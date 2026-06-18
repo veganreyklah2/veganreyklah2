@@ -16,7 +16,7 @@
 
 We are building Rye as a systems language, and an operating system, Caravan, to run on it. A natural thrift suggests itself: if we already have Rye, why design a second language for the shell? Let the language that writes the programs also write the scripts. Against that thrift stands an old instinct from Unix and Plan 9 — that the shell wants a language of its own — and the question of which spirit that language should carry: the no-surprise chain-loading of execline, the explicit comptime of Zig, the typed composition of Haskell, or the declarative laziness of Nix and our own Silo. And once a family of them exists, a further question presses: where does Mantra, our version control, sit among them?
 
-One language, or more? We will answer it, but first we have to take the question apart, because it hides a false premise.
+One language, or more? We will answer it — yet first we must take the question apart, because it hides a false premise.
 
 ---
 
@@ -29,7 +29,7 @@ When we say *shell scripting*, we blur together at least four distinct jobs, eac
 3. **Orchestration** — bringing the system *up*: starting processes in the right order, supervising them, wiring their inputs and outputs. Its master is predictable sequencing with no surprises, because this is the code that runs when nothing else is there to catch it.
 4. **Interactive glue** — a human at a prompt, composing flows: list these, filter those, pipe the result onward. Its master is terseness and immediacy — short to type, quick to answer, forgiving to explore.
 
-And threaded through all four, a fifth concern that is not a job done at a prompt but a dimension beneath them all: **memory** — the history of every program, configuration, script, and service as it changes across time. That is Mantra's domain, and we place it once the four are settled.
+And threaded through all four, a fifth concern — less a job done at a prompt than a dimension beneath them all: **memory** — the history of every program, configuration, script, and service as it changes across time. That is Mantra's domain, and we place it once the four are settled.
 
 A single language asked to serve all four masters at once must betray most of them. This is why the question "Rye, or a shell language?" cannot be answered yes or no: it is really four questions wearing one coat — with a fifth, memory, woven beneath.
 
@@ -39,7 +39,7 @@ A single language asked to serve all four masters at once must betray most of th
 
 Before we divide, let us be fair to unification, because its pull is real and principled.
 
-If everything is Rye, there is *one mental model* to learn, *one toolchain* to keep, and — most deeply — *no seam*. A system, in Rich Hickey's framing, is an ensemble of programs flowing values to one another, and every seam between languages is a place where values must be flattened to text and reparsed, losing their types and their guarantees in the crossing. If a script and a program speak the same values, that loss never happens; a pipeline carries living, typed values, not reconstituted strings. And a script written in Rye is a *checkable program* — it gets the same assertions, the same types, the same strengthening as everything else. The Lisp machines lived this way; Urbit lives this way now, one language from the metal to the prompt. The dream is coherent, and it is not foolish.
+If everything is Rye, there is *one mental model* to learn, *one toolchain* to keep, and — most deeply — *no seam*. A system, in Rich Hickey's framing, is an ensemble of programs flowing values to one another, and every seam between languages is a place where values must be flattened to text and reparsed, losing their types and their guarantees in the crossing. If a script and a program speak the same values, that loss never happens; a pipeline carries living, typed values, not reconstituted strings. And a script written in Rye is a *checkable program* — it gets the same assertions, the same types, the same strengthening as everything else. The Lisp machines lived this way; Urbit lives this way now, one language from the metal to the prompt. The dream is coherent, and it deserves our respect.
 
 So we keep its best prize — *no seam* — and look for a way to claim it without paying its price.
 
@@ -51,7 +51,7 @@ The price is fit. A systems language and an interactive shell optimize for oppos
 
 Rye, in the spirit of Zig, is explicit, ahead-of-time compiled, and verbose precisely where verbosity buys control and safety. That is exactly right for a program and exactly wrong for a prompt: no one wants a compile step between typing a command and seeing its answer, nor the ceremony of a `main` and a return type to list a directory. Stretch Rye to be terse and interactive and you blunt the explicitness that makes it safe; stretch the shell to be a full systems language and you drown its immediacy in ceremony. Every attempt in computing's history to make the systems language be the shell, or the shell be the systems language, has produced something that serves one master poorly and the other worse. TAME asks for simplicity and for the right nouns and verbs; both point to tools shaped to their work, not one tool hammered flat to cover all of it.
 
-The resolution, then: **not one language, and not a lone separate shell — but a coherent family, each member fit to its master, all sharing one value model so the seam never opens.** Coherence over uniformity.
+The resolution, then: **a coherent family — rather than one language stretched thin, rather than a lone separate shell — each member fit to its master, all sharing one value model so the seam never opens.** Coherence over uniformity.
 
 ---
 
@@ -61,11 +61,11 @@ With the four jobs named, the spirits the question offered each find their right
 
 - **The Zig spirit** — explicit, comptime, low-level — is *Rye's own* spirit, and it belongs to the **programs**. It is the wrong spirit for glue: too low to the metal, too long in the saying. We keep it where it earns its keep, and carry it no further.
 
-- **The Nix/Silo spirit** — declarative, lazy, content-addressed — is exactly right for **configuration and build**, which is precisely why we already have **Silo**. You describe what the system should be and let realization follow; laziness serves you, computing only what is demanded. But that same laziness is a poor fit for a prompt, where a human means *do this now, in this order* — a command typed is a command expected to run, not a thunk deferred until forced. Silo for the system's shape; not for the human's hands.
+- **The Nix/Silo spirit** — declarative, lazy, content-addressed — is exactly right for **configuration and build**, which is precisely why we already have **Silo**. You describe what the system should be and let realization follow; laziness serves you, computing only what is demanded. Yet that same laziness is a poor fit for a prompt, where a human means *do this now, in this order* — a command typed is a command expected to run, rather than a thunk deferred until forced. Silo for the system's shape; not for the human's hands.
 
-- **The execline spirit** — interpreter-less chain-loading, bounded, no security surprises — is the right spirit for **orchestration**, the bringing-up of services that is Caravan's lineage. The instinct for "a more TAME execline" lands exactly here. This layer wants no resident interpreter, no parsing ambiguity, no cleverness — just a predictable sequence of process hand-offs that does the same thing every time. It is the wrong spirit for interactive use (its syntax is alien to a human exploring) but the right one for the init that must never surprise.
+- **The execline spirit** — interpreter-less chain-loading, bounded, no security surprises — is the right spirit for **orchestration**, the bringing-up of services that is Caravan's lineage. The instinct for "a more TAME execline" lands exactly here. This layer wants no resident interpreter, no parsing ambiguity, no cleverness — just a predictable sequence of process hand-offs that does the same thing every time. It is the wrong spirit for interactive use — its syntax is alien to a human exploring — yet the right one for the init that must never surprise.
 
-- **The Haskell spirit** — typed values and composition — is the right *core* for **interactive glue**, because a pipeline truly *is* function composition: `a | b | c` is `c` after `b` after `a` over a stream of values. Strong types make that composition safe; structured values make it lossless. But Haskell's other halves — purity and laziness — must be set down here, because a shell's whole vocation is *effects in order*: spawn, write, move, now. So we borrow Haskell's typed composition and decline its purity, which is, not by accident, exactly the bargain a structured-data shell already proves can work.
+- **The Haskell spirit** — typed values and composition — is the right *core* for **interactive glue**, because a pipeline truly *is* function composition: `a | b | c` is `c` after `b` after `a` over a stream of values. Strong types make that composition safe; structured values make it lossless. Yet Haskell's other halves — purity and laziness — must be set down here, because a shell's whole vocation is *effects in order*: spawn, write, move, now. So we borrow Haskell's typed composition and decline its purity, which is, fittingly, exactly the bargain a structured-data shell already proves can work.
 
 No single spirit fits "the shell," because the shell is four jobs. Each spirit fits one of them.
 
@@ -87,8 +87,8 @@ We recommend a small family of TAME-coherent languages, sharing one value model,
 
 - **Rye** — the **programs**. Systems work, in the Zig spirit, strengthened our way.
 - **Silo** — the **configuration and build**. Declarative and content-addressed, in the Nix spirit, already ours.
-- **An orchestration language** — the **services and init**, in the execline spirit: no resident interpreter, bounded, surprise-free. This may not even need to be a separate language — Silo could *describe* the service graph and Caravan *execute* it in the chain-loading manner — but if it wants its own small grammar, that grammar is a TAME execline.
-- **An interactive shell** — the **human glue**: terse, typed, composition-first, and effect-honest, a sibling of Rye rather than Rye itself. We name it **Rishi** — a seer who hears the human and speaks faithfully to the machine, carrying typed values from one command into the next; the name keeps bhakti's devotion and a sattvic, plant-kind gentleness, true to our vow (and is taken up in full in `988_rishi_shell.md`).
+- **An orchestration language** — the **services and init**, in the execline spirit: no resident interpreter, bounded, surprise-free. This may need no separate language at all — Silo could *describe* the service graph and Caravan *execute* it in the chain-loading manner — yet if it wants its own small grammar, that grammar is a TAME execline.
+- **An interactive shell** — the **human glue**: terse, typed, composition-first, and effect-honest, a sibling of Rye rather than Rye itself. We name it **Rishi** — a seer who hears the human and speaks faithfully to the machine, carrying typed values from one command into the next; the name keeps bhakti's devotion and a sattvic, plant-kind gentleness, true to our vow. We take it up in full in `988_rishi_shell.md`.
 - **Mantra** — the **memory**. Not a language you compose in, but the content-addressed weave that remembers all the others, versioning programs, configs, scripts, and services alike — because they share one value model, their history is one weave.
 
 The move that earns the one-language prize without its price is this: **all of these share a single value model.** A value produced by a Rye program, carried through a Rishi pipeline, stored by a Silo build, and remembered by a Mantra weave is *the same value*, not four flattened-and-reparsed copies of it. The seam Hickey warns against never opens, because there is nothing to marshal across — not between the languages, and not between the present and the past. We get coherence — one ecosystem, one set of guarantees — without the false economy of one syntax pretending to fit every hand.

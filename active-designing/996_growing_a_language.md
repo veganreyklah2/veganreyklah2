@@ -40,7 +40,7 @@ Rye rested on a foundation that already existed — a whole language and library
 The five moves carry over, lightly adapted:
 
 - **Stand on proven ground** — Rishi rests on Rye (proven, owned), not on a borrowed shell. Its process-spawning, its types, its safety all come from the foundation we are already strengthening.
-- **Wear a thin costume first** — the first `rishi` is a small Rye program that reads a `.rish` file and runs it, doing only what the first real script needs. Humble, but running.
+- **Wear a thin costume first** — the first `rishi` is a small Rye program that reads a `.rish` file and runs it, doing only what the first real script needs. Humble, yet running.
 - **Own the core by path** — Rishi's builtins are our own, loaded explicitly, so we always know whose `run`, whose `map`, whose `assert` is in force.
 - **Diverge by accretion** — Rishi grows one feature at a time, each proven, each stamped, nothing taken away once given.
 - **Dogfood and gate** — the first program Rishi runs is the gate itself.

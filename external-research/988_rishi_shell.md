@@ -1,6 +1,6 @@
 # 988 · Rishi — A Shell for the Rye Ecosystem, and the Parity Gate Three Ways
 
-*We write `tools/parity.sh` in Bash today. This piece asks what it becomes as it grows toward TAME: first in execline (the no-surprise bridge), then in Rye itself (typed and owned, but heavy for glue), and then in a shell made for our own ecosystem — **Rishi**, with `.rish` scripts — which unites execline's safe execution with Rye's typed values in a surface terse enough for a human's hand. The parity gate turns out to be the perfect first proving-ground, because it is part orchestration and part data, and shows exactly where each tool shines and strains.*
+*We write `tools/parity.sh` in Bash today. This piece asks what it becomes as it grows toward TAME: first in execline (the no-surprise bridge), then in Rye itself (typed and owned, yet heavy for glue), and then in a shell made for our own ecosystem — **Rishi**, with `.rish` scripts — which unites execline's safe execution with Rye's typed values in a surface terse enough for a human's hand. The parity gate turns out to be the perfect first proving-ground, because it is part orchestration and part data, and shows exactly where each tool shines and strains.*
 
 **Language:** EN
 **Version:** `20260618.160612` (Rye chronological stamp)
@@ -67,7 +67,7 @@ Read it and the virtues are clear: no word-splitting, no resident interpreter, e
 
 But read it again for what is *missing*. There is no running tally — no clean way to count *matched* and *diverged* across the loop, because each pass of `forx` execs forward into a fresh chain and keeps no mutable accumulator. There is no single final verdict, no overall exit code that reflects "any divergence at all," without resorting to a counter file on disk. And comparing two multi-line outputs through environment variables strains against env size limits. execline shines at *do this, then this, then this*; it strains at *gather, count, and judge*. That strain is the lesson, not a flaw.
 
-### In Rye — typed and owned, but heavy
+### In Rye — typed and owned, yet heavy
 
 Rye can do the whole job, tally and all, as a real checkable program (Rye is Zig-shaped today, so this reads as Zig):
 
@@ -108,7 +108,7 @@ Three things make this Rishi rather than Bash. The values are *typed and structu
 
 ### How the three overlap
 
-The point is not three rival tools but one layered design:
+The point is one layered design, rather than three rival tools:
 
 - **execline gives Rishi its execution model.** Where a Rishi script spawns and sequences processes, it can *lower* to execline-style chain-loading underneath — inheriting the no-surprise, no-resident-interpreter safety for free. Rishi's orchestration *is* execline's spirit, wearing a friendlier face.
 - **Rye gives Rishi its values.** A record, a list, a string, an `assert` in Rishi are *the same things* as in Rye — one value model, shared. A value made by a Rye program flows into a Rishi pipeline without being flattened to text and reparsed; the seam `989` warns of never opens. Rishi is, in a real sense, Rye's value model wearing a shell's clothes.
@@ -123,7 +123,7 @@ We name the hazards honestly, so the dream does not run ahead of the work.
 - **Rishi does not exist yet.** Today the parity gate is Bash; the *near* bridge for orchestration-shaped scripts is execline (which we already mean to vendor); Rishi is the destination, not the present. We must not write `parity.rish` as if it ran.
 - **Designing a language is a large vow.** A shell is small to use and large to build well. The danger is bikeshedding Rishi's syntax while the strengthening work waits. Rishi earns its hours only after the gates and the foundation are sound.
 - **The syntax above is a sketch to argue over,** not a specification. Its only firm commitments are the three principles — typed values, structured process results, assertions as gates — not the particular punctuation.
-- **`.rish` carries a faint echo** (the Shizuku "Rish"); we judge it weak, but we record it so the choice is informed rather than blind.
+- **`.rish` carries a faint echo** (the Shizuku "Rish"); we judge it weak, yet record it so the choice is informed rather than blind.
 - **Interactive and scripted use still differ.** A REPL wants even more forgiveness than a script; Rishi must serve both without becoming two languages, and that tension is real work left to do.
 
 ---
