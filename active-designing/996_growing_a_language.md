@@ -3,7 +3,7 @@
 *We have grown one language already, Rye, and the way we did it is a method we can reuse. This brief draws that method out plainly, applies it to Rishi — our shell, which stands on Rye the way Rye stands on its foundation — and settles how TAME Style is organized across a family of languages: one shared root, and a small supplement for each, created only when earned.*
 
 **Language:** EN
-**Version:** `20260618.161712` (Rye chronological stamp)
+**Version:** `20260618.184912` (Rye chronological stamp)
 **Last updated:** 2026-06-18
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME priority — safety, performance, then the joy of the craft
@@ -27,7 +27,9 @@ Growing Rye taught us a method, and the method is worth more than any single ste
 4. **Diverge by strengthening, not rewriting.** Our changes are additive and behavior-preserving, each proven against the foundation by a gate, each stamped on our own clock. We change what the code *says* far more often than what it *does*, and we never break what we have given.
 5. **Dogfood, and gate.** We test against a growing corpus, and a parity gate proves our divergences keep their promises. Safety lives in the process, not only in the person.
 
-This method is not about any one language. It is how we mean to grow every language we make.
+Underneath all five lies one principle we hold as near to law as design offers: **a complex system that works is invariably found to have grown from a simpler system that worked.** A complex system designed whole, from scratch, rarely comes to life and cannot be patched into life; the honest path is to begin with something simple that runs and let it become the larger thing by degrees. So we never reach first for the finished, intricate whole — we reach for the smallest version that works, and grow it.
+
+This method is not about any one language. It is how we mean to grow every language — and every system — we make.
 
 ---
 

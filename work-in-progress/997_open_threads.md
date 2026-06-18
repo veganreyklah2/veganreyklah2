@@ -1,4 +1,4 @@
-# 987 · Open Threads — As of 2026-06-18, Afternoon
+# 997 · Open Threads — As of 2026-06-18, Afternoon
 
 *A fresh snapshot, superseding `998`, taken as we pause to run a radiant pass over all our writings. It records what has closed since the last gathering and what still waits, so the next session begins exactly where this one rests.*
 

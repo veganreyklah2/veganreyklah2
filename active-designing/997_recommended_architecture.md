@@ -3,8 +3,8 @@
 *A clean-room architecture brief for our six modules — TAME, Rye, Silo, Tally, Caravan, and Aurora — reasoning the recommended design path for each from first principles. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
 
 **Language:** EN
-**Version:** `20260617.181112` (Rye chronological stamp)
-**Last updated:** 2026-06-17
+**Version:** `20260618.184912` (Rye chronological stamp)
+**Last updated:** 2026-06-18
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME priority — safety, performance, then the joy of the craft
 **Status:** Active Design
@@ -88,6 +88,8 @@ Read together, the six are one architecture seen at six scales, and the recommen
 The discipline (**TAME**) is the ground; it governs how every other module is written. The language (**Rye**) is the discipline made into a tool, designed to be cohesion with RISC-V rather than an abstraction over it. The configuration language (**Silo**) describes whole systems as lawful, composable, content-addressed data, reproducible from source. The allocator (**Tally**) holds memory in bounded gardens that map straight onto the machine. The kernel (**Caravan**) supervises a tree of small services behind a pinned outer promise. And the boot (**Aurora**) wakes the machine as a flow of verified, named values along RISC-V's own privilege relay, into the kernel that the allocator serves and the configuration describes and the language writes and the discipline keeps honest.
 
 The single thread, stated once for all six: bound the lifetime, grow by accretion, release whole regions cleanly, speak in values with enduring names, and never take from a holder what they were given — all in cohesion with the one substrate we treat as fixed, the open instruction set the world is coming to rest upon.
+
+Since this brief was first written, the family has grown around these six. A shell for the human's hand, **Rishi**; a memory that keeps every history, **Mantra**; and a bounded enclosure for an agent at work, **Pond** — each reasoned in the later writings, and each composing onto the six by this same single thread. The six names here remain the load-bearing core; the fuller family grows from them, exactly as a working complex system grows from a working simple one.
 
 ---
 

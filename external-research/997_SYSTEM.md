@@ -1,12 +1,12 @@
 # 997 · Honoring Tiger Style and the Language of the System
 
-*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, and Rich Hickey's flow and his distinction of the simple from the easy — set down with thanks, together with the gentle name and the vow we carry forward.*
+*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones — set down with thanks, together with the gentle name and the vow we carry forward.*
 
 **Language:** EN
-**Version:** `20260618.182312` (Rye chronological stamp)
+**Version:** `20260618.184912` (Rye chronological stamp)
 **Last updated:** 2026-06-18
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Honors:** `../gratitude/TIGER_STYLE.md`, `../gratitude/LanguageSystem.md`, `../gratitude/SimpleMadeEasy.md`, `../gratitude/Spec_ulation.md`
+**Honors:** `../gratitude/TIGER_STYLE.md`, `../gratitude/LanguageSystem.md`, `../gratitude/SimpleMadeEasy.md`, `../gratitude/Systemantics.md`, `../gratitude/Spec_ulation.md`
 **Status:** Gratitude
 
 ---
@@ -17,7 +17,7 @@ This is the one place where we say plainly where the good ideas came from. It ga
 
 We keep it as a single gratitude note so the direct writings can stay pure. The discipline, voiced wholly in our own words, lives in `996_TAME_STYLE.md`. The systems thinking, explained from scratch and grown toward the metal, lives in `993`, the Aurora writing. This note is the bridge to all of it: the record of the debt, so the other documents can simply do the work.
 
-The whole lineage teaches one lesson, said in three voices. A system earns trust when it is safe first, fast second, and a joy to work in third — composed of small honest pieces that speak in values, with names that endure and assertions that guard every boundary. Tiger Style gave us the discipline, Joran the order, and Hickey the flow.
+The whole lineage teaches one lesson, said in four voices. A system earns trust when it is safe first, fast second, and a joy to work in third — composed of small honest pieces that speak in values, with names that endure and assertions that guard every boundary, grown from simpler pieces that already worked. Tiger Style gave us the discipline, Joran the order, Hickey the flow, and Gall the way systems grow.
 
 ---
 
@@ -59,6 +59,14 @@ So we choose the simple over the merely easy, even when the easy lies closer to 
 
 ---
 
+## What John Gall Taught Us
+
+John Gall, in *Systemantics* — later *The Systems Bible* — watched systems fail with a wry and generous eye, and left one observation we treat as near to law as design offers. **A complex system that works is invariably found to have evolved from a simple system that worked.** Its companion is just as plain: a complex system designed whole, from scratch, rarely comes to life and cannot be patched into life — the honest path is to begin again with a simple system that runs.
+
+We take this gladly, because it tells us *how* to build everything else here. We never design the finished, intricate thing and hope it breathes; we grow it from the smallest version that works, by degrees, each stage running before the next is added. Gall's wider lore rhymes with our discipline — that a loose, decoupled system outlasts a tightly bound one, that large systems drift toward antics and encroachment when left unwatched, that a system set against the people it serves works poorly — and all of it points one way: keep it simple, keep it loose, grow it from what already works, and stay in close touch with what the system is truly for. It is the lesson Tiger Style states as "simplicity is the hardest revision," and Hickey as "simple, composed," now told from the far side — by watching, with affection, what happens when we forget it.
+
+---
+
 ## How the Voices Meet
 
 The three voices were answering different questions, and they arrive at one harmony. Tiger Style sets the discipline of the small — the assertions, the limits, the sized types within a single program. Joran orders the goals across the whole endeavor. Hickey shapes the composition of many programs into a system. Read together, they describe work that is safe at its core, fast by design, joyful to build, and assembled from small honest pieces that flow values to one another and keep faith through partial failure.
@@ -90,6 +98,7 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 - **`../gratitude/TIGER_STYLE.md`** — TigerBeetle's Tiger Style, whole and unaltered, where the priority order and the safety discipline are stated. Voiced directly, in our own words, in `996_TAME_STYLE.md`.
 - **`../gratitude/LanguageSystem.md`** — Rich Hickey's *The Language of the System* (Clojure/conj 2012), whole and unaltered. The source of the flow model, values-with-names, the systems failure model, and simple services. Explained directly in `993`, the Aurora writing.
 - **`../gratitude/SimpleMadeEasy.md`** — Rich Hickey's *Simple Made Easy* (Strange Loop 2011), whole and unaltered. The source of the simple-versus-easy distinction and of building by composing free parts, deepening our sense that simplicity is earned.
+- **`../gratitude/Systemantics.md`** — John Gall's *Systemantics* / *The Systems Bible*, honored as a curated principles summary (the book is copyrighted). The source of Gall's Law — that a working complex system grows from a working simple one — which shapes how we grow every module.
 - **`../gratitude/Spec_ulation.md`** — Rich Hickey's *Spec-ulation*, whole and unaltered, the source of growth-over-breakage and enduring names, which shapes how Rye versions itself.
 - **This note** — the one gratitude bridge between all these sources and our work.
 

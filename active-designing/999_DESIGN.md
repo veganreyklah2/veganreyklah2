@@ -45,7 +45,8 @@ Like the external-research stack, this folder counts **down**, and two near-foun
 
 ```
 active-designing/
-  996_<next-design>.md            <- most recent design, sorts first
+  995_single_stranded.md          <- most recent design, sorts first
+  996_growing_a_language.md       <- how we grow a language
   997_recommended_architecture.md <- the first design brief
   998_strengthening_strategy.md   <- the standing strategy that guides the work
   999_DESIGN.md                   <- this foundation, sorts last
