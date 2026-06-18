@@ -41,7 +41,7 @@ A *rishi* is a seer — one who *hears* the truth (śruti) and *speaks* it faith
 
 The extension `.rish` was chosen with eyes open. `.rsh` was set aside deliberately: across the developer community those three letters read instantly as `rsh`, the classic Unix **remote shell**, and an extension that lies about a file's nature is exactly the kind of quiet confusion TAME refuses. `.rish` carries no such canonical baggage; its only echo is a niche Android helper (Shizuku's "Rish"), in a different domain and a different community, weak enough to set aside. And `.rish` reads as *family* — it stands beside `.fish`, `.ksh`, `.zsh`, and `.csh` and announces plainly, *this is a shell language*. Since we are building our own OS, we hold our own namespace; should we ever want the idea of a "remote shell," we will give it a name of our own rather than borrow back the one we declined. The direction stands, gladly and without veto.
 
-(In `989` we floated *Brook* as a placeholder for this shell, "to argue over, not a decree." Rishi is the argument settled. Brook can rest, or live on as the name for the *stream of typed values* a Rishi pipeline carries — a small poetry, not a second tool.)
+(`989` reaches this same conclusion and now carries the name Rishi too. If we ever want a word for the *stream of typed values* a Rishi pipeline carries, that is a small poetry to coin later, not a second tool.)
 
 ---
 
