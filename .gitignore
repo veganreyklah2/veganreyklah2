@@ -21,11 +21,13 @@
 !/tools/
 !/strengthening-compiler/
 !/work-in-progress/
+!/rishi/
 
 # --- Re-ignore fetched dependencies and build artifacts inside the project --
 # The Zig toolchain is large and fetched, not authored (the binary alone is
 # ~165MB, past GitHub's 100MB limit). The rye binary and caches are built.
 /rye/bin/
+/rishi/bin/
 *.rye.zig
 .zig-cache/
 zig-cache/
