@@ -1,7 +1,7 @@
 # Rye
 
 **Language:** EN
-**Version:** `20260618.043012` (Rye chronological stamp)
+**Version:** `20260618.191412` (Rye chronological stamp)
 **Last updated:** 2026-06-18
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Style (`../external-research/996_TAME_STYLE.md`)
 **Status:** Living
@@ -12,12 +12,15 @@
 
 Rye is the systems language we are growing from Zig 0.16.0. This first version is honest about what it is: a careful front-end that runs `.rye` source through the Zig 0.16.0 toolchain, on a standard library that is now Rye's own. A `.rye` file is Zig source at heart for now, so every capability the toolchain offers — including SHA3-512 in the standard crypto library — is Rye's too, by construction. Yet Rye has begun to diverge: it carries its own copy of the standard library, and it counts its versions in its own way. Over time, it grows further into its own shape.
 
-The `rye` command speaks two verbs:
+The `rye` command speaks three verbs:
 
 - `rye version` — print Rye's chronological version and the backend it stands upon.
 - `rye run <file.rye>` — compile and run a single `.rye` source file, against Rye's own standard library.
+- `rye build <file.rye>` — compile a `.rye` source file to a binary. Flags after the file pass straight through to the toolchain, so Rye can aim at any target it supports.
 
-Because the toolchain's front-end reads only the `.zig` extension, `rye run` bridges: it copies the `.rye` source to an adjacent `.zig` file, hands that to the compiler — pointed at Rye's standard library — and clears the bridge away so the tree stays tidy.
+Because the toolchain's front-end reads only the `.zig` extension, both `run` and `build` bridge: they copy the `.rye` source to an adjacent `.zig` file, hand that to the compiler — pointed at Rye's standard library — and clear the bridge away so the tree stays tidy.
+
+The first place we aimed `rye build` was bare metal. It compiled a freestanding RISC-V program that wakes on an emulator — at once Rye's RISC-V cohesion made concrete and Aurora's first living seed, a hart that comes up, speaks one asserted line, and rests. That seed and its story live in `../aurora/`.
 
 ---
 

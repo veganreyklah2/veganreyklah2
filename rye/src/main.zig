@@ -10,6 +10,10 @@
 //! Commands:
 //!   rye version            Print the Rye version and its toolchain backend.
 //!   rye run <file.rye>     Compile and run a single .rye source file.
+//!   rye build <file.rye>   Compile a .rye source file to a binary. Flags after
+//!                          the file pass through to the toolchain, so Rye can
+//!                          aim at any target it supports — including freestanding
+//!                          RISC-V, the ground Aurora's first seed wakes on.
 //!
 //! We locate the Zig toolchain through the RYE_ZIG environment variable when
 //! set, and otherwise as `zig` on the PATH. We pass this explicitly rather than
@@ -27,13 +31,15 @@ const std = @import("std");
 /// Rye's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger. The scheme itself was the first divergence from Zig (20260617.213112):
 /// Rye names its versions on a clock while the backend keeps its honest semantic
-/// version, reported through `builtin.zig_version`. Divergences in *substance*
-/// then accrete, each an additive, parity-identical strengthening of Rye's own
-/// `std`, recorded in the strengthening-compiler stack. This stamp marks the
-/// deeper Keccak sponge strengthening and the new `std.debug.maybe` helper
-/// (strengthening-compiler/9997); the SHA3-512 wrappers came first at
-/// 20260618.070012 (9998). The backend stays honestly 0.16.0 throughout.
-const rye_version = "20260618.072512";
+/// version, reported through `builtin.zig_version`. From there Rye accretes,
+/// nothing removed and only added, along two strands. Divergences in *substance*
+/// strengthen Rye's own `std` — each additive and parity-identical, recorded in
+/// the strengthening-compiler stack: the SHA3-512 wrappers at 20260618.070012
+/// (9998), the deeper Keccak sponge at 20260618.072512 (9997). Accretions in
+/// *capability* grow the tool itself: this stamp adds the `build` command, and
+/// with it Aurora's first freestanding RISC-V seed — a hart that wakes in an
+/// emulator, speaks one line, and halts. The backend stays honestly 0.16.0.
+const rye_version = "20260618.191412";
 
 /// The Zig toolchain version this first Rye stands upon.
 const zig_backend_version = "0.16.0";
@@ -74,7 +80,9 @@ pub fn main(init: std.process.Init) !u8 {
         printVersion();
         return 0;
     } else if (std.mem.eql(u8, command, "run")) {
-        return runFile(init, args);
+        return bridgeToZig(init, args, "run", "run");
+    } else if (std.mem.eql(u8, command, "build")) {
+        return bridgeToZig(init, args, "build-exe", "build");
     } else if (std.mem.eql(u8, command, "help") or std.mem.eql(u8, command, "--help")) {
         printUsage();
         return 0;
@@ -92,6 +100,7 @@ fn printUsage() void {
         \\usage:
         \\  rye version            print the Rye version and toolchain backend
         \\  rye run <file.rye>     compile and run a single .rye source file
+        \\  rye build <file.rye>   compile a .rye file to a binary (flags pass through)
         \\
     , .{ rye_version, zig_backend_version });
 }
@@ -104,19 +113,29 @@ fn printVersion() void {
     , .{ rye_version, zig_backend_version, zig_backend_version_chrono });
 }
 
-fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
+/// Bridge a `.rye` file to the toolchain: copy it to an adjacent `.zig`, hand
+/// that to `zig <zig_subcommand>` against Rye's own standard library, then clear
+/// the bridge away. `run` and `build` share this one path; only the toolchain
+/// verb and the spoken label differ. Flags after the file pass straight through,
+/// so a caller can aim a build at any target the toolchain supports.
+fn bridgeToZig(
+    init: std.process.Init,
+    args: []const [:0]const u8,
+    zig_subcommand: []const u8,
+    label: []const u8,
+) !u8 {
     const arena = init.arena.allocator();
     const io = init.io;
 
     if (args.len < 3) {
-        std.debug.print("rye run: expected a .rye file\n", .{});
+        std.debug.print("rye {s}: expected a .rye file\n", .{label});
         return 2;
     }
     const rye_path = args[2];
 
     // A `.rye` source is required; reject the negative space plainly.
     if (!std.mem.endsWith(u8, rye_path, ".rye")) {
-        std.debug.print("rye run: source file must end with .rye, got '{s}'\n", .{rye_path});
+        std.debug.print("rye {s}: source file must end with .rye, got '{s}'\n", .{ label, rye_path });
         return 2;
     }
 
@@ -127,11 +146,11 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
     const bridge_path = try std.fmt.allocPrint(arena, "{s}.zig", .{rye_path});
 
     const source = dir.readFileAlloc(io, rye_path, arena, .unlimited) catch |err| {
-        std.debug.print("rye run: could not read '{s}': {s}\n", .{ rye_path, @errorName(err) });
+        std.debug.print("rye {s}: could not read '{s}': {s}\n", .{ label, rye_path, @errorName(err) });
         return 1;
     };
     dir.writeFile(io, .{ .sub_path = bridge_path, .data = source }) catch |err| {
-        std.debug.print("rye run: could not stage '{s}': {s}\n", .{ bridge_path, @errorName(err) });
+        std.debug.print("rye {s}: could not stage '{s}': {s}\n", .{ label, bridge_path, @errorName(err) });
         return 1;
     };
     defer dir.deleteFile(io, bridge_path) catch {};
@@ -141,11 +160,11 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
 
     // Resolve Rye's own standard library, so `@import("std")` means *our* std.
     // Rye insists on its own std and never falls back to the toolchain's
-    // silently: a run that succeeds is a run that used our standard library.
+    // silently: a build that succeeds is a build that used our standard library.
     const rye_lib = resolveRyeLib(init, arena) catch |err| {
         std.debug.print(
-            "rye run: could not locate Rye's standard library ({s}). It should sit beside this binary at '{s}', or set RYE_LIB to point at rye/lib.\n",
-            .{ @errorName(err), rye_lib_relative_to_exe },
+            "rye {s}: could not locate Rye's standard library ({s}). It should sit beside this binary at '{s}', or set RYE_LIB to point at rye/lib.\n",
+            .{ label, @errorName(err), rye_lib_relative_to_exe },
         );
         return 1;
     };
@@ -155,17 +174,20 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
     const std_root = try std.fmt.allocPrint(arena, "{s}/std/std.zig", .{rye_lib});
     dir.access(io, std_root, .{}) catch |err| {
         std.debug.print(
-            "rye run: Rye's standard library is missing at '{s}' ({s}). Expected our std at '{s}'.\n",
-            .{ rye_lib, @errorName(err), std_root },
+            "rye {s}: Rye's standard library is missing at '{s}' ({s}). Expected our std at '{s}'.\n",
+            .{ label, rye_lib, @errorName(err), std_root },
         );
         return 1;
     };
 
-    // Invocation: zig run <bridged.zig> --zig-lib-dir <rye/lib> [forwarded args].
+    // Invocation: zig <subcommand> <bridged.zig> --zig-lib-dir <rye/lib> [forwarded].
+    // `run` runs the program; `build-exe` emits a binary. The forwarded flags let
+    // a build choose its target, code model, linker script, and output path — the
+    // levers Aurora's freestanding RISC-V seed leans on.
     const extra: []const [:0]const u8 = if (args.len > 3) args[3..] else &.{};
     const argv = try arena.alloc([]const u8, 5 + extra.len);
     argv[0] = zig;
-    argv[1] = "run";
+    argv[1] = zig_subcommand;
     argv[2] = bridge_path;
     argv[3] = "--zig-lib-dir";
     argv[4] = rye_lib;
@@ -173,8 +195,8 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
 
     var child = std.process.spawn(io, .{ .argv = argv }) catch |err| {
         std.debug.print(
-            "rye run: could not start toolchain '{s}' ({s}). Set RYE_ZIG to the zig binary, or put zig on your PATH.\n",
-            .{ zig, @errorName(err) },
+            "rye {s}: could not start toolchain '{s}' ({s}). Set RYE_ZIG to the zig binary, or put zig on your PATH.\n",
+            .{ label, zig, @errorName(err) },
         );
         return 1;
     };

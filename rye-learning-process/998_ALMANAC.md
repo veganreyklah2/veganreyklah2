@@ -140,12 +140,25 @@ Two paths, both confirmed:
 
 ---
 
+## A Freestanding Hart on RISC-V
+
+The first time Rye left the operating system behind, it woke a bare-metal hart. `rye build` — the new sibling of `rye run` — hands the bridged source to `zig build-exe` rather than `zig run`, so Rye emits a binary; flags after the file pass straight through, which is how a freestanding target gets chosen. Aiming at `riscv64-freestanding-none` and running the result on `qemu-system-riscv64 -machine virt` taught a handful of lessons worth keeping.
+
+- **The code model matters at the top of RAM.** QEMU's `virt` machine places RAM at `0x8000_0000`, and the default `medlow` code model cannot address a symbol there — its `lui`-based `R_RISCV_HI20` relocation overflows a signed 20-bit field by exactly one (`524288`, where `524287` is the maximum). The fix is the `medany` model, which Zig spells `-mcmodel=medium`: it addresses symbols PC-relative (`auipc`) and so reaches anywhere. This is the canonical RISC-V bare-metal stumble, and the linker error names it precisely once you know to read it.
+- **A hart wakes with no stack.** At reset the stack pointer is undefined, so the entry point cannot be an ordinary function — its prologue would write through a garbage `sp`. We make `_start` `callconv(.naked)` so no prologue runs, set `sp` to real memory with a single `li`, and `j` to a normal function that may now use a stack freely.
+- **Placement is the linker script's job.** With `-bios none`, the machine begins executing at `0x8000_0000`, so `_start` must live exactly there. We give it its own section, `.text.init`, and a tiny linker script (`ENTRY(_start)`; `. = 0x80000000`; `KEEP(*(.text.init))` placed first) that lays it at the base of RAM. `-fno-entry` tells the toolchain we provide the entry ourselves.
+- **The machine has two useful edges.** The `virt` console UART sits at `0x1000_0000`: write a byte to its transmit register and it appears on the console. The SiFive test device sits at `0x10_0000`: write `0x5555` and the machine powers off, handing a clean exit (`0`) back to the host — which is how the seed ends without hanging the emulator.
+
+The whole thing is one command, `aurora/run-seed.sh`, and it dogfoods Rye end to end: Rye's own toolchain builds the binary, against Rye's own `std`, and the emulator wakes it. The seed lives in `../aurora/`.
+
+---
+
 ## Open Threads
 
 A few paths we have left lit for later, each a deliberate choice rather than an oversight:
 
 - **Self-hosting the `rye` command.** For now it is a small Zig program. As Rye finds its own shape, the command can be written in Rye itself — the natural end state.
-- **A `build.rye` story.** Zig builds projects through a `build.zig` script; Rye will want its own `build.rye`, bridged the same way single files are today.
+- **A `build.rye` story.** `rye build` now compiles a single `.rye` file to a binary, freestanding targets included. Zig builds *whole projects* through a `build.zig` script; Rye will want its own `build.rye` for many-file programs, bridged the same way single files are today.
 - **A bounded read.** The command reads a source file with an unlimited size; a future version can bound it, in keeping with putting a limit on everything.
 - **Many-file programs.** The single-file bridge serves the first version; multi-file `.rye` projects, with their imports, are a thread to pick up next.
 - **Pond.** The `ai-jail` sandbox we work inside is a Rust project; re-growing it as a gentle, TAME-style enclosure in Rye — Pond — is a thread we mean to follow once the language stands on more of its own.

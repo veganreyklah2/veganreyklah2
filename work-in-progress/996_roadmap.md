@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260618.184912` (Rye chronological stamp)
+**Version:** `20260618.191412` (Rye chronological stamp)
 **Last updated:** 2026-06-18
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -73,9 +73,21 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 ---
 
-## The Immediate Next Step
+## The Adjusted Priority — Rye and Aurora Share One Seed
 
-From Horizon 1, the smallest move that grows the most: **add list values to Rishi**, so `say` can speak a list — the first step of the climb toward `parity.rish`. It is small, it will run, and `parity.rish` is made of it.
+Reading Rye and Aurora through every active-designing lens at once gives one clear move. Rye is the trunk: the language everything else is written in, and the one simple system that already works. Aurora is a branch that grows from it — and it cannot grow until the trunk can meet bare-metal RISC-V. So Rye leads, by dependency and by Gall's Law alike.
+
+The gift hidden here is that Rye's next reach and Aurora's first breath are *the same step*. Because Rye stands on a toolchain that already targets freestanding RISC-V, a minimal RISC-V program — a hart waking, doing one asserted thing — is buildable now; and that very program proves the RISC-V cohesion the spec asks of Rye while planting the living seed Aurora grows from. One step feeds two roots. These are not competing priorities; they are one priority wearing two names.
+
+So the trunk advances and the branch is planted together: we teach Rye to emit a freestanding RISC-V binary and run it in an emulator. Rishi keeps growing toward `parity.rish` on its own track, unhurried, since the gates already make each of its passes safe.
+
+---
+
+## The Step Just Taken, and the Next
+
+The shared seed is planted. `rye build` now emits a freestanding RISC-V binary, and `aurora/run-seed.sh` wakes it on `qemu-system-riscv64`: a hart comes up at the base of RAM, gives itself a stack, speaks one asserted line, and powers the machine down cleanly (exit 0). Rye's RISC-V cohesion and Aurora's first living stage arrived together, as one step, stamped `20260618.191412` — the seed and its story in `../aurora/`.
+
+The next step grows from it: a **second asserted stage** — the seed reads a register or a device, proves the value it finds, and hands off — turning one line of output into the first true relay. Rishi's own next feature, list values toward `parity.rish`, continues in parallel.
 
 ---
 

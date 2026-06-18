@@ -123,6 +123,22 @@ These stamps endure together, exactly as accretion asks: `20260617.033512` when 
 
 ---
 
+## Accretion in Capability
+
+Substance is one strand of growth; capability is the other. Where a divergence in substance strengthens what Rye's `std` *says*, an accretion in capability grows what the `rye` tool can *do* — and it grows the same gentle way, by adding a name and taking none away. The stamp
+
+```
+20260618.191412
+```
+
+marks the first such accretion: the `rye` command learned a second verb, `build`, beside the `run` it already spoke. `run` still runs exactly as it did; `build` emits a binary instead, with flags passing straight through to the toolchain, so Rye can aim at any target it supports.
+
+The first thing we aimed it at was bare metal. With `build`, Rye compiled a freestanding RISC-V program — Aurora's first seed — and `qemu-system-riscv64` woke it: a hart came up at the base of RAM, gave itself a stack, spoke one asserted line over the console, and powered the machine down cleanly. That single step fed two roots at once. It is the RISC-V cohesion Rye's own spec asks of it (`rye-as-its-own-language.md`), made concrete in a binary that runs; and it is Aurora's first living stage, the simple boot the rest grows from. The seed and its story live in `../../aurora/`.
+
+So a second strand now grows beside the first, on the one shared clock. The substance stamps and this capability stamp endure together — none erased — and `20260618.191412` is the one that first woke Rye on RISC-V.
+
+---
+
 ## How Rye Grows Without Breaking
 
 A version stamp records when. The deeper promise is what happens between stamps, and here the value becomes a daily practice.
