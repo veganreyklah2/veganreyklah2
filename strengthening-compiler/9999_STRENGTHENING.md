@@ -14,7 +14,7 @@
 
 ## What This Stack Is
 
-Rye begins on the exact Zig 0.16.0 standard library, and from there it becomes ours — not by rewriting what already works, but by surrounding proven code with the discipline of stated invariants. This folder is the record of that becoming. Each document is one **strengthening**: a single function, or a small family of them, met carefully and made to *say* what it has always quietly kept true.
+Rye begins on the exact Zig 0.16.0 standard library, and from there it becomes ours — by surrounding proven code with the discipline of stated invariants, rather than by rewriting what already works. This folder is the record of that becoming. Each document is one **strengthening**: a single function, or a small family of them, met carefully and made to *say* what it has always quietly kept true.
 
 The stack reads newest-first, the way the rest of our research does. This manifesto holds the highest number, `9999`, so it rests at the floor of an alphabetical listing. The first strengthening sits just above it at `9998`. Every new pass takes the next lower number — `9997`, then `9996`, and onward — so the freshest work rises to the top and the method that began it all stays beneath, holding everything up.
 
@@ -66,7 +66,7 @@ Versioning binds the two. Rye's first divergence was in naming — the chronolog
 
 ## The Promise
 
-We will make many of these — likely thousands, across the long years. Each will be small enough to hold in the eye and safe enough to trust on its own. Together they are how a borrowed standard library becomes a tended one: not in a single rewrite we could never fully verify, but in a patient sequence of passes, every one of them additive, proven, and reversible by simply reading what it added.
+We will make many of these — likely thousands, across the long years. Each will be small enough to hold in the eye and safe enough to trust on its own. Together they are how a borrowed standard library becomes a tended one: a patient sequence of passes — rather than a single rewrite we could never fully verify — every one of them additive, proven, and reversible by simply reading what it added.
 
 Our gratitude here runs to TigerBeetle, whose assertion craft — the dual `maybe`, the precondition block at a function's door, the careful economy of when an expensive check earns its keep — we study with admiration and fold into TAME Style. The discipline is theirs by example; the application to Rye's `std` is ours by hand, recorded here.
 

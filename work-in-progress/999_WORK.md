@@ -10,7 +10,7 @@
 
 ## What This Folder Is
 
-This is the workbench. Where the external-research stack studies the world and the active-designing stack decides our design, this folder holds the *live edges* of the work — the threads still in motion. The questions waiting on a decision. The tasks chosen but not yet done, or offered but not yet taken. The housekeeping left ajar. We keep them here, in writing, so nothing slips between sessions, and so anyone returning to the work — a future us, or an agent picking it back up — can see at a glance exactly where we stand and what comes next.
+This is the workbench. Where the external-research stack studies the world and the active-designing stack decides our design, this folder holds the *live edges* of the work — the threads still in motion. The questions waiting on a decision. The tasks chosen and not yet done, or offered and not yet taken. The housekeeping left ajar. We keep them here, in writing, so nothing slips between sessions, and so anyone returning to the work — a future us, or an agent picking it back up — can see at a glance exactly where we stand and what comes next.
 
 It is a kindness to our future selves: memory for the *work*, the way Mantra is memory for the *code*.
 

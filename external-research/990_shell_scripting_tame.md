@@ -14,7 +14,7 @@
 
 ## The Question, Honestly Put
 
-We wrote our first tooling in Bash — `tools/parity.sh` and `tools/make-key-card.sh` — for the plain reason that Bash is already here, in every shell, with nothing to install. But Bash sits uneasily beside everything else we hold. It is stringly-typed to its core: a word splits where you did not expect, a glob expands where you did not mean, an unquoted variable becomes three arguments or none. Its error model is a retrofit — `set -euo pipefail` is a seatbelt bolted onto a car built without one. If TAME asks for safety first, Bash answers last.
+We wrote our first tooling in Bash — `tools/parity.sh` and `tools/make-key-card.sh` — for the plain reason that Bash is already here, in every shell, with nothing to install. Yet Bash sits uneasily beside everything else we hold. It is stringly-typed to its core: a word splits where you did not expect, a glob expands where you did not mean, an unquoted variable becomes three arguments or none. Its error model is a retrofit — `set -euo pipefail` is a seatbelt bolted onto a car built without one. If TAME asks for safety first, Bash answers last.
 
 So the question is fair and overdue: is some other shell more TAME? We weigh the candidates against the lens we always use, and let safety lead.
 
@@ -34,17 +34,17 @@ Now the candidates, each held to that light.
 
 ## The Incumbent: Bash and Zsh
 
-Bash and Zsh are the shells nearly everyone has, and that ubiquity is their one real gift to us: in a constrained sandbox they are already present and need nothing installed. Everything else weighs against them. Their values are untyped text, so structure must be faked with delimiters and rebuilt with `cut`, `sed`, and `awk`. Word splitting and globbing happen implicitly, turning an unquoted variable into a bug that hides until the wrong filename appears. Their error handling is opt-in and partial — `set -euo pipefail` helps, yet leaks through pipelines and command substitutions in ways even experts misjudge. Zsh is friendlier in places, but shares the same stringly foundation. By the measure that matters most to us, these are the least TAME tools we use — which is exactly why our own Bash scripts deserve a successor.
+Bash and Zsh are the shells nearly everyone has, and that ubiquity is their one real gift to us: in a constrained sandbox they are already present and need nothing installed. Everything else weighs against them. Their values are untyped text, so structure must be faked with delimiters and rebuilt with `cut`, `sed`, and `awk`. Word splitting and globbing happen implicitly, turning an unquoted variable into a bug that hides until the wrong filename appears. Their error handling is opt-in and partial — `set -euo pipefail` helps, yet leaks through pipelines and command substitutions in ways even experts misjudge. Zsh is friendlier in places, yet shares the same stringly foundation. By the measure that matters most to us, these are the least TAME tools we use — which is exactly why our own Bash scripts deserve a successor.
 
 ---
 
 ## Fish, Now in Rust
 
-Fish 4.0 (February 2025) is a complete rewrite from C++ to Rust — a real gain in the *implementation's* memory safety. But the team's own promise was that the change is invisible to users: the *language* is unchanged. Fish stays stringly-typed and interactive-first. Its gifts are genuine — no word-splitting surprises, friendly errors, a delightful prompt — but they are gifts of *developer joy*, the third value, rather than of safety, the first. Fish makes the human happier; it does not make the script safer. For interactive use, a pleasure. For TAME tooling, a modest step.
+Fish 4.0 (February 2025) is a complete rewrite from C++ to Rust — a real gain in the *implementation's* memory safety. Yet the team's own promise was that the change is invisible to users: the *language* is unchanged. Fish stays stringly-typed and interactive-first. Its gifts are genuine — no word-splitting surprises, friendly errors, a delightful prompt — yet they are gifts of *developer joy*, the third value, rather than of safety, the first. Fish makes the human happier; it does not make the script safer. For interactive use, a pleasure. For TAME tooling, a modest step.
 
 ---
 
-## Ion: Typed and Safe, but Not Yet Solid
+## Ion: Typed and Safe, Yet Unsettled
 
 Ion, the Rust shell of the Redox OS world, is the most TAME in *design* among the traditional-looking shells: first-class typed values (`str`, `bool`, `int`, `float`), typed arrays `[T]` and maps `hmap[T]`, type-checked assignments that fail loudly on a bad value, a deliberate refusal of POSIX's awkward legacy, and Rust's memory safety beneath it all. We admire it. And we cannot yet build upon it: its last release was a 2017 prerelease, its own documentation calls it a work in progress whose syntax may still change, and it is developed chiefly for Redox. TAME asks for zero technical debt and doing things right the first time; resting our floor on a shell that may shift under us is the opposite. Ion is a reference to learn from, not a dependency to take.
 
@@ -66,7 +66,7 @@ YSH, the new language of the Oils project, is shell grown up. It keeps a familia
 
 And then there is execline, which we already honored in `991_useful_utilities.md` as the TAME answer to scripting — and the survey only deepens that regard. execline is a scripting language with *no resident interpreter*: its launcher reads a script, turns it into a single argument vector, and executes into that chain, each program performing its action and then exec-ing into the next — the discipline called chain loading. Its author states it plainly: the syntax is far more logical and predictable than the shell's, and it has *no security issues*. No word-splitting to surprise you, no quoting hazard, no interpreter lingering in memory. It is tiny, ISC-licensed, and still actively kept.
 
-Its costs mirror its virtues. The syntax is alien to a shell user; it is built for *small, simple, non-interactive* scripts rather than ad-hoc data wrangling; and its single-argv model carries an operating-system size limit. But look at what our tooling actually *is*: short, deterministic sequences — build this, run that, compare, report. That is precisely execline's sweet spot, and precisely where Bash's stringly hazards buy us nothing.
+Its costs mirror its virtues. The syntax is alien to a shell user; it is built for *small, simple, non-interactive* scripts rather than ad-hoc data wrangling; and its single-argv model carries an operating-system size limit. Yet look at what our tooling actually *is*: short, deterministic sequences — build this, run that, compare, report. That is precisely execline's sweet spot, and precisely where Bash's stringly hazards buy us nothing.
 
 ---
 

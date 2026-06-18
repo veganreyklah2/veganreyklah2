@@ -17,7 +17,7 @@
 
 The first pass strengthened SHA3-512 at its three wrappers — `hash`, `update`, `final` — and held there on purpose, leaving the sponge beneath them exactly as Zig wrote it, a step to take when we chose to. We choose to now.
 
-Those wrappers do little on their own. `update` calls `absorb`; `final` calls `pad` and then `squeeze`. The real work — the buffering of input into rate-sized blocks, the permutation, the extraction of the digest — lives in the Keccak sponge state at `rye/lib/std/crypto/keccak_p.zig`. These three functions are the standard-library code the hash actually leans on, and they are shared by the whole Keccak family: not only SHA3, but SHAKE, cSHAKE, KMAC, TurboSHAKE, and KangarooTwelve all rest on this same sponge. To strengthen it once is to strengthen all of them.
+Those wrappers do little on their own. `update` calls `absorb`; `final` calls `pad` and then `squeeze`. The real work — the buffering of input into rate-sized blocks, the permutation, the extraction of the digest — lives in the Keccak sponge state at `rye/lib/std/crypto/keccak_p.zig`. These three functions are the standard-library code the hash actually leans on, and they are shared by the whole Keccak family — SHA3, SHAKE, cSHAKE, KMAC, TurboSHAKE, and KangarooTwelve all rest on this same sponge. To strengthen it once is to strengthen all of them.
 
 The sponge keeps a single invariant above all others, and everything else depends on it: a cursor named `offset` that always rests within one block — in the range `[0, rate]`. It may sit *at* the boundary when a full block waits to be consumed, and it never moves past it. The buffer is exactly `rate` bytes wide, so this bound is what keeps every copy into that buffer in range. Naming it is the heart of this pass.
 
@@ -80,7 +80,7 @@ And `squeeze` brackets its early-returning body the same way `absorb` does, nami
 
 ## The Verify Economy, in Action
 
-The most instructive part of this pass is what we *did not* do. Each of these functions carries a `while` loop that walks block by block — this is the data plane, the hot inner path of hashing. The updated TAME Style is precise about assertions here: assert the O(1) precondition *before* the loop, but do not pay an assertion on every iteration unless a benchmark proves it worthwhile, and if you must, guard it behind a `verify` flag.
+The most instructive part of this pass is what we *did not* do. Each of these functions carries a `while` loop that walks block by block — this is the data plane, the hot inner path of hashing. The updated TAME Style is precise about assertions here: assert the O(1) precondition *before* the loop, and avoid paying an assertion on every iteration unless a benchmark proves it worthwhile; if you must, guard it behind a `verify` flag.
 
 So we placed our checks at the function boundaries, where they cost O(1) and run once per call, and we added nothing inside the loops. The invariant `offset <= rate` is checked on entry and on exit; the per-block work runs exactly as fast as before. This is the control-plane / data-plane line drawn for assertions rather than for throughput — dense safety at the edges, an untouched fast path in the middle. No `verify` gate was needed, because nothing expensive was added; that gate waits for a pass where an O(n) check genuinely earns its keep.
 

@@ -10,7 +10,7 @@
 
 ## What Rye Is
 
-Rye is the systems language we are growing from Zig 0.16.0. This first version is honest about what it is: a careful front-end that runs `.rye` source through the Zig 0.16.0 toolchain, on a standard library that is now Rye's own. A `.rye` file is Zig source at heart for now, so every capability the toolchain offers — including SHA3-512 in the standard crypto library — is Rye's too, by construction. But Rye has begun to diverge: it carries its own copy of the standard library, and it counts its versions in its own way. Over time, it grows further into its own shape.
+Rye is the systems language we are growing from Zig 0.16.0. This first version is honest about what it is: a careful front-end that runs `.rye` source through the Zig 0.16.0 toolchain, on a standard library that is now Rye's own. A `.rye` file is Zig source at heart for now, so every capability the toolchain offers — including SHA3-512 in the standard crypto library — is Rye's too, by construction. Yet Rye has begun to diverge: it carries its own copy of the standard library, and it counts its versions in its own way. Over time, it grows further into its own shape.
 
 The `rye` command speaks two verbs:
 

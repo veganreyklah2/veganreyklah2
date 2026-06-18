@@ -1,6 +1,6 @@
 # 998 · Open Threads — As of 2026-06-18
 
-*A faithful gathering of where the work stands: one task in hand, a few questions waiting on Kaeden, a roadmap offered but not yet walked, and one old bit of housekeeping still ajar. Funneled from a stock-taking on this date, so nothing slips.*
+*A faithful gathering of where the work stands: one task in hand, a few questions waiting on Kaeden, a roadmap offered and not yet walked, and one old bit of housekeeping still ajar. Funneled from a stock-taking on this date, so nothing slips.*
 
 **Language:** EN
 **Version:** `20260618.155212` (Rye chronological stamp)
@@ -21,7 +21,7 @@
 
 - **The name `9999_STRENGTHENING`.** Kaeden proposed `TAME_STRONG` and asked "like that name?"; Reya chose `STRENGTHENING` for stack-consistency and promised to rename on a word. That word has not come. Keep `STRENGTHENING`, or switch to `TAME_STRONG`? A one-line rename either way.
 - **`Brook`, and the unnamed orchestration language.** In `989`, *Brook* was floated for the interactive shell "to argue over, not a decree," and the execline-spirit orchestration language was left unnamed. Both await a blessing or a fresh coinage.
-- **The strategic fork.** Raised in the compiler critique and still undecided: is Rye's destination *a hardened Zig dialect* or *a genuinely separate language*? The recent direction (the `989` family) leans toward "separate," but it has not been said outright — and the choice relocates where the real compiler work lives.
+- **The strategic fork.** Raised in the compiler critique and still undecided: is Rye's destination *a hardened Zig dialect* or *a genuinely separate language*? The recent direction (the `989` family) leans toward "separate," yet it has not been said outright — and the choice relocates where the real compiler work lives.
 
 ---
 
