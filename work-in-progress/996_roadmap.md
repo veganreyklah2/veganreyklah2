@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260618.194012` (Rye chronological stamp)
+**Version:** `20260618.222612` (Rye chronological stamp)
 **Last updated:** 2026-06-18
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -22,9 +22,11 @@ This plan draws its discipline from the active-designing stack: simplicity as si
 
 These are the simple systems that run today. Everything ahead grows from them.
 
-- **Rye runs** — a Zig-0.16 derivative with its own standard library, its own chronological versioning, the `rye` CLI bridging `.rye` source to the toolchain.
-- **The gate trio runs** — `parity.sh` (behavior identical to baseline), `parity-selftest.sh` (the gate turns red on a real divergence), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is now safe by construction.
-- **Rishi runs** — a minimal shell interpreter in Rye: comments, `let` of strings and integers, `say` with `${name}` interpolation.
+- **Rye runs, and is written in Rye** — a Zig-0.16 derivative with its own standard library and its own chronological versioning. The `rye` command (`run` and `build`) is itself a `.rye` program; Rye bootstraps once, then self-hosts its own build.
+- **Aurora wakes on RISC-V** — `rye build` emits a freestanding RISC-V binary that `qemu-system-riscv64` runs: a seed (a hart wakes, speaks one asserted line, halts) and a three-stage relay (a boot as a flow of named values, each stage asserted). Rye's open-hardware cohesion and Aurora's first life, proven together.
+- **The strengthening series is live** — SHA3-512, the Keccak sponge beneath it, and the everyday `std` our own tools lean on (`mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt`), each given stated invariants and each parity-green, recorded in the strengthening-compiler stack.
+- **The gate trio runs** — `parity.sh` (behavior identical to baseline), `parity-selftest.sh` (the gate turns red on a real divergence), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction, and the parity corpus grows with every pass.
+- **Rishi runs** — a minimal shell interpreter in Rye (comments, `let` of strings and integers, `say` with `${name}` interpolation), built by `rye build`.
 
 ---
 
@@ -32,10 +34,12 @@ These are the simple systems that run today. Everything ahead grows from them.
 
 Each is a thing that runs on its own, added by degrees, behind the gates.
 
+- [ ] **A first networking seed** — one encrypted, content-named datagram between two harts: the smallest living piece of `985`/`982`, grown from Aurora's seed (which speaks, yet does not yet listen). Identity at the owner key, named by SHA3-512, validated in place. This is the move that turns the whole networking arc into something that runs.
+- [ ] **Aurora's deciding stage** — a relay stage that hands the next a value *it chose*, not only one it read: the seed of a boot that selects what runs next.
 - [ ] **Grow Rishi toward `parity.rish`** — one feature at a time, each shipped working: list values → records → a `run` that returns a structured process result → `map`/`where` → `==` → `assert` as a gate.
-- [ ] **Vendor execline** into `gratitude/` (with skalibs) — the near-term, surprise-free orchestration bridge, and a reference to study.
-- [ ] **Resume strengthening passes** on the foundational `std` surface we depend on, each through the gate trio, recorded in the strengthening-compiler stack.
-- [ ] **A minimal Mantra weave** — overlay, always-succeeding merge, line-provenance — so the strengthening process gains durable memory and survives baseline drift.
+- [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
+- [ ] **A minimal Mantra weave** — overlay, always-succeeding merge, line-provenance — so the strengthening process and the network's messages alike gain durable, content-addressed memory.
+- [ ] **Vendor execline** (with skalibs) into `gratitude/` — the near-term, surprise-free orchestration bridge, and a reference to study.
 
 ---
 
@@ -44,6 +48,8 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 Each milestone here is *made of* the working systems above.
 
 - [ ] **`parity.rish` runs** — made of: Rishi (grown to lists/records/run/assert) + the existing parity logic. The gate, rewritten in our own shell.
+- [ ] **Setu v1 — the network module** *(name provisional; see `../external-research/981`)* — made of: the encrypted-datagram seed grown into typed, content-named, sealed message delivery, exactly-once by hash, carrying values between identities.
+- [ ] **Unified keys v1** — made of: one owner seed deriving the keys a person needs (ed25519 for SSH/GPG/Sui, secp256k1 for Nostr), separated for safety and recovered as one (`../external-research/981`).
 - [ ] **Silo v1** — made of: a content-addressed store (grown from the smallest working build of one thing) + a single lawful compose combinator. Describes a simple system reproducibly.
 - [ ] **Tally v1** — made of: the process-garden pattern Rye already uses, grown into a named, bounded region allocator with asserted edges.
 - [ ] **Caravan v1** — made of: the simplest working supervision (one parent that never dies, one child, restart on fall), grown toward a small tree and chain-loaded startup.
@@ -55,11 +61,14 @@ Each milestone here is *made of* the working systems above.
 
 The far ends. Each is named with the simpler working systems it is composed of, so the path to it is always a growing, never a leap.
 
-- [ ] **Rye, a genuinely separate language** — made of: the strengthened `std` (Horizon 1) + a growing divergence in syntax and semantics, compiling to RISC-V as a first-class target. Grown from the Zig-derivative, never rewritten from scratch.
-- [ ] **The full family, composing through one value model** — made of: Rye + Silo + Rishi + the orchestration language + Mantra, each grown from its v1, sharing one value model so values flow seam-free.
-- [ ] **Aurora — the boot on RISC-V** — made of: a minimal working privilege relay, grown stage by stage into a verified, named-value boot from an immutable root.
+- [ ] **Rye, a genuinely separate language** — made of: the strengthened `std` + a growing divergence in syntax and semantics, including borrow-checking-style guarantees over Tally's gardens (`../external-research/983`), compiling to RISC-V as a first-class target. Grown from the Zig-derivative, never rewritten from scratch.
+- [ ] **The full family, composing through one value model** — made of: Rye + Silo + Rishi + the orchestration language + Mantra + Setu, each grown from its v1, sharing one value model so values flow seam-free from a keystroke to the wire.
+- [ ] **The content-centric messenger** — made of: Setu + Mantra + unified keys + Rishi's `talk` — an IRC-meets-Dojo where a message is a named, sealed value carried home (`../external-research/982`).
+- [ ] **The devotional social layer** — made of: the messenger + Nostr-simple store-and-forward relays on our coherent core, curated by honest structure, true to the values (`../external-research/984`).
+- [ ] **The fractal address space** — made of: unified keys + a derivation tree shaped as galaxies, stars, and planets (d5 × d12 = d60), with admins who coordinate and never command (`../external-research/981`).
+- [ ] **Aurora — the boot on RISC-V** — made of: the seed and relay, grown stage by stage into a verified, named-value boot from an immutable root.
 - [ ] **Pond — a trustworthy daily enclosure** — made of: Pond v1, hardened pass by pass over Caravan's isolation and Tally's gardens, until it is the room our agents work inside.
-- [ ] **A self-hosted, RISC-V-cohesive Rye system** — made of: Aurora (boot) + Caravan (kernel) + Tally (memory) + Silo (configuration) + Mantra (memory of the system) + Rishi (the hand) + Pond (the enclosure) — the whole machine, grown from every working part beneath it, belonging wholly to the one who runs it.
+- [ ] **A self-hosted, RISC-V-cohesive Rye system** — made of: Aurora (boot) + Caravan (kernel) + Tally (memory) + Silo (configuration) + Mantra (memory of the system) + Setu (the network) + Rishi (the hand) + Pond (the enclosure) — the whole machine, grown from every working part beneath it, belonging wholly to the one who runs it.
 
 ---
 
@@ -73,21 +82,21 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 ---
 
-## The Adjusted Priority — Rye and Aurora Share One Seed
+## Where We Are Now — Design Has Run Ahead, and We Re-Anchor on Building
 
-Reading Rye and Aurora through every active-designing lens at once gives one clear move. Rye is the trunk: the language everything else is written in, and the one simple system that already works. Aurora is a branch that grows from it — and it cannot grow until the trunk can meet bare-metal RISC-V. So Rye leads, by dependency and by Gall's Law alike.
+The shared seed is planted: Rye builds itself, wakes a hart on RISC-V, and the relay carries named values — Rye's cohesion and Aurora's first life proven together. Since then, a long arc of *design* has run out ahead of building. We have drawn the networking layer (`../external-research/985`), the content-centric messenger (`982`), the social layer (`984`), the correctness stance with its borrow-checking over Tally's gardens (`983`), and the unified identity and fractal address space (`981`); we have honored the sources these learn from — Urbit, Sui, Nostr, Primal, Damus — cloned into `gratitude/`; and we have grown a way of working, the expanding-prompts stack, where a request becomes an expanded prompt we run.
 
-The gift hidden here is that Rye's next reach and Aurora's first breath are *the same step*. Because Rye stands on a toolchain that already targets freestanding RISC-V, a minimal RISC-V program — a hart waking, doing one asserted thing — is buildable now; and that very program proves the RISC-V cohesion the spec asks of Rye while planting the living seed Aurora grows from. One step feeds two roots. These are not competing priorities; they are one priority wearing two names.
+This is a good problem to have: the destination is clear now, and clear in our own voice. Gall's Law asks one thing of it, gently — that a working whole grow from a working *simple* one, so design that runs ahead is a map rather than the territory. So we re-anchor on building. The next moves are small and concrete, each proven before the next: Aurora's deciding stage, Rishi's list values, the next strengthening pass, and — the move that turns the whole research arc into something that runs — **a first encrypted, content-named datagram between two harts**, the smallest living piece of the messenger we designed. From that one sealed word, Setu and the messenger and the social layer all grow.
 
-So the trunk advances and the branch is planted together: we teach Rye to emit a freestanding RISC-V binary and run it in an emulator. Rishi keeps growing toward `parity.rish` on its own track, unhurried, since the gates already make each of its passes safe.
+One decision waits on you: the network module's name — **Setu** is recommended, with Doota, Akasha, and Comlink in view (`../external-research/981`).
 
 ---
 
-## The Steps Just Taken, and the Next
+## The Steps Just Taken
 
-Three steps are taken, each grown from the last. **Rye builds a freestanding RISC-V binary** and wakes it on `qemu-system-riscv64` (`aurora/run.sh`): a hart comes up at the base of RAM, gives itself a stack, speaks one asserted line, and powers down cleanly — Rye's RISC-V cohesion and Aurora's first living stage in one move (`20260618.191412`). **Rye is now written in Rye**: the `rye` and `rishi` sources carry the `.rye` name, Rye builds itself, and Rishi is built by `rye build`. And the seed has grown its **first relay** (`aurora/run.sh relay`): a boot as a flow of named values, where one stage reads the machine's identity, the next proves an invariant of it and speaks it, and the last rests — each handoff a tail call, each stage asserted.
+Since the last roadmap, the work moved on two fronts. In **code**: Rye became written in Rye and now self-hosts its build; Aurora grew from a seed into a three-stage relay; and the strengthening series reached the everyday `std` our tools call — `mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt` (`../strengthening-compiler/9996`) — each parity-green. In **design**: a research arc drew the networking, messaging, social, correctness, and identity layers (`../external-research/981`–`985`) in our own voice and through every lens; the expanding-prompts stack was born; the honored sources were cloned; and a radiant pass set the corpus to lead with what IS, with the stance of *correctness over debugging* written into both style guides.
 
-The next step grows from the relay: a stage that hands the next a value *it chose* — a real decision, not only a reading — the seed of a boot that selects what runs next. Rishi's own next feature, list values toward `parity.rish`, continues in parallel.
+The next step turns design back into something that runs: **a first encrypted, content-named datagram between two harts** — grown from Aurora's seed and `985`/`982` — alongside Aurora's deciding stage and Rishi's list values, each small, each proven, each a root the larger systems grow from.
 
 ---
 
