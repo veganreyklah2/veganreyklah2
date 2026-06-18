@@ -10,6 +10,7 @@
 # --- The project ------------------------------------------------------------
 !/.gitignore
 !/.gitmodules
+!/SOURCE.md
 !/context/
 !/external-research/
 !/active-designing/
