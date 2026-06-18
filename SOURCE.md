@@ -104,6 +104,8 @@ A fingerprint is meant to be shared and checked. It is also, quietly, beautiful 
 
 You will get clean, scannable images — one tall, one wide — that carry your keys' fingerprints in a typeface that loves code. Pin them to a profile, print them, keep them. They prove your identity to anyone who scans, and they look like you mean it.
 
+This repository carries a finished example to model yours on: `keys_firacode_veganreyklah2_landscape.png` and `keys_firacode_veganreyklah2_portrait.png` gather three public-key fingerprints — SSH for Codeberg, SSH for GitHub, and the OpenPGP signing key — into a single Fira Code card. Fingerprints are public by design, so these images are safe to share anywhere.
+
 ---
 
 ## Step 5 — Your Hands and Eyes (Cursor + Claude)
