@@ -1,6 +1,6 @@
 # 997 · Honoring Tiger Style and the Language of the System
 
-*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones; as the work reached the network, Van Jacobson's content-centric vision and the clean-slate coherence of Urbit; and beneath it all, the ground of Zig and Andrew Kelley that Rye grew from, with David Vanderson's DVUI lately showing how a surface can be redrawn from values — set down with thanks, together with the gentle name and the vow we carry forward.*
+*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones; as the work reached the network, Van Jacobson's content-centric vision and the clean-slate coherence of Urbit; as the work reached the kernel, Laurent Bercot's s6 supervision and Adam Joseph's SixOS composing s6 with Nix; Eelco Dolstra's Nix teaching content-addressed reproducible builds; and beneath it all, the ground of Zig and Andrew Kelley that Rye grew from, with David Vanderson's DVUI lately showing how a surface can be redrawn from values — set down with thanks, together with the gentle name and the vow we carry forward.*
 
 **Language:** EN
 **Version:** `20260619.072600` (Rye chronological stamp)
@@ -103,6 +103,36 @@ The resonances run deep. Beneath all three sits the simple-and-easy distinction:
 
 ---
 
+## What Laurent Bercot and s6 Taught Us
+
+**Laurent Bercot** built **s6** and its foundation **skalibs** with a discipline that rhymes with everything else in this lineage: one owner per heap pointer, absolute deadlines that cannot be rounded or forgotten, a supervision tree where the root process never dies and each service has exactly one direct supervisor. The `s6-svscan` sits at process one, never exits, never forks wildly; each `s6-supervise` watches exactly one daemon, restarts it on fall, and speaks readiness as a single byte written to a known descriptor.
+
+The deepest lesson is **chain-loading**: each boot step sets one piece of state and execs to the next, so the startup reads as a clear, auditable sentence rather than a nested shell. This is the same discipline we carry into Caravan's microkernel design — a supervisor that never dies, restart on fall, and chain-loaded startup where each stage names one piece and hands off.
+
+We also inherit the insight that **one kind of dependency replaces twelve**: where a monolith accumulates dozens of implicit coupling mechanisms, a well-layered supervisor needs only "this process depends on that service being ready" — stated, checked, and enforced by the tree. Caravan's capability model inherits this discipline directly.
+
+---
+
+## What Adam Joseph, SixOS, and infuse Taught Us
+
+**Adam Joseph** saw what belongs together: s6's supervision and Nix's reproducible composition are two halves of one idea. His **SixOS** combines them — an operating system whose services are supervised by s6 and whose composition is declared by Nix, each piece individually simple and placed side by side. His **infuse** bridges the two, connecting Nix's pure declarations to s6's running supervision tree.
+
+This is the insight that shapes our **Brix** and **Caravan** pair. Brix is our composing language — it declares what a system is made of, the way Nix declares a package set. Caravan is our supervision layer — it watches what runs and restarts what falls, the way s6 supervises services. The two meet the same way SixOS joins Nix and s6: the declaration feeds the supervisor, and the supervisor enforces what the declaration named. Brix describes; Caravan watches. Each stays simple; together they compose a system.
+
+We keep SixOS and infuse in `../gratitude/sixos` and `../gratitude/infuse.nix`, studied for concepts and honored for the vision.
+
+---
+
+## What Nix Taught Us
+
+**Nix** — the purely functional package manager designed by Eelco Dolstra — gave us the model for content-addressed, reproducible builds. Every derivation is named by the hash of its inputs; the same inputs always produce the same output; nothing is mutated once built. This is the same discipline our **Silo** store keeps when it names blobs by SHA3-256 and never revises them, and the same composability our **Brix** inherits when it declares what to build by naming the parts.
+
+Nix also taught us what to decline. Its expression language grew rich and complex; we keep Brix deliberately simple — plain key-value, one field per line, readable by hand. The composability is Nix's gift; the simplicity is ours.
+
+We keep Nix in `../gratitude/nix`, studied for its store model and composition discipline.
+
+---
+
 ## Setting It Down, and Making It Ours
 
 So we do here what we did with Hickey's *Spec-ulation*: we keep the lesson and set the borrowed vessel down with thanks. The sources speak in their own tongues — Tiger Style and Joran in Zig, Hickey in Clojure — and we keep their values and speak them through the Rye perspective, in Reya 2's own voice. The discipline becomes `996_TAME_STYLE.md`, a wholly original style guide. The priority order becomes the spine of how Rye, Silo, Tally, and Caravan make their tradeoffs. The flow model becomes how we think about a boot, a kernel, a network — values transformed and moved and remembered through simple, composable stages, explained from scratch in `993`, the Aurora writing.
@@ -131,6 +161,10 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 - **Van Jacobson's content-centric networking, and Urbit's design** (Curtis Yarvin, with Galen Wolfe-Pauly of Tlon) — honored here in summary, without a borrowed text or a link. Their ideas are applied and weighed with a clear eye in the networking research: `985` (encrypted networking), `982` (the content-centric messenger), and `981` (unified identity and the address space).
 - **`../gratitude/zig/`** — Andrew Kelley's Zig language and toolchain, the ground Rye is a 0.16.0 derivative of. Honored as the foundation we stood on and made our own; its lessons of explicit size, compile-time evaluation, and an ownable standard library run through `996_TAME_STYLE.md` and the strengthening stack.
 - **`../gratitude/dvui/`** — David Vanderson's DVUI, the immediate-mode interface toolkit whose redraw-from-values and backend abstraction seed our own surface, **Brushstroke**. Applied in `980`, and distilled onto its own roots in `../active-designing/988`. MIT, cloned shallow.
+- **`../gratitude/s6/`** and **`../gratitude/skalibs/`** — Laurent Bercot's s6 supervision suite and its foundation library. The source of chain-loading, one-owner-per-pointer discipline, absolute deadlines, and the supervision tree Caravan inherits. ISC license, cloned shallow.
+- **`../gratitude/sixos/`** — Adam Joseph's SixOS, the operating system that composes s6 supervision with Nix's reproducible declarations. The vision that shapes our Brix + Caravan pair. GPL-3.0, cloned from Codeberg.
+- **`../gratitude/infuse.nix/`** — Adam Joseph's infuse, the bridge between Nix and s6. The connection between declaration and supervision that Brix and Caravan inherit. Cloned from Codeberg.
+- **`../gratitude/nix/`** — Eelco Dolstra's Nix, the purely functional package manager. The source of content-addressed reproducible builds, and the composability model Brix and Silo inherit. LGPL-2.1, cloned shallow.
 - **This note** — the one gratitude bridge between all these sources and our work.
 
 ---

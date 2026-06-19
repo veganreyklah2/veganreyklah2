@@ -3,7 +3,7 @@
 *A fresh snapshot, taken after the four-pass strengthening frontier sealed, after Mantra's first seed planted, and after `init.arena` became `init.garden` across Rye's entire vocabulary. Names the new threads that opened tonight and carries forward the still-open ones.*
 
 **Language:** EN
-**Version:** `20260619.212312` (Rye chronological stamp)
+**Version:** `20260619.225712` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -23,6 +23,12 @@
 - **Mantra seed runs** (pass 9990). Weave, LCS diff, SHA3-256 store, `init / add / status`. Corpus at 14. The first living history in Rye.
 - **`init.garden` replaces `init.arena`.** Rye's public API now uses TAME vocabulary throughout. `std.process.Init.garden` is the season allocator — allocate freely, clear on exit. The parity gate confirmed the rename is visible only in Rye's std (as intended): the weave test was updated to `page_allocator` so both stds produce identical output.
 - **Rishi file I/O builtins.** `read-file`, `write-file`, `list-dir` — each behind the OS boundary. Round-trip test in `rishi/tests/file_io.rish`, all assertions green.
+- **TAME Style spec + Claude rule.** `context/specs/tame-style.md` (root + Rye/Brix/Rishi supplements), `.claude/rules/tame-style.md`.
+- **TAME assertion audit.** 12 highest-value assertions added to Rishi file I/O and Mantra commit chain. ~50 more in backlog.
+- **Caravan microkernel brief (984).** Quarantined design: three kernel responsibilities, five invariants, path from seed to kernel.
+- **s6, Nix, skalibs cloned into `gratitude/`.** SixOS and infuse already present. All thanked in `997_SYSTEM.md`.
+- **External research: s6/SixOS/Nix/infuse (974).** What Caravan, Brix, and Tally inherit from each.
+- **The Whole System brief (983).** Quarantined design composing every module — language, kernel, memory, store, shell, surface, network, enclosure — on its own ground.
 
 ## Threads Now Closed
 
