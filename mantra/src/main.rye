@@ -276,7 +276,11 @@ const Store = struct {
 };
 
 fn hexEncode(allocator: std.mem.Allocator, bytes: []const u8) ![]u8 {
+    // invariant: input is non-empty — hashing nothing is a caller error
+    std.debug.assert(bytes.len > 0);
     const out = try allocator.alloc(u8, bytes.len * 2);
+    // postcondition: output is exactly twice the input length
+    std.debug.assert(out.len == bytes.len * 2);
     const hex = "0123456789abcdef";
     for (bytes, 0..) |b, i| {
         out[i * 2]     = hex[b >> 4];
@@ -371,6 +375,8 @@ fn serializeCommit(allocator: std.mem.Allocator, commit: CommitRecord) ![]const 
 }
 
 fn deserializeCommit(allocator: std.mem.Allocator, blob: []const u8) !CommitRecord {
+    // invariant: a commit blob is never empty
+    std.debug.assert(blob.len > 0);
     var it = std.mem.splitScalar(u8, blob, '\n');
     const header = it.next() orelse return error.InvalidFormat;
     if (!std.mem.eql(u8, header, "mantra-commit-v1")) return error.InvalidFormat;
@@ -392,6 +398,10 @@ fn deserializeCommit(allocator: std.mem.Allocator, blob: []const u8) !CommitReco
         }
     }
     const w = weave_val orelse return error.InvalidFormat;
+    // postcondition: weave name is exactly 64 hex chars
+    std.debug.assert(w.len == Sha3.digest_length * 2);
+    // postcondition: parent is null or exactly 64 hex chars
+    if (parent_val) |p| std.debug.assert(p.len == Sha3.digest_length * 2);
     return CommitRecord{ .parent = parent_val, .weave_name = w };
 }
 
@@ -606,8 +616,11 @@ fn cmdLog(allocator: std.mem.Allocator, io: std.Io) !u8 {
         std.debug.print("mantra: no commits yet — run `mantra add` to weave the first line.\n", .{});
         return 0;
     }
+    const max_log_depth: usize = 1000; // bounded to prevent runaway chain walks
     var depth: usize = 0;
     while (head) |commit_name| {
+        // invariant: depth stays within the stated bound
+        std.debug.assert(depth <= max_log_depth);
         const blob = try store.readBlob(allocator, io, commit_name);
         if (!std.mem.startsWith(u8, blob, "mantra-commit-v1")) {
             // Legacy v0: HEAD pointed directly to a weave blob.
@@ -620,7 +633,7 @@ fn cmdLog(allocator: std.mem.Allocator, io: std.Io) !u8 {
         });
         head = commit.parent;
         depth += 1;
-        if (depth > 1000) {
+        if (depth > max_log_depth) {
             std.debug.print("  ... (depth limit — stopping)\n", .{});
             break;
         }
