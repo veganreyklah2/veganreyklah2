@@ -1,7 +1,7 @@
 # 999 · The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -45,15 +45,17 @@ Like the external-research stack, this folder counts **down**, and two near-foun
 
 ```
 active-designing/
-  991_aurora.md                   <- most recent design, sorts first
-  992_shape_casting.md            <- shape-casting and the two layers of safety
-  993_bounded_network.md          <- the network as a flow of named, sealed values
-  994_rooted_identity.md          <- one root, a derived tree of identities
-  995_single_stranded.md          <- simplicity: free parts, composed
-  996_growing_a_language.md       <- how we grow a language
-  997_recommended_architecture.md <- the first design brief
-  998_strengthening_strategy.md   <- the standing strategy that guides the work
-  999_DESIGN.md                   <- this foundation, sorts last
+  989_the_faithful_hand.md           <- the design of Rishi, the shell (most recent, sorts first)
+  990_correctness_by_construction.md <- the design of Rye, the language
+  991_aurora.md                      <- the boot as a relay of named, verified values
+  992_shape_casting.md               <- shape-casting and the two layers of safety
+  993_bounded_network.md             <- the network as a flow of named, sealed values
+  994_rooted_identity.md             <- one root, a derived tree of identities
+  995_single_stranded.md             <- simplicity: free parts, composed
+  996_growing_a_language.md          <- how we grow a language
+  997_recommended_architecture.md    <- the first design brief
+  998_strengthening_strategy.md      <- the standing strategy that guides the work
+  999_DESIGN.md                      <- this foundation, sorts last
 ```
 
 To add a design, take the next number down from the lowest present, name the file for its subject, write it self-contained in Radiant Style, and keep faith with the quarantine principle: our own names, and RISC-V, and nothing else. The strategy at `998` is revised in place as our thinking matures; the foundation at `999` rarely moves at all.
