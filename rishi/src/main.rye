@@ -6,9 +6,10 @@
 //! directly, supporting line comments; `let` bindings of strings, integers,
 //! booleans, lists, and records; `say` with `${...}` interpolation; comparison
 //! with `==` and `!=`; list membership with `contains`; field access with
-//! `record.field`; running a command with `run`, whose result is a record; and
-//! `assert` as a gate that stops the script and says why when a fact does not
-//! hold. It is the seed from which
+//! `record.field`; running a command with `run`, whose result is a record;
+//! transforming and filtering lists with `map` and `where`; and `assert` as a
+//! gate that stops the script and says why when a fact does not hold. It is the
+//! seed from which
 //! the language grows toward `parity.rish`, the program that will name its first
 //! real purpose (see active-designing/996_growing_a_language.md).
 //!
@@ -24,7 +25,7 @@ const std = @import("std");
 
 /// Rishi's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger, the same clock Rye keeps. This is Rishi's founding stamp.
-const rishi_version = "20260619.054612";
+const rishi_version = "20260619.060512";
 
 /// A Rishi value. The first two kinds — a string and an integer — are the seed
 /// of a model that will grow to lists, records, and process results, shared
@@ -210,6 +211,12 @@ const EvalError = error{
     RunNeedsCommand,
     RunArgsMustBeStrings,
     CommandFailed,
+    PipelineNeedsAs,
+    PipelineNeedsColon,
+    PipelineNeedsName,
+    PipelineNeedsList,
+    WhereNeedsBool,
+    TooManyBindings,
     OutOfMemory,
 };
 
@@ -222,6 +229,15 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     const trimmed = std.mem.trim(u8, text, " \t");
     if (std.mem.startsWith(u8, trimmed, "run ")) {
         return doRun(allocator, io, env, trimmed[4..]);
+    }
+    // `map <list> as <name>: <expr>` transforms each element; `where … ` keeps the
+    // elements whose predicate holds. Checked before the operators below, so a
+    // comparison in the body stays part of the body.
+    if (std.mem.startsWith(u8, trimmed, "map ")) {
+        return doPipeline(allocator, io, env, trimmed[4..], .transform);
+    }
+    if (std.mem.startsWith(u8, trimmed, "where ")) {
+        return doPipeline(allocator, io, env, trimmed[6..], .filter);
     }
     // `<list> contains <value>` asks membership, yielding a boolean.
     if (findWordOp(text, " contains ")) |idx| {
@@ -278,6 +294,55 @@ fn doRun(allocator: std.mem.Allocator, io: std.Io, env: *const Env, argv_text: [
     fields[2] = .{ .name = "code", .value = .{ .int = code } };
     fields[3] = .{ .name = "ok", .value = .{ .boolean = code == 0 } };
     return .{ .record = fields };
+}
+
+/// `map <list> as <name>: <expr>` evaluates <expr> for each element with <name>
+/// bound to it, collecting the results into a new list. `where <list> as <name>:
+/// <pred>` keeps the elements whose boolean <pred> holds. The element binding
+/// lives in a child scope, so it never leaks past the pipeline.
+fn doPipeline(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []const u8, mode: enum { transform, filter }) EvalError!Value {
+    const as_idx = findWordOp(rest, " as ") orelse return error.PipelineNeedsAs;
+    const list_text = rest[0..as_idx];
+    const tail = rest[as_idx + 4 ..];
+    const colon = findTopLevel(tail, ':') orelse return error.PipelineNeedsColon;
+    const var_name = std.mem.trim(u8, tail[0..colon], " \t");
+    const body = std.mem.trim(u8, tail[colon + 1 ..], " \t");
+    if (var_name.len == 0) return error.PipelineNeedsName;
+
+    const list_value = try evalExpr(allocator, io, env, list_text);
+    const items = switch (list_value) {
+        .list => |l| l,
+        else => return error.PipelineNeedsList,
+    };
+
+    var results: [256]Value = undefined;
+    var count: usize = 0;
+    for (items) |item| {
+        // Each element is evaluated in a child scope carrying the loop binding.
+        var child = env.*;
+        try child.bind(var_name, item);
+        const value = try evalExpr(allocator, io, &child, body);
+        switch (mode) {
+            .transform => {
+                if (count == results.len) return error.ListTooLong;
+                results[count] = value;
+                count += 1;
+            },
+            .filter => {
+                const holds = switch (value) {
+                    .boolean => |b| b,
+                    else => return error.WhereNeedsBool,
+                };
+                if (holds) {
+                    if (count == results.len) return error.ListTooLong;
+                    results[count] = item;
+                    count += 1;
+                }
+            },
+        }
+    }
+    const out = try allocator.dupe(Value, results[0..count]);
+    return .{ .list = out };
 }
 
 /// Evaluate one operand: a double-quoted string, a boolean, a base-ten integer,

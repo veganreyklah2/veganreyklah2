@@ -1,6 +1,6 @@
 # Rishi — the shell of the Rye ecosystem
 
-**Version:** `20260619.054612` (chronological; later is larger)
+**Version:** `20260619.060512` (chronological; later is larger)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
 
@@ -40,6 +40,10 @@ supporting:
   record: `out` and `err` (the captured text), `code` (the exit status), and `ok`
   (true when the code is zero). A command that exits non-zero is an ordinary
   result; a command that cannot be spawned at all stops the script.
+- **`map` and `where`** — `map xs as x: <expr>` transforms each element into a new
+  list; `where xs as x: <pred>` keeps the elements whose boolean predicate holds.
+  The body can project a field (`map people as p: p.name`), compare, or even
+  `run` a command per element; the loop binding lives only inside the pipeline.
 - **`assert`** — `assert <expr>` makes a fact a gate: when the expression is a
   false boolean, the script stops, says why, and exits non-zero. An optional
   `else "message"` gives the reason to show.
@@ -70,24 +74,26 @@ rishi/bin/rishi run rishi/tests/checks.rish   # booleans, comparison, and assert
 rishi/bin/rishi run rishi/tests/lists.rish    # lists, contains, and equality
 rishi/bin/rishi run rishi/tests/records.rish  # records, field access, and equality
 rishi/bin/rishi run rishi/tests/run.rish      # running commands, results as records
+rishi/bin/rishi run rishi/tests/map_where.rish # transforming and filtering lists
 ```
 
 `tests/checks.rish` shows the comparison-and-assert pieces, `tests/lists.rish` the
-list-and-membership ones, `tests/records.rish` the records and field paths, and
-`tests/run.rish` a command run and read as a record — each a run of facts that all
-hold. A false `assert` instead stops the script, names the broken fact, and exits
-non-zero: the gate behavior `parity.rish` will lean on.
+list-and-membership ones, `tests/records.rish` the records and field paths,
+`tests/run.rish` a command run and read as a record, and `tests/map_where.rish` a
+list transformed and filtered — each a run of facts that all hold. A false `assert`
+instead stops the script, names the broken fact, and exits non-zero: the gate
+behavior `parity.rish` will lean on.
 
 ## How It Grows
 
 The first version is the seed; the destination is `parity.rish`, our parity gate
-written in Rishi. Nearly all the pieces it asks for have now landed — the `==` that
-compares, the `assert` that gates, the **list** that holds a corpus (with `contains`
-for membership), the **record** that gives a value named fields, and the **`run`**
-that executes a command and returns its result as a record — each arriving the Rye
-way, additive and proven, one careful step at a time. One piece remains: `map` and
-`where`, to walk and filter a pipeline. Each shares Rye's value model, so a value
-made in a Rye program and a value carried through a Rishi pipeline are the same value.
+written in Rishi. Every piece it asks for is now in hand — the **list** that holds
+a corpus, the **`run`** that executes a program and returns a record, the `==` that
+compares (lists element by element), the **`map`** and **`where`** that walk and
+filter, and the **`assert`** that gates. The next step is `parity.rish` itself: the
+gate rewritten in our own shell, the child keeping watch over the parent. Each piece
+shares Rye's value model, so a value made in a Rye program and a value carried
+through a Rishi pipeline are the same value.
 
 Two north stars guide that growth. `tests/hello.rish` is what runs today;
 `examples/pond.rish` is where we are headed — an illustrative sketch of Rishi
