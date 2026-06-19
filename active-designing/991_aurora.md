@@ -23,7 +23,7 @@ A boot must begin somewhere it can trust absolutely, and Aurora begins at the ow
 
 Aurora is a relay. Control passes forward in stages, and three things hold at every handoff.
 
-- **Each stage is a value.** Not a half-configured machine passed along, but a value with a shape — what was found, what was decided, what comes next — handed to the stage that follows.
+- **Each stage is a value.** A value with a shape — what was found, what was decided, what comes next — handed to the stage that follows, rather than a half-configured machine passed along.
 - **Each stage is named by its content.** Mantra gives every stage an enduring, content-addressed name, so a finished boot can say *exactly* what it ran, stage by stage. A boot becomes a thing you can read back, rather than a dark passage you must trust blind.
 - **Each stage proves the next before trusting it.** Before control is handed forward, the next stage is shape-cast (`992`): its bytes are proven to be the verified thing they claim before they are ever set running. Privilege flows onward only through a door that has been checked.
 

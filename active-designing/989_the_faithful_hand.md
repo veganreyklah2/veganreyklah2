@@ -1,6 +1,6 @@
 # 989 · The Faithful Hand — the Design of Rishi
 
-*Rishi is the shell of the family: the hand a person works with, and the seer who hears them and speaks faithfully to the machine. This brief designs what Rishi is meant to be. Not how we grow it — that is `996` — but the shape it grows toward. One promise orders the rest: a value at the hand is the same value in the program and on the wire, so the shell adds reach without ever opening a seam.*
+*Rishi is the shell of the family: the hand a person works with, and the seer who hears them and speaks faithfully to the machine. This brief designs what Rishi is meant to be: the shape it grows toward. The way we grow it is `996`'s method. One promise orders the rest: a value at the hand is the same value in the program and on the wire, so the shell adds reach without ever opening a seam.*
 
 **Language:** EN
 **Version:** `20260619.051312` (Rye chronological stamp)
@@ -19,7 +19,7 @@ That faithfulness is the design. A shell that quietly reshapes what you meant, o
 
 ## The Unbroken Seam
 
-Rishi's values are Rye's values (`990`). A list, a record, a string, a truth at the Rishi prompt are the very same things they are inside a Rye program — one value model, shared (`995`). This is the deepest decision in the shell, and the one most often gotten wrong: when a value passes from a program into the shell and onward, it is not flattened into a flat line of text and parsed back out. The seam between the language and the hand never opens, so nothing leaks through it.
+Rishi's values are Rye's values (`990`). A list, a record, a string, a truth at the Rishi prompt are the very same things they are inside a Rye program — one value model, shared (`995`). This is the deepest decision in the shell, and the one most often gotten wrong: when a value passes from a program into the shell and onward, it stays whole — never flattened into a flat line of text and reparsed. The seam between the language and the hand never opens, so nothing leaks through it.
 
 The reward is reach without loss. A value computed deep in a program can be carried to the hand, set beside another, gated, and sent to the network — sealed and named (`993`) — and arrive as the very value it began as. The shell becomes a place values *flow through*, rather than a place they are torn down and rebuilt at every step.
 
@@ -47,7 +47,7 @@ Rishi means to be one language across three sizes, with no cliff between them. A
 
 ## Honest About Effects
 
-A shell acts on the world — it runs processes, touches files, reaches the network — and Rishi is honest about it. An effect is named for what it does; its order is the order written; and the result of an act, such as running a process, is itself a **structured value** — its output and its outcome carried together — rather than a smear of text a later line must guess at. Effects are not hidden under convenience. A person should be able to read a Rishi script and know what it will do to the world, and in what sequence, before it does it.
+A shell acts on the world — it runs processes, touches files, reaches the network — and Rishi is honest about it. An effect is named for what it does; its order is the order written; and the result of an act, such as running a process, is itself a **structured value** — its output and its outcome carried together — rather than a smear of text a later line must guess at. Effects stay in the open, never hidden under convenience. A person should be able to read a Rishi script and know what it will do to the world, and in what sequence, before it does it.
 
 ## Grown on Rye
 

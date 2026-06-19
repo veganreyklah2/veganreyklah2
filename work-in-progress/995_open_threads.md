@@ -21,7 +21,7 @@
 
 ## Threads Now Closed
 
-- **The encrypted-datagram seed — tied off.** "Two harts, two owner keys, one authenticated, content-named datagram, verified in place" was the open thread; it now runs (`posted.rye`). What remains is not the seed but its next size — a real device.
+- **The encrypted-datagram seed — tied off.** "Two harts, two owner keys, one authenticated, content-named datagram, verified in place" was the open thread; it now runs (`posted.rye`). The seed is done; what remains is its next size — a real device.
 - **Rishi's first gate features — tied off.** Comparison, assertion, lists, and membership are in and proven; the climb continues toward records and `run`.
 - **The network's name — tied off.** Comlink.
 

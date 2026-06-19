@@ -54,7 +54,7 @@ We keep the gates honest about cost, the way safety asks. A check that runs once
 
 ## The First Concrete Step
 
-To get started, we build the **parity gate** first, in its smallest honest form: a harness that takes the programs we already trust, runs each against both the baseline library and our strengthened one, and confirms the results match to the last value. It is self-contained, it can be built now from what we already have, and the moment it turns green it changes the character of every future pass — each one proven rather than merely promised. With the parity gate standing, we set the additive gate beside it, and only then resume the passes themselves, now flowing through machinery instead of resting on attention.
+To get started, we build the **parity gate** first, in its smallest honest form: a harness that takes the programs we already trust, runs each against both the baseline library and our strengthened one, and confirms the results match to the last value. It is self-contained, it can be built now from what we already have, and the moment it turns green it changes the character of every future pass — each one proven rather than merely promised. With the parity gate standing, we set the additive gate beside it, and only then resume the passes themselves, now flowing through machinery rather than resting on attention.
 
 From there the order is clear: the gates first; then the overlay and the weave that carry history and survive drift; then a steady cadence of passes aimed at the foundation; and alongside all of it, our own modules grown TAME-first. Each piece is small. Each piece is safe on its own. Together they are how strengthening becomes something we can do a thousand times and trust every single time.
 

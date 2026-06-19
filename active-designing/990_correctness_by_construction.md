@@ -1,6 +1,6 @@
 # 990 · Correctness by Construction — the Design of Rye
 
-*Rye is the language the whole family is written in, so this brief designs what Rye is meant to be. Not how we grew it — that is `996` — but what it grows toward. One promise orders the rest: the dangerous states should be the ones a person cannot write. From that promise the value model, the bounded gardens, the lifetimes, the accretion, and the cohesion with the open machine all follow.*
+*Rye is the language the whole family is written in, so this brief designs what Rye is meant to be: what it grows toward. The way we grew it is `996`'s method. One promise orders the rest: the dangerous states should be the ones a person cannot write. From that promise the value model, the bounded gardens, the lifetimes, the accretion, and the cohesion with the open machine all follow.*
 
 **Language:** EN
 **Version:** `20260619.051212` (Rye chronological stamp)
@@ -33,7 +33,7 @@ Bounding memory this way costs less than it seems and gives more. It makes a pro
 
 Here Rye reaches for a guarantee the foundation it grew from did not offer. We want the compiler to know, for every value, **who may touch it and for how long** — so that a value is never read after its garden is cleared, never changed by two hands at once, never released while another name still holds it. Tracked at compile time, these become whole classes of fault that simply cannot be written.
 
-The usual way to win such guarantees leans on a free, ever-growing pool of memory, which sits uneasily beside bounded gardens. Rye looks for the sweet spot between the two: ownership and lifetime checked at compile time, but *over the gardens* rather than over an unbounded pool. A value belongs to a garden; a borrow of it may not outlive that garden; a changing hold on it is the only hold while it lasts. The bound and the check reinforce each other — the garden says how much, the lifetime says how long and by whom — and together they close a door that neither closes alone. This is a real divergence we mean to grow into, by degrees and behind the gates, never by a rewrite.
+The usual way to win such guarantees leans on a free, ever-growing pool of memory, which sits uneasily beside bounded gardens. Rye looks for the sweet spot between the two: ownership and lifetime checked at compile time, yet *over the gardens* rather than over an unbounded pool. A value belongs to a garden; a borrow of it may not outlive that garden; a changing hold on it is the only hold while it lasts. The bound and the check reinforce each other — the garden says how much, the lifetime says how long and by whom — and together they close a door that neither closes alone. This is a real divergence we mean to grow into, by degrees and behind the gates, never by a rewrite.
 
 ## Assertions Are Part of the Design
 
@@ -49,7 +49,7 @@ So Rye changes the way a living thing changes — by adding, by strengthening, b
 
 ## On the Open Grain
 
-Rye is cut to the grain of an open machine. It speaks in explicitly sized values, so what the program means and what the hardware holds are the same thing seen twice. It treats RISC-V not as one target among many but as solid ground — a clean, open instruction set we can read all the way down and aim at as a first-class destination. A language that means to be owned wholly by the one who runs it cannot rest on a machine no one is allowed to read; cohering with the open grain is part of what correctness, here, even means.
+Rye is cut to the grain of an open machine. It speaks in explicitly sized values, so what the program means and what the hardware holds are the same thing seen twice. It treats RISC-V as solid ground rather than as one target among many — a clean, open instruction set we can read all the way down and aim at as a first-class destination. A language that means to be owned wholly by the one who runs it cannot rest on a machine no one is allowed to read; cohering with the open grain is part of what correctness, here, even means.
 
 ## How Rye Becomes Itself
 
