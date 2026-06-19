@@ -24,6 +24,7 @@
 !/rishi/
 !/aurora/
 !/tally/
+!/mantra/
 !/expanding-prompts/
 !/session-logs/
 !/.cursor/
@@ -36,6 +37,7 @@
 /rye/bin/
 /rishi/bin/
 /tally/bin/
+/mantra/bin/
 /aurora/.build/
 *.rye.zig
 .zig-cache/
