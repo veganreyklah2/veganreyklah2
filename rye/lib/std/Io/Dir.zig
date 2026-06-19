@@ -575,6 +575,9 @@ pub const OpenFileOptions = struct {
 /// On WASI, `sub_path` should be encoded as valid UTF-8.
 /// On other platforms, `sub_path` is an opaque sequence of bytes with no particular encoding.
 pub fn openFile(dir: Dir, io: Io, sub_path: []const u8, options: OpenFileOptions) File.OpenError!File {
+    // Boundary assertions: the path names something real and fits in the OS limit.
+    assert(sub_path.len > 0); // empty path is always a caller error
+    assert(sub_path.len < max_path_bytes); // path fits within the declared OS limit
     return io.vtable.dirOpenFile(io.userdata, dir, sub_path, options);
 }
 
@@ -636,6 +639,9 @@ pub const CreateFileOptions = struct {
 /// On WASI, `sub_path` should be encoded as valid UTF-8.
 /// On other platforms, `sub_path` is an opaque sequence of bytes with no particular encoding.
 pub fn createFile(dir: Dir, io: Io, sub_path: []const u8, flags: CreateFileOptions) File.OpenError!File {
+    // Boundary assertions: the path names something real and fits in the OS limit.
+    assert(sub_path.len > 0); // empty path is always a caller error
+    assert(sub_path.len < max_path_bytes); // path fits within the declared OS limit
     return io.vtable.dirCreateFile(io.userdata, dir, sub_path, flags);
 }
 
@@ -656,6 +662,11 @@ pub const WriteFileError = File.Writer.Error || File.OpenError;
 
 /// Writes content to the file system, using the file creation flags provided.
 pub fn writeFile(dir: Dir, io: Io, options: WriteFileOptions) WriteFileError!void {
+    // Boundary assertions: the path names something real and fits in the OS limit.
+    // (createFile below will also assert these; stating them here names the contract
+    // at the level the caller sees, before any vtable dispatch.)
+    assert(options.sub_path.len > 0); // empty path is always a caller error
+    assert(options.sub_path.len < max_path_bytes); // path fits within the declared OS limit
     var file = try dir.createFile(io, options.sub_path, options.flags);
     defer file.close(io);
     try file.writeStreamingAll(io, options.data);
@@ -751,6 +762,11 @@ pub const ReadFileError = File.OpenError || File.Reader.Error;
 /// * On WASI, `file_path` should be encoded as valid UTF-8.
 /// * On other platforms, `file_path` is an opaque sequence of bytes with no particular encoding.
 pub fn readFile(dir: Dir, io: Io, file_path: []const u8, buffer: []u8) ReadFileError![]u8 {
+    // Boundary assertions: the path names something real, fits in the OS limit,
+    // and the buffer has room to receive bytes.
+    assert(file_path.len > 0); // empty path is always a caller error
+    assert(file_path.len < max_path_bytes); // path fits within the declared OS limit
+    assert(buffer.len > 0); // a zero-length buffer reads nothing; pass a real buffer
     var file = try dir.openFile(io, file_path, .{
         // We can take advantage of this on Windows since it doesn't involve any extra syscalls,
         // so we can get error.IsDir during open rather than during the read.
