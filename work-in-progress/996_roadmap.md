@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260619.035912` (Rye chronological stamp)
+**Version:** `20260619.050712` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -23,11 +23,12 @@ This plan draws its discipline from the active-designing stack: simplicity as si
 These are the simple systems that run today. Everything ahead grows from them.
 
 - **Rye runs, and is written in Rye** — a Zig-0.16 derivative with its own standard library and its own chronological versioning. The `rye` command (`run` and `build`) is itself a `.rye` program; Rye bootstraps once, then self-hosts its own build.
-- **Aurora wakes on RISC-V** — `rye build` emits a freestanding RISC-V binary that `qemu-system-riscv64` runs: a seed (a hart wakes, speaks one asserted line, halts) and a three-stage relay (a boot as a flow of named values, each stage asserted). Rye's open-hardware cohesion and Aurora's first life, proven together.
+- **Aurora wakes on RISC-V, and grows stage by stage** — `rye build` emits a freestanding RISC-V binary that `qemu-system-riscv64` runs, through six living stages: a seed (a hart wakes, speaks one asserted line, halts), a three-stage relay (a boot as a flow of named values, each asserted), a content-named hart (SHA3-512 on bare metal), a whole sealed message (X25519 + AEAD + SHA3 + Ed25519, sealed and opened freestanding), and — across two harts — the wire (a shared-memory mailbox) and a posted datagram.
+- **A sealed datagram crosses between two harts** — Alice seals on hart 0; Bob, on hart 1, reads the raw bytes off a shared-memory wire, shape-casts them, verifies the attestation, confirms the content-name, derives the shared secret from his own key, and opens it. The content-name matches the hosted test byte-for-byte: the move that turns the whole networking arc into something that runs, running.
 - **The strengthening series is live** — SHA3-512, the Keccak sponge beneath it, and the everyday `std` our own tools lean on (`mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt`), each given stated invariants and each parity-green, recorded in the strengthening-compiler stack.
-- **The crypto foundation is proven, primitive by primitive** — the content hash (SHA3-512, strengthened), signing (Ed25519), and key agreement (X25519) all run in Rye's own std and stand parity-green in the gate: the foundation the network and identity will rest on (`../strengthening-compiler/9995`).
-- **The gate trio runs** — `parity.sh` (behavior identical to baseline), `parity-selftest.sh` (the gate turns red on a real divergence), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction; the corpus now carries six programs, all green, and the gate is written in portable shell so it runs anywhere.
-- **Rishi runs** — a minimal shell interpreter in Rye (comments, `let` of strings and integers, `say` with `${name}` interpolation), built by `rye build`.
+- **The crypto foundation is proven, primitive by primitive** — the content hash (SHA3-512, strengthened), signing (Ed25519), key agreement (X25519), and the authenticated seal (AEAD: ChaCha20-Poly1305) all run in Rye's own std, hosted and freestanding alike, and stand parity-green: the foundation the network and identity rest on (`../strengthening-compiler/9995`).
+- **The gate trio runs** — `parity.sh` (behavior identical to baseline), `parity-selftest.sh` (the gate turns red on a real divergence), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction; the corpus now carries eight programs, all green, and the gate is written in portable shell so it runs anywhere.
+- **Rishi runs, and is growing toward a gate** — a shell interpreter in Rye with comments; `let` of strings, integers, booleans, and lists; `say` with `${name}` interpolation; `==`/`!=` comparison; list membership with `contains`; and `assert` as a gate that exits non-zero with its reason. Built by `rye build`.
 
 ---
 
@@ -35,9 +36,9 @@ These are the simple systems that run today. Everything ahead grows from them.
 
 Each is a thing that runs on its own, added by degrees, behind the gates.
 
-- [ ] **A first networking seed** — one encrypted, content-named datagram between two harts: the smallest living piece of `985`/`982`, grown from Aurora's seed (which speaks, yet does not yet listen). Its crypto foundation is being laid and proven, seed by seed: signing (Ed25519) and key agreement (X25519) are done and parity-green; the authenticated seal (AEAD) comes next; then the datagram itself — identity at the owner key, named by SHA3-512, sealed and validated in place. This is the move that turns the whole networking arc into something that runs.
+- [ ] **The wire as a real device** — carry a sealed datagram over an emulated `virtio-net` between two QEMU machines, growing the two-hart shared-memory wire (done, Horizon 0) into a true network link. A device driver and two communicating instances: the meatier climb where Comlink fully begins (`985`/`982`).
 - [ ] **Aurora's deciding stage** — a relay stage that hands the next a value *it chose*, not only one it read: the seed of a boot that selects what runs next.
-- [ ] **Grow Rishi toward `parity.rish`** — one feature at a time, each shipped working: list values → records → a `run` that returns a structured process result → `map`/`where` → `==` → `assert` as a gate.
+- [ ] **Grow Rishi toward `parity.rish`** — one feature at a time, each shipped working. Done and proven: `==`/`!=`, `assert` as a gate, list values, `contains`. Next: records → a `run` that returns a structured process result → `map`/`where`.
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
 - [ ] **A minimal Mantra weave** — overlay, always-succeeding merge, line-provenance — so the strengthening process and the network's messages alike gain durable, content-addressed memory.
 - [ ] **Vendor execline** (with skalibs) into `gratitude/` — the near-term, surprise-free orchestration bridge, and a reference to study.
@@ -83,21 +84,23 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 ---
 
-## Where We Are Now — Design Has Run Ahead, and We Re-Anchor on Building
+## Where We Are Now — Building Caught Up, and the Datagram Runs
 
-The shared seed is planted: Rye builds itself, wakes a hart on RISC-V, and the relay carries named values. A long arc of *design* then ran out ahead of building — the networking layer (`../external-research/985`), the messenger (`982`), the social layer (`984`), the correctness stance (`983`), and the unified identity and address space (`981`) — learning from sources we honored and cloned into `gratitude/` (Urbit, Sui, Nostr, Primal, Damus). Since, we have done two quiet, load-bearing things: **distilled that arc into the clean room** as principles standing on their own roots — rooted identity, the bounded network, shape-casting, and Aurora itself (`../active-designing/994`–`991`) — and **begun building again at the very bottom**.
+The shared seed is planted, and it has grown: Rye builds itself, wakes a hart on RISC-V, and the relay carries named values. A long arc of *design* once ran out ahead of building — the networking layer (`../external-research/985`), the messenger (`982`), the social layer (`984`), the correctness stance (`983`), and the unified identity and address space (`981`). We met that drift the way Gall's Law asks: we distilled the arc into the clean room as principles on their own roots (`../active-designing/994`–`991`), then **returned to the very bottom and built upward until building caught up with design** — and then carried past it.
 
-For Gall's Law asks that a working whole grow from a working *simple* one. So we returned to the foundation our new ideas lean on — the cryptography — and began proving it, seed by seed: **signing** (Ed25519) and **key agreement** (X25519) now run in our own std, deterministic and parity-green, the gate carrying six programs with none diverged. The next moves stay small and concrete: the authenticated **seal** (AEAD), then the first encrypted, content-named **datagram** between two harts — where Aurora's relay and the network meet — alongside Aurora's deciding stage and Rishi's list values. From that one sealed word, Comlink and the messenger and the social layer all grow.
+The foundation proved itself primitive by primitive — the content hash, signing, key agreement, and the authenticated seal — each in our own std, each parity-green. Those primitives composed into a whole sealed message on the bare hart, and that message crossed **between two harts**: Alice seals on hart 0, Bob opens on hart 1, the content-name matching byte-for-byte. The headline of the near horizon is running. In parallel, the shell grew its own way — `==`, `assert`, lists, `contains` — each with a passing test and a failing one. And the one name left open is chosen: the network module is **Comlink** (`../external-research/981`).
 
-And the one name left open is now chosen: the network module is **Comlink** (`../external-research/981`).
+### What to Build Next, and Why
+
+Two threads are ripe, and we favor the readier one. **Rishi toward `parity.rish`** is the near-term priority: its path is clear and free of large unknowns, its milestone is concrete and self-proving (the gate, rewritten in our own shell), and the values it grows — records, then a structured `run` — are the same ones Pond's policy and every module will share. The next step is **records** (a value with named fields and `name.field` access), which also unlocks `run`'s structured result and `pond.rish`. The second thread, **the wire as a real device** (`virtio-net` between two machines, where Comlink fully begins), is a meatier, riskier spike — a device driver and two instances — better taken deliberately once the shell can drive and assert it. So: grow Rishi now; climb the device-wire next.
 
 ---
 
 ## The Steps Just Taken
 
-Since the last roadmap, the work moved on two fronts. In **code**: Rye became written in Rye and now self-hosts its build; Aurora grew from a seed into a three-stage relay; and the strengthening series reached the everyday `std` our tools call — `mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt` (`../strengthening-compiler/9996`) — each parity-green. In **design**: a research arc drew the networking, messaging, social, correctness, and identity layers (`../external-research/981`–`985`) in our own voice and through every lens; the expanding-prompts stack was born; the honored sources were cloned; and a radiant pass set the corpus to lead with what IS, with the stance of *correctness over debugging* written into both style guides.
+Since the last roadmap, the work moved fast and stayed proven. The cryptographic foundation finished its climb — the authenticated **seal** (AEAD) joined signing and key agreement — and the primitives composed into a **whole sealed message**, first hosted, then freestanding on a bare hart (`../aurora/src/sealed.rye`). Then the **wire**: two harts passing a value across shared memory (`wire.rye`), grown at once into a **posted datagram** — a sealed value sealed on one hart and opened on another, shape-cast on arrival (`posted.rye`). The network module was named **Comlink**. And the shell grew four proven steps — `==`/`!=`, `assert`, list values, and `contains` — each with a passing test and a failing one (`../rishi/tests/`).
 
-The next step turns design back into something that runs: **a first encrypted, content-named datagram between two harts** — grown from Aurora's seed and `985`/`982` — alongside Aurora's deciding stage and Rishi's list values, each small, each proven, each a root the larger systems grow from.
+The next step keeps the readier thread moving: **records in Rishi** — a value with named fields and `name.field` access — the piece that unlocks a structured `run` and, with it, `parity.rish`. The device-wire toward Comlink waits its turn as the deliberate next climb.
 
 ---
 

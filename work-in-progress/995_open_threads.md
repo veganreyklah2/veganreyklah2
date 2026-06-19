@@ -1,10 +1,10 @@
-# 995 · Open Threads — the Networking and Social Turn
+# 995 · Open Threads — After the First Sealed Wire
 
-*A fresh snapshot of where we are and what is live, taken after a turn that reached outward: encrypted networking from the boot upward, a devotional social layer, and five new honored sources. It supersedes `997_open_threads.md`, carrying its still-open items forward.*
+*A fresh snapshot, taken after the cryptographic foundation became a sealed datagram crossing between two harts, and after the shell grew comparison, assertion, lists, and membership. It carries forward the still-open threads of the networking-and-social turn it grew from, and ties off the ones that now run.*
 
 **Language:** EN
-**Version:** `20260618.195712` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Version:** `20260619.050712` (Rye chronological stamp)
+**Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -12,29 +12,34 @@
 
 ## What Just Landed
 
-- **A new way of working.** The `expanding-prompts/` stack is born (`9999_EXPANDING`), where a request becomes an expanded, structured prompt I run; its first entry, `10000`, is my reading of this turn's request.
-- **Two research pieces.** `external-research/985` (encrypted networking from the boot upward → Aurora/Caravan/Tally/Silo/Mantra/Rye on RISC-V, learning from Urbit's Ames/Jael and Sui's Mysticeti/Move) and `984` (a simple, non-harming social layer for a devotional vegan community, learning from Nostr, with Sui-style validation and DAG curation).
-- **Five honored sources, cloned.** `gratitude/urbit`, `gratitude/sui`, `gratitude/nips`, `gratitude/primal`, `gratitude/damus` — added as shallow submodules, for study and provenance.
+- **The crypto foundation, whole.** The authenticated seal (AEAD: ChaCha20-Poly1305) joined the content hash (SHA3-512), signing (Ed25519), and key agreement (X25519) — every primitive in Rye's own std, parity-green, hosted and freestanding alike.
+- **A sealed message on the bare hart.** `aurora/src/sealed.rye` composes all four primitives freestanding: Alice seals to Bob, Bob verifies and opens, with no OS beneath. The content-name matches the hosted test byte-for-byte.
+- **A sealed datagram across the wire between two harts.** `aurora/src/wire.rye` proves the smallest wire — two harts, a shared-memory mailbox, a memory fence — and `posted.rye` carries a whole sealed datagram across it: hart 0 seals, hart 1 shape-casts the raw bytes and opens, trusting only its own secret and what arrived.
+- **The network module is named.** Comlink — the keeper's choice from Setu, Doota, Akasha, and Comlink (`../external-research/981`).
+- **The shell grew toward a gate.** Rishi gained `==`/`!=`, `assert` (with an optional `else`), list values, and `contains` — each with a passing test and a failing one (`../rishi/tests/checks.rish`, `lists.rish`).
+- **The gate trio is portable, and the corpus is eight.** All green, runnable anywhere in plain POSIX shell.
 
-## New Threads These Open
+## Threads Now Closed
 
-- **The owner-key PKI.** `985` roots network identity in the owner key (Ames's lesson without Azimuth). The hard, unanswered part is rotation, revocation, and recovery — what happens when a key is lost or stolen. The QR key-cards and master-key rotation in `SOURCE.md` are the first thread, not the whole answer.
-- **The encrypted-datagram seed.** The smallest network that works: two harts, two owner keys, one authenticated, content-named datagram, verified with asserted invariants. This is Aurora's networking seed, several honest stages past today's "wake and speak."
-- **Curation by structure, not by engine.** Both `985` and `984` lean on a DAG of named values (Mantra + Mysticeti's lesson). The live question: the smallest honest ranking — chronology, explicit follows, a web of trust — that needs no hidden model.
-- **Spam without a central filter.** Nostr's known weakness. Our candidate answer: a web of trust among keys plus Tally-bounded relays, possibly Pond-enclosed. Untested.
-- **The smallest social layer.** A note signed by an owner key, stored on one relay, read by a friend's key. What is the least we build first, and what grows from it?
-- **Critical reading still owed.** We gathered essences by web and clone; a close read of the cloned sources (Ames's packet format, Mysticeti's commit rule, the core NIPs, Primal's caching, Damus's NIP set) would sharpen `985`/`984` and may earn their own research entries.
+- **The encrypted-datagram seed — tied off.** "Two harts, two owner keys, one authenticated, content-named datagram, verified in place" was the open thread; it now runs (`posted.rye`). What remains is not the seed but its next size — a real device.
+- **Rishi's first gate features — tied off.** Comparison, assertion, lists, and membership are in and proven; the climb continues toward records and `run`.
+- **The network's name — tied off.** Comlink.
 
-## Carried Forward (still live)
+## Threads Still Open
 
-- **Aurora's next stage:** a stage that hands the next a value *it chose* — a real decision, not only a reading (`aurora/`, the roadmap).
-- **Rishi toward `parity.rish`:** the next feature is list values; the climb continues on its own track.
-- **The verify-flag hot-path strengthening pass:** `indexOfScalarPos` and other hot data-plane functions await postconditions compiled in only behind a `verify` flag (`strengthening-compiler/9996`).
-- **The unbuilt modules:** Tally, Caravan, Silo, Mantra remain designs; `985`/`984` lean on them and so raise the value of growing their first working seeds.
+- **The wire as a real device.** The two-hart wire is shared memory; carrying a sealed datagram over an emulated `virtio-net` between two machines is the next networking climb — a device driver and two instances, where Comlink fully begins.
+- **Rishi toward `parity.rish`.** Next: records → a structured `run` → `map`/`where`. Records is the immediate step, and it also unlocks `pond.rish`.
+- **Aurora's deciding stage.** A relay stage that hands the next a value *it chose* — a real decision, not only a reading (`aurora/`, the roadmap).
+- **The owner-key PKI.** Rotation, revocation, and recovery when a key is lost or stolen. The QR key-cards and master-key rotation in `SOURCE.md` are the first thread, not the whole answer.
+- **Curation by structure, not by engine.** The smallest honest ranking for the social layer — chronology, explicit follows, a web of trust — that needs no hidden model (`984`).
+- **Spam without a central filter.** A web of trust among keys plus Tally-bounded, perhaps Pond-enclosed relays. Untested.
+- **Critical reading still owed.** A close read of the cloned sources — Ames's packet format, Mysticeti's commit rule, the core NIPs, Primal's caching, Damus's NIP set — would sharpen `985`/`984`.
+- **The unbuilt modules.** Tally, Caravan, Silo, Mantra, and Pond remain designs; the sealed datagram and the social layer both lean on them, raising the value of their first working seeds.
+- **The verify-flag hot path.** `indexOfScalarPos` and other data-plane functions await postconditions compiled in only behind a `verify` flag (`../strengthening-compiler/9996`).
 
 ## The Through-Line
 
-One value model, all the way down: a packet (`985`), a post (`984`), a Mantra line, a Silo build, a Rye value — the same kind of thing, signed, named, bounded, owned. Each new study tightens that line; each clone tests it against how others actually did it. We keep it simple, we keep it kind, and we grow the whole from the smallest part that already works.
+One value model, all the way down: a packet (`985`), a post (`984`), a Mantra line, a Silo build, a Rye value — the same kind of thing, signed, named, bounded, owned. The sealed datagram between two harts is that line made real: a value, sealed and named, arriving on the far side as the same value it left as. Each new step tightens the line; each clone tests it against how others actually did it. We keep it simple, we keep it kind, and we grow the whole from the smallest part that already works.
 
 ---
 
