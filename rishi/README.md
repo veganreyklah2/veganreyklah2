@@ -1,6 +1,6 @@
 # Rishi — the shell of the Rye ecosystem
 
-**Version:** `20260619.063712` (chronological; later is larger)
+**Version:** `20260619.090912` (chronological; later is larger)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
 
@@ -50,6 +50,12 @@ supporting:
 - **`assert`** — `assert <expr>` makes a fact a gate: when the expression is a
   false boolean, the script stops, says why, and exits non-zero. An optional
   `else "message"` gives the reason to show.
+- **Integer arithmetic** — `+`, `-`, `*`, `/` on integers, with correct operator
+  precedence (`*`/`/` before `+`/`-`) and left-to-right associativity. Negative
+  number literals work as operands (`3 + -2` is `1`).
+- **Parenthesized expressions** — `(expr)` groups its contents, overriding
+  precedence: `(2 + 3) * 4` is `20`, and `assert (xs contains y)` parses the
+  membership test as a single expression.
 
 A short example, `tests/hello.rish`:
 
@@ -78,7 +84,8 @@ rishi/bin/rishi run rishi/tests/lists.rish    # lists, contains, and equality
 rishi/bin/rishi run rishi/tests/records.rish  # records, field access, and equality
 rishi/bin/rishi run rishi/tests/run.rish      # running commands, results as records
 rishi/bin/rishi run rishi/tests/map_where.rish # transforming and filtering lists
-rishi/bin/rishi run rishi/tests/strings.rish  # composing strings by interpolation
+rishi/bin/rishi run rishi/tests/strings.rish      # composing strings by interpolation
+rishi/bin/rishi run rishi/tests/arithmetic.rish   # integer arithmetic and grouping
 ```
 
 Each test is a run of facts that all hold — comparison and `assert`, lists and
@@ -104,9 +111,9 @@ composing a sandbox policy as a value and opening a **Pond** enclosure over
 Caravan's isolation and Tally's bounded gardens. The reasoning lives in
 `../external-research/987_pond_foundation.md`.
 
-A note on the horizon: this version speaks through the same channel our test
-programs use, so its output sits beside theirs. Routing `say` to standard output
-in its own right is a small, early refinement on the way.
+`say` writes to standard output. When a Rishi script is run as a child via
+`run ["rishi" "run" "child.rish"]`, the child's `say` output appears in
+`result.out` and can be read, compared, and asserted like any other value.
 
 ---
 

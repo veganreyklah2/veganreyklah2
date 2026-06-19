@@ -1,18 +1,18 @@
-//! The `rishi` command-line tool — the first version of the Rishi shell.
+//! The `rishi` command-line tool — the shell of the Rye ecosystem.
 //!
 //! Rishi is the shell of the Rye ecosystem: terse for the hand, typed for
-//! safety, a sibling of Rye that shares its value model. This first version is
-//! honest about how small it is. It reads a `.rish` script and runs it
-//! directly, supporting line comments; `let` bindings of strings, integers,
-//! booleans, lists, and records; string interpolation, where `"${expr}"` composes
-//! a value into text; `say`; comparison with `==` and `!=`; list membership with
-//! `contains`; field access with `record.field`; running a command with `run`,
-//! whose result is a record;
-//! transforming and filtering lists with `map` and `where`; and `assert` as a
-//! gate that stops the script and says why when a fact does not hold. It is the
-//! seed from which
-//! the language grows toward `parity.rish`, the program that will name its first
-//! real purpose (see active-designing/996_growing_a_language.md).
+//! safety, a sibling of Rye that shares its value model. It reads a `.rish`
+//! script and runs it directly, supporting line comments; `let` bindings of
+//! strings, integers, booleans, lists, and records; string interpolation, where
+//! `"${expr}"` composes a value into text; `say` (to standard output); comparison
+//! with `==` and `!=`; list membership with `contains`; field access with
+//! `record.field`; running a command with `run`, whose result is a record;
+//! transforming and filtering lists with `map` and `where`; `assert` as a gate
+//! that stops the script and says why when a fact does not hold; integer
+//! arithmetic (`+`, `-`, `*`, `/`) with correct operator precedence; and
+//! parenthesized expressions `(expr)` for grouping.
+//! It is the seed from which the language grows toward `parity.rish` and,
+//! further, `pond.rish` (see active-designing/996_growing_a_language.md).
 //!
 //! Rishi is implemented in Rye and built against Rye's own standard library, so
 //! the language we are growing and the language we build it in are one and the
@@ -26,11 +26,10 @@ const std = @import("std");
 
 /// Rishi's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger, the same clock Rye keeps. This is Rishi's founding stamp.
-const rishi_version = "20260619.063712";
+const rishi_version = "20260619.090912";
 
-/// A Rishi value. The first two kinds — a string and an integer — are the seed
-/// of a model that will grow to lists, records, and process results, shared
-/// with Rye so a value can cross between them without a seam.
+/// A Rishi value. The kinds — string, integer, boolean, list, record — are the
+/// seed of a model shared with Rye so a value can cross between them without a seam.
 /// One field of a record: a name and the value bound to it.
 const Field = struct { name: []const u8, value: Value };
 
@@ -40,32 +39,40 @@ const Value = union(enum) {
     boolean: bool,
     list: []const Value,
     record: []const Field,
-
-    fn write(self: Value) void {
-        switch (self) {
-            .string => |s| std.debug.print("{s}", .{s}),
-            .int => |x| std.debug.print("{d}", .{x}),
-            .boolean => |b| std.debug.print("{s}", .{if (b) "true" else "false"}),
-            .list => |items| {
-                std.debug.print("[", .{});
-                for (items, 0..) |item, idx| {
-                    if (idx != 0) std.debug.print(" ", .{});
-                    item.write();
-                }
-                std.debug.print("]", .{});
-            },
-            .record => |fields| {
-                std.debug.print("{{", .{});
-                for (fields, 0..) |f, idx| {
-                    if (idx != 0) std.debug.print(", ", .{});
-                    std.debug.print("{s}: ", .{f.name});
-                    f.value.write();
-                }
-                std.debug.print("}}", .{});
-            },
-        }
-    }
 };
+
+/// Write a value to a file — the shared rendering used by `say`. Write errors
+/// are swallowed; if the file is broken there is nowhere to report them.
+fn writeValueTo(value: Value, io: std.Io, file: std.Io.File) void {
+    switch (value) {
+        .string => |s| file.writeStreamingAll(io, s) catch {},
+        .int => |x| {
+            var buf: [24]u8 = undefined;
+            const text = std.fmt.bufPrint(&buf, "{d}", .{x}) catch return;
+            file.writeStreamingAll(io, text) catch {};
+        },
+        .boolean => |b| file.writeStreamingAll(io, if (b) "true" else "false") catch {},
+        .list => |items| {
+            file.writeStreamingAll(io, "[") catch {};
+            for (items, 0..) |item, idx| {
+                if (idx != 0) file.writeStreamingAll(io, " ") catch {};
+                writeValueTo(item, io, file);
+            }
+            file.writeStreamingAll(io, "]") catch {};
+        },
+        .record => |fields| {
+            file.writeStreamingAll(io, "{") catch {};
+            for (fields, 0..) |f, idx| {
+                if (idx != 0) file.writeStreamingAll(io, ", ") catch {};
+                var buf: [512]u8 = undefined;
+                const label = std.fmt.bufPrint(&buf, "{s}: ", .{f.name}) catch return;
+                file.writeStreamingAll(io, label) catch {};
+                writeValueTo(f.value, io, file);
+            }
+            file.writeStreamingAll(io, "}") catch {};
+        },
+    }
+}
 
 const Binding = struct { name: []const u8, value: Value };
 
@@ -217,6 +224,8 @@ const EvalError = error{
     PipelineNeedsName,
     PipelineNeedsList,
     WhereNeedsBool,
+    ArithNeedsInt,
+    DivisionByZero,
     TooManyBindings,
     StringTooLong,
     UnterminatedInterpolation,
@@ -255,12 +264,105 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
         }
         return .{ .boolean = false };
     }
-    // `a == b` / `a != b` compare, yielding a boolean.
+    // `a == b` / `a != b` compare, yielding a boolean. Arithmetic is allowed
+    // on either side, so operands go through evalAddSub rather than evalOperand.
     if (findComparison(text)) |cmp| {
-        const left = try evalOperand(allocator, io, env, cmp.left);
-        const right = try evalOperand(allocator, io, env, cmp.right);
+        const left = try evalAddSub(allocator, io, env, cmp.left);
+        const right = try evalAddSub(allocator, io, env, cmp.right);
         const equal = valuesEqual(left, right);
         return .{ .boolean = if (cmp.op == .ne) !equal else equal };
+    }
+    return evalAddSub(allocator, io, env, text);
+}
+
+/// Find the rightmost top-level `+` or `-` that is a binary operator — one
+/// with a non-empty, non-operator left operand. A leading `-` (negative number)
+/// is not a binary operator. Returns the index of the operator character.
+fn findLastArithAdd(text: []const u8) ?usize {
+    var result: ?usize = null;
+    var in_quote = false;
+    var depth: usize = 0;
+    for (text, 0..) |c, i| {
+        if (c == '"') {
+            in_quote = !in_quote;
+        } else if (in_quote) {
+            // inside a string: ignore all structure
+        } else if (c == '[' or c == '{' or c == '(') {
+            depth += 1;
+        } else if ((c == ']' or c == '}' or c == ')') and depth > 0) {
+            depth -= 1;
+        } else if (depth == 0 and (c == '+' or c == '-')) {
+            // Binary only when the trimmed left side is non-empty and ends
+            // with a value token, not another operator.
+            const before = std.mem.trimEnd(u8, text[0..i], " \t");
+            if (before.len > 0) {
+                const last = before[before.len - 1];
+                if (last != '+' and last != '-' and last != '*' and last != '/') {
+                    result = i;
+                }
+            }
+        }
+    }
+    return result;
+}
+
+/// Find the rightmost top-level `*` or `/`. Every occurrence is binary.
+fn findLastArithMul(text: []const u8) ?usize {
+    var result: ?usize = null;
+    var in_quote = false;
+    var depth: usize = 0;
+    for (text, 0..) |c, i| {
+        if (c == '"') {
+            in_quote = !in_quote;
+        } else if (in_quote) {
+        } else if (c == '[' or c == '{' or c == '(') {
+            depth += 1;
+        } else if ((c == ']' or c == '}' or c == ')') and depth > 0) {
+            depth -= 1;
+        } else if (depth == 0 and (c == '*' or c == '/')) {
+            result = i;
+        }
+    }
+    return result;
+}
+
+/// Additive layer: handles `+` and `-` with lower precedence than `*`/`/`.
+/// Left-associative: scanning for the rightmost operator, left arm recurses
+/// through additive, right arm through multiplicative.
+fn evalAddSub(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []const u8) EvalError!Value {
+    if (findLastArithAdd(text)) |idx| {
+        const op = text[idx];
+        const left = try evalAddSub(allocator, io, env, text[0..idx]);
+        const right = try evalMulDiv(allocator, io, env, text[idx + 1 ..]);
+        const a = switch (left) {
+            .int => |x| x,
+            else => return error.ArithNeedsInt,
+        };
+        const b = switch (right) {
+            .int => |x| x,
+            else => return error.ArithNeedsInt,
+        };
+        return .{ .int = if (op == '+') a + b else a - b };
+    }
+    return evalMulDiv(allocator, io, env, text);
+}
+
+/// Multiplicative layer: handles `*` and `/` with higher precedence than `+`/`-`.
+fn evalMulDiv(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []const u8) EvalError!Value {
+    if (findLastArithMul(text)) |idx| {
+        const op = text[idx];
+        const left = try evalMulDiv(allocator, io, env, text[0..idx]);
+        const right = try evalOperand(allocator, io, env, text[idx + 1 ..]);
+        const a = switch (left) {
+            .int => |x| x,
+            else => return error.ArithNeedsInt,
+        };
+        const b = switch (right) {
+            .int => |x| x,
+            else => return error.ArithNeedsInt,
+        };
+        if (op == '/' and b == 0) return error.DivisionByZero;
+        return .{ .int = if (op == '*') a * b else @divTrunc(a, b) };
     }
     return evalOperand(allocator, io, env, text);
 }
@@ -353,6 +455,24 @@ fn doPipeline(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: [
 fn evalOperand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: []const u8) EvalError!Value {
     const s = std.mem.trim(u8, raw, " \t");
     if (s.len == 0) return error.ExpectedValue;
+    // A parenthesized expression `(expr)` groups its contents and recurses into
+    // evalExpr, so `(2 + 3) * 4` and `assert (xs contains y)` both parse correctly.
+    if (s[0] == '(') {
+        var depth2: usize = 1;
+        var j: usize = 1;
+        var in_q: bool = false;
+        while (j < s.len and depth2 > 0) : (j += 1) {
+            if (s[j] == '"') in_q = !in_q;
+            if (!in_q) {
+                if (s[j] == '(') depth2 += 1 else if (s[j] == ')') depth2 -= 1;
+            }
+        }
+        // j is now one past the closing ')'; if it equals s.len the whole
+        // expression is wrapped in matching parens — recurse into the interior.
+        if (j == s.len and depth2 == 0) {
+            return evalExpr(allocator, io, env, s[1 .. s.len - 1]);
+        }
+    }
     if (s.len >= 2 and s[0] == '"' and s[s.len - 1] == '"') {
         const inner = s[1 .. s.len - 1];
         // A string with a `${…}` hole composes a new value; a plain one is itself.
@@ -712,13 +832,12 @@ fn findWordOp(text: []const u8, word: []const u8) ?usize {
     return null;
 }
 
-/// `say` writes a string literal — interpolating `${name}` as it goes — or the
-/// value bound to a bare name, then a newline.
+/// `say` writes a value to standard output, then a newline. A quoted string is
+/// interpolated; a bare name, field path, or literal speaks its value directly.
 fn doSay(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []const u8) !void {
     if (arg.len == 0) return error.SayNeedsArgument;
-    // Any operand will do — a quoted string (interpolated when it carries `${…}`),
-    // a name, a field path, or a literal. Speak its value, then a newline.
     const value = try evalOperand(allocator, io, env, arg);
-    value.write();
-    std.debug.print("\n", .{});
+    const stdout = std.Io.File.stdout();
+    writeValueTo(value, io, stdout);
+    stdout.writeStreamingAll(io, "\n") catch {};
 }
