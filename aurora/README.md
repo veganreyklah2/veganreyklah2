@@ -1,8 +1,8 @@
 # Aurora — the dawn a machine wakes into
 
-**Version:** `20260619.033812` (Rye chronological stamp)
+**Version:** `20260619.034612` (Rye chronological stamp)
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Style (`../external-research/996_TAME_STYLE.md`)
-**Status:** First seed, a relay, and a content-named hart — small, runnable, and growing
+**Status:** Seed, relay, content-named hart, and a sealed datagram — small, runnable, and growing
 
 ---
 
@@ -46,12 +46,19 @@ off — the shape every later stage will take.
 
 The relay carried a value; this stage proves the boot can *name* one — with cryptography, on the bare metal. In `src/named.rye`, a freestanding hart hashes a message with SHA3-512, the very function we strengthened first, and speaks the content-name over the console. There is no operating system beneath the hash and no allocator either; the strengthened `std` crypto runs on the bare hart exactly as it does in a hosted test. This is where Aurora's bare-metal reach meets Mantra's content-addressing — and the proof that unlocks the rest: if the hash runs freestanding, so will the key agreement, the seal, and the signature that compose an encrypted, content-named datagram (`../external-research/985`, `/982`).
 
+## The Fourth Stage — the Sealed Datagram
+
+The named hart proved the hash runs freestanding; this proves the *whole sealed message* does. In `src/sealed.rye`, one bare-metal hart plays both sides of a conversation: Alice seals a message to Bob — key agreement (X25519, from their Ed25519 identities), the seal (AEAD), the content-name (SHA3-512), the attestation (Ed25519) — and Bob verifies the attestation, checks the name against the bytes, derives the same secret, and opens it. The opened message is spoken over the console, with no operating system beneath any of it.
+
+The quiet proof hides in the content-name: it is *byte-for-byte the same* on the bare hart as in the hosted test (`../rye/tests/sealed_message_test.rye`). One value model, hosted or freestanding — the same sealed message either way. All that remains for an encrypted datagram *between* two harts is the wire to carry it.
+
 ## Build and Run
 
 ```sh
 aurora/run.sh          # the seed (the default stage)
 aurora/run.sh relay    # the second stage: the first relay
 aurora/run.sh named    # the third stage: content-naming, with crypto, on the bare hart
+aurora/run.sh sealed   # the fourth stage: a whole sealed message, sealed and opened on bare metal
 ```
 
 `run.sh` asks `rye build` to emit a freestanding RISC-V ELF for the chosen stage
@@ -79,6 +86,16 @@ Aurora: content-named on the bare hart.
   name = 9c9f6b69ba766938dda360b25638dc54...
 ```
 
+and the sealed stage opens a whole sealed message on bare metal — its
+content-name byte-for-byte the same as the hosted test:
+
+```
+Aurora: a sealed datagram, opened on the bare hart.
+  attestation verified, content-name matches.
+  opened = Meet me where the rye grows.
+  name = ef825a25550a090da510a46461178d73...
+```
+
 All end with a clean exit (status 0), because the last stage writes the
 machine's test finisher to power itself down. The script uses the vendored Zig
 0.16.0 toolchain beside the project, so it needs no extra setup; an emulator
@@ -93,6 +110,7 @@ aurora/
     seed.rye         <- the first seed: a hart wakes, speaks, and halts
     relay.rye        <- the second stage: a value flows across asserted stages
     named.rye        <- the third stage: SHA3 content-naming, with crypto, on bare metal
+    sealed.rye       <- the fourth stage: a whole sealed message, freestanding
   layout.ld          <- where a stage lives in memory (RAM base, _start first)
   run.sh             <- build a stage with rye, wake it in qemu (default: seed)
   .build/            <- the emitted ELFs (built on demand, untracked)
@@ -100,14 +118,13 @@ aurora/
 
 ## How It Grows
 
-The seed, the relay, and the named hart each grew from the one before, never
-bolted on. Now that the crypto runs freestanding, the near steps are clear: grow
-the named hart into the full **sealed datagram** — key agreement, the seal, and
-the signature composed on the bare metal as they already are in a hosted test —
-and, in parallel, a stage that hands the next a value *it chose*. Then, as the
-other modules ripen, Tally's bounded gardens for the boot's own memory, Caravan's
-hand on what runs next, and Silo describing the stages as values. The roadmap
-that holds these steps lives in `../work-in-progress/996_roadmap.md`.
+Each stage grew from the one before, never bolted on — and the sealed datagram
+now runs whole on the bare hart. The clear next step is the **wire**: carrying a
+sealed datagram from one hart to another, the true encrypted datagram between two
+machines, where Setu begins. In parallel: a stage that hands the next a value *it
+chose*; and, as the other modules ripen, Tally's bounded gardens for the boot's
+own memory, Caravan's hand on what runs next, and Silo describing the stages as
+values. The roadmap that holds these steps lives in `../work-in-progress/996_roadmap.md`.
 
 ---
 

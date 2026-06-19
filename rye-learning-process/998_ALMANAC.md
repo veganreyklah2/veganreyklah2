@@ -192,6 +192,8 @@ The reason it works is that the cryptography is *pure*: it computes over fixed-s
 
 This is the quiet unlock for the encrypted datagram. The cryptography our network leans on does not wait for an operating system; it runs the moment a hart wakes. Aurora's bare-metal reach and Mantra's content-addressing meet here, on the first stage that does real cryptographic work with nothing beneath it.
 
+And the whole sealed message followed, exactly as the reasoning promised. `aurora/src/sealed.rye` composes key agreement (X25519), the seal (AEAD), the content-name (SHA3-512), and the attestation (Ed25519) on the bare hart, and opens the message — every primitive freestanding, every one pure. The proof is in the name: the content-name it computes is *byte-for-byte the same* as the hosted `sealed_message_test`. One value model, hosted or freestanding — the same sealed message either way. The only thing now between us and an encrypted datagram between two harts is the wire to carry it.
+
 ---
 
 ## Open Threads
