@@ -1,7 +1,7 @@
 # 999 · The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Status:** Foundation
@@ -18,7 +18,9 @@ It is a kindness to our future selves: memory for the *work*, the way Mantra is 
 
 ## How It Counts
 
-Like our other stacks, this folder counts **down**. This foundation holds `999`. Each time we take stock, we write a new snapshot of the open threads at the next number down — `998`, then `997`, and so on — so that, sorted alphabetically, the freshest snapshot rises to the top while the foundation rests at the base. The newest snapshot is the present truth; the older ones remain as an honest record of what was open, and when.
+This folder counts **down**, the way most of our stacks do — the one exception is the expanding-prompts stack, which counts up like a journal. This foundation holds `999`. Each time we take stock, we write a new snapshot of the open threads at the next number down — `998`, then `997`, and so on — so that, sorted alphabetically, the freshest snapshot rises to the top while the foundation rests at the base. The newest snapshot is the present truth.
+
+Once a snapshot is superseded, it graduates to `archive/` — out of the live folder, yet kept whole as an honest record of what was open, and when. So the live folder shows only the present snapshot and the foundation beneath it, while the full lineage waits one folder down for anyone who wants to read how the work moved.
 
 A snapshot is a faithful gathering, not a contract. An item leaves the next snapshot when it is **done**, **decided**, or **set down on purpose** — and that next snapshot says which, so even closure is remembered rather than merely vanishing.
 
