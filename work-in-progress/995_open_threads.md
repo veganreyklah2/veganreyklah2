@@ -3,7 +3,7 @@
 *A fresh snapshot, taken after the cryptographic foundation became a sealed datagram crossing between two harts, and after the shell grew comparison, assertion, lists, and membership. It carries forward the still-open threads of the networking-and-social turn it grew from, and ties off the ones that now run.*
 
 **Language:** EN
-**Version:** `20260619.060512` (Rye chronological stamp)
+**Version:** `20260619.063712` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -22,13 +22,13 @@
 ## Threads Now Closed
 
 - **The encrypted-datagram seed — tied off.** "Two harts, two owner keys, one authenticated, content-named datagram, verified in place" was the open thread; it now runs (`posted.rye`). The seed is done; what remains is its next size — a real device.
-- **Rishi's first gate features — tied off.** Comparison, assertion, lists, and membership are in and proven; the climb continues toward records and `run`.
+- **Rishi reached `parity.rish` — tied off.** Comparison, assertion, lists, membership, records, `run`, `map`/`where`, and string interpolation all landed, and the parity gate now runs in Rishi (`../tools/parity.rish`), proven GREEN and RED — the child keeping watch over the parent.
 - **The network's name — tied off.** Comlink.
 
 ## Threads Still Open
 
 - **The wire as a real device.** The two-hart wire is shared memory; carrying a sealed datagram over an emulated `virtio-net` between two machines is the next networking climb — a device driver and two instances, where Comlink fully begins.
-- **Rishi toward `parity.rish`.** Lists, `run` (records), `==` over lists, `map`/`where`, and `assert` are all in hand; the remaining step is writing `parity.rish` itself. (Records also unlocks `pond.rish`.)
+- **`pond.rish`, the enclosure as a value.** Records and interpolation now let a sandbox policy be written as a value (`../rishi/examples/pond.rish`); the enclosure it opens still awaits Caravan's isolation and Tally's bounds.
 - **Aurora's deciding stage.** A relay stage that hands the next a value *it chose* — a real decision, not only a reading (`aurora/`, the roadmap).
 - **The owner-key PKI.** Rotation, revocation, and recovery when a key is lost or stolen. The QR key-cards and master-key rotation in `SOURCE.md` are the first thread, not the whole answer.
 - **Curation by structure, not by engine.** The smallest honest ranking for the social layer — chronology, explicit follows, a web of trust — that needs no hidden model (`984`).

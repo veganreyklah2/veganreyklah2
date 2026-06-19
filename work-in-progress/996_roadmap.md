@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260619.060512` (Rye chronological stamp)
+**Version:** `20260619.063712` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -28,7 +28,8 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **The strengthening series is live** — SHA3-512, the Keccak sponge beneath it, and the everyday `std` our own tools lean on (`mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt`), each given stated invariants and each parity-green, recorded in the strengthening-compiler stack.
 - **The crypto foundation is proven, primitive by primitive** — the content hash (SHA3-512, strengthened), signing (Ed25519), key agreement (X25519), and the authenticated seal (AEAD: ChaCha20-Poly1305) all run in Rye's own std, hosted and freestanding alike, and stand parity-green: the foundation the network and identity rest on (`../strengthening-compiler/9995`).
 - **The gate trio runs** — `parity.sh` (behavior identical to baseline), `parity-selftest.sh` (the gate turns red on a real divergence), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction; the corpus now carries eight programs, all green, and the gate is written in portable shell so it runs anywhere.
-- **Rishi runs, and is growing toward a gate** — a shell interpreter in Rye with comments; `let` of strings, integers, booleans, lists, and records; `say` with `${...}` interpolation; `==`/`!=` comparison; list membership with `contains`; field access with `record.field`; running a command with `run` (its result a record of `out`, `err`, `code`, `ok`); transforming and filtering lists with `map` and `where`; and `assert` as a gate that exits non-zero with its reason. Built by `rye build`.
+- **Rishi runs** — a shell interpreter in Rye with comments; `let` of strings, integers, booleans, lists, and records; string interpolation that composes a value into text (`"${a}/${b}"`); `say`; `==`/`!=` comparison; list membership with `contains`; field access with `record.field`; running a command with `run` (its result a record of `out`, `err`, `code`, `ok`); transforming and filtering lists with `map` and `where`; and `assert` as a gate that exits non-zero with its reason. Built by `rye build`.
+- **The parity gate runs in Rishi** — `tools/parity.rish` is `parity.sh` reborn in our own shell: it maps the corpus through `run` against the baseline and strengthened std, compares the two lists of outputs as one value, and asserts the verdict. Proven GREEN across the corpus and RED on an injected divergence — so the shell Rye grew now guards Rye's own becoming.
 
 ---
 
@@ -38,7 +39,7 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 
 - [ ] **The wire as a real device** — carry a sealed datagram over an emulated `virtio-net` between two QEMU machines, growing the two-hart shared-memory wire (done, Horizon 0) into a true network link. A device driver and two communicating instances: the meatier climb where Comlink fully begins (`985`/`982`).
 - [ ] **Aurora's deciding stage** — a relay stage that hands the next a value *it chose*, not only one it read: the seed of a boot that selects what runs next.
-- [ ] **Grow Rishi toward `parity.rish`** — one feature at a time, each shipped working. Done and proven: `==`/`!=`, `assert`, list values, `contains`, records with field access, `run` (its result a record), and `map`/`where`. Every ingredient the gate asks for is now in hand; the remaining step is **writing `parity.rish` itself**.
+- [x] **Grew Rishi to `parity.rish`** — shipped one proven feature at a time: `==`/`!=`, `assert`, lists, `contains`, records with field access, `run`, `map`/`where`, and string interpolation — and then the gate itself (Horizon 2 below, reached early). `tools/parity.rish` runs GREEN, and RED on a real divergence.
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
 - [ ] **A minimal Mantra weave** — overlay, always-succeeding merge, line-provenance — so the strengthening process and the network's messages alike gain durable, content-addressed memory.
 - [ ] **Vendor execline** (with skalibs) into `gratitude/` — the near-term, surprise-free orchestration bridge, and a reference to study.
@@ -49,7 +50,7 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 
 Each milestone here is *made of* the working systems above.
 
-- [ ] **`parity.rish` runs** — made of: Rishi (grown to lists/records/run/assert) + the existing parity logic. The gate, rewritten in our own shell.
+- [x] **`parity.rish` runs** — made of: Rishi (lists, records, `run`, `map`/`where`, interpolation, `assert`) + the parity logic. The gate, rewritten in our own shell — proven GREEN, and RED on a real divergence (`../tools/parity.rish`).
 - [ ] **Comlink v1 — the network module** *(see `../external-research/981`)* — made of: the encrypted-datagram seed grown into typed, content-named, sealed message delivery, exactly-once by hash, carrying values between identities.
 - [ ] **Unified keys v1** — made of: one owner seed deriving the keys a person needs (ed25519 for SSH/GPG/Sui, secp256k1 for Nostr), separated for safety and recovered as one (`../external-research/981`).
 - [ ] **Silo v1** — made of: a content-addressed store (grown from the smallest working build of one thing) + a single lawful compose combinator. Describes a simple system reproducibly.
@@ -84,23 +85,23 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 ---
 
-## Where We Are Now — Building Caught Up, and the Datagram Runs
+## Where We Are Now — The Gate Runs in Our Own Shell
 
 The shared seed is planted, and it has grown: Rye builds itself, wakes a hart on RISC-V, and the relay carries named values. A long arc of *design* once ran out ahead of building — the networking layer (`../external-research/985`), the messenger (`982`), the social layer (`984`), the correctness stance (`983`), and the unified identity and address space (`981`). We met that drift the way Gall's Law asks: we distilled the arc into the clean room as principles on their own roots (`../active-designing/994`–`991`), then **returned to the very bottom and built upward until building caught up with design** — and then carried past it.
 
-The foundation proved itself primitive by primitive — the content hash, signing, key agreement, and the authenticated seal — each in our own std, each parity-green. Those primitives composed into a whole sealed message on the bare hart, and that message crossed **between two harts**: Alice seals on hart 0, Bob opens on hart 1, the content-name matching byte-for-byte. The headline of the near horizon is running. In parallel, the shell grew its own way — `==`, `assert`, lists, `contains`, records, `run`, and now `map`/`where` — each with a passing test and a failing one, until every ingredient the parity gate asks for was in hand. And the one name left open is chosen: the network module is **Comlink** (`../external-research/981`).
+The foundation proved itself primitive by primitive — the content hash, signing, key agreement, and the authenticated seal — each in our own std, each parity-green. Those primitives composed into a whole sealed message on the bare hart, and that message crossed **between two harts**: Alice seals on hart 0, Bob opens on hart 1, the content-name matching byte-for-byte. The headline of the near horizon is running. In parallel, the shell grew its own way — `==`, `assert`, lists, `contains`, records, `run`, `map`/`where`, and string interpolation — each with a passing test and a failing one, until the gate itself came within reach. And it arrived: `tools/parity.rish` now runs the whole parity check in our own shell, proven GREEN and RED. The one name left open is chosen, too: the network module is **Comlink** (`../external-research/981`).
 
 ### What to Build Next, and Why
 
-Two threads are ripe, and we favor the readier one. **Rishi toward `parity.rish`** stays the near-term priority, and it has arrived at the doorstep: lists, `run` (records), `==` over lists, `map`/`where`, and `assert` are all in hand. The next step is **`parity.rish` itself** — the gate rewritten in our own shell, where a corpus maps through `run` to a list of outputs, the strengthened list and the baseline list compare as values, and one `assert` speaks the verdict. The child keeps watch over the parent. The second thread, **the wire as a real device** (`virtio-net` between two machines, where Comlink fully begins), is a meatier, riskier spike — a device driver and two instances — best taken once the gate lives in our own shell. So: write `parity.rish`; climb the device-wire next.
+The readier thread has arrived: **`parity.rish` runs**, the gate rewritten in Rishi, proven both GREEN and RED. With the shell now able to drive and assert real programs, two threads open ahead. The first is **the wire as a real device** — a sealed datagram over an emulated `virtio-net` between two machines, where Comlink fully begins; a meatier spike of a device driver and two communicating instances, now more approachable because Rishi can script and check it. The second is **continued strengthening**, each new pass provable by our own `parity.rish` rather than only the shell gate. We lean toward the device-wire as the next reach, with strengthening passes alongside it.
 
 ---
 
 ## The Steps Just Taken
 
-Since the last roadmap, the shell finished its climb to the gate's doorstep: **`map` and `where`** joined records and `run`, so a list can be transformed, filtered, and run through a command per element, and two lists of outputs compare as a single value. Six scripts now run green (`../rishi/tests/`). Behind them sit the two new design briefs — **Correctness by Construction** for Rye and **The Faithful Hand** for Rishi (`../active-designing/990`, `/989`) — and a radiant pass that swept the newest writings to lead with what IS.
+Since the last roadmap, Rishi reached its destination. **String interpolation** landed — a `"${expr}"` hole composes a value into text — and with `map`/`where`, records, and `run` already in hand, **`tools/parity.rish`** now expresses the whole differential-parity gate in our own shell. It is proven both ways: GREEN across the eight-program corpus, and RED (exit 1, named) when a real divergence is injected into the strengthened std and then reverted. The child keeps watch over the parent. Seven Rishi scripts run green.
 
-The next step is **`parity.rish` itself** — the parity gate written in Rishi, mirroring the shell gate that guards each strengthening pass: a corpus mapped through `run`, two lists of outputs compared as values, one `assert` for the verdict. The device-wire toward Comlink waits its turn as the deliberate next climb.
+The next reach is **the wire as a real device** — a sealed datagram over an emulated `virtio-net` between two machines, where Comlink fully begins — with continued strengthening passes alongside, each now provable by `parity.rish` itself.
 
 ---
 
