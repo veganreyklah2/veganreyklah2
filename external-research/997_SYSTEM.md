@@ -1,10 +1,10 @@
 # 997 · Honoring Tiger Style and the Language of the System
 
-*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones; and, as the work reached the network, Van Jacobson's content-centric vision and the clean-slate coherence of Urbit — set down with thanks, together with the gentle name and the vow we carry forward.*
+*The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones; as the work reached the network, Van Jacobson's content-centric vision and the clean-slate coherence of Urbit; and beneath it all, the ground of Zig and Andrew Kelley that Rye grew from, with David Vanderson's DVUI lately showing how a surface can be redrawn from values — set down with thanks, together with the gentle name and the vow we carry forward.*
 
 **Language:** EN
-**Version:** `20260618.223812` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Version:** `20260619.072600` (Rye chronological stamp)
+**Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Honors:** `../gratitude/TIGER_STYLE.md`, `../gratitude/LanguageSystem.md`, `../gratitude/SimpleMadeEasy.md`, `../gratitude/Systemantics.md`, `../gratitude/Spec_ulation.md`
 **Status:** Gratitude
@@ -79,6 +79,22 @@ Their ideas are applied, and weighed with a clear eye, in the networking researc
 
 ---
 
+## The Ground We Stand On — Zig and Andrew Kelley
+
+We set this down later than the rest, and it is the most foundational of all. Rye is a Zig 0.16.0 derivative — the language and toolchain **Andrew Kelley** designed are the very ground our own language grows from. What Zig gave us is the substance the rest of this lineage is built in: explicitly sized types, computation at compile time in place of hidden machinery, no control flow or allocation that hides from the reader, and a standard library and compiler open enough that we could take ownership of them — read every line, strengthen them in place, and aim the whole at bare metal. Tiger Style itself is written in Zig, so the discipline we adapted and the language we build in were drawn, in part, from the same well.
+
+Our debt here is unusual, because we did not only learn from Zig — we stood on it and made it our own, the way a child stands on a parent. We honor that plainly: Rye's clarity about size and cost, its compile-time evaluation, its freestanding reach, and the very possibility of owning and strengthening a standard library, are Andrew Kelley's gift carried forward. We diverge by accretion, and we will keep diverging — yet we never forget whose ground we began on.
+
+---
+
+## The Drawn Surface — David Vanderson and DVUI
+
+As the work reached toward showing itself, one more source joined the lineage: **David Vanderson's DVUI**, an immediate-mode interface toolkit for Zig. It taught us two things we carry into our own surface, **Brushstroke**. The first is **immediate mode**: an interface redrawn from the current values every frame, holding no retained tree that can drift from the truth — the same single-stranded simplicity Hickey names, now applied to what a person sees. The second is a **backend abstraction**: one interface decoupled from the surface it lands on, so the same program can draw to many places through one clean seam, including a surface a person reaches from a small, portable, sandboxed artifact.
+
+We honor DVUI as a source we study, kept whole in `../gratitude/dvui`, and we do not absorb it: Brushstroke is written fresh in Rye, on our own ground, carrying the essence and leaving the code where its author put it. Its design is applied and weighed in `980`, the documentation-surface study, and distilled onto its own roots in `../active-designing/988`.
+
+---
+
 ## How the Voices Meet
 
 The voices were answering different questions, and they arrive at one harmony. Tiger Style sets the discipline of the small — the assertions, the limits, the sized types within a single program. Joran orders the goals across the whole endeavor. Hickey shapes the composition of many programs into a system. Read together, they describe work that is safe at its core, fast by design, joyful to build, and assembled from small honest pieces that flow values to one another and keep faith through partial failure.
@@ -113,6 +129,8 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 - **`../gratitude/Systemantics.md`** — John Gall's *Systemantics* / *The Systems Bible*, honored as a curated principles summary (the book is copyrighted). The source of Gall's Law — that a working complex system grows from a working simple one — which shapes how we grow every module.
 - **`../gratitude/Spec_ulation.md`** — Rich Hickey's *Spec-ulation*, whole and unaltered, the source of growth-over-breakage and enduring names, which shapes how Rye versions itself.
 - **Van Jacobson's content-centric networking, and Urbit's design** (Curtis Yarvin, with Galen Wolfe-Pauly of Tlon) — honored here in summary, without a borrowed text or a link. Their ideas are applied and weighed with a clear eye in the networking research: `985` (encrypted networking), `982` (the content-centric messenger), and `981` (unified identity and the address space).
+- **`../gratitude/zig/`** — Andrew Kelley's Zig language and toolchain, the ground Rye is a 0.16.0 derivative of. Honored as the foundation we stood on and made our own; its lessons of explicit size, compile-time evaluation, and an ownable standard library run through `996_TAME_STYLE.md` and the strengthening stack.
+- **`../gratitude/dvui/`** — David Vanderson's DVUI, the immediate-mode interface toolkit whose redraw-from-values and backend abstraction seed our own surface, **Brushstroke**. Applied in `980`, and distilled onto its own roots in `../active-designing/988`. MIT, cloned shallow.
 - **This note** — the one gratitude bridge between all these sources and our work.
 
 ---
