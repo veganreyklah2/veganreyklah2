@@ -336,6 +336,66 @@ fn deserializeWeave(allocator: std.mem.Allocator, blob: []const u8) !Weave {
 }
 
 // =========================================================================
+// § Commit — the chain link
+// =========================================================================
+//
+// A commit blob names a weave blob and points to its parent commit.
+// Format:
+//   mantra-commit-v1\n
+//   parent <64-hex|none>\n
+//   weave <64-hex>\n
+//
+// HEAD always points to the most recent commit blob.
+// Legacy HEAD values (v0: HEAD → weave blob directly) are handled in
+// loadWeave for backwards compatibility.
+
+const CommitRecord = struct {
+    parent:     ?[]const u8, // null for the first commit
+    weave_name: []const u8,
+};
+
+fn serializeCommit(allocator: std.mem.Allocator, commit: CommitRecord) ![]const u8 {
+    var out = std.ArrayListUnmanaged(u8).empty;
+    try out.appendSlice(allocator, "mantra-commit-v1\n");
+    if (commit.parent) |p| {
+        std.debug.assert(p.len == Sha3.digest_length * 2);
+        const line = try std.fmt.allocPrint(allocator, "parent {s}\n", .{p});
+        try out.appendSlice(allocator, line);
+    } else {
+        try out.appendSlice(allocator, "parent none\n");
+    }
+    std.debug.assert(commit.weave_name.len == Sha3.digest_length * 2);
+    const line = try std.fmt.allocPrint(allocator, "weave {s}\n", .{commit.weave_name});
+    try out.appendSlice(allocator, line);
+    return out.toOwnedSlice(allocator);
+}
+
+fn deserializeCommit(allocator: std.mem.Allocator, blob: []const u8) !CommitRecord {
+    var it = std.mem.splitScalar(u8, blob, '\n');
+    const header = it.next() orelse return error.InvalidFormat;
+    if (!std.mem.eql(u8, header, "mantra-commit-v1")) return error.InvalidFormat;
+    var parent_val: ?[]const u8 = null;
+    var weave_val:  ?[]const u8 = null;
+    while (it.next()) |row| {
+        if (row.len == 0) continue;
+        const sep = std.mem.indexOfScalar(u8, row, ' ') orelse continue;
+        const key = row[0..sep];
+        const val = std.mem.trim(u8, row[sep + 1..], " \t\r");
+        if (std.mem.eql(u8, key, "parent")) {
+            if (std.mem.eql(u8, val, "none")) {
+                parent_val = null;
+            } else {
+                parent_val = try allocator.dupe(u8, val);
+            }
+        } else if (std.mem.eql(u8, key, "weave")) {
+            weave_val = try allocator.dupe(u8, val);
+        }
+    }
+    const w = weave_val orelse return error.InvalidFormat;
+    return CommitRecord{ .parent = parent_val, .weave_name = w };
+}
+
+// =========================================================================
 // § Brix — .brix course descriptor
 // =========================================================================
 //
@@ -394,6 +454,12 @@ fn loadWeave(allocator: std.mem.Allocator, store: *const Store, io: std.Io) !Wea
     const head_name = try store.readHead(allocator, io);
     if (head_name == null) return Weave.empty();
     const blob = try store.readBlob(allocator, io, head_name.?);
+    // v1: HEAD → commit blob → weave blob. Legacy v0: HEAD → weave blob.
+    if (std.mem.startsWith(u8, blob, "mantra-commit-v1")) {
+        const commit = try deserializeCommit(allocator, blob);
+        const weave_blob = try store.readBlob(allocator, io, commit.weave_name);
+        return deserializeWeave(allocator, weave_blob);
+    }
     return deserializeWeave(allocator, blob);
 }
 
@@ -414,11 +480,13 @@ pub fn main(init: std.process.Init) !u8 {
     } else if (std.mem.eql(u8, cmd, "brix")) {
         return cmdBrix(allocator, io);
     } else if (std.mem.eql(u8, cmd, "add")) {
-        if (args.len < 3) {
-            std.debug.print("mantra: add requires a file path\n", .{});
-            return 2;
+        if (args.len >= 3) {
+            return cmdAdd(allocator, io, args[2]);
+        } else {
+            return cmdAddAll(allocator, io);
         }
-        return cmdAdd(allocator, io, args[2]);
+    } else if (std.mem.eql(u8, cmd, "log")) {
+        return cmdLog(allocator, io);
     } else if (std.mem.eql(u8, cmd, "status")) {
         if (args.len < 3) {
             std.debug.print("mantra: status requires a file path\n", .{});
@@ -442,7 +510,9 @@ fn printUsage() void {
         \\usage:
         \\  mantra init           create .mantra/ in the current directory
         \\  mantra brix           print the .brix course descriptor
-        \\  mantra add <file>     weave the file's current text into the history
+        \\  mantra add            weave all .brix files into the history
+        \\  mantra add <file>     weave one file's current text into the history
+        \\  mantra log            show the commit chain
         \\  mantra status <file>  show what has changed since the last weave
         \\  mantra version        print the Mantra version
         \\
@@ -490,17 +560,72 @@ fn cmdAdd(allocator: std.mem.Allocator, io: std.Io, file_path: []const u8) !u8 {
         std.debug.print("mantra add: cannot read '{s}': {}\n", .{ file_path, err });
         return 1;
     };
-    var w        = try loadWeave(allocator, &store, io);
-    const old    = try w.current(allocator);
-    const new    = try splitLines(allocator, file_content);
-    const d      = try computeDiff(allocator, old, new);
+    // Record the current HEAD as parent before the new commit.
+    const parent_name = try store.readHead(allocator, io);
+    var w             = try loadWeave(allocator, &store, io);
+    const old         = try w.current(allocator);
+    const new         = try splitLines(allocator, file_content);
+    const d           = try computeDiff(allocator, old, new);
     try w.apply(allocator, d);
-    const blob   = try serializeWeave(allocator, &w);
-    const name   = try store.writeBlob(allocator, io, blob);
-    try store.writeHead(io, name);
+    const weave_blob  = try serializeWeave(allocator, &w);
+    const weave_name  = try store.writeBlob(allocator, io, weave_blob);
+    const commit_blob = try serializeCommit(allocator, .{ .parent = parent_name, .weave_name = weave_name });
+    const commit_name = try store.writeBlob(allocator, io, commit_blob);
+    try store.writeHead(io, commit_name);
     std.debug.print("mantra: wove '{s}' — +{d} -{d} lines. HEAD → {s}\n", .{
-        file_path, d.inserts.len, d.deletes.len, name[0..12],
+        file_path, d.inserts.len, d.deletes.len, commit_name[0..12],
     });
+    return 0;
+}
+
+fn cmdAddAll(allocator: std.mem.Allocator, io: std.Io) !u8 {
+    const maybe_brix = try readBrix(allocator, io, Dir.cwd());
+    if (maybe_brix == null) {
+        std.debug.print("mantra add: no .brix found — either specify a file or create .brix\n", .{});
+        return 1;
+    }
+    const brix = maybe_brix.?;
+    std.debug.print("mantra: adding {d} file(s) from .brix ({s})\n", .{ brix.files.len, brix.name });
+    var added: usize = 0;
+    for (brix.files) |file_path| {
+        const rc = try cmdAdd(allocator, io, file_path);
+        if (rc == 0) added += 1;
+    }
+    std.debug.print("mantra: wove {d}/{d} file(s).\n", .{ added, brix.files.len });
+    return if (added == brix.files.len) 0 else 1;
+}
+
+fn cmdLog(allocator: std.mem.Allocator, io: std.Io) !u8 {
+    const cwd = Dir.cwd();
+    var store = Store.open(io, cwd) catch |err| {
+        std.debug.print("mantra log: cannot open .mantra/ ({}) — run `mantra init` first\n", .{err});
+        return 1;
+    };
+    var head: ?[]const u8 = try store.readHead(allocator, io);
+    if (head == null) {
+        std.debug.print("mantra: no commits yet — run `mantra add` to weave the first line.\n", .{});
+        return 0;
+    }
+    var depth: usize = 0;
+    while (head) |commit_name| {
+        const blob = try store.readBlob(allocator, io, commit_name);
+        if (!std.mem.startsWith(u8, blob, "mantra-commit-v1")) {
+            // Legacy v0: HEAD pointed directly to a weave blob.
+            std.debug.print("  {s}  (weave, legacy)\n", .{commit_name[0..12]});
+            break;
+        }
+        const commit = try deserializeCommit(allocator, blob);
+        std.debug.print("  commit {s}  weave {s}\n", .{
+            commit_name[0..12], commit.weave_name[0..12],
+        });
+        head = commit.parent;
+        depth += 1;
+        if (depth > 1000) {
+            std.debug.print("  ... (depth limit — stopping)\n", .{});
+            break;
+        }
+    }
+    std.debug.print("({d} commit(s))\n", .{depth});
     return 0;
 }
 

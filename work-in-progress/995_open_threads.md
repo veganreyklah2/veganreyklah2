@@ -39,7 +39,7 @@
 ## Threads Still Open
 
 **Near — Horizon 1 threads:**
-- **Mantra for `~/veganreyklah2`** — grow the seed into multi-file weave: commit-chain model (parent reference), `mantra add` (no args) walks `.brix` file list, `mantra log` follows the HEAD chain. Tally v1 and Brix minimum are both done; this is next.
+- **Mantra for `~/veganreyklah2`** — tied off (seed). Commit-chain model (parent reference), `mantra add` (no args) walks `.brix` file list, `mantra log` follows the HEAD chain. 9/9 bricks wove on first run. Multi-file manifest (each file a separate weave; manifest commits reference them) is the next growth pass.
 - **Device wire** — sealed datagram over emulated `virtio-net` between two QEMU machines; Comlink's next rung.
 
 **Near — display layer:**
