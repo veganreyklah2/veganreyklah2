@@ -3,7 +3,7 @@
 *A fresh snapshot, taken after the cryptographic foundation became a sealed datagram crossing between two harts, and after the shell grew comparison, assertion, lists, and membership. It carries forward the still-open threads of the networking-and-social turn it grew from, and ties off the ones that now run.*
 
 **Language:** EN
-**Version:** `20260619.063712` (Rye chronological stamp)
+**Version:** `20260619.084412` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -27,14 +27,18 @@
 
 ## Threads Still Open
 
-- **The wire as a real device.** The two-hart wire is shared memory; carrying a sealed datagram over an emulated `virtio-net` between two machines is the next networking climb — a device driver and two instances, where Comlink fully begins.
-- **`pond.rish`, the enclosure as a value.** Records and interpolation now let a sandbox policy be written as a value (`../rishi/examples/pond.rish`); the enclosure it opens still awaits Caravan's isolation and Tally's bounds.
+- **Three parallel near threads** (counsel `084412`, `../active-designing/987`, `../expanding-prompts/10007`):
+  - **Device wire** — sealed datagram over emulated `virtio-net` between two machines; Comlink's next rung.
+  - **Caravan seed** — hosted supervision: one parent that never dies, one child, restart on fall, asserted.
+  - **Tally seed** — one bounded region with asserted edges, bump allocate, clear whole, tested.
+  - **Close reading** — packet format, commit rule, relay protocols from `gratitude/` clones, before Comlink's format hardens.
+- **`pond.rish`, the enclosure as a value.** Records and interpolation now let a sandbox policy be written as a value (`../rishi/examples/pond.rish`); the enclosure it opens still awaits Caravan's isolation and Tally's bounds — the seeds above are the first floor.
 - **Aurora's deciding stage.** A relay stage that hands the next a value *it chose* — a real decision, not only a reading (`aurora/`, the roadmap).
 - **The owner-key PKI.** Rotation, revocation, and recovery when a key is lost or stolen. The QR key-cards and master-key rotation in `SOURCE.md` are the first thread, not the whole answer.
 - **Curation by structure, not by engine.** The smallest honest ranking for the social layer — chronology, explicit follows, a web of trust — that needs no hidden model (`984`).
 - **Spam without a central filter.** A web of trust among keys plus Tally-bounded, perhaps Pond-enclosed relays. Untested.
-- **Critical reading still owed.** A close read of the cloned sources — Ames's packet format, Mysticeti's commit rule, the core NIPs, Primal's caching, Damus's NIP set — would sharpen `985`/`984`.
-- **The unbuilt modules.** Tally, Caravan, Silo, Mantra, and Pond remain designs; the sealed datagram and the social layer both lean on them, raising the value of their first working seeds.
+- **Critical reading — promoted to near work.** Close read of cloned sources (Ames packet shape, Mysticeti commit rule, Nostr relay NIPs, supervision in s6/skalibs) — actionable notes for Comlink and Caravan, not bibliography alone (`10007`).
+- **The unbuilt modules — seeds first.** Tally, Caravan, Silo, Mantra, and Pond remain designs at full scale; **Caravan seed** and **Tally seed** are now explicit Horizon 1 work so building does not slip behind again.
 - **The verify-flag hot path.** `indexOfScalarPos` and other data-plane functions await postconditions compiled in only behind a `verify` flag (`../strengthening-compiler/9996`).
 
 ## The Through-Line

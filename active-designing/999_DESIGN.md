@@ -45,7 +45,8 @@ Like the external-research stack, this folder counts **down**, and two near-foun
 
 ```
 active-designing/
-  988_brushstroke.md                 <- the surface that draws itself from values (most recent, sorts first)
+  987_the_first_seeds.md             <- Caravan + Tally seeds, close reading (most recent, sorts first)
+  988_brushstroke.md                 <- the surface that draws itself from values
   989_the_faithful_hand.md           <- the design of Rishi, the shell
   990_correctness_by_construction.md <- the design of Rye, the language
   991_aurora.md                      <- the boot as a relay of named, verified values

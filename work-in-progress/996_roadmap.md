@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260619.063712` (Rye chronological stamp)
+**Version:** `20260619.084412` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -38,6 +38,9 @@ These are the simple systems that run today. Everything ahead grows from them.
 Each is a thing that runs on its own, added by degrees, behind the gates.
 
 - [ ] **The wire as a real device** — carry a sealed datagram over an emulated `virtio-net` between two QEMU machines, growing the two-hart shared-memory wire (done, Horizon 0) into a true network link. A device driver and two communicating instances: the meatier climb where Comlink fully begins (`985`/`982`).
+- [ ] **Caravan seed — one parent, one child, restart on fall** — the smallest living supervision loop in hosted Rye: a parent that never dies, one child, restart when the child falls, proven by assertion (`../active-designing/987`). Grows toward Caravan v1; runs **in parallel** with the device-wire so design does not outrun code.
+- [ ] **Tally seed — one region, asserted edges** — the smallest bounded garden: bump allocate within stated start/length/end, fail past the edge, clear whole in one gesture, proven by test (`../active-designing/987`). Grows toward Tally v1; runs **in parallel** with the device-wire.
+- [ ] **Close reading of cloned sources** — packet format, commit rule, relay protocols from what we vendored in `gratitude/`, with actionable notes for Comlink before the wire format hardens (`995`, `10007`).
 - [ ] **Aurora's deciding stage** — a relay stage that hands the next a value *it chose*, not only one it read: the seed of a boot that selects what runs next.
 - [x] **Grew Rishi to `parity.rish`** — shipped one proven feature at a time: `==`/`!=`, `assert`, lists, `contains`, records with field access, `run`, `map`/`where`, and string interpolation — and then the gate itself (Horizon 2 below, reached early). `tools/parity.rish` runs GREEN, and RED on a real divergence.
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
@@ -93,7 +96,7 @@ The foundation proved itself primitive by primitive — the content hash, signin
 
 ### What to Build Next, and Why
 
-The readier thread has arrived: **`parity.rish` runs**, the gate rewritten in Rishi, proven both GREEN and RED. With the shell now able to drive and assert real programs, two threads open ahead. The first is **the wire as a real device** — a sealed datagram over an emulated `virtio-net` between two machines, where Comlink fully begins; a meatier spike of a device driver and two communicating instances, now more approachable because Rishi can script and check it. The second is **continued strengthening**, each new pass provable by our own `parity.rish` rather than only the shell gate. We lean toward the device-wire as the next reach, with strengthening passes alongside it.
+The readier thread remains **the wire as a real device** — virtio-net between two machines, where Comlink fully begins. Counsel at `084412` names what must run **alongside** it so building stays level with design: the **smallest Caravan seed** (parent, one child, restart on fall), the **smallest Tally seed** (one region with asserted edges), and a **close reading** of cloned packet and relay sources before Comlink's format hardens. Three parallel threads, each kept small by Gall's Law — not three large projects. Strengthening passes continue beside them, each provable by `parity.rish`. See `../active-designing/987` and `../expanding-prompts/10007_caravan_tally_seeds_and_close_reading.md`.
 
 ---
 
@@ -101,7 +104,7 @@ The readier thread has arrived: **`parity.rish` runs**, the gate rewritten in Ri
 
 Since the last roadmap, Rishi reached its destination. **String interpolation** landed — a `"${expr}"` hole composes a value into text — and with `map`/`where`, records, and `run` already in hand, **`tools/parity.rish`** now expresses the whole differential-parity gate in our own shell. It is proven both ways: GREEN across the eight-program corpus, and RED (exit 1, named) when a real divergence is injected into the strengthened std and then reverted. The child keeps watch over the parent. Seven Rishi scripts run green.
 
-The next reach is **the wire as a real device** — a sealed datagram over an emulated `virtio-net` between two machines, where Comlink fully begins — with continued strengthening passes alongside, each now provable by `parity.rish` itself.
+The next reach is **three parallel threads** — device-wire, Caravan seed, Tally seed, and close reading — each small enough to run, together keeping building level with design. Strengthening passes continue alongside, each provable by `parity.rish`.
 
 ---
 
