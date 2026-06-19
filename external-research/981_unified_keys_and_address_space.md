@@ -3,8 +3,8 @@
 *A person today carries a fistful of keys — an SSH key to reach their machines, a GPG key to sign their work, a Sui key to hold their coins, a Nostr key to speak in the commons — each made apart, backed up apart, and lost apart. This study asks how Rye OS could give them instead **one identity** from which every key is grown, kept once and recovered once; and how that identity could live in a space with shape and meaning — a fractal of galaxies, stars, and planets evolved from Urbit's address space, yet shaped by the Vedic vargas, where a galaxy's circle of five and its inheritance of twelve together lead a sixty.*
 
 **Language:** EN
-**Version:** `20260618.215612` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Version:** `20260619.035912` (Rye chronological stamp)
+**Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME Style (`996_TAME_STYLE.md`); active-designing principles (one value model, simplicity, self-sovereignty)
@@ -69,13 +69,13 @@ And the cosmology names the admins gently: a universe's steward is at once a **M
 
 ### Naming the network
 
-The module that carries identities and messages across this space, and bridges between universes, deserves a name in our own voice. The candidate raised is **Comlink**, after the work of [ELDÆON](https://eldaeon.com/) — clear and evocative, though it sits a little outside the devotional, natural family our names have kept (Mantra, Rishi, Pond, Caravan). Three names from that family fit the work closely:
+The module that carries identities and messages across this space, and bridges between universes, deserves a name chosen with care. The name is **Comlink**, after the work of [ELDÆON](https://eldaeon.com/) — clear and evocative, a word that says plainly what the module is for. It sits a little outside the devotional, natural family our other names keep (Mantra, Rishi, Pond, Caravan), and three names from that family were weighed beside it before the choice settled:
 
-- **Setu** (सेतु, "bridge") — the bridge Rama's allies built across the ocean; it honors the design's own word, *bridging*, and a network is, at heart, a set of bridges between identities. *(Recommended, and used provisionally below.)*
+- **Setu** (सेतु, "bridge") — the bridge Rama's allies built across the ocean; it honors the design's own word, *bridging*, and a network is, at heart, a set of bridges between identities.
 - **Doota** (दूत, "envoy, faithful messenger") — Hanuman as Rama's doota, who crossed the sea to carry a message truly and bring an answer home; it pairs with Rishi's faithful speech and the messenger of `982`.
 - **Akasha** (आकाश, "ether, space") — the subtle element through which sound and all communication travel; the network as the very *space* identities move through, which rhymes with calling this an address *space*.
 
-We will speak of **Setu** here until you choose, since naming is rightly yours; any of the four would serve, and Comlink remains entirely viable if its clarity appeals more than the devotional resonance.
+Each would have served, and the choice was rightly the keeper's. **Comlink** won it for the clarity it carries, and we speak of Comlink throughout.
 
 ## Metaphor and Mechanism
 
@@ -95,7 +95,7 @@ Further out, a person logs into Rye OS once, as their galaxy, and is — without
 
 ## Conclusion
 
-The sprawl of keys is not a law of nature; it is the absence of a root. Give a person one seed, derive their every key from it — ed25519 for SSH and GPG and Sui, secp256k1 for Nostr — separated for safety and unified for keeping, and the four scattered identities become one. Let the address space *be* the key tree, in Urbit's spirit on our own ground; let the Vedic vargas give it a humane shape — the d5 one solves with, the d12 one carries forward, the d60 they lead together; let the admins be Manus and Aditis who convene rather than rule; and let the network that bridges them carry a name in our own voice — **Setu**, until you say otherwise. The metaphor gives the space its meaning; the keys give it its safety; and the person, at last, holds all of it with one hand.
+The sprawl of keys is not a law of nature; it is the absence of a root. Give a person one seed, derive their every key from it — ed25519 for SSH and GPG and Sui, secp256k1 for Nostr — separated for safety and unified for keeping, and the four scattered identities become one. Let the address space *be* the key tree, in Urbit's spirit on our own ground; let the Vedic vargas give it a humane shape — the d5 one solves with, the d12 one carries forward, the d60 they lead together; let the admins be Manus and Aditis who convene rather than rule; and let the network that bridges them carry a name chosen with care — **Comlink**. The metaphor gives the space its meaning; the keys give it its safety; and the person, at last, holds all of it with one hand.
 
 ---
 

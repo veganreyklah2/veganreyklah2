@@ -20,16 +20,16 @@ Each step is a thing that runs, proven before the next is added — the discipli
 
 1. **The seal.** Prove the authenticated cipher (AEAD) in our own std, the way we proved signing and agreement: a deterministic seed that seals a payload to a key and opens it again, parity-green. Now we can hide as well as sign.
 2. **The sealed message.** Compose the proven primitives into one value: agree a shared secret (X25519), seal the payload (AEAD), name it by its content (SHA3-512), and attest it (Ed25519). A message sealed *to an identity* and named by what it says — the heart of `993`, shown working.
-3. **The encrypted datagram.** Carry that sealed value between two harts in an emulator — the smallest living piece of the network, where Aurora's bare-metal reach and the messenger's value meet. One sealed word, delivered once because its name is its identity. This is the seed from which Setu grows.
+3. **The encrypted datagram.** Carry that sealed value between two harts in an emulator — the smallest living piece of the network, where Aurora's bare-metal reach and the messenger's value meet. One sealed word, delivered once because its name is its identity. This is the seed from which Comlink grows.
 4. **Aurora's deciding stage.** Let a relay stage *choose* what comes next from a value it read, rather than merely pass one along — the first boot that decides, the seed of a privilege relay that selects its successor and proves its shape before trusting it.
 5. **Rishi's next words.** Grow the shell one feature at a time toward `parity.rish` — list values first, then records, then a `run` that returns a structured result — each shipped working, each sharing the one value model.
 6. **The first module seeds.** Tally as a named, bounded garden with asserted edges; Caravan as the simplest supervision that never dies and restarts what falls. Small, real, composable.
 
 ## What These Converge Into
 
-These are not six errands; they are one system arriving. The sealed message and the datagram become **Setu**, the network that carries named, sealed values between identities. The deciding stage grows **Aurora** from a relay into a boot that chooses. Rishi's words reach `parity.rish`, and then `talk` — the messenger a person actually speaks. Tally and Caravan become the bounded, supervised ground the rest rests on. And the owner key that signs each message is the same root that wakes the machine and names a person across every network — `994`'s rooted identity, lived.
+These are not six errands; they are one system arriving. The sealed message and the datagram become **Comlink**, the network that carries named, sealed values between identities. The deciding stage grows **Aurora** from a relay into a boot that chooses. Rishi's words reach `parity.rish`, and then `talk` — the messenger a person actually speaks. Tally and Caravan become the bounded, supervised ground the rest rests on. And the owner key that signs each message is the same root that wakes the machine and names a person across every network — `994`'s rooted identity, lived.
 
-Seen from far enough away, the near arc is the moment our one value model first crosses between two machines under its own protection: a thought, shaped in Rye, named by Mantra, sealed to a friend's owner key, carried by Setu over an interface Caravan owns and Tally bounds, woken by Aurora, and read on the far side as the same value it began as. The whole system, in miniature, alive.
+Seen from far enough away, the near arc is the moment our one value model first crosses between two machines under its own protection: a thought, shaped in Rye, named by Mantra, sealed to a friend's owner key, carried by Comlink over an interface Caravan owns and Tally bounds, woken by Aurora, and read on the far side as the same value it began as. The whole system, in miniature, alive.
 
 ## The Discipline I Hold While Projecting
 

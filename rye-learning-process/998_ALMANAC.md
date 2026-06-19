@@ -205,7 +205,7 @@ A sealed datagram is a value; carrying it *between* harts needs a wire. The smal
 - **One hart powers down, after the other has read.** The machine's test finisher powers off the *whole* machine, so the receiver writes it only once it has the value; the sender rests in a `wfi` loop rather than halting, lest it cut the wire mid-message.
 - **Zig 0.16 clobbers are a struct.** Inline-asm clobbers moved from a string (`::: "memory"`) to a struct (`::: .{ .memory = true }`); the older spelling no longer compiles.
 
-On that wire, `posted.rye` carries a whole sealed datagram: hart 0 seals and serializes it into the mailbox; hart 1 reads the raw bytes, *shape-casts* them (a datagram shorter than its header or longer than the wire is refused at the edge), and opens it — trusting only its own secret and the sender's public key off the wire, reconstructed with `Ed25519.PublicKey.fromBytes`, `Ed25519.Signature.fromBytes`, and `X25519.publicKeyFromEd25519`. The content-name matches the hosted test once more. The next wire is a real device between two machines, where Setu fully begins.
+On that wire, `posted.rye` carries a whole sealed datagram: hart 0 seals and serializes it into the mailbox; hart 1 reads the raw bytes, *shape-casts* them (a datagram shorter than its header or longer than the wire is refused at the edge), and opens it — trusting only its own secret and the sender's public key off the wire, reconstructed with `Ed25519.PublicKey.fromBytes`, `Ed25519.Signature.fromBytes`, and `X25519.publicKeyFromEd25519`. The content-name matches the hosted test once more. The next wire is a real device between two machines, where Comlink fully begins.
 
 ---
 

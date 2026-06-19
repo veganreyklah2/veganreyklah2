@@ -33,7 +33,7 @@ Roots gather into namespaces, and a namespace asks for a coordinator — one who
 
 ## How It Sits With the Rest
 
-The root is Aurora's owner key, grown into a life. Setu carries these identities and the messages between them; Mantra names what each one says and signs; the gates keep each derivation honest. And because the root is one, the care we already practice — the cards today, and in time a split of the secret across trusted hands — becomes the keeping of a single thing rather than a scattered handful.
+The root is Aurora's owner key, grown into a life. Comlink carries these identities and the messages between them; Mantra names what each one says and signs; the gates keep each derivation honest. And because the root is one, the care we already practice — the cards today, and in time a split of the secret across trusted hands — becomes the keeping of a single thing rather than a scattered handful.
 
 ---
 

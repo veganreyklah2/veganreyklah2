@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260619.024512` (Rye chronological stamp)
+**Version:** `20260619.035912` (Rye chronological stamp)
 **Last updated:** 2026-06-19
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -49,7 +49,7 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 Each milestone here is *made of* the working systems above.
 
 - [ ] **`parity.rish` runs** — made of: Rishi (grown to lists/records/run/assert) + the existing parity logic. The gate, rewritten in our own shell.
-- [ ] **Setu v1 — the network module** *(name provisional; see `../external-research/981`)* — made of: the encrypted-datagram seed grown into typed, content-named, sealed message delivery, exactly-once by hash, carrying values between identities.
+- [ ] **Comlink v1 — the network module** *(see `../external-research/981`)* — made of: the encrypted-datagram seed grown into typed, content-named, sealed message delivery, exactly-once by hash, carrying values between identities.
 - [ ] **Unified keys v1** — made of: one owner seed deriving the keys a person needs (ed25519 for SSH/GPG/Sui, secp256k1 for Nostr), separated for safety and recovered as one (`../external-research/981`).
 - [ ] **Silo v1** — made of: a content-addressed store (grown from the smallest working build of one thing) + a single lawful compose combinator. Describes a simple system reproducibly.
 - [ ] **Tally v1** — made of: the process-garden pattern Rye already uses, grown into a named, bounded region allocator with asserted edges.
@@ -63,13 +63,13 @@ Each milestone here is *made of* the working systems above.
 The far ends. Each is named with the simpler working systems it is composed of, so the path to it is always a growing, never a leap.
 
 - [ ] **Rye, a genuinely separate language** — made of: the strengthened `std` + a growing divergence in syntax and semantics, including borrow-checking-style guarantees over Tally's gardens (`../external-research/983`), compiling to RISC-V as a first-class target. Grown from the Zig-derivative, never rewritten from scratch.
-- [ ] **The full family, composing through one value model** — made of: Rye + Silo + Rishi + the orchestration language + Mantra + Setu, each grown from its v1, sharing one value model so values flow seam-free from a keystroke to the wire.
-- [ ] **The content-centric messenger** — made of: Setu + Mantra + unified keys + Rishi's `talk` — an IRC-meets-Dojo where a message is a named, sealed value carried home (`../external-research/982`).
+- [ ] **The full family, composing through one value model** — made of: Rye + Silo + Rishi + the orchestration language + Mantra + Comlink, each grown from its v1, sharing one value model so values flow seam-free from a keystroke to the wire.
+- [ ] **The content-centric messenger** — made of: Comlink + Mantra + unified keys + Rishi's `talk` — an IRC-meets-Dojo where a message is a named, sealed value carried home (`../external-research/982`).
 - [ ] **The devotional social layer** — made of: the messenger + Nostr-simple store-and-forward relays on our coherent core, curated by honest structure, true to the values (`../external-research/984`).
 - [ ] **The fractal address space** — made of: unified keys + a derivation tree shaped as galaxies, stars, and planets (d5 × d12 = d60), with admins who coordinate and never command (`../external-research/981`).
 - [ ] **Aurora — the boot on RISC-V** — made of: the seed and relay, grown stage by stage into a verified, named-value boot from an immutable root.
 - [ ] **Pond — a trustworthy daily enclosure** — made of: Pond v1, hardened pass by pass over Caravan's isolation and Tally's gardens, until it is the room our agents work inside.
-- [ ] **A self-hosted, RISC-V-cohesive Rye system** — made of: Aurora (boot) + Caravan (kernel) + Tally (memory) + Silo (configuration) + Mantra (memory of the system) + Setu (the network) + Rishi (the hand) + Pond (the enclosure) — the whole machine, grown from every working part beneath it, belonging wholly to the one who runs it.
+- [ ] **A self-hosted, RISC-V-cohesive Rye system** — made of: Aurora (boot) + Caravan (kernel) + Tally (memory) + Silo (configuration) + Mantra (memory of the system) + Comlink (the network) + Rishi (the hand) + Pond (the enclosure) — the whole machine, grown from every working part beneath it, belonging wholly to the one who runs it.
 
 ---
 
@@ -87,9 +87,9 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 The shared seed is planted: Rye builds itself, wakes a hart on RISC-V, and the relay carries named values. A long arc of *design* then ran out ahead of building — the networking layer (`../external-research/985`), the messenger (`982`), the social layer (`984`), the correctness stance (`983`), and the unified identity and address space (`981`) — learning from sources we honored and cloned into `gratitude/` (Urbit, Sui, Nostr, Primal, Damus). Since, we have done two quiet, load-bearing things: **distilled that arc into the clean room** as principles standing on their own roots — rooted identity, the bounded network, shape-casting, and Aurora itself (`../active-designing/994`–`991`) — and **begun building again at the very bottom**.
 
-For Gall's Law asks that a working whole grow from a working *simple* one. So we returned to the foundation our new ideas lean on — the cryptography — and began proving it, seed by seed: **signing** (Ed25519) and **key agreement** (X25519) now run in our own std, deterministic and parity-green, the gate carrying six programs with none diverged. The next moves stay small and concrete: the authenticated **seal** (AEAD), then the first encrypted, content-named **datagram** between two harts — where Aurora's relay and the network meet — alongside Aurora's deciding stage and Rishi's list values. From that one sealed word, Setu and the messenger and the social layer all grow.
+For Gall's Law asks that a working whole grow from a working *simple* one. So we returned to the foundation our new ideas lean on — the cryptography — and began proving it, seed by seed: **signing** (Ed25519) and **key agreement** (X25519) now run in our own std, deterministic and parity-green, the gate carrying six programs with none diverged. The next moves stay small and concrete: the authenticated **seal** (AEAD), then the first encrypted, content-named **datagram** between two harts — where Aurora's relay and the network meet — alongside Aurora's deciding stage and Rishi's list values. From that one sealed word, Comlink and the messenger and the social layer all grow.
 
-One decision waits on you: the network module's name — **Setu** is recommended, with Doota, Akasha, and Comlink in view (`../external-research/981`).
+And the one name left open is now chosen: the network module is **Comlink** (`../external-research/981`).
 
 ---
 

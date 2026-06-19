@@ -1,6 +1,6 @@
 # Aurora — the dawn a machine wakes into
 
-**Version:** `20260619.035412` (Rye chronological stamp)
+**Version:** `20260619.035912` (Rye chronological stamp)
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Style (`../external-research/996_TAME_STYLE.md`)
 **Status:** Seed, relay, content-named hart, sealed datagram, the wire, and a sealed datagram posted across it — small, runnable, and growing
 
@@ -60,7 +60,7 @@ The sealed stage left one thing for a datagram to travel *between* harts: a wire
 
 The wire carries a value; the sealed hart sealed and opened one. This stage unites them. In `src/posted.rye`, the machine wakes with two harts again. Hart 0 (Alice) seals a message to hart 1 (Bob) — key agreement, the seal, the content-name, the attestation — serializes the whole datagram into the shared-memory wire, and raises the flag. Hart 1 reads the raw bytes off the wire and, before trusting any of them, *shape-casts* them: a datagram shorter than its header or longer than the wire is refused at the edge (`../active-designing/992_shape_casting.md`). Only then does Bob verify the attestation, confirm the content-name binds the bytes, derive the shared secret from *his own secret and Alice's public key off the wire*, and open the seal.
 
-This is a sealed value crossing the wire between two harts — the smallest honest seed of Setu (`../active-designing/993_bounded_network.md`; `../external-research/982`, `/985`). The wire here is shared memory between two harts; the next wire is a device between two machines.
+This is a sealed value crossing the wire between two harts — the smallest honest seed of Comlink (`../active-designing/993_bounded_network.md`; `../external-research/982`, `/985`). The wire here is shared memory between two harts; the next wire is a device between two machines.
 
 ## Build and Run
 
@@ -155,7 +155,7 @@ aurora/
 Each stage grew from the one before, never bolted on — and a sealed datagram now
 crosses the wire between two harts. That wire is shared memory; the next wire is a
 real device (an emulated `virtio-net` to start) carrying a sealed datagram between
-two *machines*, where Setu fully begins. In parallel: a stage that hands the next a
+two *machines*, where Comlink fully begins. In parallel: a stage that hands the next a
 value *it chose*; and, as the other modules ripen, Tally's bounded gardens for the
 boot's own memory, Caravan's hand on what runs next, and Silo describing the stages
 as values. The roadmap that holds these steps lives in `../work-in-progress/996_roadmap.md`.
