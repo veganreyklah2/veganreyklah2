@@ -39,7 +39,7 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`); virtio-net is next (`10016`).
 - **Rishi string builtins** — `length`, `trim`, `slice`, `lines`, `starts-with`, `ends-with`, `split`, `join`, `contains`, infix `index-of`; gate trio 38/38 GREEN.
 - **Skate text grid** — monospace 8×8 glyphs on Brushstroke Wayland seed; headless selftest green (`10023` Track A).
-- **Strengthening passes 9979–9966** — `trimStart` … `findLastAny`. Each through the gate; corpus 17 → 37.
+- **Strengthening passes 9979–9965** — `trimStart` … `findNonePos`. Each through the gate; corpus 17 → 38.
 - **Garden memory policy** — authored `.rye` uses `init.garden.allocator()`, never `ArenaAllocator`; no std `GardenAllocator` rename; owned wrapper at `rye.garden` / `tally/heap-garden.rye` when built (`inherited-names.md`, TAME rules).
 
 ---
@@ -125,7 +125,7 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 **Highest-leverage build threads (ordered):**
 
-1. **Strengthening series** — next `std` surface through the gate trio (`9965` and below; `998`)
+1. **Strengthening series** — next `std` surface through the gate trio (`9964` and below; `998`)
 2. **Rishi** — builtins as gates and Pond policy need them (core string/path set landed)
 3. **Comlink virtio-net** — device wire between QEMU guests (`10016`, `993`)
 4. **Caravan capability table** — `984` step 5
@@ -135,15 +135,15 @@ The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi
 
 ### What to Build Next, and Why
 
-Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, split iterator trio, findAnyPos (9967), and **findLastAny (9966)** — all done. **Strengthening the next `std` surface (9965)** is the honest next step on the main track before virtio-net or the capability table widen scope.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, split iterator trio, findAnyPos (9967), findLastAny (9966), and **findNonePos (9965)** — all done. **Strengthening the next `std` surface (9964)** is the honest next step on the main track before virtio-net or the capability table widen scope.
 
 ---
 
 ## The Steps Just Taken
 
-Strengthening through **9966**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
+Strengthening through **9965**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
 
-**Strengthening passes 9979–9967** (`143312`–`165812`): `trimStart` … `findAnyPos`. Corpus 17 → 36, all green.
+**Strengthening passes 9979–9965** (`143312`–`171112`): `trimStart` … `findNonePos`. Corpus 17 → 38, all green.
 
 **Garden memory (`161112`)** — authored code: `init.garden` only; no `ArenaAllocator`; no std `GardenAllocator`; owned wrapper horizon at `rye.garden` / `tally/heap-garden.rye`. TAME + Cursor + Claude rules.
 
