@@ -2609,11 +2609,14 @@ pub fn byteSwapAllElements(comptime Elem: type, slice: []Elem) void {
 ///           `splitSequence`,`splitAny`, `splitScalar`,
 ///           `splitBackwardsSequence`, `splitBackwardsAny`, and `splitBackwardsScalar`
 pub fn tokenizeAny(comptime T: type, buffer: []const T, delimiters: []const T) TokenIterator(T, .any) {
-    return .{
+    const it: TokenIterator(T, .any) = .{
         .index = 0,
         .buffer = buffer,
         .delimiter = delimiters,
     };
+    assert(it.index == 0);
+    assert(it.index <= buffer.len);
+    return it;
 }
 
 /// Returns an iterator that iterates over the slices of `buffer` that are not
@@ -2632,11 +2635,14 @@ pub fn tokenizeAny(comptime T: type, buffer: []const T, delimiters: []const T) T
 ///           `splitBackwardsSequence`, `splitBackwardsAny`, and `splitBackwardsScalar`
 pub fn tokenizeSequence(comptime T: type, buffer: []const T, delimiter: []const T) TokenIterator(T, .sequence) {
     assert(delimiter.len != 0);
-    return .{
+    const it: TokenIterator(T, .sequence) = .{
         .index = 0,
         .buffer = buffer,
         .delimiter = delimiter,
     };
+    assert(it.index == 0);
+    assert(it.index <= buffer.len);
+    return it;
 }
 
 /// Returns an iterator that iterates over the slices of `buffer` that are not
@@ -2653,11 +2659,14 @@ pub fn tokenizeSequence(comptime T: type, buffer: []const T, delimiter: []const 
 ///           `splitSequence`,`splitAny`, and `splitScalar`
 ///           `splitBackwardsSequence`, `splitBackwardsAny`, and `splitBackwardsScalar`
 pub fn tokenizeScalar(comptime T: type, buffer: []const T, delimiter: T) TokenIterator(T, .scalar) {
-    return .{
+    const it: TokenIterator(T, .scalar) = .{
         .index = 0,
         .buffer = buffer,
         .delimiter = delimiter,
     };
+    assert(it.index == 0);
+    assert(it.index <= buffer.len);
+    return it;
 }
 
 test tokenizeScalar {
