@@ -1,9 +1,9 @@
-//! brushstroke/wayland_seed.rye — one Wayland window, one frame from values.
+//! brushstroke/wayland_seed.rye — Skate grid on a Wayland surface.
 //!
 //! The hosted seed (`seed.rye`) proved Frame → redraw on stdout. This seed
-//! proves the same values land on a compositor surface: connect, create an
-//! xdg toplevel, attach one SHM buffer filled from a Frame value, commit once,
-//! wait for the frame callback, exit cleanly.
+//! proves monospace **Skate** cells land on a compositor surface: connect,
+//! create an xdg toplevel, attach one SHM buffer filled from a cell grid,
+//! commit once, wait for the frame callback, exit cleanly.
 //!
 //! Build (from repo root):
 //!   mkdir -p brushstroke/bin
@@ -11,23 +11,29 @@
 //!   rye/bin/rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c \
 //!     -Ibrushstroke -lc -lwayland-client -lrt \
 //!     -femit-bin=brushstroke/bin/brushstroke-wayland-seed
-//!   brushstroke/bin/brushstroke-wayland-seed
+//!   brushstroke/bin/brushstroke-wayland-seed          # Wayland window
+//!   brushstroke/bin/brushstroke-wayland-seed selftest # headless grid proof
 //!
-//! Requires a running Wayland compositor (`WAYLAND_DISPLAY`).
+//! Requires a running Wayland compositor (`WAYLAND_DISPLAY`) for the default mode.
 
 const std = @import("std");
 const posix = std.posix;
+const skate = @import("skate_grid.rye");
 
 const c = @cImport({
     @cInclude("wayland-client.h");
     @cInclude("xdg-shell-client-protocol.h");
 });
 
-const wayland_seed_version = "20260620.022412";
+const wayland_seed_version = "20260620.050912";
 
 const window_width: i32 = 400;
 const window_height: i32 = 240;
 const max_lines = 8;
+const grid_cols = @as(usize, @intCast(@divExact(window_width, @as(i32, @intCast(skate.cell_w)))));
+const grid_rows = @as(usize, @intCast(@divExact(window_height, @as(i32, @intCast(skate.cell_h)))));
+const skate_bg = skate.Color{ .r = 0x1a, .g = 0x1a, .b = 0x2e };
+const skate_fg = skate.Color{ .r = 0xe0, .g = 0xe0, .b = 0xe0 };
 
 /// Display seam — connect holds the session socket lifecycle (`985`).
 const Display = struct {
@@ -67,6 +73,15 @@ const Frame = struct {
         std.debug.assert(lines.len <= max_lines);
         return .{ .lines = lines };
     }
+
+    fn toGrid(self: Frame, allocator: std.mem.Allocator) !skate.Grid {
+        var grid = try skate.Grid.init(allocator, grid_cols, grid_rows);
+        var i: usize = 0;
+        while (i < self.lines.len) : (i += 1) {
+            grid.putLine(i, self.lines[i].text);
+        }
+        return grid;
+    }
 };
 
 const App = struct {
@@ -80,6 +95,7 @@ const App = struct {
     configured: bool = false,
     frame_done: bool = false,
     frame: Frame,
+    grid: skate.Grid,
 
     fn registryGlobal(
         data: ?*anyopaque,
@@ -207,31 +223,7 @@ const App = struct {
     }
 
     fn fillBuffer(self: *App, pixels: []u8, stride: usize) void {
-        // Deep sky fill — one honest color from values (lines choose accent bands).
-        const base_r: u8 = 0x1a;
-        const base_g: u8 = 0x3a;
-        const base_b: u8 = 0x5c;
-        const accent_r: u8 = 0x7e;
-        const accent_g: u8 = 0xc9;
-        const accent_b: u8 = 0xff;
-
-        var y: usize = 0;
-        while (y < @as(usize, @intCast(window_height))) : (y += 1) {
-            const row = pixels[y * stride ..][0 .. @as(usize, @intCast(window_width)) * 4];
-            const band = y / 48;
-            const use_accent = band < self.frame.lines.len;
-            const r = if (use_accent) accent_r else base_r;
-            const g = if (use_accent) accent_g else base_g;
-            const b = if (use_accent) accent_b else base_b;
-            var x: usize = 0;
-            while (x < @as(usize, @intCast(window_width))) : (x += 1) {
-                const px = x * 4;
-                row[px + 0] = b;
-                row[px + 1] = g;
-                row[px + 2] = r;
-                row[px + 3] = 0xff;
-            }
-        }
+        self.grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg);
     }
 
     fn commitFrame(self: *App) !void {
@@ -324,17 +316,51 @@ const App = struct {
     }
 };
 
+fn runSelftest(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const lines = try garden.alloc(Line, 3);
+    lines[0] = .{ .text = "Skate grid seed" };
+    lines[1] = .{ .text = "monospace cells from values" };
+    lines[2] = .{ .text = wayland_seed_version };
+
+    const frame = Frame.init(lines);
+    var grid = try frame.toGrid(garden);
+    std.debug.assert(grid.cols == grid_cols);
+    std.debug.assert(grid.rows == grid_rows);
+
+    const stride = @as(usize, @intCast(window_width)) * 4;
+    const size = stride * @as(usize, @intCast(window_height));
+    const pixels = try garden.alloc(u8, size);
+    grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg);
+
+    const lit = grid.litPixelCount(pixels, stride, window_width, window_height, skate_bg);
+    std.debug.assert(lit > 200);
+
+    var buf: [64]u8 = undefined;
+    const lit_msg = try std.fmt.bufPrint(&buf, "skate grid selftest: {d} lit pixels — GREEN\n", .{lit});
+    try std.Io.File.stdout().writeStreamingAll(io, lit_msg);
+    return 0;
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.garden.allocator();
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(garden);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
+        return runSelftest(garden, io);
+    }
 
     const lines = try garden.alloc(Line, 3);
-    lines[0] = .{ .text = "brushstroke wayland seed" };
-    lines[1] = .{ .text = "frame drawn from values" };
+    lines[0] = .{ .text = "Skate grid seed" };
+    lines[1] = .{ .text = "monospace cells from values" };
     lines[2] = .{ .text = wayland_seed_version };
+
+    const frame = Frame.init(lines);
+    const grid = try frame.toGrid(garden);
 
     var app = App{
         .display = try Display.connect(),
-        .frame = Frame.init(lines),
+        .frame = frame,
+        .grid = grid,
     };
     defer app.display.disconnect();
 
@@ -342,7 +368,6 @@ pub fn main(init: std.process.Init) !u8 {
 
     try app.run();
 
-    const io = init.io;
-    try std.Io.File.stdout().writeStreamingAll(io, "brushstroke wayland seed: frame drawn from values\n");
+    try std.Io.File.stdout().writeStreamingAll(io, "brushstroke wayland seed: skate grid drawn\n");
     return 0;
 }

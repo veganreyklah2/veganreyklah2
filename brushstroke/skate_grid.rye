@@ -1,0 +1,134 @@
+//! brushstroke/skate_grid.rye — Skate: monospace cell grid → ARGB8888 buffer.
+//!
+//! font8x8_basic is public domain (dhepper/font8x8). Grid mutations use
+//! strengthened `std.mem.copyForwards`; allocation uses strengthened
+//! `std.mem.Allocator.alloc`.
+//!
+//! Build and prove (from repo root):
+//!   rye/bin/rye build brushstroke/skate_grid.rye -femit-bin=brushstroke/bin/skate-grid
+//!   brushstroke/bin/skate-grid
+
+const std = @import("std");
+const font8x8 = @import("font8x8_data.rye");
+
+pub const cell_w: usize = 8;
+pub const cell_h: usize = 16;
+
+pub const Color = struct {
+    r: u8,
+    g: u8,
+    b: u8,
+};
+
+pub const Grid = struct {
+    cols: usize,
+    rows: usize,
+    cells: []u8,
+
+    pub fn init(allocator: std.mem.Allocator, cols: usize, rows: usize) !Grid {
+        std.debug.assert(cols > 0);
+        std.debug.assert(rows > 0);
+        const cells = try allocator.alloc(u8, cols * rows);
+        std.debug.assert(cells.len == cols * rows);
+        @memset(cells, ' ');
+        return .{ .cols = cols, .rows = rows, .cells = cells };
+    }
+
+    pub fn putLine(self: *Grid, row: usize, text: []const u8) void {
+        if (row >= self.rows) return;
+        const base = row * self.cols;
+        std.debug.assert(base < self.cells.len);
+        const n = @min(text.len, self.cols);
+        std.mem.copyForwards(u8, self.cells[base..][0..n], text[0..n]);
+    }
+
+    pub fn litPixelCount(_: Grid, pixels: []const u8, stride: usize, width: i32, height: i32, bg: Color) usize {
+        std.debug.assert(width > 0);
+        std.debug.assert(height > 0);
+        std.debug.assert(stride >= @as(usize, @intCast(width)) * 4);
+        var count: usize = 0;
+        var y: usize = 0;
+        while (y < @as(usize, @intCast(height))) : (y += 1) {
+            const row = pixels[y * stride ..][0 .. @as(usize, @intCast(width)) * 4];
+            var x: usize = 0;
+            while (x < @as(usize, @intCast(width))) : (x += 1) {
+                const px = x * 4;
+                if (row[px + 0] != bg.b or row[px + 1] != bg.g or row[px + 2] != bg.r) {
+                    count += 1;
+                }
+            }
+        }
+        return count;
+    }
+
+    pub fn rasterize(
+        self: Grid,
+        pixels: []u8,
+        stride: usize,
+        width: i32,
+        height: i32,
+        bg: Color,
+        fg: Color,
+    ) void {
+        std.debug.assert(width > 0);
+        std.debug.assert(height > 0);
+        std.debug.assert(stride >= @as(usize, @intCast(width)) * 4);
+        std.debug.assert(self.cells.len == self.cols * self.rows);
+
+        var y: usize = 0;
+        while (y < @as(usize, @intCast(height))) : (y += 1) {
+            const row = pixels[y * stride ..][0 .. @as(usize, @intCast(width)) * 4];
+            var x: usize = 0;
+            while (x < @as(usize, @intCast(width))) : (x += 1) {
+                const px = x * 4;
+                row[px + 0] = bg.b;
+                row[px + 1] = bg.g;
+                row[px + 2] = bg.r;
+                row[px + 3] = 0xff;
+            }
+        }
+
+        var row: usize = 0;
+        while (row < self.rows) : (row += 1) {
+            var col: usize = 0;
+            while (col < self.cols) : (col += 1) {
+                const ch = self.cells[row * self.cols + col];
+                drawGlyph(pixels, stride, width, height, @intCast(col * cell_w), @intCast(row * cell_h), ch, fg);
+            }
+        }
+    }
+};
+
+fn drawGlyph(
+    pixels: []u8,
+    stride: usize,
+    width: i32,
+    height: i32,
+    x0: i32,
+    y0: i32,
+    ch: u8,
+    fg: Color,
+) void {
+    std.debug.assert(width > 0);
+    std.debug.assert(height > 0);
+    std.debug.assert(stride >= @as(usize, @intCast(width)) * 4);
+
+    const glyph = if (ch < 128) font8x8.font8x8_basic[ch] else [_]u8{0} ** 8;
+    var gy: usize = 0;
+    while (gy < 8) : (gy += 1) {
+        const bits = glyph[gy];
+        var gx: usize = 0;
+        while (gx < 8) : (gx += 1) {
+            if ((bits & (@as(u8, 1) << @intCast(gx))) == 0) continue;
+            const x = x0 + @as(i32, @intCast(gx));
+            const y = y0 + @as(i32, @intCast(gy));
+            if (x < 0 or y < 0 or x >= width or y >= height) continue;
+            const row = pixels[@as(usize, @intCast(y)) * stride ..][0 .. @as(usize, @intCast(width)) * 4];
+            const px = @as(usize, @intCast(x)) * 4;
+            row[px + 0] = fg.b;
+            row[px + 1] = fg.g;
+            row[px + 2] = fg.r;
+            row[px + 3] = 0xff;
+        }
+    }
+}
