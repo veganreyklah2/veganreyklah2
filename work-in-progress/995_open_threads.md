@@ -52,7 +52,7 @@
 - **Device wire** — sealed datagram over emulated `virtio-net` between two QEMU machines; Comlink's next rung.
 
 **Near — display layer:**
-- **River and Ghostty into `gratitude/`** — clone before Brushstroke's native backend hardens. Manual `git clone` into `gratitude/river` and `gratitude/ghostty`.
+- **Display-layer study** — River (GPL-3.0) is studied through public Wayland protocol specs and documentation only, not cloned. Ghostty (MIT) may be cloned for close reading. Our terminal is **Skate**; our compositor surface is **Brushstroke**. Both written from scratch in Rye.
 - **Brushstroke seed** — one native x86_64 window, one static frame, thin Wayland/Vulkan backend (`../active-designing/985`, `../active-designing/986`). Depends on River and Ghostty.
 
 **Near — shell:**

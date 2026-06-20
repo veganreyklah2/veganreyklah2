@@ -107,6 +107,8 @@ Brushstroke is the family's drawing layer. Immediate mode: an interface redrawn 
 
 The widget vocabulary grows as needed: text, box, input, list. The `frame` garden in Tally is Brushstroke's memory: every redraw is a season — opened at the start of `render`, filled with the widget tree computed from values, cleared whole when the frame is submitted.
 
+**Skate** is the terminal surface — a GPU-accelerated text area inside a Brushstroke window, where Rishi speaks and Mantra's output lands. Named for the joy of skating through a terminal. Skate is written from scratch in Rye; its backend seam and text rendering are our own, informed by public documentation and protocol specs rather than by any GPL implementation.
+
 ### Comlink — The Network
 
 Comlink carries values between identities. A message is typed, content-addressed (SHA3 hash), sealed at identity (owner keys), and validated where it lands. Exactly-once delivery follows from content-naming: a name is a promise; the bytes behind it will never change. Security attaches to the content, not the channel (`993`).
