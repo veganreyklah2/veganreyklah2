@@ -3,8 +3,8 @@
 *A growing reference of how Rye and its Zig 0.16.0 toolchain actually work — each entry earned by running code, recorded so the next builder need not rediscover it.*
 
 **Language:** EN
-**Version:** `20260618.043112` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Version:** `20260620.033912` (Rye chronological stamp)
+**Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`); code in TAME Style (`../external-research/996_TAME_STYLE.md`)
 **Status:** Living
 
@@ -178,7 +178,7 @@ Four functions, each a different kind of TAME invariant:
 - **`std.mem.eql`** — a *`maybe`*, the dual of assert: equal and unequal lengths are both expected, so we name the variable space rather than constrain it.
 - **`std.fmt.parseInt`** — a *precondition*: a base is `0` (detect the prefix) or a true radix in 2…36; anything else is the caller's mistake, named at the door.
 
-The discipline held: each change adds what the code *says*, never what it *does*. A new corpus program, `rye/tests/call_paths_test.rye`, exercises all four across found/not-found, equal/unequal, all-stripped trims, and several bases; the parity gate (`tools/parity.sh`) runs it against the baseline and the strengthened `std` and stays green. And because `rye run` builds in Debug, the assertions are *live* when we run Rishi — every `.rish` script now checks these invariants as it goes. The full study is `strengthening-compiler/9996_stdlib_call_paths.md`.
+The discipline held: each change adds what the code *says*, never what it *does*. A new corpus program, `rye/tests/call_paths_test.rye`, exercises all four across found/not-found, equal/unequal, all-stripped trims, and several bases; the parity gate (`tools/parity.rish`) runs it against the baseline and the strengthened `std` and stays green. And because `rye run` builds in Debug, the assertions are *live* when we run Rishi — every `.rish` script now checks these invariants as it goes. The full study is `strengthening-compiler/9996_stdlib_call_paths.md`.
 
 One deferral, named on purpose: `indexOfScalarPos` is a direct alias to the hot `findScalarPos`, so giving *it* a postcondition means touching the hot core. That waits for a pass that strengthens hot paths behind a `verify` flag — checks too costly for the data plane, compiled in only when asked for.
 
@@ -205,7 +205,79 @@ A sealed datagram is a value; carrying it *between* harts needs a wire. The smal
 - **One hart powers down, after the other has read.** The machine's test finisher powers off the *whole* machine, so the receiver writes it only once it has the value; the sender rests in a `wfi` loop rather than halting, lest it cut the wire mid-message.
 - **Zig 0.16 clobbers are a struct.** Inline-asm clobbers moved from a string (`::: "memory"`) to a struct (`::: .{ .memory = true }`); the older spelling no longer compiles.
 
-On that wire, `posted.rye` carries a whole sealed datagram: hart 0 seals and serializes it into the mailbox; hart 1 reads the raw bytes, *shape-casts* them (a datagram shorter than its header or longer than the wire is refused at the edge), and opens it — trusting only its own secret and the sender's public key off the wire, reconstructed with `Ed25519.PublicKey.fromBytes`, `Ed25519.Signature.fromBytes`, and `X25519.publicKeyFromEd25519`. The content-name matches the hosted test once more. The next wire is a real device between two machines, where Comlink fully begins.
+On that wire, `posted.rye` carries a whole sealed datagram: hart 0 seals and serializes it into the mailbox; hart 1 reads the raw bytes, *shape-casts* them (a datagram shorter than its header or longer than the wire is refused at the edge), and opens it — trusting only its own secret and the sender's public key off the wire, reconstructed with `Ed25519.PublicKey.fromBytes`, `Ed25519.Signature.fromBytes`, and `X25519.publicKeyFromEd25519`. The content-name matches the hosted test once more. The next wire is a real device between two machines, where Comlink fully begins (`expanding-prompts/10014`).
+
+---
+
+## The Gate Trio in Rishi
+
+Strengthening is safe only while we can prove it. Three gates run in **Rishi** today — no `.sh` fallbacks:
+
+| Gate | Script | What it proves |
+|------|--------|----------------|
+| **Parity** | `tools/parity.rish` | Rye's strengthened `std` is behavior-identical to the baseline across **16** corpus programs |
+| **Selftest** | `tools/parity-selftest.rish` | The parity gate turns **RED** on a deliberate SHA3 tamper |
+| **Additive** | `tools/additive-gate.rish` | The latest commit to `rye/lib/` changed only assertions, comments, and `maybe` markers |
+
+Run from the repository root:
+
+```sh
+rishi/bin/rishi run tools/parity.rish
+rishi/bin/rishi run tools/parity-selftest.rish
+rishi/bin/rishi run tools/additive-gate.rish   # after a std-touching commit
+```
+
+`parity.rish` maps the corpus through `run`, compares exit codes and combined output as one value, and `assert`s equality. The selftest builds a shadow copy of `rye/lib` with one tampered file (`sed -i` on the shadow — `sha3.zig` is too large to hold in a Rishi string). The additive gate pipes `git diff` through `tools/additive-classify.awk`. Each strengthening pass in `strengthening-compiler/` (9998 downward) records what was touched and expects these gates to stay green.
+
+---
+
+## `init.garden` — Season Memory
+
+Rye renamed `std.process.Init.arena` to **`init.garden`**: the process season allocator, cleared whole on exit. Locals in our programs say `const garden = init.garden.allocator()` where the metaphor reads honestly; inherited Zig names such as `ArenaAllocator` stay until a deliberate std fork (`context/specs/inherited-names.md`). The garden is Tally's pattern lived in the runtime before Tally is a module.
+
+---
+
+## Caravan on Hosted Ground
+
+Supervision grows by accretion on the host, where Rishi's gates reach every build. Each step is a `caravan/*.rye` seed (`active-designing/976_what_we_mean_by_seed.md`):
+
+| File | Claim |
+|------|--------|
+| `seed.rye` | One parent, one child, restart on fall |
+| `bounded.rye` | Child in a Tally `Region`; budget enforced |
+| `twin.rye` | Two children, separate stack gardens |
+| `chain.rye` | Ordered startup (`wake` → `prove`); per-stage restart, chain does not rewind |
+
+Build any seed: `rye build caravan/chain.rye -femit-bin=caravan/bin/chain`. The path toward Caravan v1 continues with a capability table, then freestanding kernel work (`984`).
+
+---
+
+## Brushstroke — Frame from Values
+
+Brushstroke draws immediate-mode: a **Frame** value, a pure **redraw** pass, no retained widget tree.
+
+- **Hosted seed** (`brushstroke/seed.rye`) — redraw to stdout; proves values → surface on the hosted path.
+- **Wayland seed** (`brushstroke/wayland_seed.rye`) — same Frame; SHM buffer on an xdg toplevel. Build with an extra C protocol file and system libraries:
+
+```sh
+rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c \
+  -Ibrushstroke -lc -lwayland-client -lrt \
+  -femit-bin=brushstroke/bin/brushstroke-wayland-seed
+```
+
+Flags after the `.rye` path pass through to `zig build-exe`, so link lines and additional translation units ride the same bridge as freestanding targets. Display seam wrappers live in the seed; the full brief is `active-designing/988_brushstroke.md`.
+
+---
+
+## Rishi — Builtins Worth Knowing
+
+Rishi (`rishi/src/main.rye`, built by `rye build`) is the shell that runs the gate trio. Beyond the first-version surface documented in `rishi/README.md`, these builtins matter for tooling:
+
+- **`read-file` / `write-file` / `list-dir`** — file I/O behind OS wrappers (`rishi/tests/file_io.rish`).
+- **`lines`** — split a string on newlines into a list.
+- **`starts-with`** — prefix check as a boolean expression.
+
+Integer arithmetic, `map`/`where`, records, and `run` compose the parity gate. `write-file` has a practical size limit today — large std files are tampered in place with `sed -i` on a shadow tree instead.
 
 ---
 
@@ -214,9 +286,9 @@ On that wire, `posted.rye` carries a whole sealed datagram: hart 0 seals and ser
 A few paths we have left lit for later, each a deliberate choice rather than an oversight:
 
 - **Self-hosting the `rye` command.** The command is now written in Rye (`rye/src/main.rye`) and built by `rye build`, so the *build* is self-hosted. The deeper end state remains ahead: Rye compiling Rye, rather than bridging to the Zig toolchain beneath. We walk toward it as the language grows its own shape.
-- **A `build.rye` story.** `rye build` now compiles a single `.rye` file to a binary, freestanding targets included. Zig builds *whole projects* through a `build.zig` script; Rye will want its own `build.rye` for many-file programs, bridged the same way single files are today.
-- **A bounded read.** The command reads a source file with an unlimited size; a future version can bound it, in keeping with putting a limit on everything.
-- **Many-file programs.** The single-file bridge serves the first version; multi-file `.rye` projects, with their imports, are a thread to pick up next.
+- **A `build.rye` story.** `rye build` now compiles a single `.rye` file to a binary, freestanding targets included, and accepts extra source files and link flags after the path (see *Brushstroke* above). Zig builds *whole projects* through a `build.zig` script; Rye will want its own `build.rye` for many-file programs, bridged the same way single files are today.
+- **Device wire.** Sealed datagram over virtio-net or hosted datagram between processes — Comlink's next rung after `posted.rye` (`10014`).
+- **Strengthening series.** Passes 9988–9991 and crypto foundation 9995 are green; the next `std` surfaces our tools lean on each earn a strengthening note and a corpus extension when they change behavior.
 - **Pond.** The `ai-jail` sandbox we work inside is a Rust project; re-growing it as a gentle, TAME-style enclosure in Rye — Pond — is a thread we mean to follow once the language stands on more of its own.
 
 ---

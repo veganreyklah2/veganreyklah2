@@ -1,6 +1,7 @@
 # Rishi — the shell of the Rye ecosystem
 
-**Version:** `20260619.090912` (chronological; later is larger)
+**Version:** `20260620.033912` (Rye chronological stamp)
+**Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
 
@@ -56,6 +57,12 @@ supporting:
 - **Parenthesized expressions** — `(expr)` groups its contents, overriding
   precedence: `(2 + 3) * 4` is `20`, and `assert (xs contains y)` parses the
   membership test as a single expression.
+- **File I/O** — `read-file path` returns file contents as a string;
+  `write-file path value` writes a value to a path; `list-dir path` returns
+  entry names as a list (`tests/file_io.rish`).
+- **`lines`** — `lines text` splits a string on newlines into a list of strings.
+- **`starts-with`** — `text starts-with prefix` checks whether a string begins
+  with a given prefix (used in gates and tests).
 
 A short example, `tests/hello.rish`:
 
@@ -86,6 +93,18 @@ rishi/bin/rishi run rishi/tests/run.rish      # running commands, results as rec
 rishi/bin/rishi run rishi/tests/map_where.rish # transforming and filtering lists
 rishi/bin/rishi run rishi/tests/strings.rish      # composing strings by interpolation
 rishi/bin/rishi run rishi/tests/arithmetic.rish   # integer arithmetic and grouping
+rishi/bin/rishi run rishi/tests/file_io.rish      # read-file, write-file, list-dir
+rishi/bin/rishi run rishi/tests/lines_startswith.rish  # lines and starts-with
+```
+
+### The gate trio
+
+Rishi orchestrates Rye's strengthening safety net — all `.rish`, no `.sh`:
+
+```sh
+rishi/bin/rishi run tools/parity.rish           # behavior: 16 programs GREEN
+rishi/bin/rishi run tools/parity-selftest.rish  # gate turns RED on tamper
+rishi/bin/rishi run tools/additive-gate.rish    # shape: assertions-only std diff
 ```
 
 Each test is a run of facts that all hold — comparison and `assert`, lists and
@@ -95,17 +114,9 @@ the broken fact, and exits non-zero: the gate behavior `parity.rish` leans on.
 
 ## How It Grows
 
-The first version was the seed; the destination was `parity.rish`, our parity gate
-written in Rishi — and it now **runs** (`../tools/parity.rish`). With lists, `run`
-(records), `==` over lists, `map`/`where`, `assert`, and string interpolation all in
-hand, the whole gate becomes one clear flow: a corpus mapped through `run` against
-the baseline std and the strengthened one, the two lists of outputs compared as a
-single value, and one `assert` for the verdict. It turns GREEN when behavior matches
-and RED when it diverges — proven both ways. The shell that Rye grew now guards Rye's
-own becoming, which is the finest dogfooding there is: the child keeping watch over
-the parent.
+The first version was the seed; **`parity.rish` now runs** and guards the whole strengthened corpus (`../tools/parity.rish`). **`parity-selftest.rish`** proves the gate turns RED on a real divergence. **`additive-gate.rish`** classifies std diffs as assertions-only or REVIEW. Together they are the gate trio documented in `../rye-learning-process/998_ALMANAC.md`.
 
-Two north stars guide that growth. `tests/hello.rish` is what runs today;
+Two north stars guide further growth. `tests/hello.rish` is what runs today;
 `examples/pond.rish` is where we are headed — an illustrative sketch of Rishi
 composing a sandbox policy as a value and opening a **Pond** enclosure over
 Caravan's isolation and Tally's bounded gardens. The reasoning lives in

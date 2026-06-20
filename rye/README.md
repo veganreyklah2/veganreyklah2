@@ -1,8 +1,8 @@
 # Rye
 
 **Language:** EN
-**Version:** `20260618.191412` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Version:** `20260620.033912` (Rye chronological stamp)
+**Last updated:** 2026-06-20
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Style (`../external-research/996_TAME_STYLE.md`)
 **Status:** Living
 
@@ -42,7 +42,9 @@ rye/
     rye                     <- the built command (after building)
 ```
 
-The lessons learned while building Rye live in their own home, `../rye-learning-process/`, with the growing reference in `998_ALMANAC.md`.
+The lessons learned while building Rye live in their own home, `../rye-learning-process/`, with the growing reference in `998_ALMANAC.md` — gate trio, Caravan seeds, Brushstroke, strengthening, and Zig 0.16.0 I/O.
+
+Sibling modules built with `rye build` include **Rishi** (`../rishi/`), **Caravan** (`../caravan/`), **Tally** (`../tally/`), **Brushstroke** (`../brushstroke/`), **Mantra** (`../mantra/`), and **Aurora** (`../aurora/`). What *seed* means in this family is defined in `../active-designing/976_what_we_mean_by_seed.md`.
 
 ---
 
@@ -88,6 +90,28 @@ Run the SHA3-512 test; the command finds `lib/` beside its own binary, so `.rye`
 ```
 
 The test hashes the bytes `"Rye"` with SHA3-512 and asserts the digest against a value computed independently beforehand. When it prints the digest and confirms parity, SHA3-512 in Rye is working exactly as it does in Zig 0.16.0 — the very same code, under a new name.
+
+**Linking and extra sources.** Flags after the `.rye` path pass through to `zig build-exe`. A native client may need a companion `.c` file and system libraries:
+
+```sh
+rye/bin/rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c \
+  -Ibrushstroke -lc -lwayland-client -lrt \
+  -femit-bin=brushstroke/bin/brushstroke-wayland-seed
+```
+
+---
+
+## Strengthening and the Gate Trio
+
+Rye's `std` grows by **strengthening** — assertions and `maybe` markers that state what the code already does, never changing behavior. Each pass is recorded in `../strengthening-compiler/` and proven by three **Rishi** gates (`../tools/*.rish`):
+
+```sh
+rishi/bin/rishi run tools/parity.rish          # 16 corpus programs, GREEN
+rishi/bin/rishi run tools/parity-selftest.rish # gate turns RED on tamper
+rishi/bin/rishi run tools/additive-gate.rish   # shape of std changes only
+```
+
+The parity gate compares Rye's `rye/lib` against the pristine toolchain `std` byte-for-byte on behavior. Details live in `../rye-learning-process/998_ALMANAC.md` under *The Gate Trio in Rishi*.
 
 ---
 

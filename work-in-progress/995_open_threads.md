@@ -3,7 +3,7 @@
 *A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
 
 **Language:** EN
-**Version:** `20260620.032012` (Rye chronological stamp)
+**Version:** `20260620.033912` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -38,6 +38,7 @@
 - **Brushstroke Wayland seed (`brushstroke/wayland_seed.rye`).** One xdg toplevel, Frame → SHM buffer, commit; `10012` Track A.
 - **Gate trio pure Rishi.** `parity-selftest.rish` no longer shells to `sh`; `parity-selftest.sh` removed.
 - **Caravan chain (`caravan/chain.rye`).** Ordered startup wake → prove; per-stage restart; chain does not rewind (`10014`).
+- **Documentation sync (`10015`).** `998_ALMANAC`, `rye/README`, `rishi/README` aligned to gate trio, Caravan arc, Brushstroke, `init.garden`.
 
 ## Threads Now Closed
 
