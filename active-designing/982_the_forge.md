@@ -3,7 +3,7 @@
 *A quarantined design brief for the forge we mean to build: a place where Mantra repositories are served, Brushstroke draws the surface, Comlink replicates between peers, and Pond encloses what runs. The forge is where group projects begin — cheaply, sovereign, with a key and a descriptor and the weave that holds every line. This brief names only our own modules and speaks in our own vocabulary.*
 
 **Language:** EN
-**Version:** `20260620.004112` (Rye chronological stamp)
+**Version:** `20260620.005112` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -22,9 +22,9 @@ This is a clean room. We name only what is ours — **Mantra**, **Brushstroke**,
 
 A forge is a place where code lives, grows, and is shared. It holds repositories. It accepts changes. It shows history. It lets people find each other's work and build together.
 
-The forges the world uses today speak one protocol and show one kind of history. The protocol is Git — snapshots named by hash, pushed and pulled over SSH or HTTPS. The history is a graph of commits — each a frozen moment, linked to its parents.
+The forges the world uses today speak a snapshot protocol and show one kind of history. Snapshots named by hash, pushed and pulled over a secure channel. The history is a graph of frozen moments, each linked to its parents.
 
-Our forge speaks the same protocol on the wire — so any person with a Git client can push and pull — and shows a richer history underneath. The weave. Every line that has ever been written, with its generation and its presence, in one structure that only accretes. A merge that always completes. An annotation that shows what each side did.
+Our forge may speak a compatible wire protocol — so existing tools can push and pull — yet it shows a richer history underneath. The weave. Every line that has ever been written, with its generation and its presence, in one structure that only accretes. A merge that always completes. An annotation that shows what each side did. The snapshot graph is an import path; the weave is the native record.
 
 ---
 
@@ -34,9 +34,9 @@ Our forge speaks the same protocol on the wire — so any person with a Git clie
 
 Mantra is the heart of the forge. Each repository holds a weave per tracked file, linked by a commit chain. The weave is the history — not a reconstruction from snapshots, yet the living structure itself.
 
-A push arrives as Git objects. The forge unpacks them, diffs the new content against the current weave state, and applies the diff as a new generation. The weave grows; the commit chain extends. The Git objects are kept for compatibility; the weave is the primary record.
+A push arrives as content — snapshots, patches, or raw files. The forge diffs the new content against the current weave state and applies the diff as a new generation. The weave grows; the commit chain extends. Imported snapshots are kept for interoperability; the weave is the primary record.
 
-A person who visits the forge sees the weave: every line, its age, its generation count, the merges annotated with what each side did. The commit graph is available for those who want it; the weave is what the forge shows first.
+A person who visits the forge sees the weave: every line, its age, its generation count, the merges annotated with what each side did. A snapshot view is available for those who want it; the weave is what the forge shows first.
 
 ### 2. Brushstroke — The Surface
 
@@ -114,7 +114,7 @@ The forge encourages group projects by making them **cheap to begin and sovereig
   1. Brushstroke seed — one native window, text rendering
   2. Brushstroke portable — compile to browser surface
   3. Forge seed — serve one Mantra repo over HTTP, display weave history
-  4. Git protocol — accept push/pull, update weave on push
+  4. Wire protocol — accept push/pull from existing tools, update weave on push
   5. Multi-repo — serve many repositories, search, project pages
   6. Comlink replication — peer-to-peer sync between forges
   7. Pond CI — build inside enclosures, report results
