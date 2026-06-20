@@ -3335,7 +3335,13 @@ test cutSuffix {
 /// * `tokenizeAny`
 pub fn cut(comptime T: type, haystack: []const T, needle: []const T) ?struct { []const T, []const T } {
     const index = find(T, haystack, needle) orelse return null;
-    return .{ haystack[0..index], haystack[index + needle.len ..] };
+    const before = haystack[0..index];
+    const after = haystack[index + needle.len ..];
+    // Postcondition: both parts are in-range and reassemble the haystack.
+    assert(index <= haystack.len);
+    assert(index + needle.len <= haystack.len);
+    assert(before.len + needle.len + after.len == haystack.len);
+    return .{ before, after };
 }
 
 test cut {
@@ -3372,7 +3378,12 @@ test cutLast {
 /// * `tokenizeScalar`
 pub fn cutScalar(comptime T: type, haystack: []const T, needle: T) ?struct { []const T, []const T } {
     const index = findScalar(T, haystack, needle) orelse return null;
-    return .{ haystack[0..index], haystack[index + 1 ..] };
+    const before = haystack[0..index];
+    const after = haystack[index + 1 ..];
+    // Postcondition: both parts are in-range and reassemble the haystack.
+    assert(index < haystack.len);
+    assert(before.len + 1 + after.len == haystack.len);
+    return .{ before, after };
 }
 
 test cutScalar {
