@@ -3,8 +3,8 @@
 *The lineage we build from — Tiger Style's discipline, Joran Dirk Greef's priority, Rich Hickey's flow and his distinction of the simple from the easy, and John Gall's law that working systems grow from simpler ones; as the work reached the network, Van Jacobson's content-centric vision and the clean-slate coherence of Urbit; as the work reached the kernel, Laurent Bercot's s6 supervision and Adam Joseph's SixOS composing s6 with Nix; Eelco Dolstra's Nix teaching content-addressed reproducible builds; and beneath it all, the ground of Zig and Andrew Kelley that Rye grew from, with David Vanderson's DVUI lately showing how a surface can be redrawn from values — set down with thanks, together with the gentle name and the vow we carry forward.*
 
 **Language:** EN
-**Version:** `20260619.072600` (Rye chronological stamp)
-**Last updated:** 2026-06-19
+**Version:** `20260620.014412` (Rye chronological stamp)
+**Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Honors:** `../gratitude/TIGER_STYLE.md`, `../gratitude/LanguageSystem.md`, `../gratitude/SimpleMadeEasy.md`, `../gratitude/Systemantics.md`, `../gratitude/Spec_ulation.md`
 **Status:** Gratitude
@@ -183,24 +183,101 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 - **Van Jacobson's content-centric networking, and Urbit's design** (Curtis Yarvin, with Galen Wolfe-Pauly of Tlon) — honored here in summary, without a borrowed text or a link. Their ideas are applied and weighed with a clear eye in the networking research: `985` (encrypted networking), `982` (the content-centric messenger), and `981` (unified identity and the address space).
 - **`../gratitude/zig/`** — Andrew Kelley's Zig language and toolchain, the ground Rye is a 0.16.0 derivative of. Honored as the foundation we stood on and made our own; its lessons of explicit size, compile-time evaluation, and an ownable standard library run through `996_TAME_STYLE.md` and the strengthening stack.
 - **`../gratitude/dvui/`** — David Vanderson's DVUI, the immediate-mode interface toolkit whose redraw-from-values and backend abstraction seed our own surface, **Brushstroke**. Applied in `980`, and distilled onto its own roots in `../active-designing/988`. MIT, cloned shallow.
-- **`../gratitude/s6/`** and **`../gratitude/skalibs/`** — Laurent Bercot's s6 supervision suite and its foundation library. The source of chain-loading, one-owner-per-pointer discipline, absolute deadlines, and the supervision tree Caravan inherits. ISC license, cloned shallow.
-- **`../gratitude/sixos/`** — Adam Joseph's SixOS, the operating system that composes s6 supervision with Nix's reproducible declarations. The vision that shapes our Brix + Caravan pair. GPL-3.0, cloned from Codeberg.
-- **`../gratitude/infuse.nix/`** — Adam Joseph's infuse, the bridge between Nix and s6. The connection between declaration and supervision that Brix and Caravan inherit. Cloned from Codeberg.
-- **`../gratitude/nix/`** — Eelco Dolstra's Nix, the purely functional package manager. The source of content-addressed reproducible builds, and the composability model Brix and Silo inherit. LGPL-2.1, cloned shallow.
+- **`../gratitude/s6/`** and **`../gratitude/skalibs/`** — Laurent Bercot's s6 supervision suite and its foundation library. The source of chain-loading, one-owner-per-pointer discipline, absolute deadlines, and the supervision tree Caravan inherits. **ISC license** (permissive, not GPL). Local clone for reading; not tracked by git. Prefer public API reference at skarnet.org. Caravan inherits s6's supervision discipline; Tally inherits skalibs' bounded-allocation discipline (`974`).
+- **`../gratitude/sixos/`** — Adam Joseph's SixOS, the operating system that composes s6 supervision with Nix's reproducible declarations. The vision that shapes our Brix + Caravan pair. **GPL-3.0**. Gitlink only — our git history never contains its source.
+- **`../gratitude/infuse.nix/`** — Adam Joseph's infuse, the bridge between Nix and s6. The connection between declaration and supervision that Brix and Caravan inherit. Permissive (studied freely); cloned from Codeberg.
+- **`../gratitude/nix/`** — Eelco Dolstra's Nix, the purely functional package manager. The source of content-addressed reproducible builds, and the composability model Brix and Silo inherit. **LGPL-2.1**. Local clone for reading; not tracked by git.
 - **`../gratitude/manyana/`** — Manyana, a CRDT-based version control system. The direct ancestor of Mantra's weave structure, generation counting, and conflict-free merges. Public domain.
+- **`../gratitude/ai-jail/`** — Akita On Rails' ai-jail sandbox. The enclosure pattern we adapt for Cursor and Zed. **GPL-3.0**. Gitlink only.
+- **`../gratitude/libqrencode/`** — Fukuchi Kentaro's QR encoder library. The tool our key-card script builds from source for scannable identity cards. **LGPL-2.1**. Gitlink only — we compile its CLI into gitignored `tools/.build/`; we do not link it into Rye binaries.
 - **River** (Isaac Freund) — a non-monolithic Wayland compositor in Zig. GPL-3.0. Studied through public documentation and Wayland protocol specs only; not cloned, not incorporated. The design that informs our **Brushstroke** compositor surface.
 - **Ghostty** (Mitchell Hashimoto) — a GPU-accelerated terminal emulator with a clean backend seam. MIT. The design that informs our terminal, **Skate**.
 - **This note** — the one gratitude bridge between all these sources and our work.
 
 ---
 
-## A Note on Licenses and the Clean Room
+## Gratitude Licenses and the Clean Room
 
-We honor every source plainly and keep a clean conscience about how we use them. The projects held in `../gratitude/` fall into two families: **permissively licensed** sources (MIT, ISC, Apache 2.0, public domain) whose code we may study freely, and **copyleft-licensed** sources (GPL-3.0, LGPL-2.1) whose code we study for concepts only. In every case, our implementations are written from scratch in Rye. No code, no documentation, and no text is copied from any source into our own modules; what we inherit is ideas, and ideas are free.
+`gratitude/` is a reading library, not a dependency. We study concepts; we never copy code, documentation, or text into our own modules. What we inherit is ideas — and ideas are free. Our implementations are written from scratch in Rye, expressed through quarantined briefs in `active-designing/`. The boundary between reading and building is the boundary between `gratitude/` and `rye/`, and it is never crossed by code — only by understanding.
 
-The GPL-licensed projects held in `gratitude/` — SixOS, ai-jail, and Damus — are recorded as gitlinks (commit pointers) rather than as source files in our repository. Our git history has never contained their source code. The locally cloned copies (Nix, s6, skalibs) are not tracked by git at all; they live on disk for reading and are excluded from our commits. River, also GPL-3.0, is not cloned and is studied only through its public documentation and the Wayland protocol specifications it implements.
+*The notes below are practical engineering guidance for how we honor each license. They are not legal advice.*
 
-This separation is deliberate. The `active-designing/` directory is a clean room: it names only our own modules and expresses concepts in our own vocabulary. The `external-research/` directory studies the world with attribution. The boundary between reading and building is the boundary between `gratitude/` and `rye/`, and it is never crossed by code — only by understanding.
+### What copyleft means for us
+
+Copyleft licenses protect **expression** — source code, substantial text — when that expression is **combined with or distributed as part of** our work. They do not fence off **ideas**: content-addressed stores, supervision trees, separated compositors, relay behavior. We learn those ideas openly, then speak them again in Rye, through our own names and our own modules.
+
+Our own code ships under **MIT and Apache 2.0**. Copyleft inspirations stay in `gratitude/` or on the public web; they never become ingredients inside `rye/`, `rishi/`, `tally/`, or `caravan/` unless we deliberately choose a compliance path we have not chosen.
+
+---
+
+### GPL-3.0 — strong copyleft
+
+**What the license cares about.** GPL-3.0 applies when we **distribute a work based on** GPL source — incorporating GPL code into our tree, linking it into our binaries, or shipping modified GPL programs without honoring source and license terms.
+
+**What we do instead.** We hold GPL projects as **gitlinks** (commit pointers only) or **do not clone them at all**. Our git history has never contained GPL source code. We study design through public documentation and through concepts abstracted in `external-research/` and `active-designing/`. We build **Brushstroke**, **Pond**, **Caravan**, and **Comlink** from scratch in Rye.
+
+**What limits us in practice.** Almost nothing about *designing* or *implementing our own modules* — provided we do not paste GPL code into our repository or link GPL libraries into Rye binaries we distribute. Running a GPL tool on the host (for example `ai-jail` wrapping an editor) is separate from shipping GPL code inside our language.
+
+| Project | How we hold it | What we take | What we build |
+|---------|----------------|--------------|---------------|
+| **SixOS** | Gitlink | Adam Joseph's vision: declaration meets supervision — Nix-shaped composition joined to s6-shaped watching | **Brix** declares; **Caravan** watches (`974`, `982`) |
+| **ai-jail** | Gitlink | The enclosure pattern: namespaces, Landlock, a durable project tree | `tools/launch-*.sh`, **Pond** as the long-term enclosure |
+| **Damus** | Gitlink | Relay behavior, Nostr-shaped social flow, spam resistance without a central filter | **Comlink** relay study (`971`, close reading) |
+| **River** | **Not cloned** | Isaac Freund's separated compositor and window-manager architecture; Wayland protocol discipline | **Brushstroke** + **Skate**, written in Rye from public specs only |
+
+**SixOS** teaches that a system can be *declared* and *supervised* as two honest halves. We honor Adam Joseph's composition without shipping his operating system. **Caravan** and **Brix** carry the relationship in our vocabulary.
+
+**ai-jail** teaches that an agent can live inside a bounded tree while the host stays free. We honor Akita On Rails' sandbox by adapting the launch pattern, not by embedding the Rust crate in Rye.
+
+**Damus** teaches how a relay can store, forward, and resist spam through protocol shape rather than central policy. We read for **Comlink**'s social layer; our wire format remains ours.
+
+**River** teaches that a compositor and a window manager can stand as separate processes joined by protocol — the most TAME-aligned display architecture we studied. River is GPL-3.0; we respect that by studying [public documentation](https://isaacfreund.com/software/river/) and the Wayland specifications, never cloning or incorporating its source. **Brushstroke** draws on the separation; **Skate** draws on the terminal beside it.
+
+---
+
+### LGPL-2.1 — library copyleft
+
+**What the license cares about.** LGPL is weaker than GPL and aimed at **libraries**. Obligations bite when we **link** LGPL library code into a program we **distribute** — static or dynamic link — or when we ship modified LGPL source without source and relink provisions. LGPL does **not** forbid reading source, learning algorithms, or running the upstream program as a **separate tool** on the host.
+
+**What we do instead.** We study Nix and libqrencode for **discipline and behavior**, then implement our own modules — **Brix**, **Silo**, future Rye-grown QR — in clean-room Rye. Local Nix clones stay off git; libqrencode stays a gitlink; neither is linked into our language runtime.
+
+**What limits us in practice.** We avoid **linking** `libnix`, `libqrencode`, or other LGPL libraries into shipped Rye binaries without an LGPL compliance plan. We avoid **vendoring** their source into paths we commit. Running `nix` on a NixOS host or building `qrencode` into gitignored `tools/.build/` for key cards is fine: those tools stand beside our work, not inside it.
+
+| Project | How we hold it | What we take | What we build |
+|---------|----------------|--------------|---------------|
+| **Nix** | Local clone; not tracked by git | Content-addressed outputs, immutable store, pure derivations — same inputs, same bytes | **Brix** composition, **Silo** SHA3-256 naming (`974`) |
+| **libqrencode** | Gitlink | A small, honest encoder for identity cards — a tool we build from source, not a library we embed | `tools/make-key-card.sh` → gitignored `tools/.build/qrencode`; future Rye reimplementation noted in `SOURCE.md` |
+
+**Nix** teaches that a build output can be **named by the hash of its inputs** and never revised once written. That discipline is Silo's birthright and Brix's promise. We honor Eelco Dolstra's package manager by learning its store model, not by wrapping `libnix` in Rye. Our expression language stays plain, our store stays SHA3-256, our simplicity stays ours.
+
+**libqrencode** teaches that a scannable QR code wants a real encoder, not a picture that merely looks like one. We honor Fukuchi Kentaro's library by compiling its CLI from the gitlink into an ignored build directory for key cards today, and by marking both the encoder and ImageMagick as candidates to be **re-grown in Rye** tomorrow. We do not link libqrencode into `rye`, `rishi`, or any module we ship as our language.
+
+---
+
+### skarnet — s6 and skalibs are ISC, not GPL
+
+**s6** and **skalibs** (Laurent Bercot, skarnet.org) are **ISC** — permissive, like MIT. **SixOS** is the GPL-3.0 project that composes s6 with Nix; the licenses are different projects and must not be confused.
+
+Local clones of s6 and skalibs may exist on disk for reading; they are **not tracked by git**. We prefer **public API reference and design documentation on the web** (skarnet.org) as the study surface. **Caravan** inherits s6's supervision discipline; **Tally** inherits skalibs' bounded-allocation discipline — our own names, our own Rye code (`974`).
+
+---
+
+### Permissive — study freely, still write our own code
+
+MIT, ISC, Apache 2.0, and public domain — including **Zig**, **DVUI**, **Urbit**, **TigerBeetle**, **Sui**, **Primal**, **Manyana**, **infuse.nix**, and **Ghostty**. Permissive licenses allow reading; our clean-room discipline still requires implementations in our own vocabulary.
+
+---
+
+### Where the voices land
+
+| License family | Projects | What we build from them |
+|----------------|----------|-------------------------|
+| GPL-3.0 (gitlink / not cloned) | SixOS, ai-jail, Damus, River | Caravan+Brix vision, Pond enclosure, Comlink relay study, Brushstroke separation |
+| LGPL-2.1 (gitlink / local, not in Rye) | Nix, libqrencode | Brix composition, Silo content-addressing; key-card tool only |
+| ISC (skarnet) | s6, skalibs | Caravan supervision, Tally bounded allocation |
+| Permissive | Zig, DVUI, Ghostty, Manyana, … | Rye ground, Brushstroke, Skate, Mantra weave |
+
+`external-research/` studies the world with attribution. `active-designing/` names only our own modules. `.cursor/rules/gratitude-licenses.mdc` and `.claude/rules/gratitude-licenses.md` carry the summary table for agents in Cursor and Zed; **this section** is the full Radiant record.
 
 ---
 

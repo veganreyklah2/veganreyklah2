@@ -1,23 +1,47 @@
 # Gratitude Licenses — Clean-Room Discipline
 
+**Canonical reference:** `external-research/997_SYSTEM.md` → section **Gratitude Licenses and the Clean Room** (full Radiant notes per project). Mirror: `.cursor/rules/gratitude-licenses.mdc`.
+
 `gratitude/` is a reading library, not a dependency. We study concepts; we never copy code.
 
-## GPL projects (sixos, ai-jail, damus)
+## GPL-3.0 — gitlinks or not cloned
 
-- Tracked as **gitlinks only** (commit pointers, mode 160000) — our git history never contains their source code
-- Study design concepts only; never copy code or documentation into our modules
-- **River** (GPL-3.0) is NOT cloned — study through public Wayland protocol specs and public project documentation only
-- Our implementations are written from scratch in Rye, expressed through quarantined clean-room briefs in `active-designing/`
+| Project | How we hold it | Study boundary |
+|---------|----------------|----------------|
+| **sixos**, **ai-jail**, **damus** | Gitlinks only — our git history never contains their source | Design concepts only; clean-room briefs in `active-designing/` |
+| **River** (Isaac Freund) | **Not cloned** | GPL-3.0. Public Wayland protocol specs + public project documentation only |
 
-## Local-only clones (nix, s6, skalibs — NOT tracked by git)
+Per-project Radiant notes: see **997_SYSTEM.md**.
 
-- Cloned locally for reading; excluded from git tracking
-- LGPL-2.1 (nix) and ISC (s6, skalibs) — permissive enough for study
-- Never add these to git; they stay local
+## LGPL-2.1 — gitlink or local clone, never linked into Rye
 
-## Permissive projects (zig, dvui, urbit, tigerbeetle, sui, primal, manyana, infuse.nix)
+| Project | How we hold it | Study boundary |
+|---------|----------------|----------------|
+| **Nix** | Local clone; not tracked by git | Store model → Brix, Silo; do not link libnix |
+| **libqrencode** | Gitlink | Build CLI to gitignored `tools/.build/` only; do not link into Rye binaries |
 
-- Safe to study freely — MIT, ISC, Apache 2.0, public domain
+LGPL limits **embedding** library code in programs we distribute — not learning ideas or running tools separately. Full notes: **997_SYSTEM.md**.
+
+## skarnet (s6, skalibs) — ISC, not GPL
+
+**s6** and **skalibs** (Laurent Bercot) are **ISC** — permissive, not GPL. **SixOS** (Adam Joseph) is the GPL-3.0 project that composes s6 with Nix.
+
+- Local clones may exist on disk for reading; they are **not tracked by git**
+- Prefer **public API reference and design docs on the web** (skarnet.org) as the legal study surface
+- **Caravan** inherits s6's supervision *discipline*; **Tally** inherits skalibs' bounded-allocation *discipline* — our own names, our own Rye code (`external-research/974`)
+
+## Other local-only clones (nix — NOT tracked by git)
+
+- **Nix**: LGPL-2.1 — see 997 for full note
+- Never add local nix clone to git
+
+## LGPL gitlinks (libqrencode)
+
+- **libqrencode**: LGPL-2.1 gitlink; build CLI to `tools/.build/` only — see 997
+
+## Permissive projects (zig, dvui, urbit, tigerbeetle, sui, primal, manyana, infuse.nix, Ghostty)
+
+- MIT, ISC, Apache 2.0, public domain — safe to study freely
 - Still write our own implementations; concepts enter through the clean room
 
 ## The clean-room path

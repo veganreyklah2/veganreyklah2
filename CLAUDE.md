@@ -22,9 +22,9 @@ Write in **Radiant Style** — see `context/RADIANT_STYLE.md` and `.claude/rules
 
 ## Dual editors
 
-- **Cursor** (host or ai-jail) reads `.cursor/rules/*.mdc`.
-- **Zed + Claude Agent** (this thread) reads this file and `.claude/rules/*.md`.
-- Shared truth lives in `context/`; editor-specific rule files should stay thin pointers, not duplicate essays.
+- **Cursor** (host or ai-jail) reads `.cursor/rules/*.mdc` — including `gratitude-licenses.mdc` for clean-room discipline.
+- **Zed + Claude Agent** (this thread) reads this file and `.claude/rules/*.md` — including `gratitude-licenses.md`.
+- **Canonical license table:** `external-research/997_SYSTEM.md` → Gratitude Licenses and the Clean Room.
 
 ## Session logs
 
