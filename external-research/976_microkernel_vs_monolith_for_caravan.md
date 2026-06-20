@@ -16,7 +16,7 @@
 
 Would making Caravan a microkernel — in the tradition of seL4 and Redox — lower performance too much for the safety benefits, compared to a TAME-disciplined monolith? Can a TAME monolith match microkernel safety at higher speed? Or is the microkernel objectively safer, making it the right priority for TAME Rye?
 
-The short answer is: **the microkernel is objectively safer by formal criteria, and with the right IPC design — zero-copy via bounded shared regions — the performance gap is real but bounded and acceptable.** The long answer is what this piece is.
+The short answer is: **the microkernel is objectively safer by formal criteria, and with the right IPC design — zero-copy via bounded shared regions — the performance gap is real, bounded, and acceptable.** The long answer is what this piece is.
 
 ---
 
@@ -26,15 +26,15 @@ A microkernel keeps the kernel as small as possible: typically scheduling, capab
 
 **seL4** is the most rigorous microkernel in existence. Developed at NICTA and Data61 (Australia), it carries a full machine-checked formal proof — in Isabelle/HOL — that the kernel's C implementation correctly refines its abstract specification, and that the specification enforces security and isolation properties. The trusted computing base (TCB) is roughly 10,000 lines of C. Every property that seL4 claims — information flow isolation, capability integrity, memory safety — is derived from the proof, not from testing or review. A bug below the proof boundary would invalidate it; the proof itself catches every class of bug within its scope.
 
-The proof required roughly ten person-years of work and covers only the kernel. The services above it (VFS, drivers) are not proven, but they are isolated: a bug in a user-space driver corrupts only that process's address space. The kernel and other services survive.
+The proof required roughly ten person-years of work and covers only the kernel. The services above it (VFS, drivers) are not proven; they are isolated: a bug in a user-space driver corrupts only that process's address space. The kernel and other services survive.
 
-**Redox OS** takes a more pragmatic path: a microkernel written in Rust, with user-space drivers and a URL-based IPC model. It is not formally proven, but the combination of Rust's type system and the microkernel's isolation means that driver bugs cannot corrupt the kernel. Redox demonstrates that a microkernel design in a modern, high-safety language is practical and usable, not merely academic.
+**Redox OS** takes a more pragmatic path: a microkernel written in Rust, with user-space drivers and a URL-based IPC model. It is not formally proven; the combination of Rust's type system and the microkernel's isolation means that driver bugs cannot corrupt the kernel. Redox demonstrates that a microkernel design in a modern, high-safety language is practical and usable, not merely academic.
 
 ---
 
 ## The Performance History — Where Microkernels Got Their Reputation
 
-The original microkernel designs of the 1980s — Mach, in particular — were slow. Mach IPC required multiple copies of data as it passed between address spaces, and the overhead added up: a `read()` call on Mach passed through three or four address-space crossings, each with a context switch and a data copy. Benchmarks showed a 10–50× performance penalty over a monolith kernel for I/O-heavy workloads. This gave microkernels a lasting reputation as theoretically pure but practically slow.
+The original microkernel designs of the 1980s — Mach, in particular — were slow. Mach IPC required multiple copies of data as it passed between address spaces, and the overhead added up: a `read()` call on Mach passed through three or four address-space crossings, each with a context switch and a data copy. Benchmarks showed a 10–50× performance penalty over a monolith kernel for I/O-heavy workloads. This gave microkernels a lasting reputation as theoretically pure yet practically slow.
 
 Jochen Liedtke's response, in 1993, was precise: **Mach was slow because its IPC was slow, not because microkernels are inherently slow.** His L4 microkernel redesigned IPC from scratch, keeping IPC message headers in registers and optimizing the common path until round-trip IPC cost ~4µs on 1990s hardware — roughly the cost of a context switch, not the cost of a function call. The "fast IPC" insight became the foundation of the L4 family.
 
@@ -45,13 +45,13 @@ seL4, descended from L4, carries this forward. On a modern ARM Cortex-A57 (the b
 - Linux `getpid()` syscall (a near-zero-cost baseline): **~50–100 ns**
 - Linux `read()` on `/dev/null` (a real syscall with kernel work): **~300–400 ns**
 
-The IPC cost is real: 2–5× a Linux syscall. But it is not the 10–50× of Mach. For workloads where each operation requires one or two IPC round trips, the overhead is measurable but manageable.
+The IPC cost is real: 2–5× a Linux syscall. It is not the 10–50× of Mach. For workloads where each operation requires one or two IPC round trips, the overhead is measurable and manageable.
 
 ---
 
 ## The Copy Problem — and the Zero-Copy Solution
 
-The deeper performance question is not IPC latency but data movement. If passing a 4 KB block to a file-system server requires copying it from the application into an IPC message buffer and then into the server's buffer, every file write costs two copies: roughly 1–2 µs on modern hardware. Composed across all I/O, this accumulates.
+The deeper performance question is data movement more than IPC latency. If passing a 4 KB block to a file-system server requires copying it from the application into an IPC message buffer and then into the server's buffer, every file write costs two copies: roughly 1–2 µs on modern hardware. Composed across all I/O, this accumulates.
 
 The solution — the same solution the Wayland display protocol uses, and the same one Aurora's wire already uses — is **zero-copy IPC via bounded shared memory regions.** The IPC message carries only a capability reference and a length; the data stays in a shared region that both parties hold read and/or write access to. Sender: write into the region, send a short IPC notification. Receiver: read from the region, process, reply.
 
@@ -65,7 +65,7 @@ This is the Tally-bounded shared region IPC model: a `Region` struct holds the d
 
 A monolith kernel places all its services in one address space. The benefits are real: kernel code can call into drivers and filesystems directly, without context switches; shared data structures can be read without IPC; the hot path for a `read()` call is a function call, not an address-space crossing. Linux's performance on storage and network I/O reflects this.
 
-Can a TAME monolith match microkernel safety? It can get substantially closer than a traditional C kernel. Rye's type system, TAME's wrapping discipline, and the assertion culture all reduce the probability of a kernel bug reaching dangerous state. But two structural limits remain.
+Can a TAME monolith match microkernel safety? It can get substantially closer than a traditional C kernel. Rye's type system, TAME's wrapping discipline, and the assertion culture all reduce the probability of a kernel bug reaching dangerous state. Two structural limits remain.
 
 **First, TCB size.** A monolith kernel that includes the network stack, storage drivers, and VFS has a trusted computing base in the hundreds of thousands of lines, or millions. Even with TAME discipline, the probability of a correctness-affecting bug scales with the size of the trusted base. A microkernel separates the concern: the kernel is 10,000 lines (seL4) or 20,000 lines; the rest is untrusted code whose bugs cannot reach the kernel.
 
@@ -79,7 +79,7 @@ TAME names its priorities in order: safety above performance, performance above 
 
 **Safety.** The microkernel wins, and it is not close. A formally verifiable minimal core — with isolation guaranteeing that a buggy driver cannot corrupt the kernel — is a stronger safety guarantee than TAME discipline applied inside a monolith. Type safety inside a monolith helps; it does not isolate a buggy network driver from the memory management code. The microkernel separates them by hardware boundary. If safety comes first, the microkernel design is the correct choice.
 
-**Performance.** The monolith wins a narrow IPC-latency argument and loses the zero-copy argument on large transfers. For Caravan's use case — supervising processes, routing named values between them, bounding their memory — the IPC pattern is: pass a capability to a bounded region, notify the receiver, wait for a reply. This is one round-trip IPC per "operation," where operations are things like "open a file" or "commit a Mantra weave" — not tight inner loops. At 500 ns per IPC, a design with 100 operations per second costs 50 µs of IPC overhead per second: negligible. At 100,000 operations per second (high-frequency Rishi pipeline), it costs 50 ms/s: noticeable but still within a 5% budget if operations take ~10 µs each on average.
+**Performance.** The monolith wins a narrow IPC-latency argument and loses the zero-copy argument on large transfers. For Caravan's use case — supervising processes, routing named values between them, bounding their memory — the IPC pattern is: pass a capability to a bounded region, notify the receiver, wait for a reply. This is one round-trip IPC per "operation," where operations are things like "open a file" or "commit a Mantra weave" — not tight inner loops. At 500 ns per IPC, a design with 100 operations per second costs 50 µs of IPC overhead per second: negligible. At 100,000 operations per second (high-frequency Rishi pipeline), it costs 50 ms/s: noticeable, yet still within a 5% budget if operations take ~10 µs each on average.
 
 **Joy.** The capability model is cleaner than the monolith's implicit sharing. A capability is an unforgeable, transferable reference to a resource — the same concept Rye's value model builds on. Caravan issuing capabilities to bounded regions, processes exchanging them for access to named resources: this is more legible than a monolith's shared kernel state.
 
@@ -99,7 +99,7 @@ Caravan is Rye's process supervisor and enclosure. Under a microkernel design, i
 
 **IPC data paths** use Tally-bounded shared regions: the IPC message carries a capability + length; the data stays in the region. The Tally garden's `alloc` and `clear` lifecycle maps to the shared region's lifetime. The region is asserted at the boundary wrapper before the IPC call, exactly as the POSIX wrappers assert before a `read()`.
 
-This design is not near work — it belongs to the Pond full-OS horizon, after Caravan v1 exists. But the study should happen before Caravan's supervision design hardens, so the later move toward a microkernel core does not require redesigning what was built before it.
+This design is not near work — it belongs to the Pond full-OS horizon, after Caravan v1 exists. The study should happen before Caravan's supervision design hardens, so the later move toward a microkernel core does not require redesigning what was built before it.
 
 ---
 

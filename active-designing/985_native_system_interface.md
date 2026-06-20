@@ -30,7 +30,7 @@ Several of the OS interface's core conventions sit naturally with TAME.
 
 **Explicit buffers with explicit lengths.** Every I/O call takes a buffer and a length declared by the caller: `read(fd, buf, n)`, `write(fd, buf, n)`, `recv(fd, buf, n, flags)`. The bound is stated at the call site, not inferred. This is the same discipline TAME asks everywhere: limits on everything, named plainly. Assert that `n` does not exceed the buffer's true capacity, check the returned byte count, and the call is safe.
 
-**Resource lifecycles through handles.** A file descriptor is a small, bounded integer naming an OS resource. It has a clear lifecycle — open, use, close — and the kernel rejects operations on a closed or invalid handle. This lifecycle model is not as strong as Rye's compile-time lifetime checking will eventually provide, but it is explicit and auditable. We hold file descriptors in typed structs with known ownership, never as globals.
+**Resource lifecycles through handles.** A file descriptor is a small, bounded integer naming an OS resource. It has a clear lifecycle — open, use, close — and the kernel rejects operations on a closed or invalid handle. This lifecycle model is not as strong as Rye's compile-time lifetime checking will eventually provide; it is explicit and auditable today. We hold file descriptors in typed structs with known ownership, never as globals.
 
 **The path-relative call family.** Every path operation has a variant that works relative to a directory handle — `openat`, `mkdirat`, `readlinkat`, `unlinkat`. These are safer than absolute-path variants: the root directory is an explicit argument, not an ambient global, so the call cannot escape the declared subtree. We prefer this family always.
 
@@ -110,7 +110,7 @@ The compositor design is not near work. It belongs to the Pond full OS horizon, 
 The display protocol and terminal surface described here run on x86_64 Linux today — Rye compiles to x86_64, the AMD GPU is confirmed working in the enclosure. Brushstroke's native backend and Rishi's text area begin here. Bare-metal x86_64 follows once Caravan exists: the display protocol negotiation then runs inside Caravan's supervision, and Pond's compositor replaces the borrowed one.
 
 **RISC-V as the horizon.**
-Every Rye program that runs on x86_64 compiles for RISC-V. The OS interface is the same concept at a different instruction-set boundary: the system call numbers differ, the privilege relay is Aurora's own, but the pattern — assert at the boundary, convert to typed values, keep the wrapper narrow — is identical. Aurora's relay hands a verified system to Caravan; Caravan hosts Brushstroke; Brushstroke draws to a native RISC-V display surface. The grain is the same all the way through.
+Every Rye program that runs on x86_64 compiles for RISC-V. The OS interface is the same concept at a different instruction-set boundary: The system call numbers differ, the privilege relay is Aurora's own, and the pattern — assert at the boundary, convert to typed values, keep the wrapper narrow — is identical. Aurora's relay hands a verified system to Caravan; Caravan hosts Brushstroke; Brushstroke draws to a native RISC-V display surface. The grain is the same all the way through.
 
 ---
 

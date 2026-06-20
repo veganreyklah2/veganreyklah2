@@ -33,7 +33,7 @@ A datastore answers one question: given a key, what is the value? Everything els
 
 **What it does that Silo should decline:**
 - **No content-addressing.** Keys are arbitrary bytes; the store makes no claim about the relationship between a key and its value. Silo names values by their content hash — that identity guarantee is Silo's whole point.
-- **No hard memory bound.** The mmap grows to fit the database. A bound is declared at open time but can be exceeded with a remap. Silo should enforce a hard ceiling, named at initialization.
+- **No hard memory bound.** The mmap grows to fit the database. A bound is declared at open time and can be exceeded with a remap. Silo should enforce a hard ceiling, named at initialization.
 
 **Lesson:** The zero-copy, single-writer, copy-on-write design is elegant and correct. LMDB's discipline of "state the constraint in the API" is a model. Its weakness is the unconstrained mmap growth and the absence of content-identity.
 
@@ -51,7 +51,7 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **Designed for storage fault tolerance.** TigerBeetle assumes disks fail; it uses a two-phase write and verifies checksums. Every write is known to have landed.
 
 **What it does that Silo should consider carefully:**
-- **Tightly coupled to a single domain (accounting).** The discipline is admirable; the scope is narrow. Silo is a general-purpose content-addressed store — it should inherit the discipline but not the accounting schema.
+- **Tightly coupled to a single domain (accounting).** The discipline is admirable; the scope is narrow. Silo is a general-purpose content-addressed store — it should inherit the discipline, not the accounting schema.
 - **No content-addressing.** Identity is assigned by the caller, not derived from content. Silo derives identity from the SHA3-256 digest; content-naming makes the store self-verifying.
 
 **Lesson:** TigerBeetle proves that a narrower interface, stated invariants, and explicit bounds produce a faster and more trustworthy store than a general one. Its fault-tolerance design (two-phase write, checksum on every record) is directly applicable to Silo's durability contract.
@@ -71,7 +71,7 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **SQL is a large surface.** DuckDB accepts arbitrary SQL; Silo's interface should be narrower: `get(hash) → blob` and `put(blob) → hash`. Narrow surfaces are safe surfaces.
 - **No content-addressing.** Tables are mutable; a value can be changed after being stored. Silo is write-once.
 
-**Lesson:** The in-process, no-server architecture is right for Silo. Structured metadata over stored values — not just the raw blob, but type, size, hash, and user-defined tags — is worth building from the start.
+**Lesson:** The in-process, no-server architecture is right for Silo. Structured metadata over stored values — type, size, hash, and user-defined tags alongside the raw blob — is worth building from the start.
 
 ---
 
@@ -83,7 +83,7 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **No unsafe in the critical path.** redb's design constraints mirror TAME's: safety is structural, not relying on programmer vigilance.
 - **Explicit transactions.** Every read and write happens inside a transaction. There is no accidental concurrent write; the type system enforces it.
 - **Crash-safe by design.** Two-phase commit; the durability guarantee is explicit and testable.
-- **Single writer, multiple readers.** Like LMDB, but with a cleaner type-level enforcement.
+- **Single writer, multiple readers.** Like LMDB, with a cleaner type-level enforcement.
 
 **What it does that Silo should adapt:**
 - **Type-parameterized keys and values.** redb's generics allow typed keys and values — a direct model for Silo's typed blob metadata (hash type, size type).
@@ -102,7 +102,7 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **Embeddable.** No server, no configuration file, no daemon. Exactly right for Silo's role as a module, not a service.
 
 **What it does that Silo should note:**
-- **Vector-specific, not general.** The similarity-search model doesn't directly apply, but the *embeddability* and *narrow surface* principles apply directly.
+- **Vector-specific, not general.** The similarity-search model doesn't directly apply; the *embeddability* and *narrow surface* principles apply directly.
 - **No content-addressing.** Turbopuffer's identity model is caller-assigned. Silo derives identity from content.
 
 **Lesson:** The extreme simplicity of Turbopuffer's API is a target for Silo. A store that can be understood in an afternoon is one that can be trusted in a system.

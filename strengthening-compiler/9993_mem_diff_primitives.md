@@ -37,7 +37,7 @@ pub fn copyForwards(comptime T: type, dest: []T, source: []const T) void {
 }
 ```
 
-The loop indexes `dest[0..source.len]`, which Zig's runtime safety would catch if `source.len > dest.len` — but a runtime panic is a late and opaque stop. The assertion fires at the exact point the contract is broken, with a message that names the function. Same form as `copyBackwards`, which already carries this assertion.
+The loop indexes `dest[0..source.len]`, which Zig's runtime safety would catch if `source.len > dest.len` — a runtime panic is a late and opaque stop. The assertion fires at the exact point the contract is broken, with a message that names the function.
 
 ### `startsWith` — `maybe` for the variable space
 
@@ -97,7 +97,7 @@ pub fn next(self: *Self) ?[]const T {
 }
 ```
 
-`SplitIterator` is the generic backing `splitScalar`, `splitSequence`, and `splitAny`. Its `next()` method is the only path that returns a slice; strengthening it once covers all three split variants. The two assertions state what must be true before every slice is taken from the buffer: start is at or before end, and end is at or before the buffer's length. These hold by construction — `start` is either 0 or a post-delimiter position that `findScalarPos` proved is within the buffer, and `end` is either that delimiter's position or `buffer.len` — but stating them makes the invariant legible and would catch any future edit that broke the monotonic advance.
+`SplitIterator` is the generic backing `splitScalar`, `splitSequence`, and `splitAny`. Its `next()` method is the only path that returns a slice; strengthening it once covers all three split variants. The two assertions state what must be true before every slice is taken from the buffer: start is at or before end, and end is at or before the buffer's length. These hold by construction — `start` is either 0 or a post-delimiter position that `findScalarPos` proved is within the buffer, and `end` is either that delimiter's position or `buffer.len` — and stating them makes the invariant legible and would catch any future edit that broke the monotonic advance.
 
 ---
 

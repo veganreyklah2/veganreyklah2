@@ -24,9 +24,9 @@ POSIX is a family of interfaces rather than a single design. File descriptors an
 
 ## What POSIX Gets Right
 
-**Explicit buffers, explicit lengths.** Every POSIX I/O call takes a buffer and a length: `read(fd, buf, n)`, `write(fd, buf, n)`, `sendmsg(fd, msg, flags)`. The buffer size is stated at the call site, not inferred. This is the same discipline TAME asks everywhere: bounds on everything, stated plainly. A bounded `read` is a bounded `read`; the danger lies not in the syscall but in failing to assert that `n` does not exceed the buffer's true capacity, and in failing to check the returned byte count. Assert both, and the call is safe.
+**Explicit buffers, explicit lengths.** Every POSIX I/O call takes a buffer and a length: `read(fd, buf, n)`, `write(fd, buf, n)`, `sendmsg(fd, msg, flags)`. The buffer size is stated at the call site, not inferred. This is the same discipline TAME asks everywhere: bounds on everything, stated plainly. A bounded `read` is a bounded `read`; the danger lies in failing to assert that `n` does not exceed the buffer's true capacity, and in failing to check the returned byte count. Assert both, and the call is safe.
 
-**File descriptors as bounded resources.** A file descriptor is a small integer naming a kernel resource. It has a clear lifecycle — open, use, close — and the kernel refuses operations outside that lifecycle with EBADF. This is not as safe as Rye's lifetime system will eventually be, but it is an explicit lifecycle model, which is closer to TAME than to hidden allocation.
+**File descriptors as bounded resources.** A file descriptor is a small integer naming a kernel resource. It has a clear lifecycle — open, use, close — and the kernel refuses operations outside that lifecycle with EBADF. This is not as safe as Rye's lifetime system will eventually be; it is an explicit lifecycle model, which is closer to TAME than to hidden allocation.
 
 **The `*at` syscall family.** `openat`, `mkdirat`, `readlinkat`, `fchownat` — every pathname operation has a variant that works relative to a directory file descriptor rather than an absolute path. This matters for two TAME reasons: it prevents path traversal (the file can only be reached within the given directory's subtree), and it makes the path boundary auditable (the root directory is an explicit argument, not an implicit global). We prefer the `*at` variants always.
 
@@ -44,7 +44,7 @@ POSIX is a family of interfaces rather than a single design. File descriptors an
 
 **Signal handlers.** POSIX signals interrupt a running program asynchronously — a signal handler may run at any point between instructions, touching whatever memory it can reach. In a multithreaded program, this is a deep source of data races; even in a single-threaded one, it constrains which functions are safe to call inside the handler to a small, explicitly-named set. Signal handlers are hidden shared-state channels — the opposite of TAME values flowing explicitly. Our discipline: avoid signal handlers where possible. On Linux, `signalfd` converts signals into file descriptor events — the same poll/epoll loop that handles Wayland messages handles signals, with no shared mutable state. Where a signal handler is unavoidable (SIGTERM for process shutdown), it sets one `volatile` flag and does nothing else.
 
-**`fork` in multithreaded programs.** `fork()` copies the process but carries only the calling thread into the child, leaving the other threads' locks in unknown states. This is unsafe by construction in a multithreaded program. Our discipline: if we use `fork`, we use it only before threads are started, or we use `posix_spawn` (which is closer to the `execve` pattern and safer in threaded contexts). Caravan, supervising a tree of processes, chooses the safe fork/exec pattern: fork in a single-threaded context, exec immediately in the child, never fork a multithreaded process.
+**`fork` in multithreaded programs.** `fork()` copies the process and carries only the calling thread into the child, leaving the other threads' locks in unknown states. This is unsafe by construction in a multithreaded program. Our discipline: if we use `fork`, we use it only before threads are started, or we use `posix_spawn` (which is closer to the `execve` pattern and safer in threaded contexts). Caravan, supervising a tree of processes, chooses the safe fork/exec pattern: fork in a single-threaded context, exec immediately in the child, never fork a multithreaded process.
 
 ---
 
@@ -100,7 +100,7 @@ Ghostty also exposes `libghostty`, a C API that lets another program embed a Gho
 
 **Ghostty's thin costume is the right seed for Brushstroke.** The `libghostty` C backend lets Rishi's text surface exist before Brushstroke grows its own text-area widget. The seam is Brushstroke's design; the rendering is Ghostty's. When the native text-area widget arrives, the seam holds and the backend swaps out. This is the method in practice: stand on proven ground, wear a thin costume first.
 
-**River is the full Pond compositor design reference.** If Pond becomes the complete OS — its own compositor, no borrowed display server — River's architecture is what Caravan's display management grows from. Not yet near work, but the study should happen before Brushstroke's native backend hardens, so the compositor interface it speaks is designed with the full Pond OS in mind.
+**River is the full Pond compositor design reference.** If Pond becomes the complete OS — its own compositor, no borrowed display server — River's architecture is what Caravan's display management grows from. Not yet near work; the study should happen before Brushstroke's native backend hardens, so the compositor interface it speaks is designed with the full Pond OS in mind.
 
 ---
 

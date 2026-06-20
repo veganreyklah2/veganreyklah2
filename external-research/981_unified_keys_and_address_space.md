@@ -91,7 +91,7 @@ One line must stay bright, in the spirit of how `982` kept shape and safety apar
 
 ## Longer Horizon
 
-Further out, a person logs into Rye OS once, as their galaxy, and is — without another step — reachable over SSH, trusted by GPG, present on Sui, and speaking on Nostr, every key grown from the one root they keep. Their five stars and sixty planets are not rows in a database but a living picture of their circle and their works, each a sub-identity they can hand out and revoke. And their galaxy federates with others by bridge and alliance, across universes stewarded by Manus and Aditis who convene yet never command. One identity, many keys, a sky with meaning — owned by the person, ruled by no one.
+Further out, a person logs into Rye OS once, as their galaxy, and is — without another step — reachable over SSH, trusted by GPG, present on Sui, and speaking on Nostr, every key grown from the one root they keep. Their five stars and sixty planets are a living picture of their circle and their works, rather than rows in a database, each a sub-identity they can hand out and revoke. And their galaxy federates with others by bridge and alliance, across universes stewarded by Manus and Aditis who convene yet never command. One identity, many keys, a sky with meaning — owned by the person, ruled by no one.
 
 ## Conclusion
 

@@ -31,7 +31,7 @@ So the foundation is mostly cryptographic — and most of it is still ahead.
 
 The hash is done. The frontier is the rest of the crypto our identity and our network lean on: **signing (Ed25519), key agreement (X25519), the authenticated cipher (AEAD), and key derivation (KDF)**. These are the next passes, and they ask for more care than the sponge did, for two reasons worth naming plainly.
 
-First, the boundary is largely guarded already: the crypto takes fixed-size arrays, so the lengths a precondition would assert are settled by the type at compile time. The real strengthening lives *inside* — stated invariants on the internal state, the way the sponge gained `offset <= rate`: a scalar reduced within its order, a point proven on its curve, a tag compared in constant time. Second, this code is delicate and timing-sensitive, so every added assertion must preserve not only the result but the constant-time guarantee — checked by the parity gate, and weighed against the data-plane economy before it ever rides a hot path.
+First, the boundary is largely guarded already: the crypto takes fixed-size arrays, so the lengths a precondition would assert are settled by the type at compile time. The real strengthening lives *inside* — stated invariants on the internal state, the way the sponge gained `offset <= rate`: a scalar reduced within its order, a point proven on its curve, a tag compared in constant time. Second, this code is delicate and timing-sensitive, so every added assertion must preserve the result and the constant-time guarantee — checked by the parity gate, and weighed against the data-plane economy before it ever rides a hot path.
 
 So the crypto passes will come, sponge by sponge, with a steady hand.
 

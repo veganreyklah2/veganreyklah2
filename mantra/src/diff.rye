@@ -93,7 +93,7 @@ pub fn diff(
     }
 
     // Postcondition: applying the diff is a net transformation — not necessarily
-    // fewer lines, but never a negative-length insert or delete.
+    // fewer lines, yet never a negative-length insert or delete.
     const result = Diff{
         .inserts = try inserts.toOwnedSlice(allocator),
         .deletes = try deletes.toOwnedSlice(allocator),

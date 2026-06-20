@@ -103,7 +103,7 @@ pub const Weave = struct {
             }
         }
         // Sort by position — inserts append to the backing list in order of
-        // arrival, but a merge may interleave positions from two weave branches.
+        // arrival; a merge may interleave positions from two weave branches.
         const result = try out.toOwnedSlice(allocator);
         std.mem.sort(Line, result, {}, struct {
             fn lessThan(_: void, a: Line, b: Line) bool {

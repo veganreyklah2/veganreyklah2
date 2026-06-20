@@ -10,7 +10,7 @@ Two ideas lived inside the single name "Silo," and they pulled in different dire
 
 **Silo** is the general-purpose content-addressed store: an accreting collection of immutable blobs, each named by the hash of its content, never mutated, written once and kept. It is the database layer — a place where you put things and name them precisely. Mantra's `.mantra/blobs/` is a small Silo. The build store of a full system builder is a larger one. The name is apt: a silo holds things, sealed and stable, until needed.
 
-**Brix** is the composing language: the thing that says *what a system is made of*. Not how to store the pieces, but how to declare them, arrange them, and compose them into a whole. Like bricks — individually simple, shaped to fit together, placed side by side without weaving. Each brick is one thing; the wall is their composition, not their entanglement.
+**Brix** is the composing language: the thing that says *what a system is made of* — how to declare, arrange, and compose pieces into a whole, rather than how to store them. Like bricks — individually simple, shaped to fit together, placed side by side without weaving. Each brick is one thing; the wall is their composition, not their entanglement.
 
 The name honors two teachers:
 - **Nix's composability** — each derivation is a brick, isolated and reproducible; composition is explicit, not implicit; the system is a stack of declared bricks, auditable from any angle.

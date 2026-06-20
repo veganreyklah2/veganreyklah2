@@ -20,7 +20,7 @@ To grow a Pond native desktop application — a Rishi shell in a Brushstroke win
 
 ## Problem
 
-Today, all of Rishi, Tally, and the Rye toolchain already compile and run on x86_64. Rishi can assert, compute, and run external programs. Mantra does not yet exist. Brushstroke does not yet exist. Pond is designed but awaits Caravan and Tally v1. The gap is not in design — the design is rich and coherent — but in building. The layers must be grown in order, each small enough to prove before the next begins.
+Today, all of Rishi, Tally, and the Rye toolchain already compile and run on x86_64. Rishi can assert, compute, and run external programs. Mantra does not yet exist. Brushstroke does not yet exist. Pond is designed and awaits Caravan and Tally v1. The gap lives in building: the design is rich and coherent, and the layers must be grown in order, each small enough to prove before the next begins.
 
 ---
 

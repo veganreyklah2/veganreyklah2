@@ -44,7 +44,7 @@ Applied to: `openFile`, `createFile`, `readFile` (as `file_path`), `writeFile` (
 assert(sub_path.len < max_path_bytes); // path fits within the declared OS limit
 ```
 
-`max_path_bytes` is the platform-specific maximum path length (4096 on Linux, including the null terminator). A path at or beyond this limit cannot be passed to the kernel as a null-terminated C string without overflowing the OS buffer. The assertion catches over-long paths before they reach `openat`/`creat`, where the error would arrive as `ENAMETOOLONG` — a valid but opaque error return. The assertion is `<`, not `<=`, because `max_path_bytes` includes the null sentinel byte: a path of `max_path_bytes - 1` bytes would just fit; one of `max_path_bytes` would not.
+`max_path_bytes` is the platform-specific maximum path length (4096 on Linux, including the null terminator). A path at or beyond this limit cannot be passed to the kernel as a null-terminated C string without overflowing the OS buffer. The assertion catches over-long paths before they reach `openat`/`creat`, where the error would arrive as `ENAMETOOLONG` — a valid yet opaque error return. The assertion is `<`, not `<=`, because `max_path_bytes` includes the null sentinel byte: a path of `max_path_bytes - 1` bytes would just fit; one of `max_path_bytes` would not.
 
 Applied to: `openFile`, `createFile`, `readFile`, `writeFile`.
 
@@ -54,7 +54,7 @@ Applied to: `openFile`, `createFile`, `readFile`, `writeFile`.
 assert(buffer.len > 0); // a zero-length buffer reads nothing; pass a real buffer
 ```
 
-Applied only to `readFile`. Passing a zero-length buffer reads zero bytes and returns `buffer[0..0]`, which is technically correct but almost certainly a mistake. The assertion names this at the door.
+Applied only to `readFile`. Passing a zero-length buffer reads zero bytes and returns `buffer[0..0]`, which is technically correct yet almost certainly a mistake. The assertion names this at the door.
 
 ---
 

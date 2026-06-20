@@ -1,6 +1,6 @@
 # 979 · Where Building Met Design — a Progress Map at the Turn
 
-*A survey taken at a natural resting point: the crypto foundation proven, Rishi grown past its first destination, the Tally seed landed, and the three parallel threads primed. This piece reads the running code through the lens of the active-designing stack, checks where building has met design, and names what still waits. The purpose is alignment — not a celebration of distance covered, but a clear map of where we stand and why.*
+*A survey taken at a natural resting point: the crypto foundation proven, Rishi grown past its first destination, the Tally seed landed, and the three parallel threads primed. This piece reads the running code through the lens of the active-designing stack, checks where building has met design, and names what still waits — a clear map of where we stand and why.*
 
 **Language:** EN
 **Version:** `20260619.153212` (Rye chronological stamp)
@@ -20,7 +20,7 @@ Design and building drift apart in every project; the honest discipline is to no
 
 ## The Lens: Gall's Law and the Active-Designing Stack
 
-The active-designing writings reason from first principles in our own words, naming only our own modules and the one fixed external, RISC-V. They describe destinations — what Rye, Rishi, Tally, Caravan, Aurora, Comlink, Pond, and the others are *for* and what shape they grow toward. The law beneath all of them is Gall's: a working whole is invariably found to have grown from a working simple part. So the measure for each module is not "how complete is it?" but "is it growing from something that already ran, and does what now runs set a solid floor for what comes next?"
+The active-designing writings reason from first principles in our own words, naming only our own modules and the one fixed external, RISC-V. They describe destinations — what Rye, Rishi, Tally, Caravan, Aurora, Comlink, Pond, and the others are *for* and what shape they grow toward. The law beneath all of them is Gall's: a working whole is invariably found to have grown from a working simple part. So the measure for each module is "is it growing from something that already ran, and does what now runs set a solid floor for what comes next?" — rather than "how complete is it?"
 
 That is the lens applied here.
 
