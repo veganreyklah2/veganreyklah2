@@ -130,7 +130,7 @@ We name the hazards honestly, so the dream does not run ahead of the work.
 
 ## Longer Horizon
 
-Further out, Rishi is the daily shell of Caravan: a person at the prompt composing typed flows, scripts that lower their orchestration to execline-clean chains for init and supervision, values that pass to Rye programs and back without a seam, and a history kept by Mantra in the same content-addressed weave that holds everything else (`989`). The whole family — Rye for programs, Silo for configuration, the execline-spirit layer for bringing the system up, Rishi for the human's hand, Mantra for memory — speaks several languages in one voice, because they share one value model all the way down. And perhaps, in time, an interactive Rishi that completes, suggests, and explains as kindly as the friendliest shells, while never once lying about a type or swallowing an error.
+Further out, Rishi is the daily shell of Caravan: a person at the prompt composing typed flows, scripts that lower their orchestration to execline-clean chains for init and supervision, values that pass to Rye programs and back without a seam, and a history kept by Mantra in the same content-addressed weave that holds everything else (`989`). The whole family — Rye for programs, Tablecloth for configuration, the execline-spirit layer for bringing the system up, Rishi for the human's hand, Mantra for memory — speaks several languages in one voice, because they share one value model all the way down. And perhaps, in time, an interactive Rishi that completes, suggests, and explains as kindly as the friendliest shells, while never once lying about a type or swallowing an error.
 
 ---
 

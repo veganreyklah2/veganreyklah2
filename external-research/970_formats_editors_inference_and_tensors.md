@@ -1,6 +1,6 @@
 # 970 · Formats, Editors, Inference, and Tensors — What the Horizon Modules Inherit
 
-*Six open threads share one through-line: values that cross seams without losing their shape. This research reads JSON and Brix together, surveys markdown parsers in Zig and Rust, studies Zed's editor architecture and GPUI's permissive frame discipline, and reads Ollama, Tinygrad, PyTorch, and TensorFlow for what **Scribble**, **Lantern**, **Lattice**, and **Anvil** should become in tame Rye. The distilled design lives in quarantine at `../active-designing/978_scribble_lantern_and_lattice.md`.*
+*Six open threads share one through-line: values that cross seams without losing their shape. This research reads JSON and Brix together, surveys markdown parsers in Zig and Rust, studies Zed's editor architecture and GPUI's permissive frame discipline, and reads Ollama, Tinygrad, PyTorch, and TensorFlow for what **Scribble**, **Lantern**, **Lattice**, and **Anvil** should become in tame Rye. The distilled design lives in silo at `../active-designing/978_scribble_lantern_and_lattice.md`.*
 
 **Language:** EN
 **Version:** `20260620.020712` (Rye chronological stamp)
@@ -38,7 +38,7 @@ The recommendation is not a second format beside Brix. It is **one value grammar
 | **JSON wire** | Interchange with the outside world, Forge APIs, Comlink messages where text serialization is required |
 | **Rishi literals** | The same records in the shell — no translation layer between what you type and what Brix stores |
 
-A Brix brick record and a JSON object describing that brick should be the same shape: field names identical, nesting identical, serialization a mechanical mapping. Silo holds the hashed artifacts; Brix names the composition; JSON is how a brick record crosses a HTTP boundary or lands in a log. TAME bounds apply at parse time: maximum nesting depth, maximum string length, maximum array length — stated before the parser runs, asserted at the door.
+A Brix brick record and a JSON object describing that brick should be the same shape: field names identical, nesting identical, serialization a mechanical mapping. Tablecloth holds the hashed artifacts; Brix names the composition; JSON is how a brick record crosses a HTTP boundary or lands in a log. TAME bounds apply at parse time: maximum nesting depth, maximum string length, maximum array length — stated before the parser runs, asserted at the door.
 
 **Lesson:** Hickey's observation that systems talk in values is the license to unify. Brix grows from the `.brix` descriptor already in Mantra; JSON is its wire face, not a rival format.
 
@@ -110,7 +110,7 @@ Mantra views, Forge pages, and research itself are written in Markdown today. A 
 
 **What Lantern should inherit:**
 
-- **Model as a named artifact.** Content-addressed weights in Silo; Brix declares which models a Pond may load.
+- **Model as a named artifact.** Content-addressed weights in Tablecloth; Brix declares which models a Pond may load.
 - **Inference inside Pond.** Each run is enclosed: memory cap in Tally, no network unless the policy grants it, stdout/stderr bounded.
 - **Value-based API.** Request and response are records (prompt, temperature, max tokens → completion text, token counts) — not an unbounded stream unless the policy explicitly enables streaming chunks as values.
 - **Pull, then run.** The operator names a model; Lantern fetches or verifies the hash, then loads into a bounded garden.
@@ -153,7 +153,7 @@ Mantra views, Forge pages, and research itself are written in Markdown today. A 
 
 **Anvil** is the name reserved for training-framework scale — distributed training, checkpointing, dataset pipelines — **only after Lattice proves the numeric ground**. Until then, Anvil is study-only: what PyTorch gets right about operator coverage, what TensorFlow gets right about serving graphs, and what both do that violates TAME (hidden allocation, implicit GPU sync, unbounded autograd retention).
 
-**Lesson:** Read Anvil's teachers for discipline; grow Lattice first. A forge that trains models is a Pond job with a Caravan supervisor and a Silo of checkpoints — Anvil names that world, yet the first brick is a single matmul that passes the parity gate.
+**Lesson:** Read Anvil's teachers for discipline; grow Lattice first. A forge that trains models is a Pond job with a Caravan supervisor and a Tablecloth of checkpoints — Anvil names that world, yet the first brick is a single matmul that passes the parity gate.
 
 ---
 
@@ -165,7 +165,7 @@ Mantra views, Forge pages, and research itself are written in Markdown today. A 
 4. **Lattice before Lantern before Anvil** — numeric primitives, then local inference, then training scale.
 5. **Every module Pond-enclosed** — inference and tensors are high-risk; policy-as-a-value is non-negotiable.
 
-The quarantined design brief at `../active-designing/978_scribble_lantern_and_lattice.md` states these modules on our own ground.
+The siloed design brief at `../active-designing/978_scribble_lantern_and_lattice.md` states these modules on our own ground.
 
 ---
 

@@ -16,7 +16,7 @@
 
 ## The Mission
 
-Grow the **display frontier** from design into running code, **complete the garden vocabulary** so Tally's metaphor reads honestly in our programs and docs, and **quarantine the flow-of-values foundation** that Hickey's *Language of the System* taught us — distilled on our own ground, beside `993_bounded_network` which already carries the network slice.
+Grow the **display frontier** from design into running code, **complete the garden vocabulary** so Tally's metaphor reads honestly in our programs and docs, and **silo the flow-of-values foundation** that Hickey's *Language of the System* taught us — distilled on our own ground, beside `993_bounded_network` which already carries the network slice.
 
 Three milestones, one session, composed not braided:
 
@@ -24,7 +24,7 @@ Three milestones, one session, composed not braided:
 |-------|-----------|-------------|
 | **A** | **Brushstroke seed** — one hosted program draws a frame from values | Smallest thing that draws |
 | **B** | **Garden vocabulary sweep** — `init.garden` locals and docs aligned | Phase 2 of open thread |
-| **C** | **`977_flow_of_values.md`** — system-wide flow brief quarantined | Ideas cross boundary clean |
+| **C** | **`977_flow_of_values.md`** — system-wide flow brief siloed | Ideas cross boundary clean |
 
 **Defer to next autonomous run** (named, not started here unless time remains):
 
@@ -76,7 +76,7 @@ Three milestones, one session, composed not braided:
 
 **Prove:** `tools/parity.rish` GREEN if available; else build rye + rishi.
 
-## Track C — Flow of Values (Quarantine)
+## Track C — Flow of Values (silo)
 
 **Deliverable:** `active-designing/977_flow_of_values.md`
 
@@ -84,7 +84,7 @@ Three milestones, one session, composed not braided:
 
 - Four operations kept apart: **transform**, **move**, **route**, **remember**
 - **Simple services** — one job, tiny surface, few verbs; map each `983` module to a flow role
-- **Values with enduring names** — content-addressing, accretion, Brix/Mantra/Silo
+- **Values with enduring names** — content-addressing, accretion; Tablecloth slice in `10021_tablecloth_value_model.md`
 - **Systems failure model** — partial failure normal; timeouts, idempotency, exactly-once by name (Comlink)
 - Cross-link: `993` (network), `995` (single-stranded), `997` (architecture), `990` (no seams)
 - Gratitude pointer in external-research only: `997_SYSTEM.md`, `gratitude/LanguageSystem.md`

@@ -1,6 +1,6 @@
 # 998 · Mantra: Version Control as a Weave
 
-*A study of Bram Cohen's Manyana — CRDT-based version control where every merge succeeds and history lives in the structure itself — and what it updates about Silo, the relationship between version control and the build store, and a new module we name Mantra.*
+*A study of Bram Cohen's Manyana — CRDT-based version control where every merge succeeds and history lives in the structure itself — and what it updates about Tablecloth, the relationship between version control and the build store, and a new module we name Mantra.*
 
 **Language:** EN
 **Version:** `20260617.195312` (Rye chronological stamp)
@@ -14,9 +14,9 @@
 
 ## The Question
 
-Our configuration language, Silo, rests on a content-addressed, immutable store of build results — an idea we drew, in the deeper study, from the world's best build systems. Version control sits beside it as a separate concern, the way it does everywhere: one tool holds the history of the source, another builds that source into artifacts, and the two are stitched together at a seam.
+Our configuration language, Tablecloth, rests on a content-addressed, immutable store of build results — an idea we drew, in the deeper study, from the world's best build systems. Version control sits beside it as a separate concern, the way it does everywhere: one tool holds the history of the source, another builds that source into artifacts, and the two are stitched together at a seam.
 
-Bram Cohen's **Manyana** invites us to reconsider that seam. It is a small, public-domain demonstration — about 470 lines of Python — that version control can rest on a **conflict-free replicated data type**, a CRDT, and gain properties that the tools we all use reach toward by approximation. Studying it, we ask two questions. Does a principled version control change how we should think about Silo and about the relationship between version control and the build store? And what would our own version control look like, were we to build it on these ideas? We give that module a name in this piece: **Mantra**, the faithful record that never forgets a line.
+Bram Cohen's **Manyana** invites us to reconsider that seam. It is a small, public-domain demonstration — about 470 lines of Python — that version control can rest on a **conflict-free replicated data type**, a CRDT, and gain properties that the tools we all use reach toward by approximation. Studying it, we ask two questions. Does a principled version control change how we should think about Tablecloth and about the relationship between version control and the build store? And what would our own version control look like, were we to build it on these ideas? We give that module a name in this piece: **Mantra**, the faithful record that never forgets a line.
 
 We keep this in the external-research stack, where naming the works that teach us is welcome. Mantra arrives here as a proposal, to be admitted to the disciplined design space only once it has earned its place.
 
@@ -38,7 +38,7 @@ There is a cost, named honestly: the system commits to a diff at commit time, ba
 
 ## The Seam Between Version Control and the Build Store
 
-To see what Manyana updates for us, look first at how the two concerns relate in the wider world. Git holds the history of the source: a content-addressed object store of commits and trees and blobs, each named by a hash of its contents. Nix holds the history of the *build*: a content-addressed, immutable store of build results, each named by a hash of all its inputs. Both rest on the same beautiful instinct — name a thing by its content, keep it immutable, let the collection only ever grow — and that shared instinct is the very thing Silo inherits.
+To see what Manyana updates for us, look first at how the two concerns relate in the wider world. Git holds the history of the source: a content-addressed object store of commits and trees and blobs, each named by a hash of its contents. Nix holds the history of the *build*: a content-addressed, immutable store of build results, each named by a hash of all its inputs. Both rest on the same beautiful instinct — name a thing by its content, keep it immutable, let the collection only ever grow — and that shared instinct is the very thing Tablecloth inherits.
 
 Yet the two live as separate tools, joined at a seam. A build pins a source revision by its hash; the build store points back into the version-control store and trusts it. The seam works, and it is loose. Two object models, two notions of history, two content-addressing schemes that happen to rhyme, stitched together by a pinned reference. Most of the friction people feel — reproducibility that depends on remembering to pin, history that the build store cannot see into, version control that knows nothing of what was built from it — lives at that seam.
 
@@ -46,13 +46,13 @@ Manyana sharpens the picture by making version control itself principled and con
 
 ---
 
-## What This Updates About Silo
+## What This Updates About Tablecloth
 
-The update to our thinking is this. Silo need not treat version control as a foreign tool it merely points at. Because Silo already rests on content-addressed immutability, and because a weave-based version control rests on the same, the two can share one foundation rather than meeting at a seam.
+The update to our thinking is this. Tablecloth need not treat version control as a foreign tool it merely points at. Because Tablecloth already rests on content-addressed immutability, and because a weave-based version control rests on the same, the two can share one foundation rather than meeting at a seam.
 
 Concretely, we recommend that the versioned source and the build store speak the same language of content-addressed, immutable, accreting values. The history of a source file — its weave — and the build results derived from it become two views of one coherent, deterministic whole, rather than two stores lashed together. A build can see into the history it came from. The history can know what was built from it. Reproducibility becomes structural, given for free by the design, because the reference and the content are one thing. This is the same value we have traced through every layer — content-addressing, accretion, enduring names, determinism — now closing the oldest seam in the toolchain.
 
-To carry that into our own ecosystem, we need a version-control module that belongs to the same family as Silo. We name it Mantra.
+To carry that into our own ecosystem, we need a version-control module that belongs to the same family as Tablecloth. We name it Mantra.
 
 ---
 
@@ -80,20 +80,20 @@ So Mantra is not only a version-control module that happens to suit us. It is Ra
 
 ---
 
-## How Mantra and Silo Interplay
+## How Mantra and Tablecloth Interplay
 
-Set Mantra beside Silo and the old seam closes. Mantra holds the source as a content-addressed, deterministic weave. Silo builds from that source into a content-addressed, deterministic store. Both name by content, both keep the immutable, both only grow — so they stand as two faces of one foundation, rather than two strangers pinned together.
+Set Mantra beside Tablecloth and the old seam closes. Mantra holds the source as a content-addressed, deterministic weave. Tablecloth builds from that source into a content-addressed, deterministic store. Both name by content, both keep the immutable, both only grow — so they stand as two faces of one foundation, rather than two strangers pinned together.
 
-The interplay is direct. A Silo build draws its inputs from a Mantra weave by content, so a build is reproducible by construction rather than by the discipline of remembering to pin a revision. The history Mantra keeps is legible to Silo, so a build can know precisely the source history it came from, and a source can know what was built from it. Where the world stitches Git to Nix across a loose seam, Rye grows Mantra and Silo from one root, so version control and build are coherent the way the rest of the ecosystem is coherent. The grain is the same all the way through.
+The interplay is direct. A Tablecloth build draws its inputs from a Mantra weave by content, so a build is reproducible by construction rather than by the discipline of remembering to pin a revision. The history Mantra keeps is legible to Tablecloth, so a build can know precisely the source history it came from, and a source can know what was built from it. Where the world stitches Git to Nix across a loose seam, Rye grows Mantra and Tablecloth from one root, so version control and build are coherent the way the rest of the ecosystem is coherent. The grain is the same all the way through.
 
-This is a proposal, offered from the open stack where we study and compare. Mantra crosses into the disciplined design space — to take its place beside TAME, Aurora, Rye, Silo, Tally, and Caravan — once we have confirmed it, slowly and intentionally, in the way that space asks. For now, we have learned something worth keeping: version control and the build store want to be one family, and a weave is how they join.
+This is a proposal, offered from the open stack where we study and compare. Mantra crosses into the disciplined design space — to take its place beside TAME, Aurora, Rye, Tablecloth, Tally, and Caravan — once we have confirmed it, slowly and intentionally, in the way that space asks. For now, we have learned something worth keeping: version control and the build store want to be one family, and a weave is how they join.
 
 ---
 
 ## Sources and Gratitude
 
 - **Bram Cohen, *Manyana*** — the CRDT-based version-control demonstration: the weave, never-failing commutative merges, informative conflict presentation, generation counting, permanent line ordering, and rebase-and-squash that preserve history. Cloned whole and unmodified into `../gratitude/manyana/` (rev `bd77d48`), public domain, from `github.com/bramcohen/manyana`, with the accompanying essay at `bramcohen.com/p/manyana`.
-- **The content-addressing lineage** — the shared instinct beneath Git's object store and Nix's build store, which Silo inherits and which Mantra now joins, drawn through the systems lineage of `997_SYSTEM.md`.
+- **The content-addressing lineage** — the shared instinct beneath Git's object store and Nix's build store, which Tablecloth inherits and which Mantra now joins, drawn through the systems lineage of `997_SYSTEM.md`.
 
 ---
 

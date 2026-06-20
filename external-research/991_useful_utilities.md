@@ -61,13 +61,13 @@ Caravan is, in essence, this family re-grown. Vendoring it brings the study clos
 
 ## Tier 3 — Build and Reproducibility
 
-- **samurai** — *MIT.* A ninja-compatible build tool in a few thousand lines of C. **Near:** fast, small builds without a heavy dependency. **Far:** a clear reference for how Silo might drive builds.
-- **redo** (e.g. `redo-c`) — *permissive.* Djb's build design: each target a small script, dependencies discovered as they are used. **Far:** a second model for Silo's build reasoning, complementary to samurai's graph.
+- **samurai** — *MIT.* A ninja-compatible build tool in a few thousand lines of C. **Near:** fast, small builds without a heavy dependency. **Far:** a clear reference for how Tablecloth might drive builds.
+- **redo** (e.g. `redo-c`) — *permissive.* Djb's build design: each target a small script, dependencies discovered as they are used. **Far:** a second model for Tablecloth's build reasoning, complementary to samurai's graph.
 - **zig** — *already vendored.* Our compiler and, for now, the ground beneath Rye's standard library.
 
 ---
 
-## Tier 4 — Crypto and Integrity, for Mantra, Tally, and Silo
+## Tier 4 — Crypto and Integrity, for Mantra, Tally, and Tablecloth
 
 - **monocypher** — *CC0 / 2-clause BSD, single file.* Audited primitives — Blake2b, ChaCha20, Poly1305, X25519, Ed25519, Argon2 — in one readable file. **Near:** everything content-addressing and signing needs. **Far:** the ideal size and license to re-grow as Rye's own `std.crypto` companions — a right-sized reference for the signing and hashing primitives Mantra and Tally lean on. For the SHA3 family Mantra recommends, our `std` already carries Zig's implementation, so monocypher complements rather than supplies it.
 
@@ -89,10 +89,10 @@ The third TAME value lives here: tools a person delights in.
 
 ---
 
-## Tier 7 — Data and Configuration, the Lineage of Silo
+## Tier 7 — Data and Configuration, the Lineage of Tablecloth
 
-- **jq** — *MIT.* Querying and shaping structured data. **Near:** handling JSON in the jail. **Far:** informs how Silo reads and transforms configuration values.
-- **sixos** and **infuse.nix** — *already vendored.* The s6-and-Nix composition lineage, with `infuse`'s lawful combinator, that feeds Silo directly. The Nix language itself stays a studied reference.
+- **jq** — *MIT.* Querying and shaping structured data. **Near:** handling JSON in the jail. **Far:** informs how Tablecloth reads and transforms configuration values.
+- **sixos** and **infuse.nix** — *already vendored.* The s6-and-Nix composition lineage, with `infuse`'s lawful combinator, that feeds Tablecloth directly. The Nix language itself stays a studied reference.
 
 ---
 
@@ -111,7 +111,7 @@ The third TAME value lives here: tools a person delights in.
 
 ## What Each Becomes in Rye
 
-The list resolves into a few clear destinations. The coreutils families (sbase, ubase, toybox's catalog) become **a Rye base suite** atop our own `std`. The skarnet suite becomes **Caravan**. The crypto file becomes companions to **Rye's `std.crypto`**, serving **Mantra** and **Tally**. The build tools and Nix lineage inform **Silo**. The version-control line feeds **Mantra**. The sandbox becomes **Pond**, the gentle enclosure our agents work within. Seen this way, the utilities are not a detour from the modules — they are the modules, met early, in a form we can run today.
+The list resolves into a few clear destinations. The coreutils families (sbase, ubase, toybox's catalog) become **a Rye base suite** atop our own `std`. The skarnet suite becomes **Caravan**. The crypto file becomes companions to **Rye's `std.crypto`**, serving **Mantra** and **Tally**. The build tools and Nix lineage inform **Tablecloth**. The version-control line feeds **Mantra**. The sandbox becomes **Pond**, the gentle enclosure our agents work within. Seen this way, the utilities are not a detour from the modules — they are the modules, met early, in a form we can run today.
 
 ---
 

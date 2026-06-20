@@ -22,7 +22,7 @@ Per-project notes: **997_SYSTEM.md**.
 
 | Project | How we hold it | Study boundary |
 |---------|----------------|----------------|
-| **Nix** | Local clone; not in git | Brix, Silo — do not link libnix |
+| **Nix** | Local clone; not in git | Brix, Tablecloth — do not link libnix |
 | **libqrencode** | Gitlink | `tools/.build/qrencode` only |
 
 LGPL limits embedding, not ideas or separate host tools. Full notes: **997_SYSTEM.md**.
@@ -41,7 +41,7 @@ LGPL limits embedding, not ideas or separate host tools. Full notes: **997_SYSTE
 
 | Project | Hold | Rule |
 |---------|------|------|
-| **Nix** | Local clone | Brix/Silo ideas only — no libnix link |
+| **Nix** | Local clone | Brix/Tablecloth ideas only — no libnix link |
 | **libqrencode** | Gitlink | `tools/.build/qrencode` only |
 
 ## Permissive — study freely, still write our own code

@@ -16,7 +16,7 @@
 
 Wayland is a protocol, not a program. It describes how a compositor and its clients communicate: a client asks for a surface, draws to it, and the compositor places it on the screen. The protocol is minimal by design — it replaces the vast, accumulated surface of X11 with a small, typed message set. Clients do their own rendering; the compositor places, transforms, and presents.
 
-**TAME alignment:** Wayland's minimalism is deeply aligned. A small protocol with stated types is a narrow surface — the same discipline Silo and Comlink keep. The compositor is the single authority over what appears on screen, the way Caravan is the single authority over what runs. The protocol's extensibility through typed extension protocols (each a small, self-contained addition) follows the accretion model: add beside, never break.
+**TAME alignment:** Wayland's minimalism is deeply aligned. A small protocol with stated types is a narrow surface — the same discipline Tablecloth and Comlink keep. The compositor is the single authority over what appears on screen, the way Caravan is the single authority over what runs. The protocol's extensibility through typed extension protocols (each a small, self-contained addition) follows the accretion model: add beside, never break.
 
 **What Wayland does not decide:** Wayland says nothing about how windows are arranged, how keybindings work, or how applications are launched. Those are compositor decisions. This is the right separation — the protocol carries surfaces; policy lives above it.
 
@@ -128,7 +128,7 @@ This is not executable Rishi today — `bind` is not yet a builtin. It is the de
 | Status bar | **Brushstroke status strip** | Brushstroke widget |
 | Compositor (Hyprland) | **Brushstroke** | Brushstroke + Wayland |
 | Window manager | **Rishi layout script** | Rishi protocol extension |
-| Package manager | **Brix** | Brix descriptor + Silo store |
+| Package manager | **Brix** | Brix descriptor + Tablecloth store |
 | Init system | **Caravan** | Microkernel supervision |
 | Version control | **Mantra** | Weave + commit chain |
 

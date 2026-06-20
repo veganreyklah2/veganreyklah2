@@ -42,13 +42,13 @@ Eelco Dolstra's Nix gave us the model for how a system should be declared and bu
 **What Nix does right (TAME-aligned):**
 
 - **A derivation is a pure function of its inputs.** Same inputs, same output, every time. No hidden dependencies, no environment state that leaks. This is the composability that makes caching, distributed building, and reproducibility possible.
-- **Content-addressed outputs.** Every build output is named by the hash of its inputs. The name is a promise: the bytes behind it will never change. This is the same discipline our Silo store keeps with SHA3-256, and the same content-naming Mantra uses for weave states.
+- **Content-addressed outputs.** Every build output is named by the hash of its inputs. The name is a promise: the bytes behind it will never change. This is the same discipline our Tablecloth store keeps with SHA3-256, and the same content-naming Mantra uses for weave states.
 - **Immutable store.** Once built, an output is never modified. The store grows by accretion — the same accretion discipline Rye keeps in its versioning.
 - **Lazy evaluation.** Nix evaluates expressions only when needed. Self-referential configurations (a service that refers to its own outputs) work naturally through laziness with cycle detection.
 
 **What Nix does that Brix should inherit:**
 
-- **The store model.** Silo is our store — blobs named by hash, never revised. Brix is our declaration — what to build, from what inputs. The relationship mirrors Nix's derivation-to-store path: the descriptor feeds the store, and the store holds the results.
+- **The store model.** Tablecloth is our store — blobs named by hash, never revised. Brix is our declaration — what to build, from what inputs. The relationship mirrors Nix's derivation-to-store path: the descriptor feeds the store, and the store holds the results.
 - **Parameterized declarations.** A Brix descriptor that takes parameters (which files, which version, which target) is a function that returns a declaration. The full Brix grows toward this, once the seed format (plain key-value) has proven itself.
 
 **What to decline:**
@@ -112,7 +112,7 @@ Adam Joseph's infuse shows how to connect Nix's pure declarations to s6's runnin
 
 One idea, seen five times: a system is composed of simple parts, each about one thing, each placed side by side rather than woven together. s6 keeps supervision simple by refusing to own dependencies. Nix keeps composition pure by refusing to allow mutation. SixOS joins the two without tangling them. infuse merges without clobbering. And skalibs, beneath them all, keeps every pointer owned and every allocation bounded.
 
-We carry this forward in our own vocabulary: Caravan supervises, Brix declares, Tally bounds, Silo stores, and the parts meet at capabilities and policies that are values — the same value model that flows everywhere in the family.
+We carry this forward in our own vocabulary: Caravan supervises, Brix declares, Tally bounds, Tablecloth stores, and the parts meet at capabilities and policies that are values — the same value model that flows everywhere in the family.
 
 ---
 

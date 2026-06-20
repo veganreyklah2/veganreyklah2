@@ -53,7 +53,7 @@ The design is one sentence: **a message is a typed Rye value, named by its conte
 - **Named by content (Mantra + CCN).** The message's name is the SHA3-512 of its content — the hash we strengthened first. Naming by content gives provenance (the name binds to the bytes) and gives **exactly-once almost for free**: a message *is* its hash, so a duplicate is simply a name already seen, dropped without ceremony.
 - **Sealed to an owner key (`985`).** Encryption lives at identity, not at the address — a key agreement between two owner keys, the payload sealed and authenticated. The pipe is untrusted by design; the content needs no trusted pipe.
 - **Validated in place by a shape-cast (the mark, in Rye).** Before a received message is trusted, a shape-cast proves its bytes are the declared Rye type — Arvo's `vale`/"clam" reborn as a typed, asserted read. Once proven, it is read with zero copy. A fault stops loudly, at the door, the instant a malformed message arrives — the correctness stance of `983`.
-- **Carried by what we already have.** Caravan owns the network service and clears its garden cleanly on fault; Tally bounds every buffer and peer's state in a garden; our IP (`985`) carries the datagrams; Silo declares the peers and channels as values. Each piece is one we are already growing.
+- **Carried by what we already have.** Caravan owns the network service and clears its garden cleanly on fault; Tally bounds every buffer and peer's state in a garden; our IP (`985`) carries the datagrams; Tablecloth declares the peers and channels as values. Each piece is one we are already growing.
 
 **The Rishi messenger** is the human surface — an IRC-meets-Dojo, terse for the hand. The smallest version speaks three verbs over content-named, encrypted messages:
 

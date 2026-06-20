@@ -1,6 +1,6 @@
 # 989 · One Language or More? Rye, the Shell, and the Voices of an OS
 
-*Should our future OS speak in one language or more? Should Rye also be its shell and scripting language, or should the shell have its own — a more TAME execline, or something in the spirit of Zig, Haskell, or Nix/Silo? And where does Mantra, our version control, sit among them? The question rests on a hidden assumption: that "the shell" is one thing. It is not. An OS speaks several languages, held together by one memory, and the art is to make them a coherent family rather than one language stretched thin or a babel of strangers.*
+*Should our future OS speak in one language or more? Should Rye also be its shell and scripting language, or should the shell have its own — a more TAME execline, or something in the spirit of Zig, Haskell, or Nix/Tablecloth? And where does Mantra, our version control, sit among them? The question rests on a hidden assumption: that "the shell" is one thing. It is not. An OS speaks several languages, held together by one memory, and the art is to make them a coherent family rather than one language stretched thin or a babel of strangers.*
 
 **Language:** EN
 **Version:** `20260618.150112` (Rye chronological stamp)
@@ -14,7 +14,7 @@
 
 ## The Question
 
-We are building Rye as a systems language, and an operating system, Caravan, to run on it. A natural thrift suggests itself: if we already have Rye, why design a second language for the shell? Let the language that writes the programs also write the scripts. Against that thrift stands an old instinct from Unix and Plan 9 — that the shell wants a language of its own — and the question of which spirit that language should carry: the no-surprise chain-loading of execline, the explicit comptime of Zig, the typed composition of Haskell, or the declarative laziness of Nix and our own Silo. And once a family of them exists, a further question presses: where does Mantra, our version control, sit among them?
+We are building Rye as a systems language, and an operating system, Caravan, to run on it. A natural thrift suggests itself: if we already have Rye, why design a second language for the shell? Let the language that writes the programs also write the scripts. Against that thrift stands an old instinct from Unix and Plan 9 — that the shell wants a language of its own — and the question of which spirit that language should carry: the no-surprise chain-loading of execline, the explicit comptime of Zig, the typed composition of Haskell, or the declarative laziness of Nix and our own Tablecloth. And once a family of them exists, a further question presses: where does Mantra, our version control, sit among them?
 
 One language, or more? We will answer it — yet first we must take the question apart, because it hides a false premise.
 
@@ -61,7 +61,7 @@ With the four jobs named, the spirits the question offered each find their right
 
 - **The Zig spirit** — explicit, comptime, low-level — is *Rye's own* spirit, and it belongs to the **programs**. It is the wrong spirit for glue: too low to the metal, too long in the saying. We keep it where it earns its keep, and carry it no further.
 
-- **The Nix/Silo spirit** — declarative, lazy, content-addressed — is exactly right for **configuration and build**, which is precisely why we already have **Silo**. You describe what the system should be and let realization follow; laziness serves you, computing only what is demanded. Yet that same laziness is a poor fit for a prompt, where a human means *do this now, in this order* — a command typed is a command expected to run, rather than a thunk deferred until forced. Silo for the system's shape; not for the human's hands.
+- **The Nix/Tablecloth spirit** — declarative, lazy, content-addressed — is exactly right for **configuration and build**, which is precisely why we already have **Tablecloth**. You describe what the system should be and let realization follow; laziness serves you, computing only what is demanded. Yet that same laziness is a poor fit for a prompt, where a human means *do this now, in this order* — a command typed is a command expected to run, rather than a thunk deferred until forced. Tablecloth for the system's shape; not for the human's hands.
 
 - **The execline spirit** — interpreter-less chain-loading, bounded, no security surprises — is the right spirit for **orchestration**, the bringing-up of services that is Caravan's lineage. The instinct for "a more TAME execline" lands exactly here. This layer wants no resident interpreter, no parsing ambiguity, no cleverness — just a predictable sequence of process hand-offs that does the same thing every time. It is the wrong spirit for interactive use — its syntax is alien to a human exploring — yet the right one for the init that must never surprise.
 
@@ -75,7 +75,7 @@ No single spirit fits "the shell," because the shell is four jobs. Each spirit f
 
 Mantra is the member of the family you do not *write in* the way you write the others. The four above are synchronic — they say what the system does now. Mantra is diachronic: it remembers what they all said, across every change, forever. It is less a language than a weave, a content-addressed structure that holds the whole history of a thing in its own shape.
 
-And here the shared value model pays its deepest dividend. Because a Rye program, a Silo configuration, an orchestration script, and a value at the prompt are all *the same kind of value*, Mantra can version them with a single mechanism: one weave, content-addressed, holding the history of values rather than the history of text. The program and its config and the service that runs it are not three histories in three formats stitched together — they are one history, in one grain. This is exactly the seam `998_MANTRA.md` set out to close: the gap between a source's history and the build made from it disappears, because both are the same content-addressed values in the same weave. Memory, for the whole family, named in one grain of hashes.
+And here the shared value model pays its deepest dividend. Because a Rye program, a Tablecloth configuration, an orchestration script, and a value at the prompt are all *the same kind of value*, Mantra can version them with a single mechanism: one weave, content-addressed, holding the history of values rather than the history of text. The program and its config and the service that runs it are not three histories in three formats stitched together — they are one history, in one grain. This is exactly the seam `998_MANTRA.md` set out to close: the gap between a source's history and the build made from it disappears, because both are the same content-addressed values in the same weave. Memory, for the whole family, named in one grain of hashes.
 
 So Mantra is not a fifth syntax to learn. It is the family's shared past — the reason the other four can change freely and still be trusted, because nothing they produce is ever truly lost.
 
@@ -86,25 +86,25 @@ So Mantra is not a fifth syntax to learn. It is the family's shared past — the
 We recommend a small family of TAME-coherent languages, sharing one value model, one safety discipline, and one grammar-feel — so that crossing between them costs nothing and learning one eases the next:
 
 - **Rye** — the **programs**. Systems work, in the Zig spirit, strengthened our way.
-- **Silo** — the **configuration and build**. Declarative and content-addressed, in the Nix spirit, already ours.
-- **An orchestration language** — the **services and init**, in the execline spirit: no resident interpreter, bounded, surprise-free. This may need no separate language at all — Silo could *describe* the service graph and Caravan *execute* it in the chain-loading manner — yet if it wants its own small grammar, that grammar is a TAME execline.
+- **Tablecloth** — the **configuration and build**. Declarative and content-addressed, in the Nix spirit, already ours.
+- **An orchestration language** — the **services and init**, in the execline spirit: no resident interpreter, bounded, surprise-free. This may need no separate language at all — Tablecloth could *describe* the service graph and Caravan *execute* it in the chain-loading manner — yet if it wants its own small grammar, that grammar is a TAME execline.
 - **An interactive shell** — the **human glue**: terse, typed, composition-first, and effect-honest, a sibling of Rye rather than Rye itself. We name it **Rishi** — a seer who hears the human and speaks faithfully to the machine, carrying typed values from one command into the next; the name keeps bhakti's devotion and a sattvic, plant-kind gentleness, true to our vow. We take it up in full in `988_rishi_shell.md`.
 - **Mantra** — the **memory**. Less a language you compose in than the content-addressed weave that remembers all the others, versioning programs, configs, scripts, and services alike — because they share one value model, their history is one weave.
 
-The move that earns the one-language prize without its price is this: **all of these share a single value model.** A value produced by a Rye program, carried through a Rishi pipeline, stored by a Silo build, and remembered by a Mantra weave is *the same value*, not four flattened-and-reparsed copies of it. The seam Hickey warns against never opens, because there is nothing to marshal across — not between the languages, and not between the present and the past. We get coherence — one ecosystem, one set of guarantees — without the false economy of one syntax pretending to fit every hand.
+The move that earns the one-language prize without its price is this: **all of these share a single value model.** A value produced by a Rye program, carried through a Rishi pipeline, stored by a Tablecloth build, and remembered by a Mantra weave is *the same value*, not four flattened-and-reparsed copies of it. The seam Hickey warns against never opens, because there is nothing to marshal across — not between the languages, and not between the present and the past. We get coherence — one ecosystem, one set of guarantees — without the false economy of one syntax pretending to fit every hand.
 
 ---
 
 ## The Answer, Plainly
 
-So: **Rye should not be the shell scripting language**, and the shell should not be a single separate language either. Rye is the systems language; the OS speaks a coherent family beside it — Silo for what the system is, an execline-spirit language for bringing it up, a typed, composition-first shell (Rishi) for the human at the prompt, and Mantra as the memory that remembers them all. They are siblings, not strangers: one value model, one safety, one feel. That is how an operating system can speak several languages and still sound like one voice.
+So: **Rye should not be the shell scripting language**, and the shell should not be a single separate language either. Rye is the systems language; the OS speaks a coherent family beside it — Tablecloth for what the system is, an execline-spirit language for bringing it up, a typed, composition-first shell (Rishi) for the human at the prompt, and Mantra as the memory that remembers them all. They are siblings, not strangers: one value model, one safety, one feel. That is how an operating system can speak several languages and still sound like one voice.
 
 ---
 
 ## Sources and Threads
 
 - **`990_shell_scripting_tame.md`** — the survey of shells through the TAME lens that this piece builds upon: execline, Nushell, YSH, Ion, Fish, Bash.
-- **`991_useful_utilities.md`** — execline named as the TAME answer to scripting, and Silo's lineage in the Nix/build world.
+- **`991_useful_utilities.md`** — execline named as the TAME answer to scripting, and Tablecloth's lineage in the Nix/build world.
 - **`998_MANTRA.md`** — Mantra as a content-addressed weave that closes the seam between a source's history and the build made from it; the memory that, given one value model, versions the whole family in one grain.
 - **`997_SYSTEM.md`** — the language-of-the-system view: a system as programs flowing values, and the seam that opens wherever values must be flattened to cross between languages.
 - The wider lineage: Unix (C and `sh`), Plan 9 (C and `rc`), the Lisp machines and Urbit (one language throughout), and the structured-data shells that prove typed pipelines work in practice.

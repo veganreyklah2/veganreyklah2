@@ -149,7 +149,7 @@ file work-in-progress/995_open_threads.md
 file work-in-progress/996_roadmap.md
 ```
 
-Mantra reads this at startup to know the project name and the bricks it tracks. `mantra brix` prints the descriptor. Brix's larger design (the lawful composition combinator, Silo-backed content-addressed derivations) grows from this descriptor later. Silo is the content-addressed store; Brix is the composing language — see `expanding-prompts/10010_brix_composing_language.md`.
+Mantra reads this at startup to know the project name and the bricks it tracks. `mantra brix` prints the descriptor. Brix's larger design (the lawful composition combinator, Tablecloth-backed content-addressed derivations) grows from this descriptor later. Tablecloth is the content-addressed store; Brix is the composing language — see the Tablecloth ladder starting at `expanding-prompts/10018_tablecloth_ladder_index.md` (`10019` split, `10020` build).
 
 ---
 

@@ -417,7 +417,7 @@ fn deserializeCommit(allocator: std.mem.Allocator, blob: []const u8) !CommitReco
 //   version  — descriptor version (Rye chronological stamp)
 //   file     — one tracked brick/source file (multiple allowed, in order)
 //
-// Silo (the content-addressed store) holds blobs; Brix (the composing
+// Tablecloth (the content-addressed store) holds blobs; Brix (the composing
 // language) describes what the system is made of. A .brix descriptor is
 // a course: an ordered list of bricks, declared plainly.
 

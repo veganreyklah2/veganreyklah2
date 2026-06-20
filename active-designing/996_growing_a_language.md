@@ -13,7 +13,7 @@
 
 ## Our Own Ground
 
-This is a clean room. We name only what is ours — TAME, Rye, Brix, Silo, Tally, Caravan, Mantra, Aurora, Pond, and now **Rishi**, our shell — together with **RISC-V**, the open instruction set we treat as solid ground. Everything borrowed enters as a concept, weighed on its own merit. One value orders every recommendation: **safety first, performance second, the joy of the craft third** — and a clean design tends to serve all three at once.
+This is a clean room. We name only what is ours — TAME, Rye, Brix, Tablecloth, Tally, Caravan, Mantra, Aurora, Pond, and now **Rishi**, our shell — together with **RISC-V**, the open instruction set we treat as solid ground. Everything borrowed enters as a concept, weighed on its own merit. One value orders every recommendation: **safety first, performance second, the joy of the craft third** — and a clean design tends to serve all three at once.
 
 ---
 

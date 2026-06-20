@@ -21,6 +21,8 @@ Why keep them at all? Because a prompt well understood is half the work, and a p
 
 This stack counts *upward*, unlike the research and work stacks that count down. The introduction is `9999`; the first expanded prompt is `10000`, the next `10001`, and onward. It reads like a journal, oldest at the top, because a prompt is best understood beside the ones that came before it — a record of how intent was heard and how it grew into action.
 
+Some topics ladder across several files with timestamps one minute apart — for example the **Tablecloth** store (`10018`–`10022`, from `043712`). The index rung names the sequence; each later rung carries one slice of the work. Retired prompt files are pruned rather than left as stubs.
+
 ## What Belongs Here
 
 - The expanded prompt itself: my improved, structured reading of a request.

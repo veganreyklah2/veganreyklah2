@@ -1,6 +1,6 @@
 # 976 · What We Mean by Seed
 
-*A quarantined vocabulary brief: the word **seed** names the smallest living version of a module — the thing that runs, proves one honest claim, and grows by accretion toward the full design. Gall's Law made a noun. The first concrete seeds are named in `987`; the whole-system map carries them in `983`. This brief states what the word means on our own ground so every new seed reads true beside the ones already green.*
+*A siloed vocabulary brief: the word **seed** names the smallest living version of a module — the thing that runs, proves one honest claim, and grows by accretion toward the full design. Gall's Law made a noun. The first concrete seeds are named in `987`; the whole-system map carries them in `983`. This brief states what the word means on our own ground so every new seed reads true beside the ones already green.*
 
 **Language:** EN
 **Version:** `20260620.021912` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — Gall's Law; correctness by construction (`990`); single-stranded composition (`995`)
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only our modules — **Rye**, **Rishi**, **Brix**, **Silo**, **Mantra**, **Tally**, **Caravan**, **Aurora**, **Pond**, **Comlink**, **Brushstroke**, **Skate**, **Scribble** — together with **RISC-V** and **x86_64** where hardware matters. The insight that a complex system grows from a simpler one that already worked enters as a principle (Gall's Law). The gratitude for s6's supervision discipline and Urbit's loom lives in `../external-research/`; here we speak only what is ours.
+This is a clean room. We name only our modules — **Rye**, **Rishi**, **Brix**, **Tablecloth**, **Mantra**, **Tally**, **Caravan**, **Aurora**, **Pond**, **Comlink**, **Brushstroke**, **Skate**, **Scribble** — together with **RISC-V** and **x86_64** where hardware matters. The insight that a complex system grows from a simpler one that already worked enters as a principle (Gall's Law). The gratitude for s6's supervision discipline and Urbit's loom lives in `../external-research/`; here we speak only what is ours.
 
 ---
 
@@ -53,7 +53,7 @@ A seed **says** what the module is for. The v1 beside it **composes** what the s
 | **Owner key seed** | Cryptographic material from which keys derive (`10002`) — a *seed phrase*, not a Gall seed. |
 | **Random seed** | PRNG or ML reproducibility — unrelated vocabulary. |
 | **Expanding prompt** | A prompt is a seed of *intent* (`9999`); the code seed is the running proof of a *module*. |
-| **Quarantine brief** | Design on clean-room ground — essential, yet not a seed until a program runs the claim. |
+| **siloed brief** | Design on clean-room ground — essential, yet not a seed until a program runs the claim. |
 | **Full module** | Caravan v1, Tally v1, Pond GUI — compositions of seeds and simpler systems beneath them. |
 
 When prose says "the forge seed" or "Comlink seed," it means **the smallest running slice** of that module still to be written — not the whole forge or the whole network.
@@ -104,7 +104,7 @@ The seed file stays. Later rings import its discipline or inline its types hones
 | **Rishi** | `rishi/src/main.rye` + tests | Typed shell; gate trio in `.rish` | Running |
 | **Pond** | `rishi/examples/pond.rish` | Policy as a value | Designed; awaits Caravan + Tally enforcement |
 | **Skate** | — | Monospace text grid on Wayland seed | Next (`10017` Track B) |
-| **Scribble / Lantern / Lattice** | — | Horizon modules (`978`) | Quarantined design only |
+| **Scribble / Lantern / Lattice** | — | Horizon modules (`978`) | Siloed design only |
 
 Horizon seeds still to plant: **virtio-net device wire**, **Caravan capability table**, **Forge HTTP seed** (`982`).
 

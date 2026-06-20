@@ -1,6 +1,6 @@
 # 979 · Comlink Remoting — Value-Based State Sync Over the Bounded Network
 
-*A quarantined design brief for remote access in the TAME Rye OS: Comlink carries terminal state as values over UDP, authenticated by owner keys, sealed by our own crypto, and enclosed by Pond on the server side. The session roams by key, not by address. The remote shell synchronizes state rather than streaming bytes.*
+*A siloed design brief for remote access in the TAME Rye OS: Comlink carries terminal state as values over UDP, authenticated by owner keys, sealed by our own crypto, and enclosed by Pond on the server side. The session roams by key, not by address. The remote shell synchronizes state rather than streaming bytes.*
 
 **Language:** EN
 **Version:** `20260620.012112` (Rye chronological stamp)
@@ -8,7 +8,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 

@@ -1,6 +1,6 @@
-# 987 · The Bounded Enclosure — How Rye, Silo, Rishi, and Mantra Serve Pond, Caravan, and Tally
+# 987 · The Bounded Enclosure — How Rye, Tablecloth, Rishi, and Mantra Serve Pond, Caravan, and Tally
 
-*Pond re-grows over the kernel's isolation primitives — and in our own world, those primitives are ours: **Caravan**, the kernel and supervisor, and **Tally**, the garden allocator. So Pond is the focused composition of Caravan's isolation and Tally's bounds, expressed as a policy that is a value. To serve Pond is therefore to serve all three, and the whole family — Rye, Silo, Rishi, Mantra — bends naturally to that work.*
+*Pond re-grows over the kernel's isolation primitives — and in our own world, those primitives are ours: **Caravan**, the kernel and supervisor, and **Tally**, the garden allocator. So Pond is the focused composition of Caravan's isolation and Tally's bounds, expressed as a policy that is a value. To serve Pond is therefore to serve all three, and the whole family — Rye, Tablecloth, Rishi, Mantra — bends naturally to that work.*
 
 **Language:** EN
 **Version:** `20260618.180812` (Rye chronological stamp)
@@ -34,7 +34,7 @@ So Pond is not a thing apart. It is Caravan's isolation and Tally's bounds, comp
 ## How the Family Serves Caravan
 
 - **Rye** is Caravan's substrate. A kernel asks for exactly what TAME gives: explicit control flow, bounds on everything, assertions where a wrong step would be catastrophic, no hidden machinery. And Rye treats RISC-V as solid ground, so Caravan reasons about an open instruction set it can read and own, rather than a black box.
-- **Silo** describes what Caravan brings up. In the lineage we studied, one language *declares* the services and their order while the supervisor *realizes* them. Silo is that declaration — what the system is, named by content — and Caravan is the hand that makes it so.
+- **Tablecloth** describes what Caravan brings up. In the lineage we studied, one language *declares* the services and their order while the supervisor *realizes* them. Tablecloth is that declaration — what the system is, named by content — and Caravan is the hand that makes it so.
 - **The orchestration language** carries Caravan's startup. The bringing-up of services wants surprise-free, interpreter-less sequencing — the execline-spirit member of the family — so that the code which runs when nothing else is there to catch it does the same thing every time.
 - **Rishi** is the human's way in. A person at the prompt invokes Caravan, inspects a running tree, composes a launch — terse for the hand, typed underneath. Pond itself becomes something Caravan supervises and Rishi opens.
 - **Mantra** gives Caravan a memory. The system's configuration and its succession of states — which services, which versions, which generation — live as a content-addressed weave, so a running system is reproducible from its history rather than from a remembered incantation. The seam between *what the system is* and *what it was* closes, the same way it closes between source and build.
@@ -45,7 +45,7 @@ So Pond is not a thing apart. It is Caravan's isolation and Tally's bounds, comp
 
 - **Rye** is Tally made principle-first. TAME asks us to bound every allocation and, where we can, to take our memory at the start and clear it whole — which is precisely the garden allocator's shape. The first `rye` tool already allocates from a single process garden the runtime clears on exit; Tally is that pattern grown into a module, with its edges asserted.
 - **Tally is the bound that Pond and Caravan both lean on.** Pond's bounded living space and Caravan's per-service memory are the same primitive seen twice: a garden with a stated size. Give that primitive one good home, and every enclosure and every service inherits a memory it cannot silently outgrow.
-- **Silo** can budget the gardens, declaring how much room a service or an enclosure may hold; **Rishi** can show them, a `tally` view of which garden holds what; and the **gates** can harden the allocator's invariants, asserting that a region's edges hold and that nothing is handed back twice.
+- **Tablecloth** can budget the gardens, declaring how much room a service or an enclosure may hold; **Rishi** can show them, a `tally` view of which garden holds what; and the **gates** can harden the allocator's invariants, asserting that a region's edges hold and that nothing is handed back twice.
 
 ---
 
@@ -57,7 +57,7 @@ Pond, Caravan, and Tally all stand on the same standard-library surface — the 
 
 ## One Value Model, Seam-Free
 
-A Pond policy, a Caravan service description, a Tally budget — each is a *value*, not a scatter of stringly flags. Because the family shares one value model, a policy composed in Silo flows through a Rishi pipeline into Pond, Caravan, or Tally with nothing flattened to text and reparsed — no marshaling seam, exactly where a security boundary can least afford ambiguity. And Mantra can version any of them, so an enclosure's policy or a system's generation has an enduring, content-addressed name.
+A Pond policy, a Caravan service description, a Tally budget — each is a *value*, not a scatter of stringly flags. Because the family shares one value model, a policy composed in Tablecloth flows through a Rishi pipeline into Pond, Caravan, or Tally with nothing flattened to text and reparsed — no marshaling seam, exactly where a security boundary can least afford ambiguity. And Mantra can version any of them, so an enclosure's policy or a system's generation has an enduring, content-addressed name.
 
 ---
 

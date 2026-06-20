@@ -1,6 +1,6 @@
 # 985 · Encrypted Networking, From the Boot Upward
 
-*How does a machine come to speak to another machine — from the firmware that wakes it, through the boot, up into a running network — and where in that climb does it simply **assume** trust rather than prove it? This study follows that ascent, asks how Aurora, Caravan, Tally, Silo, Mantra, and Rye would make it encrypted from the first packet on RISC-V, and learns — gratefully and critically — from three living systems: Urbit's Ames and Jael, Sui's Mysticeti and Move, and (in its sibling, `984`) Nostr.*
+*How does a machine come to speak to another machine — from the firmware that wakes it, through the boot, up into a running network — and where in that climb does it simply **assume** trust rather than prove it? This study follows that ascent, asks how Aurora, Caravan, Tally, Tablecloth, Mantra, and Rye would make it encrypted from the first packet on RISC-V, and learns — gratefully and critically — from three living systems: Urbit's Ames and Jael, Sui's Mysticeti and Move, and (in its sibling, `984`) Nostr.*
 
 **Language:** EN
 **Version:** `20260618.195512` (Rye chronological stamp)
@@ -42,7 +42,7 @@ The reimagining is one sentence: **a packet is a value, encrypted to an identity
 - **Tally bounds the buffers.** Every queue, every reassembly window, every peer's state lives in a bounded garden with a stated limit, so a flood meets an edge rather than eating memory — the TAME habit of putting a limit on everything, exactly where networking most needs it.
 - **Rye types the packet.** A datagram is a value with a shape — sender identity, receiver identity, a nonce, a content hash, a payload — rather than a smear of bytes. The encryption (a Diffie–Hellman key between owner keys, an authenticated cipher over the payload) is a function on that value, asserted — key present, nonce never repeated, length within bounds — in the strengthened `std` we are already tending.
 - **Mantra names what crossed.** Each message is content-addressed by SHA3-512 — the hash we strengthened first, precisely because it would give Mantra's lines and now the network's messages their enduring names. A conversation becomes a small DAG of named values (Mysticeti's lesson at human scale): each message references those it answers, so order lives in the structure and a gap is visible rather than silent.
-- **Silo describes the interface.** Which device, which peers, which bounds — declared as a value, not configured by mutable command, so the network a machine will speak is something you can read before it runs (Move's declared-inputs lesson, brought to configuration).
+- **Tablecloth describes the interface.** Which device, which peers, which bounds — declared as a value, not configured by mutable command, so the network a machine will speak is something you can read before it runs (Move's declared-inputs lesson, brought to configuration).
 
 **The smallest network that works.** By Gall's Law we do not build a stack; we build one encrypted datagram. Two harts in two emulators, each with an owner key; one computes the shared key to the other, sends a single authenticated, content-named datagram; the other verifies it — key present, hash matches, nonce fresh, all asserted — and answers. That is the seed. TCP, routing, discovery, the whole IP edifice: each is a later stage grown from a datagram that already proved itself, never assumed beneath it.
 
@@ -55,11 +55,11 @@ The reimagining is one sentence: **a packet is a value, encrypted to an identity
 
 ## Longer Horizon
 
-Further out, the same value travels the whole way without a seam: a thought written in Rishi, shaped as a Rye value, named by Mantra, encrypted to a friend's owner key by a function in our own `std`, carried over an interface Caravan owns and Silo described, and read on the far side as the *same value* — no marshaling, no serialization boundary, no late TLS wrapper. The network stops being a layer the program reaches down into and becomes simply the means by which our one value model crosses between machines. That is the through-line from this study to the social layer in `984`: relays and feeds and curation are only this — named, signed values, flowing — seen from far enough away.
+Further out, the same value travels the whole way without a seam: a thought written in Rishi, shaped as a Rye value, named by Mantra, encrypted to a friend's owner key by a function in our own `std`, carried over an interface Caravan owns and Tablecloth described, and read on the far side as the *same value* — no marshaling, no serialization boundary, no late TLS wrapper. The network stops being a layer the program reaches down into and becomes simply the means by which our one value model crosses between machines. That is the through-line from this study to the social layer in `984`: relays and feeds and curation are only this — named, signed values, flowing — seen from far enough away.
 
 ## Conclusion
 
-The Internet we have proves trust late and confuses where with who; the systems we honored prove trust early and make identity the root. We need not adopt their weight to keep their wisdom. Encryption at the owner key, packets as typed and content-named values, buffers bounded by Tally, the device owned by Caravan, the interface declared by Silo, the history named by Mantra — and all of it grown from a single datagram that already vouches for itself. We begin, as always, with the smallest thing that works, and let the network rise from a packet we can trust rather than one we must believe.
+The Internet we have proves trust late and confuses where with who; the systems we honored prove trust early and make identity the root. We need not adopt their weight to keep their wisdom. Encryption at the owner key, packets as typed and content-named values, buffers bounded by Tally, the device owned by Caravan, the interface declared by Tablecloth, the history named by Mantra — and all of it grown from a single datagram that already vouches for itself. We begin, as always, with the smallest thing that works, and let the network rise from a packet we can trust rather than one we must believe.
 
 ---
 

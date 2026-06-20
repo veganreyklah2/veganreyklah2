@@ -6,13 +6,13 @@
 **Version:** `20260618.195512` (Rye chronological stamp — the moment of taking)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
-**Lens:** active-designing principles (Gall's Law, the gates, one value model, simplicity, the quarantine); TAME Style; critical evaluation through every filter we hold
+**Lens:** active-designing principles (Gall's Law, the gates, one value model, simplicity, the silo); TAME Style; critical evaluation through every filter we hold
 
 ---
 
 ## The Seed (a faithful echo)
 
-The request, in its own shape: write a `985` research piece asking how the Internet Protocol is implemented and executed via ownerboot, and how we translate that to Aurora, Rye, Mantra, Silo and the rest on RISC-V, for *encrypted* networking. Explore Urbit's Ames and Jael, and Sui's Move and Mysticeti, and adapt their essences. Use the "mission / problem / opportunity / architecture / caveats / longer horizon / conclusion" structure, the active-designing principles, and a TAME lens. Add `urbit/urbit`, the Sui repositories, and Nostr's NIPs — especially the work of respected projects like Primal and Damus — to the gratitude folder, and open a new work-in-progress thread for them. Tie all of it into Nostr research, and weave Nostr relays, Sui validation, and networked DAG curation into a vision for a social application that serves Vedanta vegan bhakti values — kept simple. Evaluate every design critically through our own perspectives. Add further research documents where they help.
+The request, in its own shape: write a `985` research piece asking how the Internet Protocol is implemented and executed via ownerboot, and how we translate that to Aurora, Rye, Mantra, Tablecloth and the rest on RISC-V, for *encrypted* networking. Explore Urbit's Ames and Jael, and Sui's Move and Mysticeti, and adapt their essences. Use the "mission / problem / opportunity / architecture / caveats / longer horizon / conclusion" structure, the active-designing principles, and a TAME lens. Add `urbit/urbit`, the Sui repositories, and Nostr's NIPs — especially the work of respected projects like Primal and Damus — to the gratitude folder, and open a new work-in-progress thread for them. Tie all of it into Nostr research, and weave Nostr relays, Sui validation, and networked DAG curation into a vision for a social application that serves Vedanta vegan bhakti values — kept simple. Evaluate every design critically through our own perspectives. Add further research documents where they help.
 
 ## The Mission
 
@@ -22,7 +22,7 @@ Learn, from three living systems and one boot project, how to carry *values betw
 
 **Networking, from the boot upward.**
 1. How does conventional IP networking come to exist on a machine — from firmware and boot (ownerboot's territory on RISC-V) through the kernel's stack — and where, in that ascent, does trust get assumed rather than proven?
-2. What would it mean for Aurora to bring a network interface up as a *flow of named values* rather than a tangle of mutable state — and for Caravan to own the device, Tally to bound its buffers, Silo to describe the interface, and Mantra to name what crossed?
+2. What would it mean for Aurora to bring a network interface up as a *flow of named values* rather than a tangle of mutable state — and for Caravan to own the device, Tally to bound its buffers, Brix to describe the interface, and Mantra to name what crossed?
 3. Where should encryption live so that it is the default and not a layer bolted on — at the identity, as Urbit does, rather than at the address?
 
 **Urbit (Ames, Jael) — adapt the essences.**
@@ -34,7 +34,7 @@ Learn, from three living systems and one boot project, how to carry *values betw
 7. Move makes every asset an object with a unique id and clear ownership, declares a transaction's inputs up front so honest work runs in parallel, and verifies bytecode before it runs. How much of that — declared effects, resource safety, verify-before-run — is simply TAME wearing other words?
 
 **Nostr (NIPs, Primal, Damus) — adapt the essences, critically.**
-8. Nostr is three parts: keys, signed events, relays. An event is content-addressed (its id is a SHA-256 of its fields) and signed (Schnorr/secp256k1); relays store and forward yet cannot alter. What is the smallest honest version of this we could speak natively, in one value model, across Rye, Silo, Rishi, and Mantra?
+8. Nostr is three parts: keys, signed events, relays. An event is content-addressed (its id is a SHA-256 of its fields) and signed (Schnorr/secp256k1); relays store and forward yet cannot alter. What is the smallest honest version of this we could speak natively, in one value model, across Rye, Tablecloth, Rishi, and Mantra?
 9. Relays are simple WebSocket servers; Primal's caching service curates their firehose into feeds; Damus signs and verifies on the edge. Where is Nostr genuinely simple, and where has ease (npub UX, relay discovery, spam, encryption bolted on as NIP-04/44/59) been mistaken for simplicity?
 
 **The social layer — simple, and true to the values.**
@@ -50,9 +50,9 @@ Learn, from three living systems and one boot project, how to carry *values betw
 ## The Lens to Hold
 
 - **Simplicity first.** "Keeping things simple" was asked for outright. Prefer the smallest thing that works (Gall's Law). Tell the simple from the easy.
-- **One value model.** A value made in Rye, carried by Rishi, configured by Silo, named by Mantra, and sent over the wire should be the *same* value, with no marshaling seam — the through-line of every essence we adapt.
+- **One value model.** A value made in Rye, carried by Rishi, composed by Brix, stored in Tablecloth, named by Mantra, and sent over the wire should be the *same* value, with no marshaling seam — see `expanding-prompts/10021_tablecloth_value_model.md` (Tablecloth ladder rung 3).
 - **Encrypted and content-addressed by default**, identity at the core, location at the edge.
-- **Critical evaluation.** Honor these systems and refuse to flatter them. Name where Urbit is heavy, where Sui assumes a chain we may not want, where Nostr confuses ease for simplicity. The quarantine still holds in active-designing; external-research may name names and judge them.
+- **Critical evaluation.** Honor these systems and refuse to flatter them. Name where Urbit is heavy, where Sui assumes a chain we may not want, where Nostr confuses ease for simplicity. The silo still holds in active-designing; external-research may name names and judge them.
 - **The values are the point.** Non-harming, devotion, clarity, attention treated as sacred rather than mined. The technology serves them, never the reverse.
 
 ## Now Run It

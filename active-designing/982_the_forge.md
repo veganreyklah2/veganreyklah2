@@ -1,6 +1,6 @@
 # 982 · The Forge — Mantra Served, Brushstroke Drawn, Group Projects Welcome
 
-*A quarantined design brief for the forge we mean to build: a place where Mantra repositories are served, Brushstroke draws the surface, Comlink replicates between peers, and Pond encloses what runs. The forge is where group projects begin — cheaply, sovereign, with a key and a descriptor and the weave that holds every line. This brief names only our own modules and speaks in our own vocabulary.*
+*A siloed design brief for the forge we mean to build: a place where Mantra repositories are served, Brushstroke draws the surface, Comlink replicates between peers, and Pond encloses what runs. The forge is where group projects begin — cheaply, sovereign, with a key and a descriptor and the weave that holds every line. This brief names only our own modules and speaks in our own vocabulary.*
 
 **Language:** EN
 **Version:** `20260620.005112` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, the joy of the craft
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only what is ours — **Mantra**, **Brushstroke**, **Skate**, **Comlink**, **Pond**, **Brix**, **Silo**, **Rishi**, **Rye**, **Tally**, and **Caravan** — together with **RISC-V** and **x86_64** as solid ground. The forge tradition enters as a concept: a place that holds repositories, accepts contributions, and shows history. Everything else is ours.
+This is a clean room. We name only what is ours — **Mantra**, **Brushstroke**, **Skate**, **Comlink**, **Pond**, **Brix**, **Tablecloth**, **Rishi**, **Rye**, **Tally**, and **Caravan** — together with **RISC-V** and **x86_64** as solid ground. The forge tradition enters as a concept: a place that holds repositories, accepts contributions, and shows history. Everything else is ours.
 
 ---
 

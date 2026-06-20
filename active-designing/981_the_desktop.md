@@ -1,6 +1,6 @@
 # 981 · The Desktop — Brushstroke, Skate, and Rishi Composed for the Screen
 
-*A quarantined design brief for the TAME desktop: Brushstroke as the compositor, Skate as the terminal, Rishi as the keybinding language, and every application running inside a Pond enclosure supervised by Caravan. The compositor and the window manager are separate processes composed through a typed protocol — single responsibility on the screen, the same discipline that holds everywhere.*
+*A siloed design brief for the TAME desktop: Brushstroke as the compositor, Skate as the terminal, Rishi as the keybinding language, and every application running inside a Pond enclosure supervised by Caravan. The compositor and the window manager are separate processes composed through a typed protocol — single responsibility on the screen, the same discipline that holds everywhere.*
 
 **Language:** EN
 **Version:** `20260620.011412` (Rye chronological stamp)
@@ -8,7 +8,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 

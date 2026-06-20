@@ -1,6 +1,6 @@
 # 10007 · First Seeds — Caravan, Tally, and a Close Reading Before the Wire Grows
 
-*Expanded from counsel received at `084412`, spoken in Reya 2's radiant voice through a TAME lens. The praise lands on what runs: Rye self-hosts, Aurora carries a sealed datagram between two harts, the gate lives in Rishi, Comlink has a name. The gentle warning is equally clear: Tally, Caravan, Brix, Silo, Mantra, and Pond remain designs (Silo named as composer in the original counsel; now: Brix is the composing language, Silo is the content-addressed store), and the richest near work still leans on them. The counsel names three parallel threads — device-wire, the smallest living seeds of Caravan and Tally, and a close reading of what we cloned before Comlink grows further — so building stays level with design rather than slipping behind again.*
+*Expanded from counsel received at `084412`, spoken in Reya 2's radiant voice through a TAME lens. The praise lands on what runs: Rye self-hosts, Aurora carries a sealed datagram between two harts, the gate lives in Rishi, Comlink has a name. The gentle warning is equally clear: Tally, Caravan, Brix, Tablecloth, Mantra, and Pond remain designs in part (Tablecloth store: see `10018`–`10022` ladder; Brix composing language split in `10019`), and the richest near work still leans on them. The counsel names three parallel threads — device-wire, the smallest living seeds of Caravan and Tally, and a close reading of what we cloned before Comlink grows further — so building stays level with design rather than slipping behind again.*
 
 **Language:** EN
 **Version:** `20260619.084412` (Rye chronological stamp)
@@ -12,7 +12,7 @@
 
 ## The Seed (a faithful echo)
 
-> Where the design still runs a little ahead — and this is the one place to keep your eye — is the unbuilt core. Tally the garden allocator, Caravan the supervisor, Silo, Mantra, and Pond remain designs, and much of the richest near work leans on them. The roadmap already sees this and points at it. My gentle counsel: **alongside the device-wire**, pick off the **smallest living seed of Caravan** — one parent that never dies, one child, restart on a fall — and the **smallest Tally region** with asserted edges. Those two seeds preserve the property you just earned, that building stays level with design rather than slipping behind again. The other thread worth promoting before Comlink grows much further is the **close reading still owed** of the sources you cloned — the packet format, the commit rule, the relay protocols — since the wire and the messenger both lean on how others truly did it.
+> Where the design still runs a little ahead — and this is the one place to keep your eye — is the unbuilt core. Tally the garden allocator, Caravan the supervisor, Tablecloth, Mantra, and Pond remain designs, and much of the richest near work leans on them. The roadmap already sees this and points at it. My gentle counsel: **alongside the device-wire**, pick off the **smallest living seed of Caravan** — one parent that never dies, one child, restart on a fall — and the **smallest Tally region** with asserted edges. Those two seeds preserve the property you just earned, that building stays level with design rather than slipping behind again. The other thread worth promoting before Comlink grows much further is the **close reading still owed** of the sources you cloned — the packet format, the commit rule, the relay protocols — since the wire and the messenger both lean on how others truly did it.
 
 ## The Mission
 
@@ -79,7 +79,7 @@ Output: `external-research/980` band or new `979_*` close-reading stack — **ac
 
 ## Discipline
 
-- **Smallest thing that runs** for B and C — no kernel, no full Pond, no Brix composer or Silo store yet.
+- **Smallest thing that runs** for B and C — no kernel, no full Pond; Tablecloth v1 per `10022`, Brix combinator deferred.
 - **Prove each seed** — assert, test, gate where pure.
 - **Read before inventing** on the wire — Thread D informs Thread A so Comlink does not guess at formats others already solved.
 - **One value model** — seeds return values and records Rishi can inspect later.

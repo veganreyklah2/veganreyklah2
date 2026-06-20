@@ -22,7 +22,7 @@ Reading Aurora and Mantra against these, the first thing we notice is how little
 
 ## Aurora, Through the Decided Design
 
-`993` already aligns with nearly everything we later decided: a boot in deep cohesion with RISC-V, written in Rye; a flow of named values through simple-service stages; stage images named by the hash of their contents; Silo building the manifest, Tally tending the memory, Caravan waking at the end of the relay; the owner's key sealing the chain. It reads now like a letter from ahead.
+`993` already aligns with nearly everything we later decided: a boot in deep cohesion with RISC-V, written in Rye; a flow of named values through simple-service stages; stage images named by the hash of their contents; Tablecloth building the manifest, Tally tending the memory, Caravan waking at the end of the relay; the owner's key sealing the chain. It reads now like a letter from ahead.
 
 What the decided design adds is **the path of Gall's Law.** `993` paints the whole, coherent boot — and the temptation a finished picture invites is to build it whole. We decline that. Aurora grows from the smallest working privilege relay: a single `mret` into supervisor mode, asserted and proven, that *runs*. Then a stage at a time joins it — train the memory, parse the device tree, verify an image — each a simple service that runs before the next is added, each behind the gates. The beauty of `993` is the destination; Gall's Law is how we arrive without ever designing the intricate whole from scratch.
 
@@ -38,7 +38,7 @@ Three more decisions land softly on Aurora. **The gates** harden each stage and 
 
 **It grows from a simple seed.** Gall's Law shapes Mantra as it shapes everything: the first Mantra is the smallest weave that works — an overlay, an always-succeeding merge, line-provenance — grown by degrees toward the full conflict-aware, rebase-preserving system, never built whole.
 
-**It weaves values, not only lines.** Because the family shares one value model, Mantra versions a Rye program, a Silo configuration, a Rishi script, and an orchestration definition with one mechanism — a weave of *values*, content-addressed, rather than a weave of text. The seam `998` set out to close between a source's history and the build made from it widens into a seam closed across the whole family: one history, in one grain.
+**It weaves values, not only lines.** Because the family shares one value model, Mantra versions a Rye program, a Tablecloth configuration, a Rishi script, and an orchestration definition with one mechanism — a weave of *values*, content-addressed, rather than a weave of text. The seam `998` set out to close between a source's history and the build made from it widens into a seam closed across the whole family: one history, in one grain.
 
 **The hash it trusts is now stronger.** `998` chose SHA3-512 for naming, and the strengthening-compiler's first passes hardened exactly that — the Keccak sponge beneath SHA3-512, stated and proven (`../strengthening-compiler/9998_sha3_512.md`, `9997_keccak_sponge.md`). So the names Mantra leans on rest on a function we have made more trustworthy. And one day Mantra will version the very history of those strengthening passes. The tool and the work make each other surer — a circle worth pausing over.
 
@@ -48,13 +48,13 @@ The simplicity lens reads Mantra kindly, too: its always-succeeding merge is com
 
 ## Where Aurora and Mantra Meet
 
-The decided design reveals a meeting the two earlier pieces could not see in each other. Aurora names every stage image by the hash of its contents; Mantra weaves content-addressed values into a history. These are the same instinct, one stage apart. So the boot's succession of verified manifests — which Silo builds reproducibly — becomes a history Mantra can remember: the generations of a machine's boot, content-addressed, replayable, each a promise about exactly which bytes woke the machine. A boot can be rolled back to a known-good dawn the way a source can be rolled back to a known-good line, because both live in the same weave of named values. Aurora lights the machine; Mantra remembers every light it has ever shown.
+The decided design reveals a meeting the two earlier pieces could not see in each other. Aurora names every stage image by the hash of its contents; Mantra weaves content-addressed values into a history. These are the same instinct, one stage apart. So the boot's succession of verified manifests — which Tablecloth builds reproducibly — becomes a history Mantra can remember: the generations of a machine's boot, content-addressed, replayable, each a promise about exactly which bytes woke the machine. A boot can be rolled back to a known-good dawn the way a source can be rolled back to a known-good line, because both live in the same weave of named values. Aurora lights the machine; Mantra remembers every light it has ever shown.
 
 ---
 
 ## What This Updates, Concretely
 
-- **Aurora** — grow it from a minimal working privilege relay, a stage at a time, each gated; written in Rye as a first-class RISC-V program; its content-addressed stages weaving into Mantra, so Silo *builds* the boot and Mantra *remembers* its generations.
+- **Aurora** — grow it from a minimal working privilege relay, a stage at a time, each gated; written in Rye as a first-class RISC-V program; its content-addressed stages weaving into Mantra, so Tablecloth *builds* the boot and Mantra *remembers* its generations.
 - **Mantra** — raise its priority, for it de-risks strengthening at scale; build the minimal weave first (overlay, merge, provenance); weave values rather than only lines, across the whole family; name by the now-strengthened SHA3-512; and let it hold the history of the system and of the boot alike.
 
 Neither `993` nor `998` is rewritten here — a research note is an honest record of when we thought it, and those two stand. This piece is the newer reading, and the updates it names land when we build, along the roadmap at `../work-in-progress/996_roadmap.md`.

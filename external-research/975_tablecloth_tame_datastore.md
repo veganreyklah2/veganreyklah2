@@ -1,6 +1,6 @@
-# 975 · Silo — A TAME-Aligned Datastore: Close Reading of the Field
+# 975 · Tablecloth — A TAME-Aligned Datastore: Close Reading of the Field
 
-*What would a datastore look like if it were designed in the TAME order — correctness first, performance second, joy third? This research reads five stores that each push one or more of those properties hard: LMDB, TigerBeetle, DuckDB, redb, and Turbopuffer. The goal is concrete: distill what each does well that Silo should inherit, and name what each does that Silo should decline.*
+*What would a datastore look like if it were designed in the TAME order — correctness first, performance second, joy third? This research reads five stores that each push one or more of those properties hard: LMDB, TigerBeetle, DuckDB, redb, and Turbopuffer. The goal is concrete: distill what each does well that Tablecloth should inherit, and name what each does that Tablecloth should decline.*
 
 **Language:** EN
 **Version:** `20260619.220012` (Rye chronological stamp)
@@ -31,9 +31,9 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **One writer at a time.** A hard constraint, not a soft advisory. The lock is explicit and the semantics are clear.
 - **Write once per key per transaction.** LMDB's design precludes phantom writes; what you committed, you keep.
 
-**What it does that Silo should decline:**
-- **No content-addressing.** Keys are arbitrary bytes; the store makes no claim about the relationship between a key and its value. Silo names values by their content hash — that identity guarantee is Silo's whole point.
-- **No hard memory bound.** The mmap grows to fit the database. A bound is declared at open time and can be exceeded with a remap. Silo should enforce a hard ceiling, named at initialization.
+**What it does that Tablecloth should decline:**
+- **No content-addressing.** Keys are arbitrary bytes; the store makes no claim about the relationship between a key and its value. Tablecloth names values by their content hash — that identity guarantee is Tablecloth's whole point.
+- **No hard memory bound.** The mmap grows to fit the database. A bound is declared at open time and can be exceeded with a remap. Tablecloth should enforce a hard ceiling, named at initialization.
 
 **Lesson:** The zero-copy, single-writer, copy-on-write design is elegant and correct. LMDB's discipline of "state the constraint in the API" is a model. Its weakness is the unconstrained mmap growth and the absence of content-identity.
 
@@ -50,11 +50,11 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **No general-purpose queries.** By refusing to be general, it stays fast, correct, and auditable. A narrow surface is a safe surface.
 - **Designed for storage fault tolerance.** TigerBeetle assumes disks fail; it uses a two-phase write and verifies checksums. Every write is known to have landed.
 
-**What it does that Silo should consider carefully:**
-- **Tightly coupled to a single domain (accounting).** The discipline is admirable; the scope is narrow. Silo is a general-purpose content-addressed store — it should inherit the discipline, not the accounting schema.
-- **No content-addressing.** Identity is assigned by the caller, not derived from content. Silo derives identity from the SHA3-256 digest; content-naming makes the store self-verifying.
+**What it does that Tablecloth should consider carefully:**
+- **Tightly coupled to a single domain (accounting).** The discipline is admirable; the scope is narrow. Tablecloth is a general-purpose content-addressed store — it should inherit the discipline, not the accounting schema.
+- **No content-addressing.** Identity is assigned by the caller, not derived from content. Tablecloth derives identity from the SHA3-256 digest; content-naming makes the store self-verifying.
 
-**Lesson:** TigerBeetle proves that a narrower interface, stated invariants, and explicit bounds produce a faster and more trustworthy store than a general one. Its fault-tolerance design (two-phase write, checksum on every record) is directly applicable to Silo's durability contract.
+**Lesson:** TigerBeetle proves that a narrower interface, stated invariants, and explicit bounds produce a faster and more trustworthy store than a general one. Its fault-tolerance design (two-phase write, checksum on every record) is directly applicable to Tablecloth's durability contract.
 
 ---
 
@@ -63,15 +63,15 @@ A datastore answers one question: given a key, what is the value? Everything els
 *Columnar, in-process, OLAP. Designed to run in a single process, analyzing data without a server.*
 
 **What it does right (TAME-aligned):**
-- **In-process, no server.** The complexity of a client-server protocol and a separate server process disappears. Silo is similarly in-process: a module called directly, not a service.
-- **Query over structured values.** DuckDB's strength is reading structured data without schema migration penalties. For Silo, this suggests: structured metadata (content hash, size, timestamp, tags) should be first-class and queryable.
+- **In-process, no server.** The complexity of a client-server protocol and a separate server process disappears. Tablecloth is similarly in-process: a module called directly, not a service.
+- **Query over structured values.** DuckDB's strength is reading structured data without schema migration penalties. For Tablecloth, this suggests: structured metadata (content hash, size, timestamp, tags) should be first-class and queryable.
 - **Vectorized execution is fast without being magic.** The speed comes from a clear design decision (column-oriented storage, SIMD-friendly layout) rather than hidden cleverness.
 
-**What it does that Silo should decline:**
-- **SQL is a large surface.** DuckDB accepts arbitrary SQL; Silo's interface should be narrower: `get(hash) → blob` and `put(blob) → hash`. Narrow surfaces are safe surfaces.
-- **No content-addressing.** Tables are mutable; a value can be changed after being stored. Silo is write-once.
+**What it does that Tablecloth should decline:**
+- **SQL is a large surface.** DuckDB accepts arbitrary SQL; Tablecloth's interface should be narrower: `get(hash) → blob` and `put(blob) → hash`. Narrow surfaces are safe surfaces.
+- **No content-addressing.** Tables are mutable; a value can be changed after being stored. Tablecloth is write-once.
 
-**Lesson:** The in-process, no-server architecture is right for Silo. Structured metadata over stored values — type, size, hash, and user-defined tags alongside the raw blob — is worth building from the start.
+**Lesson:** The in-process, no-server architecture is right for Tablecloth. Structured metadata over stored values — type, size, hash, and user-defined tags alongside the raw blob — is worth building from the start.
 
 ---
 
@@ -85,10 +85,10 @@ A datastore answers one question: given a key, what is the value? Everything els
 - **Crash-safe by design.** Two-phase commit; the durability guarantee is explicit and testable.
 - **Single writer, multiple readers.** Like LMDB, with a cleaner type-level enforcement.
 
-**What it does that Silo should adapt:**
-- **Type-parameterized keys and values.** redb's generics allow typed keys and values — a direct model for Silo's typed blob metadata (hash type, size type).
+**What it does that Tablecloth should adapt:**
+- **Type-parameterized keys and values.** redb's generics allow typed keys and values — a direct model for Tablecloth's typed blob metadata (hash type, size type).
 
-**Lesson:** redb proves that a safe-by-design embedded database is achievable and fast. Its type-level transaction enforcement is the right model for Silo's API.
+**Lesson:** redb proves that a safe-by-design embedded database is achievable and fast. Its type-level transaction enforcement is the right model for Tablecloth's API.
 
 ---
 
@@ -99,23 +99,23 @@ A datastore answers one question: given a key, what is the value? Everything els
 **What it does right (TAME-aligned):**
 - **Extreme simplicity.** The API is: insert vectors, query by similarity, delete. The surface is narrow enough to understand in an afternoon.
 - **Written to run fast without special hardware.** Turbopuffer's performance comes from a well-designed data layout and cache-friendly access, not from GPU offload or distributed complexity.
-- **Embeddable.** No server, no configuration file, no daemon. Exactly right for Silo's role as a module, not a service.
+- **Embeddable.** No server, no configuration file, no daemon. Exactly right for Tablecloth's role as a module, not a service.
 
-**What it does that Silo should note:**
+**What it does that Tablecloth should note:**
 - **Vector-specific, not general.** The similarity-search model doesn't directly apply; the *embeddability* and *narrow surface* principles apply directly.
-- **No content-addressing.** Turbopuffer's identity model is caller-assigned. Silo derives identity from content.
+- **No content-addressing.** Turbopuffer's identity model is caller-assigned. Tablecloth derives identity from content.
 
-**Lesson:** The extreme simplicity of Turbopuffer's API is a target for Silo. A store that can be understood in an afternoon is one that can be trusted in a system.
+**Lesson:** The extreme simplicity of Turbopuffer's API is a target for Tablecloth. A store that can be understood in an afternoon is one that can be trusted in a system.
 
 ---
 
-## What Silo Should Inherit
+## What Tablecloth Should Inherit
 
 From the close reading, five principles emerge:
 
 **1. Write-once, content-addressed identity.** A blob is named by its SHA3-256 digest. A name is a promise: the bytes behind it will never change. This is stronger than any of the stores above — it makes the store self-verifying. (Mantra's `.mantra/blobs/` already works this way.)
 
-**2. Hard, stated bounds.** At construction, Silo knows its memory budget and its disk budget. A write that would exceed the budget fails with a named error, not a silent growth. LMDB's unconstrained mmap is the failure mode to avoid.
+**2. Hard, stated bounds.** At construction, Tablecloth knows its memory budget and its disk budget. A write that would exceed the budget fails with a named error, not a silent growth. LMDB's unconstrained mmap is the failure mode to avoid.
 
 **3. Write-once ACID.** A blob is written in one transaction; if the transaction completes, the blob is durable. If it does not complete, nothing is stored. TigerBeetle's two-phase write is the model.
 
@@ -125,24 +125,24 @@ From the close reading, five principles emerge:
 
 ---
 
-## What Silo Should Decline
+## What Tablecloth Should Decline
 
 - **Mutable values.** Content-addressed storage makes mutation incoherent — if the content changes, the name changes. The store never updates; it only accretes. An old version stays, under its old name.
 - **Unbounded growth.** A store with no ceiling is a store that will one day fill a disk without warning. State the ceiling at construction; enforce it at write.
-- **A server process.** Silo is a module, not a service. It is called in-process, from Rye.
+- **A server process.** Tablecloth is a module, not a service. It is called in-process, from Rye.
 - **SQL or a query language.** The surface is `get`, `put`, and metadata query. Narrowness is safety.
 
 ---
 
 ## Relation to Brix
 
-Silo stores; Brix composes. A `.brix` descriptor names the bricks a system is made of. A full Brix build:
+Tablecloth stores; Brix composes. A `.brix` descriptor names the bricks a system is made of. A full Brix build:
 
 1. For each brick: hash the inputs.
-2. Ask Silo: "do you have a blob named by this hash?"
+2. Ask Tablecloth: "do you have a blob named by this hash?"
 3. If yes: done. If no: build, `put` the result, proceed.
 
-Silo is Brix's substrate: it provides the content-addressed storage that makes a Brix build reproducible. Silo's API is narrow so that Brix's dependency on it is narrow.
+Tablecloth is Brix's substrate: it provides the content-addressed storage that makes a Brix build reproducible. Tablecloth's API is narrow so that Brix's dependency on it is narrow.
 
 ---
 
@@ -158,4 +158,4 @@ All read for concepts, not for code or naming conventions. The design decisions 
 
 ---
 
-*Silo holds. Its name is a hash; its promise is the bytes behind the hash, unchanged. Five stores showed us what that promise requires: stated bounds, write-once ACID, single-writer discipline, and a narrow surface. The rest is accretion — a store that grows only by adding, never by changing what it already holds. A ledger, not an eraser.*
+*Tablecloth holds. Its name is a hash; its promise is the bytes behind the hash, unchanged. Five stores showed us what that promise requires: stated bounds, write-once ACID, single-writer discipline, and a narrow surface. The rest is accretion — a store that grows only by adding, never by changing what it already holds. A ledger, not an eraser.*

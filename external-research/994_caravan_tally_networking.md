@@ -7,14 +7,14 @@
 **Last updated:** 2026-06-17
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME Style (`996_TAME_STYLE.md`); honoring and systems lineage in `997_SYSTEM.md`
-**Prerequisite:** the names Rye, Silo, Tally, and Caravan are introduced in `995_ownerboot_riscv_caravan.md`
+**Prerequisite:** the names Rye, Tablecloth, Tally, and Caravan are introduced in `995_ownerboot_riscv_caravan.md`
 **Status:** Exploration
 
 ---
 
 ## The Question We Are Chasing
 
-One question runs underneath everything here, and it is worth saying plainly before we begin. The four names at the heart of this study — the language **Rye**, the configuration language **Silo**, the garden allocator **Tally**, and the kernel **Caravan** — are introduced, with their missions and goals, in the companion piece `995_ownerboot_riscv_caravan.md`. That piece grounds them in a boot; this one goes deeper, testing the same names against five living systems.
+One question runs underneath everything here, and it is worth saying plainly before we begin. The four names at the heart of this study — the language **Rye**, the configuration language **Tablecloth**, the garden allocator **Tally**, and the kernel **Caravan** — are introduced, with their missions and goals, in the companion piece `995_ownerboot_riscv_caravan.md`. That piece grounds them in a boot; this one goes deeper, testing the same names against five living systems.
 
 Does the API of the Linux kernel itself follow TAME Style — the discipline we drew from Tiger Style and the commitment we drew from Rich Hickey's *Spec-ulation*? And how does that API compare to a different way of holding memory: the arena, which our Rye ecosystem frames as the garden allocator **Tally**, inside the kernel **Caravan**, shaped by s6 and TAME Style and aimed first at RISC-V emulation and x86_64 AMD hardware?
 
@@ -88,13 +88,13 @@ The runtime layering is pure TAME, and it answers a question systemd answers bad
 
 ### Infuse — One Lawful Combinator Instead of a Module System
 
-The composability of SixOS rests on **infuse**, and infuse rewards a careful look, because it is the seed of the Silo idea we will plant later.
+The composability of SixOS rests on **infuse**, and infuse rewards a careful look, because it is the seed of the Tablecloth idea we will plant later.
 
 Nix configuration, at scale, tends toward one of two unhappy shapes. A single giant expression collapses under its own weight, and a tower of nested `override` and `overrideAttrs` calls grows unreadable, each layer wrapping the last in `previousArgs: previousArgs // { ... }` ceremony. Infuse offers a third shape. It is a *deep* version of override that generalizes two familiar tools at once — `lib.pipe`, which threads a value through a list of functions, and `recursiveUpdate`, which merges nested attribute sets. Where a tangle of nested overrides once sprawled across thirty lines, an infusion states each change on its own clear line: `xrdp.__input.systemd.__assign = null;` says what it means and stops there.
 
 The quiet brilliance is that infuse is **one trick, not three**. It works the same way on lists, on attribute sets, and on functions — the three non-finite types in Nix — and it preserves the identity and associativity laws at all three. Threading an empty list changes nothing, the way merging an empty set changes nothing, the way composing with the identity function changes nothing; and a combined infusion always equals the composition of its parts. The double-underscore markers like `__assign` and `__append` are merely sugar that desugars down to functions on the leaves, with no magic underneath, and you may define your own. This is a lawful, minimal, composable core where the NixOS module system is a large, typed, special-purpose framework. It is precisely the "minimum of excellent abstractions" TAME asks for, and the algebraic laws are assertions about behavior raised to the level of design.
 
-Infuse and SixOS together complete the s6 lesson. The small-and-composable instinct that begins in skalibs — one owner per pointer, one combinator for I/O timing — climbs all the way up through the supervision tree and into the configuration language itself. Composition by chain-loading at the process level finds its mirror in composition by infusion at the configuration level. This is the lineage Caravan and Silo will join.
+Infuse and SixOS together complete the s6 lesson. The small-and-composable instinct that begins in skalibs — one owner per pointer, one combinator for I/O timing — climbs all the way up through the supervision tree and into the configuration language itself. Composition by chain-loading at the process level finds its mirror in composition by infusion at the configuration level. This is the lineage Caravan and Tablecloth will join.
 
 ---
 
@@ -234,23 +234,23 @@ So Tally is the region model made tender. It is the same value that pins Rye's v
 
 ---
 
-## Silo — A Nix, Reconsidered
+## Tablecloth — A Nix, Reconsidered
 
-SixOS and infuse bring the last of our four names into full focus. Rye is the systems language we grow from Zig. **Silo** is its companion, introduced in the ownerboot piece: the configuration and build language, a Nix reconsidered through TAME Style. The names belong together on a working farm — Rye is the grain, Silo is where the grain is stored and kept whole through the seasons, Caravan carries it across the country, and Tally tends the garden it grew in.
+SixOS and infuse bring the last of our four names into full focus. Rye is the systems language we grow from Zig. **Tablecloth** is its companion, introduced in the ownerboot piece: the configuration and build language, a Nix reconsidered through TAME Style. The names belong together on a working farm — Rye is the grain, Tablecloth is where the grain is stored and kept whole through the seasons, Caravan carries it across the country, and Tally tends the garden it grew in.
 
-Nix already holds a profound, correct idea, and Silo keeps it entirely. The Nix store is content-addressed and immutable; a built derivation is named by a hash of all its inputs, it never changes once built, and the store only ever grows. That is Hickey's accreting collection of immutable things, realized as a package store — the same shape as Maven Central, as Git, as Urbit's Clay, as a Mysticeti DAG. Nix solved the *Spec-ulation* problem at the store layer years ago, and beautifully. Silo inherits that store wholesale and reveres it.
+Nix already holds a profound, correct idea, and Tablecloth keeps it entirely. The Nix store is content-addressed and immutable; a built derivation is named by a hash of all its inputs, it never changes once built, and the store only ever grows. That is Hickey's accreting collection of immutable things, realized as a package store — the same shape as Maven Central, as Git, as Urbit's Clay, as a Mysticeti DAG. Nix solved the *Spec-ulation* problem at the store layer years ago, and beautifully. Tablecloth inherits that store wholesale and reveres it.
 
-Silo's work is the layer above the store: the *language* in which configurations are written. Here Nix shows its age, and TAME shows the way. Silo refines four things.
+Tablecloth's work is the layer above the store: the *language* in which configurations are written. Here Nix shows its age, and TAME shows the way. Tablecloth refines four things.
 
-First, **composition is lawful and native.** Where Nix bolted a large module system on top of the language, and where infuse had to be written as a clever library to route around it, Silo makes infuse-style composition a first-class part of the language itself. Configuration composes by a single combinator that obeys identity and associativity at every composite type, so merging an empty change does nothing and a combined change always equals the composition of its parts. The laws are guarantees the language makes, rather than properties a library hopes to preserve.
+First, **composition is lawful and native.** Where Nix bolted a large module system on top of the language, and where infuse had to be written as a clever library to route around it, Tablecloth makes infuse-style composition a first-class part of the language itself. Configuration composes by a single combinator that obeys identity and associativity at every composite type, so merging an empty change does nothing and a combined change always equals the composition of its parts. The laws are guarantees the language makes, rather than properties a library hopes to preserve.
 
-Second, **everything says why, and asserts both spaces.** Silo carries TAME's assertion discipline into configuration. A value declares the shape it expects and the shapes it rejects, checked before a single derivation is realized — the configuration-language echo of TigerBeetle's compile-time assertions that verify a design before it runs. Options are passed explicitly rather than inherited from a silent default, so a configuration reads as a clear statement of intent, and a mismatch fails fast with a reason attached, rather than surfacing as a baffling error deep in a build.
+Second, **everything says why, and asserts both spaces.** Tablecloth carries TAME's assertion discipline into configuration. A value declares the shape it expects and the shapes it rejects, checked before a single derivation is realized — the configuration-language echo of TigerBeetle's compile-time assertions that verify a design before it runs. Options are passed explicitly rather than inherited from a silent default, so a configuration reads as a clear statement of intent, and a mismatch fails fast with a reason attached, rather than surfacing as a baffling error deep in a build.
 
-Third, **names endure and the standard library accretes.** Silo versions itself chronologically, the way Rye does, so later reads as larger and every version carries a real commitment. Its standard library grows by adding, never by quietly reshaping a function that configurations already lean on. When something truly must change, it arrives under a new name beside the old, and the old keeps working — breakage turned into accretion, the lesson held from the first day rather than learned in pain.
+Third, **names endure and the standard library accretes.** Tablecloth versions itself chronologically, the way Rye does, so later reads as larger and every version carries a real commitment. Its standard library grows by adding, never by quietly reshaping a function that configurations already lean on. When something truly must change, it arrives under a new name beside the old, and the old keeps working — breakage turned into accretion, the lesson held from the first day rather than learned in pain.
 
-Fourth, **the language stays small.** Silo aims to be a language a careful reader can hold whole in mind, in the spirit of the s6 toolbox and the infuse combinator — a minimum of excellent abstractions, rather than a sprawling framework whose magic delights when it works and bewilders when it fails. Smallness is what lets the interior stay honest, the same strategy Caravan chose for its kernel.
+Fourth, **the language stays small.** Tablecloth aims to be a language a careful reader can hold whole in mind, in the spirit of the s6 toolbox and the infuse combinator — a minimum of excellent abstractions, rather than a sprawling framework whose magic delights when it works and bewilders when it fails. Smallness is what lets the interior stay honest, the same strategy Caravan chose for its kernel.
 
-So Silo is to configuration what Tally is to memory and what Caravan is to processes: the one value, brought to its own layer. It keeps Nix's immutable, accreting store with gratitude, and it gives that store a language that composes lawfully, asserts clearly, names enduringly, and stays small enough to trust. Rye and Silo together — a systems language and a configuration language, grown from the same principles, stored in the same silo.
+So Tablecloth is to configuration what Tally is to memory and what Caravan is to processes: the one value, brought to its own layer. It keeps Nix's immutable, accreting store with gratitude, and it gives that store a language that composes lawfully, asserts clearly, names enduringly, and stays small enough to trust. Rye and Tablecloth together — a systems language and a configuration language, grown from the same principles, stored in the same silo.
 
 ---
 
@@ -268,11 +268,11 @@ At the level of the **name**, the value is endurance: content addressing in Clay
 
 At the level of the **version**, the value is a real promise about change: Kelvin counting down toward a frozen floor, TAI64N sorting itself as text, Rye's chronological stamp, all refusing the empty major-number bump.
 
-At the level of **composition**, the value is lawful and small: infuse's single combinator obeying identity and associativity where a module system once sprawled, and Silo carrying those laws into the language itself.
+At the level of **composition**, the value is lawful and small: infuse's single combinator obeying identity and associativity where a module system once sprawled, and Tablecloth carrying those laws into the language itself.
 
 At the level of the **system**, the value is the line drawn well: Linux pinning its outer promise forever while keeping its interior a closed standup, SixOS needing one dependency type where systemd needs twelve, and Caravan choosing the same on purpose, kept honest by smallness.
 
-These are not seven values. They are one value, wearing the clothes of each layer. *Bound the lifetime, grow by accretion, release whole regions cleanly, and never take from a holder what they were given.* We found it in a 2016 talk about packages, in a coding style for a financial database, in a peer-to-peer operating system, in a supervision suite, in a Nix married to s6, in a consensus protocol, and in the promise an operating system makes to the programs that trust it. Rye will carry it too — in how it names versions, in how Tally tends memory, in how Silo composes configuration, and in how Caravan shepherds its processes across the long country of uptime.
+These are not seven values. They are one value, wearing the clothes of each layer. *Bound the lifetime, grow by accretion, release whole regions cleanly, and never take from a holder what they were given.* We found it in a 2016 talk about packages, in a coding style for a financial database, in a peer-to-peer operating system, in a supervision suite, in a Nix married to s6, in a consensus protocol, and in the promise an operating system makes to the programs that trust it. Rye will carry it too — in how it names versions, in how Tally tends memory, in how Tablecloth composes configuration, and in how Caravan shepherds its processes across the long country of uptime.
 
 ---
 

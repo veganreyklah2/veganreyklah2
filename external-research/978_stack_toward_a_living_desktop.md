@@ -1,6 +1,6 @@
-# 978 · The Stack Toward a Living Desktop — Mantra, Tally, Silo, Aurora, and Pond Grown for a Rishi Shell
+# 978 · The Stack Toward a Living Desktop — Mantra, Tally, Tablecloth, Aurora, and Pond Grown for a Rishi Shell
 
-*A dependency map and design reading. The goal is concrete: a Pond GUI application, drawn by Brushstroke, running a Rishi shell whose Mantra commands version-control our own development repository, running natively on AMD x86_64 hardware, keeping RISC-V as the forward target. This piece traces the full stack required — which std functions Mantra needs strengthened, what Tally and Silo and Aurora each need to contribute, and how Pond grows, by accretion, to become the desktop-native application surface the family deserves.*
+*A dependency map and design reading. The goal is concrete: a Pond GUI application, drawn by Brushstroke, running a Rishi shell whose Mantra commands version-control our own development repository, running natively on AMD x86_64 hardware, keeping RISC-V as the forward target. This piece traces the full stack required — which std functions Mantra needs strengthened, what Tally and Tablecloth and Aurora each need to contribute, and how Pond grows, by accretion, to become the desktop-native application surface the family deserves.*
 
 **Language:** EN
 **Version:** `20260619.153612` (Rye chronological stamp)
@@ -76,7 +76,7 @@ The Tally seed proves one `Region`. Mantra and Brushstroke together need named, 
 - A `Gardens` struct: a small, named collection of regions, each backed by a different slice.
 - Named access: `gardens.get("blob")`, `gardens.get("diff")`, `gardens.get("frame")`.
 - Per-operation lifecycle: a Mantra command takes a garden at the start of a command, runs, and the garden is cleared whole at the end — the season model.
-- A Silo declaration that budgets each garden's ceiling up front, so the program proves it has room before it begins.
+- A Tablecloth declaration that budgets each garden's ceiling up front, so the program proves it has room before it begins.
 
 Three specific gardens for the Rishi-Mantra-Brushstroke stack:
 
@@ -90,11 +90,11 @@ The `frame` garden is especially natural: Brushstroke redraws from values each f
 
 ---
 
-## What Silo Needs — A Minimum Project Descriptor
+## What Tablecloth Needs — A Minimum Project Descriptor
 
-Full Silo — the content-addressed, lawfully-composable build language — comes after Caravan. Yet Mantra needs to know what the repository *is*: which root, which files belong, which branch is the working weave. A minimum Silo for this purpose is simply a project descriptor: a value one can read.
+Full Tablecloth — the content-addressed, lawfully-composable build language — comes after Caravan. Yet Mantra needs to know what the repository *is*: which root, which files belong, which branch is the working weave. A minimum Tablecloth for this purpose is simply a project descriptor: a value one can read.
 
-**Minimum Silo for Mantra:**
+**Minimum Tablecloth for Mantra:**
 
 A `.silo` file at the repository root, parsed by Rishi as a Rishi record:
 
@@ -107,9 +107,9 @@ let project = {
 }
 ```
 
-Mantra reads this record at startup, knows the root and the source paths, and stores its weave blobs under `.mantra/blobs/` (content-addressed by SHA3-256). No build language, no composition combinators — just a named value describing the project. That is Silo's seed: a description, not a command.
+Mantra reads this record at startup, knows the root and the source paths, and stores its weave blobs under `.mantra/blobs/` (content-addressed by SHA3-256). No build language, no composition combinators — just a named value describing the project. That is Tablecloth's seed: a description, not a command.
 
-Silo's larger design — content-addressed build results, the lawful composition combinator, integration with Mantra's weave so a build knows its source history — grows from this seed once Caravan exists to run what Silo describes.
+Tablecloth's larger design — content-addressed build results, the lawful composition combinator, integration with Mantra's weave so a build knows its source history — grows from this seed once Caravan exists to run what Tablecloth describes.
 
 ---
 
@@ -148,7 +148,7 @@ The current Pond design (`987`, `995`) is already the right shape: Caravan's iso
 
 Pond gains Brushstroke as the surface layer. An application that runs in a Pond enclosure may also *draw* — through Brushstroke's single seam — to a native window or to a portable Wasm artifact. The enclosure is unchanged: isolated, bounded, policy-as-a-value. The surface adds the ability to show that enclosure to a person.
 
-The module list for `999_DESIGN.md` (the clean-room Quarantine Principle) accretes Brushstroke as a first-class name alongside Pond. This was already presaged: `988_brushstroke.md` names it as "the surface of the family," and the external-research study (`980`) placed Brushstroke and Pond on the same trajectory.
+The module list for `999_DESIGN.md` (the clean-room Tablecloth Principle) accretes Brushstroke as a first-class name alongside Pond. This was already presaged: `988_brushstroke.md` names it as "the surface of the family," and the external-research study (`980`) placed Brushstroke and Pond on the same trajectory.
 
 **Pond and Brushstroke, together:**
 
@@ -193,7 +193,7 @@ From substrate to surface, every piece and its prerequisite:
   └── SHA3-256 blob store on disk
   └── Rishi integration: `run ["mantra" "add" ...]`
 
-[Layer 3] Silo minimum (project descriptor)
+[Layer 3] Tablecloth minimum (project descriptor)
   └── `.silo` record: name, root, sources, mantra_root
   └── Read by Rishi as a record value
 

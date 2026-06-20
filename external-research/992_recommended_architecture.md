@@ -1,6 +1,6 @@
 # 992 · The Recommended Path for Seven Names
 
-*A clean-room architecture brief for our seven modules — TAME, Rye, Silo, Mantra, Tally, Caravan, and Aurora — reasoning the recommended design path for each from the bare ideas, named apart from the projects that taught them. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
+*A clean-room architecture brief for our seven modules — TAME, Rye, Tablecloth, Mantra, Tally, Caravan, and Aurora — reasoning the recommended design path for each from the bare ideas, named apart from the projects that taught them. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
 
 **Language:** EN
 **Version:** `20260617.195912` (Rye chronological stamp)
@@ -41,7 +41,7 @@ One value orders every recommendation, and we state it once so it need not be re
 
 ---
 
-## Silo — How We Describe What to Build
+## Tablecloth — How We Describe What to Build
 
 **The idea.** A way to describe a whole system as data — what to build, from which sources, with which options and keys — so a build is reproducible and auditable. Two failure modes bound the design space. One is a single giant description that collapses under its own weight. The other is a tower of nested overrides, each wrapping the last in ceremony until no one can read it.
 
@@ -57,7 +57,7 @@ One value orders every recommendation, and we state it once so it need not be re
 
 **The recommendation.** Hold the history in a **weave**: one structure that keeps every line which has ever lived in a file, content-addressed and immutable, each line marked with when it arrived and when it left. Build merging on a conflict-free foundation, so that **every merge succeeds** and converges to the same result no matter the order branches are combined — and where two edits land too near each other, show the merged result with honest annotation of what each side did, rather than blocking the work. This is showing rather than blocking, the affirmative posture made structural, and it suits decentralized work where no one is in charge. For the hash that names each line and each state, lead with safety: we recommend **SHA3-512**, whose larger digest gives the wider margin against two contents ever sharing a name, and whose construction stands clear of the older family's length-extension surprise; where a lighter footprint earns its keep, the 256-bit member of the same family already reaches beyond any feasible collision.
 
-**Why it leads, and how it meets Silo.** A history kept this way is deterministic and content-addressed — the very instinct that underlies the build store, so version control and build stop being two strangers joined at a seam. We recommend that the source the history keeps and the artifacts the build produces share one foundation of content-addressed, immutable, accreting values. Then a build draws its inputs by content and is reproducible by construction rather than by the discipline of remembering to pin a revision; the history can see what was built from it, and the build can see the history it came from. The oldest seam in the toolchain closes, and source and build become two faces of one foundation.
+**Why it leads, and how it meets Tablecloth.** A history kept this way is deterministic and content-addressed — the very instinct that underlies the build store, so version control and build stop being two strangers joined at a seam. We recommend that the source the history keeps and the artifacts the build produces share one foundation of content-addressed, immutable, accreting values. Then a build draws its inputs by content and is reproducible by construction rather than by the discipline of remembering to pin a revision; the history can see what was built from it, and the build can see the history it came from. The oldest seam in the toolchain closes, and source and build become two faces of one foundation.
 
 ---
 
@@ -95,7 +95,7 @@ One value orders every recommendation, and we state it once so it need not be re
 
 Read together, the seven are one architecture seen at seven scales, and the recommended path is to build them as one.
 
-The discipline (**TAME**) is the ground; it governs how every other module is written. The language (**Rye**) is the discipline made into a tool, designed to be cohesion with RISC-V rather than an abstraction over it. The configuration language (**Silo**) describes whole systems as lawful, composable, content-addressed data, reproducible from source. The version control (**Mantra**) keeps the source as a content-addressed weave that the build draws from, so source and build share one foundation rather than meeting at a seam. The allocator (**Tally**) holds memory in bounded gardens that map straight onto the machine. The kernel (**Caravan**) supervises a tree of small services behind a pinned outer promise. And the boot (**Aurora**) wakes the machine as a flow of verified, named values along RISC-V's own privilege relay, into the kernel that the allocator serves and the configuration describes and the version control keeps and the language writes and the discipline holds honest.
+The discipline (**TAME**) is the ground; it governs how every other module is written. The language (**Rye**) is the discipline made into a tool, designed to be cohesion with RISC-V rather than an abstraction over it. The configuration language (**Tablecloth**) describes whole systems as lawful, composable, content-addressed data, reproducible from source. The version control (**Mantra**) keeps the source as a content-addressed weave that the build draws from, so source and build share one foundation rather than meeting at a seam. The allocator (**Tally**) holds memory in bounded gardens that map straight onto the machine. The kernel (**Caravan**) supervises a tree of small services behind a pinned outer promise. And the boot (**Aurora**) wakes the machine as a flow of verified, named values along RISC-V's own privilege relay, into the kernel that the allocator serves and the configuration describes and the version control keeps and the language writes and the discipline holds honest.
 
 The single thread, stated once for all seven: bound the lifetime, grow by accretion, release whole regions cleanly, speak in values with enduring names, and never take from a holder what they were given — all in cohesion with the one substrate we treat as fixed, the open instruction set the world is coming to rest upon.
 

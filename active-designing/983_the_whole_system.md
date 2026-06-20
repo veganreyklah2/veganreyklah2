@@ -1,6 +1,6 @@
 # 983 · The Whole System — Every Module Composed on Its Own Ground
 
-*A quarantined design brief that names the complete system we are building: language, kernel, supervision, composition, memory, store, boot, shell, version control, display, network, identity, and enclosure — each grown from what already runs, each named in our own vocabulary, each inheriting concepts from the sources we studied and thanked, expressed wholly on our own ground. This is the map of the whole, so any part can be read against the shape of the whole it belongs to.*
+*A siloed design brief that names the complete system we are building: language, kernel, supervision, composition, memory, store, boot, shell, version control, display, network, identity, and enclosure — each grown from what already runs, each named in our own vocabulary, each inheriting concepts from the sources we studied and thanked, expressed wholly on our own ground. This is the map of the whole, so any part can be read against the shape of the whole it belongs to.*
 
 **Language:** EN
 **Version:** `20260619.225712` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety first, performance second, the joy of the craft third
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only what is ours — **TAME**, **Rye**, **Aurora**, **Caravan**, **Tally**, **Brix**, **Silo**, **Mantra**, **Pond**, **Rishi**, **Comlink**, and **Brushstroke** — together with **RISC-V** and, where the hardware target matters, **x86_64**, both of which we treat as solid ground. Everything we studied enters as a concept, weighed on its own merit, spoken in our own voice. The sources live in `../gratitude/`, thanked in `../external-research/997_SYSTEM.md`. What follows is ours.
+This is a clean room. We name only what is ours — **TAME**, **Rye**, **Aurora**, **Caravan**, **Tally**, **Brix**, **Tablecloth**, **Mantra**, **Pond**, **Rishi**, **Comlink**, and **Brushstroke** — together with **RISC-V** and, where the hardware target matters, **x86_64**, both of which we treat as solid ground. Everything we studied enters as a concept, weighed on its own merit, spoken in our own voice. The sources live in `../gratitude/`, thanked in `../external-research/997_SYSTEM.md`. What follows is ours.
 
 ---
 
@@ -71,11 +71,11 @@ Brix declares what a system is made of. A `.brix` file names the project and the
 
 Brix is to our system what content-addressed reproducible composition is to a build: same inputs, same output, every time. The descriptor feeds Caravan's supervisor — Brix declares what services to start and what capabilities each receives; Caravan enforces what the declaration named. Declaration meets supervision; each stays simple.
 
-### Silo — The Store
+### Tablecloth — The Store
 
-Silo is the content-addressed store. A blob is named by its SHA3-256 digest; writing a blob under a name that already exists does nothing; reading one by name returns the exact bytes that name was given. The store grows by accretion, never by revision. Hard bounds: memory and disk budgets stated at construction, enforced at the edge. Single writer, MVCC readers. Narrow API: `put(blob) → hash`, `get(hash) → blob?`, and metadata query (`975`).
+Tablecloth is the content-addressed store. A blob is named by its SHA3-256 digest; writing a blob under a name that already exists does nothing; reading one by name returns the exact bytes that name was given. The store grows by accretion, never by revision. Hard bounds: memory and disk budgets stated at construction, enforced at the edge. Single writer, MVCC readers. Narrow API: `put(blob) → hash`, `get(hash) → blob?`, and metadata query (`external-research/975_tablecloth_tame_datastore.md`).
 
-Silo is Brix's substrate: the content-addressed storage that makes a Brix build reproducible. Silo stores; Brix composes.
+Tablecloth is Brix's substrate: the content-addressed storage that makes a Brix build reproducible. Tablecloth stores; Brix composes.
 
 ### Mantra — The Version Control
 
@@ -126,7 +126,7 @@ The sealed datagram across two harts (proven in Aurora) is the first wire. The d
                       │                    │
                       ├── Tally (memory)   ├── Rishi (shell)
                       ├── Brix (compose)   ├── Mantra (history)
-                      ├── Silo (store)     ├── Brushstroke (surface)
+                      ├── Tablecloth (store)     ├── Brushstroke (surface)
                       └── Comlink (net)    └── (applications)
 
   ← All written in Rye, all sharing one value model →
@@ -160,13 +160,13 @@ Every module has a seed. Every seed already runs — vocabulary in `976_what_we_
 | Caravan | `seed.rye` → `bounded` → `twin` → `chain` | Running |
 | Tally | `seed.rye` + `gardens.rye` named regions | Running |
 | Brix | `.brix` descriptor | Running |
-| Silo | `.mantra/blobs/`, content-addressed store | Running (inside Mantra) |
+| Tablecloth | `.mantra/blobs/`, content-addressed store | Running (inside Mantra) |
 | Mantra | Weave + LCS diff + commit chain | Running |
 | Rishi | Shell with typed values; gate trio in `.rish` | Running |
 | Brushstroke | `seed.rye` + `wayland_seed.rye` — frame from values | Running |
 | Pond | Policy as a value (`pond.rish`) | Designed |
 | Comlink | Sealed datagram between two harts | Running (shared-memory) |
-| Skate, Scribble, Lantern, Lattice | Horizon (`978`) | Quarantined design |
+| Skate, Scribble, Lantern, Lattice | Horizon (`978`) | Siloed design |
 
 The complex system that works grows from the simpler systems that work. Each seed runs; each grows by accretion; each is proven before the next layer begins.
 

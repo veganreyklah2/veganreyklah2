@@ -17,7 +17,7 @@ Per-project Radiant notes: see **997_SYSTEM.md**.
 
 | Project | How we hold it | Study boundary |
 |---------|----------------|----------------|
-| **Nix** | Local clone; not tracked by git | Store model → Brix, Silo; do not link libnix |
+| **Nix** | Local clone; not tracked by git | Store model → Brix, Tablecloth; do not link libnix |
 | **libqrencode** | Gitlink | Build CLI to gitignored `tools/.build/` only; do not link into Rye binaries |
 
 LGPL limits **embedding** library code in programs we distribute — not learning ideas or running tools separately. Full notes: **997_SYSTEM.md**.

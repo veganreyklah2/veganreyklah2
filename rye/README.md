@@ -123,7 +123,7 @@ The `rye` command allocates from `init.garden` — the process season allocator 
 
 ## Rye's Garden
 
-Rye is the language at the bottom of a wider ecosystem we are designing in the open: **Tally**, the garden allocator; **Caravan**, the supervisor-kernel; **Silo**, configuration; **Mantra**, version control; **Aurora**, boot; and **Pond** — a gentle, TAME-style reimplementation of the `ai-jail` sandbox we work inside, a bounded enclosure where an agent can build in safety. The explorations behind these names live in `../external-research/`, and the from-scratch setup that ties the tools together lives in `../SOURCE.md`.
+Rye is the language at the bottom of a wider ecosystem we are designing in the open: **Tally**, the garden allocator; **Caravan**, the supervisor-kernel; **Tablecloth**, the content-addressed store; **Mantra**, version control; **Aurora**, boot; and **Pond** — a gentle, TAME-style reimplementation of the `ai-jail` sandbox we work inside, a bounded enclosure where an agent can build in safety. The explorations behind these names live in `../external-research/`, and the from-scratch setup that ties the tools together lives in `../SOURCE.md`.
 
 ---
 

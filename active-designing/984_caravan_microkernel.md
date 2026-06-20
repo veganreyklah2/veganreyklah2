@@ -1,6 +1,6 @@
-# 984 · Caravan as a Microkernel — Quarantined Design Brief
+# 984 · Caravan as a Microkernel — Siloed Design Brief
 
-*Caravan is the supervision and isolation layer of the family. This brief quarantines the microkernel decision — reached through external research (`../external-research/976`) — into a concrete, clean-room design that names only our own modules and says precisely what goes inside the kernel, what lives outside it, and how the two meet.*
+*Caravan is the supervision and isolation layer of the family. This brief silos the microkernel decision — reached through external research (`../external-research/976`) — into a concrete, clean-room design that names only our own modules and says precisely what goes inside the kernel, what lives outside it, and how the two meet.*
 
 **Language:** EN
 **Version:** `20260619.223712` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, then the joy of the craft
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only our own modules — TAME, Aurora, Rye, Brix, Silo, Tally, Caravan, Mantra, Pond, Rishi, Comlink, and Brushstroke — together with **RISC-V**, the open instruction set we treat as solid ground. The microkernel tradition enters as a concept, weighed on its own merit; the specific systems we studied live in the external research that brought us here.
+This is a clean room. We name only our own modules — TAME, Aurora, Rye, Brix, Tablecloth, Tally, Caravan, Mantra, Pond, Rishi, Comlink, and Brushstroke — together with **RISC-V**, the open instruction set we treat as solid ground. The microkernel tradition enters as a concept, weighed on its own merit; the specific systems we studied live in the external research that brought us here.
 
 ---
 

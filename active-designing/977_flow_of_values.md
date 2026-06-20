@@ -1,6 +1,6 @@
 # 977 · Flow of Values — How the System Moves Without Braiding
 
-*A quarantined foundation brief for the compositional law beneath the whole family: values transformed, moved, routed, and remembered — kept apart so each stays simple; simple services each doing one thing; enduring names for what persists; partial failure as the normal case. The network slice lives in `993`; simplicity in `995`; correctness in `990`; architecture in `997`. This brief states the system-wide flow on our own ground.*
+*A siloed foundation brief for the compositional law beneath the whole family: values transformed, moved, routed, and remembered — kept apart so each stays simple; simple services each doing one thing; enduring names for what persists; partial failure as the normal case. The network slice lives in `993`; simplicity in `995`; correctness in `990`; architecture in `997`. This brief states the system-wide flow on our own ground.*
 
 **Language:** EN
 **Version:** `20260620.021212` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only our modules — **Rye**, **Rishi**, **Brix**, **Silo**, **Mantra**, **Tally**, **Caravan**, **Aurora**, **Pond**, **Comlink**, **Brushstroke**, **Skate**, **Scribble** — together with **RISC-V** and **x86_64** where hardware matters. The insight that a *system* is larger than a program, and that it stays sane as a production line rather than a shared factory floor, enters as a principle. The gratitude and citations live in `../external-research/997_SYSTEM.md` and `../gratitude/LanguageSystem.md`.
+This is a clean room. We name only our modules — **Rye**, **Rishi**, **Brix**, **Tablecloth**, **Mantra**, **Tally**, **Caravan**, **Aurora**, **Pond**, **Comlink**, **Brushstroke**, **Skate**, **Scribble** — together with **RISC-V** and **x86_64** where hardware matters. The insight that a *system* is larger than a program, and that it stays sane as a production line rather than a shared factory floor, enters as a principle. The gratitude and citations live in `../external-research/997_SYSTEM.md` and `../gratitude/LanguageSystem.md`.
 
 ---
 
@@ -35,7 +35,7 @@ Every cross-module interaction is one of four operations. Mixing them braids con
 | **Transform** | Compute a new value from inputs | Rye programs, Rishi scripts, Mantra weave/diff, Lattice matmul, Scribble parse |
 | **Move** | Carry a value across a boundary | Comlink datagrams, Caravan IPC (future), Brushstroke frame submit |
 | **Route** | Choose where a value goes next | Brix descriptors, Caravan supervision tree, Pond policy, Comlink naming |
-| **Remember** | Persist a value under an enduring name | Silo blobs, Mantra commits, `.brix` + HEAD chain, Aurora stage hashes |
+| **Remember** | Persist a value under an enduring name | Tablecloth blobs, Mantra commits, `.brix` + HEAD chain, Aurora stage hashes |
 
 A module may transform and remember (Mantra), yet it should not also route network traffic in the same breath — that is Comlink's job. Pond **routes** capabilities; it does not **transform** application logic.
 
@@ -50,7 +50,7 @@ Each module is a **simple service**: one primary job, a tiny surface, a few verb
 | **Rye** | Execute typed programs | compile, run |
 | **Rishi** | The hand at the prompt | let, say, run, assert |
 | **Brix** | Declare what to build | describe bricks, merge descriptors |
-| **Silo** | Hold artifacts by hash | put, get |
+| **Tablecloth** | Hold artifacts by hash | put, get |
 | **Mantra** | Remember every line | init, add, status, log |
 | **Tally** | Bound memory in gardens | alloc, clear |
 | **Caravan** | Watch and restart | supervise, restart |
@@ -69,7 +69,7 @@ When a service grows a second job, we split it — or compose another service be
 
 What must persist receives a **name that endures** — ideally a content hash, so the name is a promise about exact bytes.
 
-- **Silo** — SHA3-256 of the blob
+- **Tablecloth** — SHA3-256 of the blob
 - **Mantra** — commit chain + weave snapshots
 - **Brix** — descriptor version stamps; future derivations named by input hash
 - **Aurora** — each boot stage image named by its contents
@@ -107,7 +107,7 @@ Correctness by construction (`990`) makes dangerous states unwritable inside eac
 ```
 Transform (Rye, Rishi, Mantra, Scribble, Lattice)
     ↓ values
-Remember (Silo, Mantra, Aurora stages)
+Remember (Tablecloth, Mantra, Aurora stages)
     ↓ named artifacts
 Route (Brix, Caravan, Pond)
     ↓ capabilities + policy

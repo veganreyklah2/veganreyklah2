@@ -14,7 +14,7 @@
 
 ## Our Own Ground
 
-This is a clean room. We name only what is ours — TAME, Aurora, Rye, Brix, Silo, Tally, Caravan, Mantra, Pond, Rishi, Comlink, Brushstroke — together with RISC-V and, where the hardware target matters, x86_64. The native system interface enters as a concept: the family of calls a program makes to cross into the kernel and receive OS services in return.
+This is a clean room. We name only what is ours — TAME, Aurora, Rye, Brix, Tablecloth, Tally, Caravan, Mantra, Pond, Rishi, Comlink, Brushstroke — together with RISC-V and, where the hardware target matters, x86_64. The native system interface enters as a concept: the family of calls a program makes to cross into the kernel and receive OS services in return.
 
 ---
 

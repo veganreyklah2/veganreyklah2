@@ -14,7 +14,7 @@
 
 ## Our Own Ground
 
-This is a clean room. We name only our own modules — TAME, Aurora, Rye, Brix, Silo, Tally, Caravan, Mantra, Pond, Rishi, Comlink, and now **Brushstroke** — together with **RISC-V** and, where the hardware target matters, **x86_64**, both of which we treat as solid ground. Everything else enters as a concept.
+This is a clean room. We name only our own modules — TAME, Aurora, Rye, Brix, Tablecloth, Tally, Caravan, Mantra, Pond, Rishi, Comlink, and now **Brushstroke** — together with **RISC-V** and, where the hardware target matters, **x86_64**, both of which we treat as solid ground. Everything else enters as a concept.
 
 ---
 
@@ -81,7 +81,7 @@ file tally/gardens.rye
 file mantra/src/main.rye
 ```
 
-Mantra reads this at startup: the project name and the bricks (source files) it tracks. `mantra brix` prints the descriptor. `mantra add` (no args) lays each brick into the weave. Brix's seed is a declaration, not a command. Its full shape — the lawful composition combinator, the Silo-backed content-addressed derivations — grows once Caravan exists to realize what Brix describes.
+Mantra reads this at startup: the project name and the bricks (source files) it tracks. `mantra brix` prints the descriptor. `mantra add` (no args) lays each brick into the weave. Brix's seed is a declaration, not a command. Its full shape — the lawful composition combinator, the Tablecloth-backed content-addressed derivations — grows once Caravan exists to realize what Brix describes.
 
 ---
 

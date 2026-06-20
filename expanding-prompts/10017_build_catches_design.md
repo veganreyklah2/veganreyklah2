@@ -33,12 +33,13 @@
 | **Caravan** | `984` | seed → chain | capability table (step 5) |
 | **Tally** | `987` | seed + gardens | Pond enforcement |
 | **Mantra** | `977` | weave, store, repo chain | multi-file weave |
-| **Brix** | `10010` | `.brix` minimum | composing language v1 |
+| **Brix** | `10020` | `.brix` minimum | composing language v1 (`10019` vocabulary) |
+| **Tablecloth** | `10018`–`10022` | Mantra `.mantra/blobs/` | v1 seed deferred (`10022`; after Rye/Rishi track) |
 | **Brushstroke** | `988`, `981` | stdout + Wayland seeds | **Skate text grid** |
 | **Skate** | `980`, `981`, `983` | named only | text rendering on Wayland |
 | **Comlink** | `979`, `993` | posted + hosted wire | virtio-net (`10016`) |
 | **Pond** | `986`, `pond.rish` | policy value | Caravan + Tally enforcement |
-| **Forge** | `982` | quarantined | HTTP seed far horizon |
+| **Forge** | `982` | siloed | HTTP seed far horizon |
 
 ## This Run — Track A: Rishi String Builtins
 
@@ -55,7 +56,7 @@
 | 3 | **D** | Strengthening pass on next `std` surface | `998` |
 | 4 | **E** | Caravan capability table | `984` step 5 |
 
-**Defer:** new quarantined design docs unless a build thread demands one.
+**Defer:** new siloed design docs unless a build thread demands one.
 
 ## Discipline
 

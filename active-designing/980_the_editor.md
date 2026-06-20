@@ -1,6 +1,6 @@
 # 980 · The Editor — Select, Then Act, Configured in Brix and Rishi
 
-*A quarantined design brief for the TAME editor: modal text editing that follows the select-then-act model, configured through Brix (settings) and Rishi (behavior), running inside Skate, enclosed by Pond. No editor-specific DSL — three languages serve the whole system.*
+*A siloed design brief for the TAME editor: modal text editing that follows the select-then-act model, configured through Brix (settings) and Rishi (behavior), running inside Skate, enclosed by Pond. No editor-specific DSL — three languages serve the whole system.*
 
 **Language:** EN
 **Version:** `20260620.012012` (Rye chronological stamp)
@@ -8,7 +8,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 

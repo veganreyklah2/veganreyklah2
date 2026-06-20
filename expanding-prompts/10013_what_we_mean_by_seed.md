@@ -1,6 +1,6 @@
-# 10013 · What We Mean by Seed — Vocabulary Quarantine and Catalog Sync
+# 10013 · What We Mean by Seed — Vocabulary silo and Catalog Sync
 
-*Expanded at `021912` from the request: a quarantined document stating what **seed** means in the Rye family — Gall's Law as vocabulary, distinct from bootstrap, key phrases, and full modules. `987` named the first instances; `983` lists seeds in a table that has drifted. This prompt quarantines the foundation word and syncs the living docs to the seeds that actually run.*
+*Expanded at `021912` from the request: a siloed document stating what **seed** means in the Rye family — Gall's Law as vocabulary, distinct from bootstrap, key phrases, and full modules. `987` named the first instances; `983` lists seeds in a table that has drifted. This prompt silos the foundation word and syncs the living docs to the seeds that actually run.*
 
 **Language:** EN
 **Version:** `20260620.021912` (Rye chronological stamp)
@@ -12,15 +12,15 @@
 
 ## The Seed
 
-> I think we should have a quarantined document about what we mean by "seed", time 021912, reya 2 radiant, expand into prompt and run it, then commit push all
+> I think we should have a siloed document about what we mean by "seed", time 021912, reya 2 radiant, expand into prompt and run it, then commit push all
 
 ## The Mission
 
-Quarantine **`976_what_we_mean_by_seed.md`** — the vocabulary brief for the whole family — and align the docs that use the word so a reader meets one definition.
+silo **`976_what_we_mean_by_seed.md`** — the vocabulary brief for the whole family — and align the docs that use the word so a reader meets one definition.
 
 | Track | Deliverable | Gall's test |
 |-------|-------------|-------------|
-| **A** | **`976` quarantine brief** — law, anatomy, catalog, anti-patterns | One place defines seed |
+| **A** | **`976` silo brief** — law, anatomy, catalog, anti-patterns | One place defines seed |
 | **B** | **Cross-links** — `987`, `983`, `995` | Instances point to vocabulary |
 | **C** | **Catalog sync** — `983` seed table matches repo | Running seeds listed honestly |
 
@@ -30,7 +30,7 @@ Quarantine **`976_what_we_mean_by_seed.md`** — the vocabulary brief for the wh
 
 Seeds green today: Aurora, Tally (+ gardens), Caravan (+ bounded, twin), Mantra, Brushstroke hosted, Brix `.brix`, Comlink posted datagram, Rye, Rishi. See `976` catalog.
 
-## Track A — Quarantine Brief
+## Track A — silo brief
 
 **Deliverable:** `active-designing/976_what_we_mean_by_seed.md`
 
@@ -38,7 +38,7 @@ Seeds green today: Aurora, Tally (+ gardens), Caravan (+ bounded, twin), Mantra,
 
 - Gall's Law as the law behind the word
 - Six properties every seed shares (runs, proves, one thing, bounded, stamped, hosted-first when wise)
-- What seed is **not** (bootstrap, key phrase, prompt, quarantine-only, v1)
+- What seed is **not** (bootstrap, key phrase, prompt, silo-only, v1)
 - File anatomy and growth rings (`seed.rye` → siblings)
 - Running catalog table
 - Gates relationship
@@ -50,7 +50,7 @@ Seeds green today: Aurora, Tally (+ gardens), Caravan (+ bounded, twin), Mantra,
 | File | Change |
 |------|--------|
 | `987_the_first_seeds.md` | Opening pointer: instances live here; vocabulary in `976` |
-| `995_open_threads.md` | What Just Landed: `976` quarantined |
+| `995_open_threads.md` | What Just Landed: `976` siloed |
 | `996_roadmap.md` | One line under Horizon 0: seeds defined in `976` |
 
 ## Track C — Catalog Sync

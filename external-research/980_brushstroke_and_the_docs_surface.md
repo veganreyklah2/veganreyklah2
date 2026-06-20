@@ -59,7 +59,7 @@ What stays behind: DVUI's breadth of backends (we begin with one, the browser), 
 
 ## Documentation as Values
 
-Here the two strands become one. A document, in our world, is a **named, content-addressed value** — Mantra's domain, the same kind of thing as a packet, a post, a Silo build, a Rye value: signed, named, bounded, owned. If documentation is values, and Brushstroke draws values, then the documentation surface is simply values flowing to a surface: each doc content-addressed by its hash and rendered by a pure function of itself, rather than a file run through a templating engine. The docs site becomes the cleanest possible demonstration of the one value model, drawn for the eye.
+Here the two strands become one. A document, in our world, is a **named, content-addressed value** — Mantra's domain, the same kind of thing as a packet, a post, a Tablecloth build, a Rye value: signed, named, bounded, owned. If documentation is values, and Brushstroke draws values, then the documentation surface is simply values flowing to a surface: each doc content-addressed by its hash and rendered by a pure function of itself, rather than a file run through a templating engine. The docs site becomes the cleanest possible demonstration of the one value model, drawn for the eye.
 
 ## The First Slice
 

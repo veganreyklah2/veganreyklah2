@@ -1,6 +1,6 @@
 # 997 · The Recommended Path for the Core Names
 
-*A clean-room architecture brief for our core modules — TAME, Rye, Brix, Silo, Tally, Caravan, and Aurora — reasoning the recommended design path for each from first principles. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
+*A clean-room architecture brief for our core modules — TAME, Rye, Brix, Tablecloth, Tally, Caravan, and Aurora — reasoning the recommended design path for each from first principles. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
 
 **Language:** EN
 **Version:** `20260618.184912` (Rye chronological stamp)
@@ -13,7 +13,7 @@
 
 ## Our Own Ground
 
-This is a clean room. Inside it we reason about our own design from first principles, and we name only what is genuinely ours: the core modules that are the subject — TAME, Rye, Brix, Silo, Tally, Caravan, and Aurora — and the one fixed external we build upon, **RISC-V**, the open instruction set we treat as solid ground because the hardware supply chain and the world economy increasingly rest upon it.
+This is a clean room. Inside it we reason about our own design from first principles, and we name only what is genuinely ours: the core modules that are the subject — TAME, Rye, Brix, Tablecloth, Tally, Caravan, and Aurora — and the one fixed external we build upon, **RISC-V**, the open instruction set we treat as solid ground because the hardware supply chain and the world economy increasingly rest upon it.
 
 Everything else here appears as a concept rather than a citation — a region of memory, a content-addressed store, a supervision tree, a lawful combinator — described plainly and weighed on its own merits, so the architecture we recommend stands on reasoning alone. We keep this space self-contained on purpose. It is where our own design grows, undivided, in our own words.
 
@@ -45,15 +45,15 @@ One value orders every recommendation, and we state it once so it need not be re
 
 **The idea.** A language for describing a whole system as data — what to build, from which bricks, composed in what arrangement — so a build is reproducible and auditable. Two failure modes bound the design space. One is a single giant description that collapses under its own weight. The other is a tower of nested overrides, each wrapping the last in ceremony until no one can read it. A third failure, subtler, is describing composition by weaving: tangling separate concerns together until no one can pull them apart. Brix refuses all three.
 
-**The recommendation.** Build on two ideas, each chosen over its rivals. First, a **content-addressed, immutable store** (Silo) of build results, where every output is named by a hash of all its inputs and nothing is ever mutated in place — an accreting collection of immutable things, so a name is a precise promise about exactly which bytes will result. This beats a mutable store the way a ledger beats an eraser. Second, a **single lawful composition combinator** as the native way to combine brick descriptions, in place of a large special-purpose module framework. We recommend the combinator obey the laws a careful reader expects — combining with nothing changes nothing, and a combined change equals the composition of its parts — so configurations merge by a stated difference rather than by hand-maintained duplication. Silo holds; Brix composes.
+**The recommendation.** Build on two ideas, each chosen over its rivals. First, a **content-addressed, immutable store** (Tablecloth) of build results, where every output is named by a hash of all its inputs and nothing is ever mutated in place — an accreting collection of immutable things, so a name is a precise promise about exactly which bytes will result. This beats a mutable store the way a ledger beats an eraser. Second, a **single lawful composition combinator** as the native way to combine brick descriptions, in place of a large special-purpose module framework. We recommend the combinator obey the laws a careful reader expects — combining with nothing changes nothing, and a combined change equals the composition of its parts — so configurations merge by a stated difference rather than by hand-maintained duplication. Tablecloth holds; Brix composes.
 
 **Why it leads.** Reproducibility is a safety property: a system you can rebuild from source, byte for byte, is a system you can trust without trusting whoever shipped it a binary. We recommend building every component from source, refusing opaque artifacts, so trust runs unbroken all the way down — even to the compiler that compiles the compiler. And the language that does the describing should itself stay small and lawful, because a course of bricks is read far more often than it is laid.
 
-## Silo — How We Hold Build Artifacts
+## Tablecloth — How We Hold Build Artifacts
 
-**The idea.** A content-addressed, immutable store: blobs go in named by the hash of their content, and they never mutate. The store is a ledger, not an eraser. Silo is Brix's substrate: Brix describes what to build; Silo holds what was built, reproducibly named.
+**The idea.** A content-addressed, immutable store: blobs go in named by the hash of their content, and they never mutate. The store is a ledger, not an eraser. Tablecloth is Brix's substrate: Brix describes what to build; Tablecloth holds what was built, reproducibly named.
 
-**The recommendation.** Grow the store from the smallest working case — Mantra's `.mantra/blobs/` is already a Silo in miniature — into a general-purpose build artifact store. Name every stored artifact by its SHA3-256 digest. A name is then a precise promise about exactly which bytes lie behind it, independent of who wrote them or when. Build on top of this by giving every Brix derivation a hash of all its inputs; the output hash is then a proof, not an assertion.
+**The recommendation.** Grow the store from the smallest working case — Mantra's `.mantra/blobs/` is already a Tablecloth in miniature — into a general-purpose build artifact store. Name every stored artifact by its SHA3-256 digest. A name is then a precise promise about exactly which bytes lie behind it, independent of who wrote them or when. Build on top of this by giving every Brix derivation a hash of all its inputs; the output hash is then a proof, not an assertion.
 
 ---
 
@@ -91,7 +91,7 @@ One value orders every recommendation, and we state it once so it need not be re
 
 Read together, the core names are one architecture seen at multiple scales, and the recommended path is to build them as one.
 
-The discipline (**TAME**) is the ground; it governs how every other module is written. The language (**Rye**) is the discipline made into a tool, designed to be cohesion with RISC-V rather than an abstraction over it. The composing language (**Brix**) describes whole systems as courses of lawful, composable bricks; the store (**Silo**) holds the content-addressed artifacts those bricks produce, reproducible from source. The allocator (**Tally**) holds memory in bounded gardens that map straight onto the machine. The kernel (**Caravan**) supervises a tree of small services behind a pinned outer promise. And the boot (**Aurora**) wakes the machine as a flow of verified, named values along RISC-V's own privilege relay, into the kernel that the allocator serves and the courses Brix describes and the language writes and the discipline keeps honest.
+The discipline (**TAME**) is the ground; it governs how every other module is written. The language (**Rye**) is the discipline made into a tool, designed to be cohesion with RISC-V rather than an abstraction over it. The composing language (**Brix**) describes whole systems as courses of lawful, composable bricks; the store (**Tablecloth**) holds the content-addressed artifacts those bricks produce, reproducible from source. The allocator (**Tally**) holds memory in bounded gardens that map straight onto the machine. The kernel (**Caravan**) supervises a tree of small services behind a pinned outer promise. And the boot (**Aurora**) wakes the machine as a flow of verified, named values along RISC-V's own privilege relay, into the kernel that the allocator serves and the courses Brix describes and the language writes and the discipline keeps honest.
 
 The single thread, stated once for all six: bound the lifetime, grow by accretion, release whole regions cleanly, speak in values with enduring names, and never take from a holder what they were given — all in cohesion with the one substrate we treat as fixed, the open instruction set the world is coming to rest upon.
 

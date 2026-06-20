@@ -1,7 +1,7 @@
 # 999 · The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-06-19
+**Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -15,13 +15,13 @@ This file, `999_DESIGN.md`, is the foundation stone. It rests at the bottom of t
 
 ---
 
-## The Quarantine Principle
+## The silo principle
 
 One rule governs everything here, and it is the reason this folder stands apart: **active-designing names only what is ours, and one fixed external.**
 
-The names we may use are our own chosen modules — **TAME, Aurora, Rye, Brix, Silo, Tally, Caravan, Mantra, Pond, Rishi, Comlink, Brushstroke**, and any future names we coin — together with **RISC-V**, the open instruction set we build upon and treat as solid ground. No other project, product, language, or person is named here. Not the systems that inspired us, not the tools we admire, not even the languages our work descends from. Those belong elsewhere.
+The names we may use are our own chosen modules — **TAME, Aurora, Rye, Brix, Tablecloth, Tally, Caravan, Mantra, Pond, Rishi, Comlink, Brushstroke**, and any future names we coin — together with **RISC-V**, the open instruction set we build upon and treat as solid ground. No other project, product, language, or person is named here. Not the systems that inspired us, not the tools we admire, not even the languages our work descends from. Those belong elsewhere.
 
-This is quarantine as a kindness to clarity. Outside ideas enter only as **concepts**, stripped of their origin and weighed on their own merits — a region of memory, a content-addressed store, a supervision tree, a lawful combinator. By refusing the borrowed name, we force ourselves to understand the idea well enough to restate it plainly, and we keep our design space free of any genealogy that might quietly smuggle in assumptions we never chose. What grows here grows on its own roots.
+This is silo as a kindness to clarity. Outside ideas enter only as **concepts**, stripped of their origin and weighed on their own merits — a region of memory, a content-addressed store, a supervision tree, a lawful combinator. By refusing the borrowed name, we force ourselves to understand the idea well enough to restate it plainly, and we keep our design space free of any genealogy that might quietly smuggle in assumptions we never chose. What grows here grows on its own roots.
 
 The discipline is simple to check: read any line aloud, and if it names something outside our own work or RISC-V, it belongs in the external-research stack instead.
 
@@ -45,7 +45,13 @@ Like the external-research stack, this folder counts **down**, and two near-foun
 
 ```
 active-designing/
-  985_native_system_interface.md     <- TAME at the OS boundary: wrappers, display, compositor (most recent, sorts first)
+  971_tally_and_who.md               <- Tally bounds memory for each who (most recent, sorts first)
+  972_who_executor_sealer_opener.md  <- who runs, seals, opens, routes
+  973_sealed_datagrams.md            <- Comlink wire value: layout, seal, open
+  974_harts_parallel_on_one_machine.md <- harts, mhartid, two-hart wire
+  975_virtio_the_device_wire.md      <- virtio as Comlink's third wire rung
+  976_what_we_mean_by_seed.md        <- seed vocabulary — Gall's Law, catalog, planting
+  985_native_system_interface.md     <- TAME at the OS boundary: wrappers, display, compositor
   986_living_desktop.md              <- Pond + Brushstroke + Rishi + Mantra: the native desktop
   987_the_first_seeds.md             <- Caravan + Tally seeds, close reading
   988_brushstroke.md                 <- the surface that draws itself from values
@@ -62,7 +68,7 @@ active-designing/
   999_DESIGN.md                      <- this foundation, sorts last
 ```
 
-To add a design, take the next number down from the lowest present, name the file for its subject, write it self-contained in Radiant Style, and keep faith with the quarantine principle: our own names, and RISC-V, and nothing else. The strategy at `998` is revised in place as our thinking matures; the foundation at `999` rarely moves at all.
+To add a design, take the next number down from the lowest present, name the file for its subject, write it self-contained in Radiant Style, and keep faith with the silo principle: our own names, and RISC-V, and nothing else. The strategy at `998` is revised in place as our thinking matures; the foundation at `999` rarely moves at all.
 
 ---
 

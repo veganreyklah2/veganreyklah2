@@ -64,7 +64,7 @@ So the three compose into one memory-and-failure model, each owning a clear piec
 - **The borrow checker** owns *that references respect the gardens* — proven at compile time, paid for in nothing.
 - **Caravan** owns *the runtime* — when to clear a garden, how to contain a fault, and how a resource is held and released across a service's life.
 
-Read together they are the correctness stance at every layer: prevent by construction what we can (Tally and the checker), contain gracefully what we cannot (Caravan), and in both cases prepare for the challenge rather than chase it. The same value model that runs through Rye, Silo, Rishi, and Mantra runs through this too — one way of holding memory, references, and failure, all the way down.
+Read together they are the correctness stance at every layer: prevent by construction what we can (Tally and the checker), contain gracefully what we cannot (Caravan), and in both cases prepare for the challenge rather than chase it. The same value model that runs through Rye, Tablecloth, Rishi, and Mantra runs through this too — one way of holding memory, references, and failure, all the way down.
 
 ## Caveats
 

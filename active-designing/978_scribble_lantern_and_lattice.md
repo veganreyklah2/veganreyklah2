@@ -1,6 +1,6 @@
 # 978 · Scribble, Lantern, and Lattice — Horizon Modules on One Value Grammar
 
-*A quarantined design brief for the modules that extend our stack toward human-readable docs, GPU-aware editing, local inference, and honest tensors. **Scribble** parses markdown into values. **Brix** and JSON share one record grammar. **Lantern** runs models in Pond enclosures. **Lattice** holds tensor math in Tally gardens. **Anvil** names training-scale work on the far horizon. The editor grows from `980` with GPU frame discipline on Brushstroke and Skate. This brief names only our modules and speaks only on our ground.*
+*A siloed design brief for the modules that extend our stack toward human-readable docs, GPU-aware editing, local inference, and honest tensors. **Scribble** parses markdown into values. **Brix** and JSON share one record grammar. **Lantern** runs models in Pond enclosures. **Lattice** holds tensor math in Tally gardens. **Anvil** names training-scale work on the far horizon. The editor grows from `980` with GPU frame discipline on Brushstroke and Skate. This brief names only our modules and speaks only on our ground.*
 
 **Language:** EN
 **Version:** `20260620.020712` (Rye chronological stamp)
@@ -8,13 +8,13 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy
-**Status:** Active Design (quarantined)
+**Status:** Active Design (siloed)
 
 ---
 
 ## Our Own Ground
 
-This is a clean room. We name only what is ours — **Scribble**, **Lantern**, **Lattice**, **Anvil**, **Brix**, **Silo**, **Mantra**, **Brushstroke**, **Skate**, **Pond**, **Tally**, **Caravan**, **Rishi**, and **Rye** — together with **RISC-V** and **x86_64** where hardware matters. Markdown, JSON, tensors, and GPU text rendering enter as concepts. The close reading that named external teachers lives in `../external-research/970_formats_editors_inference_and_tensors.md`.
+This is a clean room. We name only what is ours — **Scribble**, **Lantern**, **Lattice**, **Anvil**, **Brix**, **Tablecloth**, **Mantra**, **Brushstroke**, **Skate**, **Pond**, **Tally**, **Caravan**, **Rishi**, and **Rye** — together with **RISC-V** and **x86_64** where hardware matters. Markdown, JSON, tensors, and GPU text rendering enter as concepts. The close reading that named external teachers lives in `../external-research/970_formats_editors_inference_and_tensors.md`.
 
 ---
 
@@ -28,7 +28,7 @@ Brix describes what a system is made of. That description is already a value: re
 
 A parser for either face produces the same in-memory value. Shape-cast at the door: nesting depth, string length, and collection size each carry a stated maximum. A document that exceeds its budget fails with a named error before allocation grows.
 
-Silo stores the content-addressed artifacts Brix names. JSON does not replace Silo — it carries brick *descriptions*, while Silo carries brick *bytes*.
+Tablecloth stores the content-addressed artifacts Brix names. JSON does not replace Tablecloth — it carries brick *descriptions*, while Tablecloth carries brick *bytes*.
 
 ---
 
@@ -71,7 +71,7 @@ Multiplayer editing, when it arrives, is shared buffer state over Comlink — th
 
 Lantern pulls and runs language models inside Pond.
 
-**Model artifact.** Weights live in Silo, named by hash. Brix declares which model hashes a given enclosure may load.
+**Model artifact.** Weights live in Tablecloth, named by hash. Brix declares which model hashes a given enclosure may load.
 
 **Run contract.**
 
@@ -128,7 +128,7 @@ Anvil names distributed training, dataset pipelines, and checkpoint rhythms — 
 
 - parity-green primitives,
 - a single-model forward pass in Pond,
-- and a Silo checkpoint format named by content hash.
+- and a Tablecloth checkpoint format named by content hash.
 
 Until then, Anvil is a reserved name and a study direction, not a build target.
 
@@ -139,11 +139,11 @@ Until then, Anvil is a reserved name and a study direction, not a build target.
 | Module | Sits beside | Provides |
 |--------|-------------|----------|
 | **Scribble** | Mantra, Forge | Prose as values |
-| **Brix + JSON** | Silo, Pond | Composition and policy as values |
+| **Brix + JSON** | Tablecloth, Pond | Composition and policy as values |
 | **Editor (`980`)** | Skate, Brushstroke | Text editing as values |
-| **Lantern** | Pond, Silo, Tally | Inference as bounded request/response |
+| **Lantern** | Pond, Tablecloth, Tally | Inference as bounded request/response |
 | **Lattice** | Tally, parity gate | Tensors as bounded buffers |
-| **Anvil** | Caravan, Silo | Training orchestration (horizon) |
+| **Anvil** | Caravan, Tablecloth | Training orchestration (horizon) |
 
 The through-line from `983` holds: a Mantra line, a Brix brick, a Scribble block, a Brushstroke frame, a Lantern completion, and a Lattice tensor are the same kind of thing — named, bounded, owned, passing as values across seams that stay closed.
 

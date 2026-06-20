@@ -30,7 +30,7 @@
 - **The additive-only gate** (#1) — prove a strengthening pass changes only `assert` / `maybe` / comments, never behavior. The structural half is cheap; the semantic half wants a small language-aware check.
 - **Vendor execline** — the near-term TAME bridge for our build scripts, per `990` / `991`; the path off Bash for the small, non-interactive tooling.
 - **A minimal Mantra weave** — overlay, always-succeeding merge, and line-provenance. By the earlier reasoning, possibly the single highest-leverage thing for strengthening *at scale*, because it de-risks drift against the evolving baseline.
-- **Promote the language family into active-designing.** The `989` family (Rye, Silo, an orchestration language, Brook, Mantra, one value model) feels ready to cross from open research into the quarantined design space — once the fork above is decided.
+- **Promote the language family into active-designing.** The `989` family (Rye, Tablecloth, an orchestration language, Brook, Mantra, one value model) feels ready to cross from open research into the siloed design space — once the fork above is decided.
 
 ---
 

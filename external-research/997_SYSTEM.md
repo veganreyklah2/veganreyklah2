@@ -135,7 +135,7 @@ We keep SixOS and infuse in `../gratitude/sixos` and `../gratitude/infuse.nix`, 
 
 ## What Nix Taught Us
 
-**Nix** — the purely functional package manager designed by Eelco Dolstra — gave us the model for content-addressed, reproducible builds. Every derivation is named by the hash of its inputs; the same inputs always produce the same output; nothing is mutated once built. This is the same discipline our **Silo** store keeps when it names blobs by SHA3-256 and never revises them, and the same composability our **Brix** inherits when it declares what to build by naming the parts.
+**Nix** — the purely functional package manager designed by Eelco Dolstra — gave us the model for content-addressed, reproducible builds. Every derivation is named by the hash of its inputs; the same inputs always produce the same output; nothing is mutated once built. This is the same discipline our **Tablecloth** store keeps when it names blobs by SHA3-256 and never revises them, and the same composability our **Brix** inherits when it declares what to build by naming the parts.
 
 Nix also taught us what to decline. Its expression language grew rich and complex; we keep Brix deliberately simple — plain key-value, one field per line, readable by hand. The composability is Nix's gift; the simplicity is ours.
 
@@ -157,7 +157,7 @@ We keep Manyana in `../gratitude/manyana`, studied for its CRDT weave model and 
 
 ## Setting It Down, and Making It Ours
 
-So we do here what we did with Hickey's *Spec-ulation*: we keep the lesson and set the borrowed vessel down with thanks. The sources speak in their own tongues — Tiger Style and Joran in Zig, Hickey in Clojure — and we keep their values and speak them through the Rye perspective, in Reya 2's own voice. The discipline becomes `996_TAME_STYLE.md`, a wholly original style guide. The priority order becomes the spine of how Rye, Silo, Tally, and Caravan make their tradeoffs. The flow model becomes how we think about a boot, a kernel, a network — values transformed and moved and remembered through simple, composable stages, explained from scratch in `993`, the Aurora writing.
+So we do here what we did with Hickey's *Spec-ulation*: we keep the lesson and set the borrowed vessel down with thanks. The sources speak in their own tongues — Tiger Style and Joran in Zig, Hickey in Clojure — and we keep their values and speak them through the Rye perspective, in Reya 2's own voice. The discipline becomes `996_TAME_STYLE.md`, a wholly original style guide. The priority order becomes the spine of how Rye, Tablecloth, Tally, and Caravan make their tradeoffs. The flow model becomes how we think about a boot, a kernel, a network — values transformed and moved and remembered through simple, composable stages, explained from scratch in `993`, the Aurora writing.
 
 This note is the bridge to all of it: the place that records, plainly, that the discipline came from Tiger Style, the order from Joran, and the flow from Hickey.
 
@@ -186,7 +186,7 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 - **`../gratitude/s6/`** and **`../gratitude/skalibs/`** — Laurent Bercot's s6 supervision suite and its foundation library. The source of chain-loading, one-owner-per-pointer discipline, absolute deadlines, and the supervision tree Caravan inherits. **ISC license** (permissive, not GPL). Local clone for reading; not tracked by git. Prefer public API reference at skarnet.org. Caravan inherits s6's supervision discipline; Tally inherits skalibs' bounded-allocation discipline (`974`).
 - **`../gratitude/sixos/`** — Adam Joseph's SixOS, the operating system that composes s6 supervision with Nix's reproducible declarations. The vision that shapes our Brix + Caravan pair. **GPL-3.0**. Gitlink only — our git history never contains its source.
 - **`../gratitude/infuse.nix/`** — Adam Joseph's infuse, the bridge between Nix and s6. The connection between declaration and supervision that Brix and Caravan inherit. Permissive (studied freely); cloned from Codeberg.
-- **`../gratitude/nix/`** — Eelco Dolstra's Nix, the purely functional package manager. The source of content-addressed reproducible builds, and the composability model Brix and Silo inherit. **LGPL-2.1**. Local clone for reading; not tracked by git.
+- **`../gratitude/nix/`** — Eelco Dolstra's Nix, the purely functional package manager. The source of content-addressed reproducible builds, and the composability model Brix and Tablecloth inherit. **LGPL-2.1**. Local clone for reading; not tracked by git.
 - **`../gratitude/manyana/`** — Manyana, a CRDT-based version control system. The direct ancestor of Mantra's weave structure, generation counting, and conflict-free merges. Public domain.
 - **`../gratitude/ai-jail/`** — Akita On Rails' ai-jail sandbox. The enclosure pattern we adapt for Cursor and Zed. **GPL-3.0**. Gitlink only.
 - **`../gratitude/libqrencode/`** — Fukuchi Kentaro's QR encoder library. The tool our key-card script builds from source for scannable identity cards. **LGPL-2.1**. Gitlink only — we compile its CLI into gitignored `tools/.build/`; we do not link it into Rye binaries.
@@ -198,7 +198,7 @@ So TAME is more than a label. It is a small daily reminder that strength and gen
 
 ## Gratitude Licenses and the Clean Room
 
-`gratitude/` is a reading library, not a dependency. We study concepts; we never copy code, documentation, or text into our own modules. What we inherit is ideas — and ideas are free. Our implementations are written from scratch in Rye, expressed through quarantined briefs in `active-designing/`. The boundary between reading and building is the boundary between `gratitude/` and `rye/`, and it is never crossed by code — only by understanding.
+`gratitude/` is a reading library, not a dependency. We study concepts; we never copy code, documentation, or text into our own modules. What we inherit is ideas — and ideas are free. Our implementations are written from scratch in Rye, expressed through siloed briefs in `active-designing/`. The boundary between reading and building is the boundary between `gratitude/` and `rye/`, and it is never crossed by code — only by understanding.
 
 *The notes below are practical engineering guidance for how we honor each license. They are not legal advice.*
 
@@ -239,16 +239,16 @@ Our own code ships under **MIT and Apache 2.0**. Copyleft inspirations stay in `
 
 **What the license cares about.** LGPL is weaker than GPL and aimed at **libraries**. Obligations bite when we **link** LGPL library code into a program we **distribute** — static or dynamic link — or when we ship modified LGPL source without source and relink provisions. LGPL does **not** forbid reading source, learning algorithms, or running the upstream program as a **separate tool** on the host.
 
-**What we do instead.** We study Nix and libqrencode for **discipline and behavior**, then implement our own modules — **Brix**, **Silo**, future Rye-grown QR — in clean-room Rye. Local Nix clones stay off git; libqrencode stays a gitlink; neither is linked into our language runtime.
+**What we do instead.** We study Nix and libqrencode for **discipline and behavior**, then implement our own modules — **Brix**, **Tablecloth**, future Rye-grown QR — in clean-room Rye. Local Nix clones stay off git; libqrencode stays a gitlink; neither is linked into our language runtime.
 
 **What limits us in practice.** We avoid **linking** `libnix`, `libqrencode`, or other LGPL libraries into shipped Rye binaries without an LGPL compliance plan. We avoid **vendoring** their source into paths we commit. Running `nix` on a NixOS host or building `qrencode` into gitignored `tools/.build/` for key cards is fine: those tools stand beside our work, not inside it.
 
 | Project | How we hold it | What we take | What we build |
 |---------|----------------|--------------|---------------|
-| **Nix** | Local clone; not tracked by git | Content-addressed outputs, immutable store, pure derivations — same inputs, same bytes | **Brix** composition, **Silo** SHA3-256 naming (`974`) |
+| **Nix** | Local clone; not tracked by git | Content-addressed outputs, immutable store, pure derivations — same inputs, same bytes | **Brix** composition, **Tablecloth** SHA3-256 naming (`974`) |
 | **libqrencode** | Gitlink | A small, honest encoder for identity cards — a tool we build from source, not a library we embed | `tools/make-key-card.sh` → gitignored `tools/.build/qrencode`; future Rye reimplementation noted in `SOURCE.md` |
 
-**Nix** teaches that a build output can be **named by the hash of its inputs** and never revised once written. That discipline is Silo's birthright and Brix's promise. We honor Eelco Dolstra's package manager by learning its store model, not by wrapping `libnix` in Rye. Our expression language stays plain, our store stays SHA3-256, our simplicity stays ours.
+**Nix** teaches that a build output can be **named by the hash of its inputs** and never revised once written. That discipline is Tablecloth's birthright and Brix's promise. We honor Eelco Dolstra's package manager by learning its store model, not by wrapping `libnix` in Rye. Our expression language stays plain, our store stays SHA3-256, our simplicity stays ours.
 
 **libqrencode** teaches that a scannable QR code wants a real encoder, not a picture that merely looks like one. We honor Fukuchi Kentaro's library by compiling its CLI from the gitlink into an ignored build directory for key cards today, and by marking both the encoder and ImageMagick as candidates to be **re-grown in Rye** tomorrow. We do not link libqrencode into `rye`, `rishi`, or any module we ship as our language.
 
@@ -273,7 +273,7 @@ MIT, ISC, Apache 2.0, and public domain — including **Zig**, **DVUI**, **Urbit
 | License family | Projects | What we build from them |
 |----------------|----------|-------------------------|
 | GPL-3.0 (gitlink / not cloned) | SixOS, ai-jail, Damus, River | Caravan+Brix vision, Pond enclosure, Comlink relay study, Brushstroke separation |
-| LGPL-2.1 (gitlink / local, not in Rye) | Nix, libqrencode | Brix composition, Silo content-addressing; key-card tool only |
+| LGPL-2.1 (gitlink / local, not in Rye) | Nix, libqrencode | Brix composition, Tablecloth content-addressing; key-card tool only |
 | ISC (skarnet) | s6, skalibs | Caravan supervision, Tally bounded allocation |
 | Permissive | Zig, DVUI, Ghostty, Manyana, … | Rye ground, Brushstroke, Skate, Mantra weave |
 

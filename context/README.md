@@ -39,7 +39,7 @@ When a chat or a file stops serving the project, name it gently and let it go. P
     REYA2.md
     specs/
   external-research/ <- counting-down research stack; open to other works, experimental and informal (999 is the foundation)
-  active-designing/  <- counting-down design stack; quarantined to our own names + RISC-V, clear and intentional (999 is the foundation)
+  active-designing/  <- counting-down design stack; siloed to our own names + RISC-V, clear and intentional (999 is the foundation)
   gratitude/      <- works we honor, kept whole and unmodified
     sixos/        <- Adam Joseph's nix-os-without-systemd, from Codeberg
     infuse.nix/   <- the composable override combinator SixOS leans on

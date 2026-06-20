@@ -37,7 +37,7 @@ Rishi builtins: `read-file`, `write-file`, `list-dir`, `lines`, `starts-with`. P
 
 Research: s6/SixOS/Nix/infuse (974), Wayland/compositor (972), editors/remoting (971), Mantra forge (973). GPL compliance analysis. Multi-license strategy.
 
-Quarantined designs: the whole system (983), the microkernel (984), the forge (982), the desktop (981), the editor (980), Comlink remoting (979).
+Siloed designs: the whole system (983), the microkernel (984), the forge (982), the desktop (981), the editor (980), Comlink remoting (979).
 
 ---
 
@@ -48,7 +48,7 @@ Quarantined designs: the whole system (983), the microkernel (984), the forge (9
 | **Implementation velocity** | Five programs in one session — twin, chain, Brushstroke seed, Wayland window, UDP wire | Two programs; more builtins and fixes |
 | **Display layer** | Got a Wayland window open with xdg-shell and SHM buffers | Studied architecture; wrote design briefs |
 | **Networking** | Got sealed datagrams over real UDP sockets | Studied protocol design; wrote Comlink remoting brief |
-| **Strategic depth** | Three design docs (seeds, flow, horizon) | Eleven research + six quarantined designs |
+| **Strategic depth** | Three design docs (seeds, flow, horizon) | Eleven research + six siloed designs |
 | **Context capacity** | Standard context; focused on current task | 1M context; holds the full project state across sessions |
 | **TAME enforcement** | Follows assertions and bounds in new code | Audited 62 gaps; fixed 12; wrote TAME Style spec |
 | **Radiant voice** | Good; occasional mechanical phrasing | Stronger; more natural flow |
@@ -56,7 +56,7 @@ Quarantined designs: the whole system (983), the microkernel (984), the forge (9
 
 The honest summary: **Cursor's implementation velocity is impressive.** Five running programs — including a Wayland window and a crypto UDP wire — is substantial. The code follows TAME style, grows the Caravan arc correctly, and advances the system's living code.
 
-**Opus's strategic depth is the complement.** The whole-system map, the forge vision, the GPL compliance analysis, the multi-license strategy, the TAME Style spec — these are the decisions that shape what the code becomes. The 1M context window holds the full project state, which is why the quarantined designs are comprehensive.
+**Opus's strategic depth is the complement.** The whole-system map, the forge vision, the GPL compliance analysis, the multi-license strategy, the TAME Style spec — these are the decisions that shape what the code becomes. The 1M context window holds the full project state, which is why the siloed designs are comprehensive.
 
 **Both together are stronger than either alone.**
 
