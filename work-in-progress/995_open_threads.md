@@ -3,7 +3,7 @@
 *A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
 
 **Language:** EN
-**Version:** `20260620.022412` (Rye chronological stamp)
+**Version:** `20260620.032012` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -37,6 +37,7 @@
 - **`976_what_we_mean_by_seed.md`.** Quarantined vocabulary — Gall's Law as the word *seed*, catalog, anti-patterns, growth rings (`10013`).
 - **Brushstroke Wayland seed (`brushstroke/wayland_seed.rye`).** One xdg toplevel, Frame → SHM buffer, commit; `10012` Track A.
 - **Gate trio pure Rishi.** `parity-selftest.rish` no longer shells to `sh`; `parity-selftest.sh` removed.
+- **Caravan chain (`caravan/chain.rye`).** Ordered startup wake → prove; per-stage restart; chain does not rewind (`10014`).
 
 ## Threads Now Closed
 
@@ -68,12 +69,13 @@
 - **Seed vocabulary (`976`).** What *seed* means — law, catalog, how to plant; instances in `987`.
 - **Brushstroke Wayland seed.** Native window, one frame from values (`brushstroke/wayland_seed.rye`).
 - **Caravan multi-child (twin seed).** Two supervised children, independent gardens (`caravan/twin.rye`).
+- **Caravan chain-loading (`caravan/chain.rye`).** Sequential wake → prove; per-stage restart (`984` step 4).
 
 ## Threads Still Open
 
 **Near — build:**
-- **Device wire** — sealed datagram over emulated `virtio-net` between two QEMU machines; Comlink's next rung.
-- **Caravan chain-loading** — grow twin toward startup tree and capability handoff (`984`).
+- **Device wire** — sealed datagram over emulated `virtio-net` between two QEMU machines; Comlink's next rung (`10014`).
+- **Caravan capability table** — small Rye struct naming what each child may do (`984` step 5).
 
 **Near — strengthen:**
 - **Continue the strengthening series** — the next `std` surfaces our tools lean on, each through the parity gate. Corpus at 16.

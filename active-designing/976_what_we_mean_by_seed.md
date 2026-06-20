@@ -68,6 +68,7 @@ When prose says "the forge seed" or "Comlink seed," it means **the smallest runn
 caravan/seed.rye      →  one parent, one child, restart on fall
 caravan/bounded.rye   →  seed + Tally garden in the child
 caravan/twin.rye      →  two children, separate gardens
+caravan/chain.rye     →  wake → prove, ordered chain-loading
 ```
 
 ```
@@ -94,7 +95,7 @@ The seed file stays. Later rings import its discipline or inline its types hones
 |--------|---------------|---------------|--------|
 | **Aurora** | `aurora/src/seed.rye` | A hart wakes, speaks one asserted line, halts | Running (RISC-V) |
 | **Tally** | `tally/seed.rye` | One Region; allocate within edges; clear whole | Running; v1 in `gardens.rye` |
-| **Caravan** | `caravan/seed.rye` | Parent watches child; restart on fall; counts match plan | Running; grown through `bounded`, `twin` |
+| **Caravan** | `seed.rye` → `bounded` → `twin` → `chain` | Supervision + chain-loading | Running |
 | **Mantra** | `mantra/src/main.rye` (seed commands) | Weave, LCS diff, SHA3-256 store, init/add/status | Running; repo chain wove 9 bricks |
 | **Brushstroke** | `brushstroke/seed.rye` (hosted); `wayland_seed.rye` (native window) | Frame drawn from values | Running |
 | **Brix** | `.brix` | Project descriptor Mantra can read | Running |
@@ -105,7 +106,7 @@ The seed file stays. Later rings import its discipline or inline its types hones
 | **Skate** | — | Terminal surface in a Brushstroke window | Awaits Brushstroke Wayland seed |
 | **Scribble / Lantern / Lattice** | — | Horizon modules (`978`) | Quarantined design only |
 
-Horizon seeds still to plant: **device wire** (virtio-net), **Caravan chain-loading**, **Forge HTTP seed** (`982`).
+Horizon seeds still to plant: **device wire** (virtio-net), **Caravan capability table**, **Forge HTTP seed** (`982`).
 
 ---
 

@@ -44,8 +44,9 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 
 - [ ] **The wire as a real device** — carry a sealed datagram over an emulated `virtio-net` between two QEMU machines, growing the two-hart shared-memory wire (done, Horizon 0) into a true network link. A device driver and two communicating instances: the meatier climb where Comlink fully begins.
 - [x] **Caravan seed** — one parent, one child, restart on fall (`caravan/seed.rye`). Grows through bounded and twin toward Caravan v1.
-- [x] **Caravan bounded** — supervision + Tally garden composed; child exceeds 256-byte budget, falls, restarts, then holds (`caravan/bounded.rye`).
-- [x] **Caravan twin** — one parent, two children, separate stack gardens, independent restart counts (`caravan/twin.rye`).
+- [x] **Caravan bounded** — supervision + Tally garden composed (`caravan/bounded.rye`).
+- [x] **Caravan twin** — two children, separate gardens (`caravan/twin.rye`).
+- [x] **Caravan chain** — ordered startup wake → prove; per-stage restart (`caravan/chain.rye`; `984` step 4).
 - [x] **Tally seed — one region, asserted edges** — one bounded `Region` struct over a caller-provided backing slice; bump allocate within stated edges, fail past the boundary, clear whole in one gesture. 13 hosted `debug.assert` calls, all green (`tally/seed.rye`). Grows toward Tally v1.
 - [ ] **Close reading of cloned sources** — packet format, commit rule, relay protocols from what we vendored in `gratitude/`, with actionable notes for Comlink before the wire format hardens (`995`, `10007`).
 - [x] **Aurora's deciding stage** — four stages: wake, prove, decide, rest. The deciding stage reads ISA extensions, chooses a configuration path, tags the choice. Clean exit on QEMU virt (`aurora/src/deciding.rye`).

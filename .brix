@@ -9,7 +9,7 @@
 #   file     — one tracked brick/source file (multiple, in order)
 
 name veganreyklah2
-version 20260620.021612
+version 20260620.032012
 
 # Rye compiler
 file rye/src/main.rye
@@ -25,6 +25,7 @@ file tally/gardens.rye
 file caravan/seed.rye
 file caravan/bounded.rye
 file caravan/twin.rye
+file caravan/chain.rye
 
 # Mantra version control
 file mantra/src/main.rye

@@ -1,0 +1,200 @@
+//! Caravan chain — startup as a sequence of named stages.
+//!
+//! Twin proved two children with separate gardens, supervised independently.
+//! This program proves chain-loading: stages run in a fixed order, each must
+//! exit cleanly before the next begins, and a fall restarts only the current
+//! stage — never rewinding the chain. The s6 discipline on hosted ground.
+//!
+//! Usage:
+//!   chain                     Run as supervisor (chain wake → prove)
+//!   chain child wake ok       Wake stage succeeds (readiness signal)
+//!   chain child wake fail     Wake stage falls
+//!   chain child prove ok      Prove stage succeeds (bounded garden)
+//!   chain child prove fail    Prove stage falls
+
+const std = @import("std");
+
+const caravan_chain_version = "20260620.032012";
+
+const Region = struct {
+    buf: []u8,
+    pos: usize,
+
+    fn init(buf: []u8) Region {
+        std.debug.assert(buf.len > 0);
+        const r = Region{ .buf = buf, .pos = 0 };
+        std.debug.assert(r.pos <= r.buf.len);
+        return r;
+    }
+
+    fn alloc(self: *Region, n: usize) error{OutOfBounds}![]u8 {
+        std.debug.assert(self.pos <= self.buf.len);
+        if (n > self.buf.len - self.pos) return error.OutOfBounds;
+        const slice = self.buf[self.pos .. self.pos + n];
+        self.pos += n;
+        std.debug.assert(self.pos <= self.buf.len);
+        return slice;
+    }
+
+    fn clear(self: *Region) void {
+        self.pos = 0;
+        std.debug.assert(self.pos <= self.buf.len);
+    }
+
+    fn remaining(self: *const Region) usize {
+        return self.buf.len - self.pos;
+    }
+};
+
+const Stage = enum { wake, prove };
+
+const chain: [2]Stage = .{ .wake, .prove };
+
+const prove_budget: usize = 160;
+const planned_failures_wake: usize = 0;
+const planned_failures_prove: usize = 1;
+const max_restarts_per_stage: usize = 5;
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const garden = init.garden.allocator();
+    const args = try init.minimal.args.toSlice(garden);
+
+    if (args.len >= 4 and std.mem.eql(u8, args[1], "child")) {
+        const stage = parseStage(args[2]) orelse return 1;
+        const should_fail = std.mem.eql(u8, args[3], "fail");
+        return runStageChild(stage, should_fail);
+    }
+
+    return runSupervisor(garden, io, args);
+}
+
+fn parseStage(name: []const u8) ?Stage {
+    if (std.mem.eql(u8, name, "wake")) return .wake;
+    if (std.mem.eql(u8, name, "prove")) return .prove;
+    return null;
+}
+
+fn plannedFailures(stage: Stage) usize {
+    return switch (stage) {
+        .wake => planned_failures_wake,
+        .prove => planned_failures_prove,
+    };
+}
+
+fn runStageChild(stage: Stage, should_fail: bool) u8 {
+    switch (stage) {
+        .wake => {
+            if (should_fail) {
+                std.debug.print("caravan chain: wake fell (intended)\n", .{});
+                return 1;
+            }
+            std.debug.print("caravan chain: wake ready\n", .{});
+            return 0;
+        },
+        .prove => {
+            var backing: [prove_budget]u8 = undefined;
+            var region = Region.init(&backing);
+            std.debug.assert(region.remaining() == prove_budget);
+
+            const work = region.alloc(48) catch {
+                std.debug.print("caravan chain: prove allocation failed\n", .{});
+                return 1;
+            };
+            std.debug.assert(work.len == 48);
+
+            if (should_fail) {
+                const too_much = region.remaining() + 1;
+                _ = region.alloc(too_much) catch {
+                    std.debug.print("caravan chain: prove exceeded garden (intended)\n", .{});
+                    return 1;
+                };
+            }
+
+            const rest = region.alloc(region.remaining()) catch {
+                std.debug.print("caravan chain: prove edge allocation failed\n", .{});
+                return 1;
+            };
+            std.debug.assert(rest.len == prove_budget - 48);
+            region.clear();
+            std.debug.assert(region.remaining() == prove_budget);
+
+            std.debug.print("caravan chain: prove held. garden {d} bytes cleared.\n", .{prove_budget});
+            return 0;
+        },
+    }
+}
+
+fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+    std.debug.assert(args.len >= 1);
+    const self_path = args[0];
+
+    std.debug.print("caravan chain: supervisor alive. version {s}\n", .{caravan_chain_version});
+    std.debug.print("caravan chain: stages wake → prove (chain-loading)\n", .{});
+
+    var total_restarts: usize = 0;
+
+    for (chain, 0..) |stage, index| {
+        std.debug.assert(index < chain.len);
+        const restarts = try superviseStage(allocator, io, self_path, stage, plannedFailures(stage));
+        total_restarts += restarts;
+        std.debug.print("caravan chain: stage {s} green after {d} restart(s).\n", .{ @tagName(stage), restarts });
+    }
+
+    std.debug.assert(total_restarts == planned_failures_wake + planned_failures_prove);
+    std.debug.print("caravan chain: chain complete. {d} stage(s), {d} total restart(s).\n", .{
+        chain.len, total_restarts,
+    });
+    std.debug.print("caravan chain: startup sequence proven. chain-loading grows.\n", .{});
+    return 0;
+}
+
+fn superviseStage(
+    allocator: std.mem.Allocator,
+    io: std.Io,
+    self_path: []const u8,
+    stage: Stage,
+    planned_failures: usize,
+) !usize {
+    var restarts: usize = 0;
+    const tag = @tagName(stage);
+
+    while (true) {
+        std.debug.assert(restarts <= max_restarts_per_stage);
+
+        const child_arg: []const u8 = if (restarts < planned_failures) "fail" else "ok";
+
+        const argv = try allocator.alloc([]const u8, 4);
+        std.debug.assert(argv.len == 4);
+        argv[0] = self_path;
+        argv[1] = "child";
+        argv[2] = tag;
+        argv[3] = child_arg;
+
+        var proc = std.process.spawn(io, .{ .argv = argv }) catch |err| {
+            std.debug.print("caravan chain: could not start stage {s} ({s})\n", .{ tag, @errorName(err) });
+            return error.SpawnFailed;
+        };
+
+        const term = try proc.wait(io);
+        const code: u8 = switch (term) {
+            .exited => |c| c,
+            else => 255,
+        };
+
+        if (code == 0) {
+            std.debug.assert(restarts == planned_failures);
+            return restarts;
+        }
+
+        restarts += 1;
+        std.debug.print("caravan chain: stage {s} fell (code {d}), restart {d}/{d}\n", .{
+            tag, code, restarts, max_restarts_per_stage,
+        });
+
+        if (restarts >= max_restarts_per_stage) {
+            std.debug.print("caravan chain: stage {s} restart limit reached.\n", .{tag});
+            return error.RestartLimit;
+        }
+    }
+}

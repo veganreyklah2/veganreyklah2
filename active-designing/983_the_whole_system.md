@@ -157,7 +157,7 @@ Every module has a seed. Every seed already runs — vocabulary in `976_what_we_
 |--------|------|--------|
 | Rye | Self-hosting compiler, strengthened std | Running, corpus 16 |
 | Aurora | Six-stage relay on RISC-V, sealed datagram | Running |
-| Caravan | `seed.rye` → `bounded.rye` → `twin.rye` | Running |
+| Caravan | `seed.rye` → `bounded` → `twin` → `chain` | Running |
 | Tally | `seed.rye` + `gardens.rye` named regions | Running |
 | Brix | `.brix` descriptor | Running |
 | Silo | `.mantra/blobs/`, content-addressed store | Running (inside Mantra) |
