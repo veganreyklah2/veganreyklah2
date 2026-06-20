@@ -164,6 +164,8 @@ fn ShakeLike(comptime security_level: u11, comptime default_delim: u8, comptime 
         /// Squeeze a slice of bytes from the state.
         /// `out` can be any length, and the function can be called multiple times.
         pub fn squeeze(self: *Self, out_: []u8) void {
+            assert(self.offset <= self.buf.len);
+            defer assert(self.offset <= self.buf.len);
             if (!self.padded) {
                 self.st.pad();
                 self.padded = true;
@@ -173,6 +175,8 @@ fn ShakeLike(comptime security_level: u11, comptime default_delim: u8, comptime 
                 const left = self.buf.len - self.offset;
                 if (left > 0) {
                     const n = @min(left, out.len);
+                    assert(n <= out.len);
+                    assert(self.offset + n <= self.buf.len);
                     @memcpy(out[0..n], self.buf[self.offset..][0..n]);
                     out = out[n..];
                     self.offset += n;
@@ -188,6 +192,7 @@ fn ShakeLike(comptime security_level: u11, comptime default_delim: u8, comptime 
             }
             if (out.len > 0) {
                 self.st.squeeze(self.buf[0..]);
+                assert(out.len <= self.buf.len);
                 @memcpy(out[0..], self.buf[0..out.len]);
                 self.offset = out.len;
             }
