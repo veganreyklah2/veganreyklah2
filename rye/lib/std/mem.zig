@@ -3487,6 +3487,9 @@ pub fn SplitIterator(comptime T: type, comptime delimiter_type: DelimiterType) t
                 .any => findAnyPos(T, self.buffer, start, self.delimiter),
                 .scalar => findScalarPos(T, self.buffer, start, self.delimiter),
             }) |delim_start| delim_start else self.buffer.len;
+            // Postcondition: peek returns a valid sub-slice without advancing (pairs with next).
+            assert(start <= end);
+            assert(end <= self.buffer.len);
             return self.buffer[start..end];
         }
 
