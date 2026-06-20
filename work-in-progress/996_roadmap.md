@@ -27,17 +27,17 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **A sealed datagram crosses between two harts** — Alice seals on hart 0; Bob, on hart 1, reads the raw bytes off a shared-memory wire, shape-casts them, verifies the attestation, confirms the content-name, derives the shared secret from his own key, and opens it. The content-name matches the hosted test byte-for-byte: the move that turns the whole networking arc into something that runs, running.
 - **The strengthening series is live** — SHA3-512, the Keccak sponge beneath it, and the everyday `std` our own tools lean on (`mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt`), each given stated invariants and each parity-green, recorded in the strengthening-compiler stack.
 - **The crypto foundation is proven, primitive by primitive** — the content hash (SHA3-512, strengthened), signing (Ed25519), key agreement (X25519), and the authenticated seal (AEAD: ChaCha20-Poly1305) all run in Rye's own std, hosted and freestanding alike, and stand parity-green: the foundation the network and identity rest on (`../strengthening-compiler/9995`).
-- **The gate trio runs** — `parity.rish` (behavior), `parity-selftest.rish` (proves RED on divergence), `additive-gate.rish` (shape). All three run in Rishi; the corpus carries sixteen programs, all green.
+- **The gate trio runs** — `parity.rish` (behavior), `parity-selftest.rish` (proves RED on divergence), `additive-gate.rish` (shape). All three run in Rishi; the corpus carries twenty-one programs, all green.
 - **Rishi runs** — a shell interpreter in Rye with comments; `let` of strings, integers, booleans, lists, and records; string interpolation that composes a value into text (`"${a}/${b}"`); `say`; `==`/`!=` comparison; list membership with `contains`; field access with `record.field`; running a command with `run` (its result a record of `out`, `err`, `code`, `ok`); transforming and filtering lists with `map` and `where`; and `assert` as a gate that exits non-zero with its reason. Built by `rye build`.
 - **Rishi gained arithmetic and a real stdout** — integer `+`/`-`/`×`/`÷` with correct operator precedence via two-layer recursive descent, parenthesized grouping, and `say` rebound from stderr to stdout. Nine arithmetic assertions in `rishi/tests/arithmetic.rish`, all green. The shell can now compute, compose, and speak.
-- **The parity gate runs in Rishi** — `tools/parity.rish` is `parity.sh` reborn in our own shell: it maps the corpus through `run` against the baseline and strengthened std, compares the two lists of outputs as one value, and asserts the verdict. Proven GREEN across the corpus and RED on an injected divergence — so the shell Rye grew now guards Rye's own becoming.
+- **The parity gate runs in Rishi** — `tools/parity.rish` runs each corpus `.rye` through `rye run` (baseline via `RYE_LIB=vendor/zig-toolchain/lib`, strengthened via default `rye/lib`), compares outputs as one value, and asserts the verdict. Proven GREEN across 21 programs and RED on tamper (`parity-selftest.rish`).
 - **The strengthening frontier (9994–9991) is sealed** — SHA3-256 (content-naming primitive), mem diff primitives (`copyForwards`, `startsWith`, `endsWith`, `find`, `splitScalar`), `std.Io.Dir` filesystem boundary assertions, and `Dir.iterate` name invariants and exhaustion state — all four through the gate, corpus at 14, all green.
 - **Mantra seed runs** — the smallest version-control that runs: a Weave holds the full history of a text file as Lines with stable positions and generation-parity presence; `computeDiff` finds the minimal LCS edit; the store content-names every weave state by its SHA3-256 digest. `mantra init / add / status` confirmed end-to-end. Pure LCS test joins the corpus (`../strengthening-compiler/9990`).
 - **`init.garden` replaces `init.arena` in Rye's vocabulary** — `std.process.Init.garden` is Rye's name for the season allocator: allocate freely within the session, clear whole on exit. The TAME vocabulary (`garden`) now lives in the public API; `arena` recedes to an implementation detail inside `start.zig`. Rishi, Rye, Mantra, and all benchmark callers updated.
 - **Seeds defined in `976`.** Every module grows from the smallest version that runs; the catalog and planting discipline live in `active-designing/976_what_we_mean_by_seed.md`.
 - **Seven hosted/freestanding seeds in one arc** — Caravan (seed → chain), Brushstroke (stdout + Wayland), Comlink (posted + hosted wire), Aurora deciding — code advancing; design (~20 active-designing docs) now leads until build catches up (`10017`).
 - **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`); virtio-net is next (`10016`).
-- **Rishi string builtins** — `length`, `trim`, `slice` beside `lines` and `starts-with`; gate trio still 16/16 GREEN.
+- **Rishi string builtins** — `length`, `trim`, `slice`, `ends-with`, `join` beside `lines` and `starts-with`; gate trio 20/20 GREEN.
 
 ---
 
@@ -64,8 +64,8 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 - [x] **Brushstroke hosted seed** — Frame value, stdout redraw (`brushstroke/seed.rye`; `10011`).
 - [x] **Brushstroke Wayland seed** — one native window, Frame → SHM buffer (`brushstroke/wayland_seed.rye`; `10012`).
 - [x] **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`; `10014` Track D).
-- [x] **Rishi string builtins** — `length`, `trim`, `slice` (`10017` Track A).
-- [ ] **Skate text grid** — monospace glyph rendering on the Wayland seed (`980`, `10017` Track B).
+- [x] **Rishi string builtins** — `length`, `trim`, `slice`, `ends-with`, `join` (`10023` Track C).
+- [x] **Skate text grid** — monospace glyph rendering on the Wayland seed (`skate_grid.rye`, `font8x8_data.rye`, `wayland_seed.rye`; `10023` Track A).
 - [ ] **Device wire (virtio-net)** — two QEMU guests (`10016`).
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
 
@@ -121,18 +121,17 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 **Highest-leverage build threads (ordered):**
 
-1. **Skate** — text grid on `wayland_seed` (`980`, `981`, `10017` Track B)
-2. **Strengthening series** — next `std` surface through the gate trio (`998`)
-3. **Rishi** — builtins as gates need them (`length`/`trim`/`slice` done)
-4. **Comlink virtio-net** — device wire between QEMU guests (`10016`, `993`)
-5. **Caravan capability table** — `984` step 5
-6. **Tablecloth v1** — after 1–3 stay green (`10022`; Mantra blobs → queryable store)
+1. **Strengthening series** — next `std` surface through the gate trio (`998`)
+2. **Rishi** — builtins as gates need them (`join` landed; path `join` + Pond policy next)
+3. **Comlink virtio-net** — device wire between QEMU guests (`10016`, `993`)
+4. **Caravan capability table** — `984` step 5
+5. **Tablecloth v1** — after 1–2 stay green (`10022`; Mantra blobs → queryable store)
 
 The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi meet on x86_64. Aurora's RISC-V arc continues in parallel.
 
 ### What to Build Next, and Why
 
-Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, and Comlink hosted wire — all done. **Skate's first glyph grid** is the honest next step on the desktop path: one monospace cell raster in the existing Wayland window, values in and frame out, before virtio-net or the capability table widen scope.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, and **Skate's first glyph grid** — all done. **Strengthening the next `std` surface** is the honest next step: earn one more dependency through the gate trio before virtio-net or the capability table widen scope.
 
 ---
 

@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `044012`: Tablecloth prompt ladder unified and pruned; main track returns to Rye, Rishi, and strengthening.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `145612`: parity runs `rye run` on `.rye` corpus; `.rye`/`.zig` discipline recorded.*
 
 **Language:** EN
-**Version:** `20260620.044012` (Rye chronological stamp)
+**Version:** `20260620.145612` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,9 +12,17 @@
 
 ## What Just Landed (this session)
 
+- **Parity via `rye run` (`145612`).** `tools/parity.rish` and `parity-selftest.rish` run corpus `.rye` files through `rye run`; baseline arm sets `RYE_LIB` to pinned vendor std. No more `parity-work` `.zig` copies.
+- **`.rye` vs `.zig` discipline (`145312`–`145612`).** Documented in *Ongoing — Rye vocabulary* below: we author `.rye`; we strengthen `rye/lib/std/*.zig` until Rye owns the import graph.
+- **Strengthening pass 9983 (`144812`).** `std.fs.path.join` buffer postcondition + `maybe` for empty components; corpus 21/21 GREEN.
+- **Rishi `join` (`144412`).** List-to-string compose builtin.
+- **Strengthening pass 9984 (`144112`).** `readFileAlloc` limit postcondition; pairs with 9985 write path.
+- **Strengthening pass 9985 (`143912`).** `writeStreamingAll` postcondition.
+- **Rishi `ends-with` (`143612`).** String suffix builtin; `rishi/tests/ends_with.rish` green.
+- **Strengthening pass 9987 (`050912`).** `Allocator.alloc` postcondition; Skate modules migrated from `.zig` to `.rye`; corpus 17/17 GREEN.
 - **Tablecloth vocabulary (`043212`).** Store module renamed from the retired name; **silo** / **siloed** names the clean-room discipline only.
 - **Tablecloth prompt ladder (`10018`–`10022`).** Five rungs from `043712`–`044112`: index, Brix split, build flow, value model, v1 seed frame.
-- **Prompt history pruned (`044012`).** `10010` removed; `10005` renamed to `silo_the_surface`; expanding-prompts carry **Tablecloth** only for the store.
+- **Prompt numbering (`044412`).** `10010_reserved.md` holds the number open; **`10023`** carries the main-track build order (Skate → strengthening → Rishi).
 
 ## Threads Now Closed
 
@@ -24,7 +32,7 @@
 - **Rishi arithmetic + stdout** — `+`/`-`/`*`/`/`, correct precedence, `say`.
 - **Tally seed** — one Region, 13 invariants.
 - **Tally v1 named gardens** — `Gardens`, blob/diff/frame, 15/15 GREEN.
-- **Strengthening 9994–9988** — SHA3-256, mem diff, fs boundary, Dir.iterate, allocPrint/trimEnd. Corpus 16.
+- **Strengthening 9994–9983** — through path.join. Corpus 21.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
 - **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`.
@@ -49,19 +57,17 @@
 - **Caravan chain-loading (`caravan/chain.rye`).**
 - **Comlink hosted wire (`comlink/hosted_wire.rye`).**
 - **Rishi string builtins (`length`, `trim`, `slice`).** Parity 16/16.
+- **Skate text grid.** Monospace 8×8 glyphs on `wayland_seed`; headless `selftest` green.
 
 ## Threads Still Open
 
-**Discipline (from `10017`):** **⅔ implementation · ⅓ design** — build catches the active-designing map.
-
-**Main track — Rye · Rishi · strengthening (now):**
+**Main track — Rye · Rishi · strengthening:** `expanding-prompts/10023_main_track_rye_rishi_strengthening.md` (`044412`). Run this for the current build order; `10010` is a reserved stub only.
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Skate text grid** — monospace glyphs on `wayland_seed` | `980`, `981`, `10017` Track B |
-| 2 | **Strengthening series** — next `std` surface through gate trio | `998`, corpus 16 |
-| 3 | **Rishi** — builtins as gates and Pond policy need them | `10017` |
-| 4 | **TAME assertion backlog** — fix as code is touched | audit list |
+| 1 | **Strengthening series** — next `std` surface through gate trio | `10023` Track B, `998` |
+| 2 | **Rishi** — builtins as gates and Pond policy need them (`join` done) | `10023` Track C |
+| 3 | **TAME assertion backlog** — fix as code is touched | audit list |
 
 **Near — build (after main track holds green):**
 
@@ -94,6 +100,23 @@
 - **`pond.rish`** — enclosure as a value.
 - **Owner-key PKI** — rotation, revocation, recovery.
 - **Verify-flag hot path** — data-plane postconditions.
+
+**Ongoing — Rye vocabulary (`.rye` vs `.zig`):**
+
+| Layer | Extension | Role |
+|-------|-----------|------|
+| **Our programs** | `.rye` | Rishi, seeds, Skate, corpus tests — what we author |
+| **Our std** | `.zig` under `rye/lib/std` | Strengthened surfaces the compiler reads via `--zig-lib-dir` |
+| **Ephemeral bridge** | adjacent `.zig` | `rye run` / `rye build` only; deleted after compile |
+
+Skate briefly used `.zig` modules; migrated at `050912` with recursive `.rye` import bridging. **Whole std as `.rye`** is a horizon move — the lib tree is the backend layout today.
+
+**Parity contract (`145612`):**
+
+- **Compare:** baseline `vendor/zig-toolchain/lib` vs strengthened `rye/lib` — same test, same pinned Zig (`RYE_ZIG`).
+- **Invoke:** `rye run rye/tests/<name>.rye` on both arms (`RYE_LIB` for baseline); exercises the real bridge path.
+- **Hold:** exit code + stdout/stderr identical — assertions change what code *says*, never what it *does*.
+- **Horizon:** strengthened std modules as `.rye` when Rye controls imports without bridging the full lib tree.
 
 ## The Through-Line
 

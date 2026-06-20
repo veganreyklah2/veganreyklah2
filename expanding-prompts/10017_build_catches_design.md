@@ -49,6 +49,8 @@
 
 ## Next Runs (ordered)
 
+See **`10023_main_track_rye_rishi_strengthening.md`** for the current build order.
+
 | Priority | Track | Milestone | Design anchor |
 |----------|-------|-----------|---------------|
 | 1 | **B** | Skate — monospace glyph grid on `wayland_seed` | `980`, `981`, `988` |

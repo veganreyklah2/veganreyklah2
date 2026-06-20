@@ -46,7 +46,7 @@ Run in order; each rung is one minute later on the clock.
 | `10011` Track C remember | `10021` |
 | `10017` module lens | `10020` Brix; `10022` Tablecloth v1 |
 
-**Pruned:** `10010_brix_composing_language.md` — removed; content lives in `10019`–`10020`.
+**Reserved:** `10010_reserved.md` — number held open. Tablecloth/Brix content in `10019`–`10020`; main track in `10023`.
 
 ## Track A — Prompt Hygiene (`044012`)
 

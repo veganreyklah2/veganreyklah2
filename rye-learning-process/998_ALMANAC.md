@@ -22,7 +22,9 @@ Read it as an almanac: practical, accumulated, seasonal. It grows as Rye grows.
 
 Rye's first version is honest about what it is: a thin front-end over the Zig 0.16.0 toolchain. A `.rye` file is Zig source for now, since the language has yet to diverge, so every capability the toolchain offers is Rye's by construction.
 
-The one wrinkle we met immediately: the toolchain's front-end reads only the `.zig` extension. `zig run file.rye` answers `error: unrecognized file extension`. So the `rye` command bridges — it copies the `.rye` source to an adjacent `.zig` file, hands that to the compiler, and clears the bridge away afterward so the tree stays tidy. A single-file run needs nothing more.
+The one wrinkle we met immediately: the toolchain's front-end reads only the `.zig` extension. `zig run file.rye` answers `error: unrecognized file extension`. So the `rye` command bridges — it copies the `.rye` source to an adjacent `.zig` file, hands that to the compiler, and clears the bridge away afterward so the tree stays tidy. Since `050912`, `rye build` and `rye run` also bridge every local `@import("*.rye")` dependency recursively, rewriting those imports to `.zig` for the toolchain while the repository keeps `.rye` sources only.
+
+**What we write vs what we strengthen:** programs and corpus tests are `.rye`; assertions accrete in `rye/lib/std/**/*.zig` because that is the layout `--zig-lib-dir` serves. See `work-in-progress/995_open_threads.md` (*Ongoing — Rye vocabulary*).
 
 Since then, Rye has taken its first steps away from the toolchain: it owns its standard library, and it counts its versions in its own way. The three entries that follow record how.
 
@@ -223,7 +225,7 @@ Strengthening is safe only while we can prove it. Three gates run in **Rishi** t
 
 | Gate | Script | What it proves |
 |------|--------|----------------|
-| **Parity** | `tools/parity.rish` | Rye's strengthened `std` is behavior-identical to the baseline across **16** corpus programs |
+| **Parity** | `tools/parity.rish` | Rye's strengthened `std` is behavior-identical to the baseline across **21** corpus programs |
 | **Selftest** | `tools/parity-selftest.rish` | The parity gate turns **RED** on a deliberate SHA3 tamper |
 | **Additive** | `tools/additive-gate.rish` | The latest commit to `rye/lib/` changed only assertions, comments, and `maybe` markers |
 
@@ -235,7 +237,7 @@ rishi/bin/rishi run tools/parity-selftest.rish
 rishi/bin/rishi run tools/additive-gate.rish   # after a std-touching commit
 ```
 
-`parity.rish` maps the corpus through `run`, compares exit codes and combined output as one value, and `assert`s equality. The selftest builds a shadow copy of `rye/lib` with one tampered file (`sed -i` on the shadow — `sha3.zig` is too large to hold in a Rishi string). The additive gate pipes `git diff` through `tools/additive-classify.awk`. Each strengthening pass in `strengthening-compiler/` (9998 downward) records what was touched and expects these gates to stay green.
+`parity.rish` runs each corpus `.rye` through `rye run` twice: baseline arm sets `RYE_LIB=vendor/zig-toolchain/lib`, strengthened arm uses default `rye/lib`. Same `RYE_ZIG`; only the std tree differs. Exit codes and combined output must match. The selftest builds a shadow copy of `rye/lib` with one tampered file (`sed -i` on the shadow) and confirms `rye run` catches the divergence. The additive gate pipes `git diff` through `tools/additive-classify.awk`. Each strengthening pass in `strengthening-compiler/` (9998 downward) records what was touched and expects these gates to stay green.
 
 ---
 
