@@ -189,6 +189,8 @@ fn parseNum(text: []const u8) error{ InvalidVersion, Overflow }!usize {
 }
 
 pub fn format(self: Version, w: *std.Io.Writer) std.Io.Writer.Error!void {
+    if (self.pre) |pre| assert(pre.len > 0);
+    if (self.build) |build| assert(build.len > 0);
     try w.print("{d}.{d}.{d}", .{ self.major, self.minor, self.patch });
     if (self.pre) |pre| try w.print("-{s}", .{pre});
     if (self.build) |build| try w.print("+{s}", .{build});
