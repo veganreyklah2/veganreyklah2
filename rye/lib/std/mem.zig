@@ -1255,7 +1255,13 @@ pub fn findScalarLast(comptime T: type, slice: []const T, value: T) ?usize {
     var i: usize = slice.len;
     while (i != 0) {
         i -= 1;
-        if (slice[i] == value) return i;
+        if (slice[i] == value) {
+            const result = i;
+            // Postcondition: a found index lands inside the slice at the sought value.
+            assert(result < slice.len);
+            assert(slice[result] == value);
+            return result;
+        }
     }
     return null;
 }
