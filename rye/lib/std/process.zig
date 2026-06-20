@@ -496,6 +496,8 @@ pub const RunResult = struct {
 /// Spawns a child process, waits for it, collecting stdout and stderr, and then returns.
 /// If it succeeds, the caller owns result.stdout and result.stderr memory.
 pub fn run(gpa: Allocator, io: Io, options: RunOptions) RunError!RunResult {
+    // Precondition: spawn needs a program path in argv[0].
+    assert(options.argv.len > 0);
     var child = try spawn(io, .{
         .argv = options.argv,
         .cwd = options.cwd,
@@ -542,6 +544,14 @@ pub fn run(gpa: Allocator, io: Io, options: RunOptions) RunError!RunResult {
 
     const stderr_slice = try multi_reader.toOwnedSlice(1);
     errdefer gpa.free(stderr_slice);
+
+    // Postcondition: collected output respects stated stream limits.
+    if (options.stdout_limit.toInt()) |limit| {
+        assert(stdout_slice.len <= limit);
+    }
+    if (options.stderr_limit.toInt()) |limit| {
+        assert(stderr_slice.len <= limit);
+    }
 
     return .{
         .stdout = stdout_slice,

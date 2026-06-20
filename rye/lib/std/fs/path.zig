@@ -126,6 +126,9 @@ fn joinSepMaybeZ(allocator: Allocator, separator: u8, comptime sepPredicate: fn 
 
     if (zero) buf[buf.len - 1] = 0;
 
+    // Postcondition: every byte of the allocated buffer is accounted for.
+    assert(buf_index == buf.len - @as(usize, @intFromBool(zero)));
+
     // No need for shrink since buf is exactly the correct size.
     return buf;
 }
@@ -133,6 +136,7 @@ fn joinSepMaybeZ(allocator: Allocator, separator: u8, comptime sepPredicate: fn 
 /// Naively combines a series of paths with the native path separator.
 /// Allocates memory for the result, which must be freed by the caller.
 pub fn join(allocator: Allocator, paths: []const []const u8) ![]u8 {
+    for (paths) |p| std.debug.maybe(p.len == 0);
     return joinSepMaybeZ(allocator, sep, isSep, paths, false);
 }
 
@@ -1335,7 +1339,11 @@ fn dirnameInner(comptime path_type: PathType, path: []const u8) ?[]const u8 {
     var it = ComponentIterator(path_type, u8).init(path);
     _ = it.last() orelse return null;
     const up = it.previous() orelse return it.root();
-    return up.path;
+    const result = up.path;
+    // Postcondition: dirname is a prefix sub-slice of the input path.
+    assert(result.len <= path.len);
+    assert(mem.startsWith(u8, path, result));
+    return result;
 }
 
 test dirnamePosix {

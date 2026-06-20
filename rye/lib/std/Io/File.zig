@@ -625,6 +625,8 @@ pub fn writeStreamingAll(file: File, io: Io, bytes: []const u8) Writer.Error!voi
     while (index < bytes.len) {
         index += try writeStreaming(file, io, &.{}, &.{bytes[index..]}, 1);
     }
+    // Postcondition: the loop advanced across every byte.
+    assert(index == bytes.len);
 }
 
 pub const LockError = error{

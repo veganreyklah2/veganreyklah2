@@ -1389,10 +1389,14 @@ pub fn readFileAllocOptions(
     });
     defer file.close(io);
     var file_reader = file.reader(io, &.{});
-    return file_reader.interface.allocRemainingAlignedSentinel(gpa, limit, alignment, sentinel) catch |err| switch (err) {
+    const result = file_reader.interface.allocRemainingAlignedSentinel(gpa, limit, alignment, sentinel) catch |err| switch (err) {
         error.ReadFailed => return file_reader.err.?,
         error.OutOfMemory, error.StreamTooLong => |e| return e,
     };
+    // Postcondition: a successful read never exceeds the stated limit.
+    const max = @intFromEnum(limit);
+    if (max != std.math.maxInt(usize)) assert(result.len <= max);
+    return result;
 }
 
 pub const DeleteTreeError = error{

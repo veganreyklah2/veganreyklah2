@@ -1187,7 +1187,11 @@ pub fn allEqual(comptime T: type, slice: []const T, scalar: T) bool {
 pub fn trimStart(comptime T: type, slice: []const T, values_to_strip: []const T) []const T {
     var begin: usize = 0;
     while (begin < slice.len and findScalar(T, values_to_strip, slice[begin]) != null) : (begin += 1) {}
-    return slice[begin..];
+    const result = slice[begin..];
+    // Postcondition: trimStart only shortens or preserves the slice; it never extends it.
+    assert(begin <= slice.len);
+    assert(result.len <= slice.len);
+    return result;
 }
 
 test trimStart {
@@ -1198,7 +1202,11 @@ test trimStart {
 pub fn trimEnd(comptime T: type, slice: []const T, values_to_strip: []const T) []const T {
     var end: usize = slice.len;
     while (end > 0 and findScalar(T, values_to_strip, slice[end - 1]) != null) : (end -= 1) {}
-    return slice[0..end];
+    const result = slice[0..end];
+    // Postcondition: trimEnd only shortens or preserves the slice; it never extends it.
+    assert(end <= slice.len);
+    assert(result.len <= slice.len);
+    return result;
 }
 
 test trimEnd {

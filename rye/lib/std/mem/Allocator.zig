@@ -272,7 +272,10 @@ pub inline fn allocAdvancedWithRetAddr(
 ) Error![]align(if (alignment) |a| a.toByteUnits() else @alignOf(T)) T {
     const a: Alignment = alignment orelse comptime .of(T);
     const ptr: [*]align(a.toByteUnits()) T = @ptrCast(try self.allocWithSizeAndAlignment(@sizeOf(T), a, n, return_address));
-    return ptr[0..n];
+    const result = ptr[0..n];
+    // Postcondition: the returned slice spans exactly n elements.
+    assert(result.len == n);
+    return result;
 }
 
 fn allocWithSizeAndAlignment(

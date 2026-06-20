@@ -603,7 +603,10 @@ pub fn bufPrint(buf: []u8, comptime fmt: []const u8, args: anytype) BufPrintErro
     w.print(fmt, args) catch |err| switch (err) {
         error.WriteFailed => return error.NoSpaceLeft,
     };
-    return w.buffered();
+    const result = w.buffered();
+    // Postcondition: formatted output fits in the caller buffer.
+    assert(result.len <= buf.len);
+    return result;
 }
 
 /// Deprecated in favor of `bufPrintSentinel`
@@ -637,7 +640,11 @@ pub fn allocPrint(gpa: Allocator, comptime fmt: []const u8, args: anytype) Alloc
     aw.writer.print(fmt, args) catch |err| switch (err) {
         error.WriteFailed => return error.OutOfMemory,
     };
-    return aw.toOwnedSlice();
+    const written_len = aw.writer.end;
+    const result = try aw.toOwnedSlice();
+    // Postcondition: owned slice length matches bytes formatted before transfer.
+    assert(result.len == written_len);
+    return result;
 }
 
 pub fn allocPrintSentinel(
