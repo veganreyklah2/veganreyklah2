@@ -1270,8 +1270,13 @@ test "findSentinel vector paths" {
 /// Returns true if all elements in a slice are equal to the scalar value provided
 pub fn allEqual(comptime T: type, slice: []const T, scalar: T) bool {
     for (slice) |item| {
-        if (item != scalar) return false;
+        if (item != scalar) {
+            assert(item != scalar);
+            return false;
+        }
     }
+    // Postcondition: every element matches scalar (vacuously true when empty).
+    for (slice) |item| assert(item == scalar);
     return true;
 }
 
