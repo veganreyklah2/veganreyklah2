@@ -121,7 +121,11 @@ pub fn parse(text: []const u8) !Version {
         .patch = try parseNum(it.next() orelse return error.InvalidVersion),
     };
     if (it.next() != null) return error.InvalidVersion;
-    if (extra_index == null) return ver;
+    if (extra_index == null) {
+        assert(ver.pre == null);
+        assert(ver.build == null);
+        return ver;
+    }
 
     // Slice optional pre-release or build metadata components.
     const extra: []const u8 = text[extra_index.?..text.len];
@@ -165,6 +169,9 @@ pub fn parse(text: []const u8) !Version {
         }
     }
 
+    // Postcondition: optional pre/build slices stay within the parsed text.
+    if (ver.pre) |pre| assert(std.mem.indexOf(u8, text, pre) != null);
+    if (ver.build) |build| assert(std.mem.indexOf(u8, text, build) != null);
     return ver;
 }
 
@@ -172,10 +179,13 @@ fn parseNum(text: []const u8) error{ InvalidVersion, Overflow }!usize {
     // Leading zeroes are not allowed.
     if (text.len > 1 and text[0] == '0') return error.InvalidVersion;
 
-    return std.fmt.parseUnsigned(usize, text, 10) catch |err| switch (err) {
+    const result = std.fmt.parseUnsigned(usize, text, 10) catch |err| switch (err) {
         error.InvalidCharacter => return error.InvalidVersion,
         error.Overflow => return error.Overflow,
     };
+    // Postcondition: parsed numeric field consumed a non-empty digit string.
+    assert(text.len > 0);
+    return result;
 }
 
 pub fn format(self: Version, w: *std.Io.Writer) std.Io.Writer.Error!void {
