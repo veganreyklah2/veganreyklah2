@@ -3,7 +3,7 @@
 *A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
 
 **Language:** EN
-**Version:** `20260620.021212` (Rye chronological stamp)
+**Version:** `20260620.021612` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -33,6 +33,7 @@
 - **Brushstroke seed (`brushstroke/seed.rye`).** Hosted frame-from-values; stdout redraw; `10011` Track A.
 - **`977_flow_of_values.md`.** Quarantined Language-of-the-System foundation — transform, move, route, remember.
 - **Garden vocabulary sweep (phase 2).** Locals `garden`, `start.zig` internals, README, ALMANAC — open thread closed.
+- **Caravan twin (`caravan/twin.rye`).** One parent, two children, separate stack gardens (128 / 192 bytes); A falls once then holds; B holds first try.
 
 ## Threads Now Closed
 
@@ -61,13 +62,14 @@
 - **Formats, editors, inference research (`970`).** JSON/Brix, Scribble, Zed/GPUI, inference stacks.
 - **Horizon modules quarantined (`978`).** Scribble, Lantern, Lattice, Anvil.
 - **Flow of values foundation (`977`).** System-wide compositional law quarantined.
+- **Caravan multi-child (twin seed).** Two supervised children, independent gardens (`caravan/twin.rye`).
 
 ## Threads Still Open
 
 **Near — build:**
-- **Brushstroke Wayland seed** — one native x86_64 window, one static frame (`985`, `986`, `988`). Hosted seed runs (`brushstroke/seed.rye`).
+- **Brushstroke Wayland seed** — one native x86_64 window, one static frame (`985`, `986`, `988`, `10012`). Hosted seed runs (`brushstroke/seed.rye`).
 - **Device wire** — sealed datagram over emulated `virtio-net` between two QEMU machines; Comlink's next rung.
-- **Caravan multi-child** — grow the bounded seed toward two children with separate gardens, then chain-loading (`984`).
+- **Caravan chain-loading** — grow twin toward startup tree and capability handoff (`984`).
 
 **Near — strengthen:**
 - **Continue the strengthening series** — the next `std` surfaces our tools lean on, each through the parity gate. Corpus at 16.

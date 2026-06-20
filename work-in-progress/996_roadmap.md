@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260620.004712` (Rye chronological stamp)
+**Version:** `20260620.021612` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -27,7 +27,7 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **A sealed datagram crosses between two harts** — Alice seals on hart 0; Bob, on hart 1, reads the raw bytes off a shared-memory wire, shape-casts them, verifies the attestation, confirms the content-name, derives the shared secret from his own key, and opens it. The content-name matches the hosted test byte-for-byte: the move that turns the whole networking arc into something that runs, running.
 - **The strengthening series is live** — SHA3-512, the Keccak sponge beneath it, and the everyday `std` our own tools lean on (`mem.trim`, `mem.eql`, `mem.findScalar`, `fmt.parseInt`), each given stated invariants and each parity-green, recorded in the strengthening-compiler stack.
 - **The crypto foundation is proven, primitive by primitive** — the content hash (SHA3-512, strengthened), signing (Ed25519), key agreement (X25519), and the authenticated seal (AEAD: ChaCha20-Poly1305) all run in Rye's own std, hosted and freestanding alike, and stand parity-green: the foundation the network and identity rest on (`../strengthening-compiler/9995`).
-- **The gate trio runs** — `parity.sh` / `parity.rish` (behavior identical to baseline), `parity-selftest.sh` / `parity-selftest.rish` (the gate turns RED on a real divergence — the tamper was caught), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction; the parity and selftest gates now run in both portable sh and in Rishi. The corpus carries fourteen programs, all green. `additive-gate.rish` follows once Rishi gains stream processing.
+- **The gate trio runs** — `parity.sh` / `parity.rish` (behavior identical to baseline), `parity-selftest.sh` / `parity-selftest.rish` (the gate turns RED on a real divergence — the tamper was caught), `additive-gate.sh` (a pass changed only assertions and words). Strengthening is safe by construction; the parity and selftest gates now run in both portable sh and in Rishi. The corpus carries sixteen programs, all green. The gate trio is complete in Rishi; `.sh` fallbacks removed.
 - **Rishi runs** — a shell interpreter in Rye with comments; `let` of strings, integers, booleans, lists, and records; string interpolation that composes a value into text (`"${a}/${b}"`); `say`; `==`/`!=` comparison; list membership with `contains`; field access with `record.field`; running a command with `run` (its result a record of `out`, `err`, `code`, `ok`); transforming and filtering lists with `map` and `where`; and `assert` as a gate that exits non-zero with its reason. Built by `rye build`.
 - **Rishi gained arithmetic and a real stdout** — integer `+`/`-`/`×`/`÷` with correct operator precedence via two-layer recursive descent, parenthesized grouping, and `say` rebound from stderr to stdout. Nine arithmetic assertions in `rishi/tests/arithmetic.rish`, all green. The shell can now compute, compose, and speak.
 - **The parity gate runs in Rishi** — `tools/parity.rish` is `parity.sh` reborn in our own shell: it maps the corpus through `run` against the baseline and strengthened std, compares the two lists of outputs as one value, and asserts the verdict. Proven GREEN across the corpus and RED on an injected divergence — so the shell Rye grew now guards Rye's own becoming.
@@ -42,7 +42,9 @@ These are the simple systems that run today. Everything ahead grows from them.
 Each is a thing that runs on its own, added by degrees, behind the gates.
 
 - [ ] **The wire as a real device** — carry a sealed datagram over an emulated `virtio-net` between two QEMU machines, growing the two-hart shared-memory wire (done, Horizon 0) into a true network link. A device driver and two communicating instances: the meatier climb where Comlink fully begins.
-- [x] **Caravan seed — one parent, one child, restart on fall** — the smallest living supervision loop in hosted Rye: a parent that never dies, one child, restart when the child falls, proven by assertion (`../active-designing/987`). 3 planned failures, 3 restarts, 5 assertions GREEN (`caravan/seed.rye`). Grows toward Caravan v1.
+- [x] **Caravan seed** — one parent, one child, restart on fall (`caravan/seed.rye`). Grows through bounded and twin toward Caravan v1.
+- [x] **Caravan bounded** — supervision + Tally garden composed; child exceeds 256-byte budget, falls, restarts, then holds (`caravan/bounded.rye`).
+- [x] **Caravan twin** — one parent, two children, separate stack gardens, independent restart counts (`caravan/twin.rye`).
 - [x] **Tally seed — one region, asserted edges** — one bounded `Region` struct over a caller-provided backing slice; bump allocate within stated edges, fail past the boundary, clear whole in one gesture. 13 hosted `debug.assert` calls, all green (`tally/seed.rye`). Grows toward Tally v1.
 - [ ] **Close reading of cloned sources** — packet format, commit rule, relay protocols from what we vendored in `gratitude/`, with actionable notes for Comlink before the wire format hardens (`995`, `10007`).
 - [x] **Aurora's deciding stage** — four stages: wake, prove, decide, rest. The deciding stage reads ISA extensions, chooses a configuration path, tags the choice. Clean exit on QEMU virt (`aurora/src/deciding.rye`).
@@ -54,7 +56,8 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 - [ ] **Display-layer study** — River studied through public Wayland specs only (GPL-3.0, not cloned). Ghostty (MIT) may be cloned. Our terminal is **Skate**; our surface is **Brushstroke**. Both from scratch in Rye.
 - [x] **Rishi file I/O builtins** — `read-file`, `write-file`, `list-dir` behind OS-boundary wrappers. Round-trip test in `rishi/tests/file_io.rish`, all assertions green. Parity gate 15/15 GREEN.
 - [x] **`additive-gate.rish`** — Rishi orchestrates (`git diff` + awk classifier). The `.sh` fallbacks are removed. Gate trio complete in Rishi.
-- [ ] **Brushstroke seed** — one native window on x86_64 AMD, one static frame. Written from scratch in Rye; informed by public Wayland specs and display-layer documentation (`../active-designing/985`, `../active-designing/986`, `../active-designing/988`).
+- [x] **Brushstroke hosted seed** — Frame value, stdout redraw (`brushstroke/seed.rye`; `10011`).
+- [ ] **Brushstroke Wayland seed** — one native window on x86_64, one static frame (`10012`, `985`, `986`, `988`).
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
 
 ---
