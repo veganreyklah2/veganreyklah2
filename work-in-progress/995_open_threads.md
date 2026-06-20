@@ -3,7 +3,7 @@
 *A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
 
 **Language:** EN
-**Version:** `20260620.020012` (Rye chronological stamp)
+**Version:** `20260620.021012` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -44,7 +44,7 @@
 - **Strengthening 9994–9988** — SHA3-256, mem diff, fs boundary, Dir.iterate, allocPrint/trimEnd. Corpus 16.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
-- **`init.garden`** — TAME vocabulary in std.
+- **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`; benchmarks and callers use `init.garden.allocator()`. Local variables, docs, and heap-level names remain (`session-logs/99970`).
 - **Brix minimum** — `.brix` descriptor, 10 tracked bricks.
 - **Rishi file I/O** — `read-file`, `write-file`, `list-dir`.
 - **Rishi `lines` + `starts-with`** — string splitting, prefix checking, paren depth fix.
@@ -67,6 +67,18 @@
 **Near — strengthen:**
 - **Continue the strengthening series** — the next `std` surfaces our tools lean on, each through the parity gate. Corpus at 16.
 - **TAME assertion backlog** — ~50 locations identified in the audit, not yet fixed. Addressed as code is touched.
+
+**Near — vocabulary (`arena` → `garden`):**
+- **Finish the garden vocabulary sweep** — Tally's metaphor should read consistently in our code and prose. Phase 1 landed `init.garden` on `std.process.Init`; the rest is still open.
+  - **Local names in our programs** — `const arena = init.garden.allocator()` → `garden` in `rye/src/main.rye`, `rishi/src/main.rye`, and the three `std` benchmark entrypoints (`Random`, `hash`, `crypto`). Function parameters that mean season memory (`resolveRyeLib`, etc.) follow suit.
+  - **Comments and bridges** — update comments that still say "process arena" where the API is now `init.garden` (`rye/src/main.rye`).
+  - **Learning and reference docs** — `rye/README.md`, `rye-learning-process/998_ALMANAC.md` still cite `init.arena`; align to `init.garden` and keep the bridge sentence (*garden cleared whole on exit*).
+  - **`context/specs/inherited-names.md`** — reconcile with phase 1: `Init.garden` is an approved Rye public field; **`ArenaAllocator`** and `std.heap.ArenaAllocator` stay inherited Zig names.
+  - **`rye/lib/std/start.zig`** — internal `arena_allocator` / `arena_backing_allocator` locals could become `garden_allocator` where we own the file (parity gate after).
+  - **Strengthening notes** — `9989_tally_gardens.md` future `tally/arena.rye` → name `tally/heap-garden.rye` or fold into `gardens.rye`.
+  - **External-research pedagogy** — `994` may keep *arena* when citing Urbit's loom or CS literature as the generic term; our prose there already maps *arena → garden Tally*. No blind sed in gratitude or unmodified upstream std.
+  - **TAME Style example** — `996_TAME_STYLE.md` `arena: Allocator` example could add `garden: Allocator` beside it.
+  - **Out of scope** — `std.heap.ArenaAllocator`, thousands of inherited `arena` locals inside unmodified `rye/lib/std/**`; those remain Zig vocabulary until a deliberate std fork pass.
 
 **Near — study:**
 - **Display-layer study** — Wayland protocol specs for Brushstroke. Ghostty (MIT) for Skate. River through public docs only (GPL-3.0).
