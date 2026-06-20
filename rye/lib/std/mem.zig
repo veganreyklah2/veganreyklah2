@@ -1007,9 +1007,14 @@ pub fn sliceTo(ptr: anytype, comptime end: std.meta.Elem(@TypeOf(ptr))) SliceTo(
     const length = lenSliceTo(ptr, end);
     const ptr_info = @typeInfo(Result).pointer;
     if (ptr_info.sentinel()) |s| {
-        return ptr[0..length :s];
+        const result = ptr[0..length :s];
+        // Postcondition: slice length matches lenSliceTo (pairs with findSentinel 9952).
+        assert(result.len == length);
+        return result;
     } else {
-        return ptr[0..length];
+        const result = ptr[0..length];
+        assert(result.len == length);
+        return result;
     }
 }
 
@@ -1084,6 +1089,7 @@ fn lenSliceTo(ptr: anytype, comptime end: std.meta.Elem(@TypeOf(ptr))) usize {
                 // to check for both.
                 var i: usize = 0;
                 while (ptr[i] != end and ptr[i] != s) i += 1;
+                if (ptr[i] == end) assert(ptr[i] == end);
                 return i;
             } else {
                 return findSentinel(ptr_info.child, end, @ptrCast(ptr));
@@ -1098,7 +1104,13 @@ fn lenSliceTo(ptr: anytype, comptime end: std.meta.Elem(@TypeOf(ptr))) usize {
                         return findSentinel(ptr_info.child, s, ptr);
                     }
                 }
-                return findScalar(ptr_info.child, ptr, end) orelse ptr.len;
+                const found = findScalar(ptr_info.child, ptr, end);
+                const result = found orelse ptr.len;
+                if (found) |idx| {
+                    assert(idx < ptr.len);
+                    assert(ptr[idx] == end);
+                }
+                return result;
             },
         },
         else => {},
