@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `180012`: pass 9956 `TokenIterator.next`; corpus 47.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `180712`: pass 9955 iterator `reset`; corpus 48.*
 
 **Language:** EN
-**Version:** `20260620.180012` (Rye chronological stamp)
+**Version:** `20260620.180712` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,7 +12,8 @@
 
 ## What Just Landed (this session)
 
-- **Strengthening pass 9956 (`180012`).** `TokenIterator.next` postconditions; corpus 47/47 GREEN.
+- **Strengthening pass 9955 (`180712`).** `SplitIterator`/`SplitBackwardsIterator`/`TokenIterator` `reset`; corpus 48/48 GREEN.
+- **Strengthening pass 9956 (`180012`).** `TokenIterator.next` postconditions; corpus 47 GREEN.
 - **Strengthening pass 9957 (`175712`).** `TokenIterator.peek` + `rest` postconditions; corpus 46 GREEN.
 - **Strengthening pass 9958 (`175312`).** `cutLast` + `cutScalarLast` postconditions; corpus 45 GREEN.
 - **Strengthening pass 9959 (`174912`).** `cut` + `cutScalar` postconditions; corpus 44 GREEN.

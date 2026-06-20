@@ -3491,6 +3491,8 @@ pub fn TokenIterator(comptime T: type, comptime delimiter_type: DelimiterType) t
         /// Resets the iterator to the initial token.
         pub fn reset(self: *Self) void {
             self.index = 0;
+            // Postcondition: tokenization restarts at buffer start (pairs with next 9956).
+            assert(self.index == 0);
         }
 
         fn isDelimiter(self: Self, index: usize) bool {
@@ -3590,6 +3592,8 @@ pub fn SplitIterator(comptime T: type, comptime delimiter_type: DelimiterType) t
         /// Resets the iterator to the initial slice.
         pub fn reset(self: *Self) void {
             self.index = 0;
+            // Postcondition: forward split restarts at buffer start (pairs with first 9963).
+            assert(self.index.? == 0);
         }
     };
 }
@@ -3653,6 +3657,8 @@ pub fn SplitBackwardsIterator(comptime T: type, comptime delimiter_type: Delimit
         /// Resets the iterator to the initial slice.
         pub fn reset(self: *Self) void {
             self.index = self.buffer.len;
+            // Postcondition: backward split restarts at buffer end (pairs with first 9962).
+            assert(self.index.? == self.buffer.len);
         }
     };
 }
