@@ -1,6 +1,6 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `200012`: pass 9939 `mem.startsWith`; 64 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `200312`: Aurora metal lane open thread; strengthening at 9939 / 64 witnesses.*
 
 **Language:** EN
 **Version:** `20260620.200012` (Rye chronological stamp)
@@ -102,11 +102,29 @@
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Strengthening series** — next `std` surface through gate trio (9939 and below) | `10023` Track B, `998` |
+| 1 | **Strengthening series** — next `std` surface through gate trio (9938 and below) | `10023` Track B, `998` |
 | 2 | **Rishi** — builtins as gates and Pond policy need them | `10023` Track C |
 | 3 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |
+| 4 | **Aurora metal lane** — std surfaces on the freestanding crypto path (see below) | `991`, `9995`, `998` |
 
-**Near — build (after main track holds green):**
+**Aurora metal lane** *(opened `200312`)* — parallel to the main mem/string arc, not a fork of it. Aurora's freestanding stages (`aurora/src/*.rye`, `riscv64-freestanding-none`) lean on **crypto** and a thin **mem** slice, not `std.os` or hosted I/O.
+
+| Surface | Aurora / RISC-V role | Strengthening status |
+|---------|---------------------|-------------------|
+| `crypto.hash.sha3` + Keccak sponge | `named`, `sealed`, `posted` content-names and seal keys | **Done** — witnesses + sponge invariants (`9994`–`9998`) |
+| `crypto.sign.Ed25519`, `dh.X25519`, `aead` ChaCha20-Poly1305 | Full sealed datagram on bare metal | **Done** — hosted witnesses; same `std` on RISC-V build |
+| `mem.eql` | Content-name check in `sealed` / `posted` | **Done** (`9941`); **scalar path** is what RISC-V uses (`stage2_riscv64` disables vector `eqlBytes`) |
+| `mem.copyForwards` / `copyBackwards` | Sibling discipline to sponge `@memcpy` buffer walks | **Done** (`9943`–`9944`) |
+| `mem.startsWith` / `endsWith` | Mantra weave edges; `rye` suffix checks (hosted) | **startsWith** `9939`; **endsWith** next on main track (`9938`) |
+| `crypto.timing_safe.eql` | AEAD tag compare on decrypt path | **Open** — timing-sensitive; needs cold-wrapper postconditions per `9995` |
+| Keccak `@memcpy` slice bounds | Every hash update on the metal path | **Partial** — `offset <= block_length`; slice-length asserts around `@memcpy` still open |
+| Freestanding integration gate | `aurora/run.sh` stages prove RISC-V link + QEMU | **Open** — complements hosted `parity.rish`, does not replace it |
+| CSR / MMIO / UART in `deciding`, `seed` | Boot relay, not `std` | **Aurora-owned** — TAME assertions in `.rye`, not strengthening passes |
+
+**Rishi** stays on the hosted string/mem track (`trim`, `split`, `eql`, path builtins) — correct for the shell gate trio.
+
+**Order when the main track reaches a natural pause:** (1) `endsWith` (`9938`, already next), (2) `crypto.timing_safe` cold wrapper, (3) Keccak `@memcpy` slice postconditions, (4) optional `aurora-metal.rish` smoke (build + QEMU finisher, not byte-parity with hosted).
+
 
 - **Device wire (virtio-net)** — sealed datagram over emulated link (`10016`).
 - **Caravan capability table** — small Rye struct per child (`984` step 5).
@@ -171,7 +189,7 @@ Phase 2 vocabulary sweep is **closed**. Policy at `161112`: warm names enter bes
 - **Compare:** baseline `vendor/zig-toolchain/lib` vs strengthened `rye/lib` — same test, same pinned Zig (`RYE_ZIG`).
 - **Invoke:** `rye run rye/tests/<name>.rye` on both arms (`RYE_LIB` for baseline); exercises the real bridge path.
 - **Hold:** exit code + stdout/stderr identical — assertions change what code *says*, never what it *does*.
-- **Witnesses:** 63 programs, all GREEN (9940 `mem.allEqual` latest).
+- **Witnesses:** 64 programs, all GREEN (9939 `mem.startsWith` latest).
 
 ## The Through-Line
 
