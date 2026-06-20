@@ -3,7 +3,7 @@
 *A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
 
 **Language:** EN
-**Version:** `20260620.015312` (Rye chronological stamp)
+**Version:** `20260620.020012` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -30,7 +30,8 @@
 - **TAME Style spec + Claude rule.** Root + Rye/Brix/Rishi supplements.
 - **Skate named.** Our terminal — GPU-accelerated text in a Brushstroke window.
 
-- **Radiant sweep (014612).** `but` → `yet`/restructure across research, strengthening notes, and Mantra comments since the 054612 sweep (`0963662`).
+- **Formats, editors, inference research (`970`).** JSON/Brix unification, Ink markdown survey, Zed/GPUI study, Ollama/Tinygrad/PyTorch/TensorFlow boundaries.
+- **Horizon modules quarantined (`978`).** Ink, Lantern, Lattice, Anvil on one value grammar; editor extends `980`.
 
 ## Threads Now Closed
 
@@ -70,20 +71,20 @@
 **Near — study:**
 - **Display-layer study** — Wayland protocol specs for Brushstroke. Ghostty (MIT) for Skate. River through public docs only (GPL-3.0).
 - **Close reading** — packet format, commit rule, relay protocols from `gratitude/` before Comlink's format hardens.
-- **TAME editor design** — Kakoune's select-then-act in Rye, Brix for settings, Rishi for behavior (`971`, `980`).
-- **TAME editor — Zed architecture study** — Zed's core editor is GPL-3.0 (public design study only, same boundary as River); **GPUI** is Apache-2.0 and may inform GPU frame discipline. Study core/UI separation, multiplayer state model, and Tree-sitter-shaped syntax layers; implement as tame Rye on Brushstroke + Skate, extending `980` rather than shipping Rust.
-- **JSON unified with Brix** — one value grammar for `.brix` brick records, serialized interchange, and Rishi literals; JSON as the wire face of Brix values rather than a parallel format. Grow from the plain key-value `.brix` descriptor already in Mantra.
-- **Ink (markdown parser)** — tame Rye markdown for Mantra views, Forge pages, and docs surfaces. Survey permissive Zig parsers and mature Rust implementations (e.g. pulldown-cmark, MIT/Apache); clean-room Rye with TAME bounds on input size, nesting depth, and allocation per parse.
+- **TAME editor design** — Kakoune's select-then-act in Rye, Brix for settings, Rishi for behavior (`971`, `980`, `978`).
+- **TAME editor — Zed architecture study** — GPU frame discipline from permissive GPUI patterns; GPL core study-only (`970`). Implements on Brushstroke + Skate.
+- **JSON unified with Brix** — one value grammar (`970`, `978`); grow from `.brix` descriptor in Mantra.
+- **Ink (markdown parser)** — tame Rye CommonMark subset (`970` survey, `978` design); Zmd, pulldown-cmark close-reading targets.
 - **Comlink remoting** — value-based state sync over UDP, our own crypto, Pond enclosures (`971`).
 
 **Horizon 2 milestones:**
 - **Pond GUI** — Rishi REPL + Mantra in a Brushstroke window on x86_64 AMD.
 - **The Forge** — Mantra-native forge, Brushstroke surface, Comlink replication, Pond CI (`982`).
 
-**Horizon — inference & tensors** *(module names provisional; quarantine until designs earn them):*
-- **Lantern** — local LLM inference (Ollama-shaped): pull and run models inside Pond enclosures, bounded memory in Tally gardens, value-based request/response API rather than a streaming pipe protocol.
-- **Lattice** — tensor autograd (Tinygrad-shaped; **preferred** over heavier stacks): explicit buffers, smallest honest tensor surface, parity-gated numeric primitives before any model work.
-- **Anvil** — training-framework scale (PyTorch/TensorFlow-shaped; far horizon): only after Lattice proves the numeric ground; study for discipline, implement in clean-room Rye if the need arrives.
+**Horizon — inference & tensors** *(see `978`):*
+- **Lantern** — local LLM inference (Ollama-shaped; MIT study in `970`): Pond-enclosed, value-based API.
+- **Lattice** — tensor autograd (Tinygrad-shaped; **build first**): parity-gated primitives in Tally gardens.
+- **Anvil** — training-framework scale (PyTorch/TensorFlow-shaped; far horizon): reserved name until Lattice proves numeric ground.
 
 **Ongoing — design:**
 - **`pond.rish`** — the enclosure as a value; awaits Caravan isolation and Tally bounds.
