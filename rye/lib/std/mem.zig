@@ -3398,7 +3398,17 @@ pub fn startsWith(comptime T: type, haystack: []const T, needle: []const T) bool
     // Both are valid and expected — state the variable space rather than constraining it.
     maybe(needle.len == 0);
     maybe(needle.len > haystack.len);
-    return if (needle.len > haystack.len) false else eql(T, haystack[0..needle.len], needle);
+    if (needle.len > haystack.len) {
+        assert(needle.len > haystack.len);
+        return false;
+    }
+    const result = eql(T, haystack[0..needle.len], needle);
+    if (result) {
+        assert(needle.len <= haystack.len);
+    } else {
+        assert(needle.len == 0 or !eql(T, haystack[0..needle.len], needle));
+    }
+    return result;
 }
 
 test startsWith {

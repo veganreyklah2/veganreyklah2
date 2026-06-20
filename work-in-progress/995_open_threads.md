@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `195612`: pass 9940 `mem.allEqual`; 63 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `200012`: pass 9939 `mem.startsWith`; 64 witnesses.*
 
 **Language:** EN
-**Version:** `20260620.195612` (Rye chronological stamp)
+**Version:** `20260620.200012` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,6 +12,7 @@
 
 ## What Just Landed (this session)
 
+- **Strengthening pass 9939 (`200012`).** `mem.startsWith` return-path postconditions; 64/64 witnesses GREEN.
 - **Strengthening pass 9940 (`195612`).** `mem.allEqual` postconditions; 63/63 witnesses GREEN.
 - **Strengthening pass 9941 (`195412`).** `mem.eql` return-path postconditions; 62/62 witnesses GREEN.
 - **Strengthening pass 9942 (`195112`).** `mem.len` postconditions; 61/61 witnesses GREEN.
@@ -67,7 +68,7 @@
 - **Rishi arithmetic + stdout** — `+`/`-`/`*`/`/`, correct precedence, `say`.
 - **Tally seed** — one Region, 13 invariants.
 - **Tally v1 named gardens** — `Gardens`, blob/diff/frame, 15/15 GREEN.
-- **Strengthening 9994–9940** — through `mem.allEqual`. 63 witnesses.
+- **Strengthening 9994–9939** — through `mem.startsWith`. 64 witnesses.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
 - **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`.
@@ -101,7 +102,7 @@
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Strengthening series** — next `std` surface through gate trio (9940 and below) | `10023` Track B, `998` |
+| 1 | **Strengthening series** — next `std` surface through gate trio (9939 and below) | `10023` Track B, `998` |
 | 2 | **Rishi** — builtins as gates and Pond policy need them | `10023` Track C |
 | 3 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |
 
@@ -170,7 +171,7 @@ Phase 2 vocabulary sweep is **closed**. Policy at `161112`: warm names enter bes
 - **Compare:** baseline `vendor/zig-toolchain/lib` vs strengthened `rye/lib` — same test, same pinned Zig (`RYE_ZIG`).
 - **Invoke:** `rye run rye/tests/<name>.rye` on both arms (`RYE_LIB` for baseline); exercises the real bridge path.
 - **Hold:** exit code + stdout/stderr identical — assertions change what code *says*, never what it *does*.
-- **Witnesses:** 62 programs, all GREEN (9941 `mem.eql` latest).
+- **Witnesses:** 63 programs, all GREEN (9940 `mem.allEqual` latest).
 
 ## The Through-Line
 
