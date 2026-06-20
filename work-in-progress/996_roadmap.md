@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260620.021912` (Rye chronological stamp)
+**Version:** `20260620.040712` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -35,6 +35,9 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **Mantra seed runs** — the smallest version-control that runs: a Weave holds the full history of a text file as Lines with stable positions and generation-parity presence; `computeDiff` finds the minimal LCS edit; the store content-names every weave state by its SHA3-256 digest. `mantra init / add / status` confirmed end-to-end. Pure LCS test joins the corpus (`../strengthening-compiler/9990`).
 - **`init.garden` replaces `init.arena` in Rye's vocabulary** — `std.process.Init.garden` is Rye's name for the season allocator: allocate freely within the session, clear whole on exit. The TAME vocabulary (`garden`) now lives in the public API; `arena` recedes to an implementation detail inside `start.zig`. Rishi, Rye, Mantra, and all benchmark callers updated.
 - **Seeds defined in `976`.** Every module grows from the smallest version that runs; the catalog and planting discipline live in `active-designing/976_what_we_mean_by_seed.md`.
+- **Seven hosted/freestanding seeds in one arc** — Caravan (seed → chain), Brushstroke (stdout + Wayland), Comlink (posted + hosted wire), Aurora deciding — code advancing; design (~20 active-designing docs) now leads until build catches up (`10017`).
+- **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`); virtio-net is next (`10016`).
+- **Rishi string builtins** — `length`, `trim`, `slice` beside `lines` and `starts-with`; gate trio still 16/16 GREEN.
 
 ---
 
@@ -60,6 +63,10 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 - [x] **`additive-gate.rish`** — Rishi orchestrates (`git diff` + awk classifier). The `.sh` fallbacks are removed. Gate trio complete in Rishi.
 - [x] **Brushstroke hosted seed** — Frame value, stdout redraw (`brushstroke/seed.rye`; `10011`).
 - [x] **Brushstroke Wayland seed** — one native window, Frame → SHM buffer (`brushstroke/wayland_seed.rye`; `10012`).
+- [x] **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`; `10014` Track D).
+- [x] **Rishi string builtins** — `length`, `trim`, `slice` (`10017` Track A).
+- [ ] **Skate text grid** — monospace glyph rendering on the Wayland seed (`980`, `10017` Track B).
+- [ ] **Device wire (virtio-net)** — two QEMU guests (`10016`).
 - [ ] **Continue the strengthening series** — the next `std` surfaces our tools depend on, each through the gate trio, each recorded in the strengthening-compiler stack.
 
 ---
@@ -108,15 +115,23 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 ---
 
-## Where We Are Now — A Living Desktop Takes Shape on x86_64
+## Where We Are Now — Build Catches Design
 
-Two things ran today that had not run before. Rishi gained integer arithmetic and a real stdout; Tally's first seed ran with 13 asserted invariants, all green. The design arc then caught up with and outpaced those new parts: four research and design documents landed in one session — POSIX at the door (`../external-research/977`), the full living desktop stack (`../external-research/978`), a quarantined native system interface brief (`../active-designing/985`), and a quarantined living desktop brief (`../active-designing/986`) — together with an expanded ordered plan (`../expanding-prompts/10009`) and a mapped strengthening frontier (passes 9994–9991).
+**Ratio going forward:** two-thirds implementation, one-third design (`10017`). The active-designing stack (~20 quarantined briefs) names the whole; running code now includes Caravan through chain-loading, Brushstroke through Wayland, Comlink through hosted UDP, Aurora through deciding, and Rishi through eight builtin families.
 
-The near goal is concrete and named: **a Pond GUI running a Rishi REPL and live Mantra version control of `~/veganreyklah2`, in a native Brushstroke window on x86_64 AMD.** The dependency stack runs six layers deep — from today's foundation through Tally v1 gardens, Mantra for the repo, Brix descriptor, Brushstroke seed, and the Pond GUI milestone. The Aurora RISC-V arc continues in parallel on its own horizon; x86_64 is the active build target where Pond, Brushstroke, and Rishi converge.
+**Highest-leverage build threads (ordered):**
+
+1. **Skate** — text grid on `wayland_seed` (`980`, `981`, `988`)
+2. **Comlink virtio-net** — device wire between QEMU guests (`10016`, `993`)
+3. **Rishi** — more builtins as gates need them (`trim` family done)
+4. **Strengthening series** — next `std` surface through the gate trio
+5. **Caravan capability table** — `984` step 5
+
+The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi meet on x86_64. Aurora's RISC-V arc continues in parallel.
 
 ### What to Build Next, and Why
 
-Tally v1, Brix minimum, Mantra seed (commit chain, add-all, log), Rishi file I/O, Caravan seed, and the gate trio migration to Rishi — all done. The near frontier: **Brushstroke seed** (one native window, Wayland study from public specs), **Caravan + Tally** (child in a bounded garden), **display-layer study**, and the **strengthening series** continuing. The Forge vision (982) and the whole-system map (983) set the direction; each step grows from what already runs.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, and Comlink hosted wire — all done. **Skate's first glyph grid** is the honest next step on the desktop path: one monospace cell raster in the existing Wayland window, values in and frame out, before virtio-net or the capability table widen scope.
 
 ---
 

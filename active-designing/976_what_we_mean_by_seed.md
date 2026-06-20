@@ -103,7 +103,7 @@ The seed file stays. Later rings import its discipline or inline its types hones
 | **Rye** | `rye/src/main.rye` | Self-hosting compiler + strengthened std | Running (corpus 16) |
 | **Rishi** | `rishi/src/main.rye` + tests | Typed shell; gate trio in `.rish` | Running |
 | **Pond** | `rishi/examples/pond.rish` | Policy as a value | Designed; awaits Caravan + Tally enforcement |
-| **Skate** | — | Terminal surface in a Brushstroke window | Awaits Brushstroke Wayland seed |
+| **Skate** | — | Monospace text grid on Wayland seed | Next (`10017` Track B) |
 | **Scribble / Lantern / Lattice** | — | Horizon modules (`978`) | Quarantined design only |
 
 Horizon seeds still to plant: **virtio-net device wire**, **Caravan capability table**, **Forge HTTP seed** (`982`).

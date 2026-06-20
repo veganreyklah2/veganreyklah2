@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated after tonight's building session: Caravan bounded, Aurora deciding, the gate trio complete in Rishi, Wayland and editor research, the forge quarantined, and the whole-system map drawn.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `040712`: build catches design — two-thirds code, one-third prose; Rishi string builtins land; roadmap aligned to the running system.*
 
 **Language:** EN
-**Version:** `20260620.034212` (Rye chronological stamp)
+**Version:** `20260620.040712` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -40,6 +40,8 @@
 - **Caravan chain (`caravan/chain.rye`).** Ordered startup wake → prove; per-stage restart; chain does not rewind (`10014`).
 - **Documentation sync (`10015`).** `998_ALMANAC`, `rye/README`, `rishi/README` aligned to gate trio, Caravan arc, Brushstroke, `init.garden`.
 - **Comlink hosted wire (`comlink/hosted_wire.rye`).** Same sealed datagram as `posted.rye`, over localhost UDP between two processes; `selftest` / `send` / `recv` / `demo` GREEN (`10014` Track D).
+- **Counsel at `040712` (`10017`).** Two-thirds implementation, one-third design until build catches the active-designing stack.
+- **Rishi `length` / `trim` / `slice`.** String builtins for real scripting; `string_builtins.rish` GREEN; parity 16/16.
 
 ## Threads Now Closed
 
@@ -73,10 +75,14 @@
 - **Caravan multi-child (twin seed).** Two supervised children, independent gardens (`caravan/twin.rye`).
 - **Caravan chain-loading (`caravan/chain.rye`).** Sequential wake → prove; per-stage restart (`984` step 4).
 - **Comlink hosted wire (`comlink/hosted_wire.rye`).** Sealed datagram over localhost UDP; hosted rung before virtio-net (`10014` Track D).
+- **Rishi string builtins (`length`, `trim`, `slice`).** Gate scripts and Pond policy tests can shape strings without shelling out (`10017` Track A).
 
 ## Threads Still Open
 
+**Discipline (from `10017`):** **⅔ implementation · ⅓ design** until running code catches the active-designing map (~20 docs).
+
 **Near — build:**
+- **Skate text grid** — monospace glyphs on `brushstroke/wayland_seed.rye` (`980`, `981`, `988`).
 - **Device wire (virtio-net)** — sealed datagram over emulated `virtio-net` between two QEMU guests; Comlink's next rung (`10016`).
 - **Caravan capability table** — small Rye struct naming what each child may do (`984` step 5).
 

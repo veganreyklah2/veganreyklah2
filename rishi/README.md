@@ -1,6 +1,6 @@
 # Rishi — the shell of the Rye ecosystem
 
-**Version:** `20260620.033912` (Rye chronological stamp)
+**Version:** `20260620.040712` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
@@ -63,6 +63,9 @@ supporting:
 - **`lines`** — `lines text` splits a string on newlines into a list of strings.
 - **`starts-with`** — `text starts-with prefix` checks whether a string begins
   with a given prefix (used in gates and tests).
+- **`length`** — `length text` or `length list` returns byte length or element count.
+- **`trim`** — `trim text` removes leading and trailing whitespace.
+- **`slice`** — `slice text start end` returns a bounded substring `[start, end)`.
 
 A short example, `tests/hello.rish`:
 
@@ -95,6 +98,7 @@ rishi/bin/rishi run rishi/tests/strings.rish      # composing strings by interpo
 rishi/bin/rishi run rishi/tests/arithmetic.rish   # integer arithmetic and grouping
 rishi/bin/rishi run rishi/tests/file_io.rish      # read-file, write-file, list-dir
 rishi/bin/rishi run rishi/tests/lines_startswith.rish  # lines and starts-with
+rishi/bin/rishi run rishi/tests/string_builtins.rish   # length, trim, slice
 ```
 
 ### The gate trio

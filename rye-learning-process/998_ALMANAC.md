@@ -284,6 +284,9 @@ Rishi (`rishi/src/main.rye`, built by `rye build`) is the shell that runs the ga
 - **`read-file` / `write-file` / `list-dir`** — file I/O behind OS wrappers (`rishi/tests/file_io.rish`).
 - **`lines`** — split a string on newlines into a list.
 - **`starts-with`** — prefix check as a boolean expression.
+- **`length`** — byte length of a string or element count of a list.
+- **`trim`** — remove surrounding ASCII whitespace from a string.
+- **`slice`** — bounded substring with half-open indices.
 
 Integer arithmetic, `map`/`where`, records, and `run` compose the parity gate. `write-file` has a practical size limit today — large std files are tampered in place with `sed -i` on a shadow tree instead.
 
