@@ -3568,7 +3568,12 @@ pub fn SplitBackwardsIterator(comptime T: type, comptime delimiter_type: Delimit
         /// Asserts that iteration has not begun.
         pub fn first(self: *Self) []const T {
             assert(self.index.? == self.buffer.len);
-            return self.next().?;
+            const end: usize = self.buffer.len;
+            const field = self.next().?;
+            // Postcondition: first field is a valid suffix sub-slice (pairs with next 9962).
+            assert(field.len <= self.buffer.len);
+            assert(end <= self.buffer.len);
+            return field;
         }
 
         /// Returns a slice of the next field, or null if splitting is complete.
@@ -3588,12 +3593,17 @@ pub fn SplitBackwardsIterator(comptime T: type, comptime delimiter_type: Delimit
                 self.index = null;
                 break :blk 0;
             };
+            // Postcondition: every field returned is a valid sub-slice of the buffer.
+            assert(start <= end);
+            assert(end <= self.buffer.len);
             return self.buffer[start..end];
         }
 
         /// Returns a slice of the remaining bytes. Does not affect iterator state.
         pub fn rest(self: Self) []const T {
             const end = self.index orelse 0;
+            // Postcondition: rest is the unprocessed prefix up to the cursor.
+            assert(end <= self.buffer.len);
             return self.buffer[0..end];
         }
 
