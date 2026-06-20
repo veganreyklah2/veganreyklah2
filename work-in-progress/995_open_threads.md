@@ -66,7 +66,7 @@
 - **Continue the strengthening series** — the next `std` surfaces our tools lean on, each through the gate trio.
 - **Caravan bounded — tied off.** Child runs inside a 256-byte Tally garden; exceeds budget → falls → supervisor restarts → child stays within bounds → 10 assertions GREEN (`caravan/bounded.rye`). Grows toward multi-child and chain-loading (`../active-designing/984`).
 - **Close reading** — packet format, commit rule, relay protocols from `gratitude/` before Comlink's format hardens.
-- **Aurora's deciding stage** — a relay stage that hands the next a value it chose.
+- **Aurora's deciding stage — tied off.** Four stages: wake, prove, decide, rest. The deciding stage reads ISA extensions and chooses a configuration path — the seed of a boot that selects what runs next (`aurora/src/deciding.rye`).
 - **Caravan kernel design** — decided: microkernel. Quarantined in `../active-designing/984`. Research in `../external-research/976`.
 - **The Forge** — Mantra-native forge with Brushstroke surface, Comlink replication, Pond CI, key-based identity. Quarantined in `../active-designing/982`. Research in `../external-research/973`.
 - **`pond.rish`** — the enclosure as a value; awaits Caravan isolation and Tally bounds.
