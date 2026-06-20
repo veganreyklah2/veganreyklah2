@@ -56,7 +56,7 @@
 - **Brushstroke seed** — one native x86_64 window, one static frame, thin Wayland/Vulkan backend (`../active-designing/985`, `../active-designing/986`). Depends on River and Ghostty.
 
 **Near — shell:**
-- **`additive-gate.rish`** — the last gate-trio member to migrate. Needs Rishi stream processing (for-each-line over `git diff` output). Until then `additive-gate.sh` remains the backstop. Strategy: **rish-first, sh-fallback** — write the `.rish` version once Rishi has the capability; leave the `.sh` as a documented fallback for environments where Rishi isn't built.
+- **`additive-gate.rish` — tied off.** Rishi orchestrates (`git diff` + `write-file` + `awk -f`); the awk classifier (`additive-classify.awk`) handles line classification. Both gates agree. The `.sh` version remains as a fallback.
 
 **Horizon 2 milestone:**
 - **Pond GUI on x86_64 AMD** — Rishi REPL + live Mantra version control of `~/veganreyklah2` in a Brushstroke window (`../expanding-prompts/10009`).
