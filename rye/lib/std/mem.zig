@@ -1474,7 +1474,11 @@ pub fn findLastLinear(comptime T: type, haystack: []const T, needle: []const T) 
     if (needle.len > haystack.len) return null;
     var i: usize = haystack.len - needle.len;
     while (true) : (i -= 1) {
-        if (mem.eql(T, haystack[i..][0..needle.len], needle)) return i;
+        if (mem.eql(T, haystack[i..][0..needle.len], needle)) {
+            // Postcondition: a found index fits the needle at the end of haystack.
+            assert(i + needle.len <= haystack.len);
+            return i;
+        }
         if (i == 0) return null;
     }
 }
