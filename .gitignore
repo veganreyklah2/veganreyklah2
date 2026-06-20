@@ -36,6 +36,9 @@
 !/CLAUDE.md
 !/.claude/
 
+# Claude Code grows this file when you approve shell commands in Zed; machine-local.
+/.claude/settings.local.json
+
 # --- Re-ignore fetched dependencies and build artifacts inside the project --
 # The Zig toolchain is large and fetched, not authored (the binary alone is
 # ~165MB, past GitHub's 100MB limit). The rye binary and caches are built.
