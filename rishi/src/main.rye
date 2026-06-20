@@ -13,12 +13,13 @@
 //! parenthesized expressions `(expr)` for grouping; and file I/O with
 //! `read-file` (returns file contents as a string), `write-file` (writes a
 //! value to a path), and `list-dir` (returns entry names as a list of strings);
-//! `lines` to split a string into a list by newline; `starts-with` to check
-//! whether a string begins with a given prefix; `length` for strings and lists;
-//! `trim` to remove surrounding whitespace; and `slice` for bounded substring.
-//! It is the shell that runs the gate trio (`tools/parity.rish`,
-//! `tools/parity-selftest.rish`, `tools/additive-gate.rish`) and grows toward
-//! `examples/pond.rish` (see `active-designing/976_what_we_mean_by_seed.md`).
+//! `lines` to split a string into a list by newline; `starts-with` and `ends-with`
+//! to check whether a string begins or ends with a given affix; `length` for strings
+//! and lists; `trim` to remove surrounding whitespace; `slice` for bounded substring;
+//! and `join` to compose a list of strings with a separator. It is the shell that runs
+//! the gate trio (`tools/parity.rish`, `tools/parity-selftest.rish`,
+//! `tools/additive-gate.rish`) and grows toward `examples/pond.rish`
+//! (see `active-designing/976_what_we_mean_by_seed.md`).
 //!
 //! Rishi is implemented in Rye and built against Rye's own standard library, so
 //! the language we are growing and the language we build it in are one and the
@@ -32,7 +33,7 @@ const std = @import("std");
 
 /// Rishi's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger, the same clock Rye keeps. This is Rishi's founding stamp.
-const rishi_version = "20260620.040712";
+const rishi_version = "20260620.153812";
 
 /// A Rishi value. The kinds — string, integer, boolean, list, record — are the
 /// seed of a model shared with Rye so a value can cross between them without a seam.
@@ -220,7 +221,8 @@ fn evalStatement(allocator: std.mem.Allocator, io: std.Io, env: *Env, line: []co
 const EvalError = error{
     ExpectedValue,
     UndefinedName,
-    ContainsNeedsList,
+    ContainsNeedsListOrString,
+    ContainsNeedsString,
     ListTooLong,
     RecordTooLong,
     FieldNeedsColon,
@@ -242,11 +244,18 @@ const EvalError = error{
     ListDirFailed,
     LinesNeedsString,
     StartsWithNeedsString,
+    EndsWithNeedsString,
+    IndexOfNeedsString,
     LengthNeedsStringOrList,
     TrimNeedsString,
     SliceNeedsString,
     SliceNeedsInt,
     SliceOutOfRange,
+    JoinNeedsList,
+    JoinNeedsString,
+    JoinNeedsStringElements,
+    SplitNeedsString,
+    SplitEmptySeparator,
     TooManyBindings,
     StringTooLong,
     UnterminatedInterpolation,
@@ -279,6 +288,15 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     if (std.mem.startsWith(u8, trimmed, "where ")) {
         return doPipeline(allocator, io, env, trimmed[6..], .filter);
     }
+    // Top-level `==` / `!=` before infix word operators, so a needle never
+    // absorbs the comparison. Each arm recurses through evalExpr so infix
+    // builtins, prefix builtins, and arithmetic all parse on the same arm.
+    if (findComparison(text)) |cmp| {
+        const left = try evalExpr(allocator, io, env, cmp.left);
+        const right = try evalExpr(allocator, io, env, cmp.right);
+        const equal = valuesEqual(left, right);
+        return .{ .boolean = if (cmp.op == .ne) !equal else equal };
+    }
     // `<string> starts-with <prefix>` checks whether a string begins with a prefix.
     if (findWordOp(text, " starts-with ")) |idx| {
         const haystack = try evalExpr(allocator, io, env, text[0..idx]);
@@ -293,28 +311,57 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
         };
         return .{ .boolean = std.mem.startsWith(u8, str, prefix) };
     }
-    // `<list> contains <value>` asks membership, yielding a boolean.
+    // `<string> ends-with <suffix>` checks whether a string ends with a suffix.
+    if (findWordOp(text, " ends-with ")) |idx| {
+        const haystack = try evalExpr(allocator, io, env, text[0..idx]);
+        const needle = try evalExpr(allocator, io, env, text[idx + 11 ..]);
+        const str = switch (haystack) {
+            .string => |s| s,
+            else => return error.EndsWithNeedsString,
+        };
+        const suffix = switch (needle) {
+            .string => |s| s,
+            else => return error.EndsWithNeedsString,
+        };
+        return .{ .boolean = std.mem.endsWith(u8, str, suffix) };
+    }
+    // `<string> index-of <needle>` — first byte index, or -1 when absent.
+    if (findWordOp(text, " index-of ")) |idx| {
+        const haystack = try evalExpr(allocator, io, env, text[0..idx]);
+        const needle = try evalExpr(allocator, io, env, text[idx + 10 ..]);
+        const str = switch (haystack) {
+            .string => |s| s,
+            else => return error.IndexOfNeedsString,
+        };
+        const sub = switch (needle) {
+            .string => |s| s,
+            else => return error.IndexOfNeedsString,
+        };
+        const found = std.mem.indexOf(u8, str, sub) orelse return .{ .int = -1 };
+        return .{ .int = @intCast(found) };
+    }
+    // `<list> contains <value>` or `<string> contains <substring>` — membership test.
     if (findWordOp(text, " contains ")) |idx| {
         const haystack = try evalExpr(allocator, io, env, text[0..idx]);
         const needle = try evalExpr(allocator, io, env, text[idx + 10 ..]);
-        const items = switch (haystack) {
-            .list => |l| l,
-            else => return error.ContainsNeedsList,
+        return switch (haystack) {
+            .list => |items| {
+                for (items) |item| {
+                    if (valuesEqual(item, needle)) return .{ .boolean = true };
+                }
+                return .{ .boolean = false };
+            },
+            .string => |str| {
+                const sub = switch (needle) {
+                    .string => |s| s,
+                    else => return error.ContainsNeedsString,
+                };
+                return .{ .boolean = std.mem.indexOf(u8, str, sub) != null };
+            },
+            else => error.ContainsNeedsListOrString,
         };
-        for (items) |item| {
-            if (valuesEqual(item, needle)) return .{ .boolean = true };
-        }
-        return .{ .boolean = false };
     }
-    // `a == b` / `a != b` compare, yielding a boolean. Arithmetic is allowed
-    // on either side, so operands go through evalAddSub rather than evalOperand.
-    if (findComparison(text)) |cmp| {
-        const left = try evalAddSub(allocator, io, env, cmp.left);
-        const right = try evalAddSub(allocator, io, env, cmp.right);
-        const equal = valuesEqual(left, right);
-        return .{ .boolean = if (cmp.op == .ne) !equal else equal };
-    }
-    // Unary string builtins — after comparison so `length "x" == 5` parses correctly.
+    // Unary string builtins — after comparison and infix ops.
     if (std.mem.startsWith(u8, trimmed, "lines ")) {
         return doLines(allocator, io, env, trimmed[6..]);
     }
@@ -327,7 +374,24 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     if (std.mem.startsWith(u8, trimmed, "slice ")) {
         return doSlice(allocator, io, env, trimmed[6..]);
     }
+    if (std.mem.startsWith(u8, trimmed, "join ")) {
+        return doJoin(allocator, io, env, trimmed[5..]);
+    }
+    if (std.mem.startsWith(u8, trimmed, "split ")) {
+        return doSplit(allocator, io, env, trimmed[6..]);
+    }
     return evalAddSub(allocator, io, env, text);
+}
+
+/// True when `c` is an ASCII letter — used to distinguish word hyphens from `-`.
+fn isIdentLetter(c: u8) bool {
+    return (c >= 'a' and c <= 'z') or (c >= 'A' and c <= 'Z');
+}
+
+/// True when `-` at `i` joins two letters (`index-of`, `starts-with`), not `3-5`.
+fn isWordHyphen(text: []const u8, i: usize) bool {
+    if (i == 0 or i + 1 >= text.len or text[i] != '-') return false;
+    return isIdentLetter(text[i - 1]) and isIdentLetter(text[i + 1]);
 }
 
 /// Find the rightmost top-level `+` or `-` that is a binary operator — one
@@ -347,6 +411,8 @@ fn findLastArithAdd(text: []const u8) ?usize {
         } else if ((c == ']' or c == '}' or c == ')' or c == ')') and depth > 0) {
             depth -= 1;
         } else if (depth == 0 and (c == '+' or c == '-')) {
+            // Hyphens inside word operators (`index-of`) are not subtraction.
+            if (c == '-' and isWordHyphen(text, i)) continue;
             // Binary only when the trimmed left side is non-empty and ends
             // with a value token, not another operator.
             const before = std.mem.trimEnd(u8, text[0..i], " \t");
@@ -625,6 +691,106 @@ fn doSlice(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []co
     return .{ .string = out };
 }
 
+/// `join <list> <sep>` — compose list elements into one string, separated by `sep`.
+fn doJoin(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []const u8) EvalError!Value {
+    var tok = TokenIter{ .text = rest };
+    const list_token = tok.next() orelse return error.JoinNeedsList;
+    const sep_token = tok.next() orelse return error.JoinNeedsString;
+
+    const list_value = try evalOperand(allocator, io, env, list_token);
+    const items = switch (list_value) {
+        .list => |l| l,
+        else => return error.JoinNeedsList,
+    };
+    const sep_value = try evalOperand(allocator, io, env, sep_token);
+    const sep = switch (sep_value) {
+        .string => |s| s,
+        else => return error.JoinNeedsString,
+    };
+
+    if (items.len == 0) {
+        const out = allocator.dupe(u8, "") catch return error.OutOfMemory;
+        return .{ .string = out };
+    }
+
+    var total: usize = 0;
+    for (items, 0..) |item, i| {
+        const s = switch (item) {
+            .string => |x| x,
+            else => return error.JoinNeedsStringElements,
+        };
+        total += s.len;
+        if (i + 1 < items.len) total += sep.len;
+    }
+
+    const out = allocator.alloc(u8, total) catch return error.OutOfMemory;
+    var pos: usize = 0;
+    for (items, 0..) |item, i| {
+        const s = switch (item) {
+            .string => |x| x,
+            else => return error.JoinNeedsStringElements,
+        };
+        std.mem.copyForwards(u8, out[pos..][0..s.len], s);
+        pos += s.len;
+        if (i + 1 < items.len) {
+            std.mem.copyForwards(u8, out[pos..][0..sep.len], sep);
+            pos += sep.len;
+        }
+    }
+    std.debug.assert(pos == total);
+    return .{ .string = out };
+}
+
+/// `split <text> <sep>` — split a string on a separator into a list of strings.
+/// Composes with `join`: `join (split text sep) sep` recovers the original when
+/// separators are single occurrences. Uses `splitScalar` for one-byte separators
+/// and `splitSequence` for longer ones.
+fn doSplit(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []const u8) EvalError!Value {
+    var tok = TokenIter{ .text = rest };
+    const text_token = tok.next() orelse return error.SplitNeedsString;
+    const sep_token = tok.next() orelse return error.SplitNeedsString;
+
+    const text_value = try evalOperand(allocator, io, env, text_token);
+    const text = switch (text_value) {
+        .string => |s| s,
+        else => return error.SplitNeedsString,
+    };
+    const sep_value = try evalOperand(allocator, io, env, sep_token);
+    const sep = switch (sep_value) {
+        .string => |s| s,
+        else => return error.SplitNeedsString,
+    };
+    if (sep.len == 0) return error.SplitEmptySeparator;
+
+    var count: usize = 0;
+    if (sep.len == 1) {
+        var counter = std.mem.splitScalar(u8, text, sep[0]);
+        while (counter.next() != null) count += 1;
+    } else {
+        var counter = std.mem.splitSequence(u8, text, sep);
+        while (counter.next() != null) count += 1;
+    }
+
+    const items = allocator.alloc(Value, count) catch return error.OutOfMemory;
+    std.debug.assert(items.len == count);
+    var i: usize = 0;
+    if (sep.len == 1) {
+        var it = std.mem.splitScalar(u8, text, sep[0]);
+        while (it.next()) |piece| {
+            items[i] = .{ .string = piece };
+            i += 1;
+        }
+    } else {
+        var it = std.mem.splitSequence(u8, text, sep);
+        while (it.next()) |piece| {
+            items[i] = .{ .string = piece };
+            i += 1;
+        }
+    }
+    std.debug.assert(i == count);
+    return .{ .list = items };
+}
+
 /// `map <list> as <name>: <expr>` evaluates <expr> for each element with <name>
 /// bound to it, collecting the results into a new list. `where <list> as <name>:
 /// <pred>` keeps the elements whose boolean <pred> holds. The element binding
@@ -726,6 +892,12 @@ fn evalOperand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: [
     }
     if (std.mem.startsWith(u8, s, "slice ")) {
         return doSlice(allocator, io, env, s[6..]);
+    }
+    if (std.mem.startsWith(u8, s, "join ")) {
+        return doJoin(allocator, io, env, s[5..]);
+    }
+    if (std.mem.startsWith(u8, s, "split ")) {
+        return doSplit(allocator, io, env, s[6..]);
     }
     // `base.field.field…` reads a field from a record, one step at a time.
     if (findTopLevel(s, '.')) |dot| {

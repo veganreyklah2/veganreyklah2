@@ -1,6 +1,6 @@
 # Rishi — the shell of the Rye ecosystem
 
-**Version:** `20260620.040712` (Rye chronological stamp)
+**Version:** `20260620.153812` (Rye chronological stamp)
 **Last updated:** 2026-06-20
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
@@ -38,8 +38,8 @@ supporting:
 - **Comparison** — `a == b` and `a != b` yield a boolean; unlike kinds simply
   differ. The operator is found outside any quoted string, so `==` inside `"text"`
   stays text.
-- **`contains`** — `xs contains value` yields a boolean, so membership reads as a
-  fact and can be a gate: `assert allowed contains here`.
+- **`contains`** — `list contains value` yields a boolean for list membership;
+  `string contains substring` checks whether a substring appears anywhere in the text.
 - **`run`** — `let result = run ["echo" "hello"]` executes a command and returns a
   record: `out` and `err` (the captured text), `code` (the exit status), and `ok`
   (true when the code is zero). A command that exits non-zero is an ordinary
@@ -63,6 +63,12 @@ supporting:
 - **`lines`** — `lines text` splits a string on newlines into a list of strings.
 - **`starts-with`** — `text starts-with prefix` checks whether a string begins
   with a given prefix (used in gates and tests).
+- **`ends-with`** — `text ends-with suffix` checks whether a string ends with a
+  given suffix (file extensions, line endings in filters).
+- **`index-of`** — `text index-of needle` returns the byte index of the first
+  match, or `-1` when the needle is absent.
+- **`join`** — `join list sep` composes string list elements with a separator.
+- **`split`** — `split text sep` decomposes a string into a list on a separator.
 - **`length`** — `length text` or `length list` returns byte length or element count.
 - **`trim`** — `trim text` removes leading and trailing whitespace.
 - **`slice`** — `slice text start end` returns a bounded substring `[start, end)`.
@@ -98,6 +104,12 @@ rishi/bin/rishi run rishi/tests/strings.rish      # composing strings by interpo
 rishi/bin/rishi run rishi/tests/arithmetic.rish   # integer arithmetic and grouping
 rishi/bin/rishi run rishi/tests/file_io.rish      # read-file, write-file, list-dir
 rishi/bin/rishi run rishi/tests/lines_startswith.rish  # lines and starts-with
+rishi/bin/rishi run rishi/tests/ends_with.rish         # ends-with suffix checks
+rishi/bin/rishi run rishi/tests/join.rish              # join list with separator
+rishi/bin/rishi run rishi/tests/split.rish             # split string on separator
+rishi/bin/rishi run rishi/tests/contains_string.rish   # contains for lists and strings
+rishi/bin/rishi run rishi/tests/index_of.rish          # index-of substring search
+rishi/bin/rishi run rishi/tests/parser_hyphens.rish    # hyphenated ops vs subtraction
 rishi/bin/rishi run rishi/tests/string_builtins.rish   # length, trim, slice
 ```
 
@@ -106,7 +118,7 @@ rishi/bin/rishi run rishi/tests/string_builtins.rish   # length, trim, slice
 Rishi orchestrates Rye's strengthening safety net — all `.rish`, no `.sh`:
 
 ```sh
-rishi/bin/rishi run tools/parity.rish           # behavior: 16 programs GREEN
+rishi/bin/rishi run tools/parity.rish           # behavior: corpus via rye run, 21 programs GREEN
 rishi/bin/rishi run tools/parity-selftest.rish  # gate turns RED on tamper
 rishi/bin/rishi run tools/additive-gate.rish    # shape: assertions-only std diff
 ```
