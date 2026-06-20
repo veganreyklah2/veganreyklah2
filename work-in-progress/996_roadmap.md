@@ -135,15 +135,15 @@ The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi
 
 ### What to Build Next, and Why
 
-Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, forward and backward split iterators, findAnyPos (9967), findLastAny (9966), findNonePos (9965), findLastNone (9964) — all done. **Strengthening the next `std` surface (9961)** is the honest next step on the main track before virtio-net or the capability table widen scope.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, forward and backward split iterators, findAnyPos (9967), findLastAny (9966), findNonePos (9965), findLastNone (9964), SplitBackwardsIterator (9962) — all done. **Strengthening the next `std` surface (9960)** is the honest next step on the main track before virtio-net or the capability table widen scope.
 
 ---
 
 ## The Steps Just Taken
 
-Strengthening through **9962**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
+Strengthening through **9961**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
 
-**Strengthening passes 9979–9962** (`143312`–`172612`): `trimStart` … `SplitBackwardsIterator`. Corpus 17 → 41, all green.
+**Strengthening passes 9979–9961** (`143312`–`173212`): `trimStart` … `mem.join`. Corpus 17 → 42, all green.
 
 **Garden memory (`161112`)** — authored code: `init.garden` only; no `ArenaAllocator`; no std `GardenAllocator`; owned wrapper horizon at `rye.garden` / `tally/heap-garden.rye`. TAME + Cursor + Claude rules.
 
