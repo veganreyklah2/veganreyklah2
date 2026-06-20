@@ -1421,7 +1421,13 @@ pub const indexOfNone = findNone;
 ///
 /// Comparable to `strspn` in the C standard library.
 pub fn findNone(comptime T: type, slice: []const T, values: []const T) ?usize {
-    return findNonePos(T, slice, 0, values);
+    const result = findNonePos(T, slice, 0, values);
+    // Postcondition at cold wrapper (pairs with findAny, 9967).
+    if (result) |i| {
+        assert(i < slice.len);
+        for (values) |value| assert(slice[i] != value);
+    }
+    return result;
 }
 
 test findNone {
@@ -1465,6 +1471,10 @@ pub fn findNonePos(comptime T: type, slice: []const T, start_index: usize, value
         for (values) |value| {
             if (c == value) continue :outer;
         }
+        // Postcondition: a found index lands inside the slice outside the sought set.
+        assert(i < slice.len);
+        assert(i >= start_index);
+        for (values) |v| assert(slice[i] != v);
         return i;
     }
     return null;
