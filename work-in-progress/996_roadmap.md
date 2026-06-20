@@ -136,15 +136,15 @@ The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi
 
 ### What to Build Next, and Why
 
-Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, split iterators, mem.join (9961), and **cutPrefix/cutSuffix (9960)** — all done. **Strengthening the next `std` surface (9959)** stays the honest next step on the main track; **RyeVersion** accretion waits beside the capability table, not on the critical path yet.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, mem search, split iterators, mem.join (9961), cutPrefix/cutSuffix (9960), and **cut/cutScalar (9959)** — all done. **Strengthening the next `std` surface (9958)** stays the honest next step on the main track; **RyeVersion** accretion waits beside the capability table.
 
 ---
 
 ## The Steps Just Taken
 
-Strengthening through **9960**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
+Strengthening through **9959**, garden-memory policy in TAME and rules, Rishi builtins and parser fix, Skate grid, parity via `rye run`, style audit shipped.
 
-**Strengthening passes 9979–9960** (`143312`–`174312`): `trimStart` … `cutPrefix`/`cutSuffix`. Corpus 17 → 43, all green.
+**Strengthening passes 9979–9959** (`143312`–`174912`): `trimStart` … `cut`/`cutScalar`. Corpus 17 → 44, all green.
 
 **Version parser thread (`173212`–`174312`)** — documented in `995` Near build: accrete `std.RyeVersion` beside `SemanticVersion` when capability table or Tablecloth needs programmatic bounds; lexicographic compare on fixed-width stamps suffices until then.
 
