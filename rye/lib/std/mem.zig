@@ -1454,6 +1454,9 @@ pub fn findLastNone(comptime T: type, slice: []const T, values: []const T) ?usiz
         for (values) |value| {
             if (slice[i] == value) continue :outer;
         }
+        // Postcondition: a found index lands inside the slice outside the sought set.
+        assert(i < slice.len);
+        for (values) |v| assert(slice[i] != v);
         return i;
     }
     return null;
