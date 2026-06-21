@@ -1,0 +1,30 @@
+# width-check.rish — verify .rye files have ZERO `usize` tokens.
+#
+# The F1 gate: Rye has no usize. Period. No seam casts, no boundary
+# patterns, no exceptions. Every `usize` in authored .rye is debt
+# to be eliminated by the compiler fork.
+#
+# Usage: rishi run tools/width-check.rish
+#
+# Every authored .rye file is checked. When ALL pass, F2 is complete.
+
+let files = ["tally/seed.rye" "tally/gardens.rye" "caravan/seed.rye" "caravan/bounded.rye" "caravan/twin.rye" "caravan/chain.rye" "mantra/src/main.rye" "rishi/src/main.rye" "brushstroke/seed.rye" "comlink/hosted_wire.rye" "aurora/src/deciding.rye"]
+
+say "width-check: scanning ALL authored .rye for usize (zero tolerance)..."
+
+let results = map files as file: { file: file, result: run ["grep" "-c" "usize" file] }
+let violations = where results as r: r.result.code == 0
+let clean = where results as r: r.result.code != 0
+
+let v_count = length violations
+let c_count = length clean
+let total = length files
+
+say "  clean: ${c_count}/${total}"
+say "  violations: ${v_count}/${total}"
+
+for-each violations as v do say "  FAIL: ${v.file}"
+for-each clean as c do say "  OK:   ${c.file}"
+
+if v_count == 0 then say "WIDTH CHECK GREEN: all ${total} files are usize-free."
+if v_count != 0 then say "WIDTH CHECK RED: ${v_count} file(s) still contain usize — debt for the compiler fork."
