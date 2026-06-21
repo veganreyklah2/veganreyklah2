@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `015112`: pass 9927 ShakeLike.update; 76 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `015612`: pass 9926 mem.sliceAsBytes; 77 witnesses.*
 
 **Language:** EN
-**Version:** `20260621.015112` (Rye chronological stamp)
+**Version:** `20260621.015612` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,6 +12,7 @@
 
 ## What Just Landed (this session)
 
+- **Strengthening pass 9926 (`015612`).** `mem.sliceAsBytes` byte-view length postconditions; witness `mem_slice_as_bytes_test`; 77/77 witnesses GREEN.
 - **Strengthening pass 9927 (`015112`).** SHA3 `ShakeLike.update` sponge cursor postconditions; witness `sha3_shake_update_test`; 76/76 witnesses GREEN.
 - **TAME document stack (`014512`).** Operational supplement → `context/TAME_STYLE.md` (TigerBeetle `TIGER_STYLE.md` filename pattern). Canon: `external-research/996_TAME_STYLE.md` + `gratitude/TIGER_STYLE.md`. Rules updated; `snake_case` defers to 996.
 - **Explicit-width Phase 1b (`014512`).** `caravan/seed.rye`: `max_restarts`, `planned_failures`, `restarts` → `u32`.
@@ -83,7 +84,7 @@
 - **Rishi arithmetic + stdout** — `+`/`-`/`*`/`/`, correct precedence, `say`.
 - **Tally seed** — one Region, 13 invariants.
 - **Tally v1 named gardens** — `Gardens`, blob/diff/frame, 15/15 GREEN.
-- **Strengthening 9994–9927** — through ShakeLike.update. 76 witnesses.
+- **Strengthening 9994–9926** — through mem.sliceAsBytes. 77 witnesses.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
 - **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`.
@@ -117,7 +118,7 @@
 
 | When | Strand | Next step |
 |------|--------|-----------|
-| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9926` and below) through `parity.rish` |
+| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9925` and below) through `parity.rish` |
 | **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ ~~`caravan/seed`~~ → `caravan/bounded` → `twin` → `chain` → `brushstroke/skate_grid.rye` |
 | **Metal pause** | **Aurora smoke** | `aurora/run.sh` in CI (`10024` Phase 2 after Caravan/Skate) |
 

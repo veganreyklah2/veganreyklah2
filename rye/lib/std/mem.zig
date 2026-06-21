@@ -4996,17 +4996,29 @@ fn SliceAsBytesReturnType(comptime Slice: type) type {
 /// Given a slice, returns a slice of the underlying bytes, preserving pointer attributes.
 pub fn sliceAsBytes(slice: anytype) SliceAsBytesReturnType(@TypeOf(slice)) {
     const Slice = @TypeOf(slice);
+    const elem_size = @sizeOf(std.meta.Elem(Slice));
 
     // a slice of zero-bit values always occupies zero bytes
-    if (@sizeOf(std.meta.Elem(Slice)) == 0) return &[0]u8{};
+    if (elem_size == 0) {
+        const result = &[0]u8{};
+        assert(result.len == 0);
+        return result;
+    }
 
     // let's not give an undefined pointer to @ptrCast
     // it may be equal to zero and fail a null check
-    if (slice.len == 0 and std.meta.sentinel(Slice) == null) return &[0]u8{};
+    if (slice.len == 0 and std.meta.sentinel(Slice) == null) {
+        const result = &[0]u8{};
+        assert(result.len == 0);
+        return result;
+    }
 
     const cast_target = CopyPtrAttrs(Slice, .many, u8);
-
-    return @as(cast_target, @ptrCast(slice))[0 .. slice.len * @sizeOf(std.meta.Elem(Slice))];
+    const byte_len = slice.len * elem_size;
+    const result = @as(cast_target, @ptrCast(slice))[0..byte_len];
+    // Postcondition: byte view spans exactly one element width per item (pairs with asBytes).
+    assert(result.len == byte_len);
+    return result;
 }
 
 test sliceAsBytes {
