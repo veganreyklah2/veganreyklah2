@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `023612`: pass 9922 mem.bytesAsValue; 81 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `024012`: pass 9921 mem.reverse; 82 witnesses.*
 
 **Language:** EN
-**Version:** `20260621.023612` (Rye chronological stamp)
+**Version:** `20260621.024012` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,6 +12,7 @@
 
 ## What Just Landed (this session)
 
+- **Strengthening pass 9921 (`024012`).** `mem.reverse` snapshot postconditions (len <= 64); witness `mem_reverse_test`; 82/82 witnesses GREEN.
 - **Strengthening pass 9922 (`023612`).** `mem.bytesAsValue` byte-buffer size preconditions; witness `mem_bytes_as_value_test`; 81/81 witnesses GREEN.
 - **Strengthening pass 9923 (`023112`).** `mem.toBytes` array-length postconditions; witness `mem_to_bytes_test`; 80/80 witnesses GREEN.
 - **Strengthening pass 9924 (`022612`).** `mem.bytesAsSlice` typed-view length postconditions; witness `mem_bytes_as_slice_test`; 79/79 witnesses GREEN.
@@ -91,7 +92,7 @@
 - **Rishi arithmetic + stdout** — `+`/`-`/`*`/`/`, correct precedence, `say`.
 - **Tally seed** — one Region, 13 invariants.
 - **Tally v1 named gardens** — `Gardens`, blob/diff/frame, 15/15 GREEN.
-- **Strengthening 9994–9922** — through mem.bytesAsValue. 81 witnesses.
+- **Strengthening 9994–9921** — through mem.reverse. 82 witnesses.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
 - **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`.
@@ -125,7 +126,7 @@
 
 | When | Strand | Next step |
 |------|--------|-----------|
-| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9921` and below) through `parity.rish` |
+| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9920` and below) through `parity.rish` |
 | **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/*`~~ ~~`caravan/seed`~~ ~~`caravan/bounded`~~ ~~`caravan/twin`~~ → `caravan/chain` → `brushstroke/skate_grid.rye` |
 | **Metal pause** | **Aurora smoke** | `aurora/run.sh` in CI (`10024` Phase 2 after Caravan/Skate) |
 
@@ -135,7 +136,7 @@ Width and strengthening **do not block each other** — they touch different fil
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Strengthening series** — next `std` surface through gate trio (9921 and below) | `10023` Track B, `998` |
+| 1 | **Strengthening series** — next `std` surface through gate trio (9920 and below) | `10023` Track B, `998` |
 | 2 | **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye` (parallel, one module per session) | `10024`, `992` |
 | 3 | **Rishi** — builtins as gates and Pond policy need them | `10023` Track C |
 | 4 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |

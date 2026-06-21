@@ -4267,6 +4267,13 @@ inline fn reverseVector(comptime N: usize, comptime T: type, a: []T) [N]T {
 
 /// In-place order reversal of a slice
 pub fn reverse(comptime T: type, items: []T) void {
+    const max_reverse_check: usize = 64;
+    var original: [max_reverse_check]T = undefined;
+    const snapshot = items.len <= max_reverse_check;
+    if (snapshot) {
+        @memcpy(original[0..items.len], items);
+    }
+
     var i: usize = 0;
     const end = items.len / 2;
     if (use_vectors and
@@ -4293,6 +4300,13 @@ pub fn reverse(comptime T: type, items: []T) void {
 
     while (i < end) : (i += 1) {
         swap(T, &items[i], &items[items.len - i - 1]);
+    }
+
+    if (snapshot) {
+        var j: usize = 0;
+        while (j < items.len) : (j += 1) {
+            assert(eql(u8, asBytes(&items[j]), asBytes(&original[items.len - 1 - j])));
+        }
     }
 }
 
