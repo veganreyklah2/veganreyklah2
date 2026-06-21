@@ -1,50 +1,61 @@
-# 994 · Style Audit — TAME and Radiant since sweep `0963662`
+# 994 · Style Audit — TAME and Radiant
 
-**Stamp:** `20260620.155212` (audit run); filename is stable — no timestamp suffix.
-**Scope:** Main-track arc (`143312`–`153812`): strengthening 9979–9987, Skate grid, parity-via-`rye run`, Rishi builtins, parser hyphen fix. Shipped at `155212`.
-**Baseline:** Last Radiant sweep commit `0963662`; garden vocabulary sweep `c91253e`.
+**Stamp:** `20260621.055512`
+**Baseline:** Last full sweep at corpus 24; current corpus 90.
+**Status:** GREEN — no blocking issues. Re-run periodically as code grows.
 
 ---
 
-## TAME audit — `.rye` and `.rish`
+## TAME Audit — `.rye` and `.rish`
 
-**Files reviewed:** 22 (all uncommitted `.rye`/`.rish` in working tree).
+| Check | Result | Notes |
+|-------|--------|-------|
+| `init.garden` — no stray `init.arena` | GREEN | `inherited-names.md` governs the std boundary |
+| Preconditions on paths and inputs | GREEN | `path.len > 0` in Rishi I/O, Mantra, Caravan |
+| Postconditions on allocations | GREEN | `argv.len == items.len`, `fields.len == 4` in doRun |
+| Named errors in Rishi `EvalError` | GREEN | All new builtins have named error variants |
+| `// invariant:` comments before assertions | PARTIAL | Older code has assertions without the comment prefix; new code follows the convention |
+| Width policy (`u32` over `usize`) | IN PROGRESS | 5 files done; 17 remaining (see `992`) |
+
+### Assertion backlog
+
+The TAME audit (session `223712`) identified ~50 locations with missing assertions. 12 were fixed immediately. The remainder are addressed as each file is touched — not as a separate sweep, since the context of the fix matters more than the count.
+
+---
+
+## Radiant Audit — Prose and Documentation
 
 | Check | Result |
 |-------|--------|
-| `init.garden` / no stray `init.arena` in our code | GREEN |
-| Preconditions on paths (`path.len > 0`) in Rishi I/O | GREEN |
-| Postconditions on strengthened std wrappers | GREEN (9979–9987) |
-| Named errors in Rishi `EvalError` set | GREEN |
-| Assertions state invariants (`// postcondition`, `// invariant`) | GREEN on new Skate, Rishi, witness tests |
-| `std.debug.assert` in witness tests (parity pattern) | Consistent with existing witnesses |
-
-**Notes:** Corpus tests intentionally use `std.debug.assert` so strengthened postconditions run at parity time — same pattern as `alloc_print_test` and `mem_diff_test`. Inherited `ArenaAllocator` in std remains per `context/specs/inherited-names.md`.
-
-**Verdict:** GREEN — no blocking TAME fixes required.
+| Lead with what IS | GREEN |
+| Active voice | GREEN |
+| "yet/however" over "but" | GREEN |
+| Sentence rhythm varies | GREEN |
+| Benedictions on longer pieces | GREEN |
+| Code comments affirm capability | GREEN |
 
 ---
 
-## Radiant audit — writings and code comments since `0963662`
+## Strengthening Strategy — Quality over Quantity
 
-**Docs reviewed:** strengthening passes 9979–9987, `995`, `996`, `998_ALMANAC`, Rishi README, session logs from this arc.
+The corpus grew from 16 to 90 witnesses in one session. Going forward, the strategy is:
 
-| Check | Result |
-|-------|--------|
-| Lead with what IS | GREEN on new strengthening logs |
-| Avoid bare "but" where "yet/however" fits | GREEN (0 hits in new strengthening/wip md) |
-| Active voice in pass records | GREEN |
-| Code comments affirm capability | GREEN (`isWordHyphen`, parser reorder comments) |
+1. **Prioritize functions our code calls.** A strengthening pass earns its keep when it covers a function that Rishi, Mantra, Caravan, or Brushstroke actually depends on. Exhaustive std coverage is valuable yet secondary.
 
-**Verdict:** GREEN — no prose rewrites required for this arc.
+2. **Each pass should test meaningful behavior.** A witness that reverses an array and checks the result is correct yet shallow. A witness that exercises a boundary condition (`replace` with overlapping patterns, `split` at the edges of a buffer) is deeper and catches more.
 
----
+3. **The width audit rides the strengthening.** Each pass now carries a `## usize explicit audit` section. This is the right coupling — the width is documented where the function is strengthened.
 
-## Gate proof at audit time
-
-- `rishi run tools/parity.rish` — 24/24 GREEN
-- Rishi regression suite (index-of, parser_hyphens, split, join, contains, arithmetic, ends-with) — GREEN
+4. **The gate must stay green.** Every commit that touches `rye/lib/std` or adds a witness must pass `tools/parity.rish`. The gate is the invariant; the witness count is the measure.
 
 ---
 
-*May the root hold; may the prose stay warm; may each pass stay green on the way home.*
+## Gate Proof
+
+- `rishi run tools/parity.rish` — **90/90 GREEN**
+- Rishi test suite — **all GREEN**
+- `additive-gate.rish` — available for shape checks on std changes
+
+---
+
+*May the audit stay honest: GREEN where the work is sound, PARTIAL where it awaits, and always re-run rather than assumed.*
