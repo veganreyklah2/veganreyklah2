@@ -35,32 +35,32 @@ Laurent Bercot's s6 and its foundation library skalibs carry a discipline that r
 
 ---
 
-## Nix — Content-Addressed Reproducible Composition
+## Nix + infuse — Content-Addressed Reproducible Composition
 
-Eelco Dolstra's Nix gave us the model for how a system should be declared and built.
+Eelco Dolstra's Nix, bridged to s6 by Adam Joseph's infuse, gave us the model for how a system should be declared and built.
 
-**What Nix does right (TAME-aligned):**
+**What Nix + infuse do right (TAME-aligned):**
 
 - **A derivation is a pure function of its inputs.** Same inputs, same output, every time. No hidden dependencies, no environment state that leaks. This is the composability that makes caching, distributed building, and reproducibility possible.
 - **Content-addressed outputs.** Every build output is named by the hash of its inputs. The name is a promise: the bytes behind it will never change. This is the same discipline Brix's build store keeps with SHA3-256, and the same content-naming Mantra uses for weave states.
 - **Immutable store.** Once built, an output is never modified. The store grows by accretion — the same accretion discipline Rye keeps in its versioning.
 - **Lazy evaluation.** Nix evaluates expressions only when needed. Self-referential configurations (a service that refers to its own outputs) work naturally through laziness with cycle detection.
 
-**What Nix does that Brix should inherit:**
+**What Nix + infuse teach Brix:**
 
-- **The store model.** Brix's own build store holds blobs named by hash, never revised. Brix is the declaration — what to build, from what inputs. The relationship mirrors Nix's derivation-to-store path: the descriptor feeds the store, and the store holds the results.
+- **The store model.** Brix's own build store holds blobs named by hash, never revised. Brix is the declaration — what to build, from what inputs. The relationship mirrors the Nix infuse derivation-to-store path: the descriptor feeds the store, and the store holds the results.
 - **Parameterized declarations.** A Brix descriptor that takes parameters (which files, which version, which target) is a function that returns a declaration. The full Brix grows toward this, once the seed format (plain key-value) has proven itself.
 
 **What to decline:**
 
-- **Nix's expression language grew rich and complex.** We keep Brix deliberately simple: plain key-value in the seed, a small composing language later. The composability is Nix's gift; the simplicity is ours.
+- **Nix's expression language grew rich and complex.** We keep Brix deliberately simple: plain key-value in the seed, a small composing language later. The composability is the Nix + infuse gift; the simplicity is ours.
 - **Nix's lazy evaluation model.** Brix evaluates eagerly — the descriptor is read once, at startup. Lazy evaluation introduces complexity that the seed does not need.
 
 ---
 
 ## SixOS — Composition as Vision
 
-Adam Joseph's SixOS sees what belongs together: s6's supervision and Nix's reproducible composition are two halves of one idea.
+Adam Joseph's SixOS sees what belongs together: s6's supervision and Nix infuse's reproducible composition are two halves of one idea.
 
 **What SixOS teaches:**
 

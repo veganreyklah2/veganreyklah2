@@ -10,6 +10,7 @@ The countdown prefix starts at `99999` and **decreases by one** for each new log
 
 ## Contents
 
+- **Editor and model** at the top — which editor produced this log and which model powered it. Example: `**Editor:** Claude Code (Zed) · **Model:** Claude Opus 4.6 (1M context)` or `**Editor:** Cursor Composer · **Model:** Claude Sonnet 4.6`. This lets either agent identify which logs came from the other.
 - The step-by-step **thinking trace** and reasoning followed during the response.
 - **Observations** about the changes, and any decisions or trade-offs taken.
 - A list of the **files** created, modified, or deleted, each with a one-line why.

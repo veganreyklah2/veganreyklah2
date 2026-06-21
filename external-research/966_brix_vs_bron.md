@@ -18,10 +18,10 @@
 |---|---------|---------|
 | **What it is** | Composition language for Rye OS | Data notation for values |
 | **What it declares** | What a system is made of: services, stages, dependencies, policies, build targets | What a value contains: settings, headers, metadata, configuration fields |
-| **Analogy** | Nix expression language (`.nix`) | JSON / ZON (`.json`, `.zonf`) |
+| **Analogy** | Nix infuse expression language | JSON / ZON (`.json`, `.zonf`) |
 | **File extension** | `.brix` | `.bron` |
 | **Evaluated?** | Yes — Brix expressions are evaluated to produce build plans, service trees, composition results | No — Bron is parsed, not evaluated. A `.bron` file is data, not a program. |
-| **Has functions?** | Yes (growing toward parameterized declarations, like Nix's `{ pkgs, ... }:`) | No. Bron is key-value. No functions, no expressions, no control flow. |
+| **Has functions?** | Yes (growing toward parameterized declarations, like Nix infuse's parameterized overlays) | No. Bron is key-value. No functions, no expressions, no control flow. |
 | **Has dependencies?** | Yes — a Brix declaration names what it depends on. Brix interfaces with Mantra for versioned inputs and targets Aurora/Tally for boot stages and memory budgets. | No. A Bron file is self-contained. |
 | **Backed by a store?** | Yes — Brix has its own content-addressed build artifact cache (like Nix's `/nix/store`), currently inside `.mantra/blobs/` | No. Bron is a text format; it has no store. |
 
@@ -29,9 +29,9 @@
 
 ## What Nix and infuse Teach About the Boundary
 
-### Nix separates expression from data
+### Nix infuse separates expression from data
 
-A Nix file (`.nix`) is a **program** — it has functions, let-bindings, conditionals, imports. When evaluated, it produces an **attribute set** — which is data. The attribute set can be serialized to JSON, stored in the Nix store, or passed to a builder.
+A Nix infuse file is a **program** — it has functions, let-bindings, conditionals, imports. When evaluated, it produces an **attribute set** — which is data. The attribute set can be serialized to JSON, stored in the Nix store, or passed to a builder.
 
 The lesson: **the composition language evaluates to data.** Brix evaluates to Bron. A `.brix` file is a program that, when run, produces a `.bron`-shaped value — a record of keys and values that names what was composed.
 
@@ -54,7 +54,7 @@ The lesson: **Brix declares what Caravan supervises.** The `.brix` declaration p
 Use Brix (`.brix`) when you are **composing a system** — declaring what exists, what depends on what, what to build, what to supervise:
 
 - **System composition** — declaring the services, stages, and dependencies of a Rye OS instance
-- **Build targets** — naming the source bricks, their versions, and how they compose (like a Nix derivation)
+- **Build targets** — naming the source bricks, their versions, and how they compose (like a Nix infuse derivation)
 - **Boot stage declarations** — naming what Aurora loads, in what order, with what Tally budgets
 - **Service policies** — declaring what capabilities each Caravan-supervised process receives
 - **Project descriptors** — the `.brix` file at the repository root that Mantra reads
@@ -90,7 +90,7 @@ Brix (composition) ──evaluates──→ Bron (data)
                                     └── LLMs read it (context)
 ```
 
-Brix produces Bron the way Nix produces attribute sets. The composition language is richer; the data notation is simpler. Every module that consumes configuration reads Bron — the universal data format of the family.
+Brix produces Bron the way Nix infuse produces attribute sets. The composition language is richer; the data notation is simpler. Every module that consumes configuration reads Bron — the universal data format of the family.
 
 ---
 
@@ -133,7 +133,7 @@ Bron is simpler than EDN on purpose. A systems notation does not need reader mac
 
 ## Sources
 
-- Nix: nixos.org — expression language that evaluates to attribute sets
+- Nix infuse: codeberg.org/amjoseph/infuse.nix — expression language that evaluates to attribute sets
 - infuse: codeberg.org/amjoseph/infuse.nix — desugaring and monoid composition
 - SixOS: codeberg.org/amjoseph/sixos — declaration (Nix) meets supervision (s6)
 - ZON: github.com/ZON-Format/ZON — token-efficient notation for LLM workflows. MIT.
