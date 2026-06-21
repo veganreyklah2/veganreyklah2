@@ -70,7 +70,7 @@ Each is a thing that runs on its own, added by degrees, behind the gates.
 - [x] **Comlink hosted wire** — sealed datagram over localhost UDP (`comlink/hosted_wire.rye`; `10014` Track D).
 - [x] **Rishi string builtins** — `length`, `trim`, `slice`, `lines`, `starts-with`, `ends-with`, `split`, `join`, `contains`, infix `index-of` (`10023` Track C).
 - [x] **Skate text grid** — monospace glyph rendering on the Wayland seed (`skate_grid.rye`, `font8x8_data.rye`, `wayland_seed.rye`; `10023` Track A).
-- [x] **Strengthening 9979–9927** — everyday `std` surfaces through the gate (`trimStart` … ShakeLike.update; see `strengthening-compiler/9927`–`9987`).
+- [x] **Strengthening 9979–9926** — everyday `std` surfaces through the gate (`trimStart` … mem.sliceAsBytes; see `strengthening-compiler/9926`–`9987`).
 - [ ] **Device wire (virtio-net)** — two QEMU guests (`10016`).
 - [ ] **Rye chronological version parser** — accrete `std.RyeVersion` beside `SemanticVersion` (`parse` / `format` / `order` for `YYYYMMDD.HHMMSS`); unblocks Caravan capability min-version and Tablecloth policy (`rye-versioning-style.md`, `995`).
 - [ ] **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye`; inherited `std` at strengthen touch only (`10024`, `992`; pilot `tally/seed.rye`)
@@ -128,7 +128,7 @@ The far ends. Each is named with the simpler working systems it is composed of, 
 
 **Highest-leverage build threads (ordered):**
 
-1. **Strengthening series** — next `std` surface (`9926` and below; `998`) — invoke with **`k <stamp>`**
+1. **Strengthening series** — next `std` surface (`9925` and below; `998`) — invoke with **`k <stamp>`**
 2. **Explicit-width migration** — Phase 1 queue: Caravan family next (`10024`, `992`; Tally **done**)
 3. **Rishi** — builtins as gates need them
 4. **Comlink virtio-net** — device wire (`10016`)
@@ -143,15 +143,15 @@ The Pond GUI (`10009`, `986`) composes when Brushstroke + Skate + Mantra + Rishi
 
 ### What to Build Next, and Why
 
-Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, **TAME document stack (`014512`)**, **SemanticVersion** trio, **mem** compare/copy/sentinel arc, **timing_safe.eql (9937)** on the metal path, **Keccak/SHAKE `@memcpy` (9936 + 9935)** on the metal path, mem iterators through **WindowIterator (9954)**, mem.join (9961), cut family (9958–9960), **split factories (9934 + 9933)**, **tokenize factories (9932)**, **window factory (9931)**, **mem.trim (9930)**, **crypto.secureZero (9929)**, **mem.span (9928)**, **ShakeLike.update (9927)**, **Tally explicit widths (`211712`)**, **`caravan/seed` widths (`014512`)** — done. **Strengthening (`9926`)** via `k`; **width Phase 1** continues `caravan/bounded` → Skate between `k` runs. **Freestanding smoke** on Aurora metal lane; **RyeVersion** beside capability table.
+Tally v1 gardens, Brix minimum, Mantra repo chain, Rishi gate trio, Caravan chain, Brushstroke Wayland, Comlink hosted wire, Skate glyph grid, path naming family, garden-memory policy, **TAME document stack (`014512`)**, **SemanticVersion** trio, **mem** compare/copy/sentinel arc, **timing_safe.eql (9937)** on the metal path, **Keccak/SHAKE `@memcpy` (9936 + 9935)** on the metal path, mem iterators through **WindowIterator (9954)**, mem.join (9961), cut family (9958–9960), **split factories (9934 + 9933)**, **tokenize factories (9932)**, **window factory (9931)**, **mem.trim (9930)**, **crypto.secureZero (9929)**, **mem.span (9928)**, **ShakeLike.update (9927)**, **mem.sliceAsBytes (9926)**, **Tally explicit widths (`211712`)**, **`caravan/seed` widths (`014512`)**, **`caravan/bounded` widths (`015712`)** — done. **Strengthening (`9925`)** via `k`; **width Phase 1** continues `caravan/twin` → Skate between `k` runs. **Freestanding smoke** on Aurora metal lane; **RyeVersion** beside capability table.
 
 ---
 
 ## The Steps Just Taken
 
-Strengthening through **9927**, explicit-width Tally Phase 1 on `u32`, parity **76/76** green.
+Strengthening through **9926**, explicit-width Tally Phase 1 on `u32`, parity **77/77** green.
 
-**Strengthening passes 9979–9927** (`143312`–`015112`): witness count 17 → 76, all green.
+**Strengthening passes 9979–9926** (`143312`–`015612`): witness count 17 → 77, all green.
 
 **Version parser thread (`173212`–`174312`)** — documented in `995` Near build: accrete `std.RyeVersion` beside `SemanticVersion` when capability table or Tablecloth needs programmatic bounds; lexicographic compare on fixed-width stamps suffices until then.
 

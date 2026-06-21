@@ -1,7 +1,7 @@
 # Public Keys
 
 **Language:** EN
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-21
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -24,6 +24,8 @@ These keys belong to **Kaeden Reyklah**.
 ## The Keys
 
 All keys use the ed25519 family — two SSH keys for the forges, and two OpenPGP keys for signing: Kaeden's master, and a dedicated sandbox key the automated agent signs with. Each fingerprint below stands ready for checking against its source.
+
+**The two `.asc` files in `keys/` are different keys** (master `0646…` vs sandbox `DBF8…`). See `keys/README.md` for roles and why both are kept.
 
 **Codeberg · SSH** authenticates pushes and pulls on Codeberg, where the `xwb122m` work lives.
 

@@ -3,7 +3,7 @@
 **Stamp:** `20260620.210812`
 **Policy:** `context/TAME_STYLE.md` (Rye supplement)
 **Charter:** `expanding-prompts/10024_explicit_width_audit.md`
-**Status:** Phase 1b underway (`014512`) — `caravan/seed.rye` on `u32`; Caravan family continues
+**Status:** Phase 1b underway (`015712`) — `caravan/bounded.rye` on `u32`; `caravan/twin` next
 
 ---
 
@@ -32,7 +32,7 @@
 | `aurora/src/deciding.rye` | 11 | metal | 2 | MMIO offsets → `u64`; small counters → `u32` |
 | `aurora/src/posted.rye` | 11 | metal | 2 | mailbox layout — wire widths |
 | `aurora/src/relay.rye` | 8 | metal | 2 | relay buffer walks |
-| `caravan/bounded.rye` | 8 | supervision | 1 | restart counts |
+| `caravan/bounded.rye` | 0 | supervision | 1 | **Done** `015712` |
 | `tally/gardens.rye` | 0 | memory | 1 | **Done** `211712` |
 | `brushstroke/wayland_seed.rye` | 9 | display | 1 | SHM stride / dimension casts |
 | `mantra/src/main.rye` | 5 | vcs | 1 | line/weave indices |

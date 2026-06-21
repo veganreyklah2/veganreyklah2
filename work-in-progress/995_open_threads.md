@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `015612`: pass 9926 mem.sliceAsBytes; 77 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `015712`: keys README; `caravan/bounded.rye` widths; 77 witnesses.*
 
 **Language:** EN
-**Version:** `20260621.015612` (Rye chronological stamp)
+**Version:** `20260621.015712` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,6 +12,8 @@
 
 ## What Just Landed (this session)
 
+- **Keys policy clarified (`015712`).** `gpg_signing_06462132` (master) and `rye_signing_DBF853` (sandbox) are distinct fingerprints — not duplicates. `context/keys/README.md` + `PUBKEYS.md` note.
+- **Explicit-width Phase 1b (`015712`).** `caravan/bounded.rye`: Region + supervision counts → `u32`; `bufLenU32` at slice seam.
 - **Strengthening pass 9926 (`015612`).** `mem.sliceAsBytes` byte-view length postconditions; witness `mem_slice_as_bytes_test`; 77/77 witnesses GREEN.
 - **Strengthening pass 9927 (`015112`).** SHA3 `ShakeLike.update` sponge cursor postconditions; witness `sha3_shake_update_test`; 76/76 witnesses GREEN.
 - **TAME document stack (`014512`).** Operational supplement → `context/TAME_STYLE.md` (TigerBeetle `TIGER_STYLE.md` filename pattern). Canon: `external-research/996_TAME_STYLE.md` + `gratitude/TIGER_STYLE.md`. Rules updated; `snake_case` defers to 996.
@@ -119,7 +121,7 @@
 | When | Strand | Next step |
 |------|--------|-----------|
 | **`k <stamp>`** | **Strengthening** | Next `std` surface (`9925` and below) through `parity.rish` |
-| **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ ~~`caravan/seed`~~ → `caravan/bounded` → `twin` → `chain` → `brushstroke/skate_grid.rye` |
+| **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ ~~`caravan/seed`~~ ~~`caravan/bounded`~~ → `caravan/twin` → `chain` → `brushstroke/skate_grid.rye` |
 | **Metal pause** | **Aurora smoke** | `aurora/run.sh` in CI (`10024` Phase 2 after Caravan/Skate) |
 
 Width and strengthening **do not block each other** — they touch different files. Prefer **one width module** when not on a `k` strengthening pass.
@@ -128,13 +130,13 @@ Width and strengthening **do not block each other** — they touch different fil
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Strengthening series** — next `std` surface through gate trio (9926 and below) | `10023` Track B, `998` |
+| 1 | **Strengthening series** — next `std` surface through gate trio (9925 and below) | `10023` Track B, `998` |
 | 2 | **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye` (parallel, one module per session) | `10024`, `992` |
 | 3 | **Rishi** — builtins as gates and Pond policy need them | `10023` Track C |
 | 4 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |
 | 5 | **Aurora metal lane** — freestanding integration smoke | `991`, `aurora/run.sh` |
 
-**Explicit-width migration** *(opened `210812`, Phase 1 underway `211712`)* — Tiger Style asks for explicitly sized types. **Policy:** `u32` bounded in-memory, `u64` wire-persistent, `usize` only at slice seams. **Done:** `tally/seed.rye`, `tally/gardens.rye`, `caravan/seed.rye`. **Next:** `caravan/bounded.rye` → `twin` → `chain`. Charter `10024`; inventory `992`.
+**Explicit-width migration** *(opened `210812`, Phase 1 underway `211712`)* — Tiger Style asks for explicitly sized types. **Policy:** `u32` bounded in-memory, `u64` wire-persistent, `usize` only at slice seams. **Done:** `tally/seed.rye`, `tally/gardens.rye`, `caravan/seed.rye`, `caravan/bounded.rye`. **Next:** `caravan/twin.rye` → `chain`. Charter `10024`; inventory `992`.
 
 **Aurora metal lane** *(opened `200312`)* — parallel to the main mem/string arc, not a fork of it. Aurora's freestanding stages (`aurora/src/*.rye`, `riscv64-freestanding-none`) lean on **crypto** and a thin **mem** slice, not `std.os` or hosted I/O.
 
@@ -217,7 +219,7 @@ Phase 2 vocabulary sweep is **closed**. Policy at `161112`: warm names enter bes
 - **Compare:** baseline `vendor/zig-toolchain/lib` vs strengthened `rye/lib` — same test, same pinned Zig (`RYE_ZIG`).
 - **Invoke:** `rye run rye/tests/<name>.rye` on both arms (`RYE_LIB` for baseline); exercises the real bridge path.
 - **Hold:** exit code + stdout/stderr identical — assertions change what code *says*, never what it *does*.
-- **Witnesses:** 76 programs, all GREEN (9927 ShakeLike.update latest).
+- **Witnesses:** 77 programs, all GREEN (9926 mem.sliceAsBytes latest).
 
 ## The Through-Line
 

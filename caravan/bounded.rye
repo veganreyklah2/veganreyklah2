@@ -22,7 +22,12 @@
 
 const std = @import("std");
 
-const caravan_bounded_version = "20260620.005412";
+const caravan_bounded_version = "20260621.015712";
+
+fn bufLenU32(buf: []const u8) u32 {
+    std.debug.assert(buf.len <= std.math.maxInt(u32));
+    return @intCast(buf.len);
+}
 
 // =========================================================================
 // § Tally Region — the bounded garden (same as tally/seed.rye)
@@ -31,35 +36,36 @@ const caravan_bounded_version = "20260620.005412";
 // Invariant: pos <= buf.len at every mutation.
 const Region = struct {
     buf: []u8,
-    pos: usize,
+    pos: u32,
 
     fn init(buf: []u8) Region {
         // invariant: buffer is non-empty
         std.debug.assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        std.debug.assert(r.pos <= r.buf.len);
+        std.debug.assert(r.pos <= bufLenU32(r.buf));
         return r;
     }
 
-    fn alloc(self: *Region, n: usize) error{OutOfBounds}![]u8 {
-        // invariant: pos in range before allocation
-        std.debug.assert(self.pos <= self.buf.len);
-        if (n > self.buf.len - self.pos) return error.OutOfBounds;
-        const slice = self.buf[self.pos .. self.pos + n];
+    fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
+        const cap = bufLenU32(self.buf);
+        std.debug.assert(self.pos <= cap);
+        if (n > cap - self.pos) return error.OutOfBounds;
+        const start: usize = @intCast(self.pos);
+        const end: usize = @intCast(self.pos + n);
+        std.debug.assert(end <= self.buf.len);
+        const slice = self.buf[start..end];
         self.pos += n;
-        // invariant: pos in range after allocation
-        std.debug.assert(self.pos <= self.buf.len);
+        std.debug.assert(self.pos <= cap);
         return slice;
     }
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        // invariant: reset holds
-        std.debug.assert(self.pos <= self.buf.len);
+        std.debug.assert(self.pos <= bufLenU32(self.buf));
     }
 
-    fn remaining(self: *const Region) usize {
-        return self.buf.len - self.pos;
+    fn remaining(self: *const Region) u32 {
+        return bufLenU32(self.buf) - self.pos;
     }
 };
 
@@ -69,14 +75,14 @@ const Region = struct {
 
 /// The child's memory budget — 256 bytes. Small on purpose: the proof
 /// is in the bound, not in the size.
-const child_budget: usize = 256;
+const child_budget: u32 = 256;
 
 /// Maximum restarts before the supervisor gives up.
-const max_restarts: usize = 5;
+const max_restarts: u32 = 5;
 
 /// Planned failures: the child will exceed its garden once, get
 /// restarted, then run within bounds and succeed.
-const planned_failures: usize = 1;
+const planned_failures: u32 = 1;
 
 // =========================================================================
 // § Entry point — dispatch on mode
@@ -165,7 +171,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
         child_budget, planned_failures,
     });
 
-    var restarts: usize = 0;
+    var restarts: u32 = 0;
 
     while (true) {
         // invariant: restarts bounded
@@ -212,7 +218,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     // postcondition: within the limit
     std.debug.assert(restarts < max_restarts);
 
-    const total_assertions: usize = planned_failures + 2 + 7; // supervisor + child garden assertions
+    const total_assertions: u32 = planned_failures + 2 + 7; // supervisor + child garden assertions
     std.debug.print("caravan bounded: {d} assertion(s) confirmed. supervision + bounded memory proven GREEN.\n", .{total_assertions});
     return 0;
 }
