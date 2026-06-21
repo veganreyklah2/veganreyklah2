@@ -4732,7 +4732,11 @@ fn AsBytesReturnType(comptime P: type) type {
 
 /// Given a pointer to a single item, returns a slice of the underlying bytes, preserving pointer attributes.
 pub fn asBytes(ptr: anytype) AsBytesReturnType(@TypeOf(ptr)) {
-    return @ptrCast(@alignCast(ptr));
+    const Result = AsBytesReturnType(@TypeOf(ptr));
+    const result: Result = @ptrCast(@alignCast(ptr));
+    // Postcondition: byte view spans exactly one value (pairs with sliceAsBytes 9926).
+    assert(result.len == @sizeOf(@TypeOf(ptr.*)));
+    return result;
 }
 
 test asBytes {
