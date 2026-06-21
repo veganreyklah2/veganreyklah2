@@ -4589,6 +4589,13 @@ pub fn replaceScalar(comptime T: type, slice: []T, match: T, replacement: T) voi
 
 /// Collapse consecutive duplicate elements into one entry.
 pub fn collapseRepeatsLen(comptime T: type, slice: []T, elem: T) usize {
+    const max_collapse_check: u32 = 64;
+    var original: [max_collapse_check]T = undefined;
+    const snapshot = slice.len <= @as(usize, max_collapse_check);
+    if (snapshot) {
+        @memcpy(original[0..slice.len], slice);
+    }
+
     if (slice.len == 0) return 0;
     var write_idx: usize = 1;
     var read_idx: usize = 1;
@@ -4598,12 +4605,38 @@ pub fn collapseRepeatsLen(comptime T: type, slice: []T, elem: T) usize {
             write_idx += 1;
         }
     }
+
+    // Postcondition: consumed input, result fits (pairs with replaceScalar 9914, os/windows).
+    assert(read_idx == slice.len);
+    assert(write_idx <= slice.len);
+    if (snapshot) {
+        var expected: [max_collapse_check]T = undefined;
+        var exp_len: usize = 0;
+        if (slice.len > 0) {
+            expected[0] = original[0];
+            exp_len = 1;
+            var r: usize = 1;
+            while (r < slice.len) : (r += 1) {
+                if (!(original[r - 1] == elem and original[r] == elem)) {
+                    expected[exp_len] = original[r];
+                    exp_len += 1;
+                }
+            }
+        }
+        assert(write_idx == exp_len);
+        var j: usize = 0;
+        while (j < write_idx) : (j += 1) {
+            assert(eql(u8, asBytes(&slice[j]), asBytes(&expected[j])));
+        }
+    }
     return write_idx;
 }
 
 /// Collapse consecutive duplicate elements into one entry.
 pub fn collapseRepeats(comptime T: type, slice: []T, elem: T) []T {
-    return slice[0..collapseRepeatsLen(T, slice, elem)];
+    const collapsed_len = collapseRepeatsLen(T, slice, elem);
+    assert(collapsed_len <= slice.len);
+    return slice[0..collapsed_len];
 }
 
 fn testCollapseRepeats(str: []const u8, elem: u8, expected: []const u8) !void {
