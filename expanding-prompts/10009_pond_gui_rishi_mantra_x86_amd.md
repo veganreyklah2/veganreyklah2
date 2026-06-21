@@ -143,7 +143,6 @@ file rishi/src/main.rye
 file tally/seed.rye
 file tally/gardens.rye
 file mantra/src/main.rye
-file tools/parity.sh
 file tools/parity.rish
 file work-in-progress/995_open_threads.md
 file work-in-progress/996_roadmap.md

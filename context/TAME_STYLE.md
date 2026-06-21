@@ -93,13 +93,15 @@ Rye carries the family. The safety Rye offers is the safety every module written
 
 Use explicitly sized integer types: `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`. Use `f32` or `f64` for floating-point. Never use `c_int`, `c_uint`, or `anyopaque` without a stated, commented reason.
 
-**`usize` is a boundary type, not a design type.** This is the same policy Tiger Style states — *use explicitly-sized types like `u32`; avoid architecture-specific `usize`* (`gratitude/TIGER_STYLE.md` § Safety). TAME voices it for Rye: set aside architecture-specific widths so behavior stays exact across targets — especially RISC-V (`riscv64`) and hosted x86_64. Our inherited Zig `std` still speaks `usize` at slice and pointer edges; we honor that at the seam and convert explicitly everywhere we own the contract.
+**North star (`051312`):** Rye forks to a **literal `usize` ban** in types we publish — see [`external-research/967_literal_usize_ban_language_fork.md`](../external-research/967_literal_usize_ban_language_fork.md) and [`active-designing/970_explicit_width_in_rye.md`](../active-designing/970_explicit_width_in_rye.md). Until fork F3, Zig-ground `std` uses the **interim seam** manual [`968`](../external-research/968_usize_boundary_not_design.md).
+
+**`usize` is a boundary type, not a design type** — interim on Zig ground; same rule Tiger Style states (*use explicitly-sized types like `u32`; avoid architecture-specific `usize`*). TAME voices it for Rye: set aside architecture-specific widths so behavior stays exact across targets — especially RISC-V (`riscv64`) and hosted x86_64. Our inherited Zig `std` still speaks `usize` at slice edges **until the fork**; we honor that at the seam and convert explicitly everywhere we own the contract.
 
 | Width | Role in authored Rye |
 |-------|----------------------|
 | **`u32`** | In-memory counts, indices, and lengths **bounded by a named constant** (garden capacity, grid dimension, stack depth, frame size). Default width for “how many in this region.” |
 | **`u64`** | Wire-persistent sizes, timestamps, content offsets, and any quantity that must mean the same thing on every target without relying on `usize` width. |
-| **`usize`** | **Only** at the immediate Zig slice boundary: `buf.len`, indexing a `[]T` you do not own, or calling inherited `std` APIs that require `usize`. Convert in with `@intCast` and a narrow assert; convert out before the value crosses a module we authored. |
+| **`usize`** | **Interim only (Zig-ground):** immediate slice boundary until fork F3 — see `968`. Not in APIs we publish long-term (`970`). |
 
 Do **not** store `usize` in struct fields, function parameters, or return types we publish. Name the bound when you pick `u32`:
 

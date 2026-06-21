@@ -3,7 +3,7 @@
 *A living plan for the work ahead, shaped by one law we hold close: a complex system that works grows from a simpler system that worked. So this roadmap never points straight at the finished, intricate whole. It lays out horizons — what runs now, what comes next, what composes from those, and the ambitious ends — and for each larger system it names the smaller working ones it is made of. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260621.051312` (Rye chronological stamp)
+**Version:** `20260621.051612` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -40,7 +40,7 @@ These are the simple systems that run today. Everything ahead grows from them.
 - **Rishi string builtins** — `length`, `trim`, `slice`, `lines`, `starts-with`, `ends-with`, `split`, `join`, `contains`, infix `index-of`; gate trio 71/71 GREEN.
 - **Skate text grid** — monospace 8×8 glyphs on Brushstroke Wayland seed; headless selftest green (`10023` Track A).
 - **Strengthening passes 9979–9913** — `trimStart` … mem.collapseRepeats. Each through the gate; witness count 17 → 90.
-- **Explicit-width policy** — TAME supplement aligned with Tiger Style (`210812`); baseline `992`; charter `10024`. **Fork `051312`:** literal `usize` ban in Rye types — research `967`, design `970`.
+- **Doc-stack hygiene (`051612`).** Redirect stubs in research/prompts; foundation stones name retired patterns (Bash gates, Python enricher, seam-only `usize` as destination).
 - **Garden memory policy** — authored `.rye` uses `init.garden.allocator()`, never `ArenaAllocator`; no std `GardenAllocator` rename; owned wrapper at `rye.garden` / `tally/heap-garden.rye` when built (`inherited-names.md`, TAME rules).
 
 ---

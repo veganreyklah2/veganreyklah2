@@ -88,7 +88,7 @@ We recommend a small family of TAME-coherent languages, sharing one value model,
 - **Rye** — the **programs**. Systems work, in the Zig spirit, strengthened our way.
 - **Tablecloth** — the **configuration and build**. Declarative and content-addressed, in the Nix spirit, already ours.
 - **An orchestration language** — the **services and init**, in the execline spirit: no resident interpreter, bounded, surprise-free. This may need no separate language at all — Tablecloth could *describe* the service graph and Caravan *execute* it in the chain-loading manner — yet if it wants its own small grammar, that grammar is a TAME execline.
-- **An interactive shell** — the **human glue**: terse, typed, composition-first, and effect-honest, a sibling of Rye rather than Rye itself. We name it **Rishi** — a seer who hears the human and speaks faithfully to the machine, carrying typed values from one command into the next; the name keeps bhakti's devotion and a sattvic, plant-kind gentleness, true to our vow. We take it up in full in `988_rishi_shell.md`.
+- **An interactive shell** — the **human glue**: terse, typed, composition-first, and effect-honest, a sibling of Rye rather than Rye itself. We name it **Rishi** — a seer who hears the human and speaks faithfully to the machine, carrying typed values from one command into the next; the name keeps bhakti's devotion and a sattvic, plant-kind gentleness, true to our vow. We take it up in full in [`../active-designing/989_the_faithful_hand.md`](../active-designing/989_the_faithful_hand.md) and [`../rishi/README.md`](../rishi/README.md).
 - **Mantra** — the **memory**. Less a language you compose in than the content-addressed weave that remembers all the others, versioning programs, configs, scripts, and services alike — because they share one value model, their history is one weave.
 
 The move that earns the one-language prize without its price is this: **all of these share a single value model.** A value produced by a Rye program, carried through a Rishi pipeline, stored by a Tablecloth build, and remembered by a Mantra weave is *the same value*, not four flattened-and-reparsed copies of it. The seam Hickey warns against never opens, because there is nothing to marshal across — not between the languages, and not between the present and the past. We get coherence — one ecosystem, one set of guarantees — without the false economy of one syntax pretending to fit every hand.
@@ -103,7 +103,7 @@ So: **Rye should not be the shell scripting language**, and the shell should not
 
 ## Sources and Threads
 
-- **`990_shell_scripting_tame.md`** — the survey of shells through the TAME lens that this piece builds upon: execline, Nushell, YSH, Ion, Fish, Bash.
+- **`990_shell_scripting_tame.md`** — redirect stub; conclusion lives in `tools/parity.rish` and the gate trio.
 - **`991_useful_utilities.md`** — execline named as the TAME answer to scripting, and Tablecloth's lineage in the Nix/build world.
 - **`998_MANTRA.md`** — Mantra as a content-addressed weave that closes the seam between a source's history and the build made from it; the memory that, given one value model, versions the whole family in one grain.
 - **`997_SYSTEM.md`** — the language-of-the-system view: a system as programs flowing values, and the seam that opens wherever values must be flattened to cross between languages.

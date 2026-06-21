@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Version:** `20260618.195512` (Rye chronological stamp)
+**Version:** `20260621.051612` (Rye chronological stamp)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -22,6 +22,23 @@ Why keep them at all? Because a prompt well understood is half the work, and a p
 This stack counts *upward*, unlike the research and work stacks that count down. The introduction is `9999`; the first expanded prompt is `10000`, the next `10001`, and onward. It reads like a journal, oldest at the top, because a prompt is best understood beside the ones that came before it — a record of how intent was heard and how it grew into action.
 
 Some topics ladder across several files with timestamps one minute apart — for example the **Tablecloth** store (`10018`–`10022`, from `043712`) and the **main track** (`10023`, from `044412`). Reserved numbers (e.g. `10010`) stay as stubs. The index rung names the sequence; each later rung carries one slice of the work.
+
+## Redirects and retired patterns
+
+**Executed prompts** become stubs — they keep their number and point at the deliverable (`10013` → `976`, `10015` → Almanac/READMEs). See stub table in [`../external-research/999_RESEARCH.md`](../external-research/999_RESEARCH.md).
+
+**Current tooling (use these):**
+
+| Role | Path |
+|------|------|
+| Parity gate | `tools/parity.rish` |
+| Additive gate | `tools/additive-gate.rish` |
+| Strengthening enricher | `tools/enrich_strengthening_docs.rye` |
+| Width audit (planned) | `tools/width-audit.rish` (`10024` Phase 5) |
+
+**Retired in new prompts:** `tools/parity.sh`, `enrich_strengthening_docs.py`, `parity.rye` as gate target, `init.arena`, authored `ArenaAllocator`, “`usize` only at seam” as **permanent** policy (interim only — fork `967`/`970`).
+
+**Width:** charter `10024`; baseline `992`; fork research `967`; design `970`; interim seam `968`.
 
 ## What Belongs Here
 

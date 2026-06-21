@@ -1,7 +1,7 @@
 # 999 · The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-06-20
+**Last updated:** 2026-06-21 (`051612` — redirect stubs, `970` width fork)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -69,6 +69,14 @@ active-designing/
 ```
 
 To add a design, take the next number down from the lowest present, name the file for its subject, write it self-contained in Radiant Style, and keep faith with the silo principle: our own names, and RISC-V, and nothing else. The strategy at `998` is revised in place as our thinking matures; the foundation at `999` rarely moves at all.
+
+## Redirect stubs
+
+When a design brief **supersedes** research or an executed prompt, the old file in another stack becomes a stub (see `../external-research/999_RESEARCH.md`). In **this** stack, revise briefs in place when the design matures (`998` strategy) rather than leaving duplicate architecture docs.
+
+**Current width law:** [`970_explicit_width_in_rye.md`](970_explicit_width_in_rye.md) — literal `usize` ban in Rye types. Interim Zig-ground seam audit: research `968` until fork F3.
+
+**Retired patterns in new design prose:** Bash gates, `ArenaAllocator` in authored modules (use `init.garden`), `usize` in APIs we publish, vendor Zig parity as permanent contract.
 
 ---
 

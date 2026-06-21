@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `051312`: Rye forks to literal `usize` ban — research `967`, design `970`.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `051612`: doc-stack redirect stubs; retired Bash/Python/seam-forever patterns.*
 
 **Language:** EN
-**Version:** `20260621.051312` (Rye chronological stamp)
+**Version:** `20260621.051612` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,9 +12,8 @@
 
 ## What Just Landed (this session)
 
-- **Literal `usize` ban — language fork (`051312`).** Decision recorded: Rye will have **no `usize` in authored types**; `u32`/`u64` slices and indices; Zig bridge is bootstrap; parity re-bases to Rye spec. Research: `external-research/967_literal_usize_ban_language_fork.md`. Siloed design: `active-designing/970_explicit_width_in_rye.md`. `968` remains the interim seam manual for Zig-ground strengthenings.
-- **968 safety walkthrough (`050312`).** How and why each allowed seam pattern is safe under Tiger/TAME.
-- **Strengthening tools in Rye (`043312`).** `tools/tame_usize_audit.rye` + `tools/enrich_strengthening_docs.rye`.
+- **Doc-stack cleanup (`051612`).** Redirect stubs for superseded research (`988`, `990`, `992`), executed prompts (`10013`, `10015`, `10025`); foundation stones `999_RESEARCH`, `999_DESIGN`, `9999_EXPANDING` document retired patterns (Bash gates, Python enricher, permanent seam-only `usize`). Main track `10023` reoriented.
+- **Literal `usize` ban — language fork (`051312`).** Research `967`, design `970`. `968` interim seam manual.
 - **Full implementation in pass writings (`040912`).** Live `pub fn` bodies in `## Rye std surface` and `## Audited surfaces`.
 - **Strengthening pass 9914 (`033712`).** `mem.replaceScalar` snapshot postconditions; width audit on 5 affected files; witness `mem_replace_scalar_test`; 89/89 witnesses GREEN.
 - **Strengthening pass 9915 (`033412`).** `mem.replaceOwned` alloc-length + verify walk; width audit on 6 affected files; witness `mem_replace_owned_test`; 88/88 witnesses GREEN.

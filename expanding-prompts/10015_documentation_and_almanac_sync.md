@@ -1,22 +1,19 @@
-# 10015 · Documentation and Almanac Sync
+# 10015 · Documentation and Almanac Sync — Redirect
 
-*Expanded at `033912`: building has outrun several entry points — the Almanac still cited `parity.sh`, Rye and Rishi READMEs predated the gate trio, Caravan chain, Brushstroke Wayland, and `init.garden`. This prompt syncs the learning layer so the next builder meets what runs.*
+**Status:** Executed (`033912`) · stub (`051612`).
 
-**Language:** EN
-**Version:** `20260620.033912`
-**Style:** Radiant
-**Voice:** Reya 2
+The learning layer was synced: gate trio, `init.garden`, Caravan chain, Brushstroke Wayland, Rishi builtins.
 
-## Mission
+**Read instead:**
 
-| Track | Deliverable |
-|-------|-------------|
-| **A** | `998_ALMANAC.md` — gate trio, garden, Caravan, Brushstroke, Rishi builtins; fix stale `.sh` |
-| **B** | `rye/README.md` — strengthening, gates, module pointers, link flags |
-| **C** | `rishi/README.md` — file I/O, gate trio complete, run commands |
-| **D** | `rishi/src/main.rye` header — gate trio named |
+| Topic | Path |
+|-------|------|
+| Almanac | [`../rye-learning-process/998_ALMANAC.md`](../rye-learning-process/998_ALMANAC.md) |
+| Rye | [`../rye/README.md`](../rye/README.md) |
+| Rishi | [`../rishi/README.md`](../rishi/README.md) |
+| Open threads | [`../work-in-progress/995_open_threads.md`](../work-in-progress/995_open_threads.md) |
 
-**Defer:** new strengthening pass; device wire code.
+**Retired patterns:** `tools/parity.sh`, `init.arena` in docs, pre-gate-trio READMEs.
 
 ---
 

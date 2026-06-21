@@ -1,7 +1,7 @@
 # 999 · The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-06-17
+**Last updated:** 2026-06-21 (`051612` — redirect stubs)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -14,6 +14,22 @@ This is where curiosity lands. The `external-research/` folder holds our explora
 This folder is allowed to be experimental, informal, and overgrown at times. It is open to the world: it may name other projects, draw inspiration freely, and cite its sources, with the original works kept whole in the `gratitude/` folder. That openness is its purpose, and it is exactly what sets it apart from its disciplined sibling, the `active-designing/` stack, which carries only our own names and one fixed external and accrues slowly and intentionally. Here we roam; there we decide.
 
 This file, `999_RESEARCH.md`, is the foundation stone. It rests at the bottom of the stack and explains how the stack works, so that anyone who opens this folder for the first time understands the shape of it at a glance.
+
+---
+
+## Redirect stubs
+
+When an exploration **lands** (mission complete) or **moves** to active-designing, the numbered file becomes a **stub** — a short redirect, not deleted, so old links keep working. Stubs say **Deprecated** or **Executed**, name the stamp, and point at the canonical home.
+
+| Stub | Canonical home |
+|------|----------------|
+| `988_rishi_shell.md` | `active-designing/989_the_faithful_hand.md`, `rishi/README.md` |
+| `990_shell_scripting_tame.md` | `tools/parity.rish`, gate trio |
+| `992_recommended_architecture.md` | `active-designing/997_recommended_architecture.md` |
+
+**Width policy:** interim seam manual [`968`](968_usize_boundary_not_design.md); fork north star [`967`](967_literal_usize_ban_language_fork.md) + [`../active-designing/970_explicit_width_in_rye.md`](../active-designing/970_explicit_width_in_rye.md).
+
+**Retired patterns** (do not reintroduce in new research): Bash `parity.sh`, Python doc enrichers, permanent Tier C `usize` as destination, `init.arena` in prose (use `init.garden`).
 
 ---
 
