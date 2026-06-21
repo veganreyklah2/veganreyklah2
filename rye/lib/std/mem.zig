@@ -1320,7 +1320,10 @@ pub fn trim(comptime T: type, slice: []const T, values_to_strip: []const T) []co
     // is a contiguous sub-slice of the input — never longer, never out of bounds.
     assert(begin <= end);
     assert(end <= slice.len);
-    return slice[begin..end];
+    const result = slice[begin..end];
+    assert(result.len <= slice.len);
+    assert(result.len == end - begin);
+    return result;
 }
 
 test trim {

@@ -1,10 +1,10 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `212412`: pass 9931 mem window factory; 72 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `012812`: pass 9930 mem.trim; 73 witnesses.*
 
 **Language:** EN
-**Version:** `20260620.212412` (Rye chronological stamp)
-**Last updated:** 2026-06-20
+**Version:** `20260621.012812` (Rye chronological stamp)
+**Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -12,7 +12,7 @@
 
 ## What Just Landed (this session)
 
-- **Strengthening pass 9931 (`212412`).** `mem.window` factory postconditions; witness `mem_window_factory_test`; 72/72 witnesses GREEN.
+- **Strengthening pass 9930 (`012812`).** `mem.trim` postconditions + witness `mem_trim_test`; completes trim family with `trimStart` (9979) and `trimEnd` (9988); 73/73 witnesses GREEN.
 - **Explicit-width Phase 1 (`211712`).** `tally/seed.rye` + `tally/gardens.rye`: `Region.pos`, `alloc`, `remaining`, `Gardens.count` → `u32`; `bufLenU32` at slice seam. Rules in `.cursor`, `.claude`, `context/specs/tame-style.md`.
 - **Explicit-width audit (`210812`).** TAME supplement corrected — `u32`/`u64` in authored APIs, `usize` boundary-only. Charter `10024`; baseline `992`.
 - **Strengthening pass 9932 (`210412`).** `tokenizeScalar` / `tokenizeAny` / `tokenizeSequence` factory postconditions; witness `mem_tokenize_factory_test`; 71/71 witnesses GREEN.
@@ -79,7 +79,7 @@
 - **Rishi arithmetic + stdout** — `+`/`-`/`*`/`/`, correct precedence, `say`.
 - **Tally seed** — one Region, 13 invariants.
 - **Tally v1 named gardens** — `Gardens`, blob/diff/frame, 15/15 GREEN.
-- **Strengthening 9994–9932** — through mem tokenize factories. 71 witnesses.
+- **Strengthening 9994–9930** — through mem.trim. 73 witnesses.
 - **Mantra seed** — weave, LCS diff, SHA3-256 store, init/add/status.
 - **Mantra for the repo (seed)** — commit chain, add-all walks `.brix`, log follows chain. 9/9 bricks.
 - **`init.garden` (phase 1)** — `std.process.Init.garden` renamed from upstream `arena`.
@@ -113,7 +113,7 @@
 
 | When | Strand | Next step |
 |------|--------|-----------|
-| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9930` and below) through `parity.rish` |
+| **`k <stamp>`** | **Strengthening** | Next `std` surface (`9929` and below) through `parity.rish` |
 | **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ → `caravan/*` → `brushstroke/skate_grid.rye` |
 | **Metal pause** | **Aurora smoke** | `aurora/run.sh` in CI (`10024` Phase 2 after Caravan/Skate) |
 
@@ -123,7 +123,7 @@ Width and strengthening **do not block each other** — they touch different fil
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|
-| 1 | **Strengthening series** — next `std` surface through gate trio (9930 and below) | `10023` Track B, `998` |
+| 1 | **Strengthening series** — next `std` surface through gate trio (9929 and below) | `10023` Track B, `998` |
 | 2 | **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye` (parallel, one module per session) | `10024`, `992` |
 | 3 | **Rishi** — builtins as gates and Pond policy need them | `10023` Track C |
 | 4 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |
@@ -212,7 +212,7 @@ Phase 2 vocabulary sweep is **closed**. Policy at `161112`: warm names enter bes
 - **Compare:** baseline `vendor/zig-toolchain/lib` vs strengthened `rye/lib` — same test, same pinned Zig (`RYE_ZIG`).
 - **Invoke:** `rye run rye/tests/<name>.rye` on both arms (`RYE_LIB` for baseline); exercises the real bridge path.
 - **Hold:** exit code + stdout/stderr identical — assertions change what code *says*, never what it *does*.
-- **Witnesses:** 71 programs, all GREEN (9932 mem tokenize factories latest).
+- **Witnesses:** 72 programs, all GREEN (9931 mem window factory latest).
 
 ## The Through-Line
 
