@@ -16,7 +16,9 @@
 //! `lines` to split a string into a list by newline; `starts-with` and `ends-with`
 //! to check whether a string begins or ends with a given affix; `length` for strings
 //! and lists; `trim` to remove surrounding whitespace; `slice` for bounded substring;
-//! and `join` to compose a list of strings with a separator. It is the shell that runs
+//! `join` to compose a list of strings with a separator; `if/then/else` for
+//! conditional execution; and `for-each` for iteration with effects.
+//! It is the shell that runs
 //! the gate trio (`tools/parity.rish`, `tools/parity-selftest.rish`,
 //! `tools/additive-gate.rish`) and grows toward `examples/pond.rish`
 //! (see `active-designing/976_what_we_mean_by_seed.md`).
@@ -33,7 +35,7 @@ const std = @import("std");
 
 /// Rishi's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger, the same clock Rye keeps. This is Rishi's founding stamp.
-const rishi_version = "20260620.153812";
+const rishi_version = "20260621.062112";
 
 /// A Rishi value. The kinds — string, integer, boolean, list, record — are the
 /// seed of a model shared with Rye so a value can cross between them without a seam.
@@ -210,6 +212,10 @@ fn evalStatement(allocator: std.mem.Allocator, io: std.Io, env: *Env, line: []co
         try doAssert(allocator, io, env, std.mem.trim(u8, line[7..], " \t"));
     } else if (std.mem.startsWith(u8, line, "write-file ")) {
         try doWriteFile(allocator, io, env, std.mem.trim(u8, line[11..], " \t"));
+    } else if (std.mem.startsWith(u8, line, "if ")) {
+        try doIf(allocator, io, env, std.mem.trim(u8, line[3..], " \t"));
+    } else if (std.mem.startsWith(u8, line, "for-each ")) {
+        try doForEach(allocator, io, env, std.mem.trim(u8, line[9..], " \t"));
     } else {
         return error.UnknownStatement;
     }
@@ -605,6 +611,69 @@ fn doWriteFile(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: 
     const z_path = std.fmt.allocPrint(allocator, "{s}", .{path}) catch return error.OutOfMemory;
     const dir = std.Io.Dir.cwd();
     dir.writeFile(io, .{ .sub_path = z_path, .data = sb.bytes[0..sb.len] }) catch return error.WriteFileFailed;
+}
+
+/// `if <condition> then <statement>` — conditional execution.
+/// `if <condition> then <statement> else <statement>` — conditional with fallback.
+/// The condition must evaluate to a boolean. The then/else arms are full
+/// statements (let, say, assert, write-file, if, for-each). The `if` shares
+/// the parent's environment, so a `let` inside `if` is visible afterward.
+fn doIf(allocator: std.mem.Allocator, io: std.Io, env: *Env, rest: []const u8) anyerror!void {
+    const then_idx = findWordOp(rest, " then ") orelse return error.IfNeedsThen;
+    const condition_text = std.mem.trim(u8, rest[0..then_idx], " \t");
+    const then_rest = std.mem.trim(u8, rest[then_idx + 6 ..], " \t");
+
+    // invariant: condition text is non-empty
+    std.debug.assert(condition_text.len > 0);
+
+    const cond_value = try evalExpr(allocator, io, env, condition_text);
+    const holds = switch (cond_value) {
+        .boolean => |b| b,
+        else => return error.IfNeedsBool,
+    };
+
+    // Check for an else arm — find " else " at the top level in the then_rest.
+    if (findWordOp(then_rest, " else ")) |else_idx| {
+        const then_stmt = std.mem.trim(u8, then_rest[0..else_idx], " \t");
+        const else_stmt = std.mem.trim(u8, then_rest[else_idx + 6 ..], " \t");
+        if (holds) {
+            try evalStatement(allocator, io, env, then_stmt);
+        } else {
+            try evalStatement(allocator, io, env, else_stmt);
+        }
+    } else {
+        if (holds) {
+            try evalStatement(allocator, io, env, then_rest);
+        }
+    }
+}
+
+/// `for-each <list-expr> as <name> do <statement>` — iterate with effects.
+/// Each element is bound to <name> in a child scope; the body runs once per
+/// element. The loop variable does not leak past the for-each.
+fn doForEach(allocator: std.mem.Allocator, io: std.Io, env: *Env, rest: []const u8) anyerror!void {
+    const as_idx = findWordOp(rest, " as ") orelse return error.ForEachNeedsAs;
+    const list_text = rest[0..as_idx];
+    const after_as = rest[as_idx + 4 ..];
+    const do_idx = findWordOp(after_as, " do ") orelse return error.ForEachNeedsDo;
+    const var_name = std.mem.trim(u8, after_as[0..do_idx], " \t");
+    const body = std.mem.trim(u8, after_as[do_idx + 4 ..], " \t");
+
+    // invariant: loop variable name is non-empty
+    std.debug.assert(var_name.len > 0);
+
+    const list_value = try evalExpr(allocator, io, env, list_text);
+    const items = switch (list_value) {
+        .list => |l| l,
+        else => return error.ForEachNeedsList,
+    };
+
+    for (items) |item| {
+        // Each iteration runs in a child scope — the loop variable does not leak.
+        var child = env.*;
+        try child.bind(var_name, item);
+        try evalStatement(allocator, io, &child, body);
+    }
 }
 
 /// `lines <expr>` splits a string by newline into a list of strings. Used for
