@@ -55,10 +55,29 @@ const n: u32 = @intCast(buf.len);
 
 ---
 
-## Future: Language Fork
+## The Fork IS the Priority
 
-The long-horizon path (`active-designing/970`, `external-research/967`): Rye's own type system rejects `usize` in `.rye` source. This is F1–F5 in the fork roadmap — decided yet not started. Phase 4 sunsets when F3 (Rye-native std) completes.
+The Rye language fork (`active-designing/970`, `external-research/967`) is not a future horizon — it is the primary track. Rye's own type system rejects `usize` in `.rye` source. The Zig bridge is a bootstrap shim, not a destination.
+
+**Fork milestones:**
+
+- [x] **F0 — Decide.** Literal ban in Rye types; research + siloed design (`051312`)
+- [ ] **F1 — Compiler spike.** Reject `usize` in one witness compile
+- [ ] **F2 — Authored corpus.** Zero `usize` in published `.rye`; width gate required
+- [ ] **F3 — Rye-native std.** `rye/lib` surfaces rewritten with `u32`/`u64` signatures; witnesses re-based
+- [ ] **F4 — Bridge sunset.** Self-hosted `rye run` without Zig for our tree
+- [ ] **F5 — Guest Zig.** Interop lane documented for Rye OS
+
+Phases 1–5 (the seam migration above) run in parallel with F1–F2. Phase 4 (seam audit) sunsets when F3 completes. The 90 witnesses ARE the specification the Rye-native std will satisfy.
 
 ---
 
-*May the inventory shrink one module at a time, with the gate green at every step.*
+## Known Issue: Enricher Grabbing Wrong Functions
+
+The `tools/enrich_strengthening_docs.rye` script that added `## Rye std surface` sections to 86 pass documents has a **name-collision bug**: it matches function names naively across the entire Zig std tree and frequently grabs the wrong function (e.g., `Atomic.replace` instead of `mem.replace`, a linked-list `reverse` instead of `mem.reverse`). The API reference sections in the strengthening docs are **not trustworthy** until the enricher is fixed to match by module path, not by bare name.
+
+**Action:** Fix the enricher to match `std.mem.replace` (full path), not `replace` (bare name). Re-run on all 86 docs. Until then, the witness tests remain the ground truth — they exercise the correct functions.
+
+---
+
+*May the inventory shrink one module at a time, with the gate green at every step, and may the fork arrive as the language that the seam migration was always growing toward.*
