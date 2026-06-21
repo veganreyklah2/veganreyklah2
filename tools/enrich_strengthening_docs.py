@@ -17,7 +17,11 @@ AUTHORED = {
     "9990_mantra_seed.md": ("mantra/src/main.rye", None),
 }
 
-SKIP = {"9999_STRENGTHENING.md"}
+META = {
+    "9995_crypto_foundation.md": ("meta/foundation", "crypto foundation map"),
+}
+
+SKIP = {"9999_STRENGTHENING.md", "0000_STRENGTHENING_LEXICON.md"}
 
 STD_REF = re.compile(r"\*\*`std\.([^`]+)`\*\*")
 BACKTICK_FN = re.compile(r"`std\.([a-zA-Z0-9_.]+)`")
@@ -235,6 +239,179 @@ def enrich_file(path: Path, sources: dict[str, str]) -> bool:
     return True
 
 
+def surface_to_std_file(surface: str) -> str:
+    """Map a dotted std surface name to rye/lib/std relative path."""
+    if surface.startswith("std."):
+        rest = surface[4:]
+        parts = rest.split(".")
+        head = parts[0]
+        if head == "debug":
+            return "debug.zig"
+        if head == "mem":
+            if len(parts) >= 2 and parts[1] == "Allocator":
+                return "mem/Allocator.zig"
+            return "mem.zig"
+        if head == "fs":
+            if len(parts) >= 2 and parts[1] == "path":
+                return "fs/path.zig"
+            return "fs.zig"
+        if head == "crypto":
+            low = rest.lower()
+            if "sha3" in low or any(p.startswith("Sha3") for p in parts):
+                return "crypto/sha3.zig"
+            if "keccak" in low:
+                return "crypto/keccak_p.zig"
+            if "timing_safe" in rest:
+                return "crypto/timing_safe.zig"
+            return "crypto.zig"
+        if head == "SemanticVersion":
+            return "SemanticVersion.zig"
+        if head == "process":
+            return "process.zig"
+        if head == "fmt":
+            return "fmt.zig"
+        if head == "Io":
+            if len(parts) >= 2:
+                return f"Io/{parts[1]}.zig"
+            return "Io/"
+        return "/".join(parts) + ".zig"
+    if "/" in surface or surface.endswith(".rye"):
+        return f"authored/{surface}"
+    return "authored/misc"
+
+
+def surface_short_name(surface: str) -> str:
+    if surface.startswith("std."):
+        parts = surface[4:].split(".")
+        if len(parts) >= 3 and parts[0] in ("fs", "crypto", "Io"):
+            return ".".join(parts[1:])
+        if len(parts) >= 2 and parts[0] == "mem" and parts[1] == "Allocator":
+            return ".".join(parts[1:])
+        return parts[-1]
+    return surface
+
+
+def extract_surfaces_from_doc(text: str, path: Path) -> list[str]:
+    if path.name in AUTHORED:
+        mod, _ = AUTHORED[path.name]
+        return [mod]
+    if path.name in META:
+        _, label = META[path.name]
+        return [label]
+    names: list[str] = []
+    if SURFACE_SECTION in text:
+        section = text.split(SURFACE_SECTION, 1)[1].split("\n## ", 1)[0]
+        for m in STD_REF.finditer(section):
+            if m.group(1) not in names:
+                names.append(m.group(1))
+        for m in BACKTICK_FN.finditer(section):
+            n = m.group(1)
+            if n not in names:
+                names.append(n)
+    if not names and "## What this pass covers" in text:
+        cover = text.split("## What this pass covers", 1)[1].split("\n## ", 1)[0]
+        for m in STD_REF.finditer(cover):
+            if m.group(1) not in names:
+                names.append(m.group(1))
+    if not names:
+        names = filename_guess(path)
+    return names
+
+
+def lexicon_entries(sources: dict[str, str]) -> list[dict]:
+    entries: list[dict] = []
+    for path in sorted(SC_DIR.glob("*.md")):
+        if path.name in SKIP:
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        m = re.match(r"(\d+)_", path.name)
+        pass_num = m.group(1) if m else "?"
+        surfaces = extract_surfaces_from_doc(text, path)
+        if not surfaces:
+            surfaces = [path.stem]
+        for surface in surfaces:
+            if path.name in META:
+                full = META[path.name][1]
+                std_file = META[path.name][0]
+            elif path.name in AUTHORED:
+                full = AUTHORED[path.name][0]
+                std_file = surface_to_std_file(full)
+            else:
+                full = surface if surface.startswith("std.") else f"std.{surface}"
+                std_file = surface_to_std_file(full)
+            entries.append(
+                {
+                    "pass": pass_num,
+                    "doc": path.name,
+                    "surface": full,
+                    "short": surface_short_name(full) if full.startswith("std.") else full,
+                    "file": std_file,
+                }
+            )
+    return entries
+
+
+def generate_lexicon(entries: list[dict], stamp: str = "20260621.035112") -> str:
+    by_file: dict[str, dict[str, list[tuple[str, str]]]] = {}
+    for e in entries:
+        key = (e["pass"], e["doc"])
+        bucket = by_file.setdefault(e["file"], {}).setdefault(e["short"], [])
+        if key not in bucket:
+            bucket.append(key)
+
+    lines = [
+        "# 0000 · Strengthening Lexicon — std-shaped tree",
+        "",
+        f"**Stamp:** `{stamp}`",
+        "**Generated by:** `tools/enrich_strengthening_docs.py`",
+        "**Chronicle floor:** [`9999_STRENGTHENING.md`](9999_STRENGTHENING.md)",
+        "**Flat index:** [`../work-in-progress/992_strengthening_width_crosswalk.md`](../work-in-progress/992_strengthening_width_crosswalk.md)",
+        "",
+        "*The ceiling of the strengthening-compiler folder. Number `0000` sorts first; "
+        "`9999` sorts last. Together they bracket the countdown chronicle (`9913`–`9998`).*",
+        "",
+        "---",
+        "",
+        "## Two ways to navigate",
+        "",
+        "| View | Role | Order |",
+        "|------|------|-------|",
+        "| **Lexicon** (this doc) | Find a strengthened surface by where it lives in `rye/lib/std` | std tree |",
+        "| **Chronicle** (`9913`–`9998`) | Read how Rye's `std` became ours, pass by pass | newest first |",
+        "| **Manifesto** (`9999`) | Method, four promises, versioning | floor |",
+        "| **Crosswalk** (`992b`) | Machine index: pass → surface → width tier | pass number |",
+        "",
+        "Each pass doc still holds the full story — signature, width notes, postconditions, witness.",
+        "",
+        "---",
+        "",
+        "## Tree by `rye/lib/std` module",
+        "",
+    ]
+
+    file_order = sorted(by_file.keys(), key=lambda f: (f.startswith("authored"), f))
+    for std_file in file_order:
+        surfaces = by_file[std_file]
+        lines.append(f"### `{std_file}`")
+        lines.append("")
+        lines.append("| Surface | Pass | Doc |")
+        lines.append("|---------|------|-----|")
+        for short in sorted(surfaces.keys(), key=str.lower):
+            passes = sorted(surfaces[short], key=lambda x: int(x[0]), reverse=True)
+            pass_str = ", ".join(p[0] for p in passes)
+            doc_link = ", ".join(f"[{p[0]}]({p[1]})" for p in passes)
+            lines.append(f"| `{short}` | {pass_str} | {doc_link} |")
+        lines.append("")
+
+    lines.append("---")
+    lines.append("")
+    lines.append(
+        "*May the lexicon show where each surface lives, and the chronicle show when it earned its witness.*"
+    )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def crosswalk_rows(sources: dict[str, str]) -> list[str]:
     rows = []
     for path in sorted(SC_DIR.glob("*.md")):
@@ -282,6 +459,11 @@ Auto-generated index of every strengthening pass, its primary surface, and width
     rows = crosswalk_rows(sources)
     crosswalk.write_text(header + "\n".join(rows) + "\n", encoding="utf-8")
     print(f"crosswalk: {len(rows)} rows -> {crosswalk}")
+
+    entries = lexicon_entries(sources)
+    lexicon_path = SC_DIR / "0000_STRENGTHENING_LEXICON.md"
+    lexicon_path.write_text(generate_lexicon(entries), encoding="utf-8")
+    print(f"lexicon: {len(entries)} surfaces -> {lexicon_path}")
     print(f"enriched {changed} files")
     return 0
 

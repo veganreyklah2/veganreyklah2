@@ -16,7 +16,9 @@
 
 Rye begins on the exact Zig 0.16.0 standard library, and from there it becomes ours — by surrounding proven code with the discipline of stated invariants, rather than by rewriting what already works. This folder is the record of that becoming. Each document is one **strengthening**: a single function, or a small family of them, met carefully and made to *say* what it has always quietly kept true.
 
-The stack reads newest-first, the way the rest of our research does. This manifesto holds the highest number, `9999`, so it rests at the floor of an alphabetical listing. The first strengthening sits just above it at `9998`. Every new pass takes the next lower number — `9997`, then `9996`, and onward — so the freshest work rises to the top and the method that began it all stays beneath, holding everything up.
+The stack reads newest-first, the way the rest of our research does. **`0000_STRENGTHENING_LEXICON.md`** sorts first — a std-shaped tree for finding any strengthened surface by module. This manifesto holds the highest number, `9999`, so it rests at the floor of an alphabetical listing. The first strengthening sits just above it at `9998`. Every new pass takes the next lower number — `9997`, then `9996`, and onward — so the freshest work rises to the top and the method that began it all stays beneath, holding everything up.
+
+**Two ways to navigate:** the **lexicon** (`0000`) groups passes by where they live in `rye/lib/std`; the **chronicle** (`9913`–`9998`) records when each pass landed. **`992_strengthening_width_crosswalk.md`** is the flat machine index.
 
 We expect this stack to grow long. There are thousands of functions in a standard library, and many will earn a pass in time. That is the point: a large, patient body of small, careful changes, each one safe on its own.
 

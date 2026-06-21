@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `034412`: pass 9913 mem.collapseRepeats; 90 witnesses; width audits on affected files.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `035112`: strengthening lexicon `0000` (std-shaped tree); 90 witnesses.*
 
 **Language:** EN
-**Version:** `20260621.034412` (Rye chronological stamp)
+**Version:** `20260621.035112` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
