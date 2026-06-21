@@ -4565,9 +4565,25 @@ test replace {
 
 /// Replace all occurrences of `match` with `replacement`.
 pub fn replaceScalar(comptime T: type, slice: []T, match: T, replacement: T) void {
+    const max_replace_scalar_check: u32 = 64;
+    var original: [max_replace_scalar_check]T = undefined;
+    const snapshot = slice.len <= @as(usize, max_replace_scalar_check);
+    if (snapshot) {
+        @memcpy(original[0..slice.len], slice);
+    }
     for (slice) |*e| {
         if (e.* == match)
             e.* = replacement;
+    }
+    if (snapshot) {
+        for (slice, 0..) |*e, i| {
+            if (original[i] == match) {
+                // Postcondition: matches became replacement (pairs with replace 9917).
+                assert(eql(u8, asBytes(e), asBytes(&replacement)));
+            } else {
+                assert(eql(u8, asBytes(e), asBytes(&original[i])));
+            }
+        }
     }
 }
 
