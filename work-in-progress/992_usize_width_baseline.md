@@ -1,9 +1,9 @@
 # 992 · `usize` Width Baseline — inventory before migration
 
 **Stamp:** `20260620.210812`
-**Policy:** `context/specs/tame-style.md` (Rye supplement)
+**Policy:** `context/TAME_STYLE.md` (Rye supplement)
 **Charter:** `expanding-prompts/10024_explicit_width_audit.md`
-**Status:** Phase 1a complete (`211712`) — Tally on `u32`; Caravan family next
+**Status:** Phase 1b underway (`014512`) — `caravan/seed.rye` on `u32`; Caravan family continues
 
 ---
 
@@ -37,7 +37,7 @@
 | `brushstroke/wayland_seed.rye` | 9 | display | 1 | SHM stride / dimension casts |
 | `mantra/src/main.rye` | 5 | vcs | 1 | line/weave indices |
 | `tally/seed.rye` | 0 | memory | 1 | **Done** `211712` |
-| `caravan/seed.rye` | 3 | supervision | 1 | |
+| `caravan/seed.rye` | 0 | supervision | 1 | **Done** `014512` |
 | `rye/src/main.rye` | 2 | tool | 3 | bridge argv |
 | `mantra/src/diff.rye` | 2 | vcs | 1 | LCS table indices |
 | `aurora/src/wire.rye` | 1 | metal | 2 | |

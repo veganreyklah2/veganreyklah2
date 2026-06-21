@@ -25,11 +25,11 @@ const caravan_seed_version = "20260619.224512";
 
 /// Maximum restarts before the supervisor gives up. Bounded on purpose:
 /// a supervision loop without a ceiling is a loop without honesty.
-const max_restarts: usize = 10;
+const max_restarts: u32 = 10;
 
 /// Planned failures for the self-test. The child will fail this many
 /// times, then succeed. The supervisor asserts the restart count matches.
-const planned_failures: usize = 3;
+const planned_failures: u32 = 3;
 
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
@@ -74,7 +74,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
         planned_failures, max_restarts,
     });
 
-    var restarts: usize = 0;
+    var restarts: u32 = 0;
 
     while (true) {
         // invariant: restarts stays within the stated bound

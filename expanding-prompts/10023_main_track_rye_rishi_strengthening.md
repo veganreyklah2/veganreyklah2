@@ -3,7 +3,7 @@
 *Expanded at `044412`: the highest-priority build threads from `995` and `996`, gathered into one runnable prompt now that `10010` is reserved and Tablecloth prose lives in `10018`–`10022`. **⅔ implementation · ⅓ design** (`10017`) — Skate first, then strengthening, then Rishi as gates need.*
 
 **Language:** EN
-**Version:** `20260620.044412` (Rye chronological stamp)
+**Version:** `20260621.014512` (Rye chronological stamp)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — Gall's Law; gate trio; `983` map; `998` strengthening charter
@@ -19,10 +19,10 @@
 | Priority | Thread | Prompt anchor | Green when |
 |----------|--------|---------------|------------|
 | **1** | **Skate text grid** — monospace glyphs on `wayland_seed` | `10012` (display), `10017` Track B | One grid of cells draws in the Wayland window |
-| **2** | **Strengthening series** — next `std` surface through gate trio | `9999_STRENGTHENING`, `9988`+ | Corpus stays 16/16 GREEN; new `9987_*` log written |
+| **2** | **Strengthening series** — next `std` surface through gate trio | `9999_STRENGTHENING`, `9927`+ | 75/75 GREEN; next `9927_*` log |
 | **3** | **Rishi builtins** — as gates and Pond policy need them | `10017`, `rishi/README` | One family + one `.rish` test per run |
 | **4** | **TAME assertion backlog** — fix as code is touched | audit list | Assertions land beside code we edit |
-| **5** | **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye` | `10024`, `992` | One module migrated; parity green |
+| **5** | **Explicit-width migration** — `usize` → `u32`/`u64` in authored `.rye` | `10024`, `992` | One module per braid session; ~~Tally~~ ~~`caravan/seed`~~ done |
 
 **After main track holds green:**
 
@@ -58,6 +58,12 @@
 - Session log; commit when green
 
 ## Cross-Links
+
+| Doc | Role |
+|-----|------|
+| TAME stack | `gratitude/TIGER_STYLE.md` → `996_TAME_STYLE.md` → `context/TAME_STYLE.md` |
+| Width charter | `10024`, baseline `992` |
+| Strengthening | `9999_STRENGTHENING.md`; invoke with `k <stamp>` |
 
 | Retired / reserved | Lives in |
 |--------------------|----------|

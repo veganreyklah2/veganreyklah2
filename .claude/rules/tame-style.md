@@ -1,6 +1,7 @@
 # TAME Style — Code
 
-Full guide: `context/specs/tame-style.md`. Apply when writing or reviewing Rye source (`.rye`), Brix descriptors (`.brix`), and Rishi scripts (`.rish`).
+**Canon:** `external-research/996_TAME_STYLE.md` (voiced Tiger Style) · **Source:** `gratitude/TIGER_STYLE.md`
+**Operational supplement:** `context/TAME_STYLE.md`. Apply when writing or reviewing Rye source (`.rye`), Brix descriptors (`.brix`), and Rishi scripts (`.rish`).
 
 ## When this rule is active
 
@@ -16,12 +17,13 @@ Full guide: `context/specs/tame-style.md`. Apply when writing or reviewing Rye s
 - Say why: every assertion, every named constant, every surprising design choice earns a comment that names the reason.
 - Accrete, never break: a name once given is a promise. Add beside it; do not replace it silently.
 - One value model: string, integer, bool, list, record — composed side by side, never tangled.
+- **`snake_case`** for functions, variables, and file names — per Tiger Style (`gratitude/TIGER_STYLE.md`, `996_TAME_STYLE.md`).
 
 ## Supplement cheatsheet
 
 | Language | Key discipline |
 |----------|----------------|
-| **Rye** | Explicit widths (`u32` bounded, `u64` wire); `usize` only at inherited slice boundaries. `std.debug.assert` at every invariant. Named errors, propagated with `try`. Short functions named with a verb. Constants named with type and comment. **Never use `ArenaAllocator` in authored `.rye`** — use `init.garden.allocator()`; see `inherited-names.md`. |
+| **Rye** | Explicit widths (`u32` bounded, `u64` wire); `usize` only at inherited slice boundaries. `snake_case` naming. `std.debug.assert` at every invariant. Named errors, propagated with `try`. Short functions named with a verb. Constants in `snake_case`. **Never use `ArenaAllocator` in authored `.rye`** — use `init.garden.allocator()`; see `inherited-names.md`. |
 | **Brix** | Declarative only — no commands, no conditions. One field per line. Comments name what the brick *is*. Plain key-value; readable by hand. |
 | **Rishi** | `run` always returns `{ status, out, err }`. Check `status` before trusting `out`. `assert` as a pipeline gate at every stage boundary. Effects come last and are visible. Named `let` bindings. |
 
@@ -31,7 +33,7 @@ Tiger Style: **`usize` is a boundary type, not a design type.** Inherited Zig `s
 
 | Width | Use |
 |-------|-----|
-| `u32` | Bounded in-memory counts, indices, lengths (named `MAX_*`) |
+| `u32` | Bounded in-memory counts, indices, lengths (named `max_*`) |
 | `u64` | Wire offsets, timestamps, cross-target persistent sizes |
 | `usize` | Only at `buf.len`, slice indexing, inherited `std` calls — always with `@intCast` + assert |
 

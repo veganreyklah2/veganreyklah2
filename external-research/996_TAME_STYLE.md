@@ -4,10 +4,24 @@
 
 **Language:** EN
 **Version:** `20260618.204012` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-21 (`014512` — document stack cross-link)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Status:** Living
+
+---
+
+## Document Stack
+
+Three layers, one discipline:
+
+| Layer | Path | Role |
+|-------|------|------|
+| **Source** | `../gratitude/TIGER_STYLE.md` | TigerBeetle team's guide, kept whole |
+| **Voiced canon** | this document | Our radiant adaptation; Safety, Performance, DX |
+| **Operational supplement** | `../context/TAME_STYLE.md` | Checkable root + Rye / Brix / Rishi rules for authors and agents |
+
+Read this document for *why* TAME feels the way it does. Read `context/TAME_STYLE.md` at the keyboard for *what to check*. Landmark filenames follow TigerBeetle's `docs/TIGER_STYLE.md` pattern.
 
 ---
 

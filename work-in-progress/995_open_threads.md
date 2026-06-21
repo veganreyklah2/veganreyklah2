@@ -1,9 +1,9 @@
 # 995 · Open Threads — The System Takes Shape
 
-*A living snapshot of what has landed, what is closed, and what remains open. Updated at `013412`: pass 9928 mem.span; 75 witnesses.*
+*A living snapshot of what has landed, what is closed, and what remains open. Updated at `014512`: TAME document stack; `caravan/seed.rye` widths; 75 witnesses.*
 
 **Language:** EN
-**Version:** `20260621.013412` (Rye chronological stamp)
+**Version:** `20260621.014512` (Rye chronological stamp)
 **Last updated:** 2026-06-21
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
@@ -12,9 +12,11 @@
 
 ## What Just Landed (this session)
 
+- **TAME document stack (`014512`).** Operational supplement → `context/TAME_STYLE.md` (TigerBeetle `TIGER_STYLE.md` filename pattern). Canon: `external-research/996_TAME_STYLE.md` + `gratitude/TIGER_STYLE.md`. Rules updated; `snake_case` defers to 996.
+- **Explicit-width Phase 1b (`014512`).** `caravan/seed.rye`: `max_restarts`, `planned_failures`, `restarts` → `u32`.
 - **Strengthening pass 9928 (`013412`).** `mem.span` sentinel slice postconditions; witness `mem_span_test`; 75/75 witnesses GREEN.
 - **Strengthening pass 9929 (`013112`).** `crypto.secureZero` byte-level wipe postconditions; witness `crypto_secure_zero_test`; 74/74 witnesses GREEN.
-- **Explicit-width Phase 1 (`211712`).** `tally/seed.rye` + `tally/gardens.rye`: `Region.pos`, `alloc`, `remaining`, `Gardens.count` → `u32`; `bufLenU32` at slice seam. Rules in `.cursor`, `.claude`, `context/specs/tame-style.md`.
+- **Explicit-width Phase 1 (`211712`).** `tally/seed.rye` + `tally/gardens.rye`: `Region.pos`, `alloc`, `remaining`, `Gardens.count` → `u32`; `bufLenU32` at slice seam. Rules in `.cursor`, `.claude`, `context/TAME_STYLE.md`.
 - **Explicit-width audit (`210812`).** TAME supplement corrected — `u32`/`u64` in authored APIs, `usize` boundary-only. Charter `10024`; baseline `992`.
 - **Strengthening pass 9932 (`210412`).** `tokenizeScalar` / `tokenizeAny` / `tokenizeSequence` factory postconditions; witness `mem_tokenize_factory_test`; 71/71 witnesses GREEN.
 - **Strengthening pass 9933 (`205912`).** `splitBackwardsScalar` / `splitBackwardsAny` / `splitBackwardsSequence` factory postconditions; witness `mem_split_backwards_factory_test`; 70/70 witnesses GREEN.
@@ -63,7 +65,7 @@
 - **Strengthening pass 9975 (`162712`).** `std.mem.findScalarLast`; 28 witnesses GREEN.
 - **Strengthening pass 9976 (`161812`–`162512`).** `std.fs.path.stem`; 27 witnesses GREEN.
 - **Strengthening pass 9977 (`161312`).** `std.fs.path.extension` postcondition; 26/26 witnesses GREEN.
-- **Garden-memory policy (`161112`–`161312`).** Authored `.rye` never uses `ArenaAllocator` directly — use `init.garden.allocator()`. No `std.heap.GardenAllocator` rename; owned wrapper path is `rye.garden` / `tally/heap-garden.rye`. Recorded in `inherited-names.md`, `tame-style.md`, `.cursor/rules/tame-style.mdc`, `.claude/rules/tame-style.md`.
+- **Garden-memory policy (`161112`–`161312`).** Authored `.rye` never uses `ArenaAllocator` directly — use `init.garden.allocator()`. No `std.heap.GardenAllocator` rename; owned wrapper path is `rye.garden` / `tally/heap-garden.rye`. Recorded in `inherited-names.md`, `TAME_STYLE.md`, `.cursor/rules/tame-style.mdc`, `.claude/rules/tame-style.md`.
 - **Strengthening pass 9978 (`160312`).** `std.fs.path.basename`; 25/25 witnesses GREEN.
 - **Living docs refresh (`160312`).** `994_style_audit.md` (timestamp removed from filename); `995` and `996` brought current after `155212` ship.
 - **Style audit shipped (`155212`).** TAME + Radiant GREEN on 22 `.rye`/`.rish` files; record at `work-in-progress/994_style_audit.md`. Seven commits pushed to all remotes (`36203a9`).
@@ -95,7 +97,7 @@
 - **`additive-gate.rish`** — gate trio complete in Rishi. `.sh` fallbacks removed.
 - **`parity-selftest.rish`** — the gate proves RED.
 - **Brix + Tablecloth naming** — compose (Brix) vs store (Tablecloth) vs discipline (silo/siloed); prompt ladder `10018`–`10022`.
-- **TAME Style spec** — `context/specs/tame-style.md` + Claude rule.
+- **TAME Style stack** — `gratitude/TIGER_STYLE.md` → `996_TAME_STYLE.md` → `context/TAME_STYLE.md` + agent rules.
 - **GPL compliance** — gitlinks, River not cloned, clean-room boundary.
 - **Formats, editors, inference research (`970`).**
 - **Horizon modules siloed (`978`).** Scribble, Lantern, Lattice, Anvil.
@@ -115,7 +117,7 @@
 | When | Strand | Next step |
 |------|--------|-----------|
 | **`k <stamp>`** | **Strengthening** | Next `std` surface (`9927` and below) through `parity.rish` |
-| **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ → `caravan/*` → `brushstroke/skate_grid.rye` |
+| **Between `k` runs** | **Explicit width** | Phase 1 queue: ~~`tally/seed`~~ ~~`tally/gardens`~~ ~~`caravan/seed`~~ → `caravan/bounded` → `twin` → `chain` → `brushstroke/skate_grid.rye` |
 | **Metal pause** | **Aurora smoke** | `aurora/run.sh` in CI (`10024` Phase 2 after Caravan/Skate) |
 
 Width and strengthening **do not block each other** — they touch different files. Prefer **one width module** when not on a `k` strengthening pass.
@@ -130,7 +132,7 @@ Width and strengthening **do not block each other** — they touch different fil
 | 4 | **TAME assertion backlog** — fix as code is touched | `994_style_audit.md` |
 | 5 | **Aurora metal lane** — freestanding integration smoke | `991`, `aurora/run.sh` |
 
-**Explicit-width migration** *(opened `210812`, Phase 1 underway `211712`)* — Tiger Style asks for explicitly sized types. **Policy:** `u32` bounded in-memory, `u64` wire-persistent, `usize` only at slice seams. **Done:** `tally/seed.rye`, `tally/gardens.rye`. **Next:** `caravan/seed.rye` → `bounded` → `twin` → `chain`. Charter `10024`; inventory `992`.
+**Explicit-width migration** *(opened `210812`, Phase 1 underway `211712`)* — Tiger Style asks for explicitly sized types. **Policy:** `u32` bounded in-memory, `u64` wire-persistent, `usize` only at slice seams. **Done:** `tally/seed.rye`, `tally/gardens.rye`, `caravan/seed.rye`. **Next:** `caravan/bounded.rye` → `twin` → `chain`. Charter `10024`; inventory `992`.
 
 **Aurora metal lane** *(opened `200312`)* — parallel to the main mem/string arc, not a fork of it. Aurora's freestanding stages (`aurora/src/*.rye`, `riscv64-freestanding-none`) lean on **crypto** and a thin **mem** slice, not `std.os` or hosted I/O.
 

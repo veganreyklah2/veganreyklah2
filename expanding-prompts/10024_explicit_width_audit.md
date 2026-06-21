@@ -18,7 +18,7 @@
 
 **There is no `usize64` type to invent.** Rye speaks the widths Zig already gives us: **`u32`** for bounded in-memory counts, **`u64`** for wire-persistent and cross-target quantities. `usize` remains only at the inherited slice seam — convert at the door.
 
-**Policy lives in** `context/specs/tame-style.md` (Rye supplement, `210812`). **Baseline inventory** lives in `work-in-progress/992_usize_width_baseline.md`.
+**Policy lives in** `context/TAME_STYLE.md` (Rye supplement, `210812`). **Baseline inventory** lives in `work-in-progress/992_usize_width_baseline.md`.
 
 **Strengthening and width are parallel tracks.** Strengthening passes (`9931` and below) keep earning `std` surfaces through parity. Width migration touches authored `.rye` first, then wire formats, then Rishi internals; inherited `rye/lib/std` keeps `usize` until a function is already open for strengthening — never a mass rewrite.
 
@@ -43,7 +43,7 @@
 
 ## This Run — Phase 0 Deliverables
 
-- [x] Correct `context/specs/tame-style.md` (remove “lengths are `usize`”; add width table)
+- [x] Correct `context/TAME_STYLE.md` (remove “lengths are `usize`”; add width table)
 - [x] Write `work-in-progress/992_usize_width_baseline.md` (inventory + tier tags)
 - [x] Update `995_open_threads.md` and `996_roadmap.md`
 - [x] Rules in `.cursor` and `.claude`

@@ -38,7 +38,7 @@ We would add an alias only if it earned its keep, and only ever as an addition â
 const garden = init.garden.allocator();
 ```
 
-This is TAME discipline recorded in `context/specs/tame-style.md` and enforced in Cursor/Claude rules.
+This is TAME discipline recorded in `context/TAME_STYLE.md` and enforced in Cursor/Claude rules.
 
 **Do not** add `std.heap.GardenAllocator` as a type alias or thin rename of `ArenaAllocator`. That steals the name reserved for Tally and confuses inherited std with owned vocabulary.
 
