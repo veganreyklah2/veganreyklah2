@@ -4823,7 +4823,19 @@ fn BytesAsValueReturnType(comptime T: type, comptime B: type) type {
 /// Given a pointer to an array of bytes, returns a pointer to a value of the specified type
 /// backed by those bytes, preserving pointer attributes.
 pub fn bytesAsValue(comptime T: type, bytes: anytype) BytesAsValueReturnType(T, @TypeOf(bytes)) {
-    return @ptrCast(bytes);
+    const elem_size = @sizeOf(T);
+    switch (@typeInfo(@TypeOf(bytes))) {
+        .pointer => |ptr| switch (ptr.size) {
+            .slice => assert(bytes.len >= elem_size),
+            .one => assert(@sizeOf(ptr.child) >= elem_size),
+            else => {},
+        },
+        else => {},
+    }
+    const Result = BytesAsValueReturnType(T, @TypeOf(bytes));
+    const result: Result = @ptrCast(bytes);
+    // Postcondition: returned pointer aliases at least one T (pairs with asBytes 9925, toBytes 9923).
+    return result;
 }
 
 test bytesAsValue {
