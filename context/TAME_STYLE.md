@@ -7,7 +7,7 @@ type: reference
 # TAME Style — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-06-28 (`044300` — thin-frontend direction adopted)
+**Last updated:** 2026-06-28 (TigerStyle-alignment pass — idioms and lint surface drawn from TigerBeetle `src/tidy.zig` and `docs/TIGER_STYLE.md`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -35,6 +35,8 @@ TAME names the order of values that governs every line we write: **safety first,
 
 This guide makes those values concrete for code. It is organized as **one root** — rules that hold across the whole family — and **a supplement for each language**, added when that language has earned distinct idioms of its own. A supplement that does not exist yet is not overdue: it waits for the language to be real enough to need it.
 
+The rules here that a machine can check are gathered near the end, in **What We Check, and When** — each one matched to the tool that catches it today, or named as a horizon when it waits for a Zig parser. The checkable rules and the idioms behind them are drawn faithfully from TigerBeetle's own enforcement, `src/tidy.zig`, kept in our gratitude for the team that wrote it.
+
 ---
 
 ## Root — Universal Across the Family
@@ -47,29 +49,29 @@ Write the assertions before you write the algorithm. An invariant written before
 
 A structural invariant lives in a comment block immediately before the type it governs:
 
-```
+```zig
 // Invariant: pos <= buf.len; all bytes in buf[0..pos] are committed.
 const Region = struct { ... };
 ```
 
 A behavioral invariant lives immediately before the function that enforces it:
 
-```
+```zig
 // Precondition: name.len == Sha3.digest_length * 2 (64 hex chars).
 fn read_blob(...) ...
 ```
 
-### 2. Bounds on everything
+### 2. Bounds on everything, and simple control flow
 
-Every allocation, every collection, every pipeline names its maximum size. Name the budget at construction; check it at the edge; fail with a named error, not a silent corruption.
+Every allocation, every collection, every pipeline names its maximum size. Name the budget at construction; check it at the edge; fail with a named error, rather than a silent corruption.
 
-A bound is not a hedge. It is the honest answer to "how large can this grow?" stated up front, before the machine runs.
+A bound is the honest answer to "how large can this grow?" stated up front, before the machine runs. Everything has a limit, so every loop and every queue carries a fixed upper bound. Where a loop genuinely cannot terminate — an event loop — that fact is asserted, so the reader meets the intent. Control flow stays simple and explicit; recursion stays out, so that everything which should be bounded stays bounded.
 
 ### 3. Say why
 
 Every assertion earns a comment: `// invariant: ...`. Every named constant earns a comment if the name alone does not make the reason obvious. Every design choice that will surprise a reader earns a sentence that names the reason.
 
-The next reader meets the reason, not only the rule.
+The next reader meets the reason, not only the rule. Always motivate, always say why — a stated rationale shares with the reader the very criteria by which to weigh the decision.
 
 ### 4. Accrete, never break
 
@@ -83,6 +85,28 @@ A value is: a string, an integer, a boolean, a list of values, a record of named
 
 A value crosses module boundaries without being serialized to text and reparsed on the other side. When that seam would open, close it.
 
+### 6. State invariants positively
+
+Lead with what holds. The affirmative form is easier to get right and easier to read aloud, and it is the same instinct Radiant Style keeps for prose:
+
+```zig
+if (index < length) {
+    // The invariant holds.
+} else {
+    // The invariant does not hold.
+}
+```
+
+Split compound conditions into simple ones with nested `if/else`, rather than a wall of booleans joined by `and`. A single `if` often wants a matching `else`, so the positive and the negative space are both handled or both asserted.
+
+### 7. Smallest scope, fewest variables
+
+Declare each variable at the smallest scope that serves it, and keep the number of variables in scope small. Fewer names in flight means fewer ways to reach for the wrong one.
+
+### 8. Explicit options at the call site
+
+Pass options to library functions explicitly, rather than leaning on their defaults. `@prefetch(a, .{ .cache = .data, .rw = .read, .locality = 3 })` reads more clearly than `@prefetch(a, .{})`, and it stays correct even if the library changes a default tomorrow.
+
 ---
 
 ## Rye Supplement
@@ -93,11 +117,11 @@ Rye carries the family. The safety Rye offers is the safety every module written
 
 Use explicitly sized integer types: `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, `i64`. Use `f32` or `f64` for floating-point. Never use `c_int`, `c_uint`, or `anyopaque` without a stated, commented reason.
 
-**Prefer fixed widths; avoid `usize` in authored Rye.** Tiger Style: use explicitly-sized types like `u32` for everything; avoid architecture-specific `usize`. In authored `.rye`, `tools/width-check.rish` enforces zero literal `usize` in published corpus. At the **inherited-std seam** (calling Zig's `std` through pristine symlinks), assert the bound and cast — that is correct Tiger code, not debt awaiting a compiler fork.
+**Prefer fixed widths; avoid `usize` in authored Rye.** Tiger Style: use explicitly-sized types like `u32` for everything; avoid architecture-specific `usize`. In authored `.rye`, `tools/width-check.rish` enforces zero literal `usize` in published corpus. At the **inherited-std seam** (calling Zig's `std` through pristine symlinks), assert the bound and cast — that is correct Tiger code, rather than debt awaiting a compiler fork.
 
 | Width | Role in authored Rye |
 |-------|----------------------|
-| **`u32`** | All in-memory counts, indices, and lengths **bounded by a named constant** (garden capacity, grid dimension, stack depth, frame size). Default width for “how many in this region.” |
+| **`u32`** | All in-memory counts, indices, and lengths **bounded by a named constant** (garden capacity, grid dimension, stack depth, frame size). Default width for "how many in this region." |
 | **`u64`** | Wire-persistent sizes, timestamps, content offsets, and any quantity that must mean the same thing on every target. |
 | **`usize`** | **Avoid** in authored Rye. At the inherited-std boundary only: assert `len <= maxInt(u32)` (or named bound), do arithmetic in `u32`, `@intCast` to `usize` for the Zig API call. |
 
@@ -113,15 +137,17 @@ Width audit: [`work-in-progress/20260620-212126_usize-width-baseline.md`](../wor
 **Seam pattern at inherited `std` (correct, not debt):**
 
 ```zig
-std.debug.assert(buf.len <= std.math.maxInt(u32));
+const assert = std.debug.assert;
+
+assert(buf.len <= std.math.maxInt(u32));
 const cap: u32 = @intCast(buf.len);
 // ... arithmetic in u32 ...
 const start: usize = @intCast(self.pos);
-std.debug.assert(start <= buf.len);
+assert(start <= buf.len);
 return buf[start .. start + @as(usize, @intCast(n))];
 ```
 
-**Compiler fork (F1–F5):** deferred **horizon** — deliberated only from a mature whole. See [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md). Prior fork-plan notes remain in [`active-designing/20260621-070712_the-compiler-fork.md`](../active-designing/20260621-070712_the-compiler-fork.md) as research, not the active primary track.
+**Compiler fork (F1–F5):** deferred **horizon** — deliberated only from a mature whole. See [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md). Prior fork-plan notes remain in [`active-designing/20260621-070712_the-compiler-fork.md`](../active-designing/20260621-070712_the-compiler-fork.md) as research, rather than the active primary track.
 
 ### Naming (Tiger Style)
 
@@ -129,35 +155,68 @@ return buf[start .. start + @as(usize, @intCast(n))];
 
 - Name functions with a verb: `compute_diff`, `serialize_weave`, `load_weave`, `read_brix`.
 - Name constants in `snake_case` with units and qualifiers last when helpful: `max_depth`, `digest_hex_len`.
-- Early seeds may still carry `camelCase` from before this rule landed; migrate names opportunistically when you touch a file — do not rename silently across the tree in one sweep.
+- Early seeds may still carry `camelCase` from before this rule landed; migrate names opportunistically when you touch a file — rather than renaming silently across the tree in one sweep.
+
+**Types and receivers.** A function that returns a `type` carries a `CamelCase` name ending in `Type` — `StackType`, `BitSetType` — so the reader sees a type constructor at a glance. When a method aliases its own type, give the alias the **real type name**, `const Stack = @This();`, rather than the bare `Self`. For the receiver itself, name it after the type in non-generic structs — `file: SourceFile`, `counter: *IdentifierCounter` — which reads more clearly than a generic `self`; the plain `self` stays welcome inside generic wrappers where the type name is a parameter.
 
 For everything else, follow the Zig style guide as filtered through **996** (line length, braces, `zig fmt`, and the rest).
 
 ### Assertions as first-class design
 
-`std.debug.assert(cond)` is not a debugging tool; it is the design written down where the machine can check it.
+`assert(cond)` is not a debugging tool; it is the design written down where the machine can check it. Import it unqualified once per file — `const assert = std.debug.assert;` — and call it bare, the way TigerBeetle does throughout. Assertions detect programmer errors, which are unexpected; the correct response to corrupt code is to crash, and so an assertion downgrades a catastrophic correctness bug into a loud, findable liveness bug.
 
+- **Density.** Assert all function arguments and return values, preconditions, postconditions, and invariants. Aim for an average of at least **two assertions per function** — a function that checks nothing operates blindly on data it has not verified.
 - **Preconditions** — at the top of a function, before any work: the conditions the caller must have arranged.
 - **Invariants** — after every mutation of a data structure: the conditions the structure must always keep.
 - **Postconditions** — after a computation: the conditions the result must honor.
+- **Pair your assertions.** For each property worth enforcing, find two different code paths to assert it on — validity right before a write and again right after the matching read, a count checked on both `push` and `pop`. The boundary between valid and invalid is where the interesting bugs live, so guard both sides of it.
+- **Assert positive space and negative space.** Assert what you expect to be true, and also assert what you expect to be false. Tests follow the same rule: exercise valid data, invalid data, and data crossing from one to the other.
+- **Split compound assertions.** Prefer `assert(a); assert(b);` over `assert(a and b)` — the split form reads more simply and names exactly which half failed.
+- **Assert implications on one line.** `if (a) assert(b)` states "a implies b" plainly.
+- **Assert at compile time.** Use `comptime assert(...)` to check the relationships of compile-time constants and the sizes of types, so a design flaw is caught before the program ever runs.
+- **Gate the expensive check.** When a thorough assertion costs too much for the hot path, place it behind a verify flag rather than dropping it: `if (constants.verify and verify_push) assert(!contains(link));`. This mirrors our verify-flag hot-path thread.
 
-Prefer a narrow assertion over a wide one. `assert(len <= max)` is more informative than `assert(ok)`.
+A small, complete example — a bounded stack, asserting its invariant on two paths and naming its bound:
 
-In tests, use `std.testing.expect` and `std.testing.expectEqual` rather than `std.debug.assert`.
+```zig
+const assert = std.debug.assert;
+
+fn push(stack: *StackAny, link: *Link) void {
+    assert((stack.count == 0) == (stack.head == null)); // structural invariant
+    assert(link.next == null);
+    assert(stack.count < stack.capacity);              // the bound
+
+    link.next = stack.head;
+    stack.head = link;
+    stack.count += 1;
+}
+
+fn pop(stack: *StackAny) ?*Link {
+    assert((stack.count == 0) == (stack.head == null)); // same invariant, second path
+    const link = stack.head orelse return null;
+    stack.head = link.next;
+    stack.count -= 1;
+    return link;
+}
+```
+
+In tests, reach for `std.testing.expect` and `std.testing.expectEqual` rather than `assert`.
 
 ### Named errors
 
-Error types are named descriptively: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`. Names are chosen to name the *fault*, not the *operation* that discovered it.
+Error types are named for the **fault**, rather than the operation that discovered it: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`.
 
-Propagate errors with `try`. Catch only at the boundary where the program can act: a command entry point, a test body. Never swallow an error silently with a discard pattern.
+Propagate errors with `try`. Catch only at the boundary where the program can act: a command entry point, a test body. When you must compare an error, **switch on it** rather than writing `err == error.Foo` or `err != error.Foo` — the equality form silently widens to `anyerror` and lets a new error slip through unhandled, while a `switch` makes every case visible. Never swallow an error silently with a discard pattern. Handle every error: most catastrophic failures trace back to mishandled non-fatal errors.
 
 ### Short functions
 
-One function, one idea. If a function needs a section comment divider (`// ---`), it is doing more than one thing and should be split.
+One function, one idea. We keep a **hard limit of 70 lines per function** — the point where a function stops fitting on a screen and starts asking the reader to scroll. Art is born of constraints, and most walls of code have a natural seam at this length.
 
-The name says what the function *does*; the comment says *why it exists* and *what invariants it keeps*.
+We bring the rule in by **ratcheting from the bottom up**, rather than sweeping the whole tree at once: the greatest value is in keeping a small function from quietly growing into a large one, so a function newly crossing the line is the one to split. This is accrete-never-break applied to length.
 
-Parameters: declare the tightest type you can. Prefer slices over pointers when ownership is not transferred.
+When you split, **push the `if`s up and the `for`s down**: keep the branching in one parent function, and move the non-branchy work into leaf helpers that stay pure. Centralize control flow and state in the parent; let the helpers compute what changes rather than applying it. A function that needs a `// ---` section divider is doing more than one thing and wants splitting.
+
+Parameters: declare the tightest type you can. Prefer slices over pointers when ownership stays put.
 
 ### Named constants
 
@@ -168,7 +227,7 @@ const max_depth: u32 = 1024; // chain length above which we stop and warn
 const digest_hex_len: u32 = 64; // SHA3-256 digest rendered as hex
 ```
 
-The comment names why the bound exists, not just what it is.
+The comment names why the bound exists, rather than only what it is.
 
 ### Structs carry their invariant
 
@@ -187,7 +246,7 @@ A mutation function on the struct asserts the invariant holds on entry and on ex
 
 ### Garden memory — never `ArenaAllocator` directly
 
-In **authored** Rye programs (`.rye` seeds, tools, witness tests, Skate, Rishi source), reach for the process season allocator through **`init.garden`**, not through `std.heap.ArenaAllocator`:
+In **authored** Rye programs (`.rye` seeds, tools, witness tests, Skate, Rishi source), reach for the process season allocator through **`init.garden`**, rather than through `std.heap.ArenaAllocator`:
 
 ```zig
 const garden = init.garden.allocator();
@@ -199,11 +258,13 @@ Name the local `garden` (or `allocator` when the role is generic). Do not constr
 
 **Freestanding / no `Init`:** use `std.heap.FixedBufferAllocator`, Tally `Region`, or an explicit child allocator passed in — still not `ArenaAllocator` in authored code unless you are strengthening inherited `std` itself.
 
+**On static allocation.** TigerBeetle allocates all memory at startup and frees nothing after, a discipline its database domain rewards with zero latency spikes and no use-after-free. We adopt the spirit fully — bound everything, name every budget — and we adopt the letter where the domain matches: freestanding Aurora paths favor `FixedBufferAllocator` and Tally regions sized up front. For hosted seeds and tools, the bounded `init.garden` season is our deliberate, honest choice: a single arena, released at the end of its season, rather than per-call churn. We name this difference plainly rather than claim a rule we do not yet keep.
+
 ---
 
 ## Brix Supplement
 
-Brix is the composing language: it describes what a system is made of. A `.brix` file is a declaration, not a program. These rules govern `.brix` descriptors.
+Brix is the composing language: it describes what a system is made of. A `.brix` file is a declaration, rather than a program. These rules govern `.brix` descriptors.
 
 ### Declarative only
 
@@ -255,7 +316,37 @@ Short pipelines are good. A pipeline longer than roughly ten stages earns a name
 
 ### Bindings are named
 
-`let` binds a named value. Name bindings for what they *are*, not for how they were computed: `let commit_hash = ...` rather than `let result_of_sha3_over_blob = ...`.
+`let` binds a named value. Name bindings for what they *are*, rather than for how they were computed: `let commit_hash = ...` rather than `let result_of_sha3_over_blob = ...`.
+
+---
+
+## What We Check, and When
+
+These are the machine-checkable rules — the lint surface. The discipline is the distinctiveness we chose when we made Rye a thin frontend, so we grow these checks the way we grow everything: as small, demand-driven increments beside the work, rather than one large sweep. Each line names the rule, and the tool that catches it today or the horizon it waits for.
+
+**Enforced now — textual checks in Rishi** (grow these first, each with a witness, alongside SLC-1 and the width migration):
+
+| Rule | Check |
+|------|-------|
+| **Zero `usize` in authored `.rye`** | `tools/width-check.rish` (live) |
+| **Unqualified assert** | flag `std.debug.assert(` and `debug.assert(` in authored `.rye`; the import line is the one allowed mention |
+| **No `Self = @This()`** | flag the literal `Self = @This()`; the alias takes the real type name |
+| **No tabs, no trailing whitespace** | flag tab characters and lines ending in a space |
+| **Line length ≤ 100 columns** | flag lines past 100, allowing a URL or a multiline-string result that itself fits |
+| **One `# Title` per markdown** | flag any `.md` with zero or more than one top-level `#`, fenced code ignored — directly serving our doc-heavy tree |
+| **No leftover `FIXME` or `dbg(`** | flag both before merge; `FIXME` is welcome while iterating, gone before main |
+
+**Horizon — wait for a Zig parser** (build when Rye's own tooling can parse, or when the need is proven; do not clone `tidy.zig` ahead of the need):
+
+| Rule | Why it waits |
+|------|--------------|
+| **70 lines per function, ratcheted** | needs the AST to find function spans |
+| **Parenthesize bitwise-with-arithmetic mixes** | needs the AST to read operator nodes |
+| **`defer` followed by a blank line** | needs token positions |
+| **Dead declarations and dead files** | needs identifier and import analysis |
+| **Switch on errors, not `== error.`** | a textual flag is a fair first pass; the AST makes it exact |
+
+The full enforcement we are learning from lives in TigerBeetle's `src/tidy.zig`. We borrow its rules in our own voice and at our own pace, and we keep its file in gratitude.
 
 ---
 
