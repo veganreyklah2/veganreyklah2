@@ -79,6 +79,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection |
 | **SLC-L2** | Sealed delivery — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
+| **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK primitives |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first ring needs no ledger and no currency — only the primitives Rye OS already grows.

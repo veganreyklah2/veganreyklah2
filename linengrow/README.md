@@ -25,6 +25,22 @@ Linengrow shares Rye OS's architectural spine exactly: state as a pure fold over
 
 Correctness by construction in the kernel becomes trust by construction in the platform. The same discipline that makes a kernel safe makes a marketplace honest.
 
+The unifying civic vision — open OS, open hardware, regenerative land, the ledger, creator tools — lives in [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md). Linengrow carries forward its creator-facing gifts: the fable, the tools surface, and the privacy-by-disclosure model, below.
+
+---
+
+## Privacy and Disclosure
+
+Linengrow holds two truths at once, and zero-knowledge proofs are what let it: **the mechanism is transparent; the individual is private.** The marketplace's rules stay visible to everyone — a sponsored post wears its label, a data sale carries its receipt, a contract shows its expiration — because the honesty of the room is the platform's whole promise. The person, by contrast, is private by default: opted out of public sharing until they choose otherwise, revealing only what they choose through a zero-knowledge proof — proving they are a verified vegan creator without naming themselves, proving a sponsorship was disclosed without exposing its terms, opening a door with a cryptographic pass while keeping the key behind it. The powerful mechanism is transparent; the individual stays private.
+
+The default leans toward privacy, on purpose. No one is made public against their will; a person opts in to what they reveal, selectively, through proofs they control. Yet the culture and the economics make opting in attractive — a creator who shares their **fable**, their story told and proven honestly, is met and rewarded for it; transparency is celebrated as a community value; the positive economics flow toward those who choose to be seen. People opt in to being public because it is honored and it pays, never because the door was forced. The cryptographic pass is the everyday shape of this — it opens what you want opened, and keeps closed what you keep.
+
+This satisfies all four promises a tool can keep at once, and most of all *tell the truth* and *hold lightly*: the room is honest, and the person remains free.
+
+### The creator's surface
+
+Linengrow serves makers with tools that are theirs: free tools for music, for fashion, for keeping notes, and for holding a social graph a person actually owns. Each creator's **fable** — their attested story — is the thread that runs through them, told once and provable anywhere, carried under the person's own key.
+
 ---
 
 ## The SLC Ladder
@@ -36,6 +52,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **SLC-L1** | **A verifiable receipt** — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection |
 | **SLC-L2** | **Sealed delivery** — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | **Settlement** — a transaction settled on Sui with USDsui, its receipt verifiable on the ledger | Sui / Mysticeti |
+| **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK primitives |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
 The first ring needs no ledger and no currency — only the primitives Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.
