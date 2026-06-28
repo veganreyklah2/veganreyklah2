@@ -265,7 +265,7 @@
 
 Strengthening and authored width **do not block each other**. The fork **re-points** strengthening and parity after the current arc holds green — it does not cancel today's `k` passes.
 
-**Main track — Rye · Rishi · strengthening:** `expanding-prompts/10023_main_track_rye_rishi_strengthening.md` (`044412`). Run this for the current build order; `10010` is a reserved stub only.
+**Main track — Rye · Rishi · strengthening:** [`expanding-prompts/20260621-051612_main-track-rye-rishi-strengthening.md`](../expanding-prompts/20260621-051612_main-track-rye-rishi-strengthening.md) (`044412`). Run this for the current build order; topic routing table in [`expanding-prompts/README.md`](../expanding-prompts/README.md).
 
 | Priority | Thread | Anchor |
 |----------|--------|--------|

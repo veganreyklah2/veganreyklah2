@@ -79,7 +79,7 @@ Each wrapper: assert at entry, typed errors, no raw fds in Brushstroke logic.
 
 ## Deliverables Checklist
 
-- [ ] `expanding-prompts/10012_brushstroke_wayland_and_display_frontier.md` (this file)
+- [ ] `expanding-prompts/20260620-021612_brushstroke-wayland-and-display-frontier.md` (this file)
 - [ ] `caravan/twin.rye` + `.brix`
 - [ ] `work-in-progress/995_open_threads.md` updated
 - [ ] `work-in-progress/996_roadmap.md` partial refresh

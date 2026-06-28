@@ -29,7 +29,7 @@ To carry a *meaning* between two people — a message, content-named and encrypt
 
 ## Deliverables
 
-- `external-research/982` — the exploration, in the seven-part structure, under TAME and active-designing lenses, citing the CCN literature, Curtis's essay (distilled), the Clay mark docs, and our own `983`/`984`/`985`/`994`.
+- `external-research/20260618-212112_content-centric-messaging.md` — the exploration, in the seven-part structure, under TAME and active-designing lenses, citing the CCN literature, Curtis's essay (distilled), the Clay mark docs, and our own `983`/`984`/`985`/`994`.
 
 ## The Lens to Hold
 

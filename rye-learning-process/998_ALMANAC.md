@@ -215,7 +215,7 @@ The next rung is a **hosted wire** between processes: `comlink/hosted_wire.rye` 
 rye build comlink/hosted_wire.rye -lc -femit-bin=comlink/bin/hosted-wire
 ```
 
-After that, the wire is a real device between two machines — virtio-net in QEMU (`expanding-prompts/10016`).
+After that, the wire is a real device between two machines — virtio-net in QEMU ([`expanding-prompts/20260620-034212_virtio-device-wire.md`](../expanding-prompts/20260620-034212_virtio-device-wire.md)).
 
 ---
 

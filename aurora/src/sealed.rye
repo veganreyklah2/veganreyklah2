@@ -8,7 +8,7 @@
 //! secret, and opens it. The opened message is spoken over the console. This is
 //! the sealed message of the hosted test (`../../rye/tests/sealed_message_test.rye`),
 //! now running on bare metal — the value the encrypted datagram will one day
-//! carry between two harts (active-designing/993; external-research/982, /985).
+//! carry between two harts (active-designing/993; external-research/20260618-212112_content-centric-messaging.md, /985).
 //!
 //! Build and run with `../run.sh sealed`. QEMU virt; UART 0x1000_0000; finisher 0x10_0000.
 

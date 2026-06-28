@@ -39,7 +39,7 @@ So the crypto passes will come, sponge by sponge, with a steady hand.
 
 Before we strengthen the signing, we prove it — the way the SHA3 test proved hashing before the SHA3 pass strengthened it. `rye/tests/ed25519_sign_test.rye` derives a deterministic key pair from a fixed seed, signs a message with null noise (a deterministic signature), confirms the true message verifies and a tampered one is rejected, and renders the public-key identity as stable hex. It runs identically every time, and the parity gate now carries it: five programs, all green, the signing primitive pinned byte-for-byte to the baseline.
 
-This is the foundation of rooted identity and sealed messaging, shown to work in our own std — and the witness entry that will catch the day a strengthening pass touches it. The next implementation seeds grow from here: a shared secret between two identities (key agreement), a sealed payload (the cipher), and then the single encrypted, content-named datagram the network is waiting for (`../external-research/985`, `../external-research/982`).
+This is the foundation of rooted identity and sealed messaging, shown to work in our own std — and the witness entry that will catch the day a strengthening pass touches it. The next implementation seeds grow from here: a shared secret between two identities (key agreement), a sealed payload (the cipher), and then the single encrypted, content-named datagram the network is waiting for (`../external-research/20260618-195512_encrypted-networking-riscv.md`, `../external-research/20260618-212112_content-centric-messaging.md`).
 
 ## So, Two Answers
 
@@ -107,7 +107,7 @@ Live implementation from `rye/lib/std` (strengthened):
 
 Tiger Style: *use explicitly-sized types like `u32`; avoid architecture-specific `usize`* ([`gratitude/TIGER_STYLE.md`](../gratitude/TIGER_STYLE.md) § Safety).
 
-TAME: **`usize` is a boundary type, not a design type** — [`context/TAME_STYLE.md`](../context/TAME_STYLE.md), [`10024`](../expanding-prompts/10024_explicit_width_audit.md), [`992`](../work-in-progress/992_usize_width_baseline.md).
+TAME: **`usize` is a boundary type, not a design type** — [`context/TAME_STYLE.md`](../context/TAME_STYLE.md), [`10024`](../expanding-prompts/20260620-210812_explicit-width-audit.md), [`992`](../work-in-progress/992_usize_width_baseline.md).
 
 Lexicon ✅ requires every row **`done`** and zero **`fail`** rows.
 ### `meta/foundation`

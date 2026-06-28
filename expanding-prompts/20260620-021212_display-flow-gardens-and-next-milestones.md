@@ -84,7 +84,7 @@ Three milestones, one session, composed not braided:
 
 - Four operations kept apart: **transform**, **move**, **route**, **remember**
 - **Simple services** — one job, tiny surface, few verbs; map each `983` module to a flow role
-- **Values with enduring names** — content-addressing, accretion; Tablecloth slice in `10021_tablecloth_value_model.md`
+- **Values with enduring names** — content-addressing, accretion; Tablecloth slice in `20260620-044012_tablecloth-value-model.md`
 - **Systems failure model** — partial failure normal; timeouts, idempotency, exactly-once by name (Comlink)
 - Cross-link: `993` (network), `995` (single-stranded), `997` (architecture), `990` (no seams)
 - Gratitude pointer in external-research only: `997_SYSTEM.md`, `gratitude/LanguageSystem.md`
@@ -107,7 +107,7 @@ Three milestones, one session, composed not braided:
 
 ## Deliverables Checklist
 
-- [ ] `expanding-prompts/10011_display_flow_gardens_and_next_milestones.md` (this file)
+- [ ] `expanding-prompts/20260620-021212_display-flow-gardens-and-next-milestones.md` (this file)
 - [ ] `brushstroke/seed.rye` + `.gitignore` allow-list
 - [ ] Garden vocabulary sweep (code + docs)
 - [ ] `active-designing/20260620-021212_flow-of-values.md`

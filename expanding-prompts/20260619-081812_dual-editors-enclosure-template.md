@@ -42,7 +42,7 @@ To give every clone a clear, copy-and-fill path: two AI editors sharing one proj
 
 ## Deliverables
 
-- **`expanding-prompts/10006`** — this file.
+- **[`20260619-081812_dual-editors-enclosure-template.md`](20260619-081812_dual-editors-enclosure-template.md)** — this file.
 - **`context/specs/enclosure-editors.md`** — the guide anyone can follow.
 - **`tools/enclosure.conf.example`**, **`tools/launch-cursor.sh.example`**, **`tools/launch-zed.sh.example`** — copy, fill, run.
 - **`SOURCE.md`** — cross-link and NixOS horizon note.

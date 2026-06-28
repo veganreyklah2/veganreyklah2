@@ -31,10 +31,10 @@ Run in order; each rung is one minute later on the clock.
 | Rung | File | Time | Delivers |
 |------|------|------|----------|
 | **0** | **`10018`** (this file) | `043712` | Index, vocabulary, cross-link map |
-| **1** | **`10019_tablecloth_brix_split.md`** | `043812` | Tablecloth vs Brix; brick vocabulary |
-| **2** | **`10020_tablecloth_brix_build.md`** | `043912` | Reproducible build flow; `.brix` + Tablecloth |
-| **3** | **`10021_tablecloth_value_model.md`** | `044012` | Remember flow; one value across modules |
-| **4** | **`10022_tablecloth_v1_seed.md`** | `044112` | Smallest living store seed (deferred build) |
+| **1** | **`20260620-043812_tablecloth-brix-split.md`** | `043812` | Tablecloth vs Brix; brick vocabulary |
+| **2** | **`20260620-043912_tablecloth-brix-build.md`** | `043912` | Reproducible build flow; `.brix` + Tablecloth |
+| **3** | **`20260620-044012_tablecloth-value-model.md`** | `044012` | Remember flow; one value across modules |
+| **4** | **`20260620-044112_tablecloth-v1-seed.md`** | `044112` | Smallest living store seed (deferred build) |
 
 ## Cross-Link Map
 
@@ -46,7 +46,7 @@ Run in order; each rung is one minute later on the clock.
 | `10011` Track C remember | `10021` |
 | `10017` module lens | `10020` Brix; `10022` Tablecloth v1 |
 
-**Reserved:** `10010_reserved.md` — number held open. Tablecloth/Brix content in `10019`–`10020`; main track in `10023`.
+**Routing:** topic index lives in [`README.md`](README.md) — Tablecloth/Brix in [`20260620-043812_tablecloth-brix-split.md`](20260620-043812_tablecloth-brix-split.md) through [`20260620-044112_tablecloth-v1-seed.md`](20260620-044112_tablecloth-v1-seed.md); main track in [`20260621-051612_main-track-rye-rishi-strengthening.md`](20260621-051612_main-track-rye-rishi-strengthening.md).
 
 ## Track A — Prompt Hygiene (`044012`)
 

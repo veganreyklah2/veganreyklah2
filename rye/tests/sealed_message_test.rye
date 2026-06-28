@@ -4,7 +4,7 @@
 //! their Ed25519 identities), seal a payload to it (AEAD), name the sealed bytes
 //! by content (SHA3-512), and attest the name (Ed25519). The reader verifies the
 //! attestation, checks the content-name, derives the same secret, and opens it.
-//! This is active-designing/993 and external-research/982, /985 in miniature.
+//! This is active-designing/993 and external-research/20260618-212112_content-centric-messaging.md, /985 in miniature.
 //!
 //! Deterministic throughout — fixed seeds and nonce — so the output is identical
 //! every run and across both stds, for the parity gate. Fixtures, never secrets.

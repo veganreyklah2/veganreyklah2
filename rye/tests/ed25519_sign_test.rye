@@ -1,6 +1,6 @@
 //! Rye test: Ed25519 signing — the identity and authentication primitive our
 //! new ideas lean on (rooted identity, active-designing/994; sealed messaging,
-//! active-designing/993; the network, external-research/985/982). The hash that
+//! active-designing/993; the network, external-research/20260618-195512_encrypted-networking-riscv.md/982). The hash that
 //! names values is already strengthened (SHA3-512); this proves the *signing*
 //! foundation works in Rye's own std, the way the SHA3 test first proved hashing.
 //!

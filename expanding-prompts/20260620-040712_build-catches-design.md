@@ -49,7 +49,7 @@
 
 ## Next Runs (ordered)
 
-See **`10023_main_track_rye_rishi_strengthening.md`** for the current build order.
+See **`20260621-051612_main-track-rye-rishi-strengthening.md`** for the current build order.
 
 | Priority | Track | Milestone | Design anchor |
 |----------|-------|-----------|---------------|

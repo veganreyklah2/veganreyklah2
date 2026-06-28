@@ -23,7 +23,7 @@ To hold three threads in parallel without letting any one race so far ahead that
 - **Horizon 0** — crypto, two-hart posted datagram, `parity.rish`, Rishi gate (`996_roadmap.md`).
 - **Horizon 1** — device-wire listed; Caravan v1 and Tally v1 listed in Horizon 2 as composed milestones — counsel asks to **pull their smallest seeds into Horizon 1** as parallel work, not wait for composition.
 - **Open threads** — `995` already names unbuilt modules and critical reading owed; this prompt **promotes** them to co-equal near work beside device-wire.
-- **Design ground** — `active-designing/997`, `external-research/20260618-180812_pond-foundation.md`, `994_caravan_tally_networking.md`, `995_ownerboot_riscv_caravan.md`.
+- **Design ground** — `active-designing/20260618-184912_recommended-architecture.md`, `external-research/20260618-180812_pond-foundation.md`, `994_caravan_tally_networking.md`, `995_ownerboot_riscv_caravan.md`.
 
 ## The Work
 
@@ -69,7 +69,7 @@ The process-garden pattern Rye already uses at exit is the ancestor; this seed m
 | Primal (if present) | Caching, hot path |
 | s6 / skalibs | Supervision primitives (feeds Caravan seed) |
 
-Output: `external-research/980` band or new `979_*` close-reading stack — **actionable bullets** for Comlink v1 and the messenger, not bibliography alone.
+Output: `external-research/20260619-070612_brushstroke-and-the-docs-surface.md` band or new `979_*` close-reading stack — **actionable bullets** for Comlink v1 and the messenger, not bibliography alone.
 
 ## Roadmap and Open Threads Updates
 

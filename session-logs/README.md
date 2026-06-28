@@ -6,6 +6,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260628-020948` | [reorg chunk 4 expanding-prompts](20260628-020948_reorg-chunk-4-expanding-prompts.md) | B — one-clock reorg (`reorg/one-clock`) |
 | `20260628-015112` | [chunk 3 push and handoff](20260628-015112_chunk-3-push-handoff.md) | B — one-clock reorg (`reorg/one-clock`) |
 | `20260628-014512` | [reorg chunk 3 external-research](20260628-014512_reorg-chunk-3-external-research.md) | B — one-clock reorg (`reorg/one-clock`) |
 | `20260628-014307` | [reorg chunk 3 preview](20260628-014307_reorg-chunk-3-preview.md) | B — one-clock reorg (`reorg/one-clock`) |
@@ -173,7 +174,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 | `20260620-143312` | [pass 9986 bufPrint](20260620-143312.md) | `10023` Track B (strengthening), proceed at `143312` |
 | `20260620-120000` | [2026-06-20 (24-hour Zed + Claude Code retrospective)](20260620-120000.md) | Look at the progress made with Zed and Claude Code the past 24 hours. |
 | `20260620-050912` | [Skate .rye migration + pass 9987](20260620-050912.md) | User flagged `.zig` files in brushstroke where `.rye` is the project convention; functions should call strengthened `std` recursively. |
-| `20260620-045012` | [10023 Track A (Skate grid)](20260620-045012.md) | `expanding-prompts/10023_main_track_rye_rishi_strengthening.md` Track A |
+| `20260620-045012` | [10023 Track A (Skate grid)](20260620-045012.md) | `expanding-prompts/20260621-051612_main-track-rye-rishi-strengthening.md` Track A |
 | `20260620-044412` | [10010 stub + 10023 main track (044412)](20260620-044412.md) | Reserve `10010` as blank stub; next prompt at highest number (`10023`) for main-track task list. |
 | `20260620-044012` | [prompt prune + open threads realign (044012)](20260620-044012.md) | Clean up prompt history (remove retired store-module name); add Tablecloth ladder to open threads; return to Rye/Rishi/strengthening; commit and pu… |
 | `20260620-043712` | [Tablecloth prompt ladder (043712)](20260620-043712.md) | Unify expanding-prompts that mention Silo/Tablecloth as module name; ladder-step from `043712`, +1 minute per document. |

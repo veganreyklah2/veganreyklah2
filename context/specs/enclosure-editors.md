@@ -167,7 +167,7 @@ Zed offers two different Claude experiences:
 
 **Terminal Threads** remain useful for one-off CLI work; they are not the same UI as the Agent Panel. If both are open, use the panel for the agent feed and close or hide the terminal thread when it is redundant.
 
-Expanded prompt: `expanding-prompts/10008_zed_claude_rules_and_agent_panel.md`.
+Expanded prompt: `expanding-prompts/20260619-090512_zed-claude-rules-and-agent-panel.md`.
 
 ---
 

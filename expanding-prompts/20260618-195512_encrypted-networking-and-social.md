@@ -42,15 +42,15 @@ Learn, from three living systems and one boot project, how to carry *values betw
 
 ## Deliverables
 
-- `external-research/985` — encrypted networking from the boot upward, translated to our stack on RISC-V, with the Urbit/Sui essences, in the requested seven-part structure, under the active-designing and TAME lenses.
-- `external-research/984` — the social-layer vision: Nostr relays, Sui-style validation, and DAG curation woven into a simple, value-true application for a devotional vegan community, critically evaluated through our filters.
+- `external-research/20260618-195512_encrypted-networking-riscv.md` — encrypted networking from the boot upward, translated to our stack on RISC-V, with the Urbit/Sui essences, in the requested seven-part structure, under the active-designing and TAME lenses.
+- `external-research/20260618-195612_devotional-social-layer.md` — the social-layer vision: Nostr relays, Sui-style validation, and DAG curation woven into a simple, value-true application for a devotional vegan community, critically evaluated through our filters.
 - `gratitude/` — `urbit/urbit`, `MystenLabs/sui`, `nostr-protocol/nips`, `PrimalHQ/primal-caching-service`, `damus-io/damus`, added as honored submodules, with the README's provenance and licenses recorded.
 - `work-in-progress/995_open_threads.md` — a fresh snapshot naming the threads these studies open and the questions still live.
 
 ## The Lens to Hold
 
 - **Simplicity first.** "Keeping things simple" was asked for outright. Prefer the smallest thing that works (Gall's Law). Tell the simple from the easy.
-- **One value model.** A value made in Rye, carried by Rishi, composed by Brix, stored in Tablecloth, named by Mantra, and sent over the wire should be the *same* value, with no marshaling seam — see `expanding-prompts/10021_tablecloth_value_model.md` (Tablecloth ladder rung 3).
+- **One value model.** A value made in Rye, carried by Rishi, composed by Brix, stored in Tablecloth, named by Mantra, and sent over the wire should be the *same* value, with no marshaling seam — see `expanding-prompts/20260620-044012_tablecloth-value-model.md` (Tablecloth ladder rung 3).
 - **Encrypted and content-addressed by default**, identity at the core, location at the edge.
 - **Critical evaluation.** Honor these systems and refuse to flatter them. Name where Urbit is heavy, where Sui assumes a chain we may not want, where Nostr confuses ease for simplicity. The silo still holds in active-designing; external-research may name names and judge them.
 - **The values are the point.** Non-harming, devotion, clarity, attention treated as sacred rather than mined. The technology serves them, never the reverse.

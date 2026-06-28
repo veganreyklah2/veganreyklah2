@@ -44,7 +44,7 @@ off — the shape every later stage will take.
 
 ## The Third Stage — Naming on the Bare Hart
 
-The relay carried a value; this stage proves the boot can *name* one — with cryptography, on the bare metal. In `src/named.rye`, a freestanding hart hashes a message with SHA3-512, the very function we strengthened first, and speaks the content-name over the console. There is no operating system beneath the hash and no allocator either; the strengthened `std` crypto runs on the bare hart exactly as it does in a hosted test. This is where Aurora's bare-metal reach meets Mantra's content-addressing — and the proof that unlocks the rest: if the hash runs freestanding, so will the key agreement, the seal, and the signature that compose an encrypted, content-named datagram (`../external-research/985`, `/982`).
+The relay carried a value; this stage proves the boot can *name* one — with cryptography, on the bare metal. In `src/named.rye`, a freestanding hart hashes a message with SHA3-512, the very function we strengthened first, and speaks the content-name over the console. There is no operating system beneath the hash and no allocator either; the strengthened `std` crypto runs on the bare hart exactly as it does in a hosted test. This is where Aurora's bare-metal reach meets Mantra's content-addressing — and the proof that unlocks the rest: if the hash runs freestanding, so will the key agreement, the seal, and the signature that compose an encrypted, content-named datagram (`../external-research/20260618-195512_encrypted-networking-riscv.md`, `/982`).
 
 ## The Fourth Stage — the Sealed Datagram
 
@@ -60,7 +60,7 @@ The sealed stage left one thing for a datagram to travel *between* harts: a wire
 
 The wire carries a value; the sealed hart sealed and opened one. This stage unites them. In `src/posted.rye`, the machine wakes with two harts again. Hart 0 (Alice) seals a message to hart 1 (Bob) — key agreement, the seal, the content-name, the attestation — serializes the whole datagram into the shared-memory wire, and raises the flag. Hart 1 reads the raw bytes off the wire and, before trusting any of them, *shape-casts* them: a datagram shorter than its header or longer than the wire is refused at the edge (`../active-designing/20260618-224812_shape-casting.md`). Only then does Bob verify the attestation, confirm the content-name binds the bytes, derive the shared secret from *his own secret and Alice's public key off the wire*, and open the seal.
 
-This is a sealed value crossing the wire between two harts — the smallest honest seed of Comlink (`../active-designing/20260618-224712_bounded-network.md`; `../external-research/982`, `/985`). The wire here is shared memory between two harts; the next wire is a device between two machines.
+This is a sealed value crossing the wire between two harts — the smallest honest seed of Comlink (`../active-designing/20260618-224712_bounded-network.md`; `../external-research/20260618-212112_content-centric-messaging.md`, `/985`). The wire here is shared memory between two harts; the next wire is a device between two machines.
 
 ## Build and Run
 
