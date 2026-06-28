@@ -17,13 +17,13 @@
 
 > **This platform exists to build social technology that makes the economics of attention transparent, returns data sovereignty to the people who create and consume content, and demonstrates that ethical commerce is profitable commerce.**
 
-We lead with what is, rather than what is missing. We say what we build. And we build a place where transparency itself becomes the most valuable asset on the balance sheet.
+We lead with what is. We say what we build. And we build a place where transparency itself becomes the most valuable asset on the balance sheet.
 
 ---
 
 ## I. The Business Model
 
-The public benefit corporation is the legal architecture of everything that follows. The PBC form expands fiduciary duty beyond shareholder returns to include the communities the company serves, which lets the directors prioritize transparency over raw growth, user sovereignty over data monetization, and local economic circulation over extraction — all while remaining a for-profit company that earns honest returns for its investors.
+The public benefit corporation is the legal architecture of everything that follows. The PBC form expands fiduciary duty beyond shareholder returns to include the communities the company serves, which lets the directors prioritize transparency, user sovereignty, and local economic circulation — all while remaining a for-profit company that earns honest returns for its investors.
 
 The platform earns revenue through four channels, each designed so that every dollar received corresponds to a visible unit of value delivered to a specific participant in the ecosystem.
 
@@ -67,7 +67,7 @@ The seed round funds the core engineering team, the forge and hosting infrastruc
 
 ## II. Investor Outreach
 
-The investor thesis aligns with a specific constellation of values: ethical commerce, data sovereignty, plant-based and veganic agriculture, transparent technology, and compassionate capitalism. The investors we seek share these values and bring expertise that strengthens the mission rather than diluting it. The approach organizes potential allies into four tiers, described here as archetypes rather than named individuals so the strategy stays reusable across regions and rounds.
+The investor thesis aligns with a specific constellation of values: ethical commerce, data sovereignty, plant-based and veganic agriculture, transparent technology, and compassionate capitalism. The investors we seek share these values and bring expertise that strengthens the mission. The approach organizes potential allies into four tiers, described here as archetypes — unnamed so the strategy stays reusable across regions and rounds.
 
 ### Mission-Aligned Institutional Funds
 
@@ -79,7 +79,7 @@ The second tier is angel investors with a demonstrated track record of backing p
 
 ### Fellow Public Benefit Corporations
 
-The third tier is other public benefit corporations whose structure mirrors this one — companies committed to stakeholder value beyond shareholders alone. Natural allies include regenerative-agriculture producers with farmer-cooperative supply chains, responsible-technology companies, earth-observation and precision-agriculture providers whose data serves the cooperative economy at continental scale, and sustainable-materials companies whose domestic supply chains intersect with the platform's own. A partnership between two public benefit corporations carries structural coherence: infrastructure that serves people rather than surveilling them.
+The third tier is other public benefit corporations whose structure mirrors this one — companies committed to stakeholder value beyond shareholders alone. Natural allies include regenerative-agriculture producers with farmer-cooperative supply chains, responsible-technology companies, earth-observation and precision-agriculture providers whose data serves the cooperative economy at continental scale, and sustainable-materials companies whose domestic supply chains intersect with the platform's own. A partnership between two public benefit corporations carries structural coherence: infrastructure that serves people.
 
 ### Specialized Vegan Venture Funds
 
