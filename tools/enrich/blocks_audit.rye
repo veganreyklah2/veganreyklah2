@@ -197,7 +197,7 @@ pub fn buildAuditedSurfacesBlock(
     try out.appendSlice(a,
         \\## Audited surfaces
         \\
-        \\Checkmark requires **`## usize explicit audit`** all `done`, zero `fail` (Tiger/TAME — [`992`](../work-in-progress/992_usize_width_baseline.md)). Full implementation from `rye/lib/std`:
+        \\Checkmark requires **`## usize explicit audit`** all `done`, zero `fail` (Tiger/TAME — [`992`](../work-in-progress/20260620-212126_usize-width-baseline.md)). Full implementation from `rye/lib/std`:
         \\
     );
     for (surface_list) |s| {

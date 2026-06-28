@@ -122,7 +122,7 @@ pub fn splitBackwardsSequence(comptime T: type, buffer: []const T, delimiter: []
 
 Tiger Style: *use explicitly-sized types like `u32`; avoid architecture-specific `usize`* ([`gratitude/TIGER_STYLE.md`](../gratitude/TIGER_STYLE.md) § Safety).
 
-TAME: **`usize` is a boundary type, not a design type** — [`context/TAME_STYLE.md`](../context/TAME_STYLE.md), [`10024`](../expanding-prompts/20260620-210812_explicit-width-audit.md), [`992`](../work-in-progress/992_usize_width_baseline.md).
+TAME: **`usize` is a boundary type, not a design type** — [`context/TAME_STYLE.md`](../context/TAME_STYLE.md), [`10024`](../expanding-prompts/20260620-210812_explicit-width-audit.md), [`992`](../work-in-progress/20260620-212126_usize-width-baseline.md).
 
 Lexicon ✅ requires every row **`done`** and zero **`fail`** rows.
 ### `std..mem.splitBackwardsScalar`
@@ -193,7 +193,7 @@ Lexicon ✅ requires every row **`done`** and zero **`fail`** rows.
 
 ## Audited surfaces
 
-Checkmark requires **`## usize explicit audit`** all `done`, zero `fail` (Tiger/TAME — [`992`](../work-in-progress/992_usize_width_baseline.md)). Full implementation from `rye/lib/std`:
+Checkmark requires **`## usize explicit audit`** all `done`, zero `fail` (Tiger/TAME — [`992`](../work-in-progress/20260620-212126_usize-width-baseline.md)). Full implementation from `rye/lib/std`:
 - [x] `std..mem.splitBackwardsScalar` — [`misc`](../misc)
 
 ```zig

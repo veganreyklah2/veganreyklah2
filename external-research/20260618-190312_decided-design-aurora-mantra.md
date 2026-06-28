@@ -57,7 +57,7 @@ The decided design reveals a meeting the two earlier pieces could not see in eac
 - **Aurora** — grow it from a minimal working privilege relay, a stage at a time, each gated; written in Rye as a first-class RISC-V program; its content-addressed stages weaving into Mantra, so Tablecloth *builds* the boot and Mantra *remembers* its generations.
 - **Mantra** — raise its priority, for it de-risks strengthening at scale; build the minimal weave first (overlay, merge, provenance); weave values rather than only lines, across the whole family; name by the now-strengthened SHA3-512; and let it hold the history of the system and of the boot alike.
 
-Neither `993` nor `998` is rewritten here — a research note is an honest record of when we thought it, and those two stand. This piece is the newer reading, and the updates it names land when we build, along the roadmap at `../work-in-progress/996_roadmap.md`.
+Neither `993` nor `998` is rewritten here — a research note is an honest record of when we thought it, and those two stand. This piece is the newer reading, and the updates it names land when we build, along the roadmap at `../work-in-progress/ROADMAP.md`.
 
 ---
 

@@ -98,9 +98,9 @@ The cost is honest: we own the compiler, the std rewrite, and a new gate story. 
 | Seam policy (interim) | `20260621-050312_usize-boundary-not-design.md` |
 | Siloed design (clean room) | `active-designing/20260621-051312_explicit-width-in-rye.md` |
 | Rye is its own language | `context/specs/rye-as-its-own-language.md` |
-| Width migration inventory | `work-in-progress/992_usize_width_baseline.md` |
-| Living threads | `work-in-progress/995_open_threads.md` |
-| Roadmap | `work-in-progress/996_roadmap.md` |
+| Width migration inventory | `work-in-progress/20260620-212126_usize-width-baseline.md` |
+| Living threads | `work-in-progress/20260623-033012_open-threads.md` |
+| Roadmap | `work-in-progress/ROADMAP.md` |
 | Growing a language | `active-designing/20260618-184912_growing-a-language.md` |
 
 ---

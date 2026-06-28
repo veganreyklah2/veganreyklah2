@@ -158,7 +158,7 @@ real device (an emulated `virtio-net` to start) carrying a sealed datagram betwe
 two *machines*, where Comlink fully begins. In parallel: a stage that hands the next a
 value *it chose*; and, as the other modules ripen, Tally's bounded gardens for the
 boot's own memory, Caravan's hand on what runs next, and Tablecloth describing the stages
-as values. The roadmap that holds these steps lives in `../work-in-progress/996_roadmap.md`.
+as values. The roadmap that holds these steps lives in `../work-in-progress/ROADMAP.md`.
 
 ---
 

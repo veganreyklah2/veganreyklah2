@@ -10,8 +10,8 @@ This documentation pass landed. Re-run the enricher after each new `k` pass; wid
 |-------------|------|
 | Rerunnable enricher | [`../tools/enrich_strengthening_docs.rye`](../tools/enrich_strengthening_docs.rye) |
 | usize audit module | [`../tools/tame_usize_audit.rye`](../tools/tame_usize_audit.rye) |
-| Width baseline + fork phases | [`../work-in-progress/992_usize_width_baseline.md`](../work-in-progress/992_usize_width_baseline.md) |
-| Crosswalk | [`../work-in-progress/992_strengthening_width_crosswalk.md`](../work-in-progress/992_strengthening_width_crosswalk.md) |
+| Width baseline + fork phases | [`../work-in-progress/20260620-212126_usize-width-baseline.md`](../work-in-progress/20260620-212126_usize-width-baseline.md) |
+| Crosswalk | [`../work-in-progress/20260621-032327_strengthening-width-crosswalk.md`](../work-in-progress/20260621-032327_strengthening-width-crosswalk.md) |
 | Interim seam audit manual | [`../external-research/20260621-050312_usize-boundary-not-design.md`](../external-research/20260621-050312_usize-boundary-not-design.md) |
 | Fork north star | [`../external-research/20260621-051312_literal-usize-ban-language-fork.md`](../external-research/20260621-051312_literal-usize-ban-language-fork.md), [`../active-designing/20260621-051312_explicit-width-in-rye.md`](../active-designing/20260621-051312_explicit-width-in-rye.md) |
 

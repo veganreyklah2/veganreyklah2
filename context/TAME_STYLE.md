@@ -108,7 +108,7 @@ const max_frame_bytes: u32 = 4096;
 pos: u32, // invariant: pos <= max_frame_bytes
 ```
 
-Width audit: `work-in-progress/992_usize_width_baseline.md`. Fork plan: `active-designing/20260621-070712_the-compiler-fork.md`.
+Width audit: `work-in-progress/20260620-212126_usize-width-baseline.md`. Fork plan: `active-designing/20260621-070712_the-compiler-fork.md`.
 
 **Existing Zig seam casts** (`const x: usize = @intCast(...)`) are **technical debt**, not an acceptable pattern:
 

@@ -81,8 +81,8 @@ Each wrapper: assert at entry, typed errors, no raw fds in Brushstroke logic.
 
 - [ ] `expanding-prompts/20260620-021612_brushstroke-wayland-and-display-frontier.md` (this file)
 - [ ] `caravan/twin.rye` + `.brix`
-- [ ] `work-in-progress/995_open_threads.md` updated
-- [ ] `work-in-progress/996_roadmap.md` partial refresh
+- [ ] `work-in-progress/20260623-033012_open-threads.md` updated
+- [ ] `work-in-progress/ROADMAP.md` partial refresh
 - [ ] `session-logs/99929_20260620-021612.md`
 - [ ] (Next run) `brushstroke/wayland_seed.rye`
 

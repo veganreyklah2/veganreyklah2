@@ -144,8 +144,8 @@ file tally/seed.rye
 file tally/gardens.rye
 file mantra/src/main.rye
 file tools/parity.rish
-file work-in-progress/995_open_threads.md
-file work-in-progress/996_roadmap.md
+file work-in-progress/20260623-033012_open-threads.md
+file work-in-progress/ROADMAP.md
 ```
 
 Mantra reads this at startup to know the project name and the bricks it tracks. `mantra brix` prints the descriptor. Brix's larger design (the lawful composition combinator, Tablecloth-backed content-addressed derivations) grows from this descriptor later. Tablecloth is the content-addressed store; Brix is the composing language — see the Tablecloth ladder starting at `expanding-prompts/20260620-044012_tablecloth-ladder-index.md` (`10019` split, `10020` build).

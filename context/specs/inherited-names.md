@@ -14,7 +14,7 @@ When Rye inherits a name from Zig — `ArenaAllocator`, `std.heap.ArenaAllocator
 
 **Approved Rye divergence (2026-06-19):** the season allocator on `std.process.Init` is published as **`garden`**, not `arena`. Upstream Zig 0.16.0 calls this field `arena`; Rye's public API uses Tally's word. The backing type remains `*std.heap.ArenaAllocator` — inherited — and the doc comment in `process.zig` names both. Callers use `init.garden.allocator()`.
 
-So the answer to "should we rename everything `arena` to `garden`?" is *layered*: **`Init.garden` yes**; **`ArenaAllocator` no**; **local variables and our prose** should say `garden` where they mean the season allocator (open thread in `work-in-progress/995_open_threads.md`).
+So the answer to "should we rename everything `arena` to `garden`?" is *layered*: **`Init.garden` yes**; **`ArenaAllocator` no**; **local variables and our prose** should say `garden` where they mean the season allocator (open thread in `work-in-progress/20260623-033012_open-threads.md`).
 
 ## Why
 

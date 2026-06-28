@@ -111,7 +111,7 @@ Three milestones, one session, composed not braided:
 - [ ] `brushstroke/seed.rye` + `.gitignore` allow-list
 - [ ] Garden vocabulary sweep (code + docs)
 - [ ] `active-designing/20260620-021212_flow-of-values.md`
-- [ ] `work-in-progress/995_open_threads.md` updated
+- [ ] `work-in-progress/20260623-033012_open-threads.md` updated
 - [ ] `session-logs/99930_20260620-021212.md`
 - [ ] Parity or build proof recorded in session log
 

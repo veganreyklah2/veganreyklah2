@@ -1,7 +1,7 @@
-# 999 · The Work-in-Progress Stack
+# The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-06-19
+**Last updated:** 2026-06-28
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Status:** Foundation
@@ -18,9 +18,11 @@ It is a kindness to our future selves: memory for the *work*, the way Mantra is 
 
 ## How It Counts
 
-This folder counts **down**, the way most of our stacks do — the one exception is the expanding-prompts stack, which counts up like a journal. This foundation holds `999`. Each time we take stock, we write a new snapshot of the open threads at the next number down — `998`, then `997`, and so on — so that, sorted alphabetically, the freshest snapshot rises to the top while the foundation rests at the base. The newest snapshot is the present truth.
+Dated artifacts carry `YYYYMMDD-HHMMSS_short-slug.md`; this README is the living foundation. The reverse-chronological index below reads newest first. Full naming law: [`../context/specs/20260627-102012_one-clock-naming-law.md`](../context/specs/20260627-102012_one-clock-naming-law.md).
 
-Once a snapshot is superseded, it graduates to `archive/` — out of the live folder, yet kept whole as an honest record of what was open, and when. So the live folder shows only the present snapshot and the foundation beneath it, while the full lineage waits one folder down for anyone who wants to read how the work moved.
+Each stock-taking writes a new **open-threads** snapshot stamped at the time of writing — the newest snapshot is the present truth. Once a snapshot is superseded, it graduates to [`archive/`](archive/) — out of the live folder, yet kept whole as an honest record of what was open, and when. Finished scaffolding and other superseded records graduate there too.
+
+The standing roadmap lives in [`ROADMAP.md`](ROADMAP.md) — living, unstamped.
 
 A snapshot is a faithful gathering, not a contract. An item leaves the next snapshot when it is **done**, **decided**, or **set down on purpose** — and that next snapshot says which, so even closure is remembered rather than merely vanishing.
 
@@ -33,6 +35,20 @@ A snapshot is a faithful gathering, not a contract. An item leaves the next snap
 **Not here:** finished work (it lives in its own folder, committed), settled design (active-designing), or study and comparison (external-research). When a thread is truly done, it graduates out of this stack into the place its result belongs, and the next snapshot notes the graduation.
 
 The discipline is simple: if reading a line aloud would make a newcomer ask "so what happens next?", it belongs here until the answer is no longer in doubt.
+
+---
+
+## Live workbench (newest first)
+
+| Stamp | Artifact | Meaning |
+|-------|----------|---------|
+| — | [`ROADMAP.md`](ROADMAP.md) | Living roadmap — standing plan |
+| `20260623-033012` | [Open threads](20260623-033012_open-threads.md) | Current snapshot — what is open now |
+| `20260621-032327` | [Strengthening width crosswalk](20260621-032327_strengthening-width-crosswalk.md) | Pass-doc ↔ stdlib width reference |
+| `20260620-212126` | [usize width baseline](20260620-212126_usize-width-baseline.md) | Tiger/TAME explicit-width charter |
+| `20260620-155342` | [Style audit](20260620-155342_style-audit.md) | TAME and Radiant audit record |
+
+Superseded snapshots and finished records: [`archive/README.md`](archive/README.md).
 
 ---
 
