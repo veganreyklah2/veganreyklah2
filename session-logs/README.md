@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260628-142951` | [batch close handoff for Claude](20260628-142951_batch-close-handoff-for-claude.md) | Linengrow prose + rules sync pushed; collective summary |
 | `20260628-142900` | [session-log rules sync](20260628-142900_session-log-rules-sync.md) | Align Claude/Cursor rules; commit backlog session logs |
 | `20260628-142855` | [Linengrow Radiant prose cleanup](20260628-142855_linengrow-radiant-prose-cleanup.md) | Drop contrastive "rather than" framing; remove stale root dupes |
 | `20260628-142447` | [distilled essays into foundations](20260628-142447_distilled-essays-into-foundations.md) | Seven essays from zip + synthesis weave in foundations |
