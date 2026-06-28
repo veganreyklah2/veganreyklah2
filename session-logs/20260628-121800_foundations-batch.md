@@ -1,6 +1,7 @@
 # Session log — foundations branch batch
 
-**Countdown:** 99785 · **Clock:** 20260628-121800
+**Stamp:** `20260628.121800`
+**Editor:** Cursor · **Model:** Composer
 
 ## Trace
 

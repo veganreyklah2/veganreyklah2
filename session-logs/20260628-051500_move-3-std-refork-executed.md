@@ -1,6 +1,7 @@
 # Session log — Move 3 std re-fork executed
 
-**Stamp:** `20260628-051500`  
+**Stamp:** `20260628.051500`
+**Editor:** Cursor · **Model:** Composer
 **Arc:** Thin frontend four moves — Move 3 (std re-fork)
 
 ## Thinking trace

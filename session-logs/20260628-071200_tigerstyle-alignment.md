@@ -1,6 +1,7 @@
 # Session log — TigerStyle alignment Phases A and B
 
-**Countdown:** 99787 · **Clock:** 20260628-071200
+**Stamp:** `20260628.071200`
+**Editor:** Cursor · **Model:** Composer
 
 ## Trace
 

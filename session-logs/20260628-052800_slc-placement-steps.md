@@ -1,6 +1,7 @@
 # Session log — SLC method doc placement (Steps 0–2)
 
-**Countdown:** 99790 · **Clock:** 20260628-052800
+**Stamp:** `20260628.052800`
+**Editor:** Cursor · **Model:** Composer
 
 ## Trace
 

@@ -1,6 +1,7 @@
 # Session log — SLC method on context shelf (committed)
 
-**Countdown:** 99789 · **Clock:** 20260628-053200
+**Stamp:** `20260628.053200`
+**Editor:** Cursor · **Model:** Composer
 
 ## Trace
 

@@ -4,8 +4,22 @@ Living index for the append-only session stream. Files sort ascending by stamp; 
 
 Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../context/specs/20260627-102012_one-clock-naming-law.md).
 
+**Filename:** `YYYYMMDD-HHMMSS_short-slug.md` — no countdown prefix. **Body:** `**Stamp:**` in dot form (`YYYYMMDD.HHMMSS`); **Editor** and **Model** at the top per `.claude/rules/session-logs.md`.
+
+**Commit discipline:** ship the log in the **same commit** as the work it records whenever possible. A follow-up commit only for the log is a last resort, not the default.
+
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260628-131800` | [session logs one-clock alignment](20260628-131800_session-logs-one-clock-alignment.md) | Drop countdown prefix; fix headers, index, commit discipline |
+| `20260628-130000` | [Codeberg and groupproject36 push](20260628-130000_codeberg-gp36-push.md) | `main` to origin, gp36-codeberg, gp36-github |
+| `20260628-125200` | [Linengrow merge to main](20260628-125200_linengrow-merge-main.md) | Linengrow, TASKS, roadmap, foundations batch merged |
+| `20260628-122200` | [Grokipedia link sweep](20260628-122200_grokipedia-link-sweep.md) | Wikipedia → Grokipedia in our authored markdown |
+| `20260628-121800` | [foundations batch](20260628-121800_foundations-batch.md) | design/foundations-and-kernel-horizon branch |
+| `20260628-071500` | [SLC-1 scope note](20260628-071500_slc-1-scope-note.md) | Hammock spec for Rishi-and-Mantra shell |
+| `20260628-071200` | [TigerStyle alignment](20260628-071200_tigerstyle-alignment.md) | TAME supplement + width-check header |
+| `20260628-053500` | [GitHub push SLC context](20260628-053500_github-push-slc-context.md) | SIMPLE_LOVABLE_COMPLETE on github |
+| `20260628-053200` | [SLC context shelf](20260628-053200_slc-context-shelf.md) | SIMPLE_LOVABLE_COMPLETE commit |
+| `20260628-052800` | [SLC placement steps](20260628-052800_slc-placement-steps.md) | SLC method doc placement Phases 0–2 |
 | `20260628-051500` | [Move 3 std re-fork executed](20260628-051500_move-3-std-refork-executed.md) | Symlink pristine std; witness suite + overlay guard |
 | `20260628-044500` | [thin frontend four moves](20260628-044500_thin-frontend-four-moves.md) | Moves 1,2,4 done; Move 3 plan only |
 | `20260628-043542` | [thin frontend adopted](20260628-043542_thin-frontend-adopted.md) | Direction + four-move prompt prepared |
