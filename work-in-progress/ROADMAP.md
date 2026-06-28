@@ -54,7 +54,7 @@ Grow running seeds into things a person can use *as-is*. See [`gratitude/Your cu
 
 | Ring | What | Status |
 |------|------|--------|
-| **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Next north star** |
+| **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Next north star** — scope [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md) |
 | **SLC 2** | **Pond GUI** — same loop in Brushstroke/Skate window on x86_64 | After Skate text rendering |
 | **Compose** | Comlink device wire → capability table → Comlink v1 → Brix v1 → Tablecloth → Forge | Horizon 2 |
 
@@ -78,7 +78,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/20260621-070712
 
 ### Build (SLC 1 first)
 
-1. **Rishi + Mantra shell loop** — scriptable hosted shell with versioned history; gates green; terminal-complete.
+1. **Rishi + Mantra shell loop** — scriptable hosted shell with versioned history; gates green; terminal-complete. Scope: [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md).
 2. **Rishi builtins** — trim improvements still open.
 3. **Width migration Phase 1b** — `mantra/*` next (decoupled from fork).
 4. **Caravan capability table** — small Rye struct naming what each child may do.

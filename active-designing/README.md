@@ -47,7 +47,8 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
-| `20260622-235012` | [976 · What We Mean by Seed](20260622-235012_what-we-mean-by-seed.md) | A siloed vocabulary brief: the word **seed** names the smallest living version of a module — the thing that runs, proves one honest claim, a |
+| `20260628-071012` | [SLC-1 · Rishi-and-Mantra hosted shell](20260628-071012_slc-1-rishi-mantra-shell.md) | Hammock scope: four verbs (type, run, version, recall); history in `.mantra/`; terminal-complete first ring |
+| `20260628-043542` | [Thin frontend — direction adopted](20260628-043542_thin-frontend-slc-direction.md) | Rye as thin frontend; SLC order; strengthening arc complete |
 | `20260622-232912` | [967 · Caravan — Improving Upon the State of the Art](20260622-232912_caravan-kernel-improvements.md) | A siloed design brief for how Caravan's microkernel improves upon what formal verification and safe-language kernels achieved separately. Th |
 | `20260621-070712` | [968 · The Compiler Fork — Rye Becomes Its Own Language](20260621-070712_the-compiler-fork.md) | A siloed design brief for the moment Rye stops being a derivative and starts compiling its own types. The fork replaces the inherited slice  |
 | `20260621-063912` | [969 · Bron — Token-Efficient Data Notation for the Rye OS Family](20260621-063912_bron-notation.md) | A siloed design brief for Bron (`.bron`), the data notation that carries values between modules, between forges, and between agents — human- |

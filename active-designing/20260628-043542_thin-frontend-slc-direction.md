@@ -49,7 +49,7 @@ Authored-width work (`u32` in published `.rye`, Phase 1b through `mantra/*`) is 
 
 ### 3. SLC order — smaller complete first
 
-**First SLC:** Rishi + Mantra as a hosted, scriptable shell with versioned history — run in a terminal **today**. Simple: one loop. Lovable: yours, gates green. Complete: type → run → version → recall closes without the compositor.
+**First SLC:** Rishi + Mantra as a hosted, scriptable shell with versioned history — run in a terminal **today**. Simple: one loop. Lovable: yours, gates green. Complete: type → run → version → recall closes without the compositor. Scope: [`20260628-071012_slc-1-rishi-mantra-shell.md`](20260628-071012_slc-1-rishi-mantra-shell.md).
 
 **Second SLC:** Pond GUI — Rishi REPL + Mantra in Brushstroke/Skate window on x86_64. Grown from the first ring when Skate text rendering and Wayland are ready.
 
