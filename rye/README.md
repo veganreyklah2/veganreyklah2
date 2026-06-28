@@ -111,7 +111,7 @@ rishi/bin/rishi run tools/parity-selftest.rish # gate turns RED on tamper
 rishi/bin/rishi run tools/additive-gate.rish   # shape of std changes only
 ```
 
-The parity gate compares Rye's `rye/lib` against the pristine toolchain `std` byte-for-byte on behavior. Details live in `../rye-learning-process/998_ALMANAC.md` under *The Gate Trio in Rishi*.
+The parity gate compares Rye's `rye/lib` against the pristine toolchain `std` byte-for-byte on behavior. Details live in `../rye-learning-process/ALMANAC.md` under *The Gate Trio in Rishi*.
 
 ---
 

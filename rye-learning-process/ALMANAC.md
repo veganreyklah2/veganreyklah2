@@ -1,4 +1,4 @@
-# 998 · The Rye Almanac
+# The Rye Almanac
 
 *A growing reference of how Rye and its Zig 0.16.0 toolchain actually work — each entry earned by running code, recorded so the next builder need not rediscover it.*
 
