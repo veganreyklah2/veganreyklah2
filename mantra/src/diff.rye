@@ -12,6 +12,7 @@
 //! Pure functions — no file I/O, no side effects.
 
 const std   = @import("std");
+const assert = std.debug.assert;
 const Weave = @import("weave.rye").Weave;
 const Line  = @import("weave.rye").Line;
 const Diff  = @import("weave.rye").Diff;
@@ -98,8 +99,8 @@ pub fn diff(
         .inserts = try inserts.toOwnedSlice(allocator),
         .deletes = try deletes.toOwnedSlice(allocator),
     };
-    std.debug.assert(result.inserts.len <= n); // can't insert more than the new text has
-    std.debug.assert(result.deletes.len <= m); // can't delete more than the old text had
+    assert(result.inserts.len <= n); // can't insert more than the new text has
+    assert(result.deletes.len <= m); // can't delete more than the old text had
     return result;
 }
 

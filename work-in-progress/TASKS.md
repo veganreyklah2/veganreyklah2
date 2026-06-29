@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-29 (TH-2 tame-check informational; TH-2b keystone next)
+**Last updated:** 2026-06-29 (TH-2b Mantra bare assert; TH-2c / TH-3 next)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -64,7 +64,8 @@ SLC-1 promised the four-verb loop; this milestone hardens the code beside it. Le
 - [x] **TH-0b — dual-editor rules + aligner** — session-log one-clock rules synced; `tools/align_session_logs.rye` replaces Python; Claude/Cursor `tame-guidance` rules match supplement seam policy; `992` width baseline aligned (`2026-06-29`).
 - [x] **TH-1 — width-check refinement (ruling #1)** — seam-aware lint; sanctioned `@intCast` / `@as(usize` pass; authored `usize` still flagged; witness `tools/width_check_th1.rish` on Tally exemplar + authored fixture (`2026-06-29`).
 - [x] **TH-2 — first `tame-check` lints** — `tools/tame-check.rish` + `tools/fixtures/tame_check_scan.sh`; unqualified-assert, no `Self = @This()`, tabs/trailing whitespace; informational; witness `tools/tame_check_th2.rish` (`2026-06-29`).
-- [ ] **TH-2b — Mantra assert compliance** — bare `assert` throughout `mantra/*`; green under `tame-check`.
+- [x] **TH-2b — Mantra assert compliance** — bare `assert` throughout `mantra/*`; import-once binding; witness `tools/tame_check_th2b.rish` gates module clean (`2026-06-29`).
+- [ ] **TH-2c — hosted modules bare assert** — same rename for Tally, Caravan, Rishi, Comlink, Brushstroke; mechanical; small per-module commits; then flip `tame-check` to hard gate.
 - [ ] **TH-3 — `mantra/*` Phase 1b width** — `u32`/`u64` migration; green under refined `width-check`.
 - [ ] **TH-4 — `.brix` dead-path mend** — replace stale WIP paths with `ROADMAP.md` / `TASKS.md`; stamp `20260629.004912`.
 - [ ] **TH-5 — `rishi/*` width pass** — explicit widths in shell seed; green under refined lint.

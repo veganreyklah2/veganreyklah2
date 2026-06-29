@@ -51,3 +51,8 @@ say "witness suite: TH-2 tame-check informational…"
 let th2 = run ["rishi/bin/rishi" "run" "tools/tame_check_th2.rish"]
 assert th2.ok else "TH-2 tame-check witness failed"
 say "GREEN: TH-2 tame-check witness passed."
+
+say "witness suite: TH-2b Mantra bare assert…"
+let th2b = run ["rishi/bin/rishi" "run" "tools/tame_check_th2b.rish"]
+assert th2b.ok else "TH-2b Mantra bare assert witness failed"
+say "GREEN: TH-2b Mantra bare assert witness passed."

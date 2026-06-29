@@ -14,6 +14,7 @@
 //! Part of Mantra — TAME-first from line one.
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 /// A single line in the weave. Once added, its position is permanent.
 ///
@@ -64,13 +65,13 @@ pub const Weave = struct {
             var found = false;
             for (self.lines.items) |*line| {
                 if (line.pos == target_pos) {
-                    std.debug.assert(line.gen % 2 == 1); // must be present to delete
+                    assert(line.gen % 2 == 1); // must be present to delete
                     line.gen += 1;                       // odd → even: mark gone
                     found = true;
                     break;
                 }
             }
-            std.debug.assert(found); // deleting a position that does not exist is a caller error
+            assert(found); // deleting a position that does not exist is a caller error
         }
 
         // Process inserts: each new line enters at generation 1 (first appearance,
@@ -81,15 +82,15 @@ pub const Weave = struct {
                 .gen   = 1,
                 .pos   = self.next_pos,
             };
-            std.debug.assert(line.gen % 2 == 1); // new lines are always present
+            assert(line.gen % 2 == 1); // new lines are always present
             try self.lines.append(allocator, line);
             self.next_pos += 1;
         }
 
         // Postcondition: every line in the weave has a valid, assigned position.
         for (self.lines.items) |line| {
-            std.debug.assert(line.gen >= 1);
-            std.debug.assert(line.pos < self.next_pos);
+            assert(line.gen >= 1);
+            assert(line.pos < self.next_pos);
         }
     }
 
@@ -113,11 +114,11 @@ pub const Weave = struct {
 
         // Postcondition: result is sorted and all entries are present.
         for (result) |line| {
-            std.debug.assert(line.gen % 2 == 1);
+            assert(line.gen % 2 == 1);
         }
         for (result, 0..) |line, i| {
             if (i + 1 < result.len) {
-                std.debug.assert(result[i].pos < result[i + 1].pos);
+                assert(result[i].pos < result[i + 1].pos);
             }
             _ = line;
         }

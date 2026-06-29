@@ -16,6 +16,7 @@
 //!   store.writeHead(io, name)            !void
 
 const std  = @import("std");
+const assert = std.debug.assert;
 const Dir  = std.Io.Dir;
 const Sha3 = std.crypto.hash.sha3.Sha3_256;
 
@@ -47,7 +48,7 @@ pub const Store = struct {
     /// allocated from `allocator`). If the blob already exists, a write is
     /// skipped — content-addressing guarantees the existing content matches.
     pub fn writeBlob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, data: []const u8) ![]const u8 {
-        std.debug.assert(data.len > 0); // writing an empty blob is always a caller error
+        assert(data.len > 0); // writing an empty blob is always a caller error
 
         // Compute the SHA3-256 digest and hex-encode it as the name.
         var digest: [Sha3.digest_length]u8 = undefined;
@@ -65,7 +66,7 @@ pub const Store = struct {
 
     /// Read a blob by its name. Returns the content, allocated from `allocator`.
     pub fn readBlob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, name: []const u8) ![]u8 {
-        std.debug.assert(name.len == Sha3.digest_length * 2); // names are always 64 hex chars
+        assert(name.len == Sha3.digest_length * 2); // names are always 64 hex chars
         // Allocate a read buffer sized to the maximum we expect for a single-file weave.
         const buf = try allocator.alloc(u8, 1024 * 1024); // 1 MiB ceiling for seed
         const content = try self.blobs_dir.readFile(io, name, buf);
@@ -88,7 +89,7 @@ pub const Store = struct {
 
     /// Write a new HEAD, pointing to `name` (a 64-char hex blob name).
     pub fn writeHead(self: *const Store, io: std.Io, name: []const u8) !void {
-        std.debug.assert(name.len == Sha3.digest_length * 2);
+        assert(name.len == Sha3.digest_length * 2);
         // Write "name\n" as HEAD.
         var buf: [65]u8 = undefined;
         const head_content = std.fmt.bufPrint(&buf, "{s}\n", .{name}) catch unreachable;
