@@ -34,6 +34,7 @@
 //!   rishi run <file.rish>    Read and run a single .rish script.
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 /// Rishi's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger, the same clock Rye keeps. This is Rishi's founding stamp.
@@ -116,6 +117,53 @@ const Env = struct {
     }
 };
 
+const max_history: u32 = 50; // recent input lines kept for :history and (Step 3) :recall
+const max_transcript_bytes: u32 = 65536; // the session transcript's ceiling, in bytes
+
+/// A bounded ring of the most recent input lines. Bounded on purpose: the
+/// limit is named, so a long session meets a clear edge rather than growing
+/// without end. The oldest line is released when the ring is full.
+const History = struct {
+    items: [max_history][]const u8 = undefined,
+    count: u32 = 0,
+
+    fn record(self: *History, line: []const u8) void {
+        assert(self.count <= max_history); // invariant: never past the ceiling
+        if (self.count == max_history) {
+            var i: u32 = 1;
+            while (i < max_history) : (i += 1) self.items[i - 1] = self.items[i];
+            self.items[max_history - 1] = line;
+        } else {
+            self.items[self.count] = line;
+            self.count += 1;
+        }
+        assert(self.count <= max_history); // invariant: still in range
+    }
+};
+
+/// The durable record the weave remembers: prompt, input, and caught errors,
+/// in order, bounded by a named ceiling. Held in memory until :version writes
+/// it whole to .mantra/session.log. Builtin stdout is horizon — not captured.
+const Transcript = struct {
+    bytes: [max_transcript_bytes]u8 = undefined,
+    len: u32 = 0,
+
+    /// Append text if it fits. Returns false at the edge — the caller then
+    /// invites a :version to checkpoint, rather than wrapping in silence.
+    fn append(self: *Transcript, text: []const u8) bool {
+        assert(self.len <= max_transcript_bytes);
+        assert(text.len <= std.math.maxInt(u32));
+        const add: u32 = @intCast(text.len);
+        if (add > max_transcript_bytes - self.len) return false; // bounded edge
+        const start: usize = @intCast(self.len);
+        const end: usize = @intCast(self.len + add);
+        @memcpy(self.bytes[start..end], text);
+        self.len += add;
+        assert(self.len <= max_transcript_bytes);
+        return true;
+    }
+};
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const args = try init.minimal.args.toSlice(garden);
@@ -154,12 +202,86 @@ fn printUsage() void {
     , .{rishi_version});
 }
 
+fn transcriptInviteVersion() void {
+    std.debug.print("rishi: session transcript near its bound — type :version to checkpoint\n", .{});
+}
+
+fn transcriptAppend(transcript: *Transcript, text: []const u8) void {
+    if (!transcript.append(text)) transcriptInviteVersion();
+}
+
+fn transcriptAppendPromptLine(transcript: *Transcript, line: []const u8) void {
+    transcriptAppend(transcript, "rishi> ");
+    transcriptAppend(transcript, line);
+    transcriptAppend(transcript, "\n");
+}
+
+fn transcriptAppendError(transcript: *Transcript, err_name: []const u8) void {
+    transcriptAppend(transcript, "  error: ");
+    transcriptAppend(transcript, err_name);
+    transcriptAppend(transcript, "\n");
+}
+
+fn mantraBinPath(init: std.process.Init) []const u8 {
+    // RISHI_MANTRA overrides; otherwise "mantra" on PATH (settled ruling).
+    return init.environ_map.get("RISHI_MANTRA") orelse "mantra";
+}
+
+fn runMantra(garden: std.mem.Allocator, io: std.Io, init: std.process.Init, sub_args: []const []const u8) !std.process.RunResult {
+    const bin = mantraBinPath(init);
+    const argv = try garden.alloc([]const u8, sub_args.len + 1);
+    argv[0] = bin;
+    for (sub_args, 0..) |arg, i| argv[i + 1] = arg;
+    return std.process.run(garden, io, .{ .argv = argv });
+}
+
+fn runExitedOk(result: std.process.RunResult) bool {
+    return result.term == .exited and result.term.exited == 0;
+}
+
+fn ensureMantraStore(garden: std.mem.Allocator, io: std.Io, init: std.process.Init, store_ready: *bool) !void {
+    if (store_ready.*) return;
+    const cwd = std.Io.Dir.cwd();
+    cwd.access(io, ".mantra", .{}) catch |err| switch (err) {
+        error.FileNotFound => {
+            const init_result = try runMantra(garden, io, init, &.{"init"});
+            if (!runExitedOk(init_result)) {
+                std.debug.print("rishi: mantra init failed: {s}\n", .{init_result.stderr});
+                return error.CommandFailed;
+            }
+        },
+        else => return err,
+    };
+    store_ready.* = true;
+}
+
+fn doVersion(garden: std.mem.Allocator, io: std.Io, init: std.process.Init, transcript: *const Transcript, store_ready: *bool) !void {
+    try ensureMantraStore(garden, io, init, store_ready);
+    const cwd = std.Io.Dir.cwd();
+    const data = transcript.bytes[0..@as(usize, @intCast(transcript.len))];
+    try cwd.writeFile(io, .{ .sub_path = ".mantra/session.log", .data = data });
+    const add_result = try runMantra(garden, io, init, &.{ "add", ".mantra/session.log" });
+    if (runExitedOk(add_result)) {
+        std.debug.print("{s}", .{add_result.stdout});
+    } else {
+        const code: i64 = switch (add_result.term) {
+            .exited => |c| @as(i64, c),
+            else => -1,
+        };
+        std.debug.print("rishi: mantra add failed ({d}): {s}\n", .{ code, add_result.stderr });
+        return error.CommandFailed;
+    }
+}
+
 /// Interactive loop — read a line, evaluate it, carry bindings forward. Meta-
 /// commands begin with `:`; `:quit` ends the session cleanly.
 fn runRepl(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
     var env = Env{};
+    var history: History = .{};
+    var transcript: Transcript = .{};
+    var store_ready = false;
     var stdin_buffer: [4096]u8 = undefined;
     var file_reader = std.Io.File.Reader.initStreaming(std.Io.File.stdin(), io, &stdin_buffer);
     const reader = &file_reader.interface;
@@ -174,16 +296,37 @@ fn runRepl(init: std.process.Init) !u8 {
         if (line.len == 0) continue;
 
         if (line[0] == ':') {
+            transcriptAppendPromptLine(&transcript, line);
             if (std.mem.eql(u8, line, ":quit") or std.mem.eql(u8, line, ":q")) return 0;
+            if (std.mem.eql(u8, line, ":history")) {
+                var i: u32 = 0;
+                while (i < history.count) : (i += 1) {
+                    std.debug.print("  {d}  {s}\n", .{ i + 1, history.items[i] });
+                }
+                continue;
+            }
+            if (std.mem.eql(u8, line, ":version")) {
+                doVersion(garden, io, init, &transcript, &store_ready) catch |err| {
+                    std.debug.print("rishi: {s}\n", .{@errorName(err)});
+                    transcriptAppendError(&transcript, @errorName(err));
+                };
+                continue;
+            }
             std.debug.print("rishi: unknown meta-command '{s}'\n", .{line});
             continue;
         }
+
+        transcriptAppendPromptLine(&transcript, line);
+        const kept = try garden.dupe(u8, line);
+        history.record(kept);
 
         evalStatement(garden, io, &env, line) catch |err| {
             if (err == error.AssertionFailed) {
                 // doAssert already named the broken fact.
             } else {
-                std.debug.print("rishi: {s}\n  {s}\n", .{ @errorName(err), line });
+                const err_name = @errorName(err);
+                std.debug.print("rishi: {s}\n  {s}\n", .{ err_name, line });
+                transcriptAppendError(&transcript, err_name);
             }
             continue;
         };

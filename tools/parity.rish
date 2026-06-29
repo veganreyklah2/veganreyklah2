@@ -26,3 +26,8 @@ say "witness suite: SLC-1 Step 1 repl…"
 let slc1 = run ["rishi/bin/rishi" "run" "tools/slc1_repl_step1.rish"]
 assert slc1.ok else "SLC-1 Step 1 repl witness failed"
 say "GREEN: SLC-1 Step 1 repl witness passed."
+
+say "witness suite: SLC-1 Step 2 version…"
+let slc1v = run ["rishi/bin/rishi" "run" "tools/slc1_version_step2.rish"]
+assert slc1v.ok else "SLC-1 Step 2 version witness failed"
+say "GREEN: SLC-1 Step 2 version witness passed."

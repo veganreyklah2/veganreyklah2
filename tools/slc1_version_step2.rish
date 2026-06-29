@@ -1,0 +1,10 @@
+# slc1_version_step2.rish — witness for SLC-1 Step 2: :version weaves session into Mantra.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/slc1_version_step2.rish
+
+let result = run ["sh" "tools/fixtures/slc1_version_step2.sh"]
+
+assert result.ok else "rishi repl version pass exited non-zero"
+assert result.out contains "GREEN: SLC-1 Step 2" else "version did not advance HEAD with a blob"
+say "GREEN: SLC-1 Step 2 — the session versions into Mantra."
