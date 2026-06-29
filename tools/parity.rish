@@ -21,3 +21,8 @@ let codes = map runs as r: r.code
 let failures = where codes as c: c != 0
 assert length failures == 0 else "a witness failed — the regression suite is RED"
 say "GREEN: all witnesses passed against pristine std."
+
+say "witness suite: SLC-1 Step 1 repl…"
+let slc1 = run ["rishi/bin/rishi" "run" "tools/slc1_repl_step1.rish"]
+assert slc1.ok else "SLC-1 Step 1 repl witness failed"
+say "GREEN: SLC-1 Step 1 repl witness passed."

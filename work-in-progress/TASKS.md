@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-28 (SLC-1 Step 1 landed)
+**Last updated:** 2026-06-28 (witness suite green; SLC-1 Step 1 sealed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -17,15 +17,15 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [ ] **Run the witness suite on metal** — build `rye`, run `rishi/bin/rishi run tools/parity.rish` once; seal the thin-frontend arc green. If any of the 17 re-forked files surface an old postcondition, meet it at the call site per `work-in-progress/20260628-044200_call-site-harvest.md` — never by copying `std` back.
+- [x] **Run the witness suite on metal** — `rishi/bin/rishi run tools/parity.rish` green (116 `rye run` witnesses + SLC-1 repl); `parity-selftest.rish` green. Build with `HOME` on project disk (`/home/xy/veganreyklah2/.build-home`) — host tmpfs at `/home/xy` is full.
 - [x] **SLC-1, Step 1 — the interactive loop** — `rishi repl` (bare `rishi` or `rishi repl`), in-process evaluator, bindings carried forward line to line; `:quit` / `:q`; witness `tools/slc1_repl_step1.rish` green.
   - [x] **1a — entry points** — bare `rishi` and `rishi repl` both start the loop; `rishi run` and `rishi version` unchanged.
   - [x] **1b — type** — fixed prompt `rishi> `; stdin via `takeDelimiterInclusive('\n')`; trim `\r\n` from each line.
   - [x] **1c — run** — `evalStatement` in-process; shared `Env`; evaluation errors print and continue (no exit).
   - [x] **1d — meta (minimal)** — `:quit` and `:q` end cleanly; other `:` lines report unknown meta-command.
   - [x] **1e — witness** — `tools/fixtures/slc1_repl_step1.input` + `tools/slc1_repl_step1.rish` assert binding carry-forward (`let x = 7` then `say "${x}"` → `7`).
-  - [ ] **1f — register** — add `slc1_repl_step1.rish` to `tools/parity.rish` once the suite runs green on metal.
-- [ ] **`init.garden` → `init.arena` harvest** — pristine `vendor/zig-toolchain` std uses `arena`; migrate remaining `.rye` call sites (18 noted in harvest) — `rishi/src/main.rye` done for this pass.
+  - [x] **1f — register** — `tools/slc1_repl_step1.rish` appended to `tools/parity.rish`.
+- [ ] **`init.garden` → `init.arena` harvest** — pristine `vendor/zig-toolchain` std uses `arena`; migrate remaining `.rye` call sites (18 noted in harvest) — `rishi/src/main.rye` and `rye/src/main.rye` done for this pass.
 - [ ] **Width migration Phase 1b — `mantra/*`** — migrate authored widths to `u32`/`u64` per the supplement; `width-check.rish` green. Decoupled from any fork.
 
 ### Linengrow

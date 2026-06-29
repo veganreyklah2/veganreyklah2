@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260628-124512` (Linengrow track; two tracks one spine)
-**Last updated:** 2026-06-28 (SLC-1 Step 1 landed)
+**Last updated:** 2026-06-28 (witness suite green; SLC-1 Step 1 sealed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`20260628-044200_call-site-harvest.md`](20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (witness regression suite), `parity-selftest.rish` (std symlink guard), `additive-gate.rish`. All in Rishi.
+**Gate trio:** `parity.rish` (117 witnesses — 116 `rye run` + SLC-1 repl), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-06-28`).
 
 ---
 
@@ -102,7 +102,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/20260621-070712
 
 ### Build (SLC 1 first)
 
-**Gate before the SLC-1 merge:** `rishi/bin/rishi run tools/parity.rish` green once on metal (116 witnesses). New loop witness: `tools/slc1_repl_step1.rish` (register in parity when the suite is green).
+**Gate before the SLC-1 merge:** ~~`rishi/bin/rishi run tools/parity.rish` green once on metal~~ **done** (`2026-06-28`) — 116 witnesses + `slc1_repl_step1.rish` registered in parity.
 
 **SLC-1 build order** (granular; mirrors [`TASKS.md`](TASKS.md)):
 
