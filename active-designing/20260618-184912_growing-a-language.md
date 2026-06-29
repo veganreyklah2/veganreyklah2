@@ -4,10 +4,12 @@
 
 **Language:** EN
 **Version:** `20260618.184912` (Rye chronological stamp)
-**Last updated:** 2026-06-18
+**Last updated:** 2026-06-29
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME priority — safety, performance, then the joy of the craft
 **Status:** Active Design
+
+*Reviewed in the yonder sweep on 2026-06-29 and kept active — canonical TAME Guidance organization brief.*
 
 ---
 

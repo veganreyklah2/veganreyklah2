@@ -7,7 +7,7 @@
 **Last updated:** 2026-06-17
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME Style (`TAME_STYLE.md`); systems lineage honored in `20260620-014412_system.md`
-**Builds on:** `yonder/20260617-195612_ownerboot-riscv-caravan.md`, `20260617-195712_caravan-tally-networking.md`
+**Builds on:** `yonder/20260617-195612_ownerboot-riscv-caravan.md`, `yonder/20260617-195712_caravan-tally-networking.md`
 **Status:** Exploration
 
 ---

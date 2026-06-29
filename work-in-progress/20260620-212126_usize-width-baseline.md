@@ -5,6 +5,8 @@
 **Policy:** `context/TAME_GUIDANCE.md` · `gratitude/TIGER_STYLE.md` · `active-designing/970`
 **Status:** Living inventory. Prefer `u32`/`u64` in authored APIs; `usize` only at the inherited-std seam with assert + `@intCast`. Compiler fork (slice `len: u32`) is a **horizon** — active track is explicit widths + lint beside SLC.
 
+*Reviewed in the yonder sweep on 2026-06-29 and kept active — canonical width inventory.*
+
 ---
 
 ## The Law

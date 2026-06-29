@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-06-29
+**Last updated:** 2026-06-29 (yonder pass three; affirm-kept rule)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -96,6 +96,17 @@ The distinction matters: `yonder/` is a horizon, not a graveyard. A truly finish
 **The active test:** a document stays one level deep while it drives present implementation; it moves to `yonder/` when it becomes future, dormant, consumed, or realized-as-code. Move by `git mv` so history stays whole, and update any reference that points at the old path.
 
 **Age is a hint, not the test.** What sends a file to `yonder/` is that it has become future, dormant, consumed, or realized-as-code — never its stamp alone. A document that is foundational to the design, or that is actively cited by other living files, stays where it is however old it reads. Relevance and inbound references outrank the date.
+
+**Affirming a kept file.** Marking a file reviewed-and-kept is done in the file, not by renaming it. A re-stamp that bubbles a file to the bottom suits an *ordinary, lightly-cited* document, where the sort cue helps and the few references are cheap to move. A *canonical reference* — one many files cite — keeps its stable name and is affirmed in place: its `Last updated` and a short affirmation line carry the signal, and its citation density already tells anyone it is load-bearing. Renaming what a hundred files depend on, to gain a sort cue nobody needed, trades a real promise for a small convenience.
+
+### Reviewed and kept (`2026-06-29`)
+
+| File | Why kept |
+|------|----------|
+| `active-designing/20260618-182412_single-stranded.md` | Foundational one-value-model brief; widely cited |
+| `work-in-progress/20260620-212126_usize-width-baseline.md` | Canonical width inventory; cited from `TAME_GUIDANCE` |
+| `expanding-prompts/20260620-210812_explicit-width-audit.md` | Width charter; heavily cited across strengthening docs |
+| `active-designing/20260618-184912_growing-a-language.md` | Canonical TAME Guidance organization brief |
 
 ---
 

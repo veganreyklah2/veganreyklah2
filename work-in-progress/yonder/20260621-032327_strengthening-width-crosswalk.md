@@ -1,8 +1,8 @@
 # 993 · Strengthening ↔ Width Crosswalk
 
 **Stamp:** `20260623.033012`
-**Parent:** `20260620-212126_usize-width-baseline.md`
-**Lexicon:** `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`
+**Parent:** `../20260620-212126_usize-width-baseline.md`
+**Lexicon:** `../../strengthening-compiler/0000_STRENGTHENING_LEXICON.md`
 
 ---
 

@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260618.215512` (Rye chronological stamp — the moment of taking)
-**Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Style:** Radiant (see `../../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME Style; active-designing principles (one value model, simplicity, the gates); critical evaluation through every filter we hold
 

@@ -4,9 +4,12 @@
 
 **Language:** EN
 **Version:** `20260620.210812` (Rye chronological stamp)
+**Last updated:** 2026-06-29
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME · Tiger Style (`gratitude/TIGER_STYLE.md`, `external-research/TAME_STYLE.md`) · inherited-names · parity gate
+
+*Reviewed in the yonder sweep on 2026-06-29 and kept active — width charter, heavily cited.*
 
 ---
 
