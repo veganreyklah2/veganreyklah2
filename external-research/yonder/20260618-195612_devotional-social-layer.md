@@ -8,7 +8,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME Style (`TAME_STYLE.md`); active-designing principles; critical evaluation through every filter we hold
-**Reads alongside:** `20260618-195512_encrypted-networking-riscv.md`; sources honored in `../gratitude/nips`, `../gratitude/primal`, `../gratitude/damus`, `../gratitude/sui`
+**Reads alongside:** `yonder/20260618-195512_encrypted-networking-riscv.md`; sources honored in `../gratitude/nips`, `../gratitude/primal`, `../gratitude/damus`, `../gratitude/sui`
 **Structure:** mission · problem · opportunity · architecture · caveats · longer horizon · conclusion
 
 ---

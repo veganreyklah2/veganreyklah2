@@ -6,7 +6,7 @@
 //! fence on each side keeps the order honest — the buffer is published before the
 //! flag, and read after it. This is the smallest "wire": the mailbox a sealed
 //! datagram will one day ride between two harts, and later between two machines,
-//! where Comlink truly begins (active-designing/993; external-research/20260618-195512_encrypted-networking-riscv.md, /982).
+//! where Comlink truly begins (active-designing/993; external-research/yonder/20260618-195512_encrypted-networking-riscv.md, /982).
 //!
 //! Run with `RYE_SMP=2 ../run.sh wire`.
 

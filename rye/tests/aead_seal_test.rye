@@ -2,7 +2,7 @@
 //! new ideas lean on, after signing and key agreement. It seals a payload so
 //! only the right key opens it, and rejects any tampering. Combined with X25519
 //! (the shared key) and Ed25519 (the attestation), this is how a message is
-//! sealed to an identity (active-designing/993; external-research/20260618-212112_content-centric-messaging.md, /985).
+//! sealed to an identity (active-designing/993; external-research/yonder/20260618-212112_content-centric-messaging.md, /985).
 //!
 //! Deterministic — a fixed key and nonce — so the output is identical on every
 //! run and across the baseline and the strengthened std, for the parity gate.

@@ -5,7 +5,7 @@
 //! it — and speaks the name over the console. This is where Aurora's bare-metal
 //! reach meets Mantra's content-addressing: the cryptography our network leans
 //! on, proven to run freestanding on RISC-V. The seal and the full encrypted
-//! datagram grow from here (active-designing/993; external-research/20260618-212112_content-centric-messaging.md, /985).
+//! datagram grow from here (active-designing/993; external-research/yonder/20260618-212112_content-centric-messaging.md, /985).
 //!
 //! Build and run with `../run.sh named`. Same machine as the seed and relay:
 //! QEMU's `virt`, UART at 0x1000_0000, test finisher at 0x10_0000.

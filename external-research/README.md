@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-06-29 (yonder pass seven; root duplicate cleanup)
+**Last updated:** 2026-06-29 (yonder pass eight; pond-foundation affirmed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -65,13 +65,13 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260619-153212` | [Where Building Met Design — a Progress Map at the Turn](yonder/20260619-153212_where-building-met-design.md) | Consumed survey — superseded by ROADMAP + TASKS; in `yonder/` |
 | `20260619-070612` | [980 · Brushstroke and the Documentation Surface — a Drawn Interface for Rye, and How the System Shows Itself](20260619-070612_brushstroke-and-the-docs-surface.md) | Two strands, woven into one rope. The first is a plain question: should we begin documenting Rye OS in earnest — Rishi's |
 | `20260619-035912` | [One Identity, Many Keys — and a Fractal Address Space](yonder/20260619-035912_unified-keys-and-address-space.md) | Horizon — companion to consumed prompt in `expanding-prompts/yonder/`; in `yonder/` |
-| `20260618-212112` | [982 · A Content-Centric Messenger, From the Network In](20260618-212112_content-centric-messaging.md) | A message is a meaning meant for someone. This study designs the smallest honest way to carry one — content-named, encry |
-| `20260618-204012` | [983 · Borrow Checking, the Garden, and Correctness by Construction](20260618-204012_borrow-checking-and-correctness.md) | A question worth asking carefully: would borrowing inspiration from Rust's borrow checker contradict TAME's love of stat |
+| `20260618-212112` | [Content-Centric Messenger — From the Network In](yonder/20260618-212112_content-centric-messaging.md) | Realized-origin — Comlink/Aurora carry the seeds; messenger is horizon; in `yonder/` |
+| `20260618-204012` | [Borrow Checking, the Garden, and Correctness by Construction](yonder/20260618-204012_borrow-checking-and-correctness.md) | Canonized in `TAME_GUIDANCE` and kept briefs; in `yonder/` |
 | `20260618-195612` | [A Devotional Social Layer, Kept Simple](yonder/20260618-195612_devotional-social-layer.md) | Horizon — social atop Comlink; Linengrow carries civic commerce; in `yonder/` |
-| `20260618-195512` | [985 · Encrypted Networking, From the Boot Upward](20260618-195512_encrypted-networking-riscv.md) | How does a machine come to speak to another machine — from the firmware that wakes it, through the boot, up into a runni |
-| `20260618-190312` | [986 · Reading Aurora and Mantra Through the Decided Design](20260618-190312_decided-design-aurora-mantra.md) | Aurora (`993`) and Mantra (`998`) were written before the active-designing stack settled its principles — Gall's Law, th |
-| `20260618-180812` | [987 · The Bounded Enclosure — How Rye, Tablecloth, Rishi, and Mantra Serve Pond, Caravan, and Tally](20260618-180812_pond-foundation.md) | Pond re-grows over the kernel's isolation primitives — and in our own world, those primitives are ours: **Caravan**, the |
-| `20260618-150112` | [989 · One Language or More? Rye, the Shell, and the Voices of an OS](20260618-150112_voices-of-an-os.md) | Exploration |
+| `20260618-195512` | [Encrypted Networking, From the Boot Upward](yonder/20260618-195512_encrypted-networking-riscv.md) | Realized-origin — Comlink and Aurora sealed datagram; in `yonder/` |
+| `20260618-190312` | [Reading Aurora and Mantra Through the Decided Design](yonder/20260618-190312_decided-design-aurora-mantra.md) | Realized analysis — modules built; in `yonder/` |
+| `20260618-180812` | [Pond's Foundation — The Bounded Enclosure Beneath Pond, Caravan, and Tally](20260618-180812_pond-foundation.md) | Kept active — Pond ring foundation; affirmed pass eight |
+| `20260618-150112` | [One Language or More? Rye, the Shell, and the Voices of an OS](yonder/20260618-150112_voices-of-an-os.md) | Settled — see kept `growing-a-language`; in `yonder/` |
 | `20260617-201612` | [Useful Utilities — What We Lean On, and What We'll Re-Grow](yonder/20260617-201612_useful-utilities.md) | Realized-origin — re-grow inventory; live plan is ROADMAP/TASKS; in `yonder/` |
 | `20260617-195812` | [Aurora: A Boot Designed for RISC-V](yonder/20260617-195812_aurora-boot-riscv.md) | Realized-origin — Aurora boots; reunites ownerboot trio in `yonder/` |
 | `20260617-195712` | [994 · Caravan, Tally, and the Shape of Networking](yonder/20260617-195712_caravan-tally-networking.md) | Realized-origin — Caravan and Tally live; companion to ownerboot in `yonder/` |

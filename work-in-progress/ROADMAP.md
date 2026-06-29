@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260628-124512` (Linengrow track; two tracks one spine)
-**Last updated:** 2026-06-29 (TASKS swept; Skate next — Claude)
+**Last updated:** 2026-06-29 (conventions codified; ROADMAP witness/width hygiene)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -36,7 +36,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 | Module | Seed | Witnesses |
 |--------|------|-----------|
-| **Rye** | Thin frontend; `rye/lib/std` → vendor symlink | 116 witness regression suite |
+| **Rye** | Thin frontend; `rye/lib/std` → vendor symlink | 132 witness regression suite |
 | **Aurora** | Six-stage relay + deciding stage on RISC-V | Freestanding |
 | **Caravan** | seed → bounded → twin → chain | Hosted, asserted |
 | **Tally** | seed + named gardens (blob/diff/frame) | 15 invariants |
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (120 witnesses — 116 `rye run` + four SLC-1), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-06-29`); additive-gate runs when std changes land.
+**Gate trio:** `parity.rish` (**132 witnesses** — `rye run` regression suite + SLC-1 + hosted `width-check`), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-06-29`); additive-gate runs when std changes land.
 
 ---
 
@@ -62,11 +62,11 @@ Grow running seeds into things a person can use *as-is*. See [`gratitude/Your cu
 
 | Ring | What | Status |
 |------|------|--------|
-| **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Done** (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; scope [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md). Width/TAME hardening is the **next milestone**, not part of this close. |
+| **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Done** (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; scope [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md). TAME hardening **complete** (`2026-06-29`). |
 | **SLC 2** | **Pond GUI** — same loop in Brushstroke/Skate window on x86_64 | After Skate text rendering |
 | **Compose** | Comlink device wire → capability table → Comlink v1 → Brix v1 → Tablecloth → Forge | Horizon 2 |
 
-**Authored width migration** (Phase 1b: `brushstroke/*` done; **`mantra/*` next**) continues — good Tiger on its own, enforced by `width-check.rish`; **not** fork-work.
+**Authored width migration** — **complete and blocking in parity** (TH-3 through TH-7; hosted `width-check`). Remaining authored surfaces migrate as-you-touch beside SLC-2; not a pending milestone.
 
 ---
 
@@ -102,7 +102,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/20260621-070712
 
 ### Build (SLC 1 first)
 
-**Gate before the SLC-1 merge:** ~~`rishi/bin/rishi run tools/parity.rish` green once on metal~~ **done** (`2026-06-28`) — 116 witnesses + `slc1_repl_step1.rish` registered in parity.
+**Gate before the SLC-1 merge:** ~~`rishi/bin/rishi run tools/parity.rish` green once on metal~~ **done** (`2026-06-28`) — parity suite green; SLC-1 witnesses registered (now **132** total with hosted `width-check`).
 
 **SLC-1 build order** (granular; mirrors [`TASKS.md`](TASKS.md)):
 
@@ -119,7 +119,6 @@ Prior fork steps F0–F5 remain documented in [`active-designing/20260621-070712
 2. **Caravan capability table** — small Rye struct naming what each child may do; first step toward the microkernel.
 3. **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests.
 4. **Rishi builtins** — trim improvements still open (optional, as-you-touch).
-5. **Width migration Phase 1b** — `mantra/*` and remaining authored surfaces; decoupled from fork; as-you-touch beside SLC-2.
 
 ### Ground (thin frontend)
 

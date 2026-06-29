@@ -9,7 +9,7 @@
 //!
 //! This is a sealed value crossing the wire between two harts: the smallest seed
 //! of Comlink (active-designing/992 shape-casting, /993 the bounded network;
-//! external-research/20260618-212112_content-centric-messaging.md content-centric messaging, /985 encrypted networking).
+//! external-research/yonder/20260618-212112_content-centric-messaging.md content-centric messaging, /985 encrypted networking).
 //!
 //! Run with `RYE_SMP=2 ../run.sh posted`.
 

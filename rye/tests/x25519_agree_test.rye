@@ -2,7 +2,7 @@
 //! lean on, after signing. Two identities, each holding only their own secret
 //! and the other's public key, derive the *same* shared secret without ever
 //! sending it. This is how a message is sealed *to an identity* rather than to
-//! a channel (active-designing/993; external-research/20260618-195512_encrypted-networking-riscv.md, /982), and it is the
+//! a channel (active-designing/993; external-research/yonder/20260618-195512_encrypted-networking-riscv.md, /982), and it is the
 //! next seed on the path to the encrypted, content-named datagram.
 //!
 //! Deterministic throughout — fixed seeds — so the output is identical on every

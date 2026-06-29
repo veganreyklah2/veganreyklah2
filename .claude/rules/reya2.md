@@ -15,3 +15,4 @@ Apply Radiant Style to chats, commit messages, specs, and prose. Full guide: `co
 - **Third-party source** lives in `vendor/` (for example, `vendor/zig`), held locally and left unmodified.
 - **Slower to go faster.** Embrace strict, capable tools early so the whole project finishes sooner.
 - **Prune with care.** Welcome the question of which chats and files still serve us, and release what no longer does.
+- **Collaboration rhythm:** when to keep going vs pause for a Claude ruling — `.claude/rules/collaboration.md` and `ORGANIZING.md`.

@@ -11,7 +11,7 @@
 //! freestanding ELF and `qemu-system-riscv64 -machine virt` to wake it. The
 //! fuller vision of Aurora lives in
 //! `../../external-research/yonder/20260617-195812_aurora-boot-riscv.md`, read forward through
-//! `../../external-research/20260618-190312_decided-design-aurora-mantra.md`.
+//! `../../external-research/yonder/20260618-190312_decided-design-aurora-mantra.md`.
 //!
 //! The addresses below belong to QEMU's `virt` machine: a 16550-style console
 //! UART whose transmit register sits at 0x1000_0000, and a test device at

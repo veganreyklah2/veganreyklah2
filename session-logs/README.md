@@ -10,7 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260629.225845 | [push confirm cfc8eb5](20260629-225845_push-confirm-tip-cfc8eb5.md) | Four remotes up-to-date; no pending diff. |
+| 20260629.225312 | [codify conventions and yonder pass eight](20260629-225312_codify-conventions-yonder-pass-eight.md) | Collaboration rules; pond-foundation affirmed; six to yonder; ROADMAP 132/width. |
 | 20260629.225245 | [TASKS sweep and root cleanup](20260629-225245_tasks-sweep-root-cleanup.md) | Pruned completed blocks; removed root duplicate markdown. |
 | `20260629-212045` | [Affirm kept and yonder pass three](20260629-212045_affirm-kept-yonder-pass-three.md) | affirm-not-rename; ownerboot pair reunited; crosswalk to yonder. |
 | `20260629-211626` | [Yonder passes two–five — commit and push](20260629-211626_yonder-passes-commit-push.md) | `63547a0` on all four remotes. |
