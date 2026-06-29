@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-29 (SLC-1 Step 3 sealed; acceptance in reach)
+**Last updated:** 2026-06-29 (SLC-1 done — four verbs proven together)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -17,7 +17,7 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [x] **Run the witness suite on metal** — `rishi/bin/rishi run tools/parity.rish` green (116 `rye run` witnesses + SLC-1 repl + version + recall); `parity-selftest.rish` green. Build with `HOME` on project disk (`/home/xy/veganreyklah2/.build-home`) — host tmpfs at `/home/xy` is full.
+- [x] **Run the witness suite on metal** — `rishi/bin/rishi run tools/parity.rish` green (116 `rye run` witnesses + four SLC-1); `parity-selftest.rish` green. Build with `HOME` on project disk (`/home/xy/veganreyklah2/.build-home`) — host tmpfs at `/home/xy` is full.
 - [x] **SLC-1, Step 1 — the interactive loop** — `rishi repl` (bare `rishi` or `rishi repl`), in-process evaluator, bindings carried forward line to line; `:quit` / `:q`; witness `tools/slc1_repl_step1.rish` green.
   - [x] **1a — entry points** — bare `rishi` and `rishi repl` both start the loop; `rishi run` and `rishi version` unchanged.
   - [x] **1b — type** — fixed prompt `rishi> `; stdin via `takeDelimiterInclusive('\n')`; trim `\r\n` from each line.
@@ -26,7 +26,7 @@
   - [x] **1e — witness** — `tools/fixtures/slc1_repl_step1.input` + `tools/slc1_repl_step1.rish` assert binding carry-forward (`let x = 7` then `say "${x}"` → `7`).
   - [x] **1f — register** — `tools/slc1_repl_step1.rish` appended to `tools/parity.rish`.
 - [x] **`init.garden` → `init.arena` harvest** — pristine `vendor/zig-toolchain` std uses `arena`; all authored `.rye` call sites migrated (`2026-06-29`). `brushstroke/wayland_seed.rye` link still needs Wayland dev headers on the host (unchanged).
-- [ ] **Width migration Phase 1b — `mantra/*`** — migrate authored widths to `u32`/`u64` per the supplement; `width-check.rish` green. Decoupled from any fork.
+- [x] **SLC-1 acceptance** — `tools/slc1_accept.rish` green; four verbs in one session; parity 120; gate trio confirmed on metal (`2026-06-29`). Closed on the **functional promise** — type, run, version, recall. Width migration on touched files and `width-check` refinement remain the **TAME-hardening milestone** (below), not folded into SLC-1.
 
 ### Linengrow
 - [x] **Infuse the vision** — place the business model and venture pitch in `linengrow/`, with a README connecting Linengrow to the Rye OS spine (this pass).
@@ -52,9 +52,19 @@
   - [x] **3a — `:recall <n>`** — `recallByIndex` + shared `runInputLine`; re-runs ring entry as if typed.
   - [x] **3b — `!<n>` alias** — shorthand via `recallByIndex` before the `:` meta block.
   - [x] **3c — witness** — `tools/slc1_recall_step3.rish` green; two `RE-RAN` prints prove re-run; registered in `parity.rish`.
-- [ ] **SLC-1 acceptance** — type → run → version → recall closes on metal; gate trio green; pristine-`std` guard green; `rishi run`/`version` behavior unchanged; meta-commands documented in `rishi/README` (done) or `rye-learning-process/ALMANAC.md`.
+
+### TAME hardening — next milestone (distinct from SLC-1 close)
+
+SLC-1 promised the four-verb loop; this milestone hardens the code beside it. Led by width-check refinement (ruling #1, already approved).
+
+- [ ] **Width-check refinement (ruling #1)** — replace substring scan with seam-aware rules so sanctioned casts (e.g. Tally `bufLenU32`) pass; unrefined gate today reads red on honest seam casts in Steps 2–3.
+- [ ] **Width migration Phase 1b — `mantra/*`** — migrate authored widths to `u32`/`u64` per the supplement; `width-check.rish` green. Decoupled from any fork.
+- [ ] **Width migration — `rishi/*`** — explicit widths in the shell seed; green under refined `width-check`.
+- [ ] **First TAME lints (Phase C)** — grow `tools/tame-check.rish`: unqualified-assert, no `Self = @This()`, no tabs / trailing whitespace.
+- [ ] **`.brix` dead-path mend** — stamp `20260629.004912` for Phase 6 when the mend lands.
+
+### Rye OS — further rings
 - [ ] **Caravan capability table** — a small Rye struct naming what each child may do; the first true step toward the microkernel. Asserted; witnessed.
-- [ ] **First TAME lints (Phase C)** — grow `tools/tame-check.rish` beside the `mantra/*` work, cheapest first, each with a witness: unqualified-assert (flag `std.debug.assert(` / `debug.assert(`), no `Self = @This()`, no tabs / trailing whitespace.
 - [ ] **Skate text rendering** — text on screen; unlocks SLC-2.
 
 ### Linengrow

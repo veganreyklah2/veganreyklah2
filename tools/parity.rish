@@ -36,3 +36,8 @@ say "witness suite: SLC-1 Step 3 recall…"
 let slc1r = run ["rishi/bin/rishi" "run" "tools/slc1_recall_step3.rish"]
 assert slc1r.ok else "SLC-1 Step 3 recall witness failed"
 say "GREEN: SLC-1 Step 3 recall witness passed."
+
+say "witness suite: SLC-1 acceptance…"
+let slc1a = run ["rishi/bin/rishi" "run" "tools/slc1_accept.rish"]
+assert slc1a.ok else "SLC-1 acceptance witness failed"
+say "GREEN: SLC-1 acceptance witness passed."

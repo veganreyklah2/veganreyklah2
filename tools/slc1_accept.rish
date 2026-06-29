@@ -1,0 +1,10 @@
+# slc1_accept.rish — SLC-1 acceptance: the four verbs proven together in one pass.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/slc1_accept.rish
+
+let result = run ["sh" "tools/fixtures/slc1_accept.sh"]
+
+assert result.ok else "SLC-1 acceptance pass exited non-zero"
+assert result.out contains "GREEN: SLC-1 ACCEPT" else "the four verbs did not all prove out in one session"
+say "GREEN: SLC-1 ACCEPT — type, run, version, recall all breathe on one pass."
