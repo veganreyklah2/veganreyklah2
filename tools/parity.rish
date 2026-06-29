@@ -76,3 +76,23 @@ say "witness suite: TH-5 Rishi width…"
 let th5 = run ["rishi/bin/rishi" "run" "tools/width_check_th5.rish"]
 assert th5.ok else "TH-5 Rishi width witness failed"
 say "GREEN: TH-5 Rishi width witness passed."
+
+say "witness suite: RS-1 script args…"
+let rs1 = run ["rishi/bin/rishi" "run" "tools/rs1_args.rish"]
+assert rs1.ok else "RS-1 script args witness failed"
+say "GREEN: RS-1 script args witness passed."
+
+say "witness suite: RS-2 flag parse…"
+let rs2 = run ["rishi/bin/rishi" "run" "tools/rs2_flag.rish"]
+assert rs2.ok else "RS-2 flag parse witness failed"
+say "GREEN: RS-2 flag parse witness passed."
+
+say "witness suite: RS-3 launch-cursor args…"
+let rs3 = run ["rishi/bin/rishi" "run" "tools/rs3_launch_cursor.rish"]
+assert rs3.ok else "RS-3 launch-cursor witness failed"
+say "GREEN: RS-3 launch-cursor witness passed."
+
+say "witness suite: TH-6 Comlink width…"
+let th6 = run ["rishi/bin/rishi" "run" "tools/width_check_th6.rish"]
+assert th6.ok else "TH-6 Comlink width witness failed"
+say "GREEN: TH-6 Comlink width witness passed."

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-29 (TH-4 .brix mend + TH-5 Rishi width done; RS-1 next — Claude strategy)
+**Last updated:** 2026-06-29 (TH-6 Comlink width; Aurora width next for global green)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -53,8 +53,8 @@
   - [x] **3a — `:recall <n>`** — `recallByIndex` + shared `runInputLine`; re-runs ring entry as if typed.
   - [x] **3b — `!<n>` alias** — shorthand via `recallByIndex` before the `:` meta block.
   - [x] **3c — witness** — `tools/slc1_recall_step3.rish` green; two `RE-RAN` prints prove re-run; registered in `parity.rish`.
-- [ ] **Rishi script arguments** — see **RS-1** through **RS-3** under TAME hardening (travels beside it; both live in Rishi).
-- [ ] **Launcher graduation** — **RS-3** under TAME hardening.
+- [ ] **Rishi script arguments** — see **RS-1** through **RS-3** under TAME hardening (all done).
+- [x] **Launcher graduation** — **RS-3** under TAME hardening.
 
 ### TAME hardening — next milestone (distinct from SLC-1 close)
 
@@ -69,10 +69,11 @@ SLC-1 promised the four-verb loop; this milestone hardens the code beside it. Le
 - [x] **TH-3 — `mantra/*` Phase 1b width** — seven sites in `diff.rye` then `main.rye`; seam policy canonical in `TAME_GUIDANCE`; witness `tools/width_check_th3.rish`; global `width-check` still RED until Rishi/Comlink (`2026-06-29`).
 - [x] **TH-4 — `.brix` dead-path mend** — `ROADMAP.md` / `TASKS.md` replace retired paths; stamp `20260629.004912`; witness `tools/width_check_th4.rish` (`2026-06-29`).
 - [x] **TH-5 — `rishi/*` width pass** — in-memory indices and counts to `u32` with seam casts; witness `tools/width_check_th5.rish`; global `width-check` still RED until Comlink (`2026-06-29`).
+- [x] **TH-6 — `comlink/hosted_wire.rye` width pass** — wire offsets and capacities to `u64` with seam casts at slice and libc boundaries; witness `tools/width_check_th6.rish`; global `width-check` still RED until Aurora (`2026-06-29`).
 
-- [ ] **Rishi script arguments (RS-1)** — pass `args[3..]` through `rishi run`; expose `args` list to scripts; bounded count; witness flag-reading `.rish`. **Pause for Claude strategy** before starting.
-- [ ] **Rishi script arguments (RS-2)** — `--flag value` parse helper.
-- [ ] **Launcher graduation (RS-3)** — `launch-cursor.rish` reads `--appimage`; retire `cursor-jail.sh` flag layer.
+- [x] **Rishi script arguments (RS-1)** — `args[3..]` pre-bound as `.list` of `.string`; `.len` and `[n]` on lists; `max_args` bound; witness `tools/rs1_args.rish` (`2026-06-29`).
+- [x] **Rishi script arguments (RS-2)** — `flag args "--name"` scans for exact flag token, returns following string; friendly errors; witness `tools/rs2_flag.rish` (`2026-06-29`).
+- [x] **Launcher graduation (RS-3)** — `launch-cursor.rish` reads `--appimage`/`--gpu` via `flag` and `contains`; `--extract` stays on `cursor-jail.sh`; witness `tools/rs3_launch_cursor.rish` (`2026-06-29`).
 
 - [ ] **Aurora invariant notes (optional)** — say-why rationales beside `catch unreachable` in `aurora/src/seed.rye`; freestanding only; no width or assert lint.
 

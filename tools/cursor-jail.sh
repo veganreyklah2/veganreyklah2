@@ -24,9 +24,10 @@ EXTRACT=""
 
 usage() {
   cat <<'EOF'
-Usage: ./tools/cursor-jail.sh [options]
+Usage: ./tools/cursor-jail.sh [options] [APPRUN]
 
-  --appimage PATH   Path to Cursor AppRun (default: squashfs-root/AppRun in the repo)
+  APPRUN            Path to Cursor AppRun (positional; default: squashfs-root/AppRun)
+  --appimage PATH   Same as positional APPRUN (legacy; prefer rishi run launch-cursor.rish)
   --extract IMAGE   Extract an AppImage into squashfs-root/, then launch
   --gpu             Pass --gpu to ai-jail (GNOME Wayland / WebGPU)
   -h, --help        Show this help
@@ -57,10 +58,14 @@ while [ $# -gt 0 ]; do
       usage
       exit 0
       ;;
-    *)
+    --*)
       echo "cursor-jail: unknown option: $1" >&2
       usage >&2
       exit 2
+      ;;
+    *)
+      APPRUN="$1"
+      shift
       ;;
   esac
 done

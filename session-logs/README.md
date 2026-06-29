@@ -10,7 +10,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| `20260629-175959` | [TH-4 and TH-5 — .brix mend and Rishi width](20260629-175959_th4-brix-th5-rishi-width.md) | .brix tracks ROADMAP/TASKS; Rishi zero authored usize; parity 127; RS-1 needs Claude. |
+| `20260629-195640` | [TH-6 — Comlink hosted wire width](20260629-195640_th6-comlink-width.md) | u64 wire offsets; global width-check 11/12; Aurora remains. |
+| `20260629-195133` | [RS-1 through RS-3 — script args and launcher](20260629-195133_rs1-rs3-script-args-launcher.md) | args, flag helper, launch-cursor; parity 130; Comlink width next. |
+| `20260629-194323` | [RS-1 — script args pre-bound](20260629-194323_rs1-script-args.md) | args as .list of .string; .len and [n]; parity 128. |
+| `20260629-175959` | [TH-4 and TH-5 — .brix mend and Rishi width](20260629-175959_th4-brix-th5-rishi-width.md) | .brix tracks ROADMAP/TASKS; Rishi zero authored usize; parity 127. |
 | `20260629-175044` | [TH-3 — Mantra width and seam policy](20260629-175044_th3-mantra-width-seam-policy.md) | Seven sites cleared; TAME_GUIDANCE seam rule; parity 125; global width-check still RED. |
 | `20260629-175044` | [Silo Technique — filed in context home](20260629-175044_silo-technique-filed.md) | Portable silo guide beside Radiant Style and REYA2. |
 | `20260629-173543` | [TH-2c — four-remote push confirmation](20260629-173543_th-2c-four-remote-push.md) | `085d3dd` on origin, github, gp36-codeberg, gp36-github. |

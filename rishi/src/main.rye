@@ -17,7 +17,9 @@
 //! to check whether a string begins or ends with a given affix; `length` for strings
 //! and lists; `trim` to remove surrounding whitespace; `slice` for bounded substring;
 //! `join` to compose a list of strings with a separator; `if/then/else` for
-//! conditional execution; and `for-each` for iteration with effects.
+//! conditional execution; and `for-each` for iteration with effects. For scripts run
+//! with `rishi run`, a pre-bound `args` list (`.list` of `.string`) holds the words
+//! after the script path, readable with `.len` and `[n]` — no new value kind.
 //! It is the shell that runs
 //! the gate trio (`tools/parity.rish`, `tools/parity-selftest.rish`,
 //! `tools/additive-gate.rish`) and grows toward `examples/pond.rish`
@@ -119,6 +121,7 @@ const Env = struct {
 
 const max_history: u32 = 50; // recent input lines kept for :history and (Step 3) :recall
 const max_transcript_bytes: u32 = 65536; // the session transcript's ceiling, in bytes
+const max_args: u32 = 64; // script argv bound — friendly error past this, not a crash
 
 /// A bounded ring of the most recent input lines. Bounded on purpose: the
 /// limit is named, so a long session meets a clear edge rather than growing
@@ -406,23 +409,55 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
         return 1;
     };
 
-    return interpret(garden, io, source);
+    var env = Env{};
+    bindScriptArgs(garden, &env, args[3..]) catch |err| switch (err) {
+        error.TooManyScriptArgs => {
+            std.debug.print("rishi run: too many arguments (max {d})\n", .{max_args});
+            return 2;
+        },
+        else => return err,
+    };
+
+    return interpret(garden, io, &env, source);
+}
+
+/// Pre-bind `args` as a `.list` of `.string` — the words after the script path.
+/// Each argument is duped into the garden; the process argv seam uses assert +
+/// `@intCast` at the count boundary. RS-1 adds no new value kind.
+fn bindScriptArgs(allocator: std.mem.Allocator, env: *Env, script_args: []const [:0]const u8) !void {
+    assert(script_args.len <= std.math.maxInt(u32));
+    const count: u32 = @intCast(script_args.len);
+    if (count > max_args) return error.TooManyScriptArgs;
+    const items = try allocator.alloc(Value, count);
+    for (script_args, 0..) |arg, i| {
+        const owned = try allocator.dupe(u8, arg);
+        items[i] = .{ .string = owned };
+    }
+    try env.bind("args", .{ .list = items });
 }
 
 /// Run a Rishi script, line by line. Returns 0 when the whole script runs, or 1
 /// at the first line that does not make sense — named with its line number, so
 /// the trouble is easy to find.
-fn interpret(allocator: std.mem.Allocator, io: std.Io, source: []const u8) u8 {
-    var env = Env{};
+fn interpret(allocator: std.mem.Allocator, io: std.Io, env: *Env, source: []const u8) u8 {
     var line_no: u32 = 0;
     var lines = std.mem.splitScalar(u8, source, '\n');
     while (lines.next()) |raw| {
         line_no += 1;
         const line = std.mem.trim(u8, raw, " \t\r\n");
         if (line.len == 0 or line[0] == '#') continue;
-        evalStatement(allocator, io, &env, line) catch |err| {
+        evalStatement(allocator, io, env, line) catch |err| {
             if (err == error.AssertionFailed) {
                 // doAssert already named the broken fact; add where it broke.
+                std.debug.print("  at line {d}: {s}\n", .{ line_no, line });
+            } else if (err == error.ListIndexOutOfRange) {
+                std.debug.print("rishi: list index out of range\n", .{});
+                std.debug.print("  at line {d}: {s}\n", .{ line_no, line });
+            } else if (err == error.FlagNotFound) {
+                std.debug.print("rishi: flag not found in args\n", .{});
+                std.debug.print("  at line {d}: {s}\n", .{ line_no, line });
+            } else if (err == error.FlagNeedsValue) {
+                std.debug.print("rishi: flag requires a value\n", .{});
                 std.debug.print("  at line {d}: {s}\n", .{ line_no, line });
             } else {
                 std.debug.print("rishi: line {d}: {s}\n  {s}\n", .{ line_no, @errorName(err), line });
@@ -488,6 +523,12 @@ const EvalError = error{
     EndsWithNeedsString,
     IndexOfNeedsString,
     LengthNeedsStringOrList,
+    FlagNeedsList,
+    FlagNeedsName,
+    FlagNeedsString,
+    FlagNeedsStringElements,
+    FlagNotFound,
+    FlagNeedsValue,
     TrimNeedsString,
     SliceNeedsString,
     SliceNeedsInt,
@@ -498,6 +539,10 @@ const EvalError = error{
     SplitNeedsString,
     SplitEmptySeparator,
     TooManyBindings,
+    TooManyScriptArgs,
+    ListIndexNeedsList,
+    ListIndexNeedsInt,
+    ListIndexOutOfRange,
     StringTooLong,
     UnterminatedInterpolation,
     OutOfMemory,
@@ -533,8 +578,8 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     // absorbs the comparison. Each arm recurses through evalExpr so infix
     // builtins, prefix builtins, and arithmetic all parse on the same arm.
     if (findComparison(text)) |cmp| {
-        const left = try evalExpr(allocator, io, env, cmp.left);
-        const right = try evalExpr(allocator, io, env, cmp.right);
+        const left = try evalExpr(allocator, io, env, std.mem.trim(u8, cmp.left, " \t"));
+        const right = try evalExpr(allocator, io, env, std.mem.trim(u8, cmp.right, " \t"));
         const equal = valuesEqual(left, right);
         return .{ .boolean = if (cmp.op == .ne) !equal else equal };
     }
@@ -608,6 +653,9 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     }
     if (std.mem.startsWith(u8, trimmed, "length ")) {
         return doLength(allocator, io, env, trimmed[7..]);
+    }
+    if (std.mem.startsWith(u8, trimmed, "flag ")) {
+        return doFlag(allocator, io, env, trimmed[5..]);
     }
     if (std.mem.startsWith(u8, trimmed, "trim ")) {
         return doTrim(allocator, io, env, trimmed[5..]);
@@ -952,6 +1000,38 @@ fn doLength(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []co
     };
 }
 
+/// `flag <list> <name>` — scan a list of strings for an exact flag token and
+/// return the following string. RS-2 helper: scripts read `--name value` from `args`
+/// without a new value kind — same five shapes, one scan idiom beside `length`.
+fn doFlag(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []const u8) EvalError!Value {
+    var tok = TokenIter{ .text = rest };
+    const list_token = tok.next() orelse return error.FlagNeedsList;
+    const name_token = tok.next() orelse return error.FlagNeedsName;
+    const list_value = try evalOperand(allocator, io, env, list_token);
+    const items = switch (list_value) {
+        .list => |l| l,
+        else => return error.FlagNeedsList,
+    };
+    const name_value = try evalOperand(allocator, io, env, name_token);
+    const flag_name = switch (name_value) {
+        .string => |s| s,
+        else => return error.FlagNeedsString,
+    };
+    var i: u32 = 0;
+    while (i < items.len) : (i += 1) {
+        const token = switch (items[@intCast(i)]) {
+            .string => |s| s,
+            else => return error.FlagNeedsStringElements,
+        };
+        if (std.mem.eql(u8, token, flag_name)) {
+            const next = i + 1;
+            if (next >= items.len) return error.FlagNeedsValue;
+            return items[@intCast(next)];
+        }
+    }
+    return error.FlagNotFound;
+}
+
 /// `trim <expr>` — remove leading and trailing ASCII whitespace.
 fn doTrim(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []const u8) EvalError!Value {
     const value = try evalExpr(allocator, io, env, arg);
@@ -1199,6 +1279,9 @@ fn evalOperand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: [
     if (std.mem.startsWith(u8, s, "length ")) {
         return doLength(allocator, io, env, s[7..]);
     }
+    if (std.mem.startsWith(u8, s, "flag ")) {
+        return doFlag(allocator, io, env, s[5..]);
+    }
     if (std.mem.startsWith(u8, s, "trim ")) {
         return doTrim(allocator, io, env, s[5..]);
     }
@@ -1211,23 +1294,91 @@ fn evalOperand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: [
     if (std.mem.startsWith(u8, s, "split ")) {
         return doSplit(allocator, io, env, s[6..]);
     }
-    // `base.field.field…` reads a field from a record, one step at a time.
+    // `list[n]` — index a list; out-of-range is a friendly error, not a crash.
+    if (findListOpenBracket(s)) |br| {
+        const close = findClosingBracket(s, br) orelse return error.ExpectedValue;
+        if (close + 1 == @as(u32, @intCast(s.len))) {
+            const base_text = std.mem.trim(u8, s[0..@intCast(br)], " \t");
+            const index_text = std.mem.trim(u8, s[@intCast(br + 1)..@intCast(close)], " \t");
+            const base = try evalOperand(allocator, io, env, base_text);
+            const items = switch (base) {
+                .list => |l| l,
+                else => return error.ListIndexNeedsList,
+            };
+            const idx_val = try evalExpr(allocator, io, env, index_text);
+            const idx = switch (idx_val) {
+                .int => |x| x,
+                else => return error.ListIndexNeedsInt,
+            };
+            if (idx < 0) return error.ListIndexOutOfRange;
+            const uidx: u32 = @intCast(idx);
+            if (uidx >= items.len) return error.ListIndexOutOfRange;
+            return items[@intCast(uidx)];
+        }
+    }
+    // `base.field.field…` reads a field from a record, or `.len` on a list/string.
     if (findTopLevel(s, '.')) |dot| {
         var value = try evalOperand(allocator, io, env, s[0..@intCast(dot)]);
         var rest = s[@intCast(dot + 1)..];
         while (true) {
             const next_dot = findTopLevel(rest, '.');
             const field = std.mem.trim(u8, if (next_dot) |nd| rest[0..@intCast(nd)] else rest, " \t");
-            const fields = switch (value) {
-                .record => |r| r,
-                else => return error.NotARecord,
-            };
-            value = findField(fields, field) orelse return error.NoSuchField;
+            if (std.mem.eql(u8, field, "len")) {
+                value = switch (value) {
+                    .list => |items| .{ .int = @intCast(items.len) },
+                    .string => |str| .{ .int = @intCast(str.len) },
+                    else => return error.LengthNeedsStringOrList,
+                };
+            } else {
+                const fields = switch (value) {
+                    .record => |r| r,
+                    else => return error.NotARecord,
+                };
+                value = findField(fields, field) orelse return error.NoSuchField;
+            }
             if (next_dot) |nd| rest = rest[@intCast(nd + 1)..] else break;
         }
         return value;
     }
     return env.lookup(s) orelse error.UndefinedName;
+}
+
+/// Find the first `[` at bracket depth zero — not the same as findTopLevel(s, '['),
+/// which treats `[` as opening depth before matching the target.
+fn findListOpenBracket(text: []const u8) ?u32 {
+    var in_quote = false;
+    var depth: u32 = 0;
+    var i: u32 = 0;
+    while (i < @as(u32, @intCast(text.len))) : (i += 1) {
+        const c = text[@intCast(i)];
+        if (c == '"') {
+            in_quote = !in_quote;
+        } else if (in_quote) {
+        } else if (c == '[' and depth == 0) {
+            return i;
+        } else if (c == '[' or c == '{' or c == '(') {
+            depth += 1;
+        } else if ((c == ']' or c == '}' or c == ')') and depth > 0) {
+            depth -= 1;
+        }
+    }
+    return null;
+}
+
+/// Find the closing `]` that matches `[` at `open`, ignoring nested brackets.
+fn findClosingBracket(text: []const u8, open: u32) ?u32 {
+    var depth: u32 = 1;
+    var i: u32 = open + 1;
+    while (i < @as(u32, @intCast(text.len))) : (i += 1) {
+        const c = text[@intCast(i)];
+        if (c == '[') {
+            depth += 1;
+        } else if (c == ']') {
+            depth -= 1;
+            if (depth == 0) return i;
+        }
+    }
+    return null;
 }
 
 /// Find a value among a record's fields by name, most-recent-wins on a duplicate.
