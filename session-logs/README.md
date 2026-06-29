@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260629-211626` | [Yonder passes two–five — commit and push](20260629-211626_yonder-passes-commit-push.md) | `63547a0` on all four remotes. |
 | `20260629-211348` | [Yonder pass five — redirect stubs](20260629-211348_yonder-redirect-stubs.md) | three executed redirect stubs to yonder; paths fixed. |
 | `20260629-210920` | [TASKS sweep and main-track to yonder](20260629-210920_tasks-sweep-main-track-yonder.md) | TAME hardening collapsed in TASKS; main-track consumed. |
 | `20260629-210715` | [Yonder pass three — cursor prompts](20260629-210715_yonder-pass-three-cursor-prompts.md) | 19 consumed cursor prompts to yonder; width-audit charter kept. |
