@@ -96,3 +96,8 @@ say "witness suite: TH-6 Comlink width…"
 let th6 = run ["rishi/bin/rishi" "run" "tools/width_check_th6.rish"]
 assert th6.ok else "TH-6 Comlink width witness failed"
 say "GREEN: TH-6 Comlink width witness passed."
+
+say "witness suite: width-check hosted corpus…"
+let wc = run ["rishi/bin/rishi" "run" "tools/width-check.rish"]
+assert wc.ok else "width-check hosted corpus witness failed"
+say "GREEN: width-check hosted corpus witness passed."

@@ -48,7 +48,7 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 | `20260623-033012` | [Open threads](20260623-033012_open-threads.md) | Current snapshot — pre-direction; refresh next stock-taking |
 | `20260621-032327` | [Strengthening width crosswalk](20260621-032327_strengthening-width-crosswalk.md) | Pass-doc ↔ stdlib width reference |
 | `20260620-212126` | [usize width baseline](20260620-212126_usize-width-baseline.md) | Tiger/TAME explicit-width charter |
-| `20260620-155342` | [Style audit](20260620-155342_style-audit.md) | TAME and Radiant audit record |
+| `20260620-155342` | [Style audit](yonder/20260620-155342_style-audit.md) | Stale audit record — live threads lifted to TASKS; in `yonder/` |
 
 Superseded snapshots and finished records: [`archive/README.md`](archive/README.md).
 

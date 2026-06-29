@@ -24,6 +24,7 @@ const isa_atomic: usize = 1 << ('A' - 'A');
 const isa_multiply: usize = 1 << ('M' - 'A');
 
 /// The machine's identity — what stage one learned.
+/// usize here is XLEN on rv64: the honest width for CSR values (hartid, misa).
 const Machine = struct {
     hartid: usize,
     isa: usize,
@@ -144,6 +145,7 @@ fn stageAnnounce(decision: Decision) noreturn {
 // =========================================================================
 
 fn readCsr(comptime name: []const u8) usize {
+    // Register return is XLEN-wide; usize is the machine word on rv64.
     return asm volatile ("csrr %[out], " ++ name
         : [out] "=r" (-> usize),
     );

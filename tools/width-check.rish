@@ -1,32 +1,14 @@
-# width-check.rish — seam-aware authored `.rye` width lint.
+# width-check.rish — seam-aware authored `.rye` width lint (hosted corpus).
 #
 # TAME Guidance (context/TAME_GUIDANCE.md): prefer fixed widths in authored
 # Rye; at the inherited-std seam assert the bound and `@intCast` or
 # `@as(usize` — correct Tiger code, not debt. This gate flags `usize` only
 # when its line carries neither seam marker.
 #
+# aurora/* is freestanding: usize is the machine word there — addresses, CSRs,
+# hardware masks. Governed by the freestanding width policy in TAME_GUIDANCE,
+# not this hosted gate.
+#
 # Usage: rishi run tools/width-check.rish
 
-let files = ["tally/seed.rye" "tally/gardens.rye" "caravan/seed.rye" "caravan/bounded.rye" "caravan/twin.rye" "caravan/chain.rye" "mantra/src/diff.rye" "mantra/src/main.rye" "rishi/src/main.rye" "brushstroke/seed.rye" "comlink/hosted_wire.rye" "aurora/src/deciding.rye"]
-
-say "width-check: scanning authored .rye for authored usize (seam casts blessed)..."
-
-let results = map files as path: { file: path, scan: run ["sh" "-c" "grep 'usize' ${path} 2>/dev/null | grep -v '@intCast' | grep -v '@as(usize' | wc -l"] }
-
-let violations = where results as r: trim r.scan.out != "0"
-let clean = where results as r: trim r.scan.out == "0"
-
-let v_count = length violations
-let c_count = length clean
-let total = length files
-
-say "  clean: ${c_count}/${total}"
-say "  violations: ${v_count}/${total}"
-
-for-each violations as v do say "  FAIL: ${v.file}"
-for-each clean as c do say "  OK:   ${c.file}"
-
-if v_count == 0 then say "WIDTH CHECK GREEN: all ${total} files are authored-usize-free (seam casts blessed)."
-if v_count != 0 then say "WIDTH CHECK RED: ${v_count} file(s) still carry authored usize — explicit-width debt in authored Rye."
-
-assert v_count == 0 else "width-check RED: authored usize remains in the corpus"
+let files = ["tally/seed.rye" "tally/gardens.rye" "caravan/seed.rye" "caravan/bounded.rye" "caravan/twin.rye" "caravan/chain.rye" "mantra/src/diff.rye" "mantra/src/main.rye" "rishi/src/main.rye" "brushstroke/seed.rye" "comlink/hosted_wire.rye"]

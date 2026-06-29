@@ -76,7 +76,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260617-195812` | [993 · Aurora: A Boot Designed for RISC-V](20260617-195812_aurora-boot-riscv.md) | Exploration |
 | `20260617-195712` | [994 · Caravan, Tally, and the Shape of Networking](20260617-195712_caravan-tally-networking.md) | Exploration |
 | `20260617-195612` | [995 · Ownerboot at the Reset Vector](20260617-195612_ownerboot-riscv-caravan.md) | Exploration |
-| `20260617-195312` | [998 · Mantra: Version Control as a Weave](20260617-195312_mantra.md) | Exploration |
+| `20260617-195312` | [998 · Mantra: Version Control as a Weave](yonder/20260617-195312_mantra.md) | Origin story — module live; in `yonder/` |
 
 ## How To Add an Exploration
 

@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-06-28
+**Last updated:** 2026-06-29
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -78,6 +78,22 @@ The placements for any given season are recorded in `session-logs/` — what mov
 ## The One Clock
 
 Every dated artifact names itself `YYYYMMDD-HHMMSS_short-slug.md`. Later is always larger. Living documents (`README.md`, `ROADMAP.md`, `TASKS.md`, the discipline files) carry **Last updated** and evolve in place. Full law: `context/specs/20260627-102012_one-clock-naming-law.md`.
+
+---
+
+## Sort as Priority: the `yonder/` Horizon
+
+A folder's own alphabetical order carries its priority, so the listing itself shows what matters now. Presently active implementation — the specs, prompts, and strategies driving an SLC or a working product in progress — rests one level deep, where date-stamped names surface the recent first. Deferred-but-alive work rests one level deeper, in a **`yonder/`** whose name sorts toward the bottom and points ahead: dormant strategies, horizon ideas, research whose module has since been built, prompts already consumed whose ideas still beckon.
+
+Three tiers, each with a clear purpose:
+
+- **Active** (one level deep) — what we are engaged with now.
+- **`yonder/`** (two levels deep) — points *forward*; kept because the idea is alive and may return.
+- **`archive/`** (two levels deep) — points *backward*; done or superseded, kept only for the honest record.
+
+The distinction matters: `yonder/` is a horizon, not a graveyard. A truly finished or dead file goes to `archive/` rather than `yonder/`.
+
+**The active test:** a document stays one level deep while it drives present implementation; it moves to `yonder/` when it becomes future, dormant, consumed, or realized-as-code. Move by `git mv` so history stays whole, and update any reference that points at the old path.
 
 ---
 

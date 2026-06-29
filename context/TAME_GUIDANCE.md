@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-06-29 (TH-3 seam policy; Mantra width exemplar)
+**Last updated:** 2026-06-29 (TH-7 freestanding width; width-check in parity; POSIX seam note)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -85,6 +85,8 @@ A value is: a string, an integer, a boolean, a list of values, a record of named
 
 A value crosses module boundaries without being serialized to text and reparsed on the other side. When that seam would open, close it.
 
+POSIX interop at the process boundary is a seam, not the model — see [`active-designing/20260629-203012_posix-a-seam-not-a-model.md`](../active-designing/20260629-203012_posix-a-seam-not-a-model.md).
+
 ### 6. State invariants positively
 
 Lead with what holds. The affirmative form is easier to get right and easier to read aloud, and it is the same instinct Radiant Style keeps for prose:
@@ -132,7 +134,9 @@ Two seam moves cover nearly everything:
 1. **Index a slice with an authored `u32`:** cast at the index — `buf[@intCast(pos)]` or `buf[@as(usize, pos)]`. Assert the value is in range first when the bound is not already guaranteed.
 2. **Take a std-provided length into authored arithmetic:** assert `len <= std.math.maxInt(u32)`, then `@intCast` down to `u32` — reuse Tally's `bufLenU32` shape rather than re-rolling the assert-and-cast at every call site.
 
-**Worked example:** Mantra's SLC-1 path (`mantra/src/diff.rye`, `main.rye`) — seven in-memory indices migrated to `u32` with seam casts at slice indices; `store.rye` and `weave.rye` were already clean. Comlink wire formats lean on **`u64`** at persistence boundaries; Rishi REPL buffers follow the same **`u32` + seam cast** pattern as Mantra in TH-5. Aurora freestanding code plays by its own bare-metal width rules — out of this pass.
+**Worked example:** Mantra's SLC-1 path (`mantra/src/diff.rye`, `main.rye`) — seven in-memory indices migrated to `u32` with seam casts at slice indices; `store.rye` and `weave.rye` were already clean. Comlink wire formats lean on **`u64`** at persistence boundaries; Rishi REPL buffers follow the same **`u32` + seam cast** pattern as Mantra in TH-5.
+
+**Freestanding width (Aurora).** On bare metal, `usize` is the machine word, and it is the correct, honest type for addresses, for control-and-status register values, for register-width hardware bit masks, and for local indices at the slice-access site. These are not debt; they are the kernel naming the hardware in the hardware's own width. What stays disciplined even here: a long-lived stored *count* still earns a named `u32` bound, so its ceiling is documented rather than left to the word size. The hosted authored-`usize` gate, `width-check`, governs the hosted corpus; `aurora/*` is freestanding and keeps this policy instead.
 
 Name the bound when you pick `u32`:
 
@@ -141,7 +145,7 @@ const max_frame_bytes: u32 = 4096;
 pos: u32, // invariant: pos <= max_frame_bytes
 ```
 
-Width audit: [`work-in-progress/20260620-212126_usize-width-baseline.md`](../work-in-progress/20260620-212126_usize-width-baseline.md). **Mantra** is green under this policy (TH-3); **Rishi** and **Comlink** inherit the same rule in their own passes. **`width-check.rish`** stays out of the green parity suite until the global authored-`usize` count reaches zero.
+Width audit: [`work-in-progress/20260620-212126_usize-width-baseline.md`](../work-in-progress/20260620-212126_usize-width-baseline.md). **Mantra**, **Rishi**, and **Comlink** are green under the hosted policy (TH-3 through TH-6). **`width-check.rish`** is a blocking parity witness for the hosted corpus; **`aurora/*`** is scoped out and governed by the freestanding policy above.
 
 **Seam pattern at inherited `std` (correct, not debt):**
 

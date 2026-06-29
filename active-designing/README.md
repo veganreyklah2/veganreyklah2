@@ -81,10 +81,10 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 | `20260618-184912` | [996 · How We Grow a Language — Rishi on Rye, and One Style for the Family](20260618-184912_growing-a-language.md) | We have grown one language already, Rye, and the way we did it is a method we can reuse. This brief draws that method out plainly, applies i |
 | `20260618-184912` | [997 · The Recommended Path for the Core Names](20260618-184912_recommended-architecture.md) | A clean-room architecture brief for our core modules — TAME, Rye, Brix, Tablecloth, Tally, Caravan, and Aurora — reasoning the recommended d |
 | `20260618-182412` | [995 · Single-Stranded — The Enclosure and the Family, Read for What Stands Free](20260618-182412_single-stranded.md) | We hold a distinction worth keeping close: the **simple** and the **easy** are different things. This brief takes the architecture we have b |
-| `20260618-085812` | [998 · A Strategy for Strengthening Rye, and the Next Step to Take](20260618-085812_strengthening-strategy.md) | The standing strategy for our strengthening work. We have taken our first passes by hand; this charter says how to take many more without lo |
+| `20260618-085812` | [998 · A Strategy for Strengthening Rye, and the Next Step to Take](yonder/20260618-085812_strengthening-strategy.md) | The standing strategy for our strengthening work. Gates realized; effort dormant in `yonder/`. |
 ## Redirect stubs
 
-When a design brief **supersedes** research or an executed prompt, the old file in another stack becomes a stub (see `../external-research/README.md`). In **this** stack, revise briefs in place when the design matures (see [`20260618-085812_strengthening-strategy.md`](20260618-085812_strengthening-strategy.md)) rather than leaving duplicate architecture docs.
+When a design brief **supersedes** research or an executed prompt, the old file in another stack becomes a stub (see `../external-research/README.md`). In **this** stack, revise briefs in place when the design matures (see [`yonder/20260618-085812_strengthening-strategy.md`](yonder/20260618-085812_strengthening-strategy.md)) rather than leaving duplicate architecture docs.
 
 **Current width law:** [`20260621-051312_explicit-width-in-rye.md`](20260621-051312_explicit-width-in-rye.md) — literal `usize` ban in Rye types. Interim Zig-ground seam audit: research `968` until fork F3.
 
