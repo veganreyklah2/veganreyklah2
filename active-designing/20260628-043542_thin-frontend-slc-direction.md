@@ -67,7 +67,7 @@ Authored-width work (`u32` in published `.rye`, Phase 1b through `mantra/*`) is 
 
 ## Four Moves (Cursor prompt)
 
-See `cursor-prompt_thin-frontend-four-moves.md` at repo root.
+See [`../expanding-prompts/yonder/cursor-prompt_thin-frontend-four-moves.md`](../expanding-prompts/yonder/cursor-prompt_thin-frontend-four-moves.md) — consumed bench prompt.
 
 ---
 

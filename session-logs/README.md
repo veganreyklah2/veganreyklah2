@@ -10,7 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260629.220145 | [affirm de-number yonder pass four](20260629-220145_affirm-de-number-yonder-pass-four.md) | Five kept de-numbered; three to yonder; Aurora-boot trio reunited. |
+| 20260629.221245 | [ROADMAP sync and yonder pass five](20260629-221245_roadmap-sync-root-prompts-yonder-pass-five.md) | Root cursor prompts to yonder; ROADMAP synced; progress survey moved. |
 | `20260629-212045` | [Affirm kept and yonder pass three](20260629-212045_affirm-kept-yonder-pass-three.md) | affirm-not-rename; ownerboot pair reunited; crosswalk to yonder. |
 | `20260629-211626` | [Yonder passes two–five — commit and push](20260629-211626_yonder-passes-commit-push.md) | `63547a0` on all four remotes. |
 | `20260629-211348` | [Yonder pass five — redirect stubs](20260629-211348_yonder-redirect-stubs.md) | three executed redirect stubs to yonder; paths fixed. |

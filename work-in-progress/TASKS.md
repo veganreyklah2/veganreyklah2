@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-29 (yonder pass three; affirm-kept; Skate next — Claude)
+**Last updated:** 2026-06-29 (yonder pass four; affirm de-number; Skate next — Claude)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law

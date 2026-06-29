@@ -21,7 +21,7 @@ Why keep them at all? Because a prompt well understood is half the work, and a p
 
 Dated prompts carry `YYYYMMDD-HHMMSS_short-slug.md`; this README is the living foundation. Full naming law: [`../context/specs/20260627-102012_one-clock-naming-law.md`](../context/specs/20260627-102012_one-clock-naming-law.md).
 
-**Consumed prompts** — including executed `cursor-*` bench passes — rest in [`yonder/`](yonder/) when the work they drove has landed. Session logs record the outcome; the prompt stays as an honest record of how the request was expanded.
+**Consumed prompts** — including executed `cursor-*` bench passes and legacy `cursor-prompt_*` files from the one-clock reorg — rest in [`yonder/`](yonder/) when the work they drove has landed. Session logs record the outcome; the prompt stays as an honest record of how the request was expanded.
 
 ## Redirects and retired patterns
 
