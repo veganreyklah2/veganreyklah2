@@ -46,3 +46,8 @@ say "witness suite: TH-1 width-check seam…"
 let th1 = run ["rishi/bin/rishi" "run" "tools/width_check_th1.rish"]
 assert th1.ok else "TH-1 width-check seam witness failed"
 say "GREEN: TH-1 width-check seam witness passed."
+
+say "witness suite: TH-2 tame-check informational…"
+let th2 = run ["rishi/bin/rishi" "run" "tools/tame_check_th2.rish"]
+assert th2.ok else "TH-2 tame-check witness failed"
+say "GREEN: TH-2 tame-check witness passed."

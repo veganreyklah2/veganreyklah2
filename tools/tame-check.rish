@@ -1,0 +1,25 @@
+# tame-check.rish — first TAME textual lints (informational).
+#
+# Rules (context/TAME_GUIDANCE.md, TH-2):
+#   - Unqualified assert: flag std.debug.assert( in authored .rye
+#   - No Self = @This()
+#   - No tabs, no trailing whitespace on a line
+#
+# Informational this pass — reports counts; does not fail on debt.
+#
+# Usage: rishi run tools/tame-check.rish
+
+say "tame-check: scanning authored .rye (informational — three textual rules)..."
+
+let result = run ["sh" "tools/fixtures/tame_check_scan.sh"]
+assert result.ok else "tame-check scan script failed"
+
+say result.out
+
+let lines = lines result.out
+let fails = where lines as l: l starts-with "FAIL"
+let oks = where lines as l: l starts-with "OK"
+
+say "  clean: ${length oks}/${length lines}"
+say "  violations: ${length fails}/${length lines}"
+say "TAME CHECK INFORMATIONAL: debt reported above; TH-2b brings Mantra into assert compliance."
