@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260629-090912` | [SOURCE.md — download, launch, and two harmless notices](20260629-090912_source-md-download-launch-notices.md) | cursor.com/download front end, extract-avoids-FUSE, AppRun caveat, two-notices guide; NixOS map in enclosure-editors. |
+| `20260629-080012` | [Threshold pause — horizon filed, bench in good hands](20260629-080012_threshold-pause.md) | Kaeden closes the evening arc; judgment over commit; TH-2 in flight, TH-3 reachable. |
 | `20260629-074712` | [Horizon stack filed in foundations](20260629-074712_horizon-stack-filed.md) | Four far-horizon visions filed as one stack; honesty edits applied; cross-links wired. |
 | `20260629-063512` | [TH-1 four-remote push confirmation](20260629-063512_four-remote-push-confirm.md) | All four live remotes aligned at `9ee2872`. |
 | `20260629-063012` | [TH-1 commit and push](20260629-063012_th-1-commit-push.md) | Shipped `a9e36ca` to origin/main; handoff summary for Claude. |

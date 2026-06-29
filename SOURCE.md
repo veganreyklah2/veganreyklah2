@@ -1,7 +1,7 @@
 # SOURCE — From Nothing to a Signed, Sandboxed Home
 
 **Language:** EN
-**Version:** `20260629.030512` (Rye chronological stamp)
+**Version:** `20260629.090912` (Rye chronological stamp)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **By:** Reya 2, in the radiant voice, with **Kaeden Reyklah** as coauthor
 **Status:** Living guide
@@ -127,7 +127,9 @@ If Cursor is already set up (Step 5), you can simply ask the agent to do all of 
 
 ## Step 5 — Your Hands and Eyes (Cursor + Claude)
 
-Install **Cursor** from <https://cursor.com>, and subscribe to **Cursor Pro** or **Cursor Ultra** — the plans that give you generous access to the strongest models.
+Go to **<https://cursor.com/download>**, choose **Linux**, and download the **x86_64 AppImage** — the right build for **Framework** laptops, whether Intel or AMD, on both NixOS and Ubuntu. A `.deb` is offered too, yet the sandbox launcher runs the AppImage, so the AppImage is the one to fetch. Save it into the project folder (or into `~/Downloads` and move it in), since Step 6 extracts it there.
+
+Subscribe to **Cursor Pro** or **Cursor Ultra** — the plans that give you generous access to the strongest models.
 
 Open Cursor, enter **Agent mode**, and choose a **Claude** model (the Opus and Sonnet families are excellent partners for this kind of work). Agent mode lets the model read your project, run commands, and make changes with your blessing — which is exactly what the rest of this guide leans on.
 
@@ -147,7 +149,7 @@ cargo install ai-jail            # or build from source; see github.com/akitaonr
 
 > **Host OS:** we recommend the **latest stable NixOS** for new setups — bubblewrap and ai-jail install cleanly via nixpkgs or the project's Nix flake (`nix profile install github:akitaonrails/ai-jail`). This guide still documents **Ubuntu 24.04 LTS** first while our own hosts are **in transition**; see `context/specs/enclosure-editors.md` for the NixOS map and dual-editor templates.
 
-Cursor ships as an AppImage; unpack it once in the project folder so the sandbox can launch it:
+Cursor ships as an AppImage; unpack it once in the project folder so the sandbox can launch it. The launcher runs the **extracted `AppRun`**, not the raw `.AppImage` file — a kind choice, because a raw AppImage mounts through FUSE, while `--appimage-extract` unpacks into `squashfs-root/` and the launcher runs `AppRun` directly, with no FUSE in the path.
 
 ```bash
 cd ~/yourrepo
@@ -155,6 +157,10 @@ cd ~/yourrepo
 ```
 
 When you upgrade Cursor, extract the new AppImage the same way (or use `./tools/cursor-jail.sh --extract ./Cursor-*.AppImage`). The AppImage and `squashfs-root/` stay in the project directory and are not committed — only the launch scripts ship in git.
+
+**Ubuntu (24.04 LTS).** The extract path needs nothing extra. Only if someone runs the `.AppImage` *directly* would they need FUSE — and on 24.04 that package is **`libfuse2t64`** (not `fuse`, not the old `libfuse2`). Since the jail path extracts, this stays a footnote.
+
+**NixOS (Framework and similar).** NixOS does not run generic dynamically linked executables out of the box — and that holds for the extracted `AppRun` as much as for the `.AppImage`. Enable AppImage support in system config with `programs.appimage.enable = true;` and `programs.appimage.binfmt = true;` (NixOS 24.05 and later), which lets a `.AppImage` run directly when you choose that path; the older route is `appimage-run` from nixpkgs. Because binfmt registration acts on the `.AppImage` file, the launcher's **extracted-`AppRun`** path may additionally want an FHS wrapper — `steam-run` or `nix-ld` — to supply the dynamic loader and libraries. On a tested Framework host, extract once, then `./tools/cursor-jail.sh` from the repo root is the working form; if `AppRun` fails with loader errors, wrap the launch with `steam-run` from nixpkgs. The full NixOS map lives in **`context/specs/enclosure-editors.md`**.
 
 ---
 
@@ -277,10 +283,10 @@ ai-jail --private-home --no-docker -- ./squashfs-root/AppRun --no-sandbox \
   --extensions-dir="$PWD/.cursor-state/extensions" "$PWD"
 ```
 
-**Options** (the tracked `tools/cursor-jail.sh` script):
+**Options** (the tracked `tools/cursor-jail.sh` script). The `--appimage` flag expects the **extracted `AppRun`**, not a `.AppImage` file — a raw `.AppImage` mounts through FUSE, which fails inside the jail, so the launcher always runs the extracted form. To point at a freshly downloaded `.AppImage`, use **`--extract`**, which unpacks it into `squashfs-root/` and launches in one step.
 
 ```bash
-./tools/cursor-jail.sh --extract ./Cursor-3.9.16-x86_64.AppImage   # refresh squashfs-root
+./tools/cursor-jail.sh --extract ./Cursor-3.9.16-x86_64.AppImage   # unpack + launch
 ./tools/cursor-jail.sh --appimage /path/to/squashfs-root/AppRun    # custom AppRun
 ./tools/cursor-jail.sh --gpu                                        # GPU on GNOME Wayland
 ```
@@ -309,6 +315,14 @@ chmod +x tools/launch-cursor.sh
 ```
 
 `tools/launch-cursor.sh` stays gitignored; `tools/cursor-jail.sh` and `tools/launch-cursor.rish` are tracked for everyone who clones the repo.
+
+### Two Notices You May See, Both Harmless
+
+When Cursor first opens inside the jail, two messages may appear. Both are safe, and neither means your work failed.
+
+**Inline diffs suppressed.** When the agent makes many edits at once, the editor may say it has *suppressed inline diffs because there are too many to display.* The changes are all intact; only the per-line highlighting is paused. *Don't Show Again* dismisses it for good. It is purely cosmetic.
+
+**A read-only `.ai-jail`.** The editor may report that it *failed to save `.ai-jail` — read-only file system (EROFS)*. This is expected and safe. `.ai-jail` is the enclosure's own configuration: the launcher passes `--no-save-config` so it is never written, and inside the sandbox it is read-only by design, since the editor working behind the wall should not be able to rewrite the wall. The notice appears only because the editor opened that file and tried to autosave it. Choose **Revert** — not *Save As*, which would leave a stray copy, and not *Retry*, which only fails again — then close the tab. The repository itself stays fully writable, as every commit proves, and `.ai-jail` is already gitignored by the allow-list, so it never travels. To stop the notice from returning, exclude `.ai-jail` from the workspace in Cursor settings, or add a tracked `.vscode/settings.json` with `files.exclude` — propose that change when you want it shared with every clone.
 
 ---
 

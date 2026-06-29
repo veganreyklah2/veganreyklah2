@@ -282,6 +282,26 @@ nix profile install github:akitaonrails/ai-jail
 
 User namespaces and bwrap behave as expected on NixOS; skip the Ubuntu AppArmor sysctl section. Wayland on GNOME is the same: launch scripts from the project root unchanged.
 
+### Cursor on NixOS — extracted AppRun in ai-jail
+
+The tracked launcher runs **`squashfs-root/AppRun`** after extract, not the raw `.AppImage` — so FUSE is not in the jail path. System config still benefits from:
+
+```nix
+programs.appimage.enable = true;
+programs.appimage.binfmt = true;   # NixOS 24.05+
+```
+
+Binfmt registration applies to `.AppImage` files. The **extracted `AppRun`** is a dynamically linked binary; if it fails with loader or library errors inside ai-jail, wrap the launch with an FHS environment from nixpkgs:
+
+```bash
+./Cursor-3.9.16-x86_64.AppImage --appimage-extract    # once → squashfs-root/
+./tools/cursor-jail.sh                               # tested on Framework NixOS
+# if AppRun fails with loader errors:
+steam-run ./tools/cursor-jail.sh
+```
+
+`--appimage` on `cursor-jail.sh` expects the extracted **`AppRun`**, not a `.AppImage` path — use **`--extract`** for a fresh download.
+
 ---
 
 ## Troubleshooting
