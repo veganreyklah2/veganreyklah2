@@ -6,7 +6,9 @@
 **Voice:** Reya 2, with **Kaeden Reyklah** as coauthor
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Scope adopted — build cites this note; witness suite green on metal gates the implementation pass
+**Status:** Scope adopted — Step 1 sealed on metal; Step 2 hammock at [`20260629-004912_slc-1-step-2-version.md`](20260629-004912_slc-1-step-2-version.md)
+
+**Child scopes:** [`20260629-004912_slc-1-step-2-version.md`](20260629-004912_slc-1-step-2-version.md) (version) · Step 3 recall — pending
 
 **Direction:** [`20260628-043542_thin-frontend-slc-direction.md`](20260628-043542_thin-frontend-slc-direction.md) · **Roadmap:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md)
 

@@ -84,7 +84,7 @@ tools/enrich_strengthening_docs.rye
 
 ## Phase 2 — SLC-1 Step 2: Version
 
-Persist the session into Mantra's store. Cite `active-designing/20260628-071012_slc-1-rishi-mantra-shell.md`. Mantra stays a **separate seed** the loop drives — composition, never absorption.
+**Hammock scope:** [`active-designing/20260629-004912_slc-1-step-2-version.md`](../active-designing/20260629-004912_slc-1-step-2-version.md) — build cites that note. Persist the session into Mantra's store. Mantra stays a **separate seed** the loop drives — composition, never absorption.
 
 **Two structures, each bounded and each honest.**
 

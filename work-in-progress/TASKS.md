@@ -41,7 +41,7 @@
 ## Next — After Now Lands
 
 ### Rye OS
-- [ ] **SLC-1, Step 2 — version** — session transcript + Mantra weave; Rishi drives Mantra as a separate seed (composition, not absorption).
+- [ ] **SLC-1, Step 2 — version** — session transcript + Mantra weave; scope [`active-designing/20260629-004912_slc-1-step-2-version.md`](../active-designing/20260629-004912_slc-1-step-2-version.md); Rishi drives Mantra as a separate seed (composition, not absorption).
   - [ ] **2a — session buffer** — ring buffer of last *N* input lines (default 50, bounded).
   - [ ] **2b — transcript file** — append prompt, input, output, and errors to `.mantra/session.log` in cwd.
   - [ ] **2c — `:history`** — print numbered entries from the session buffer.
