@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-06-29
+**Last updated:** 2026-06-29 (horizon stack filed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -24,6 +24,13 @@ These rest beneath the specifications. The specs say what to build and how; thes
 - `20260629-020012_mantrapod-venture-pitch.md` — the open-hardware pocket computer where the whole vision becomes holdable: a reflective screen, no radios, memory that forgets, a held key, screwdriver repair, and local currency on the shared ledger.
 - `the-aspiring-radiance-universal.md` — a regenerative policy design framework for every climate and community.
 - `the-regenerative-experiment-universal.md` — a literary vision of renewal across every landscape.
+
+**The far horizon** — four visions that compose one layered stack the project grows toward, distinct from the active rings (SLC-1 done; TAME hardening now). Read top to bottom: surface → graph → hardware → model. Gall's Law holds — complex systems grow from working simple ones; these name aspiration, not near-term build order.
+
+- `20260629-063512_realidream.md` — the unified editor-and-browser surface over a single streaming graph: read the living web and write the living program in one place, bounded and deterministic, owned by the person before it.
+- `20260629-063512_the-graph-beneath-the-surface.md` — the streaming DAG under Realidream: program, page, and screen as one graph, on Tally (bounds), Mantra (history), Tablecloth (fold) — fast because little redraws, honest because the history is a chain of signed facts.
+- `20260629-063512_the-wafer-and-the-sovereign-coin.md` — wafer-scale compute that keeps memory beside the cores, greener and faster for it, framed as sovereign-scale public infrastructure built from real resources.
+- `20260629-063512_lantern-lattice-anvil.md` — the open model layer: Anvil the forge, Lattice the serving fabric, Lantern the honest meter — open weights, hosted serving as the product, every token counted in plain sight.
 
 **Distilled essays** — single-stranded meditations drawn from a year of notes, each self-contained and composable:
 
