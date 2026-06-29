@@ -15,6 +15,7 @@
 //!   rye build comlink/hosted_wire.rye -lc -femit-bin=comlink/bin/hosted-wire
 
 const std = @import("std");
+const assert = std.debug.assert;
 const c = std.c;
 const Ed25519 = std.crypto.sign.Ed25519;
 const X25519 = std.crypto.dh.X25519;
@@ -101,9 +102,9 @@ fn sealDatagram(buf: *[wire_capacity]u8) usize {
 const expected_message = "Meet me where the rye grows.";
 
 fn openDatagram(buf: []const u8, opened: []u8) !usize {
-    std.debug.assert(buf.len >= off_cipher);
-    std.debug.assert(buf.len <= wire_capacity);
-    std.debug.assert(opened.len >= max_message);
+    assert(buf.len >= off_cipher);
+    assert(buf.len <= wire_capacity);
+    assert(opened.len >= max_message);
 
     const sender = Ed25519.PublicKey.fromBytes(buf[off_sender..][0..32].*) catch return error.BadSender;
     const nonce = buf[off_nonce..][0..ChaCha20Poly1305.nonce_length].*;
@@ -215,8 +216,8 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
         else => 255,
     };
 
-    std.debug.assert(recv_code == 0);
-    std.debug.assert(send_code == 0);
+    assert(recv_code == 0);
+    assert(send_code == 0);
 
     std.debug.print("comlink hosted wire: demo GREEN — sealed datagram crossed localhost UDP\n", .{});
     std.debug.print("comlink hosted wire: version {s}\n", .{hosted_wire_version});
@@ -233,7 +234,7 @@ pub fn main(init: std.process.Init) !u8 {
         if (std.mem.eql(u8, args[1], "recv")) return runRecv();
         if (std.mem.eql(u8, args[1], "selftest")) return runSelftest();
         if (std.mem.eql(u8, args[1], "demo")) {
-            std.debug.assert(args.len >= 1);
+            assert(args.len >= 1);
             return runDemo(garden, io, args[0]);
         }
     }

@@ -1,15 +1,11 @@
-# tame-check.rish — first TAME textual lints (informational).
+# tame-check.rish — TAME textual lints on authored .rye.
 #
-# Rules (context/TAME_GUIDANCE.md, TH-2):
-#   - Unqualified assert: flag std.debug.assert( in authored .rye
-#   - No Self = @This()
-#   - No tabs, no trailing whitespace on a line
-#
-# Informational this pass — reports counts; does not fail on debt.
+# Rules (context/TAME_GUIDANCE.md): unqualified assert, no Self = @This(),
+# no tabs, no trailing whitespace. TH-2c cleared the hosted corpus; gate is live.
 #
 # Usage: rishi run tools/tame-check.rish
 
-say "tame-check: scanning authored .rye (informational — three textual rules)..."
+say "tame-check: scanning authored .rye (three textual rules)..."
 
 let result = run ["sh" "tools/fixtures/tame_check_scan.sh"]
 assert result.ok else "tame-check scan script failed"
@@ -20,6 +16,7 @@ let lines = lines result.out
 let fails = where lines as l: l starts-with "FAIL"
 let oks = where lines as l: l starts-with "OK"
 
-say "  clean: ${length oks}/${length lines}"
-say "  violations: ${length fails}/${length lines}"
-say "TAME CHECK INFORMATIONAL: debt reported above; TH-2b brings Mantra into assert compliance."
+if length fails == 0 then say "TAME CHECK GREEN: all ${length lines} files pass assert style and whitespace rules."
+if length fails != 0 then say "TAME CHECK RED: ${length fails} file(s) carry tame-check debt."
+
+assert length fails == 0 else "tame-check RED: authored .rye still carries assert or whitespace debt"

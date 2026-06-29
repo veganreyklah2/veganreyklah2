@@ -17,6 +17,7 @@
 //!   brushstroke seed: frame drawn from values
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 const brushstroke_seed_version = "20260620.021212";
 
@@ -31,7 +32,7 @@ const Frame = struct {
     lines: []const Line,
 
     fn init(lines: []const Line) Frame {
-        std.debug.assert(lines.len <= max_lines);
+        assert(lines.len <= max_lines);
         return .{ .lines = lines };
     }
 };
@@ -42,7 +43,7 @@ const max_lines = 8;
 fn redraw(frame: Frame, io: std.Io) !void {
     const stdout = std.Io.File.stdout();
     for (frame.lines) |line| {
-        std.debug.assert(line.text.len > 0);
+        assert(line.text.len > 0);
         try stdout.writeStreamingAll(io, line.text);
         try stdout.writeStreamingAll(io, "\n");
     }
@@ -59,7 +60,7 @@ pub fn main(init: std.process.Init) !u8 {
     lines[2] = .{ .text = brushstroke_seed_version };
 
     const frame = Frame.init(lines);
-    std.debug.assert(frame.lines.len == 3);
+    assert(frame.lines.len == 3);
 
     try redraw(frame, io);
 

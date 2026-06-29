@@ -14,11 +14,12 @@
 //!   twin child b fail        Child B exceeds its garden (intended fall)
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 const caravan_twin_version = "20260621.020512";
 
 fn bufLenU32(buf: []const u8) u32 {
-    std.debug.assert(buf.len <= std.math.maxInt(u32));
+    assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
 
@@ -27,28 +28,28 @@ const Region = struct {
     pos: u32,
 
     fn init(buf: []u8) Region {
-        std.debug.assert(buf.len > 0);
+        assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        std.debug.assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= bufLenU32(r.buf));
         return r;
     }
 
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
         const cap = bufLenU32(self.buf);
-        std.debug.assert(self.pos <= cap);
+        assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
         const end: usize = @intCast(self.pos + n);
-        std.debug.assert(end <= self.buf.len);
+        assert(end <= self.buf.len);
         const slice = self.buf[start..end];
         self.pos += n;
-        std.debug.assert(self.pos <= cap);
+        assert(self.pos <= cap);
         return slice;
     }
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        std.debug.assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= bufLenU32(self.buf));
     }
 
     fn remaining(self: *const Region) u32 {
@@ -98,14 +99,14 @@ fn runBoundedChild(child: ChildId, should_fail: bool) u8 {
     var backing: [max_child_budget]u8 = undefined;
     var region = Region.init(backing[0..budget]);
 
-    std.debug.assert(region.remaining() == budget);
+    assert(region.remaining() == budget);
 
     const work = region.alloc(32) catch {
         std.debug.print("twin child {s}: allocation failed unexpectedly\n", .{@tagName(child)});
         return 1;
     };
-    std.debug.assert(work.len == 32);
-    std.debug.assert(region.remaining() == budget - 32);
+    assert(work.len == 32);
+    assert(region.remaining() == budget - 32);
 
     for (work) |*byte| byte.* = 0xBB;
 
@@ -121,18 +122,18 @@ fn runBoundedChild(child: ChildId, should_fail: bool) u8 {
         std.debug.print("twin child {s}: edge allocation failed\n", .{@tagName(child)});
         return 1;
     };
-    std.debug.assert(region.remaining() == 0);
-    std.debug.assert(rest.len == budget - 32);
+    assert(region.remaining() == 0);
+    assert(rest.len == budget - 32);
 
     region.clear();
-    std.debug.assert(region.remaining() == budget);
+    assert(region.remaining() == budget);
 
     std.debug.print("twin child {s}: garden held. budget {d}, cleared.\n", .{ @tagName(child), budget });
     return 0;
 }
 
 fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
-    std.debug.assert(args.len >= 1);
+    assert(args.len >= 1);
     const self_path = args[0];
 
     std.debug.print("caravan twin: supervisor alive. version {s}\n", .{caravan_twin_version});
@@ -141,8 +142,8 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     const restarts_a = try superviseChild(allocator, io, self_path, .a, planned_failures_a);
     const restarts_b = try superviseChild(allocator, io, self_path, .b, planned_failures_b);
 
-    std.debug.assert(restarts_a == planned_failures_a);
-    std.debug.assert(restarts_b == planned_failures_b);
+    assert(restarts_a == planned_failures_a);
+    assert(restarts_b == planned_failures_b);
 
     std.debug.print("caravan twin: both children green. A restarts {d}, B restarts {d}.\n", .{ restarts_a, restarts_b });
     std.debug.print("caravan twin: separate gardens proven. supervision tree grows.\n", .{});
@@ -159,13 +160,13 @@ fn superviseChild(
     var restarts: u32 = 0;
 
     while (true) {
-        std.debug.assert(restarts <= max_restarts_per_child);
+        assert(restarts <= max_restarts_per_child);
 
         const child_arg: []const u8 = if (restarts < planned_failures) "fail" else "ok";
         const tag = @tagName(child);
 
         const argv = try allocator.alloc([]const u8, 4);
-        std.debug.assert(argv.len == 4);
+        assert(argv.len == 4);
         argv[0] = self_path;
         argv[1] = "child";
         argv[2] = tag;
@@ -198,6 +199,6 @@ fn superviseChild(
         }
     }
 
-    std.debug.assert(restarts == planned_failures);
+    assert(restarts == planned_failures);
     return restarts;
 }

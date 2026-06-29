@@ -329,9 +329,9 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | Rule | Check |
 |------|-------|
 | **No authored `usize` in published `.rye`** (seam casts blessed) | `tools/width-check.rish` (live, TH-1) |
-| **Unqualified assert** | `tools/tame-check.rish` (live, TH-2 — informational) |
-| **No `Self = @This()`** | `tools/tame-check.rish` (informational) |
-| **No tabs, no trailing whitespace** | `tools/tame-check.rish` (informational) |
+| **Unqualified assert** | `tools/tame-check.rish` (live gate, TH-2c) |
+| **No `Self = @This()`** | `tools/tame-check.rish` (gate) |
+| **No tabs, no trailing whitespace** | `tools/tame-check.rish` (gate) |
 | **Line length ≤ 100 columns** | flag lines past 100, allowing a URL or a multiline-string result that itself fits |
 | **One `# Title` per markdown** | flag any `.md` with zero or more than one top-level `#`, fenced code ignored — directly serving our doc-heavy tree |
 | **No leftover `FIXME` or `dbg(`** | flag both before merge; `FIXME` is welcome while iterating, gone before main |

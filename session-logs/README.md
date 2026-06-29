@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| `20260629-173048` | [TH-2c — hosted bare assert; tame-check gates](20260629-173048_th-2c-hosted-bare-assert-gate.md) | Hosted modules import-once; tame-check hard gate; parity 124; pause before TH-3 width. |
 | `20260629-093012` | [TH-2b — Mantra bare assert compliance](20260629-093012_th-2b-mantra-bare-assert.md) | 38 sites renamed; module gated clean; TH-2c queued. |
 | `20260629-092512` | [TH-2 — tame-check informational lint lands](20260629-092512_th-2-tame-check-informational.md) | Three textual rules; fixture scan; 13/16 assert debt reported; TH-2b next. |
 | `20260629-091512` | [Docs close — SOURCE.md verified, wall stays whole](20260629-091512_docs-close-wall-whole.md) | Kaeden confirms faithful SOURCE.md; `.vscode` exclude stays documentation-only. |

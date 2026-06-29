@@ -21,11 +21,12 @@
 //!   bounded child fail     Run as bounded child that exceeds its garden
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 const caravan_bounded_version = "20260621.015712";
 
 fn bufLenU32(buf: []const u8) u32 {
-    std.debug.assert(buf.len <= std.math.maxInt(u32));
+    assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
 
@@ -40,28 +41,28 @@ const Region = struct {
 
     fn init(buf: []u8) Region {
         // invariant: buffer is non-empty
-        std.debug.assert(buf.len > 0);
+        assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        std.debug.assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= bufLenU32(r.buf));
         return r;
     }
 
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
         const cap = bufLenU32(self.buf);
-        std.debug.assert(self.pos <= cap);
+        assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
         const end: usize = @intCast(self.pos + n);
-        std.debug.assert(end <= self.buf.len);
+        assert(end <= self.buf.len);
         const slice = self.buf[start..end];
         self.pos += n;
-        std.debug.assert(self.pos <= cap);
+        assert(self.pos <= cap);
         return slice;
     }
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        std.debug.assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= bufLenU32(self.buf));
     }
 
     fn remaining(self: *const Region) u32 {
@@ -111,7 +112,7 @@ fn runBoundedChild(should_fail: bool) u8 {
     var garden = Region.init(&backing);
 
     // invariant: garden starts full
-    std.debug.assert(garden.remaining() == child_budget);
+    assert(garden.remaining() == child_budget);
 
     // Allocate within the budget — 64 bytes, well within 256.
     const work_slice = garden.alloc(64) catch {
@@ -120,9 +121,9 @@ fn runBoundedChild(should_fail: bool) u8 {
     };
 
     // postcondition: we got exactly what we asked for
-    std.debug.assert(work_slice.len == 64);
+    assert(work_slice.len == 64);
     // postcondition: remaining decreased by the allocation
-    std.debug.assert(garden.remaining() == child_budget - 64);
+    assert(garden.remaining() == child_budget - 64);
 
     // Write something into the allocated space to prove it's real memory.
     for (work_slice) |*byte| byte.* = 0xAA;
@@ -144,13 +145,13 @@ fn runBoundedChild(should_fail: bool) u8 {
         return 1;
     };
     // postcondition: garden is exactly full
-    std.debug.assert(garden.remaining() == 0);
-    std.debug.assert(rest.len == child_budget - 64);
+    assert(garden.remaining() == 0);
+    assert(rest.len == child_budget - 64);
 
     // Clear whole — the season ends.
     garden.clear();
     // postcondition: garden is fully available again
-    std.debug.assert(garden.remaining() == child_budget);
+    assert(garden.remaining() == child_budget);
 
     std.debug.print("bounded child: garden held. budget {d}, used {d}, cleared.\n", .{
         child_budget, child_budget,
@@ -164,7 +165,7 @@ fn runBoundedChild(should_fail: bool) u8 {
 
 fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     // invariant: we have at least argv[0]
-    std.debug.assert(args.len >= 1);
+    assert(args.len >= 1);
     const self_path = args[0];
 
     std.debug.print("caravan bounded: supervisor alive. budget {d} bytes, planned failures: {d}\n", .{
@@ -175,13 +176,13 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
 
     while (true) {
         // invariant: restarts bounded
-        std.debug.assert(restarts <= max_restarts);
+        assert(restarts <= max_restarts);
 
         // First child exceeds its garden (planned failure); subsequent children stay within.
         const child_arg: []const u8 = if (restarts < planned_failures) "fail" else "ok";
 
         const argv = try allocator.alloc([]const u8, 3);
-        std.debug.assert(argv.len == 3);
+        assert(argv.len == 3);
         argv[0] = self_path;
         argv[1] = "child";
         argv[2] = child_arg;
@@ -214,9 +215,9 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     }
 
     // postcondition: restarts match the plan
-    std.debug.assert(restarts == planned_failures);
+    assert(restarts == planned_failures);
     // postcondition: within the limit
-    std.debug.assert(restarts < max_restarts);
+    assert(restarts < max_restarts);
 
     const total_assertions: u32 = planned_failures + 2 + 7; // supervisor + child garden assertions
     std.debug.print("caravan bounded: {d} assertion(s) confirmed. supervision + bounded memory proven GREEN.\n", .{total_assertions});

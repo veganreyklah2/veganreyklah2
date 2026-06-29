@@ -97,9 +97,9 @@ const Env = struct {
 
     fn bind(self: *Env, name: []const u8, value: Value) !void {
         // invariant: count never exceeds capacity
-        std.debug.assert(self.count <= self.items.len);
+        assert(self.count <= self.items.len);
         // invariant: a binding name is never empty
-        std.debug.assert(name.len > 0);
+        assert(name.len > 0);
         if (self.count == self.items.len) return error.TooManyBindings;
         self.items[self.count] = .{ .name = name, .value = value };
         self.count += 1;
@@ -743,7 +743,7 @@ fn doRun(allocator: std.mem.Allocator, io: std.Io, env: *const Env, argv_text: [
     if (items.len == 0) return error.RunNeedsCommand;
     const argv = try allocator.alloc([]const u8, items.len);
     // postcondition: argv matches the item count we requested
-    std.debug.assert(argv.len == items.len);
+    assert(argv.len == items.len);
     for (items, 0..) |item, idx| {
         argv[idx] = switch (item) {
             .string => |s| s,
@@ -759,7 +759,7 @@ fn doRun(allocator: std.mem.Allocator, io: std.Io, env: *const Env, argv_text: [
 
     const fields = try allocator.alloc(Field, 4);
     // postcondition: fields has exactly the four expected entries
-    std.debug.assert(fields.len == 4);
+    assert(fields.len == 4);
     fields[0] = .{ .name = "out", .value = .{ .string = result.stdout } };
     fields[1] = .{ .name = "err", .value = .{ .string = result.stderr } };
     fields[2] = .{ .name = "code", .value = .{ .int = code } };
@@ -777,7 +777,7 @@ fn doReadFile(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []
         else => return error.FilePathNeedsString,
     };
     // invariant: a file path is never empty — empty paths are always a caller error
-    std.debug.assert(path.len > 0);
+    assert(path.len > 0);
     // invariant: path is sentinel-terminated for the OS boundary
     const z_path = std.fmt.allocPrint(allocator, "{s}", .{path}) catch return error.OutOfMemory;
     const dir = std.Io.Dir.cwd();
@@ -795,7 +795,7 @@ fn doListDir(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []c
         else => return error.FilePathNeedsString,
     };
     // invariant: a directory path is never empty
-    std.debug.assert(path.len > 0);
+    assert(path.len > 0);
     const z_path = std.fmt.allocPrint(allocator, "{s}", .{path}) catch return error.OutOfMemory;
     const cwd = std.Io.Dir.cwd();
     const dir = cwd.openDir(io, z_path, .{ .iterate = true }) catch return error.ListDirFailed;
@@ -808,12 +808,12 @@ fn doListDir(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []c
         const entry = maybe_entry orelse break;
         if (count == names.len) return error.ListTooLong;
         // invariant: entry name from the OS is never empty (asserted in Dir.iterate)
-        std.debug.assert(entry.name.len > 0);
+        assert(entry.name.len > 0);
         names[count] = .{ .string = allocator.dupe(u8, entry.name) catch return error.OutOfMemory };
         count += 1;
     }
     // postcondition: count is bounded by the static array
-    std.debug.assert(count <= names.len);
+    assert(count <= names.len);
     return .{ .list = allocator.dupe(Value, names[0..count]) catch return error.OutOfMemory };
 }
 
@@ -831,9 +831,9 @@ fn doWriteFile(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: 
         else => return error.FilePathNeedsString,
     };
     // invariant: a file path is never empty
-    std.debug.assert(path.len > 0);
+    assert(path.len > 0);
     // invariant: token iterator position is within the source
-    std.debug.assert(tok.i <= rest.len);
+    assert(tok.i <= rest.len);
     const content_text = std.mem.trim(u8, rest[tok.i..], " \t");
     if (content_text.len == 0) return error.WriteFileNeedsContent;
     const content_value = try evalExpr(allocator, io, env, content_text);
@@ -841,7 +841,7 @@ fn doWriteFile(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: 
     var sb = StrBuf{};
     try sb.appendValue(content_value);
     // postcondition: rendered content fits within the bounded buffer
-    std.debug.assert(sb.len <= sb.bytes.len);
+    assert(sb.len <= sb.bytes.len);
     // invariant: path is sentinel-terminated for the OS boundary
     const z_path = std.fmt.allocPrint(allocator, "{s}", .{path}) catch return error.OutOfMemory;
     const dir = std.Io.Dir.cwd();
@@ -859,7 +859,7 @@ fn doIf(allocator: std.mem.Allocator, io: std.Io, env: *Env, rest: []const u8) a
     const then_rest = std.mem.trim(u8, rest[then_idx + 6 ..], " \t");
 
     // invariant: condition text is non-empty
-    std.debug.assert(condition_text.len > 0);
+    assert(condition_text.len > 0);
 
     const cond_value = try evalExpr(allocator, io, env, condition_text);
     const holds = switch (cond_value) {
@@ -895,7 +895,7 @@ fn doForEach(allocator: std.mem.Allocator, io: std.Io, env: *Env, rest: []const 
     const body = std.mem.trim(u8, after_as[do_idx + 4 ..], " \t");
 
     // invariant: loop variable name is non-empty
-    std.debug.assert(var_name.len > 0);
+    assert(var_name.len > 0);
 
     const list_value = try evalExpr(allocator, io, env, list_text);
     const items = switch (list_value) {
@@ -928,7 +928,7 @@ fn doLines(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []con
     while (counter.next() != null) count += 1;
     const items = allocator.alloc(Value, count) catch return error.OutOfMemory;
     // postcondition: items has exactly count slots
-    std.debug.assert(items.len == count);
+    assert(items.len == count);
     var it = std.mem.splitScalar(u8, text, '\n');
     var i: usize = 0;
     while (it.next()) |line| {
@@ -936,7 +936,7 @@ fn doLines(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []con
         i += 1;
     }
     // postcondition: filled exactly count items
-    std.debug.assert(i == count);
+    assert(i == count);
     return .{ .list = items };
 }
 
@@ -1041,7 +1041,7 @@ fn doJoin(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []con
             pos += sep.len;
         }
     }
-    std.debug.assert(pos == total);
+    assert(pos == total);
     return .{ .string = out };
 }
 
@@ -1076,7 +1076,7 @@ fn doSplit(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []co
     }
 
     const items = allocator.alloc(Value, count) catch return error.OutOfMemory;
-    std.debug.assert(items.len == count);
+    assert(items.len == count);
     var i: usize = 0;
     if (sep.len == 1) {
         var it = std.mem.splitScalar(u8, text, sep[0]);
@@ -1091,7 +1091,7 @@ fn doSplit(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []co
             i += 1;
         }
     }
-    std.debug.assert(i == count);
+    assert(i == count);
     return .{ .list = items };
 }
 

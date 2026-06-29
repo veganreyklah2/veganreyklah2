@@ -19,6 +19,7 @@
 //!   caravan_seed child <code>  Run as child (exit with <code>)
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 /// Caravan seed version — stamped chronologically.
 const caravan_seed_version = "20260619.224512";
@@ -67,7 +68,7 @@ fn runChild(args: []const [:0]const u8) u8 {
 /// non-zero exit. Asserts the restart count matches the plan.
 fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     // invariant: we have at least argv[0] — our own path
-    std.debug.assert(args.len >= 1);
+    assert(args.len >= 1);
     const self_path = args[0];
 
     std.debug.print("caravan seed: supervisor alive. planned failures: {d}, max restarts: {d}\n", .{
@@ -78,7 +79,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
 
     while (true) {
         // invariant: restarts stays within the stated bound
-        std.debug.assert(restarts <= max_restarts);
+        assert(restarts <= max_restarts);
 
         // Choose the child's exit code: fail for the first N, then succeed.
         const child_code: []const u8 = if (restarts < planned_failures) "1" else "0";
@@ -86,7 +87,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
         // Spawn ourselves as a child process.
         const argv = try allocator.alloc([]const u8, 3);
         // postcondition: argv has exactly 3 slots
-        std.debug.assert(argv.len == 3);
+        assert(argv.len == 3);
         argv[0] = self_path;
         argv[1] = "child";
         argv[2] = child_code;
@@ -125,10 +126,10 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     // =====================================================================
 
     // postcondition: restart count matches the plan exactly
-    std.debug.assert(restarts == planned_failures);
+    assert(restarts == planned_failures);
 
     // postcondition: we did not exceed the restart limit
-    std.debug.assert(restarts < max_restarts);
+    assert(restarts < max_restarts);
 
     std.debug.print(
         "caravan seed: {d} assertion(s) confirmed. supervision loop proven GREEN.\n",
