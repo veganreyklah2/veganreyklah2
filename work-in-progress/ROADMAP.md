@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260628-124512` (Linengrow track; two tracks one spine)
-**Last updated:** 2026-06-29 (TAME hardening complete; affirm de-number; Skate next — Claude)
+**Last updated:** 2026-06-29 (TASKS swept; Skate next — Claude)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

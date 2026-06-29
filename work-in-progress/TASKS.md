@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-29 (yonder pass seven; Skate next — Claude)
+**Last updated:** 2026-06-29 (TASKS swept; Skate next — Claude)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -12,53 +12,29 @@
 
 **Tracks:** **Rye OS** grows the system. **Linengrow** grows the first whole built on it. **Ground** is the shared discipline beneath both.
 
+**Landed through 2026-06-29** (detail in `../session-logs/`): SLC-1 complete (type, run, version, recall + acceptance); TAME hardening **TH-0–TH-7** and **RS-1–RS-3**; cursor ai-jail launcher; witness suite on metal; `init.garden` harvest; Linengrow vision infused; Grokipedia sweep; foundations merge; open-threads archived.
+
 ---
 
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [x] **Run the witness suite on metal** — `rishi/bin/rishi run tools/parity.rish` green (116 `rye run` witnesses + four SLC-1); `parity-selftest.rish` green. Build with `HOME` on project disk (`/home/xy/veganreyklah2/.build-home`) — host tmpfs at `/home/xy` is full.
-- [x] **SLC-1, Step 1 — the interactive loop** — `rishi repl` (bare `rishi` or `rishi repl`), in-process evaluator, bindings carried forward line to line; `:quit` / `:q`; witness `tools/slc1_repl_step1.rish` green.
-  - [x] **1a — entry points** — bare `rishi` and `rishi repl` both start the loop; `rishi run` and `rishi version` unchanged.
-  - [x] **1b — type** — fixed prompt `rishi> `; stdin via `takeDelimiterInclusive('\n')`; trim `\r\n` from each line.
-  - [x] **1c — run** — `evalStatement` in-process; shared `Env`; evaluation errors print and continue (no exit).
-  - [x] **1d — meta (minimal)** — `:quit` and `:q` end cleanly; other `:` lines report unknown meta-command.
-  - [x] **1e — witness** — `tools/fixtures/slc1_repl_step1.input` + `tools/slc1_repl_step1.rish` assert binding carry-forward (`let x = 7` then `say "${x}"` → `7`).
-  - [x] **1f — register** — `tools/slc1_repl_step1.rish` appended to `tools/parity.rish`.
-- [x] **`init.garden` → `init.arena` harvest** — pristine `vendor/zig-toolchain` std uses `arena`; all authored `.rye` call sites migrated (`2026-06-29`). `brushstroke/wayland_seed.rye` link still needs Wayland dev headers on the host (unchanged).
-- [x] **SLC-1 acceptance** — `tools/slc1_accept.rish` green; four verbs in one session; parity 120; gate trio confirmed on metal (`2026-06-29`). Closed on the **functional promise** — type, run, version, recall. TAME hardening completed separately (`2026-06-29`).
-- [x] **Cursor in ai-jail launcher** — `tools/cursor-jail.sh` + `tools/launch-cursor.rish` (tracked); `SOURCE.md` Step 6–9 and `enclosure-editors.md` updated; `squashfs-root/` and `.cursor-state/` gitignored; POSIX scaffold until Rishi script arguments graduate flag-handling (`2026-06-29`).
+- [ ] **Skate text rendering** — text on screen; unlocks SLC-2. *Scope and acceptance need a Claude ruling before bench work.*
+- [ ] **Caravan capability table** — a small Rye struct naming what each child may do; the first true step toward the microkernel. Asserted; witnessed.
 
 ### Linengrow
-- [x] **Infuse the vision** — place the business model and venture pitch in `linengrow/`, with a README connecting Linengrow to the Rye OS spine (this pass).
-- [x] **Name SLC-L1** — record that the first Linengrow ring is the verifiable receipt (sign → append → receipt → verify), built from keypair + Mantra log + projection.
+- [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
 
 ### Ground
-- [x] **Grokipedia sweep** — Wikipedia links in our own markdown swapped where a comparable page exists; third-party clones left as-is.
-- [x] **Merge the batch home** — when `design/foundations-and-kernel-horizon` settles, merge to `main` and push, so the living docs (ROADMAP, TASKS, Linengrow, foundations) reach the default tip.
+- [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.
 
 ---
 
-## Next — After Now Lands
-
-### Rye OS
-- [x] **SLC-1, Step 2 — version** — session transcript + Mantra weave; scope [`active-designing/20260629-004912_slc-1-step-2-version.md`](../active-designing/20260629-004912_slc-1-step-2-version.md); Rishi drives Mantra as a separate seed (composition, not absorption).
-  - [x] **2a — session buffer** — `History` ring of last 50 input lines (bounded, TAME).
-  - [x] **2b — transcript** — in-memory `Transcript` records prompt, input, and caught errors (stdout horizon); flushed to `.mantra/session.log` on `:version`.
-  - [x] **2c — `:history`** — print numbered entries from the session buffer.
-  - [x] **2d — lazy init** — on first `:version`, ensure `.mantra/` exists (`mantra init` if needed).
-  - [x] **2e — `:version`** — invoke `mantra add .mantra/session.log`; HEAD advances.
-  - [x] **2f — witness** — `tools/slc1_version_step2.rish` green; registered in `parity.rish`.
-- [x] **SLC-1, Step 3 — recall** — prior lines in-session; durable record is the weave from Step 2.
-  - [x] **3a — `:recall <n>`** — `recallByIndex` + shared `runInputLine`; re-runs ring entry as if typed.
-  - [x] **3b — `!<n>` alias** — shorthand via `recallByIndex` before the `:` meta block.
-  - [x] **3c — witness** — `tools/slc1_recall_step3.rish` green; two `RE-RAN` prints prove re-run; registered in `parity.rish`.
-- [x] **Rishi script arguments** — **RS-1** through **RS-3** under TAME hardening (all done).
-- [x] **Launcher graduation** — **RS-3** under TAME hardening.
+## Next — Horizons and Optional
 
 ### TAME hardening — complete (`2026-06-29`)
 
-Strengthening charter, seam-aware width, bare assert, script args, launcher graduation, and hosted width gate — **TH-0 through TH-7**, **RS-1 through RS-3**. Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and prior TH/RS logs. Hosted `width-check` blocks in parity.
+Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and prior TH/RS logs. Hosted `width-check` blocks in parity (132 witnesses).
 
 **Horizon and optional (still open):**
 
@@ -75,17 +51,6 @@ Strengthening charter, seam-aware width, bare assert, script args, launcher grad
 - [ ] **Ownerboot sovereignty (horizon)** — owner-key-sealed boot chain inverting trust at the reset vector; from `external-research/yonder/20260617-195612_ownerboot-riscv-caravan.md`; Caravan is live, the firmware path is horizon.
 
 - [ ] **Unified identity and fractal address space (horizon)** — one seed deriving SSH, GPG, Sui, and Nostr keys; fractal address space shaped by Vedic whole-sign astrology (galaxy / star / planet); ties to Linengrow portable identity; from `expanding-prompts/yonder/20260618-215512_unified-keys-and-address-space.md`; Comlink carries the networking half today.
-
-### Rye OS — further rings
-- [ ] **Caravan capability table** — a small Rye struct naming what each child may do; the first true step toward the microkernel. Asserted; witnessed.
-- [ ] **Skate text rendering** — text on screen; unlocks SLC-2.
-
-### Linengrow
-- [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
-
-### Ground
-- [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.
-- [x] **Open-threads hygiene** — accreted `20260623-033012` snapshot archived to `work-in-progress/archive/`; redirect stub at old path; TASKS + ROADMAP are the live plan (`2026-06-29`).
 
 ---
 
