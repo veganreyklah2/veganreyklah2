@@ -58,15 +58,15 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260620-020712` | [970 · Formats, Editors, Inference, and Tensors — What the Horizon Modules Inherit](20260620-020712_formats-editors-inference-and-tensors.md) | Research |
 | `20260620-014412` | [997 · Honoring Tiger Style and the Language of the System](20260620-014412_system.md) | Gratitude |
 | `20260620-010712` | [971 · Editors, Remoting, and the TAME Rye OS — Neovim, Kakoune, SSH, Mosh, and What We Build](20260620-010712_editors-remoting-tame.md) | Research |
-| `20260620-010412` | [972 · Wayland, Compositors, and the TAME Desktop — What Brushstroke Inherits](20260620-010412_wayland-compositor-tame.md) | Research |
-| `20260620-001412` | [973 · A Forge for Mantra — How Git, Weaves, and Group Projects Meet](20260620-001412_mantra-forge-and-group-projects.md) | Research |
-| `20260619-225212` | [974 · s6, SixOS, Nix, and infuse — What Caravan, Brix, and Tally Inherit](20260619-225212_s6-sixos-nix-infuse.md) | Research |
-| `20260619-220012` | [975 · Tablecloth — A TAME-Aligned Datastore: Close Reading of the Field](20260619-220012_tablecloth-tame-datastore.md) | What would a datastore look like if it were designed in the TAME order — correctness first, performance second, joy thir |
-| `20260619-171112` | [976 · Microkernel or Monolith? — What Caravan Can Learn from seL4 and Redox, and What TAME Demands](20260619-171112_microkernel-vs-monolith-for-caravan.md) | Research |
-| `20260619-155612` | [977 · POSIX at the Door — What the OS Interface Asks of TAME, and How River and Ghostty Show the Way](20260619-155612_posix-and-tame-guidance.md) | Research |
+| `20260620-010412` | [972 · Wayland, Compositors, and the TAME Desktop — What Brushstroke Inherits](yonder/20260620-010412_wayland-compositor-tame.md) | Research |
+| `20260620-001412` | [973 · A Forge for Mantra — How Git, Weaves, and Group Projects Meet](yonder/20260620-001412_mantra-forge-and-group-projects.md) | Research |
+| `20260619-225212` | [974 · s6, SixOS, Nix, and infuse — What Caravan, Brix, and Tally Inherit](yonder/20260619-225212_s6-sixos-nix-infuse.md) | Research |
+| `20260619-220012` | [975 · Tablecloth — A TAME-Aligned Datastore: Close Reading of the Field](yonder/20260619-220012_tablecloth-tame-datastore.md) | What would a datastore look like if it were designed in the TAME order — correctness first, performance second, joy thir |
+| `20260619-171112` | [976 · Microkernel or Monolith? — What Caravan Can Learn from seL4 and Redox, and What TAME Demands](yonder/20260619-171112_microkernel-vs-monolith-for-caravan.md) | Research |
+| `20260619-155612` | [977 · POSIX at the Door — What the OS Interface Asks of TAME, and How River and Ghostty Show the Way](yonder/20260619-155612_posix-and-tame-style.md) | Research |
 | `20260619-153612` | [The Stack Toward a Living Desktop](yonder/20260619-153612_stack-toward-a-living-desktop.md) | Consumed synthesis — SLC-1 landed; living successor ROADMAP SLC-2; in `yonder/` |
 | `20260619-153212` | [Where Building Met Design — a Progress Map at the Turn](yonder/20260619-153212_where-building-met-design.md) | Consumed survey — superseded by ROADMAP + TASKS; in `yonder/` |
-| `20260619-070612` | [980 · Brushstroke and the Documentation Surface — a Drawn Interface for Rye, and How the System Shows Itself](20260619-070612_brushstroke-and-the-docs-surface.md) | Two strands, woven into one rope. The first is a plain question: should we begin documenting Rye OS in earnest — Rishi's |
+| `20260619-070612` | [980 · Brushstroke and the Documentation Surface — a Drawn Interface for Rye, and How the System Shows Itself](yonder/20260619-070612_brushstroke-and-the-docs-surface.md) | Two strands, woven into one rope. The first is a plain question: should we begin documenting Rye OS in earnest — Rishi's |
 | `20260619-035912` | [One Identity, Many Keys — and a Fractal Address Space](yonder/20260619-035912_unified-keys-and-address-space.md) | Horizon — companion to consumed prompt in `expanding-prompts/yonder/`; in `yonder/` |
 | `20260618-212112` | [Content-Centric Messenger — From the Network In](yonder/20260618-212112_content-centric-messaging.md) | Realized-origin — Comlink/Aurora carry the seeds; messenger is horizon; in `yonder/` |
 | `20260618-204012` | [Borrow Checking, the Garden, and Correctness by Construction](yonder/20260618-204012_borrow-checking-and-correctness.md) | Canonized in `TAME_GUIDANCE` and kept briefs; in `yonder/` |

@@ -47,6 +47,11 @@ let slc2r1 = run ["rishi/bin/rishi" "run" "tools/slc2a_ring1_arbitrary.rish"]
 assert slc2r1.ok else "SLC-2a Ring 1 arbitrary-value witness failed"
 say "GREEN: SLC-2a Ring 1 arbitrary-value witness passed."
 
+say "witness suite: SLC-2a Ring 2 redraw…"
+let slc2r2 = run ["rishi/bin/rishi" "run" "tools/slc2a_ring2_redraw.rish"]
+assert slc2r2.ok else "SLC-2a Ring 2 redraw witness failed"
+say "GREEN: SLC-2a Ring 2 redraw witness passed."
+
 say "witness suite: TH-1 width-check seam…"
 let th1 = run ["rishi/bin/rishi" "run" "tools/width_check_th1.rish"]
 assert th1.ok else "TH-1 width-check seam witness failed"

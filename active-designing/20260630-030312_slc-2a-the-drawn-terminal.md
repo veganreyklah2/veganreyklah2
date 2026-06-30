@@ -15,7 +15,9 @@
 
 ## What Runs Today — the Seed We Grow From
 
-The hosted seed presents one frame and exits, and the whole path is already in the code. A value of text lines becomes a `Frame`; the `Frame` folds into a Skate `Grid` through `toGrid`; the grid rasterizes to an ARGB8888 buffer through `rasterize`; and `commitFrame` lands that buffer on a Wayland surface. Confirmed on GNOME Wayland: the window draws and exits clean with "skate grid drawn," the headless selftest counts 1125 lit pixels, and parity holds at 132 green.
+The hosted seed presents one frame and exits, and the whole path is already in the code. A value of text lines becomes a `Frame`; the `Frame` folds into a Skate `Grid` through `toGrid`; the grid rasterizes to an ARGB8888 buffer through `rasterize`; and `commitFrame` lands that buffer on a Wayland surface. Confirmed on GNOME Wayland: the window draws and exits clean with "skate grid drawn," the headless selftest counts 1125 lit pixels, and parity holds at **134** green.
+
+**Ring 1 landed** (`2026-06-30`): value as explicit `[]const Line` input; arbitrary-value witness GREEN. **Ring 2 landed** (`2026-06-30`): `setFrame` re-folds and re-presents; FNV content-signature witness GREEN (A→B→A); `redraw` metal mode confirmed. **Ring 3 next**: mirror live Rishi session *(check in with Claude before bench)*.
 
 The value-to-frame fold already lives in `Frame`, `Line`, and `toGrid`. So SLC-2a does not invent a new path. It grows the proven one in two places: the frame becomes *current* instead of *single*, and the value becomes the *live Rishi session*.
 

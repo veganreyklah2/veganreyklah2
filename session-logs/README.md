@@ -10,6 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260630.041131 | [SLC-2a Ring 2 — redraw on change](20260630-041131_slc-2a-ring-2-redraw.md) | setFrame + FNV signature witness; parity 134 GREEN. |
+| 20260630.041131 | [Yonder pass nine Part B — affirmations](20260630-041131_yonder-pass-nine-part-b.md) | reviewed-kept on ten canonical briefs; README titles de-numbered. |
+| 20260630.040900 | [Yonder pass nine Part A — file moves](20260630-040900_yonder-pass-nine-part-a.md) | 24 git mv + 2 root prompts; README and inbound path fixes. |
 | 20260630.031512 | [SLC-2a Ring 1 and research placed](20260630-031512_slc-2a-ring-1-and-research-placed.md) | Value-driven viewer witness; three essays; parity 133. |
 | 20260630.020512 | [Wayland seed metal confirmation](20260630-020512_wayland-seed-metal-confirmation.md) | selftest + window exit 0 on GNOME Wayland; SLC-2a gate cleared for Claude brief. |
 | 20260630.014112 | [Lotus, REAPER, Genesis gratitude](20260630-014112_lotus-reaper-genesis-gratitude.md) | Lotus DAW named; REAPER docs parsed; Genesis and AP Mastering honored. |

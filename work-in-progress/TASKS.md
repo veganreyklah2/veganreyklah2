@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-30 (Wayland seed metal confirmation)
+**Last updated:** 2026-06-30 (SLC-2a Ring 2; yonder pass nine)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -19,7 +19,7 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Ring 1 landed** (`2026-06-30`): value as explicit `[]const Line` input; arbitrary-value witness GREEN (157 vs 1125 lit pixels); parity **133** witnesses. **Next: Ring 2 — redraw on change** *(confirm witness shape with Claude before bench)*. Ring 3 mirrors live Rishi session.
+- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Ring 1 landed** (`2026-06-30`): value as explicit input; arbitrary-value witness GREEN. **Ring 2 landed** (`2026-06-30`): `setFrame` + FNV content-signature redraw witness GREEN; `redraw` metal mode A→B; parity **134** witnesses. **Next: Ring 3 — mirror live Rishi session** *(check in with Claude for wiring before bench)*.
 - [ ] **Caravan capability table** — a small Rye struct naming what each child may do; the first true step toward the microkernel. Asserted; witnessed.
 
 ### Linengrow
@@ -95,6 +95,8 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ## Open Questions
 
+- **Tablecloth horizon** — datastore + layout cluster now in `external-research/yonder/` and `expanding-prompts/yonder/`; shape when SLC bench allows.
+- **sixos/s6 infrastructure horizon** — study in `external-research/yonder/20260619-225212_s6-sixos-nix-infuse.md`; Caravan inherits supervision discipline when we reach for it.
 - **Bron** — proposed; role beside Brix still open. Brix describes *what a system is made of*; the `.bron` notation brief exists — what does Bron describe alongside it? *(Open ruling for Kaeden.)*
 - **Tablecloth** — proposed layout or structured-view layer; named, not yet shaped.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
@@ -103,7 +105,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Weave** — adopted in lexicon and substrate doc; pending formal blessing.
 - **Research essays (authored, living)** — [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md); [`external-research/20260630-030312_after-victor-immediate-contact.md`](../external-research/20260630-030312_after-victor-immediate-contact.md); [`external-research/20260630-030312_the-hot-loop-as-the-forge.md`](../external-research/20260630-030312_the-hot-loop-as-the-forge.md).
 - **Lotus** — DAW direction adopted in `active-designing/20260630-014012_lotus-the-daw.md`; REAPER docs and AP Mastering design in `gratitude/`; bench waits for SLC-2a.
-- **Kernel direction** — is the microkernel leaning settled enough to graduate into a direction memo, or does it want more deliberation first?
+- **Kernel-direction brief held** — `expanding-prompts/20260628-120912_kernel-direction-brix-and-foundations.md` stays one level deep pending the kernel-direction memo (live Now task).
 - **Linengrow's home** — does Linengrow stay a folder in this repo, or graduate to its own repo (`xwb122m/linengrow-*`) once its first ring runs?
 - **SLC-L1 and Sui** — confirm the first Linengrow ring uses pure foundations (keypair + log + projection) with no Sui, settlement deferred to SLC-L3. (Recommended: yes.)
 - **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
