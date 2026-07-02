@@ -13,6 +13,7 @@
 //! parenthesized expressions `(expr)` for grouping; and file I/O with
 //! `read-file` (returns file contents as a string), `write-file` (writes a
 //! value to a path), and `list-dir` (returns entry names as a list of strings);
+//! `env` to read the process environment by name (empty string when unset);
 //! `lines` to split a string into a list by newline; `starts-with` and `ends-with`
 //! to check whether a string begins or ends with a given affix; `length` for strings
 //! and lists; `trim` to remove surrounding whitespace; `slice` for bounded substring;
@@ -97,6 +98,8 @@ const Binding = struct { name: []const u8, value: Value };
 pub const Env = struct {
     items: [256]Binding = undefined,
     count: u32 = 0,
+    /// Process environment for the `env` builtin — set at REPL and script entry.
+    host_environ: ?*std.process.Environ.Map = null,
 
     fn bind(self: *Env, name: []const u8, value: Value) !void {
         // invariant: count never exceeds capacity
@@ -427,7 +430,7 @@ pub fn sessionLines(
 fn runRepl(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
-    var env = Env{};
+    var env = Env{ .host_environ = init.environ_map };
     var history: History = .{};
     var transcript: Transcript = .{};
     var store_ready = false;
@@ -471,7 +474,7 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
         return 1;
     };
 
-    var env = Env{};
+    var env = Env{ .host_environ = init.environ_map };
     bindScriptArgs(garden, &env, args[3..]) catch |err| switch (err) {
         error.TooManyScriptArgs => {
             print("rishi run: too many arguments (max {d})\n", .{max_args});
@@ -578,6 +581,7 @@ const EvalError = error{
     ArithNeedsInt,
     DivisionByZero,
     FilePathNeedsString,
+    EnvNeedsString,
     ReadFileFailed,
     ListDirFailed,
     LinesNeedsString,
@@ -619,6 +623,9 @@ fn evalExpr(allocator: std.mem.Allocator, io: std.Io, env: *const Env, text: []c
     const trimmed = std.mem.trim(u8, text, " \t");
     if (std.mem.startsWith(u8, trimmed, "run ")) {
         return doRun(allocator, io, env, trimmed[4..]);
+    }
+    if (std.mem.startsWith(u8, trimmed, "env ")) {
+        return doEnv(allocator, io, env, trimmed[4..]);
     }
     // File I/O expressions — each evaluates a path and returns a value.
     if (std.mem.startsWith(u8, trimmed, "read-file ")) {
@@ -875,6 +882,25 @@ fn doRun(allocator: std.mem.Allocator, io: std.Io, env: *const Env, argv_text: [
     fields[2] = .{ .name = "code", .value = .{ .int = code } };
     fields[3] = .{ .name = "ok", .value = .{ .boolean = code == 0 } };
     return .{ .record = fields };
+}
+
+/// `env <name-expr>` reads one process environment variable by name. When the
+/// name is unset, the empty string is returned — the same honest absence a
+/// missing binding would show, without stopping the script.
+fn doEnv(allocator: std.mem.Allocator, io: std.Io, env: *const Env, arg: []const u8) EvalError!Value {
+    const name_value = try evalExpr(allocator, io, env, arg);
+    const name = switch (name_value) {
+        .string => |s| s,
+        else => return error.EnvNeedsString,
+    };
+    assert(name.len > 0);
+    if (env.host_environ) |environ| {
+        if (environ.get(name)) |val| {
+            const owned = try allocator.dupe(u8, val);
+            return .{ .string = owned };
+        }
+    }
+    return .{ .string = try allocator.dupe(u8, "") };
 }
 
 /// `read-file <path-expr>` reads a file and returns its contents as a string.
@@ -1355,6 +1381,9 @@ fn evalOperand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: [
     }
     if (std.mem.startsWith(u8, s, "split ")) {
         return doSplit(allocator, io, env, s[6..]);
+    }
+    if (std.mem.startsWith(u8, s, "env ")) {
+        return doEnv(allocator, io, env, s[4..]);
     }
     // `list[n]` — index a list; out-of-range is a friendly error, not a crash.
     if (findListOpenBracket(s)) |br| {
