@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (granularity pass `20260702.194512`; SLC-L1 scope note `20260702.195426`)
+**Last updated:** 2026-07-02 (Door 2 headless boxes checked `20260702.200040`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -21,8 +21,8 @@
 ### The three doors (Kaeden, in order)
 - [ ] **Door 1 — Pond clause**: affirm or refine the recommended sentence in [`pond/README.md`](../pond/README.md).
 - [ ] **Door 2 — Ring 3 metal close** (Kaeden, on GNOME Wayland):
-  - [ ] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN
-  - [ ] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers
+  - [x] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN (`20260702.195626`, Cursor on host)
+  - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`, Cursor on host)
   - [ ] Live `pond/bin/drawn-terminal`, five confirmations: **build** (binary present) · **type** (lines redraw the frame) · **idle ~1 min** (pong keeps the compositor honest) · **ceiling** (past 65536 bytes, status row still updates) · **exit** (`:quit` clean)
   - [ ] One line in the session log: "Ring 3 metal-closed on GNOME, `YYYYMMDD.HHMMSS`" — Kaeden's stamp verbatim
 - [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
@@ -42,7 +42,7 @@
 4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt: [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md).
    - [ ] **Nod (Kaeden):** placement — `pond/apps/` extension vs a `dexter/` seed beside Brushstroke (Claude optional only if this seam surprises)
    - [ ] **(Cursor) DoD, each its own green:** one typed line in the window runs through Rishi and redraws · `:quit` from the window exits clean · witness (headless where the seat seam allows, else a metal `.rish` like Ring 3) wired into parity **+1** · TAME held, Skate stays in `brushstroke/`
-5. [ ] **(Cursor) RW-1 mirrored pair** — the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); lands while the seam is warm from SLC-2b. Two witnesses, two commits, parity **+2**:
+5. [ ] **(Cursor) RW-1 mirrored pair** — the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); contract on paper at [`20260702-200109_rw1-mirrored-pair-contract.md`](20260702-200109_rw1-mirrored-pair-contract.md) (`20260702.200109`); lands while the seam is warm from SLC-2b. Two witnesses, two commits, parity **+2**:
    - [ ] `tools/rw1_shell_collab.rish` — the asker's side: the shell against a stub history store; right questions at `:version`/`:history`/`:recall`; every allowed answer handled, one unwelcome answer survived
    - [ ] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
 
