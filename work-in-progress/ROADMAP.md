@@ -76,7 +76,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 
 | Ring | What | Grows from |
 |------|------|-----------|
-| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **scope-note checklist now boxed in [`TASKS.md`](TASKS.md)**, Open Asks room gated behind it | keypair + Mantra log + projection |
+| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **scope note** [`20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md); Open Asks room gated behind it | keypair + Mantra log + projection |
 | **SLC-L2** | Sealed delivery — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |

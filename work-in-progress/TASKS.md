@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (granularity pass `20260702.194512` — doors, ladder, and L1 expanded to commit-sized boxes)
+**Last updated:** 2026-07-02 (granularity pass `20260702.194512`; SLC-L1 scope note `20260702.195426`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -47,11 +47,11 @@
    - [ ] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
 
 ### Linengrow
-- [ ] **SLC-L1 scope note** — the hammock spec, one page, these boxes its skeleton:
-  - [ ] The **transaction fact**'s fields, exactly (parties by Kumara key, amount, memo, stamp) — a `.bron` value
-  - [ ] **Sign** with the ed25519 path parity already witnesses; **append** to a plain log file; **receipt = a pure fold** over that log; **verify** = recompute + signature check
-  - [ ] The **edge of complete**, named: in — one signer, one log, one verifiable receipt; out — settlement, the market, currency, multi-party
-  - [ ] Witness sketch named (`tools/slcl1_receipt.rish`) so the ring lands proven; Open Asks room stays gated behind this note
+- [x] **SLC-L1 scope note** — the hammock spec, one page, these boxes its skeleton ([`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md), `20260702.195426`):
+  - [x] The **transaction fact**'s fields, exactly (parties by Kumara key, amount, memo, stamp) — a `.bron` value
+  - [x] **Sign** with the ed25519 path parity already witnesses; **append** to a plain log file; **receipt = a pure fold** over that log; **verify** = recompute + signature check
+  - [x] The **edge of complete**, named: in — one signer, one log, one verifiable receipt; out — settlement, the market, currency, multi-party
+  - [x] Witness sketch named (`tools/slcl1_receipt.rish`) so the ring lands proven; Open Asks room stays gated behind this note
 
 ### Ground
 - [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.

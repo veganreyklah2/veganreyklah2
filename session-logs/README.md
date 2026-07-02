@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.195426 | [Autonomous round 1 — SLC-L1 scope note](20260702-195426_autonomous-round1-slcl1-scope.md) | Hammock spec lands; four Linengrow boxes checked. |
 | 20260702.195103 | [Consume granularity pass — commit-sized boxes](20260702-195103_consume-granularity-pass.md) | TASKS + ROADMAP sharpened; ~88 boxes; Amber pre-counsel proposed. |
 | 20260702.194512 | [The Granularity Pass — Every Rung Boxed to Commit Size](20260702-194512_granularity-pass.md) | Claude executor log for granularity sitting. |
 | 20260702.194512 | [Commits push full summary — Kaeden request](20260702-194512_commits-push-request.md) | c020501 pushed; full arc summary delivered. |
