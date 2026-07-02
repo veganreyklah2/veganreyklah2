@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.194512 | [Commits, push, and full summary handoff](20260702-194512_commits-push-full-summary.md) | Four remotes at tip; arc from audit through open-asks bridge. |
+| 20260702.194112 | [Aborted zip extract — status ping](20260702-194112_aborted-zip-extract-status.md) | Background unzip aborted; bridge round already at 89fd336. |
 | 20260702.193650 | [Consume bridge round — movement open asks](20260702-193650_consume-open-asks-bridge.md) | Demand map memo; Open Asks room; agent writing awaits paste. |
 | 20260702.192712 | [The movement's open asks — Rio's fifth round](20260702-192712_movements-open-asks.md) | Claude executor log for bridge sitting. |
 | 20260702.191045 | [Commits push and full summary handoff](20260702-191045_commits-push-full-summary.md) | Four remotes at babfa99; arc summary for Kaeden. |
