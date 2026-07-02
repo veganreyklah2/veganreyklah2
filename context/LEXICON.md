@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-06-30 (Lotus, REAPER gratitude, Genesis clarified)
+**Last updated:** 2026-07-02 (Amber seated; Lotus, REAPER gratitude, Genesis clarified)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -27,6 +27,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Tablecloth** | Application data store (horizon — role still shaping) |
 | **Bron** | Data notation between modules (`.bron`) |
 | **Lotus** | Our digital audio workstation — hot-loop studio; horizon after SLC-2 |
+| **Amber** | Preservation — signed, encrypted, bit-faithful archives on deep storage, recorded in an append-only log and verified by folding; Mantra holds the living history, Amber seals the moment cold |
 
 ## Named tonight (`2026-06-30`)
 

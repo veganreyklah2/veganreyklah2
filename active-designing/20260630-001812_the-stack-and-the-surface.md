@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260630.001812` (Rye chronological stamp)
-**Last updated:** 2026-06-30
+**Last updated:** 2026-07-02 (Amber seated in stack record)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety, performance, then the joy of the craft; Gall's Law; one value model; aparigraha
 **Companions:** `recommended-architecture` and `single-stranded` (the core names); `pond-foundation` (the enclosure)
@@ -31,7 +31,7 @@ The modules rest on one another in one direction, and the test the whole arrange
 
 **Weave** is the substrate: the append-only DAG of immutable signed facts. It is the literal floor beneath the family's deepest thesis, that state is a pure fold over a log. Weave rests on Tally for its memory and on identity for its signatures, and it knows nothing of the views that will later be folded from it.
 
-**Mantra** and **Comlink** rest on Weave. Mantra is a projection over Weave — the version-control view of the content-addressed DAG, the names and histories a person reads. Comlink is a transport over Weave — the sealed movement of signed facts from one node to another. A projection and a journey, both over the same substrate.
+**Mantra** and **Comlink** rest on Weave. Mantra is a projection over Weave — the version-control view of the content-addressed DAG, the names and histories a person reads. Comlink is a transport over Weave — the sealed movement of signed facts from one node to another. **Amber** seals state cold to disconnected storage — signing through the host's OpenPGP seam with Kumara as its sovereign horizon, leaning on Tally for bounded working memory — while Mantra holds the living history and Comlink moves signed facts hot between nodes. A projection, a journey, and a preservation ring, all over the same substrate.
 
 **Brushstroke** is the surface, and it rests above the substrate with one deliberate gap between them, named in its own section below. It leans on **Skate**, the primitive that turns a grid of text into a buffer of pixels.
 

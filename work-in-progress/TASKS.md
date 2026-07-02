@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-06-30 (foundation seeds in parity; 138 witnesses)
+**Last updated:** 2026-07-02 (Alice birth-chart library; Amber and deep-archive docs round)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -19,13 +19,17 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–2 landed** (`2026-06-30`, commit `5b3a5a4`). **Ring 3 next — mirror live Rishi session** *(check in with Claude for wiring before bench)*.
+- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–2 landed** (`5b3a5a4`). **Ring 3** — bench prompt [`20260701-231512_cursor-slc-2a-ring-three.md`](../expanding-prompts/20260701-231512_cursor-slc-2a-ring-three.md) *(confirm `pond/apps/drawn_terminal.rye` placement with Kaeden before writing)*.
 
 ### Linengrow
 - [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
 
 ### Ground
 - [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.
+- [ ] **Amber first ring (horizon)** — designed in [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md); seal one directory to one drive, one signed record, one verifying fold, one hand-verified golden when the season comes.
+- [ ] **Deep-archive hardware (horizon)** — rack, powered dock, bare enterprise drives, front-door tunnel; researched in [`external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md); procurement waits on the dedicated machine.
+
+**Recorded rulings (`20260701-221512` docs round):** **Amber invocation** — explicit shell command with manual sandbox-key unlock; the docked bare drive is precondition, never trigger; the shell may notice and offer, never act; scrub runs cold, key warm only for the seconds of seal. **Amber key custody** — master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` cold and certifying; sandbox `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` signing and revocable; drive passphrase on paper in the firebox and offsite; any other fingerprint is an error on sight.
 
 ---
 
@@ -109,6 +113,9 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **SLC-L1 and Sui** — confirm the first Linengrow ring uses pure foundations (keypair + log + projection) with no Sui, settlement deferred to SLC-L3. (Recommended: yes.)
 - **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
 - **TASKS naming** — keep `TASKS.md`, or rename to the warmer `WORKBENCH.md`?
+- **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
+- **Designed-not-built spec bound (Edit 5)** — pending Kaeden ruling: at most one functional spec in designed-not-built flight until its first ring runs green.
+- **Birth-chart craft** — siloed library at [`foundations/alice-silos/`](../foundations/alice-silos/); template and sample at `20260701-232912_*`; computation at [`tools/cast_a_chart.py`](../tools/cast_a_chart.py).
 
 ---
 

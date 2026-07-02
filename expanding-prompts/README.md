@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Version:** `20260621.051612` (Rye chronological stamp)
+**Last updated:** 2026-07-02 (Ring 3 bench prompt; Amber docs round consumed to yonder)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,6 +68,8 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260701-231512` | [SLC-2a Ring 3 — mirror live session](20260701-231512_cursor-slc-2a-ring-three.md) | Active bench — drawn terminal + Pond app; awaits Kaeden placement nod |
+| `20260701-221512` | [Amber and deep archive docs round](yonder/20260701-221512_cursor-amber-and-deep-archive.md) | Consumed — blueprint, Amber spec, rulings; in `yonder/` |
 | `20260628-120912` | [Kernel direction, Brix, and foundations — batch brief](20260628-120912_kernel-direction-brix-and-foundations.md) | Microkernel as Caravan direction (horizon); Brix clarification; foundation layer; revitalization practice |
 | `20260621-051612` | [10023 · Main Track — Rye, Rishi, and Strengthening](yonder/20260621-051612_main-track-rye-rishi-strengthening.md) | Consumed — strengthening arc and width gate complete; in `yonder/` |
 | `20260621-051612` | [10025 · Strengthening Stdlib Doc + Width Pass — Redirect](yonder/20260621-051612_strengthening-stdlib-doc-width-pass-redirect.md) | Redirect stub — in `yonder/` |
