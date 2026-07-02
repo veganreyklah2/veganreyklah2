@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Door 2 headless boxes checked `20260702.200040`)
+**Last updated:** 2026-07-02 (Amber pre-counsel confirmed `20260702.202612`; studies 19–20 landed; Serena episode)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -32,7 +32,7 @@
 2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5 → parity 143.** One commit, message `Wire Edit 5 designed-not-built witness — parity 143`:
    - [ ] Append the standard quartet at the tail of [`tools/parity.rish`](../tools/parity.rish), after the width-check block: `say` banner → `run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]` → `assert .ok else` → `say "GREEN: …"`
    - [ ] Full suite green on metal; ROADMAP gate-trio line and this ladder's parity numbers refreshed in the same commit.
-3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Invocation and custody rulings below govern throughout. **Pre-counsel, proposed `20260702.194512` — the sitting confirms or amends, Cursor starts nothing before it lands:**
+3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Invocation and custody rulings below govern throughout. **Pre-counsel proposed `20260702.194512` — CONFIRMED by the outside reading `20260702.202612`, all five as written; after the doors, the sitting is a formality unless a door changes the ground. Cursor implements nothing before Doors 1–3 land:**
    - **(1) Module home:** `amber/` at top level — Amber is a module by role (its own invariants, budget, and witness from birth), never an aspect of another host.
    - **(2) First export target:** a fixed fixture tree `tools/fixtures/amber_ring1_tree/` — three files (one empty, one small text, one ~64 KiB binary) plus one subdirectory — deterministic, so the golden never moves.
    - **(3) Independent digest tool:** `openssl dgst -sha3-256` as the host-seam oracle; the golden manifest digest pinned by hand into the witness.
@@ -62,6 +62,11 @@
 ---
 
 ## Next — Horizons and Optional
+
+### The lane and the hearth (`20260702.202612`)
+
+- [x] **Studies 19–20** — [`19_GOVERNMENT_AS_PLANETARY_SPECTRUM.md`](../classical-vedic-astrology/studies/19_GOVERNMENT_AS_PLANETARY_SPECTRUM.md) and [`20_LIBERAL_AND_CONSERVATIVE_PLANETS.md`](../classical-vedic-astrology/studies/20_LIBERAL_AND_CONSERVATIVE_PLANETS.md); distilled from Vic DiCara with gratitude; raw transcripts not committed (`20260702.202612`).
+- [x] **The Serena episode** — [`foundations/20260702-202612_a-conversation-with-serena.md`](../foundations/20260702-202612_a-conversation-with-serena.md): the hearth-talk imagined fuller, in the register of the earliest foundations writings (`20260702.202612`).
 
 ### The movement's open asks (`20260702.192712`)
 

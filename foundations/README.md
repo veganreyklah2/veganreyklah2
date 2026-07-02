@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-02 (happy-zone foundation; Rio round)
+**Last updated:** 2026-07-02 (the Serena episode; studies 19–20; happy-zone foundation)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -14,6 +14,7 @@ These rest beneath the specifications. The specs say what to build and how; thes
 
 **Foundation briefs** — the why beneath the daily work, on our own roots:
 
+- `20260702-202612_a-conversation-with-serena.md` — the hearth episode: the long cycles, the diary that can't be quietly rewritten, grace as the ground and the ledger for the weeds; a mother's questions as the best part.
 - `20260628-121512_the-foundation-beneath-the-work.md` — work as offering, building as service, freedom as the thing we build toward, grace as the ground we stand on.
 - `20260628-121512_the-heart-in-the-work.md` — the path with heart as the test for what we take up, conserved energy as strength, clean craft as energy spent without leak.
 - `20260702-165412_the-happy-zone-and-the-thin-ring.md` — the testing teaching siloed: two small answers at every seam turn multiplication into addition; the pure fold core proven fast inside, the world's few honest checks kept to a thin ring at the edge.

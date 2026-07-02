@@ -1,27 +1,40 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.200109`
+**Stamp:** `20260702.202612`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Affirmed (`20260702.165412` through `20260702.200109`)
+## Affirmed through `20260702.202612`
 
-Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 closed · Grain · Versioning · Brix yonder · Open asks · Granularity pass · **SLC-L1 scope note** · **RW-1 contract prep**
+Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Brix yonder · Open asks · Granularity · SLC-L1 scope · RW-1 contract prep · **Amber pre-counsel CONFIRMED (all five)** · **Studies 19–20** · **Serena episode**
+
+## Hard bounds (Cursor loop)
+
+- **Never** touch boxes tagged **(Kaeden …)** — three doors, ratifications, nods, pastes
+- **`amber/`** untouched until Doors 1–3 land; after Door 3 = *for*: wire Edit 5 → **143**, then Amber rungs (a)–(e), one commit each
+- **No new module/aspect names** — park candidates in RTAC
+- **Stop-and-park** on: Kaeden-tagged path · parity red twice · module-home/seam decision · keys/custody/amber/MALA · new names
 
 ## Kaeden — three doors before Claude
 
 | # | Item | Status |
 |---|------|--------|
-| 1 | **Pond clause** | Awaiting affirm/refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | Headless **2/4** done (`195626`); live five steps + log stamp remain |
-| 3 | **Edit 5** | *for* → **143** or *against* — witness **GREEN** unwired |
+| 1 | **Pond clause** | Awaiting affirm/refine |
+| 2 | **Ring 3 metal close** | Headless **2/4**; live five steps + log stamp remain |
+| 3 | **Edit 5** | *for* → **143** or *against* |
 
-## Claude — after doors (ladder rung 3)
+**Optional ratifications:** archive verdict · Maitreya owns time · standing audit rule · versioning rule · demand map
 
-**Amber first ring** — pre-counsel `20260702.194512`; sitting confirms before `amber/`.
+## Amber — pre-counsel CONFIRMED (`20260702.202612`)
+
+All five as written at `20260702.194512`: `amber/` module home · `tools/fixtures/amber_ring1_tree/` · `openssl dgst -sha3-256` oracle · welcome + tampered witness · parity **144** if Edit 5 wired else **143**. Sitting is formality after doors unless a door changes ground.
+
+## Awaiting Kaeden paste
+
+**Linengrow agent writing** — whole in external-research + siloed in foundations on arrival.
 
 ## Parity arithmetic
 
@@ -29,26 +42,28 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 closed · Grain · Versionin
 |------|--------|
 | Now | **142** |
 | Edit 5 (if *for*) | **143** |
-| Amber | **+1** |
+| Amber (five rungs) | **+1** (144 if Edit 5 wired) |
 | SLC-2b | **+1** |
 | RW-1 pair | **+2** |
 
-## Autonomous progress (`20260702.200109`)
+## Ungated diet (smallest-first)
+
+Rishi framework growth (one builtin/round) · semver sweep · manual reference pages (witnessed behavior only) · tutorial two on run record · bare-print as-you-touch · RW-2 contract on paper
+
+## Landed `20260702.202612`
 
 | Commit | Aspect |
 |--------|--------|
-| `40f77e1` | Pond — Door 2 headless boxes in TASKS |
-| `caedb3a` | Rye — RW-1 witness contract on paper |
-| `0ab0169` | Ground — slcl1 fixture index + active-designing row |
+| *(this sitting)* | Studies 19–20 · Serena episode · Amber confirmed in TASKS |
 
-Prior sitting: `aedbd09`→`bd6c462` (SLC-L1 scope, fixtures, headless verify).
+Prior tip: `87ef200`
 
 ## Best path
 
-**Door 1 → Door 2 live (2 boxes left) → Door 3 → Amber sitting → ladder**
+**Door 1 → Door 2 live → Door 3 → (if *for*) Edit 5 + Amber rungs → SLC-2b nod → RW-1**
 
-Parity **142** GREEN · prep lanes open · build lanes door-gated
+Parity **142** GREEN
 
 ---
 
-*May every seam carry its two small answers in season.*
+*May the kitchen table stay the truest design review this project ever holds.*
