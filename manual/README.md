@@ -4,7 +4,7 @@
 **Last updated:** 2026-07-02
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
-**Status:** Founded — reference at parity **142**; first tutorial open
+**Status:** Founded — reference at parity **142**; two tutorials open; Caravan and Tally reference partial
 
 ---
 
@@ -16,10 +16,13 @@ The lane grows by the same law as the code: reference specifications open only w
 
 ## What Lives Here
 
-- **`reference/rishi-language.md`** — the Rishi language and command-line reference (version `20260702.184312`, parity **142**).
+- **`reference/rishi-language.md`** — the Rishi language and command-line reference (version `20260702.184312`, parity **142**); §8 conditionals witnessed `20260702.205630`.
+- **`reference/caravan-capabilities.md`** — hosted capability table (witnessed behavior only).
+- **`reference/tally-gardens.md`** — named bounded memory regions (witnessed behavior only).
 - **`tutorials/first-witness.md`** — run, read, write: your first `.rish` witness against the living suite.
+- **`tutorials/run-record-and-failures.md`** — the four run-record fields and RW-4 failure paths.
 
-*Next rooms, in season: reference pages for the Aurora, Tally, and Caravan interfaces as each stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
+*Next rooms, in season: Aurora interface reference when the surface stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
 
 ---
 
