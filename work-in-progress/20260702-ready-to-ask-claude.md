@@ -9,7 +9,7 @@
 
 ## Affirmed through `20260702.202612`
 
-Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Brix yonder · Open asks · Granularity · SLC-L1 scope · RW-1 contract prep · **Amber pre-counsel CONFIRMED (all five)** · **Studies 19–20** · **Serena episode**
+Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Brix yonder · Open asks · Granularity · SLC-L1 scope · RW-1 contract prep · **Amber pre-counsel CONFIRMED (all five)** · **Studies 19–20** · **Serena episode** · **WOV named (`20260702.211312`)** · build verdict recorded · ledger map completed
 
 ## Hard bounds (Cursor loop)
 
@@ -51,17 +51,22 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — empty plate (`20260702.211046`):** all enumerated items through framework growth are landed. Remaining opportunistic items (Aurora manual when stable · bare-print as-you-touch) wait on surface stability or touch — **not** autonomous forage. Loop stops here until Kaeden opens a door or refreshes the menu.
+**Menu status — empty plate; pre-staged for the doors (`20260702.211312`):** autonomous diet remains empty until a door opens. **When Door 3 = *for*:** Edit 5 → **143**, Amber rungs (a)–(e), chrono sweep wires in same arithmetic. **When SLC-2b nod lands (after Door 2):** four DoD greens, then RW-1 pair (**+2**). **After Amber season:** toolset ring one and `rye test` enter the diet. **Aurora manual:** as-you-touch on next surface stabilization.
 
 ~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi framework growth (four witnesses)~~ · ~~file I/O witness~~ · ~~exit vocabulary~~
 
-## Landed `20260702.211046`
+## Parked name-candidates (Kaeden's joy)
+
+- **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs)
+- **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
+
+## Landed `20260702.213002`
 
 | Commit | Aspect |
 |--------|--------|
-| *(this round)* | Lexicon: ungated diet · RTAC empty-plate rule |
+| *(this sitting)* | WOV memo · lexicon · TASKS horizons · menu pre-staged |
 
-Prior tip: `313f1fd`
+Prior tip: `0c8abd1`
 
 ## Best path
 
