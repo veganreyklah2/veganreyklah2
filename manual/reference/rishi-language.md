@@ -57,7 +57,14 @@ assert smoke.ok else "metalsmoke exited non-zero"
 
 A pipeline *must* check `.ok` (or `.code`) before trusting `.out` or `.err`. External programs keep stdout and stderr separate in the run record. When a witness drives **`rishi repl`** or **`rishi run`** as a subprocess, Rishi's own diagnostics land on **stderr** — merge with `2>&1` in the host seam when the witness needs to read them from `.out`, as in `tools/rw4_slc_failure_paths.rish`.
 
-The `["sh" "-c" "…"]` form is the sanctioned **host seam** for environment variables, redirection, and globbing; scripts *should* keep each seam to one honest line, and orchestration in Rishi proper. By convention every script runs **from the repository root**; scripts *must not* assume any other working directory.
+The `["sh" "-c" "…"]` form remains the **host seam** for setting variables, redirection, and globbing; scripts *should* keep each seam to one honest line. For **reading** the process environment, `env "NAME"` returns the value as a string, or the empty string when unset — witness: `tools/rish_env_witness.rish` (run with `RISHI_ENV_WITNESS_TEST=pinned`).
+
+```
+let home = env "HOME"
+let zig = env "RYE_ZIG"
+```
+
+By convention every script runs **from the repository root**; scripts *must not* assume any other working directory.
 
 ## 5. Gates — `assert … else`
 
@@ -90,9 +97,9 @@ let failures = where codes as c: c != 0
 assert length failures == 0 else "a witness failed — the regression suite is RED"
 ```
 
-`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry much of the parity suite. **`if … then … else …`** and **`for-each LIST as x do …`** handle branching and iteration with effects (see §8).
+`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry much of the parity suite. Branching and iteration with effects live in §9.
 
-## 8. Conditionals and Iteration — `if` and `for-each`
+## 9. Conditionals and Iteration — `if` and `for-each`
 
 ```
 if x == 5 then let msg = "yes" else let msg = "no"
@@ -102,11 +109,11 @@ for-each items as i do if i == 3 then say "found three"
 
 Conditions may compare with `==`, `!=`, and `starts-with`. The `then` branch runs when the condition is true; `else` is optional. **`for-each`** runs a statement for each list element — effects included. Witness: `tools/rish_conditional_witness.rish`.
 
-## 9. Output — `say`
+## 10. Output — `say`
 
 `say "…"` prints a line with interpolation; lists render inline. The convention across the corpus: a witness's final line begins `GREEN:` on success, and gates upstream test for it with `contains "GREEN"`.
 
-## 10. Script Arguments — `args` and `flag`
+## 11. Script Arguments — `args` and `flag`
 
 Inside a script run as `rishi run script.rish a b c`:
 
@@ -118,13 +125,13 @@ let path = flag args "--appimage"
 
 `args` is the list of words after the script path. `flag LIST "--name"` scans for `--name value` and returns the value; a missing flag ends the script with `flag not found`, and a flag at list's end with `requires a value` — both *must* remain friendly, single-line messages.
 
-## 11. The Interactive Shell
+## 12. The Interactive Shell
 
 `rishi repl` reads lines, runs them, and keeps the last **50** inputs. Meta-commands begin with a colon: `:history` lists recent inputs; `:recall <n>` replays one; `:version` prints the version; `:quit` and `:q` leave. Everything else on a line is dispatched as a command. Unknown meta-commands and bad `:recall` arguments answer with a friendly line and the session continues — pinned in `tools/rw4_slc_failure_paths.rish`. The drawn terminal mirrors exactly this session through `sessionLines`, so the shell's contract and the window's content are one value.
 
-## 12. Named Gaps — the Growing Edge
+## 13. Named Gaps — the Growing Edge
 
-Held openly, so the reference and the roadmap agree: **`if` / `for-each`** are witnessed in `tools/rish_conditional_witness.rish`. Rishi still keeps **no environment builtin** (the `sh -c` seam serves), **no file-reading builtin** in the script surface, and **no named exit-code vocabulary** yet. Each remaining gap is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
+Held openly, so the reference and the roadmap agree: **`if` / `for-each`** are witnessed in `tools/rish_conditional_witness.rish`; **`env`** is witnessed in `tools/rish_env_witness.rish`. Rishi still keeps **no named exit-code vocabulary** yet (temporary / permanent / could-not-begin). Each remaining gap is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
 
 ---
 

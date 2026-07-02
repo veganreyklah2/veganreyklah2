@@ -61,6 +61,8 @@ supporting:
 - **File I/O** — `read-file path` returns file contents as a string;
   `write-file path value` writes a value to a path; `list-dir path` returns
   entry names as a list (`tests/file_io.rish`).
+- **`env`** — `env "NAME"` reads the process environment; empty string when unset
+  (`tests/env.rish`; witness `tools/rish_env_witness.rish`).
 - **`lines`** — `lines text` splits a string on newlines into a list of strings.
 - **`starts-with`** — `text starts-with prefix` checks whether a string begins
   with a given prefix (used in gates and tests).
@@ -120,6 +122,7 @@ rishi/bin/rishi run rishi/tests/map_where.rish # transforming and filtering list
 rishi/bin/rishi run rishi/tests/strings.rish      # composing strings by interpolation
 rishi/bin/rishi run rishi/tests/arithmetic.rish   # integer arithmetic and grouping
 rishi/bin/rishi run rishi/tests/file_io.rish      # read-file, write-file, list-dir
+rishi/bin/rishi run rishi/tests/env.rish          # env process lookup
 rishi/bin/rishi run rishi/tests/lines_startswith.rish  # lines and starts-with
 rishi/bin/rishi run rishi/tests/ends_with.rish         # ends-with suffix checks
 rishi/bin/rishi run rishi/tests/join.rish              # join list with separator

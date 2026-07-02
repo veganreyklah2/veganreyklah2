@@ -48,7 +48,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 ## Ungated diet (smallest-first)
 
-~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · **next:** Rishi env builtin (one per round) · Aurora manual when stable · bare-print as-you-touch
+~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi env builtin~~ · **next:** file-reading builtin surface · named exit codes · Aurora manual when stable · bare-print as-you-touch
 
 ## Landed `20260702.205846`
 
