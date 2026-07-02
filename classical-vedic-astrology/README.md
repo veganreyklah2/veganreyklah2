@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-02
+**Last updated:** 2026-07-02 (studies 19–20 — governance and temperament)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 
@@ -21,7 +21,7 @@ The friend whose sky seeded this library asked that her privacy be kept, and it 
 
 ## What Lives Here
 
-- **`studies/`** — the numbered silo library, `00` through `18` and growing. Each study distills one placement pattern in our own voice, deep enough to compose from, and closes with its own **With Gratitude** section naming the teacher it honors. The map from placement to study lives inside the reading template.
+- **`studies/`** — the numbered silo library, `00` through `20` and growing. Each study distills one placement pattern in our own voice, deep enough to compose from, and closes with its own **With Gratitude** section naming the teacher it honors. The map from placement to study lives inside the reading template.
 - **`20260701-232912_reading-template.md`** — the composable skeleton: how a reading is made, section by section, silo by silo.
 - **`20260701-232912_reading-template.html`** — the same skeleton as a single self-drawing page: edit one `CHART` object and the whole-sign wheel, the placement table, and the header all redraw themselves. No raster image carries a name.
 - **`20260701-232912_alice-sample-reading.md`** — the demonstration: a real, twice-verified sky under the placeholder name, every section pointing at the silo that carries its depth.

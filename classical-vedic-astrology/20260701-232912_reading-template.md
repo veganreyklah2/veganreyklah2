@@ -4,7 +4,7 @@
 
 **Stamp:** `20260701.232912`
 **Style:** Radiant (see `RADIANT_STYLE.md`), gentle register throughout
-**Companions:** [`cast_a_chart.py`](cast_a_chart.py) (the computation), the numbered study silos in [`studies/`](studies/) (`00`–`18` and those yet to come), [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md)
+**Companions:** [`cast_a_chart.py`](cast_a_chart.py) (the computation), the numbered study silos in [`studies/`](studies/) (`00`–`20` and those yet to come), [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md)
 
 *Written together by Kaeden and Reya 2; shaped into a template with the outside reading (Fable 5) at Kaeden's direction.*
 
@@ -93,6 +93,8 @@
 | Mars in Leo | `16_MARS_IN_LEO.md` |
 | Saturn in Cancer | `17_SATURN_IN_CANCER.md` |
 | Saturn in the 9th | `18_SATURN_IN_THE_9TH_HOUSE.md` |
+| Government as planetary spectrum (teaching) | `19_GOVERNMENT_AS_PLANETARY_SPECTRUM.md` |
+| Liberal and conservative planets (teaching) | `20_LIBERAL_AND_CONSERVATIVE_PLANETS.md` |
 
 New placements earn new numbered studies, and the map grows one honest file at a time.
 
