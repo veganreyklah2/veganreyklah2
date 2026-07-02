@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.193650 | [Consume bridge round — movement open asks](20260702-193650_consume-open-asks-bridge.md) | Demand map memo; Open Asks room; agent writing awaits paste. |
+| 20260702.192712 | [The movement's open asks — Rio's fifth round](20260702-192712_movements-open-asks.md) | Claude executor log for bridge sitting. |
 | 20260702.191045 | [Commits push and full summary handoff](20260702-191045_commits-push-full-summary.md) | Four remotes at babfa99; arc summary for Kaeden. |
 | 20260702.190330 | [Consume Brix re-silo and yonder pass ten](20260702-190330_consume-brix-yonder-pass-ten.md) | Fourteen live briefs; Brix siloed; tree repointed. |
 | 20260702.185912 | [Brix re-siloed, and yonder pass ten](20260702-185912_brix-resilo-yonder-ten.md) | Claude executor log for structural sitting. |

@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (audit round; userland lineages; small-sharp toolset)
+**Last updated:** 2026-07-02 (the movement's open asks)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -41,6 +41,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260702-192712` | [The movement's open asks](20260702-192712_the-movements-open-asks.md) | The boards read directly; eight categories assigned to module ensembles; the Open Asks room named as the meta-ask; caveats and horizons |
 | `20260702-180812` | [The userland lineages](20260702-180812_userland-lineages.md) | musl, Alpine, s6, Nix, sixos/infuse — patterns for a small sharp Rye userland |
 | `20260702-035018` | [Puddle — sandboxed Rye OS environments](20260702-035018_puddle-sandboxed-rye-containers.md) | Many bounded worlds, one host: pier lessons, microVM lineage, content-addressed archive verdict beyond tar; second pass `20260702.165412` |
 | `20260702-031312` | [Settlement, consensus, and many roads](20260702-031312_settlement-consensus-and-many-roads.md) | Sui and Mysticeti read plainly; proven ground under Linengrow; multipath lineage behind the road-keeper |

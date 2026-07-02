@@ -1,42 +1,47 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.185912`
+**Stamp:** `20260702.192712`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Affirmed (`20260702.165412` + `20260702.180812` + `20260702.184312` + `20260702.185912`)
+## Affirmed (`20260702.165412` through `20260702.192712`)
 
-Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **Grain and crossing** · **Versioning audit** · **Brix re-siloed** · **Yonder pass ten** (14 live briefs)
+Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 closed · Grain and crossing · Versioning audit · Brix re-siloed · **Movement open asks mapped**
 
 ## Kaeden — three doors before Claude
 
 | # | Item | Command / where |
 |---|------|-----------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` → metalsmoke → live five steps |
-| 3 | **Edit 5** | Rule *for* → parity **143** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
+| 2 | **Ring 3 metal close** | preflight → metalsmoke → live five steps |
+| 3 | **Edit 5** | *for* → parity **143** or *against* |
 
-**Optional ratifications (one breath):** archive verdict · Maitreya owns time · **standing audit rule** · **versioning rule**
+**Optional ratifications (one breath):** archive verdict · Maitreya owns time · standing audit rule · versioning rule · **demand map** ([memo](../external-research/20260702-192712_the-movements-open-asks.md))
 
 ## Claude — after doors (+ ladder rung 3)
 
-**Amber first ring** — brief at [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md).
+**Amber first ring** — [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md)
+
+## Awaiting Kaeden paste
+
+**Linengrow agent writing** — claude.ai links walled; lands whole in external-research + siloed in foundations on paste.
 
 ## Landed this sitting
 
 | Tip | What |
 |-----|------|
-| `524fb19` | Brix re-silo + yonder pass ten (14 live briefs) |
+| `8fce46b` | Prior handoff |
+| *(this commit)* | Open asks bridge memo + TASKS horizons |
 
 ## Best path
 
-**Doors 1–3 → ratify two rules → (Cursor Edit 5 if for → 143) → Claude Amber → SLC-2b → RW-1**
+**Doors 1–3 → (paste agent writing when ready) → ratify demand map → Claude Amber → SLC-2b → RW-1**
 
 Parity **142** GREEN · mechanical lane idle until doors land
 
 ---
 
-*May the clean room read clean all the way down.*
+*May every open ask find its answering hand.*
