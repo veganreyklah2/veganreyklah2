@@ -29,8 +29,7 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 | Tip | What |
 |-----|------|
-| `e5dff5c` | Audit round integration (`61a986a`) + handoff log |
-| *(pending commit)* | RW-3 witness wired → parity **141**; Amber Claude brief; Edit 5 apply bundle → **142** |
+| `e2bc0f9` | RW-3 witness → parity **141**; Amber Claude brief; Edit 5 apply → **142** |
 
 ## Best path
 
