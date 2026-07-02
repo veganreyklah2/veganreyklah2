@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (the movement's open asks)
+**Last updated:** 2026-07-02 (WOV sitting; ledger map)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -41,6 +41,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260702-211312` | [Names, builds, and the ledger map — WOV steps forward](20260702-211312_names-builds-and-the-ledger-map.md) | Vocabulary harvest (concepts cross, names park); no-new-module build verdict; MALA/Mycelium/Tablecloth ledger map; WOV assessed — monarch rule as pre-consensus boundary |
 | `20260702-192712` | [The movement's open asks](20260702-192712_the-movements-open-asks.md) | The boards read directly; eight categories assigned to module ensembles; the Open Asks room named as the meta-ask; caveats and horizons |
 | `20260702-180812` | [The userland lineages](20260702-180812_userland-lineages.md) | musl, Alpine, s6, Nix, sixos/infuse — patterns for a small sharp Rye userland |
 | `20260702-035018` | [Puddle — sandboxed Rye OS environments](20260702-035018_puddle-sandboxed-rye-containers.md) | Many bounded worlds, one host: pier lessons, microVM lineage, content-addressed archive verdict beyond tar; second pass `20260702.165412` |
