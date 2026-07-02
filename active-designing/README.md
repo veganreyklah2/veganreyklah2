@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Brix re-siloed; yonder pass ten — twenty-six early briefs to yonder)
+**Last updated:** 2026-07-02 (SLC-L1 scope note `20260702.195426`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,6 +47,7 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify, Open Asks gated |
 | `20260702-185912` | [Brix — the composer and the system around it](20260702-185912_brix-the-composer.md) | Re-siloed: the ensemble table on our own strands; one bond as the override; sealed distribution at identity; first ring after the Amber season |
 | `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: the grain's nine strands defined; the two-room crossing and its closing test — what "siloed into our grain" means |
 | `20260702-180812` | [The small sharp toolset](20260702-180812_the-small-sharp-toolset.md) | Userland patterns in our grain: composed artifact, readiness as facts, man as value, one override combinator; ladder gated after Amber |
