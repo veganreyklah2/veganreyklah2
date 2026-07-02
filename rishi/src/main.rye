@@ -14,6 +14,8 @@
 //! `read-file` (returns file contents as a string), `write-file` (writes a
 //! value to a path), and `list-dir` (returns entry names as a list of strings);
 //! `env` to read the process environment by name (empty string when unset);
+//! pre-bound exit vocabulary (`exit-ok`, `exit-temporary`, `exit-permanent`,
+//! `exit-could-not-begin`) and an `exit` statement for scripts;
 //! `lines` to split a string into a list by newline; `starts-with` and `ends-with`
 //! to check whether a string begins or ends with a given affix; `length` for strings
 //! and lists; `trim` to remove surrounding whitespace; `slice` for bounded substring;
@@ -95,11 +97,17 @@ const Binding = struct { name: []const u8, value: Value };
 /// A bounded environment of name-to-value bindings. Bounded on purpose: the
 /// limit is stated, so a runaway script meets a clear edge rather than eating
 /// memory without end.
+const ExitSlot = struct {
+    code: ?u8 = null,
+};
+
 pub const Env = struct {
     items: [256]Binding = undefined,
     count: u32 = 0,
     /// Process environment for the `env` builtin — set at REPL and script entry.
     host_environ: ?*std.process.Environ.Map = null,
+    /// When set, an `exit` statement stores the script's chosen code here.
+    script_exit: ?*ExitSlot = null,
 
     fn bind(self: *Env, name: []const u8, value: Value) !void {
         // invariant: count never exceeds capacity
@@ -305,7 +313,7 @@ fn runInputLine(
     evalStatement(garden, io, env, line) catch |err| {
         if (err == error.AssertionFailed) {
             // doAssert already named the broken fact.
-        } else {
+        } else if (err != error.ExitRequested) {
             const err_name = @errorName(err);
             print("rishi: {s}\n  {s}\n", .{ err_name, line });
             transcriptAppendError(transcript, err_name);
@@ -391,6 +399,9 @@ pub fn runOneInput(
     }
 
     try runInputLine(garden, io, env, history, transcript, line);
+    if (env.script_exit) |slot| {
+        if (slot.code != null) return .quit;
+    }
     return .advance;
 }
 
@@ -430,7 +441,9 @@ pub fn sessionLines(
 fn runRepl(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
-    var env = Env{ .host_environ = init.environ_map };
+    var exit_slot: ExitSlot = .{};
+    var env = Env{ .host_environ = init.environ_map, .script_exit = &exit_slot };
+    try bindExitVocabulary(&env);
     var history: History = .{};
     var transcript: Transcript = .{};
     var store_ready = false;
@@ -448,7 +461,7 @@ fn runRepl(init: std.process.Init) !u8 {
         if (line.len == 0) continue;
 
         const signal = try runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, line);
-        if (signal == .quit) return 0;
+        if (signal == .quit) return exit_slot.code orelse 0;
     }
 }
 
@@ -474,7 +487,9 @@ fn runFile(init: std.process.Init, args: []const [:0]const u8) !u8 {
         return 1;
     };
 
-    var env = Env{ .host_environ = init.environ_map };
+    var exit_slot: ExitSlot = .{};
+    var env = Env{ .host_environ = init.environ_map, .script_exit = &exit_slot };
+    try bindExitVocabulary(&env);
     bindScriptArgs(garden, &env, args[3..]) catch |err| switch (err) {
         error.TooManyScriptArgs => {
             print("rishi run: too many arguments (max {d})\n", .{max_args});
@@ -501,6 +516,15 @@ fn bindScriptArgs(allocator: std.mem.Allocator, env: *Env, script_args: []const 
     try env.bind("args", .{ .list = items });
 }
 
+/// Pre-bind the Caravan-facing exit vocabulary — execline/s6 lineage values
+/// scripts may return through `exit`. Each name is an integer binding.
+fn bindExitVocabulary(env: *Env) !void {
+    try env.bind("exit-ok", .{ .int = 0 });
+    try env.bind("exit-temporary", .{ .int = 112 });
+    try env.bind("exit-permanent", .{ .int = 111 });
+    try env.bind("exit-could-not-begin", .{ .int = 125 });
+}
+
 /// Run a Rishi script, line by line. Returns 0 when the whole script runs, or 1
 /// at the first line that does not make sense — named with its line number, so
 /// the trouble is easy to find.
@@ -512,6 +536,10 @@ fn interpret(allocator: std.mem.Allocator, io: std.Io, env: *Env, source: []cons
         const line = std.mem.trim(u8, raw, " \t\r\n");
         if (line.len == 0 or line[0] == '#') continue;
         evalStatement(allocator, io, env, line) catch |err| {
+            if (err == error.ExitRequested) {
+                if (env.script_exit) |slot| return slot.code orelse 0;
+                return 0;
+            }
             if (err == error.AssertionFailed) {
                 // doAssert already named the broken fact; add where it broke.
                 print("  at line {d}: {s}\n", .{ line_no, line });
@@ -551,6 +579,8 @@ fn evalStatement(allocator: std.mem.Allocator, io: std.Io, env: *Env, line: []co
         try doIf(allocator, io, env, std.mem.trim(u8, line[3..], " \t"));
     } else if (std.mem.startsWith(u8, line, "for-each ")) {
         try doForEach(allocator, io, env, std.mem.trim(u8, line[9..], " \t"));
+    } else if (std.mem.startsWith(u8, line, "exit ")) {
+        try doExit(allocator, io, env, std.mem.trim(u8, line[5..], " \t"));
     } else {
         return error.UnknownStatement;
     }
@@ -612,6 +642,9 @@ const EvalError = error{
     StringTooLong,
     UnterminatedInterpolation,
     OutOfMemory,
+    ExitRequested,
+    ExitNeedsInt,
+    ExitOutOfRange,
 };
 
 /// Evaluate an expression: an operand, two operands compared with `==`/`!=`, or a
@@ -1749,6 +1782,20 @@ fn recordsEqual(x: []const Field, y: []const Field) bool {
         if (!valuesEqual(fx.value, fy)) return false;
     }
     return true;
+}
+
+/// `exit EXPR` ends the script with an integer exit code — usually one of the
+/// pre-bound vocabulary names serving Caravan's restart policy.
+fn doExit(allocator: std.mem.Allocator, io: std.Io, env: *Env, arg: []const u8) EvalError!void {
+    const value = try evalExpr(allocator, io, env, arg);
+    const code_i = switch (value) {
+        .int => |x| x,
+        else => return error.ExitNeedsInt,
+    };
+    if (code_i < 0 or code_i > 255) return error.ExitOutOfRange;
+    const code: u8 = @intCast(code_i);
+    if (env.script_exit) |slot| slot.code = code;
+    return error.ExitRequested;
 }
 
 /// `assert <expr>` makes a fact a gate: when the expression is a false boolean,
