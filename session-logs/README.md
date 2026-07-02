@@ -10,7 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260702.213002 | [WOV integration — Cursor](20260702-213002_wov-integration-cursor.md) | Rio sitting landed; WOV in lexicon; menu pre-staged for doors. |
+| 20260702.221032 | [Bench-and-fit intake — Cursor ROUND ZERO](20260702-221032_bench-fit-round-zero.md) | Verified bare-bench cure; two batched commits; plate empty afterward. |
+| 20260702.215212 | [WOV/MALA hardware fit-check](20260702-215212_wov-mala-hardware-fit-check.md) | Blueprint confirmed in ballpark; two deltas named; TASKS factored. |
+| 20260702.214941 | [Bench raise and the self-contained gate](20260702-214941_bench-raise-self-contained-gate.md) | Fresh bench green; SLC-1 witnesses now raise mantra; parity 142 from bare clone. |
 | 20260702.211046 | [Ungated diet — lexicon and empty plate](20260702-211046_ungated-diet-lexicon-empty-plate.md) | Rio's definition seated; empty-plate rule; menu marked empty. |
 | 20260702.210650 | [Rishi file I/O and exit vocabulary](20260702-210650_rishi-file-io-exit-vocabulary.md) | File I/O witness; exit codes pre-bound; framework growth track complete. |
 | 20260702.210201 | [Rishi env builtin](20260702-210201_rishi-env-builtin.md) | `env "NAME"` in interpreter; witness green; parity 142 unchanged. |
