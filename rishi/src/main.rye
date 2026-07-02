@@ -93,7 +93,7 @@ const Binding = struct { name: []const u8, value: Value };
 /// A bounded environment of name-to-value bindings. Bounded on purpose: the
 /// limit is stated, so a runaway script meets a clear edge rather than eating
 /// memory without end.
-const Env = struct {
+pub const Env = struct {
     items: [256]Binding = undefined,
     count: u32 = 0,
 
@@ -120,13 +120,14 @@ const Env = struct {
 };
 
 const max_history: u32 = 50; // recent input lines kept for :history and (Step 3) :recall
-const max_transcript_bytes: u32 = 65536; // the session transcript's ceiling, in bytes
+pub const max_transcript_bytes: u32 = 65536; // the session transcript's ceiling, in bytes
 const max_args: u32 = 64; // script argv bound — friendly error past this, not a crash
+const max_session_lines: u32 = 256; // sessionLines row bound — named before any projection
 
 /// A bounded ring of the most recent input lines. Bounded on purpose: the
 /// limit is named, so a long session meets a clear edge rather than growing
 /// without end. The oldest line is released when the ring is full.
-const History = struct {
+pub const History = struct {
     items: [max_history][]const u8 = undefined,
     count: u32 = 0,
 
@@ -147,9 +148,13 @@ const History = struct {
 /// The durable record the weave remembers: prompt, input, and caught errors,
 /// in order, bounded by a named ceiling. Held in memory until :version writes
 /// it whole to .mantra/session.log. Builtin stdout is horizon — not captured.
-const Transcript = struct {
+///
+/// `full` is set at the first refused append and never cleared within a session,
+/// so a caller above Rishi can see that the ceiling was reached.
+pub const Transcript = struct {
     bytes: [max_transcript_bytes]u8 = undefined,
     len: u32 = 0,
+    full: bool = false,
 
     /// Append text if it fits. Returns false at the edge — the caller then
     /// invites a :version to checkpoint, rather than wrapping in silence.
@@ -210,7 +215,10 @@ fn transcriptInviteVersion() void {
 }
 
 fn transcriptAppend(transcript: *Transcript, text: []const u8) void {
-    if (!transcript.append(text)) transcriptInviteVersion();
+    if (!transcript.append(text)) {
+        transcript.full = true;
+        transcriptInviteVersion();
+    }
 }
 
 fn transcriptAppendPromptLine(transcript: *Transcript, line: []const u8) void {
@@ -328,6 +336,91 @@ fn recallByIndex(
     try runInputLine(garden, io, env, history, transcript, target);
 }
 
+/// One step signal for a caller driving a session above Rishi.
+pub const StepSignal = enum { advance, quit };
+
+/// Run one input line whole — meta-commands, bang-recall, and plain evaluation.
+/// Returns whether the session should continue or quit cleanly.
+pub fn runOneInput(
+    garden: std.mem.Allocator,
+    io: std.Io,
+    init: std.process.Init,
+    env: *Env,
+    history: *History,
+    transcript: *Transcript,
+    store_ready: *bool,
+    line: []const u8,
+) !StepSignal {
+    if (line.len == 0) return .advance;
+
+    if (line[0] == '!') {
+        transcriptAppendPromptLine(transcript, line);
+        const arg = std.mem.trim(u8, line[1..], " \t");
+        try recallByIndex(garden, io, env, history, transcript, arg);
+        return .advance;
+    }
+
+    if (line[0] == ':') {
+        transcriptAppendPromptLine(transcript, line);
+        if (std.mem.eql(u8, line, ":quit") or std.mem.eql(u8, line, ":q")) return .quit;
+        if (std.mem.eql(u8, line, ":history")) {
+            var i: u32 = 0;
+            while (i < history.count) : (i += 1) {
+                std.debug.print("  {d}  {s}\n", .{ i + 1, history.items[i] });
+            }
+            return .advance;
+        }
+        if (std.mem.eql(u8, line, ":version")) {
+            doVersion(garden, io, init, transcript, store_ready) catch |err| {
+                std.debug.print("rishi: {s}\n", .{@errorName(err)});
+                transcriptAppendError(transcript, @errorName(err));
+            };
+            return .advance;
+        }
+        if (std.mem.startsWith(u8, line, ":recall ")) {
+            const arg = std.mem.trim(u8, line[":recall ".len..], " \t");
+            try recallByIndex(garden, io, env, history, transcript, arg);
+            return .advance;
+        }
+        std.debug.print("rishi: unknown meta-command '{s}'\n", .{line});
+        return .advance;
+    }
+
+    try runInputLine(garden, io, env, history, transcript, line);
+    return .advance;
+}
+
+/// Return the trailing `rows` transcript lines as plain string slices, bounded by `rows`.
+pub fn sessionLines(
+    transcript: *const Transcript,
+    allocator: std.mem.Allocator,
+    rows: u32,
+) ![][]const u8 {
+    assert(rows > 0);
+    assert(rows <= max_session_lines);
+    const data_len = transcript.len;
+    if (data_len == 0) return try allocator.alloc([]const u8, 0);
+
+    var temp: [max_session_lines][]const u8 = undefined;
+    var collected: u32 = 0;
+    var end: u32 = data_len;
+    while (end > 0 and collected < rows) {
+        var start: u32 = end;
+        while (start > 0 and transcript.bytes[start - 1] != '\n') start -= 1;
+        temp[rows - 1 - collected] = transcript.bytes[start..end];
+        collected += 1;
+        if (start == 0) break;
+        end = start - 1;
+    }
+
+    const out = try allocator.alloc([]const u8, collected);
+    var i: u32 = 0;
+    while (i < collected) : (i += 1) {
+        out[i] = temp[rows - collected + i];
+    }
+    return out;
+}
+
 /// Interactive loop — read a line, evaluate it, carry bindings forward. Meta-
 /// commands begin with `:`; `:quit` ends the session cleanly.
 fn runRepl(init: std.process.Init) !u8 {
@@ -350,40 +443,8 @@ fn runRepl(init: std.process.Init) !u8 {
         const line = std.mem.trim(u8, raw_line, " \t\r\n");
         if (line.len == 0) continue;
 
-        if (line[0] == '!') {
-            transcriptAppendPromptLine(&transcript, line);
-            const arg = std.mem.trim(u8, line[1..], " \t");
-            try recallByIndex(garden, io, &env, &history, &transcript, arg);
-            continue;
-        }
-
-        if (line[0] == ':') {
-            transcriptAppendPromptLine(&transcript, line);
-            if (std.mem.eql(u8, line, ":quit") or std.mem.eql(u8, line, ":q")) return 0;
-            if (std.mem.eql(u8, line, ":history")) {
-                var i: u32 = 0;
-                while (i < history.count) : (i += 1) {
-                    std.debug.print("  {d}  {s}\n", .{ i + 1, history.items[i] });
-                }
-                continue;
-            }
-            if (std.mem.eql(u8, line, ":version")) {
-                doVersion(garden, io, init, &transcript, &store_ready) catch |err| {
-                    std.debug.print("rishi: {s}\n", .{@errorName(err)});
-                    transcriptAppendError(&transcript, @errorName(err));
-                };
-                continue;
-            }
-            if (std.mem.startsWith(u8, line, ":recall ")) {
-                const arg = std.mem.trim(u8, line[":recall ".len..], " \t");
-                try recallByIndex(garden, io, &env, &history, &transcript, arg);
-                continue;
-            }
-            std.debug.print("rishi: unknown meta-command '{s}'\n", .{line});
-            continue;
-        }
-
-        try runInputLine(garden, io, &env, &history, &transcript, line);
+        const signal = try runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, line);
+        if (signal == .quit) return 0;
     }
 }
 

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Comlink long-run horizons captured; counsel memo; live rung unchanged)
+**Last updated:** 2026-07-02 (wire hardening; Rishi Ring 3 Edit 1; live rung still Ring 3 app)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -19,7 +19,7 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–2 landed** (`5b3a5a4`). **Ring 3** — bench prompt [`20260701-231512_cursor-slc-2a-ring-three.md`](../expanding-prompts/20260701-231512_cursor-slc-2a-ring-three.md) *(confirm `pond/apps/drawn_terminal.rye` placement with Kaeden before writing)*.
+- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–2 landed** (`5b3a5a4`). **Ring 3 Edit 1 landed** — `runOneInput`, `sessionLines`, `Transcript.full`, pub session types. **Edits 2–6** — bench prompt [`20260701-231512_cursor-slc-2a-ring-three.md`](../expanding-prompts/20260701-231512_cursor-slc-2a-ring-three.md) *(confirm `pond/apps/drawn_terminal.rye` placement with Kaeden before writing the app)*.
 
 ### Linengrow
 - [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
@@ -39,7 +39,7 @@
 
 Ground: [`external-research/20260702-014112_comlink-beyond-dns-and-sockets.md`](../external-research/20260702-014112_comlink-beyond-dns-and-sockets.md) · counsel: [`20260702-014112_horizons-and-blind-spots.md`](20260702-014112_horizons-and-blind-spots.md).
 
-- [ ] **Wire hardening (precedes any real peer)** — hosted wire graduates its witness scaffolding: unique nonce per message, real keypairs in place of deterministic ones.
+- [x] **Wire hardening (precedes any real peer)** — hosted wire: witness fixture key seeds (replacing `0xA1`/`0xB0`), unique nonce per seal via monotonic counter + SHA3 mix; parity **138** green. Production CSPRNG nonces remain horizon.
 - [ ] **Algorithm tags (accretion)** — every signed record carries its algorithm field, so eras verify side by side on one log forever.
 - [ ] **Hybrid key agreement (horizon)** — X25519 joined with ML-KEM-768 on the wire; harvest-now-decrypt-later answered.
 - [ ] **Dual signatures for the long dark (horizon)** — Amber adds SLH-DSA beside Ed25519 through the OpenPGP seam as its tooling settles.

@@ -22,7 +22,7 @@ const X25519 = std.crypto.dh.X25519;
 const ChaCha20Poly1305 = std.crypto.aead.chacha_poly.ChaCha20Poly1305;
 const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
 
-const hosted_wire_version = "20260620.034212";
+const hosted_wire_version = "20260702.014112";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -40,8 +40,28 @@ const off_tag: u64 = off_sig + Ed25519.Signature.encoded_length;
 const off_cipher: u64 = off_tag + ChaCha20Poly1305.tag_length;
 const max_message: u64 = wire_capacity - off_cipher;
 
-const seed_alice = [_]u8{0xA1} ** 32;
-const seed_bob = [_]u8{0xB0} ** 32;
+/// Witness fixture seeds — unpredictable bytes pinned for parity, not production keys.
+const seed_alice = [_]u8{
+    0x30, 0x67, 0x4a, 0xec, 0xf2, 0x43, 0x4f, 0xc6, 0x92, 0x7f, 0x03, 0x79, 0xa8, 0x57, 0x6f, 0x40,
+    0xb3, 0x92, 0x4b, 0x67, 0xfd, 0x2c, 0xf4, 0xb7, 0x94, 0x4b, 0xc6, 0xcc, 0xda, 0xce, 0xe3, 0x73,
+};
+const seed_bob = [_]u8{
+    0xd9, 0xfb, 0xd1, 0xab, 0x33, 0xdb, 0x8a, 0xeb, 0x77, 0x2f, 0xe2, 0x1f, 0x1d, 0xa3, 0xfb, 0x8d,
+    0xc8, 0xe0, 0x92, 0x17, 0x1e, 0xd0, 0x9f, 0x81, 0x1c, 0xbe, 0x86, 0xb4, 0x3f, 0x64, 0x12, 0x71,
+};
+
+var seal_nonce_counter: u64 = 0;
+
+fn freshNonce() [ChaCha20Poly1305.nonce_length]u8 {
+    seal_nonce_counter += 1;
+    var counter_bytes: [8]u8 = undefined;
+    std.mem.writeInt(u64, &counter_bytes, seal_nonce_counter, .little);
+    var digest: [Sha3_512.digest_length]u8 = undefined;
+    Sha3_512.hash(&counter_bytes, &digest, .{});
+    var nonce: [ChaCha20Poly1305.nonce_length]u8 = undefined;
+    @memcpy(&nonce, digest[0..nonce.len]);
+    return nonce;
+}
 
 const sockaddr_in = extern struct {
     sin_family: c_ushort = AF_INET,
@@ -77,7 +97,7 @@ fn sealDatagram(buf: *[@intCast(wire_capacity)]u8) u64 {
     const bob_x_pub = X25519.publicKeyFromEd25519(bob_pub) catch unreachable;
 
     const message = expected_message;
-    const nonce = [_]u8{0x01} ** ChaCha20Poly1305.nonce_length;
+    const nonce = freshNonce();
 
     const shared = X25519.scalarmult(alice_x.secret_key, bob_x_pub) catch unreachable;
     const key = sealKey(shared);
