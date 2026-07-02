@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.185728 | [Consume Claude grain round — canon and clock](20260702-185728_consume-grain-round.md) | Grain canon; manual under chronological law; two rules await ratification. |
+| 20260702.184312 | [The grain defined, the clock restored — Rio's third round](20260702-184312_grain-and-versioning.md) | Claude executor log for grain sitting. |
 | 20260702.184512 | [Commits push and full summary handoff](20260702-184512_commits-push-full-summary.md) | Four remotes at 3d7da36; arc summary for Kaeden. |
 | 20260702.183949 | [Manual v0.2 and first Rishi tutorial](20260702-183949_manual-v02-first-tutorial.md) | Reference at parity 142; tutorial one open; doors still gate Claude. |
 | 20260702.183634 | [RW-4 SLC failure-path witness at parity 142](20260702-183634_rw4-slc-failure-paths-142.md) | Audit gaps RW-3/RW-4 closed; doors still gate Claude. |

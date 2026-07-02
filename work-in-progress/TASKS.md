@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (three doors + ladder reorientation; testing audit; Rishi reference; userland silo)
+**Last updated:** 2026-07-02 (the grain defined; versioning audit — manual brought under the chronological law)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -45,13 +45,14 @@
 
 ### The audit, the manual, and the userland (`20260702.180812`)
 
-Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) · [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) · [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) · [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md).
+Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) · [`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md) · [`active-designing/20260702-184312_the-grain-and-the-crossing.md`](../active-designing/20260702-184312_the-grain-and-the-crossing.md) · [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) · [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) · [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md).
 
 - [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
 - [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin).
+- [ ] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); a five-line semver sweep joins the corpus checks when the bench next touches the sweep tools.
 - [ ] **Rishi framework growth (witness-first, in need order)** — `when` guard or conditional; environment builtin; file-reading builtin; named exit-code vocabulary (temporary / permanent / could-not-begin, serving Caravan's restart policy). Each enters the reference only after its witness runs green.
-- [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference bumped to v0.2 at parity **142** (`20260702.184000`).
+- [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
 - [ ] **Manual horizons** — Aurora / Tally / Caravan interface reference pages as each surface stabilizes.
 - [ ] **Man-as-value first ring** — one utility carries a `.bron` man record; `:man <name>` renders it; the manual renders the same record. After the toolset's first ring.
 - [ ] **Small-sharp-toolset ladder (gated after Amber season)** — ring one: an `echo`-sized utility with opening lines, `.bron` man record, `.brix` declaration, witness green; ring two: readiness-as-fact for one Caravan child; the override combinator earns its ring when two real configurations exist to differ.

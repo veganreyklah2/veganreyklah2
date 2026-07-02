@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (design sitting companion)
+**Last updated:** 2026-07-02 (the grain and the crossing)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,6 +47,7 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: the grain's nine strands defined; the two-room crossing and its closing test — what "siloed into our grain" means |
 | `20260702-180812` | [The small sharp toolset](20260702-180812_the-small-sharp-toolset.md) | Userland patterns in our grain: composed artifact, readiness as facts, man as value, one override combinator; ladder gated after Amber |
 | `20260702-031312` | [Modules, aspects, and mailable money](20260702-031312_modules-aspects-and-mailable-money.md) | Module/aspect vocabulary and graduation rule; Weave's trigger; MALA M0–M4; Mycelium and road-keeper; Amber contract; Brix packaging through Pond; opening lines; manual's four rooms |
 | `20260630-030312` | [SLC-2a — the drawn terminal](20260630-030312_slc-2a-the-drawn-terminal.md) | Three-ring scope: value-driven viewer, redraw on change, live session mirror; Rings 1–3 witness landed |

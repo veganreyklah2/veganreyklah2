@@ -16,7 +16,7 @@ The lane grows by the same law as the code: reference specifications open only w
 
 ## What Lives Here
 
-- **`reference/rishi-language.md`** — the Rishi language and command-line reference (v0.2, parity **142**).
+- **`reference/rishi-language.md`** — the Rishi language and command-line reference (version `20260702.184312`, parity **142**).
 - **`tutorials/first-witness.md`** — run, read, write: your first `.rish` witness against the living suite.
 
 *Next rooms, in season: reference pages for the Aurora, Tally, and Caravan interfaces as each stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
