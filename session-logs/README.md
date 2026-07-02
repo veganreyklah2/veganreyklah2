@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.205846 | [Ungated diet — sitting three](20260702-205846_ungated-diet-sitting-three.md) | Conditional witness, chrono sweep, RW-2 contract, manual tutorial two and Caravan/Tally reference. |
 | 20260702.205421 | [Consume hearth lane — studies 19–20 and Serena episode](20260702-205421_consume-hearth-lane-studies-19-20.md) | Vic DiCara silos distilled; Amber pre-counsel confirmed in TASKS. |
 | 20260702.202612 | [The Hearth, the Lane, and the Confirmed Counsel](20260702-202612_hearth-lane-confirmed-counsel.md) | Claude executor log for Rio sixth round. |
 | 20260702.202707 | [Commits, push, and full summary handoff](20260702-202707_commits-push-full-summary.md) | Four remotes at 547306d; full arc summary for Kaeden. |

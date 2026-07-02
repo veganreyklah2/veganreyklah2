@@ -48,15 +48,15 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 ## Ungated diet (smallest-first)
 
-Rishi framework growth (one builtin/round) · semver sweep · manual reference pages (witnessed behavior only) · tutorial two on run record · bare-print as-you-touch · RW-2 contract on paper
+~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · **next:** Rishi env builtin (one per round) · Aurora manual when stable · bare-print as-you-touch
 
-## Landed `20260702.202612`
+## Landed `20260702.205846`
 
 | Commit | Aspect |
 |--------|--------|
-| *(this sitting)* | Studies 19–20 · Serena episode · Amber confirmed in TASKS |
+| *(this sitting)* | Conditional witness · chrono sweep · RW-2 contract · manual tutorial two + Caravan/Tally reference · TASKS/RTAC |
 
-Prior tip: `87ef200`
+Prior tip: `d92cbd7`
 
 ## Best path
 
