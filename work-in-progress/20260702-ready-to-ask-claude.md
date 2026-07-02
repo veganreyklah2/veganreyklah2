@@ -17,6 +17,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 - **`amber/`** untouched until Doors 1–3 land; after Door 3 = *for*: wire Edit 5 → **143**, then Amber rungs (a)–(e), one commit each
 - **No new module/aspect names** — park candidates in RTAC
 - **Stop-and-park** on: Kaeden-tagged path · parity red twice · module-home/seam decision · keys/custody/amber/MALA · new names
+- **Empty plate** — if the ungated diet runs empty, stop and summarize rather than invent new work; an empty plate is a question for Kaeden, never a license to forage
 
 ## Kaeden — three doors before Claude
 
@@ -48,15 +49,19 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 ## Ungated diet (smallest-first)
 
-~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi framework growth (four witnesses)~~ · **next:** Aurora manual when stable · bare-print as-you-touch
+**Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-## Landed `20260702.210650`
+**Menu status — empty plate (`20260702.211046`):** all enumerated items through framework growth are landed. Remaining opportunistic items (Aurora manual when stable · bare-print as-you-touch) wait on surface stability or touch — **not** autonomous forage. Loop stops here until Kaeden opens a door or refreshes the menu.
+
+~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi framework growth (four witnesses)~~ · ~~file I/O witness~~ · ~~exit vocabulary~~
+
+## Landed `20260702.211046`
 
 | Commit | Aspect |
 |--------|--------|
-| *(this sitting)* | File I/O witness · exit vocabulary · manual §5–§6 |
+| *(this round)* | Lexicon: ungated diet · RTAC empty-plate rule |
 
-Prior tip: `011c2b5`
+Prior tip: `313f1fd`
 
 ## Best path
 

@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.211046 | [Ungated diet — lexicon and empty plate](20260702-211046_ungated-diet-lexicon-empty-plate.md) | Rio's definition seated; empty-plate rule; menu marked empty. |
 | 20260702.210650 | [Rishi file I/O and exit vocabulary](20260702-210650_rishi-file-io-exit-vocabulary.md) | File I/O witness; exit codes pre-bound; framework growth track complete. |
 | 20260702.210201 | [Rishi env builtin](20260702-210201_rishi-env-builtin.md) | `env "NAME"` in interpreter; witness green; parity 142 unchanged. |
 | 20260702.205846 | [Ungated diet — sitting three](20260702-205846_ungated-diet-sitting-three.md) | Conditional witness, chrono sweep, RW-2 contract, manual tutorial two and Caravan/Tally reference. |

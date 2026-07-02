@@ -1,12 +1,28 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Rio round; Maitreya owns time)
+**Last updated:** 2026-07-02 (ungated diet lexicon; Rio `20260702.211046`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
 
 Living vocabulary for the Rye OS family. Each name teaches its function. Provenance for the three names given on 2026-06-30 lives in `specs/20260630-004512_module-name-provenance.md`. Module, aspect, and the graduation rule: [`specs/20260702-035018_graduation-rule.md`](specs/20260702-035018_graduation-rule.md).
+
+## Cursor loop — gates and diet
+
+| Term | One line |
+|------|----------|
+| **Gate** | A precondition owned by someone else or an unlanded event — `(Kaeden …)` tags, a door ruling, a paste, counsel not yet confirmed, a prior rung's green |
+| **Ungated diet** | The **named menu** of tasks the autonomous loop may eat **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; **not** a foraging license |
+| **Smallest-first** | Order within the diet — smallest witness or doc wins the next round |
+| **Witness-first, red-then-green** | Method within the diet — witness or gate before prose; fail loudly, then land green in the same sitting |
+| **Empty plate** | When the ungated diet runs out — **stop and summarize**; an empty plate is a question for Kaeden, never a license to forage |
+
+**Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
+
+**Examples (ungated, when on the menu):** Rishi builtin ladder one-per-round · semver sweep · manual reference pages (witnessed behavior only) · tutorial rooms · RW-2 contract on paper · bare-print as-you-touch.
+
+Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md).
 
 ## Pattern — module and aspect
 
