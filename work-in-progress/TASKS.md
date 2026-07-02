@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (the movement's open asks mapped; agent-writing intake awaiting paste)
+**Last updated:** 2026-07-02 (granularity pass `20260702.194512` — doors, ladder, and L1 expanded to commit-sized boxes)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -20,18 +20,38 @@
 
 ### The three doors (Kaeden, in order)
 - [ ] **Door 1 — Pond clause**: affirm or refine the recommended sentence in [`pond/README.md`](../pond/README.md).
-- [ ] **Door 2 — Ring 3 metal close**: `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish`, then on GNOME: `rishi/bin/rishi run tools/slc2a_ring3_metal.rish`, then the live five steps in [`pond/README.md`](../pond/README.md).
+- [ ] **Door 2 — Ring 3 metal close** (Kaeden, on GNOME Wayland):
+  - [ ] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN
+  - [ ] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers
+  - [ ] Live `pond/bin/drawn-terminal`, five confirmations: **build** (binary present) · **type** (lines redraw the frame) · **idle ~1 min** (pong keeps the compositor honest) · **ceiling** (past 65536 bytes, status row still updates) · **exit** (`:quit` clean)
+  - [ ] One line in the session log: "Ring 3 metal-closed on GNOME, `YYYYMMDD.HHMMSS`" — Kaeden's stamp verbatim
 - [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
 
 ### The ladder (after the doors, in order — owner tagged)
 1. [x] **(Cursor) Fixture twins verified** — both `.rish` fixtures green on host; `.sh` elders retired to [`tools/fixtures/yonder/`](../tools/fixtures/yonder/); [`pond/README.md`](../pond/README.md) points at twins (`20260702.180812`).
-2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5** — `tools/designed_not_built_witness.rish` into `tools/parity.rish` → parity **143** (RW-3 at **141**, RW-4 at **142**). One commit.
-3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — from [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md): (a) the sealed-record `.bron` manifest shape on paper; (b) export one directory → stones + manifest; (c) verify on two paths, one golden pinned by an independent digest tool; (d) restore and compare bit-faithful; (e) witness `tools/amber_first_ring.rish` → parity **+1**. Invocation and custody rulings below govern throughout.
-4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt placed at [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md); mechanical unless the module seam shifts (Dexter within vs beside Brushstroke — Claude optional).
-5. [ ] **(Cursor) RW-1 mirrored pair** — first happy-zone pair at the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); lands while the seam is warm from SLC-2b.
+2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5 → parity 143.** One commit, message `Wire Edit 5 designed-not-built witness — parity 143`:
+   - [ ] Append the standard quartet at the tail of [`tools/parity.rish`](../tools/parity.rish), after the width-check block: `say` banner → `run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]` → `assert .ok else` → `say "GREEN: …"`
+   - [ ] Full suite green on metal; ROADMAP gate-trio line and this ladder's parity numbers refreshed in the same commit.
+3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Invocation and custody rulings below govern throughout. **Pre-counsel, proposed `20260702.194512` — the sitting confirms or amends, Cursor starts nothing before it lands:**
+   - **(1) Module home:** `amber/` at top level — Amber is a module by role (its own invariants, budget, and witness from birth), never an aspect of another host.
+   - **(2) First export target:** a fixed fixture tree `tools/fixtures/amber_ring1_tree/` — three files (one empty, one small text, one ~64 KiB binary) plus one subdirectory — deterministic, so the golden never moves.
+   - **(3) Independent digest tool:** `openssl dgst -sha3-256` as the host-seam oracle; the golden manifest digest pinned by hand into the witness.
+   - **(4) Witness contract (`tools/amber_first_ring.rish`):** welcome — export emits stones + manifest, manifest digest equals the pinned golden, restore then `diff -r` clean; unwelcome — one stone byte-tampered, verify **must fail** (`(v.ok == false)` asserted).
+   - **(5) Parity arithmetic:** Amber lands at **144** if Door 3 = *for* (Edit 5 at 143), at **143** otherwise.
+   - Sitting output: (a)–(e) as five Cursor rungs, each one commit with its own green.
+4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt: [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md).
+   - [ ] **Nod (Kaeden):** placement — `pond/apps/` extension vs a `dexter/` seed beside Brushstroke (Claude optional only if this seam surprises)
+   - [ ] **(Cursor) DoD, each its own green:** one typed line in the window runs through Rishi and redraws · `:quit` from the window exits clean · witness (headless where the seat seam allows, else a metal `.rish` like Ring 3) wired into parity **+1** · TAME held, Skate stays in `brushstroke/`
+5. [ ] **(Cursor) RW-1 mirrored pair** — the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); lands while the seam is warm from SLC-2b. Two witnesses, two commits, parity **+2**:
+   - [ ] `tools/rw1_shell_collab.rish` — the asker's side: the shell against a stub history store; right questions at `:version`/`:history`/`:recall`; every allowed answer handled, one unwelcome answer survived
+   - [ ] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
 
 ### Linengrow
-- [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
+- [ ] **SLC-L1 scope note** — the hammock spec, one page, these boxes its skeleton:
+  - [ ] The **transaction fact**'s fields, exactly (parties by Kumara key, amount, memo, stamp) — a `.bron` value
+  - [ ] **Sign** with the ed25519 path parity already witnesses; **append** to a plain log file; **receipt = a pure fold** over that log; **verify** = recompute + signature check
+  - [ ] The **edge of complete**, named: in — one signer, one log, one verifiable receipt; out — settlement, the market, currency, multi-party
+  - [ ] Witness sketch named (`tools/slcl1_receipt.rish`) so the ring lands proven; Open Asks room stays gated behind this note
 
 ### Ground
 - [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.

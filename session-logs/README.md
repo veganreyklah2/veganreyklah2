@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.195103 | [Consume granularity pass — commit-sized boxes](20260702-195103_consume-granularity-pass.md) | TASKS + ROADMAP sharpened; ~88 boxes; Amber pre-counsel proposed. |
+| 20260702.194512 | [The Granularity Pass — Every Rung Boxed to Commit Size](20260702-194512_granularity-pass.md) | Claude executor log for granularity sitting. |
 | 20260702.194512 | [Commits push full summary — Kaeden request](20260702-194512_commits-push-request.md) | c020501 pushed; full arc summary delivered. |
 | 20260702.194512 | [Commits, push, and full summary handoff](20260702-194512_commits-push-full-summary.md) | Four remotes at tip; arc from audit through open-asks bridge. |
 | 20260702.194112 | [Aborted zip extract — status ping](20260702-194112_aborted-zip-extract-status.md) | Background unzip aborted; bridge round already at 89fd336. |

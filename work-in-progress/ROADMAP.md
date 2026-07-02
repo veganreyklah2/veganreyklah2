@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260628-124512` (Linengrow track; two tracks one spine)
-**Last updated:** 2026-07-02 (Rio round `20260702.165412`; parity **140**; metal close on Kaeden's bench)
+**Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
+**Last updated:** 2026-07-02 (granularity pass; parity **142**; three doors before the Amber season)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -47,7 +47,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 | **Rishi** | Shell: typed values, file I/O, string builtins; **`repl`** — type, run, version, recall (SLC-1 **done**) | Gate trio + four SLC-1 witnesses incl. `slc1_accept.rish` |
 | **Brushstroke** | Hosted seed + Wayland seed (Skate grid on xdg toplevel) | Frame from values; seed + grid raster in parity |
 | **Skate** | Text grid: 8×8 monospace → ARGB8888 buffer | Headless selftest GREEN; feeds Wayland seed |
-| **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (**136**) |
+| **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (suite at **142**) |
 | **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer) | **First ring** — witness at parity **140**; metalsmoke on Wayland |
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
@@ -76,7 +76,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 
 | Ring | What | Grows from |
 |------|------|-----------|
-| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection |
+| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **scope-note checklist now boxed in [`TASKS.md`](TASKS.md)**, Open Asks room gated behind it | keypair + Mantra log + projection |
 | **SLC-L2** | Sealed delivery — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
@@ -115,10 +115,19 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 
 **SLC-1 is done** on its functional promise (`2026-06-29`). **TAME hardening is complete** (`2026-06-29`) — TH-0–TH-7, RS-1–RS-3, hosted `width-check` blocking in parity (132 witnesses). The bench turns to the next product ring.
 
-1. **SLC-2a Ring 3** — mirror live Rishi session in the Skate viewer. *Check in with Claude for witness shape and SLC-1 loop wiring before bench.*
-2. ~~**Caravan capability table**~~ — **landed** (`2026-06-30`): `caravan/capabilities.rye`; witness in parity at **135**.
-3. **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests.
-4. **Rishi builtins** — trim improvements still open (optional, as-you-touch).
+**Landed since this section was drawn:** SLC-2a Rings 1–3 witnessed with metalsmoke GREEN (parity **140**); Caravan capability table (`2026-06-30`); RW-3 and RW-4 (**141**, **142**); fixture twins in Rishi; the manual's first reference and tutorial.
+
+**The current position — three doors, then the ladder** (granular boxes in [`TASKS.md`](TASKS.md)):
+
+| Step | Owner | Parity |
+|------|-------|--------|
+| Door 1 — Pond clause · Door 2 — Ring 3 metal close · Door 3 — Edit 5 ruling | **Kaeden** | — |
+| Edit 5 wired (if Door 3 = *for*) | Cursor | **143** |
+| **Amber first ring** — the season sitting, then five rungs (a)–(e) | Claude + Kaeden → Cursor | **+1** (144 if Edit 5 wired) |
+| SLC-2b — keyboard from the window, Dexter's genesis | Kaeden nod → Cursor | **+1** |
+| RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **+2** |
+
+Still on this horizon, after the ladder: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.
 
 ### Ground (thin frontend)
 
