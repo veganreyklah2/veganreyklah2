@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.171301 | [Pond build helper and Amber archive cross-link](20260702-171301_pond-build-helper-amber-crosslink.md) | One-command metal-close build; Amber→Puddle archive link. |
 | 20260702.170622 | [Happy-zone horizon links and RTAC refresh](20260702-170622_happy-zone-horizon-rtac-refresh.md) | TAME/ROADMAP/Pond thin-ring links; RTAC three-door table; parity 140. |
 | 20260702.165412 | [Consume Claude Rio round and restamp](20260702-165412_consume-claude-rio-round.md) | Puddle second pass, happy zone at 165412, gratitude teaching; Rio counsel integrated. |
 | 20260702.165412 | [Rio first round — searched ground](20260702-165412_rio-first-round.md) | Claude executor log restamped; pier and archive searches recorded. |

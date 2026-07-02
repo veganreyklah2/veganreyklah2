@@ -19,7 +19,7 @@
 ## Now — In Flight and Immediate
 
 ### Rye OS
-- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–3 witness landed** — parity **140**; **metalsmoke GREEN** ([`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish)). **Ring 3 metal close (Kaeden)** — interactive idle, ceiling, `:quit` on `pond/bin/drawn-terminal`. **SLC-2b placed** — [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md), awaits nod.
+- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–3 witness landed** — parity **140**; **metalsmoke GREEN** ([`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish)). **Ring 3 metal close (Kaeden)** — five steps in [`pond/README.md`](../pond/README.md); build via [`tools/fixtures/pond_build_drawn_terminal.sh`](../tools/fixtures/pond_build_drawn_terminal.sh). **SLC-2b placed** — [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md), awaits nod.
 
 ### Linengrow
 - [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).

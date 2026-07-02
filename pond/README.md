@@ -34,6 +34,12 @@ These symlinks are required for `drawn_terminal.rye` to import `rishi/main.rye` 
 From the repository root:
 
 ```bash
+sh tools/fixtures/pond_build_drawn_terminal.sh
+```
+
+Or manually:
+
+```bash
 mkdir -p pond/bin
 export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
 rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
@@ -49,7 +55,7 @@ rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c 
 
 **Metal close (Kaeden):** run live mode on GNOME Wayland and confirm each step:
 
-1. **Build** — command block above; binary at `pond/bin/drawn-terminal`
+1. **Build** — `sh tools/fixtures/pond_build_drawn_terminal.sh` (or command block above); binary at `pond/bin/drawn-terminal`
 2. **Type** — enter a few Rishi lines; frame updates in the window
 3. **Idle ~one minute** — leave the window focused; pong keeps the compositor honest
 4. **Ceiling** — fill past `max_transcript_bytes` (65536); status row still updates (invitation visible)

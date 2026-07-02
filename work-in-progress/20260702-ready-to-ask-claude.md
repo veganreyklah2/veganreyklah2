@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.170622`
+**Stamp:** `20260702.171301`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -13,22 +13,23 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone + gratitude teachin
 
 ## Kaeden — three doors before Claude
 
-| # | Item | Where |
-|---|------|--------|
+| # | Item | One command / where |
+|---|------|---------------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | Five-step checklist on GNOME (build → type → idle → ceiling → `:quit`) |
-| 3 | **Edit 5** | Rule *for* → wire witness to parity **141** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
+| 2 | **Ring 3 metal close** | `sh tools/fixtures/pond_build_drawn_terminal.sh` then live on GNOME — five steps in Pond README |
+| 3 | **Edit 5** | Rule *for* → parity **141** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
-**Optional affirmations** (same sitting, one word each): archive verdict · Maitreya owns time · happy-zone pairing → TAME
+**Optional affirmations:** archive verdict · Maitreya owns time · happy-zone pairing → TAME
 
 ## Claude — after steps 1–3
 
-**Amber first ring** — export / verify / restore season spine. Optional: SLC-2b Dexter placement, Puddle hypervisor after Amber export.
+**Amber first ring** — export / verify / restore. Archive verdict cross-linked in Amber spec → Puddle memo.
 
-## Landed since last RTAC (`aa6a874` → tip)
+## Landed since last RTAC (`483e942` → tip)
 
-- TAME horizon pointer → happy-zone foundation (pairing gated)
-- ROADMAP + Pond README — thin-ring language; metal-close checklist linked
+- **`tools/fixtures/pond_build_drawn_terminal.sh`** — one-command build for metal close step 1
+- **Amber spec** — companion link to archive verdict (Puddle second pass)
+- Build + `sessiontest` verified **GREEN** on host
 
 ## Best path
 
