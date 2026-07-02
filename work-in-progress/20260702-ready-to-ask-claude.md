@@ -29,8 +29,7 @@ Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **Grain and cr
 
 | Tip | What |
 |-----|------|
-| `dfafc9f` | Grain round + prior arc |
-| *(this commit)* | Brix `20260702-185912`; 26 briefs yondered; tree repointed |
+| `524fb19` | Brix re-silo + yonder pass ten (14 live briefs) |
 
 ## Best path
 
