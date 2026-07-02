@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.025012 | [TAME print alias and RTAC refresh](20260702-025012_tame-print-alias-rtac.md) | Bare `print` convention ruled as-you-touch; Tiger gates assert only. |
 | 20260702.031512 | [RTAC refresh and ROADMAP metalsmoke note](20260702-031512_rtac-roadmap-metalsmoke.md) | Metal rish fixed; bc69e80 pushed; parity 139 green; Claude timing named. |
 | 20260702.030112 | [Ring 3 metalsmoke and SLC-2b placed](20260702-030112_ring3-metalsmoke-slc2b-placed.md) | Wayland metalsmoke GREEN; SLC-2b prompt filed; RTAC updated. |
 | 20260702.022845 | [SLC-2a Ring 3 witness and Pond first app](20260702-022845_slc-2a-ring-3-witness.md) | drawn_terminal sessiontest; parity 139; RTAC checkpoint. |

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Ring 3 metalsmoke; SLC-2b prompt placed; RTAC refreshed)
+**Last updated:** 2026-07-02 (TAME print alias ruled; RTAC `20260702.025012`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -61,7 +61,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 - [ ] **Mantra CRDT weave (horizon)** — merge-always-succeeds-and-converges semantics from `external-research/yonder/20260617-195312_mantra.md`; SLC-1 seed uses LCS line weave only today.
 
-- [ ] **TAME hygiene (as-you-touch)** — assertion-density backlog and `// invariant:` prefix in older code; address when each file is touched, not as a sweep.
+- [ ] **TAME hygiene (as-you-touch)** — assertion-density backlog, `// invariant:` prefix, and bare `print(...)` via `const print = std.debug.print` in older hosted `.rye`; address when each file is touched, not as a sweep.
 
 - [ ] **Content-centric Rishi messenger (horizon)** — smallest IRC-meets-Dojo CLI over sealed, content-named datagrams; from `expanding-prompts/yonder/20260618-212012_content-centric-messaging.md`; Aurora/Comlink carry the networking seeds today.
 

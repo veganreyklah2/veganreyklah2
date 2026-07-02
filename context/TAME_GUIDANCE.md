@@ -215,6 +215,14 @@ fn pop(stack: *StackAny) ?*Link {
 
 In tests, reach for `std.testing.expect` and `std.testing.expectEqual` rather than `assert`.
 
+### Diagnostic output (`print`)
+
+For hosted seeds and modules, mirror the assert import: bind once per file — `const print = std.debug.print;` — and call bare `print(...)`. TigerBeetle's `tidy.zig` bans qualified `debug.assert(` and expects unqualified `assert`; it does **not** ban qualified `debug.print(`, yet the same once-per-file binding keeps diagnostic lines short and consistent across the hosted corpus.
+
+- **As-you-touch.** Migrate when a file is already open for other work — the same discipline as assertion-density hygiene, rather than a tree-wide sweep.
+- **No gate yet.** `tools/tame-check.rish` does not flag `std.debug.print(`; add that rule only if the need is proven, the way we defer AST-tier lints.
+- **Separate layers.** Rishi `.rish` pipelines speak through `say`; freestanding Aurora may grow its own logging seam when the boot path matures; `rye/tests/*` witnesses may keep the qualified form until touched.
+
 ### Named errors
 
 Error types are named for the **fault**, rather than the operation that discovered it: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`.
