@@ -94,6 +94,7 @@ zig-cache/
 /*.key
 
 # --- Regenerated and local-only reference (added 20260627-191712) ----------
+tools/fixtures/rish_io/*.txt
 __pycache__/
 *.pyc
 /gratitude/nix/
