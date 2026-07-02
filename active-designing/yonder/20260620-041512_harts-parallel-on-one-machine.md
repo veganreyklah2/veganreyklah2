@@ -1,5 +1,7 @@
 # 974 · Harts — Parallel Execution on One Machine
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Before Comlink carried a sealed datagram between two machines, it carried one between two harts — two hardware threads on the same RISC-V silicon, sharing RAM, waking together at `_start`. A **hart** is the smallest honest unit of parallel execution on bare metal: not a process, not a hosted thread, but a core the architecture names with `mhartid` and expects us to stack, route, and fence correctly. This brief silos what harts *mean* for Aurora and Comlink so every two-hart stage reads as deliberate design, not emulator accident.*
 
 **Language:** EN

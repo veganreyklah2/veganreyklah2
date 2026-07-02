@@ -1,5 +1,7 @@
 # The Recommended Path for the Core Names
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *A clean-room architecture brief for our core modules — TAME, Rye, Brix, Tablecloth, Tally, Caravan, and Aurora — reasoning the recommended design path for each from first principles. The one fixed external is RISC-V, the open instruction set our hardware world rests upon.*
 
 **Language:** EN

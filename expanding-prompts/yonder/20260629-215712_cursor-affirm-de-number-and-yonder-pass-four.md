@@ -25,9 +25,9 @@ The `NNN ·` title prefixes are vestigial and now ambiguous — three different 
 
 Apply to the four previously affirmed, plus the new keep from this pass:
 
-- `active-designing/20260618-182412_single-stranded.md`
-- `active-designing/20260618-184912_growing-a-language.md`
-- `active-designing/20260618-184912_recommended-architecture.md` *(new — Part B keep)*
+- `active-designing/yonder/20260618-182412_single-stranded.md`
+- `active-designing/yonder/20260618-184912_growing-a-language.md`
+- `active-designing/yonder/20260618-184912_recommended-architecture.md` *(new — Part B keep)*
 - `work-in-progress/20260620-212126_usize-width-baseline.md`
 - `expanding-prompts/20260620-210812_explicit-width-audit.md`
 
@@ -43,7 +43,7 @@ Filenames and references stay untouched throughout — only titles, the dating, 
 
 ### Kept (affirmed in Part A, not moved)
 
-- **`active-designing/20260618-184912_recommended-architecture.md`** — foundational clean-room architecture brief, "Active Design," cited 12 times; the third of the foundational trio with single-stranded and growing-a-language. Affirmed and de-numbered above.
+- **`active-designing/yonder/20260618-184912_recommended-architecture.md`** — foundational clean-room architecture brief, "Active Design," cited 12 times; the third of the foundational trio with single-stranded and growing-a-language. Affirmed and de-numbered above.
 
 ### Move to `yonder/`, with reference repoints
 

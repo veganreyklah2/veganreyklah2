@@ -66,7 +66,7 @@ Ruling #1 (approved): seam-aware `width-check` so sanctioned `@intCast` / `@as(u
 | Step | What | Status |
 |------|------|--------|
 | **F0** | Policy: explicit widths + seam discipline | **Active** — `context/TAME_GUIDANCE.md` |
-| **F1–F5** | Compiler fork: reject `usize`, native slice `len: u32`, self-host | **Horizon** — research in `active-designing/20260621-070712_the-compiler-fork.md` |
+| **F1–F5** | Compiler fork: reject `usize`, native slice `len: u32`, self-host | **Horizon** — research in `active-designing/yonder/20260621-070712_the-compiler-fork.md` |
 
 The 120 parity witnesses (116 + four SLC-1) specify behavior the living desktop must keep. A fork is deliberated only from a mature whole.
 

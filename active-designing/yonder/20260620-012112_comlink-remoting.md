@@ -1,5 +1,7 @@
 # 979 · Comlink Remoting — Value-Based State Sync Over the Bounded Network
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *A siloed design brief for remote access in the TAME Rye OS: Comlink carries terminal state as values over UDP, authenticated by owner keys, sealed by our own crypto, and enclosed by Pond on the server side. The session roams by key, not by address. The remote shell synchronizes state rather than streaming bytes.*
 
 **Language:** EN

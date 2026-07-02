@@ -1,5 +1,7 @@
 # 968 · The Compiler Fork — Rye Becomes Its Own Language
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *A siloed design brief for the moment Rye stops being a derivative and starts compiling its own types. The fork replaces the inherited slice type with one that carries a bounded, explicitly-sized length. The compiler rejects architecture-specific widths in authored source. The standard library surfaces are rewritten module by module, each proven by the gate. The bridge to the inherited toolchain becomes optional — a guest lane, not the host.*
 
 **Language:** EN

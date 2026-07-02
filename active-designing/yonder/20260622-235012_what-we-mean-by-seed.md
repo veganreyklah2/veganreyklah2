@@ -1,5 +1,7 @@
 # 976 · What We Mean by Seed
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *A siloed vocabulary brief: the word **seed** names the smallest living version of a module — the thing that runs, proves one honest claim, and grows by accretion toward the full design. The Seed Law made a noun. The first concrete seeds are named in `987`; the whole-system map carries them in `983`. This brief states what the word means on our own ground so every new seed reads true beside the ones already green.*
 
 **Language:** EN

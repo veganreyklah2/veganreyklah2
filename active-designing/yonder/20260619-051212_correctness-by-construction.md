@@ -1,5 +1,7 @@
 # Correctness by Construction — the Design of Rye
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Rye is the language the whole family is written in, so this brief designs what Rye is meant to be: what it grows toward. The way we grew it is `996`'s method. One promise orders the rest: the dangerous states should be the ones a person cannot write. From that promise the value model, the bounded gardens, the lifetimes, the accretion, and the cohesion with the open machine all follow.*
 
 **Language:** EN

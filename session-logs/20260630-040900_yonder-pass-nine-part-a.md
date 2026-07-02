@@ -16,7 +16,7 @@ Executed Part A of `expanding-prompts/yonder/20260630-033312_cursor-yonder-pass-
 
 - **Moved (git):** 15 expanding-prompts, 7 external-research, 2 active-designing → respective `yonder/`
 - **Moved (untracked):** `20260630-033312_cursor-slc-2a-ring-two.md`, `20260630-033312_cursor-yonder-pass-nine.md` → `expanding-prompts/yonder/`
-- **Reference fixes:** `strengthening-compiler/9992_fs_boundary.md`, `gratitude/README.md`, `active-designing/20260628-120912_brix-the-composer.md`, `rye-learning-process/ALMANAC.md`
+- **Reference fixes:** `strengthening-compiler/9992_fs_boundary.md`, `gratitude/README.md`, `active-designing/yonder/20260628-120912_brix-the-composer.md`, `rye-learning-process/ALMANAC.md`
 - **Indexes:** `expanding-prompts/README.md`, `external-research/README.md`, `active-designing/README.md`
 - **TASKS:** two Open Questions added
 

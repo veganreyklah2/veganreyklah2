@@ -1,5 +1,7 @@
 # 972 · Who — Executor, Sealer, Opener, and Router
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *In conversation we said a hart names **who executes** and a datagram names **what moves** — and a fair question followed: what do we mean by *who*? This brief silos that word on our own ground. **Who** is not a person in prose; it is whichever part of the system holds **agency** at a boundary: the thread that runs, the key that seals, the secret that opens, the supervisor that routes. Keeping those *whos* distinct is how hart and datagram pair without melting into one confused noun.*
 
 **Language:** EN

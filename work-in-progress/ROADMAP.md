@@ -20,7 +20,7 @@
 
 **Rye today** is a thin, honest frontend on pinned Zig 0.16.0 — `rye/lib/std` leaned upon through pristine symlinks, safety living in authored `.rye` (assertions at call sites, `width-check.rish`, the gate trio). The strengthening chronicle **completed** as analysis; it is record, not product.
 
-The full design lives in [`active-designing/20260619-225712_the-whole-system.md`](../active-designing/20260619-225712_the-whole-system.md). This roadmap says what to build and in what order.
+The full design lives in [`active-designing/yonder/20260619-225712_the-whole-system.md`](../active-designing/yonder/20260619-225712_the-whole-system.md). This roadmap says what to build and in what order.
 
 ---
 
@@ -94,7 +94,7 @@ The first ring needs no ledger and no currency — only the foundations Rye OS a
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
 | **Inference stack** | Lantern, Lattice, Anvil — after the living desktop composes |
 
-Prior fork steps F0–F5 remain documented in [`active-designing/20260621-070712_the-compiler-fork.md`](../active-designing/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
+Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 
 ---
 

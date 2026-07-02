@@ -4842,7 +4842,7 @@ Let me verify quarantine compliance (no external project names slipped in) and c
 Done, and we're moving. Here's the shape of it:
 
 - **Moved** `active-designing/998_recommended_architecture.md` → `997_recommended_architecture.md` (history preserved).
-- **Wrote** `active-designing/20260618-085812_strengthening-strategy.md` — the strategy, in radiant voice, and **quarantine-clean** (scanned: no external project names; only our names + the concepts).
+- **Wrote** `active-designing/yonder/20260618-085812_strengthening-strategy.md` — the strategy, in radiant voice, and **quarantine-clean** (scanned: no external project names; only our names + the concepts).
 - **Updated** `README.md`'s convention so the stack stays coherent: I placed the strategy at `998` deliberately, as a **standing-strategy layer just above the foundation** (999 foundation → 998 strategy → designs counting down from 997). That's why it sits where you asked rather than on top — it's a charter, not a design doc.
 
 **The strategy's answer to "how do we get started?", in one breath:** don't take another *hand*-pass next — strengthen the **process** first, so the next thousand passes are safe by construction:
@@ -5461,7 +5461,7 @@ All three threads of your request are done, committed `ec41e13`, signed, on both
 
 **2. Woven into `997_SYSTEM` — with the radiant reframe you asked for.** A new section, *The Simple and the Easy*, sets out the distinction (simple = how a thing is *made*, single-stranded; easy = how *near* it lies), and reframes Hickey's negative-leaning vocabulary affirmatively: rather than dwelling on "complecting," we **compose** — *"threads kept free, set beside one another, each still its own,"* leading with what we want rather than what we shun. It's fed in at the most general sense (no construct lists), tied to TAME's "simplicity is the hardest revision," and threaded into *How the Voices Meet*. Stamp → `20260618.182312`.
 
-**3. Read our architecture through it — `active-designing/20260618-182412_single-stranded.md`** (quarantine-clean, the principles restated as our own). It takes the Pond/Caravan/Tally conclusions and shows each is **simple by choice**:
+**3. Read our architecture through it — `active-designing/yonder/20260618-182412_single-stranded.md`** (quarantine-clean, the principles restated as our own). It takes the Pond/Caravan/Tally conclusions and shows each is **simple by choice**:
 - each module about one thing, free to stand alone;
 - composed through **one value model** — *no seam is no braid*;
 - the enclosure a **value**, not braided flags;
@@ -6368,7 +6368,7 @@ Clean — no outside names. Committing and pushing.
 
 Done — committed (signed `97ead83`), pushed to both remotes. Aurora now has its own clean-room design.
 
-**`active-designing/20260618-225712_aurora.md`** (`20260618.225712`) frames Aurora as a **relay of named, verified values**:
+**`active-designing/yonder/20260618-225712_aurora.md`** (`20260618.225712`) frames Aurora as a **relay of named, verified values**:
 
 - **Rooted in the owner key** (`994`) — trust *proven low*, at an immutable root, from the very first instruction, rather than assumed high and late.
 - **A relay, three things true at every handoff** — each stage is *a value* (not a half-configured machine passed along); each is *named by its content* (Mantra), so a finished boot can say exactly what it ran; and each *proves the next before trusting it* (shape-cast, `992`) — privilege passes only through a door that's been checked.
@@ -7531,7 +7531,7 @@ All done — one commit, signed and on both forges. And the new practice is hono
 **`expanding-prompts/10005`** captures the three strands (the log practice, the quarantine, the honoring), then I ran it.
 
 ## The quarantine — `988`
-**`active-designing/20260619-072600_brushstroke.md`** distills `980` into the clean room in the exact shape you named — **mission, problem, opportunity, architecture, caveats, longer horizon, conclusion**. Every borrowed name is abstracted onto our own roots (verified by a grep that found none): *the foundation Rye grew from* for Zig, *an interface redrawn from values* for the toolkit, *a portable executable form* for the bytecode target, *a drawing surface within a person's reach* for the browser. Added to the `999_DESIGN` index.
+**`active-designing/yonder/20260619-072600_brushstroke.md`** distills `980` into the clean room in the exact shape you named — **mission, problem, opportunity, architecture, caveats, longer horizon, conclusion**. Every borrowed name is abstracted onto our own roots (verified by a grep that found none): *the foundation Rye grew from* for Zig, *an interface redrawn from values* for the toolkit, *a portable executable form* for the bytecode target, *a drawing surface within a person's reach* for the browser. Added to the `999_DESIGN` index.
 
 ## The honoring — `997_SYSTEM`
 Two sections added: **The Ground We Stand On — Zig and Andrew Kelley** (an overdue thanks — Zig is the literal ground Rye derives from, and it wasn't yet honored), and **The Drawn Surface — David Vanderson and DVUI** (studied, not absorbed). The abstract and "Where Each Thing Lives" now name both, and `gratitude/dvui` is recorded. *(One small note: the canonical spelling is **Andrew Kelley**, which I used throughout.)*

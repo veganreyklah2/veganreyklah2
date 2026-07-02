@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (the grain defined; versioning audit — manual brought under the chronological law)
+**Last updated:** 2026-07-02 (Brix re-siloed; yonder pass ten; grain + versioning audit)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -128,7 +128,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [ ] **SLC-2 — Pond GUI** — the Rishi+Mantra loop in a Brushstroke/Skate window on x86_64. Simple, lovable, complete at a small scope.
 - [ ] **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests. **Hosted wire** in parity; **Caravan seeds** (`seed`→`chain`) in parity at **137**; **Track A** virtio-net bring-up remains.
 - [ ] **Comlink v1** — typed, content-named, sealed delivery between identities.
-- [ ] **Brix v1** — a `.brix` course evaluating into a closure of content-addressed bricks in Tablecloth, per `active-designing/20260628-120912_brix-the-composer.md`.
+- [ ] **Brix v1** — a `.brix` course evaluating into a closure of content-addressed bricks in Tablecloth, per [`active-designing/20260702-185912_brix-the-composer.md`](../active-designing/20260702-185912_brix-the-composer.md).
 - [ ] **Unified keys** — one owner seed deriving all keys.
 - [ ] **Revitalization pass** — refresh the oldest active-designing briefs to the current direction; affirmed canonical files get the four-in-one touch (de-number, re-date, affirm, light freshen) rather than rename; see `ORGANIZING.md`.
 

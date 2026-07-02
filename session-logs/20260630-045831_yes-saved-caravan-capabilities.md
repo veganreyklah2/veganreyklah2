@@ -22,7 +22,7 @@ Hosted policy table only — enforcement in the kernel waits for freestanding Ca
 - `tools/caravan_capabilities.rish` — witness
 - `tools/parity.rish`, `tools/width-check.rish` — registered
 - `work-in-progress/TASKS.md`, `ROADMAP.md` — bench truth at 135 witnesses
-- `active-designing/20260622-235012_what-we-mean-by-seed.md` — accretion path line
+- `active-designing/yonder/20260622-235012_what-we-mean-by-seed.md` — accretion path line
 
 **Uncommitted** at log time — commit when Kaeden asks.
 

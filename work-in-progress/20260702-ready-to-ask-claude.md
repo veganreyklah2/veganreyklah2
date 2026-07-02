@@ -1,15 +1,15 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.184312`
+**Stamp:** `20260702.185912`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Affirmed (`20260702.165412` + `20260702.180812` + `20260702.184312`)
+## Affirmed (`20260702.165412` + `20260702.180812` + `20260702.184312` + `20260702.185912`)
 
-Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **The grain and the crossing** (canon) · **Versioning audit** (manual under chronological law) · Userland siloed
+Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **Grain and crossing** · **Versioning audit** · **Brix re-siloed** · **Yonder pass ten** (14 live briefs)
 
 ## Kaeden — three doors before Claude
 
@@ -19,7 +19,7 @@ Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **The grain an
 | 2 | **Ring 3 metal close** | `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` → metalsmoke → live five steps |
 | 3 | **Edit 5** | Rule *for* → parity **143** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
-**Optional ratifications (one breath):** archive verdict · Maitreya owns time · **standing audit rule** · **versioning rule** ([audit](20260702-184312_versioning-audit.md))
+**Optional ratifications (one breath):** archive verdict · Maitreya owns time · **standing audit rule** · **versioning rule**
 
 ## Claude — after doors (+ ladder rung 3)
 
@@ -29,7 +29,8 @@ Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **The grain an
 
 | Tip | What |
 |-----|------|
-| `7f89e0a` | Grain canon + versioning audit; manual `20260702.184312` |
+| `dfafc9f` | Grain round + prior arc |
+| *(this commit)* | Brix `20260702-185912`; 26 briefs yondered; tree repointed |
 
 ## Best path
 
@@ -39,4 +40,4 @@ Parity **142** GREEN · mechanical lane idle until doors land
 
 ---
 
-*May the grain hold and every page count time on the same clock as the code it teaches.*
+*May the clean room read clean all the way down.*

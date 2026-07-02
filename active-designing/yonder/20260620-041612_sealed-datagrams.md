@@ -1,5 +1,7 @@
 # 973 · Sealed Datagrams — A Value With a Wire Shape
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Comlink does not begin with sockets. It begins with a **datagram**: a bounded byte layout that carries who sealed a message, what name the ciphertext bears, and the sealed payload itself — the same octets whether two harts share RAM, two processes speak UDP, or two guests meet on virtio. A datagram is not a protocol stack; it is a **value made portable**, shape-cast at every edge, opened only by the one who holds the right secret. This brief silos what that shape means so every wire rung shares one letter.*
 
 **Language:** EN

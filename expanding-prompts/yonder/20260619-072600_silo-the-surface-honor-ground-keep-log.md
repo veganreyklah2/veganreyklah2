@@ -21,13 +21,13 @@ To keep an honest record of the work as it happens; to carry the Brushstroke vis
 ## The Work
 
 1. **The session-log practice.** Begin keeping a trace of reasoning and changes, laid down at the end of each response in `session-logs/`, counting down. Make it durable — a standing rule the work obeys across sessions, not a habit that fades when the context resets — and allow the folder into the tracked tree so the record endures.
-2. **The silo.** Distill `980` into `active-designing/20260619-072600_brushstroke.md`, the Brushstroke brief, abstracting every borrowed name: the foundation Rye grew from in place of one language's name, *an interface redrawn from values* in place of the toolkit we studied, *a portable executable form* in place of the bytecode standard, *a drawing surface within a person's reach* in place of the browser. Hold the named shape — mission through conclusion.
+2. **The silo.** Distill `980` into `active-designing/yonder/20260619-072600_brushstroke.md`, the Brushstroke brief, abstracting every borrowed name: the foundation Rye grew from in place of one language's name, *an interface redrawn from values* in place of the toolkit we studied, *a portable executable form* in place of the bytecode standard, *a drawing surface within a person's reach* in place of the browser. Hold the named shape — mission through conclusion.
 3. **The honoring.** Add to `997_SYSTEM.md` two sources: the ground (Zig, and Andrew Kelley who made it — the language Rye descends from and made its own) and the drawn interface (David Vanderson's DVUI — immediate mode, one interface drawn to many surfaces).
 
 ## Deliverables
 
 - A standing **session-log practice**, made durable by a rule, with `session-logs/` tracked and this response's log written as the first (`99999`).
-- **`active-designing/20260619-072600_brushstroke.md`** — Brushstroke, siloed, in the mission→conclusion shape, naming only our own and RISC-V.
+- **`active-designing/yonder/20260619-072600_brushstroke.md`** — Brushstroke, siloed, in the mission→conclusion shape, naming only our own and RISC-V.
 - **`997_SYSTEM.md`** extended with the ground (Zig, Andrew Kelley) and the drawn interface (DVUI, David Vanderson), and `../gratitude/dvui` recorded where each thing lives.
 
 ---

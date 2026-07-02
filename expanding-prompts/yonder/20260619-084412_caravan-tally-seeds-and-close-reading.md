@@ -23,7 +23,7 @@ To hold three threads in parallel without letting any one race so far ahead that
 - **Horizon 0** — crypto, two-hart posted datagram, `parity.rish`, Rishi gate (`996_roadmap.md`).
 - **Horizon 1** — device-wire listed; Caravan v1 and Tally v1 listed in Horizon 2 as composed milestones — counsel asks to **pull their smallest seeds into Horizon 1** as parallel work, not wait for composition.
 - **Open threads** — `995` already names unbuilt modules and critical reading owed; this prompt **promotes** them to co-equal near work beside device-wire.
-- **Design ground** — `active-designing/20260618-184912_recommended-architecture.md`, `external-research/20260618-180812_pond-foundation.md`, `994_caravan_tally_networking.md`, `995_ownerboot_riscv_caravan.md`.
+- **Design ground** — `active-designing/yonder/20260618-184912_recommended-architecture.md`, `external-research/20260618-180812_pond-foundation.md`, `994_caravan_tally_networking.md`, `995_ownerboot_riscv_caravan.md`.
 
 ## The Work
 
@@ -75,7 +75,7 @@ Output: `external-research/20260619-070612_brushstroke-and-the-docs-surface.md` 
 
 - **`996_roadmap.md`** — Horizon 1 gains explicit Caravan seed, Tally seed, and close-reading items; "What to Build Next" names **three parallel threads**.
 - **`995_open_threads.md`** — Promote seeds and close reading to co-equal with device-wire.
-- **`active-designing/20260619-084412_the-first-seeds.md`** — Clean-room brief: mission, problem, opportunity, architecture, caveats, conclusion for the two seeds and the reading discipline.
+- **`active-designing/yonder/20260619-084412_the-first-seeds.md`** — Clean-room brief: mission, problem, opportunity, architecture, caveats, conclusion for the two seeds and the reading discipline.
 
 ## Discipline
 
@@ -87,7 +87,7 @@ Output: `external-research/20260619-070612_brushstroke-and-the-docs-surface.md` 
 ## Deliverables
 
 - This expanding prompt (`10007`).
-- `active-designing/20260619-084412_the-first-seeds.md`.
+- `active-designing/yonder/20260619-084412_the-first-seeds.md`.
 - Updated `996_roadmap.md` and `995_open_threads.md`.
 - Session log `99995_20260619-084412.md`.
 

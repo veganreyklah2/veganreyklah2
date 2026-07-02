@@ -1,5 +1,7 @@
 # 975 · Virtio — The Parity Device at the Emulated Wire
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Comlink's wire grew in three rungs: shared memory between two harts, localhost datagrams between two processes, and next — a true device between two machines. Virtio is the name the industry gives to that third ground: a paravirtual device interface where guest and host agree on queues and descriptors rather than pretending to be legacy hardware. This brief silos what virtio *means* for our family — Aurora, Caravan, Tally, Comlink — so the device-wire seed grows from understanding, not from copying.*
 
 **Language:** EN

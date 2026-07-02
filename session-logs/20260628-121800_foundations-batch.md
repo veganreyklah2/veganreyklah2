@@ -29,5 +29,5 @@ Kaeden delivered Opus deliberation on microkernel direction, Brix/sixos mapping,
 | `gratitude/DevotionAndCreativeFreedom.md` | Own-voice synthesis |
 | `gratitude/PathWithHeart.md` | Own-voice synthesis |
 | `foundations/*` | Why-beneath-the-work layer |
-| `active-designing/20260628-120912_brix-the-composer.md` | sixos → module mapping |
+| `active-designing/yonder/20260628-120912_brix-the-composer.md` | sixos → module mapping |
 | `expanding-prompts/20260628-120912_kernel-direction-brix-and-foundations.md` | Batch deliberation record |

@@ -1,5 +1,7 @@
 # The Faithful Hand — the Design of Rishi
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Rishi is the shell of the family: the hand a person works with, and the seer who hears them and speaks faithfully to the machine. This brief designs what Rishi is meant to be: the shape it grows toward. The way we grow it is `996`'s method. One promise orders the rest: a value at the hand is the same value in the program and on the wire, so the shell adds reach without ever opening a seam.*
 
 **Language:** EN

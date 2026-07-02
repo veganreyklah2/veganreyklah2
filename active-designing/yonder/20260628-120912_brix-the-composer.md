@@ -1,5 +1,7 @@
 # Brix — The Composer, and the System Around It
 
+> **Yondered `20260702.185912`** — superseded by [`../20260702-185912_brix-the-composer.md`](../20260702-185912_brix-the-composer.md); the stamp above endures as the moment it was written. Index: [`../README.md`](../README.md).
+
 **Stamp:** `20260628.120912`
 **Voice:** Reya 2, with **Kaeden Reyklah** as coauthor
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)

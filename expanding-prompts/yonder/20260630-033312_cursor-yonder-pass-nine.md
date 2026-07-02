@@ -51,8 +51,8 @@
 
 | File | To |
 |------|----|
-| `active-designing/20260619-154912_living-desktop.md` | `active-designing/yonder/` — now the stack record + `pond-foundation` |
-| `active-designing/20260619-160312_native-system-interface.md` | `active-designing/yonder/` — now the POSIX-as-a-seam memo |
+| `active-designing/yonder/20260619-154912_living-desktop.md` | `active-designing/yonder/` — now the stack record + `pond-foundation` |
+| `active-designing/yonder/20260619-160312_native-system-interface.md` | `active-designing/yonder/` — now the POSIX-as-a-seam memo |
 | `external-research/20260619-070612_brushstroke-and-the-docs-surface.md` | `external-research/yonder/` — now the stack record + the three essays |
 | `external-research/20260619-155612_posix-and-tame-style.md` | `external-research/yonder/` — now the POSIX memo (zero inbound refs) |
 
@@ -75,14 +75,14 @@ These stay where they are — the design narratives of our current and core modu
 |------|------------------|------|
 | `external-research/20260620-014412_system.md` | Tiger Style and the Language of the System | 137 inbound refs — keep the filename, de-number the H1 only |
 | `expanding-prompts/20260620-210812_explicit-width-audit.md` | Explicit Width Audit | already de-numbered; re-date + reviewed-kept line |
-| `active-designing/20260619-072600_brushstroke.md` | Brushstroke | the canonical surface brief; active in SLC-2a |
-| `active-designing/20260618-225712_aurora.md` | Aurora | the kernel design narrative |
-| `active-designing/20260619-051212_correctness-by-construction.md` | Correctness by Construction | the design of Rye |
-| `active-designing/20260619-051312_the-faithful-hand.md` | The Faithful Hand | the design of Rishi |
-| `active-designing/20260619-223712_caravan-microkernel.md` | Caravan as a Microkernel | Caravan's design; pending the capability table |
-| `active-designing/20260619-084412_the-first-seeds.md` | The First Seeds | Caravan and Tally's seeding |
-| `active-designing/20260618-224812_shape-casting.md` | Shape-Casting | the two layers of safety |
-| `active-designing/20260618-224712_bounded-network.md` | The Bounded Network | Comlink's design narrative |
+| `active-designing/yonder/20260619-072600_brushstroke.md` | Brushstroke | the canonical surface brief; active in SLC-2a |
+| `active-designing/yonder/20260618-225712_aurora.md` | Aurora | the kernel design narrative |
+| `active-designing/yonder/20260619-051212_correctness-by-construction.md` | Correctness by Construction | the design of Rye |
+| `active-designing/yonder/20260619-051312_the-faithful-hand.md` | The Faithful Hand | the design of Rishi |
+| `active-designing/yonder/20260619-223712_caravan-microkernel.md` | Caravan as a Microkernel | Caravan's design; pending the capability table |
+| `active-designing/yonder/20260619-084412_the-first-seeds.md` | The First Seeds | Caravan and Tally's seeding |
+| `active-designing/yonder/20260618-224812_shape-casting.md` | Shape-Casting | the two layers of safety |
+| `active-designing/yonder/20260618-224712_bounded-network.md` | The Bounded Network | Comlink's design narrative |
 
 ## Part C — Hold (pending upcoming work)
 

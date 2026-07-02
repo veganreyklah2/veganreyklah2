@@ -49,7 +49,7 @@ Do not move it — Pond is next, and its foundation stays at hand.
 
 | File | To | Why · refs |
 |------|----|-----------|
-| `active-designing/20260618-224612_rooted-identity.md` | `active-designing/yonder/` | design-stage; kin to the unified-identity horizon already in `yonder/` · ~1 |
+| `active-designing/yonder/20260618-224612_rooted-identity.md` | `active-designing/yonder/` | design-stage; kin to the unified-identity horizon already in `yonder/` · ~1 |
 | `external-research/20260618-150112_voices-of-an-os.md` | `external-research/yonder/` | explores "one language or more," now settled in the kept `growing-a-language` · ~4 |
 | `external-research/20260618-190312_decided-design-aurora-mantra.md` | `external-research/yonder/` | reads two now-built modules through the design; realized analysis · ~3 |
 | `external-research/20260618-195512_encrypted-networking-riscv.md` | `external-research/yonder/` | the `985` networking study, realized in Comlink and Aurora's sealed datagram · ~8 |

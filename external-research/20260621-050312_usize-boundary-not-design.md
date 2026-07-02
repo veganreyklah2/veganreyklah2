@@ -7,7 +7,7 @@
 **Last updated:** 2026-06-21 (`050312` — safety walkthrough for allowed `usize`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
-**Status:** Exploration — seam policy for **Zig-ground era**; strategic fork recorded in [`20260621-051312_literal-usize-ban-language-fork.md`](20260621-051312_literal-usize-ban-language-fork.md) · design silo [`../active-designing/20260621-051312_explicit-width-in-rye.md`](../active-designing/20260621-051312_explicit-width-in-rye.md)
+**Status:** Exploration — seam policy for **Zig-ground era**; strategic fork recorded in [`20260621-051312_literal-usize-ban-language-fork.md`](20260621-051312_literal-usize-ban-language-fork.md) · design silo [`../active-designing/yonder/20260621-051312_explicit-width-in-rye.md`](../active-designing/yonder/20260621-051312_explicit-width-in-rye.md)
 
 > **Reorientation (`051312`):** Rye will fork to a **literal `usize` ban** in authored types. This document remains the accurate manual for strengthenings and audits **while** `rye/lib/std` is Zig-shaped and parity uses vendor baseline. New language work follows `970`.
 

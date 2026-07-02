@@ -1,5 +1,7 @@
 # 967 · Caravan — Improving Upon the State of the Art
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *A siloed design brief for how Caravan's microkernel improves upon what formal verification and safe-language kernels achieved separately. The insight: one tradition proved the kernel correct yet left the language unsafe; another made the language safe yet left the kernel unproven. Caravan aims to do both — a safe language building a verified kernel, on widths that never silently change.*
 
 **Language:** EN

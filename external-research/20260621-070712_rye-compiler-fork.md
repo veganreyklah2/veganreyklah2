@@ -89,7 +89,7 @@ After F3: `rye run` compiles against Rye-native std; parity proves behavior matc
 - Tiger Style: `gratitude/TIGER_STYLE.md` — "use explicitly-sized types; avoid `usize`"
 - Rye-as-its-own-language: `context/specs/rye-as-its-own-language.md`
 - Width baseline: `work-in-progress/20260620-212126_usize-width-baseline`
-- Width design: `active-designing/20260621-051312_explicit-width-in-rye.md`
+- Width design: `active-designing/yonder/20260621-051312_explicit-width-in-rye.md`
 
 ---
 

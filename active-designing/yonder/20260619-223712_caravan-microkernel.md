@@ -1,5 +1,7 @@
 # Caravan as a Microkernel — Siloed Design Brief
 
+> **Yondered `20260702.185912`** — early brief, consumed into the living records; the stamp above endures as the moment it was written. Index: `../README.md`.
+
 *Caravan is the supervision and isolation layer of the family. This brief silos the microkernel decision — reached through external research (`../external-research/976`) — into a concrete, clean-room design that names only our own modules and says precisely what goes inside the kernel, what lives outside it, and how the two meet.*
 
 **Language:** EN

@@ -78,7 +78,7 @@ Three milestones, one session, composed not braided:
 
 ## Track C — Flow of Values (silo)
 
-**Deliverable:** `active-designing/20260620-021212_flow-of-values.md`
+**Deliverable:** `active-designing/yonder/20260620-021212_flow-of-values.md`
 
 **Contents (no borrowed names):**
 
@@ -110,7 +110,7 @@ Three milestones, one session, composed not braided:
 - [ ] `expanding-prompts/20260620-021212_display-flow-gardens-and-next-milestones.md` (this file)
 - [ ] `brushstroke/seed.rye` + `.gitignore` allow-list
 - [ ] Garden vocabulary sweep (code + docs)
-- [ ] `active-designing/20260620-021212_flow-of-values.md`
+- [ ] `active-designing/yonder/20260620-021212_flow-of-values.md`
 - [ ] `work-in-progress/20260623-033012_open-threads.md` updated
 - [ ] `session-logs/99930_20260620-021212.md`
 - [ ] Parity or build proof recorded in session log

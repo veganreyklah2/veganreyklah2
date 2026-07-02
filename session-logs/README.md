@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.190330 | [Consume Brix re-silo and yonder pass ten](20260702-190330_consume-brix-yonder-pass-ten.md) | Fourteen live briefs; Brix siloed; tree repointed. |
+| 20260702.185912 | [Brix re-siloed, and yonder pass ten](20260702-185912_brix-resilo-yonder-ten.md) | Claude executor log for structural sitting. |
 | 20260702.190145 | [Commits push and full summary handoff](20260702-190145_commits-push-full-summary.md) | Four remotes at 9366fcb; arc summary for Kaeden. |
 | 20260702.185728 | [Consume Claude grain round — canon and clock](20260702-185728_consume-grain-round.md) | Grain canon; manual under chronological law; two rules await ratification. |
 | 20260702.184312 | [The grain defined, the clock restored — Rio's third round](20260702-184312_grain-and-versioning.md) | Claude executor log for grain sitting. |
@@ -392,7 +394,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 | `20260619-150000` | [2026-06-19 (Rally → Rishi typo fix)](20260619-150000.md) | 1. Located `session-logs/99991_20260619-090912.md` — Zed had searched for "Rally" and left an open clarification thread. |
 | `20260619-145412` | [2026-06-19 14:54:12](20260619-145412.md) | 1. Surveyed git status and Zed-authored session logs (`99990` at 090912, `99989` at 100412, `99991` at 090912). |
 | `20260619-100412` | [2026-06-19 10:04:12](20260619-100412.md) | 1. Read `work-in-progress/995_open_threads.md`, `996_roadmap.md`, `active-designing/README.md`,… |
-| `20260619-090912` | [2026-06-19 09:09:12](20260619-090912_external-research-rye-rishi-first.md) | 1. Read all new untracked files: `active-designing/20260619-084412_the-first-seeds.md`, `expanding-prompts/10006` and `10007`,… |
+| `20260619-090912` | [2026-06-19 09:09:12](20260619-090912_external-research-rye-rishi-first.md) | 1. Read all new untracked files: `active-designing/yonder/20260619-084412_the-first-seeds.md`, `expanding-prompts/10006` and `10007`,… |
 | `20260619-090912` | [2026-06-19 09:09:12](20260619-090912_rye-rishi-first-implementation.md) | 1. Read `rishi/src/main.rye` (725 lines), all tests, `parity.rish`, `examples/pond.rish`, and `README.md` in full. Confirmed: `say` writes… |
 | `20260619-090512` | [2026-06-19 (Zed Claude rules + agent panel)](20260619-090512.md) | 1. Researched Zed docs: External Agents (Claude Agent via ACP) own native config — `CLAUDE.md` and `.claude/rules/`, not `.cursor/rules`… |
 | `20260619-090500` | [2026-06-19 (Zed launch confirmed working)](20260619-090500.md) | 1. Prior turn diagnosed instant exit after `Landlock: fully enforced` as missing `/dev/dri` when `USE_GPU=false`. |

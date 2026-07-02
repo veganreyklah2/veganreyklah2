@@ -50,7 +50,7 @@ Create the `yonder/` subfolder in each folder as needed, and `git mv` each file 
 
 | File | To |
 |------|----|
-| `active-designing/20260618-085812_strengthening-strategy.md` | `active-designing/yonder/` — standing charter, gates realized, effort dormant |
+| `active-designing/yonder/20260618-085812_strengthening-strategy.md` | `active-designing/yonder/` — standing charter, gates realized, effort dormant |
 | `expanding-prompts/20260618-195512_encrypted-networking-and-social.md` | `expanding-prompts/yonder/` — consumed prompt; networking landed, social is horizon |
 | `external-research/20260617-195312_mantra.md` | `external-research/yonder/` — realized; the origin story of a live module |
 | `work-in-progress/20260620-155342_style-audit.md` | `work-in-progress/yonder/` — stale audit; live threads lifted to TASKS |

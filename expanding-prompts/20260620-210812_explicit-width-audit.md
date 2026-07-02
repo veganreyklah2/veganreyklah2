@@ -25,7 +25,7 @@
 
 **Strengthening and width are parallel tracks.** Strengthening passes (`9931` and below) keep earning `std` surfaces through parity on **vendor Zig baseline** until fork F3; then witnesses re-base to **Rye spec**. Width migration touches authored `.rye` first, then wire formats, then Rishi internals.
 
-**Language fork (`051312`):** Rye will ban `usize` in authored types — research `external-research/20260621-051312_literal-usize-ban-language-fork.md`, design `active-designing/20260621-051312_explicit-width-in-rye.md`. Interim seam policy: `968`.
+**Language fork (`051312`):** Rye will ban `usize` in authored types — research `external-research/20260621-051312_literal-usize-ban-language-fork.md`, design `active-designing/yonder/20260621-051312_explicit-width-in-rye.md`. Interim seam policy: `968`.
 
 ## Phased Migration
 
