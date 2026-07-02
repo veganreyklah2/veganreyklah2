@@ -17,6 +17,7 @@
 
 const std  = @import("std");
 const assert = std.debug.assert;
+const print = std.debug.print;
 const Dir  = std.Io.Dir;
 const Sha3 = std.crypto.hash.sha3.Sha3_256;
 

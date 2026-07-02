@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.031312`
+**Stamp:** `20260702.034052`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
@@ -18,8 +18,8 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 | **OCuLink companion memo** | Awaits supply; bridge into deep-archive blueprint |
 | **SLC-2a Ring 3 metal close** | Witness **139 GREEN**; **metalsmoke GREEN**. **Your hand:** interactive idle, ceiling, `:quit` on `pond/bin/drawn-terminal` |
 | **SLC-2b placement nod** | Bench prompt placed — not built |
-| **Pond clause** — finish the mid-flight sentence | Recommended: *run what Brix composes under policy* — enclosure aspect as packaging's runtime; **your true ending** |
-| **`.bron` as resolved-record carrier** | Open — packaging memo recommends; awaits affirm |
+| **Pond clause** — finish the mid-flight sentence | Recommended: *run what Brix composes under policy*; **your true ending** |
+| **`.bron` as resolved-record carrier** | Open — awaits affirm |
 | **MALA / Mycelium** | Named in lexicon; M0 design after Edit 5 + Amber |
 
 ## Claude — strategy (when Kaeden opens the door)
@@ -31,13 +31,12 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 | **Manual program shape** | When tutorial lane opens — four rooms, tutorials-first |
 | **Mycelium / road-keeper detail** | M4 / multipath seasons — not now |
 
-## Landed since design sitting (`20260702.031312`)
+## Landed since design sitting (`20260702.031312` → `d9dcfa1`)
 
-- **Design sitting filed** — [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) + [`external-research/20260702-031312_settlement-consensus-and-many-roads.md`](../external-research/20260702-031312_settlement-consensus-and-many-roads.md)
-- **Lexicon** — module/aspect pattern, MALA, Mycelium, Weave-as-Mantra-aspect
-- **TASKS** — modules-money-manual horizon block
-- **Opening lines** — canonized in TAME guidance
-- **Prior arc** — Ring 3 @ parity **139**, Pond README, bare print on Caravan + Comlink
+- **Design sitting** — modules/aspects/MALA memo + settlement companion
+- **Lexicon, TASKS, opening lines canon** in TAME
+- **Hosted opening lines** — Tally, Brushstroke, Mantra (all four), Rishi on bare `print` (this turn)
+- **Prior arc** — Caravan + Comlink print; Ring 3 @ parity **139**; Pond README
 
 ---
 

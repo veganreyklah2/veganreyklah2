@@ -29,6 +29,7 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const print = std.debug.print;
 
 const tally_gardens_version = "20260620.211712";
 
@@ -254,5 +255,5 @@ pub fn main() void {
         assert(e.region.pos <= e.region.buf.len);
     }
 
-    std.debug.print("tally gardens: all facts held.\n", .{});
+    print("tally gardens: all facts held.\n", .{});
 }

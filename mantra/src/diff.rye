@@ -13,6 +13,7 @@
 
 const std   = @import("std");
 const assert = std.debug.assert;
+const print = std.debug.print;
 const Weave = @import("weave.rye").Weave;
 const Line  = @import("weave.rye").Line;
 const Diff  = @import("weave.rye").Diff;
