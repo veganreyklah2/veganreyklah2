@@ -29,8 +29,7 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 | Tip | What |
 |-----|------|
-| `74f1807` | RW-3 at parity **141**; Amber Claude brief |
-| *(this commit)* | RW-4 at parity **142** — audit gaps RW-3 and RW-4 closed |
+| `4eb7a05` | RW-4 at parity **142** — audit RW-3/RW-4 complete |
 
 ## Best path
 
