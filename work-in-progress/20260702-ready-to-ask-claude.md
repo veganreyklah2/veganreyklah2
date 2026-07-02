@@ -16,7 +16,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 closed · Grain and crossing
 | # | Item | Command / where |
 |---|------|-----------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | Four sub-boxes in [`TASKS.md`](TASKS.md) |
+| 2 | **Ring 3 metal close** | Headless path **GREEN** (`20260702.195626`): preflight + metalsmoke passed; Kaeden still owns live five steps + session-log stamp |
 | 3 | **Edit 5** | *for* → parity **143** or *against* |
 
 **Edit 5 witness:** `designed_not_built_witness.rish` **GREEN** on metal (`20260702.195426`); unwired until Door 3 = *for*.
