@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.030112`
+**Stamp:** `20260702.031512`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
@@ -28,11 +28,12 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 | **Post-quantum accretion order** | When production CSPRNG / ML-KEM ring opens |
 | **Virtio-net Track A** | Optional when Comlink device wire bench resumes |
 
-## Landed since last checkpoint (`0175eb7`)
+## Landed since last checkpoint (`0175eb7` → `bc69e80`)
 
-- **Ring 3 metalsmoke** — Wayland surface mirrors scripted session; pong window serviced
+- **Ring 3 metalsmoke** — Wayland surface mirrors scripted session; pong window serviced; `tools/slc2a_ring3_metal.rish` **GREEN**
 - **SLC-2b bench prompt placed** (not executed)
 - **SLC-2a brief** refreshed — Rings 1–3 witness status, parity 139
+- **ROADMAP** — Pond first app and metalsmoke noted
 
 ---
 
