@@ -3,9 +3,9 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-07-02 (classical-vedic-astrology lane founded; Amber spec; deep-archive blueprint)
+**Last updated:** 2026-07-02 (manual lane founded; audit round `20260702.180812`)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
-**Voice:** Reya 2
+**Voice:** Rio 3
 
 ---
 
@@ -24,6 +24,8 @@ Read the sections below when you wonder where a new file belongs. When a season'
 **`foundations/`** — the why beneath the work: foundation briefs, the distilled essays and the weave that composes them, and the civic visions. Dated artifacts rest beneath a living README.
 
 **`classical-vedic-astrology/`** — the reading craft: a siloed study library (`studies/`, numbered and growing), composable reading templates, a sample reading, and the dual-zodiac caster. Names stay siloed to the placeholder **Alice** by consent and by design; the fuller originals rest in the private lane, and gratitude to teachers lives inside each study.
+
+**`manual/`** — the four rooms that teach the system: tutorials by the hand, guides for the task, living reference specifications for stable surfaces, and pointers to the understanding essays. Every page teaches only what runs; the first reference open is the Rishi language, derived from the witness corpus.
 
 **`linengrow/`** — the civic-application track: Linengrow's README, business model, and venture pitch, sharing the one spine with the operating system. It graduates to its own repository once its first ring runs.
 
@@ -60,6 +62,7 @@ Read the piece aloud. Ask what it is *doing*:
 - **Governing how we write or decide** → `context/` (discipline or spec).
 - **Naming why the work means something** → `foundations/` (brief, essay, vision, or weave).
 - **Reading a friend's sky** → `classical-vedic-astrology/` (study, template, reading, or caster).
+- **Teaching or looking something up** → `manual/` (tutorial, guide, or reference — only what runs).
 - **Carrying Linengrow's application vision** → `linengrow/`.
 - **Deciding our own design** → `active-designing/`.
 - **Studying an external work** → `external-research/`.

@@ -1,0 +1,17 @@
+# tools/fixtures/pond_build_drawn_terminal.rish — build pond/bin/drawn-terminal from the repository root.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
+#
+# Written at the bench (20260702.180812), awaiting the host's first green run;
+# the .sh sibling retires to yonder only after this passes on metal.
+# The env-and-exec line is a deliberate host seam, the same proven idiom the
+# Ring 3 session witness already runs green in parity.
+
+let zig = "vendor/zig-toolchain/zig"
+let bin = "pond/bin/drawn-terminal"
+
+let build = run ["sh" "-c" "mkdir -p pond/bin && env RYE_ZIG=${zig} rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c -Ibrushstroke -lc -lwayland-client -lrt -femit-bin=${bin}"]
+assert build.ok else "drawn_terminal build failed"
+
+say "GREEN: ${bin} built."

@@ -1,7 +1,7 @@
 # Pond — The Enclosure and Its Applications
 
 **Language:** EN
-**Last updated:** 2026-07-02
+**Last updated:** 2026-07-02 (fixture twins `.rish`; audit round `20260702.180812`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -34,7 +34,7 @@ These symlinks are required for `drawn_terminal.rye` to import `rishi/main.rye` 
 From the repository root:
 
 ```bash
-sh tools/fixtures/pond_build_drawn_terminal.sh
+rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
 ```
 
 Or manually:
@@ -53,22 +53,23 @@ rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c 
 | **Metalsmoke** | `pond/bin/drawn-terminal metalsmoke` | Thin-ring Wayland slice — [`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish); see [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) |
 | **Live** | `pond/bin/drawn-terminal` | Interactive mirror on GNOME Wayland + stdin (keyboard-from-window: SLC-2b) |
 
-**Metal close (Kaeden):** run the automated preflight, then live mode on GNOME Wayland:
+**Metal close (Kaeden):** run the automated preflight, then the thin ring, then live mode on GNOME Wayland:
 
 ```bash
-sh tools/fixtures/pond_metal_close_preflight.sh   # build + sessiontest (+ metalsmoke on Wayland)
-pond/bin/drawn-terminal                            # interactive close
+rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish
+rishi/bin/rishi run tools/slc2a_ring3_metal.rish
+pond/bin/drawn-terminal
 ```
 
 Confirm each interactive step:
 
-1. **Build** — `sh tools/fixtures/pond_build_drawn_terminal.sh` (or command block above); binary at `pond/bin/drawn-terminal`
+1. **Build** — preflight above (or `pond_build_drawn_terminal.rish` alone); binary at `pond/bin/drawn-terminal`
 2. **Type** — enter a few Rishi lines; frame updates in the window
 3. **Idle ~one minute** — leave the window focused; pong keeps the compositor honest
 4. **Ceiling** — fill past `max_transcript_bytes` (65536); status row still updates (invitation visible)
 5. **Exit** — `:quit` closes clean
 
-Witness and metalsmoke already **GREEN**; this pass is the interactive confirmation only.
+Witness and metalsmoke already **GREEN**; this pass is the interactive confirmation only. Retired `.sh` fixtures live in [`tools/fixtures/yonder/`](../tools/fixtures/yonder/).
 
 ---
 

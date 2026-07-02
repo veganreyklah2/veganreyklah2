@@ -1,42 +1,44 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.172315`
+**Stamp:** `20260702.180812`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Affirmed (`20260702.165412` UDT)
+## Affirmed (`20260702.165412` + `20260702.180812`)
 
-Graduation rule · Rio 3 · Puddle second pass · Happy zone + gratitude teaching
+Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit first pass** · **Rishi reference v0.1** · **Userland lineages siloed**
 
 ## Kaeden — three doors before Claude
 
-| # | Item | One command / where |
-|---|------|---------------------|
+| # | Item | Command / where |
+|---|------|-----------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | `sh tools/fixtures/pond_metal_close_preflight.sh` then `pond/bin/drawn-terminal` on GNOME |
+| 2 | **Ring 3 metal close** | `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` → metalsmoke → live five steps |
 | 3 | **Edit 5** | Rule *for* → parity **141** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
-**Optional affirmations:** archive verdict · Maitreya owns time · happy-zone pairing → TAME
+**Optional ratifications:** archive verdict · Maitreya owns time · **standing audit rule** (one mirrored pair per season)
 
-## Claude — after steps 1–3
+## Claude — after doors (+ ladder rung 3)
 
-**Amber first ring** — export / verify / restore season spine.
+**Amber first ring** — five lettered steps in [`TASKS.md`](TASKS.md) ladder (manifest → export → verify → restore → witness).
 
-## Landed since last RTAC (`cc63d83` → tip)
+## Landed this sitting (`3fb277d` → tip)
 
-- **`tools/fixtures/pond_metal_close_preflight.sh`** — build + sessiontest + metalsmoke (when Wayland set)
-- **Metalsmoke witness** — uses shared build script
-- SLC-2a brief + Pond README updated
+- [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) — census, gaps, RW-1–4
+- [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) — v0.1 at parity 140
+- [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) + [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md)
+- **Ladder rung 1 done** — `.rish` fixture twins green; `.sh` → yonder
+- **TASKS** reoriented — three doors first, owner-tagged ladder beneath
 
 ## Best path
 
-**Pond clause → preflight + live close → Edit 5 → Claude (Amber) → SLC-2b nod**
+**Doors 1–3 → (Cursor rung 2 if Edit 5 for) → Claude Amber sitting → SLC-2b → RW-1**
 
-Parity **140** GREEN · Edit 5 witness drafted, unwired
+Parity **140** GREEN
 
 ---
 
-*Three quick hands, then the Amber season opens.*
+*May the suite stay happy-zone shaped and the manual never disagree with parity.*

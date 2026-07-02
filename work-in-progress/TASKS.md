@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Rio round `20260702.165412`; Puddle second pass; happy zone)
+**Last updated:** 2026-07-02 (three doors + ladder reorientation; testing audit; Rishi reference; userland silo)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -16,17 +16,25 @@
 
 ---
 
-## Now — In Flight and Immediate
+## Now — The Three Doors, Then the Ladder
 
-### Rye OS
-- [ ] **SLC-2a — the Skate viewer (drawn terminal)** — scope: [`active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md). **Rings 1–3 witness landed** — parity **140**; **metalsmoke GREEN** ([`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish)). **Ring 3 metal close (Kaeden)** — [`tools/fixtures/pond_metal_close_preflight.sh`](../tools/fixtures/pond_metal_close_preflight.sh) then live close — [`pond/README.md`](../pond/README.md). **SLC-2b placed** — [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md), awaits nod.
+### The three doors (Kaeden, in order)
+- [ ] **Door 1 — Pond clause**: affirm or refine the recommended sentence in [`pond/README.md`](../pond/README.md).
+- [ ] **Door 2 — Ring 3 metal close**: `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish`, then on GNOME: `rishi/bin/rishi run tools/slc2a_ring3_metal.rish`, then the live five steps in [`pond/README.md`](../pond/README.md).
+- [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
+
+### The ladder (after the doors, in order — owner tagged)
+1. [x] **(Cursor) Fixture twins verified** — both `.rish` fixtures green on host; `.sh` elders retired to [`tools/fixtures/yonder/`](../tools/fixtures/yonder/); [`pond/README.md`](../pond/README.md) points at twins (`20260702.180812`).
+2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5** — `tools/designed_not_built_witness.rish` into `tools/parity.rish` → parity **141**. One commit.
+3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — from [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md): (a) the sealed-record `.bron` manifest shape on paper; (b) export one directory → stones + manifest; (c) verify on two paths, one golden pinned by an independent digest tool; (d) restore and compare bit-faithful; (e) witness `tools/amber_first_ring.rish` → parity **+1**. Invocation and custody rulings below govern throughout.
+4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt placed at [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md); mechanical unless the module seam shifts (Dexter within vs beside Brushstroke — Claude optional).
+5. [ ] **(Cursor) RW-1 mirrored pair** — first happy-zone pair at the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); lands while the seam is warm from SLC-2b.
 
 ### Linengrow
 - [ ] **SLC-L1 scope note** — the hammock spec: the transaction fact, the keypair that signs it, the append to the log, the receipt as a pure fold, the verification. Draw the edge of complete; name what is out (settlement, the market).
 
 ### Ground
 - [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.
-- [ ] **Amber first ring (horizon)** — designed in [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md); seal one directory to one drive, one signed record, one verifying fold, one hand-verified golden when the season comes.
 - [ ] **Deep-archive hardware (horizon)** — rack, powered dock, bare enterprise drives, front-door tunnel; researched in [`external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md); procurement waits on the dedicated machine.
 
 **Recorded rulings (`20260701-221512` docs round):** **Amber invocation** — explicit shell command with manual sandbox-key unlock; the docked bare drive is precondition, never trigger; the shell may notice and offer, never act; scrub runs cold, key warm only for the seconds of seal. **Amber key custody** — master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` cold and certifying; sandbox `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` signing and revocable; drive passphrase on paper in the firebox and offsite; any other fingerprint is an error on sight.
@@ -34,6 +42,16 @@
 ---
 
 ## Next — Horizons and Optional
+
+### The audit, the manual, and the userland (`20260702.180812`)
+
+Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) · [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) · [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) · [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md).
+
+- [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin), RW-3 (run-record four-field witness), RW-4 (SLC failure-path lines).
+- [ ] **Rishi framework growth (witness-first, in need order)** — `when` guard or conditional; environment builtin; file-reading builtin; named exit-code vocabulary (temporary / permanent / could-not-begin, serving Caravan's restart policy). Each enters the reference only after its witness runs green.
+- [ ] **Manual next rooms** — Rishi tutorial one (the opening lines, a first witness); Aurora / Tally / Caravan interface reference pages as each surface stabilizes.
+- [ ] **Man-as-value first ring** — one utility carries a `.bron` man record; `:man <name>` renders it; the manual renders the same record. After the toolset's first ring.
+- [ ] **Small-sharp-toolset ladder (gated after Amber season)** — ring one: an `echo`-sized utility with opening lines, `.bron` man record, `.brix` declaration, witness green; ring two: readiness-as-fact for one Caravan child; the override combinator earns its ring when two real configurations exist to differ.
 
 ### Rio's first round — searched ground and the happy zone (`20260702.165412`)
 
@@ -57,7 +75,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Amber-compatibility contract (design)** — export / verify / restore for every log-bearing module (Mantra, Tablecloth, Linengrow, Realidream, MALA); first ring = a Mantra log slice sealed and restored, riding Amber's first ring.
 - [ ] **Brix packaging (first ring visible)** — one content-addressed, Kumara-signed package: descriptor read, stones fetched by digest over Comlink, verified on two paths, placed, run in Pond; `.bron` as the resolved-record carrier awaits Kaeden's affirmation.
 - [x] **Opening lines (canonized)** — three-line head in TAME guidance; **`tools/opening_lines_witness.rish`** in parity **140** (sixteen hosted files, including `pond/apps/drawn_terminal.rye`).
-- [ ] **Manual program (horizon)** — four rooms: tutorials (Radiant beginner series for Rye and Rishi, tutorials-first because they teach only what runs), task guides, numbered reference specifications (beginning with Aurora, Tally, and Caravan interfaces), and the essays; shape note before any lane is founded.
+- [ ] **Manual program (horizon)** — four rooms founded at [`manual/README.md`](../manual/README.md); first reference [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) open; tutorials and module reference pages in season.
 - [ ] **Pond clause (Kaeden completes)** — recommended completion in [`pond/README.md`](../pond/README.md): Pond's **enclosure aspect runs what Brix composes under policy**; awaiting your true ending.
 - [ ] **Puddle exploration (horizon)** — sandboxed Rye containers; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md); first ring = one guest snapshot export/verify/restore.
 - [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya owns time (audio + video); Uddhava spatial/CAD horizon; counsel affirmed `20260702.165412` — Kaeden affirms archive verdict and Maitreya owns-time lines when ready.
