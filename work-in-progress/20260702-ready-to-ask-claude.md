@@ -48,15 +48,15 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 ## Ungated diet (smallest-first)
 
-~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi env builtin~~ · **next:** file-reading builtin surface · named exit codes · Aurora manual when stable · bare-print as-you-touch
+~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi framework growth (four witnesses)~~ · **next:** Aurora manual when stable · bare-print as-you-touch
 
-## Landed `20260702.205846`
+## Landed `20260702.210650`
 
 | Commit | Aspect |
 |--------|--------|
-| *(this sitting)* | Conditional witness · chrono sweep · RW-2 contract · manual tutorial two + Caravan/Tally reference · TASKS/RTAC |
+| *(this sitting)* | File I/O witness · exit vocabulary · manual §5–§6 |
 
-Prior tip: `d92cbd7`
+Prior tip: `011c2b5`
 
 ## Best path
 

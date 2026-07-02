@@ -63,6 +63,8 @@ supporting:
   entry names as a list (`tests/file_io.rish`).
 - **`env`** — `env "NAME"` reads the process environment; empty string when unset
   (`tests/env.rish`; witness `tools/rish_env_witness.rish`).
+- **Exit vocabulary** — pre-bound `exit-ok`, `exit-temporary`, `exit-permanent`,
+  `exit-could-not-begin`; `exit EXPR` ends the script (`tools/rish_exit_codes_witness.rish`).
 - **`lines`** — `lines text` splits a string on newlines into a list of strings.
 - **`starts-with`** — `text starts-with prefix` checks whether a string begins
   with a given prefix (used in gates and tests).

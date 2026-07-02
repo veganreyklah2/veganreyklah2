@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.210650 | [Rishi file I/O and exit vocabulary](20260702-210650_rishi-file-io-exit-vocabulary.md) | File I/O witness; exit codes pre-bound; framework growth track complete. |
 | 20260702.210201 | [Rishi env builtin](20260702-210201_rishi-env-builtin.md) | `env "NAME"` in interpreter; witness green; parity 142 unchanged. |
 | 20260702.205846 | [Ungated diet — sitting three](20260702-205846_ungated-diet-sitting-three.md) | Conditional witness, chrono sweep, RW-2 contract, manual tutorial two and Caravan/Tally reference. |
 | 20260702.205421 | [Consume hearth lane — studies 19–20 and Serena episode](20260702-205421_consume-hearth-lane-studies-19-20.md) | Vic DiCara silos distilled; Amber pre-counsel confirmed in TASKS. |

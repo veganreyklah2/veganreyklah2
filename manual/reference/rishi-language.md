@@ -66,7 +66,43 @@ let zig = env "RYE_ZIG"
 
 By convention every script runs **from the repository root**; scripts *must not* assume any other working directory.
 
-## 5. Gates — `assert … else`
+## 5. File I/O — `read-file`, `write-file`, `list-dir`
+
+```
+write-file "tools/fixtures/rish_io/roundtrip.txt" "hello from rishi witness"
+let content = read-file "tools/fixtures/rish_io/roundtrip.txt"
+let entries = list-dir "tools/fixtures/rish_io"
+assert entries contains "roundtrip.txt" else "list-dir missed the file we wrote"
+```
+
+| Form | Returns | Effect |
+|------|---------|--------|
+| `read-file PATH` | file contents as string | reads from the current working directory |
+| `write-file PATH VALUE` | none (statement) | renders `VALUE` to text and writes |
+| `list-dir PATH` | list of entry names | bounded at 256 entries |
+
+Paths evaluate to strings; integers and other values render through the same `write-file` path as `say`. A missing file stops the script with `ReadFileFailed`; a missing directory stops with `ListDirFailed`. Witness: `tools/rish_file_io_witness.rish`.
+
+## 6. Exit Vocabulary — pre-bound names and `exit`
+
+Every script and REPL session pre-binds four integer names — execline/s6 lineage values Caravan's restart policy reads:
+
+| Name | Value | Meaning |
+|------|-------|---------|
+| `exit-ok` | 0 | success |
+| `exit-temporary` | 112 | temporary failure — restart |
+| `exit-permanent` | 111 | permanent failure — do not restart |
+| `exit-could-not-begin` | 125 | could not execute — enclosure or spawn failure |
+
+```
+exit exit-temporary
+let code = exit-permanent
+assert temp.code == exit-temporary else "child must speak temporary failure"
+```
+
+`exit EXPR` ends the script immediately with the integer code (0–255). Witness: `tools/rish_exit_codes_witness.rish`.
+
+## 7. Gates — `assert … else`
 
 ```
 assert build.ok else "drawn_terminal build failed for Ring 3 witness"
@@ -75,7 +111,7 @@ assert (oob.ok == false) else "out-of-range index must fail"
 
 `assert EXPR else "message"` stops the script loudly when the expression does not hold, printing the message on standard error. Parentheses group comparisons. Assertions are the language's whole control discipline: place one after every `run`, before every effect. Negative space is asserted as deliberately as positive — a check that something *fails* is a first-class witness line.
 
-## 6. Conditional — `if … then … else …`
+## 8. Conditional — `if … then … else …`
 
 ```
 if length fails == 0 then say "OPENING LINES GREEN: all hosted files carry the canonical head."
@@ -84,11 +120,11 @@ if length fails != 0 then say "OPENING LINES RED: some files missing the head."
 
 `if CONDITION then STATEMENT` runs the statement when the condition evaluates to a boolean `true`. An optional `else STATEMENT` arm runs when the condition is false. The condition *must* be boolean — comparisons like `length fails == 0` or `(fail_run.ok == false)` are the usual shapes. Witnesses in parity **142** use `if` for reporting; gates remain `assert … else`.
 
-## 7. Expressions
+## 9. Expressions
 
 Equality `==` and inequality `!=` work on strings, integers, and booleans. `TEXT contains "needle"` tests substring presence. Records answer field access with `.name`; lists and strings answer `.len`; lists answer indexing `xs[i]`, and an out-of-range index ends the script with a friendly `out of range` error.
 
-## 8. Comprehensions — `map`, `where`, `length`
+## 10. Comprehensions — `map`, `where`, `length`
 
 ```
 let runs     = map witnesses as s: run ["env" "RYE_ZIG=${zig}" rye "run" "${dir}/${s}.rye"]
@@ -97,9 +133,9 @@ let failures = where codes as c: c != 0
 assert length failures == 0 else "a witness failed — the regression suite is RED"
 ```
 
-`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry much of the parity suite. Branching and iteration with effects live in §9.
+`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry much of the parity suite. Branching and iteration with effects live in §11.
 
-## 9. Conditionals and Iteration — `if` and `for-each`
+## 11. Conditionals and Iteration — `if` and `for-each`
 
 ```
 if x == 5 then let msg = "yes" else let msg = "no"
@@ -109,11 +145,11 @@ for-each items as i do if i == 3 then say "found three"
 
 Conditions may compare with `==`, `!=`, and `starts-with`. The `then` branch runs when the condition is true; `else` is optional. **`for-each`** runs a statement for each list element — effects included. Witness: `tools/rish_conditional_witness.rish`.
 
-## 10. Output — `say`
+## 12. Output — `say`
 
 `say "…"` prints a line with interpolation; lists render inline. The convention across the corpus: a witness's final line begins `GREEN:` on success, and gates upstream test for it with `contains "GREEN"`.
 
-## 11. Script Arguments — `args` and `flag`
+## 13. Script Arguments — `args` and `flag`
 
 Inside a script run as `rishi run script.rish a b c`:
 
@@ -125,13 +161,13 @@ let path = flag args "--appimage"
 
 `args` is the list of words after the script path. `flag LIST "--name"` scans for `--name value` and returns the value; a missing flag ends the script with `flag not found`, and a flag at list's end with `requires a value` — both *must* remain friendly, single-line messages.
 
-## 12. The Interactive Shell
+## 14. The Interactive Shell
 
 `rishi repl` reads lines, runs them, and keeps the last **50** inputs. Meta-commands begin with a colon: `:history` lists recent inputs; `:recall <n>` replays one; `:version` prints the version; `:quit` and `:q` leave. Everything else on a line is dispatched as a command. Unknown meta-commands and bad `:recall` arguments answer with a friendly line and the session continues — pinned in `tools/rw4_slc_failure_paths.rish`. The drawn terminal mirrors exactly this session through `sessionLines`, so the shell's contract and the window's content are one value.
 
-## 13. Named Gaps — the Growing Edge
+## 15. Named Gaps — the Growing Edge
 
-Held openly, so the reference and the roadmap agree: **`if` / `for-each`** are witnessed in `tools/rish_conditional_witness.rish`; **`env`** is witnessed in `tools/rish_env_witness.rish`. Rishi still keeps **no named exit-code vocabulary** yet (temporary / permanent / could-not-begin). Each remaining gap is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
+Held openly, so the reference and the roadmap agree: **`if` / `for-each`** in `tools/rish_conditional_witness.rish`; **`env`** in `tools/rish_env_witness.rish`; **file I/O** in `tools/rish_file_io_witness.rish`; **exit vocabulary** in `tools/rish_exit_codes_witness.rish`. The framework-growth witness track for this season is complete at parity **142**; new surface enters only on the day its witness runs green.
 
 ---
 
