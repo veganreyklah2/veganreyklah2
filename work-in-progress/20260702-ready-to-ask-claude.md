@@ -1,43 +1,41 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.165412`
+**Stamp:** `20260702.170622`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Affirmed this sitting (`20260702.165412` UDT)
+## Affirmed (`20260702.165412` UDT)
 
-- **Graduation rule** — canon at [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md)
-- **Rio 3** — active voice until Kaeden restores Reya 2
-- **Puddle second pass** — pier lessons, rust-vmm, archive verdict, sources
-- **Happy zone** — [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) + gratitude entry
+Graduation rule · Rio 3 · Puddle second pass · Happy zone + gratitude teaching
 
-## Kaeden — rulings and nods
+## Kaeden — three doors before Claude
 
-| Item | State |
-|------|-------|
-| **Pond clause** | Recommended in [`pond/README.md`](../pond/README.md) — **affirm or refine** |
-| **Ring 3 metal close** | Five-step checklist; witness + metalsmoke **GREEN** |
-| **Edit 5** | Apply bundle ready; witness draft **GREEN**, not in parity until ruled *for* |
-| **Archive verdict** | Counsel recorded — **affirm** when ready |
-| **Maitreya owns time** | Counsel yes (video too) — **affirm** when ready |
-| **Happy-zone pairing** | TAME horizon — rule in when ready |
-| **SLC-2b nod** | After metal close |
+| # | Item | Where |
+|---|------|--------|
+| 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
+| 2 | **Ring 3 metal close** | Five-step checklist on GNOME (build → type → idle → ceiling → `:quit`) |
+| 3 | **Edit 5** | Rule *for* → wire witness to parity **141** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
-## Claude — strategy (when Kaeden opens the door)
+**Optional affirmations** (same sitting, one word each): archive verdict · Maitreya owns time · happy-zone pairing → TAME
 
-| Topic | When |
-|-------|------|
-| **Amber first ring** | After Edit 5 (+ optional affirmations above) |
-| **SLC-2b Dexter seam** | Optional |
-| **Puddle hypervisor** | After first Amber export ring |
+## Claude — after steps 1–3
+
+**Amber first ring** — export / verify / restore season spine. Optional: SLC-2b Dexter placement, Puddle hypervisor after Amber export.
+
+## Landed since last RTAC (`aa6a874` → tip)
+
+- TAME horizon pointer → happy-zone foundation (pairing gated)
+- ROADMAP + Pond README — thin-ring language; metal-close checklist linked
 
 ## Best path
 
-1. Pond clause → 2. Ring 3 metal close → 3. Edit 5 → 4. **Claude: Amber first ring** → 5. SLC-2b nod
+**Pond clause → metal close → Edit 5 → Claude (Amber) → SLC-2b nod**
+
+Parity **140** GREEN · Edit 5 witness drafted, unwired
 
 ---
 
-*May the pier's lessons become easy invariants. May every seal name honest stones.*
+*Three quick hands, then the Amber season opens.*

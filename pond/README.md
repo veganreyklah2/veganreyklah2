@@ -44,7 +44,7 @@ rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c 
 | Mode | Command | Purpose |
 |------|---------|---------|
 | **Witness** | `pond/bin/drawn-terminal sessiontest` | Headless Ring 3 witness (golden lines, signatures, ceiling row) — in parity **140** |
-| **Metalsmoke** | `pond/bin/drawn-terminal metalsmoke` | Automated Wayland slice — [`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish) |
+| **Metalsmoke** | `pond/bin/drawn-terminal metalsmoke` | Thin-ring Wayland slice — [`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish); see [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) |
 | **Live** | `pond/bin/drawn-terminal` | Interactive mirror on GNOME Wayland + stdin (keyboard-from-window: SLC-2b) |
 
 **Metal close (Kaeden):** run live mode on GNOME Wayland and confirm each step:
