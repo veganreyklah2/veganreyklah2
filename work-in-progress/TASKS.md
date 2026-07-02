@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (WOV named and gated `20260702.211312`; build verdict recorded)
+**Last updated:** 2026-07-02 (WOV/MALA hardware fit recorded `20260702.215212`; WOV named and gated `20260702.211312`; build verdict recorded)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -68,6 +68,7 @@
 Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md).
 
 - [ ] **WOV gate (Kaeden affirms)** — throughput lane over pinned TigerBeetle (pin, never fork, until a Rye-shaped change demands); one or two monarchs, never three (three is Mycelium's door at M4); **exit-honesty spec written before any ring** (root facts + balance proofs sufficient for holder exit); first ring after MALA M2 only.
+- [x] **Hardware fit (recorded)** — the sovereign-host blueprint covers MALA M0–M2 and WOV's first ring through the two-monarch season with headroom; two deltas named: a dedicated power-loss-protected M.2 NVMe for the WOV data file beside the settlement U.2, and ECC as the value-bearing-monarch threshold with the blueprint's apex tower as its pre-written answer; the x1 gentle-slot rule extends to every ledger tenant. Ground: [`external-research/20260702-215212_wov-mala-hardware-fit.md`](../external-research/20260702-215212_wov-mala-hardware-fit.md) (`20260702.215212`).
 - [x] **Build verdict (recorded)** — no new module: the build system grows as `rye`'s verbs (`rye test` runner is the first witness-gated horizon, a watcher later), declared by Brix, typed by Bron's mark triad, versioned where Mantra already stands; watcher name-candidates parked in RTAC for Kaeden (`20260702.211312`).
 - [x] **Bron mark triad (concept adopted)** — every notation type carries its conversions in, out, and its operations; arm names await Kaeden (*absorb / express / tend* is one spark) (`20260702.211312`).
 - [x] **Comlink address triple (concept adopted)** — named data resolves by *Kumara identity / lane / stamp*; design note when the naming ring opens (`20260702.211312`).

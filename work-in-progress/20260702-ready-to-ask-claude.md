@@ -60,13 +60,25 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 - **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
 
-## Landed `20260702.213002`
+## Landed `20260702.221032`
 
 | Commit | Aspect |
 |--------|--------|
-| *(this sitting)* | WOV memo · lexicon · TASKS horizons · menu pre-staged |
+| *(batch 1)* | SLC-1 witnesses raise mantra — parity green from bare clone |
+| *(batch 2)* | WOV/MALA hardware fit-check — memo, TASKS, RTAC, logs |
 
-Prior tip: `0c8abd1`
+Prior tip: `f92513b`
+
+## Second bench witnessed (`20260702.215212`, Claude Fable 5 · Cursor verified `20260702.221032`)
+
+Fresh bench raised from tip `f92513b`. **Gate trio on this metal:** parity **142 GREEN** (116 std + 26 blocks, exit 0), selftest GREEN, additive-gate inapplicable. Module bins wiped (mantra/tally/caravan/comlink/brushstroke/pond); SLC-1 witnesses self-provision `mantra/bin`; chrono sweep **136** after fit memo; Edit 5 draft green and unwired.
+
+| Commit | Hash | Aspect |
+|--------|------|--------|
+| Batch 1 | `c7e5747` | `tools/slc1_version_step2.rish` · `tools/slc1_accept.rish` · bench-raise log |
+| Batch 2 | *(this commit)* | fit memo · TASKS · RTAC · fit-check log · index rows · round-zero log |
+
+**Parked offer:** one-page fresh-bench tutorial — on appetite only; empty plate held.
 
 ## Best path
 
