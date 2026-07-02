@@ -10,6 +10,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.200109 | [Autonomous sitting summary — rounds 4–6](20260702-200109_autonomous-sitting-summary.md) | Door 2 boxes, RW-1 contract, fixture indexes; tip 0ab0169. |
+| 20260702.200109 | [Autonomous round 6 — fixture indexes refreshed](20260702-200109_autonomous-round6-fixture-indexes.md) | slcl1 README; active-designing SLC-L1 row. |
+| 20260702.200109 | [Autonomous round 5 — RW-1 mirrored pair contract](20260702-200109_autonomous-round5-rw1-contract.md) | Witness contract on paper for ladder rung 5. |
+| 20260702.200109 | [Autonomous round 4 — Door 2 headless boxes recorded](20260702-200109_autonomous-round4-door2-boxes.md) | TASKS sub-boxes 1–2 checked. |
 | 20260702.195639 | [Autonomous sitting summary — three rounds](20260702-195639_autonomous-sitting-summary.md) | SLC-L1 scope, fixture, Door 2 headless GREEN; tip a8e0214. |
 | 20260702.195626 | [Autonomous round 3 — Door 2 headless path verified](20260702-195626_autonomous-round3-door2-headless.md) | Preflight + metalsmoke GREEN; live close still Kaeden. |
 | 20260702.195555 | [Autonomous round 2 — SLC-L1 fixture and workbench index](20260702-195555_autonomous-round2-slcl1-fixture.md) | slcl1_fact.bron fixture; RTAC and WIP README refreshed. |
