@@ -90,7 +90,17 @@ let failures = where codes as c: c != 0
 assert length failures == 0 else "a witness failed — the regression suite is RED"
 ```
 
-`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry the whole parity suite. There is no general loop and no conditional statement — bounded comprehension plus assertion is the deliberate shape (see §11).
+`map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry much of the parity suite. **`if … then … else …`** and **`for-each LIST as x do …`** handle branching and iteration with effects (see §8).
+
+## 8. Conditionals and Iteration — `if` and `for-each`
+
+```
+if x == 5 then let msg = "yes" else let msg = "no"
+if path starts-with "/home" then let is_home = true else let is_home = false
+for-each items as i do if i == 3 then say "found three"
+```
+
+Conditions may compare with `==`, `!=`, and `starts-with`. The `then` branch runs when the condition is true; `else` is optional. **`for-each`** runs a statement for each list element — effects included. Witness: `tools/rish_conditional_witness.rish`.
 
 ## 9. Output — `say`
 
@@ -114,7 +124,7 @@ let path = flag args "--appimage"
 
 ## 12. Named Gaps — the Growing Edge
 
-Held openly, so the reference and the roadmap agree: Rishi keeps **no environment builtin** (the `sh -c` seam serves), **no file-reading builtin** in the script surface, and **no named exit-code vocabulary** yet. Each is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
+Held openly, so the reference and the roadmap agree: **`if` / `for-each`** are witnessed in `tools/rish_conditional_witness.rish`. Rishi still keeps **no environment builtin** (the `sh -c` seam serves), **no file-reading builtin** in the script surface, and **no named exit-code vocabulary** yet. Each remaining gap is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
 
 ---
 
