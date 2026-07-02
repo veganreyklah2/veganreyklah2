@@ -1,8 +1,9 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.034749`
+**Stamp:** `20260702.035018`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Voice:** Rio 3
 
 ---
 
@@ -12,31 +13,33 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 
 | Item | State |
 |------|-------|
-| **Edit 5** — cap at one designed-not-built functional spec until first ring green | Open; counsel argues *for* |
-| **Setu** — USB-C dock-wire name for Comlink lexicon | Proposed, not seated |
-| **Mantrapod module map** | Tabled in counsel memo; awaits affirm |
-| **OCuLink companion memo** | Awaits supply; bridge into deep-archive blueprint |
-| **SLC-2a Ring 3 metal close** | Witness **140 GREEN**; **metalsmoke GREEN**. **Your hand:** interactive idle, ceiling, `:quit` on `pond/bin/drawn-terminal` |
-| **SLC-2b placement nod** | Bench prompt placed — not built |
-| **Pond clause** — finish the mid-flight sentence | Recommended: *run what Brix composes under policy*; **your true ending** |
-| **`.bron` as resolved-record carrier** | Open — awaits affirm |
-| **MALA / Mycelium** | Named in lexicon; M0 design after Edit 5 + Amber |
+| **Edit 5** | Open; counsel argues *for* |
+| **Ring 3 metal close** | Witness **140 GREEN**; metalsmoke GREEN; interactive idle/ceiling/`:quit` |
+| **SLC-2b nod** | Prompt placed — not built |
+| **Pond clause** | Recommended: enclosure aspect **runs what Brix composes under policy** — **your true ending** |
+| **`.bron` carrier** | Open |
+| **Maitreya video + Linengrow media shapes** | Named; middleware open-table (screenshot reference not in bundle — await shapes) |
+| **Uddhava scope** | Named horizon — 3D/CAD/Unity-shaped |
+| **Puddle** | Exploration filed — no implementation |
+| **Rio 3 vs Reya 2** | **Rio 3 active** until you restore Reya 2 |
 
 ## Claude — strategy (when Kaeden opens the door)
 
 | Topic | When |
 |-------|------|
-| **Amber first ring** | After Edit 5 ruled — export/verify/restore contract rides it |
-| **SLC-2b module seam** | Optional — Dexter within vs beside Brushstroke |
-| **Manual program shape** | When tutorial lane opens — four rooms, tutorials-first |
-| **Mycelium / road-keeper detail** | M4 / multipath seasons — not now |
+| **Amber first ring** | After Edit 5 |
+| **SLC-2b Dexter seam** | Optional |
+| **Manual program** | Tutorial lane opens |
+| **Puddle hypervisor choice** | After first Amber export ring |
 
-## Landed since design sitting (`20260702.031312` → `d3c5a09`)
+## Landed this turn (`ef594bb` → tip)
 
-- **Design sitting** — modules/aspects/MALA memo + settlement companion
-- **Opening lines** — hosted corpus migrated; **`tools/opening_lines_witness.rish`** → parity **140**
-- **Prior arc** — Caravan + Comlink print; Ring 3 metalsmoke; Pond README
+- **Graduation rule** — [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md)
+- **Rio 3** — `context/RIO3.md`, `.cursor/rules/rio3.mdc`, Claude `rio3.md`
+- **Puddle exploration** — external-research memo
+- **Maitreya, Uddhava** — lexicon + Lotus brief
+- **Parity 140** — opening-lines witness (prior turn)
 
 ---
 
-*Recommend: finish Pond clause → Ring 3 metal close → Edit 5 → Amber first ring with Claude → nod SLC-2b.*
+*Recommend: Pond clause → Ring 3 metal → Edit 5 → Amber with Claude → SLC-2b nod.*

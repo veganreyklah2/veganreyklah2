@@ -39,7 +39,7 @@
 
 Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) · named companion: [`external-research/20260702-031312_settlement-consensus-and-many-roads.md`](../external-research/20260702-031312_settlement-consensus-and-many-roads.md).
 
-- [x] **Module/aspect vocabulary** — definitions and graduation rule in the design sitting and [`context/LEXICON.md`](../context/LEXICON.md) pattern section.
+- [x] **Module/aspect vocabulary** — definitions and graduation rule in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md).
 - [ ] **Weave graduation trigger (recorded)** — the day Comlink serves named data straight from Weave, `mantra/src/weave.rye` graduates to `weave/` and Mantra imports it like everyone else.
 - [ ] **MALA M0 (design ring)** — token-fact shapes and witnesses on paper; opens after the Edit 5 ruling and Amber's first ring, in that order; ladder M0–M4 in the memo.
 - [ ] **Digital land = M3 (design only)** — plots as name-claim facts with extent in Realidream's graph, deeds bound to Kumara holders, traded in MALA; ordinary internet and dock-wire alike.
@@ -49,7 +49,9 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Brix packaging (first ring visible)** — one content-addressed, Kumara-signed package: descriptor read, stones fetched by digest over Comlink, verified on two paths, placed, run in Pond; `.bron` as the resolved-record carrier awaits Kaeden's affirmation.
 - [x] **Opening lines (canonized)** — three-line head in TAME guidance; **`tools/opening_lines_witness.rish`** in parity **140**.
 - [ ] **Manual program (horizon)** — four rooms: tutorials (Radiant beginner series for Rye and Rishi, tutorials-first because they teach only what runs), task guides, numbered reference specifications (beginning with Aurora, Tally, and Caravan interfaces), and the essays; shape note before any lane is founded.
-- [ ] **Pond clause (Kaeden completes)** — *"Pond be the module which has an aspect which becomes the solution for the aspect that we need to —"* Recommended completion: **run what Brix composes under policy** — Pond's **enclosure aspect** as packaging's runtime target; awaiting your true ending.
+- [ ] **Pond clause (Kaeden completes)** — recommended completion: Pond's **enclosure aspect runs what Brix composes under policy**; awaiting your true ending.
+- [ ] **Puddle exploration (horizon)** — sandboxed Rye containers; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md); first ring = one guest snapshot export/verify/restore.
+- [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya media driver (audio + video horizon); Uddhava spatial/CAD; Lotus above Maitreya; Realidream/Linengrow playback via Maitreya middleware — open-table for codec shapes Kaeden referenced.
 
 ### Comlink and the long run — horizons (`2026-07-02`)
 

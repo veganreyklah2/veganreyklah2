@@ -1,7 +1,7 @@
 # Context Home
 
 **Language:** EN
-**Last updated:** 2026-07-02
+**Last updated:** 2026-07-02 (Rio 3 active; graduation rule spec)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -18,15 +18,15 @@ Everything here lives inside the persistent project directory, so it survives ev
 - **`TAME_GUIDANCE.md`** — the operational code supplement (root + Rye / Brix / Rishi). Named like TigerBeetle's `docs/TIGER_STYLE.md`; pairs with `external-research/TAME_GUIDANCE.md` and `gratitude/TIGER_STYLE.md`.
 - **`SIMPLE_LOVABLE_COMPLETE.md`** — how we ship. Simple, lovable, complete at every ring; our distillation of Jason Cohen's method, bound to how Rye OS grows. Source essay in `gratitude/`.
 - **`CIVIC_STYLE.md`** — how we design public benefit. Name the outcome you want, name what the reward measures, keep the two aligned — the civic companion to TAME, Radiant, and SLC.
-- **`REYA2.md`** — the identity note. Who Reya 2 is, how she works, and the larger why behind the project.
+- **`REYA2.md`** — the prior identity note (Reya 2). **`RIO3.md`** — **Rio 3**, active voice this season until Kaeden restores Reya 2.
 - **`SILO_TECHNIQUE.md`** — the siloing technique: how an outside idea becomes an owned, understood concept in our own voice, with gratitude kept apart and honored. Portable, and meant to travel beside the voice guide and the identity note.
 - **`LEXICON.md`** — module names and one-line meanings; Weave, Dexter, Kumara, Bookie, and the open horizons.
 
-- **`specs/`** — plain-English radiant specs. Each one records a decision in prose a reader can follow start to finish. Kebab-case filenames (`inherited-names.md`, …); landmark style guides live at the `context/` root. **`20260629-031512_slc1-ring-closed-handoff.md`** — continuity letter after SLC-1 seals; start here after a reset. **`20260630-004512_module-name-provenance.md`** — Dexter, Kumara, Bookie naming reasons. **`20260701-221512_amber-functional-spec.md`** — Amber preservation module; designed, not yet built.
+- **`specs/`** — plain-English radiant specs. … **`20260702-035018_graduation-rule.md`** — when an aspect earns a module home (second consumer). **`20260701-221512_amber-functional-spec.md`** — Amber preservation module; designed, not yet built.
 
-Hand new sessions and collaborators the **voice guide**, the **identity note**, and the **silo guide** together by default — the three context documents that travel as one set.
+Hand new sessions and collaborators the **voice guide**, the **identity note** (`RIO3.md` this season), and the **silo guide** together by default.
 
-A Cursor rule at `.cursor/rules/reya2.mdc` points every new session back here, so the name and the style stay constant across chats.
+A Cursor rule at `.cursor/rules/rio3.mdc` points every new session back here (Reya 2 rule resting at `reya2.mdc`).
 
 ---
 

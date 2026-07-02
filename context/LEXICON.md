@@ -1,12 +1,12 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-02 (design sitting `20260702.031312`; MALA and Mycelium named)
+**Last updated:** 2026-07-02 (Rio 3; Maitreya, Uddhava, Puddle named)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
 
-Living vocabulary for the Rye OS family. Each name teaches its function. Provenance for the three names given on 2026-06-30 lives in `specs/20260630-004512_module-name-provenance.md`. Module, aspect, and the graduation rule: [`../active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md).
+Living vocabulary for the Rye OS family. Each name teaches its function. Provenance for the three names given on 2026-06-30 lives in `specs/20260630-004512_module-name-provenance.md`. Module, aspect, and the graduation rule: [`specs/20260702-035018_graduation-rule.md`](specs/20260702-035018_graduation-rule.md).
 
 ## Pattern — module and aspect
 
@@ -27,14 +27,16 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Mantra** | Version-control projection over Weave |
 | **Comlink** | Transport of sealed facts over Weave |
 | **Brushstroke** | The drawn surface — values to pixels, immediate-mode |
-| **Skate** | Text grid → pixel buffer (primitive inside Brushstroke today) |
-| **Pond** | The bounded enclosure for an agent |
+| **Skate** | Text grid → pixel buffer (aspect of Brushstroke today) |
+| **Maitreya** | Media driver — audio framework under Lotus; video playback horizon; Realidream and Linengrow media integrate here |
+| **Lotus** | Our digital audio workstation — hot-loop studio above Maitreya; horizon after SLC-2 |
+| **Uddhava** | Spatial driver — real-time 3D, CAD, and scene graph (horizon; Unity-shaped role in our vocabulary) |
+| **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy |
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition |
 | **Tablecloth** | Application data store (horizon — role still shaping) |
 | **Bron** | Data notation between modules (`.bron`) |
-| **Lotus** | Our digital audio workstation — hot-loop studio; horizon after SLC-2 |
 | **Amber** | Preservation — signed, encrypted, bit-faithful archives on deep storage, recorded in an append-only log and verified by folding; Mantra holds the living history, Amber seals the moment cold |
 
 ## Named tonight (`2026-06-30`)
@@ -51,6 +53,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 |------|--------|
 | **MALA** | Named (`2026-07-02`) — mailable money: issuer-signed token facts on the log, balance as a fold; ladder M0–M4 in [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md); first ring after Edit 5 and Amber |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
+| **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
 | **Bron** | Proposed — composing companion beside Brix; role open for Kaeden |
 | **Tablecloth** | Named — layout or structured-view layer; horizon |
 | **`.brush`** | Surface-description extension when Brushstroke earns a small language |
