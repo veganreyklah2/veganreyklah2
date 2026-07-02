@@ -132,6 +132,11 @@ let rs3 = run ["rishi/bin/rishi" "run" "tools/rs3_launch_cursor.rish"]
 assert rs3.ok else "RS-3 launch-cursor witness failed"
 say "GREEN: RS-3 launch-cursor witness passed."
 
+say "witness suite: RW-3 run record…"
+let rw3 = run ["rishi/bin/rishi" "run" "tools/run_record_witness.rish"]
+assert rw3.ok else "RW-3 run-record witness failed"
+say "GREEN: RW-3 run-record witness passed."
+
 say "witness suite: TH-6 Comlink width…"
 let th6 = run ["rishi/bin/rishi" "run" "tools/width_check_th6.rish"]
 assert th6.ok else "TH-6 Comlink width witness failed"

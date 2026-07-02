@@ -25,7 +25,7 @@
 
 ### The ladder (after the doors, in order — owner tagged)
 1. [x] **(Cursor) Fixture twins verified** — both `.rish` fixtures green on host; `.sh` elders retired to [`tools/fixtures/yonder/`](../tools/fixtures/yonder/); [`pond/README.md`](../pond/README.md) points at twins (`20260702.180812`).
-2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5** — `tools/designed_not_built_witness.rish` into `tools/parity.rish` → parity **141**. One commit.
+2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5** — `tools/designed_not_built_witness.rish` into `tools/parity.rish` → parity **142** (RW-3 already at **141**). One commit.
 3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — from [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md): (a) the sealed-record `.bron` manifest shape on paper; (b) export one directory → stones + manifest; (c) verify on two paths, one golden pinned by an independent digest tool; (d) restore and compare bit-faithful; (e) witness `tools/amber_first_ring.rish` → parity **+1**. Invocation and custody rulings below govern throughout.
 4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt placed at [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md); mechanical unless the module seam shifts (Dexter within vs beside Brushstroke — Claude optional).
 5. [ ] **(Cursor) RW-1 mirrored pair** — first happy-zone pair at the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); lands while the seam is warm from SLC-2b.
@@ -47,7 +47,8 @@
 
 Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) · [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) · [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) · [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md).
 
-- [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin), RW-3 (run-record four-field witness), RW-4 (SLC failure-path lines).
+- [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
+- [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin), RW-4 (SLC failure-path lines).
 - [ ] **Rishi framework growth (witness-first, in need order)** — `when` guard or conditional; environment builtin; file-reading builtin; named exit-code vocabulary (temporary / permanent / could-not-begin, serving Caravan's restart policy). Each enters the reference only after its witness runs green.
 - [ ] **Manual next rooms** — Rishi tutorial one (the opening lines, a first witness); Aurora / Tally / Caravan interface reference pages as each surface stabilizes.
 - [ ] **Man-as-value first ring** — one utility carries a `.bron` man record; `:man <name>` renders it; the manual renders the same record. After the toolset's first ring.

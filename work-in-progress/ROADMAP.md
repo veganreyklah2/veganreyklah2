@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (**140 witnesses** — regression suite + SLC-1 + SLC-2a + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check`), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-02`); additive-gate runs when std changes land.
+**Gate trio:** `parity.rish` (**141 witnesses** — regression suite + SLC-1 + SLC-2a + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 run record), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-02`); additive-gate runs when std changes land.
 
 ---
 

@@ -33,7 +33,7 @@ Add row:
 
 ### 3. `tools/parity.rish`
 
-Wire `tools/designed_not_built_witness.rish` into the witness suite (increment parity to **141**).
+Wire `tools/designed_not_built_witness.rish` into the witness suite (increment parity to **142** if RW-3 already landed at **141**; otherwise **141**).
 
 ### 4. Verify
 
