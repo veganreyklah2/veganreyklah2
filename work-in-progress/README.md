@@ -1,9 +1,9 @@
 # The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-06-29 (yonder pass six; thin-frontend records archived)
+**Last updated:** 2026-07-02 (granularity pass `20260702.194512`; SLC-L1 scope `20260702.195426`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Voice:** Reya 2
+**Voice:** Rio 3
 **Status:** Foundation
 
 ---
@@ -42,8 +42,10 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 
 | Stamp | Artifact | Meaning |
 |-------|----------|---------|
-| — | [`TASKS.md`](TASKS.md) | Living granular plan — what-now |
-| — | [`ROADMAP.md`](ROADMAP.md) | Living roadmap — standing plan |
+| `20260702.195426` | [SLC-L1 scope note](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — verifiable receipt; Open Asks gated |
+| `20260702.194512` | [Ready to ask Claude](20260702-ready-to-ask-claude.md) | Strategy checkpoint — doors, parity arithmetic, Amber pre-counsel |
+| — | [`TASKS.md`](TASKS.md) | Living granular plan — what-now (~88 commit-sized boxes) |
+| — | [`ROADMAP.md`](ROADMAP.md) | Living roadmap — current position table |
 | `20260623-033012` | [Open threads — redirect](20260623-033012_open-threads.md) | Archived — full snapshot in [`archive/`](archive/) |
 | `20260621-032327` | [Strengthening width crosswalk](yonder/20260621-032327_strengthening-width-crosswalk.md) | Completed crosswalk — in `yonder/` beside strengthening kin |
 | `20260620-212126` | [usize width baseline](20260620-212126_usize-width-baseline.md) | Tiger/TAME explicit-width charter |

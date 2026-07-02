@@ -1,0 +1,6 @@
+# transaction fact — SLC-L1 witness fixture (deterministic test keys)
+from DBF853437A937B4E36B93611D949807AC26B2B99
+to 06462132D3E63B834F976E03A81D720B9235FA7A
+amount 100
+memo stipend for animation micro-gig
+stamp 20260702.195426
