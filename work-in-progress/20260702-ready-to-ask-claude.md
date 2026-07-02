@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.025012`
+**Stamp:** `20260702.025838`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
@@ -18,7 +18,7 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 | **OCuLink companion memo** | Awaits supply; bridge into deep-archive blueprint |
 | **SLC-2a Ring 3 metal close** | Witness **139 GREEN**; **metalsmoke GREEN** on Wayland (`tools/slc2a_ring3_metal.rish`). **Your hand:** interactive idle one minute, ceiling fill, `:quit` on `pond/bin/drawn-terminal` |
 | **SLC-2b placement nod** | Bench prompt placed at `expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md` — not built |
-| **Bare `print` alias** | **Ruled yes, as-you-touch** — documented in `context/TAME_GUIDANCE.md`; no tame-check gate (Tiger tidy gates assert only) |
+| **Bare `print` alias** | **Ruled yes, as-you-touch** — documented in `context/TAME_GUIDANCE.md`; no tame-check gate |
 
 ## Claude — strategy (when Kaeden opens the door)
 
@@ -29,12 +29,13 @@ Items that rest with **Kaeden** or **Claude** before the next counsel-sized sitt
 | **Post-quantum accretion order** | When production CSPRNG / ML-KEM ring opens |
 | **Virtio-net Track A** | Optional when Comlink device wire bench resumes |
 
-## Landed since last checkpoint (`0175eb7` → `3b1888f`)
+## Landed since last checkpoint (`0175eb7` → `17e915c`)
 
 - **Ring 3 metalsmoke** — Wayland surface mirrors scripted session; `tools/slc2a_ring3_metal.rish` **GREEN**
 - **SLC-2b bench prompt placed** (not executed)
 - **ROADMAP** — Pond first app and metalsmoke noted
 - **TAME print convention** — bare `print` via one import; as-you-touch migration
+- **Pond README** — compile symlinks, build, three modes, metal witness table
 
 ---
 

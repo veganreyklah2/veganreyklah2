@@ -12,10 +12,12 @@
 //!     -femit-bin=pond/bin/drawn-terminal
 //!
 //!   pond/bin/drawn-terminal              # live mirror (Wayland + stdin)
-//!   pond/bin/drawn-terminal sessiontest    # headless Ring 3 witness
+//!   pond/bin/drawn-terminal sessiontest  # headless Ring 3 witness
+//!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
 const assert = std.debug.assert;
+const print = std.debug.print;
 const posix = std.posix;
 const c = std.c;
 
@@ -175,7 +177,7 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
 
         if (ready != .stdin_ready) continue;
 
-        std.debug.print("rishi> ", .{});
+        print("rishi> ", .{});
         const raw_line = reader.takeDelimiterInclusive('\n') catch |err| switch (err) {
             error.EndOfStream => return 0,
             else => return 1,
