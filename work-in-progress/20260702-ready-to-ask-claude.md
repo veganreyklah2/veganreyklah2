@@ -25,13 +25,12 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 **Amber first ring** — five lettered steps in [`TASKS.md`](TASKS.md) ladder (manifest → export → verify → restore → witness).
 
-## Landed this sitting (`3fb277d` → tip)
+## Landed this sitting (`61a986a`)
 
 - [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) — census, gaps, RW-1–4
-- [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) — v0.1 at parity 140
+- [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) — v0.1 at parity 140; `manual/` allow-listed in `.gitignore`
 - [`external-research/20260702-180812_userland-lineages.md`](../external-research/20260702-180812_userland-lineages.md) + [`active-designing/20260702-180812_the-small-sharp-toolset.md`](../active-designing/20260702-180812_the-small-sharp-toolset.md)
-- **Ladder rung 1 done** — `.rish` fixture twins green; `.sh` → yonder
-- **TASKS** reoriented — three doors first, owner-tagged ladder beneath
+- **Ladder rung 1 done** — `.rish` fixture twins green; `.sh` → yonder; four remotes aligned
 
 ## Best path
 
