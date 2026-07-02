@@ -29,8 +29,7 @@ Graduation rule · Rio 3 · Happy zone · **RW-3/RW-4 closed** · **The grain an
 
 | Tip | What |
 |-----|------|
-| `25e5ced` | Prior handoff at parity **142** |
-| *(this commit)* | Grain canon + versioning audit; manual stamp `20260702.184312` |
+| `7f89e0a` | Grain canon + versioning audit; manual `20260702.184312` |
 
 ## Best path
 
