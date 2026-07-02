@@ -3,7 +3,7 @@
 **Language:** EN
 **Last updated:** 2026-07-02
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`)
-**Version:** 0.1 — derived from the living witness corpus at parity **140** and the interpreter at `rishi/src/main.rye`
+**Version:** 0.2 — derived from the living witness corpus at parity **142** and the interpreter at `rishi/src/main.rye`
 **Conformance:** *must* and *should* carry their plain conformance weight
 **Pledge:** this reference documents only what runs; every example below is drawn from, or shaped exactly like, a witness that passes today
 
@@ -33,7 +33,7 @@ A script is a sequence of statements, one per line. `#` opens a comment to end o
 ```
 let zig = "vendor/zig-toolchain/zig"
 let witnesses = ["sha3_256_test" "version_test"]
-let build = run ["sh" "tools/fixtures/pond_build_drawn_terminal.sh"]
+let build = run ["rishi/bin/rishi" "run" "tools/fixtures/pond_build_drawn_terminal.rish"]
 ```
 
 `let` binds a name to a value. Bindings do not rebind; a new meaning takes a new name, in the accrete-never-break spirit. Name bindings for what they *are* rather than how they were computed.
@@ -54,7 +54,9 @@ let smoke = run ["sh" "-c" "${bin} metalsmoke 2>&1"]
 assert smoke.ok else "metalsmoke exited non-zero"
 ```
 
-A pipeline *must* check `.ok` (or `.code`) before trusting `.out`. The `["sh" "-c" "…"]` form is the sanctioned **host seam** for environment variables, redirection, and globbing; scripts *should* keep each seam to one honest line, and orchestration in Rishi proper. By convention every script runs **from the repository root**; scripts *must not* assume any other working directory.
+A pipeline *must* check `.ok` (or `.code`) before trusting `.out` or `.err`. External programs keep stdout and stderr separate in the run record. When a witness drives **`rishi repl`** or **`rishi run`** as a subprocess, Rishi's own diagnostics land on **stderr** — merge with `2>&1` in the host seam when the witness needs to read them from `.out`, as in `tools/rw4_slc_failure_paths.rish`.
+
+The `["sh" "-c" "…"]` form is the sanctioned **host seam** for environment variables, redirection, and globbing; scripts *should* keep each seam to one honest line, and orchestration in Rishi proper. By convention every script runs **from the repository root**; scripts *must not* assume any other working directory.
 
 ## 5. Gates — `assert … else`
 
@@ -63,13 +65,22 @@ assert build.ok else "drawn_terminal build failed for Ring 3 witness"
 assert (oob.ok == false) else "out-of-range index must fail"
 ```
 
-`assert EXPR else "message"` stops the script loudly when the expression does not hold, printing the message. Parentheses group comparisons. Assertions are the language's whole control discipline: place one after every `run`, before every effect. Negative space is asserted as deliberately as positive — a check that something *fails* is a first-class witness line.
+`assert EXPR else "message"` stops the script loudly when the expression does not hold, printing the message on standard error. Parentheses group comparisons. Assertions are the language's whole control discipline: place one after every `run`, before every effect. Negative space is asserted as deliberately as positive — a check that something *fails* is a first-class witness line.
 
-## 6. Expressions
+## 6. Conditional — `if … then … else …`
+
+```
+if length fails == 0 then say "OPENING LINES GREEN: all hosted files carry the canonical head."
+if length fails != 0 then say "OPENING LINES RED: some files missing the head."
+```
+
+`if CONDITION then STATEMENT` runs the statement when the condition evaluates to a boolean `true`. An optional `else STATEMENT` arm runs when the condition is false. The condition *must* be boolean — comparisons like `length fails == 0` or `(fail_run.ok == false)` are the usual shapes. Witnesses in parity **142** use `if` for reporting; gates remain `assert … else`.
+
+## 7. Expressions
 
 Equality `==` and inequality `!=` work on strings, integers, and booleans. `TEXT contains "needle"` tests substring presence. Records answer field access with `.name`; lists and strings answer `.len`; lists answer indexing `xs[i]`, and an out-of-range index ends the script with a friendly `out of range` error.
 
-## 7. Comprehensions — `map`, `where`, `length`
+## 8. Comprehensions — `map`, `where`, `length`
 
 ```
 let runs     = map witnesses as s: run ["env" "RYE_ZIG=${zig}" rye "run" "${dir}/${s}.rye"]
@@ -80,11 +91,11 @@ assert length failures == 0 else "a witness failed — the regression suite is R
 
 `map LIST as x: EXPR` transforms every element; `where LIST as x: PRED` keeps the elements that satisfy the predicate; `length LIST` counts. These three carry the whole parity suite. There is no general loop and no conditional statement — bounded comprehension plus assertion is the deliberate shape (see §11).
 
-## 8. Output — `say`
+## 9. Output — `say`
 
 `say "…"` prints a line with interpolation; lists render inline. The convention across the corpus: a witness's final line begins `GREEN:` on success, and gates upstream test for it with `contains "GREEN"`.
 
-## 9. Script Arguments — `args` and `flag`
+## 10. Script Arguments — `args` and `flag`
 
 Inside a script run as `rishi run script.rish a b c`:
 
@@ -96,13 +107,13 @@ let path = flag args "--appimage"
 
 `args` is the list of words after the script path. `flag LIST "--name"` scans for `--name value` and returns the value; a missing flag ends the script with `flag not found`, and a flag at list's end with `requires a value` — both *must* remain friendly, single-line messages.
 
-## 10. The Interactive Shell
+## 11. The Interactive Shell
 
-`rishi repl` reads lines, runs them, and keeps the last **50** inputs. Meta-commands begin with a colon: `:history` lists recent inputs; `:recall <n>` replays one; `:version` prints the version; `:quit` and `:q` leave. Everything else on a line is dispatched as a command. The drawn terminal mirrors exactly this session through `sessionLines`, so the shell's contract and the window's content are one value.
+`rishi repl` reads lines, runs them, and keeps the last **50** inputs. Meta-commands begin with a colon: `:history` lists recent inputs; `:recall <n>` replays one; `:version` prints the version; `:quit` and `:q` leave. Everything else on a line is dispatched as a command. Unknown meta-commands and bad `:recall` arguments answer with a friendly line and the session continues — pinned in `tools/rw4_slc_failure_paths.rish`. The drawn terminal mirrors exactly this session through `sessionLines`, so the shell's contract and the window's content are one value.
 
-## 11. Named Gaps — the Growing Edge
+## 12. Named Gaps — the Growing Edge
 
-Held openly, so the reference and the roadmap agree: Rishi keeps **no conditional** (`if`/`when`), **no environment builtin** (the `sh -c` seam serves), **no file-reading builtin**, and **no named exit-code vocabulary** yet. Each is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
+Held openly, so the reference and the roadmap agree: Rishi keeps **no environment builtin** (the `sh -c` seam serves), **no file-reading builtin** in the script surface, and **no named exit-code vocabulary** yet. Each is a gated horizon in `work-in-progress/TASKS.md`; each enters this reference only on the day its witness runs green.
 
 ---
 

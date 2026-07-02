@@ -4,7 +4,7 @@
 **Last updated:** 2026-07-02
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
-**Status:** Founded — reference room open; tutorials next
+**Status:** Founded — reference at parity **142**; first tutorial open
 
 ---
 
@@ -16,9 +16,10 @@ The lane grows by the same law as the code: reference specifications open only w
 
 ## What Lives Here
 
-- **`reference/rishi-language.md`** — the Rishi language and command-line reference, derived from the living witness corpus at parity 140. The first surface stable enough to document.
+- **`reference/rishi-language.md`** — the Rishi language and command-line reference (v0.2, parity **142**).
+- **`tutorials/first-witness.md`** — run, read, write: your first `.rish` witness against the living suite.
 
-*Next rooms, in season: the Rishi tutorial one (the opening lines and a first witness); reference pages for the Aurora, Tally, and Caravan interfaces as each stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
+*Next rooms, in season: reference pages for the Aurora, Tally, and Caravan interfaces as each stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
 
 ---
 

@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.183500`
+**Stamp:** `20260702.184000`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -9,7 +9,7 @@
 
 ## Affirmed (`20260702.165412` + `20260702.180812`)
 
-Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit first pass** · **Rishi reference v0.1** · **Userland lineages siloed** · **RW-3 + RW-4** (parity **142**)
+Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit RW-3/RW-4 closed** · **Rishi reference v0.2 + tutorial one** · **Userland lineages siloed**
 
 ## Kaeden — three doors before Claude
 
@@ -23,13 +23,14 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 ## Claude — after doors (+ ladder rung 3)
 
-**Amber first ring** — brief at [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); five lettered steps in [`TASKS.md`](TASKS.md) ladder.
+**Amber first ring** — brief at [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md).
 
 ## Landed this sitting
 
 | Tip | What |
 |-----|------|
-| `4eb7a05` | RW-4 at parity **142** — audit RW-3/RW-4 complete |
+| `18f6d6c` | RW-4 at parity **142** |
+| *(this commit)* | Manual v0.2 + [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md) |
 
 ## Best path
 

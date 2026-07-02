@@ -51,7 +51,8 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
 - [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin).
 - [ ] **Rishi framework growth (witness-first, in need order)** — `when` guard or conditional; environment builtin; file-reading builtin; named exit-code vocabulary (temporary / permanent / could-not-begin, serving Caravan's restart policy). Each enters the reference only after its witness runs green.
-- [ ] **Manual next rooms** — Rishi tutorial one (the opening lines, a first witness); Aurora / Tally / Caravan interface reference pages as each surface stabilizes.
+- [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference bumped to v0.2 at parity **142** (`20260702.184000`).
+- [ ] **Manual horizons** — Aurora / Tally / Caravan interface reference pages as each surface stabilizes.
 - [ ] **Man-as-value first ring** — one utility carries a `.bron` man record; `:man <name>` renders it; the manual renders the same record. After the toolset's first ring.
 - [ ] **Small-sharp-toolset ladder (gated after Amber season)** — ring one: an `echo`-sized utility with opening lines, `.bron` man record, `.brix` declaration, witness green; ring two: readiness-as-fact for one Caravan child; the override combinator earns its ring when two real configurations exist to differ.
 
