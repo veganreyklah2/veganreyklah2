@@ -137,6 +137,11 @@ let rw3 = run ["rishi/bin/rishi" "run" "tools/run_record_witness.rish"]
 assert rw3.ok else "RW-3 run-record witness failed"
 say "GREEN: RW-3 run-record witness passed."
 
+say "witness suite: RW-4 SLC failure paths…"
+let rw4 = run ["rishi/bin/rishi" "run" "tools/rw4_slc_failure_paths.rish"]
+assert rw4.ok else "RW-4 SLC failure-path witness failed"
+say "GREEN: RW-4 SLC failure-path witness passed."
+
 say "witness suite: TH-6 Comlink width…"
 let th6 = run ["rishi/bin/rishi" "run" "tools/width_check_th6.rish"]
 assert th6.ok else "TH-6 Comlink width witness failed"

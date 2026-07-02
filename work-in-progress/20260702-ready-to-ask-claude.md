@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.190000`
+**Stamp:** `20260702.183500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -9,7 +9,7 @@
 
 ## Affirmed (`20260702.165412` + `20260702.180812`)
 
-Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit first pass** · **Rishi reference v0.1** · **Userland lineages siloed** · **RW-3 run-record witness** (parity **141**)
+Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit first pass** · **Rishi reference v0.1** · **Userland lineages siloed** · **RW-3 + RW-4** (parity **142**)
 
 ## Kaeden — three doors before Claude
 
@@ -17,7 +17,7 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 |---|------|-----------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
 | 2 | **Ring 3 metal close** | `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` → metalsmoke → live five steps |
-| 3 | **Edit 5** | Rule *for* → parity **142** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
+| 3 | **Edit 5** | Rule *for* → parity **143** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
 **Optional ratifications:** archive verdict · Maitreya owns time · **standing audit rule** (one mirrored pair per season)
 
@@ -29,13 +29,14 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 | Tip | What |
 |-----|------|
-| `e2bc0f9` | RW-3 witness → parity **141**; Amber Claude brief; Edit 5 apply → **142** |
+| `74f1807` | RW-3 at parity **141**; Amber Claude brief |
+| *(this commit)* | RW-4 at parity **142** — audit gaps RW-3 and RW-4 closed |
 
 ## Best path
 
-**Doors 1–3 → (Cursor rung 2 if Edit 5 for → 142) → Claude Amber sitting → SLC-2b → RW-1**
+**Doors 1–3 → (Cursor rung 2 if Edit 5 for → 143) → Claude Amber sitting → SLC-2b → RW-1**
 
-Parity **141** GREEN · mechanical lane idle until doors land
+Parity **142** GREEN · mechanical lane idle until doors land
 
 ---
 

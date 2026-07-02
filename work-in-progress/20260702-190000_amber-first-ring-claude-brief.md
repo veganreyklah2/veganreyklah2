@@ -31,7 +31,7 @@ Design and name the **first ring** so Cursor can implement it rung by rung after
 2. **First export target** — smallest honest directory (suggest: one Mantra log slice or a fixed fixture tree)
 3. **Independent digest tool** — host seam name (`sha3sum`, `openssl dgst`, or Rye std witness already in parity)
 4. **Witness contract lines** — what `amber_first_ring.rish` asserts (welcome and one unwelcome path if cheap)
-5. **Edit 5 interaction** — if bound lands at parity 141, Amber witness lands at **142**; if run-record already at 141, Amber at **142** and Edit 5 at **143**
+5. **Edit 5 interaction** — if bound lands at parity **143**, Amber witness lands at **144**; RW-3/RW-4 already at **141**/**142**
 
 ## What Cursor will not start until counsel lands
 

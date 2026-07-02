@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260702.183634 | [RW-4 SLC failure-path witness at parity 142](20260702-183634_rw4-slc-failure-paths-142.md) | Audit gaps RW-3/RW-4 closed; doors still gate Claude. |
 | 20260702.183020 | [RW-3 run-record witness and Amber brief](20260702-183020_rw3-run-record-amber-brief.md) | Parity 141; Amber Claude brief; mechanical lane idle at doors. |
 | 20260702.182645 | [Land audit round, commit, and handoff](20260702-182645_land-audit-round-commit-handoff.md) | `61a986a` on four remotes; manual allow-listed; mechanical lane through rung 1. |
 | 20260702.180812 | [Consume Claude audit round — fixture twins](20260702-180812_consume-audit-round-fixture-twins.md) | Testing audit, manual, userland; `.rish` twins green; ladder rung 1. |

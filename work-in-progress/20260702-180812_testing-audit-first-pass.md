@@ -37,7 +37,7 @@ The active-designing stack passes the contract test conceptually: the flow-of-va
 1. **RW-1 (first pair):** Rishi↔Mantra history — a collaboration witness driving the shell against a stub store; a contract witness pinning the store's answers, welcome and unwelcome. After SLC-2b lands, while the seam is warm.
 2. **RW-2:** app↔Brushstroke — the drawn terminal's collaboration twin beside the Ring 2 golden.
 3. **RW-3:** the run-record witness — one script, all four fields, both outcomes. **Landed** at parity **141** (`tools/run_record_witness.rish`, `20260702.190000`).
-4. **RW-4:** failure-path lines for the SLC flows — the malformed meta-command, the doomed `run`, each answered kindly and pinned.
+4. **RW-4:** failure-path lines for the SLC flows — the malformed meta-command, the doomed `run`, each answered kindly and pinned. **Landed** at parity **142** (`tools/rw4_slc_failure_paths.rish`, `20260702.183500`).
 5. **Standing rule (Kaeden ratifies with the happy-zone horizon):** every new seam ships with its mirrored pair, and integrated checks live only on the ring.
 
 ---
