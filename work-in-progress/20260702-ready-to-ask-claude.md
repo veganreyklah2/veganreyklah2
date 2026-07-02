@@ -67,7 +67,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 | *(batch 1)* | SLC-1 witnesses raise mantra — parity green from bare clone |
 | *(batch 2)* | WOV/MALA hardware fit-check — memo, TASKS, RTAC, logs |
 
-Prior tip: `f92513b`
+Prior tip: `960ddf7` (batch 2) · `c7e5747` (batch 1) · `f92513b` (base)
 
 ## Second bench witnessed (`20260702.215212`, Claude Fable 5 · Cursor verified `20260702.221032`)
 
@@ -76,7 +76,7 @@ Fresh bench raised from tip `f92513b`. **Gate trio on this metal:** parity **142
 | Commit | Hash | Aspect |
 |--------|------|--------|
 | Batch 1 | `c7e5747` | `tools/slc1_version_step2.rish` · `tools/slc1_accept.rish` · bench-raise log |
-| Batch 2 | *(this commit)* | fit memo · TASKS · RTAC · fit-check log · index rows · round-zero log |
+| Batch 2 | `960ddf7` | fit memo · TASKS · RTAC · fit-check log · index rows · round-zero log |
 
 **Parked offer:** one-page fresh-bench tutorial — on appetite only; empty plate held.
 
