@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Rio 3; Maitreya, Uddhava, Puddle named)
+**Last updated:** 2026-07-02 (Rio round; Maitreya owns time)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -28,7 +28,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Comlink** | Transport of sealed facts over Weave |
 | **Brushstroke** | The drawn surface — values to pixels, immediate-mode |
 | **Skate** | Text grid → pixel buffer (aspect of Brushstroke today) |
-| **Maitreya** | Media driver — audio framework under Lotus; video playback horizon; Realidream and Linengrow media integrate here |
+| **Maitreya** | Media driver — **time** for audio and video: decode, sync, bounded buffers; Brushstroke owns space; Lotus authors above; Realidream and Linengrow play through one seam; codecs as royalty-free host seams |
 | **Lotus** | Our digital audio workstation — hot-loop studio above Maitreya; horizon after SLC-2 |
 | **Uddhava** | Spatial driver — real-time 3D, CAD, and scene graph (horizon; Unity-shaped role in our vocabulary) |
 | **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy |

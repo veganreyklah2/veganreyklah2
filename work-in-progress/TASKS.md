@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (opening-lines sixteen files; Pond clause recommended)
+**Last updated:** 2026-07-02 (Rio round `20260702.165412`; Puddle second pass; happy zone)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -35,6 +35,15 @@
 
 ## Next — Horizons and Optional
 
+### Rio's first round — searched ground and the happy zone (`20260702.165412`)
+
+Ground: [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (second pass) · [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md).
+
+- [ ] **Archive verdict (Kaeden affirms)** — Amber's seal = Kumara-signed `.bron` manifest naming SHA3-addressed stones cut at content-defined boundaries; the chunk-store family is the host seam today; a mountable index is the bootable-clone shape; tar demoted to transport wrapper only.
+- [ ] **Puddle continuity invariant (recorded)** — one live instance per Kumara identity, enforced by a signed continuity fact; the double-boot hazard ruled out by construction.
+- [ ] **Maitreya owns time (Kaeden affirms)** — one clock for audio and video: decode, sync, bounded buffers; Brushstroke owns space; codecs stay royalty-free host seams (the lossless, low-delay, general, and hybrid families, with their video kin); Lotus authors above; Realidream plays through the same seam.
+- [ ] **Happy-zone pairing (TAME horizon)** — as module seams stabilize, each earns mirrored collaboration and contract witnesses; metalsmoke stays the thin ring's few honest integrated checks; enters TAME guidance on Kaeden's ruling.
+
 ### Modules, money, and the manual — horizons (`2026-07-02`)
 
 Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) · named companion: [`external-research/20260702-031312_settlement-consensus-and-many-roads.md`](../external-research/20260702-031312_settlement-consensus-and-many-roads.md).
@@ -51,7 +60,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Manual program (horizon)** — four rooms: tutorials (Radiant beginner series for Rye and Rishi, tutorials-first because they teach only what runs), task guides, numbered reference specifications (beginning with Aurora, Tally, and Caravan interfaces), and the essays; shape note before any lane is founded.
 - [ ] **Pond clause (Kaeden completes)** — recommended completion in [`pond/README.md`](../pond/README.md): Pond's **enclosure aspect runs what Brix composes under policy**; awaiting your true ending.
 - [ ] **Puddle exploration (horizon)** — sandboxed Rye containers; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md); first ring = one guest snapshot export/verify/restore.
-- [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya media driver (audio + video horizon); Uddhava spatial/CAD; Lotus above Maitreya; Realidream/Linengrow playback via Maitreya middleware — open-table for codec shapes Kaeden referenced.
+- [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya owns time (audio + video); Uddhava spatial/CAD horizon; counsel affirmed `20260702.165412` — Kaeden affirms archive verdict and Maitreya owns-time lines when ready.
 
 ### Comlink and the long run — horizons (`2026-07-02`)
 
