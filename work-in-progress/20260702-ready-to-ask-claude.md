@@ -29,8 +29,7 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone · **Testing audit 
 
 | Tip | What |
 |-----|------|
-| `18f6d6c` | RW-4 at parity **142** |
-| *(this commit)* | Manual v0.2 + [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md) |
+| `b2d95df` | Manual v0.2 + tutorial one at parity **142** |
 
 ## Best path
 
