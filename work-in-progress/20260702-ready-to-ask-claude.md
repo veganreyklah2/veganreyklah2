@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.171301`
+**Stamp:** `20260702.172315`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -16,24 +16,24 @@ Graduation rule · Rio 3 · Puddle second pass · Happy zone + gratitude teachin
 | # | Item | One command / where |
 |---|------|---------------------|
 | 1 | **Pond clause** | Affirm or refine — [`pond/README.md`](../pond/README.md) |
-| 2 | **Ring 3 metal close** | `sh tools/fixtures/pond_build_drawn_terminal.sh` then live on GNOME — five steps in Pond README |
+| 2 | **Ring 3 metal close** | `sh tools/fixtures/pond_metal_close_preflight.sh` then `pond/bin/drawn-terminal` on GNOME |
 | 3 | **Edit 5** | Rule *for* → parity **141** ([apply bundle](20260702-edit5-ready-to-apply.md)) or *against* |
 
 **Optional affirmations:** archive verdict · Maitreya owns time · happy-zone pairing → TAME
 
 ## Claude — after steps 1–3
 
-**Amber first ring** — export / verify / restore. Archive verdict cross-linked in Amber spec → Puddle memo.
+**Amber first ring** — export / verify / restore season spine.
 
-## Landed since last RTAC (`483e942` → tip)
+## Landed since last RTAC (`cc63d83` → tip)
 
-- **`tools/fixtures/pond_build_drawn_terminal.sh`** — one-command build for metal close step 1
-- **Amber spec** — companion link to archive verdict (Puddle second pass)
-- Build + `sessiontest` verified **GREEN** on host
+- **`tools/fixtures/pond_metal_close_preflight.sh`** — build + sessiontest + metalsmoke (when Wayland set)
+- **Metalsmoke witness** — uses shared build script
+- SLC-2a brief + Pond README updated
 
 ## Best path
 
-**Pond clause → metal close → Edit 5 → Claude (Amber) → SLC-2b nod**
+**Pond clause → preflight + live close → Edit 5 → Claude (Amber) → SLC-2b nod**
 
 Parity **140** GREEN · Edit 5 witness drafted, unwired
 

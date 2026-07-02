@@ -6,10 +6,9 @@
 # Manual remainder (Kaeden on GNOME): run `pond/bin/drawn-terminal` interactively —
 # type commands, idle one minute (pong), fill past the ceiling (status row), :quit.
 
-let zig = "vendor/zig-toolchain/zig"
 let bin = "pond/bin/drawn-terminal"
 
-let build = run ["sh" "-c" "mkdir -p pond/bin && env RYE_ZIG=${zig} rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c -Ibrushstroke -lc -lwayland-client -lrt -femit-bin=${bin}"]
+let build = run ["sh" "tools/fixtures/pond_build_drawn_terminal.sh"]
 
 assert build.ok else "drawn_terminal build failed for Ring 3 metal smoke"
 
