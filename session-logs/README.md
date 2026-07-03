@@ -10,6 +10,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.182112 | [Commits and pushes — counsel summary](20260703-182112_commits-push-counsel-summary.md) | Four counsel logs pushed to four remotes |
+| 20260703.162912 | [Stones vocabulary candidates](20260703-162912_stones-vocabulary-candidates.md) | Archive verdict word alternatives for Kaeden |
+| 20260703.162212 | [Five ratifications speakable script](20260703-162212_five-ratifications-speakable-script.md) | Kaeden item 1 — Claude-aligned wording |
+| 20260703.142112 | [Claude 071212 counsel crosswalk](20260703-142112_claude-071212-counsel-crosswalk.md) | Packet seated; SLC-2b landed since counsel |
 | 20260703.140012 | [Commits and pushes — SLC-2b summary](20260703-140012_commits-push-slc2b-summary.md) | Three commits pushed to four remotes |
 | 20260703.135512 | [Skate / Brushstroke / font zoom counsel](20260703-135512_skate-brushstroke-font-zoom-counsel.md) | Layer answer from stack record; Ctrl± unlanded |
 | 20260703.135212 | [Drawn-terminal window size](20260703-135212_drawn-terminal-window-size.md) | Live works; buffer 1280×768 |
