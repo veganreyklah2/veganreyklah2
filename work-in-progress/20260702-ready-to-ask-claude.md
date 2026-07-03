@@ -60,6 +60,21 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 - **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
 
+## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)
+
+| # | Hash | Aspect |
+|---|------|--------|
+| 1 | `e2c0a46` | Metalsmoke definition |
+| 2 | `f8477ec` | Yonder pass eleven |
+| 3 | `a60c9f3` | Recursion-prompt craft guide |
+| 4 | `92d9bbd` | Home-server purchase guide + blueprint |
+| 5 | `6d7e560` | Audits + width Phase 1b + RTAC six-asks |
+| 6 | `f67a102` | Round summary and decoder |
+| 7 | `9408f64` | Bandwidth and moderation |
+| 8 | `0c71444` | Recursion prompt v3 seated |
+
+Prior tip: `cbb2b96` · chrono **142** · parity **142 GREEN** · Edit 5 draft unwired
+
 ## Landed `20260703.012509`
 
 | Commit | Hash | Aspect |
@@ -112,7 +127,7 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 
 **Door 1 → Door 2 live → Door 3 → (if *for*) Edit 5 + Amber rungs → SLC-2b nod → RW-1**
 
-Parity **142** GREEN · chrono **137** · Edit 5 draft GREEN, unwired
+Parity **142** GREEN · chrono **142** · Edit 5 draft GREEN, unwired
 
 ---
 

@@ -20,7 +20,7 @@ Landed eight named commits per v3 ROUND ZERO, then hash bookkeeping commit nine.
 | 5 | `6d7e560` | Audits factored — width Phase 1b, RTAC |
 | 6 | `f67a102` | Round summary and decoder |
 | 7 | `9408f64` | Bandwidth and moderation |
-| 8 | *(pending)* | Cursor recursion prompt v3 seated |
+| 8 | `0c71444` | Cursor recursion prompt v3 seated |
 | 9 | *(pending)* | RTAC hash bookkeeping |
 
 ## Observations
