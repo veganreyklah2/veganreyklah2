@@ -65,7 +65,7 @@ The recertified channel is real and confirmed: dedicated resellers stock recerti
 | Cat6a patch set + 10 GbE SFP+→RJ45 module (uplink to the home router) | $50–70 | — | One warm module is plenty |
 | **WireGuard VPS front door** | **$5–10 / month** (opex) | — | The rack dials out; **no port on the home NAT ever opens inward**; survives every address change; fails closed |
 
-The NAT posture deserves its one plain sentence: the home router keeps every inbound door shut, the tunnel is the only public face, and dynamic DNS remains the named weaker fallback for low-stakes services only.
+One budget sentence joins it, per the bandwidth memo: **the VPS plan's monthly transfer cap is the rack's true public bandwidth budget** — name it as a constant and meter it at the tunnel's mouth ([`20260703-015512_bandwidth-and-moderation.md`](20260703-015512_bandwidth-and-moderation.md)). The NAT posture deserves its one plain sentence: the home router keeps every inbound door shut, the tunnel is the only public face, and dynamic DNS remains the named weaker fallback for low-stakes services only.
 
 ## Six — Enclosure, Power, Cooling, Wiring
 

@@ -101,6 +101,8 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 | WIP aging audit | Verdict: sound; one gap found and closed — width Phase 1b re-anchored in TASKS; open-threads stub honest; all 0702 files live |
 | Purchase guide | [`external-research/20260703-013412_home-server-purchase-guide.md`](../external-research/20260703-013412_home-server-purchase-guide.md) — three tiers (~$2.9k core / ~$5.2k value / ~$8k new), OCuLink path confirmed (A2 has none native; adapter card → DEG1), tinybox red + apex tower appendices |
 
+**Added (`20260703.015512`):** the friend's question — bandwidth and moderation — answered whole at [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md); four concepts infused as recorded design in TASKS (egress budget · household headroom · moderation-fact shape · stone-refusal fact); purchase guide accreted one budget sentence; no door, gate, or name touched.
+
 **Parked (no action taken):** ER next-pass yonder candidates (`20260620-010712`, `20260620-040112`); compiler-fork status-line touch — one line, on your word.
 
 
