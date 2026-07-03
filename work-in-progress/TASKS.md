@@ -152,6 +152,9 @@ Ground: [`external-research/20260702-014112_comlink-beyond-dns-and-sockets.md`](
 
 ### TAME hardening — complete (`2026-06-29`)
 
+
+- [ ] **Width migration Phase 1b (as-you-touch)** — `mantra/*` next per the living baseline [`20260620-212126_usize-width-baseline.md`](20260620-212126_usize-width-baseline.md); decoupled from any compiler fork; re-anchored here so the oldest live thread stays on the granular plan (`20260703.013412`).
+
 Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and prior TH/RS logs. Hosted `width-check` blocks in parity (**138** witnesses).
 
 **Horizon and optional (still open):**

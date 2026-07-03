@@ -88,6 +88,22 @@ Fresh bench raised from tip `f92513b`. **Gate trio on this metal:** parity **142
 
 **Parked offer:** one-page fresh-bench tutorial — on appetite only; empty plate held.
 
+## Six asks answered (`20260703.013412`, Claude Fable 5)
+
+Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
+
+| Ask | Landed |
+|-----|--------|
+| Metalsmoke, siloed | [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) |
+| Yonder pass eleven | Zed-rules + astrology-silos prompts to `expanding-prompts/yonder/`; index + spec repointed; Ring 3 prompt held until Door 2 closes |
+| Recursion-prompt craft guide | [`external-research/20260703-013412_writing-recursion-prompts.md`](../external-research/20260703-013412_writing-recursion-prompts.md) |
+| ER audit | Verdict: healthy; four flags — compiler-fork memo wants a held-under-thin-frontend status line; two early editor memos are next-pass yonder candidates; license table refresh when next gratitude lands; blueprint companion line accreted (done) |
+| WIP aging audit | Verdict: sound; one gap found and closed — width Phase 1b re-anchored in TASKS; open-threads stub honest; all 0702 files live |
+| Purchase guide | [`external-research/20260703-013412_home-server-purchase-guide.md`](../external-research/20260703-013412_home-server-purchase-guide.md) — three tiers (~$2.9k core / ~$5.2k value / ~$8k new), OCuLink path confirmed (A2 has none native; adapter card → DEG1), tinybox red + apex tower appendices |
+
+**Parked (no action taken):** ER next-pass yonder candidates (`20260620-010712`, `20260620-040112`); compiler-fork status-line touch — one line, on your word.
+
+
 ## Best path
 
 **Door 1 → Door 2 live → Door 3 → (if *for*) Edit 5 + Amber rungs → SLC-2b nod → RW-1**
