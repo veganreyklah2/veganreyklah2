@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.030112 | [Door 2 explained — counsel Q&A](20260703-030112_door2-explained-counsel-qa.md) | Tradeoffs and recommendation for Ring 3 live close; no door opened. |
 | 20260703.023259 | [Third-bench counsel intake — Cursor verified](20260703-023259_third-bench-counsel-intake.md) | Fable counsel guide landed; chrono 143; doors still Kaeden's. |
 | 20260703.021412 | [Third bench — counsel and test guide](20260703-021412_third-bench-counsel-test-guide.md) | Fable verified ROUND ZERO on third metal; jail-first guide written. |
 | 20260703.020909 | [Handoff v3 — ROUND ZERO intake](20260703-020909_handoff-round-zero-intake.md) | Eight-commit bundle landed from handoff zip; v3 seated in canon. |
