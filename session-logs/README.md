@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.012031 | [Door 1 — Pond clause affirmed](20260703-012031_door1-pond-clause.md) | Kaeden opened Door 1; recommended sentence committed verbatim in pond/README.md. |
 | 20260702.221032 | [Bench-and-fit intake — Cursor ROUND ZERO](20260702-221032_bench-fit-round-zero.md) | Verified bare-bench cure; two batched commits; plate empty afterward. |
 | 20260702.215212 | [WOV/MALA hardware fit-check](20260702-215212_wov-mala-hardware-fit-check.md) | Blueprint confirmed in ballpark; two deltas named; TASKS factored. |
 | 20260702.214941 | [Bench raise and the self-contained gate](20260702-214941_bench-raise-self-contained-gate.md) | Fresh bench green; SLC-1 witnesses now raise mantra; parity 142 from bare clone. |

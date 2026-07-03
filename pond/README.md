@@ -8,7 +8,7 @@
 
 Pond holds **applications** that compose Rye OS modules above the kernel and compositor — the first ring where isolation policy meets a running whole a person can use. The `apps/` floor keeps enclosure code and application code apart.
 
-**Enclosure horizon (Pond clause — Kaeden completes):** Pond's enclosure aspect **runs what Brix composes under policy**. This is the recommended completion; your true ending may refine the wording.
+**Pond clause:** Pond's enclosure aspect runs what Brix composes under policy.
 
 **First application:** [`apps/drawn_terminal.rye`](apps/drawn_terminal.rye) — SLC-2a Ring 3, the drawn terminal (Rishi session mirrored in a Brushstroke/Skate window).
 
