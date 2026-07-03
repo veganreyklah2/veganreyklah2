@@ -58,7 +58,7 @@ Two editors can share one repository if each keeps **its own state directory** i
 ### Ubuntu 24.04 LTS (our current host)
 
 ```bash
-sudo apt install bubblewrap
+sudo apt install bubblewrap libwayland-dev libxkbcommon-dev
 # ai-jail: pick one
 cargo install ai-jail
 # or download from https://github.com/akitaonrails/ai-jail/releases

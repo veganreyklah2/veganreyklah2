@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (WOV/MALA hardware fit-check)
+**Last updated:** 2026-07-03 (second harvest map; RW-1 studies)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -41,6 +41,12 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260703-182612` | [The road a failure carries](20260703-182612_the-road-a-failure-carries.md) | Metalsmoke stays narrow; trace designed — call road + fact road; spec candidate parked |
+| `20260703-182612` | [Sameness is the macro](20260703-182612_sameness-is-the-macro.md) | Graham × Hickey reconciled with TAME; two canon passages boxed for Kaeden's word |
+| `20260703-182612` | [Puddle — the app harbor](20260703-182612_puddle-the-app-harbor.md) | Serena's blessing; harbor rings; charter expansion parked in RTAC |
+| `20260703-182612` | [The granary question](20260703-182612_the-granary-question.md) | Sharing surface on four doors; five names parked, Granary leading |
+| `20260703-173512` | [Bubble — the drawing room](20260703-173512_bubble-the-drawing-room.md) | Sibling-bench harvest seated verbatim: felt tests, export door, one log under every surface |
+| `20260703-071712` | [The second harvest](20260703-071712_the-second-harvest.md) | Silo harvest map from a sibling bench: nineteen insights with destinations; first four landings at `140212` |
 | `20260702-215212` | [WOV/MALA hardware fit-check](20260702-215212_wov-mala-hardware-fit.md) | Blueprint confirmed in ballpark; PLP M.2 and ECC deltas named; gentle-slot rule extended |
 | `20260702-211312` | [Names, builds, and the ledger map — WOV steps forward](20260702-211312_names-builds-and-the-ledger-map.md) | Vocabulary harvest (concepts cross, names park); no-new-module build verdict; MALA/Mycelium/Tablecloth ledger map; WOV assessed — monarch rule as pre-consensus boundary |
 | `20260702-192712` | [The movement's open asks](20260702-192712_the-movements-open-asks.md) | The boards read directly; eight categories assigned to module ensembles; the Open Asks room named as the meta-ask; caveats and horizons |
@@ -106,3 +112,4 @@ Adding research is a small, glad ritual:
 ---
 
 *May each question find its file. May the newest thought always greet the reader first. May this folder grow downward and upward at once — rooted in its foundation, reaching toward whatever we are curious about next.*
+

@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-02 (the Serena episode; studies 19–20; happy-zone foundation)
+**Last updated:** 2026-07-03 (the learning chapter candidate)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -14,6 +14,7 @@ These rest beneath the specifications. The specs say what to build and how; thes
 
 **Foundation briefs** — the why beneath the daily work, on our own roots:
 
+- `20260703-140212_the-learning-chapter.md` — the candidate Civic Style education chapter: learning as apprenticeship, a dignity floor per learner, the unlocked door in existing law, accreditation resung as a witness suite; enters canon on Kaeden's word.
 - `20260702-202612_a-conversation-with-serena.md` — the hearth episode: the long cycles, the diary that can't be quietly rewritten, grace as the ground and the ledger for the weeds; a mother's questions as the best part.
 - `20260628-121512_the-foundation-beneath-the-work.md` — work as offering, building as service, freedom as the thing we build toward, grace as the ground we stand on.
 - `20260628-121512_the-heart-in-the-work.md` — the path with heart as the test for what we take up, conserved energy as strength, clean craft as energy spent without leak.
@@ -53,3 +54,4 @@ The gratitude syntheses that seed the briefs — `DevotionAndCreativeFreedom.md`
 ---
 
 *May the why stay in view beneath the how. May the work remain an offering. May what we build serve the hands that need it, season after season.*
+

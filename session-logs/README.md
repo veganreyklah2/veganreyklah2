@@ -10,10 +10,13 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.190112 | [Intake 140212 + 182612 — bench, harvest, RW-1](20260703-190112_intake-bench-harvest-rw1.md) | Claude proposals seated; parity **147** on Cursor metal |
+| 20260703.182612 | [Nine answers, RW-1 landed](20260703-182612_nine-answers-rw1-landed.md) | Claude Fable 5 — RW-1 pair, five studies, identity/archive tools |
 | 20260703.182112 | [Commits and pushes — counsel summary](20260703-182112_commits-push-counsel-summary.md) | Four counsel logs pushed to four remotes |
 | 20260703.162912 | [Stones vocabulary candidates](20260703-162912_stones-vocabulary-candidates.md) | Archive verdict word alternatives for Kaeden |
 | 20260703.162212 | [Five ratifications speakable script](20260703-162212_five-ratifications-speakable-script.md) | Kaeden item 1 — Claude-aligned wording |
 | 20260703.142112 | [Claude 071212 counsel crosswalk](20260703-142112_claude-071212-counsel-crosswalk.md) | Packet seated; SLC-2b landed since counsel |
+| 20260703.140212 | [The bench + harvest landings](20260703-140212_bench-and-harvest-landings.md) | Bench defined; second harvest map + four landings; recipe accretes libxkbcommon-dev |
 | 20260703.140012 | [Commits and pushes — SLC-2b summary](20260703-140012_commits-push-slc2b-summary.md) | Three commits pushed to four remotes |
 | 20260703.135512 | [Skate / Brushstroke / font zoom counsel](20260703-135512_skate-brushstroke-font-zoom-counsel.md) | Layer answer from stack record; Ctrl± unlanded |
 | 20260703.135212 | [Drawn-terminal window size](20260703-135212_drawn-terminal-window-size.md) | Live works; buffer 1280×768 |

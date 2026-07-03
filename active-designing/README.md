@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (SLC-L1 scope note `20260702.195426`)
+**Last updated:** 2026-07-03 (the bench; shape carries the bound)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,6 +47,8 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260703-140212` | [The bench — where claims become evidence](20260703-140212_the-bench.md) | Third in the metalsmoke/season family: metal, sitter, discipline; bench truth; harvest workflow economics absorbed |
+| `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally ring region + framed grid named; TAME canon passage boxed for Kaeden's word |
 | `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify, Open Asks gated |
 | `20260702-185912` | [Brix — the composer and the system around it](20260702-185912_brix-the-composer.md) | Re-siloed: the ensemble table on our own strands; one bond as the override; sealed distribution at identity; first ring after the Amber season |
 | `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: the grain's nine strands defined; the two-room crossing and its closing test — what "siloed into our grain" means |
