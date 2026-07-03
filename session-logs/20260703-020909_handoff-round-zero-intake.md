@@ -21,7 +21,7 @@ Landed eight named commits per v3 ROUND ZERO, then hash bookkeeping commit nine.
 | 6 | `f67a102` | Round summary and decoder |
 | 7 | `9408f64` | Bandwidth and moderation |
 | 8 | `0c71444` | Cursor recursion prompt v3 seated |
-| 9 | *(pending)* | RTAC hash bookkeeping |
+| 9 | `d174271` | RTAC hash bookkeeping |
 
 ## Observations
 

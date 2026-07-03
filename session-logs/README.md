@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.023259 | [Third-bench counsel intake — Cursor verified](20260703-023259_third-bench-counsel-intake.md) | Fable counsel guide landed; chrono 143; doors still Kaeden's. |
+| 20260703.021412 | [Third bench — counsel and test guide](20260703-021412_third-bench-counsel-test-guide.md) | Fable verified ROUND ZERO on third metal; jail-first guide written. |
 | 20260703.020909 | [Handoff v3 — ROUND ZERO intake](20260703-020909_handoff-round-zero-intake.md) | Eight-commit bundle landed from handoff zip; v3 seated in canon. |
 | 20260703.020012 | [Handoff — recursion prompt v3](20260703-020012_handoff-v3.md) | Fable final bundle and v3 seating record. |
 | 20260703.015512 | [Bandwidth and moderation — the friend's question](20260703-015512_friends-question-bandwidth-moderation.md) | Egress budget and moderation-fact design infused; purchase guide accreted. |
