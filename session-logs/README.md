@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.041850 | [Commits and Claude counsel brief](20260703-041850_commits-counsel-brief.md) | First-ring essay pushed; strategy questions staged for Claude. |
+| 20260703.033702 | [First ring goes green — essay](20260703-033702_first-ring-goes-green-essay.md) | External-research defines ring, green, and Edit 5 graduation. |
 | 20260703.033109 | [Door 3 — Edit 5 wired at parity 143](20260703-033109_door3-edit5-wired.md) | Kaeden ruled *for*; designed-not-built bound is live gate law. |
 | 20260703.032511 | [Door 2 — Ring 3 metal-closed on GNOME](20260703-032511_door2-ring3-metal-closed.md) | Kaeden stamp verbatim; Ring 3 prompt to yonder; SLC-2b nod next. |
 | 20260703.032312 | [Door 2 — live close working](20260703-032312_door2-live-working.md) | Prompt fix; mirror and rishi> on host GNOME. |

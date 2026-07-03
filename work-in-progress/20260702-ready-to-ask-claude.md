@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612`
+**Stamp:** `20260702.202612` · refreshed `20260703.041850` (post–Door 3; Claude counsel brief staged)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -50,9 +50,26 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — empty plate; pre-staged for the doors (`20260702.211312`):** autonomous diet remains empty until a door opens. **When Door 3 = *for*:** Edit 5 → **143**, Amber rungs (a)–(e), chrono sweep wires in same arithmetic. **When SLC-2b nod lands (after Door 2):** four DoD greens, then RW-1 pair (**+2**). **After Amber season:** toolset ring one and `rye test` enter the diet. **Aurora manual:** as-you-touch on next surface stabilization.
+**Menu status — post–Door 3 HOLD (`20260703.041850`):** plate empty until Kaeden opens the next door. **Queued:** *Open Amber* → five rungs **144** · SLC-2b nod · optional ratifications · Claude strategy sitting ([`20260703-041850_claude-strategy-roadmap-counsel.md`](20260703-041850_claude-strategy-roadmap-counsel.md)). **After Amber season:** chrono sweep wire, toolset ring one, `rye test`. **Aurora manual:** as-you-touch.
 
-~~RW-2 contract on paper~~ · ~~tutorial two~~ · ~~conditional witness~~ · ~~chrono semver sweep (unwired)~~ · ~~Caravan + Tally manual (partial)~~ · ~~Rishi framework growth (four witnesses)~~ · ~~file I/O witness~~ · ~~exit vocabulary~~
+## Claude — strategy and roadmap counsel (`20260703.041850`)
+
+**Brief:** [`20260703-041850_claude-strategy-roadmap-counsel.md`](20260703-041850_claude-strategy-roadmap-counsel.md)
+
+**Medium-long strategy (seven questions):** cascade order after Amber **144** · Linengrow vs Rye next product ring · MALA M0 / WOV timing · doc lane vs metal lane after Edit 5 · Open Asks first ring when paste lands · hardware procurement season · ratifications bundle order.
+
+**Guidance request:** granular refresh plan for `ROADMAP.md`, `TASKS.md`, decoder living doc, RTAC menu — structure and deltas only; Cursor applies on Kaeden approval after counsel lands.
+
+**Counsel bounds:** propose and argue; no implementation, no new module names, do not reopen Doors 1–3 or Edit 5.
+
+## Landed `20260703.041850` — first ring essay + counsel brief (Cursor)
+
+| Commit | Aspect |
+|--------|--------|
+| *(this push)* | [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md) — ring · green · Edit 5 graduation vocabulary |
+| *(this push)* | Claude strategy + ROADMAP/TASKS counsel brief · RTAC refresh |
+
+Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 
 ## Parked name-candidates (Kaeden's joy)
 
