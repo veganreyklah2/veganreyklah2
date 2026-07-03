@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.033109 | [Door 3 — Edit 5 wired at parity 143](20260703-033109_door3-edit5-wired.md) | Kaeden ruled *for*; designed-not-built bound is live gate law. |
 | 20260703.032511 | [Door 2 — Ring 3 metal-closed on GNOME](20260703-032511_door2-ring3-metal-closed.md) | Kaeden stamp verbatim; Ring 3 prompt to yonder; SLC-2b nod next. |
 | 20260703.032312 | [Door 2 — live close working](20260703-032312_door2-live-working.md) | Prompt fix; mirror and rishi> on host GNOME. |
 | 20260703.032112 | [drawn-terminal live prompt fix](20260703-032112_drawn-terminal-prompt-fix.md) | rishi> before poll wait. |

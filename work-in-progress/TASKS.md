@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Door 2 metal-closed `20260703.032412`; Door 1 affirmed `20260703.012031`)
+**Last updated:** 2026-07-03 (Door 3 Edit 5 wired parity **143**; Doors 1–3 closed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -25,13 +25,13 @@
   - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`; fresh `20260703.012336`; jail `20260703.031312`)
   - [x] Live `pond/bin/drawn-terminal`, five confirmations — host GNOME (`20260703.032412`)
   - [x] Ring 3 metal-closed on GNOME, `20260703.032412 UDT` — Kaeden's stamp verbatim
-- [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
+- [x] **Door 3 — Edit 5 ruling**: ***for*** — at most one functional spec in flight until first ring green; witness wired parity **143** (`20260703.032812`).
 
 ### The ladder (after the doors, in order — owner tagged)
 1. [x] **(Cursor) Fixture twins verified** — both `.rish` fixtures green on host; `.sh` elders retired to [`tools/fixtures/yonder/`](../tools/fixtures/yonder/); [`pond/README.md`](../pond/README.md) points at twins (`20260702.180812`).
-2. [ ] **(Cursor, if Door 3 = for) Wire Edit 5 → parity 143.** One commit, message `Wire Edit 5 designed-not-built witness — parity 143`:
-   - [ ] Append the standard quartet at the tail of [`tools/parity.rish`](../tools/parity.rish), after the width-check block: `say` banner → `run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]` → `assert .ok else` → `say "GREEN: …"`
-   - [ ] Full suite green on metal; ROADMAP gate-trio line and this ladder's parity numbers refreshed in the same commit.
+2. [x] **(Cursor) Wire Edit 5 → parity 143.** One commit, message `Wire Edit 5 designed-not-built witness — parity 143` (`20260703.032812`):
+   - [x] Append the standard quartet at the tail of [`tools/parity.rish`](../tools/parity.rish), after the width-check block: `say` banner → `run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]` → `assert .ok else` → `say "GREEN: …"`
+   - [x] Full suite green on metal; ROADMAP gate-trio line and this ladder's parity numbers refreshed in the same commit.
 3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Invocation and custody rulings below govern throughout. **Pre-counsel proposed `20260702.194512` — CONFIRMED by the outside reading `20260702.202612`, all five as written; after the doors, the sitting is a formality unless a door changes the ground. Cursor implements nothing before Doors 1–3 land:**
    - **(1) Module home:** `amber/` at top level — Amber is a module by role (its own invariants, budget, and witness from birth), never an aspect of another host.
    - **(2) First export target:** a fixed fixture tree `tools/fixtures/amber_ring1_tree/` — three files (one empty, one small text, one ~64 KiB binary) plus one subdirectory — deterministic, so the golden never moves.
@@ -57,6 +57,7 @@
 - [ ] **Kernel-direction memo** — graduate the microkernel leaning in `expanding-prompts/20260628-120912_*` into its own direction memo beside `20260628-043542`, when it feels fully settled. Same pattern as thin-frontend: deliberate, then record.
 - [ ] **Egress budget (recorded, design)** — the front-door VPS transfer cap named as a constant, metered at the tunnel's mouth, witness at the edge; **household headroom** as a standing courtesy fraction the tunnel never crosses. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Deep-archive hardware (horizon)** — rack, powered dock, bare enterprise drives, front-door tunnel; researched in [`external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md); procurement waits on the dedicated machine; complete priced guide (new + used, three tiers, tinybox and apex-tower appendices): [`external-research/20260703-013412_home-server-purchase-guide.md`](../external-research/20260703-013412_home-server-purchase-guide.md).
+- [x] **Designed-not-built spec bound (Edit 5)** — at most one functional spec in flight until its first ring runs green; witness [`tools/designed_not_built_witness.rish`](../tools/designed_not_built_witness.rish) wired in parity **143** (`20260703.032812`).
 
 **Recorded rulings (`20260701-221512` docs round):** **Amber invocation** — explicit shell command with manual sandbox-key unlock; the docked bare drive is precondition, never trigger; the shell may notice and offer, never act; scrub runs cold, key warm only for the seconds of seal. **Amber key custody** — master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` cold and certifying; sandbox `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` signing and revocable; drive passphrase on paper in the firebox and offsite; any other fingerprint is an error on sight.
 
@@ -102,7 +103,7 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
 - [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin).
 - [ ] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** witnessed green in `tools/chrono_version_sweep.rish` (`20260702.205630`, 134 files, unwired — preserves Edit 5 landing at **143**).
-- [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity until Door 3 lands Edit 5 at **143**.
+- [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
 - [x] **Manual tutorial two — run record and failures** — [`manual/tutorials/run-record-and-failures.md`](../manual/tutorials/run-record-and-failures.md); RW-3 and RW-4 deep dive at parity **142** (`20260702.205630`).
 - [x] **RW-2 contract on paper** — [`20260702-205630_rw2-mirrored-pair-contract.md`](20260702-205630_rw2-mirrored-pair-contract.md); app↔Brushstroke mirrored pair spec; implementation waits RW-1 season (`20260702.205630`).
@@ -235,7 +236,6 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
 - **TASKS naming** — keep `TASKS.md`, or rename to the warmer `WORKBENCH.md`?
 - **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
-- **Designed-not-built spec bound (Edit 5)** — pending Kaeden ruling; ready-to-apply at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md); witness draft **GREEN**, not in parity until ruled for.
 - **Birth-chart craft** — siloed library, templates, sample reading, and caster at [`classical-vedic-astrology/`](../classical-vedic-astrology/README.md) (`studies/`, `20260701-232912_*`, `cast_a_chart.py`).
 
 ---

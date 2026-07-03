@@ -1,6 +1,6 @@
-# Edit 5 — Ready to Apply (gated on Kaeden's ruling)
+# Edit 5 — Applied (`20260703.032812`)
 
-**Stamp:** `20260702.035920`
+**Stamp:** `20260702.035920` · **Ruled:** *for* `20260703.032812` · **Parity:** **143**
 **Voice:** Rio 3
 **Counsel:** argues *for* the bound
 **Current tree:** **1** spec in flight — [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md) — already within the bound
@@ -46,7 +46,7 @@ rishi/bin/rishi run tools/parity.rish
 
 Note the ruling in the session log; leave witness on disk unwired; remove this file to yonder or mark consumed.
 
-## Witness (draft, not in parity)
+## Witness (live gate, parity **143**)
 
 - Scan: `tools/fixtures/designed_not_built_scan.sh`
 - Witness: `tools/designed_not_built_witness.rish`

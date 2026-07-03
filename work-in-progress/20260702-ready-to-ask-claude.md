@@ -14,7 +14,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 ## Hard bounds (Cursor loop)
 
 - **Never** touch boxes tagged **(Kaeden …)** — three doors, ratifications, nods, pastes
-- **`amber/`** untouched until Doors 1–3 land; after Door 3 = *for*: wire Edit 5 → **143**, then Amber rungs (a)–(e), one commit each
+- **`amber/`** untouched until Doors 1–3 land ✅ — Amber rungs (a)–(e) next, one commit each → **144**
 - **No new module/aspect names** — park candidates in RTAC
 - **Stop-and-park** on: Kaeden-tagged path · parity red twice · module-home/seam decision · keys/custody/amber/MALA · new names
 - **Empty plate** — if the ungated diet runs empty, stop and summarize rather than invent new work; an empty plate is a question for Kaeden, never a license to forage
@@ -25,7 +25,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 |---|------|--------|
 | 1 | **Pond clause** | **Affirmed** — `3320bed` (`20260703.012031`) |
 | 2 | **Ring 3 metal close** | **Closed** — Kaeden stamp `20260703.032412 UDT`; live five on host GNOME |
-| 3 | **Edit 5** | *for* → **143** or *against* |
+| 3 | **Edit 5** | **Closed** — ruled *for*; witness wired parity **143** (`20260703.032812`) |
 
 **Optional ratifications:** archive verdict · Maitreya owns time · standing audit rule · versioning rule · demand map
 
@@ -41,9 +41,8 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **142** |
-| Edit 5 (if *for*) | **143** |
-| Amber (five rungs) | **+1** (144 if Edit 5 wired) |
+| Now | **143** ✅ |
+| Amber (five rungs) | **144** |
 | SLC-2b | **+1** |
 | RW-1 pair | **+2** |
 
@@ -125,9 +124,9 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 
 ## Best path
 
-**Door 1 → Door 2 live → Door 3 → (if *for*) Edit 5 + Amber rungs → SLC-2b nod → RW-1**
+**Doors 1–3 closed → Amber rungs (a)–(e) → SLC-2b nod → RW-1**
 
-Parity **142** GREEN · chrono **142** · Edit 5 draft GREEN, unwired
+Parity **143** GREEN · chrono **143** GREEN · Edit 5 witness wired · Amber season next
 
 ---
 

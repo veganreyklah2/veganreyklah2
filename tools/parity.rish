@@ -151,3 +151,8 @@ say "witness suite: width-check hosted corpus…"
 let wc = run ["rishi/bin/rishi" "run" "tools/width-check.rish"]
 assert wc.ok else "width-check hosted corpus witness failed"
 say "GREEN: width-check hosted corpus witness passed."
+
+say "witness suite: designed-not-built spec bound…"
+let edit5 = run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]
+assert edit5.ok else "designed-not-built witness failed"
+say "GREEN: designed-not-built spec bound witness passed."
