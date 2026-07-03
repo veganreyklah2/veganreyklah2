@@ -21,7 +21,7 @@ pub fn main() void {
     const stride: u32 = @as(u32, @intCast(width)) * 4;
     const height_u: u32 = @intCast(height);
     const pixels = allocator.alloc(u8, @intCast(stride * height_u)) catch unreachable;
-    grid.rasterize(pixels, stride, width, height, bg, fg);
+    grid.rasterize(pixels, stride, width, height, bg, fg, 1);
 
     const lit = grid.litPixelCount(pixels, stride, width, height, bg);
     std.debug.assert(lit > 200);

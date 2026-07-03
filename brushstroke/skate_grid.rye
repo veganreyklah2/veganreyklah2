@@ -80,7 +80,11 @@ pub const Grid = struct {
         height: i32,
         bg: Color,
         fg: Color,
+        scale: u32,
     ) void {
+        std.debug.assert(scale > 0);
+        const cell_pw = cell_w * scale;
+        const cell_ph = cell_h * scale;
         std.debug.assert(width > 0);
         std.debug.assert(height > 0);
         const width_u: u32 = @intCast(width);
@@ -103,12 +107,22 @@ pub const Grid = struct {
             }
         }
 
-        var row: u32 = 0;
-        while (row < self.rows) : (row += 1) {
+        var grid_row: u32 = 0;
+        while (grid_row < self.rows) : (grid_row += 1) {
             var col: u32 = 0;
             while (col < self.cols) : (col += 1) {
-                const ch = self.cells[@as(usize, @intCast(row * self.cols + col))];
-                drawGlyph(pixels, stride, width, height, @intCast(col * cell_w), @intCast(row * cell_h), ch, fg);
+                const ch = self.cells[@as(usize, @intCast(grid_row * self.cols + col))];
+                drawGlyph(
+                    pixels,
+                    stride,
+                    width,
+                    height,
+                    @intCast(col * cell_pw),
+                    @intCast(grid_row * cell_ph),
+                    ch,
+                    fg,
+                    scale,
+                );
             }
         }
     }
@@ -123,7 +137,9 @@ fn drawGlyph(
     y0: i32,
     ch: u8,
     fg: Color,
+    scale: u32,
 ) void {
+    std.debug.assert(scale > 0);
     std.debug.assert(width > 0);
     std.debug.assert(height > 0);
     const width_u: u32 = @intCast(width);
@@ -137,16 +153,23 @@ fn drawGlyph(
         var gx: u32 = 0;
         while (gx < 8) : (gx += 1) {
             if ((bits & (@as(u8, 1) << @intCast(gx))) == 0) continue;
-            const x = x0 + @as(i32, @intCast(gx));
-            const y = y0 + @as(i32, @intCast(gy));
-            if (x < 0 or y < 0 or x >= width or y >= height) continue;
-            const y_usize: usize = @intCast(y);
-            const row = pixels[y_usize * stride_usize ..][0 .. @as(usize, @intCast(width_u)) * 4];
-            const px: usize = @as(usize, @intCast(x)) * 4;
-            row[px + 0] = fg.b;
-            row[px + 1] = fg.g;
-            row[px + 2] = fg.r;
-            row[px + 3] = 0xff;
+            var sy: u32 = 0;
+            while (sy < scale) : (sy += 1) {
+                var sx: u32 = 0;
+                while (sx < scale) : (sx += 1) {
+                    const x = x0 + @as(i32, @intCast(gx * scale + sx));
+                    const y = y0 + @as(i32, @intCast(gy * scale + sy));
+                    if (x >= 0 and y >= 0 and x < width and y < height) {
+                        const y_usize: usize = @intCast(y);
+                        const row = pixels[y_usize * stride_usize ..][0 .. @as(usize, @intCast(width_u)) * 4];
+                        const px: usize = @as(usize, @intCast(x)) * 4;
+                        row[px + 0] = fg.b;
+                        row[px + 1] = fg.g;
+                        row[px + 2] = fg.r;
+                        row[px + 3] = 0xff;
+                    }
+                }
+            }
         }
     }
 }

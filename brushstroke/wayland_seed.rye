@@ -39,13 +39,14 @@ pub const KeyAction = union(enum) {
     submit,
 };
 
-const wayland_seed_version = "20260622.235812";
+const wayland_seed_version = "20260703.133512";
 
-const window_width: i32 = 400;
-const window_height: i32 = 240;
+const pixel_scale: u32 = 2;
+const window_width: i32 = 960;
+const window_height: i32 = 512;
 const max_lines: u32 = 8;
-const grid_cols: u32 = @intCast(@divExact(window_width, @as(i32, @intCast(skate.cell_w))));
-const grid_rows: u32 = @intCast(@divExact(window_height, @as(i32, @intCast(skate.cell_h))));
+const grid_cols: u32 = @intCast(@divExact(window_width, @as(i32, @intCast(skate.cell_w * pixel_scale))));
+const grid_rows: u32 = @intCast(@divExact(window_height, @as(i32, @intCast(skate.cell_h * pixel_scale))));
 const skate_bg = skate.Color{ .r = 0x1a, .g = 0x1a, .b = 0x2e };
 const skate_fg = skate.Color{ .r = 0xe0, .g = 0xe0, .b = 0xe0 };
 
@@ -124,7 +125,7 @@ fn rasterLitForLines(garden: std.mem.Allocator, lines: []const Line) !u32 {
     const stride: u32 = @as(u32, @intCast(window_width)) * 4;
     const size: u32 = stride * @as(u32, @intCast(window_height));
     const pixels = try garden.alloc(u8, @intCast(size));
-    grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg);
+    grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
     return grid.litPixelCount(pixels, stride, window_width, window_height, skate_bg);
 }
 
@@ -141,7 +142,7 @@ fn signatureFromGrid(garden: std.mem.Allocator, grid: *const skate.Grid) !u64 {
     const stride: u32 = @as(u32, @intCast(window_width)) * 4;
     const size: u32 = stride * @as(u32, @intCast(window_height));
     const pixels = try garden.alloc(u8, @intCast(size));
-    grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg);
+    grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
     return bufferSignature(pixels);
 }
 
@@ -183,6 +184,7 @@ const App = struct {
     xdg_toplevel: ?*c.xdg_toplevel = null,
     configured: bool = false,
     frame_done: bool = false,
+    should_close: bool = false,
     keyboard_enabled: bool = false,
     keyboard_focused: bool = false,
     key_actions: [max_key_actions]KeyAction = undefined,
@@ -296,8 +298,9 @@ const App = struct {
     }
 
     fn xdgToplevelClose(data: ?*anyopaque, xdg_toplevel: ?*c.xdg_toplevel) callconv(.c) void {
-        _ = data;
         _ = xdg_toplevel;
+        const app: *App = @ptrCast(@alignCast(data));
+        app.should_close = true;
     }
 
     fn frameDone(
@@ -509,6 +512,7 @@ const App = struct {
 
         const title = "brushstroke wayland seed";
         _ = c.xdg_toplevel_set_title(self.xdg_toplevel, title);
+        _ = c.xdg_toplevel_set_min_size(self.xdg_toplevel, window_width, window_height);
 
         const toplevel_listener = c.xdg_toplevel_listener{
             .configure = xdgToplevelConfigure,
@@ -526,7 +530,7 @@ const App = struct {
     }
 
     fn fillBuffer(self: *App, pixels: []u8, stride: u32) void {
-        self.grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg);
+        self.grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
     }
 
     fn commitFrame(self: *App) !void {
@@ -583,7 +587,6 @@ const App = struct {
             if (c.wl_display_dispatch_pending(self.display.handle) < 0) return error.WaylandDispatchFailed;
             return;
         }
-        c.wl_display_cancel_read(self.display.handle);
         const display_fd = c.wl_display_get_fd(self.display.handle);
         var poll_fds = [_]std.posix.pollfd{.{
             .fd = display_fd,
@@ -592,7 +595,10 @@ const App = struct {
         }};
         const ready = std.posix.poll(&poll_fds, timeout_ms) catch 0;
         if (ready > 0 and (poll_fds[0].revents & std.posix.POLL.IN) != 0) {
+            if (c.wl_display_read_events(self.display.handle) < 0) return error.WaylandDispatchFailed;
             if (c.wl_display_dispatch_pending(self.display.handle) < 0) return error.WaylandDispatchFailed;
+        } else {
+            c.wl_display_cancel_read(self.display.handle);
         }
     }
 
@@ -604,16 +610,22 @@ const App = struct {
         std.debug.assert(self.frame_done);
     }
 
-    fn presentCurrentFrame(self: *App) !void {
+    fn presentCurrentFrame(self: *App, wait: bool) !void {
         self.frame_done = false;
         try self.commitFrame();
-        try self.waitForFrame();
+        if (wait) try self.waitForFrame();
     }
 
     pub fn setFrame(self: *App, new_lines: []const Line) !void {
         self.frame = Frame.init(new_lines);
         self.grid = try self.frame.toGrid(self.garden);
-        try self.presentCurrentFrame();
+        try self.presentCurrentFrame(true);
+    }
+
+    pub fn updateFrame(self: *App, new_lines: []const Line) !void {
+        self.frame = Frame.init(new_lines);
+        self.grid = try self.frame.toGrid(self.garden);
+        try self.presentCurrentFrame(false);
     }
 
     pub fn prepareSurface(self: *App) !void {
@@ -659,6 +671,16 @@ const App = struct {
         }
     }
 
+    pub fn setAppId(self: *App, app_id: [*:0]const u8) void {
+        if (self.xdg_toplevel) |toplevel| {
+            _ = c.xdg_toplevel_set_app_id(toplevel, app_id);
+        }
+    }
+
+    pub fn shouldClose(self: *const App) bool {
+        return self.should_close;
+    }
+
     pub fn releaseKeyboard(self: *App) void {
         self.clearKeymap();
         if (self.xkb_ctx) |ctx| {
@@ -673,12 +695,12 @@ const App = struct {
 
     fn run(self: *App) !void {
         try self.prepareSurface();
-        try self.presentCurrentFrame();
+        try self.presentCurrentFrame(true);
     }
 
     fn runRedraw(self: *App, lines_b: []const Line) !void {
         try self.prepareSurface();
-        try self.presentCurrentFrame();
+        try self.presentCurrentFrame(true);
         var beat: u32 = 0;
         while (beat < 8) : (beat += 1) {
             try self.dispatchOnce(50);

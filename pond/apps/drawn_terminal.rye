@@ -33,7 +33,7 @@ const status_full_text = "transcript full — earlier lines still ran; :quit to 
 const poll_timeout_ms: i32 = 50;
 const fill_line_count: u32 = 200;
 const fill_say_width: u32 = 400;
-const keymap_wait_beats: u32 = 200;
+const live_dispatch_ms: i32 = 16;
 
 fn boundStatus(garden: std.mem.Allocator, text: []const u8) ![]const u8 {
     if (text.len <= status_max_len) return text;
@@ -225,13 +225,6 @@ fn pollStdinAndDisplay(app: *surface.SurfaceApp, stdin_fd: posix.fd_t) !enum { s
     return .timeout;
 }
 
-fn waitForKeymap(app: *surface.SurfaceApp) !void {
-    var beat: u32 = 0;
-    while (!app.keyboardReady() and beat < keymap_wait_beats) : (beat += 1) {
-        try app.dispatchOnce(50);
-    }
-}
-
 fn redrawPromptFrame(
     garden: std.mem.Allocator,
     app: *surface.SurfaceApp,
@@ -241,7 +234,7 @@ fn redrawPromptFrame(
     const status = try formatPromptStatus(garden, editor, transcript.full);
     const frame_lines = try composeFrameLines(garden, transcript, status);
     defer garden.free(frame_lines);
-    try app.setFrame(frame_lines);
+    try app.updateFrame(frame_lines);
 }
 
 fn runSubmittedLine(
@@ -259,7 +252,7 @@ fn runSubmittedLine(
     const status = if (transcript.full) status_full_text else "";
     const frame_lines = try composeFrameLines(garden, transcript, status);
     defer garden.free(frame_lines);
-    try app.setFrame(frame_lines);
+    try app.updateFrame(frame_lines);
     if (signal == .quit) return signal;
     return signal;
 }
@@ -279,7 +272,7 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     app.enableKeyboard();
     try app.prepareSurface();
     app.setWindowTitle("drawn terminal");
-    try waitForKeymap(&app);
+    app.setAppId("drawn-terminal");
     try app.setFrame(boot_lines);
 
     const stdout = std.Io.File.stdout();
@@ -291,10 +284,11 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     const reader = &file_reader.interface;
 
     while (true) {
+        if (app.shouldClose()) return 0;
         const ready = try pollStdinAndDisplay(&app, stdin_fd);
+        try app.dispatchOnce(live_dispatch_ms);
         switch (ready) {
             .display_ready, .timeout => {
-                try app.dispatchOnce(0);
                 while (app.hasKeyAction()) {
                     const key_action = app.popKeyAction();
                     if (surfaceActionToEditor(key_action)) |editor_action| {

@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.133912 | [Drawn terminal live UX fix](20260703-133912_drawn-terminal-live-ux-fix.md) | Wayland read loop, 2× glyphs, freeze fix |
+| 20260703.133312 | [Parity 145 — metal confirmation](20260703-133312_parity-145-metal-confirm.md) | Kaeden ran full parity; SLC-2b GREEN on host |
 | 20260703.132845 | [SLC-2b — Dexter keyboard from the window](20260703-132845_slc-2b-keyboard-from-window.md) | Wayland keyboard + line editor; parity **145** GREEN |
 | 20260703.131927 | [SLC-2b nod — pond/apps](20260703-131927_slc2b-nod-pond-apps.md) | Kaeden nodded counsel; Dexter graduation trigger recorded. |
 | 20260703.072428 | [Intake anchor 071212 — Amber season](20260703-072428_intake-071212-amber-season.md) | Season vocabulary seated; placement counsel recorded. |
