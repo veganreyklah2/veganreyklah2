@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-03 (bench · resin · hash tiers ratified `191312`)
+**Last updated:** 2026-07-03 (Tilak · Pottery · Amphora · triad ratified `203712`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -56,7 +56,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition |
 | **Tablecloth** | Application data store (horizon — role still shaping) |
-| **Bron** | Data notation between modules (`.bron`) |
+| **Bron** | Data notation between modules (`.bron`); a Tilak in the proposed Bron-as-mark design |
 | **Amber** | Preservation — signed, encrypted, bit-faithful archives on deep storage, recorded in an append-only log and verified by folding; Mantra holds the living history, Amber seals the moment cold |
 
 ## Archive and digest *(ratified `20260703.191312`)*
@@ -66,6 +66,17 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Resin** | One content-addressed unit Amber seals — the stored bytes at a SHA3 name; the manifest catalogs, the digest proves; [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md) |
 | **SHA3-512 tier** | Canonical forever-names — weave states, sealed content identity, promises that must mean one thing for the life of the work |
 | **SHA3-256 tier** | Working-store names — resins, blob files, manifest entries where path size and external oracles matter |
+
+## Type-marks and crossing *(ratified `20260703.203712 UDT`)*
+
+| Term | One line |
+|------|----------|
+| **Tilak** | The type-mark — the worn sign every value wears at a seam; content-addressed in Weave; two hardcoded roots (plain-bytes, manifest); [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) |
+| **Absorb** | A Tilak's duty — make a value of this type from another type, honestly |
+| **Express** | A Tilak's duty — render this type as another (prose, text, lines) |
+| **Tend** | A Tilak's duty — care for this type's history in its own grain (diff, patch, merge) |
+| **Pottery** | The value-object tier — linear resources thrown while owned, fired when sealed; `.pott` the working extension; greenware · kiln · glaze name the aspect family; horizon until measured demand |
+| **Amphora** | The crossing vessel — greenware packet metaphor for Rio↔Cursor handoffs: shoulder line, parent mark, manifest, receipts; [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) |
 
 ## Named tonight (`2026-06-30`)
 
@@ -83,7 +94,6 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, whole in gratitude at `59f2b99`); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty before any ring; first ring after MALA M2 only — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
-| **Bron** | Proposed — composing companion beside Brix; role open for Kaeden |
 | **Tablecloth** | Named — layout or structured-view layer; horizon |
 | **`.brush`** | Surface-description extension when Brushstroke earns a small language |
 

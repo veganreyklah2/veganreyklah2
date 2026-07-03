@@ -48,7 +48,20 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **148**. **Cursor diet:** RW-2 season · crossing names (Tilak · Pottery · Amphora) · TWO_ROOMS canon (optional) · not-advice line.
+**Menu status — crossing names seated (`20260703.203712 UDT`):** Tilak · absorb/express/tend · Pottery · Amphora — all *for*. Parity **148**. **Cursor diet:** RW-2 season · crossing seed witness · TWO_ROOMS canon (optional) · not-advice line.
+
+Prior tip: `ecb6a0b`
+
+## Ratified `20260703.203712` — crossing names (Kaeden · *for*)
+
+| Name | Seat |
+|------|------|
+| **Tilak** | Type-mark word |
+| **absorb / express / tend** | Three duties of every Tilak |
+| **Pottery** | Value-object tier (`.pott`) |
+| **Amphora** | Crossing-vessel vocabulary |
+
+Law: [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`context/LEXICON.md`](../context/LEXICON.md). Next: crossing seed witness.
 
 ## Landed `20260703.202312` — marked value + crossing suite (Claude Fable 5 · Cursor seated)
 
@@ -62,9 +75,9 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 | Seed (unverified) | [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) |
 | Log | [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md) |
 
-Working-tier manifest digests verified against packet as-cut; path hygiene (`../context/`) applied post-verify. **Tilak** leads type-mark word (RTAC). Ring one ungated after names seat + full-tree zip + witness.
+Working-tier manifest digests verified against packet as-cut; path hygiene (`../context/`) applied post-verify. **Tilak**, **Pottery**, **Amphora** seated `20260703.203712 UDT`. Ring one witness on seed is next ungated crossing work.
 
-Prior tip: `999359e`
+Prior tip: `ecb6a0b`
 
 ## Landed `20260703.193012` — bench-as-block research (Claude Fable 5 · Cursor seated)
 
@@ -121,13 +134,11 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 
 ## Parked name-candidates (Kaeden's joy)
 
-- **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs) — **reaffirmed `20260703.202312`** as type-mark duties; seat awaits word
-- **Type-mark word (`202312`):** **Tilak** leads · Titulus · Emblem · Motif beside — parks until Kaeden speaks
-- **Value-object (`200712`):** **Pottery** leads (`.pott` recommended) · Amphora · Grain · Bead · Mudra · Murti · Tulsi · Loam · Kiln
+- **Type-mark alternates (`202312`):** Titulus · Emblem · Motif — beside seated **Tilak**
+- **Value-object alternates (`200712`):** Grain · Bead · Mudra · Murti · Tulsi · Loam · Kiln — beside seated **Pottery** (`.pott`)
 - **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
 - **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
-- **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
-- **Message-seam name (counsel `193012`):** *Bron* read as plain description of inter-agent passing — **LEXICON already seats Bron as `.bron` notation**; if a distinct seam name is wanted, say so; else treat as prose only
+- **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs) — *Tend* also a Tilak duty; watcher name still open
 
 ## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)
 

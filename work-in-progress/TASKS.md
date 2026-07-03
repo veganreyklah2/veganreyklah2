@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (chrono sweep wired — parity **148**; crossing suite seated)
+**Last updated:** 2026-07-03 (crossing names `203712`; chrono **148**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -62,6 +62,8 @@
 
 **Recorded rulings (`20260701-221512` docs round):** **Amber invocation** — explicit shell command with manual sandbox-key unlock; the docked bare drive is precondition, never trigger; the shell may notice and offer, never act; scrub runs cold, key warm only for the seconds of seal. **Amber key custody** — master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` cold and certifying; sandbox `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` signing and revocable; drive passphrase on paper in the firebox and offsite; any other fingerprint is an error on sight.
 
+**Recorded rulings (`20260703.203712 UDT`) — crossing names, all *for*:** **Tilak** — the type-mark word; every value at a seam wears a mark in Weave. **Triad** — **absorb / express / tend** affirmed as the three duties of every Tilak. **Pottery** — value-object tier name; `.pott` working extension; greenware · kiln · glaze aspect family. **Amphora** — crossing-vessel vocabulary for agent handoffs. Law: [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md).
+
 **Recorded rulings (`20260703.191312 UDT`) — five ratifications, all *for*:** **Archive verdict** — Amber seals content-addressed **resins** (SHA3-256 working tier; SHA3-512 canonical forever-names); law at [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). **Versioning rule** — authored surfaces chronological stamps only; semver a named backend seam; chrono sweep may wire. **Standing audit rule** — mirrored collaboration/contract pair per seam; integrated checks on thin ring only; one pair per season; RW-1 landed (**147**), RW-2 next. **Maitreya owns time** — one clock for audio and video; Brushstroke owns space. **Demand map** — eight-category → module-ensemble table held as requirements; interop-first, consent-before-counting, reward-points-at-the-good; **proxy column** on the movement memo table per circulation survey Q1.
 
 ---
@@ -82,11 +84,11 @@ Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`]
 
 Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md).
 
-- [ ] **Pottery seat (Kaeden)** — value-object candidate leads RTAC table (`.pott` recommended); greenware/kiln/glaze aspect family named (`20260703.200712`).
-- [ ] **Amphora seat (Kaeden)** — sealed vessel metaphor for crossing packets; companion silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) (`20260703.201612`).
-- [ ] **Type-mark word (Kaeden)** — **Tilak** leads (Titulus, Emblem, Motif beside); **absorb / express / tend** triad reaffirmed from naming harvest (`20260703.202312`).
-- [ ] **Crossing manifest seed (unverified)** — [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) proposed; witness first red-then-green; module home on Kaeden word; ring one parses `<mark> <sha3-256-hex> <name>`.
-- [x] **Bron mark triad (concept adopted)** — every notation type carries its conversions in, out, and its operations; arm names await Kaeden (*absorb / express / tend* is one spark) (`20260702.211312`).
+- [x] **Pottery seat (Kaeden)** — value-object tier; `.pott` working extension; greenware · kiln · glaze aspect family (`20260703.203712 UDT`, *for*).
+- [x] **Amphora seat (Kaeden)** — crossing-vessel vocabulary; companion silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) (`20260703.203712 UDT`, *for*).
+- [x] **Type-mark word (Kaeden)** — **Tilak** seated; **absorb / express / tend** triad affirmed (`20260703.203712 UDT`, *for*).
+- [ ] **Crossing manifest seed (unverified)** — [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) proposed; witness first red-then-green; module home on Kaeden word; ring one parses `<mark> <sha3-256-hex> <name>`; names seated — witness ungates next.
+- [x] **Bron mark triad (concept adopted)** — every notation type carries its conversions in, out, and its operations; arm names **absorb / express / tend** seated as Tilak duties (`20260702.211312`; affirmed `20260703.203712 UDT`).
 - [x] **Comlink address triple (concept adopted)** — named data resolves by *Kumara identity / lane / stamp*; design note when the naming ring opens (`20260702.211312`).
 
 **Menu, pre-staged for the doors** (answers the loop's question six): when **Door 3 = *for*** → Edit 5 wire (**143**), then Amber rungs (a)–(e) per the confirmed counsel, and the chronological sweep wires in the same arithmetic; when the **SLC-2b nod** lands after Door 2 → the four DoD greens, then RW-1's pair (**+2**); after the **Amber season** → the toolset ring one and `rye test` enter the diet; the Aurora manual page enters on that surface's next touch, as-you-touch.
