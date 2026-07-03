@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.014912 | [Decoder sitting — questions read whole](20260703-014912_decoder-sitting.md) | Living decoder and round summary preserved for Kaeden expansion. |
 | 20260703.013412 | [Six asks — guides, audits, yonder eleven](20260703-013412_six-asks-guides-audits-yonder.md) | Metalsmoke, yonder pass, craft guide, audits, purchase guide sitting. |
 | 20260703.012509 | [Commits, push, and full summary — doors sitting](20260703-012509_commits-push-full-summary.md) | Backlog landed; Door 1 closed; Door 2 live pending. |
 | 20260703.012336 | [Door 2 — metal close in progress](20260703-012336_door2-metal-close-in-progress.md) | Preflight + metalsmoke fresh GREEN; live five steps await Kaeden stamp. |
