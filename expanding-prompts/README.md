@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Ring 3 bench prompt; Amber docs round consumed to yonder)
+**Last updated:** 2026-07-03 (recursion prompt v3 seated `20260703.020012`; yonder pass eleven — Zed-rules and astrology-silos prompts consumed to yonder)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,8 +68,10 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260703-020012` | [Cursor recursion prompt v3 — land eight, then hold the doors](20260703-020012_cursor-recursion-prompt-v3.md) | Active loop — ROUND ZERO lands the three-sitting bundle in eight commits, then empty-plate hold; supersedes v2 |
+| `20260702-202612` | [Astrology silos 19–20 — Cursor](yonder/20260702-202612_cursor-astrology-silos-19-20.md) | Consumed — studies 19–20 distilled and landed; raw transcripts never committed; in `yonder/` |
 | `20260702-030112` | [SLC-2b — keyboard from the window](20260702-030112_cursor-slc-2b-keyboard-from-window.md) | Placed — Dexter genesis; awaits Kaeden nod after Ring 3 metal close |
-| `20260701-231512` | [SLC-2a Ring 3 — mirror live session](20260701-231512_cursor-slc-2a-ring-three.md) | Witness landed at parity 139; metalsmoke on Wayland |
+| `20260701-231512` | [SLC-2a Ring 3 — mirror live session](20260701-231512_cursor-slc-2a-ring-three.md) | Witness landed at parity 139; metalsmoke on Wayland; held until Door 2 closes, then yonder |
 | `20260701-221512` | [Amber and deep archive docs round](yonder/20260701-221512_cursor-amber-and-deep-archive.md) | Consumed — blueprint, Amber spec, rulings; in `yonder/` |
 | `20260628-120912` | [Kernel direction, Brix, and foundations — batch brief](20260628-120912_kernel-direction-brix-and-foundations.md) | Microkernel as Caravan direction (horizon); Brix clarification; foundation layer; revitalization practice |
 | `20260621-051612` | [10023 · Main Track — Rye, Rishi, and Strengthening](yonder/20260621-051612_main-track-rye-rishi-strengthening.md) | Consumed — strengthening arc and width gate complete; in `yonder/` |
@@ -88,7 +90,7 @@ What does *not* belong here is the work itself — that lands in the research, d
 | `20260620-021612` | [10012 · Brushstroke Wayland Seed and the Display Frontier](yonder/20260620-021612_brushstroke-wayland-and-display-frontier.md) | Expanded at `021612` after push and Caravan twin: the hosted Brushstroke seed draws from values on s |
 | `20260620-021212` | [10011 · Display Frontier, Flow of Values, and Garden Vocabulary — Autonomous Milestone Run](yonder/20260620-021212_display-flow-gardens-and-next-milestones.md) | Expanded at `021212` from the active-designing lens review: priorities align with Gall's Law, single |
 | `20260619-153612` | [10009 · Pond as Native Desktop — Rishi Shell, Mantra Version Control, Brushstroke Surface, x86_64 First](yonder/20260619-153612_pond-gui-rishi-mantra-x86-amd.md) | Expanding the vision: a Pond GUI application, drawn by Brushstroke, running a Rishi shell whose Mant |
-| `20260619-090512` | [10008 · Zed Claude Rules and the Agent Panel — Mirror Cursor, Run in Zed](20260619-090512_zed-claude-rules-and-agent-panel.md) | Expanded from a seed of three strands. The first asks whether **Claude in Zed** can follow **project |
+| `20260619-090512` | [10008 · Zed Claude Rules and the Agent Panel — Mirror Cursor, Run in Zed](yonder/20260619-090512_zed-claude-rules-and-agent-panel.md) | Consumed — Zed rules, agent panel, and enclosure all live; spec repointed; in `yonder/` |
 | `20260619-084412` | [10007 · First Seeds — Caravan, Tally, and a Close Reading Before the Wire Grows](yonder/20260619-084412_caravan-tally-seeds-and-close-reading.md) | Expanded from counsel received at `084412`, spoken in Reya 2's radiant voice through a TAME lens. Th |
 | `20260619-081812` | [10006 · Two Editors, One Garden — ai-jail, Zed, Cursor, and a Cloneable Template](yonder/20260619-081812_dual-editors-enclosure-template.md) | Expanded from a seed of four strands. The first asks how to run **ai-jail** from `~/veganreyklah2` f |
 | `20260619-072600` | [10005 · silo the Surface, Honor the Ground, Keep a Log](yonder/20260619-072600_silo-the-surface-honor-ground-keep-log.md) | Expanded from a seed of three strands. The first asks for a new practice: that I write down my step- |
