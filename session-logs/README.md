@@ -10,7 +10,18 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260703.030112 | [Door 2 explained — counsel Q&A](20260703-030112_door2-explained-counsel-qa.md) | Tradeoffs and recommendation for Ring 3 live close; no door opened. |
+| 20260703.032511 | [Door 2 — Ring 3 metal-closed on GNOME](20260703-032511_door2-ring3-metal-closed.md) | Kaeden stamp verbatim; Ring 3 prompt to yonder; SLC-2b nod next. |
+| 20260703.032312 | [Door 2 — live close working](20260703-032312_door2-live-working.md) | Prompt fix; mirror and rishi> on host GNOME. |
+| 20260703.032112 | [drawn-terminal live prompt fix](20260703-032112_drawn-terminal-prompt-fix.md) | rishi> before poll wait. |
+| 20260703.031712 | [Door 2 — no prompt; blind type guidance](20260703-031712_door2-no-prompt-blind-type.md) | UX diagnosis before fix. |
+| 20260703.031412 | [Door 2 — GNOME unresponsive dialog](20260703-031412_door2-unresponsive-dialog.md) | ai-jail live close troubleshooting. |
+| 20260703.031312 | [Door 2 — metalsmoke GREEN in jail](20260703-031312_door2-metalsmoke-green-jail.md) | Thin ring passed in ai-jail. |
+| 20260703.031212 | [Door 2 — preflight GREEN in jail](20260703-031212_door2-preflight-green-jail.md) | Build + headless in ai-jail. |
+| 20260703.030712 | [Pond build progress lines](20260703-030712_pond-build-progress-lines.md) | Heartbeat during silent Zig compile. |
+| 20260703.030612 | [Door 2 — seat visible in jail](20260703-030612_door2-seat-visible-next-steps.md) | Wayland seat check passed. |
+| 20260703.030512 | [ai-jail pip skip bench raise](20260703-030512_jail-pip-skip-bench-raise.md) | Skip Step 1 when binaries exist. |
+| 20260703.030312 | [Door 2 jail instructions pointer](20260703-030312_door2-jail-instructions-pointer.md) | Counsel doc Part Three pointer. |
+| 20260703.030112 | [Door 2 explained — counsel Q&A](20260703-030112_door2-explained-counsel-qa.md) | Tradeoffs and recommendation. |
 | 20260703.023259 | [Third-bench counsel intake — Cursor verified](20260703-023259_third-bench-counsel-intake.md) | Fable counsel guide landed; chrono 143; doors still Kaeden's. |
 | 20260703.021412 | [Third bench — counsel and test guide](20260703-021412_third-bench-counsel-test-guide.md) | Fable verified ROUND ZERO on third metal; jail-first guide written. |
 | 20260703.020909 | [Handoff v3 — ROUND ZERO intake](20260703-020909_handoff-round-zero-intake.md) | Eight-commit bundle landed from handoff zip; v3 seated in canon. |

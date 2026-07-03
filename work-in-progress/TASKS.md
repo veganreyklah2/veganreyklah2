@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Door 1 affirmed `20260703.012031`; Door 2 automated path fresh `20260703.012336`)
+**Last updated:** 2026-07-03 (Door 2 metal-closed `20260703.032412`; Door 1 affirmed `20260703.012031`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -20,11 +20,11 @@
 
 ### The three doors (Kaeden, in order)
 - [x] **Door 1 — Pond clause**: affirmed verbatim in [`pond/README.md`](../pond/README.md) (`20260703.012031`, commit `3320bed`).
-- [ ] **Door 2 — Ring 3 metal close** (Kaeden, on GNOME Wayland):
-  - [x] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN (`20260702.195626`; fresh `20260703.012336`)
-  - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`; fresh `20260703.012336`)
-  - [ ] Live `pond/bin/drawn-terminal`, five confirmations: **build** (binary present) · **type** (lines redraw the frame) · **idle ~1 min** (pong keeps the compositor honest) · **ceiling** (past 65536 bytes, status row still updates) · **exit** (`:quit` clean)
-  - [ ] One line in the session log: "Ring 3 metal-closed on GNOME, `YYYYMMDD.HHMMSS`" — Kaeden's stamp verbatim
+- [x] **Door 2 — Ring 3 metal close** (Kaeden, on GNOME Wayland):
+  - [x] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN (`20260702.195626`; fresh `20260703.012336`; jail `20260703.031212`)
+  - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`; fresh `20260703.012336`; jail `20260703.031312`)
+  - [x] Live `pond/bin/drawn-terminal`, five confirmations — host GNOME (`20260703.032412`)
+  - [x] Ring 3 metal-closed on GNOME, `20260703.032412 UDT` — Kaeden's stamp verbatim
 - [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
 
 ### The ladder (after the doors, in order — owner tagged)

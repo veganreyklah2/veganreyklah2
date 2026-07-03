@@ -24,7 +24,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 | # | Item | Status |
 |---|------|--------|
 | 1 | **Pond clause** | **Affirmed** — `3320bed` (`20260703.012031`) |
-| 2 | **Ring 3 metal close** | Automated path fresh **GREEN** (`20260703.012336`); live five steps + log stamp remain |
+| 2 | **Ring 3 metal close** | **Closed** — Kaeden stamp `20260703.032412 UDT`; live five on host GNOME |
 | 3 | **Edit 5** | *for* → **143** or *against* |
 
 **Optional ratifications:** archive verdict · Maitreya owns time · standing audit rule · versioning rule · demand map

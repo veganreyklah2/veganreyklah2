@@ -10,9 +10,14 @@
 #   rishi/bin/rishi run tools/slc2a_ring3_metal.rish
 # Interactive remainder (Kaeden): type, idle ~1 min, fill past the ceiling, :quit.
 
-say "preflight: building drawn-terminal..."
-let build = run ["rishi/bin/rishi" "run" "tools/fixtures/pond_build_drawn_terminal.rish"]
+say "preflight: Language EN — metal close automated path."
+say "preflight: Style Radiant — build then headless session witness."
+say "preflight: Lens TAME — compile may run silent for minutes; wait for GREEN."
+
+say "preflight: building drawn-terminal (compile may run silent for minutes)..."
+let build = run ["sh" "tools/fixtures/pond_build_drawn_terminal.sh"]
 assert build.ok else "preflight build failed — see pond/README.md"
+say build.out
 
 say "preflight: headless session witness..."
 let session = run ["sh" "-c" "pond/bin/drawn-terminal sessiontest 2>&1"]

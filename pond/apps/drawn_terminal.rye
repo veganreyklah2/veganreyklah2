@@ -162,22 +162,25 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     try app.prepareSurface();
     try app.setFrame(boot_lines);
 
+    const stdout = std.Io.File.stdout();
+    try stdout.writeStreamingAll(io, "drawn terminal live — type in this terminal; the window mirrors.\n");
+
     const stdin_fd: posix.fd_t = posix.STDIN_FILENO;
     var stdin_buffer: [4096]u8 = undefined;
     var file_reader = std.Io.File.Reader.initStreaming(std.Io.File.stdin(), io, &stdin_buffer);
     const reader = &file_reader.interface;
 
     while (true) {
-        const ready = try pollStdinAndDisplay(&app, stdin_fd);
-        switch (ready) {
-            .display_ready => try app.dispatchOnce(0),
-            .timeout => try app.dispatchOnce(0),
-            .stdin_ready => {},
+        try stdout.writeStreamingAll(io, "rishi> ");
+
+        while (true) {
+            const ready = try pollStdinAndDisplay(&app, stdin_fd);
+            switch (ready) {
+                .display_ready, .timeout => try app.dispatchOnce(0),
+                .stdin_ready => break,
+            }
         }
 
-        if (ready != .stdin_ready) continue;
-
-        print("rishi> ", .{});
         const raw_line = reader.takeDelimiterInclusive('\n') catch |err| switch (err) {
             error.EndOfStream => return 0,
             else => return 1,
