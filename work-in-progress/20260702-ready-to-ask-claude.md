@@ -50,16 +50,25 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Menu status — RW-2 landed (`20260703.235512 UDT`):** parity **150** on Cursor metal. **Cursor diet:** crossing seed witness · SLC-L1 build · TWO_ROOMS canon (optional) · not-advice line.
 
-Prior tip: `ecb6a0b`
+Prior tip: `f9c9c50`
 
-## Bench pins (`20260703.205312`)
+## Bench pins (`20260703.235512`)
+
+| Bench | Tip / zip | Parity | Status |
+|-------|-----------|--------|--------|
+| **Cursor** | `f9c9c50` | **150 GREEN** | RW-2 + chrono wired |
+| **Claude** | zip 39 @ `178d2fa` | **parked** | RW-1 red ×2 — zip stripped `+x`; cut zip 40 at `f9c9c50` |
+
+Recipe v5: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
+
+## Bench pins (`20260703.205312`) — superseded
 
 | Bench | Tip / zip | Parity | Status |
 |-------|-----------|--------|--------|
 | **Cursor** | `bad68b4` | **148 GREEN** | Chrono wired; RW-1 stub executable |
 | **Claude** | zip 39 @ `178d2fa` | **parked** | RW-1 red twice — extraction stripped `+x`; repair on word |
 
-Zip 39 five commits early — cut next full-tree zip at `bad68b4`. Recipe v5: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
+Zip 39 five commits early — cut next full-tree zip at `bad68b4`.
 
 ## Ratified `20260703.203712` — crossing names (Kaeden · *for*)
 
