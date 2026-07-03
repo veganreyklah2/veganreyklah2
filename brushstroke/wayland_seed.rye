@@ -736,6 +736,26 @@ fn runRedrawWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
+fn runBoundsWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const over = max_lines + 1;
+    const lines = try garden.alloc(Line, over);
+    var i: u32 = 0;
+    while (i < over) : (i += 1) {
+        lines[i] = .{ .text = "overflow" };
+    }
+    if (lines.len > max_lines) {
+        var buf: [96]u8 = undefined;
+        const msg = try std.fmt.bufPrint(
+            &buf,
+            "surface bounds witness: refused {d} lines (max {d}) — GREEN\n",
+            .{ lines.len, max_lines },
+        );
+        try std.Io.File.stdout().writeStreamingAll(io, msg);
+        return 0;
+    }
+    return 1;
+}
+
 fn runRedrawMetal(garden: std.mem.Allocator, io: std.Io) !u8 {
     const lines_a = try redrawLinesA(garden);
     const lines_b = try redrawLinesB(garden);
@@ -808,6 +828,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "redrawtest")) {
         return runRedrawWitness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "boundstest")) {
+        return runBoundsWitness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "redraw")) {
         return runRedrawMetal(garden, io);

@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · happy zone · mirrored pair
-**Status:** Contract prep — no `.rish` files until RW-1 season closes; two commits, parity **+2** when wired
+**Status:** Landed — parity **150** (`20260703.235512 UDT`, Cursor metal)
 
 **Ground:** [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md) · [`../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md) · [`../tools/slc2a_ring2_redraw.rish`](../tools/slc2a_ring2_redraw.rish)
 

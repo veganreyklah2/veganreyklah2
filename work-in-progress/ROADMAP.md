@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
-**Last updated:** 2026-07-03 (chrono sweep wired — parity **148**; Doors 1–3 closed)
+**Last updated:** 2026-07-03 (RW-2 mirrored pair — parity **150**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (**148 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1 + chrono version sweep), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
+**Gate trio:** `parity.rish` (**150 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1 + chrono version sweep), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
 
 ---
 
@@ -127,6 +127,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 | SLC-2b — keyboard from the window, Dexter's genesis | Cursor | **145** ✅ |
 | RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **147** ✅ |
 | Chrono version sweep — authored surfaces | Cursor | **148** ✅ |
+| RW-2 mirrored pair — app↔Brushstroke seam | Cursor | **150** ✅ |
 
 Still on this horizon, after the ladder: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.
 

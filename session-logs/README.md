@@ -10,7 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260703.205312 | [Zip 39 relay — Cursor re-pin](20260703-205312_intake-zip39-relay-cursor-repin.md) | Claude parked RW-1 @ 178d2fa; Cursor 148 @ bad68b4; v5 recipe |
+| 20260703.235512 | [RW-2 mirrored pair landed](20260703-235512_rw2-mirrored-pair-landed.md) | App↔Brushstroke pair wired; parity **150** on Cursor metal |
+| 20260703.205312 | [Zip 39 relay — Cursor re-pin](20260703-205312_intake-zip39-relay-cursor-repin.md) | Claude parked RW-1 @ 178d2fa; v5 recipe |
 | 20260703.204012 | [Commits and pushes — evening summary](20260703-204012_commits-pushes-evening-summary.md) | Full arc `999359e`→`c9453b5`; tree clean on origin |
 | 20260703.203712 | [Zip 39 raise parked](20260703-203712_zip39-raise-rw1-parked.md) | Claude bench: RW-1 red twice from stripped exec; zip five commits early |
 | 20260703.203712 | [Crossing names seated](20260703-203712_crossing-names-seated.md) | Kaeden *for* — Tilak, triad, Pottery, Amphora in LEXICON |

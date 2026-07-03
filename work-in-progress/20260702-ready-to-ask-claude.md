@@ -41,14 +41,14 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **148** ✅ |
-| Next ladder | RW-2 season · crossing names (Kaeden) |
+| Now | **150** ✅ |
+| Next diet | crossing seed witness · SLC-L1 build |
 
 ## Ungated diet (smallest-first)
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — crossing names seated (`20260703.203712 UDT`):** Tilak · absorb/express/tend · Pottery · Amphora — all *for*. Parity **148**. **Cursor diet:** RW-2 season · crossing seed witness · TWO_ROOMS canon (optional) · not-advice line.
+**Menu status — RW-2 landed (`20260703.235512 UDT`):** parity **150** on Cursor metal. **Cursor diet:** crossing seed witness · SLC-L1 build · TWO_ROOMS canon (optional) · not-advice line.
 
 Prior tip: `ecb6a0b`
 

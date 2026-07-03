@@ -181,3 +181,13 @@ say "witness suite: chrono version sweep…"
 let chrono = run ["rishi/bin/rishi" "run" "tools/chrono_version_sweep.rish"]
 assert chrono.ok else "chrono version sweep witness failed"
 say "GREEN: chrono version sweep witness passed."
+
+say "witness suite: RW-2 app collaboration…"
+let rw2a = run ["rishi/bin/rishi" "run" "tools/rw2_app_collab.rish"]
+assert rw2a.ok else "RW-2 app collaboration witness failed"
+say "GREEN: RW-2 app-collaboration witness passed."
+
+say "witness suite: RW-2 surface contract…"
+let rw2s = run ["rishi/bin/rishi" "run" "tools/rw2_surface_contract.rish"]
+assert rw2s.ok else "RW-2 surface contract witness failed"
+say "GREEN: RW-2 surface-contract witness passed."

@@ -12,6 +12,7 @@
 //!   pond/bin/drawn-terminal              # live mirror (Wayland keyboard + stdin)
 //!   pond/bin/drawn-terminal sessiontest  # headless Ring 3 witness
 //!   pond/bin/drawn-terminal keyboardtest # headless SLC-2b witness
+//!   pond/bin/drawn-terminal rw2collabtest  # headless RW-2 app collaboration witness
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -165,6 +166,50 @@ fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.In
         &out,
         "drawn terminal session witness: sig_1={x} sig_2={x} sig_final={x} ceiling={x} — GREEN\n",
         .{ sig_1, sig_2, sig_final, sig_full },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+    var env = rishi.Env{};
+    var history = rishi.History{};
+    var transcript = rishi.Transcript{};
+    var store_ready = false;
+
+    const boot = try garden.alloc(surface.SkateLine, 1);
+    boot[0] = .{ .text = "rw2 boot" };
+    const sig_boot = try surface.contentSignature(garden, boot);
+
+    _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let rw2 = 1");
+    const frame_one = try composeFrameLines(garden, &transcript, "");
+    defer garden.free(frame_one);
+    const sig_one = try surface.contentSignature(garden, frame_one);
+    assert(sig_boot != sig_one);
+
+    const sig_one_again = try surface.contentSignature(garden, frame_one);
+    assert(sig_one_again == sig_one);
+
+    const empty_transcript = rishi.Transcript{};
+    const empty_lines = try composeFrameLines(garden, &empty_transcript, "");
+    defer garden.free(empty_lines);
+    const sig_empty = try surface.contentSignature(garden, empty_lines);
+    const sig_empty_again = try surface.contentSignature(garden, empty_lines);
+    assert(sig_empty == sig_empty_again);
+
+    const sig_before_bad = try surface.contentSignature(garden, frame_one);
+    const bad_result = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, ":recall 99");
+    assert(bad_result == .advance);
+    const frame_after_bad = try composeFrameLines(garden, &transcript, "");
+    defer garden.free(frame_after_bad);
+    _ = try surface.contentSignature(garden, frame_after_bad);
+    assert(sig_before_bad != sig_boot);
+
+    var out: [128]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal rw2 collaboration: boot={x} one={x} empty={x} — GREEN\n",
+        .{ sig_boot, sig_one, sig_empty },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
     return 0;
@@ -367,6 +412,9 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "sessiontest")) {
         return runSessionWitness(garden, io, init);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "rw2collabtest")) {
+        return runRw2CollaborationWitness(garden, io, init);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return runKeyboardWitness(garden, io, init);

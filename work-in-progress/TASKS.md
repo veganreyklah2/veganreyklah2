@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (crossing names `203712`; chrono **148**)
+**Last updated:** 2026-07-03 (RW-2 landed — parity **150**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -46,6 +46,9 @@
    - [x] `tools/rw1_shell_collab.rish` — the asker's side: the shell against a stub history store; right questions at `:version`/`:history`/`:recall`; every allowed answer handled, one unwelcome answer survived
    - [x] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
    - [x] **Landed `20260703.182612 UDT` — parity **147** (`20260703.182612`)
+6. [x] **(Cursor) RW-2 mirrored pair** — app↔Brushstroke `setFrame` seam per [`20260702-205630_rw2-mirrored-pair-contract.md`](20260702-205630_rw2-mirrored-pair-contract.md); **landed `20260703.235512 UDT` — parity 150**:**
+   - [x] `tools/rw2_app_collab.rish` — drawn-terminal `rw2collabtest`: sessionLines → contentSignature
+   - [x] `tools/rw2_surface_contract.rish` — `redrawtest` + `boundstest` on wayland_seed
 
 ### Linengrow
 - [x] **SLC-L1 scope note** — the hammock spec, one page, these boxes its skeleton ([`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md), `20260702.195426`):
@@ -64,7 +67,7 @@
 
 **Recorded rulings (`20260703.203712 UDT`) — crossing names, all *for*:** **Tilak** — the type-mark word; every value at a seam wears a mark in Weave. **Triad** — **absorb / express / tend** affirmed as the three duties of every Tilak. **Pottery** — value-object tier name; `.pott` working extension; greenware · kiln · glaze aspect family. **Amphora** — crossing-vessel vocabulary for agent handoffs. Law: [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md).
 
-**Recorded rulings (`20260703.191312 UDT`) — five ratifications, all *for*:** **Archive verdict** — Amber seals content-addressed **resins** (SHA3-256 working tier; SHA3-512 canonical forever-names); law at [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). **Versioning rule** — authored surfaces chronological stamps only; semver a named backend seam; chrono sweep may wire. **Standing audit rule** — mirrored collaboration/contract pair per seam; integrated checks on thin ring only; one pair per season; RW-1 landed (**147**), RW-2 next. **Maitreya owns time** — one clock for audio and video; Brushstroke owns space. **Demand map** — eight-category → module-ensemble table held as requirements; interop-first, consent-before-counting, reward-points-at-the-good; **proxy column** on the movement memo table per circulation survey Q1.
+**Recorded rulings (`20260703.191312 UDT`) — five ratifications, all *for*:** **Archive verdict** — Amber seals content-addressed **resins** (SHA3-256 working tier; SHA3-512 canonical forever-names); law at [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). **Versioning rule** — authored surfaces chronological stamps only; semver a named backend seam; chrono sweep may wire. **Standing audit rule** — mirrored collaboration/contract pair per seam; integrated checks on thin ring only; one pair per season; RW-1 landed (**147**), RW-2 landed (**150**). **Maitreya owns time** — one clock for audio and video; Brushstroke owns space. **Demand map** — eight-category → module-ensemble table held as requirements; interop-first, consent-before-counting, reward-points-at-the-good; **proxy column** on the movement memo table per circulation survey Q1.
 
 ---
 
@@ -118,12 +121,12 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 
 - [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
-- [x] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5, **landed 147**), then RW-2 (app↔Brushstroke twin) (`20260703.191312 UDT`, *for*).
+- [x] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 (**147**), RW-2 (**150**) landed (`20260703.191312 UDT`, *for*).
 - [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** wired in parity **148** (`20260703.203212 UDT`, Cursor metal) (`20260703.191312 UDT`, *for*).
 - [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
 - [x] **Manual tutorial two — run record and failures** — [`manual/tutorials/run-record-and-failures.md`](../manual/tutorials/run-record-and-failures.md); RW-3 and RW-4 deep dive at parity **142** (`20260702.205630`).
-- [x] **RW-2 contract on paper** — [`20260702-205630_rw2-mirrored-pair-contract.md`](20260702-205630_rw2-mirrored-pair-contract.md); app↔Brushstroke mirrored pair spec; implementation waits RW-1 season (`20260702.205630`).
+- [x] **RW-2 contract on paper** — [`20260702-205630_rw2-mirrored-pair-contract.md`](20260702-205630_rw2-mirrored-pair-contract.md); app↔Brushstroke mirrored pair spec; **landed parity 150** (`20260703.235512 UDT`, Cursor metal).
 - [ ] **Manual horizons** — Aurora / Tally / Caravan interface reference pages as each surface stabilizes. **Partial (`20260702.205630`):** [`manual/reference/caravan-capabilities.md`](../manual/reference/caravan-capabilities.md) · [`manual/reference/tally-gardens.md`](../manual/reference/tally-gardens.md) — witnessed behavior only; Aurora waits.
 - [ ] **Man-as-value first ring** — one utility carries a `.bron` man record; `:man <name>` renders it; the manual renders the same record. After the toolset's first ring.
 - [ ] **Small-sharp-toolset ladder (gated after Amber season)** — ring one: an `echo`-sized utility with opening lines, `.bron` man record, `.brix` declaration, witness green; ring two: readiness-as-fact for one Caravan child; the override combinator earns its ring when two real configurations exist to differ.
