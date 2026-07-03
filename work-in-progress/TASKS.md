@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-02 (WOV/MALA hardware fit recorded `20260702.215212`; WOV named and gated `20260702.211312`; build verdict recorded)
+**Last updated:** 2026-07-03 (Door 1 affirmed `20260703.012031`; Door 2 automated path fresh `20260703.012336`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -19,10 +19,10 @@
 ## Now — The Three Doors, Then the Ladder
 
 ### The three doors (Kaeden, in order)
-- [ ] **Door 1 — Pond clause**: affirm or refine the recommended sentence in [`pond/README.md`](../pond/README.md).
+- [x] **Door 1 — Pond clause**: affirmed verbatim in [`pond/README.md`](../pond/README.md) (`20260703.012031`, commit `3320bed`).
 - [ ] **Door 2 — Ring 3 metal close** (Kaeden, on GNOME Wayland):
-  - [x] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN (`20260702.195626`, Cursor on host)
-  - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`, Cursor on host)
+  - [x] `rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish` — build + headless witness GREEN (`20260702.195626`; fresh `20260703.012336`)
+  - [x] `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` — the thin ring answers (`20260702.195626`; fresh `20260703.012336`)
   - [ ] Live `pond/bin/drawn-terminal`, five confirmations: **build** (binary present) · **type** (lines redraw the frame) · **idle ~1 min** (pong keeps the compositor honest) · **ceiling** (past 65536 bytes, status row still updates) · **exit** (`:quit` clean)
   - [ ] One line in the session log: "Ring 3 metal-closed on GNOME, `YYYYMMDD.HHMMSS`" — Kaeden's stamp verbatim
 - [ ] **Door 3 — Edit 5 ruling**: *for* or *against*; apply bundle at [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md).
@@ -130,7 +130,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Brix packaging (first ring visible)** — one content-addressed, Kumara-signed package: descriptor read, stones fetched by digest over Comlink, verified on two paths, placed, run in Pond; `.bron` as the resolved-record carrier awaits Kaeden's affirmation.
 - [x] **Opening lines (canonized)** — three-line head in TAME guidance; **`tools/opening_lines_witness.rish`** in parity **140** (sixteen hosted files, including `pond/apps/drawn_terminal.rye`).
 - [ ] **Manual program (horizon)** — four rooms founded at [`manual/README.md`](../manual/README.md); first reference [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) open; tutorials and module reference pages in season.
-- [ ] **Pond clause (Kaeden completes)** — recommended completion in [`pond/README.md`](../pond/README.md): Pond's **enclosure aspect runs what Brix composes under policy**; awaiting your true ending.
+- [x] **Pond clause (Kaeden completes)** — affirmed in [`pond/README.md`](../pond/README.md) (`20260703.012031`, `3320bed`).
 - [ ] **Puddle exploration (horizon)** — sandboxed Rye containers; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md); first ring = one guest snapshot export/verify/restore.
 - [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya owns time (audio + video); Uddhava spatial/CAD horizon; counsel affirmed `20260702.165412` — Kaeden affirms archive verdict and Maitreya owns-time lines when ready.
 

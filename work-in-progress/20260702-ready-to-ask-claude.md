@@ -23,8 +23,8 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 
 | # | Item | Status |
 |---|------|--------|
-| 1 | **Pond clause** | Awaiting affirm/refine |
-| 2 | **Ring 3 metal close** | Headless **2/4**; live five steps + log stamp remain |
+| 1 | **Pond clause** | **Affirmed** — `3320bed` (`20260703.012031`) |
+| 2 | **Ring 3 metal close** | Automated path fresh **GREEN** (`20260703.012336`); live five steps + log stamp remain |
 | 3 | **Edit 5** | *for* → **143** or *against* |
 
 **Optional ratifications:** archive verdict · Maitreya owns time · standing audit rule · versioning rule · demand map
@@ -60,6 +60,14 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 - **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
 
+## Landed `20260703.012509`
+
+| Commit | Hash | Aspect |
+|--------|------|--------|
+| Door 1 | `3320bed` | Pond clause affirmed verbatim in `pond/README.md` |
+
+Prior tip: `3320bed` · `f5b6a5d` · ROUND ZERO `c7e5747` / `960ddf7`
+
 ## Landed `20260702.221032`
 
 | Commit | Aspect |
@@ -84,7 +92,7 @@ Fresh bench raised from tip `f92513b`. **Gate trio on this metal:** parity **142
 
 **Door 1 → Door 2 live → Door 3 → (if *for*) Edit 5 + Amber rungs → SLC-2b nod → RW-1**
 
-Parity **142** GREEN
+Parity **142** GREEN · chrono **137** · Edit 5 draft GREEN, unwired
 
 ---
 

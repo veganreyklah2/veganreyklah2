@@ -10,7 +10,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.012509 | [Commits, push, and full summary — doors sitting](20260703-012509_commits-push-full-summary.md) | Backlog landed; Door 1 closed; Door 2 live pending. |
+| 20260703.012336 | [Door 2 — metal close in progress](20260703-012336_door2-metal-close-in-progress.md) | Preflight + metalsmoke fresh GREEN; live five steps await Kaeden stamp. |
 | 20260703.012031 | [Door 1 — Pond clause affirmed](20260703-012031_door1-pond-clause.md) | Kaeden opened Door 1; recommended sentence committed verbatim in pond/README.md. |
+| 20260703.011854 | [HOLD — loop reasserted (second pass)](20260703-011854_hold-empty-plate.md) | Operating loop re-pasted; no door opened; plate empty. |
+| 20260703.010830 | [HOLD — empty plate reasserted](20260703-010830_hold-empty-plate.md) | Loop re-pasted; no menu item opened; plate stays empty. |
+| 20260702.222353 | [Recursion prompt v2](20260702-222353_recursion-prompt-v2.md) | Post–ROUND ZERO improved loop; HOLD phase; COMPLETED table. |
 | 20260702.221032 | [Bench-and-fit intake — Cursor ROUND ZERO](20260702-221032_bench-fit-round-zero.md) | Verified bare-bench cure; two batched commits; plate empty afterward. |
 | 20260702.215212 | [WOV/MALA hardware fit-check](20260702-215212_wov-mala-hardware-fit-check.md) | Blueprint confirmed in ballpark; two deltas named; TASKS factored. |
 | 20260702.214941 | [Bench raise and the self-contained gate](20260702-214941_bench-raise-self-contained-gate.md) | Fresh bench green; SLC-1 witnesses now raise mantra; parity 142 from bare clone. |
