@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.044012 | [Cursor intake verify — anchor 043912](20260703-044012_cursor-intake-043912.md) | Proposal landed; parity 143 and chrono 147 green on metal. |
+| 20260703.043912 | [Issuer's ledger and circulation survey](20260703-043912_issuers-ledger-circulation-survey.md) | Claude silo + July 2026 survey; sibling bench re-verified. |
 | 20260703.041850 | [Commits and Claude counsel brief](20260703-041850_commits-counsel-brief.md) | First-ring essay pushed; strategy questions staged for Claude. |
 | 20260703.033702 | [First ring goes green — essay](20260703-033702_first-ring-goes-green-essay.md) | External-research defines ring, green, and Edit 5 graduation. |
 | 20260703.033109 | [Door 3 — Edit 5 wired at parity 143](20260703-033109_door3-edit5-wired.md) | Kaeden ruled *for*; designed-not-built bound is live gate law. |

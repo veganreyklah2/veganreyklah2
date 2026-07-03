@@ -62,6 +62,18 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Counsel bounds:** propose and argue; no implementation, no new module names, do not reopen Doors 1–3 or Edit 5.
 
+## Landed `20260703.043912` — issuer's ledger + circulation survey (Claude Fable 5 · Cursor verified)
+
+| Item | Path |
+|------|------|
+| Silo | [`external-research/20260703-043912_the-issuers-ledger.md`](../external-research/20260703-043912_the-issuers-ledger.md) |
+| Survey | [`external-research/20260703-043912_circulation-portfolio-survey.md`](../external-research/20260703-043912_circulation-portfolio-survey.md) |
+| Log | [`session-logs/20260703-043912_issuers-ledger-circulation-survey.md`](../session-logs/20260703-043912_issuers-ledger-circulation-survey.md) |
+
+Zip comment `df88223` verified character-for-character. **Cursor metal:** parity **143 GREEN** (116 std + 27 blocks), chrono **147 GREEN**, designed-not-built **GREEN** at count=1. Three staged words untouched. Counsel brief sealed.
+
+Prior tip: `df88223`
+
 ## Landed `20260703.041850` — first ring essay + counsel brief (Cursor)
 
 | Commit | Aspect |

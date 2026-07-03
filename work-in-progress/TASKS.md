@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Door 3 Edit 5 wired parity **143**; Doors 1–3 closed)
+**Last updated:** 2026-07-03 (anchor `043912` intake — issuer's ledger + circulation survey)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -94,6 +94,7 @@ Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../exte
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Stone-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a stone, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`).
 - [ ] **Linengrow agent writing (intake awaiting paste)** — the shared links resist the bench's fetch (client-rendered artifact; robots-walled share); on arrival it lands whole in external-research and siloed in foundations, exactly as asked.
+- [x] **Issuer's ledger silo + circulation portfolio survey (`20260703.043912`)** — [`external-research/20260703-043912_the-issuers-ledger.md`](../external-research/20260703-043912_the-issuers-ledger.md) (MMT lecture on our spine; MALA deferred) · [`external-research/20260703-043912_circulation-portfolio-survey.md`](../external-research/20260703-043912_circulation-portfolio-survey.md) (July 2026 ground re-verified on Cursor metal; thin-chapter → Linengrow rails); research for understanding only; treasury untouched.
 
 ### The audit, the manual, and the userland (`20260702.180812`)
 
