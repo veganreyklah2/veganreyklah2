@@ -16,8 +16,8 @@ Landed backlog in two batches: recursion prompt v2; then HOLD logs, Door 2 in-pr
 | Hash | Message |
 |------|---------|
 | `3320bed` | Door 1 — Pond clause affirmed (prior turn) |
-| *(batch 1)* | Recursion prompt v2 — post ROUND ZERO operating loop |
-| *(batch 2)* | Door sitting logs, TASKS/RTAC refresh, index rows |
+| `cc5b828` | Recursion prompt v2 — post ROUND ZERO operating loop |
+| `ec91d9f` | Door sitting logs, TASKS/RTAC refresh |
 
 ## Files
 
