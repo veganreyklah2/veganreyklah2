@@ -124,6 +124,14 @@ A re-stamp that bubbles a file to the bottom suits an *ordinary, lightly-cited* 
 
 ---
 
+## The Identity Layer, and Tidy Days
+
+The tree signs its work. The keeper's canonical fingerprints live in `PUBKEYS.md` at the root of the keeper's checkout; a fork begins from `PUBKEYS.template.md` and records its own four public lines, and `tools/identity_check.rish` proves the shape either way — template-only checkouts pass kindly, and a present `PUBKEYS.md` must carry exactly two SSH and two OpenPGP fingerprints. The private halves never enter the tree.
+
+Session logs keep the working day flat and fold every earlier day beneath `session-logs/archive/YYYYMMDD/`. The fold is one idempotent word — `tools/session_logs_archive.rish` — which moves prior days and rewrites the index links in place; run it at a day's close, on Kaeden's word.
+
+---
+
 ## Caretaking
 
 - **Rename with history:** `git mv`, never silent rewrites.

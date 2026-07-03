@@ -41,14 +41,14 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **145** ✅ |
-| RW-1 pair | **+2** |
+| Now | **147** ✅ |
+| Next ladder | chrono sweep wire · RW-2 · ratifications |
 
 ## Ungated diet (smallest-first)
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — RW-1 ungated (`20260703.132112`):** SLC-2b four DoD greens landed parity **145**. **Cursor diet:** RW-1 mirrored pair (**+2**). **Queued:** ratifications · Claude counsel · not-advice canon · demand-map.
+**Menu status — RW-1 landed (`20260703.182612 UDT`):** parity **147**. **Cursor diet:** chrono sweep wire · RW-2 contract season · ratifications · not-advice canon · demand-map.
 
 ## Claude — strategy and roadmap counsel (`20260703.041850`)
 
@@ -162,9 +162,9 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 
 ## Best path
 
-**Doors 1–3 closed → Amber ring 1 green → SLC-2b green → RW-1**
+**Doors 1–3 closed → Amber ring 1 green → SLC-2b green → RW-1 green**
 
-Parity **145** GREEN · RW-1 **ungated** · next green **147** (pair)
+Parity **147** GREEN · next ungated: chrono sweep wire · RW-2 season
 
 ---
 

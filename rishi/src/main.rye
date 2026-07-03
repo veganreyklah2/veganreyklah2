@@ -376,6 +376,7 @@ pub fn runOneInput(
         transcriptAppendPromptLine(transcript, line);
         if (std.mem.eql(u8, line, ":quit") or std.mem.eql(u8, line, ":q")) return .quit;
         if (std.mem.eql(u8, line, ":history")) {
+            if (history.count == 0) print("rishi: no history yet\n", .{});
             var i: u32 = 0;
             while (i < history.count) : (i += 1) {
                 print("  {d}  {s}\n", .{ i + 1, history.items[i] });

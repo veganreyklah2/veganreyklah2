@@ -147,6 +147,16 @@ let th6 = run ["rishi/bin/rishi" "run" "tools/width_check_th6.rish"]
 assert th6.ok else "TH-6 Comlink width witness failed"
 say "GREEN: TH-6 Comlink width witness passed."
 
+say "witness suite: RW-1 shell collaboration…"
+let rw1c = run ["rishi/bin/rishi" "run" "tools/rw1_shell_collab.rish"]
+assert rw1c.ok else "RW-1 shell collaboration witness failed"
+say "GREEN: RW-1 shell-collaboration witness passed."
+
+say "witness suite: RW-1 history contract…"
+let rw1h = run ["rishi/bin/rishi" "run" "tools/rw1_history_contract.rish"]
+assert rw1h.ok else "RW-1 history contract witness failed"
+say "GREEN: RW-1 history-contract witness passed."
+
 say "witness suite: width-check hosted corpus…"
 let wc = run ["rishi/bin/rishi" "run" "tools/width-check.rish"]
 assert wc.ok else "width-check hosted corpus witness failed"

@@ -1,0 +1,15 @@
+# session_logs_archive.rish — fold prior days' session logs into archive/YYYYMMDD/.
+#
+# Convention (ORGANIZING.md): the working day stays flat in session-logs/; every
+# earlier day's logs live under session-logs/archive/<YYYYMMDD>/. This script is
+# idempotent, moves nothing from today, and rewrites README.md links to the new
+# archive paths. It only proposes tidiness — run it on Kaeden's word:
+#   rishi/bin/rishi run tools/session_logs_archive.rish
+
+let today = run ["sh" "-c" "date +%Y%m%d"]
+say "archive: keeping day ${today.out} flat; folding earlier days beneath archive/."
+
+let moved = run ["sh" "-c" "cd session-logs && mkdir -p archive && count=0; for f in 20*.md; do [ -e \"$f\" ] || continue; day=${f%%-*}; [ \"$day\" = \"$(date +%Y%m%d)\" ] && continue; mkdir -p \"archive/$day\"; git mv \"$f\" \"archive/$day/$f\" 2>/dev/null || mv \"$f\" \"archive/$day/$f\"; sed -i \"s|](${f})|](archive/${day}/${f})|g\" README.md; count=$((count+1)); done; echo \"moved=$count\""]
+assert moved.ok else "archive fold must complete"
+say moved.out
+say "GREEN: session-logs archive fold complete — links in README.md updated in place."

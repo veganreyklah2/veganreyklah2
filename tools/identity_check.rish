@@ -1,0 +1,15 @@
+# identity_check.rish — the repository's public identity, checked in shape.
+#
+# Canonical fingerprints live in PUBKEYS.md at the root of the keeper's
+# checkout; a fork writes its own from PUBKEYS.template.md. The verdict script
+# handles both worlds: template-only checkouts pass kindly, and when PUBKEYS.md
+# is present it must carry exactly two SSH and two OpenPGP lines, printed for
+# eyes-on comparison with `ssh-keygen -lf <pub>` and `gpg --fingerprint`.
+# Run from the repository root:
+#   rishi/bin/rishi run tools/identity_check.rish
+
+let verdict = run ["sh" "tools/fixtures/identity_shape.sh"]
+assert verdict.ok else "identity shape script must pass"
+say verdict.out
+assert verdict.out contains "IDENTITY-GREEN" else "identity must reach a green verdict"
+say "GREEN: identity — shape verdict above; the private halves never enter this tree."

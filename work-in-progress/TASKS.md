@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (SLC-2b landed — parity **145**)
+**Last updated:** 2026-07-03 (RW-1 mirrored pair — parity **147**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -42,9 +42,10 @@
    - [x] **Nod (Kaeden):** **`pond/apps/` extension** — counsel's recommended placement (`20260703.131812`); keyboard input grows from Ring 3's poll loop in [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye); Skate stays in `brushstroke/`.
    - [x] **Dexter graduation trigger (recorded):** the **Dexter** name applies to keyboard-from-window as an aspect inside the drawn terminal until a **second external consumer** arrives — a Pond app beyond the terminal, a TAME editor surface, or the sovereign framebuffer backend's input path; then `dexter/` earns its own module home per [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md).
    - [x] **(Cursor) DoD:** Wayland seat + xkbcommon in [`brushstroke/wayland_seed.rye`](../brushstroke/wayland_seed.rye); line editor in [`pond/apps/window_input.rye`](../pond/apps/window_input.rye); live loop + `keyboardtest` witness; [`tools/slc2b_keyboard.rish`](../tools/slc2b_keyboard.rish) in parity **145**
-5. [ ] **(Cursor) RW-1 mirrored pair** — the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); contract on paper at [`20260702-200109_rw1-mirrored-pair-contract.md`](20260702-200109_rw1-mirrored-pair-contract.md) (`20260702.200109`); lands while the seam is warm from SLC-2b. Two witnesses, two commits, parity **+2**:
-   - [ ] `tools/rw1_shell_collab.rish` — the asker's side: the shell against a stub history store; right questions at `:version`/`:history`/`:recall`; every allowed answer handled, one unwelcome answer survived
-   - [ ] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
+5. [x] **(Cursor) RW-1 mirrored pair** — the Rishi↔Mantra history seam, per the audit ([`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-audit-first-pass.md)); contract on paper at [`20260702-200109_rw1-mirrored-pair-contract.md`](20260702-200109_rw1-mirrored-pair-contract.md) (`20260702.200109`); lands while the seam is warm from SLC-2b. Two witnesses, two commits, parity **+2**:
+   - [x] `tools/rw1_shell_collab.rish` — the asker's side: the shell against a stub history store; right questions at `:version`/`:history`/`:recall`; every allowed answer handled, one unwelcome answer survived
+   - [x] `tools/rw1_history_contract.rish` — the answerer's side: the `.mantra` store honors exactly those questions; every prepared answer demonstrated, welcome and unwelcome mirrored line for line
+   - [x] **Landed `20260703.182612 UDT` — parity **147** (`20260703.182612`)
 
 ### Linengrow
 - [x] **SLC-L1 scope note** — the hammock spec, one page, these boxes its skeleton ([`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md), `20260702.195426`):
