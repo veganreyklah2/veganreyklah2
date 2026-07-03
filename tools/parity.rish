@@ -161,3 +161,8 @@ say "witness suite: amber first ring…"
 let amber1 = run ["rishi/bin/rishi" "run" "tools/amber_first_ring.rish"]
 assert amber1.ok else "amber first ring witness failed"
 say "GREEN: amber first ring witness passed."
+
+say "witness suite: SLC-2b keyboard from window…"
+let slc2b = run ["rishi/bin/rishi" "run" "tools/slc2b_keyboard.rish"]
+assert slc2b.ok else "SLC-2b keyboard witness failed"
+say "GREEN: SLC-2b keyboard-from-window witness passed."

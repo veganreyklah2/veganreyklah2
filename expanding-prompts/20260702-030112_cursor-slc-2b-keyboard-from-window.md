@@ -5,7 +5,7 @@
 **Stamp:** `20260702.030112`
 **Voice:** Rio 3
 **For:** Cursor Composer — mechanical bench after strategy nod
-**Status:** **Nod received** — `pond/apps/` extension (`20260703.131812`); Dexter graduation trigger in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md). Cursor bench ungated; not built until DoD greens land.
+**Status:** **Landed** — `pond/apps/` extension (`20260703.131812` nod); parity **145** (`20260703.132112`).
 
 ---
 
@@ -18,10 +18,10 @@
 
 ## Definition of Done (draft)
 
-- [ ] One typed line in the window runs through Rishi and redraws the frame
-- [ ] `:quit` from the window exits clean
-- [ ] Headless or semi-headless witness where the compositor seam allows; else metal script like Ring 3
-- [ ] Parity witness wired; TAME held; Skate stays in `brushstroke/`
+- [x] One typed line in the window runs through Rishi and redraws the frame
+- [x] `:quit` from the window exits clean
+- [x] Headless or semi-headless witness where the compositor seam allows; else metal script like Ring 3
+- [x] Parity witness wired; TAME held; Skate stays in `brushstroke/`
 
 ## Before You Move On
 

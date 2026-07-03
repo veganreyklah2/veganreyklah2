@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.132845 | [SLC-2b — Dexter keyboard from the window](20260703-132845_slc-2b-keyboard-from-window.md) | Wayland keyboard + line editor; parity **145** GREEN |
 | 20260703.131927 | [SLC-2b nod — pond/apps](20260703-131927_slc2b-nod-pond-apps.md) | Kaeden nodded counsel; Dexter graduation trigger recorded. |
 | 20260703.072428 | [Intake anchor 071212 — Amber season](20260703-072428_intake-071212-amber-season.md) | Season vocabulary seated; placement counsel recorded. |
 | 20260703.071212 | [Amber season writing](20260703-071212_amber-season-writing.md) | Claude defines season as Amber's unit of custody. |

@@ -7,7 +7,7 @@ let root = "."
 let zig = "vendor/zig-toolchain/zig"
 let bin = "brushstroke/bin/brushstroke-wayland-seed"
 
-let build = run ["sh" "-c" "mkdir -p brushstroke/bin && env RYE_ZIG=${zig} rye/bin/rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c -Ibrushstroke -lc -lwayland-client -lrt -femit-bin=${bin}"]
+let build = run ["sh" "-c" "mkdir -p brushstroke/bin && env RYE_ZIG=${zig} rye/bin/rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt -femit-bin=${bin}"]
 
 assert build.ok else "wayland_seed build failed for Ring 1 witness"
 

@@ -18,7 +18,7 @@ echo "build:     (first compile often 1–3 min; ai-jail may be slower — heart
 
 (
   env RYE_ZIG="${ZIG}" rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
-    -Ibrushstroke -lc -lwayland-client -lrt -femit-bin="${BIN}"
+    -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt -femit-bin="${BIN}"
 ) &
 BPID=$!
 SECS=0

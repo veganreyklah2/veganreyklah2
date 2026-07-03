@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
-**Last updated:** 2026-07-03 (Amber first ring **144**; Doors 1–3 closed)
+**Last updated:** 2026-07-03 (SLC-2b Dexter keyboard — parity **145**; Doors 1–3 closed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -48,11 +48,11 @@ Correctness by construction in the kernel becomes trust by construction in the p
 | **Brushstroke** | Hosted seed + Wayland seed (Skate grid on xdg toplevel) | Frame from values; seed + grid raster in parity |
 | **Skate** | Text grid: 8×8 monospace → ARGB8888 buffer | Headless selftest GREEN; feeds Wayland seed |
 | **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (suite at **144**) |
-| **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer) | **First ring** — witness at parity **140**; metalsmoke on Wayland |
+| **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer + Dexter keyboard) | **SLC-2b** — keyboard witness at parity **145**; Ring 3 at **140** |
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (**144 witnesses** — regression suite + SLC-1 + SLC-2a + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
+**Gate trio:** `parity.rish` (**145 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
 
 ---
 
@@ -63,7 +63,7 @@ Grow running seeds into things a person can use *as-is*. See [`gratitude/Your cu
 | Ring | What | Status |
 |------|------|--------|
 | **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Done** (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; scope [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md). TAME hardening **complete** (`2026-06-29`). |
-| **SLC 2** | **Pond GUI / Skate viewer (SLC-2a)** — Rings 1–3 witness **landed**; **metalsmoke GREEN** (thin ring); **interactive metal close** — five steps in [`pond/README.md`](../pond/README.md); **SLC-2b placed** | Scope [`20260630-030312`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md); parity **140** |
+| **SLC 2** | **Pond GUI / Skate viewer** — SLC-2a Rings 1–3 **landed**; **SLC-2b keyboard** **landed** (`20260703.132112`) | Scope [`20260630-030312`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md); parity **145** |
 | **Compose** | Comlink device wire → ~~capability table~~ **landed** → Comlink v1 → Brix v1 → Tablecloth → Forge | Horizon 2; capability table `2026-06-30` |
 
 **Authored width migration** — **complete and blocking in parity** (TH-3 through TH-7; hosted `width-check`). Remaining authored surfaces migrate as-you-touch beside SLC-2; not a pending milestone.
@@ -124,7 +124,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 | Door 1 — Pond clause · Door 2 — Ring 3 metal close · Door 3 — Edit 5 ruling | **Kaeden** | ✅ closed |
 | Edit 5 wired | Cursor | **143** ✅ |
 | **Amber first ring** — five rungs (a)–(e) | Cursor | **144** ✅ |
-| SLC-2b — keyboard from the window, Dexter's genesis | Kaeden nod → Cursor | **+1** |
+| SLC-2b — keyboard from the window, Dexter's genesis | Cursor | **145** ✅ |
 | RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **+2** |
 
 Still on this horizon, after the ladder: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.

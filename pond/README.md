@@ -43,15 +43,16 @@ Or manually:
 mkdir -p pond/bin
 export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
 rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
-  -Ibrushstroke -lc -lwayland-client -lrt \
+  -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
   -femit-bin=pond/bin/drawn-terminal
 ```
 
 | Mode | Command | Purpose |
 |------|---------|---------|
-| **Witness** | `pond/bin/drawn-terminal sessiontest` | Headless Ring 3 witness (golden lines, signatures, ceiling row) — in parity **140** |
+| **Witness (Ring 3)** | `pond/bin/drawn-terminal sessiontest` | Headless session mirror (golden lines, signatures, ceiling row) |
+| **Witness (SLC-2b)** | `pond/bin/drawn-terminal keyboardtest` | Headless Dexter line editor → Rishi → redraw — parity **145** |
 | **Metalsmoke** | `pond/bin/drawn-terminal metalsmoke` | Thin-ring Wayland slice — [`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish); see [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) |
-| **Live** | `pond/bin/drawn-terminal` | Interactive mirror on GNOME Wayland + stdin (keyboard-from-window: SLC-2b) |
+| **Live** | `pond/bin/drawn-terminal` | Keyboard focus in the window; stdin still works for dev |
 
 **Metal close (Kaeden):** run the automated preflight, then the thin ring, then live mode on GNOME Wayland:
 

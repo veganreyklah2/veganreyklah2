@@ -17,7 +17,7 @@
 
 The hosted seed presents one frame and exits, and the whole path is already in the code. A value of text lines becomes a `Frame`; the `Frame` folds into a Skate `Grid` through `toGrid`; the grid rasterizes to an ARGB8888 buffer through `rasterize`; and `commitFrame` lands that buffer on a Wayland surface. Confirmed on GNOME Wayland: the window draws and exits clean with "skate grid drawn," the headless selftest counts 1125 lit pixels, and parity holds at **134** green.
 
-**Ring 1 landed** (`2026-06-30`): value as explicit `[]const Line` input; arbitrary-value witness GREEN. **Ring 2 landed** (`2026-06-30`): `setFrame` re-folds and re-presents; FNV content-signature witness GREEN (A→B→A); `redraw` metal mode confirmed. **Ring 3 witness landed** (`2026-07-02`): live session mirrored headlessly; parity **140**; `pond/apps/drawn_terminal.rye`; `metalsmoke` for automated Wayland slice — interactive idle/ceiling on GNOME still manual. **Ring 3 metal close** — preflight [`tools/fixtures/pond_metal_close_preflight.sh`](../tools/fixtures/pond_metal_close_preflight.sh), then five steps in [`pond/README.md`](../pond/README.md). **SLC-2b next** — Dexter; bench prompt [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md) placed, not built.
+**Ring 1 landed** (`2026-06-30`): value as explicit `[]const Line` input; arbitrary-value witness GREEN. **Ring 2 landed** (`2026-06-30`): `setFrame` re-folds and re-presents; FNV content-signature witness GREEN (A→B→A); `redraw` metal mode confirmed. **Ring 3 metal close** — preflight [`tools/fixtures/pond_metal_close_preflight.sh`](../tools/fixtures/pond_metal_close_preflight.sh), then five steps in [`pond/README.md`](../pond/README.md); Kaeden stamp `20260703.032412 UDT`. **SLC-2b landed** (`20260703.132112`) — Wayland seat + xkbcommon keyboard in [`brushstroke/wayland_seed.rye`](../brushstroke/wayland_seed.rye); line editor in [`pond/apps/window_input.rye`](../pond/apps/window_input.rye); `keyboardtest` witness; parity **145**.
 
 The value-to-frame fold already lives in `Frame`, `Line`, and `toGrid`. So SLC-2a does not invent a new path. It grows the proven one in two places: the frame becomes *current* instead of *single*, and the value becomes the *live Rishi session*.
 
@@ -53,9 +53,9 @@ Each ring carries a headless raster assertion — the CI-able proof that a known
 - parity is green with the new headless witnesses, and the window is confirmed on metal;
 - Skate still rests in `brushstroke/` — no second consumer has yet earned a move to `skate/`.
 
-## What Waits — SLC-2b, Named and Not Built
+## What Waits — After SLC-2b
 
-Keyboard input through Wayland is the next ring after this one: the seat, the keyboard, key events, and focus, carrying typed lines into the loop so the shell lives wholly in the window and the terminal is no longer needed. The hard input path waits until the read-only viewer is whole and loved. Growing the loop from the working viewer is the law; raising input before the viewer runs is not the law.
+Keyboard input through Wayland **landed** as SLC-2b (`20260703.132112`): the seat, xkbcommon keymap, and line editor feed `runOneInput`; `:quit` from the window exits clean. The next warm seam is **RW-1** — the Rishi↔Mantra history mirror.
 
 ## The Discipline That Holds Here
 

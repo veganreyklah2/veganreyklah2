@@ -9,7 +9,7 @@
 //!   mkdir -p brushstroke/bin
 //!   export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
 //!   rye/bin/rye build brushstroke/wayland_seed.rye brushstroke/xdg-shell-protocol.c \
-//!     -Ibrushstroke -lc -lwayland-client -lrt \
+//!     -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
 //!     -femit-bin=brushstroke/bin/brushstroke-wayland-seed
 //!   brushstroke/bin/brushstroke-wayland-seed          # Wayland window
 //!   brushstroke/bin/brushstroke-wayland-seed selftest # headless grid proof
@@ -26,7 +26,18 @@ const skate = @import("skate_grid.rye");
 const c = @cImport({
     @cInclude("wayland-client.h");
     @cInclude("xdg-shell-client-protocol.h");
+    @cInclude("xkbcommon/xkbcommon.h");
+    @cInclude("xkbcommon/xkbcommon-keysyms.h");
 });
+
+const max_key_actions: u32 = 64;
+
+pub const KeyAction = union(enum) {
+    none,
+    char_: u8,
+    backspace,
+    submit,
+};
 
 const wayland_seed_version = "20260622.235812";
 
@@ -162,14 +173,64 @@ const App = struct {
     compositor: ?*c.wl_compositor = null,
     shm: ?*c.wl_shm = null,
     wm_base: ?*c.xdg_wm_base = null,
+    seat: ?*c.wl_seat = null,
+    keyboard: ?*c.wl_keyboard = null,
+    xkb_ctx: ?*c.struct_xkb_context = null,
+    xkb_keymap: ?*c.struct_xkb_keymap = null,
+    xkb_state: ?*c.struct_xkb_state = null,
     surface: ?*c.wl_surface = null,
     xdg_surface: ?*c.xdg_surface = null,
     xdg_toplevel: ?*c.xdg_toplevel = null,
     configured: bool = false,
     frame_done: bool = false,
+    keyboard_enabled: bool = false,
+    keyboard_focused: bool = false,
+    key_actions: [max_key_actions]KeyAction = undefined,
+    key_actions_head: u32 = 0,
+    key_actions_tail: u32 = 0,
     frame: Frame,
     grid: skate.Grid,
     garden: std.mem.Allocator,
+
+    fn enqueueKeyAction(self: *App, action: KeyAction) void {
+        const next_tail = (self.key_actions_tail + 1) % max_key_actions;
+        if (next_tail == self.key_actions_head) return;
+        self.key_actions[self.key_actions_tail] = action;
+        self.key_actions_tail = next_tail;
+    }
+
+    fn dequeueKeyAction(self: *App) KeyAction {
+        if (self.key_actions_head == self.key_actions_tail) return .none;
+        const action = self.key_actions[self.key_actions_head];
+        self.key_actions_head = (self.key_actions_head + 1) % max_key_actions;
+        return action;
+    }
+
+    fn clearKeymap(self: *App) void {
+        if (self.xkb_state) |state| c.xkb_state_unref(state);
+        if (self.xkb_keymap) |keymap| c.xkb_keymap_unref(keymap);
+        self.xkb_state = null;
+        self.xkb_keymap = null;
+    }
+
+    fn handleKeyPress(self: *App, keycode: u32) void {
+        const xkb_state = self.xkb_state orelse return;
+        const kc: c.xkb_keycode_t = @intCast(keycode + 8);
+        const sym = c.xkb_state_key_get_one_sym(xkb_state, kc);
+        if (sym == c.XKB_KEY_Return or sym == c.XKB_KEY_KP_Enter) {
+            self.enqueueKeyAction(.submit);
+            return;
+        }
+        if (sym == c.XKB_KEY_BackSpace) {
+            self.enqueueKeyAction(.backspace);
+            return;
+        }
+        var utf8: [8]u8 = undefined;
+        const n = c.xkb_state_key_get_utf8(xkb_state, kc, &utf8, utf8.len);
+        if (n == 1) {
+            self.enqueueKeyAction(.{ .char_ = utf8[0] });
+        }
+    }
 
     fn registryGlobal(
         data: ?*anyopaque,
@@ -186,6 +247,8 @@ const App = struct {
             app.shm = @ptrCast(c.wl_registry_bind(registry, id, &c.wl_shm_interface, @min(version, 1)));
         } else if (std.mem.eql(u8, iface, std.mem.span(c.xdg_wm_base_interface.name))) {
             app.wm_base = @ptrCast(c.wl_registry_bind(registry, id, &c.xdg_wm_base_interface, @min(version, 2)));
+        } else if (std.mem.eql(u8, iface, "wl_seat")) {
+            app.seat = @ptrCast(c.wl_registry_bind(registry, id, &c.wl_seat_interface, @min(version, 7)));
         }
     }
 
@@ -248,6 +311,163 @@ const App = struct {
         c.wl_callback_destroy(callback);
     }
 
+    fn seatCapabilities(
+        data: ?*anyopaque,
+        wl_seat: ?*c.wl_seat,
+        capabilities: u32,
+    ) callconv(.c) void {
+        const app: *App = @ptrCast(@alignCast(data));
+        if (!app.keyboard_enabled) return;
+        const has_keyboard = (capabilities & c.WL_SEAT_CAPABILITY_KEYBOARD) != 0;
+        if (has_keyboard and app.keyboard == null) {
+            app.keyboard = c.wl_seat_get_keyboard(wl_seat);
+            if (app.keyboard != null) {
+                const keyboard_listener = c.wl_keyboard_listener{
+                    .keymap = keyboardKeymap,
+                    .enter = keyboardEnter,
+                    .leave = keyboardLeave,
+                    .key = keyboardKey,
+                    .modifiers = keyboardModifiers,
+                    .repeat_info = keyboardRepeatInfo,
+                };
+                _ = c.wl_keyboard_add_listener(app.keyboard, &keyboard_listener, app);
+            }
+        } else if (!has_keyboard and app.keyboard != null) {
+            c.wl_keyboard_destroy(app.keyboard);
+            app.keyboard = null;
+            app.clearKeymap();
+        }
+    }
+
+    fn seatName(
+        data: ?*anyopaque,
+        wl_seat: ?*c.wl_seat,
+        name: [*c]const u8,
+    ) callconv(.c) void {
+        _ = data;
+        _ = wl_seat;
+        _ = name;
+    }
+
+    fn keyboardKeymap(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        format: u32,
+        fd: i32,
+        size: u32,
+    ) callconv(.c) void {
+        _ = wl_keyboard;
+        const app: *App = @ptrCast(@alignCast(data));
+        if (format != c.WL_KEYBOARD_KEYMAP_FORMAT_XKB_V1) {
+            _ = std.c.close(fd);
+            return;
+        }
+        defer _ = std.c.close(fd);
+        const mapped = posix.mmap(
+            null,
+            size,
+            .{ .READ = true },
+            .{ .TYPE = .PRIVATE },
+            fd,
+            0,
+        ) catch return;
+        defer posix.munmap(mapped);
+
+        app.clearKeymap();
+        if (app.xkb_ctx == null) {
+            app.xkb_ctx = c.xkb_context_new(c.XKB_CONTEXT_NO_FLAGS);
+        }
+        const ctx = app.xkb_ctx orelse return;
+        app.xkb_keymap = c.xkb_keymap_new_from_string(
+            ctx,
+            @ptrCast(mapped.ptr),
+            c.XKB_KEYMAP_FORMAT_TEXT_V1,
+            c.XKB_KEYMAP_COMPILE_NO_FLAGS,
+        );
+        if (app.xkb_keymap == null) return;
+        app.xkb_state = c.xkb_state_new(app.xkb_keymap);
+    }
+
+    fn keyboardEnter(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        serial: u32,
+        surface: ?*c.wl_surface,
+        keys: ?*c.wl_array,
+    ) callconv(.c) void {
+        _ = wl_keyboard;
+        _ = serial;
+        _ = keys;
+        const app: *App = @ptrCast(@alignCast(data));
+        app.keyboard_focused = surface == app.surface;
+    }
+
+    fn keyboardLeave(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        serial: u32,
+        surface: ?*c.wl_surface,
+    ) callconv(.c) void {
+        _ = wl_keyboard;
+        _ = serial;
+        _ = surface;
+        const app: *App = @ptrCast(@alignCast(data));
+        app.keyboard_focused = false;
+    }
+
+    fn keyboardKey(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        serial: u32,
+        time: u32,
+        key: u32,
+        state: u32,
+    ) callconv(.c) void {
+        _ = wl_keyboard;
+        _ = serial;
+        _ = time;
+        const app: *App = @ptrCast(@alignCast(data));
+        if (!app.keyboard_focused) return;
+        if (state != c.WL_KEYBOARD_KEY_STATE_PRESSED) return;
+        app.handleKeyPress(key);
+    }
+
+    fn keyboardModifiers(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        serial: u32,
+        mods_depressed: u32,
+        mods_latched: u32,
+        mods_locked: u32,
+        group: u32,
+    ) callconv(.c) void {
+        _ = wl_keyboard;
+        _ = serial;
+        const app: *App = @ptrCast(@alignCast(data));
+        const xkb_state = app.xkb_state orelse return;
+        _ = c.xkb_state_update_mask(
+            xkb_state,
+            mods_depressed,
+            mods_latched,
+            mods_locked,
+            0,
+            0,
+            group,
+        );
+    }
+
+    fn keyboardRepeatInfo(
+        data: ?*anyopaque,
+        wl_keyboard: ?*c.wl_keyboard,
+        rate: i32,
+        delay: i32,
+    ) callconv(.c) void {
+        _ = data;
+        _ = wl_keyboard;
+        _ = rate;
+        _ = delay;
+    }
+
     fn bindGlobals(self: *App) !void {
         const registry = c.wl_display_get_registry(self.display.handle);
         if (registry == null) return error.NoRegistry;
@@ -261,6 +481,15 @@ const App = struct {
         std.debug.assert(self.compositor != null);
         std.debug.assert(self.shm != null);
         std.debug.assert(self.wm_base != null);
+
+        if (self.keyboard_enabled and self.seat != null) {
+            const seat_listener = c.wl_seat_listener{
+                .capabilities = seatCapabilities,
+                .name = seatName,
+            };
+            _ = c.wl_seat_add_listener(self.seat, &seat_listener, self);
+            try self.display.roundtrip();
+        }
     }
 
     fn createSurface(self: *App) !void {
@@ -400,11 +629,46 @@ const App = struct {
     }
 
     pub fn disconnect(self: *App) void {
+        self.releaseKeyboard();
         self.display.disconnect();
     }
 
     pub fn displayFd(self: *const App) posix.fd_t {
         return c.wl_display_get_fd(self.display.handle);
+    }
+
+    pub fn enableKeyboard(self: *App) void {
+        self.keyboard_enabled = true;
+    }
+
+    pub fn keyboardReady(self: *const App) bool {
+        return self.xkb_state != null;
+    }
+
+    pub fn hasKeyAction(self: *const App) bool {
+        return self.key_actions_head != self.key_actions_tail;
+    }
+
+    pub fn popKeyAction(self: *App) KeyAction {
+        return self.dequeueKeyAction();
+    }
+
+    pub fn setWindowTitle(self: *App, title: [*:0]const u8) void {
+        if (self.xdg_toplevel) |toplevel| {
+            _ = c.xdg_toplevel_set_title(toplevel, title);
+        }
+    }
+
+    pub fn releaseKeyboard(self: *App) void {
+        self.clearKeymap();
+        if (self.xkb_ctx) |ctx| {
+            c.xkb_context_unref(ctx);
+            self.xkb_ctx = null;
+        }
+        if (self.keyboard) |keyboard| {
+            c.wl_keyboard_destroy(keyboard);
+            self.keyboard = null;
+        }
     }
 
     fn run(self: *App) !void {

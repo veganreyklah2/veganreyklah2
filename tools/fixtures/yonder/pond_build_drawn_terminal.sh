@@ -6,5 +6,5 @@ cd "$root"
 mkdir -p pond/bin
 export RYE_ZIG="${RYE_ZIG:-$root/vendor/zig-toolchain/zig}"
 exec rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
-  -Ibrushstroke -lc -lwayland-client -lrt \
+  -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
   -femit-bin=pond/bin/drawn-terminal
