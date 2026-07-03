@@ -52,6 +52,15 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 Prior tip: `ecb6a0b`
 
+## Bench pins (`20260703.205312`)
+
+| Bench | Tip / zip | Parity | Status |
+|-------|-----------|--------|--------|
+| **Cursor** | `bad68b4` | **148 GREEN** | Chrono wired; RW-1 stub executable |
+| **Claude** | zip 39 @ `178d2fa` | **parked** | RW-1 red twice — extraction stripped `+x`; repair on word |
+
+Zip 39 five commits early — cut next full-tree zip at `bad68b4`. Recipe v5: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
+
 ## Ratified `20260703.203712` — crossing names (Kaeden · *for*)
 
 | Name | Seat |
