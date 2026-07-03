@@ -10,6 +10,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.020909 | [Handoff v3 — ROUND ZERO intake](20260703-020909_handoff-round-zero-intake.md) | Eight-commit bundle landed from handoff zip; v3 seated in canon. |
+| 20260703.020012 | [Handoff — recursion prompt v3](20260703-020012_handoff-v3.md) | Fable final bundle and v3 seating record. |
 | 20260703.015512 | [Bandwidth and moderation — the friend's question](20260703-015512_friends-question-bandwidth-moderation.md) | Egress budget and moderation-fact design infused; purchase guide accreted. |
 | 20260703.014912 | [Decoder sitting — questions read whole](20260703-014912_decoder-sitting.md) | Living decoder and round summary preserved for Kaeden expansion. |
 | 20260703.013412 | [Six asks — guides, audits, yonder eleven](20260703-013412_six-asks-guides-audits-yonder.md) | Metalsmoke, yonder pass, craft guide, audits, purchase guide sitting. |
