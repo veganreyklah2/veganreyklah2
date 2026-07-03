@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (anchor `043912` intake — issuer's ledger + circulation survey)
+**Last updated:** 2026-07-03 (Amber first ring **144**; Doors 1–3 closed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -32,13 +32,12 @@
 2. [x] **(Cursor) Wire Edit 5 → parity 143.** One commit, message `Wire Edit 5 designed-not-built witness — parity 143` (`20260703.032812`):
    - [x] Append the standard quartet at the tail of [`tools/parity.rish`](../tools/parity.rish), after the width-check block: `say` banner → `run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"]` → `assert .ok else` → `say "GREEN: …"`
    - [x] Full suite green on metal; ROADMAP gate-trio line and this ladder's parity numbers refreshed in the same commit.
-3. [ ] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Invocation and custody rulings below govern throughout. **Pre-counsel proposed `20260702.194512` — CONFIRMED by the outside reading `20260702.202612`, all five as written; after the doors, the sitting is a formality unless a door changes the ground. Cursor implements nothing before Doors 1–3 land:**
-   - **(1) Module home:** `amber/` at top level — Amber is a module by role (its own invariants, budget, and witness from birth), never an aspect of another host.
-   - **(2) First export target:** a fixed fixture tree `tools/fixtures/amber_ring1_tree/` — three files (one empty, one small text, one ~64 KiB binary) plus one subdirectory — deterministic, so the golden never moves.
-   - **(3) Independent digest tool:** `openssl dgst -sha3-256` as the host-seam oracle; the golden manifest digest pinned by hand into the witness.
-   - **(4) Witness contract (`tools/amber_first_ring.rish`):** welcome — export emits stones + manifest, manifest digest equals the pinned golden, restore then `diff -r` clean; unwelcome — one stone byte-tampered, verify **must fail** (`(v.ok == false)` asserted).
-   - **(5) Parity arithmetic:** Amber lands at **144** if Door 3 = *for* (Edit 5 at 143), at **143** otherwise.
-   - Sitting output: (a)–(e) as five Cursor rungs, each one commit with its own green.
+3. [x] **(Claude + Kaeden) Amber first ring — the season sitting** — brief: [`20260702-190000_amber-first-ring-claude-brief.md`](20260702-190000_amber-first-ring-claude-brief.md); spec: [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). **Landed `20260703.051812` — five rungs, parity **144**:**
+   - [x] **(1) Module home:** `amber/` at top level
+   - [x] **(2) Fixture tree:** `tools/fixtures/amber_ring1_tree/`
+   - [x] **(3) Oracle:** `openssl dgst -sha3-256`; golden `97e0d0cd…d96f` in [`tools/fixtures/amber_ring1_golden.txt`](../tools/fixtures/amber_ring1_golden.txt)
+   - [x] **(4) Witness:** [`tools/amber_first_ring.rish`](../tools/amber_first_ring.rish) — welcome + tampered stone fails
+   - [x] **(5) Parity 144** wired in same season
 4. [ ] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt: [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md).
    - [ ] **Nod (Kaeden):** placement — `pond/apps/` extension vs a `dexter/` seed beside Brushstroke (Claude optional only if this seam surprises)
    - [ ] **(Cursor) DoD, each its own green:** one typed line in the window runs through Rishi and redraws · `:quit` from the window exits clean · witness (headless where the seat seam allows, else a metal `.rish` like Ring 3) wired into parity **+1** · TAME held, Skate stays in `brushstroke/`

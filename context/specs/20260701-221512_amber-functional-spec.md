@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
-**Status:** Draft — designed, not yet built; revised the same evening to seal the outside reading's four findings (verification as its own record, recovery custody named, the signing seam said honestly, the scrub run cold); the spine (SLC-2a) stays the live rung
+**Status:** First ring green (`20260703.051812`) — fixture export, verify (openssl golden), restore; witness at parity **144**; Kumara signing and live drive seal wait for later rings
 **Companions:** the deep-archive blueprint (`20260701-213412_deep-archive-and-sovereign-host-blueprint.md`), archive verdict in [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (content-addressed stones, `.bron` manifest), `PUBKEYS.md`, and the stack record
 
 *Written together by Kaeden and Reya 2.*

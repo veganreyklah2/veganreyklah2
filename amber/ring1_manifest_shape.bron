@@ -1,0 +1,8 @@
+# amber ring-1 export manifest — shape on paper (first ring)
+# Kumara signature seam named; live signing waits for a later ring.
+format amber-ring1-v1
+stamp YYYYMMDD.HHMMSS
+source amber_ring1_tree
+entry <relpath> <sha3-256-hex-64>
+# stones live beside this file under stones/<digest> — one file per unique content
+# manifest digest: openssl dgst -sha3-256 manifest.bron (pinned golden in witness)

@@ -14,7 +14,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 ## Hard bounds (Cursor loop)
 
 - **Never** touch boxes tagged **(Kaeden …)** — three doors, ratifications, nods, pastes
-- **`amber/`** untouched until Doors 1–3 land ✅ — Amber rungs (a)–(e) next, one commit each → **144**
+- **`amber/`** first ring landed ✅ — parity **144**; further rings gated on spec
 - **No new module/aspect names** — park candidates in RTAC
 - **Stop-and-park** on: Kaeden-tagged path · parity red twice · module-home/seam decision · keys/custody/amber/MALA · new names
 - **Empty plate** — if the ungated diet runs empty, stop and summarize rather than invent new work; an empty plate is a question for Kaeden, never a license to forage
@@ -41,8 +41,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **143** ✅ |
-| Amber (five rungs) | **144** |
+| Now | **144** ✅ |
 | SLC-2b | **+1** |
 | RW-1 pair | **+2** |
 
@@ -50,7 +49,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — post–Door 3 HOLD (`20260703.041850`):** plate empty until Kaeden opens the next door. **Queued:** *Open Amber* → five rungs **144** · SLC-2b nod · optional ratifications · Claude strategy sitting ([`20260703-041850_claude-strategy-roadmap-counsel.md`](20260703-041850_claude-strategy-roadmap-counsel.md)). **After Amber season:** chrono sweep wire, toolset ring one, `rye test`. **Aurora manual:** as-you-touch.
+**Menu status — post–Amber ring 1 (`20260703.051812`):** Amber first ring **144** green. **Queued:** SLC-2b nod · Claude counsel · ratifications · not-advice canon · demand-map. **After SLC-2b:** RW-1 pair. **After ladder:** chrono sweep wire, toolset ring one, `rye test`.
 
 ## Claude — strategy and roadmap counsel (`20260703.041850`)
 
@@ -153,9 +152,9 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 
 ## Best path
 
-**Doors 1–3 closed → Amber rungs (a)–(e) → SLC-2b nod → RW-1**
+**Doors 1–3 closed → Amber ring 1 green → SLC-2b nod → RW-1**
 
-Parity **143** GREEN · chrono **143** GREEN · Edit 5 witness wired · Amber season next
+Parity **144** GREEN · chrono **147+** · Amber first ring wired · SLC-2b nod next
 
 ---
 

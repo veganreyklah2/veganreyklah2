@@ -10,6 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.055511 | [Amber first ring — parity 144](20260703-055511_amber-first-ring-144.md) | Kaeden opened Amber; fixture export/verify/restore wired. |
+| 20260703.051512 | [Relay ack — five words on HOLD](20260703-051512_relay-ack-five-words-hold.md) | Claude cross-check confirmed; plate holds. |
+| 20260703.043912 | [Cursor close acknowledged](20260703-043912_cursor-close-acknowledged.md) | Two benches, one arithmetic; fc18707 reported pending next zip. |
 | 20260703.044012 | [Cursor intake verify — anchor 043912](20260703-044012_cursor-intake-043912.md) | Proposal landed; parity 143 and chrono 147 green on metal. |
 | 20260703.043912 | [Issuer's ledger and circulation survey](20260703-043912_issuers-ledger-circulation-survey.md) | Claude silo + July 2026 survey; sibling bench re-verified. |
 | 20260703.041850 | [Commits and Claude counsel brief](20260703-041850_commits-counsel-brief.md) | First-ring essay pushed; strategy questions staged for Claude. |

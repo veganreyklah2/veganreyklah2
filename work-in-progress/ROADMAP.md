@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
-**Last updated:** 2026-07-03 (Door 3 Edit 5 wired; parity **143**; Doors 1–3 closed)
+**Last updated:** 2026-07-03 (Amber first ring **144**; Doors 1–3 closed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -47,12 +47,12 @@ Correctness by construction in the kernel becomes trust by construction in the p
 | **Rishi** | Shell: typed values, file I/O, string builtins; **`repl`** — type, run, version, recall (SLC-1 **done**) | Gate trio + four SLC-1 witnesses incl. `slc1_accept.rish` |
 | **Brushstroke** | Hosted seed + Wayland seed (Skate grid on xdg toplevel) | Frame from values; seed + grid raster in parity |
 | **Skate** | Text grid: 8×8 monospace → ARGB8888 buffer | Headless selftest GREEN; feeds Wayland seed |
-| **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (suite at **143**) |
+| **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (suite at **144**) |
 | **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer) | **First ring** — witness at parity **140**; metalsmoke on Wayland |
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (**143 witnesses** — regression suite + SLC-1 + SLC-2a + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 designed-not-built), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
+**Gate trio:** `parity.rish` (**144 witnesses** — regression suite + SLC-1 + SLC-2a + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
 
 ---
 
@@ -123,7 +123,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 |------|-------|--------|
 | Door 1 — Pond clause · Door 2 — Ring 3 metal close · Door 3 — Edit 5 ruling | **Kaeden** | ✅ closed |
 | Edit 5 wired | Cursor | **143** ✅ |
-| **Amber first ring** — the season sitting, then five rungs (a)–(e) | Claude + Kaeden → Cursor | **144** |
+| **Amber first ring** — five rungs (a)–(e) | Cursor | **144** ✅ |
 | SLC-2b — keyboard from the window, Dexter's genesis | Kaeden nod → Cursor | **+1** |
 | RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **+2** |
 
