@@ -4,12 +4,10 @@
 //! Skate surface. SLC-2b carries keyboard input through Wayland so one typed
 //! line in the window runs through Rishi and redraws the frame.
 //!
-//! Build (from repo root):
-//!   mkdir -p pond/bin
-//!   export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
-//!   rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
-//!     -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
-//!     -femit-bin=pond/bin/drawn-terminal
+//! Build (from repo root — prefer rishi):
+//!   rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
+//!
+//! Manual rye escape hatch: see pond/README.md
 //!
 //!   pond/bin/drawn-terminal              # live mirror (Wayland keyboard + stdin)
 //!   pond/bin/drawn-terminal sessiontest  # headless Ring 3 witness

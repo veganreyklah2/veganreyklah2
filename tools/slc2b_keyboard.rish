@@ -3,12 +3,13 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/slc2b_keyboard.rish
 
-let zig = "vendor/zig-toolchain/zig"
 let bin = "pond/bin/drawn-terminal"
 
-let build = run ["sh" "-c" "mkdir -p pond/bin && env RYE_ZIG=${zig} rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt -femit-bin=${bin}"]
-
+say "build: witness — drawn-terminal compile before SLC-2b keyboard test"
+let build = run ["sh" "tools/fixtures/pond_build_drawn_terminal.sh"]
 assert build.ok else "drawn_terminal build failed for SLC-2b witness"
+assert build.out contains "GREEN:" else "drawn_terminal build did not reach GREEN"
+say build.out
 
 let keyboard = run ["sh" "-c" "${bin} keyboardtest 2>&1"]
 assert keyboard.ok else "drawn terminal keyboardtest exited non-zero"

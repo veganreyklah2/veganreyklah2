@@ -39,11 +39,11 @@ pub const KeyAction = union(enum) {
     submit,
 };
 
-const wayland_seed_version = "20260703.133512";
+const wayland_seed_version = "20260703.135212";
 
 const pixel_scale: u32 = 2;
-const window_width: i32 = 960;
-const window_height: i32 = 512;
+const window_width: i32 = 1280;
+const window_height: i32 = 768;
 const max_lines: u32 = 8;
 const grid_cols: u32 = @intCast(@divExact(window_width, @as(i32, @intCast(skate.cell_w * pixel_scale))));
 const grid_rows: u32 = @intCast(@divExact(window_height, @as(i32, @intCast(skate.cell_h * pixel_scale))));

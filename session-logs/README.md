@@ -10,6 +10,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.135512 | [Skate / Brushstroke / font zoom counsel](20260703-135512_skate-brushstroke-font-zoom-counsel.md) | Layer answer from stack record; Ctrl± unlanded |
+| 20260703.135212 | [Drawn-terminal window size](20260703-135212_drawn-terminal-window-size.md) | Live works; buffer 1280×768 |
+| 20260703.135012 | [What to run next](20260703-135012_what-to-run-next.md) | Menu at parity 145 |
+| 20260703.134912 | [Rishi-first Pond commands](20260703-134912_rishi-first-pond-commands.md) | Build and witnesses lead with `rishi run` |
+| 20260703.134512 | [TAME-guided build prints](20260703-134512_tame-build-prints.md) | prepare → compile → prove staging for drawn-terminal build |
 | 20260703.133912 | [Drawn terminal live UX fix](20260703-133912_drawn-terminal-live-ux-fix.md) | Wayland read loop, 2× glyphs, freeze fix |
 | 20260703.133312 | [Parity 145 — metal confirmation](20260703-133312_parity-145-metal-confirm.md) | Kaeden ran full parity; SLC-2b GREEN on host |
 | 20260703.132845 | [SLC-2b — Dexter keyboard from the window](20260703-132845_slc-2b-keyboard-from-window.md) | Wayland keyboard + line editor; parity **145** GREEN |

@@ -1,7 +1,7 @@
 # Pond — The Enclosure and Its Applications
 
 **Language:** EN
-**Last updated:** 2026-07-02 (fixture twins `.rish`; audit round `20260702.180812`)
+**Last updated:** 2026-07-03 (rishi-first build and witness commands)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -31,30 +31,24 @@ These symlinks are required for `drawn_terminal.rye` to import `rishi/main.rye` 
 
 ## Build and run — drawn terminal
 
+**Prefer `rishi run` for every hosted step** — build, witnesses, preflight, and parity slices. Rishi carries staged TAME output and asserts GREEN before the step completes. Run binaries directly only for **live** interactive mode on GNOME Wayland.
+
 From the repository root:
 
 ```bash
+# Build (prepare → compile → prove)
 rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
 ```
 
-Or manually:
-
-```bash
-mkdir -p pond/bin
-export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
-rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
-  -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
-  -femit-bin=pond/bin/drawn-terminal
-```
-
-| Mode | Command | Purpose |
+| Step | Command | Purpose |
 |------|---------|---------|
-| **Witness (Ring 3)** | `pond/bin/drawn-terminal sessiontest` | Headless session mirror (golden lines, signatures, ceiling row) |
-| **Witness (SLC-2b)** | `pond/bin/drawn-terminal keyboardtest` | Headless Dexter line editor → Rishi → redraw — parity **145** |
-| **Metalsmoke** | `pond/bin/drawn-terminal metalsmoke` | Thin-ring Wayland slice — [`tools/slc2a_ring3_metal.rish`](../tools/slc2a_ring3_metal.rish); see [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) |
-| **Live** | `pond/bin/drawn-terminal` | Keyboard focus in the window; stdin still works for dev |
+| **Build** | `rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish` | Staged compile; asserts prepare/compile/prove/GREEN |
+| **Witness (Ring 3)** | `rishi/bin/rishi run tools/slc2a_ring3_session.rish` | Headless session mirror (build + `sessiontest`) |
+| **Witness (SLC-2b)** | `rishi/bin/rishi run tools/slc2b_keyboard.rish` | Dexter keyboard path (build + `keyboardtest`) — parity **145** |
+| **Metalsmoke** | `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` | Thin-ring Wayland slice (needs `WAYLAND_DISPLAY`) |
+| **Live** | `pond/bin/drawn-terminal` | Keyboard in the window; stdin still works for dev |
 
-**Metal close (Kaeden):** run the automated preflight, then the thin ring, then live mode on GNOME Wayland:
+**Metal close (Kaeden):** rishi preflight and metalsmoke, then live on GNOME Wayland:
 
 ```bash
 rishi/bin/rishi run tools/fixtures/pond_metal_close_preflight.rish
@@ -64,13 +58,34 @@ pond/bin/drawn-terminal
 
 Confirm each interactive step:
 
-1. **Build** — preflight above (or `pond_build_drawn_terminal.rish` alone); binary at `pond/bin/drawn-terminal`
+1. **Build** — preflight or `pond_build_drawn_terminal.rish` via rishi above; binary at `pond/bin/drawn-terminal`
 2. **Type** — enter a few Rishi lines; frame updates in the window
 3. **Idle ~one minute** — leave the window focused; pong keeps the compositor honest
 4. **Ceiling** — fill past `max_transcript_bytes` (65536); status row still updates (invitation visible)
 5. **Exit** — `:quit` closes clean
 
-Witness and metalsmoke already **GREEN**; this pass is the interactive confirmation only. Retired `.sh` fixtures live in [`tools/fixtures/yonder/`](../tools/fixtures/yonder/).
+Witness and metalsmoke already **GREEN** through rishi; live mode is the hand confirmation only.
+
+<details>
+<summary>Manual compile (escape hatch — prefer rishi build witness)</summary>
+
+```bash
+mkdir -p pond/bin
+export RYE_ZIG="$PWD/vendor/zig-toolchain/zig"
+rye/bin/rye build pond/apps/drawn_terminal.rye brushstroke/xdg-shell-protocol.c \
+  -Ibrushstroke -lc -lwayland-client -lxkbcommon -lrt \
+  -femit-bin=pond/bin/drawn-terminal
+```
+
+To watch build lines stream during a long compile (rishi buffers until exit), run the hosted script directly:
+
+```bash
+sh tools/fixtures/pond_build_drawn_terminal.sh
+```
+
+</details>
+
+Retired `.sh` fixtures live in [`tools/fixtures/yonder/`](../tools/fixtures/yonder/).
 
 ---
 

@@ -1,13 +1,17 @@
 # tools/fixtures/pond_build_drawn_terminal.rish — build pond/bin/drawn-terminal from the repository root.
 #
-# Run from the repository root:
+# Run from the repository root (canonical entry):
 #   rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
 #
-# Staged progress lives in tools/fixtures/pond_build_drawn_terminal.sh (also runnable
-# directly for live lines on the terminal). Rishi captures subprocess output until
-# exit — run the .sh alone if you want to watch lines stream during a long compile.
+# Hosted shell script (streaming progress during long compile; rishi buffers until exit):
+#   sh tools/fixtures/pond_build_drawn_terminal.sh
 
-say "build: invoking hosted compile script..."
+say "build: witness — drawn-terminal compile (prepare → compile → prove)"
 let build = run ["sh" "tools/fixtures/pond_build_drawn_terminal.sh"]
 assert build.ok else "drawn_terminal build failed"
+assert build.out contains "build: prepare" else "build missing prepare phase"
+assert build.out contains "build: compile" else "build missing compile phase"
+assert build.out contains "build: prove" else "build missing prove phase"
+assert build.out contains "GREEN:" else "build did not reach GREEN"
 say build.out
+say "GREEN: pond_build_drawn_terminal witness passed."
