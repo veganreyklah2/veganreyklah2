@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (crossing suite `202312` seated; counsel `193012`; RW-1 **147**)
+**Last updated:** 2026-07-03 (chrono sweep wired — parity **148**; crossing suite seated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -117,7 +117,7 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 - [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
 - [x] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5, **landed 147**), then RW-2 (app↔Brushstroke twin) (`20260703.191312 UDT`, *for*).
-- [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** witnessed green in `tools/chrono_version_sweep.rish` (`20260702.205630`, unwired — may wire in next arithmetic) (`20260703.191312 UDT`, *for*).
+- [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** wired in parity **148** (`20260703.203212 UDT`, Cursor metal) (`20260703.191312 UDT`, *for*).
 - [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
 - [x] **Manual tutorial two — run record and failures** — [`manual/tutorials/run-record-and-failures.md`](../manual/tutorials/run-record-and-failures.md); RW-3 and RW-4 deep dive at parity **142** (`20260702.205630`).

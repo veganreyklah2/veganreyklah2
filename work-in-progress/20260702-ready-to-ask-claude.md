@@ -41,14 +41,14 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **147** ✅ |
-| Next ladder | chrono sweep wire · RW-2 · ratifications |
+| Now | **148** ✅ |
+| Next ladder | RW-2 season · crossing names (Kaeden) |
 
 ## Ungated diet (smallest-first)
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **147**. **Cursor diet:** chrono sweep wire · RW-2 season · TWO_ROOMS canon (optional) · not-advice line. **Counsel seated `20260703.193012`:** bench-as-block survey — extractions await Kaeden word. **Crossing suite seated `20260703.202312`:** five research · three silos · unverified seed — names await Kaeden word.
+**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **148**. **Cursor diet:** RW-2 season · crossing names (Tilak · Pottery · Amphora) · TWO_ROOMS canon (optional) · not-advice line.
 
 ## Landed `20260703.202312` — marked value + crossing suite (Claude Fable 5 · Cursor seated)
 

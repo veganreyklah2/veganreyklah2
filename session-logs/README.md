@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.203212 | [Chrono sweep wired — parity 148](20260703-203212_chrono-sweep-wired.md) | Versioning rule lands in gate trio; Cursor metal green |
 | 20260703.202412 | [Intake marked-value crossing suite](20260703-202412_intake-marked-value-crossing.md) | Claude `202312` suite seated; digests verified; seed unverified |
 | 20260703.202312 | [The marked value round](20260703-202312_the-marked-value-round.md) | Type-marks join crossing; Tilak leads; manifest pinned; seed proposed |
 | 20260703.200712 | [Pottery and suite reissue](20260703-200712_pottery-and-suite-reissue.md) | Pottery leads value-object table; five-research suite |

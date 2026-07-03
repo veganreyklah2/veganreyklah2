@@ -176,3 +176,8 @@ say "witness suite: SLC-2b keyboard from window…"
 let slc2b = run ["rishi/bin/rishi" "run" "tools/slc2b_keyboard.rish"]
 assert slc2b.ok else "SLC-2b keyboard witness failed"
 say "GREEN: SLC-2b keyboard-from-window witness passed."
+
+say "witness suite: chrono version sweep…"
+let chrono = run ["rishi/bin/rishi" "run" "tools/chrono_version_sweep.rish"]
+assert chrono.ok else "chrono version sweep witness failed"
+say "GREEN: chrono version sweep witness passed."
