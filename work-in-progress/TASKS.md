@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (RW-1 landed — parity **147**; five ratifications `191312`)
+**Last updated:** 2026-07-03 (crossing suite `202312` seated; counsel `193012`; RW-1 **147**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -75,6 +75,17 @@ Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`]
 - [ ] **WOV gate (Kaeden affirms)** — throughput lane over pinned TigerBeetle (pin, never fork, until a Rye-shaped change demands); one or two monarchs, never three (three is Mycelium's door at M4); **exit-honesty spec written before any ring** (root facts + balance proofs sufficient for holder exit); first ring after MALA M2 only.
 - [x] **Hardware fit (recorded)** — the sovereign-host blueprint covers MALA M0–M2 and WOV's first ring through the two-monarch season with headroom; two deltas named: a dedicated power-loss-protected M.2 NVMe for the WOV data file beside the settlement U.2, and ECC as the value-bearing-monarch threshold with the blueprint's apex tower as its pre-written answer; the x1 gentle-slot rule extends to every ledger tenant. Ground: [`external-research/20260702-215212_wov-mala-hardware-fit.md`](../external-research/20260702-215212_wov-mala-hardware-fit.md) (`20260702.215212`).
 - [x] **Build verdict (recorded)** — no new module: the build system grows as `rye`'s verbs (`rye test` runner is the first witness-gated horizon, a watcher later), declared by Brix, typed by Bron's mark triad, versioned where Mantra already stands; watcher name-candidates parked in RTAC for Kaeden (`20260702.211312`).
+- [ ] **Living build counsel (recorded, design-only)** — builder as projection over Weave/Mantra, never a second state holder; Brix declared graph + resins-law SHA3-256 content keys; three SLC rings (watch loop · Brix-keyed cache with no-work witness · Salsa-shaped sub-file queries on proven need); ring two waits for measured red. Ground: [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) (`20260703.193012`).
+- [ ] **Bench-as-block extractions (Kaeden word)** — three siloed active-designing cuts named in counsel: *the bench is a block* · *the build as a projection* · *the message seam*; each stripped of outside names on a fresh anchor.
+
+### Crossing suite — Pottery, Amphora, type-marks (`20260703.200712`–`202312`)
+
+Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md).
+
+- [ ] **Pottery seat (Kaeden)** — value-object candidate leads RTAC table (`.pott` recommended); greenware/kiln/glaze aspect family named (`20260703.200712`).
+- [ ] **Amphora seat (Kaeden)** — sealed vessel metaphor for crossing packets; companion silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) (`20260703.201612`).
+- [ ] **Type-mark word (Kaeden)** — **Tilak** leads (Titulus, Emblem, Motif beside); **absorb / express / tend** triad reaffirmed from naming harvest (`20260703.202312`).
+- [ ] **Crossing manifest seed (unverified)** — [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) proposed; witness first red-then-green; module home on Kaeden word; ring one parses `<mark> <sha3-256-hex> <name>`.
 - [x] **Bron mark triad (concept adopted)** — every notation type carries its conversions in, out, and its operations; arm names await Kaeden (*absorb / express / tend* is one spark) (`20260702.211312`).
 - [x] **Comlink address triple (concept adopted)** — named data resolves by *Kumara identity / lane / stamp*; design note when the naming ring opens (`20260702.211312`).
 

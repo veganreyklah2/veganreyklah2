@@ -10,6 +10,13 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.202412 | [Intake marked-value crossing suite](20260703-202412_intake-marked-value-crossing.md) | Claude `202312` suite seated; digests verified; seed unverified |
+| 20260703.202312 | [The marked value round](20260703-202312_the-marked-value-round.md) | Type-marks join crossing; Tilak leads; manifest pinned; seed proposed |
+| 20260703.200712 | [Pottery and suite reissue](20260703-200712_pottery-and-suite-reissue.md) | Pottery leads value-object table; five-research suite |
+| 20260703.201612 | [Amphora proposed](20260703-201612_amphora-proposed.md) | Amphora + sealed crossing silos; manifest anatomy |
+| 20260703.193112 | [Intake bench-as-block counsel](20260703-193112_intake-bench-as-block-counsel.md) | Claude `193012` survey seated; extractions await word |
+| 20260703.193012 | [Bench-as-block research](20260703-193012_bench-as-block-research.md) | Survey: bench as block, Ford lesson, three-ring build, message seam |
+| 20260703.191912 | [Commit and push — ratifications](20260703-191912_commit-push-ratifications.md) | `999359e` on origin — five rulings + resins law seated |
 | 20260703.191712 | [Handoff — arc closed cleanly](20260703-191712_handoff-arc-closed.md) | Verified dirty tree at 178d2fa; handoff paste ready; commit optional |
 | 20260703.191312 | [Five ratifications seated — resins](20260703-191312_five-ratifications-seated.md) | Kaeden *for* — archive, versioning, audit, Maitreya, demand map + proxy |
 | 20260703.191112 | [Resins and hash tiers — proposed law](20260703-191112_resins-and-hash-tiers.md) | Archive unit word + SHA3 two-tier policy |

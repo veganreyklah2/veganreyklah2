@@ -48,7 +48,34 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **147**. **Cursor diet:** chrono sweep wire · RW-2 season · TWO_ROOMS canon (optional) · not-advice line.
+**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **147**. **Cursor diet:** chrono sweep wire · RW-2 season · TWO_ROOMS canon (optional) · not-advice line. **Counsel seated `20260703.193012`:** bench-as-block survey — extractions await Kaeden word. **Crossing suite seated `20260703.202312`:** five research · three silos · unverified seed — names await Kaeden word.
+
+## Landed `20260703.202312` — marked value + crossing suite (Claude Fable 5 · Cursor seated)
+
+| Item | Path |
+|------|------|
+| Type-marks silo | [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) |
+| Sealed crossing | [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) |
+| What needs ordering | [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) |
+| Amphora (research) | [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) |
+| Pottery suite (4 research) | `200712` mysticeti · move-for-rye · compute-commerce · cloneable-repo |
+| Seed (unverified) | [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) |
+| Log | [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md) |
+
+Working-tier manifest digests verified against packet as-cut; path hygiene (`../context/`) applied post-verify. **Tilak** leads type-mark word (RTAC). Ring one ungated after names seat + full-tree zip + witness.
+
+Prior tip: `999359e`
+
+## Landed `20260703.193012` — bench-as-block research (Claude Fable 5 · Cursor seated)
+
+| Item | Path |
+|------|------|
+| Survey | [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) |
+| Log | [`session-logs/20260703-193012_bench-as-block-research.md`](../session-logs/20260703-193012_bench-as-block-research.md) |
+
+Counsel only — seats nothing. Three extraction candidates await Kaeden word. **Bron** (message-seam sense) parks in RTAC; LEXICON already holds **Bron** as `.bron` notation. Ungated diet unchanged: chrono wire first; full-tree zip at `999359e` restores metal truth.
+
+Prior tip: `999359e`
 
 ## Claude — strategy and roadmap counsel (`20260703.041850`)
 
@@ -94,8 +121,13 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 
 ## Parked name-candidates (Kaeden's joy)
 
-- **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs)
+- **Bron mark-triad arms:** *absorb / express / tend* (spark only — theirs stay theirs) — **reaffirmed `20260703.202312`** as type-mark duties; seat awaits word
+- **Type-mark word (`202312`):** **Tilak** leads · Titulus · Emblem · Motif beside — parks until Kaeden speaks
+- **Value-object (`200712`):** **Pottery** leads (`.pott` recommended) · Amphora · Grain · Bead · Mudra · Murti · Tulsi · Loam · Kiln
+- **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
+- **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs)
+- **Message-seam name (counsel `193012`):** *Bron* read as plain description of inter-agent passing — **LEXICON already seats Bron as `.bron` notation**; if a distinct seam name is wanted, say so; else treat as prose only
 
 ## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)
 

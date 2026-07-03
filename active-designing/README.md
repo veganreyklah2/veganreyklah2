@@ -47,6 +47,9 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260703-202312` | [The marked value — types that travel](20260703-202312_the-marked-value.md) | Type-mark layer unified with crossing; absorb/express/tend triad; Tilak leads (RTAC); three rings dogfed by nightly packet |
+| `20260703-201612` | [The sealed crossing](20260703-201612_the-sealed-crossing.md) | Greenware vessel discipline; manifest anatomy with mark field; vows at the seam |
+| `20260703-200712` | [What needs ordering](20260703-200712_what-needs-ordering.md) | Value-object ladder + compute choreography; silo companion to Pottery suite |
 | `20260703-140212` | [The bench — where claims become evidence](20260703-140212_the-bench.md) | Third in the metalsmoke/season family: metal, sitter, discipline; bench truth; harvest workflow economics absorbed |
 | `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally ring region + framed grid named; TAME canon passage boxed for Kaeden's word |
 | `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify, Open Asks gated |

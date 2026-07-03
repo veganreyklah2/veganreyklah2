@@ -41,6 +41,12 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | Vessel metaphor for Rio↔Cursor packets; shoulder line, parent mark, greenware vs fired seal; manifest anatomy |
+| `20260703-200712` | [Mysticeti's blocks and the object path](20260703-200712_mysticetis-blocks-and-the-object-path.md) | Blocks in layers; owned vs shared sorting; object-path treasure for Pottery ladder |
+| `20260703-200712` | [A Move for Rye](20260703-200712_a-move-for-rye.md) | Value-object question; Pottery leads RTAC table; fixed verbs law today |
+| `20260703-200712` | [Compute commerce on the network](20260703-200712_compute-commerce-on-the-network.md) | Compute market as seated-module choreography |
+| `20260703-200712` | [The cloneable repo and the practice ground](20260703-200712_the-cloneable-repo-and-the-practice-ground.md) | Practice-ground candidates parked; cloneable repo shape |
+| `20260703-193012` | [The bench as a block, and the living build](20260703-193012_the-bench-as-a-block-and-the-living-build.md) | Bench-as-block mapping; Ford lesson; three-ring build counsel; message seam |
 | `20260703-182612` | [The road a failure carries](20260703-182612_the-road-a-failure-carries.md) | Metalsmoke stays narrow; trace designed — call road + fact road; spec candidate parked |
 | `20260703-182612` | [Sameness is the macro](20260703-182612_sameness-is-the-macro.md) | Graham × Hickey reconciled with TAME; two canon passages boxed for Kaeden's word |
 | `20260703-182612` | [Puddle — the app harbor](20260703-182612_puddle-the-app-harbor.md) | Serena's blessing; harbor rings; charter expansion parked in RTAC |
