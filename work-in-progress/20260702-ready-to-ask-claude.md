@@ -48,7 +48,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — RW-1 landed (`20260703.182612 UDT`):** parity **147**. **Cursor diet:** chrono sweep wire · RW-2 contract season · ratifications · not-advice canon · demand-map.
+**Menu status — ratifications landed (`20260703.191312 UDT`):** archive (resins) · versioning · standing audit · Maitreya · demand map — all *for*. Parity **147**. **Cursor diet:** chrono sweep wire · RW-2 season · TWO_ROOMS canon (optional) · not-advice line.
 
 ## Claude — strategy and roadmap counsel (`20260703.041850`)
 

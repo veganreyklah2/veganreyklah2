@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
 **Status:** First ring green (`20260703.051812`) — fixture export, verify (openssl golden), restore; witness at parity **144**; Kumara signing and live drive seal wait for later rings
-**Companions:** the deep-archive blueprint (`20260701-213412_deep-archive-and-sovereign-host-blueprint.md`), archive verdict in [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (content-addressed stones, `.bron` manifest), `PUBKEYS.md`, and the stack record
+**Companions:** the deep-archive blueprint (`20260701-213412_deep-archive-and-sovereign-host-blueprint.md`), archive law [`20260703-191112_resins-and-hash-tiers.md`](20260703-191112_resins-and-hash-tiers.md) (ratified `20260703.191312`), Puddle verdict in [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md), `PUBKEYS.md`, and the stack record
 
 *Written together by Kaeden and Reya 2.*
 

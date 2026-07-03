@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-03 (RW-1 mirrored pair — parity **147**)
+**Last updated:** 2026-07-03 (RW-1 landed — parity **147**; five ratifications `191312`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -62,6 +62,8 @@
 
 **Recorded rulings (`20260701-221512` docs round):** **Amber invocation** — explicit shell command with manual sandbox-key unlock; the docked bare drive is precondition, never trigger; the shell may notice and offer, never act; scrub runs cold, key warm only for the seconds of seal. **Amber key custody** — master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` cold and certifying; sandbox `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` signing and revocable; drive passphrase on paper in the firebox and offsite; any other fingerprint is an error on sight.
 
+**Recorded rulings (`20260703.191312 UDT`) — five ratifications, all *for*:** **Archive verdict** — Amber seals content-addressed **resins** (SHA3-256 working tier; SHA3-512 canonical forever-names); law at [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). **Versioning rule** — authored surfaces chronological stamps only; semver a named backend seam; chrono sweep may wire. **Standing audit rule** — mirrored collaboration/contract pair per seam; integrated checks on thin ring only; one pair per season; RW-1 landed (**147**), RW-2 next. **Maitreya owns time** — one clock for audio and video; Brushstroke owns space. **Demand map** — eight-category → module-ensemble table held as requirements; interop-first, consent-before-counting, reward-points-at-the-good; **proxy column** on the movement memo table per circulation survey Q1.
+
 ---
 
 ---
@@ -89,11 +91,11 @@ Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`]
 
 Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md).
 
-- [ ] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements.
+- [x] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements; **proxy column** (public-market proxy present or absent) on the movement memo table per circulation survey Q1 (`20260703.191312 UDT`, *for*).
 - [ ] **Open Asks room (design candidate)** — requests, applications, acceptances, completion receipts, and reputation-as-fold as Linengrow's first application beside the receipt ring; enters only after SLC-L1's scope note draws its edge.
 - [ ] **Sanctuary care log (flagship candidate)** — signed care facts per resident, schedules as projections, CIVIC dignity-floor accountability; design-only until its season.
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
-- [ ] **Stone-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a stone, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`).
+- [ ] **Resin-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a resin, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`; unit word ratified `20260703.191312`).
 - [ ] **Linengrow agent writing (intake awaiting paste)** — the shared links resist the bench's fetch (client-rendered artifact; robots-walled share); on arrival it lands whole in external-research and siloed in foundations, exactly as asked.
 - [x] **Issuer's ledger silo + circulation portfolio survey (`20260703.043912`)** — [`external-research/20260703-043912_the-issuers-ledger.md`](../external-research/20260703-043912_the-issuers-ledger.md) (MMT lecture on our spine; MALA deferred) · [`external-research/20260703-043912_circulation-portfolio-survey.md`](../external-research/20260703-043912_circulation-portfolio-survey.md) (July 2026 ground re-verified on Cursor metal; thin-chapter → Linengrow rails); research for understanding only; treasury untouched.
 
@@ -103,8 +105,8 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 
 - [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
-- [ ] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5), then RW-2 (app↔Brushstroke twin).
-- [ ] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** witnessed green in `tools/chrono_version_sweep.rish` (`20260702.205630`, 134 files, unwired — preserves Edit 5 landing at **143**).
+- [x] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin ring; one pair per season, RW-1 first (ladder rung 5, **landed 147**), then RW-2 (app↔Brushstroke twin) (`20260703.191312 UDT`, *for*).
+- [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** witnessed green in `tools/chrono_version_sweep.rish` (`20260702.205630`, unwired — may wire in next arithmetic) (`20260703.191312 UDT`, *for*).
 - [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
 - [x] **Manual tutorial two — run record and failures** — [`manual/tutorials/run-record-and-failures.md`](../manual/tutorials/run-record-and-failures.md); RW-3 and RW-4 deep dive at parity **142** (`20260702.205630`).
@@ -117,9 +119,9 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 
 Ground: [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (second pass) · [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md).
 
-- [ ] **Archive verdict (Kaeden affirms)** — Amber's seal = Kumara-signed `.bron` manifest naming SHA3-addressed stones cut at content-defined boundaries; the chunk-store family is the host seam today; a mountable index is the bootable-clone shape; tar demoted to transport wrapper only.
+- [x] **Archive verdict (Kaeden affirms)** — Amber's seal = Kumara-signed `.bron` manifest naming SHA3-256 **resins** cut at content-defined boundaries; each resin is the stored bytes, the manifest catalogs; SHA3-512 for canonical forever-names per [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md); chunk-store host seam today; mountable index = bootable-clone shape; tar transport wrapper only (`20260703.191312 UDT`, *for*).
 - [ ] **Puddle continuity invariant (recorded)** — one live instance per Kumara identity, enforced by a signed continuity fact; the double-boot hazard ruled out by construction.
-- [ ] **Maitreya owns time (Kaeden affirms)** — one clock for audio and video: decode, sync, bounded buffers; Brushstroke owns space; codecs stay royalty-free host seams (the lossless, low-delay, general, and hybrid families, with their video kin); Lotus authors above; Realidream plays through the same seam.
+- [x] **Maitreya owns time (Kaeden affirms)** — one clock for audio and video: decode, sync, bounded buffers; Brushstroke owns space; codecs stay royalty-free host seams (the lossless, low-delay, general, and hybrid families, with their video kin); Lotus authors above; Realidream plays through the same seam (`20260703.191312 UDT`, *for*).
 - [ ] **Happy-zone pairing (TAME horizon)** — as module seams stabilize, each earns mirrored collaboration and contract witnesses; metalsmoke stays the thin ring's few honest integrated checks; enters TAME guidance on Kaeden's ruling.
 
 ### Modules, money, and the manual — horizons (`2026-07-02`)
@@ -138,7 +140,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Manual program (horizon)** — four rooms founded at [`manual/README.md`](../manual/README.md); first reference [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) open; tutorials and module reference pages in season.
 - [x] **Pond clause (Kaeden completes)** — affirmed in [`pond/README.md`](../pond/README.md) (`20260703.012031`, `3320bed`).
 - [ ] **Puddle exploration (horizon)** — sandboxed Rye containers; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md); first ring = one guest snapshot export/verify/restore.
-- [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya owns time (audio + video); Uddhava spatial/CAD horizon; counsel affirmed `20260702.165412` — Kaeden affirms archive verdict and Maitreya owns-time lines when ready.
+- [ ] **Maitreya / Uddhava naming (recorded)** — Maitreya owns time (audio + video); Uddhava spatial/CAD horizon; counsel affirmed `20260702.165412`; archive verdict and Maitreya owns-time **ratified** `20260703.191312 UDT`.
 
 ### Comlink and the long run — horizons (`2026-07-02`)
 

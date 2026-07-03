@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-03 (season · ring · green in Cursor-loop table; anchor `071212`)
+**Last updated:** 2026-07-03 (bench · resin · hash tiers ratified `191312`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -20,6 +20,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Ring** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood |
 | **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
+| **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
 
 **Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
 
@@ -57,6 +58,14 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Tablecloth** | Application data store (horizon — role still shaping) |
 | **Bron** | Data notation between modules (`.bron`) |
 | **Amber** | Preservation — signed, encrypted, bit-faithful archives on deep storage, recorded in an append-only log and verified by folding; Mantra holds the living history, Amber seals the moment cold |
+
+## Archive and digest *(ratified `20260703.191312`)*
+
+| Term | One line |
+|------|----------|
+| **Resin** | One content-addressed unit Amber seals — the stored bytes at a SHA3 name; the manifest catalogs, the digest proves; [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md) |
+| **SHA3-512 tier** | Canonical forever-names — weave states, sealed content identity, promises that must mean one thing for the life of the work |
+| **SHA3-256 tier** | Working-store names — resins, blob files, manifest entries where path size and external oracles matter |
 
 ## Named tonight (`2026-06-30`)
 

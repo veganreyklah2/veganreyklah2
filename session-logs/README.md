@@ -10,6 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.191712 | [Handoff — arc closed cleanly](20260703-191712_handoff-arc-closed.md) | Verified dirty tree at 178d2fa; handoff paste ready; commit optional |
+| 20260703.191312 | [Five ratifications seated — resins](20260703-191312_five-ratifications-seated.md) | Kaeden *for* — archive, versioning, audit, Maitreya, demand map + proxy |
+| 20260703.191112 | [Resins and hash tiers — proposed law](20260703-191112_resins-and-hash-tiers.md) | Archive unit word + SHA3 two-tier policy |
 | 20260703.190112 | [Intake 140212 + 182612 — bench, harvest, RW-1](20260703-190112_intake-bench-harvest-rw1.md) | Claude proposals seated; parity **147** on Cursor metal |
 | 20260703.182612 | [Nine answers, RW-1 landed](20260703-182612_nine-answers-rw1-landed.md) | Claude Fable 5 — RW-1 pair, five studies, identity/archive tools |
 | 20260703.182112 | [Commits and pushes — counsel summary](20260703-182112_commits-push-counsel-summary.md) | Four counsel logs pushed to four remotes |
