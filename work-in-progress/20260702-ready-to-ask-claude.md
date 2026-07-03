@@ -61,6 +61,17 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Counsel bounds:** propose and argue; no implementation, no new module names, do not reopen Doors 1–3 or Edit 5.
 
+## Landed `20260703.071212` — Amber season note + placement counsel (Claude Fable 5 · Cursor verified)
+
+| Item | Path |
+|------|------|
+| Season vocabulary | [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
+| Placement counsel | [`session-logs/20260703-071212_placement-counsel.md`](../session-logs/20260703-071212_placement-counsel.md) — recommends `pond/apps` + Dexter graduation trigger; ratifications order; not-advice in ORGANIZING |
+
+**Cursor metal:** parity **144 GREEN** · chrono **148** after seat · Amber ring 1 held from tip `7395bd1`. LEXICON season/ring/green rows + spec scrub companion line seated with intake.
+
+Prior tip: `7395bd1`
+
 ## Landed `20260703.043912` — issuer's ledger + circulation survey (Claude Fable 5 · Cursor verified)
 
 | Item | Path |

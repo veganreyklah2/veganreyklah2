@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-02 (WOV named `20260702.211312`; ungated diet `20260702.211046`)
+**Last updated:** 2026-07-03 (season · ring · green in Cursor-loop table; anchor `071212`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -17,6 +17,9 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Smallest-first** | Order within the diet — smallest witness or doc wins the next round |
 | **Witness-first, red-then-green** | Method within the diet — witness or gate before prose; fail loudly, then land green in the same sitting |
 | **Empty plate** | When the ungated diet runs out — **stop and summarize**; an empty plate is a question for Kaeden, never a license to forage |
+| **Ring** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md) |
+| **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood |
+| **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
 
 **Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
 

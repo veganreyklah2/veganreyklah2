@@ -55,7 +55,7 @@ Validity is asserted on two paths, because the boundary between valid and invali
 
 ## 6. The Scrub — Verification as a Fold
 
-On a steady season — quarterly serves — each archive drive is docked and the fold runs: walk the log, recompute each archive's digest against its sealed bytes, verify each signature back to the root, and append a fresh verification record for each sound archive. The fold rewrites nothing; verification is a pure read that leaves only new appended facts behind.
+On a steady season — quarterly serves — each archive drive is docked and the fold runs: walk the log, recompute each archive's digest against its sealed bytes, verify each signature back to the root, and append a fresh verification record for each sound archive. The fold rewrites nothing; verification is a pure read that leaves only new appended facts behind. **Season** — what that word means for Amber's custody rhythm — is defined whole at [`active-designing/20260703-071212_amber-seasons.md`](../../active-designing/20260703-071212_amber-seasons.md).
 
 The scrub runs cold. Recomputing a digest and checking a signature need no signing authority at all: the drive's passphrase warms to open the vault for reading, and the signing key stays cold through the entire walk. When the walk is done and the person has reviewed its findings, one brief unlock signs the batch of verification records, and the key returns cold — warm for seconds, never for the session. Beneath Amber's fold, a checksumming filesystem on the drive scrubs for silent corruption at the block level; Amber's assertion is the module-level truth above it, and the two together guard both altitudes.
 

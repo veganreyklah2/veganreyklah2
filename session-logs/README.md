@@ -10,6 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260703.072428 | [Intake anchor 071212 — Amber season](20260703-072428_intake-071212-amber-season.md) | Season vocabulary seated; placement counsel recorded. |
+| 20260703.071212 | [Amber season writing](20260703-071212_amber-season-writing.md) | Claude defines season as Amber's unit of custody. |
+| 20260703.071212 | [Placement counsel](20260703-071212_placement-counsel.md) | Recommends pond/apps nod and ratifications order. |
 | 20260703.055511 | [Amber first ring — parity 144](20260703-055511_amber-first-ring-144.md) | Kaeden opened Amber; fixture export/verify/restore wired. |
 | 20260703.051512 | [Relay ack — five words on HOLD](20260703-051512_relay-ack-five-words-hold.md) | Claude cross-check confirmed; plate holds. |
 | 20260703.043912 | [Cursor close acknowledged](20260703-043912_cursor-close-acknowledged.md) | Two benches, one arithmetic; fc18707 reported pending next zip. |
