@@ -5,7 +5,7 @@
 **Stamp:** `20260702.030112`
 **Voice:** Rio 3
 **For:** Cursor Composer — mechanical bench after strategy nod
-**Status:** Placed, not built — awaits Kaeden nod and SLC-2a metal close
+**Status:** **Nod received** — `pond/apps/` extension (`20260703.131812`); Dexter graduation trigger in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md). Cursor bench ungated; not built until DoD greens land.
 
 ---
 
@@ -14,7 +14,7 @@
 - Wayland seat + keyboard focus on the drawn-terminal toplevel
 - Key events compose into lines; lines feed `runOneInput` instead of stdin poll
 - Terminal stdin path remains for development; window path is the lovable complete
-- Dexter name; module home open (within Brushstroke vs beside it — Kaeden/Claude ruling optional)
+- Dexter name; **placement nodded `pond/apps/`** (`20260703.131812`) — aspect in drawn terminal until second external consumer; see graduation rule Dexter trigger
 
 ## Definition of Done (draft)
 

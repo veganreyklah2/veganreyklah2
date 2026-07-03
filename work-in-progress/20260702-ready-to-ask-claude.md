@@ -49,7 +49,7 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — post–Amber ring 1 (`20260703.051812`):** Amber first ring **144** green. **Queued:** SLC-2b nod · Claude counsel · ratifications · not-advice canon · demand-map. **After SLC-2b:** RW-1 pair. **After ladder:** chrono sweep wire, toolset ring one, `rye test`.
+**Menu status — SLC-2b ungated (`20260703.131812`):** Kaeden nodded **`pond/apps`** per counsel; Dexter graduation trigger recorded. **Cursor diet:** SLC-2b four DoD greens → parity **145** · then RW-1 pair (**+2**). **Queued:** ratifications · Claude counsel · not-advice canon · demand-map.
 
 ## Claude — strategy and roadmap counsel (`20260703.041850`)
 
@@ -163,9 +163,9 @@ Repo intaken at `cbb2b96`; all six Kaeden asks served in one proposal zip.
 
 ## Best path
 
-**Doors 1–3 closed → Amber ring 1 green → SLC-2b nod → RW-1**
+**Doors 1–3 closed → Amber ring 1 green → SLC-2b nod (`pond/apps`) → build → RW-1**
 
-Parity **144** GREEN · chrono **147+** · Amber first ring wired · SLC-2b nod next
+Parity **144** GREEN · SLC-2b **ungated** · next green **145**
 
 ---
 
