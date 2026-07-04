@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.181800 | [Commit and push zip 41 arc](20260704-181800_commit-push-zip41-cellar-vessel.md) | `b4b7103` to four remotes — intake, cellar/vessel, zero-copy |
 | 20260704.181512 | [Cursor session journey — composition](20260704-181512_cursor-session-journey-composition.md) | Full Jul 3–4 thread: parity 152, vocabulary, zip 41, open threads |
 | 20260704.181012 | [Zero-copy resins expanding prompt](20260704-181012_zero-copy-resins-expanding-prompt.md) | Claude counsel prompt — snapshot, Comlink batch, WIP refresh |
 | 20260704.180612 | [Zero-copy resins research](20260704-180612_zero-copy-resins-sovereign-snapshot.md) | ER essay — TigerBeetle batching, sovereign snapshot, Urbit concepts clean-room |
