@@ -8,10 +8,17 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 **Commit discipline:** ship the log in the **same commit** as the work it records whenever possible. A follow-up commit only for the log is a last resort. Re-align the archive with `rye run tools/align_session_logs.rye`.
 
-**Archive fold:** prior days live under `archive/YYYYMMDD/`; today's logs stay flat here. Fold at day's close with `rishi/bin/rishi run tools/session_logs_archive.rish` (convention in [`ORGANIZING.md`](../ORGANIZING.md)).
+**Archive fold:** prior days live under `archive/YYYYMMDD/`; today's logs stay flat here. **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (selftest: `rishi/bin/rishi run tools/session_logs_archive_witness.rish`). Convention in [`ORGANIZING.md`](../ORGANIZING.md).
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.220812 | [Checkpoint — rye-core grain, roadmap, tasks](20260704-220812_checkpoint-rye-core-grain-roadmap-tasks.md) | Self-contained progress save — full Jul 4 arc, lap grain, parity ladder, zip 41/42 counsel, TASKS, uncommitted batch |
+| 20260704.215012 | [Radiant pass — Rye core arc](20260704-215012_radiant-pass-rye-core-arc.md) | Radiant sweep of silo, ER pair, archive comments; Last updated `215012` |
+| 20260704.214600 | [Archive preview/fold + parity wire](20260704-214600_archive-preview-fold-parity.md) | Split read/mutate subcommands; archive witness joins parity — all GREEN |
+| 20260704.214400 | [Silo accrete subject + horizon](20260704-214400_silo-accrete-subject-horizon.md) | Merged `214100` insights into `211012` silo in place — explicit subject, horizon, catalog column |
+| 20260704.214100 | [Subject-oriented programming ER](20260704-214100_subject-oriented-programming-er.md) | Urbit SOP applied to Rye core+shell — horizon, poke/peek, lap ladder |
+| 20260704.211200 | [Rye cores ER and silo](20260704-211200_rye-cores-er-and-silo.md) | Gratitude survey + siloed two-layer lap law (core proves, shell witnesses) |
+| 20260704.203100 | [Session logs archive — Rye + Rishi witnesses](20260704-203100_session-logs-archive-rishi-witnesses.md) | Archive fold in `.rye` with selftest; Rishi witness proves idempotency |
 | 20260704.202900 | [Session logs archive fold](20260704-202900_session-logs-archive-fold.md) | First archive run — 500 logs into 12 day folders; tool fixed via shell fixture |
 | 20260704.194300 | [Zip 42 unified intake — Cursor](20260704-194300_zip42-unified-intake-cursor.md) | Packet `files (14).zip` intook at `43584d8`; parity 152 re-verified; README rows + RTAC updated |
 | 20260704.185412 | [Unified packet cut](20260704-185412_unified-packet-cut.md) | Whole sitting gathered into one vessel; prior lane and zips superseded pre-intake; consolidated rows authoritative. |

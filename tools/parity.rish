@@ -192,6 +192,11 @@ let slcl1 = run ["rishi/bin/rishi" "run" "tools/slcl1_receipt.rish"]
 assert slcl1.ok else "SLC-L1 receipt witness failed"
 say "GREEN: SLC-L1 verifiable receipt witness passed."
 
+say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
+let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]
+assert slog_arch.ok else "session-logs archive witness failed"
+say "GREEN: session-logs archive hygiene witness passed."
+
 say "witness suite: RW-2 app collaboration…"
 let rw2a = run ["rishi/bin/rishi" "run" "tools/rw2_app_collab.rish"]
 assert rw2a.ok else "RW-2 app collaboration witness failed"

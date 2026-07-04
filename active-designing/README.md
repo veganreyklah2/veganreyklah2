@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-03 (the bench; shape carries the bound)
+**Last updated:** 2026-07-04 (Rye core arc Radiant pass `215012`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,6 +47,7 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260704-211012` | [The Rye core and the shell](20260704-211012_the-rye-core-and-the-shell.md) | Lap law seated — core proves, shell witnesses; explicit subject, horizon, `preview`/`fold`, parity hygiene |
 | `20260703-202312` | [The marked value — types that travel](20260703-202312_the-marked-value.md) | Type-mark layer unified with crossing; absorb/express/tend triad; Tilak leads (RTAC); three laps dogfed by nightly packet |
 | `20260703-201612` | [The sealed crossing](20260703-201612_the-sealed-crossing.md) | Greenware vessel discipline; manifest anatomy with mark field; vows at the seam |
 | `20260703-200712` | [What needs ordering](20260703-200712_what-needs-ordering.md) | Value-object ladder + compute choreography; silo companion to Pottery suite |
