@@ -104,7 +104,7 @@ Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](..
 
 ### The lane and the hearth (`20260702.202612`)
 
-- [x] **Studies 19–20** — [`19_GOVERNMENT_AS_PLANETARY_SPECTRUM.md`](../classical-vedic-astrology/studies/19_GOVERNMENT_AS_PLANETARY_SPECTRUM.md) and [`20_LIBERAL_AND_CONSERVATIVE_PLANETS.md`](../classical-vedic-astrology/studies/20_LIBERAL_AND_CONSERVATIVE_PLANETS.md); distilled from Vic DiCara with gratitude; raw transcripts not committed (`20260702.202612`).
+- [x] **Studies 19–20** — [`government-as-planetary-spectrum.md`](../classical-vedic-astrology/studies/teaching/government-as-planetary-spectrum.md) and [`liberal-and-conservative-planets.md`](../classical-vedic-astrology/studies/teaching/liberal-and-conservative-planets.md); distilled from Vic DiCara with gratitude; raw transcripts not committed (`20260702.202612`).
 - [x] **The Serena episode** — [`foundations/20260702-202612_a-conversation-with-serena.md`](../foundations/20260702-202612_a-conversation-with-serena.md): the hearth-talk imagined fuller, in the register of the earliest foundations writings (`20260702.202612`).
 
 ### The movement's open asks (`20260702.192712`)
@@ -260,7 +260,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
 - **TASKS naming** — keep `TASKS.md`, or rename to the warmer `WORKBENCH.md`?
 - **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
-- **Birth-chart craft** — siloed library, templates, sample reading, and caster at [`classical-vedic-astrology/`](../classical-vedic-astrology/README.md) (`studies/`, `20260701-232912_*`, `cast_a_chart.py`).
+- **Birth-chart craft** — siloed library (`studies/` by topic), templates, sample reading, and caster at [`classical-vedic-astrology/`](../classical-vedic-astrology/README.md).
 
 ---
 

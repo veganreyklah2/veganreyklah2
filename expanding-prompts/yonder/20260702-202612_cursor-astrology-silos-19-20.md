@@ -14,12 +14,12 @@
 
 ## The Deliverables
 
-Two new studies in `classical-vedic-astrology/studies/`, continuing the numbered convention:
+Two new studies in `classical-vedic-astrology/studies/teaching/` (or the topic folder that fits), continuing the numbered convention with hyphenated slugs:
 
-- **`19_<TITLE>.md`** — from the democracy talk
-- **`20_<TITLE>.md`** — from the temperaments talk
+- **`government-as-planetary-spectrum.md`** (#19) — from the democracy talk
+- **`liberal-and-conservative-planets.md`** (#20) — from the temperaments talk
 
-Each `<TITLE>` is drawn from the transcript's **own central thesis** in the existing ALL-CAPS underscore convention (as `05_MOON_IN_TAURUS_EXALTED.md` does) — never from the video title alone, and never invented. If a transcript's thesis surprises you, the surprise is the title's seed.
+Each filename is a hyphenated slug drawn from the transcript's **own central thesis** — never from the video title alone, and never invented. If a transcript's thesis surprises you, the surprise is the title's seed. Register each row in [`studies/README.md`](../classical-vedic-astrology/studies/README.md) and [`templates/reading-template.md`](../classical-vedic-astrology/templates/reading-template.md).
 
 ## The Method — Distill, Never Invent
 
@@ -38,7 +38,7 @@ Both talks touch the political. The lane stays devotional-scholarly: present the
 
 ## Registrations, Lint, and Commit
 
-- Add both studies as rows to the silo map table in `classical-vedic-astrology/20260701-232912_reading-template.md`.
+- Add both studies as rows to the silo map in `classical-vedic-astrology/templates/reading-template.md` and `classical-vedic-astrology/studies/README.md`.
 - Refresh the lane `README.md` last-updated line: *(studies 19–20 — governance and temperament)*.
 - Lint: Radiant throughout; no "but" (use "yet"/"however"); no emoji; single H1; no political endorsement survivable by the read-aloud test.
 - One commit: `Studies 19 and 20 enter the lane — governance and temperament, distilled with gratitude`; session-log line and RTAC touch as usual.

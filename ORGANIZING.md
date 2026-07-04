@@ -23,7 +23,7 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`foundations/`** — the why beneath the work: foundation briefs, the distilled essays and the weave that composes them, and the civic visions. Dated artifacts rest beneath a living README.
 
-**`classical-vedic-astrology/`** — the reading craft: a siloed study library (`studies/`, numbered and growing), composable reading templates, a sample reading, and the dual-zodiac caster. Names stay siloed to the placeholder **Alice** by consent and by design; the fuller originals rest in the private lane, and gratitude to teachers lives inside each study.
+**`classical-vedic-astrology/`** — the reading craft: a siloed study library in topic folders (`studies/nakshatras/`, `planets-in-signs/`, `planet-in-house/`, …), composable templates in `templates/`, demonstration readings in `readings/`, and the dual-zodiac caster. Names stay siloed to the placeholder **Alice** by consent and by design; the fuller originals rest in the private lane, and gratitude to teachers lives inside each study.
 
 **`manual/`** — the four rooms that teach the system: tutorials by the hand, guides for the task, living reference specifications for stable surfaces, and pointers to the understanding essays. Every page teaches only what runs; the first reference open is the Rishi language, derived from the witness corpus.
 

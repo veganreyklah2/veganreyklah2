@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.221412 | [Astrology topic folder reorg](20260704-221412_astrology-topic-folder-reorg.md) | Studies `00`–`20` into nakshatras, planets-in-signs, planet-in-house, …; templates/readings split |
 | 20260704.221112 | [Rye-core arc commit and push](20260704-221112_rye-core-arc-commit-and-push.md) | `239557f` landed — silo, ER pair, archive tooling, parity hygiene; four remotes |
 | 20260704.220812 | [Checkpoint — rye-core grain, roadmap, tasks](20260704-220812_checkpoint-rye-core-grain-roadmap-tasks.md) | Self-contained progress save — full Jul 4 arc, lap grain, parity ladder, zip 41/42 counsel, TASKS, uncommitted batch |
 | 20260704.215012 | [Radiant pass — Rye core arc](20260704-215012_radiant-pass-rye-core-arc.md) | Radiant sweep of silo, ER pair, archive comments; Last updated `215012` |

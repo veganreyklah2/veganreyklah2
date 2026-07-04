@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-02 (studies 19–20 — governance and temperament)
+**Last updated:** 2026-07-04 (studies by topic folder; templates and readings separated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 
@@ -21,17 +21,33 @@ The friend whose sky seeded this library asked that her privacy be kept, and it 
 
 ## What Lives Here
 
-- **`studies/`** — the numbered silo library, `00` through `20` and growing. Each study distills one placement pattern in our own voice, deep enough to compose from, and closes with its own **With Gratitude** section naming the teacher it honors. The map from placement to study lives inside the reading template.
-- **`20260701-232912_reading-template.md`** — the composable skeleton: how a reading is made, section by section, silo by silo.
-- **`20260701-232912_reading-template.html`** — the same skeleton as a single self-drawing page: edit one `CHART` object and the whole-sign wheel, the placement table, and the header all redraw themselves. No raster image carries a name.
-- **`20260701-232912_alice-sample-reading.md`** — the demonstration: a real, twice-verified sky under the placeholder name, every section pointing at the silo that carries its depth.
-- **`cast_a_chart.py`** — the dual-zodiac caster. Edit the constants at its head for a new birth moment; it prints sign, degree, nakshatra, pada, and house for every light.
+```
+classical-vedic-astrology/
+├── cast_a_chart.py          dual-zodiac caster
+├── studies/                 silo library by topic (index: studies/README.md)
+│   ├── life-frame/
+│   ├── nakshatras/
+│   ├── lunar-craft/
+│   ├── planets-in-signs/
+│   ├── planet-in-house/
+│   ├── synthesis/
+│   ├── reading-themes/
+│   └── teaching/
+├── templates/               composable reading skeleton (md + html)
+└── readings/                demonstration readings (placeholder names)
+```
+
+- **`studies/`** — numbered silo library `00`–`20` and growing. Each study lives in a **topic folder** (`nakshatras/`, `planets-in-signs/`, `planet-in-house/`, …) with a hyphenated slug. The master index is [`studies/README.md`](studies/README.md); the composable map lives in [`templates/reading-template.md`](templates/reading-template.md).
+- **`templates/reading-template.md`** — how a reading is made, section by section, silo by silo.
+- **`templates/reading-template.html`** — the same skeleton as a self-drawing page: edit one `CHART` object and the wheel, table, and header redraw.
+- **`readings/alice-sample-reading.md`** — demonstration under the placeholder name; every section points at its study silo.
+- **`cast_a_chart.py`** — dual-zodiac caster. Edit the constants at its head for a new birth moment.
 
 ---
 
 ## How a New Reading Grows
 
-Receive the birth moment verbatim and honor it exactly — the one-clock rule, applied to a life. Cast the sky twice and compare until the oracles agree. Compose each section from the matching studies, weaving rather than pasting, in Radiant voice and the gentle register. Where a placement has no study yet, write the new silo first — the library grows one honest file at a time — and keep the person's name apart until the final copy.
+Receive the birth moment verbatim and honor it exactly — the one-clock rule, applied to a life. Cast the sky twice and compare until the oracles agree. Compose each section from the matching studies, weaving rather than pasting, in Radiant voice and the gentle register. Where a placement has no study yet, write the new silo first — choose the topic folder, assign the next number, add a row to `studies/README.md` — and keep the person's name apart until the final copy.
 
 ---
 
