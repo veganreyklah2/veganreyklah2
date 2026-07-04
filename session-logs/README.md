@@ -10,6 +10,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.194300 | [Zip 42 unified intake — Cursor](20260704-194300_zip42-unified-intake-cursor.md) | Packet `files (14).zip` intook at `43584d8`; parity 152 re-verified; README rows + RTAC updated |
+| 20260704.185412 | [Unified packet cut](20260704-185412_unified-packet-cut.md) | Whole sitting gathered into one vessel; prior lane and zips superseded pre-intake; consolidated rows authoritative. |
+| 20260704.185412 | [Ends-first orientation counsel](20260704-185412_ends-first-orientation-counsel.md) | Lens counsel shipped; spot-check green on tree stamps; names parked; gates untouched. |
+| 20260704.181612 | [Zip 42 — 152 pinned, zero-copy counsel](20260704-181612_zip42-152-zero-copy-counsel.md) | Comment verified at 43584d8; 152 GREEN from bare (116+36); dnb count=0; counsel ER + Cursor lane shipped additions-only. |
+| 20260704.181612 | [Fresh bench intake — zip 42 awaited](20260704-181612_fresh-bench-intake-zip42-awaited.md) | Fresh bench seated; handoff packet's parent mark verified verbatim at 43584d8; zip 42 absent, so raise and counsel wait at its door; toolchain pre-staged (ziglang 0.16.0, wayland/xkbcommon headers); voice-name parked for Kaeden's word. |
 | 20260704.181800 | [Commit and push zip 41 arc](20260704-181800_commit-push-zip41-cellar-vessel.md) | `b4b7103` to four remotes — intake, cellar/vessel, zero-copy |
 | 20260704.181512 | [Cursor session journey — composition](20260704-181512_cursor-session-journey-composition.md) | Full Jul 3–4 thread: parity 152, vocabulary, zip 41, open threads |
 | 20260704.181012 | [Zero-copy resins expanding prompt](20260704-181012_zero-copy-resins-expanding-prompt.md) | Claude counsel prompt — snapshot, Comlink batch, WIP refresh |

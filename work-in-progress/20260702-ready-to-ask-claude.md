@@ -1,11 +1,48 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260704.031812 UDT` (zip **41** intake · both benches **152** · orientation + eight-asks counsel)
+**Stamp:** `20260702.202612` · refreshed `20260704.185412 UDT` (zip **42** unified intake · both benches **152** · zero-copy counsel + ends-first orientation)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
+
+## Zip 42 intake landed (`20260704.185412 UDT`) — Claude Fable 5 · unified packet
+
+**A1 pinned:** zip **42** @ base `43584d8` · recipe v5 held · **parity 152 GREEN** (116 std + 36 blocks) from bare on Claude bench (headless: hosted witnesses; thin-edge seams unexercised). **Cursor metal re-verified 152 GREEN** at intake (`rishi run tools/parity.rish`). **Both benches pin 152.** Designed-not-built **count=0** — Edit-5 slot open.
+
+| Item | Path |
+|------|------|
+| Zero-copy counsel (A–H, I1–I7) | [`external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) |
+| Ends-first orientation (Part Three addendum) | [`external-research/20260704-185412_ends-first-map-orientation.md`](../external-research/20260704-185412_ends-first-map-orientation.md) |
+| Unified Cursor lane | [`expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md`](../expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md) |
+| Unified cut log | [`session-logs/20260704-185412_unified-packet-cut.md`](../session-logs/20260704-185412_unified-packet-cut.md) |
+
+**Superseded pre-intake:** `181612` lane prompt and three prior proposal zips — re-cut into this packet; lineage in unified cut log.
+
+### Counsel summary (gates stay Kaeden's)
+
+| Topic | Verdict |
+|-------|---------|
+| **Three lanes** | Two wire lanes + one cargo grammar; one frame shape serves all three (A) |
+| **Resin Tilak** | **Decline** seated `resin` mark; per-cargo Tilaks stand (B) — awaits Kaeden word |
+| **Snapshot sovereign** | Smallest export: trust bundle + Weave HEAD + Mantra + resin closure + signed manifest (C) |
+| **Lap order** | Replay-on-host before boot; Puddle before USB; continuity fact at customs (D) |
+| **Urbit** | Adopt checkpoint resin concept; refuse jam/cue wire (E) |
+| **Edit-5 slot** | **Snapshot export spec (I2) first**, Comlink frame (I1) second (F) |
+| **CIVIC wall** | Civic amphora carries only published commons facts + proofs (G) — awaits ratification |
+| **Tunnel mouth** | Have-already civic default; refusal reason classes enum (H) |
+| **Ends-first lens** | Three bands over working docs — oldest tend, newest edge, middle held; promotable by any door |
+
+**Mechanical when word lands (smallest-first):** Amber manifest hygiene lap (I6) · snapshot export spec + `snapshot_replay` witness · Amphora lap-two (seed-home gate) · Comlink resin-batch frame + hosted witness · ROADMAP/TASKS/decoder deltas (staged hygiene commits).
+
+**Kaeden gates (unchanged + new):** TWO_ROOMS seat · gloss go-ahead · seed home · doorway witness · **Edit-5 slot word** · **resin-Tilak ruling** · **continuity-fact custody** · **civic export boundary** · **ends-first lens** · journey's pause.
+
+Prior tip: `43584d8` · zip 41 @ `2eb346b` superseded for counsel purposes
+
+## Zip 43 — **queued**
+
+Full-tree zip at `git rev-parse HEAD` after intake commits; comment **is** the tip hash. RTAC section gains whichever stops Kaeden's words opened.
 
 ## Zip 41 intake landed (`20260704.031812 UDT`) — Claude Fable 5
 
@@ -33,16 +70,6 @@
 **Kaeden gates named in anchor:** TWO_ROOMS seat · gloss spec go-ahead · seed home · seed witness · SLC-L1 edge as counseled. **Journey's pause** after this round is an honorable stop — Kaeden's call.
 
 Prior tip: `2eb346b` · zip 40 @ `4ab032d` superseded
-
-## Zip 42 — zero-copy resins counsel (`20260704.181012`) — **queued**
-
-**Prompt:** [`expanding-prompts/20260704-181012_zero-copy-resins-claude-counsel.md`](../expanding-prompts/20260704-181012_zero-copy-resins-claude-counsel.md)
-
-**Research anchor:** [`external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md)
-
-**Asks:** strategic **A–H** · implementation **I1–I7** · ROADMAP/TASKS/decoder/RTAC deltas · CIVIC export boundary · witness ladder (no invented parity).
-
-**Status:** prompt seated; awaits Claude sitting + zip cut at tip including ER `180612`.
 
 ## Zip 41 — Amphora exchange (Cursor → Claude) · `20260704.031200` — **answered**
 

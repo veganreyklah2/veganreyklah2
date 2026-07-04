@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-04 (zero-copy resins `180612`; zip **41** intake `031812`)
+**Last updated:** 2026-07-04 (zip **42** unified intake `185412`; zero-copy counsel `181612`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -43,6 +43,8 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260704.185412` | [Ends-first map orientation](20260704-185412_ends-first-map-orientation.md) | Age-banded lens affirmed with two refinements — middle held by default, promotable by any door; addendum to zip-42 counsel Part Three. |
+| `20260704.181612` | [Zero-copy resins counsel — answers](20260704-181612_zero-copy-resins-counsel-answers.md) | A–H answered, I1–I7 at spec grain, map deltas, civic wall; counsel only, every gate Kaeden's. |
 | `20260704.180612` | [Zero-copy resins and the sovereign snapshot](20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) | TigerBeetle-style resin batches over Comlink; maximum Aurora export replaying Weave + Brix — Urbit concepts, Rye words |
 | `20260704.031812` | [Eight asks, one sitting](20260704-031812_eight-asks-one-sitting.md) | Consolidated A1–A8 counsel — gloss spec, TWO_ROOMS seat, SLC-L1 edge, doorway witness, Amphora lap-two, fold home, ROADMAP refresh |
 | `20260704.031812` | [The view from the floor](20260704-031812_the-view-from-the-floor.md) | Whole system re-derived from Rye floor up; checkable-room voice; vision at the door |
