@@ -10,6 +10,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.031200 | [Zip 41 commit, push, Amphora brief](20260704-031200_zip41-commit-push-amphora-brief.md) | `3e7bf9c` · four remotes · RTAC zip 41 exchange for Claude |
 | 20260704.031000 | [Canonical refinement counsel](20260704-031000_canonical-refinement-counsel.md) | four-lap plan to seat glosses and sweep loose *canonical* |
 | 20260704.030800 | [Canonical vocabulary audit](20260704-030800_canonical-vocabulary-audit.md) | nine senses of *canonical* mapped to grain; tensions named |
 | 20260704.030600 | [Diet writings archived](20260704-030600_diet-writings-archived.md) | itinerary primer canonical; diet ER moved to archive |
