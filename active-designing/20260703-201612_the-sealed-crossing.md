@@ -23,9 +23,9 @@ The proposed home is **Amphora** — a candidate parked in RTAC, developed here 
 
 Four vows govern every crossing. The vessel is **media-agnostic**: it never asks whether it travels by wire, by dock, or by hand — the rite is identical on every road, which is what makes the road free to choose. It is **verified twice**: the digest checked at the mouth of the journey and again at receipt, both sides of the boundary guarded, because the boundary is where the interesting faults live. It **fails whole**: a damaged vessel is refused loudly and entirely, with no partial trust of cargo — the wreck rule, the crash-don't-corrupt instinct carried into transport. And it **names its parent, always**: every vessel is a child pointing home, so any receiver, however far, can walk the lineage back to truth on their own metal.
 
-## The Rings
+## The Laps
 
-Growth comes in three rings, each simple, lovable, and complete at its own size, each opened by a witness. Ring one: the loop's nightly packet becomes a true vessel — manifest, stamp, and parent mark living in the format itself — and the recursion prompts shed a paragraph, because the vessel now carries its own law; the loop is the first and grateful user. Ring two: an Amber season poured into a vessel and carried to a second dock or a far node, the scrub run cold on arrival, completing three copies, two media, one far away. Ring three: the crossing over Comlink — fetch by digest between peers, verified twice — feeding packaging's flow and, when its season opens, the delivery of purchased work.
+Growth comes in three laps, each simple, lovable, and complete at its own size, each opened by a witness. Lap one: the loop's nightly packet becomes a true vessel — manifest, stamp, and parent mark living in the format itself — and the recursion prompts shed a paragraph, because the vessel now carries its own law; the loop is the first and grateful user. Lap two: an Amber season poured into a vessel and carried to a second dock or a far node, the scrub run cold on arrival, completing three copies, two media, one far away. Lap three: the crossing over Comlink — fetch by digest between peers, verified twice — feeding packaging's flow and, when its season opens, the delivery of purchased work.
 
 ## The Seams
 

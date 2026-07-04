@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
-**Status:** First ring green (`20260703.051812`) — fixture export, verify (openssl golden), restore; witness at parity **144**; Kumara signing and live drive seal wait for later rings
+**Status:** first lap green (`20260703.051812`) — fixture export, verify (openssl golden), restore; witness at parity **144**; Kumara signing and live drive seal wait for later laps
 **Companions:** the deep-archive blueprint (`20260701-213412_deep-archive-and-sovereign-host-blueprint.md`), archive law [`20260703-191112_resins-and-hash-tiers.md`](20260703-191112_resins-and-hash-tiers.md) (ratified `20260703.191312`), Puddle verdict in [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md), `PUBKEYS.md`, and the stack record
 
 *Written together by Kaeden and Reya 2.*
@@ -21,7 +21,7 @@ The boundaries are as load-bearing as the function. Amber never manages hot stat
 
 ## 2. The Primitives, Applied
 
-Amber is the five primitives wearing a preservation coat. The **keypair** is Kumara's custody, reached in the first ring through the host's OpenPGP seam and detailed below. The **signed event** is a record in the archive log — an archive sealed, a verification passed, a correction made — each one fact under one signature. The **log** is the archive log, append-only forever. The **projection** is the catalog: a pure fold over the log that tells the recovering hand what exists, where, and how recently it answered true. And the **capability** is the manual unlock — the right to sign is a token warmed briefly by a hand, never held hot by a waiting process.
+Amber is the five primitives wearing a preservation coat. The **keypair** is Kumara's custody, reached in the first lap through the host's OpenPGP seam and detailed below. The **signed event** is a record in the archive log — an archive sealed, a verification passed, a correction made — each one fact under one signature. The **log** is the archive log, append-only forever. The **projection** is the catalog: a pure fold over the log that tells the recovering hand what exists, where, and how recently it answered true. And the **capability** is the manual unlock — the right to sign is a token warmed briefly by a hand, never held hot by a waiting process.
 
 ## 3. Cryptographic Custody
 
@@ -31,7 +31,7 @@ The **master signing key** — `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7
 
 The **sandbox signing key** — `DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99` — signs every record. Because its authority is delegated, it can be revoked and reissued cleanly if the sandbox is ever compromised: the root endures untouched, and every record signed before the revocation remains verifiable against it.
 
-The signature itself runs through a **named seam** in the first ring. Kumara today is a name, a doctrine, and two fingerprints; the tooling that actually signs is the host's OpenPGP suite, and Amber says so plainly — the same honest shape as the surface leaning on the host's compositor. The seam is narrow: compose the record, hand its bytes across, receive the signature back. Kumara remains the sovereign horizon, and the day identity lives natively in the family, Amber's signing moves across the seam whole, with nothing above it changing.
+The signature itself runs through a **named seam** in the first lap. Kumara today is a name, a doctrine, and two fingerprints; the tooling that actually signs is the host's OpenPGP suite, and Amber says so plainly — the same honest shape as the surface leaning on the host's compositor. The seam is narrow: compose the record, hand its bytes across, receive the signature back. Kumara remains the sovereign horizon, and the day identity lives natively in the family, Amber's signing moves across the seam whole, with nothing above it changing.
 
 Custody extends to recovery, because the disaster Amber exists for is the working system gone. The unlock material for the archive drives therefore lives apart from every running machine: the drive passphrase rests on paper, one copy in the firebox beside the resting set and one traveling with the offsite rotation. The keys that unlock a drive never rest beside the data they unlock — and never rest only on the system whose loss the archives answer.
 
@@ -73,7 +73,7 @@ Amber is a security module, so its founding document names its adversary — the
 
 The threats Amber answers by design are loss, rot, and forgery across years: a failed drive answers to the copies, silent corruption answers to the two-altitude scrub, and a forged record answers to the signature chain ending at the cold root. Four cases remain open enough to deserve their own honest sentences.
 
-A compromised host at the moment of sealing can present tampered bytes, and the record will faithfully seal what it was shown. The mitigations are the hand-verified golden of the first ring, copies written in separate sessions, and the recovery-time cross-check among copies that were never all warm at once — three copies disagreeing is a loud finding, never a quiet one.
+A compromised host at the moment of sealing can present tampered bytes, and the record will faithfully seal what it was shown. The mitigations are the hand-verified golden of the first lap, copies written in separate sessions, and the recovery-time cross-check among copies that were never all warm at once — three copies disagreeing is a loud finding, never a quiet one.
 
 A compromised host at the moment of batch-signing can present tampered findings for the hand to sign. The cold scrub shrinks this window to seconds, the human review stands in front of it, and the block-level checksums verify from a second altitude. The residue that remains is real, is small, and is accepted with open eyes rather than papered over.
 
@@ -87,7 +87,7 @@ Amber assumes the storage discipline the blueprint verifies, stated here as conc
 
 ## 10. What Waits, Named Honestly
 
-Amber is designed, and it is not built. The live rung remains the drawn terminal, and Amber's build waits for its own season after the spine; until then, the four live remotes are the project's honest durability floor, and this specification is the module's whole existence. When its season comes, the first ring is already visible and small: seal one directory to one drive, produce one signed record, verify it once by the fold — and check that fold against one hand-verified golden, a directory whose digest is computed by an independent tool from outside the family and pinned, so the oracle is never checking itself. Simple, lovable, complete. Everything larger grows from that working seed.
+Amber is designed, and it is not built. The live rung remains the drawn terminal, and Amber's build waits for its own season after the spine; until then, the four live remotes are the project's honest durability floor, and this specification is the module's whole existence. When its season comes, the first lap is already visible and small: seal one directory to one drive, produce one signed record, verify it once by the fold — and check that fold against one hand-verified golden, a directory whose digest is computed by an independent tool from outside the family and pinned, so the oracle is never checking itself. Simple, lovable, complete. Everything larger grows from that working seed.
 
 ---
 

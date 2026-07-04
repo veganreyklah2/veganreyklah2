@@ -15,7 +15,7 @@
 
 ## What This Document Is
 
-The sketchbook holds a complete design lineage for a tool the earlier season called Bubble: a founding proposal, a living plan, a task ledger, a memo of honestly named gaps, coordination letters between the five agents who built beside it, and a working source tree with tests numbered into the hundreds. This document silos that lineage. The category Bubble answers is the one the browser era made famous — the collaborative canvas where a generation learned to draw interfaces together in a rented tab — and per the silo, no product of that category is named here. What enters is the understanding; what stays out is the trademark.
+The sketchbook holds a complete design lineage for a tool the earlier season called Bubble: a founding proposal, a living plan, a task ledger, a memo of honestly named gaps, coordination letters between the five agents who built beside it, and a working source tree with tests numbered into the hundreds. This document silos that lineage. The category Bubble answers is the one the browser era made famous — the collaborative canvas where a generation learned to draw interfaces together in a rented tab — and per the silo, no product of that category is named here. What enters is the understanding; gratitude keeps trademarks at the door.
 
 ---
 

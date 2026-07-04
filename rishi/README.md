@@ -91,7 +91,7 @@ in-process; bindings carry forward. Meta-commands begin with `:` (or `!` for rec
 | `:recall <n>` | Re-run history entry *n* as if freshly typed |
 | `!<n>` | Shorthand for `:recall <n>` |
 
-The history ring holds the last 50 input lines (meta-commands are not stored).
+The history lap holds the last 50 input lines (meta-commands are not stored).
 `RISHI_MANTRA` overrides the Mantra binary; default is `mantra` on `PATH`.
 
 A short example, `tests/hello.rish`:

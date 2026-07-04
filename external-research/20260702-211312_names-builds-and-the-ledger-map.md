@@ -46,9 +46,9 @@ The settlement world we build beside has three organs, and our answer to each is
 
 **Second — the monarch rule is the pre-consensus boundary, and it is exactly right.** One monarch is the issuer-run lane: trust equals the issuer's word, *identical* to MALA's own single-issuer model — WOV adds throughput, never a new trust story. Two monarchs is dual control: both keys sign every root, our two-key custody instinct made structural. And **three would be a committee — and committees are Mycelium's door at M4.** "Never three" is the architecture staying honest about what it is: the moment a third sovereign is needed, the question has changed kind, and a different module answers it.
 
-**Third — exit honesty is WOV's safety spec, written before any ring.** Every instance publishes, with each root fact, enough for any holder to *prove their balance at the last root and exit to MALA without the monarch's cooperation going forward* — the availability-as-a-fact lesson from movement three, applied where it matters most. A throughput lane whose users cannot leave is a cage; a lane whose exits are facts is a gift.
+**Third — exit honesty is WOV's safety spec, written before any lap.** Every instance publishes, with each root fact, enough for any holder to *prove their balance at the last root and exit to MALA without the monarch's cooperation going forward* — the availability-as-a-fact lesson from movement three, applied where it matters most. A throughput lane whose users cannot leave is a cage; a lane whose exits are facts is a gift.
 
-**The gate:** WOV's first ring opens only after **MALA M2** — money must be mailable before it needs a highway — and the first ring is small and visible: one pinned ledger as a cluster of one, the overlay minting and transferring, one hourly root fact onto a local MALA log, one witness green.
+**The gate:** WOV's first lap opens only after **MALA M2** — money must be mailable before it needs a highway — and the first lap is small and visible: one pinned ledger as a cluster of one, the overlay minting and transferring, one hourly root fact onto a local MALA log, one witness green.
 
 ---
 

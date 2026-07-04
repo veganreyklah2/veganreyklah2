@@ -19,8 +19,8 @@
 
 | Ask | Answer |
 |-----|--------|
-| Metalsmoke, siloed | `active-designing/20260703-013412_metalsmoke.md` — metal + smoke test: the thin ring's few honest checks where only the world can answer; earned by three marks (world-only · smallest slice · witnessed) |
-| Yonder pass eleven | Zed-rules and astrology-silos prompts to `expanding-prompts/yonder/`; enclosure spec repointed; missing index row added; Ring 3 prompt held until Door 2 closes |
+| Metalsmoke, siloed | `active-designing/20260703-013412_metalsmoke.md` — metal + smoke test: the thin edge's few honest checks where only the world can answer; earned by three marks (world-only · smallest slice · witnessed) |
+| Yonder pass eleven | Zed-rules and astrology-silos prompts to `expanding-prompts/yonder/`; enclosure spec repointed; missing index row added; Lap 3 prompt held until Door 2 closes |
 | Recursion-prompt craft guide | `external-research/20260703-013412_writing-recursion-prompts.md` — the CIVIC reading, eight load-bearing parts, four anti-patterns, a skeleton |
 | ER audit | Healthy, four flags: compiler-fork memo wants a held-under status line; two early editor memos are next-pass yonder candidates; license table refreshes when gratitude grows; blueprint companion line accreted |
 | WIP aging audit | Sound, one gap closed: width Phase 1b re-anchored in TASKS; open-threads stub honest; all 0702 files live |
@@ -39,7 +39,7 @@
 
 Read as one voice, the system in progress is telling you three things.
 
-**First: the automated world has finished everything it may do alone.** One hundred forty-two witnesses stand green, proven twice from bare metal on two different benches. The plate is empty by law rather than exhaustion — the loop stopped because its own discipline told it to stop. There is no red anywhere, and there is no ungated work anywhere. That pairing is the healthiest state this tree can reach without you.
+**First: the automated world has finished everything it may do alone.** One hundred forty-two witnesses stand green, proven twice from bare metal on two different benches. **Journey's pause** holds by law rather than exhaustion — the loop stopped because its own discipline told it to stop. There is no red anywhere, and there is no open-itinerary work anywhere. That pairing is the healthiest state this tree can reach without you.
 
 **Second: everything that remains is a kind of consent, and each kind wants a different part of you.** The doors want your body — a hand on a real keyboard at a real window. The rulings want your law — words that turn practiced habits into standing rules. The names want your joy. The pastes want your hands on documents only you can reach. The purchases want your treasury, in season. Propose-then-confirm was built exactly so that a healthy system piles proposals at your door; the pile is the safety architecture succeeding, never a backlog reproaching you.
 
@@ -53,9 +53,9 @@ And two honest observations ride along, because a counselor who only flatters is
 
 | Question as it stands | What it truly asks | What your answer unlocks |
 |----|----|----|
-| **Door 2 — live close + your stamp** | The one truth no machine can witness: a human at a real screen confirming the window builds, types, idles, holds its ceiling, and quits clean. The five steps are the five ways a window can lie to a headless test. | Ring 3 finishes forever; the Ring 3 prompt yonders; SLC-2b's nod becomes askable |
+| **Door 2 — live close + your stamp** | The one truth no machine can witness: a human at a real screen confirming the window builds, types, idles, holds its ceiling, and quits clean. The five steps are the five ways a window can lie to a headless test. | Lap 3 finishes forever; the Lap 3 prompt yonders; SLC-2b's nod becomes askable |
 | **Door 3 — Edit 5, for or against** | Shall Gall's Law be machine-enforced on the docs lane — at most one functional spec designed-not-built at a time? *For* = the norm becomes a wired witness (parity 143). *Against* = it stays a norm, witness drafted and idle. Amber proceeds either way (at 144 or 143); the ruling is about the standing law, never about Amber. | *For*: Edit 5 wires, then Amber rungs (a)–(e), chrono wires in the same arithmetic. *Against*: Amber rungs at 143 |
-| **WOV gate — affirm with three sharpenings** | Bless the safety geometry before anyone is tempted by throughput: pin never fork; one or two monarchs never three; exit-honesty spec before any ring. Costs nothing now — the first ring waits behind MALA M2 regardless. | The concept and its boundaries become canon; no future agent ever improvises the trust story |
+| **WOV gate — affirm with three sharpenings** | Bless the safety geometry before anyone is tempted by throughput: pin never fork; one or two monarchs never three; exit-honesty spec before any lap. Costs nothing now — the first lap waits behind MALA M2 regardless. | The concept and its boundaries become canon; no future agent ever improvises the trust story |
 | **Five ratifications** (archive verdict · Maitreya owns time · audit rule · versioning rule · demand map) | Each is already how the tree behaves. The ask is one word apiece: turn practice into law. | Standing rules future agents cite instead of re-deriving |
 | **SLC-2b nod** (after Door 2) | A home question: does the keyboard live as a `pond/apps` extension or as a `dexter/` seed beside Brushstroke? The graduation rule in miniature. | Four DoD greens, then RW-1's mirrored pair (+2) |
 | **Parked names** (mark-triad arms; watcher) | Nothing yet — names wait for seeds by the naming budget. The ask is only: hold them until their seed runs, then christen at your joy. | Deferred on purpose |

@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Amber first ring wired at parity **144**)
+**Last updated:** 2026-07-03 (Amber first lap wired at parity **144**)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -136,7 +136,7 @@ Two seam moves cover nearly everything:
 
 **Worked example:** Mantra's SLC-1 path (`mantra/src/diff.rye`, `main.rye`) — seven in-memory indices migrated to `u32` with seam casts at slice indices; `store.rye` and `weave.rye` were already clean. Comlink wire formats lean on **`u64`** at persistence boundaries; Rishi REPL buffers follow the same **`u32` + seam cast** pattern as Mantra in TH-5.
 
-**Freestanding width (Aurora).** On bare metal, `usize` is the machine word, and it is the correct, honest type for addresses, for control-and-status register values, for register-width hardware bit masks, and for local indices at the slice-access site. These are not debt; they are the kernel naming the hardware in the hardware's own width. What stays disciplined even here: a long-lived stored *count* still earns a named `u32` bound, so its ceiling is documented rather than left to the word size. The hosted authored-`usize` gate, `width-check`, governs the hosted corpus; `aurora/*` is freestanding and keeps this policy instead.
+**Freestanding width (Aurora).** On bare metal, `usize` is the machine word, and it is the correct, honest type for addresses, for control-and-status register values, for register-width hardware bit masks, and for local indices at the slice-access site. These are not debt; they are the kernel naming the hardware in the hardware's own width. What stays disciplined even here: a long-lived stored *count* still earns a named `u32` bound, so its ceiling is documented rather than left to the word size. The hosted authored-`usize` witness, `width-check`, governs the hosted corpus; `aurora/*` is freestanding and keeps this policy instead.
 
 Name the bound when you pick `u32`:
 
@@ -184,7 +184,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 ```
 
-A one-line prelude was weighed and set aside: Rye removed the namespace-splat long ago, so a single import would force qualified calls and collide with bare `assert` (gated by tidy) and bare `print` (ruled this week). A prelude file would spend the same three lines plus an indirection. **Canonize these three** until the shared head outgrows four names — the day indirection starts paying rent. A gentle textual check for the canonical head waits on the horizon beside `tame-check`.
+A one-line prelude was weighed and set aside: Rye removed the namespace-splat long ago, so a single import would force qualified calls and collide with bare `assert` (checked by tidy) and bare `print` (ruled this week). A prelude file would spend the same three lines plus an indirection. **Canonize these three** until the shared head outgrows four names — the day indirection starts paying rent. A gentle textual check for the canonical head waits on the horizon beside `tame-check`.
 
 ### Assertions as first-class design
 
@@ -232,7 +232,7 @@ In tests, reach for `std.testing.expect` and `std.testing.expectEqual` rather th
 For hosted seeds and modules, mirror the assert import: bind once per file — `const print = std.debug.print;` — and call bare `print(...)`. TigerBeetle's `tidy.zig` bans qualified `debug.assert(` and expects unqualified `assert`; it does **not** ban qualified `debug.print(`, yet the same once-per-file binding keeps diagnostic lines short and consistent across the hosted corpus.
 
 - **As-you-touch.** Migrate when a file is already open for other work — the same discipline as assertion-density hygiene, rather than a tree-wide sweep.
-- **No gate yet.** `tools/tame-check.rish` does not flag `std.debug.print(`; add that rule only if the need is proven, the way we defer AST-tier lints.
+- **No witness yet.** `tools/tame-check.rish` does not flag `std.debug.print(`; add that rule only if the need is proven, the way we defer AST-tier lints.
 - **Separate layers.** Rishi `.rish` pipelines speak through `say`; freestanding Aurora may grow its own logging seam when the boot path matures; `rye/tests/*` witnesses may keep the qualified form until touched.
 
 ### Named errors
@@ -324,7 +324,7 @@ Any tool that reads a `.brix` file should be able to do so with `splitLines` and
 
 ## Rishi Supplement
 
-Rishi is the shell: typed pipelines, process results as structured values, assertions as gates. These rules govern `.rish` scripts.
+Rishi is the shell: typed pipelines, process results as structured values, assertions as the smallest witnesses. These rules govern `.rish` scripts.
 
 ### Run returns a structured value
 
@@ -335,7 +335,7 @@ let result = run "zig" ["build"]
 assert result.status == 0  // invariant: build succeeded before we run tests
 ```
 
-### Assertions as gates
+### Assertions, the smallest witnesses
 
 An `assert` in a Rishi pipeline stops the pipeline loudly when the condition fails. Place assertions at stage boundaries: after a `run`, before a write, before a conditional branch. The assert is the cheapest correctness check available; use it freely.
 
@@ -362,17 +362,17 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | Rule | Check |
 |------|-------|
 | **No authored `usize` in published `.rye`** (seam casts blessed) | `tools/width-check.rish` (live, TH-1) |
-| **Unqualified assert** | `tools/tame-check.rish` (live gate, TH-2c) |
-| **Opening lines** (`const assert` + `const print`, no qualified debug calls) | `tools/opening_lines_witness.rish` (live gate, parity **140** — hosted corpus + `pond/apps/drawn_terminal.rye`) |
-| **At most one designed-not-built functional spec** (`context/specs/*.md` Status) | `tools/designed_not_built_witness.rish` (live gate, parity **143**, Edit 5 ruling `20260703.032812`) |
-| **Amber first ring** (export / verify / restore on fixture tree) | `tools/amber_first_ring.rish` (live gate, parity **144**, `20260703.051812`) |
-| **No `Self = @This()`** | `tools/tame-check.rish` (gate) |
-| **No tabs, no trailing whitespace** | `tools/tame-check.rish` (gate) |
+| **Unqualified assert** | `tools/tame-check.rish` (live witness, TH-2c) |
+| **Opening lines** (`const assert` + `const print`, no qualified debug calls) | `tools/opening_lines_witness.rish` (live witness, parity **140** — hosted corpus + `pond/apps/drawn_terminal.rye`) |
+| **At most one designed-not-built functional spec** (`context/specs/*.md` Status) | `tools/designed_not_built_witness.rish` (live witness, parity **143**, Edit 5 ruling `20260703.032812`) |
+| **Amber first lap** (export / verify / restore on fixture tree) | `tools/amber_first_ring.rish` (live witness, parity **144**, `20260703.051812`) |
+| **No `Self = @This()`** | `tools/tame-check.rish` (witness) |
+| **No tabs, no trailing whitespace** | `tools/tame-check.rish` (witness) |
 | **Line length ≤ 100 columns** | flag lines past 100, allowing a URL or a multiline-string result that itself fits |
 | **One `# Title` per markdown** | flag any `.md` with zero or more than one top-level `#`, fenced code ignored — directly serving our doc-heavy tree |
 | **No leftover `FIXME` or `dbg(`** | flag both before merge; `FIXME` is welcome while iterating, gone before main |
 
-**Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-ring.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin ring today.
+**Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin edge today.
 
 **Horizon — wait for a Zig parser** (build when Rye's own tooling can parse, or when the need is proven; do not clone `tidy.zig` ahead of the need):
 

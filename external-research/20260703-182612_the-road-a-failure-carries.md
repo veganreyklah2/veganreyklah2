@@ -1,8 +1,8 @@
 # The Road a Failure Carries — From Metalsmoke Toward a Trace
 
 *Kaeden asked whether metalsmoke should expand into Rye's general debugging and
-error-stacktrace organ. The recommendation is a respectful no to the word and a glad yes to
-the graduation: metalsmoke stays exactly what its definition note made it — the thin ring of
+error-stacktrace organ. The recommendation keeps the word narrow and graduates the insight:
+metalsmoke stays exactly what its definition note made it — the thin edge of
 checks only the world can answer — while the insights beneath the question grow into a
 designed organ of their own: the trace, the road a failure carries.*
 
@@ -37,7 +37,7 @@ rather than a bare no. All three are thanked below; what crosses the doorway is 
 
 Our stack adds the piece none of the teachers had: state is a pure fold over an append-only
 log of signed facts. So a failure's road has two lanes. The **call road** — which scripts and
-stages were in flight — rishi already whispers today (`at line N`); its first ring is a frame
+stages were in flight — rishi already whispers today (`at line N`); its first lap is a frame
 stack of nested `run script` entries printed on any assert failure, oldest to newest. The
 **fact road** — the last few events the fold consumed before the world went wrong — is the
 lane only a log-shaped system can offer, and it turns a stack trace into a story: here are the
@@ -47,12 +47,12 @@ door-checks already fail with named errors. And riding along from the second har
 wait has a deadline** — an unbounded wait is unbounded allocation wearing a clock, so a trace
 that ends in a timeout names the deadline that expired.
 
-## The First Ring, When Its Season Opens
+## The first lap, When Its Season Opens
 
 Small on purpose: rishi keeps a bounded frame stack (script name, line) and prints it beneath
 the existing assertion message; a named budget on depth; one witness proving a three-deep
 doomed run reports all three frames. Fact-road, shape-diffs, and any Rye-side capture wait for
-later rings. This study fills no spec slot tonight; the slot is open, and the word is yours.
+later laps. This study fills no spec slot tonight; the slot is open, and the word is yours.
 
 ## Gratitude
 

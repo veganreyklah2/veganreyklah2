@@ -22,7 +22,7 @@ The lane grows by the same law as the code: reference specifications open only w
 - **`tutorials/first-witness.md`** — run, read, write: your first `.rish` witness against the living suite.
 - **`tutorials/run-record-and-failures.md`** — the four run-record fields and RW-4 failure paths.
 
-*Next rooms, in season: Aurora interface reference when the surface stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first ring lands.*
+*Next rooms, in season: Aurora interface reference when the surface stabilizes; utility pages rendered from their own `.bron` man records when the toolset's first lap lands.*
 
 ---
 

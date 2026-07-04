@@ -13,9 +13,9 @@
 //!     -femit-bin=brushstroke/bin/brushstroke-wayland-seed
 //!   brushstroke/bin/brushstroke-wayland-seed          # Wayland window
 //!   brushstroke/bin/brushstroke-wayland-seed selftest # headless grid proof
-//!   brushstroke/bin/brushstroke-wayland-seed arbitrary # SLC-2a Ring 1 witness
-//!   brushstroke/bin/brushstroke-wayland-seed redraw     # SLC-2a Ring 2 metal: A then B
-//!   brushstroke/bin/brushstroke-wayland-seed redrawtest # SLC-2a Ring 2 headless witness
+//!   brushstroke/bin/brushstroke-wayland-seed arbitrary # SLC-2a Lap 1 witness
+//!   brushstroke/bin/brushstroke-wayland-seed redraw     # SLC-2a Lap 2 metal: A then B
+//!   brushstroke/bin/brushstroke-wayland-seed redrawtest # SLC-2a Lap 2 headless witness
 //!
 //! Requires a running Wayland compositor (`WAYLAND_DISPLAY`) for the default mode.
 

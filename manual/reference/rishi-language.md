@@ -105,7 +105,7 @@ assert temp.code == exit-temporary else "child must speak temporary failure"
 ## 7. Gates — `assert … else`
 
 ```
-assert build.ok else "drawn_terminal build failed for Ring 3 witness"
+assert build.ok else "drawn_terminal build failed for Lap 3 witness"
 assert (oob.ok == false) else "out-of-range index must fail"
 ```
 

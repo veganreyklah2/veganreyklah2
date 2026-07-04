@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety, performance, joy; Gall's Law; the silo principle
-**Status:** Design counsel — horizons only; the live rung stays SLC-2b's nod and the Ring 3 metal close
+**Status:** Design counsel — horizons only; the live rung stays SLC-2b's nod and the Lap 3 metal close
 **Companion:** `external-research/20260702-031312_settlement-consensus-and-many-roads.md` carries the outside names and sources. The graduation rule stands alone at [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md).
 
 *Written together by Kaeden and Claude (Fable 5), in Reya 2's Radiant voice.*
@@ -33,7 +33,7 @@ The **graduation rule** follows Gall's Law: *an aspect becomes a module on the d
 
 **The ladder, sketched:**
 
-- **M0 — the promise on paper.** Token-fact shapes and their witnesses, design only; opens after the Edit 5 ruling and Amber's first ring, in that order.
+- **M0 — the promise on paper.** Token-fact shapes and their witnesses, design only; opens after the Edit 5 ruling and Amber's first lap, in that order.
 - **M1 — one issuer, one holder.** Mint, send, receipt, and balance-as-fold, witnessed on one node.
 - **M2 — mailable.** A MALA crosses Comlink's fact lane between two nodes and a signed receipt crosses back.
 - **M3 — digital land.** A plot is a name-claim fact with extent in Realidream's shared graph; its deed is a signed fact bound to a Kumara holder; plots trade in MALA, for people on ordinary internet connections and for Mantrapods on the dock wire alike.

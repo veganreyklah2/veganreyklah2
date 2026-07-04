@@ -3,6 +3,7 @@
 *Two phrases have carried this tree's method for weeks — "researched with sources" and "siloed into our grain" — and tonight they receive their definitions. The grain is the set of standing commitments that give our wood its direction; the crossing is the disciplined passage an outside idea makes from the named world into the clean room. This brief accretes beside `../context/SILO_TECHNIQUE.md` and this stack's own foundation stone, saying what they left implicit: the grain itself, strand by strand, and the test every crossing must pass.*
 
 **Stamp:** `20260702.184312`
+**Last updated:** 2026-07-04 (sameness strand seated — Kaeden `20260704.023400 UDT`)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety, performance, joy
@@ -25,7 +26,8 @@ The grain is not a mood. It is a short, nameable set of strands, each already ca
 - **Accretion on one clock** — names endure, growth arrives beside what stands, versions are chronological, later is larger.
 - **Gall's law and the graduation rule** — grow from the working whole; an aspect earns a home at its second outside consumer.
 - **Seam honesty** — the host's compositor, keyring, ephemeris, and libc are named seams, leaned on openly, never absorbed silently.
-- **Witnesses first, the happy zone shape** — a claim is true when a witness runs green; the center fast and isolated, the ring thin.
+- **Witnesses first, the happy zone shape** — a claim is true when a witness runs green; the center fast and isolated, the lap thin ([`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md)).
+- **Sameness as compression** — one value model, one fold, one vocabulary; grow words in canon, not private syntax; count the whole cost of a line saved ([`foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md); seated `20260704.023400 UDT`).
 - **The opening lines and the silo itself** — one canonical head for code, one clean room for design, gratitude kept apart and warm.
 
 A pattern "fits our grain" when its restatement leans only on these strands. A pattern "cuts against the grain" when adopting it would import foreign structure whole — a module system, a mutable registry, a versioning scheme that licenses breakage — and the tear shows up later as tangling, unbounded growth, or a promise quietly taken back.

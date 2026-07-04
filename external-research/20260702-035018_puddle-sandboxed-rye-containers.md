@@ -32,7 +32,7 @@ This is not Pond itself. Pond is the enclosure aspect inside a running whole. **
 | **Urbit** — pier / ship / desk | A pier is a persistent identity world; Clay desks version code; `%sandbox` desk is an isolated workspace merged from `%base` ([Urbit filesystem docs](https://docs.urbit.org/user-manual/os/filesystem)) | One **identity per container**, revision-controlled interior, explicit merge from a golden base — not the Urbit stack itself |
 | **Urbit Fleet** ([github.com/urbit/fleet](https://github.com/urbit/fleet)) | Scripts to spawn and federate many testnet ships | **Fleet orchestration** — start N isolated worlds, wire them for test — adapted as Caravan-supervised child processes or VMs, not Nock |
 | **KVM / QEMU** | Hardware virtualisation; snapshot, restore, live migration | **Snapshot semantics** — pause, seal state, resume — the mechanical floor under Amber-compatible export |
-| **rust-vmm** ([github.com/rust-vmm](https://github.com/rust-vmm)) | Shared Rust crates for building minimal virtual machine monitors; the foundation beneath Firecracker and Cloud Hypervisor, whose microVMs boot in milliseconds with a tiny device model | A **Rust seam candidate** for the hypervisor host path — identity-bearing frontier work stays Rust until Rye proves the ring |
+| **rust-vmm** ([github.com/rust-vmm](https://github.com/rust-vmm)) | Shared Rust crates for building minimal virtual machine monitors; the foundation beneath Firecracker and Cloud Hypervisor, whose microVMs boot in milliseconds with a tiny device model | A **Rust seam candidate** for the hypervisor host path — identity-bearing frontier work stays Rust until Rye proves the lap |
 
 Clean-room rule holds: we read public docs and study design; Puddle's implementation enters through `active-designing/` in our words only.
 
@@ -65,9 +65,9 @@ The TAME-guided archive is: **fold state → seal with Kumara → content-name i
 | **Kumara** | One keypair per container; no cross-Puddle signing |
 | **Tally** | Memory budgets per container |
 | **Amber** | Export whole-container snapshot cold; verify without warm keys |
-| **Comlink** | Fact lane between host and guest Puddles when networking ring opens |
+| **Comlink** | Fact lane between host and guest Puddles when networking lap opens |
 
-First ring (horizon): one QEMU (or equivalent) guest running one hosted seed, export snapshot, verify digest, restore — witnessed once.
+first lap (horizon): one QEMU (or equivalent) guest running one hosted seed, export snapshot, verify digest, restore — witnessed once.
 
 ---
 
@@ -84,7 +84,7 @@ First ring (horizon): one QEMU (or equivalent) guest running one hosted seed, ex
 
 Kaeden asked for the sources themselves, so this pass reads them directly and brings back what they teach.
 
-**What the pier teaches.** The identity-world lineage keeps a ship's entire life in one folder — the *pier* — and its documentation is a chorus of our own convictions sung back to us. Boot is literally a fold: the runtime *replays events* from an append-only log until the present returns (`pier: replaying events … play: done`). Snapshot husbandry has two named verbs — *pack* defragments the snapshot, *meld* deduplicates it, sometimes halving its size. Development runs on *fake ships*: keyless local worlds spawned with one flag that automatically network with each other on the same machine — which is precisely Puddle's first-ring shape, a fleet of small worlds on one host, wired for witness. And the sternest lesson is the double-boot law: run two copies of one identity, or boot from a stale copy, and continuity breaks so badly the network must be asked to forget you. Puddle adopts that as an invariant from birth: **one live instance per Kumara identity**, enforced by a signed continuity fact, so the hazard the pier documents becomes a state Puddle rules out by construction.
+**What the pier teaches.** The identity-world lineage keeps a ship's entire life in one folder — the *pier* — and its documentation is a chorus of our own convictions sung back to us. Boot is literally a fold: the runtime *replays events* from an append-only log until the present returns (`pier: replaying events … play: done`). Snapshot husbandry has two named verbs — *pack* defragments the snapshot, *meld* deduplicates it, sometimes halving its size. Development runs on *fake ships*: keyless local worlds spawned with one flag that automatically network with each other on the same machine — which is precisely Puddle's first-lap shape, a fleet of small worlds on one host, wired for witness. And the sternest lesson is the double-boot law: run two copies of one identity, or boot from a stale copy, and continuity breaks so badly the network must be asked to forget you. Puddle adopts that as an invariant from birth: **one live instance per Kumara identity**, enforced by a signed continuity fact, so the hazard the pier documents becomes a state Puddle rules out by construction.
 
 **The microVM lineage.** The Rust virtualization ecosystem gathers its shared machinery in the rust-vmm crates, and the monitors built on them prove the shape Puddle wants for its host: a device model kept tiny on purpose, guests that boot in milliseconds, and a security posture that treats the monitor as the smallest possible trusted surface. When Puddle's season opens, the host path is a minimal monitor in that family at the seam — while QEMU remains the roomier vehicle we already run for cross-architecture work.
 

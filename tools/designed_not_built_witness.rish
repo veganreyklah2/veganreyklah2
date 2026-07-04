@@ -18,4 +18,4 @@ let oks = where lines as l: l starts-with "OK"
 if length fails == 0 then say "DESIGNED-NOT-BUILT GREEN: at most one functional spec in flight."
 if length fails != 0 then say "DESIGNED-NOT-BUILT RED: too many functional specs in designed-not-built flight."
 
-assert length fails == 0 else "designed-not-built RED: bound is one until first ring green"
+assert length fails == 0 else "designed-not-built RED: bound is one until first lap green"

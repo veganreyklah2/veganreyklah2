@@ -37,7 +37,7 @@ This is the lane Realidream's living surfaces, Linengrow's rooms, and any self-h
 
 ## 4. Keys Without Fear — the Quantum Reckoning
 
-The honest answer to the question is **yes**: the asymmetric algorithms in today's specifications are of the pre-quantum family. The hosted wire agrees keys with **X25519** and signs with **Ed25519**; Amber's first ring signs through the host's OpenPGP seam with the same curve family. A sufficiently large quantum computer breaks both. The symmetric and hashing choices stand comfortable — **ChaCha20-Poly1305** at 256 bits and **SHA3-256** digests lose only their square root to Grover, which the margins absorb.
+The honest answer to the question is **yes**: the asymmetric algorithms in today's specifications are of the pre-quantum family. The hosted wire agrees keys with **X25519** and signs with **Ed25519**; Amber's first lap signs through the host's OpenPGP seam with the same curve family. A sufficiently large quantum computer breaks both. The symmetric and hashing choices stand comfortable — **ChaCha20-Poly1305** at 256 bits and **SHA3-256** digests lose only their square root to Grover, which the margins absorb.
 
 Two different clocks are ticking. For **Comlink**, the threat is *harvest now, decrypt later*: ciphertext recorded today, opened in some future — so the key agreement wants a post-quantum partner soonest. For **Amber**, the threat is *retro-forgery*: a signature honest today could one day be forgeable, and Amber exists precisely for the long dark — so archival signatures want the most conservative post-quantum family there is. The standards have landed: **ML-KEM** (FIPS 203) for key agreement, **ML-DSA** (FIPS 204) for general signatures, and **SLH-DSA** (FIPS 205), the stateless hash-based scheme whose security leans only on the hash functions we already trust — the natural archivist's signature. The OpenPGP tooling at our seam is already growing ML-KEM support, so the seam we chose keeps choosing us back.
 
@@ -48,7 +48,7 @@ The migration is accretion, never a break, and the five primitives make it grace
 3. **Hybrid key agreement on the wire** — X25519 joined with ML-KEM-768, the proven curve and the lattice newcomer both having to fall before a session does.
 4. **Dual signatures for the long dark** — Amber records carry Ed25519 today and add SLH-DSA beside it as the seam's tooling settles; a future verifier accepts either era and trusts the stronger.
 
-Nothing above touches the live rung. Ring 3 closes the drawn terminal; these land as ordered horizons, each with a first ring already visible and small.
+Nothing above touches the live rung. Lap 3 closes the drawn terminal; these land as ordered horizons, each with a first lap already visible and small.
 
 ---
 

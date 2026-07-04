@@ -9,7 +9,7 @@
 
 ## The ruling
 
-At most **one** functional spec in designed-not-built flight until that spec's first ring runs green. A second module spec lands only when the first's first ring is witnessed.
+At most **one** functional spec in designed-not-built flight until that spec's first lap runs green. A second module spec lands only when the first's first lap is witnessed.
 
 ## If Kaeden rules **for**
 
@@ -18,7 +18,7 @@ At most **one** functional spec in designed-not-built flight until that spec's f
 Add after the deep-archive horizon line:
 
 ```markdown
-- [x] **Designed-not-built spec bound (Edit 5)** — at most one functional spec in flight until its first ring runs green; witness [`tools/designed_not_built_witness.rish`](../tools/designed_not_built_witness.rish) wired in parity.
+- [x] **Designed-not-built spec bound (Edit 5)** — at most one functional spec in flight until its first lap runs green; witness [`tools/designed_not_built_witness.rish`](../tools/designed_not_built_witness.rish) wired in parity.
 ```
 
 Remove or strike the Open Questions line for Edit 5.

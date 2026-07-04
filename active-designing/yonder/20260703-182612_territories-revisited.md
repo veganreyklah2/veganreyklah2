@@ -19,7 +19,7 @@ it reads. **Lantern** holds its enclosure charter and gains a civic sentence: th
 is not an accessory, it is the product — every token counted in the open is CIVIC applied to
 inference. **Lattice** stays tensors-in-gardens and inherits tonight's grain: let the shape
 carry the bound — dimensions as types, budgets as geometry. **Anvil** remains the far forge,
-and its first honest ring is not training at all: it is the dataset ledger, provenance as
+and its first honest lap is not training at all: it is the dataset ledger, provenance as
 signed facts, consent before counting. **Realidream** sharpens from surface-vision to *the
 projection browser*: every pane a fold over some log — a weave, a puddle, a storefront — one
 navigation model over many substrates. **Bubble** (parked) slots beneath it as the drawing

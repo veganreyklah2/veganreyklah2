@@ -136,9 +136,9 @@ pub const max_transcript_bytes: u32 = 65536; // the session transcript's ceiling
 const max_args: u32 = 64; // script argv bound — friendly error past this, not a crash
 const max_session_lines: u32 = 256; // sessionLines row bound — named before any projection
 
-/// A bounded ring of the most recent input lines. Bounded on purpose: the
+/// A bounded lap of the most recent input lines. Bounded on purpose: the
 /// limit is named, so a long session meets a clear edge rather than growing
-/// without end. The oldest line is released when the ring is full.
+/// without end. The oldest line is released when the lap is full.
 pub const History = struct {
     items: [max_history][]const u8 = undefined,
     count: u32 = 0,
@@ -297,7 +297,7 @@ fn doVersion(garden: std.mem.Allocator, io: std.Io, init: std.process.Init, tran
 }
 
 /// Run one ordinary input line as if freshly typed: record it to the
-/// transcript and the history ring, evaluate it, and report any error.
+/// transcript and the history lap, evaluate it, and report any error.
 /// The shared road for both the prompt and :recall.
 fn runInputLine(
     garden: std.mem.Allocator,
@@ -321,7 +321,7 @@ fn runInputLine(
     };
 }
 
-/// Re-run history entry *n* (1-based). User input is untrusted — empty ring,
+/// Re-run history entry *n* (1-based). User input is untrusted — empty lap,
 /// non-numeric, and out-of-range indices meet a friendly message and return.
 fn recallByIndex(
     garden: std.mem.Allocator,
@@ -343,7 +343,7 @@ fn recallByIndex(
         print("rishi: :recall out of range — choose 1 to {d}\n", .{history.count});
         return;
     }
-    // Capture before re-running: re-recording may shift the ring.
+    // Capture before re-running: re-recording may shift the lap.
     const target = history.items[n - 1];
     try runInputLine(garden, io, env, history, transcript, target);
 }

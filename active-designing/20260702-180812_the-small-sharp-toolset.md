@@ -36,7 +36,7 @@ Configuration wants no module system. It wants **one small override combinator**
 
 ## The Ladder, Gated
 
-Nothing above starts before the three doors and the Amber season. When its turn comes, the first ring is one utility: `echo`-sized, opening lines at its head, `.bron` man record beside it, declared in `.brix`, witnessed green, rendered by `:man`. The second ring adds readiness-as-fact to one Caravan child. The combinator earns its ring only when two real configurations exist to differ.
+Nothing above starts before the three doors and the Amber season. When its turn comes, the first lap is one utility: `echo`-sized, opening lines at its head, `.bron` man record beside it, declared in `.brix`, witnessed green, rendered by `:man`. The second lap adds readiness-as-fact to one Caravan child. The combinator earns its lap only when two real configurations exist to differ.
 
 ---
 

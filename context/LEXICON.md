@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-04 (itinerary seated `001012`; retires diet · menu · empty plate forward-facing)
+**Last updated:** 2026-07-04 (itinerary retires diet `030300`; claim `024900`; lap · toll)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -12,20 +12,23 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 
 | Term | One line |
 |------|----------|
-| **Gate** | A precondition owned by someone else or an unlanded event — `(Kaeden …)` tags, a door ruling, a paste, counsel not yet confirmed, a prior rung's green |
-| **Itinerary** | The **named list of stops** the autonomous loop may execute **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; **not** an off-route license |
+| **Gate** | A named precondition on the itinerary that only a ruling, a word, or a landed event opens — gates belong to Kaeden; [`specs/20260704-020800_one-word-one-gate.md`](specs/20260704-020800_one-word-one-gate.md) |
+| **Witness** | A program that proves a claim on metal and answers green or red — the trio (`parity.rish`, `parity-selftest.rish`, `additive-gate.rish`) guards every push |
+| **Claim** | A bounded, falsifiable proposition one witness binds — lap, seam, or invariant; [`external-research/20260704-024900_claim.md`](../external-research/20260704-024900_claim.md) |
+| **Toll** | The price of shared order — facts touching the commons pay it; everything else is spared; [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) |
+| **Itinerary** | The **named list of stops** the autonomous loop may execute **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; never an off-route license — [`specs/20260704-030300_itinerary-retires-diet.md`](specs/20260704-030300_itinerary-retires-diet.md) · primer [`external-research/20260704-030600_itinerary-and-the-crossing-manifest.md`](../external-research/20260704-030600_itinerary-and-the-crossing-manifest.md) |
 | **Open itinerary** | Synonym for the itinerary when every gate is cleared **now** — what older logs called *ungated diet* |
 | **Stop** | One item on the itinerary — a witness, a wire, a doc season; replaces *menu item* in prompt prose |
 | **Smallest-first** | Order within the itinerary — the nearest, smallest stop wins the next leg |
 | **Witness-first, red-then-green** | Method within the itinerary — prove on metal before prose; fail loudly, then land green in the same sitting |
 | **Journey's pause** | When the itinerary has **no further stops** — stop and summarize; a pause is a question for Kaeden, never permission to go off-route |
 | **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
-| **Ring** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md) |
+| **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood |
 | **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
 | **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
 
-**Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet* — still readable in session history; new prose uses **itinerary** · **stops** · **journey's pause**.
+**Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet*, *ring*, *thin ring*, *appetite* (ordering sense) — still readable in session history and frozen witness basenames; new prose uses **itinerary** · **stops** · **journey's pause** · **lap** · **thin edge** · **toll**.
 
 **Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
 
@@ -95,8 +98,8 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 
 | Name | Status |
 |------|--------|
-| **MALA** | Named (`2026-07-02`) — mailable money: issuer-signed token facts on the log, balance as a fold; ladder M0–M4 in [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md); first ring after Edit 5 and Amber |
-| **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, whole in gratitude at `59f2b99`); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty before any ring; first ring after MALA M2 only — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
+| **MALA** | Named (`2026-07-02`) — mailable money: issuer-signed token facts on the log, balance as a fold; ladder M0–M4 in [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md); first lap after Edit 5 and Amber |
+| **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, whole in gratitude at `59f2b99`); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty before any lap; first lap after MALA M2 only — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
 | **Tablecloth** | Named — layout or structured-view layer; horizon |

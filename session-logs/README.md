@@ -10,6 +10,26 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.031000 | [Canonical refinement counsel](20260704-031000_canonical-refinement-counsel.md) | four-lap plan to seat glosses and sweep loose *canonical* |
+| 20260704.030800 | [Canonical vocabulary audit](20260704-030800_canonical-vocabulary-audit.md) | nine senses of *canonical* mapped to grain; tensions named |
+| 20260704.030600 | [Diet writings archived](20260704-030600_diet-writings-archived.md) | itinerary primer canonical; diet ER moved to archive |
+| 20260704.030300 | [Itinerary retires diet — audit](20260704-030300_itinerary-retires-diet-audit.md) | full forward-facing sweep; v4 prompt; ER primer rewrite |
+| 20260704.030200 | [Radiant pass — Jul 3 cluster](20260704-030200_radiant-pass-jul3-cluster.md) | second lap on harvest + counsel essays; forward links |
+| 20260704.030000 | [Radiant pass — recent writings](20260704-030000_radiant-pass-recent-writings.md) | vocabulary cluster + TWO_ROOMS; surgical Radiant freshen |
+| 20260704.025600 | [Claims × happy zone × grain](20260704-025600_claims-happy-zone-grain.md) | braid essay — grain strands shape claims; happy zone habitats |
+| 20260704.024900 | [Claim vocabulary essay](20260704-024900_claim-essay.md) | bounded proposition; LEXICON row |
+| 20260704.024800 | [Checkable room essay](20260704-024800_checkable-room-essay.md) | definition of checkable register |
+| 20260704.024600 | [Two rooms metal-path research](20260704-024600_two-rooms-metal-path.md) | programs mapped to two registers |
+| 20260704.023800 | [Parity 152 + not-advice](20260704-023800_parity-152-not-advice.md) | full suite GREEN; ORGANIZING filing rule; RTAC pins |
+| 20260704.023700 | [Foundations grain pointer](20260704-023700_foundations-grain-pointer.md) | README index to active-designing grain brief |
+| 20260704.023600 | [Grain doc — silo into foundations?](20260704-023600_grain-filing-counsel.md) | Kaeden asked filing; counsel: no duplicate silo |
+| 20260704.023400 | [Sameness grain seated](20260704-023400_sameness-grain-seated.md) | Kaeden affirmed; tenth grain strand |
+| 20260704.023100 | [Fold canon + sameness silo](20260704-023100_fold-canon-sameness-silo.md) | stack fold map; interface affirm; foundations sameness companion |
+| 20260704.023000 | [Fold canon — interface-as-a-fold check](20260704-023000_fold-canon-interface-check.md) | Kaeden asked currency of fold documentation and stamp policy |
+| 20260704.022400 | [SLC-L1 check-in explained](20260704-022400_slcl1-check-in-explained.md) | Kaeden asked what gates remain after parity 152 |
+| 20260704.021800 | [SLC-L1 receipt — parity 152](20260704-021800_slcl1-receipt-witness-152.md) | linengrow/receipt.rye + slcl1_receipt.rish; full parity GREEN |
+| 20260704.020800 | [Toll seated + crossing witness — 151](20260704-020800_toll-crossing-witness-151.md) | one-word-one-gate spec; toll deltas; crossing_manifest_seed at parity 151 |
+| 20260704.020100 | [Lap vocabulary — Rishi sweep](20260704-020100_lap-vocabulary-rish-sweep.md) | Kaeden chose lap; word-boundary sweep + audit GREEN |
 | 20260704.011512 | [Zip 40 intake — gate counsel seated](20260704-011512_zip40-intake-gate-counsel.md) | Claude relay seated; both benches 150; park lifted; memo awaits Kaeden for deltas |
 | 20260704.004912 | [Zip 40 green + gate counsel](20260704-004912_zip40-green-gate-counsel.md) | Claude bench: v5 raise green from bare; gate-unify memo delivered |
 | 20260704.005312 | [Push to four remotes](20260704-005312_push-four-remotes.md) | `4ab032d` on origin · github · gp36-codeberg · gp36-github |

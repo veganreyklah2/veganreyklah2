@@ -1,10 +1,7 @@
-// crossing_manifest_seed.rye — PROPOSED SEED, UNVERIFIED.
-// No bench has raised or run this file. Per red-then-green, a witness comes
-// first, and no claim is made until the bench reports. This seed is parked in
-// work-in-progress; its true home is a module-home decision and moves only on
-// Kaeden's word.
+// crossing_manifest_seed.rye — PROPOSED SEED; parse harness GREEN at parity 151.
+// Module home in work-in-progress until Kaeden rules; witness: tools/crossing_manifest_seed.rish.
 //
-// Ring one of the sealed crossing: one manifest line, plain text, one entry:
+// Lap one of the sealed crossing: one manifest line, plain text, one entry:
 //
 //     <mark> <sha3-256-hex> <name>
 //
@@ -93,4 +90,18 @@ test "a damaged line is refused whole" {
     try std.testing.expectError(error.InvalidFormat, parse_manifest_line("bytes short name"));
     try std.testing.expectError(error.InvalidFormat, parse_manifest_line(" " ++ ("ab" ** 32) ++ " x"));
     try std.testing.expectError(error.InvalidFormat, parse_manifest_line("bytes " ++ ("AB" ** 32) ++ " x"));
+}
+
+pub fn main() void {
+    const line = "bytes " ++ ("ab" ** 32) ++ " session-logs/example.md";
+    const entry = parse_manifest_line(line) catch unreachable;
+    assert(std.mem.eql(u8, entry.mark, "bytes"));
+    assert(entry.digest_hex.len == digest_hex_len);
+    assert(std.mem.eql(u8, entry.name, "session-logs/example.md"));
+
+    if (parse_manifest_line("bytes short name")) |_| unreachable else |_| {}
+    if (parse_manifest_line(" " ++ ("ab" ** 32) ++ " x")) |_| unreachable else |_| {}
+    if (parse_manifest_line("bytes " ++ ("AB" ** 32) ++ " x")) |_| unreachable else |_| {}
+
+    std.debug.print("GREEN: crossing manifest seed — parse and refuse whole.\n", .{});
 }

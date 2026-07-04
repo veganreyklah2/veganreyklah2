@@ -1,11 +1,16 @@
 # Two Rooms — The Checkable and the Visionary
 
 **Language:** EN
-**Last updated:** 20260703.140212
+**Last updated:** 2026-07-04 (Radiant pass · vocabulary companions linked)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Proposed canon — drafted from the second harvest
-(`external-research/20260703-071712_the-second-harvest.md`); seats as standing context only on
-Kaeden's word, and until then binds nothing
+([`external-research/20260703-071712_the-second-harvest.md`](../external-research/20260703-071712_the-second-harvest.md));
+vocabulary companions:
+[`20260704-024800_the-checkable-room.md`](../external-research/20260704-024800_the-checkable-room.md) ·
+[`20260704-024900_claim.md`](../external-research/20260704-024900_claim.md) ·
+[`20260704-025600_claims-happy-zone-and-grain.md`](../external-research/20260704-025600_claims-happy-zone-and-grain.md) ·
+[`20260704-024600_two-rooms-on-the-metal-path.md`](../external-research/20260704-024600_two-rooms-on-the-metal-path.md);
+metal-path cases seated above; full canon seats on Kaeden's word
 
 ---
 
@@ -16,9 +21,9 @@ witness today: a digest, a gate count, a policy whose reward can be measured aga
 outcome. The other kind orients before it can be proven: the two-layer image of buried cable and
 living air, the health of pollinators as the measure of an invisible commons, give back more
 than you take, let the circle close. The first kind belongs to the bench. The second kind
-belongs to the vision register. Trouble begins only when the two share a room without saying so
-— when a beautiful guess borrows the bench's authority, or when the bench's rigor is used to
-mock an image that was doing honest orienting work. The discipline is therefore architectural:
+belongs to the vision register. Trouble begins when the two share a room without saying so
+— when a beautiful guess borrows the bench's authority, or when the bench spends its rigor
+mocking an image that was doing honest orienting work. The discipline is therefore architectural:
 **give each register a room of its own, and name the room at the door.**
 
 ## The Checkable Room
@@ -26,7 +31,12 @@ mock an image that was doing honest orienting work. The discipline is therefore 
 The checkable room is the bench's world, and its law is already canon: only what a witness can
 bind enters as fact, and the bench pins what it reports. Code, gates, arithmetic, verified
 policy ground, figures with sources — these live here, and their sentences carry the register's
-plain confidence. Nothing in this note weakens that law by a hair.
+plain confidence. Nothing in this note weakens that law by a hair. Fuller definition:
+[`external-research/20260704-024800_the-checkable-room.md`](../external-research/20260704-024800_the-checkable-room.md).
+Claim vocabulary:
+[`external-research/20260704-024900_claim.md`](../external-research/20260704-024900_claim.md).
+Braid with grain and happy zone:
+[`external-research/20260704-025600_claims-happy-zone-and-grain.md`](../external-research/20260704-025600_claims-happy-zone-and-grain.md).
 
 ## The Vision Room
 

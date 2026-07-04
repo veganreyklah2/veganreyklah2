@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-03 (the learning chapter candidate)
+**Last updated:** 2026-07-04 (grain index pointer · sameness seated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -10,15 +10,18 @@ This folder holds the why beneath the work — the reasons the building means so
 
 These rest beneath the specifications. The specs say what to build and how; these say what it is for.
 
+**The grain** — ten standing strands and the crossing test live in [`../active-designing/20260702-184312_the-grain-and-the-crossing.md`](../active-designing/20260702-184312_the-grain-and-the-crossing.md); companion to [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md). Strand briefs that silo here point back to that index; the index points to each brief.
+
 ## What Lives Here
 
 **Foundation briefs** — the why beneath the daily work, on our own roots:
 
+- `20260703-182612_sameness-is-the-macro.md` — compression without magic: sameness as the macro we accept, syntax macros we refuse; **grain strand seated** `20260704.023400 UDT`; siloed from [`../external-research/20260703-182612_sameness-is-the-macro.md`](../external-research/20260703-182612_sameness-is-the-macro.md).
 - `20260703-140212_the-learning-chapter.md` — the candidate Civic Style education chapter: learning as apprenticeship, a dignity floor per learner, the unlocked door in existing law, accreditation resung as a witness suite; enters canon on Kaeden's word.
 - `20260702-202612_a-conversation-with-serena.md` — the hearth episode: the long cycles, the diary that can't be quietly rewritten, grace as the ground and the ledger for the weeds; a mother's questions as the best part.
 - `20260628-121512_the-foundation-beneath-the-work.md` — work as offering, building as service, freedom as the thing we build toward, grace as the ground we stand on.
 - `20260628-121512_the-heart-in-the-work.md` — the path with heart as the test for what we take up, conserved energy as strength, clean craft as energy spent without leak.
-- `20260702-165412_the-happy-zone-and-the-thin-ring.md` — the testing teaching siloed: two small answers at every seam turn multiplication into addition; the pure fold core proven fast inside, the world's few honest checks kept to a thin ring at the edge.
+- `20260702-165412_the-happy-zone-and-the-thin-edge.md` — the testing teaching siloed: two small answers at every seam turn multiplication into addition; the pure fold core proven fast inside, the world's few honest checks kept to a thin edge at the edge. Gate · witness · toll vocabulary: [`../context/specs/20260704-020800_one-word-one-gate.md`](../context/specs/20260704-020800_one-word-one-gate.md).
 
 **Vision documents** — the larger civic horizon, adaptable to any community:
 
@@ -28,7 +31,7 @@ These rest beneath the specifications. The specs say what to build and how; thes
 - `the-aspiring-radiance-universal.md` — a regenerative policy design framework for every climate and community.
 - `the-regenerative-experiment-universal.md` — a literary vision of renewal across every landscape.
 
-**The far horizon** — four visions that compose one layered stack the project grows toward, distinct from the active rings (SLC-1 done; TAME hardening now). Read top to bottom: surface → graph → hardware → model. Gall's Law holds — complex systems grow from working simple ones; these name aspiration, not near-term build order.
+**The far horizon** — four visions that compose one layered stack the project grows toward, distinct from the active laps (SLC-1 done; TAME hardening now). Read top to bottom: surface → graph → hardware → model. Gall's Law holds — complex systems grow from working simple ones; these name aspiration, not near-term build order.
 
 - `20260629-063512_realidream.md` — the unified editor-and-browser surface over a single streaming graph: read the living web and write the living program in one place, bounded and deterministic, owned by the person before it.
 - `20260629-063512_the-graph-beneath-the-surface.md` — **Weave**: the streaming DAG substrate under Realidream (program, page, screen as one graph); Mantra is the projection over Weave — on Tally (bounds), Tablecloth (fold) — fast because little redraws, honest because the history is a chain of signed facts.

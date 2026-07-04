@@ -36,7 +36,7 @@ Two domestic courtesies close the bandwidth story. The rack reserves **household
 
 ### The thesis, said once
 
-An append-only log sounds like a moderation nightmare until the fold is remembered. **State is a pure fold over the log — and moderation is a property of the fold, never of the log.** Nothing needs erasing for something to stop appearing; the projection simply declines to render it. History stays whole, accrete-never-break holds, and every moderation decision becomes reversible, auditable, and personal. The friend's question assumes moderation means deletion; the architecture's answer is that moderation means *choice of fold* — which is gentler, more honest, and more powerful at once.
+The append-only log sounds like a moderation nightmare until the fold is remembered. **State is a pure fold over the log — and moderation is a property of the fold, rather than of the log.** Nothing needs erasing for something to stop appearing; the projection simply declines to render it. History stays whole, accrete-never-break holds, and every moderation decision becomes reversible, auditable, and personal. The friend's question assumes moderation means deletion; the architecture's answer is that moderation means *choice of fold* — which is gentler, more honest, and more powerful at once.
 
 ### Moderation actions are signed facts, so moderation has receipts
 

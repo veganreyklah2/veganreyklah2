@@ -1,15 +1,15 @@
-# Amber First Ring — Claude Sitting Brief
+# Amber first lap — Claude Sitting Brief
 
 **Stamp:** `20260702.190000`
 **Voice:** Rio 3
-**Opens after:** Kaeden's three doors (Pond clause · Ring 3 metal close · Edit 5 ruling)
+**Opens after:** Kaeden's three doors (Pond clause · Lap 3 metal close · Edit 5 ruling)
 **Ground:** [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md)
 
 ---
 
 ## The ask
 
-Design and name the **first ring** so Cursor can implement it rung by rung afterward. Five lettered steps from TASKS ladder rung 3:
+Design and name the **first lap** so Cursor can implement it rung by rung afterward. Five lettered steps from TASKS ladder rung 3:
 
 | Step | Deliverable |
 |------|-------------|
@@ -39,4 +39,4 @@ No `amber/` implementation, no parity wire, no functional spec status change bey
 
 ---
 
-*May the first ring seal one honest directory and verify it twice.*
+*May the first lap seal one honest directory and verify it twice.*

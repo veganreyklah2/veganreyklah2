@@ -40,7 +40,7 @@ First, distribution is sealed: where the lineage we studied trusts anonymous cac
 
 ## How It Grows
 
-Brix is small today: a `.brix` descriptor with its tracked bricks, read by Mantra. It grows by the same law as everything here. The first ring is a course evaluating into a closure of content-addressed bricks in Tablecloth, arriving after the Amber season gives sealing its witnessed shape — the packaging tool-aspect and the toolset ladder already name the rungs. Nothing is built ahead of the seed it composes.
+Brix is small today: a `.brix` descriptor with its tracked bricks, read by Mantra. It grows by the same law as everything here. The first lap is a course evaluating into a closure of content-addressed bricks in Tablecloth, arriving after the Amber season gives sealing its witnessed shape — the packaging tool-aspect and the toolset ladder already name the rungs. Nothing is built ahead of the seed it composes.
 
 ---
 

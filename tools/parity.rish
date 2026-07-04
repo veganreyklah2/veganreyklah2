@@ -42,20 +42,20 @@ let slc1a = run ["rishi/bin/rishi" "run" "tools/slc1_accept.rish"]
 assert slc1a.ok else "SLC-1 acceptance witness failed"
 say "GREEN: SLC-1 acceptance witness passed."
 
-say "witness suite: SLC-2a Ring 1 arbitrary value…"
+say "witness suite: SLC-2a Lap 1 arbitrary value…"
 let slc2r1 = run ["rishi/bin/rishi" "run" "tools/slc2a_ring1_arbitrary.rish"]
-assert slc2r1.ok else "SLC-2a Ring 1 arbitrary-value witness failed"
-say "GREEN: SLC-2a Ring 1 arbitrary-value witness passed."
+assert slc2r1.ok else "SLC-2a Lap 1 arbitrary-value witness failed"
+say "GREEN: SLC-2a Lap 1 arbitrary-value witness passed."
 
-say "witness suite: SLC-2a Ring 2 redraw…"
+say "witness suite: SLC-2a Lap 2 redraw…"
 let slc2r2 = run ["rishi/bin/rishi" "run" "tools/slc2a_ring2_redraw.rish"]
-assert slc2r2.ok else "SLC-2a Ring 2 redraw witness failed"
-say "GREEN: SLC-2a Ring 2 redraw witness passed."
+assert slc2r2.ok else "SLC-2a Lap 2 redraw witness failed"
+say "GREEN: SLC-2a Lap 2 redraw witness passed."
 
-say "witness suite: SLC-2a Ring 3 session mirror…"
+say "witness suite: SLC-2a Lap 3 session mirror…"
 let slc2r3 = run ["rishi/bin/rishi" "run" "tools/slc2a_ring3_session.rish"]
-assert slc2r3.ok else "SLC-2a Ring 3 session mirror witness failed"
-say "GREEN: SLC-2a Ring 3 session mirror witness passed."
+assert slc2r3.ok else "SLC-2a Lap 3 session mirror witness failed"
+say "GREEN: SLC-2a Lap 3 session mirror witness passed."
 
 say "witness suite: Caravan capability table…"
 let caravan_caps = run ["rishi/bin/rishi" "run" "tools/caravan_capabilities.rish"]
@@ -167,10 +167,10 @@ let edit5 = run ["rishi/bin/rishi" "run" "tools/designed_not_built_witness.rish"
 assert edit5.ok else "designed-not-built witness failed"
 say "GREEN: designed-not-built spec bound witness passed."
 
-say "witness suite: amber first ring…"
+say "witness suite: amber first lap…"
 let amber1 = run ["rishi/bin/rishi" "run" "tools/amber_first_ring.rish"]
-assert amber1.ok else "amber first ring witness failed"
-say "GREEN: amber first ring witness passed."
+assert amber1.ok else "amber first lap witness failed"
+say "GREEN: amber first lap witness passed."
 
 say "witness suite: SLC-2b keyboard from window…"
 let slc2b = run ["rishi/bin/rishi" "run" "tools/slc2b_keyboard.rish"]
@@ -181,6 +181,16 @@ say "witness suite: chrono version sweep…"
 let chrono = run ["rishi/bin/rishi" "run" "tools/chrono_version_sweep.rish"]
 assert chrono.ok else "chrono version sweep witness failed"
 say "GREEN: chrono version sweep witness passed."
+
+say "witness suite: crossing manifest seed (lap one parse)…"
+let crossing = run ["rishi/bin/rishi" "run" "tools/crossing_manifest_seed.rish"]
+assert crossing.ok else "crossing manifest seed witness failed"
+say "GREEN: crossing manifest seed witness passed."
+
+say "witness suite: SLC-L1 verifiable receipt…"
+let slcl1 = run ["rishi/bin/rishi" "run" "tools/slcl1_receipt.rish"]
+assert slcl1.ok else "SLC-L1 receipt witness failed"
+say "GREEN: SLC-L1 verifiable receipt witness passed."
 
 say "witness suite: RW-2 app collaboration…"
 let rw2a = run ["rishi/bin/rishi" "run" "tools/rw2_app_collab.rish"]

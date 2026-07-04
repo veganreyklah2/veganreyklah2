@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Door 2 metal-closed `20260703.032412`; Ring 3 prompt to yonder; recursion prompt v3 seated `20260703.020012`)
+**Last updated:** 2026-07-04 (recursion prompt v4 `20260704.030300` — itinerary · stops · journey's pause)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,7 +68,8 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
-| `20260703-020012` | [Cursor recursion prompt v3 — land eight, then hold the doors](20260703-020012_cursor-recursion-prompt-v3.md) | Active loop — ROUND ZERO lands the three-sitting bundle in eight commits, then empty-plate hold; supersedes v2 |
+| `20260704-030300` | [Cursor recursion prompt v4 — itinerary, stops, journey's pause](20260704-030300_cursor-recursion-prompt-v4.md) | **Active loop** — open itinerary · STOPS · journey's pause; supersedes v2/v3 |
+| `20260703-020012` | [Cursor recursion prompt v3 — land eight, then hold the doors](20260703-020012_cursor-recursion-prompt-v3.md) | Superseded by v4 — frozen for accretion |
 | `20260702-202612` | [Astrology silos 19–20 — Cursor](yonder/20260702-202612_cursor-astrology-silos-19-20.md) | Consumed — studies 19–20 distilled and landed; raw transcripts never committed; in `yonder/` |
 | `20260702-030112` | [SLC-2b — keyboard from the window](20260702-030112_cursor-slc-2b-keyboard-from-window.md) | **Next open question** — Dexter genesis; awaits Kaeden nod |
 | `20260701-231512` | [SLC-2a Ring 3 — mirror live session](yonder/20260701-231512_cursor-slc-2a-ring-three.md) | Consumed — witness at parity 139; metal-closed on GNOME `20260703.032412`; in `yonder/` |

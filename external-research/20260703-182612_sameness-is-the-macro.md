@@ -8,7 +8,7 @@ offers the principle they braid into, for the grain on Kaeden's word.*
 
 **Stamp:** `20260703.182612` (supplied verbatim by Kaeden)
 **Language:** EN · **Style:** Radiant · **Lens:** TAME · SLC
-**Status:** External research — principle extraction; canon passages boxed for Kaeden's word
+**Status:** External research — principle extraction; **siloed companion:** [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) — **grain strand seated** `20260704.023400 UDT`
 **Companions:** `../context/TAME_GUIDANCE.md` (one value model) · `../context/SIMPLE_LOVABLE_COMPLETE.md` · the Brix one-grammar brief (`../active-designing/20260620-020712_scribble-lantern-and-lattice.md`)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
@@ -25,14 +25,14 @@ and a system too large to hold in mind fails differently than a small one.
 
 ## Where Our Stack Already Compresses
 
-Read our own tree and the compression is everywhere, and none of it is macro-shaped. **One
+Read our own tree and compression is everywhere — and none of it is macro-shaped. **One
 value model** — string, integer, boolean, list, record — means every module speaks one
 grammar; Brix surface, wire records, and shell literals are three faces of one value, so a
 tool written once reads everything. **One fold** — state as a pure fold over signed facts —
-means undo, history, sync, and audit are one mechanism instead of four; the drawing-room
-harvest arrived tonight carrying the same discovery from the outside. **One vocabulary grown
-in canon** — season, ring, bench, gate — compresses the way a macro compresses, except the
-new words live in prose any reader can open, not in syntax only the compiler expands. That is
+means undo, history, sync, and audit are one mechanism rather than four; the drawing-room
+harvest arrived carrying the same discovery from the outside. **One vocabulary grown
+in canon** — season, lap, bench, gate — compresses the way a macro compresses, except the
+new words live in prose any reader can open, rather than in syntax only the compiler expands. That is
 the reconciliation: we accept the elder's goal and refuse his instrument.
 
 ## The Principle, Boxed for the Grain

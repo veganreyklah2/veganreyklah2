@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Lens:** TAME · SLC · Gall's Law · CIVIC where Linengrow touches people
 **Opens after:** Kaeden reads the summary; Claude sits when Kaeden opens the thread
-**Ground:** [`20260702-ready-to-ask-claude.md`](20260702-ready-to-ask-claude.md) · [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md)
+**Ground:** [`20260702-ready-to-ask-claude.md`](20260702-ready-to-ask-claude.md) · [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md)
 
 *Prepared by Cursor for Claude (Fable counsel) and Kaeden — counsel only; no parity or module changes from this file alone.*
 
@@ -18,10 +18,10 @@
 |------|-------|
 | Parity | **143 GREEN** — Edit 5 designed-not-built witness wired |
 | Chrono | **143 GREEN** |
-| Doors 1–3 | Closed (Pond clause · Ring 3 metal close · Edit 5 *for*) |
+| Doors 1–3 | Closed (Pond clause · Lap 3 metal close · Edit 5 *for*) |
 | Next mechanical ladder | Amber rungs (a)–(e) → **144** on Kaeden's *Open Amber* |
 | Pre-counsel | Amber five choices **CONFIRMED** (`20260702.202612`) |
-| Doc lane note | [`first-ring-goes-green`](../external-research/20260703-033602_first-ring-goes-green.md) essay landed — vocabulary law for rings and Edit 5 graduation |
+| Doc lane note | [`first-lap-goes-green`](../external-research/20260703-033602_first-lap-goes-green.md) essay landed — vocabulary law for laps and Edit 5 graduation |
 
 **Hard bounds for counsel:** propose and argue; Cursor implements only after Kaeden's word. No new module names without parking in RTAC. Do not reopen Doors 1–3 or Edit 5.
 
@@ -33,15 +33,15 @@ Answer as **counsel** — recommend, weigh tradeoffs, name risks — not as an i
 
 ### A. The cascade after Amber **144**
 
-The staged ladder reads: Amber → SLC-2b nod → RW-1 (+2) → chrono sweep wire → toolset ring one / `rye test`. **Question:** Is this still the kindest order for the next **eight to twelve weeks** of metal work, or should any rung swap (e.g. chrono sweep beside Amber (e), RW-1 before SLC-2b, four unwired Rishi framework witnesses batched after **144**)? Argue *for* the order you recommend and name what each swap would cost in seam warmth or discipline.
+The staged ladder reads: Amber → SLC-2b nod → RW-1 (+2) → chrono sweep wire → toolset lap one / `rye test`. **Question:** Is this still the kindest order for the next **eight to twelve weeks** of metal work, or should any rung swap (e.g. chrono sweep beside Amber (e), RW-1 before SLC-2b, four unwired Rishi framework witnesses batched after **144**)? Argue *for* the order you recommend and name what each swap would cost in seam warmth or discipline.
 
-### B. Linengrow vs Rye OS — which track earns the next *product* ring after the current ladder?
+### B. Linengrow vs Rye OS — which track earns the next *product* lap after the current ladder?
 
-SLC-L1 scope note is drawn; Open Asks room, sanctuary care, and the demand map wait behind it. Amber first ring is Rye infrastructure. **Question:** After Amber **144** and SLC-2b, should the next **lovable complete** whole be **SLC-L1 receipt** (Linengrow track), **Comlink device wire** (Rye compose track), or something else already on TASKS? Weigh Gall's Law, Edit 5's one-spec bound, and the movement memo's meta-ask (boards as architecture).
+SLC-L1 scope note is drawn; Open Asks room, sanctuary care, and the demand map wait behind it. Amber first lap is Rye infrastructure. **Question:** After Amber **144** and SLC-2b, should the next **lovable complete** whole be **SLC-L1 receipt** (Linengrow track), **Comlink device wire** (Rye compose track), or something else already on TASKS? Weigh Gall's Law, Edit 5's one-spec bound, and the movement memo's meta-ask (boards as architecture).
 
 ### C. MALA M0 and WOV — design season timing
 
-MALA M0 opens after Edit 5 + Amber first ring. WOV gate awaits Kaeden affirmation; first ring only after MALA M2. **Question:** Is M0–M4 still the right ladder shape for medium term, or should M0 shrink further (token facts on paper only, no witnesses) to keep metal on Pond/Amber/Comlink longer? For WOV, name the **minimum exit-honesty spec** that satisfies the gate without opening throughput work early.
+MALA M0 opens after Edit 5 + Amber first lap. WOV gate awaits Kaeden affirmation; first lap only after MALA M2. **Question:** Is M0–M4 still the right ladder shape for medium term, or should M0 shrink further (token facts on paper only, no witnesses) to keep metal on Pond/Amber/Comlink longer? For WOV, name the **minimum exit-honesty spec** that satisfies the gate without opening throughput work early.
 
 ### D. Documentation lane vs metal lane — healthy appetite
 
@@ -49,11 +49,11 @@ Edit 5 now enforces one designed-not-built functional spec. The decoder observed
 
 ### E. Linengrow agent writing and the Open Asks room
 
-Paste still awaited; demand map unratiated. **Question:** When the paste lands, propose **one** first application ring for Linengrow that serves the movement memo's meta-ask without competing with Flockwork — interop-first, consent-before-counting held. Bound it SLC-style: in / out / first witness sketch.
+Paste still awaited; demand map unratiated. **Question:** When the paste lands, propose **one** first application lap for Linengrow that serves the movement memo's meta-ask without competing with Flockwork — interop-first, consent-before-counting held. Bound it SLC-style: in / out / first witness sketch.
 
 ### F. Hardware and procurement season
 
-Purchase guide tiers sit in external-research; deep-archive waits on dedicated machine. **Question:** Medium-term, does **~$5.2k value tier** still read as the strategic buy for MALA M0–M2 + WOV first ring + Amber physical season, or should procurement wait until **which** rings green (name them)? No part numbers unless they change the strategy story.
+Purchase guide tiers sit in external-research; deep-archive waits on dedicated machine. **Question:** Medium-term, does **~$5.2k value tier** still read as the strategic buy for MALA M0–M2 + WOV first lap + Amber physical season, or should procurement wait until **which** laps green (name them)? No part numbers unless they change the strategy story.
 
 ### G. Ratifications bundle — still worth one breath?
 
@@ -77,7 +77,7 @@ Claude, please return **actionable editorial guidance** Cursor can apply in one 
 2. **TASKS hygiene plan** — which checked items merit **sweep to session log** now; which Open Questions duplicate decoder/TASKS horizons; proposed merge or strike list (titles only, with one-line why).
 3. **Ladder re-numbering** — after doors closed, should "Now — The Three Doors" become archive stub and ladder item 3 become "Now"? Recommend yes/no and new section headers.
 4. **Parity arithmetic table** — confirm projected steps through **148** (Amber, SLC-2b, RW-1, chrono wire, one Rishi framework witness batch?) or argue a different ceiling; **invent no arithmetic** — cite existing witnesses only or mark `[Cursor verify on metal]`.
-5. **Menu / ungated diet** — RTAC still says empty plate pre-staged for doors; propose replacement menu text for post–Door 3 HOLD.
+5. **Itinerary / open itinerary** — RTAC holds journey's pause pre-staged for doors; propose replacement **STOPS** text for post–Door 3 HOLD per [`expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md).
 6. **Decoder living doc** — recommend whether Part One six-asks base stats and Part Two door rows get a **Part Three — After Door 3** accretion or a fresh stamp pass; do not edit files in counsel — list exact rows to add/change.
 
 ### Constraints on the guidance

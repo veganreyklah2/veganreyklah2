@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-07-02 (manual lane founded; audit round `20260702.180812`)
+**Last updated:** 2026-07-04 (not-advice filing rule · grain pointer season)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
@@ -27,13 +27,13 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`manual/`** — the four rooms that teach the system: tutorials by the hand, guides for the task, living reference specifications for stable surfaces, and pointers to the understanding essays. Every page teaches only what runs; the first reference open is the Rishi language, derived from the witness corpus.
 
-**`linengrow/`** — the civic-application track: Linengrow's README, business model, and venture pitch, sharing the one spine with the operating system. It graduates to its own repository once its first ring runs.
+**`linengrow/`** — the civic-application track: Linengrow's README, business model, and venture pitch, sharing the one spine with the operating system. It graduates to its own repository once its first lap runs.
 
 **`work-in-progress/`** — the workbench. The living roadmap (`ROADMAP.md`), the granular plan (`TASKS.md`), open threads, and dated artifacts for work still in motion. Finished scaffolding graduates to `archive/`.
 
 **`active-designing/`** — design in motion. Our own module names, RISC-V-first, siloed from gratitude sources. Dated briefs; living README index.
 
-**`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README.
+**`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README. **Research for understanding, not advice:** surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course; policy and money choices belong to Kaeden in their own season. Say so in each file's status line; CIVIC stays policy-shaped in `context/`. Proposed register law: [`context/TWO_ROOMS.md`](context/TWO_ROOMS.md) (seats on Kaeden's word).
 
 **`expanding-prompts/`** — intent expanded into runnable plans. Counts upward from `10000`; each prompt is a dated artifact that agents can execute.
 
@@ -120,7 +120,7 @@ A re-stamp that bubbles a file to the bottom suits an *ordinary, lightly-cited* 
 | `active-designing/yonder/20260618-184912_recommended-architecture.md` | Foundational clean-room architecture brief; third of the trio |
 | `work-in-progress/20260620-212126_usize-width-baseline.md` | Canonical width inventory; cited from `TAME_GUIDANCE` |
 | `expanding-prompts/20260620-210812_explicit-width-audit.md` | Width charter; heavily cited across strengthening docs |
-| `external-research/20260618-180812_pond-foundation.md` | Pond ring foundation brief; cited; affirmed pass eight |
+| `external-research/20260618-180812_pond-foundation.md` | Pond lap foundation brief; cited; affirmed pass eight |
 
 ---
 

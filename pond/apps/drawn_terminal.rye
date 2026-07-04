@@ -1,4 +1,4 @@
-//! pond/apps/drawn_terminal.rye — SLC-2a Ring 3 + SLC-2b Dexter keyboard.
+//! pond/apps/drawn_terminal.rye — SLC-2a Lap 3 + SLC-2b Dexter keyboard.
 //!
 //! Composes Rishi's live session (runOneInput + sessionLines) with Brushstroke's
 //! Skate surface. SLC-2b carries keyboard input through Wayland so one typed
@@ -10,7 +10,7 @@
 //! Manual rye escape hatch: see pond/README.md
 //!
 //!   pond/bin/drawn-terminal              # live mirror (Wayland keyboard + stdin)
-//!   pond/bin/drawn-terminal sessiontest  # headless Ring 3 witness
+//!   pond/bin/drawn-terminal sessiontest  # headless Lap 3 witness
 //!   pond/bin/drawn-terminal keyboardtest # headless SLC-2b witness
 //!   pond/bin/drawn-terminal rw2collabtest  # headless RW-2 app collaboration witness
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)

@@ -2,7 +2,7 @@
 
 **Stamp:** `20260702.200109`
 
-Deterministic inputs for `tools/slcl1_receipt.rish` when the Linengrow build season opens.
+Deterministic inputs for `tools/slcl1_receipt.rish` — witness **GREEN** at parity **152** (`20260704.021800`).
 
 | File | Role |
 |------|------|

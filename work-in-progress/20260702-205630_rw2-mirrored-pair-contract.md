@@ -1,6 +1,6 @@
 # RW-2 — Mirrored Pair Contract (Drawn Terminal ↔ Brushstroke Surface)
 
-*Witness contract on paper — collaboration and contract twins for the app↔surface seam at `setFrame`, drawn only from Ring 2's golden, the SLC-2a scope note, and the testing audit. Implementation waits on the standing one-pair-per-season rule after RW-1; the mirror lands while the seam is warm from SLC-2b.*
+*Witness contract on paper — collaboration and contract twins for the app↔surface seam at `setFrame`, drawn only from Lap 2's golden, the SLC-2a scope note, and the testing audit. Implementation waits on the standing one-pair-per-season rule after RW-1; the mirror lands while the seam is warm from SLC-2b.*
 
 **Stamp:** `20260702.205630`
 **Voice:** Rio 3
@@ -41,7 +41,7 @@ The drawn-terminal app (or a headless stub invoking the same `sessionLines` + `s
 |--------|----------|
 | `setFrame` with malformed line record | survive; surface unchanged or error surfaced kindly |
 
-**Fixtures:** extend `tools/fixtures/` with line batches matching Ring 3 session golden fragments.
+**Fixtures:** extend `tools/fixtures/` with line batches matching Lap 3 session golden fragments.
 
 **Commit message:** `Add RW-2 app collaboration witness — parity +1` (first of two).
 
@@ -58,7 +58,7 @@ Exercises Brushstroke surface API directly — no full Pond app — proving the 
 | `setFrame(lines_a)` then `contentSignature` | digest equals pinned golden A |
 | `setFrame(lines_b)` where b ≠ a | signature B ≠ A |
 | `setFrame(lines_a)` again | signature returns to A |
-| Headless `redrawtest` path | output contains `GREEN` (extends Ring 2) |
+| Headless `redrawtest` path | output contains `GREEN` (extends Lap 2) |
 
 ### Unwelcome demonstration
 
@@ -70,7 +70,7 @@ Exercises Brushstroke surface API directly — no full Pond app — proving the 
 
 ---
 
-## Relation to Ring 2 today
+## Relation to Lap 2 today
 
 [`tools/slc2a_ring2_redraw.rish`](../tools/slc2a_ring2_redraw.rish) already proves the **contract fragment** (redrawtest GREEN). RW-2 **splits** the seam: collaboration isolates the app's obligation to call `setFrame` when session changes; contract isolates the surface's signature obligation — mirrored line for line with RW-1's pattern.
 
@@ -78,7 +78,7 @@ Exercises Brushstroke surface API directly — no full Pond app — proving the 
 
 ## Out of scope
 
-- Full Wayland metalsmoke (thin ring — stays in Ring 3 witness)
+- Full Wayland metalsmoke (thin edge — stays in Lap 3 witness)
 - Keyboard-from-window (SLC-2b Dexter)
 - RW-1 history seam (parallel season, earlier in ladder)
 

@@ -27,7 +27,7 @@ A fourth usage drifts in prose and should stay secondary: **civic gate** (approv
 
 **Urbit's gate** is something else entirely: in Hoon, a **gate** is a **core with exactly one arm** and a **sample** (the argument environment) — a callable value, noun-shaped, where code and closure travel together. Read [`gratitude/urbit`](../../gratitude/urbit) and the official Hoon School chapters on cores and doors; the xray matcher even labels `%gate` as a gear with one chapter and one arm.
 
-**Verdict on conflation:** we are **not** accidentally implementing Hoon gates when we say "ungated itinerary" or "parity gate." We **are** carrying a **homonym** that will confuse readers who know Urbit unless we name the collision once and keep the families apart in living docs. The itinerary sense and the witness sense are close kin — both are *preconditions before motion* — and the precious-gate sense is kin to *batch at the bottleneck*. Urbit's gate is unrelated; it belongs beside **function** and **closure**, not beside **checkpoint**.
+**Verdict on conflation:** we are **not** accidentally implementing Hoon gates when we say "open itinerary" or "parity gate." We **are** carrying a **homonym** that will confuse readers who know Urbit unless we name the collision once and keep the families apart in living docs. The itinerary sense and the witness sense are close kin — both are *preconditions before motion* — and the precious-gate sense is kin to *batch at the bottleneck*. Urbit's gate is unrelated; it belongs beside **function** and **closure**, not beside **checkpoint**.
 
 ---
 

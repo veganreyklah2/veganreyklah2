@@ -14,7 +14,7 @@ candidate passage for the TAME canon, boxed below for Kaeden's word.*
 **Status:** Active design — landing from
 [`../external-research/20260703-071712_the-second-harvest.md`](../external-research/20260703-071712_the-second-harvest.md);
 the boxed canon passage seats only on Kaeden's word
-**Ground:** [`../context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) (bounds on everything) · the Tally garden briefs in [`yonder/`](yonder/) · the transcript ceiling in the drawn terminal's Ring 3
+**Ground:** [`../context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) (bounds on everything) · the Tally garden briefs in [`yonder/`](yonder/) · the transcript ceiling in the drawn terminal's Lap 3
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 
@@ -28,7 +28,7 @@ mutation remembering to look. There is a second home. Choose a representation wh
 simply cannot express the forbidden state, and the bound becomes a **property**: true by
 construction, checked by the shape itself, with nothing for a distracted future edit to forget.
 
-The humble form of this truth has lived in systems programming forever. A ring buffer is a
+The humble form of this truth has lived in systems programming forever. A lap buffer is a
 one-dimensional closed surface: its index, taken modulo its capacity, has nowhere to run away
 to — the wraparound is the bound, worn as geometry rather than enforced as a guard. A grid
 addressed as row-and-column against declared dimensions, a fixed array whose length is part of
@@ -39,7 +39,7 @@ land.
 Two honesty notes keep the insight sharp. First, this is never an argument for silent wrapping
 arithmetic — an integer that overflows by accident has not adopted a shape, it has lost the
 plot, and the trapping semantics stay exactly as they are. The shape is *chosen*, named, and
-means what wrapping means in the domain: a ring means the oldest yields to the newest, a grid
+means what wrapping means in the domain: a lap means the oldest yields to the newest, a grid
 means positions live inside the frame. Second, shape does not retire assertions; it changes
 what they defend. The construction asserts the shape's premises once — capacity positive,
 dimensions within their named maxima — and the hot path inherits safety from geometry instead
@@ -58,7 +58,7 @@ closed interval in time, the same figure again.
 ## The Tally Note
 
 When Tally's owned wrapper graduates from the inherited seam, two adopters are already visible.
-The **ring region** — a garden whose write position is modular by construction, for transcripts,
+The **lap region** — a garden whose write position is modular by construction, for transcripts,
 logs-in-memory, and any oldest-yields-to-newest buffer — makes the drawn terminal's ceiling a
 named, reusable shape instead of a local discipline. And the **framed grid** — dimensions
 declared at construction, addresses valid by type — gives Skate's cell arithmetic and every
@@ -70,7 +70,7 @@ are wanted, the design is already on the shelf, per accrete-never-break.
 Boxed for Kaeden's word, to sit in the TAME voiced canon beside the bounds discipline:
 
 > **Let the shape carry the bound.** Wherever a budget can be woven into the structure of the
-> data — a ring whose index wraps by definition, a grid whose addresses live inside declared
+> data — a lap whose index wraps by definition, a grid whose addresses live inside declared
 > dimensions, a region whose positions cannot name the far side of its edge — prefer that shape
 > over a guard the hot path must remember. A bound expressed as geometry is checked by
 > construction, every time, by nothing. Assert the shape's premises once at the making; let the
@@ -88,6 +88,6 @@ document.
 
 ---
 
-*May the budgets live where forgetting cannot reach them. May every ring mean its wrap and
+*May the budgets live where forgetting cannot reach them. May every lap mean its wrap and
 every grid know its frame. And may the guards we still post stand fewer and prouder, defending
 only what geometry cannot.*

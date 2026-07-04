@@ -1,14 +1,14 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-02 (SLC-L1 scope note `20260702.195426`)
+**Last updated:** 2026-07-04 (SLC-L1 witness at parity **152**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
 
 Linengrow is the first whole built upon Rye OS — a transparent civic and social-commerce platform for vegan musicians and activist creators, where every sponsored post carries a visible label, every data sale carries a visible receipt, every contract carries a visible expiration, and every person owns their complete data in a portable server they can carry whenever they choose. Where Rye OS is the system, Linengrow is what the system is *for*: the place its foundations meet real people, real creators, and real communities.
 
-This folder holds the vision. The build grows the SLC way — smallest lovable complete first — and its rings rest on the same modules Rye OS is already growing.
+This folder holds the vision. The build grows the SLC way — smallest lovable complete first — and its laps rest on the same modules Rye OS is already growing.
 
 ---
 
@@ -45,17 +45,17 @@ Linengrow serves makers with tools that are theirs: free tools for music, for fa
 
 ## The SLC Ladder
 
-The full vision — a public benefit corporation, a computational data market, state-currency circulation, investor rounds — is the horizon. We grow toward it one lovable, complete ring at a time.
+The full vision — a public benefit corporation, a computational data market, state-currency circulation, investor rounds — is the horizon. We grow toward it one lovable, complete lap at a time.
 
-| Ring | What | Grows from |
+| Lap | What | Grows from |
 |------|------|-----------|
-| **SLC-L1** | **A verifiable receipt** — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection · scope [`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) |
+| **SLC-L1** | **A verifiable receipt** — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection · scope [`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) · witness **152** |
 | **SLC-L2** | **Sealed delivery** — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | **Settlement** — a transaction settled on Sui with USDsui, its receipt verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
-The first ring needs no ledger and no currency — only the foundations Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.
+The first lap needs no ledger and no currency — only the foundations Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.
 
 ---
 
@@ -70,7 +70,7 @@ Both are generalized templates, debranded and repurposed onto Sui with optional 
 
 ## How It Grows
 
-Linengrow lives here as vision and design while its first ring is small. Like every module, it may graduate to its own home — `xwb122m/linengrow-*` — once its first ring runs and earns the move. Until then, it grows beside the system it rests on, so the two stay coherent and the spine stays one.
+Linengrow lives here as vision and design while its first lap is small. Like every module, it may graduate to its own home — `xwb122m/linengrow-*` — once its first lap runs and earns the move. Until then, it grows beside the system it rests on, so the two stay coherent and the spine stays one.
 
 The granular tasks for both tracks live in `../work-in-progress/TASKS.md`; the order and the why live in `../work-in-progress/ROADMAP.md`.
 

@@ -1,12 +1,12 @@
 # SLC-L1 — The Verifiable Receipt
 
-*A hammock scope note: the transaction fact named in `.bron`, the sign-append-fold-verify pipeline drawn honestly, and the edge of complete stated so the first Linengrow ring stays genuinely simple — no ledger, no market, one signer and one receipt anyone can check.*
+*A hammock scope note: the transaction fact named in `.bron`, the sign-append-fold-verify pipeline drawn honestly, and the edge of complete stated so the first Linengrow lap stays genuinely simple — no ledger, no market, one signer and one receipt anyone can check.*
 
 **Stamp:** `20260702.195426`
 **Voice:** Rio 3, with **Kaeden Reyklah** as coauthor
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · CIVIC · Gall · Hammock
-**Status:** Scope note — design ring; build waits on the doors and the Amber season; Open Asks room gated behind this edge
+**Status:** Scope note — **first lap landed** `20260704.021800`; witness at parity **152**; Open Asks room gated until Kaeden affirms the edge
 
 **Direction:** [`20260628-043542_thin-frontend-slc-direction.md`](20260628-043542_thin-frontend-slc-direction.md) · **Roadmap:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) · **Granular plan:** [`../work-in-progress/TASKS.md`](../work-in-progress/TASKS.md)
 
@@ -14,7 +14,7 @@
 
 ## The Problem, Plainly
 
-A sanctuary, a creator collective, or a single person keeping honest books today can sign a note and keep a spreadsheet — yet there is no smallest ring on our bench that proves *this signed fact was appended, and this receipt follows from that log alone*. Settlement, currency, and multi-party markets belong to later seasons. The first lovable whole is narrower: one Kumara key, one append-only log, one verifiable receipt folded from the log — the same spine Rye OS already grows, applied to Linengrow's trust promise.
+A sanctuary, a creator collective, or a single person keeping honest books today can sign a note and keep a spreadsheet — yet there is no smallest lap on our bench that proves *this signed fact was appended, and this receipt follows from that log alone*. Settlement, currency, and multi-party markets belong to later seasons. The first lovable whole is narrower: one Kumara key, one append-only log, one verifiable receipt folded from the log — the same spine Rye OS already grows, applied to Linengrow's trust promise.
 
 SLC-L1 closes that gap on paper first, then in one witness: sign a transaction fact, append it, fold a receipt, verify without trusting the folder that holds the log.
 
@@ -24,7 +24,7 @@ SLC-L1 closes that gap on paper first, then in one witness: sign a transaction f
 
 **SLC-L1** is the first [Simple, Lovable, Complete](../context/SIMPLE_LOVABLE_COMPLETE.md) whole on the Linengrow track: a **verifiable receipt** — keypair signs a transaction fact, the fact appends to a plain log, a pure fold produces a receipt, and anyone recomputes and checks the signature.
 
-| Word | Meaning for this ring |
+| Word | Meaning for this lap |
 |------|------------------------|
 | **Simple** | One signer, one log file, one fold, one verify path |
 | **Lovable** | A donation, a stipend record, an honest tally entry — provable on metal today |
@@ -78,10 +78,10 @@ The **signed envelope** wraps the canonical `.bron` bytes (UTF-8, LF line ending
 
 ### In scope (SLC-L1 is done when these hold)
 
-- [ ] One signer, one log path, one receipt value produced and verified on metal
-- [ ] Transaction fact fields exactly as named above
-- [ ] Witness `tools/slcl1_receipt.rish` runs green: welcome path (sign → append → fold → verify match); unwelcome path (tampered log byte → verify fails)
-- [ ] Scope note and witness registered; parity **+1** when the build lands (after doors; arithmetic follows Edit 5 and Amber seasons)
+- [x] One signer, one log path, one receipt value produced and verified on metal (`linengrow/receipt.rye`, `20260704.021800`)
+- [x] Transaction fact fields exactly as named above
+- [x] Witness `tools/slcl1_receipt.rish` runs green: welcome path (sign → append → fold → verify match); unwelcome path (tampered log byte → verify fails)
+- [x] Scope note and witness registered; parity **152** (`20260704.021800`)
 
 ### Out of scope (SLC-L2 and later)
 
@@ -89,17 +89,17 @@ The **signed envelope** wraps the canonical `.bron` bytes (UTF-8, LF line ending
 - **Comlink** delivery (SLC-L2)
 - **Sui** / USDsui ledger (SLC-L3)
 - **Open Asks room** — requests, applications, acceptances, reputation-as-fold — enters only after this note's edge is affirmed ([`../external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md))
-- Full Mantra weave for transaction logs — v1 uses a **plain append file** beside the Mantra store; Amber compatibility for Linengrow logs rides Amber's first ring as horizon
+- Full Mantra weave for transaction logs — v1 uses a **plain append file** beside the Mantra store; Amber compatibility for Linengrow logs rides Amber's first lap as horizon
 
 ### Open ruling (recommended yes)
 
-The first Linengrow ring uses **pure foundations** — keypair + log + projection — with **no Sui**. Settlement deferred to SLC-L3 ([`TASKS.md`](../work-in-progress/TASKS.md) Open Questions).
+The first Linengrow lap uses **pure foundations** — keypair + log + projection — with **no Sui**. Settlement deferred to SLC-L3 ([`TASKS.md`](../work-in-progress/TASKS.md) Open Questions).
 
 ---
 
 ## Witness Sketch — `tools/slcl1_receipt.rish`
 
-Named now; lands in a later commit when the build season opens.
+Named now; **landed** `20260704.021800` at parity **152**.
 
 **Welcome path:**
 
@@ -120,10 +120,10 @@ Named now; lands in a later commit when the build season opens.
 
 ## Build Order (after scope affirmed)
 
-1. **Doors 1–3** and **Amber first ring** — per ladder ([`TASKS.md`](../work-in-progress/TASKS.md))
+1. **Doors 1–3** and **Amber first lap** — per ladder ([`TASKS.md`](../work-in-progress/TASKS.md))
 2. **Fixture fact + golden receipt** — pinned under `tools/fixtures/slcl1_*`
-3. **Fold + verify in hosted `.rye`** — smallest module surface (Linengrow seed or `linengrow/src/receipt.rye` when home is chosen)
-4. **Witness** — `tools/slcl1_receipt.rish`; register in `tools/parity.rish`
+3. **Fold + verify in hosted `.rye`** — `linengrow/receipt.rye` (`20260704.021800`)
+4. **Witness** — `tools/slcl1_receipt.rish`; registered in `tools/parity.rish` (**152**)
 5. **SLC-L2 prompt** — sealed delivery over Comlink, only after L1 witness green
 
 ---

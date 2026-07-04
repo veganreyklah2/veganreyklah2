@@ -35,7 +35,7 @@ report was then checked against the tree rather than trusted from the summary.
 | **Chrono** | **142 GREEN** before this proposal's files; **143 GREEN** re-run after — the sweep counts the counsel doc and holds session logs outside the authored surface |
 | **Designed-not-built** | **GREEN**, count = 1 — the Amber spec, exactly within Edit 5's bound |
 | Door 2 preflight | **GREEN** here too — drawn terminal builds and its headless session witness passes on a third machine |
-| Ring 3 metalsmoke | Honest red on this headless bench — no compositor answers in a container, which is precisely what a metalsmoke check exists to say. The GREEN belongs to GNOME, where Cursor holds it fresh. |
+| Lap 3 metalsmoke | Honest red on this headless bench — no compositor answers in a container, which is precisely what a metalsmoke check exists to say. The GREEN belongs to GNOME, where Cursor holds it fresh. |
 
 Three benches now agree on the same arithmetic from bare metal. The tree is telling one story,
 and the story checks out.
@@ -75,7 +75,7 @@ one. Part Three gives the exact steps, jail-first.
 The tree's own decoder names the pattern plainly — the documentation lane has been running faster
 than the metal lane, and Edit 5 is the system noticing its own appetite and binding it. Ruling
 *for* turns Gall's Law from a habit into a wired witness: at most one functional spec in
-designed-not-built flight until its first ring runs green. That is the same move TAME makes
+designed-not-built flight until its first lap runs green. That is the same move TAME makes
 everywhere — a value becomes a check the machine can hold.
 
 The cost today is exactly zero. The bound holds already: one spec in flight, Amber, witnessed
@@ -87,7 +87,7 @@ lane already exists — new design appetite queues in RTAC as questions rather t
 The honest case *against*, so the ruling is informed rather than flattered: a hard bound of one can
 pinch on a future day when two genuinely small specs would both be cheap to build, and the bound
 binds your own designing rhythm as much as any agent's. Yet the remedy lives inside the rule —
-build the first ring, then write the next spec — and that remedy is the very discipline this tree
+build the first lap, then write the next spec — and that remedy is the very discipline this tree
 chose on the day it chose Gall. If the pinch ever proves real, accrete-never-break allows the
 bound to widen by a later ruling; it does not allow tonight's looseness to be recovered.
 
@@ -119,7 +119,7 @@ Every command below runs inside an ai-jail terminal whose working directory sits
 `~/veganreyklah2`. The jail binds the project directory as the one durable ground and resets host
 `$HOME`, `/tmp`, and parent paths on exit — so the tests touch the tree and the tree alone, which
 is exactly the protection you asked for. The single host-level prerequisite is `libwayland-dev`,
-already present on your machine since Ring 1; the jail sees it through the read-only system mount.
+already present on your machine since Lap 1; the jail sees it through the read-only system mount.
 
 ### Step 0 — open the enclosure
 
@@ -190,7 +190,7 @@ watch the status row keep updating with the invitation visible; **exit** — `:q
 the door closes on one line in your reply to Cursor, your clock verbatim:
 
 ```
-Ring 3 metal-closed on GNOME, YYYYMMDD.HHMMSS
+Lap 3 metal-closed on GNOME, YYYYMMDD.HHMMSS
 ```
 
 ### Step 4 — Door 3, verified on either ruling
@@ -211,8 +211,8 @@ retires to yonder, and Amber's arithmetic settles at 143 instead.
 
 `amber/` remains sealed until Doors 2 and 3 land — the only Amber act available before then is
 reading the functional spec, and that is by design. MALA past its boxed rungs, every key and
-custody path, and every box tagged `(Kaeden …)` stay exactly where they are. The empty plate is a
-question, never a license, and this guide forages nothing.
+custody path, and every box tagged `(Kaeden …)` stay exactly where they are. **Journey's pause** is a
+question, never an off-route license, and this guide goes off-route on nothing.
 
 ---
 

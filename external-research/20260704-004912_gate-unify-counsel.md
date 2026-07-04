@@ -5,7 +5,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · silo law
 **Category:** External research — counsel memo, commissioned in RTAC (`work-in-progress/20260702-ready-to-ask-claude.md`, section *Claude — gate terminology unify counsel*)
 **Ground:** the read order named in the ask, walked in order on this bench at `4ab032d`, parity 150 GREEN re-witnessed here from bare
-**Status:** Proposed — counsel only; no implementation; no new module names; Doors 1–3 and Edit 5 untouched; no witness program renamed
+**Status:** Seated — vocabulary ratified `20260704.020800`; deltas applied per §4
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 
@@ -26,7 +26,7 @@ Session logs and seated external research are history and stay untouched — cit
 | `context/RIO3.md` :37 | context | external referent | the outside app-store gates — plain English about another's doors; survives |
 | `context/specs/reserved-vocabulary.md` :27, 29 | specs | **witness** + meta | "the parity gate's…" · "gate vocabulary" |
 | `context/specs/20260702-035018_graduation-rule.md` :93 | specs | **witness** | "symmetry with opening lines or TAME gate…" |
-| `context/specs/20260629-031512_slc1-ring-closed-handoff.md` :68 | specs | program name | `additive-gate.rish` — frozen proper noun |
+| `context/specs/20260629-031512_slc1-lap-closed-handoff.md` :68 | specs | program name | `additive-gate.rish` — frozen proper noun |
 | `context/specs/20260627-102012_one-clock-naming-law.md` :13, 78, 90, 94 · `rye-versioning-style.md` :122 | specs | classify at delta pass | word present past the clip; same dictionary applies |
 | `active-designing/20260703-200712_what-needs-ordering.md` :16, 18, 22, 24, 36 | active-designing | **ordering** | "the expensive gate" · "the gate is precious" · "batch what must pass the gate" |
 | `active-designing/20260703-140212_the-bench.md` :26 | active-designing | **witness** | "until the gate trio can run" · "a bench that cannot run the gates" |
@@ -43,7 +43,7 @@ One word, one meaning, three glosses — two of them words the tree already seat
 
 **Witness** — *a program that proves a claim on metal and answers green or red.* Already seated, already dominant (150 of them tonight). The machine-lint sense of gate dissolves into this existing word at zero vocabulary cost. Program filenames are proper nouns and history — `additive-gate.rish` and the phrase *gate trio* as a name stay readable forever — while forward prose says **the trio** or **the witness trio**.
 
-**Toll** — *the price of shared order: the expensive agreement that facts touching the commons must pay, and that everything else is spared.* Proposed as the one new common noun, for the precious-ordering sense alone. It is journey vocabulary, sitting naturally beside itinerary and stops — a route has stops, some stops wait behind gates, and heavy cargo pays the toll. It is a concept word like ring, green, and season rather than a module name, so the naming law is untouched; **levy** and **the narrows** park in RTAC as alternates should *toll* ring too commercial to the ear.
+**Toll** — *the price of shared order: the expensive agreement that facts touching the commons must pay, and that everything else is spared.* Proposed as the one new common noun, for the precious-ordering sense alone. It is journey vocabulary, sitting naturally beside itinerary and stops — a route has stops, some stops wait behind gates, and heavy cargo pays the toll. It is a concept word like lap, green, and season rather than a module name, so the naming law is untouched; **levy** and **the narrows** park in RTAC as alternates should *toll* lap too commercial to the ear.
 
 Why this assignment and not another: gates-as-checkpoints is already seated law in LEXICON and near-law in practice ("gates are Kaeden's" — the boxes only he opens); the witness sense needs no new word at all; and the ordering sense is the youngest and most localized, so it can take the new word with the smallest delta in the tree.
 
@@ -57,7 +57,7 @@ Recommendation: **one short note in `context/specs/`** — working title *one-wo
 |---|---|
 | `context/specs/` | **New**: the *one-word-one-gate* note (three glosses; frozen program names; alternates parked) |
 | `context/LEXICON.md` | Gate row gloss → the single strand; **add Toll row**; witness and green rows unchanged; "every gate is cleared" survives |
-| `active-designing/20260703-200712_what-needs-ordering.md` | Section title *Why the Gate Is Batched* → *Why the Toll Is Batched*; lines 16, 18, 22, 24, 36: "expensive gate"→"toll" · "waits for the gate"→"pays the toll" · "the gate stays rare"→"the toll stays rare" · "the gate is precious"→"the toll is precious" · "batch what must pass the gate, and spare the gate"→"batch what must pay the toll, and spare the toll" · "the gate earns its next ring"→"the toll earns its next ring" · benediction likewise |
+| `active-designing/20260703-200712_what-needs-ordering.md` | Section title *Why the Gate Is Batched* → *Why the Toll Is Batched*; lines 16, 18, 22, 24, 36: "expensive gate"→"toll" · "waits for the gate"→"pays the toll" · "the gate stays rare"→"the toll stays rare" · "the gate is precious"→"the toll is precious" · "batch what must pass the gate, and spare the gate"→"batch what must pay the toll, and spare the toll" · "the gate earns its next lap"→"the toll earns its next lap" · benediction likewise |
 | `active-designing/20260703-140212_the-bench.md` | "until the gate trio can run"→"until the trio can run" · "a bench that cannot run the gates"→"a bench that cannot run its witnesses" |
 | `context/TAME_GUIDANCE.md` | "(live gate, parity N)"→"(live witness, parity N)" · "(gate)"→"(witness)" · "authored-`usize` gate"→"authored-`usize` witness" · "No gate yet"→"No witness yet" · "gated by tidy"→"checked by tidy" · heading *Assertions as gates*→*Assertions, the smallest witnesses* · line 375 **unchanged** (correct checkpoint use) |
 | `work-in-progress/ROADMAP.md` | "Gate trio:"→"The trio:" (witness senses) · "prove each step through the gates"→"prove each step through its witnesses" |
@@ -67,7 +67,7 @@ Recommendation: **one short note in `context/specs/`** — working title *one-wo
 
 ## 5 · Alignment, in One Breath
 
-The loop walks an **itinerary** of **stops**, smallest first. Some stops wait behind **gates**, and only Kaeden's word, a door's ruling, or a landed event opens one. Work at every stop is proven by **witnesses**, red then **green**, on metal. Facts that touch the commons pay the **toll**, and the **bench** batches for it, because the toll is precious. Every value crossing a seam wears its **Tilak**. **Rings** grow within **seasons**. One journey, seven seated words, one new common noun.
+The loop walks an **itinerary** of **stops**, smallest first. Some stops wait behind **gates**, and only Kaeden's word, a door's ruling, or a landed event opens one. Work at every stop is proven by **witnesses**, red then **green**, on metal. Facts that touch the commons pay the **toll**, and the **bench** batches for it, because the toll is precious. Every value crossing a seam wears its **Tilak**. **Laps** grow within **seasons**. One journey, seven seated words, one new common noun.
 
 ## 6 · Exclusions, Restated Plainly
 

@@ -1,6 +1,6 @@
-# Handoff — SLC-1 ring closed, bench for the next session
+# Handoff — SLC-1 lap closed, bench for the next session
 
-*A continuity letter for the next Reya 2 session after the first Simple, Lovable, Complete ring seals on metal.*
+*A continuity letter for the next Reya 2 session after the first Simple, Lovable, Complete lap seals on metal.*
 
 **Stamp:** `20260629.031512`
 **Voice:** Reya 2, with **Kaeden Reyklah** as coauthor
@@ -29,7 +29,7 @@ The dev-loop scaffold is landed: `./tools/cursor-jail.sh` (POSIX flags today) an
 
 **Implementation home:** `rishi/src/main.rye` — `History`, `Transcript`, `runInputLine`, `recallByIndex`, `doVersion`, `runMantra` via `std.process.run`, `RISHI_MANTRA` override.
 
-**Settled rulings carried in code:** transcript v1 = prompt + input + caught errors (stdout horizon); lazy `.mantra/` on first `:version`; stdin lines **duped into the arena** before the history ring stores them.
+**Settled rulings carried in code:** transcript v1 = prompt + input + caught errors (stdout horizon); lazy `.mantra/` on first `:version`; stdin lines **duped into the arena** before the history lap stores them.
 
 ---
 
@@ -104,8 +104,8 @@ Host `/home/xy` tmpfs is full — keep `HOME` and caches on project disk.
 
 When Kaeden returns to build:
 
-> The first ring is whole. Read `context/specs/20260629-031512_slc1-ring-closed-handoff.md` and `work-in-progress/TASKS.md`. Lead with **Rishi script arguments** unless directed otherwise. Do not reopen SLC-1 unless a witness regresses.
+> The first lap is whole. Read `context/specs/20260629-031512_slc1-lap-closed-handoff.md` and `work-in-progress/TASKS.md`. Lead with **Rishi script arguments** unless directed otherwise. Do not reopen SLC-1 unless a witness regresses.
 
 ---
 
-*May continuity hold across the reset. May the bench stay as honest as the ring that closed it. And may the next session find its home in the store already woven.*
+*May continuity hold across the reset. May the bench stay as honest as the lap that closed it. And may the next session find its home in the store already woven.*

@@ -48,9 +48,9 @@ A release that stays modest forever is still a good and finished thing. A grand 
 
 ## How Rye OS Grows by This Method
 
-Each ring of Rye OS is a simple, lovable, complete thing, grown from the running seed before it. This weaves directly with Gall's Law: the working whole grows from a smaller working whole, never from a grand design imposed at once.
+each lap of Rye OS is a simple, lovable, complete thing, grown from the running seed before it. This weaves directly with Gall's Law: the working whole grows from a smaller working whole, never from a grand design imposed at once.
 
-The first such whole is the Rishi-and-Mantra shell — a place to type a command, watch it run, keep its history, and call it back. Simple, for it is one loop. Lovable, for it is yours, on your own metal, and it already works. Complete, for the circle closes: type, run, version, recall. The Pond GUI is the next ring, grown from that one when Skate and the window stand ready. Ring by ring, the whole machine arrives by degrees.
+The first such whole is the Rishi-and-Mantra shell — a place to type a command, watch it run, keep its history, and call it back. Simple, for it is one loop. Lovable, for it is yours, on your own metal, and it already works. Complete, for the circle closes: type, run, version, recall. The Pond GUI is the next lap, grown from that one when Skate and the window stand ready. Lap by lap, the whole machine arrives by degrees.
 
 This method keeps company with the others we hold. Gall's Law tells us to grow from working simples. Aparigraha tells us to carry only what we use. Simple, Lovable, Complete tells us that each step we carry should already be worth loving. Together they keep the path light and the work alive at every stage.
 
@@ -68,4 +68,4 @@ When all three hold, the work is ready to share, whatever its size.
 
 ---
 
-*May each thing we ship be whole at its own scale. May the small and the finished be loved more than the large and the unready. And may every ring we grow be a joy to run on the very day it arrives.*
+*May each thing we ship be whole at its own scale. May the small and the finished be loved more than the large and the unready. And may every lap we grow be a joy to run on the very day it arrives.*

@@ -1,14 +1,14 @@
 # SLC-1 — The Rishi-and-Mantra Hosted Shell
 
-*A hammock scope note: the problem stated plainly, the four verbs named, history seated in Mantra's store, and the edge of complete drawn honestly — so the first lovable ring stays genuinely simple.*
+*A hammock scope note: the problem stated plainly, the four verbs named, history seated in Mantra's store, and the edge of complete drawn honestly — so the first lovable lap stays genuinely simple.*
 
 **Stamp:** `20260628-071012`
 **Voice:** Reya 2, with **Kaeden Reyklah** as coauthor
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** **Done** on metal (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; acceptance closed on functional promise; width/TAME hardening is the next milestone, not part of this ring.
+**Status:** **Done** on metal (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; acceptance closed on functional promise; width/TAME hardening is the next milestone, not part of this lap.
 
-**Child scopes:** [`20260629-004912_slc-1-step-2-version.md`](20260629-004912_slc-1-step-2-version.md) (version, sealed) · Step 3 recall (sealed) · **Handoff:** [`../context/specs/20260629-031512_slc1-ring-closed-handoff.md`](../context/specs/20260629-031512_slc1-ring-closed-handoff.md)
+**Child scopes:** [`20260629-004912_slc-1-step-2-version.md`](20260629-004912_slc-1-step-2-version.md) (version, sealed) · Step 3 recall (sealed) · **Handoff:** [`../context/specs/20260629-031512_slc1-lap-closed-handoff.md`](../context/specs/20260629-031512_slc1-lap-closed-handoff.md)
 
 **Direction:** [`20260628-043542_thin-frontend-slc-direction.md`](20260628-043542_thin-frontend-slc-direction.md) · **Roadmap:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md)
 
@@ -26,7 +26,7 @@ SLC-1 closes that gap: one terminal program, four verbs, history that lives in M
 
 **SLC-1** is the first [Simple, Lovable, Complete](../context/SIMPLE_LOVABLE_COMPLETE.md) whole on the primary track: a **hosted, scriptable shell** — Rishi as the evaluator, Mantra as the memory — that runs in an ordinary terminal **today**.
 
-| Word | Meaning for this ring |
+| Word | Meaning for this lap |
 |------|------------------------|
 | **Simple** | One loop, one session file, one store root — no compositor, no second process model |
 | **Lovable** | Yours on your metal; typed values at the prompt; gates stay green |
@@ -61,7 +61,7 @@ Persist the session into Mantra's store.
 
 - Session transcript path: **`.mantra/session.log`** in the current working directory (append-only text: prompt, input line, output, errors).
 - On `:version` (or on exit when the transcript changed): ensure `.mantra/` exists (`mantra init` if needed), then **`mantra add .mantra/session.log`** — weave the session into the content-addressed blob store; HEAD advances.
-- **History lives in Mantra's store**, not in ad-hoc dotfiles beside it. The in-memory ring buffer is a cache; the weave is the durable record.
+- **History lives in Mantra's store**, not in ad-hoc dotfiles beside it. The in-memory lap buffer is a cache; the weave is the durable record.
 
 ### 4. Recall
 
@@ -88,7 +88,7 @@ Recall reads from the **session buffer** first (fast, interactive). After `:vers
 - **`mantra init`** creates the tree; the shell calls it lazily on first `:version`.
 - **`mantra add .mantra/session.log`** is the only Mantra command the loop requires beyond init.
 - **`mantra status`** may be exposed as `:status` for transparency; not required for the four-verb complete loop.
-- Repository-wide history (many files, merges, log) stays **out of scope** — that is Mantra's full module, not this ring.
+- Repository-wide history (many files, merges, log) stays **out of scope** — that is Mantra's full module, not this lap.
 
 ---
 
@@ -122,7 +122,7 @@ rye/bin/rye build mantra/src/main.rye -femit-bin=mantra/bin/mantra
 
 ### Out of scope (SLC-2 or later)
 
-- Pond enclosure, Brushstroke, Skate, Wayland — the GUI ring
+- Pond enclosure, Brushstroke, Skate, Wayland — the GUI lap
 - Full Mantra CLI surface (merge, log, diff UI) beyond `init` / `add` / optional `status`
 - Rishi language growth unrelated to the loop (new builtins welcome if they serve the four verbs)
 - Comlink, Brix, Tablecloth, Caravan capability table
@@ -154,4 +154,4 @@ When all three hold and the witness is green, SLC-1 is ready to share.
 
 ---
 
-*May the first ring stay small enough to finish. May history rest where Mantra can weave it, and may the next line you type be one you can call back.*
+*May the first lap stay small enough to finish. May history rest where Mantra can weave it, and may the next line you type be one you can call back.*

@@ -16,7 +16,7 @@ Everything here lives inside the persistent project directory, so it survives ev
 
 - **`RADIANT_STYLE.md`** — the canonical voice. How we write and speak so every piece reads clearly, lands warmly, and carries well aloud.
 - **`TAME_GUIDANCE.md`** — the operational code supplement (root + Rye / Brix / Rishi). Named like TigerBeetle's `docs/TIGER_STYLE.md`; pairs with `external-research/TAME_GUIDANCE.md` and `gratitude/TIGER_STYLE.md`.
-- **`SIMPLE_LOVABLE_COMPLETE.md`** — how we ship. Simple, lovable, complete at every ring; our distillation of Jason Cohen's method, bound to how Rye OS grows. Source essay in `gratitude/`.
+- **`SIMPLE_LOVABLE_COMPLETE.md`** — how we ship. Simple, lovable, complete at every lap; our distillation of Jason Cohen's method, bound to how Rye OS grows. Source essay in `gratitude/`.
 - **`CIVIC_STYLE.md`** — how we design public benefit. Name the outcome you want, name what the reward measures, keep the two aligned — the civic companion to TAME, Radiant, and SLC.
 - **`REYA2.md`** — the prior identity note (Reya 2). **`RIO3.md`** — **Rio 3**, active voice this season until Kaeden restores Reya 2.
 - **`SILO_TECHNIQUE.md`** — the siloing technique: how an outside idea becomes an owned, understood concept in our own voice, with gratitude kept apart and honored. Portable, and meant to travel beside the voice guide and the identity note.

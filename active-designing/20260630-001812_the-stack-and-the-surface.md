@@ -1,10 +1,10 @@
 # The Stack and the Surface — How Rye OS Rests on Itself, from Tally to the Drawn Frame
 
-*One question runs underneath the whole family: how do the modules rest on one another so that each leans only downward, and nothing leans back? This record answers it. It names the floor, the substrate, and the surface; it places Weave at the center as the append-only DAG of signed facts; and it draws the spectrum of applications that rise above, from the simplest drawn terminal to the richest immersive surface. What is decided here is decided. What waits is named as waiting, and built only when the ring below it runs.*
+*One question runs underneath the whole family: how do the modules rest on one another so that each leans only downward, and nothing leans back? This record answers it. It names the floor, the substrate, and the surface; it places Weave at the center as the append-only DAG of signed facts; and it draws the spectrum of applications that rise above, from the simplest drawn terminal to the richest immersive surface. What is decided here is decided. What waits is named as waiting, and built only when the lap below it runs.*
 
 **Language:** EN
 **Version:** `20260630.001812` (Rye chronological stamp)
-**Last updated:** 2026-07-02 (Amber seated in stack record)
+**Last updated:** 2026-07-04 (fold reading map · SLC-L1 landed at parity **152**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety, performance, then the joy of the craft; Gall's Law; one value model; aparigraha
 **Companions:** `recommended-architecture` and `single-stranded` (the core names); `pond-foundation` (the enclosure)
@@ -19,6 +19,21 @@ Everything in the family reduces to five small things, and naming them first mak
 
 Hold these five in mind and the modules stop being a list of names. They become a single idea wearing many coats: facts accumulate in a log, views are folded fresh from the log, identity signs the facts, and capabilities govern who may add to them. The stack below is simply where each of these lives.
 
+## Fold — Where to Read
+
+**Fold** names the same thing as **projection** in the five primitives: a pure function from the append-only log to a view — derived, never authoritative over the facts, always recomputable. The family uses the word in two accents: **projection** at the substrate (Mantra, Tablecloth, Amber's catalog), **fold** in product and teaching prose (balance, receipt, reputation, the drawn frame). Both mean one honest strand from facts to what a person sees.
+
+| Read here | What it holds |
+|-----------|----------------|
+| **This record** — § The Floor, § Weave at the Center | Five primitives, module resting order, Weave vs Mantra |
+| [`foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) | Weave DAG, Mantra projection, Tablecloth fold — the graph under Realidream |
+| [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md) | Immediate-mode surface: log → state → pixels, no second copy |
+| [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) | Fold core as the happy zone; witnesses at the thin edge |
+| [`context/LEXICON.md`](../context/LEXICON.md) | Module names and lap vocabulary |
+| [`active-designing/20260702-195426_slcl1-verifiable-receipt.md`](20260702-195426_slcl1-verifiable-receipt.md) | Receipt as fold over a transaction log — landed `20260704.021800` |
+
+Moderation, reputation, and egress each treat **which fold you choose** as the policy — history stays whole; the projection declines to render. Ground: [`../external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md).
+
 ## The Resting Order
 
 The modules rest on one another in one direction, and the test the whole arrangement must pass is that the dependencies form no circle. Read from the floor upward:
@@ -31,7 +46,7 @@ The modules rest on one another in one direction, and the test the whole arrange
 
 **Weave** is the substrate: the append-only DAG of immutable signed facts. It is the literal floor beneath the family's deepest thesis, that state is a pure fold over a log. Weave rests on Tally for its memory and on identity for its signatures, and it knows nothing of the views that will later be folded from it.
 
-**Mantra** and **Comlink** rest on Weave. Mantra is a projection over Weave — the version-control view of the content-addressed DAG, the names and histories a person reads. Comlink is a transport over Weave — the sealed movement of signed facts from one node to another. **Amber** seals state cold to disconnected storage — signing through the host's OpenPGP seam with Kumara as its sovereign horizon, leaning on Tally for bounded working memory — while Mantra holds the living history and Comlink moves signed facts hot between nodes. A projection, a journey, and a preservation ring, all over the same substrate.
+**Mantra** and **Comlink** rest on Weave. Mantra is a projection over Weave — the version-control view of the content-addressed DAG, the names and histories a person reads. Comlink is a transport over Weave — the sealed movement of signed facts from one node to another. **Amber** seals state cold to disconnected storage — signing through the host's OpenPGP seam with Kumara as its sovereign horizon, leaning on Tally for bounded working memory — while Mantra holds the living history and Comlink moves signed facts hot between nodes. A projection, a journey, and a preservation lap, all over the same substrate.
 
 **Brushstroke** is the surface, and it rests above the substrate with one deliberate gap between them, named in its own section below. It leans on **Skate**, the primitive that turns a grid of text into a buffer of pixels.
 
@@ -61,7 +76,7 @@ A drawn application, said plainly, is a fold from values into a frame. That sing
 
 **The drawn terminal** is the simplest *application*: Rishi's prompt and its history, folded from the live session and rendered through Skate, redrawn as the session grows. A terminal is, in truth, simpler than a rich graphical surface, and so it is the right first whole — the working seed the rest of the spectrum grows from.
 
-**The richest immersive surface** sits at the far end, folding something deep and living into a frame a person can move through. It is the most advanced member of the same family, reached by degrees, never raised before the simpler rings beneath it run.
+**The richest immersive surface** sits at the far end, folding something deep and living into a frame a person can move through. It is the most advanced member of the same family, reached by degrees, never raised before the simpler laps beneath it run.
 
 Between these ends lies every surface the system will ever draw, and all of them share the one shape: values in, frame out, computed fresh.
 
@@ -89,7 +104,7 @@ Three of the open names have found their words, each carrying a meaning that fit
 
 Three names remain proposed and unshaped, and honesty keeps them open. A **composing companion** beside the brick descriptor — what it describes, alongside *what a system is made of*, is the question to settle before it is built. A **layout or structured-view** layer, named and not yet given form. And a **surface-description extension** for the day the surface becomes a small language of its own — a horizon raised only when a hand-written surface proves it needs one.
 
-None of these is built here. Each is named so it is not lost, and each waits for the ring that proves it necessary.
+None of these is built here. Each is named so it is not lost, and each waits for the lap that proves it necessary.
 
 ## The Discipline That Governs All of It
 
@@ -99,4 +114,4 @@ So the live rung is the drawn terminal, the simplest application in the spectrum
 
 ---
 
-*May each layer rest gently on the one below, and lean back on none. May the surface always show the truth, because it keeps no second copy to drift from it. And may every ring we add be a working whole the day it arrives, grown from the working whole before it, carried no faster than the craft allows.*
+*May each layer rest gently on the one below, and lean back on none. May the surface always show the truth, because it keeps no second copy to drift from it. And may every lap we add be a working whole the day it arrives, grown from the working whole before it, carried no faster than the craft allows.*

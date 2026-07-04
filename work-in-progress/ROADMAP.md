@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
-**Last updated:** 2026-07-03 (RW-2 mirrored pair — parity **150**)
+**Last updated:** 2026-07-04 (SLC-L1 verifiable receipt — parity **152**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -18,7 +18,7 @@
 
 **Rye OS** — a system that belongs wholly to the one who runs it. One language (Rye), one value model, one kernel (Caravan), one compositor (Brushstroke), one shell (Rishi), one version history (Mantra), one network (Comlink), one database (Tablecloth), one composition language (Brix), one data notation (Bron), one memory model (Tally), one boot (Aurora), one enclosure (Pond). **Linengrow** is the flagship application those modules serve — transparent civic commerce grown from the same spine. Each module individually simple; together they compose a desktop, a forge, a network, and a boot — on x86_64 today and RISC-V as the horizon.
 
-**Rye today** is a thin, honest frontend on pinned Zig 0.16.0 — `rye/lib/std` leaned upon through pristine symlinks, safety living in authored `.rye` (assertions at call sites, `width-check.rish`, the gate trio). The strengthening chronicle **completed** as analysis; it is record, not product.
+**Rye today** is a thin, honest frontend on pinned Zig 0.16.0 — `rye/lib/std` leaned upon through pristine symlinks, safety living in authored `.rye` (assertions at call sites, `width-check.rish`, the trio). The strengthening chronicle **completed** as analysis; it is record, not product.
 
 The full design lives in [`active-designing/yonder/20260619-225712_the-whole-system.md`](../active-designing/yonder/20260619-225712_the-whole-system.md). This roadmap says what to build and in what order.
 
@@ -28,7 +28,7 @@ The full design lives in [`active-designing/yonder/20260619-225712_the-whole-sys
 
 Rye OS is the system. **Linengrow** is the first whole built upon it — a transparent civic and social-commerce platform for vegan musicians and activist creators. The two share one architectural spine: state as a pure fold over an append-only log of immutable signed facts, and five foundations beneath everything — keypair, signed event, log, projection, capability.
 
-Correctness by construction in the kernel becomes trust by construction in the platform. The same capability that isolates a process in Caravan names ownership in Linengrow; the same Mantra log that versions a file records a verifiable receipt; the same Comlink that seals a datagram delivers a signed transaction identity to identity. Rye OS grows the infrastructure rings; Linengrow grows its application rings on the same modules. The full Linengrow vision lives in [`../linengrow/`](../linengrow/); this roadmap grows it the SLC way, smallest lovable complete first. The granular plan for both tracks lives in [`TASKS.md`](TASKS.md).
+Correctness by construction in the kernel becomes trust by construction in the platform. The same capability that isolates a process in Caravan names ownership in Linengrow; the same Mantra log that versions a file records a verifiable receipt; the same Comlink that seals a datagram delivers a signed transaction identity to identity. Rye OS grows the infrastructure laps; Linengrow grows its application laps on the same modules. The full Linengrow vision lives in [`../linengrow/`](../linengrow/); this roadmap grows it the SLC way, smallest lovable complete first. The granular plan for both tracks lives in [`TASKS.md`](TASKS.md).
 
 ---
 
@@ -48,11 +48,11 @@ Correctness by construction in the kernel becomes trust by construction in the p
 | **Brushstroke** | Hosted seed + Wayland seed (Skate grid on xdg toplevel) | Frame from values; seed + grid raster in parity |
 | **Skate** | Text grid: 8×8 monospace → ARGB8888 buffer | Headless selftest GREEN; feeds Wayland seed |
 | **Comlink** | Sealed datagram: shared-memory + localhost UDP | Full crypto stack; hosted wire in parity (suite at **144**) |
-| **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer + Dexter keyboard) | **SLC-2b** — keyboard witness at parity **145**; RW-1 at **147**; chrono sweep at **148**; Ring 3 at **140** |
+| **Pond** | First app: [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye) (Skate viewer + Dexter keyboard) | **SLC-2b** — keyboard witness at parity **145**; RW-1 at **147**; chrono sweep at **148**; Lap 3 at **140** |
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**Gate trio:** `parity.rish` (**150 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber ring 1 + chrono version sweep), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-03`); additive-gate runs when std changes land.
+**The trio:** `parity.rish` (**152 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-04`); additive-gate runs when std changes land.
 
 ---
 
@@ -60,10 +60,10 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 Grow running seeds into things a person can use *as-is*. See [`gratitude/Your customers hate MVPs. Make a SLC instead..html`](../gratitude/Your%20customers%20hate%20MVPs.%20Make%20a%20SLC%20instead..html).
 
-| Ring | What | Status |
+| Lap | What | Status |
 |------|------|--------|
 | **SLC 1** | **Rishi + Mantra shell** — hosted, scriptable REPL with versioned history in a terminal (type → run → version → recall) | **Done** (`2026-06-29`) — four verbs + `tools/slc1_accept.rish`; scope [`20260628-071012`](../active-designing/20260628-071012_slc-1-rishi-mantra-shell.md). TAME hardening **complete** (`2026-06-29`). |
-| **SLC 2** | **Pond GUI / Skate viewer** — SLC-2a Rings 1–3 **landed**; **SLC-2b keyboard** **landed** (`20260703.132112`) | Scope [`20260630-030312`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md); parity **145** |
+| **SLC 2** | **Pond GUI / Skate viewer** — SLC-2a Laps 1–3 **landed**; **SLC-2b keyboard** **landed** (`20260703.132112`) | Scope [`20260630-030312`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md); parity **145** |
 | **Compose** | Comlink device wire → ~~capability table~~ **landed** → Comlink v1 → Brix v1 → Tablecloth → Forge | Horizon 2; capability table `2026-06-30` |
 
 **Authored width migration** — **complete and blocking in parity** (TH-3 through TH-7; hosted `width-check`). Remaining authored surfaces migrate as-you-touch beside SLC-2; not a pending milestone.
@@ -74,15 +74,15 @@ Grow running seeds into things a person can use *as-is*. See [`gratitude/Your cu
 
 Grown from the same modules Rye OS is already building, smallest lovable complete first.
 
-| Ring | What | Grows from |
+| Lap | What | Grows from |
 |------|------|-----------|
-| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **scope note** [`20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md); Open Asks room gated behind it | keypair + Mantra log + projection |
+| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **landed** `20260704.021800` — [`linengrow/receipt.rye`](../linengrow/receipt.rye) + witness at parity **152**; Open Asks room gated behind Kaeden edge affirmation | keypair + Mantra log + projection |
 | **SLC-L2** | Sealed delivery — a signed receipt sent identity to identity, under seal | Comlink |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
-The first ring needs no ledger and no currency — only the foundations Rye OS already grows.
+The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
 
 ---
 
@@ -110,20 +110,20 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 |------|------|------------|---------|
 | **1 — type + run** | Type, Run | `rishi repl`; prompt `rishi> `; in-process eval; shared `Env`; `:quit` / `:q` | `tools/slc1_repl_step1.rish` — binding carry-forward |
 | **2 — version** | Version | Session buffer; `.mantra/session.log` transcript; `:history`; lazy `mantra init`; `:version` → `mantra add` | `tools/slc1_version_step2.rish` — HEAD advances; blob in `.mantra/blobs/` |
-| **3 — recall** | Recall | `:recall <n>` and `!<n>`; in-session ring via `runInputLine` | `tools/slc1_recall_step3.rish` — prior line re-runs |
-| **accept** | all four | Meta-commands in `rishi/README`; gate trio on metal | `tools/slc1_accept.rish` — type, run, version, recall in one session |
+| **3 — recall** | Recall | `:recall <n>` and `!<n>`; in-session rerun via `runInputLine` | `tools/slc1_recall_step3.rish` — prior line re-runs |
+| **accept** | all four | Meta-commands in `rishi/README`; the trio on metal | `tools/slc1_accept.rish` — type, run, version, recall in one session |
 
-**SLC-1 is done** on its functional promise (`2026-06-29`). **TAME hardening is complete** (`2026-06-29`) — TH-0–TH-7, RS-1–RS-3, hosted `width-check` blocking in parity (132 witnesses). The bench turns to the next product ring.
+**SLC-1 is done** on its functional promise (`2026-06-29`). **TAME hardening is complete** (`2026-06-29`) — TH-0–TH-7, RS-1–RS-3, hosted `width-check` blocking in parity (132 witnesses). The bench turns to the next product lap.
 
-**Landed since this section was drawn:** SLC-2a Rings 1–3 witnessed with metalsmoke GREEN (parity **140**); Caravan capability table (`2026-06-30`); RW-3 and RW-4 (**141**, **142**); fixture twins in Rishi; the manual's first reference and tutorial.
+**Landed since this section was drawn:** SLC-2a Laps 1–3 witnessed with metalsmoke GREEN (parity **140**); Caravan capability table (`2026-06-30`); RW-3 and RW-4 (**141**, **142**); fixture twins in Rishi; the manual's first reference and tutorial.
 
 **The current position — doors closed, ladder open** (granular boxes in [`TASKS.md`](TASKS.md)):
 
 | Step | Owner | Parity |
 |------|-------|--------|
-| Door 1 — Pond clause · Door 2 — Ring 3 metal close · Door 3 — Edit 5 ruling | **Kaeden** | ✅ closed |
+| Door 1 — Pond clause · Door 2 — Lap 3 metal close · Door 3 — Edit 5 ruling | **Kaeden** | ✅ closed |
 | Edit 5 wired | Cursor | **143** ✅ |
-| **Amber first ring** — five rungs (a)–(e) | Cursor | **144** ✅ |
+| **Amber first lap** — five rungs (a)–(e) | Cursor | **144** ✅ |
 | SLC-2b — keyboard from the window, Dexter's genesis | Cursor | **145** ✅ |
 | RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **147** ✅ |
 | Chrono version sweep — authored surfaces | Cursor | **148** ✅ |
@@ -163,7 +163,7 @@ Still on this horizon, after the ladder: **Comlink device wire** — sealed data
 
 - **Ship something simple, lovable, and complete at every step.**
 - **Grow; never design the whole from scratch.**
-- **Prove each step through the gates.**
+- **Prove each step through its witnesses.**
 - **Safety lives in authored code** — assert at call sites; pristine `std` you lean on.
 - **Keep it loose and single-stranded.**
 - **Two-thirds implementation, one-third design.**

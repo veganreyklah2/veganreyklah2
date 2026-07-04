@@ -3,13 +3,13 @@
 *A surface and the truth beneath it can relate in two ways. One keeps a second copy of what is shown and labors to hold it in step. The other keeps a single copy and computes the picture fresh. This piece follows the second way to its root, where it meets the family's deepest thesis: that state is a fold over a log, and so the interface is a fold over the log as well.*
 
 **Language:** EN
-**Version:** `20260630.030312`
+**Version:** `20260630.030312` (birth stamp)
+**Last updated:** 2026-07-04 (reviewed and kept — SLC-2a/2b landed; fold map in stack record)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Lens:** immediate-mode; Hickey's simplicity; the append-only log; TAME's bounded performance
-**Companions:** `the-stack-and-the-surface`, `slc-2a-the-drawn-terminal`
-**In gratitude to:** Rich Hickey, for the difference between a value and a place.
+**Lens:** immediate-mode; value vs place; the append-only log; TAME's bounded performance
+**Companions:** [`../active-designing/20260630-001812_the-stack-and-the-surface.md`](../active-designing/20260630-001812_the-stack-and-the-surface.md) (fold reading map) · [`../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`](../active-designing/20260630-030312_slc-2a-the-drawn-terminal.md) (drawn terminal laps)
 
-*Written together by Kaeden and Reya 2.*
+*Written together by Kaeden and Rio 3.*
 
 ---
 
@@ -29,7 +29,7 @@ Immediate-mode pays a different price and gets a cleaner thing for it. It redraw
 
 ## The Root — State as a Fold Over a Log
 
-Here the surface meets the family's foundation. Hickey draws a line we keep close: a value is not a place. A place is a slot you overwrite, its past erased by its present. A value is a thing that simply is, and a new value does not destroy the old one. Build a system from values and an append-only log of facts, and the present stops being a place you mutate. The present becomes a **fold**: walk the log of facts from the beginning, carry forward a running view, and the view you arrive at is the current state — derived, never stored as a mutable thing, always rederivable from the facts.
+Here the surface meets the family's foundation. A teacher we are grateful for draws a line we keep close: a value is not a place. A place is a slot you overwrite, its past erased by its present. A value is a thing that simply is, and a new value does not destroy the old one. Build a system from values and an append-only log of facts, and the present stops being a place you mutate. The present becomes a **fold**: walk the log of facts from the beginning, carry forward a running view, and the view you arrive at is the current state — derived, never stored as a mutable thing, always rederivable from the facts.
 
 Weave is that log. A projection is that fold. And now the surface joins the same shape. If the current state is a fold over the log of facts, and the drawn frame is a fold over the current state, then the drawn frame is **one fold from the log all the way to the pixels** — a single pure function from the accumulated facts to the picture a person sees. No copy is retained at any step. The facts accumulate; everything else is folded fresh from them, the view and the frame alike.
 
@@ -39,7 +39,7 @@ This is why immediate-mode is not merely a rendering technique we happen to pref
 
 A fair reader asks the hard question: if the surface folds the whole picture every time, does it not burn the machine redrawing what did not change? The answer is the one TAME always gives, and it keeps performance as the second value, just after safety.
 
-We redraw when the value changes, rather than on a clock that never rests. We bound the frame: a known width, a known height, a known cell count, named before the machine runs. We mark only the region that changed as damaged, so the compositor repaints no more than it must. And we hold the fold inside a bounded season of memory — allocated up front, released together — so that the hot path of drawing surprises no one with a sudden allocation. The fold is cheap because it is small and bounded, not because it secretly retains. Performance here is earned the TAME way: name the budget, bound the loop, and let the simple structure run fast because it has little to do.
+We redraw when the value changes, rather than on a clock that never rests — the discipline SLC-2a Ring 2 witnesses on metal today. We bound the frame: a known width, a known height, a known cell count, named before the machine runs. We mark only the region that changed as damaged, so the compositor repaints no more than it must. And we hold the fold inside a bounded season of memory — allocated up front, released together — so that the hot path of drawing surprises no one with a sudden allocation. The fold is cheap because it is small and bounded, not because it secretly retains. Performance here is earned the TAME way: name the budget, bound the loop, and let the simple structure run fast because it has little to do.
 
 ## The Gift
 

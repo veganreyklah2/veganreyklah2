@@ -29,7 +29,7 @@ Three ideas carry the whole interface:
 | Idea | What it means |
 |------|----------------|
 | **Feature bits** | Guest and host negotiate what the device can do before any packet moves. Capabilities are declared, not assumed. |
-| **Virtqueues** | A bounded ring of descriptors in memory both sides can see. The guest places work; the host completes it. Each queue has a stated depth. |
+| **Virtqueues** | A bounded descriptor queue in memory both sides can see. The guest places work; the host completes it. Each queue has a stated depth. |
 | **Descriptors** | Small records pointing at guest buffers — address, length, flags. A chain of descriptors can describe one logical transfer. |
 
 The guest never trusts the host to guess buffer sizes. The host never trusts the guest to write past stated lengths. Every transfer names its edges — the same discipline Tally holds in a garden and `985` holds at the OS wrapper.

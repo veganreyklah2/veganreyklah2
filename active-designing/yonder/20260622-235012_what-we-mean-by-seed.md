@@ -32,7 +32,7 @@ A **seed** is the smallest version of a module that **runs** and **proves** the 
 
 It is not a sketch. It is not a design doc awaiting code. It is not the finished module wearing a modest name. It is a program — usually `seed.rye` or a clearly named sibling — that a person can build, run, and watch succeed behind assertions or the parity gate.
 
-The law it embodies: **a complex system that works is grown from a simpler system that worked — the Seed Law.** We do not open the whole Pond GUI, the whole microkernel, or the whole compositor in one pass. We open the seed, prove it green, and grow the next ring only from what already runs.
+The law it embodies: **a complex system that works is grown from a simpler system that worked — the Seed Law.** We do not open the whole Pond GUI, the whole microkernel, or the whole compositor in one pass. We open the seed, prove it green, and grow the next lap only from what already runs.
 
 ---
 
@@ -49,7 +49,7 @@ Every seed in the family shares a shape, even when the domains differ (boot, mem
 | **Version-stamped** | A chronological constant (`20260620.021912`) ties the running artifact to the brief that authorized it. |
 | **Hosted-first when wise** | Caravan and Tally seeds run on the host so Rishi's gates reach them; Aurora's seed runs freestanding because boot *is* the claim. |
 
-A seed **says** what the module is for. The v1 beside it **composes** what the seed proved into the next ring.
+A seed **says** what the module is for. The v1 beside it **composes** what the seed proved into the next lap.
 
 ---
 
@@ -87,7 +87,7 @@ tally/gardens.rye     →  named gardens (blob, diff, frame)
 
 ```
 brushstroke/seed.rye  →  Frame value → stdout redraw
-(wayland_seed.rye)    →  same Frame → one native window (next ring)
+(wayland_seed.rye)    →  same Frame → one native window (next lap)
 ```
 
 The seed file stays. Later rings import its discipline or inline its types honestly; they do not replace the proof the seed established.
@@ -146,7 +146,7 @@ Each seed is one **simple service** doing one job (`977`). Mantra **transforms**
 3. **Stamp the version** chronologically.
 4. **Run it** on the honest target (hosted vs freestanding).
 5. **Record it** in `995` What Just Landed, `.brix` if it is a brick, and this catalog.
-6. **Grow the next ring** only after the seed is green — never skip to v1 in the same breath.
+6. **Grow the next lap** only after the seed is green — never skip to v1 in the same breath.
 
 ---
 
@@ -156,4 +156,4 @@ Each seed is one **simple service** doing one job (`977`). Mantra **transforms**
 
 ---
 
-*May every module find its smallest honest proof. May the word seed mean one thing in every brief, every filename, and every roadmap row. May we grow the whole from what already runs — one seed at a time, each green before the next ring.*
+*May every module find its smallest honest proof. May the word seed mean one thing in every brief, every filename, and every roadmap row. May we grow the whole from what already runs — one seed at a time, each green before the next lap.*

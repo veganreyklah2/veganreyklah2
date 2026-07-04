@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety, performance, joy; Gall's Law; the silo principle
-**Status:** Counsel — horizons only; the live rung stays SLC-2a Ring 3
+**Status:** Counsel — horizons only; the live rung stays SLC-2a Lap 3
 
 *Written together by Kaeden and Claude (Fable 5), in Reya 2's Radiant voice.*
 
@@ -18,17 +18,17 @@ The tree holds exactly one `.py` — `classical-vedic-astrology/cast_a_chart.py`
 
 ## Alignment, Threads, and the One Warning
 
-The roadmap reads true. One live rung — Ring 3 — with a witnessed floor beneath it (parity 138 across Rye, Rishi, Caravan, Tally, Brushstroke, Comlink) and ordered horizons above it. TASKS now captures every thread this sitting opened or found loose: the wire hardening, the stream lane, the naming market, the post-quantum accretion, the Setu ruling, the Mantrapod map, and the two intakes awaiting your hand (the mathematics writings, and the Cerebras and wafer-memory silos for the inference season). The three older items still rest with you: the Ring 3 placement nod, the OCuLink companion memo, and **Edit 5**.
+The roadmap reads true. One live rung — Lap 3 — with a witnessed floor beneath it (parity 138 across Rye, Rishi, Caravan, Tally, Brushstroke, Comlink) and ordered horizons above it. TASKS now captures every thread this sitting opened or found loose: the wire hardening, the stream lane, the naming market, the post-quantum accretion, the Setu ruling, the Mantrapod map, and the two intakes awaiting your hand (the mathematics writings, and the Cerebras and wafer-memory silos for the inference season). The three older items still rest with you: the Lap 3 placement nod, the OCuLink companion memo, and **Edit 5**.
 
 The one warning is Edit 5 itself, spoken kindly: tonight's questions are exactly the gravity the bound exists for. This sitting deliberately produced explorations and horizons rather than specifications — Amber remains the tree's one designed-not-built spec — and ruling the bound in would keep every future sitting this healthy by default.
 
 ## Where Our Sight Is Thin
 
-Five blind spots, each now watched. **The quantum one** — real, and answered with an accretion plan in the companion memo. **The rehearsal one** — Amber's custody is written and never yet drilled; one afternoon, once the first ring runs, should restore a directory from a cold drive and recover from a revoked sandbox key, so recovery is a witnessed fact rather than a described hope. **The hazard-note one** — Amber's adversary section is the tree's first; the habit worth keeping is one such section in every module spec as it lands. **The wire's scaffolding** — deterministic keys and a constant nonce were honest for a witness and are named in TASKS as the hardening that precedes any real peer. **The long clock** — Amber's far-future verification leans on the log's ordering, which append-only already gives; watched, and calm.
+Five blind spots, each now watched. **The quantum one** — real, and answered with an accretion plan in the companion memo. **The rehearsal one** — Amber's custody is written and never yet drilled; one afternoon, once the first lap runs, should restore a directory from a cold drive and recover from a revoked sandbox key, so recovery is a witnessed fact rather than a described hope. **The hazard-note one** — Amber's adversary section is the tree's first; the habit worth keeping is one such section in every module spec as it lands. **The wire's scaffolding** — deterministic keys and a constant nonce were honest for a witness and are named in TASKS as the hardening that precedes any real peer. **The long clock** — Amber's far-future verification leans on the log's ordering, which append-only already gives; watched, and calm.
 
 ## Dexter, Kumara, Bookie — Right-Sized, and One Is Next
 
-The three quiet names are exactly as attended as Gall's Law wants: named, defined, and waiting for their working smaller system. The news is that **Dexter's season is next** — SLC-2b is keyboard input *from the window*, which is Dexter's genesis by definition, and the Ring 3 prompt already defers to it by name. **Kumara** takes first blood where identity first touches running code: Amber's native signing beyond the gpg seam, or Linengrow L1's keypair — whichever season opens first. **Bookie** stays doctrine — many witnesses or one changer — enforced today by TAME convention, earning code only when Rye grows its own parsing tools. No neglect; only patience with intent.
+The three quiet names are exactly as attended as Gall's Law wants: named, defined, and waiting for their working smaller system. The news is that **Dexter's season is next** — SLC-2b is keyboard input *from the window*, which is Dexter's genesis by definition, and the Lap 3 prompt already defers to it by name. **Kumara** takes first blood where identity first touches running code: Amber's native signing beyond the gpg seam, or Linengrow L1's keypair — whichever season opens first. **Bookie** stays doctrine — many witnesses or one changer — enforced today by TAME convention, earning code only when Rye grows its own parsing tools. No neglect; only patience with intent.
 
 ## One Surface, Many Skins
 
@@ -51,7 +51,7 @@ The device that forgets, drawn module by module:
 | The only wire: USB-C networking | **Comlink**, over a USB gadget lane (CDC-NCM ethernet-over-USB as the seam) |
 | Export from a device that forgets | the **Amber** shape — seal, sign, hand across |
 
-On the API name: the USB-C lane deserves one, and the naming stays yours. The candidate offered for the lexicon's *Open (named, not yet shaped)* table is **Setu** — Sanskrit for *bridge*, the causeway built stone by stone across the water — Comlink's dock-wire lane, whose first ring is small and visible: a Comlink datagram crossing CDC-NCM between host and QEMU guest, composing the wire that already runs.
+On the API name: the USB-C lane deserves one, and the naming stays yours. The candidate offered for the lexicon's *Open (named, not yet shaped)* table is **Setu** — Sanskrit for *bridge*, the causeway built stone by stone across the water — Comlink's dock-wire lane, whose first lap is small and visible: a Comlink datagram crossing CDC-NCM between host and QEMU guest, composing the wire that already runs.
 
 ## Where Every Module Stands Tonight
 
@@ -59,7 +59,7 @@ On the API name: the USB-C lane deserves one, and the naming stays yours. The ca
 |---|---|
 | **Aurora** | Seven freestanding seeds; QEMU runway; outside hosted parity by design; the kernel-direction memo waits on your settled word |
 | **Rye** | Thin frontend sealed; 116 std witnesses green; compiler fork deferred as ruled |
-| **Rishi** | SLC-1 whole; Ring 3 opens its public per-line surface |
+| **Rishi** | SLC-1 whole; Lap 3 opens its public per-line surface |
 | **Brix** | Declarative descriptors serving; each brick individually simple |
 | **Bron** | Proposed, open — role still yours to shape |
 | **Weave** | Content-addressed line history live; Kumara signing is its named horizon |
@@ -68,7 +68,7 @@ On the API name: the USB-C lane deserves one, and the naming stays yours. The ca
 | **Mantra** | SHA3 store + weave projection; CRDT weave on the horizon shelf |
 | **Tablecloth** | Named; role sharpening toward the projection store above |
 
-Everything this sitting opened lands *on* that floor without moving the rung. Ring 3 first; the horizons in their seasons.
+Everything this sitting opened lands *on* that floor without moving the rung. Lap 3 first; the horizons in their seasons.
 
 ## Two Welcomes
 

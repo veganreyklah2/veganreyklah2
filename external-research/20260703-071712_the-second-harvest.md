@@ -20,9 +20,9 @@ The first harvest took one lecture and carried it into one survey. This second p
 
 ## The Geometry of Return
 
-The toroidal research pair holds an insight that belongs deep in TAME: **let the shape carry the bound**. Optimization confined to a closed surface can never run away to infinity, because the geometry itself is the limit; the bound lives in the coordinates rather than in a runtime check. Rye already knows the humble form of this truth — a ring buffer is a one-dimensional torus, its wraparound index a bound expressed as shape — and the pattern generalizes: whenever a budget can be woven into the structure of the data, the assertion becomes a property, checked by construction rather than by vigilance. This deserves a short passage in the TAME voiced canon, beside the bounds discipline, and a design note for Tally, where region arithmetic already lives this way half-consciously.
+The toroidal research pair holds an insight that belongs deep in TAME: **let the shape carry the bound**. Optimization confined to a closed surface can never run away to infinity, because the geometry itself is the limit; the bound lives in the coordinates rather than in a runtime check. Rye already knows the humble form of this truth — a lap buffer is a one-dimensional torus, its wraparound index a bound expressed as shape — and the pattern generalizes: whenever a budget can be woven into the structure of the data, the assertion becomes a property, checked by construction rather than by vigilance. This deserves a short passage in the TAME voiced canon, beside the bounds discipline, and a design note for Tally, where region arithmetic already lives this way half-consciously.
 
-The same pair restates a thesis we hold from the ledger lineage: **one lane, fully fed, outruns many lanes half-starved**, and determinism is the price of speed you can trust. That thread already runs through WOV; the harvest here is to name it once in the Maitreya notes, since Maitreya owns time and a single owned timeline is the audio-video driver's whole safety story. And running beneath both is the figure that quietly organizes the entire project: the ring that folds through itself — the torus in the hardware papers, circulation in the economics, nutrient return in the gardens, state as a pure fold over the append-only log. The figure wants a name someday. Per our stop-and-park discipline, the candidate — something like *the returning ring* — goes to RTAC to wait, seated only if a future round truly needs it.
+The same pair restates a thesis we hold from the ledger lineage: **one lane, fully fed, outruns many lanes half-starved**, and determinism is the price of speed you can trust. That thread already runs through WOV; the harvest here is to name it once in the Maitreya notes, since Maitreya owns time and a single owned timeline is the audio-video driver's whole safety story. And running beneath both is the figure that quietly organizes the entire project: the lap that folds through itself — the torus in the hardware papers, circulation in the economics, nutrient return in the gardens, state as a pure fold over the append-only log. The figure wants a name someday. Per our stop-and-park discipline, the candidate — something like *the returning lap* — goes to RTAC to wait, seated only if a future round truly needs it.
 
 ---
 
@@ -60,11 +60,11 @@ The campaign experiments hold the sharpest management principle in the whole fie
 
 ## The Vision Register
 
-Two of the attached pieces — the aromatic field essay and the aether-theoretic sections of the toroidal work — speak in a different key, and the honest harvest names the key rather than flattening it. These writings frame themselves as vision: beautiful guesses that earn their proof later. The discipline they teach is therefore a discipline of rooms. **The checkable and the visionary each get a room of their own**: TAME's world admits only what a witness can bind, while the vision register holds the images that orient the work — the two-layer infrastructure of ground cable and living air, the health of pollinators as the measure of an invisible commons, give back more than you take, let the circle close. Kept apart, both stay strong; the poetics feed Linengrow's voice and the devotional essay lane, while the bench keeps reporting only what the bench shows. A short context note naming this two-room discipline would let future sessions handle visionary material with the same warmth and the same honesty.
+Two of the attached pieces — the aromatic field essay and the aether-theoretic sections of the toroidal work — speak in a different key, and the honest harvest names the key rather than flattening it. These writings frame themselves as vision: beautiful guesses that earn their proof later. The discipline they teach is therefore a discipline of rooms. **The checkable and the visionary each get a room of their own**: TAME's world admits only what a witness can bind, while the vision register holds the images that orient the work — the two-layer infrastructure of ground cable and living air, the health of pollinators as the measure of an invisible commons, give back more than you take, let the circle close. Kept apart, both stay strong; the poetics feed Linengrow's voice and the devotional essay lane, while the bench keeps reporting only what the bench shows. The discipline now wears a proposed name in [`../context/TWO_ROOMS.md`](../context/TWO_ROOMS.md), deepened by the Jul 4 vocabulary essays — checkable room, claim, metal-path walk — awaiting Kaeden's word to seat as standing context.
 
 ---
 
-## The Rare Resource and the Small Ring
+## The Rare Resource and the Small Edge
 
 The aftermath document distills session economics into two sentences worth keeping close. **The writing and the vision-architecture are the scarce input; the code is downstream** — so the counsel hours go first to the decisions only counsel can make. And **three percent compounded carries further than fifty percent leapt** — the daily tended increment over the heroic sprint, which is Gall's Law lived as a personal practice, with rest and nourishment scheduled first because the vow is the center that lets everything else hold. These belong in a small bench-workflow note in `context/`, where every future session will meet them early.
 
@@ -82,7 +82,7 @@ Three threads from the monetary lecture remained unspun after the first harvest,
 |---|---|---|
 | Let the shape carry the bound | TAME voiced canon; Tally design note | Ready to draft |
 | One lane, fully fed | Maitreya time note | Ready to draft |
-| The returning ring (motif) | RTAC | Parked as candidate |
+| The returning lap (motif) | RTAC | Parked as candidate |
 | Buy the rung the work has earned | Home-server build notes | Ready to draft |
 | Widest stable seam | Comlink / driver strategy note | Ready to draft |
 | Self-hosted ledger as sovereignty unit | Linengrow creator thesis | Ready to draft |
@@ -95,7 +95,7 @@ Three threads from the monetary lecture remained unspun after the first harvest,
 | Path-with-heart companion question | `SIMPLE_LOVABLE_COMPLETE.md` close | Awaiting Kaeden's word |
 | Protect first, then negotiate | Civic Style method note | Ready to draft |
 | Redeemability sentence | MALA design record | Ready to draft |
-| Two rooms: checkable and visionary | `context/` discipline note | Ready to draft |
+| Two rooms: checkable and visionary | [`context/TWO_ROOMS.md`](../context/TWO_ROOMS.md) + Jul 4 essays | Proposed — awaits Kaeden's word |
 | Rare resource; three percent | Bench-workflow note | Ready to draft |
 | Citizen's steady bond; issuer's self-note | MALA M-ladder record | Ready to draft |
 | No surveillance to sell | Linengrow platform papers | Ready to draft |

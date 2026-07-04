@@ -20,7 +20,7 @@ When Rye inherits a name from Zig — `ArenaAllocator`, `std.heap.ArenaAllocator
 
 This follows straight from the promise Rye's versioning already makes (`rye-versioning-style.md`), which is Rich Hickey's promise in *Spec-ulation*: **what we publish, we keep; we grow by adding, never by taking away.** A rename is a removal wearing a costume. Rename `ArenaAllocator` to `GardenAllocator` and every `.rye` program that named the old one breaks — the exact harm accretion exists to prevent.
 
-It keeps faith, too, with how Rye's standard library grows. Our `std` began bit-for-bit identical to Zig 0.16.0, and it diverges only by **addition that preserves behavior** — assertions stated, invariants named, the parity gate green. Renaming a public symbol is neither additive nor parity-preserving at the level that matters to a caller: a name they leaned on is simply gone. The strengthening compiler tends the *inside* of functions; it leaves the doorways where they are.
+It keeps faith, too, with how Rye's standard library grows. Our `std` began bit-for-bit identical to Zig 0.16.0, and it diverges only by **addition that preserves behavior** — assertions stated, invariants named, the parity suite green. Renaming a public symbol is neither additive nor parity-preserving at the level that matters to a caller: a name they leaned on is simply gone. The strengthening compiler tends the *inside* of functions; it leaves the doorways where they are.
 
 And there is a quieter reason. `arena` is a good, true name. It means the same thing across all of computing, and inheriting it gives every Zig programmer a Rye they already half-know. A warm metaphor is worth less than a name a stranger can already read.
 

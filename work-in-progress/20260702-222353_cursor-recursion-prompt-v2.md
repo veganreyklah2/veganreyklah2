@@ -1,5 +1,7 @@
 # Cursor Recursion Prompt — v2 (post–ROUND ZERO)
 
+**Superseded:** [`../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md) — itinerary · stops · journey's pause. Body frozen for accretion; do not paste for new sittings.
+
 **Stamp:** `20260702.222353`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)

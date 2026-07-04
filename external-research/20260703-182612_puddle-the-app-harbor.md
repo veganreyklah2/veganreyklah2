@@ -29,9 +29,9 @@ their room.
 
 ## Puddle, Grown from Its Own Charter
 
-Puddle today is the bounded place where unknown things run without reaching the house. That is
-not a stepping stone to an app store; it *is* the app store's hard part, already named. The
-growth is concentric. An **app bundle** is a Brix-described, content-addressed set of stones —
+Puddle today is the bounded place where unknown things run without reaching the house. That
+*is* the app store's hard part, already named — concentric growth from harbor to marketplace.
+The growth is concentric. An **app bundle** is a Brix-described, content-addressed set of stones —
 code, assets, manifest — signed by its maker's Kumara key. **Install** is a season: dock the
 bundle, verify signatures and budgets cold, seat it in a puddle with named ceilings (memory
 garden, wire budget, capability list — the chosen fold bounding bandwidth by construction).
@@ -42,11 +42,11 @@ accrete-never-break, enforced at the harbor door. **Purchase** is a MALA fact wh
 maker asks a price, with the receipt provable the SLC-L1 way. And **moderation** is chosen
 labels on the render, never deletion of the log — the memo's geometry, kept.
 
-## The First Ring, Honestly Small
+## The first lap, Honestly Small
 
 One fixture bundle; one witness proving the harbor refuses a tampered stone, refuses an
 unbudgeted manifest, seats a good bundle in a puddle, and runs it to one drawn frame. No
-network, no payment, no upgrade — those are later rings, each behind its own gate. Simple,
+network, no payment, no upgrade — those are later laps, each behind its own gate. Simple,
 lovable (an app you made, running in a puddle you own), complete at its scope.
 
 ## Gratitude

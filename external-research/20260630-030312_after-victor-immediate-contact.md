@@ -53,7 +53,7 @@ A surface built to this brief gives a maker what Victor asks for: the feeling of
 
 A musical instrument is the purest case of immediate connection, and it is why this thread points toward Lotus. A musician changes a sound and hears it now; any gap at all breaks the performance and the understanding together. The hot loop that must never skip and Victor's principle of immediate connection are, at the instrument, the very same requirement. Lotus is where the surface's immediacy and the audio loop's discipline meet, and designing Brushstroke after Victor is, in quiet truth, also preparing the ground that Lotus will one day stand on.
 
-We hold all of this with Gall's patience. We do not build the whole framework now. We grow it from the drawn terminal, keep the maker close at every ring, and let the surface become a language only as fast as honest use reveals the next word.
+We hold all of this with Gall's patience. We do not build the whole framework now. We grow it from the drawn terminal, keep the maker close at every lap, and let the surface become a language only as fast as honest use reveals the next word.
 
 ---
 

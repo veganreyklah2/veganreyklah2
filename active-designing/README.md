@@ -47,21 +47,21 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
-| `20260703-202312` | [The marked value — types that travel](20260703-202312_the-marked-value.md) | Type-mark layer unified with crossing; absorb/express/tend triad; Tilak leads (RTAC); three rings dogfed by nightly packet |
+| `20260703-202312` | [The marked value — types that travel](20260703-202312_the-marked-value.md) | Type-mark layer unified with crossing; absorb/express/tend triad; Tilak leads (RTAC); three laps dogfed by nightly packet |
 | `20260703-201612` | [The sealed crossing](20260703-201612_the-sealed-crossing.md) | Greenware vessel discipline; manifest anatomy with mark field; vows at the seam |
 | `20260703-200712` | [What needs ordering](20260703-200712_what-needs-ordering.md) | Value-object ladder + compute choreography; silo companion to Pottery suite |
 | `20260703-140212` | [The bench — where claims become evidence](20260703-140212_the-bench.md) | Third in the metalsmoke/season family: metal, sitter, discipline; bench truth; harvest workflow economics absorbed |
-| `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally ring region + framed grid named; TAME canon passage boxed for Kaeden's word |
+| `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally lap region + framed grid named; TAME canon passage boxed for Kaeden's word |
 | `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify, Open Asks gated |
-| `20260702-185912` | [Brix — the composer and the system around it](20260702-185912_brix-the-composer.md) | Re-siloed: the ensemble table on our own strands; one bond as the override; sealed distribution at identity; first ring after the Amber season |
-| `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: the grain's nine strands defined; the two-room crossing and its closing test — what "siloed into our grain" means |
+| `20260702-185912` | [Brix — the composer and the system around it](20260702-185912_brix-the-composer.md) | Re-siloed: the ensemble table on our own strands; one bond as the override; sealed distribution at identity; first lap after the Amber season |
+| `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: ten grain strands indexed; two-room crossing and closing test — what "siloed into our grain" means |
 | `20260702-180812` | [The small sharp toolset](20260702-180812_the-small-sharp-toolset.md) | Userland patterns in our grain: composed artifact, readiness as facts, man as value, one override combinator; ladder gated after Amber |
 | `20260702-031312` | [Modules, aspects, and mailable money](20260702-031312_modules-aspects-and-mailable-money.md) | Module/aspect vocabulary and graduation rule; Weave's trigger; MALA M0–M4; Mycelium and road-keeper; Amber contract; Brix packaging through Pond; opening lines; manual's four rooms |
-| `20260630-030312` | [SLC-2a — the drawn terminal](20260630-030312_slc-2a-the-drawn-terminal.md) | Three-ring scope: value-driven viewer, redraw on change, live session mirror; Rings 1–3 witness landed |
+| `20260630-030312` | [SLC-2a — the drawn terminal](20260630-030312_slc-2a-the-drawn-terminal.md) | Three-lap scope: value-driven viewer, redraw on change, live session mirror; Laps 1–3 witness landed |
 | `20260630-014012` | [Lotus — the DAW](20260630-014012_lotus-the-daw.md) | Our studio: REAPER workflow shape, AP Mastering surface craft, Genesis hot-loop discipline; horizon after SLC-2a |
 | `20260630-001812` | [The stack and the surface](20260630-001812_the-stack-and-the-surface.md) | Acyclic module order; Weave as substrate; Brushstroke draws values; Dexter/Kumara/Bookie named; SLC-2a the live rung |
-| `20260629-004912` | [SLC-1 Step 2 · Version](20260629-004912_slc-1-step-2-version.md) | Hammock scope: session ring + transcript; `:history` and `:version`; Rishi drives Mantra by composition |
-| `20260628-071012` | [SLC-1 · Rishi-and-Mantra hosted shell](20260628-071012_slc-1-rishi-mantra-shell.md) | Hammock scope: four verbs (type, run, version, recall); history in `.mantra/`; terminal-complete first ring |
+| `20260629-004912` | [SLC-1 Step 2 · Version](20260629-004912_slc-1-step-2-version.md) | Hammock scope: session buffer + transcript; `:history` and `:version`; Rishi drives Mantra by composition |
+| `20260628-071012` | [SLC-1 · Rishi-and-Mantra hosted shell](20260628-071012_slc-1-rishi-mantra-shell.md) | Hammock scope: four verbs (type, run, version, recall); history in `.mantra/`; terminal-complete first lap |
 | `20260628-043542` | [Thin frontend — direction adopted](20260628-043542_thin-frontend-slc-direction.md) | Rye as thin frontend; SLC order; strengthening arc complete |
 | `20260622-232912` | [967 · Caravan — Improving Upon the State of the Art](yonder/20260622-232912_caravan-kernel-improvements.md) | A siloed design brief for how Caravan's microkernel improves upon what formal verification and safe-language kernels achieved separately. Th |
 | `20260621-070712` | [968 · The Compiler Fork — Rye Becomes Its Own Language](yonder/20260621-070712_the-compiler-fork.md) | A siloed design brief for the moment Rye stops being a derivative and starts compiling its own types. The fork replaces the inherited slice  |

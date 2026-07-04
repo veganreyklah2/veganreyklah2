@@ -47,7 +47,7 @@ Two differences matter, and both serve our mission. First, distribution: where N
 
 ## How It Grows
 
-Brix is small today: a `.brix` descriptor with ten tracked bricks, read by Mantra. It grows by the same law as everything here. The first ring is Brix v1 — a course evaluating into a closure of content-addressed bricks in Tablecloth — which the roadmap already places in Horizon 2, after the Caravan capability table and Comlink v1 give it supervision and sealed distribution to compose against. The PKI distribution and the Caravan-supervised services arrive as those modules mature. Nothing is built ahead of the seed it composes.
+Brix is small today: a `.brix` descriptor with ten tracked bricks, read by Mantra. It grows by the same law as everything here. The first lap is Brix v1 — a course evaluating into a closure of content-addressed bricks in Tablecloth — which the roadmap already places in Horizon 2, after the Caravan capability table and Comlink v1 give it supervision and sealed distribution to compose against. The PKI distribution and the Caravan-supervised services arrive as those modules mature. Nothing is built ahead of the seed it composes.
 
 ---
 

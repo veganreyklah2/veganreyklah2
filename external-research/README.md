@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-04 (gate unify counsel from zip 40)
+**Last updated:** 2026-07-04 (itinerary primer `030600`; diet-era file archived)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -14,6 +14,8 @@ This is where curiosity lands. The `external-research/` folder holds our explora
 This folder is allowed to be experimental, informal, and overgrown at times. It is open to the world: it may name other projects, draw inspiration freely, and cite its sources, with the original works kept whole in the `gratitude/` folder. That openness is its purpose, and it is exactly what sets it apart from its disciplined sibling, the `active-designing/` stack, which carries only our own names and one fixed external and accrues slowly and intentionally. Here we roam; there we decide.
 
 This file is the foundation stone. It rests at the bottom of the stack and explains how the stack works, so that anyone who opens this folder for the first time understands the shape of it at a glance.
+
+**Research for understanding, not advice.** Surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course. Policy and money choices belong to Kaeden in their own season. Each dated exploration carries the boundary in its status line. Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · register law (proposed): [`../context/TWO_ROOMS.md`](../context/TWO_ROOMS.md).
 
 ---
 
@@ -41,18 +43,24 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260704.025600` | [Claims, happy zone, and grain](20260704-025600_claims-happy-zone-and-grain.md) | How claim discipline braids with happy-zone testing and each grain strand |
+| `20260704.024900` | [Claim](20260704-024900_claim.md) | Bounded proposition a witness may bind; one witness one claim |
+| `20260704.024800` | [The checkable room](20260704-024800_the-checkable-room.md) | What checkable means — witness, trio, happy zone, doorway, bench pins |
+| `20260704.024600` | [Two rooms on the metal path](20260704-024600_two-rooms-on-the-metal-path.md) | Rye→Caravan→Tally→modules walk; compile vs runtime cases |
+| `20260703.033602` | [First lap goes green](20260703-033602_first-lap-goes-green.md) | Lap · green · Edit 5 graduation vocabulary — the shipping phrase whole |
+| `20260704.020800` | [One word, one gate](20260704-020800_one-word-one-gate.md) | Gate · witness · toll vocabulary ratified |
 | `20260704-004912` | [One Word, One Gate — unify counsel](20260704-004912_gate-unify-counsel.md) | Claude zip 40: gate=checkpoint, witness absorbs machine sense, toll proposed; delta table awaits Kaeden |
 | `20260704-002912` | [Gates, arms, and the Urbit lineage](20260704-002912_gates-arms-and-the-urbit-lineage.md) | Three gate families vs Hoon homonyms; Tilak triad vs grab/grow/grad; Zig function+struct sufficient — no Urbit gate/arm in Rye |
-| `20260703-235912` | [Diet and the crossing manifest](20260703-235912_diet-and-the-crossing-manifest.md) | Ungated diet defined; name candidates parked; crossing_manifest_seed primer — prerequisites and open decisions |
+| `20260704.030600` | [Itinerary and the crossing manifest](20260704-030600_itinerary-and-the-crossing-manifest.md) | Itinerary primer + crossing_manifest_seed — canonical |
 | `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | Vessel metaphor for Rio↔Cursor packets; shoulder line, parent mark, greenware vs fired seal; manifest anatomy |
 | `20260703-200712` | [Mysticeti's blocks and the object path](20260703-200712_mysticetis-blocks-and-the-object-path.md) | Blocks in layers; owned vs shared sorting; object-path treasure for Pottery ladder |
 | `20260703-200712` | [A Move for Rye](20260703-200712_a-move-for-rye.md) | Value-object question; Pottery leads RTAC table; fixed verbs law today |
 | `20260703-200712` | [Compute commerce on the network](20260703-200712_compute-commerce-on-the-network.md) | Compute market as seated-module choreography |
 | `20260703-200712` | [The cloneable repo and the practice ground](20260703-200712_the-cloneable-repo-and-the-practice-ground.md) | Practice-ground candidates parked; cloneable repo shape |
-| `20260703-193012` | [The bench as a block, and the living build](20260703-193012_the-bench-as-a-block-and-the-living-build.md) | Bench-as-block mapping; Ford lesson; three-ring build counsel; message seam |
+| `20260703-193012` | [The bench as a block, and the living build](20260703-193012_the-bench-as-a-block-and-the-living-build.md) | Bench-as-block mapping; Ford lesson; three-lap build counsel; message seam |
 | `20260703-182612` | [The road a failure carries](20260703-182612_the-road-a-failure-carries.md) | Metalsmoke stays narrow; trace designed — call road + fact road; spec candidate parked |
-| `20260703-182612` | [Sameness is the macro](20260703-182612_sameness-is-the-macro.md) | Graham × Hickey reconciled with TAME; two canon passages boxed for Kaeden's word |
-| `20260703-182612` | [Puddle — the app harbor](20260703-182612_puddle-the-app-harbor.md) | Serena's blessing; harbor rings; charter expansion parked in RTAC |
+| `20260703-182612` | [Sameness is the macro](20260703-182612_sameness-is-the-macro.md) | Graham × Hickey study; siloed companion in [`foundations/`](../foundations/20260703-182612_sameness-is-the-macro.md) |
+| `20260703-182612` | [Puddle — the app harbor](20260703-182612_puddle-the-app-harbor.md) | Serena's blessing; harbor laps; charter expansion parked in RTAC |
 | `20260703-182612` | [The granary question](20260703-182612_the-granary-question.md) | Sharing surface on four doors; five names parked, Granary leading |
 | `20260703-173512` | [Bubble — the drawing room](20260703-173512_bubble-the-drawing-room.md) | Sibling-bench harvest seated verbatim: felt tests, export door, one log under every surface |
 | `20260703-071712` | [The second harvest](20260703-071712_the-second-harvest.md) | Silo harvest map from a sibling bench: nineteen insights with destinations; first four landings at `140212` |
@@ -96,7 +104,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260618-195612` | [A Devotional Social Layer, Kept Simple](yonder/20260618-195612_devotional-social-layer.md) | Horizon — social atop Comlink; Linengrow carries civic commerce; in `yonder/` |
 | `20260618-195512` | [Encrypted Networking, From the Boot Upward](yonder/20260618-195512_encrypted-networking-riscv.md) | Realized-origin — Comlink and Aurora sealed datagram; in `yonder/` |
 | `20260618-190312` | [Reading Aurora and Mantra Through the Decided Design](yonder/20260618-190312_decided-design-aurora-mantra.md) | Realized analysis — modules built; in `yonder/` |
-| `20260618-180812` | [Pond's Foundation — The Bounded Enclosure Beneath Pond, Caravan, and Tally](20260618-180812_pond-foundation.md) | Kept active — Pond ring foundation; affirmed pass eight |
+| `20260618-180812` | [Pond's Foundation — The Bounded Enclosure Beneath Pond, Caravan, and Tally](20260618-180812_pond-foundation.md) | Kept active — Pond lap foundation; affirmed pass eight |
 | `20260618-150112` | [One Language or More? Rye, the Shell, and the Voices of an OS](yonder/20260618-150112_voices-of-an-os.md) | Settled — see kept `growing-a-language`; in `yonder/` |
 | `20260617-201612` | [Useful Utilities — What We Lean On, and What We'll Re-Grow](yonder/20260617-201612_useful-utilities.md) | Realized-origin — re-grow inventory; live plan is ROADMAP/TASKS; in `yonder/` |
 | `20260617-195812` | [Aurora: A Boot Designed for RISC-V](yonder/20260617-195812_aurora-boot-riscv.md) | Realized-origin — Aurora boots; reunites ownerboot trio in `yonder/` |

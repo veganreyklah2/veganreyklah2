@@ -14,7 +14,7 @@
 
 ## The Question
 
-Does the Mysticeti algorithm in our gratitude carry the concept of blocks, or is the Sui object Move model something different? The answer is a clean and instructive *both*, held in two layers — and the seam between the layers is the most valuable thing Sui has to teach us.
+Does the Mysticeti algorithm in our gratitude carry the concept of blocks, or is the Sui object Move model something different? The answer holds **both**, in two layers — and the seam between the layers is the most valuable thing Sui has to teach us.
 
 ## The Consensus Layer Speaks in Blocks
 

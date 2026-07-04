@@ -240,7 +240,7 @@ tree already keeps it.
 1. Shall the demand map in the movement memo grow a column for "public-market proxy — present or
    absent," so the thin-chapter finding stays visible beside each demand?
 2. When the Linengrow paste arrives, does this survey's Part Four read as the right preface to
-   the Open Asks first ring?
+   the Open Asks first lap?
 3. Is a small standing rule worth writing — every external money-research note carries the same
    not-advice sentence in its header — so the boundary never depends on memory?
 

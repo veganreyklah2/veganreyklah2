@@ -6,11 +6,11 @@
 
 ---
 
-Pond holds **applications** that compose Rye OS modules above the kernel and compositor — the first ring where isolation policy meets a running whole a person can use. The `apps/` floor keeps enclosure code and application code apart.
+Pond holds **applications** that compose Rye OS modules above the kernel and compositor — the first lap where isolation policy meets a running whole a person can use. The `apps/` floor keeps enclosure code and application code apart.
 
 **Pond clause:** Pond's enclosure aspect runs what Brix composes under policy.
 
-**First application:** [`apps/drawn_terminal.rye`](apps/drawn_terminal.rye) — SLC-2a Ring 3, the drawn terminal (Rishi session mirrored in a Brushstroke/Skate window).
+**First application:** [`apps/drawn_terminal.rye`](apps/drawn_terminal.rye) — SLC-2a Lap 3, the drawn terminal (Rishi session mirrored in a Brushstroke/Skate window).
 
 Policy-as-value horizon: `rishi/examples/pond.rish` and `external-research/20260618-180812_pond-foundation.md`.
 
@@ -43,9 +43,9 @@ rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish
 | Step | Command | Purpose |
 |------|---------|---------|
 | **Build** | `rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish` | Staged compile; asserts prepare/compile/prove/GREEN |
-| **Witness (Ring 3)** | `rishi/bin/rishi run tools/slc2a_ring3_session.rish` | Headless session mirror (build + `sessiontest`) |
+| **Witness (Lap 3)** | `rishi/bin/rishi run tools/slc2a_ring3_session.rish` | Headless session mirror (build + `sessiontest`) |
 | **Witness (SLC-2b)** | `rishi/bin/rishi run tools/slc2b_keyboard.rish` | Dexter keyboard path (build + `keyboardtest`) — parity **145** |
-| **Metalsmoke** | `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` | Thin-ring Wayland slice (needs `WAYLAND_DISPLAY`) |
+| **Metalsmoke** | `rishi/bin/rishi run tools/slc2a_ring3_metal.rish` | Thin-lap Wayland slice (needs `WAYLAND_DISPLAY`) |
 | **Live** | `pond/bin/drawn-terminal` | Keyboard in the window; stdin still works for dev |
 
 **Metal close (Kaeden):** rishi preflight and metalsmoke, then live on GNOME Wayland:

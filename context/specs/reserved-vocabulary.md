@@ -24,9 +24,9 @@ Warm names still enter beside inherited types (`inherited-names.md`). This list 
 
 **Why it matters:** A garden **plot** is bounded ground where something is tended on purpose — growth with edges, care with intent. The word also carries story (a plot unfolds), which we may want someday; that double meaning is part of why we hold it carefully.
 
-**Near miss (`20260620`):** considered for the parity gate's collection of `.rye` programs. **Witnesses** won — each program *witnesses* behavioral agreement between baseline and strengthened `std`. `plot` stays free for a usage where bounded tending or composed layout is the heart of the thing.
+**Near miss (`20260620`):** considered for the parity suite's collection of `.rye` programs. **Witnesses** won — each program *witnesses* behavioral agreement between baseline and strengthened `std`. `plot` stays free for a usage where bounded tending or composed layout is the heart of the thing.
 
-**Do not** use `plot` in public API, living docs, or gate vocabulary until this spec records an assignment with a one-line *why*.
+**Do not** use `plot` in public API, living docs, or witness vocabulary until this spec records an assignment with a one-line *why*.
 
 ---
 

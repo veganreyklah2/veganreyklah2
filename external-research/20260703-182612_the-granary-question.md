@@ -32,7 +32,7 @@ the whole storefront is a projection anyone can re-derive from the log — the c
 principle applied to code itself. Moderation is chosen labels on the render; the log is never
 the thing edited.
 
-## The First Ring
+## The first lap
 
 Read-only and local: one registry fixture of signed name-facts; resolve `person/weave`; clone
 by folding stones; render the weave's front page through Scribble to a drawn frame; one
