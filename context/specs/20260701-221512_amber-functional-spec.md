@@ -15,7 +15,9 @@
 
 ## 1. What Amber Is, and What It Is Not
 
-Amber does one thing wholly: it seals cold state. A sealed archive is a bit-faithful snapshot — content-addressed by its digest, encrypted at rest, signed so its origin is checkable forever — written to deep storage that then disconnects from every running system. Amber records each archive in an append-only log, verifies it by folding over that log, and answers the recovering hand's only questions: what archives exist, on which physical drives, verified when, and holding what.
+**Amber is cellar software** — preservation in place at home. It does one thing wholly: seal cold state into **resins** on deep storage. A sealed archive is a bit-faithful snapshot — content-addressed by its digest, encrypted at rest, signed so its origin is checkable forever — written to storage that then disconnects from every running system. Amber records each archive in an append-only log, verifies it by folding over that log, and answers the recovering hand's only questions: what archives exist, on which physical drives, verified when, and holding what.
+
+**Amphora** is vessel software — preservation in motion; it carries sealed cargo (including resins poured from an Amber season) across wire, dock, or pocket. Amber never pretends to be the crossing; the cellar and the vessel keep separate rooms.
 
 The boundaries are as load-bearing as the function. Amber never manages hot state: the working tier — the live repository, the ledger database, the running system's drives — is presumed mortal and continuously reproducible, and it belongs to other hands. Amber is not a synchronization tool, not redundancy-in-place, not a background daemon, and not a version-control system; Mantra keeps the living history, and Amber keeps the sealed moments. Two artifact kinds fall within its scope: the bootable clone, for the fast return, and the sealed archive, for the deep keep. Everything else falls outside.
 

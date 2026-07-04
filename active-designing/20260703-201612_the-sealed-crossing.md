@@ -17,7 +17,7 @@ The system knows how to carry, how to sign, how to pay, how to seal at home, and
 
 ## The Vessel
 
-The proposed home is **Amphora** — a candidate parked in RTAC, developed here on Kaeden's commission, seated only by his word. Its anatomy is six parts. The *vessel*: one file, whole. The *seal*: encryption under Amber's standing law. The *stamp*: a Kumara signature, because nothing leaves unsigned. The *manifest*: every enclosed thing named with its type-mark and its digest — the working tier for the journey, the forever-tier for names that must outlive it, exactly as the resins law rules, with the mark layer given whole in `20260703-202312_the-marked-value.md`. The *parent mark*: the lineage hash the loop already whispers into comments, made a field with a name. The *shoulder line*: a plain human label readable without breaking the seal, so a person holding the vessel knows what they hold.
+The proposed home is **Amphora** — **vessel software**, preservation in motion. A candidate parked in RTAC, developed here on Kaeden's commission, seated only by his word. Its anatomy is six parts. The *vessel*: one file, whole. The *seal*: encryption under **Amber's** cellar law — cellar software sealing at home, vessel software carrying abroad. The *stamp*: a Kumara signature, because nothing leaves unsigned. The *manifest*: every enclosed thing named with its type-mark and its digest — the working tier for the journey, the forever-tier for names that must outlive it, exactly as the resins law rules, with the mark layer given whole in `20260703-202312_the-marked-value.md`. The *parent mark*: the lineage hash the loop already whispers into comments, made a field with a name. The *shoulder line*: a plain human label readable without breaking the seal, so a person holding the vessel knows what they hold.
 
 ## The Vows
 
@@ -29,7 +29,7 @@ Growth comes in three laps, each simple, lovable, and complete at its own size, 
 
 ## The Seams
 
-Each neighbor keeps its own room. Bron, as proposed, is the letter — one resolved record; the vessel is the crate that may carry many letters. MALA is the coin that rides inside. Comlink is the sea. Kumara is the stamp. Amber is the cellar the vessel leaves and returns to. Granary, if it seats, is the market floor where vessels change hands. Pond is the customs house, applying policy at receipt before anything is placed or run. Maitreya keeps time above them all, untouched. The kinship between the cellar and the crate is close and honest — one preserves in place, the other preserves in motion — and the two together finish a promise neither could keep alone.
+Each neighbor keeps its own room. Bron, as proposed, is the letter — one resolved record; **Amphora is vessel software**, the crate that may carry many letters. MALA is the coin that rides inside. Comlink is the sea. Kumara is the stamp. **Amber is cellar software**, the cellar the vessel leaves and returns to. Granary, if it seats, is the market floor where vessels change hands. Pond is the customs house, applying policy at receipt before anything is placed or run. Maitreya keeps time above them all, untouched. The kinship between cellar and vessel is close and honest — one preserves in place, the other preserves in motion — and the two together finish a promise neither could keep alone.
 
 ---
 

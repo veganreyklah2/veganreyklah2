@@ -90,7 +90,7 @@ Every night the Rio↔Cursor handoff improvises a container:
 - File list carried by convention and prose
 - Rules re-taught in every recursion prompt
 
-**Amphora** (vocabulary seated `20260703.203712`) names the vessel. The **manifest** is its table of contents — each cargo row names **what** (Tilak mark), **proof** (SHA3-256 hex), and **path** (name in the tree). The seed parses **one row**:
+**Amphora** (vocabulary seated `20260703.203712`) names **vessel software** — preservation in motion. The nightly zip improvises an amphora; lap one formalizes the manifest line. **Amber** is **cellar software** — preservation in place; lap two pours a season into a vessel for the offsite copy. The **manifest** is the vessel's table of contents — each cargo row names **what** (Tilak mark), **proof** (SHA3-256 hex), and **path** (name in the tree). The seed parses **one row**:
 
 ```text
 <mark> <sha3-256-hex> <name>

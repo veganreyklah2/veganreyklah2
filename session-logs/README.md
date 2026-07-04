@@ -10,6 +10,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.181512 | [Cursor session journey — composition](20260704-181512_cursor-session-journey-composition.md) | Full Jul 3–4 thread: parity 152, vocabulary, zip 41, open threads |
+| 20260704.181012 | [Zero-copy resins expanding prompt](20260704-181012_zero-copy-resins-expanding-prompt.md) | Claude counsel prompt — snapshot, Comlink batch, WIP refresh |
+| 20260704.180612 | [Zero-copy resins research](20260704-180612_zero-copy-resins-sovereign-snapshot.md) | ER essay — TigerBeetle batching, sovereign snapshot, Urbit concepts clean-room |
+| 20260704.174800 | [Cellar and vessel vocabulary infusion](20260704-174800_cellar-vessel-vocabulary-infusion.md) | Amber = cellar software, Amphora = vessel software — LEXICON pair table and doc sweep |
+| 20260704.031812 | [Zip 41 intake — Cursor](20260704-031812_zip41-intake-cursor.md) | Packet intook; RTAC and indexes updated; both benches 152 |
+| 20260704.031812 | [Zip 41 at 152 + eight asks](20260704-031812_zip41-152-eight-asks.md) | Trio green from bare at 2eb346b — parity 152 on second metal; orientation + consolidated A1–A8 counsel |
 | 20260704.031200 | [Zip 41 commit, push, Amphora brief](20260704-031200_zip41-commit-push-amphora-brief.md) | zip **41** · four remotes · RTAC Amphora exchange for Claude |
 | 20260704.031000 | [Canonical refinement counsel](20260704-031000_canonical-refinement-counsel.md) | four-lap plan to seat glosses and sweep loose *canonical* |
 | 20260704.030800 | [Canonical vocabulary audit](20260704-030800_canonical-vocabulary-audit.md) | nine senses of *canonical* mapped to grain; tensions named |

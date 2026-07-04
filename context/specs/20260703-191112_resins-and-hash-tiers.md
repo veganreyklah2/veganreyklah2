@@ -13,7 +13,9 @@
 
 ## Amber and the resin
 
-**Amber** is the module and the discipline — the art of sealing a moment cold. A **resin** is one content-addressed unit at grain size: the stored bytes at a SHA3 name, cut at a content-defined boundary, listed in a Kumara-signed `.bron` manifest.
+**Amber** is **cellar software** — the module and the discipline that seals a moment cold **in place** at home. A **resin** is one content-addressed unit at grain size: the stored bytes at a SHA3 name, cut at a content-defined boundary, listed in a Kumara-signed `.bron` manifest.
+
+**Amphora** is **vessel software** — the sealed container that carries resins (and other signed cargo) **in motion** across a crossing; it leaves the cellar under Amber's seal law and may return to a second dock for a cold scrub.
 
 The manifest **catalogs**; it does not wrap the payload in an opaque bag. Each resin **is** the matter. The digest **is** the address and the proof — not a separate checksum file that could drift from the bytes it names. Compression, when a lap adopts it, transforms the resin's bytes; the digest names **what is stored**. Tar and zip remain **transport only** — never the trust boundary.
 

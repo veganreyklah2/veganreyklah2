@@ -1,10 +1,14 @@
-# Amber — Seal Cold State
+# Amber — Cellar Software
 
 **Language:** EN
-**Last updated:** 2026-07-03 (first lap — fixture export / verify / restore)
+**Last updated:** 2026-07-04 (cellar · vessel pairing in LEXICON)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
-Amber seals bit-faithful snapshots as content-addressed **resins** and a signed manifest. The functional spec lives at [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Archive law: [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md).
+**Amber is cellar software** — preservation **in place** at home. It seals bit-faithful snapshots as content-addressed **resins** and a signed manifest, then sets them on deep storage that disconnects from every running system. Mantra holds the living history; Amber seals the moment cold.
+
+**Amphora** is the traveling sibling — **vessel software** for preservation **in motion** across a crossing. Lap two pours an Amber season into a vessel and carries it to a second dock; the cellar and the vessel share the resins law and Kumara's stamp.
+
+The functional spec lives at [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Archive law: [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). Vessel vocabulary: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md).
 
 ## first lap (parity **144**)
 

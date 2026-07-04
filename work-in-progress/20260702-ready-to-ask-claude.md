@@ -1,13 +1,50 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260704.031200` (zip **41** cut · parity **152** · Amphora exchange brief)
+**Stamp:** `20260702.202612` · refreshed `20260704.031812 UDT` (zip **41** intake · both benches **152** · orientation + eight-asks counsel)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Zip 41 — Amphora exchange (Cursor → Claude) · `20260704.031200`
+## Zip 41 intake landed (`20260704.031812 UDT`) — Claude Fable 5
+
+**A1 pinned:** zip **41** @ `2eb346b` · recipe v5 held · **parity 152 GREEN** (116 std + 36 blocks) from bare on Claude bench (headless: hosted witnesses; thin-edge seams unexercised). **Both benches pin 152.**
+
+| Item | Path |
+|------|------|
+| Orientation | [`external-research/20260704-031812_the-view-from-the-floor.md`](../external-research/20260704-031812_the-view-from-the-floor.md) |
+| Eight asks counsel | [`external-research/20260704-031812_eight-asks-one-sitting.md`](../external-research/20260704-031812_eight-asks-one-sitting.md) |
+| Claude log | [`session-logs/20260704-031812_zip41-152-eight-asks.md`](../session-logs/20260704-031812_zip41-152-eight-asks.md) |
+
+### Counsel summary (gates stay Kaeden's)
+
+| Ask | Verdict |
+|-----|---------|
+| **A1** | **Done** — 152 pinned on second metal |
+| **A2** | Gloss spec architecture drafted — draft `context/specs/*_canonical-glosses.md` on Kaeden word |
+| **A3** | **Seat TWO_ROOMS as written** + one LEXICON row — awaits Kaeden |
+| **A4** | **SLC-L1 affirmed closed at lap one**; Open Asks before SLC-L2 |
+| **A5** | Doorway witness design (`tools/two_rooms_doorway.rish`) + pointer-resolution hook — on word |
+| **A6** | Amphora lap-two Tilak witness designed (four assertions, two fixtures) — mechanical when seed-home gate opens |
+| **A7** | Fold canon → one `context/specs/` home + eight pointer deltas |
+| **A8** | ROADMAP · TASKS · decoder refresh — structure and phrases only; Cursor applies on approval |
+
+**Kaeden gates named in anchor:** TWO_ROOMS seat · gloss spec go-ahead · seed home · seed witness · SLC-L1 edge as counseled. **Journey's pause** after this round is an honorable stop — Kaeden's call.
+
+Prior tip: `2eb346b` · zip 40 @ `4ab032d` superseded
+
+## Zip 42 — zero-copy resins counsel (`20260704.181012`) — **queued**
+
+**Prompt:** [`expanding-prompts/20260704-181012_zero-copy-resins-claude-counsel.md`](../expanding-prompts/20260704-181012_zero-copy-resins-claude-counsel.md)
+
+**Research anchor:** [`external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md)
+
+**Asks:** strategic **A–H** · implementation **I1–I7** · ROADMAP/TASKS/decoder/RTAC deltas · CIVIC export boundary · witness ladder (no invented parity).
+
+**Status:** prompt seated; awaits Claude sitting + zip cut at tip including ER `180612`.
+
+## Zip 41 — Amphora exchange (Cursor → Claude) · `20260704.031200` — **answered**
 
 **Cut discipline:** full-tree zip at **`git rev-parse HEAD`** on `main` after pull (substantive body `3e7bf9c`). Prior zip 40 @ `4ab032d` · prior Cursor tip `71e84be`. Recipe v5 mandatory: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
 
@@ -170,25 +207,23 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 | Step | Parity |
 |------|--------|
-| Now | **152** ✅ |
-| Next stops | TWO_ROOMS canon (optional · Kaeden word) · Claude bench parity **152** re-run |
+| Now | **152** ✅ both benches |
+| Next stops | TWO_ROOMS seat (Kaeden) · gloss spec draft (Kaeden) · doorway witness (Kaeden) · seed-home gate · A8 refresh on approval |
 
 ## Open itinerary (smallest-first)
 
 **Definition (Rio, `20260702.211046`; vocabulary seated `20260704.001012`):** a **gate** is any precondition owned by someone else or an unlanded event; **open itinerary** means every precondition is satisfied and the owner tag is Cursor; the **itinerary** is the named list of **stops**, never an off-route license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Itinerary status (`20260704.031200`):** parity **152** **GREEN** on Cursor metal; zip **41** cut at this push. **Cursor stops:** Claude bench re-run · canonical gloss counsel · TWO_ROOMS (Kaeden) · SLC-L1 edge (Kaeden).
+**Itinerary status (`20260704.031812 UDT`):** zip **41** intake landed; both benches **152 GREEN**. **Cursor stops (smallest-first):** gloss spec draft on Kaeden go-ahead · TWO_ROOMS seat on Kaeden word · A8 ROADMAP/TASKS/decoder on approval · Amphora lap-two witness mechanical when seed-home opens.
 
-Current tip: `git rev-parse HEAD` on `main` after pull · zip 40 @ `4ab032d` superseded
+Current tip: `2eb346b` (+ intake files uncommitted)
 
-## Bench pins (`20260704.031200`)
+## Bench pins (`20260704.031812 UDT`)
 
 | Bench | Tip / zip | Parity | Status |
 |-------|-----------|--------|--------|
-| **Cursor** | HEAD on `main` | **152 GREEN** | SLC-L1 · crossing seed · itinerary/diet · two-rooms quartet · sameness grain |
-| **Claude** | zip **41** @ HEAD | **150 → 152** | Recipe v5 re-run required; zip 40 @ `4ab032d` superseded |
-
-Recipe v5 validated on Claude metal: execute bits + symlinks intact; RW-1 green inside suite. Log: [`session-logs/20260704-004912_zip40-green-gate-counsel.md`](../session-logs/20260704-004912_zip40-green-gate-counsel.md).
+| **Cursor** | `2eb346b` | **152 GREEN** | zip **41** relay sent; intake counsel landed |
+| **Claude** | zip **41** @ `2eb346b` | **152 GREEN** | A1 pinned; orientation + eight-asks shipped |
 
 ## Claude — gate terminology unify counsel (`20260704.004912`) — **SEATED** (`20260704.020800`)
 

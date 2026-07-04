@@ -10,6 +10,8 @@
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 
+**Amphora is vessel software** — preservation in motion. **Amber** is **cellar software** — preservation in place. The cellar seals resins at home; the vessel carries sealed cargo across the sea (Comlink), through customs (Pond), and back to another dock. One family, two rooms.
+
 ---
 
 ## The Missing Piece
@@ -39,7 +41,7 @@ The amphora was the shipping container of the ancient world, and every detail of
 
 ## The Proposal
 
-**Amphora: the sealed traveling container of the network.** Its anatomy, six parts. The *vessel* — one file, whole. The *seal* — encryption under Amber's standing law. The *stamp* — a Kumara signature, because nothing leaves unsigned. The *manifest* — every enclosed thing named with its type-mark and its digest, SHA3-256 at the working tier and SHA3-512 for forever-names, exactly per the resins law; the mark layer is given whole in the companion `20260703-202312_the-marked-value.md`. The *parent mark* — the lineage hash today's zip comment carries by convention, made a field. And the *shoulder line* — a plain human label readable without opening, the tituli picti reborn.
+**Amphora: vessel software — the sealed traveling container of the network.** Its anatomy, six parts. The *vessel* — one file, whole. The *seal* — encryption under Amber's standing law. The *stamp* — a Kumara signature, because nothing leaves unsigned. The *manifest* — every enclosed thing named with its type-mark and its digest, SHA3-256 at the working tier and SHA3-512 for forever-names, exactly per the resins law; the mark layer is given whole in the companion `20260703-202312_the-marked-value.md`. The *parent mark* — the lineage hash today's zip comment carries by convention, made a field. And the *shoulder line* — a plain human label readable without opening, the tituli picti reborn.
 
 Its vows, four. **Media-agnostic by design**: an amphora never asks whether it travels by wire, by dock, or by a drive in a coat pocket — the crossing is the same rite on every road. **Verified twice**: digest checked at the mouth of the journey and again at receipt, both sides of the boundary guarded. **Fails whole**: a damaged vessel is refused loudly and entirely — the wreck rule; there is no partial trust of cargo. **Names its parent, always**: every amphora is a child pointing home, so any receiver can walk the lineage to truth.
 
@@ -47,9 +49,9 @@ Its growth, three SLC laps, each witness-first. **Lap one — the packet formali
 
 ## The Seams, Kept Clean
 
-Bron, as proposed, is the letter — one resolved record. Amphora is the crate — sealed cargo of many things. MALA is the coin that may ride inside. Comlink is the sea. Kumara is the stamp. Amber is the cellar the vessel leaves and returns to. Granary, if it seats, is the market floor where amphorae change hands. And Pond is the customs house: policy applied at receipt, before anything is placed or run. No duty overlaps; each name keeps its own room.
+Bron, as proposed, is the letter — one resolved record. **Amphora is vessel software** — the crate that may carry many letters. MALA is the coin that may ride inside. Comlink is the sea. Kumara is the stamp. **Amber is cellar software** — the cellar the vessel leaves and returns to. Granary, if it seats, is the market floor where amphorae change hands. And Pond is the customs house: policy applied at receipt, before anything is placed or run. No duty overlaps; each name keeps its own room.
 
-One honesty for the ear: *Amber* and *Amphora* share a first syllable and a preservation kinship, and spoken aloud in a fast sentence they could brush. The kinship is genuine — the cellar and the crate belong to one family — and should the echo trouble Kaeden's ear, **Cask**, **Tiffin**, and **Pannier** park beside Amphora as alternates for the same duty: the sealed barrel, the stacked carrier famously delivered without fail, the pack that rides a bicycle. The duty is the proposal; the word, as always, is his.
+One honesty for the ear: *Amber* and *Amphora* share a first syllable and a preservation kinship, and spoken aloud in a fast sentence they could brush. The kinship is genuine — **cellar software and vessel software belong to one family** — one preserves in place, the other in motion — and should the echo trouble Kaeden's ear, **Cask**, **Tiffin**, and **Pannier** park beside Amphora as alternates for the same vessel duty: the sealed barrel, the stacked carrier famously delivered without fail, the pack that rides a bicycle. The duty is the proposal; the word, as always, is his.
 
 ## A Note on Counsel
 

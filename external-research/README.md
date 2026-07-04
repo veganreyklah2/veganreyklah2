@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-04 (itinerary primer `030600`; diet-era file archived)
+**Last updated:** 2026-07-04 (zero-copy resins `180612`; zip **41** intake `031812`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -43,6 +43,9 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260704.180612` | [Zero-copy resins and the sovereign snapshot](20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) | TigerBeetle-style resin batches over Comlink; maximum Aurora export replaying Weave + Brix — Urbit concepts, Rye words |
+| `20260704.031812` | [Eight asks, one sitting](20260704-031812_eight-asks-one-sitting.md) | Consolidated A1–A8 counsel — gloss spec, TWO_ROOMS seat, SLC-L1 edge, doorway witness, Amphora lap-two, fold home, ROADMAP refresh |
+| `20260704.031812` | [The view from the floor](20260704-031812_the-view-from-the-floor.md) | Whole system re-derived from Rye floor up; checkable-room voice; vision at the door |
 | `20260704.025600` | [Claims, happy zone, and grain](20260704-025600_claims-happy-zone-and-grain.md) | How claim discipline braids with happy-zone testing and each grain strand |
 | `20260704.024900` | [Claim](20260704-024900_claim.md) | Bounded proposition a witness may bind; one witness one claim |
 | `20260704.024800` | [The checkable room](20260704-024800_the-checkable-room.md) | What checkable means — witness, trio, happy zone, doorway, bench pins |
@@ -52,7 +55,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260704-004912` | [One Word, One Gate — unify counsel](20260704-004912_gate-unify-counsel.md) | Claude zip 40: gate=checkpoint, witness absorbs machine sense, toll proposed; delta table awaits Kaeden |
 | `20260704-002912` | [Gates, arms, and the Urbit lineage](20260704-002912_gates-arms-and-the-urbit-lineage.md) | Three gate families vs Hoon homonyms; Tilak triad vs grab/grow/grad; Zig function+struct sufficient — no Urbit gate/arm in Rye |
 | `20260704.030600` | [Itinerary and the crossing manifest](20260704-030600_itinerary-and-the-crossing-manifest.md) | Itinerary primer + crossing_manifest_seed — canonical |
-| `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | Vessel metaphor for Rio↔Cursor packets; shoulder line, parent mark, greenware vs fired seal; manifest anatomy |
+| `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | **Vessel software** — sealed traveling container; shoulder line, parent mark, manifest; cellar's sibling |
 | `20260703-200712` | [Mysticeti's blocks and the object path](20260703-200712_mysticetis-blocks-and-the-object-path.md) | Blocks in layers; owned vs shared sorting; object-path treasure for Pottery ladder |
 | `20260703-200712` | [A Move for Rye](20260703-200712_a-move-for-rye.md) | Value-object question; Pottery leads RTAC table; fixed verbs law today |
 | `20260703-200712` | [Compute commerce on the network](20260703-200712_compute-commerce-on-the-network.md) | Compute market as seated-module choreography |

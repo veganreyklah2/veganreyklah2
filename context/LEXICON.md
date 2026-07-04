@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-04 (itinerary retires diet `030300`; claim `024900`; lap · toll)
+**Last updated:** 2026-07-04 (preservation pair — cellar · vessel)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -65,7 +65,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Brix** | What a system is made of — lawful composition |
 | **Tablecloth** | Application data store (horizon — role still shaping) |
 | **Bron** | Data notation between modules (`.bron`); a Tilak in the proposed Bron-as-mark design |
-| **Amber** | Preservation — signed, encrypted, bit-faithful archives on deep storage, recorded in an append-only log and verified by folding; Mantra holds the living history, Amber seals the moment cold |
+| **Amber** | **Cellar software** — preservation in place at home: signed, encrypted, bit-faithful **resins** on deep storage, append-only log, verified by folding; Mantra holds the living history, Amber seals the moment cold — [`amber/README.md`](../amber/README.md) · [`specs/20260701-221512_amber-functional-spec.md`](specs/20260701-221512_amber-functional-spec.md)
 
 ## Archive and digest *(ratified `20260703.191312`)*
 
@@ -84,7 +84,15 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Express** | A Tilak's duty — render this type as another (prose, text, lines) |
 | **Tend** | A Tilak's duty — care for this type's history in its own grain (diff, patch, merge) |
 | **Pottery** | The value-object tier — linear resources thrown while owned, fired when sealed; `.pott` the working extension; greenware · kiln · glaze name the aspect family; horizon until measured demand |
-| **Amphora** | The crossing vessel — greenware packet metaphor for Rio↔Cursor handoffs: shoulder line, parent mark, manifest, receipts; [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) |
+| **Amphora** | **Vessel software** — preservation in motion across a crossing: the sealed traveling container (manifest, stamp, parent mark, shoulder line); the cellar's sibling — [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md)
+
+## Preservation pair — cellar and vessel
+
+| Term | One line |
+|------|----------|
+| **Cellar software** | Amber's duty — seal **resins** in place at home; the archive that stays on the dock |
+| **Vessel software** | Amphora's duty — carry many sealed things across wire, dock, or pocket; leaves the cellar, returns to it |
+| **The pair** | One preserves in place, the other preserves in motion; same resins law, same Kumara stamp; Comlink is the sea between docks |
 
 ## Named tonight (`2026-06-30`)
 

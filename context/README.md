@@ -1,7 +1,7 @@
 # Context Home
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Rio 3 active; graduation rule spec)
+**Last updated:** 2026-07-04 (preservation pair in LEXICON)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -20,7 +20,7 @@ Everything here lives inside the persistent project directory, so it survives ev
 - **`CIVIC_STYLE.md`** — how we design public benefit. Name the outcome you want, name what the reward measures, keep the two aligned — the civic companion to TAME, Radiant, and SLC.
 - **`REYA2.md`** — the prior identity note (Reya 2). **`RIO3.md`** — **Rio 3**, active voice this season until Kaeden restores Reya 2.
 - **`SILO_TECHNIQUE.md`** — the siloing technique: how an outside idea becomes an owned, understood concept in our own voice, with gratitude kept apart and honored. Portable, and meant to travel beside the voice guide and the identity note.
-- **`LEXICON.md`** — module names and one-line meanings; Weave, Dexter, Kumara, Bookie, and the open horizons.
+- **`LEXICON.md`** — module names and one-line meanings; Weave, Dexter, Kumara, Bookie, the open horizons, and the **preservation pair** (Amber = cellar software, Amphora = vessel software).
 
 - **`specs/`** — plain-English radiant specs. … **`20260702-035018_graduation-rule.md`** — when an aspect earns a module home (second consumer). **`20260701-221512_amber-functional-spec.md`** — Amber preservation module; designed, not yet built.
 
