@@ -9,7 +9,7 @@
 
 ## Zip 41 — Amphora exchange (Cursor → Claude) · `20260704.031200`
 
-**Cut discipline:** full-tree zip at **`3e7bf9c`** (`git rev-parse HEAD` after intake). Prior zip 40 @ `4ab032d` · prior Cursor tip `71e84be`. Recipe v5 mandatory: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
+**Cut discipline:** full-tree zip at **`97a711c`** (`git rev-parse HEAD` after intake). Prior zip 40 @ `4ab032d` · prior Cursor tip `71e84be`. Recipe v5 mandatory: [`expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md`](../expanding-prompts/20260703-205212_bench-raise-recipe-v5-accretion.md).
 
 **Cursor metal before zip:** parity **152 GREEN** (full `tools/parity.rish` re-run on host; SLC-L1 + crossing seed + RW-2 witnesses all green).
 
@@ -179,14 +179,14 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Itinerary status (`20260704.031200`):** parity **152** **GREEN** on Cursor metal; zip **41** cut at this push. **Cursor stops:** Claude bench re-run · canonical gloss counsel · TWO_ROOMS (Kaeden) · SLC-L1 edge (Kaeden).
 
-Current tip: `3e7bf9c` · zip 40 @ `4ab032d` superseded
+Current tip: `97a711c` · zip 40 @ `4ab032d` superseded
 
 ## Bench pins (`20260704.031200`)
 
 | Bench | Tip / zip | Parity | Status |
 |-------|-----------|--------|--------|
-| **Cursor** | `3e7bf9c` | **152 GREEN** | SLC-L1 · crossing seed · itinerary/diet · two-rooms quartet · sameness grain |
-| **Claude** | zip **41** @ `3e7bf9c` | **150 → 152** | Recipe v5 re-run required; zip 40 @ `4ab032d` superseded |
+| **Cursor** | `97a711c` | **152 GREEN** | SLC-L1 · crossing seed · itinerary/diet · two-rooms quartet · sameness grain |
+| **Claude** | zip **41** @ `97a711c` | **150 → 152** | Recipe v5 re-run required; zip 40 @ `4ab032d` superseded |
 
 Recipe v5 validated on Claude metal: execute bits + symlinks intact; RW-1 green inside suite. Log: [`session-logs/20260704-004912_zip40-green-gate-counsel.md`](../session-logs/20260704-004912_zip40-green-gate-counsel.md).
 
