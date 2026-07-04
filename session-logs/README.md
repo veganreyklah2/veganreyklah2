@@ -10,6 +10,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.011512 | [Zip 40 intake — gate counsel seated](20260704-011512_zip40-intake-gate-counsel.md) | Claude relay seated; both benches 150; park lifted; memo awaits Kaeden for deltas |
+| 20260704.004912 | [Zip 40 green + gate counsel](20260704-004912_zip40-green-gate-counsel.md) | Claude bench: v5 raise green from bare; gate-unify memo delivered |
+| 20260704.005312 | [Push to four remotes](20260704-005312_push-four-remotes.md) | `4ab032d` on origin · github · gp36-codeberg · gp36-github |
 | 20260704.004912 | [Itinerary, gates, commit and push](20260704-004912_itinerary-gates-commit-push.md) | Vocabulary batch committed; Claude gate-unify counsel staged in RTAC |
 | 20260704.002912 | [Gates, arms, Urbit lineage](20260704-002912_gates-arms-urbit-lineage.md) | ER survey: three gate families vs Hoon homonyms; Zig sufficient; no Urbit gate/arm in Rye |
 | 20260704.001012 | [Itinerary seated](20260704-001012_itinerary-seated.md) | Kaeden chose itinerary over diet; stops · journey's pause · off-route in LEXICON and RTAC |

@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260704.004912` (itinerary · gates survey · Claude gate counsel staged)
+**Stamp:** `20260702.202612` · refreshed `20260704.011512` (zip 40 intake · gate counsel delivered · park lifted)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -50,35 +50,30 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 
 **Itinerary status — RW-2 landed (`20260703.235512 UDT`):** parity **150** on Cursor metal. **Cursor stops:** crossing seed witness · SLC-L1 build · TWO_ROOMS canon (optional) · not-advice line.
 
-Prior tip: `f9c9c50`
+Prior tip: `4ab032d`
 
-## Claude — gate terminology unify counsel (`20260704.004912`)
+## Bench pins (`20260704.011512`) — zip 40
 
-**Ground (read in this order):**
+| Bench | Tip / zip | Parity | Status |
+|-------|-----------|--------|--------|
+| **Cursor** | `4ab032d` | **150 GREEN** | RW-2 + chrono · itinerary + gates survey seated |
+| **Claude** | zip 40 @ `4ab032d` | **150 GREEN** | v5 raise green from bare; park `203712` **lifted**; gate-unify counsel delivered |
 
-| Layer | Path |
-|-------|------|
-| Survey | [`external-research/20260704-002912_gates-arms-and-the-urbit-lineage.md`](../external-research/20260704-002912_gates-arms-and-the-urbit-lineage.md) |
-| Itinerary + gate row | [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop |
-| Ordering gate doctrine | [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) |
-| Bench gate trio | [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
-| Witness lint surface | [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) → What We Check |
-| Urbit harvest (prior) | [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) §1 |
-| Foundations grain | [`foundations/README.md`](../foundations/README.md) · [`external-research/20260620-014412_system.md`](../external-research/20260620-014412_system.md) |
+Recipe v5 validated on Claude metal: execute bits + symlinks intact; RW-1 green inside suite. Log: [`session-logs/20260704-004912_zip40-green-gate-counsel.md`](../session-logs/20260704-004912_zip40-green-gate-counsel.md).
 
-**Problem:** **gate** is honest in three families today — itinerary precondition, witness lint, precious ordering — yet the word also drifts in TAME ("live gate"), civic prose, Aurora policy, and gratitude readers will hear Hoon *gate* (callable core). Cursor's survey names the homonym; the tree still lacks one **single-stranded** public definition wired through foundations and active-designing.
+## Claude — gate terminology unify counsel (`20260704.004912`) — **DELIVERED**
 
-**Request to Claude:**
+**Memo:** [`external-research/20260704-004912_gate-unify-counsel.md`](../external-research/20260704-004912_gate-unify-counsel.md) — *One Word, One Gate*
 
-1. **Inventory** every living use of *gate* / *gated* / *ungated* / *gate trio* across `context/`, `active-designing/`, `foundations/`, `work-in-progress/`, and forward-facing `external-research/` (accrete-never-break in session logs — cite, do not rewrite).
-2. **Propose** a unified vocabulary: one primary sense or a small numbered family (e.g. checkpoint · witness · ordering) with one-line glosses that match Radiant voice and silo law — **not** Urbit's gate/arm as Rye keywords.
-3. **Recommend** where the canonical home lives — LEXICON row only, or a short `context/specs/` note, or active-designing silo — and which files get **deltas** (structure + replacement phrases, not full rewrites).
-4. **Align** with seated words: **itinerary**, **Tilak**, **bench**, **ring**, **green**, **season** — and with [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) precious-gate doctrine.
-5. **Deliverable:** counsel memo in external-research (proposed stamp) + RTAC row when seated; Cursor applies on Kaeden approval.
+| Strand | Proposal |
+|--------|----------|
+| **Gate** | Checkpoint only — itinerary precondition; Kaeden's boxes survive unchanged |
+| **Witness** | Absorbs machine-lint sense; forward prose *the trio*; program filenames frozen |
+| **Toll** | Proposed for precious-ordering sense — **awaiting Kaeden word**; *levy* · *the narrows* parked |
 
-**Counsel bounds:** propose and argue; no implementation; no new module names; do not reopen Doors 1–3 or Edit 5; do not rename parity witness programs.
+**Canonical home (counsel):** `context/specs/one-word-one-gate` note + LEXICON rows + foundations pointer. **Cursor applies deltas on Kaeden approval** — delta table in memo §4.
 
-## Bench pins (`20260703.235512`)
+## Bench pins (`20260703.235512`) — superseded
 
 | Bench | Tip / zip | Parity | Status |
 |-------|-----------|--------|--------|
@@ -183,6 +178,7 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 - **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
 - **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
 - **Diet word (`235912` → seated `001012`):** **Itinerary** *(current)* — stops · journey's pause · off-route; prior survey at [`external-research/20260703-235912_diet-and-the-crossing-manifest.md`](../external-research/20260703-235912_diet-and-the-crossing-manifest.md) (filename keeps *diet* for accretion)
+- **Toll word (`004912` counsel):** **Toll** *(proposed)* — ordering price beside itinerary; *levy* · *the narrows* parked — [`external-research/20260704-004912_gate-unify-counsel.md`](../external-research/20260704-004912_gate-unify-counsel.md)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs) — *Tend* also a Tilak duty; watcher name still open
 
 ## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)
