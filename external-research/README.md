@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-03 (second harvest map; RW-1 studies)
+**Last updated:** 2026-07-04 (gates vs Urbit lineage survey)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -41,6 +41,8 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260704-002912` | [Gates, arms, and the Urbit lineage](20260704-002912_gates-arms-and-the-urbit-lineage.md) | Three gate families vs Hoon homonyms; Tilak triad vs grab/grow/grad; Zig function+struct sufficient — no Urbit gate/arm in Rye |
+| `20260703-235912` | [Diet and the crossing manifest](20260703-235912_diet-and-the-crossing-manifest.md) | Ungated diet defined; name candidates parked; crossing_manifest_seed primer — prerequisites and open decisions |
 | `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | Vessel metaphor for Rio↔Cursor packets; shoulder line, parent mark, greenware vs fired seal; manifest anatomy |
 | `20260703-200712` | [Mysticeti's blocks and the object path](20260703-200712_mysticetis-blocks-and-the-object-path.md) | Blocks in layers; owned vs shared sorting; object-path treasure for Pottery ladder |
 | `20260703-200712` | [A Move for Rye](20260703-200712_a-move-for-rye.md) | Value-object question; Pottery leads RTAC table; fixed verbs law today |

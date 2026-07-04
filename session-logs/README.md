@@ -10,6 +10,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260704.004912 | [Itinerary, gates, commit and push](20260704-004912_itinerary-gates-commit-push.md) | Vocabulary batch committed; Claude gate-unify counsel staged in RTAC |
+| 20260704.002912 | [Gates, arms, Urbit lineage](20260704-002912_gates-arms-urbit-lineage.md) | ER survey: three gate families vs Hoon homonyms; Zig sufficient; no Urbit gate/arm in Rye |
+| 20260704.001012 | [Itinerary seated](20260704-001012_itinerary-seated.md) | Kaeden chose itinerary over diet; stops · journey's pause · off-route in LEXICON and RTAC |
+| 20260703.235912 | [Diet and crossing manifest research](20260703-235912_diet-and-crossing-manifest-research.md) | ER survey: diet, name candidates, manifest seed primer |
 | 20260703.235512 | [RW-2 mirrored pair landed](20260703-235512_rw2-mirrored-pair-landed.md) | App↔Brushstroke pair wired; parity **150** on Cursor metal |
 | 20260703.205312 | [Zip 39 relay — Cursor re-pin](20260703-205312_intake-zip39-relay-cursor-repin.md) | Claude parked RW-1 @ 178d2fa; v5 recipe |
 | 20260703.204012 | [Commits and pushes — evening summary](20260703-204012_commits-pushes-evening-summary.md) | Full arc `999359e`→`c9453b5`; tree clean on origin |

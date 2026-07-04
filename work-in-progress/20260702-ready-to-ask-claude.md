@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260703.041850` (post–Door 3; Claude counsel brief staged)
+**Stamp:** `20260702.202612` · refreshed `20260704.004912` (itinerary · gates survey · Claude gate counsel staged)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -17,7 +17,7 @@ Graduation rule · Rio 3 · Happy zone · RW-3/RW-4 · Grain · Versioning · Br
 - **`amber/`** first ring landed ✅ — parity **144**; further rings gated on spec
 - **No new module/aspect names** — park candidates in RTAC
 - **Stop-and-park** on: Kaeden-tagged path · parity red twice · module-home/seam decision · keys/custody/amber/MALA · new names
-- **Empty plate** — if the ungated diet runs empty, stop and summarize rather than invent new work; an empty plate is a question for Kaeden, never a license to forage
+- **Journey's pause** — when the open itinerary has no further stops, stop and summarize rather than invent new work; a pause is a question for Kaeden, never permission to go off-route
 
 ## Kaeden — three doors before Claude
 
@@ -42,15 +42,41 @@ All five as written at `20260702.194512`: `amber/` module home · `tools/fixture
 | Step | Parity |
 |------|--------|
 | Now | **150** ✅ |
-| Next diet | crossing seed witness · SLC-L1 build |
+| Next stops | crossing seed witness · SLC-L1 build |
 
-## Ungated diet (smallest-first)
+## Open itinerary (smallest-first)
 
-**Definition (Rio, `20260702.211046`):** a **gate** is any precondition owned by someone else or an unlanded event; **ungated** means every precondition is satisfied and the owner tag is Cursor; **diet** is a named menu, never a foraging license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
+**Definition (Rio, `20260702.211046`; vocabulary seated `20260704.001012`):** a **gate** is any precondition owned by someone else or an unlanded event; **open itinerary** means every precondition is satisfied and the owner tag is Cursor; the **itinerary** is the named list of **stops**, never an off-route license — smallest-first sets order, witness-first red-then-green sets method. Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop.
 
-**Menu status — RW-2 landed (`20260703.235512 UDT`):** parity **150** on Cursor metal. **Cursor diet:** crossing seed witness · SLC-L1 build · TWO_ROOMS canon (optional) · not-advice line.
+**Itinerary status — RW-2 landed (`20260703.235512 UDT`):** parity **150** on Cursor metal. **Cursor stops:** crossing seed witness · SLC-L1 build · TWO_ROOMS canon (optional) · not-advice line.
 
 Prior tip: `f9c9c50`
+
+## Claude — gate terminology unify counsel (`20260704.004912`)
+
+**Ground (read in this order):**
+
+| Layer | Path |
+|-------|------|
+| Survey | [`external-research/20260704-002912_gates-arms-and-the-urbit-lineage.md`](../external-research/20260704-002912_gates-arms-and-the-urbit-lineage.md) |
+| Itinerary + gate row | [`context/LEXICON.md`](../context/LEXICON.md) → Cursor loop |
+| Ordering gate doctrine | [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) |
+| Bench gate trio | [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
+| Witness lint surface | [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) → What We Check |
+| Urbit harvest (prior) | [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) §1 |
+| Foundations grain | [`foundations/README.md`](../foundations/README.md) · [`external-research/20260620-014412_system.md`](../external-research/20260620-014412_system.md) |
+
+**Problem:** **gate** is honest in three families today — itinerary precondition, witness lint, precious ordering — yet the word also drifts in TAME ("live gate"), civic prose, Aurora policy, and gratitude readers will hear Hoon *gate* (callable core). Cursor's survey names the homonym; the tree still lacks one **single-stranded** public definition wired through foundations and active-designing.
+
+**Request to Claude:**
+
+1. **Inventory** every living use of *gate* / *gated* / *ungated* / *gate trio* across `context/`, `active-designing/`, `foundations/`, `work-in-progress/`, and forward-facing `external-research/` (accrete-never-break in session logs — cite, do not rewrite).
+2. **Propose** a unified vocabulary: one primary sense or a small numbered family (e.g. checkpoint · witness · ordering) with one-line glosses that match Radiant voice and silo law — **not** Urbit's gate/arm as Rye keywords.
+3. **Recommend** where the canonical home lives — LEXICON row only, or a short `context/specs/` note, or active-designing silo — and which files get **deltas** (structure + replacement phrases, not full rewrites).
+4. **Align** with seated words: **itinerary**, **Tilak**, **bench**, **ring**, **green**, **season** — and with [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) precious-gate doctrine.
+5. **Deliverable:** counsel memo in external-research (proposed stamp) + RTAC row when seated; Cursor applies on Kaeden approval.
+
+**Counsel bounds:** propose and argue; no implementation; no new module names; do not reopen Doors 1–3 or Edit 5; do not rename parity witness programs.
 
 ## Bench pins (`20260703.235512`)
 
@@ -104,7 +130,7 @@ Prior tip: `ecb6a0b`
 | Survey | [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) |
 | Log | [`session-logs/20260703-193012_bench-as-block-research.md`](../session-logs/20260703-193012_bench-as-block-research.md) |
 
-Counsel only — seats nothing. Three extraction candidates await Kaeden word. **Bron** (message-seam sense) parks in RTAC; LEXICON already holds **Bron** as `.bron` notation. Ungated diet unchanged: chrono wire first; full-tree zip at `999359e` restores metal truth.
+Counsel only — seats nothing. Three extraction candidates await Kaeden word. **Bron** (message-seam sense) parks in RTAC; LEXICON already holds **Bron** as `.bron` notation. Open itinerary unchanged: chrono wire first; full-tree zip at `999359e` restores metal truth.
 
 Prior tip: `999359e`
 
@@ -114,7 +140,7 @@ Prior tip: `999359e`
 
 **Medium-long strategy (seven questions):** cascade order after Amber **144** · Linengrow vs Rye next product ring · MALA M0 / WOV timing · doc lane vs metal lane after Edit 5 · Open Asks first ring when paste lands · hardware procurement season · ratifications bundle order.
 
-**Guidance request:** granular refresh plan for `ROADMAP.md`, `TASKS.md`, decoder living doc, RTAC menu — structure and deltas only; Cursor applies on Kaeden approval after counsel lands.
+**Guidance request:** granular refresh plan for `ROADMAP.md`, `TASKS.md`, decoder living doc, RTAC itinerary — structure and deltas only; Cursor applies on Kaeden approval after counsel lands.
 
 **Counsel bounds:** propose and argue; no implementation, no new module names, do not reopen Doors 1–3 or Edit 5.
 
@@ -156,6 +182,7 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 - **Value-object alternates (`200712`):** Grain · Bead · Mudra · Murti · Tulsi · Loam · Kiln — beside seated **Pottery** (`.pott`)
 - **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
 - **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
+- **Diet word (`235912` → seated `001012`):** **Itinerary** *(current)* — stops · journey's pause · off-route; prior survey at [`external-research/20260703-235912_diet-and-the-crossing-manifest.md`](../external-research/20260703-235912_diet-and-the-crossing-manifest.md) (filename keeps *diet* for accretion)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs) — *Tend* also a Tilak duty; watcher name still open
 
 ## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)
@@ -199,7 +226,7 @@ Fresh bench raised from tip `f92513b`. **Gate trio on this metal:** parity **142
 | Batch 1 | `c7e5747` | `tools/slc1_version_step2.rish` · `tools/slc1_accept.rish` · bench-raise log |
 | Batch 2 | `960ddf7` | fit memo · TASKS · RTAC · fit-check log · index rows · round-zero log |
 
-**Parked offer:** one-page fresh-bench tutorial — on appetite only; empty plate held.
+**Parked offer:** one-page fresh-bench tutorial — on appetite only; journey's pause held.
 
 ## Six asks answered (`20260703.013412`, Claude Fable 5)
 

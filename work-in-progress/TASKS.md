@@ -94,7 +94,7 @@ Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](..
 - [x] **Bron mark triad (concept adopted)** — every notation type carries its conversions in, out, and its operations; arm names **absorb / express / tend** seated as Tilak duties (`20260702.211312`; affirmed `20260703.203712 UDT`).
 - [x] **Comlink address triple (concept adopted)** — named data resolves by *Kumara identity / lane / stamp*; design note when the naming ring opens (`20260702.211312`).
 
-**Menu, pre-staged for the doors** (answers the loop's question six): when **Door 3 = *for*** → Edit 5 wire (**143**), then Amber rungs (a)–(e) per the confirmed counsel, and the chronological sweep wires in the same arithmetic; when the **SLC-2b nod** lands after Door 2 → the four DoD greens, then RW-1's pair (**+2**); after the **Amber season** → the toolset ring one and `rye test` enter the diet; the Aurora manual page enters on that surface's next touch, as-you-touch.
+**Stops, pre-staged for the doors** (answers the loop's question six): when **Door 3 = *for*** → Edit 5 wire (**143**), then Amber rungs (a)–(e) per the confirmed counsel, and the chronological sweep wires in the same arithmetic; when the **SLC-2b nod** lands after Door 2 → the four DoD greens, then RW-1's pair (**+2**); after the **Amber season** → the toolset ring one and `rye test` enter the itinerary; the Aurora manual page enters on that surface's next touch, as-you-touch.
 
 ## Next — Horizons and Optional
 

@@ -1,30 +1,35 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Tilak · Pottery · Amphora · triad ratified `203712`)
+**Last updated:** 2026-07-04 (itinerary seated `001012`; retires diet · menu · empty plate forward-facing)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
 
 Living vocabulary for the Rye OS family. Each name teaches its function. Provenance for the three names given on 2026-06-30 lives in `specs/20260630-004512_module-name-provenance.md`. Module, aspect, and the graduation rule: [`specs/20260702-035018_graduation-rule.md`](specs/20260702-035018_graduation-rule.md).
 
-## Cursor loop — gates and diet
+## Cursor loop — gates and itinerary
 
 | Term | One line |
 |------|----------|
 | **Gate** | A precondition owned by someone else or an unlanded event — `(Kaeden …)` tags, a door ruling, a paste, counsel not yet confirmed, a prior rung's green |
-| **Ungated diet** | The **named menu** of tasks the autonomous loop may eat **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; **not** a foraging license |
-| **Smallest-first** | Order within the diet — smallest witness or doc wins the next round |
-| **Witness-first, red-then-green** | Method within the diet — witness or gate before prose; fail loudly, then land green in the same sitting |
-| **Empty plate** | When the ungated diet runs out — **stop and summarize**; an empty plate is a question for Kaeden, never a license to forage |
+| **Itinerary** | The **named list of stops** the autonomous loop may execute **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; **not** an off-route license |
+| **Open itinerary** | Synonym for the itinerary when every gate is cleared **now** — what older logs called *ungated diet* |
+| **Stop** | One item on the itinerary — a witness, a wire, a doc season; replaces *menu item* in prompt prose |
+| **Smallest-first** | Order within the itinerary — the nearest, smallest stop wins the next leg |
+| **Witness-first, red-then-green** | Method within the itinerary — prove on metal before prose; fail loudly, then land green in the same sitting |
+| **Journey's pause** | When the itinerary has **no further stops** — stop and summarize; a pause is a question for Kaeden, never permission to go off-route |
+| **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
 | **Ring** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-ring-goes-green.md`](../external-research/20260703-033602_first-ring-goes-green.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood |
 | **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
 | **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
 
+**Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet* — still readable in session history; new prose uses **itinerary** · **stops** · **journey's pause**.
+
 **Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
 
-**Examples (ungated, when on the menu):** Rishi builtin ladder one-per-round · semver sweep · manual reference pages (witnessed behavior only) · tutorial rooms · RW-2 contract on paper · bare-print as-you-touch.
+**Examples (on the open itinerary):** Rishi builtin ladder one-per-round · semver sweep · manual reference pages (witnessed behavior only) · tutorial rooms · RW-2 contract on paper · bare-print as-you-touch.
 
 Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md).
 
