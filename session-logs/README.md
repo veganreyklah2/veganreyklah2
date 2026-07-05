@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.194600 | [Gates open — rising-signs and Chitra revised](20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved; b1–b5 still pending |
 | 20260705.193800 | [Silo batch-6 intake — anchor 190812](20260705-193800_silo-batch6-intake.md) | Five homed studies seated; b1–b5 pending; two gates held |
 | 20260705.162200 | [Commit push Claude transcript bench](20260705-162200_commit-push-claude-transcript-bench.md) | Runnable bench + handoff at tip; four remotes pushed |
 | 20260705.161900 | [Claude silo deepening handoff summary](20260705-161900_claude-silo-deepening-handoff-summary.md) | Runnable Claude prompt + granular handoff for transcript bench |

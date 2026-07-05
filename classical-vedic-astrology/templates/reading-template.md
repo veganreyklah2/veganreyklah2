@@ -95,7 +95,9 @@
 | Saturn in the 9th | `studies/planet-in-house/saturn-in-the-9th-house.md` |
 | Government as planetary spectrum (teaching) | `studies/teaching/government-as-planetary-spectrum.md` |
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
-| Chitra — the architect's star | `studies/nakshatras/20260705-160712_chitra-the-architects-star.md` |
+| Chitra — the architect's star (transcript-revised) | `studies/nakshatras/20260705-160712_chitra-the-architects-star.md` |
+| Capricorn rising | `studies/rising-signs/20260705-190812_capricorn-rising.md` |
+| Capricorn — tenacity and realism | `studies/rising-signs/20260705-190812_capricorn-the-sign-nature.md` |
 | The maker's gathering | `studies/synthesis/20260705-160712_the-makers-gathering.md` |
 | Moon in Aquarius — the woven heart | `studies/planets-in-signs/20260705-190812_moon-in-aquarius.md` |
 | Moon in Libra — the attuned heart | `studies/planets-in-signs/20260705-190812_moon-in-libra.md` |

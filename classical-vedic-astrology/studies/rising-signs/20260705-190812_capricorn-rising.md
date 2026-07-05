@@ -2,7 +2,6 @@
 
 **Stamp:** `20260705.190812 UDT` · **Style:** Radiant, gentle register
 **Method:** Siloed — distilled in our own voice; teacher named with gratitude below
-**Placement:** Gated — awaiting the rising-sign folder name before it seats
 
 ---
 

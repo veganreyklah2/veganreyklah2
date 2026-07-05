@@ -1,7 +1,7 @@
 # Studies — The Silo Library
 
 **Language:** EN
-**Last updated:** 2026-07-05 (batch-6 studies `190812` seated; b1–b5 bundles pending; two gates held)
+**Last updated:** 2026-07-05 (gates open — `rising-signs/`, Chitra revised; b1–b5 pending)
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`), gentle register
 
 Each study distills one placement pattern in our own voice. Studies live in **topic folders**; the **#** column preserves the growing numbered order (`00`–`20` and onward). The silo map in [`../templates/reading-template.md`](../templates/reading-template.md) is the composable index.
@@ -30,8 +30,15 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | 19 | Government as planetary spectrum (teaching) | [`teaching/government-as-planetary-spectrum.md`](teaching/government-as-planetary-spectrum.md) |
 | 20 | Liberal and conservative planets (teaching) | [`teaching/liberal-and-conservative-planets.md`](teaching/liberal-and-conservative-planets.md) |
 | 21 | The divine mother as the chart's teacher | [`synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md`](synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md) |
-| 22 | Chitra — the architect's star | [`nakshatras/20260705-160712_chitra-the-architects-star.md`](nakshatras/20260705-160712_chitra-the-architects-star.md) |
+| 22 | Chitra — the architect's star (transcript-revised `190812`) | [`nakshatras/20260705-160712_chitra-the-architects-star.md`](nakshatras/20260705-160712_chitra-the-architects-star.md) |
 | 23 | The maker's gathering | [`synthesis/20260705-160712_the-makers-gathering.md`](synthesis/20260705-160712_the-makers-gathering.md) |
+
+### Rising signs (`190812`) — seated; **# pending b1 apply**
+
+| # | Placement pattern | Path |
+|---|-------------------|------|
+| — | Capricorn rising — the crocodile at the low point of the Sun | [`rising-signs/20260705-190812_capricorn-rising.md`](rising-signs/20260705-190812_capricorn-rising.md) |
+| — | Capricorn — tenacity and realism | [`rising-signs/20260705-190812_capricorn-the-sign-nature.md`](rising-signs/20260705-190812_capricorn-the-sign-nature.md) |
 
 ### Batch 6 (`190812`) — seated; **# pending b1–b5 apply**
 
@@ -45,8 +52,6 @@ Studies below are transcript-faithful and homed. Numbered rows resume after bund
 | — | Neighboring yogas of Sun and ascendant | [`teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md`](teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md) |
 | — | Occupation as lens on a star's essence | [`nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md`](nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md) |
 
-**Gated (not seated):** [`../_gated/README.md`](../_gated/README.md) — Capricorn rising pair; revised Chitra candidate.
-
 ## Topic folders
 
 | Folder | Holds |
@@ -55,10 +60,10 @@ Studies below are transcript-faithful and homed. Numbered rows resume after bund
 | `nakshatras/` | Stars, padas, guardians |
 | `lunar-craft/` | Moon-day and birth-star technique |
 | `planets-in-signs/` | Dignity and sign placement |
+| `rising-signs/` | Ascendant portraits and sign-nature studies |
 | `planet-in-house/` | House placement (and sign+house when house leads) |
 | `synthesis/` | Two planets speaking as one |
 | `reading-themes/` | Cross-chart themes |
 | `teaching/` | Craft teaching, not one natal placement |
-| `_gated/` | Studies awaiting Kaeden's word (folder name; fidelity choice) |
 
 New placements earn the next number, a topic folder, and a hyphenated slug — then a row in this table and in the reading template.
