@@ -1,0 +1,21 @@
+# Brooke — The Three Paths — One Braid
+
+**Stamp:** `20260705.020812 UDT` · **Language:** EN · **Style:** Radiant (see `../../context/RADIANT_STYLE.md`)
+**Subject:** Brooke (placeholder by consent) · chapter silo from [`20260705-020812_brooke-reading.md`](20260705-020812_brooke-reading.md)
+**Frame:** tropical signs, houses, and dignities · sidereal nakshatras (Lahiri) · whole-sign houses · D1 and D9
+
+*Written together by Kaeden and Rio 3.*
+
+---
+
+*The apsara kirtan bhakta:* her heart lives in the second house of the voice under Vishnu's own star; her Sun carries the priest's word-power; her Venus keeps the dharma house in both wheels; her essence-heart must make what it loves beautiful; and the lore's own mountain — saturated day and night in kirtan, the apsaras among its singers — stands as the pattern: celebration and devotion as one thing.
+
+*The devoted spouse and mother:* the season is written on the surface of the chart — the Sun angular at the descendant with Mercury beside it, self and speech given to partnership; the essence-Sun keeping the deep rooms of the shared life; the spartan Moon stocking the family table; and the goat's door promising what every household most needs — the one who stays, and wins by staying.
+
+*The artisan — craftswoman, writer, creator, architect of refined concepts:* the chart's ruler in the house of hands under the hundred-medicines star; the essence gathering Moon, Mercury, and exalted Saturn in Hasta under Savitar the golden-handed, carried by sign into the tenth house of vocation; Rohini, the creator's star, powering her Mars; the Aquarius Moon supplying the architect's gift of the refined concept — structure imagined for the good of the many. What she loves, her hands can build; what her hands build, her discipline can perfect.
+
+The braid is one braid. The craftswoman builds the instruments, the spaces, and the written prayers of the kirtan; the singer consecrates the household; the household shelters the workshop and the practice both. Let the incidental layer take the season's shape, chosen with her people and confirmed by a guide who knows her; keep the core — voice, devotion, love, learning, and the skilled hand — always at the center; and let each duty, once truly complete, be released with satisfaction before the next is taken up. Dharma, for Brooke, is a homecoming rather than a climb — and if it is a climb, she was born under the goat that makes them, toward the lion's country at the top.
+
+## With Gratitude
+
+The teachings distilled through this reading are learned with gratitude from the recorded talks of **Vic DiCara** — on dharma, the navamsha and its geometry, the Sun, Moon, Mercury, Jupiter, and nodal placements, the Capricorn ascendant of the classical manual, the Aquarius and Libra Moons, the houses, the fundamental lunar and solar yogas of the manual's sixth chapter, the tales and life-lessons of the nakshatra gods, and the study of Varahamihira's Brihat Samhita, chapter fifteen — and of **Parisa Yazdi**, on Venus in Virgo and Aries and on Saturn in Pisces. The talk-by-talk citation rolls live in this lane's chapter files. The frame throughout: tropical signs and dignities, sidereal nakshatras, whole-sign houses.

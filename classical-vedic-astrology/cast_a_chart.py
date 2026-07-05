@@ -1,4 +1,7 @@
-"""Cast a natal chart in the project's dual-zodiac frame.
+"""POSIX seam implementation for cast_a_chart.rish — pyswisseph / Swiss Ephemeris.
+
+Canonical entry: rishi/bin/rishi run classical-vedic-astrology/cast_a_chart.rish
+Hosted by: cast_a_chart_host.sh
 
 Tropical zodiac signs carry each planet's dignity; sidereal Lahiri
 longitudes carry the nakshatra and its pada; whole-sign houses rise

@@ -174,7 +174,7 @@ Ground: [`external-research/20260702-014112_comlink-beyond-dns-and-sockets.md`](
 - [ ] **Names without DNS (design only)** — name-claim fact shape, petnames above, Linengrow settlement as the market; no code before Kumara signs.
 - [ ] **Setu ruling (Kaeden)** — the USB-C dock-wire lane's name; candidate proposed for the lexicon's open table; first lap = one Comlink datagram over CDC-NCM, host to QEMU guest.
 - [ ] **Mantrapod module map (Kaeden affirms)** — the pod's module-by-module plan as tabled in the counsel memo.
-- [ ] **Two-oracle sky gate (optional)** — a `.rish` witness around `cast_a_chart.py` asserting agreement against a hand-pinned golden chart.
+- [x] **Two-oracle sky gate (first lap)** — `classical-vedic-astrology/cast_a_chart.rish` hosts `cast_a_chart_host.sh` → pyswisseph; golden-chart pin still optional.
 - [ ] **Intakes awaiting Kaeden's hand** — the mathematics writings (silo together, then weigh against TAME's goals); the Cerebras and wafer-memory silos (held for the inference season).
 - [ ] **Recovery rehearsal (after Amber's first lap)** — restore a directory from a cold drive and recover from a revoked sandbox key, so recovery is a witnessed fact.
 

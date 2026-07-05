@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.022512 | [Zip 43 Brooke round intake — Cursor](20260705-022512_zip43-brooke-round-intake-cursor.md) | `files (15).zip` at `38893b7`; batches A–C; fifteen chapter silos; yonder + template |
+| 20260705.022512 | [Final unification — Brooke round](20260705-022512_final-astrology-unification.md) | Claude bench: bundle split, template derived, gate silent; vessel cut |
 | 20260704.221612 | [Astrology reorg commit and push](20260704-221612_astrology-reorg-commit-and-push.md) | `d6e7848` — topic folders land; four remotes at tip |
 | 20260704.221412 | [Astrology topic folder reorg](20260704-221412_astrology-topic-folder-reorg.md) | Studies `00`–`20` into nakshatras, planets-in-signs, planet-in-house, …; templates/readings split |
 | 20260704.221112 | [Rye-core arc commit and push](20260704-221112_rye-core-arc-commit-and-push.md) | `239557f` landed — silo, ER pair, archive tooling, parity hygiene; four remotes |

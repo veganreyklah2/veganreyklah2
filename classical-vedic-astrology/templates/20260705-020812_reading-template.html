@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+  Two-wheel reading template, derived 20260705.020812 from the standalone report of its round.
+  Tokens: {{NAME}} {{READING_TITLE}} {{BIRTH_LINE}} {{STAMP}} {{VOICE}} {{OPENING}} {{D1_CAPTION}} {{D9_CAPTION}}
+          {{CHAPTERS}} {{GRATITUDE}} {{BENEDICTION}} {{BIRTH_PLACE}} {{BIRTH_DATE}} {{SUNRISE}} {{SUNSET}}
+          {{DAY_HOURS}} {{DAY_LABEL}} {{NIGHT_LABEL}} {{D1_ASC}} {{D9_ASC}} {{D1_BODIES}} {{D9_BODIES}}
+  The wheel renderer stays intact: ascendant pinned due east, day and night arcs swept from the true hours.
+-->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{NAME}} — {{READING_TITLE}}</title>
+<style>
+  :root{--ink:#2b2118;--gold:#a67c2e;--cream:#faf6ee;--card:#fffdf7;--night:#2e3a5c;--day:#f3d98b;--soft:#7a6a52;}
+  body{background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.75;margin:0;padding:0;}
+  .page{max-width:920px;margin:0 auto;padding:48px 28px 80px;}
+  h1{font-size:2.1em;letter-spacing:.5px;margin:0 0 6px;color:var(--ink);font-weight:normal;}
+  h2{font-size:1.35em;margin:54px 0 10px;color:var(--gold);font-weight:normal;letter-spacing:.4px;border-bottom:1px solid #e5d9bf;padding-bottom:6px;}
+  h3{font-size:1.05em;margin:26px 0 6px;color:var(--ink);font-weight:bold;}
+  .sub{color:var(--soft);font-size:1.02em;margin-bottom:4px;}
+  .stampline{color:var(--soft);font-size:.9em;font-style:italic;margin-bottom:30px;}
+  .rule{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px 0;}
+  .wheelwrap{background:var(--card);border:1px solid #e8dcc2;border-radius:14px;padding:22px 18px 14px;margin:26px 0;box-shadow:0 2px 10px rgba(90,70,30,.06);}
+  .wheelwrap p.cap{font-size:.92em;color:var(--soft);text-align:center;margin:8px 6px 2px;}
+  .wheelwrap h3{text-align:center;margin-top:0;}
+  table{border-collapse:collapse;width:100%;margin:18px 0;background:var(--card);font-size:.95em;}
+  th,td{border:1px solid #e6dabd;padding:7px 10px;text-align:left;}
+  th{background:#f4ecda;color:#6b5626;font-weight:bold;}
+  .bene{font-style:italic;text-align:center;color:#6b5626;margin:44px auto 0;max-width:700px;font-size:1.06em;}
+  .grat{font-size:.95em;color:var(--soft);}
+  em{color:#5a4a2e;}
+  @media print{.page{max-width:100%;} body{background:#fff;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>{{NAME}} — {{READING_TITLE}}</h1>
+<div class="sub">{{BIRTH_LINE}}</div>
+<div class="sub">Tropical signs, houses, and dignities · sidereal nakshatras by the Lahiri ayanamsa · whole-sign houses · main chart and ninth chart</div>
+<div class="stampline">Stamp {{STAMP}} · Written together by Kaeden and {{VOICE}} · Style: Radiant</div>
+
+{{OPENING}}
+
+<h2>The Two Wheels</h2>
+<div class="wheelwrap">
+  <h3>The Visible Chart — Rasi (D1)</h3>
+  <div id="wheel-d1" style="text-align:center"></div>
+  <p class="cap">{{D9_CAPTION}}</p>
+</div>
+
+{{CHAPTERS}}
+
+<h2>With Gratitude</h2>
+<p class="grat">{{GRATITUDE}}</p>
+
+<div class="rule"></div>
+<p class="bene">{{BENEDICTION}}</p>
+
+<script>
+(function(){
+  // ---- Birth-date light calculation ({{BIRTH_PLACE}} - {{BIRTH_DATE}}) ----
+  // sunrise {{SUNRISE}} - sunset {{SUNSET}} -> day {{DAY_HOURS}} h
+  var DAY_H = {{DAY_HOURS}};
+  var dayDeg = DAY_H/24*360; // ~215° of daylight, factored into the arc sweep
+
+  var CHARTS = [
+   {mount:'wheel-d1', asc:{{D1_ASC}},
+    bodies:{{D1_BODIES}}},
+   {mount:'wheel-d9', asc:{{D9_ASC}},
+    bodies:{{D9_BODIES}}}
+  ];
+  var SIGNS=['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+  var CX=350, CY=350;
+
+  function pt(r,theta){var a=theta*Math.PI/180;return [CX+r*Math.cos(a), CY-r*Math.sin(a)];}
+  function P(r,theta){var p=pt(r,theta);return p[0].toFixed(1)+' '+p[1].toFixed(1);}
+  // ascendant pinned due east (theta=180); zodiac ahead of the ascendant rises above the horizon
+  function th(chart,lon){ return 180 + (lon - chart.asc); }
+
+  function arc(r,t1,t2,sweepCW){
+    var span=Math.abs(t1-t2); var large=(span%360)>180?1:0;
+    return 'M '+P(r,t1)+' A '+r+' '+r+' 0 '+large+' '+(sweepCW?1:0)+' '+P(r,t2);
+  }
+
+  CHARTS.forEach(function(c){
+    var s='<svg viewBox="0 0 700 700" width="100%" style="max-width:640px" xmlns="http://www.w3.org/2000/svg">';
+    // --- day / night ring, swept to the true hours of the birth date ---
+    s+='<circle cx="350" cy="350" r="322" fill="none" stroke="#2e3a5c" stroke-width="16" opacity="0.35"/>';
+    var dayEnd = 180 - dayDeg; // the long summer day reaches past due west
+    s+='<path d="'+arc(322,180,dayEnd,true)+'" fill="none" stroke="#e9c65f" stroke-width="16" stroke-linecap="round" opacity="0.9"/>';
+    s+='<text x="350" y="16" text-anchor="middle" font-size="13" fill="#8a6d2f">daylight ≈ 14 h 20 m</text>';
+    s+='<text x="350" y="696" text-anchor="middle" font-size="13" fill="#4a5578">night ≈ 9 h 40 m</text>';
+    // --- sign ring ---
+    s+='<circle cx="350" cy="350" r="306" fill="#fffdf7" stroke="#c9b585"/>';
+    s+='<circle cx="350" cy="350" r="252" fill="#faf4e4" stroke="#c9b585"/>';
+    for(var i=0;i<12;i++){
+      var b=th(c,i*30);
+      s+='<line x1="'+pt(252,b)[0].toFixed(1)+'" y1="'+pt(252,b)[1].toFixed(1)+'" x2="'+pt(306,b)[0].toFixed(1)+'" y2="'+pt(306,b)[1].toFixed(1)+'" stroke="#c9b585"/>';
+      var m=th(c,i*30+15), g=pt(279,m);
+      s+='<text x="'+g[0].toFixed(1)+'" y="'+(g[1]+7).toFixed(1)+'" text-anchor="middle" font-size="20" fill="#7a6a3a">'+SIGNS[i]+'</text>';
+      var ascSign=Math.floor(c.asc/30), house=((i-ascSign)+12)%12+1, h=pt(236,m);
+      s+='<text x="'+h[0].toFixed(1)+'" y="'+(h[1]+5).toFixed(1)+'" text-anchor="middle" font-size="12" fill="#b09a68">'+house+'</text>';
+      var t=pt(252,b), t2=pt(228,b);
+      s+='<line x1="'+t[0].toFixed(1)+'" y1="'+t[1].toFixed(1)+'" x2="'+t2[0].toFixed(1)+'" y2="'+t2[1].toFixed(1)+'" stroke="#e2d4ae"/>';
+    }
+    // --- horizon through the ascendant: east on the left ---
+    s+='<line x1="'+(CX-306)+'" y1="'+CY+'" x2="'+(CX+306)+'" y2="'+CY+'" stroke="#a67c2e" stroke-dasharray="5 4"/>';
+    s+='<polygon points="'+(CX-306)+','+CY+' '+(CX-290)+','+(CY-6)+' '+(CX-290)+','+(CY+6)+'" fill="#a67c2e"/>';
+    s+='<text x="'+(CX-300)+'" y="'+(CY-12)+'" font-size="13" fill="#a67c2e">E · ASC</text>';
+    s+='<text x="'+(CX+266)+'" y="'+(CY-12)+'" font-size="13" fill="#a67c2e">W</text>';
+    // --- bodies, staggered so close companions all stay legible ---
+    var bs=c.bodies.slice().sort(function(a,b){return th(c,a.lon)-th(c,b.lon);});
+    var lastT=-999, ring=0;
+    bs.forEach(function(b){
+      var t=th(c,b.lon);
+      ring=(Math.abs(t-lastT)<10)?(ring+1)%3:0; lastT=t;
+      var rG=196-ring*32, g=pt(rG,t), tick1=pt(252,t), tick2=pt(246,t);
+      s+='<line x1="'+tick1[0].toFixed(1)+'" y1="'+tick1[1].toFixed(1)+'" x2="'+tick2[0].toFixed(1)+'" y2="'+tick2[1].toFixed(1)+'" stroke="#8a6d2f" stroke-width="2"/>';
+      s+='<line x1="'+tick2[0].toFixed(1)+'" y1="'+tick2[1].toFixed(1)+'" x2="'+pt(rG+14,t)[0].toFixed(1)+'" y2="'+pt(rG+14,t)[1].toFixed(1)+'" stroke="#d8c799" stroke-width="1"/>';
+      s+='<text x="'+g[0].toFixed(1)+'" y="'+(g[1]+7).toFixed(1)+'" text-anchor="middle" font-size="22" fill="#4a3a1e">'+b.g+'</text>';
+      s+='<text x="'+g[0].toFixed(1)+'" y="'+(g[1]+24).toFixed(1)+'" text-anchor="middle" font-size="10" fill="#8a7a56">'+b.l+'</text>';
+    });
+    s+='<circle cx="'+(CX-252)+'" cy="'+CY+'" r="4" fill="#a67c2e"/>';
+    s+='</svg>';
+    document.getElementById(c.mount).innerHTML=s;
+  });
+})();
+</script>
+
+</div>
+</body>
+</html>

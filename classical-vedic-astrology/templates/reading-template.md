@@ -4,7 +4,7 @@
 
 **Stamp:** `20260701.232912`
 **Style:** Radiant (see `RADIANT_STYLE.md`), gentle register throughout
-**Companions:** [`../cast_a_chart.py`](../cast_a_chart.py) (the computation), the numbered study silos in [`studies/`](../studies/) (`00`–`20` and those yet to come; index at [`studies/README.md`](../studies/README.md)), [`../../context/SILO_TECHNIQUE.md`](../../context/SILO_TECHNIQUE.md)
+**Companions:** [`../cast_a_chart.rish`](../cast_a_chart.rish) (the computation), the numbered study silos in [`studies/`](../studies/) (`00`–`20` and those yet to come; index at [`studies/README.md`](../studies/README.md)), [`../../context/SILO_TECHNIQUE.md`](../../context/SILO_TECHNIQUE.md)
 
 *Written together by Kaeden and Reya 2; shaped into a template with the outside reading (Fable 5) at Kaeden's direction.*
 
@@ -14,7 +14,7 @@
 
 **First, receive the birth moment verbatim.** Date, clock time, time zone, and birthplace come from the person and are honored exactly as given — the one-clock rule of the whole project, applied to a life.
 
-**Second, cast the sky twice.** Edit the constants at the top of [`../cast_a_chart.py`](../cast_a_chart.py) and run it: tropical signs for dignity, sidereal Lahiri longitudes for nakshatra and pada, whole-sign houses rising from the ascendant. Then cast the same moment with one independent tool and compare, placement by placement. Two oracles that agree make a chart worth writing about; the writing begins only when they do.
+**Second, cast the sky twice.** Edit the constants at the head of [`../cast_a_chart.py`](../cast_a_chart.py) and run [`../cast_a_chart.rish`](../cast_a_chart.rish) from the repository root: tropical signs for dignity, sidereal Lahiri longitudes for nakshatra and pada, whole-sign houses rising from the ascendant. Then cast the same moment with one independent tool and compare, placement by placement. Two oracles that agree make a chart worth writing about; the writing begins only when they do.
 
 **Third, compose from the silos.** Each placement points at one or more numbered studies. The silo carries the depth; the reading carries the person. Weave, rather than paste — the studies are understanding to draw on, never text to copy.
 
@@ -95,6 +95,28 @@
 | Saturn in the 9th | `studies/planet-in-house/saturn-in-the-9th-house.md` |
 | Government as planetary spectrum (teaching) | `studies/teaching/government-as-planetary-spectrum.md` |
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
+
+### Brooke reading — chapter silos (`20260705.020812`)
+
+| Chapter | Silo |
+|---------|------|
+| Season and three paths | `readings/20260705-020812_brooke-season-and-three-paths.md` |
+| Placements table | `readings/20260705-020812_brooke-placements.md` |
+| Foundation (dharma, D9) | `readings/20260705-020812_brooke-foundation.md` |
+| Ascendant | `readings/20260705-020812_brooke-ascendant.md` |
+| Sun | `readings/20260705-020812_brooke-sun.md` |
+| Moon | `readings/20260705-020812_brooke-moon.md` |
+| Venus | `readings/20260705-020812_brooke-venus.md` |
+| Mercury | `readings/20260705-020812_brooke-mercury.md` |
+| Jupiter | `readings/20260705-020812_brooke-jupiter.md` |
+| Saturn | `readings/20260705-020812_brooke-saturn.md` |
+| Rahu and Ketu | `readings/20260705-020812_brooke-nodes.md` |
+| Yogas | `readings/20260705-020812_brooke-yogas.md` |
+| Stars | `readings/20260705-020812_brooke-stars.md` |
+| Almanac day | `readings/20260705-020812_brooke-almanac-day.md` |
+| Three paths braid | `readings/20260705-020812_brooke-three-paths.md` |
+| Full reading (composed) | `readings/20260705-020812_brooke-reading.md` |
+| Two-wheel HTML template | `templates/20260705-020812_reading-template.html` |
 
 New placements earn the next number, a topic folder, a hyphenated filename, and a row here — see [`studies/README.md`](../studies/README.md).
 
