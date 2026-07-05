@@ -8,7 +8,7 @@
 
 ---
 
-The classical almanac reads each day by the star the Moon holds at sunrise, and assigns that star its people and trades. Sunrise came at 6:13 that morning, and the Moon stood then in Uttara Ashadha in the visible reckoning and in Pushya in the essence reckoning — a hybrid day, ruled without by the star of the later victory and within by the star of the nourisher. Taken at the level of its pattern, the almanac names the steadfast and the devout — those who carry undertakings through to their finish — joined to the counselors and nourishers whose work feeds what is around it. As career counsel it triangulates all three of her paths in one sentence: *vocations of faithful completion that nourish others* — the song carried to its last verse, the household kept through its seasons, the made thing finished to its final joint and given warm.
+The classical almanac reads each day by the star the Moon holds at sunrise (#55). Sunrise came at 6:13 that morning, and the Moon stood then in Uttara Ashadha in the visible reckoning and in Pushya in the essence reckoning — a hybrid day, ruled without by the star of the later victory and within by the star of the nourisher. For Brooke this triangulates all three paths in one sentence: *vocations of faithful completion that nourish others* — the song carried to its last verse, the household kept through its seasons, the made thing finished to its final joint and given warm.
 
 ## With Gratitude
 

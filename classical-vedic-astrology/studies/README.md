@@ -1,7 +1,7 @@
 # Studies — The Silo Library
 
 **Language:** EN
-**Last updated:** 2026-07-05 (studies #24–#54 — silo deepening Movement 1 complete; Chitra #22 transcript-revised)
+**Last updated:** 2026-07-05 (Movement 2 begun — studies #55–#57; Brooke chapters cite shelf)
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`), gentle register
 
 Each study distills one placement pattern in our own voice. Studies live in **topic folders**; the **#** column preserves the growing numbered order (`00`–`20` and onward). The silo map in [`../templates/reading-template.md`](../templates/reading-template.md) is the composable index.
@@ -63,6 +63,9 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | 52 | Occupation as lens on a star's essence | [`nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md`](nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md) |
 | 53 | Capricorn rising — the crocodile at the low point of the Sun | [`rising-signs/20260705-190812_capricorn-rising.md`](rising-signs/20260705-190812_capricorn-rising.md) |
 | 54 | Capricorn — tenacity and realism | [`rising-signs/20260705-190812_capricorn-the-sign-nature.md`](rising-signs/20260705-190812_capricorn-the-sign-nature.md) |
+| 55 | The hybrid lunar day | [`lunar-craft/20260705-195800_the-hybrid-lunar-day.md`](lunar-craft/20260705-195800_the-hybrid-lunar-day.md) |
+| 56 | The hinge of the lights at birth | [`reading-themes/20260705-195800_the-hinge-of-the-lights-at-birth.md`](reading-themes/20260705-195800_the-hinge-of-the-lights-at-birth.md) |
+| 57 | The three paths braid — apsara, grihastha, artisan | [`reading-themes/20260705-195800_the-three-paths-braid.md`](reading-themes/20260705-195800_the-three-paths-braid.md) |
 
 ## Topic folders
 

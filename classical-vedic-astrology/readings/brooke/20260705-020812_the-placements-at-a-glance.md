@@ -21,7 +21,7 @@
 | Rahu | Scorpio 21°26′ ℞ | 11 | Vishakha | Capricorn 12°54′ ℞ | 6 | Purva Ashadha |
 | Ketu | Taurus 21°26′ ℞ | 5 | Krittika | Cancer 12°54′ ℞ | 12 | Ardra |
 
-She was born on the hinge of the lights: the Sun standing at the western horizon minutes from setting, the nearly full Moon newly risen in the east — the day handing itself to the night at the moment of her birth.
+She was born on the hinge of the lights (#56): the Sun standing at the western horizon minutes from setting, the nearly full Moon newly risen in the east — the day handing itself to the night at the moment of her birth.
 
 ## With Gratitude
 

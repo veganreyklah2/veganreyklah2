@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-05 (studies #24–#54 — Movement 1 complete; Chitra #22 transcript-revised)
+**Last updated:** 2026-07-05 (Movement 2 begun — #55–#57; Brooke chapters cite shelf)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 

@@ -129,6 +129,9 @@
 | Occupation as lens on a star's essence | `studies/nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md` |
 | Capricorn rising | `studies/rising-signs/20260705-190812_capricorn-rising.md` |
 | Capricorn — tenacity and realism | `studies/rising-signs/20260705-190812_capricorn-the-sign-nature.md` |
+| The hybrid lunar day | `studies/lunar-craft/20260705-195800_the-hybrid-lunar-day.md` |
+| The hinge of the lights at birth | `studies/reading-themes/20260705-195800_the-hinge-of-the-lights-at-birth.md` |
+| The three paths braid | `studies/reading-themes/20260705-195800_the-three-paths-braid.md` |
 
 ### Brooke reading — chapter silos (`readings/brooke/`)
 
