@@ -25,8 +25,8 @@ In a reading, honor the strength and the service before naming the restlessness.
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on the Moon in the sixth house shaped its understanding, with its remarkable exemplars generalized here to the pattern they share.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Moon in the Sixth House* — https://www.youtube.com/watch?v=0sPZtNR0ZjI
+Further listening: *Moon in the Sixth House* — https://www.youtube.com/watch?v=0sPZtNR0ZjI
 
 *May the heart that meets the fight aim its strength at worthy things. May it know when the battle is won and let peace return. And may every struggle it faces be forged, in the end, into work that heals and helps, season after season, through all the long and courageous labor of overcoming.*

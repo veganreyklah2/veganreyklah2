@@ -25,8 +25,8 @@ In a reading, honor the strength before naming the weight. Speak to the reliabil
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on the Moon in Capricorn shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Nice Horns! (Moon in Capricorn)* — https://www.youtube.com/watch?v=qz3qhK0V4HU
+Further listening: *Nice Horns! (Moon in Capricorn)* — https://www.youtube.com/watch?v=qz3qhK0V4HU
 
 *May the disciplined heart be honored for all it endures. May it learn that warmth is no reward to be earned, only a nourishment already owed. And may every long climber reach the peak and, arriving, finally rest and take in the view, season after season, through all the long and patient ascent of a life.*

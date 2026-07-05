@@ -29,8 +29,8 @@ Because these arcs so often touch love, work, and the tender places of a life, t
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Parisa Yazdi**, whose teaching on a transit sequence as a testing and maturation of love shaped its understanding.
+This study is siloed with gratitude to **Parisa Yazdi**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Venus in Aries Transit: Neptune, Saturn, Pluto and Jupiter Test Love* — https://www.youtube.com/watch?v=oA868m_LZVQ
+Further listening: *Venus in Aries Transit: Neptune, Saturn, Pluto and Jupiter Test Love* — https://www.youtube.com/watch?v=oA868m_LZVQ
 
 *May we read our seasons as curricula and not as verdicts. May the dissolving teach us surrender, the disciplining teach us patience, the transforming teach us depth, and the expanding teach us faith. And may every arc we walk deliver us, at its end, a little more grown than we began, season after season, through all the long and meaningful passage of a life.*

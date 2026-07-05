@@ -29,8 +29,8 @@ The gift of the method is that depth and simplicity meet. Every point in every c
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on the composited true sign shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Your True Navamsha Sign* — https://www.youtube.com/watch?v=hIZnKzoSMnw
+Further listening: *Your True Navamsha Sign* — https://www.youtube.com/watch?v=hIZnKzoSMnw
 
 *May the whole sky be consulted and the answer stay simple. May each of us come to hear our own true voice — the blend of all our lights speaking as one. And may depth and plainness always keep company, so what is rich can still be shared, season after season, through all the long and generous work of knowing ourselves.*

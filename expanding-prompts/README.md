@@ -68,6 +68,7 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260705.195812` | [Fidelity soften — thirteen title-drawn studies](20260705-195812_fidelity-soften-instructions.md) | Gratitude softening on #24–#36; Chitra and transcript-true batches untouched |
 | `20260705.190812` | [Claude recursion v9 — batch-6 bundle](20260705-190812_claude-recursion-v9.md) | Apply b1→b4→b5→b6 in order; commit/push/zip 47 |
 | `20260705.184612` | [Claude recursion v8](20260705-184612_claude-recursion-v8.md) | Mid-arc handoff before batch 6 |
 | `20260705.174412` | [Claude recursion v7](20260705-174412_claude-recursion-prompt-v7.md) | Studies #24–#36 batches 1–3; fidelity note on title-drawn citations |

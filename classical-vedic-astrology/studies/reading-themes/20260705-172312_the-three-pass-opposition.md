@@ -29,8 +29,8 @@ The craft is to refuse to read a single hard transit as one isolated strike. Whe
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Parisa Yazdi**, whose teaching on the three-pass opposition — learning to let it be, let it go — shaped its understanding.
+This study is siloed with gratitude to **Parisa Yazdi**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Venus in Virgo Opposes Saturn Rx in Pisces: Learning to Let It Be, Let It Go* — https://www.youtube.com/watch?v=4YEQnhtRiI8
+Further listening: *Venus in Virgo Opposes Saturn Rx in Pisces: Learning to Let It Be, Let It Go* — https://www.youtube.com/watch?v=4YEQnhtRiI8
 
 *May we meet the first pass as an announcement, the second as an honest reckoning, and the third as a gentle release. May we learn, in the fullness of a season, to let it be and then to let it go. And may every difficulty reveal, at its close, the resolution that was folded inside it all along, season after season, through all the long and merciful turning of the sky.*

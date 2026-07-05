@@ -25,8 +25,8 @@ In a reading, name the difficulty softly and honor the gift plainly. Speak to th
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Parisa Yazdi**, whose teaching on Venus in Virgo — detoxing desire, love without perfection — shaped its understanding.
+This study is siloed with gratitude to **Parisa Yazdi**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Venus in Virgo: Detoxing Desire, Love Without Perfection* — https://www.youtube.com/watch?v=su7C_pTfM98
+Further listening: *Venus in Virgo: Detoxing Desire, Love Without Perfection* — https://www.youtube.com/watch?v=su7C_pTfM98
 
 *May the careful heart learn that acceptance is its finest refinement. May we love the real and the imperfect, and let that be enough. And may every eye that sees the flaw learn, at last, to see with tenderness, season after season, through all the long and patient softening into love.*

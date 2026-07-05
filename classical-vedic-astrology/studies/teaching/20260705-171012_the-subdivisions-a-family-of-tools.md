@@ -29,8 +29,8 @@ The subdivisions that carry meaning are the ones whose geometry forms a recogniz
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on the subdivisions as distinct tools shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Navamsa Q/A* — https://www.youtube.com/watch?v=JC7N8jMOHVM
+Further listening: *Navamsa Q/A* — https://www.youtube.com/watch?v=JC7N8jMOHVM
 
 *May we reach for the right tool for the question at hand. May we read the surface before we ask its reason, and honor each chart for the one thing it was made to show. And may every division of the sky keep the shape that gives it meaning, so the craft stays true, season after season, through all the long and careful reading of a life.*

@@ -29,8 +29,8 @@ The second tool sorts the planets by how strongly each rules the inner life here
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on the ninth-division chart as the chart of the true self shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *Your True Self — Astrology of the Navamsha Chart* — https://www.youtube.com/watch?v=YEFW8mict6o
+Further listening: *Your True Self — Astrology of the Navamsha Chart* — https://www.youtube.com/watch?v=YEFW8mict6o
 
 *May we come to know the way our own clock ticks. May we act from the self that feels real and set down gently what feels false. And may each of us find our essence woven whole through the beginning, the middle, and the end, holding true from the inside, season after season, through all the long and honest work of becoming ourselves.*

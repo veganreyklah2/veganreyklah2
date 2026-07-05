@@ -27,9 +27,8 @@ Nothing in this technique belongs to the ninth chart alone. Any subdivision buil
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on mapping the ninth chart onto the birth wheel shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *The Secret to Reading Navamsha* — https://www.youtube.com/watch?v=fE6G7o85Ynw
-- *Navamsha to Main Chart, Live Q&A* — https://www.youtube.com/watch?v=rtBdFm5S6r4
+Further listening: *The Secret to Reading Navamsha* — https://www.youtube.com/watch?v=fE6G7o85Ynw, and *Navamsha to Main Chart, Live Q&A* — https://www.youtube.com/watch?v=rtBdFm5S6r4
 
 *May the hidden be made visible with care. May we learn to see which inner forces truly live in a life, and honor them where they land. And may every ray the sky casts inward find, at last, the place it was always pointing, season after season, through all the long and patient craft of reading a chart whole.*

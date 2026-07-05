@@ -33,8 +33,8 @@ Read through dharma, non-harming is not the impossible demand to cause no ripple
 
 ## With Gratitude
 
-This study is siloed with gratitude to **Vic DiCara**, whose teaching on dharma as the essence of a thing shaped its understanding.
+This study is siloed with gratitude to **Vic DiCara**, teacher of this material. It was drawn from the shape of that teaching ahead of its full transcript, and it awaits a transcript-true revision.
 
-- *What is "Dharma"* — https://www.youtube.com/live/gRMoBNeDVNA
+Further listening: *What is "Dharma"* — https://www.youtube.com/live/gRMoBNeDVNA
 
 *May we each come to know the essence we carry. May our duties layer rightly, the passing ones yielding to the lasting, so we stay whole under every weather. And may the effort itself — never perfect, always sincere — be the thing that grows us, season after season, through all the long and living work of becoming what we already are.*
