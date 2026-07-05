@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-05 (studies #22–#23; silo deepening bench staged)
+**Last updated:** 2026-07-05 (batch-6 studies `190812`; b1–b5 pending; gates held)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 
@@ -24,6 +24,7 @@ The friends whose skies seeded this library asked that privacy be kept, and it i
 ```
 classical-vedic-astrology/
 ├── _method/                 diurnal wheel + rendering discipline (index: _method/README.md)
+├── _gated/                  studies awaiting Kaeden's word (index: _gated/README.md)
 ├── cast_a_chart.rish         dual-zodiac caster (canonical; hosts cast_a_chart_host.sh)
 ├── cast_a_chart_host.sh      POSIX seam → cast_a_chart.py (pyswisseph)
 ├── studies/                 silo library by topic (index: studies/README.md)

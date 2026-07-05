@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-05 (Claude transcript bench `161900`)
+**Last updated:** 2026-07-05 (recursion v9 `190812`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,6 +68,7 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260705.190812` | [Claude recursion v9 — batch-6 bundle](20260705-190812_claude-recursion-v9.md) | Apply b1→b4→b5→b6 in order; two gates held; commit/push/zip 47 |
 | `20260705.161900` | [Claude silo deepening transcript bench](20260705-161900_claude-silo-deepening-transcript-bench.md) | Runnable Claude bench — transcript intake, dissociation, recomposition, commit/push/zip 47 |
 | `20260705.160712` | [Claude silo deepening recursion v1](20260705-160712_claude-silo-deepening-recursion-v1.md) | Movement names and purpose — superseded for execution by `161900` |
 | `20260705.042512` | [Cursor final — reading canon and shelf](20260705-042512_cursor-final-reading-canon.md) | Chitra ruling, Makara sweep, canon derive batches, divine-mother re-emphasis |

@@ -1,7 +1,7 @@
 # Studies — The Silo Library
 
 **Language:** EN
-**Last updated:** 2026-07-05 (studies #22–#23 — Chitra, maker's gathering; silo deepening bench)
+**Last updated:** 2026-07-05 (batch-6 studies `190812` seated; b1–b5 bundles pending; two gates held)
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`), gentle register
 
 Each study distills one placement pattern in our own voice. Studies live in **topic folders**; the **#** column preserves the growing numbered order (`00`–`20` and onward). The silo map in [`../templates/reading-template.md`](../templates/reading-template.md) is the composable index.
@@ -33,6 +33,20 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | 22 | Chitra — the architect's star | [`nakshatras/20260705-160712_chitra-the-architects-star.md`](nakshatras/20260705-160712_chitra-the-architects-star.md) |
 | 23 | The maker's gathering | [`synthesis/20260705-160712_the-makers-gathering.md`](synthesis/20260705-160712_the-makers-gathering.md) |
 
+### Batch 6 (`190812`) — seated; **# pending b1–b5 apply**
+
+Studies below are transcript-faithful and homed. Numbered rows resume after bundles `174412`, `180812`, and `182612` land (studies `#24`–`#36` and batch-4/5 cluster per v9).
+
+| # | Placement pattern | Path |
+|---|-------------------|------|
+| — | Moon in Aquarius — the woven heart | [`planets-in-signs/20260705-190812_moon-in-aquarius.md`](planets-in-signs/20260705-190812_moon-in-aquarius.md) |
+| — | Moon in Libra — the attuned heart | [`planets-in-signs/20260705-190812_moon-in-libra.md`](planets-in-signs/20260705-190812_moon-in-libra.md) |
+| — | The four lunar neighbor yogas | [`lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md`](lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md) |
+| — | Neighboring yogas of Sun and ascendant | [`teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md`](teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md) |
+| — | Occupation as lens on a star's essence | [`nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md`](nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md) |
+
+**Gated (not seated):** [`../_gated/README.md`](../_gated/README.md) — Capricorn rising pair; revised Chitra candidate.
+
 ## Topic folders
 
 | Folder | Holds |
@@ -45,5 +59,6 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | `synthesis/` | Two planets speaking as one |
 | `reading-themes/` | Cross-chart themes |
 | `teaching/` | Craft teaching, not one natal placement |
+| `_gated/` | Studies awaiting Kaeden's word (folder name; fidelity choice) |
 
 New placements earn the next number, a topic folder, and a hyphenated slug — then a row in this table and in the reading template.

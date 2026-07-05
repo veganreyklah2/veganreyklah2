@@ -97,6 +97,11 @@
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
 | Chitra — the architect's star | `studies/nakshatras/20260705-160712_chitra-the-architects-star.md` |
 | The maker's gathering | `studies/synthesis/20260705-160712_the-makers-gathering.md` |
+| Moon in Aquarius — the woven heart | `studies/planets-in-signs/20260705-190812_moon-in-aquarius.md` |
+| Moon in Libra — the attuned heart | `studies/planets-in-signs/20260705-190812_moon-in-libra.md` |
+| The four lunar neighbor yogas | `studies/lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md` |
+| Neighboring yogas of Sun and ascendant | `studies/teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md` |
+| Occupation as lens on a star's essence | `studies/nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md` |
 
 ### Brooke reading — chapter silos (`readings/brooke/`)
 
