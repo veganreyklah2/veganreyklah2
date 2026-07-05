@@ -8,7 +8,7 @@
 
 ---
 
-With Capricorn rising, Saturn keeps the door as steward — and the steward keeps the third house in both wheels. Visible: retrograde through Pisces under Shatabhisha, the hundred medicines — the patient, inward-turned discipline of a craftsman-healer, structures dissolved until only true ones remain, the art of let it be, let it go, and the chart's motto spoken by its own steward: *substance over form.* Essence: exalted in Libra under Hasta, beside the Moon and Mercury — Saturn at its very best, the fair steward; the weight of being become the wealth of endurance, craft mastered over years, abundance that blooms late and then stays. The steward at her door is a maker; the exaltation says the making will be masterful.
+With Capricorn rising (#53), Saturn keeps the door as steward — the third house in both wheels. Visible: retrograde Pisces, Shatabhisha — *substance over form.* Essence: exalted in Libra under Hasta, beside the Moon and Mercury in the maker's gathering (#23). The steward at her door is a maker; the exaltation says the making will be masterful.
 
 ## With Gratitude
 

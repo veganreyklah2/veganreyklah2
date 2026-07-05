@@ -8,7 +8,7 @@
 
 ---
 
-Her Venus keeps the ninth house in both wheels: *love is her dharma, written twice.* In the visible chart it stands debilitated in Virgo in the ninth — love in workday clothes serving the sacred, devotion expressed as careful craft, beauty poured into service rather than display. The medicine stands: presence rather than perfection, purity through life-giving pleasure rather than denial, the true thing said with tact. Purva Phalguni keeps its householder questions burning gently — what are you committed to, and can the bond carry its full weight through pleasureless seasons. In the essence, Venus stands at the last degree of Aries in the ninth, wearing Ashwini, the twin dawn-horses, the healers: love courageous, morning-fresh, and medicinal, riding for the sacred. Whatever she loves becomes a pilgrimage.
+Her Venus keeps the ninth house in both wheels (#24): *love is her dharma, written twice.* Visible: debilitated in Virgo (#30), Purva Phalguni (#08) — presence rather than perfection. Essence: last degree of Aries (#29), Ashwini — love courageous and medicinal. Whatever she loves becomes a pilgrimage.
 
 ## With Gratitude
 

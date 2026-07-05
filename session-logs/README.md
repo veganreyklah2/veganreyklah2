@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.195609 | [Movement 2 pass two and Movement 3 recompose](20260705-195609_movement2-pass-two-m3-recompose.md) | Nine Brooke chapters thinned; composed reading synced |
 | 20260705.195800 | [Movement 2 dissociation pass one](20260705-195800_movement2-dissociation-pass-one.md) | Studies #55–#57; six Brooke chapters cite shelf |
 | 20260705.195200 | [Files 18 intake — Movement 1 batches 1–5](20260705-195200_files18-movement1-batches-landed.md) | Nested zips extracted; studies #24–#54 indexed |
 | 20260705.194600 | [Gates open — rising-signs and Chitra revised](20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved before files 18 land |

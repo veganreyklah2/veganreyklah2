@@ -8,9 +8,9 @@
 
 ---
 
-Capricorn rises in the visible chart: the Makara — shark-crocodile of the deep, guardian of gateways and thresholds, carrier of the river goddess — whom the old text paints as industrious, persevering, and practical, whose life deepens with age the way a river finds the sea. Uttara Ashadha lies across the threshold, named in the star-lore among Vishnu's own: the door of her life carries the all-sustainer's promise of the later victory — the same star her Moon wears, the door and the heart keeping one vow. The door's captain, Saturn, sits in the third house — hands, skills, courage, and the written word — wearing Shatabhisha, the hundred medicines, whose motto is substance over form. *The steward at her door is a patient craftsman-healer stationed in the workshop.*
+Capricorn rises (#53): Uttara Ashadha across the threshold — the same star her Moon wears. Saturn, the door's captain, sits in the third house under Shatabhisha — *substance over form.* *The steward at her door is a patient craftsman-healer stationed in the workshop.*
 
-The essence opens through Leo under Ashlesha — the lion within. Where the world meets a steady swimmer toward the threshold, the core self is regal, warm, generous, and deep-seeing, and Jupiter stands in that first house: wisdom itself greets whoever truly reaches her. The exchange sets the reading's spine — the apron worn at the threshold, the crown kept within, and the balance holds her whole. The Makara crosses; the lion reigns in the country the crossing reaches.
+The essence opens through Leo under Ashlesha (#14) — the lion within. Jupiter stands in that first house: wisdom greets whoever truly reaches her. The Makara crosses; the lion reigns in the country the crossing reaches.
 
 ## With Gratitude
 

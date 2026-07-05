@@ -8,7 +8,7 @@
 
 ---
 
-Born a single day shy of the full Moon, her heart is lit nearly to its fullest, and it rose in the east as she was born. In the visible chart it stands in Aquarius in the second house: the selfless spartan — a heart that feels through principle, gives to the many, and keeps its own needs on short rations; its medicine is to practice receiving as faithfully as giving. Its house is a gift to every path she owns, for the second house is the voice, the food, the family table: *her heart lives in the house of the voice.* And it keeps Uttara Ashadha across the sign-change — a heart that stays, and wins by staying. In the essence the Moon rests in Libra in the third house — very sensorial: an aesthete's heart that feeds on beauty, balance, and the fine judgment of the senses — wearing Chitra, the celestial architect's star, beside Mercury and exalted Saturn in Hasta in the house of hands. Feeling flows directly into making: what this heart loves, the hands must shape.
+Born a single day shy of the full Moon (#56), her heart rose in the east as she was born. Visible: Aquarius in the second (#48) — *her heart lives in the house of the voice* — Uttara Ashadha across the sign-change. Essence: Libra in the third (#49), wearing Chitra (#22), beside Mercury and exalted Saturn in the maker's gathering (#23). Feeling flows directly into making.
 
 ## With Gratitude
 

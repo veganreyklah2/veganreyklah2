@@ -8,7 +8,7 @@
 
 ---
 
-Her Sun stands angular in the seventh house, on the western horizon at the hour of her birth. The manual is blunt about this placement and the talks meet it honestly: a sovereign in the house of partnership must learn that partnership is a country of equals, and the early lessons often taste of friction. Ripened, it is one of the great grihastha placements: the self realized with an other and through an other, a spouse of dignity drawn to a light that stands openly at the beloved's door. Her Sun wears Pushya, the nourisher, whose god Brihaspati is priest and counselor of the gods — sacred speech his instrument, preparation his art, blessing his product. The star's lesson stands: be prepared, then be decisive — and the partnership house is where that lesson earns its keep. In the essence the Sun holds the last degree of Pisces in the eighth, wearing Uttara Bhadrapada, the deep serpent of the waters — the auspicious lord's family still, the ocean-floor patience beneath the vow-flame. Outwardly the light stands at the beloved's door; inwardly it keeps the deep rooms of the shared life warm.
+Her Sun stands angular in the seventh (#44), on the western horizon at the hour of her birth — a sovereign in the house of partnership, ripened as one of the great grihastha placements. Her Sun wears Pushya; the partnership house is where preparation earns its keep. In the essence the Sun holds the last degree of Pisces in the eighth (#43), wearing Uttara Bhadrapada. Outwardly the light stands at the beloved's door; inwardly it keeps the deep rooms of the shared life warm.
 
 ## With Gratitude
 

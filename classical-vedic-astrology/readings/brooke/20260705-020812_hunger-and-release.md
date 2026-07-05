@@ -8,7 +8,7 @@
 
 ---
 
-Visible axis, Scorpio eleventh to Taurus fifth: Rahu is appetite for depth among the gathered — communities that go all the way down, hunger and faith keeping one house, pacing the counsel; Ketu under Krittika's clean flame is release in the making — creativity freed from vanity, the fruits held lightly and offered, the artist's detachment that lets the work belong to the work. Essence axis, Capricorn sixth to Cancer twelfth: Rahu under the invincible waters is appetite disciplined into service, a hunger that shows up daily; Ketu under Ardra is the storm-star's cleansing turned toward the sanctuary, resting by degree upon her natal Mercury — the thinking mind gently loosened toward meditation. Read whole: hunger for the deep and the diligent; hold the outer fruits lightly.
+Visible axis, Scorpio eleventh to Taurus fifth (#45): Rahu appetite for depth among the gathered; Ketu under Krittika — release in the making. Essence axis, Capricorn sixth to Cancer twelfth (#46): Rahu appetite disciplined into service; Ketu under Ardra (#37), resting upon her natal Mercury. Read whole: hunger for the deep and the diligent; hold the outer fruits lightly.
 
 ## With Gratitude
 

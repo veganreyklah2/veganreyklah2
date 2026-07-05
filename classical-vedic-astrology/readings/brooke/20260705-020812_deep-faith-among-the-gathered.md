@@ -8,7 +8,7 @@
 
 ---
 
-Jupiter stands in Scorpio in the eleventh, wearing Swati, the free wind. Rightly held, this is the guru of the depths — faith that wants transformation rather than decoration, conviction with roots — and the wind keeps that faith honest, bending without breaking. The eleventh turns the depth outward: hers is a faith that goes deep *together*, belief matured in good company; Rahu beside it lends the aspirations a great hunger, and the counsel is pacing — let the wanting move at the speed of the faith. In the essence Jupiter stands in Leo in the first house — from self-knowledge to self-expression, wisdom done learning itself and beginning to shine — so whoever truly reaches her core is greeted by a warm and deep-seeing teacher.
+Jupiter stands in Scorpio in the eleventh, Swati — faith that goes deep *together* (#10); Rahu beside it lends great hunger; pace the wanting. Essence: Leo in the first (#47) — wisdom greeting whoever truly reaches her core.
 
 ## With Gratitude
 
