@@ -18,12 +18,9 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const c = std.c;
-const Ed25519 = std.crypto.sign.Ed25519;
-const X25519 = std.crypto.dh.X25519;
-const ChaCha20Poly1305 = std.crypto.aead.chacha_poly.ChaCha20Poly1305;
-const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
+const wf = @import("wire_format.rye");
 
-const hosted_wire_version = "20260702.014112";
+const hosted_wire_version = "20260705.225412";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -31,38 +28,6 @@ const SOL_SOCKET: c_int = 1;
 const SO_REUSEADDR: c_int = 2;
 
 const wire_port: u16 = 38472;
-const wire_capacity: u64 = 512;
-
-const off_sender: u64 = 0;
-const off_nonce: u64 = off_sender + 32;
-const off_name: u64 = off_nonce + ChaCha20Poly1305.nonce_length;
-const off_sig: u64 = off_name + Sha3_512.digest_length;
-const off_tag: u64 = off_sig + Ed25519.Signature.encoded_length;
-const off_cipher: u64 = off_tag + ChaCha20Poly1305.tag_length;
-const max_message: u64 = wire_capacity - off_cipher;
-
-/// Witness fixture seeds — unpredictable bytes pinned for parity, not production keys.
-const seed_alice = [_]u8{
-    0x30, 0x67, 0x4a, 0xec, 0xf2, 0x43, 0x4f, 0xc6, 0x92, 0x7f, 0x03, 0x79, 0xa8, 0x57, 0x6f, 0x40,
-    0xb3, 0x92, 0x4b, 0x67, 0xfd, 0x2c, 0xf4, 0xb7, 0x94, 0x4b, 0xc6, 0xcc, 0xda, 0xce, 0xe3, 0x73,
-};
-const seed_bob = [_]u8{
-    0xd9, 0xfb, 0xd1, 0xab, 0x33, 0xdb, 0x8a, 0xeb, 0x77, 0x2f, 0xe2, 0x1f, 0x1d, 0xa3, 0xfb, 0x8d,
-    0xc8, 0xe0, 0x92, 0x17, 0x1e, 0xd0, 0x9f, 0x81, 0x1c, 0xbe, 0x86, 0xb4, 0x3f, 0x64, 0x12, 0x71,
-};
-
-var seal_nonce_counter: u64 = 0;
-
-fn freshNonce() [ChaCha20Poly1305.nonce_length]u8 {
-    seal_nonce_counter += 1;
-    var counter_bytes: [8]u8 = undefined;
-    std.mem.writeInt(u64, &counter_bytes, seal_nonce_counter, .little);
-    var digest: [Sha3_512.digest_length]u8 = undefined;
-    Sha3_512.hash(&counter_bytes, &digest, .{});
-    var nonce: [ChaCha20Poly1305.nonce_length]u8 = undefined;
-    @memcpy(&nonce, digest[0..nonce.len]);
-    return nonce;
-}
 
 const sockaddr_in = extern struct {
     sin_family: c_ushort = AF_INET,
@@ -70,12 +35,6 @@ const sockaddr_in = extern struct {
     sin_addr: [4]u8 = .{ 127, 0, 0, 1 },
     sin_zero: [8]u8 = .{0} ** 8,
 };
-
-fn sealKey(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
-    var digest: [Sha3_512.digest_length]u8 = undefined;
-    Sha3_512.hash(&shared, &digest, .{});
-    return digest[0..ChaCha20Poly1305.key_length].*;
-}
 
 fn localhostAddr(port: u16) sockaddr_in {
     return .{
@@ -91,70 +50,12 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn sealDatagram(buf: *[@intCast(wire_capacity)]u8) u64 {
-    const alice_id = Ed25519.KeyPair.generateDeterministic(seed_alice) catch unreachable;
-    const bob_pub = (Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable).public_key;
-    const alice_x = X25519.KeyPair.fromEd25519(alice_id) catch unreachable;
-    const bob_x_pub = X25519.publicKeyFromEd25519(bob_pub) catch unreachable;
-
-    const message = expected_message;
-    const nonce = freshNonce();
-
-    const shared = X25519.scalarmult(alice_x.secret_key, bob_x_pub) catch unreachable;
-    const key = sealKey(shared);
-    var ciphertext: [message.len]u8 = undefined;
-    var tag: [ChaCha20Poly1305.tag_length]u8 = undefined;
-    ChaCha20Poly1305.encrypt(&ciphertext, &tag, message, "", nonce, key);
-    var name: [Sha3_512.digest_length]u8 = undefined;
-    Sha3_512.hash(&ciphertext, &name, .{});
-    const sig = alice_id.sign(&name, null) catch unreachable;
-
-    const sender_bytes = alice_id.public_key.toBytes();
-    const sig_bytes = sig.toBytes();
-    @memcpy(buf[@intCast(off_sender)..][0..32], &sender_bytes);
-    @memcpy(buf[@intCast(off_nonce)..][0..nonce.len], &nonce);
-    @memcpy(buf[@intCast(off_name)..][0..name.len], &name);
-    @memcpy(buf[@intCast(off_sig)..][0..sig_bytes.len], &sig_bytes);
-    @memcpy(buf[@intCast(off_tag)..][0..tag.len], &tag);
-    @memcpy(buf[@intCast(off_cipher)..][0..ciphertext.len], &ciphertext);
-    return off_cipher + @as(u64, @intCast(ciphertext.len));
-}
-
-const expected_message = "Meet me where the rye grows.";
-
-fn openDatagram(buf: []const u8, opened: []u8) !u64 {
-    assert(buf.len >= @as(usize, @intCast(off_cipher)));
-    assert(buf.len <= @as(usize, @intCast(wire_capacity)));
-    assert(opened.len >= @as(usize, @intCast(max_message)));
-
-    const sender = Ed25519.PublicKey.fromBytes(buf[@intCast(off_sender)..][0..32].*) catch return error.BadSender;
-    const nonce = buf[@intCast(off_nonce)..][0..ChaCha20Poly1305.nonce_length].*;
-    const name = buf[@intCast(off_name)..][0..Sha3_512.digest_length].*;
-    const sig = Ed25519.Signature.fromBytes(buf[@intCast(off_sig)..][0..Ed25519.Signature.encoded_length].*);
-    const tag = buf[@intCast(off_tag)..][0..ChaCha20Poly1305.tag_length].*;
-    const ciphertext = buf[@intCast(off_cipher)..];
-
-    sig.verify(&name, sender) catch return error.VerifyFailed;
-    var check: [Sha3_512.digest_length]u8 = undefined;
-    Sha3_512.hash(ciphertext, &check, .{});
-    if (!std.mem.eql(u8, &name, &check)) return error.NameMismatch;
-
-    const bob_id = Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable;
-    const bob_x = X25519.KeyPair.fromEd25519(bob_id) catch unreachable;
-    const sender_x = X25519.publicKeyFromEd25519(sender) catch unreachable;
-    const shared = X25519.scalarmult(bob_x.secret_key, sender_x) catch unreachable;
-    const key = sealKey(shared);
-
-    ChaCha20Poly1305.decrypt(opened[0..ciphertext.len], ciphertext, tag, "", nonce, key) catch return error.OpenFailed;
-    return @as(u64, @intCast(ciphertext.len));
-}
-
 fn runSelftest() !u8 {
-    var buf: [@intCast(wire_capacity)]u8 = undefined;
-    const len = sealDatagram(&buf);
-    var opened: [@intCast(max_message)]u8 = undefined;
-    const msg_len = try openDatagram(buf[0..@intCast(len)], &opened);
-    if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], expected_message)) return error.MessageWrong;
+    var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const len = wf.sealDatagram(&buf);
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const msg_len = try wf.openDatagram(buf[0..@intCast(len)], &opened);
+    if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], wf.expected_message)) return error.MessageWrong;
     print("comlink hosted wire: selftest GREEN — seal and open in one process\n", .{});
     return 0;
 }
@@ -163,8 +64,8 @@ fn runSend() !u8 {
     const fd = try openSocket();
     defer _ = c.close(fd);
 
-    var buf: [@intCast(wire_capacity)]u8 = undefined;
-    const len = sealDatagram(&buf);
+    var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const len = wf.sealDatagram(&buf);
 
     const dest = localhostAddr(wire_port);
     const sent = c.sendto(fd, &buf, @intCast(len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
@@ -181,25 +82,25 @@ fn runRecv() !u8 {
     var bind_addr = localhostAddr(wire_port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
 
-    var buf: [@intCast(wire_capacity)]u8 = undefined;
+    var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
-    const n = c.recvfrom(fd, &buf, @intCast(wire_capacity), 0, @ptrCast(&from), &from_len);
+    const n = c.recvfrom(fd, &buf, @intCast(wf.wire_capacity), 0, @ptrCast(&from), &from_len);
     if (n < 0) return error.RecvFailed;
     const len: u64 = @intCast(n);
 
-    if (len < off_cipher or len > wire_capacity) {
+    if (len < wf.off_cipher or len > wf.wire_capacity) {
         print("comlink hosted wire: malformed datagram, refused at the edge\n", .{});
         return 1;
     }
 
-    var opened: [@intCast(max_message)]u8 = undefined;
-    const msg_len = openDatagram(buf[0..@intCast(len)], &opened) catch {
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const msg_len = wf.openDatagram(buf[0..@intCast(len)], &opened) catch {
         print("comlink hosted wire: open failed\n", .{});
         return 1;
     };
 
-    if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], expected_message)) {
+    if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], wf.expected_message)) {
         print("comlink hosted wire: opened message mismatch\n", .{});
         return 1;
     }
@@ -241,7 +142,7 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
     assert(send_code == 0);
 
     print("comlink hosted wire: demo GREEN — sealed datagram crossed localhost UDP\n", .{});
-    print("comlink hosted wire: version {s}\n", .{hosted_wire_version});
+    print("comlink hosted wire: version {s} wire_format {s}\n", .{ hosted_wire_version, wf.wire_format_version });
     return 0;
 }
 
