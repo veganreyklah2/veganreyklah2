@@ -95,6 +95,8 @@
 | Saturn in the 9th | `studies/planet-in-house/saturn-in-the-9th-house.md` |
 | Government as planetary spectrum (teaching) | `studies/teaching/government-as-planetary-spectrum.md` |
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
+| Chitra — the architect's star | `studies/nakshatras/20260705-160712_chitra-the-architects-star.md` |
+| The maker's gathering | `studies/synthesis/20260705-160712_the-makers-gathering.md` |
 
 ### Brooke reading — chapter silos (`readings/brooke/`)
 

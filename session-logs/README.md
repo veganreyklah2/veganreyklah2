@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.161012 | [Silo deepening intake — Cursor](20260705-161012_silo-deepening-intake-cursor.md) | `files (17).zip` at `5c322fd`; studies #22–#23, recursion v1, staged log |
+| 20260705.160712 | [Silo deepening staged](20260705-160712_silo-deepening-staged.md) | Recursion v1 for deepening bench; exemplars #22–#23; recomposition rite defined |
 | 20260705.053212 | [Zip 45 commit and push](20260705-053212_zip45-commit-and-push.md) | `f134d8b` — shelf, sweeps, method, study #21; zip 45 at tip |
 | 20260705.050012 | [Zip 45 astrology progress intake](20260705-050012_zip45-astrology-progress-intake.md) | Shelf, Makara/Chitra/steward sweeps, method, study #21, wheel v4 |
 | 20260705.045812 | [Divine mother teacher](20260705-045812_divine-mother-teacher.md) | Steward vocabulary healed; teacher feminized; study harmonized |

@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-05 (Brooke shelf, diurnal method, divine-mother study #21, wheel v4 template)
+**Last updated:** 2026-07-05 (studies #22–#23; silo deepening bench staged)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 
