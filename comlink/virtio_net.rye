@@ -1,0 +1,418 @@
+//! comlink/virtio_net.rye — virtio-net MMIO types and freestanding driver seed.
+//!
+//! Shared by hosted descriptor validation (`device_wire.rye`) and freestanding
+//! guests on QEMU virt. One letter for constants, bounds, and the sub-lap 2 link
+//! pattern — no format fork between hosted algebra and bare-metal carriage.
+
+// --- Virtio MMIO (modern + legacy subset for virtio-net on riscv virt) ---
+
+pub const mmio_slot_stride: u64 = 0x1000;
+pub const mmio_region_base: u64 = 0x1000_1000;
+pub const mmio_slot_count: u32 = 8;
+/// Resolved at boot by `findNetDevice`.
+pub var mmio_base: u64 = mmio_region_base;
+pub var use_legacy_queues: bool = false;
+
+pub const mmio_magic: u32 = 0x74726976;
+pub const mmio_version: u32 = 2;
+pub const device_id_net: u32 = 1;
+
+pub const off_magic: u32 = 0x000;
+pub const off_version: u32 = 0x004;
+pub const off_device_id: u32 = 0x008;
+pub const off_device_features: u32 = 0x010;
+pub const off_device_features_sel: u32 = 0x014;
+pub const off_driver_features: u32 = 0x020;
+pub const off_driver_features_sel: u32 = 0x024;
+pub const off_queue_sel: u32 = 0x028;
+pub const off_queue_num_max: u32 = 0x02c;
+pub const off_queue_num: u32 = 0x030;
+pub const off_queue_ready: u32 = 0x044;
+pub const off_queue_notify: u32 = 0x050;
+pub const off_status: u32 = 0x070;
+pub const off_queue_desc_low: u32 = 0x080;
+pub const off_queue_desc_high: u32 = 0x084;
+pub const off_queue_avail_low: u32 = 0x090;
+pub const off_queue_avail_high: u32 = 0x094;
+pub const off_queue_used_low: u32 = 0x0a0;
+pub const off_queue_used_high: u32 = 0x0a4;
+pub const off_config: u32 = 0x100;
+
+pub const off_legacy_queue_sel: u32 = 0x030;
+pub const off_legacy_queue_num_max: u32 = 0x034;
+pub const off_legacy_queue_num: u32 = 0x038;
+pub const off_legacy_queue_align: u32 = 0x03c;
+pub const off_legacy_queue_pfn: u32 = 0x040;
+
+pub const status_acknowledge: u32 = 1;
+pub const status_driver: u32 = 2;
+pub const status_driver_ok: u32 = 4;
+pub const status_features_ok: u32 = 8;
+
+pub const feat_version_1: u64 = 1 << 32;
+pub const feat_mac: u64 = 1 << 5;
+
+pub const queue_rx: u32 = 0;
+pub const queue_tx: u32 = 1;
+
+pub const queue_depth: u32 = 4;
+pub const max_frame: u32 = 128;
+pub const legacy_vring_align: u32 = 4;
+pub const legacy_page_align: u32 = 4096;
+
+pub const vq_desc_f_next: u16 = 1;
+pub const vq_desc_f_write: u16 = 2;
+
+pub const VirtioNetHdr = extern struct {
+    flags: u8,
+    gso_type: u8,
+    hdr_len: u16,
+    gso_size: u16,
+    csum_start: u16,
+    csum_offset: u16,
+};
+
+pub const virtio_net_hdr_len: u32 = @sizeOf(VirtioNetHdr);
+pub const eth_header_len: u32 = 14;
+pub const lab_ethertype: u16 = 0x1201;
+
+pub const link_pattern_len: u32 = 32;
+pub const link_pattern_fill: u8 = 0xAB;
+
+pub const VqDesc = extern struct {
+    addr: u64,
+    len: u32,
+    flags: u16,
+    next: u16,
+};
+
+pub const VqAvail = extern struct {
+    flags: u16,
+    idx: u16,
+    ring: [queue_depth]u16,
+};
+
+pub const VqUsedElem = extern struct {
+    id: u32,
+    len: u32,
+};
+
+pub const VqUsed = extern struct {
+    flags: u16,
+    idx: u16,
+    ring: [queue_depth]VqUsedElem,
+};
+
+/// Fixed guest RAM — xv6-style split virtqueue pages.
+pub const desc_page_addr: u64 = 0x8040_0000;
+pub const avail_page_addr: u64 = 0x8040_1000;
+pub const used_page_addr: u64 = 0x8040_2000;
+pub const tx_buf_addr: u64 = 0x8040_3000;
+pub const rx_buf_addr: u64 = 0x8040_4000;
+
+const uart_tx: *volatile u8 = @ptrFromInt(0x1000_0000);
+const test_finisher: *volatile u32 = @ptrFromInt(0x0010_0000);
+pub const finisher_pass: u32 = 0x5555;
+
+fn assert(ok: bool) void {
+    if (!ok) unreachable;
+}
+
+fn mmioReadAt(base: u64, offset: u32) u32 {
+    const ptr: *volatile u32 = @ptrFromInt(base + offset);
+    return ptr.*;
+}
+
+fn mmioWriteAt(base: u64, offset: u32, value: u32) void {
+    const ptr: *volatile u32 = @ptrFromInt(base + offset);
+    ptr.* = value;
+}
+
+fn mmioRead(offset: u32) u32 {
+    return mmioReadAt(mmio_base, offset);
+}
+
+fn mmioWrite(offset: u32, value: u32) void {
+    mmioWriteAt(mmio_base, offset, value);
+}
+
+fn fence() void {
+    asm volatile ("fence iorw, iorw" ::: .{ .memory = true });
+}
+
+pub fn writeStr(text: []const u8) void {
+    for (text) |byte| uart_tx.* = byte;
+}
+
+pub fn finishPass() noreturn {
+    test_finisher.* = finisher_pass;
+    while (true) {}
+}
+
+pub fn finishFail() noreturn {
+    while (true) {}
+}
+
+pub fn findNetDevice() bool {
+    var slot: u32 = 0;
+    while (slot < mmio_slot_count) : (slot += 1) {
+        const base = mmio_region_base + @as(u64, slot) * mmio_slot_stride;
+        if (mmioReadAt(base, off_magic) != mmio_magic) continue;
+        const version = mmioReadAt(base, off_version);
+        const device_id = mmioReadAt(base, off_device_id);
+        if (device_id != device_id_net) continue;
+        if (version != 1 and version != mmio_version) continue;
+        mmio_base = base;
+        return true;
+    }
+    return false;
+}
+
+fn readDeviceFeatures() u64 {
+    mmioWrite(off_device_features_sel, 0);
+    const lo: u64 = mmioRead(off_device_features);
+    mmioWrite(off_device_features_sel, 1);
+    const hi: u64 = mmioRead(off_device_features);
+    return lo | (hi << 32);
+}
+
+fn writeDriverFeatures(features: u64) void {
+    mmioWrite(off_driver_features_sel, 0);
+    mmioWrite(off_driver_features, @truncate(features));
+    mmioWrite(off_driver_features_sel, 1);
+    mmioWrite(off_driver_features, @truncate(features >> 32));
+}
+
+pub fn negotiateFeatures(offered: u64) u64 {
+    return offered & feat_mac;
+}
+
+pub fn initDevice() void {
+    assert(findNetDevice());
+    const version = mmioRead(off_version);
+    assert(version == 1 or version == mmio_version);
+    assert(mmioRead(off_device_id) == device_id_net);
+    // QEMU virt transitional virtio-net exposes legacy version register yet
+    // accepts the modern split-queue layout (xv6-riscv virtio-net pattern).
+    use_legacy_queues = false;
+
+    mmioWrite(off_status, 0);
+    mmioWrite(off_status, status_acknowledge);
+    mmioWrite(off_status, status_acknowledge | status_driver);
+
+    const offered = readDeviceFeatures();
+    writeDriverFeatures(negotiateFeatures(offered));
+
+    mmioWrite(off_status, status_acknowledge | status_driver | status_features_ok);
+    assert((mmioRead(off_status) & status_features_ok) != 0);
+}
+
+fn legacyUsedOffset(num: u32) u32 {
+    // flags + idx + ring[num] + unused halfword — matches Linux vring_size().
+    const head = num * @sizeOf(VqDesc) + 2 + 2 + num * 2 + 2;
+    return (head + legacy_vring_align - 1) & ~(legacy_vring_align - 1);
+}
+
+pub const LegacyVring = struct {
+    page: [legacy_page_align]u8 align(4096),
+
+    fn desc(self: *LegacyVring) [*]VqDesc {
+        return @ptrCast(&self.page);
+    }
+
+    fn avail(self: *LegacyVring) *VqAvail {
+        const raw = @as([*]u8, @ptrCast(self)) + queue_depth * @sizeOf(VqDesc);
+        return @ptrCast(@alignCast(raw));
+    }
+
+    fn used(self: *LegacyVring) *VqUsed {
+        const raw = @as([*]u8, @ptrCast(self)) + legacyUsedOffset(queue_depth);
+        return @ptrCast(@alignCast(raw));
+    }
+
+    fn clear(self: *LegacyVring) void {
+        @memset(&self.page, 0);
+    }
+};
+
+fn descPage() [*]VqDesc {
+    return @ptrFromInt(desc_page_addr);
+}
+
+fn availPage() *VqAvail {
+    return @ptrFromInt(avail_page_addr);
+}
+
+fn usedPage() *VqUsed {
+    return @ptrFromInt(used_page_addr);
+}
+
+fn txBuf() *[max_frame]u8 {
+    return @ptrFromInt(tx_buf_addr);
+}
+
+fn rxBuf() *[max_frame]u8 {
+    return @ptrFromInt(rx_buf_addr);
+}
+
+fn setupModernQueue(queue_idx: u32) void {
+    mmioWrite(off_queue_sel, queue_idx);
+    mmioWrite(off_queue_num, queue_depth);
+
+    mmioWrite(off_queue_desc_low, @truncate(desc_page_addr));
+    mmioWrite(off_queue_desc_high, @truncate(desc_page_addr >> 32));
+    mmioWrite(off_queue_avail_low, @truncate(avail_page_addr));
+    mmioWrite(off_queue_avail_high, @truncate(avail_page_addr >> 32));
+    mmioWrite(off_queue_used_low, @truncate(used_page_addr));
+    mmioWrite(off_queue_used_high, @truncate(used_page_addr >> 32));
+    mmioWrite(off_queue_ready, 1);
+    fence();
+}
+
+fn setupLegacyQueue(queue_idx: u32, vring: *LegacyVring) void {
+    mmioWrite(off_legacy_queue_sel, queue_idx);
+    const num_max = mmioRead(off_legacy_queue_num_max);
+    assert(num_max >= queue_depth);
+    mmioWrite(off_legacy_queue_num, queue_depth);
+    mmioWrite(off_legacy_queue_align, legacy_page_align);
+    const pfn: u32 = @truncate(@intFromPtr(&vring.page) >> 12);
+    mmioWrite(off_legacy_queue_pfn, pfn);
+    fence();
+}
+
+pub fn driverOk() void {
+    mmioWrite(off_status, status_acknowledge | status_driver | status_features_ok | status_driver_ok);
+}
+
+pub fn readMac(mac: *[6]u8) void {
+    const w0 = mmioRead(off_config);
+    mac[0] = @truncate(w0);
+    mac[1] = @truncate(w0 >> 8);
+    mac[2] = @truncate(w0 >> 16);
+    mac[3] = @truncate(w0 >> 24);
+    const w1 = mmioRead(off_config + 4);
+    mac[4] = @truncate(w1);
+    mac[5] = @truncate(w1 >> 8);
+}
+
+pub fn fillPatternFrame(buf: []u8) u32 {
+    const payload_off = virtio_net_hdr_len + eth_header_len;
+    const total: u32 = payload_off + link_pattern_len;
+    assert(total <= buf.len);
+
+    @memset(buf[0..virtio_net_hdr_len], 0);
+    // hdr_len names the virtio-net header size for the device.
+    buf[4] = @truncate(virtio_net_hdr_len);
+    buf[5] = @truncate(virtio_net_hdr_len >> 8);
+    buf[virtio_net_hdr_len + 0] = 0xff;
+    buf[virtio_net_hdr_len + 1] = 0xff;
+    buf[virtio_net_hdr_len + 2] = 0xff;
+    buf[virtio_net_hdr_len + 3] = 0xff;
+    buf[virtio_net_hdr_len + 4] = 0xff;
+    buf[virtio_net_hdr_len + 5] = 0xff;
+
+    var mac: [6]u8 = undefined;
+    readMac(&mac);
+    var i: u32 = 0;
+    while (i < 6) : (i += 1) buf[virtio_net_hdr_len + 6 + i] = mac[i];
+    buf[virtio_net_hdr_len + 12] = @truncate(lab_ethertype >> 8);
+    buf[virtio_net_hdr_len + 13] = @truncate(lab_ethertype);
+    i = 0;
+    while (i < link_pattern_len) : (i += 1) buf[payload_off + i] = link_pattern_fill;
+    return total;
+}
+
+fn patternMatches(buf: []const u8) bool {
+    const payload_off = virtio_net_hdr_len + eth_header_len;
+    if (buf.len < payload_off + link_pattern_len) return false;
+    var i: u32 = 0;
+    while (i < link_pattern_len) : (i += 1) {
+        if (buf[payload_off + i] != link_pattern_fill) return false;
+    }
+    return true;
+}
+
+pub const TxQueue = struct {
+    avail_tail: u16,
+    used_tail: u16,
+
+    pub fn init(self: *TxQueue) void {
+        self.avail_tail = 0;
+        self.used_tail = 0;
+        @memset(@as([*]u8, @ptrCast(descPage()))[0 .. queue_depth * @sizeOf(VqDesc)], 0);
+        @memset(@as([*]u8, @ptrCast(availPage()))[0..@sizeOf(VqAvail)], 0);
+        @memset(@as([*]u8, @ptrCast(usedPage()))[0..@sizeOf(VqUsed)], 0);
+        @memset(txBuf(), 0);
+        setupModernQueue(queue_tx);
+    }
+
+    pub fn sendPattern(self: *TxQueue) void {
+        const buf = txBuf();
+        const total = fillPatternFrame(buf);
+        const desc = descPage();
+        const avail = availPage();
+        const used = usedPage();
+
+        desc[0] = .{
+            .addr = @intFromPtr(buf),
+            .len = total,
+            .flags = 0,
+            .next = 0,
+        };
+        avail.ring[0] = 0;
+        self.avail_tail = 1;
+        avail.idx = 1;
+        fence();
+        mmioWrite(off_queue_notify, queue_tx);
+
+        var spins: u32 = 0;
+        const used_idx: *volatile u16 = @ptrCast(&used.idx);
+        while (used_idx.* == self.used_tail) : (spins += 1) {
+            if (spins > 50_000_000) finishFail();
+        }
+        self.used_tail = used_idx.*;
+        assert(used.ring[0].id == 0);
+    }
+};
+
+pub const RxQueue = struct {
+    avail_tail: u16,
+    used_tail: u16,
+
+    pub fn init(self: *RxQueue) void {
+        self.avail_tail = 0;
+        self.used_tail = 0;
+        @memset(@as([*]u8, @ptrCast(descPage()))[0 .. queue_depth * @sizeOf(VqDesc)], 0);
+        @memset(@as([*]u8, @ptrCast(availPage()))[0..@sizeOf(VqAvail)], 0);
+        @memset(@as([*]u8, @ptrCast(usedPage()))[0..@sizeOf(VqUsed)], 0);
+        @memset(rxBuf(), 0);
+
+        const desc = descPage();
+        const avail = availPage();
+        desc[0] = .{
+            .addr = @intFromPtr(rxBuf()),
+            .len = max_frame,
+            .flags = vq_desc_f_write,
+            .next = 0,
+        };
+        avail.ring[0] = 0;
+        self.avail_tail = 1;
+        avail.idx = 1;
+        fence();
+        setupModernQueue(queue_rx);
+    }
+
+    pub fn waitPattern(self: *RxQueue) bool {
+        const buf = rxBuf();
+        const used = usedPage();
+        var spins: u32 = 0;
+        const used_idx: *volatile u16 = @ptrCast(&used.idx);
+        while (used_idx.* == self.used_tail) : (spins += 1) {
+            if (spins > 100_000_000) return false;
+        }
+        const elem = used.ring[0];
+        assert(elem.id == 0);
+        _ = elem.len;
+        return patternMatches(buf);
+    }
+};

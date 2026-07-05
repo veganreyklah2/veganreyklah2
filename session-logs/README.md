@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.231300 | [Virtio TX counsel handoff for Claude](20260705-231300_virtio-tx-counsel-handoff.md) | Counsel brief seated; six ruled questions; repro for Claude on metal |
+| 20260705.230100 | [Device wire sub-lap 2 climb and grain check](20260705-230100_device-wire-sub-lap2-grain.md) | Sub-lap 2 scaffolding; virtio TX blocked on transitional MMIO; grain verified; sub-lap 1 GREEN |
 | 20260705.225412 | [Comlink device wire sub-lap 1](20260705-225412_comlink-device-wire-sub-lap1.md) | wire_format extracted; fixture selftest GREEN |
 | 20260705.224612 | [Full summary — commits and pushes](20260705-224612_full-summary-commits-pushes.md) | Evening arc from silo bench through parity 153 |
 | 20260705.203144 | [Vocabulary ground — parity 153](20260705-203144_vocabulary-ground-parity-153.md) | TWO_ROOMS seated; gloss spec; doorway witness; season opens |

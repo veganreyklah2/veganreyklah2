@@ -1,8 +1,9 @@
 //! comlink/device_wire.rye — sealed datagram over virtio-net between guests.
 //!
 //! Sub-lap 1 (hosted selftest): virtio descriptor algebra on fixtures plus the
-//! shared wire format seal/open — no live link yet. Sub-laps 2–3 grow freestanding
-//! guests on QEMU virt per active-designing/20260705-225412_comlink-device-wire.md.
+//! shared wire format seal/open — no live link yet. Sub-lap 2 runs freestanding
+//! guests via comlink/run_device_wire_lab.sh. Sub-lap 3 carries the sealed
+//! datagram across the same link.
 //!
 //! Usage:
 //!   device_wire selftest   Fixture virtio validation + wire_format round-trip
@@ -14,6 +15,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const wf = @import("wire_format.rye");
+const vn = @import("virtio_net.rye");
 
 /// Explicit subject — every queue depth and buffer bound stated up front.
 pub const WireSubject = struct {
@@ -23,45 +25,18 @@ pub const WireSubject = struct {
     datagram: *[@intCast(wf.wire_capacity)]u8,
 };
 
-// Virtio 1.0 MMIO layout (subset for virtio-net on virt).
-pub const mmio_magic: u32 = 0x74726976;
-pub const mmio_version: u32 = 2;
-pub const mmio_vendor: u32 = 0x554d4551;
-
-pub const vq_desc_size: u64 = 16;
-pub const vq_desc_f_next: u16 = 1;
-pub const vq_desc_f_write: u16 = 2;
-
-pub const VqDesc = extern struct {
-    addr: u64,
-    len: u32,
-    flags: u16,
-    next: u16,
-};
-
-pub const VirtioNetHdr = extern struct {
-    flags: u8,
-    gso_type: u8,
-    hdr_len: u16,
-    gso_size: u16,
-    csum_start: u16,
-    csum_offset: u16,
-};
-
-pub const virtio_net_hdr_len: u32 = @sizeOf(VirtioNetHdr);
-
 fn assertMmioOffset(offset: u32, width: u32) void {
     assert(offset % width == 0);
     assert(offset < 0x100);
 }
 
-fn validateDescriptor(desc: *const VqDesc, subject: *const WireSubject) !void {
+fn validateDescriptor(desc: *const vn.VqDesc, subject: *const WireSubject) !void {
     if (desc.len == 0) return error.EmptyDescriptor;
     if (desc.len > subject.max_frame) return error.OutOfBounds;
     if (desc.addr == 0) return error.NullGuestAddr;
 }
 
-fn validateChain(subject: *const WireSubject, ring: []const VqDesc) !u32 {
+fn validateChain(subject: *const WireSubject, ring: []const vn.VqDesc) !u32 {
     var idx: u16 = 0;
     var total: u32 = 0;
     var hops: u32 = 0;
@@ -71,49 +46,43 @@ fn validateChain(subject: *const WireSubject, ring: []const VqDesc) !u32 {
         const desc = &ring[@intCast(idx)];
         try validateDescriptor(desc, subject);
         total +%= desc.len;
-        if ((desc.flags & vq_desc_f_next) == 0) return total;
+        if ((desc.flags & vn.vq_desc_f_next) == 0) return total;
         idx = desc.next;
         if (@as(u32, idx) >= subject.queue_depth) return error.BadNextIndex;
     }
 }
 
-fn negotiateFeatures(offered: u32) u32 {
-    assertMmioOffset(0, 4);
-    // Device wire lap 1: accept MAC and VIRTIO_F_VERSION_1 only.
-    const want: u32 = 1 << 5; // VIRTIO_NET_F_MAC
-    return offered & want;
-}
-
 fn selftestDescriptorFixture() !void {
-    var ring: [4]VqDesc = undefined;
+    var ring: [4]vn.VqDesc = undefined;
     var payload: [64]u8 = undefined;
-    @memset(&payload, 0xAB);
+    @memset(&payload, vn.link_pattern_fill);
 
     ring[0] = .{
         .addr = @intFromPtr(&payload),
-        .len = @sizeOf(VirtioNetHdr),
-        .flags = vq_desc_f_next,
+        .len = vn.virtio_net_hdr_len,
+        .flags = vn.vq_desc_f_next,
         .next = 1,
     };
     ring[1] = .{
-        .addr = @intFromPtr(&payload) + @sizeOf(VirtioNetHdr),
-        .len = 32,
+        .addr = @intFromPtr(&payload) + vn.virtio_net_hdr_len,
+        .len = vn.link_pattern_len,
         .flags = 0,
         .next = 0,
     };
 
     var subject = WireSubject{
-        .mmio_base = 0x1000_1000,
-        .queue_depth = 4,
-        .max_frame = 128,
+        .mmio_base = vn.mmio_base,
+        .queue_depth = vn.queue_depth,
+        .max_frame = vn.max_frame,
         .datagram = undefined,
     };
 
-    const offered: u32 = negotiateFeatures(0x0000_0020 | 0x0000_0001);
-    assert(offered == 0x0000_0020);
+    const offered: u64 = vn.feat_mac | vn.feat_version_1;
+    const accepted = vn.negotiateFeatures(offered);
+    assert(accepted == vn.feat_mac);
 
     const total = try validateChain(&subject, &ring);
-    assert(total == @sizeOf(VirtioNetHdr) + 32);
+    assert(total == vn.virtio_net_hdr_len + vn.link_pattern_len);
 }
 
 fn selftestWireFormatRoundTrip() !void {

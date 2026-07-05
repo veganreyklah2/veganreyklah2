@@ -6,7 +6,7 @@
 **Lens:** TAME — safety first at the untrusted channel; performance second; joy in the rye-field message crossing a real device
 **Register:** active-designing — names only our modules
 **Status:** Seated — checkable-room lap brief; sub-lap 1 in flight; parity wires after sub-lap 3 greens on metal
-**Ground:** [`comlink/hosted_wire.rye`](../comlink/hosted_wire.rye) · [`yonder/20260620-041412_virtio-the-device-wire.md`](yonder/20260620-041412_virtio-the-device-wire.md) · [`20260704-211012_the-rye-core-and-the-shell.md`](20260704-211012_the-rye-core-and-the-shell.md)
+**Ground:** [`comlink/hosted_wire.rye`](../comlink/hosted_wire.rye) · [`comlink/wire_format.rye`](../comlink/wire_format.rye) · [`20260705-231300_virtio-tx-counsel-handoff.md`](20260705-231300_virtio-tx-counsel-handoff.md) · [`yonder/20260620-041412_virtio-the-device-wire.md`](yonder/20260620-041412_virtio-the-device-wire.md) · [`20260704-211012_the-rye-core-and-the-shell.md`](20260704-211012_the-rye-core-and-the-shell.md) · lineage: [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md)
 
 *Written in Rio 3's Radiant voice, counseled with Kaeden and Claude.*
 
@@ -21,6 +21,26 @@ The device wire carries the **same** sealed datagram from `hosted_wire.rye` acro
 It is the exact carriage **SLC-L2** needs. Once sub-lap three greens, a signed sanctuary receipt can travel identity to identity under seal, and the civic flow becomes real end to end. One lap carries both the Rye compose spine and the Linengrow why.
 
 **Edit-5:** this lap reuses the frozen frame and does **not** occupy the Edit-5 slot. Snapshot export (I2) still precedes resin-batch frame (I1) when that slot opens.
+
+## Lineage — what this lap inherits and what it defers
+
+Yes — the safety and performance discipline on Comlink wire datagrams shares DNA with the zero-copy resins research, yet the device wire inherits that discipline **through the single-datagram letter** in `wire_format.rye`, not by building the resin-batch frame those documents design for the step after.
+
+**Shared habits (already in `hosted_wire.rye`, carried unchanged to the device wire):**
+
+| Habit | Where it lives today |
+|-------|----------------------|
+| **Control before data** | Ed25519 signature covers the **name** (SHA3 digest of ciphertext); the payload proves itself by digest — one verify pass, no second integrity walk |
+| **Shape-cast at the edge** | Receiver refuses malformed lengths; opens only after crypto checks — view over arrived bytes, not a re-encoded owned graph |
+| **Bounded everything** | `wire_capacity`, `max_message`, Tally-bounded virtqueue depth and `max_frame` on `WireSubject` |
+
+The core-and-shell brief names this vow at the wire: *control before data — signed headers verified once; payloads prove by digest.* TAME carries TigerStyle ordering (network, disk, memory, CPU) into every host-touching lap; the resins research translates that same discipline into Amphora grammar.
+
+**Deferred deliberately (I1 — Edit-5 slot, after I2):**
+
+Batching many resins under one signed batch header, the have-already and need-stone lanes, and the frame fields in counsel **I1** — that is the **batched generalization** of the single datagram this lap moves. Same law, more stones. When I1 opens, [`20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) and [`20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) are its direct blueprint.
+
+**Order on the table (coherent, not in tension):** device wire proves rung three now · I2 snapshot export takes Edit-5 first when opened · I1 resin-batch frame second · this lap runs beside Edit-5 on its own ladder.
 
 ## Core and shell
 
@@ -48,8 +68,8 @@ Gall's Law seed from yonder brief `10016` — each sub-lap is one proof; parity 
 
 | Sub-lap | Proof | Status |
 |---------|-------|--------|
-| **1** | Fixture virtio descriptor validation + `wire_format` seal/open — no live link | **In flight** — `device_wire selftest` GREEN |
-| **2** | Two QEMU `virt` guests — fixed pattern TX/RX, lengths and bytes match | Open |
+| **1** | Fixture virtio descriptor validation + `wire_format` seal/open — no live link | **Landed** — `device_wire selftest` GREEN |
+| **2** | Two QEMU `virt` guests — fixed pattern TX/RX, lengths and bytes match | **In flight** — `virtio_net.rye`, guests, `run_device_wire_lab.sh`; virtio TX completion on QEMU 8.2 transitional MMIO needs close-reading pass |
 | **3** | Sealed datagram payload — receiver opens; message reads *Meet me where the rye grows.* | Open → parity **154** |
 
 ## Lab topology (confirmed)

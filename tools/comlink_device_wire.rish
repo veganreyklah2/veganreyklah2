@@ -1,9 +1,9 @@
-# comlink_device_wire.rish — Comlink device wire sub-lap 1 witness (fixture selftest).
+# comlink_device_wire.rish — Comlink device wire witness (sub-lap 1; sub-lap 2 lab in flight).
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/comlink_device_wire.rish
 #
-# Parity wires only after sub-lap 3 greens on metal — see
+# Sub-lap 2 linktest wires when virtio TX/RX greens — see
 # active-designing/20260705-225412_comlink-device-wire.md.
 
 let zig = "vendor/zig-toolchain/zig"

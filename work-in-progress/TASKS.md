@@ -225,7 +225,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Rye OS
 - [ ] **SLC-2 — Pond GUI** — the Rishi+Mantra loop in a Brushstroke/Skate window on x86_64. Simple, lovable, complete at a small scope.
-- [~] **Comlink device wire** — sub-lap 1: `wire_format.rye`, `device_wire.rye`, `tools/comlink_device_wire.rish` (fixture selftest GREEN); sub-laps 2–3: two `virt` guests + sealed payload; parity **154** after sub-lap 3. **Hosted wire** in parity; **Track A** virtio-net bring-up remains.
+- [~] **Comlink device wire** — sub-lap 1 landed (`wire_format` + fixture selftest GREEN); sub-lap 2 in flight (`virtio_net.rye`, pattern guests, `run_device_wire_lab.sh` — virtio TX completion on QEMU 8.2 transitional MMIO pending close-reading); sub-lap 3 sealed payload → parity **154**. **Hosted wire** in parity.
 - [ ] **Comlink v1** — typed, content-named, sealed delivery between identities.
 - [ ] **Brix v1** — a `.brix` course evaluating into a closure of content-addressed bricks in Tablecloth, per [`active-designing/20260702-185912_brix-the-composer.md`](../active-designing/20260702-185912_brix-the-composer.md).
 - [ ] **Unified keys** — one owner seed deriving all keys.
