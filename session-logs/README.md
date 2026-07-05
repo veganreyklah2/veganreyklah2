@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.024412 | [Brooke round commit push zip 44](20260705-024412_brooke-round-commit-push-zip44.md) | `755cc75` — round sealed; cast_a_chart.rish; zip 44 at tip |
 | 20260705.022512 | [Zip 43 Brooke round intake — Cursor](20260705-022512_zip43-brooke-round-intake-cursor.md) | `files (15).zip` at `38893b7`; batches A–C; fifteen chapter silos; yonder + template |
 | 20260705.022512 | [Final unification — Brooke round](20260705-022512_final-astrology-unification.md) | Claude bench: bundle split, template derived, gate silent; vessel cut |
 | 20260704.221612 | [Astrology reorg commit and push](20260704-221612_astrology-reorg-commit-and-push.md) | `d6e7848` — topic folders land; four remotes at tip |
