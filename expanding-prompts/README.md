@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-05 (Brooke round final infusion `022512`)
+**Last updated:** 2026-07-05 (wheel v4, reading canon, privacy audit prompts)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,6 +68,9 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260705.042512` | [Cursor final — reading canon and shelf](20260705-042512_cursor-final-reading-canon.md) | Chitra ruling, Makara sweep, canon derive batches, divine-mother re-emphasis |
+| `20260705.041312` | [Cursor final — privacy audit and rebase](20260705-041312_cursor-final-privacy-audit-and-rebase.md) | History pickaxe, conditional filter-repo, zip 45 cut |
+| `20260705.031812` | [Cursor infusion — wheel v4 and Brooke shelf](20260705-031812_cursor-infusion-wheel-v4-and-brooke-shelf.md) | Diurnal method, Alice renderer wheels, shelf moves, natural titles |
 | `20260705.022512` | [Cursor infusion — final Brooke round](20260705-022512_cursor-infusion-final-brooke-round.md) | One paste for the whole round: files arrive placed and gate-verified; batches A–D; RTAC carried with two additions. |
 | `20260704.185412` | [Cursor lane — unified zip-42 intake](20260704-185412_cursor-lane-zip42-counsel-unified.md) | One paste for the whole sitting: both counsels, Kaeden's words listed with the lens gate added, mechanical stops smallest-first, zip 43 cut discipline. |
 | `20260704.181012` | [Zero-copy resins — Claude counsel](20260704-181012_zero-copy-resins-claude-counsel.md) | Snapshot + Comlink batch architecture; ROADMAP/TASKS/decoder refresh; CIVIC alignment — **answered** at `181612`/`185412` |

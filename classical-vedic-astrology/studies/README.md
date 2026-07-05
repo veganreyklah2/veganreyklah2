@@ -1,7 +1,7 @@
 # Studies — The Silo Library
 
 **Language:** EN
-**Last updated:** 2026-07-04 (topic folders — nakshatras, planets-in-signs, planet-in-house, …)
+**Last updated:** 2026-07-05 (study #21 — divine mother as teacher)
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`), gentle register
 
 Each study distills one placement pattern in our own voice. Studies live in **topic folders**; the **#** column preserves the growing numbered order (`00`–`20` and onward). The silo map in [`../templates/reading-template.md`](../templates/reading-template.md) is the composable index.
@@ -29,6 +29,7 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | 18 | Saturn in the 9th | [`planet-in-house/saturn-in-the-9th-house.md`](planet-in-house/saturn-in-the-9th-house.md) |
 | 19 | Government as planetary spectrum (teaching) | [`teaching/government-as-planetary-spectrum.md`](teaching/government-as-planetary-spectrum.md) |
 | 20 | Liberal and conservative planets (teaching) | [`teaching/liberal-and-conservative-planets.md`](teaching/liberal-and-conservative-planets.md) |
+| 21 | The divine mother as the chart's teacher | [`synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md`](synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md) |
 
 ## Topic folders
 

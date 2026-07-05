@@ -1,7 +1,7 @@
 # Classical Vedic Astrology — The Reading Craft
 
 **Language:** EN
-**Last updated:** 2026-07-05 (Brooke round — reading, chapter silos, two-wheel template, yonder morning-casts)
+**Last updated:** 2026-07-05 (Brooke shelf, diurnal method, divine-mother study #21, wheel v4 template)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`), gentle register
 **Stamp of founding:** `20260702.010412`
 
@@ -23,6 +23,7 @@ The friends whose skies seeded this library asked that privacy be kept, and it i
 
 ```
 classical-vedic-astrology/
+├── _method/                 diurnal wheel + rendering discipline (index: _method/README.md)
 ├── cast_a_chart.rish         dual-zodiac caster (canonical; hosts cast_a_chart_host.sh)
 ├── cast_a_chart_host.sh      POSIX seam → cast_a_chart.py (pyswisseph)
 ├── studies/                 silo library by topic (index: studies/README.md)
@@ -35,7 +36,9 @@ classical-vedic-astrology/
 │   ├── reading-themes/
 │   └── teaching/
 ├── templates/               composable reading skeleton (md + html + tokenized two-wheel)
-├── readings/                finished readings and chapter silos (placeholder names)
+├── readings/                finished readings (placeholder names)
+│   ├── alice-sample-reading.md
+│   └── brooke/              complete two-wheel reading + 15 chapters (index: brooke/README.md)
 └── yonder/                  superseded drafts (index: yonder/README.md)
 ```
 
@@ -43,7 +46,7 @@ classical-vedic-astrology/
 
 | Stamp | Reading | Meaning |
 |-------|---------|---------|
-| 20260705.020812 | [Brooke — full reading](readings/20260705-020812_brooke-reading.md) | Corrected evening cast; D1 and D9; fifteen chapter silos beside it |
+| 20260705.042512 | [Brooke — full reading](readings/brooke/20260705-020812_dharma-and-the-two-wheels.md) | Evening recast; D1 and D9; Makara sweep; fifteen chapters in `readings/brooke/` |
 | 20260701.232912 | [Alice — sample](readings/alice-sample-reading.md) | Demonstration under placeholder name |
 
 ## Templates

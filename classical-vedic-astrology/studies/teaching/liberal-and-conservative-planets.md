@@ -10,7 +10,7 @@
 
 ## The zodiac's human signs — who stands upright in the wheel
 
-Look at the zodiac symbols, the teacher invites: ram, bull, then **Gemini** — the first **human** figure. Crab, lion, then **Virgo**, Mercury's second human sign. **Libra** is not a mere scale; it is a woman holding scales — Venus's human, airy sign (her other sign is the bull). Scorpio, centaur-or-archer, crocodile-goat, **Aquarius** another human under Saturn, then fish. Mostly the human signs belong to **Mercury**, then **Venus**, then **Saturn** a little — the liberal political group in the teacher's symbolic map.
+Look at the zodiac symbols, the teacher invites: ram, bull, then **Gemini** — the first **human** figure. Crab, lion, then **Virgo**, Mercury's second human sign. **Libra** is not a mere scale; it is a woman holding scales — Venus's human, airy sign (her other sign is the bull). Scorpio, centaur-or-archer, makara, **Aquarius** another human under Saturn, then fish. Mostly the human signs belong to **Mercury**, then **Venus**, then **Saturn** a little — the liberal political group in the teacher's symbolic map.
 
 ## Two political groups — not a ballot, a temperament map
 

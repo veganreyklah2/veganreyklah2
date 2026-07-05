@@ -96,27 +96,30 @@
 | Government as planetary spectrum (teaching) | `studies/teaching/government-as-planetary-spectrum.md` |
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
 
-### Brooke reading — chapter silos (`20260705.020812`)
+### Brooke reading — chapter silos (`readings/brooke/`)
 
 | Chapter | Silo |
 |---------|------|
-| Season and three paths | `readings/20260705-020812_brooke-season-and-three-paths.md` |
-| Placements table | `readings/20260705-020812_brooke-placements.md` |
-| Foundation (dharma, D9) | `readings/20260705-020812_brooke-foundation.md` |
-| Ascendant | `readings/20260705-020812_brooke-ascendant.md` |
-| Sun | `readings/20260705-020812_brooke-sun.md` |
-| Moon | `readings/20260705-020812_brooke-moon.md` |
-| Venus | `readings/20260705-020812_brooke-venus.md` |
-| Mercury | `readings/20260705-020812_brooke-mercury.md` |
-| Jupiter | `readings/20260705-020812_brooke-jupiter.md` |
-| Saturn | `readings/20260705-020812_brooke-saturn.md` |
-| Rahu and Ketu | `readings/20260705-020812_brooke-nodes.md` |
-| Yogas | `readings/20260705-020812_brooke-yogas.md` |
-| Stars | `readings/20260705-020812_brooke-stars.md` |
-| Almanac day | `readings/20260705-020812_brooke-almanac-day.md` |
-| Three paths braid | `readings/20260705-020812_brooke-three-paths.md` |
-| Full reading (composed) | `readings/20260705-020812_brooke-reading.md` |
+| Shelf index | `readings/brooke/README.md` |
+| Season and three paths | `readings/brooke/20260705-020812_the-season-and-the-three-paths.md` |
+| Placements table | `readings/brooke/20260705-020812_the-placements-at-a-glance.md` |
+| Foundation (dharma, D9) | `readings/brooke/20260705-020812_the-ninth-chart-and-the-shape-of-dharma.md` |
+| Ascendant (Makara) | `readings/brooke/20260705-020812_the-makara-at-the-door-the-lion-within.md` |
+| Sun | `readings/brooke/20260705-020812_the-priests-light-on-the-marriage-angle.md` |
+| Moon | `readings/brooke/20260705-020812_the-spartan-heart-under-vishnus-star.md` |
+| Venus | `readings/brooke/20260705-020812_love-as-dharma-twice.md` |
+| Mercury | `readings/brooke/20260705-020812_the-articulate-heart.md` |
+| Jupiter | `readings/brooke/20260705-020812_deep-faith-among-the-gathered.md` |
+| Saturn (steward) | `readings/brooke/20260705-020812_the-makers-discipline.md` |
+| Rahu and Ketu | `readings/brooke/20260705-020812_hunger-and-release.md` |
+| Yogas | `readings/brooke/20260705-020812_companions-of-the-lights.md` |
+| Stars | `readings/brooke/20260705-020812_a-temple-of-star-gods.md` |
+| Almanac day | `readings/brooke/20260705-020812_the-day-she-was-born.md` |
+| Three paths braid | `readings/brooke/20260705-020812_one-braid.md` |
+| Full reading (composed) | `readings/brooke/20260705-020812_dharma-and-the-two-wheels.md` |
+| Divine mother as teacher | `studies/synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md` |
 | Two-wheel HTML template | `templates/20260705-020812_reading-template.html` |
+| Diurnal wheel method | `_method/rendering/SILO_DIURNAL_WHEEL.md` |
 
 New placements earn the next number, a topic folder, a hyphenated filename, and a row here — see [`studies/README.md`](../studies/README.md).
 

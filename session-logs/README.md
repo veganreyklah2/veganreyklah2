@@ -12,6 +12,13 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.050012 | [Zip 45 astrology progress intake](20260705-050012_zip45-astrology-progress-intake.md) | Shelf, Makara/Chitra/steward sweeps, method, study #21, wheel v4 |
+| 20260705.045812 | [Divine mother teacher](20260705-045812_divine-mother-teacher.md) | Steward vocabulary healed; teacher feminized; study harmonized |
+| 20260705.045012 | [Brihaspati and atelier](20260705-045012_brihaspati-and-atelier.md) | Rye astrology atelier silo; SVG generation method |
+| 20260705.043312 | [Makara sweep](20260705-043312_makara-sweep.md) | Beast corrected; Rudrani strength woven |
+| 20260705.042512 | [Final reading canon](20260705-042512_final-reading-canon.md) | Canon structure ruled; Chitra seated |
+| 20260705.041312 | [Privacy audit clean](20260705-041312_privacy-audit-clean.md) | Working tree placeholders only; history pickaxe awaits pairs |
+| 20260705.031812 | [Wheel v4 and Brooke shelf](20260705-031812_wheel-v4-and-brooke-shelf.md) | Diurnal method + shelf counsel |
 | 20260705.024812 | [Verification pass parity green](20260705-024812_verification-pass-parity-green.md) | Parity GREEN at `d30d39a`; cast seam skipped (no pyswisseph); tree clean |
 | 20260705.024412 | [Brooke round commit push zip 44](20260705-024412_brooke-round-commit-push-zip44.md) | `755cc75` — round sealed; cast_a_chart.rish; zip 44 at tip |
 | 20260705.022512 | [Zip 43 Brooke round intake — Cursor](20260705-022512_zip43-brooke-round-intake-cursor.md) | `files (15).zip` at `38893b7`; batches A–C; fifteen chapter silos; yonder + template |

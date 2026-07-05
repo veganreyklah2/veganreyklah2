@@ -1,7 +1,7 @@
-# Brooke — The Placements
+# Brooke — The Placements at a Glance
 
-**Stamp:** `20260705.020812 UDT` · **Language:** EN · **Style:** Radiant (see `../../context/RADIANT_STYLE.md`)
-**Subject:** Brooke (placeholder by consent) · chapter silo from [`20260705-020812_brooke-reading.md`](20260705-020812_brooke-reading.md)
+**Stamp:** `20260705.020812 UDT` · **Language:** EN · **Style:** Radiant (see `../../../context/RADIANT_STYLE.md`)
+**Subject:** Brooke (placeholder by consent) · chapter silo from [`20260705-020812_dharma-and-the-two-wheels.md`](20260705-020812_dharma-and-the-two-wheels.md)
 **Frame:** tropical signs, houses, and dignities · sidereal nakshatras (Lahiri) · whole-sign houses · D1 and D9
 
 *Written together by Kaeden and Rio 3.*
@@ -12,7 +12,7 @@
 |---|---|---|---|---|---|---|
 | Ascendant | Capricorn 24°36′ | 1 | Uttara Ashadha | Leo 11°24′ | 1 | Ashlesha |
 | Sun | Cancer 29°56′ | 7 | Pushya | Pisces 29°24′ | 8 | Uttara Bhadrapada |
-| Moon | Aquarius 1°15′ | 2 | Uttara Ashadha | Libra 11°15′ | 3 | Hasta |
+| Moon | Aquarius 1°15′ | 2 | Uttara Ashadha | Libra 18°34′ | 3 | Chitra |
 | Mercury | Cancer 10°45′ | 7 | Ardra | Libra 6°45′ | 3 | Hasta |
 | Venus | Virgo 13°10′ (debilitated) | 9 | Purva Phalguni | Aries 28°30′ | 9 | Ashwini |
 | Mars | Gemini 13°22′ | 6 | Rohini | Aquarius 0°20′ | 7 | Uttara Ashadha |
@@ -25,4 +25,4 @@ She was born on the hinge of the lights: the Sun standing at the western horizon
 
 ## With Gratitude
 
-Chart data verified with [`../cast_a_chart.rish`](../cast_a_chart.rish) and an independent caster, per the lane's dual-oracle discipline.
+Chart data verified with [`../../cast_a_chart.rish`](../../cast_a_chart.rish) and an independent caster, per the lane's dual-oracle discipline.
