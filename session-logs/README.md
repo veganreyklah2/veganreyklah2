@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.162200 | [Commit push Claude transcript bench](20260705-162200_commit-push-claude-transcript-bench.md) | Runnable bench + handoff at tip; four remotes pushed |
+| 20260705.161900 | [Claude silo deepening handoff summary](20260705-161900_claude-silo-deepening-handoff-summary.md) | Runnable Claude prompt + granular handoff for transcript bench |
+| 20260705.161700 | [Intake acknowledged — silo deepening landed](20260705-161700_intake-acknowledged.md) | Anchor `160712` received; fresh bench routed for transcript intake |
 | 20260705.161212 | [Silo deepening commit push](20260705-161212_silo-deepening-commit-push.md) | `24a5d35` — #22–#23 and recursion v1 at tip |
 | 20260705.161012 | [Silo deepening intake — Cursor](20260705-161012_silo-deepening-intake-cursor.md) | `files (17).zip` at `5c322fd`; studies #22–#23, recursion v1, staged log |
 | 20260705.160712 | [Silo deepening staged](20260705-160712_silo-deepening-staged.md) | Recursion v1 for deepening bench; exemplars #22–#23; recomposition rite defined |
