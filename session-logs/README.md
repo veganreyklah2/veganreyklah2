@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.202301 | [Zip 47 — silo deepening complete](20260705-202301_zip47-silo-deepening-complete.md) | `70f15cd` — git archive; bench arc sealed |
 | 20260705.202122 | [Fidelity soften — thirteen studies](20260705-202122_fidelity-soften-thirteen-studies.md) | Gratitude softened on #24–#36; fidelity item closed |
 | 20260705.195720 | [Silo deepening full summary](20260705-195720_silo-deepening-full-summary.md) | Commits, pushes, and bench state for Kaeden |
 | 20260705.195609 | [Movement 2 pass two and Movement 3 recompose](20260705-195609_movement2-pass-two-m3-recompose.md) | Nine Brooke chapters thinned; composed reading synced |
