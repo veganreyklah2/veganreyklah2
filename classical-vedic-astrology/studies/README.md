@@ -1,7 +1,7 @@
 # Studies — The Silo Library
 
 **Language:** EN
-**Last updated:** 2026-07-05 (gates open — `rising-signs/`, Chitra revised; b1–b5 pending)
+**Last updated:** 2026-07-05 (studies #24–#54 — silo deepening Movement 1 complete; Chitra #22 transcript-revised)
 **Style:** Radiant (see `../../context/RADIANT_STYLE.md`), gentle register
 
 Each study distills one placement pattern in our own voice. Studies live in **topic folders**; the **#** column preserves the growing numbered order (`00`–`20` and onward). The silo map in [`../templates/reading-template.md`](../templates/reading-template.md) is the composable index.
@@ -32,25 +32,37 @@ Each study distills one placement pattern in our own voice. Studies live in **to
 | 21 | The divine mother as the chart's teacher | [`synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md`](synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md) |
 | 22 | Chitra — the architect's star (transcript-revised `190812`) | [`nakshatras/20260705-160712_chitra-the-architects-star.md`](nakshatras/20260705-160712_chitra-the-architects-star.md) |
 | 23 | The maker's gathering | [`synthesis/20260705-160712_the-makers-gathering.md`](synthesis/20260705-160712_the-makers-gathering.md) |
-
-### Rising signs (`190812`) — seated; **# pending b1 apply**
-
-| # | Placement pattern | Path |
-|---|-------------------|------|
-| — | Capricorn rising — the crocodile at the low point of the Sun | [`rising-signs/20260705-190812_capricorn-rising.md`](rising-signs/20260705-190812_capricorn-rising.md) |
-| — | Capricorn — tenacity and realism | [`rising-signs/20260705-190812_capricorn-the-sign-nature.md`](rising-signs/20260705-190812_capricorn-the-sign-nature.md) |
-
-### Batch 6 (`190812`) — seated; **# pending b1–b5 apply**
-
-Studies below are transcript-faithful and homed. Numbered rows resume after bundles `174412`, `180812`, and `182612` land (studies `#24`–`#36` and batch-4/5 cluster per v9).
-
-| # | Placement pattern | Path |
-|---|-------------------|------|
-| — | Moon in Aquarius — the woven heart | [`planets-in-signs/20260705-190812_moon-in-aquarius.md`](planets-in-signs/20260705-190812_moon-in-aquarius.md) |
-| — | Moon in Libra — the attuned heart | [`planets-in-signs/20260705-190812_moon-in-libra.md`](planets-in-signs/20260705-190812_moon-in-libra.md) |
-| — | The four lunar neighbor yogas | [`lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md`](lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md) |
-| — | Neighboring yogas of Sun and ascendant | [`teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md`](teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md) |
-| — | Occupation as lens on a star's essence | [`nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md`](nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md) |
+| 24 | Dharma — the essence of a thing | [`life-frame/20260705-171012_dharma-the-essence-of-a-thing.md`](life-frame/20260705-171012_dharma-the-essence-of-a-thing.md) |
+| 25 | The navamsha — the chart of the essential self (teaching) | [`teaching/20260705-171012_the-navamsha-chart-of-the-essential-self.md`](teaching/20260705-171012_the-navamsha-chart-of-the-essential-self.md) |
+| 26 | Reading the navamsha upon the birth chart (teaching) | [`teaching/20260705-171012_reading-the-navamsha-upon-the-birth-chart.md`](teaching/20260705-171012_reading-the-navamsha-upon-the-birth-chart.md) |
+| 27 | The subdivisions — a family of tools (teaching) | [`teaching/20260705-171012_the-subdivisions-a-family-of-tools.md`](teaching/20260705-171012_the-subdivisions-a-family-of-tools.md) |
+| 28 | The true sign — a chart's whole voice (teaching) | [`teaching/20260705-171012_the-true-sign-a-charts-whole-voice.md`](teaching/20260705-171012_the-true-sign-a-charts-whole-voice.md) |
+| 29 | Venus in Aries | [`planets-in-signs/20260705-172312_venus-in-aries.md`](planets-in-signs/20260705-172312_venus-in-aries.md) |
+| 30 | Venus in Virgo (debilitated) | [`planets-in-signs/20260705-172312_venus-in-virgo-debilitated.md`](planets-in-signs/20260705-172312_venus-in-virgo-debilitated.md) |
+| 31 | A planet's passage — a transit as maturation | [`reading-themes/20260705-172312_a-planets-passage-as-maturation.md`](reading-themes/20260705-172312_a-planets-passage-as-maturation.md) |
+| 32 | The three-pass opposition | [`reading-themes/20260705-172312_the-three-pass-opposition.md`](reading-themes/20260705-172312_the-three-pass-opposition.md) |
+| 33 | Moon in Capricorn | [`planets-in-signs/20260705-173112_moon-in-capricorn.md`](planets-in-signs/20260705-173112_moon-in-capricorn.md) |
+| 34 | Moon in Leo | [`planets-in-signs/20260705-173112_moon-in-leo.md`](planets-in-signs/20260705-173112_moon-in-leo.md) |
+| 35 | Moon in the 12th house | [`planet-in-house/20260705-173112_moon-in-the-12th-house.md`](planet-in-house/20260705-173112_moon-in-the-12th-house.md) |
+| 36 | Moon in the 6th house | [`planet-in-house/20260705-173112_moon-in-the-6th-house.md`](planet-in-house/20260705-173112_moon-in-the-6th-house.md) |
+| 37 | Ardra — the star of Rudra | [`nakshatras/20260705-180812_ardra-the-star-of-rudra.md`](nakshatras/20260705-180812_ardra-the-star-of-rudra.md) |
+| 38 | Rudra and Shiva — one being, two names | [`nakshatras/20260705-180812_rudra-and-shiva-one-being-two-names.md`](nakshatras/20260705-180812_rudra-and-shiva-one-being-two-names.md) |
+| 39 | The two ways of reading the Veda — Purva and Uttara (teaching) | [`teaching/20260705-180812_the-two-ways-of-reading-the-veda.md`](teaching/20260705-180812_the-two-ways-of-reading-the-veda.md) |
+| 40 | The four directions and the four aims (teaching) | [`teaching/20260705-180812_the-four-directions-and-the-four-aims.md`](teaching/20260705-180812_the-four-directions-and-the-four-aims.md) |
+| 41 | Anger and sadness — two emotions, two right responses | [`reading-themes/20260705-180812_anger-and-sadness-two-responses.md`](reading-themes/20260705-180812_anger-and-sadness-two-responses.md) |
+| 42 | Reading a planet in a house (teaching) | [`teaching/20260705-182612_reading-a-planet-in-a-house.md`](teaching/20260705-182612_reading-a-planet-in-a-house.md) |
+| 43 | Sun in the 12th house | [`planet-in-house/20260705-182612_sun-in-the-12th-house.md`](planet-in-house/20260705-182612_sun-in-the-12th-house.md) |
+| 44 | Sun in the 7th house | [`planet-in-house/20260705-182612_sun-in-the-7th-house.md`](planet-in-house/20260705-182612_sun-in-the-7th-house.md) |
+| 45 | Rahu and Ketu in Taurus and Scorpio | [`planets-in-signs/20260705-182612_rahu-and-ketu-in-taurus-and-scorpio.md`](planets-in-signs/20260705-182612_rahu-and-ketu-in-taurus-and-scorpio.md) |
+| 46 | Rahu and Ketu in Cancer and Capricorn | [`planets-in-signs/20260705-182612_rahu-and-ketu-in-cancer-and-capricorn.md`](planets-in-signs/20260705-182612_rahu-and-ketu-in-cancer-and-capricorn.md) |
+| 47 | The two faces of a sign — dignity and expression (teaching) | [`teaching/20260705-182612_the-two-faces-of-a-sign.md`](teaching/20260705-182612_the-two-faces-of-a-sign.md) |
+| 48 | Moon in Aquarius — the woven heart | [`planets-in-signs/20260705-190812_moon-in-aquarius.md`](planets-in-signs/20260705-190812_moon-in-aquarius.md) |
+| 49 | Moon in Libra — the attuned heart | [`planets-in-signs/20260705-190812_moon-in-libra.md`](planets-in-signs/20260705-190812_moon-in-libra.md) |
+| 50 | The four lunar neighbor yogas | [`lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md`](lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md) |
+| 51 | Neighboring yogas of Sun and ascendant (teaching) | [`teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md`](teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md) |
+| 52 | Occupation as lens on a star's essence | [`nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md`](nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md) |
+| 53 | Capricorn rising — the crocodile at the low point of the Sun | [`rising-signs/20260705-190812_capricorn-rising.md`](rising-signs/20260705-190812_capricorn-rising.md) |
+| 54 | Capricorn — tenacity and realism | [`rising-signs/20260705-190812_capricorn-the-sign-nature.md`](rising-signs/20260705-190812_capricorn-the-sign-nature.md) |
 
 ## Topic folders
 

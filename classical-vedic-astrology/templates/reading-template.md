@@ -95,15 +95,40 @@
 | Saturn in the 9th | `studies/planet-in-house/saturn-in-the-9th-house.md` |
 | Government as planetary spectrum (teaching) | `studies/teaching/government-as-planetary-spectrum.md` |
 | Liberal and conservative planets (teaching) | `studies/teaching/liberal-and-conservative-planets.md` |
+| The divine mother as the chart's teacher | `studies/synthesis/20260705-045812_the-divine-mother-as-the-charts-teacher.md` |
 | Chitra — the architect's star (transcript-revised) | `studies/nakshatras/20260705-160712_chitra-the-architects-star.md` |
-| Capricorn rising | `studies/rising-signs/20260705-190812_capricorn-rising.md` |
-| Capricorn — tenacity and realism | `studies/rising-signs/20260705-190812_capricorn-the-sign-nature.md` |
 | The maker's gathering | `studies/synthesis/20260705-160712_the-makers-gathering.md` |
+| Dharma — the essence of a thing | `studies/life-frame/20260705-171012_dharma-the-essence-of-a-thing.md` |
+| The navamsha — chart of the essential self (teaching) | `studies/teaching/20260705-171012_the-navamsha-chart-of-the-essential-self.md` |
+| Reading the navamsha upon the birth chart (teaching) | `studies/teaching/20260705-171012_reading-the-navamsha-upon-the-birth-chart.md` |
+| The subdivisions — a family of tools (teaching) | `studies/teaching/20260705-171012_the-subdivisions-a-family-of-tools.md` |
+| The true sign — a chart's whole voice (teaching) | `studies/teaching/20260705-171012_the-true-sign-a-charts-whole-voice.md` |
+| Venus in Aries | `studies/planets-in-signs/20260705-172312_venus-in-aries.md` |
+| Venus in Virgo (debilitated) | `studies/planets-in-signs/20260705-172312_venus-in-virgo-debilitated.md` |
+| A planet's passage — a transit as maturation | `studies/reading-themes/20260705-172312_a-planets-passage-as-maturation.md` |
+| The three-pass opposition | `studies/reading-themes/20260705-172312_the-three-pass-opposition.md` |
+| Moon in Capricorn | `studies/planets-in-signs/20260705-173112_moon-in-capricorn.md` |
+| Moon in Leo | `studies/planets-in-signs/20260705-173112_moon-in-leo.md` |
+| Moon in the 12th house | `studies/planet-in-house/20260705-173112_moon-in-the-12th-house.md` |
+| Moon in the 6th house | `studies/planet-in-house/20260705-173112_moon-in-the-6th-house.md` |
+| Ardra — the star of Rudra | `studies/nakshatras/20260705-180812_ardra-the-star-of-rudra.md` |
+| Rudra and Shiva — one being, two names | `studies/nakshatras/20260705-180812_rudra-and-shiva-one-being-two-names.md` |
+| The two ways of reading the Veda | `studies/teaching/20260705-180812_the-two-ways-of-reading-the-veda.md` |
+| The four directions and the four aims | `studies/teaching/20260705-180812_the-four-directions-and-the-four-aims.md` |
+| Anger and sadness — two responses | `studies/reading-themes/20260705-180812_anger-and-sadness-two-responses.md` |
+| Reading a planet in a house | `studies/teaching/20260705-182612_reading-a-planet-in-a-house.md` |
+| Sun in the 12th house | `studies/planet-in-house/20260705-182612_sun-in-the-12th-house.md` |
+| Sun in the 7th house | `studies/planet-in-house/20260705-182612_sun-in-the-7th-house.md` |
+| Rahu and Ketu in Taurus and Scorpio | `studies/planets-in-signs/20260705-182612_rahu-and-ketu-in-taurus-and-scorpio.md` |
+| Rahu and Ketu in Cancer and Capricorn | `studies/planets-in-signs/20260705-182612_rahu-and-ketu-in-cancer-and-capricorn.md` |
+| The two faces of a sign | `studies/teaching/20260705-182612_the-two-faces-of-a-sign.md` |
 | Moon in Aquarius — the woven heart | `studies/planets-in-signs/20260705-190812_moon-in-aquarius.md` |
 | Moon in Libra — the attuned heart | `studies/planets-in-signs/20260705-190812_moon-in-libra.md` |
 | The four lunar neighbor yogas | `studies/lunar-craft/20260705-190812_the-four-lunar-neighbor-yogas.md` |
 | Neighboring yogas of Sun and ascendant | `studies/teaching/20260705-190812_the-neighboring-yogas-of-sun-and-ascendant.md` |
 | Occupation as lens on a star's essence | `studies/nakshatras/20260705-190812_occupation-as-a-lens-on-a-stars-essence.md` |
+| Capricorn rising | `studies/rising-signs/20260705-190812_capricorn-rising.md` |
+| Capricorn — tenacity and realism | `studies/rising-signs/20260705-190812_capricorn-the-sign-nature.md` |
 
 ### Brooke reading — chapter silos (`readings/brooke/`)
 

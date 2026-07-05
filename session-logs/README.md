@@ -12,8 +12,15 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260705.194600 | [Gates open — rising-signs and Chitra revised](20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved; b1–b5 still pending |
+| 20260705.195200 | [Files 18 intake — Movement 1 batches 1–5](20260705-195200_files18-movement1-batches-landed.md) | Nested zips extracted; studies #24–#54 indexed |
+| 20260705.194600 | [Gates open — rising-signs and Chitra revised](20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved before files 18 land |
 | 20260705.193800 | [Silo batch-6 intake — anchor 190812](20260705-193800_silo-batch6-intake.md) | Five homed studies seated; b1–b5 pending; two gates held |
+| 20260705.182612 | [Silo deepening — Movement 1, batch 5 (Sun, nodes, and craft)](20260705-182612_silo-deepening-movement1-batch5-sun-nodes-and-craft.md) | Studies #42–#47 — Sun in the 12th and 7th, the nodes on two axes, and two craft teachings |
+| 20260705.180812 | [Silo deepening — Movement 1, batch 4 (nakshatra cluster)](20260705-180812_silo-deepening-movement1-batch4-nakshatra-cluster.md) | Studies #37–#41 — Ardra and the Rudra–Shiva arc, siloed from real transcripts |
+| 20260705.174412 | [Handoff v7 — silo deepening, window close](20260705-174412_handoff-v7-and-close.md) | v7 prompt written; studies #24–#36 batches 1–3 bundled |
+| 20260705.173112 | [Silo deepening — Movement 1, batch 3](20260705-173112_silo-deepening-movement1-batch3.md) | Studies #33–#36 — the Moon cluster from Vic DiCara |
+| 20260705.172312 | [Silo deepening — Movement 1, batch 2](20260705-172312_silo-deepening-movement1-batch2.md) | Studies #29–#32 — the Venus cycle from Parisa Yazdi |
+| 20260705.171012 | [Silo deepening — Movement 1, batch 1](20260705-171012_silo-deepening-movement1-batch1.md) | Studies #24–#28 from six Vic talks; Chitra #22 deepened on bench |
 | 20260705.162200 | [Commit push Claude transcript bench](20260705-162200_commit-push-claude-transcript-bench.md) | Runnable bench + handoff at tip; four remotes pushed |
 | 20260705.161900 | [Claude silo deepening handoff summary](20260705-161900_claude-silo-deepening-handoff-summary.md) | Runnable Claude prompt + granular handoff for transcript bench |
 | 20260705.161700 | [Intake acknowledged — silo deepening landed](20260705-161700_intake-acknowledged.md) | Anchor `160712` received; fresh bench routed for transcript intake |
