@@ -18,6 +18,7 @@ export fn kmain() callconv(.c) noreturn {
     vn.initDevice();
     rx_queue.init();
     vn.driverOk();
+    rx_queue.kick(); // ring the RX doorbell once buffers are posted and the queue is live
 
     if (!rx_queue.waitPattern()) {
         vn.writeStr("comlink device wire: linktest FAIL — pattern mismatch or timeout\n");

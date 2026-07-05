@@ -1,21 +1,13 @@
-# comlink_device_wire.rish — Comlink device wire witness (sub-lap 1; sub-lap 2 lab in flight).
+# comlink_device_wire.rish — Comlink device wire witness (sub-lap 2 pattern + sub-lap 3 sealed).
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/comlink_device_wire.rish
 #
-# Sub-lap 2 linktest wires when virtio TX/RX greens — see
-# active-designing/20260705-225412_comlink-device-wire.md.
+# Wire into tools/parity.rish only after a red-then-green pass on the wiring
+# bench, and pin the resulting count from metal.
 
-let zig = "vendor/zig-toolchain/zig"
-let bin = "comlink/bin/device-wire"
+let lab = run ["sh" "comlink/run_device_wire_lab.sh"]
+assert lab.ok else "comlink device wire lab failed"
+assert lab.out contains "GREEN" else "comlink device wire lab not GREEN"
 
-let build = run ["sh" "-c" "mkdir -p comlink/bin && env RYE_ZIG=${zig} rye/bin/rye build comlink/device_wire.rye -lc -femit-bin=${bin}"]
-
-assert build.ok else "comlink device wire build failed"
-
-let selftest = run ["sh" "-c" "${bin} selftest 2>&1"]
-assert selftest.ok else "comlink device wire selftest exited non-zero"
-assert selftest.out contains "GREEN" else "comlink device wire selftest not GREEN"
-assert selftest.out contains "sub-lap 1" else "comlink device wire selftest missing sub-lap 1 banner"
-
-say "GREEN: Comlink device wire sub-lap 1 witness passed."
+say "GREEN: Comlink device wire witness passed (sub-lap 2 + sub-lap 3)."

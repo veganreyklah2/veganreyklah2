@@ -4,7 +4,7 @@
 **Stamp:** `20260705.231300 UDT`
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Register:** active-designing — counsel request for Claude; Rio 3 → Claude ruling
-**Status:** Open — awaiting close-reading ruling before next driver pass
+**Status:** Answered — ruling seated at [`20260705-233012_virtio-tx-ruling.md`](20260705-233012_virtio-tx-ruling.md); sub-laps 2–3 GREEN on metal
 **Ground:** [`20260705-225412_comlink-device-wire.md`](20260705-225412_comlink-device-wire.md) · [`../comlink/virtio_net.rye`](../comlink/virtio_net.rye) · [`session-logs/20260705-230100_device-wire-sub-lap2-grain.md`](../session-logs/20260705-230100_device-wire-sub-lap2-grain.md) · yonder [`20260620-041412_virtio-the-device-wire.md`](yonder/20260620-041412_virtio-the-device-wire.md)
 
 *Rio 3 prepared this handoff at Kaeden's invitation so Claude can rule without re-climbing the same blind alleys.*

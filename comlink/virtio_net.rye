@@ -24,11 +24,13 @@ pub const off_device_features: u32 = 0x010;
 pub const off_device_features_sel: u32 = 0x014;
 pub const off_driver_features: u32 = 0x020;
 pub const off_driver_features_sel: u32 = 0x024;
-pub const off_queue_sel: u32 = 0x028;
-pub const off_queue_num_max: u32 = 0x02c;
-pub const off_queue_num: u32 = 0x030;
+pub const off_queue_sel: u32 = 0x030;
+pub const off_queue_num_max: u32 = 0x034;
+pub const off_queue_num: u32 = 0x038;
 pub const off_queue_ready: u32 = 0x044;
 pub const off_queue_notify: u32 = 0x050;
+pub const off_interrupt_status: u32 = 0x060;
+pub const off_interrupt_ack: u32 = 0x064;
 pub const off_status: u32 = 0x070;
 pub const off_queue_desc_low: u32 = 0x080;
 pub const off_queue_desc_high: u32 = 0x084;
@@ -56,7 +58,7 @@ pub const queue_rx: u32 = 0;
 pub const queue_tx: u32 = 1;
 
 pub const queue_depth: u32 = 4;
-pub const max_frame: u32 = 128;
+pub const max_frame: u32 = 256;
 pub const legacy_vring_align: u32 = 4;
 pub const legacy_page_align: u32 = 4096;
 
@@ -70,6 +72,7 @@ pub const VirtioNetHdr = extern struct {
     gso_size: u16,
     csum_start: u16,
     csum_offset: u16,
+    num_buffers: u16, // present under VERSION_1
 };
 
 pub const virtio_net_hdr_len: u32 = @sizeOf(VirtioNetHdr);
@@ -103,12 +106,15 @@ pub const VqUsed = extern struct {
     ring: [queue_depth]VqUsedElem,
 };
 
-/// Fixed guest RAM — xv6-style split virtqueue pages.
-pub const desc_page_addr: u64 = 0x8040_0000;
-pub const avail_page_addr: u64 = 0x8040_1000;
-pub const used_page_addr: u64 = 0x8040_2000;
-pub const tx_buf_addr: u64 = 0x8040_3000;
-pub const rx_buf_addr: u64 = 0x8040_4000;
+/// Fixed guest RAM — split virtqueue pages, one triple per queue.
+pub const rx_desc_addr: u64 = 0x8040_0000;
+pub const rx_avail_addr: u64 = 0x8040_1000;
+pub const rx_used_addr: u64 = 0x8040_2000;
+pub const tx_desc_addr: u64 = 0x8040_3000;
+pub const tx_avail_addr: u64 = 0x8040_4000;
+pub const tx_used_addr: u64 = 0x8040_5000;
+pub const tx_buf_addr: u64 = 0x8040_6000;
+pub const rx_buf_addr: u64 = 0x8040_7000;
 
 const uart_tx: *volatile u8 = @ptrFromInt(0x1000_0000);
 const test_finisher: *volatile u32 = @ptrFromInt(0x0010_0000);
@@ -184,16 +190,15 @@ fn writeDriverFeatures(features: u64) void {
 }
 
 pub fn negotiateFeatures(offered: u64) u64 {
-    return offered & feat_mac;
+    assert((offered & feat_version_1) != 0); // modern transport must offer VERSION_1
+    return offered & (feat_version_1 | feat_mac);
 }
 
 pub fn initDevice() void {
     assert(findNetDevice());
     const version = mmioRead(off_version);
-    assert(version == 1 or version == mmio_version);
+    assert(version == mmio_version); // ruled path: modern only (force-legacy=false)
     assert(mmioRead(off_device_id) == device_id_net);
-    // QEMU virt transitional virtio-net exposes legacy version register yet
-    // accepts the modern split-queue layout (xv6-riscv virtio-net pattern).
     use_legacy_queues = false;
 
     mmioWrite(off_status, 0);
@@ -235,16 +240,23 @@ pub const LegacyVring = struct {
     }
 };
 
-fn descPage() [*]VqDesc {
-    return @ptrFromInt(desc_page_addr);
+const Rings = struct { desc: u64, avail: u64, used: u64 };
+pub const rx_rings = Rings{ .desc = rx_desc_addr, .avail = rx_avail_addr, .used = rx_used_addr };
+pub const tx_rings = Rings{ .desc = tx_desc_addr, .avail = tx_avail_addr, .used = tx_used_addr };
+
+// The vring is shared with the device by DMA. Every field the device reads
+// (desc, avail) or writes (used) is accessed volatile, so the optimizer never
+// treats a device-visible store as dead nor caches a device-written load.
+fn descOf(r: Rings) [*]volatile VqDesc {
+    return @ptrFromInt(r.desc);
 }
 
-fn availPage() *VqAvail {
-    return @ptrFromInt(avail_page_addr);
+fn availOf(r: Rings) *volatile VqAvail {
+    return @ptrFromInt(r.avail);
 }
 
-fn usedPage() *VqUsed {
-    return @ptrFromInt(used_page_addr);
+fn usedOf(r: Rings) *volatile VqUsed {
+    return @ptrFromInt(r.used);
 }
 
 fn txBuf() *[max_frame]u8 {
@@ -255,16 +267,18 @@ fn rxBuf() *[max_frame]u8 {
     return @ptrFromInt(rx_buf_addr);
 }
 
-fn setupModernQueue(queue_idx: u32) void {
+fn setupModernQueue(queue_idx: u32, r: Rings) void {
     mmioWrite(off_queue_sel, queue_idx);
+    const num_max = mmioRead(off_queue_num_max);
+    assert(num_max >= queue_depth); // bound honored before any ring address lands
     mmioWrite(off_queue_num, queue_depth);
 
-    mmioWrite(off_queue_desc_low, @truncate(desc_page_addr));
-    mmioWrite(off_queue_desc_high, @truncate(desc_page_addr >> 32));
-    mmioWrite(off_queue_avail_low, @truncate(avail_page_addr));
-    mmioWrite(off_queue_avail_high, @truncate(avail_page_addr >> 32));
-    mmioWrite(off_queue_used_low, @truncate(used_page_addr));
-    mmioWrite(off_queue_used_high, @truncate(used_page_addr >> 32));
+    mmioWrite(off_queue_desc_low, @truncate(r.desc));
+    mmioWrite(off_queue_desc_high, @truncate(r.desc >> 32));
+    mmioWrite(off_queue_avail_low, @truncate(r.avail));
+    mmioWrite(off_queue_avail_high, @truncate(r.avail >> 32));
+    mmioWrite(off_queue_used_low, @truncate(r.used));
+    mmioWrite(off_queue_used_high, @truncate(r.used >> 32));
     mmioWrite(off_queue_ready, 1);
     fence();
 }
@@ -300,10 +314,7 @@ pub fn fillPatternFrame(buf: []u8) u32 {
     const total: u32 = payload_off + link_pattern_len;
     assert(total <= buf.len);
 
-    @memset(buf[0..virtio_net_hdr_len], 0);
-    // hdr_len names the virtio-net header size for the device.
-    buf[4] = @truncate(virtio_net_hdr_len);
-    buf[5] = @truncate(virtio_net_hdr_len >> 8);
+    @memset(buf[0..virtio_net_hdr_len], 0); // no offloads: header stays all-zero
     buf[virtio_net_hdr_len + 0] = 0xff;
     buf[virtio_net_hdr_len + 1] = 0xff;
     buf[virtio_net_hdr_len + 2] = 0xff;
@@ -332,6 +343,20 @@ fn patternMatches(buf: []const u8) bool {
     return true;
 }
 
+fn clearRings(r: Rings) void {
+    const desc = descOf(r);
+    var i: u32 = 0;
+    while (i < queue_depth) : (i += 1) desc[i] = .{ .addr = 0, .len = 0, .flags = 0, .next = 0 };
+    const avail = availOf(r);
+    avail.flags = 0;
+    avail.idx = 0;
+    i = 0;
+    while (i < queue_depth) : (i += 1) avail.ring[i] = 0;
+    const used = usedOf(r);
+    used.flags = 0;
+    used.idx = 0;
+}
+
 pub const TxQueue = struct {
     avail_tail: u16,
     used_tail: u16,
@@ -339,39 +364,43 @@ pub const TxQueue = struct {
     pub fn init(self: *TxQueue) void {
         self.avail_tail = 0;
         self.used_tail = 0;
-        @memset(@as([*]u8, @ptrCast(descPage()))[0 .. queue_depth * @sizeOf(VqDesc)], 0);
-        @memset(@as([*]u8, @ptrCast(availPage()))[0..@sizeOf(VqAvail)], 0);
-        @memset(@as([*]u8, @ptrCast(usedPage()))[0..@sizeOf(VqUsed)], 0);
+        clearRings(tx_rings);
         @memset(txBuf(), 0);
-        setupModernQueue(queue_tx);
+        setupModernQueue(queue_tx, tx_rings);
     }
 
-    pub fn sendPattern(self: *TxQueue) void {
+    /// Send whatever bytes already sit in the TX frame buffer, `total` long.
+    pub fn send(self: *TxQueue, total: u32) void {
+        assert(total <= max_frame);
         const buf = txBuf();
-        const total = fillPatternFrame(buf);
-        const desc = descPage();
-        const avail = availPage();
-        const used = usedPage();
+        const desc = descOf(tx_rings);
+        const avail = availOf(tx_rings);
+        const used = usedOf(tx_rings);
 
-        desc[0] = .{
-            .addr = @intFromPtr(buf),
-            .len = total,
-            .flags = 0,
-            .next = 0,
-        };
+        desc[0] = .{ .addr = @intFromPtr(buf), .len = total, .flags = 0, .next = 0 };
         avail.ring[0] = 0;
         self.avail_tail = 1;
+        fence(); // ring contents visible before the index publishes
         avail.idx = 1;
-        fence();
+        fence(); // index visible before the doorbell
         mmioWrite(off_queue_notify, queue_tx);
 
         var spins: u32 = 0;
-        const used_idx: *volatile u16 = @ptrCast(&used.idx);
-        while (used_idx.* == self.used_tail) : (spins += 1) {
-            if (spins > 50_000_000) finishFail();
+        while (used.idx == self.used_tail) : (spins += 1) {
+            if (spins > 5_000_000) finishFail();
         }
-        self.used_tail = used_idx.*;
+        self.used_tail = used.idx;
         assert(used.ring[0].id == 0);
+    }
+
+    pub fn frame(self: *TxQueue) *[max_frame]u8 {
+        _ = self;
+        return txBuf();
+    }
+
+    pub fn sendPattern(self: *TxQueue) void {
+        const total = fillPatternFrame(txBuf());
+        self.send(total);
     }
 };
 
@@ -382,13 +411,12 @@ pub const RxQueue = struct {
     pub fn init(self: *RxQueue) void {
         self.avail_tail = 0;
         self.used_tail = 0;
-        @memset(@as([*]u8, @ptrCast(descPage()))[0 .. queue_depth * @sizeOf(VqDesc)], 0);
-        @memset(@as([*]u8, @ptrCast(availPage()))[0..@sizeOf(VqAvail)], 0);
-        @memset(@as([*]u8, @ptrCast(usedPage()))[0..@sizeOf(VqUsed)], 0);
+        clearRings(rx_rings);
         @memset(rxBuf(), 0);
 
-        const desc = descPage();
-        const avail = availPage();
+        setupModernQueue(queue_rx, rx_rings);
+        const desc = descOf(rx_rings);
+        const avail = availOf(rx_rings);
         desc[0] = .{
             .addr = @intFromPtr(rxBuf()),
             .len = max_frame,
@@ -397,22 +425,38 @@ pub const RxQueue = struct {
         };
         avail.ring[0] = 0;
         self.avail_tail = 1;
+        fence();
         avail.idx = 1;
         fence();
-        setupModernQueue(queue_rx);
+    }
+
+    /// Call after driverOk: the doorbell that tells the device buffers await.
+    pub fn kick(self: *RxQueue) void {
+        _ = self;
+        mmioWrite(off_queue_notify, queue_rx);
+    }
+
+    /// Wait for one frame; returns bytes the device wrote, or 0 on timeout.
+    pub fn waitFrame(self: *RxQueue) u32 {
+        const used = usedOf(rx_rings);
+        var spins: u32 = 0;
+        while (used.idx == self.used_tail) : (spins += 1) {
+            if (spins > 2_000_000_000) return 0;
+        }
+        self.used_tail = used.idx;
+        const elem = used.ring[0];
+        assert(elem.id == 0);
+        return elem.len;
+    }
+
+    pub fn frame(self: *RxQueue) *[max_frame]u8 {
+        _ = self;
+        return rxBuf();
     }
 
     pub fn waitPattern(self: *RxQueue) bool {
-        const buf = rxBuf();
-        const used = usedPage();
-        var spins: u32 = 0;
-        const used_idx: *volatile u16 = @ptrCast(&used.idx);
-        while (used_idx.* == self.used_tail) : (spins += 1) {
-            if (spins > 100_000_000) return false;
-        }
-        const elem = used.ring[0];
-        assert(elem.id == 0);
-        _ = elem.len;
-        return patternMatches(buf);
+        const n = self.waitFrame();
+        if (n == 0) return false;
+        return patternMatches(rxBuf()[0..n]);
     }
 };

@@ -79,7 +79,7 @@ fn selftestDescriptorFixture() !void {
 
     const offered: u64 = vn.feat_mac | vn.feat_version_1;
     const accepted = vn.negotiateFeatures(offered);
-    assert(accepted == vn.feat_mac);
+    assert(accepted == vn.feat_mac | vn.feat_version_1);
 
     const total = try validateChain(&subject, &ring);
     assert(total == vn.virtio_net_hdr_len + vn.link_pattern_len);

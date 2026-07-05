@@ -1,0 +1,57 @@
+//! comlink/guest_sealed_rx.rye — sub-lap 3 RX guest (freestanding RISC-V virt).
+//!
+//! Receives the sealed datagram across virtio-net, shape-casts at the edge, and
+//! opens it with wire_format (unchanged). The message reads back in the clear.
+
+const vn = @import("virtio_net.rye");
+const wf = @import("wire_format.rye");
+
+var rx: vn.RxQueue = undefined;
+
+export fn _start() linksection(".text.init") callconv(.naked) noreturn {
+    asm volatile (
+        \\ li sp, 0x80100000
+        \\ j kmain
+    );
+}
+
+fn sameMessage(a: []const u8) bool {
+    if (a.len != wf.expected_message.len) return false;
+    var i: usize = 0;
+    while (i < a.len) : (i += 1) {
+        if (a[i] != wf.expected_message[i]) return false;
+    }
+    return true;
+}
+
+export fn kmain() callconv(.c) noreturn {
+    vn.initDevice();
+    rx.init();
+    vn.driverOk();
+    rx.kick();
+
+    const n = rx.waitFrame();
+    if (n == 0) {
+        vn.writeStr("comlink device wire: sub-lap 3 FAIL — RX timeout\n");
+        vn.finishFail();
+    }
+    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+    if (n <= poff) {
+        vn.writeStr("comlink device wire: sub-lap 3 FAIL — frame too short\n");
+        vn.finishFail();
+    }
+    const buf = rx.frame();
+    const datagram = buf[poff..n];
+
+    var opened: [512]u8 = undefined;
+    const msg_len = wf.openDatagram(datagram, &opened) catch {
+        vn.writeStr("comlink device wire: sub-lap 3 FAIL — open refused\n");
+        vn.finishFail();
+    };
+    if (!sameMessage(opened[0..@intCast(msg_len)])) {
+        vn.writeStr("comlink device wire: sub-lap 3 FAIL — message mismatch\n");
+        vn.finishFail();
+    }
+    vn.writeStr("comlink device wire: sealed datagram GREEN — sub-lap 3 opened the message\n");
+    vn.finishPass();
+}

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260705.233012 | [Device wire sub-laps 2–3 landed](20260705-233012_device-wire-sublaps-2-3-landed.md) | Claude ruling applied; pattern + sealed laps GREEN; layout.ld boot fix |
 | 20260705.231512 | [Commits and pushes — sub-lap 2 scaffolding](20260705-231512_commits-pushes-sub-lap2.md) | `b862be2` pushed to four remotes |
 | 20260705.231300 | [Virtio TX counsel handoff for Claude](20260705-231300_virtio-tx-counsel-handoff.md) | Counsel brief seated; six ruled questions; repro for Claude on metal |
 | 20260705.230100 | [Device wire sub-lap 2 climb and grain check](20260705-230100_device-wire-sub-lap2-grain.md) | Sub-lap 2 scaffolding; virtio TX blocked on transitional MMIO; grain verified; sub-lap 1 GREEN |

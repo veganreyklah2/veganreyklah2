@@ -5,8 +5,8 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety first at the untrusted channel; performance second; joy in the rye-field message crossing a real device
 **Register:** active-designing — names only our modules
-**Status:** Seated — checkable-room lap brief; sub-lap 1 in flight; parity wires after sub-lap 3 greens on metal
-**Ground:** [`comlink/hosted_wire.rye`](../comlink/hosted_wire.rye) · [`comlink/wire_format.rye`](../comlink/wire_format.rye) · [`20260705-231300_virtio-tx-counsel-handoff.md`](20260705-231300_virtio-tx-counsel-handoff.md) · [`yonder/20260620-041412_virtio-the-device-wire.md`](yonder/20260620-041412_virtio-the-device-wire.md) · [`20260704-211012_the-rye-core-and-the-shell.md`](20260704-211012_the-rye-core-and-the-shell.md) · lineage: [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md)
+**Status:** Seated — checkable-room lap brief; sub-laps 1–3 GREEN on metal; parity **154** ready to wire after Kaeden red-then-green
+**Ground:** [`comlink/hosted_wire.rye`](../comlink/hosted_wire.rye) · [`comlink/wire_format.rye`](../comlink/wire_format.rye) · [`20260705-233012_virtio-tx-ruling.md`](20260705-233012_virtio-tx-ruling.md) · [`20260705-231300_virtio-tx-counsel-handoff.md`](20260705-231300_virtio-tx-counsel-handoff.md) · [`yonder/20260620-041412_virtio-the-device-wire.md`](yonder/20260620-041412_virtio-the-device-wire.md) · [`20260704-211012_the-rye-core-and-the-shell.md`](20260704-211012_the-rye-core-and-the-shell.md) · lineage: [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md)
 
 *Written in Rio 3's Radiant voice, counseled with Kaeden and Claude.*
 
@@ -48,7 +48,7 @@ Batching many resins under one signed batch header, the have-already and need-st
 |-------|----------|------|
 | **Format** | `comlink/wire_format.rye` | Shared offsets, seal, open — one letter for every rung |
 | **Core** | `comlink/device_wire.rye` | Virtio-net driver algebra; explicit `WireSubject`; freestanding on `virt` |
-| **Shell** | `tools/comlink_device_wire.rish` | Build, run `selftest`, assert GREEN — observer only |
+| **Shell** | `tools/comlink_device_wire.rish` | Run lab (pattern + sealed); observer only |
 | **Hosted rung** | `comlink/hosted_wire.rye` | Imports `wire_format` — localhost UDP unchanged in meaning |
 
 ### Explicit subject (`WireSubject`)
@@ -69,17 +69,16 @@ Gall's Law seed from yonder brief `10016` — each sub-lap is one proof; parity 
 | Sub-lap | Proof | Status |
 |---------|-------|--------|
 | **1** | Fixture virtio descriptor validation + `wire_format` seal/open — no live link | **Landed** — `device_wire selftest` GREEN |
-| **2** | Two QEMU `virt` guests — fixed pattern TX/RX, lengths and bytes match | **In flight** — `virtio_net.rye`, guests, `run_device_wire_lab.sh`; virtio TX completion on QEMU 8.2 transitional MMIO needs close-reading pass |
-| **3** | Sealed datagram payload — receiver opens; message reads *Meet me where the rye grows.* | Open → parity **154** |
+| **2** | Two QEMU `virt` guests — fixed pattern TX/RX, lengths and bytes match | **Landed** — `run_device_wire_lab.sh` pattern lap GREEN |
+| **3** | Sealed datagram payload — receiver opens; message reads *Meet me where the rye grows.* | **Landed** — sealed lap GREEN → parity **154** when wired |
 
 ## Lab topology (confirmed)
 
-Two guests join through a **QEMU hub or socket netdev** — the simplest honest lab, mirroring `aurora/run.sh` waking one guest today. Each guest is `-machine virt`, freestanding Rye, virtio-net device mapped at MMIO.
+Two guests join through a **QEMU socket netdev** with `-global virtio-mmio.force-legacy=false` (modern transport). See [`20260705-233012_virtio-tx-ruling.md`](20260705-233012_virtio-tx-ruling.md).
 
 ## Witness discipline
 
-- Sub-lap 1: `tools/comlink_device_wire.rish` — runnable now, **not** in `parity.rish` yet
-- Sub-lap 3: wire tail of `parity.rish`; pin count from bench, never predicted
+- Sub-laps 1–3: `tools/comlink_device_wire.rish` — GREEN on metal; wire into `parity.rish` after Kaeden red-then-green → **154**
 - Hosted wire witness stays green — `wire_format` extraction must not fork offsets
 
 ## TAME order
