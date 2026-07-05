@@ -1,16 +1,17 @@
 # Two Rooms — The Checkable and the Visionary
 
 **Language:** EN
-**Last updated:** 2026-07-04 (Radiant pass · vocabulary companions linked)
+**Last updated:** 2026-07-05 (seated — doorway witness at parity **153**)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
-**Status:** Proposed canon — drafted from the second harvest
+**Status:** Seated — reviewed and kept `20260705.203144 UDT`; doorway witness from this stamp forward
+**Ground:** drafted from the second harvest
 ([`external-research/20260703-071712_the-second-harvest.md`](../external-research/20260703-071712_the-second-harvest.md));
 vocabulary companions:
 [`20260704-024800_the-checkable-room.md`](../external-research/20260704-024800_the-checkable-room.md) ·
 [`20260704-024900_claim.md`](../external-research/20260704-024900_claim.md) ·
 [`20260704-025600_claims-happy-zone-and-grain.md`](../external-research/20260704-025600_claims-happy-zone-and-grain.md) ·
 [`20260704-024600_two-rooms-on-the-metal-path.md`](../external-research/20260704-024600_two-rooms-on-the-metal-path.md);
-metal-path cases seated above; full canon seats on Kaeden's word
+metal-path cases seated above; forward-facing pages name their room from stamp `20260705.203144` — [`specs/20260705-203144_canonical-glosses.md`](specs/20260705-203144_canonical-glosses.md)
 
 ---
 

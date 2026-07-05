@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-04 (parity **152** pinned Cursor · not-advice · TASKS hygiene)
+**Last updated:** 2026-07-05 (parity **153** · vocabulary ground lap · season Linengrow-via-Comlink)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -16,7 +16,25 @@
 
 ---
 
-## Now — The Three Doors, Then the Ladder
+## Now — Season Linengrow-via-Comlink
+
+**Ground lap landed `20260705.203144` — parity **153**:**
+
+- [x] **TWO_ROOMS seated** — [`context/TWO_ROOMS.md`](../context/TWO_ROOMS.md) reviewed and kept; doorway from this stamp forward
+- [x] **Canonical gloss spec** — [`context/specs/20260705-203144_canonical-glosses.md`](../context/specs/20260705-203144_canonical-glosses.md)
+- [x] **Doorway witness** — `tools/two_rooms_doorway.rish` + `tools/fixtures/two_rooms_doorway_scan.sh`; wired parity **153**
+- [x] **LEXICON rows** — Two rooms · Canonical
+- [x] **ROADMAP/TASKS hygiene (A8)** — zip **47** · astrology silo bench closed (`e8d1919`) · season line recorded
+
+**Next climb (Cursor, after ground):** **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; Rye core + shell shape; unlocks **SLC-L2**.
+
+**Alongside (cheap):** Open Asks hammock scope note — no Comlink required.
+
+**Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
+
+---
+
+## Closed — The Three Doors and the Ladder
 
 ### The three doors (Kaeden, in order)
 - [x] **Door 1 — Pond clause**: affirmed verbatim in [`pond/README.md`](../pond/README.md) (`20260703.012031`, commit `3320bed`).
@@ -112,7 +130,7 @@ Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](..
 Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md).
 
 - [x] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements; **proxy column** (public-market proxy present or absent) on the movement memo table per circulation survey Q1 (`20260703.191312 UDT`, *for*).
-- [ ] **Open Asks room (design candidate)** — requests, applications, acceptances, completion receipts, and reputation-as-fold as Linengrow's first application beside the receipt lap; enters only after SLC-L1's scope note draws its edge.
+- [ ] **Open Asks room (design candidate)** — requests, applications, acceptances, completion receipts, and reputation-as-fold as Linengrow's first application beside the receipt lap; hammock scope note may land alongside Comlink wire; enters build after edge drawn
 - [ ] **Sanctuary care log (flagship candidate)** — signed care facts per resident, schedules as projections, CIVIC dignity-floor accountability; design-only until its season.
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Resin-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a resin, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`; unit word ratified `20260703.191312`).
@@ -260,7 +278,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
 - **TASKS naming** — keep `TASKS.md`, or rename to the warmer `WORKBENCH.md`?
 - **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
-- **Birth-chart craft** — siloed library (`studies/` by topic), templates, sample reading, and caster at [`classical-vedic-astrology/`](../classical-vedic-astrology/README.md).
+- **Birth-chart craft** — siloed library complete through studies **#57**, Brooke shelf dissociated, zip **47** at `e8d1919` (`20260705`); fidelity soften on title-drawn studies **#24–#36**; forward path: transcript-true revisions as transcripts arrive
 
 ---
 

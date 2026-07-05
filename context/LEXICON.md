@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-04 (preservation pair — cellar · vessel)
+**Last updated:** 2026-07-05 (Two rooms · canonical gloss seated)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -15,6 +15,8 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Gate** | A named precondition on the itinerary that only a ruling, a word, or a landed event opens — gates belong to Kaeden; [`specs/20260704-020800_one-word-one-gate.md`](specs/20260704-020800_one-word-one-gate.md) |
 | **Witness** | A program that proves a claim on metal and answers green or red — the trio (`parity.rish`, `parity-selftest.rish`, `additive-gate.rish`) guards every push |
 | **Claim** | A bounded, falsifiable proposition one witness binds — lap, seam, or invariant; [`external-research/20260704-024900_claim.md`](../external-research/20260704-024900_claim.md) |
+| **Two rooms** | Every sentence is checkable or visionary, and says which at the door — [`TWO_ROOMS.md`](TWO_ROOMS.md) · seated `20260705.203144` |
+| **Canonical** | The single authoritative place or form the tree cites — [`specs/20260705-203144_canonical-glosses.md`](specs/20260705-203144_canonical-glosses.md) |
 | **Toll** | The price of shared order — facts touching the commons pay it; everything else is spared; [`active-designing/20260703-200712_what-needs-ordering.md`](../active-designing/20260703-200712_what-needs-ordering.md) |
 | **Itinerary** | The **named list of stops** the autonomous loop may execute **this minute** — every precondition satisfied, owner tag Cursor, no ask/simulate/wait; never an off-route license — [`specs/20260704-030300_itinerary-retires-diet.md`](specs/20260704-030300_itinerary-retires-diet.md) · primer [`external-research/20260704-030600_itinerary-and-the-crossing-manifest.md`](../external-research/20260704-030600_itinerary-and-the-crossing-manifest.md) |
 | **Open itinerary** | Synonym for the itinerary when every gate is cleared **now** — what older logs called *ungated diet* |

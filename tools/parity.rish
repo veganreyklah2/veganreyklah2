@@ -206,3 +206,8 @@ say "witness suite: RW-2 surface contract…"
 let rw2s = run ["rishi/bin/rishi" "run" "tools/rw2_surface_contract.rish"]
 assert rw2s.ok else "RW-2 surface contract witness failed"
 say "GREEN: RW-2 surface-contract witness passed."
+
+say "witness suite: two-rooms doorway (canon seated, forward pages name their room)…"
+let doorway = run ["rishi/bin/rishi" "run" "tools/two_rooms_doorway.rish"]
+assert doorway.ok else "two-rooms doorway witness failed"
+say "GREEN: two-rooms doorway witness passed."

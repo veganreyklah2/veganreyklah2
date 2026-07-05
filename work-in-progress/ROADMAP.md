@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260702-194512` (orientation pass — current position and parity arithmetic; prior editions endure in history)
-**Last updated:** 2026-07-04 (SLC-L1 verifiable receipt — parity **152**)
+**Version:** `20260705-203144` (vocabulary ground lap — TWO_ROOMS seated, doorway witness **153**)
+**Last updated:** 2026-07-05 (zip **47** · astrology silo bench closed · season **Linengrow-via-Comlink**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**The trio:** `parity.rish` (**152 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-04`); additive-gate runs when std changes land.
+**The trio:** `parity.rish` (**153 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **two-rooms doorway**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-05`); additive-gate runs when std changes land.
 
 ---
 
@@ -128,8 +128,11 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 | RW-1 mirrored pair — Rishi↔Mantra seam | Cursor | **147** ✅ |
 | Chrono version sweep — authored surfaces | Cursor | **148** ✅ |
 | RW-2 mirrored pair — app↔Brushstroke seam | Cursor | **150** ✅ |
+| Vocabulary ground — TWO_ROOMS seat · canonical gloss · doorway witness | Cursor | **153** ✅ |
 
-Still on this horizon, after the ladder: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.
+**Season (`20260705.203144`):** **Linengrow-via-Comlink** — ground first, then **Comlink device wire** (Rye spine step that unlocks SLC-L2 sealed delivery). Zip **47** seals the astrology silo bench (`e8d1919`).
+
+Still on this horizon, after vocabulary ground: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.
 
 ### Ground (thin frontend)
 
