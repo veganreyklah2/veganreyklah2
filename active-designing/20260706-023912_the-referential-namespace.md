@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; Mantra role, **recall**, **bolt**, and peer/bolt/revision/path grammar seated `20260706.032700`; NS-L1 local recall GREEN parity **159**; NS-L2 write revision GREEN parity **160**; NS-L3 sync logic GREEN parity **161** (have-already/need-resin, referential transparency across peers; wire carriage the next lap)
+**Status:** Landed — vocabulary seated `20260706.032700`; NS-L1 recall parity **159**; NS-L2 write revision parity **160**; NS-L3 sync logic parity **161**; NS-L3 wire lap 1 (hosted) + lap 2 (device) parity **162**. Resin-batch chunking lap 3w-3 remains horizon.
 
 *Written together by Kaeden and Rio 3.*
 
@@ -53,7 +53,23 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Lap 2 (landed, parity 160):** writing a revision appends a leaf binding and stores a resin in the in-memory catalog; **recall** on revision 1 still returns the original bytes after revision 2 lands, duplicate revisions are refused, and revision 3 honestly answers **not yet**. Witness: [`tools/mantra_recall_lap2.rish`](../tools/mantra_recall_lap2.rish).
 
-The later laps arrive each in season. Sync's first lap has landed as logic: `syncRevision` carries a bolt between two catalogs, have-already resins crossing as refs and need-resin resins as bytes once, every resin verified against its digest before anything appends, so a synced bolt recalls identically on both peers and a tampered resin refuses the whole crossing. The wire carriage of that sync — hosted first, then the device wire, over Amphora and Comlink — is the next lap, and it crosses module seams, so it waits for its own ruling. Marks-on-read lets a recall ask for a leaf in a different Tilak, express doing the conversion off the hot path. Query, held back until it can no longer be, is Tablecloth. And a host mirror, if ever wanted, reflects a bolt into the host filesystem the way the hosted wire already reflects a datagram. Each remaining lap is a small step from the running seed, and each keeps the invariants above.
+**Lap 3 — sync logic (landed, parity 161):** `syncRevision` carries a bolt revision between two in-process catalogs. Have-already resins cross as refs; need-resin resins cross as bytes once; every resin is digest-verified before append; recall is identical on both peers; tampered resin and duplicate sync refuse whole. Witness: [`tools/mantra_recall_lap3.rish`](../tools/mantra_recall_lap3.rish). Witness bolt uses small leaves (`alpha`, `beta`) that fit one sealed datagram each.
+
+**Wire carriage — counsel `20260706.041012` (lap 1 landed):** the OA-L2-shaped hop — carry proven sync over Comlink sealed datagrams, hosted first, then device wire, same `wire_format` OA-L2 and OA-L3 escrow rode. No new wire vocabulary; reuses **recall**, **bolt**, **resin**, fetch-by-digest, have-already, need-resin, **manifest**, Amphora.
+
+| Wire lap | Shape | Bench |
+|----------|-------|-------|
+| **3w-1 hosted** | Request/response sealed datagrams on localhost — A names bolt, revision, digests held; B returns manifest + missing resins; A verifies and appends | **landed** parity **162** · [`mantra/recall_sync_delivery.rye`](../mantra/recall_sync_delivery.rye) · witness [`tools/mantra_recall_lap3_wire.rish`](../tools/mantra_recall_lap3_wire.rish) |
+| **3w-2 device** | Same exchange over virtio guests | **landed** · `comlink/run_recall_sync_wire_lab.sh` · ports **15561/15562** |
+| **3w-3 batch** | `amphora_comlink_resin_batch` frame + per-frame chunking for resins larger than one datagram | Spec follow-on; not lap 1 |
+
+**Capacity constraint (confirmed on metal):** `wire_capacity` **528** minus crypto envelope **188** → **340 bytes** `max_message` per sealed datagram. Catalog `max_resin_bytes` is **512** — a full resin does not fit one frame. **Recommendation (Claude `041012`):** chunk large resins across frames rather than inflate `wire_capacity`; lap 1 proves crossing with small resins only (`alpha`/`beta` witness bolt).
+
+**Proposed ports (Kaeden may override):** hosted sync request **38478** · response **38479**; device wire **15561** (request) · **15562** (response).
+
+**Invariants on the wire:** bad Comlink seal refuses whole; resin digest mismatch refuses whole; sync stays additive (NS-L2); referential transparency survives because digest is the proof.
+
+The later laps arrive each in season. Two-way sync and subscribe-to-changes are a later horizon. Marks-on-read, Tablecloth query, and host mirror each keep their season.
 
 ## Kaeden's Word (`20260706.032700`)
 

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **161** · NS-L3 bolt sync landed)
+**Last updated:** 2026-07-06 (parity **162** · NS-L3 wire lap 1 hosted sync landed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -58,7 +58,9 @@
 - [x] **NS-L1 local recall** — `mantra/recall_lap1.rye` + `tools/mantra_recall_lap1.rish`; referential transparency + digest mismatch refused; parity **159**
 
 - [x] **NS-L2 write revision** — `BoltCatalog.appendLeaf` + immutable prior revision recall; `tools/mantra_recall_lap2.rish`; parity **160**
-- [x] **NS-L3 bolt sync (logic)** — `syncRevision` between two catalogs: have-already resins cross as refs, need-resin as bytes once; every resin digest-verified before append (tampered resin refused whole); recall identical on both peers; duplicate revision refused; `tools/mantra_recall_lap3.rish`; parity **161**. Wire carriage (hosted, then device) is the next lap — check in with Claude before it crosses Comlink.
+- [x] **NS-L3 bolt sync (logic)** — `syncRevision` between two catalogs: have-already resins cross as refs, need-resin as bytes once; every resin digest-verified before append (tampered resin refused whole); recall identical on both peers; duplicate revision refused; `tools/mantra_recall_lap3.rish`; parity **161**
+- [x] **NS-L3 wire carriage lap 2 (device)** — virtio guests `guest_sync_*`; ports **15561/15562**; `comlink/run_recall_sync_wire_lab.sh`; witness extended in `tools/mantra_recall_lap3_wire.rish`
+- [ ] **NS-L3 wire lap 3w-3 (resin-batch + chunking)** — `amphora_comlink_resin_batch` spec; resins >340 B
 
 - [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 

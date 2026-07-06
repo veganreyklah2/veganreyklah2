@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.042100 | [NS-L3 wire lap 2 device](20260706-042100_ns-l3-wire-lap2-device.md) | Virtio sync request/response on 15561/15562; witness hosted+device GREEN |
+| 20260706.041800 | [NS-L3 wire lap 1 hosted](20260706-041800_ns-l3-wire-lap1-hosted.md) | Hosted sync request/response under Comlink seal; parity 162 GREEN |
+| 20260706.041012 | [NS-L3 wire carriage counsel](20260706-041012_ns-l3-wire-carriage-counsel.md) | Anchor 041012 seated — hosted-first wire sync, 340 B frame vs 512 B resin, chunking follow-on; awaits Kaeden proceed |
 | 20260706.040700 | [Apply anchor 035512 NS-L3](20260706-040700_apply-anchor-035512-nsl3.md) | Cursor applied NS-L3 sync logic bundle; parity 161 GREEN on metal; four remotes pushed |
 | 20260706.035512 | [NS-L3 bolt sync (logic)](20260706-035512_ns-l3-sync-lap1.md) | Sync a bolt revision between peers; have-already/need-resin; tampered refused whole; recall identical on both; parity 161 |
 | 20260706.034900 | [Namespace arc commits pushes summary](20260706-034900_commits-pushes-namespace-arc-summary.md) | Confirmed four remotes at 08b3d70; full arc summary through parity 160 |

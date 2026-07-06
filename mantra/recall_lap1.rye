@@ -13,10 +13,10 @@ const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
 const ns_version = "20260706.033400";
 
-const max_bindings: u32 = 16;
-const max_resin_bytes: u32 = 512;
-const max_path: u32 = 64;
-const max_tilak: u32 = 32;
+pub const max_bindings: u32 = 16;
+pub const max_resin_bytes: u32 = 512;
+pub const max_path: u32 = 64;
+pub const max_tilak: u32 = 32;
 
 pub const RecallOutcome = enum {
     not_yet,
@@ -69,7 +69,7 @@ fn hexEq(a: []const u8, b: []const u8) bool {
     return true;
 }
 
-const LeafBinding = struct {
+pub const LeafBinding = struct {
     peer: [16]u8,
     peer_len: u32,
     bolt: [32]u8,
@@ -213,6 +213,59 @@ pub const BoltCatalog = struct {
 
     /// Does this catalog already hold a resin at the given digest? The have-already
     /// lane: when true, a sync crosses a ref rather than the bytes.
+    /// Count leaves bound at peer/bolt/revision (for wire manifest).
+    pub fn revisionLeafCount(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32) u32 {
+        var count: u32 = 0;
+        var i: u32 = 0;
+        while (i < self.leaf_count) : (i += 1) {
+            const leaf = &self.leaves[i];
+            if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
+            if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
+            if (leaf.revision != revision) continue;
+            count += 1;
+        }
+        return count;
+    }
+
+    /// Nth leaf at peer/bolt/revision (0-based among revision leaves only).
+    pub fn revisionLeafAt(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, ordinal: u32) ?struct {
+        path: []const u8,
+        tilak: []const u8,
+        digest_hex: [64]u8,
+        bytes: []const u8,
+    } {
+        var seen: u32 = 0;
+        var i: u32 = 0;
+        while (i < self.leaf_count) : (i += 1) {
+            const leaf = &self.leaves[i];
+            if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
+            if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
+            if (leaf.revision != revision) continue;
+            if (seen == ordinal) {
+                return .{
+                    .path = leaf.path[0..leaf.path_len],
+                    .tilak = leaf.tilak[0..leaf.tilak_len],
+                    .digest_hex = leaf.digest_hex,
+                    .bytes = leaf.bytes[0..leaf.bytes_len],
+                };
+            }
+            seen += 1;
+        }
+        return null;
+    }
+
+    /// Return resin bytes already held at digest (have-already lane on wire).
+    pub fn bytesForDigest(self: *const BoltCatalog, digest_hex: []const u8) ?[]const u8 {
+        var i: u32 = 0;
+        while (i < self.leaf_count) : (i += 1) {
+            const leaf = &self.leaves[i];
+            if (hexEq(leaf.digest_hex[0..64], digest_hex)) {
+                return leaf.bytes[0..leaf.bytes_len];
+            }
+        }
+        return null;
+    }
+
     pub fn hasResin(self: *const BoltCatalog, digest_hex: []const u8) bool {
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {

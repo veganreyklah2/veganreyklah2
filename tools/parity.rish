@@ -227,6 +227,11 @@ let nsl3 = run ["rishi/bin/rishi" "run" "tools/mantra_recall_lap3.rish"]
 assert nsl3.ok else "NS-L3 sync witness failed"
 say "GREEN: NS-L3 sync a bolt revision witness passed."
 
+say "witness suite: NS-L3 wire lap 1 hosted sync…"
+let nsw1 = run ["rishi/bin/rishi" "run" "tools/mantra_recall_lap3_wire.rish"]
+assert nsw1.ok else "NS-L3 wire lap 1 witness failed"
+say "GREEN: NS-L3 wire lap 1 hosted sync witness passed."
+
 say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
 let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]
 assert slog_arch.ok else "session-logs archive witness failed"
