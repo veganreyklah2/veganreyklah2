@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; Mantra role, **recall**, **bolt**, and peer/bolt/revision/path grammar seated `20260706.032700`; NS-L1 local recall GREEN parity **159**; NS-L2 write revision GREEN parity **160**
+**Status:** Landed — checkable-room; Mantra role, **recall**, **bolt**, and peer/bolt/revision/path grammar seated `20260706.032700`; NS-L1 local recall GREEN parity **159**; NS-L2 write revision GREEN parity **160**; NS-L3 sync logic GREEN parity **161** (have-already/need-resin, referential transparency across peers; wire carriage the next lap)
 
 *Written together by Kaeden and Rio 3.*
 
@@ -53,7 +53,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Lap 2 (landed, parity 160):** writing a revision appends a leaf binding and stores a resin in the in-memory catalog; **recall** on revision 1 still returns the original bytes after revision 2 lands, duplicate revisions are refused, and revision 3 honestly answers **not yet**. Witness: [`tools/mantra_recall_lap2.rish`](../tools/mantra_recall_lap2.rish).
 
-The later laps arrive each in season. Sync carries a bolt between peers over Amphora's have-already and need-resin lanes. Marks-on-read lets a recall ask for a leaf in a different Tilak, express doing the conversion off the hot path. Query, held back until it can no longer be, is Tablecloth. And a host mirror, if ever wanted, reflects a bolt into the host filesystem the way the hosted wire already reflects a datagram. None of these is built now; each is a small step from the running seed, and each keeps the invariants above.
+The later laps arrive each in season. Sync's first lap has landed as logic: `syncRevision` carries a bolt between two catalogs, have-already resins crossing as refs and need-resin resins as bytes once, every resin verified against its digest before anything appends, so a synced bolt recalls identically on both peers and a tampered resin refuses the whole crossing. The wire carriage of that sync — hosted first, then the device wire, over Amphora and Comlink — is the next lap, and it crosses module seams, so it waits for its own ruling. Marks-on-read lets a recall ask for a leaf in a different Tilak, express doing the conversion off the hot path. Query, held back until it can no longer be, is Tablecloth. And a host mirror, if ever wanted, reflects a bolt into the host filesystem the way the hosted wire already reflects a datagram. Each remaining lap is a small step from the running seed, and each keeps the invariants above.
 
 ## Kaeden's Word (`20260706.032700`)
 

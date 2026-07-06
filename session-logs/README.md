@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.040700 | [Apply anchor 035512 NS-L3](20260706-040700_apply-anchor-035512-nsl3.md) | Cursor applied NS-L3 sync logic bundle; parity 161 GREEN on metal; four remotes pushed |
+| 20260706.035512 | [NS-L3 bolt sync (logic)](20260706-035512_ns-l3-sync-lap1.md) | Sync a bolt revision between peers; have-already/need-resin; tampered refused whole; recall identical on both; parity 161 |
 | 20260706.034900 | [Namespace arc commits pushes summary](20260706-034900_commits-pushes-namespace-arc-summary.md) | Confirmed four remotes at 08b3d70; full arc summary through parity 160 |
 | 20260706.033400 | [NS-L2 write revision](20260706-033400_nsl2-write-revision.md) | Append revision 2; revision 1 recall unchanged; duplicate refused; parity 160 GREEN |
 | 20260706.033200 | [Stone resin forward hygiene](20260706-033200_stone-resin-forward-hygiene.md) | Retired stone as content-addressed unit word across forward docs; need-resin lanes; parity 159 unchanged |

@@ -99,6 +99,14 @@ pub const RecallResult = struct {
     tilak: []const u8,
 };
 
+/// NS-L3 sync report: how a bolt revision crossed. Had-already resins crossed as
+/// refs (bytes stayed home); need-resin resins crossed as bytes once.
+pub const SyncReport = struct {
+    total: u32,
+    had_already: u32,
+    needed: u32,
+};
+
 /// In-memory bolt catalog + Amber resins for local laps.
 pub const BoltCatalog = struct {
     leaves: [max_bindings]LeafBinding,
@@ -202,6 +210,16 @@ pub const BoltCatalog = struct {
         @memcpy(out[0..leaf.bytes_len], leaf.bytes[0..leaf.bytes_len]);
         return .{ .outcome = .here, .len = leaf.bytes_len, .tilak = leaf.tilak[0..leaf.tilak_len] };
     }
+
+    /// Does this catalog already hold a resin at the given digest? The have-already
+    /// lane: when true, a sync crosses a ref rather than the bytes.
+    pub fn hasResin(self: *const BoltCatalog, digest_hex: []const u8) bool {
+        var i: u32 = 0;
+        while (i < self.leaf_count) : (i += 1) {
+            if (hexEq(self.leaves[i].digest_hex[0..64], digest_hex)) return true;
+        }
+        return false;
+    }
 };
 
 /// Lap-1 compatibility: single-resin view of revision 1 witness.
@@ -215,6 +233,55 @@ pub const ResinStore = struct {
         return .{ .digest_hex = digest, .bytes = witness_content };
     }
 };
+
+/// A resin arriving from a peer must match its named digest, or the crossing
+/// refuses it whole. Content addressing makes integrity and identity one check.
+pub fn verifyResin(claimed_digest_hex: []const u8, bytes: []const u8) RecallError!void {
+    var recomputed: [64]u8 = undefined;
+    digestHexOf(bytes, &recomputed);
+    if (!hexEq(recomputed[0..64], claimed_digest_hex)) return error.DigestMismatch;
+}
+
+/// NS-L3: sync a bolt revision from a source peer into a destination catalog.
+///
+/// Invariants: every resin is verified against its named digest before anything
+/// is appended, so a tampered resin refuses the whole crossing; revisions append
+/// and never rewrite; a synced bolt recalls identically to its source, because a
+/// resin proven by its digest is the same bytes on every peer.
+pub fn syncRevision(
+    dest: *BoltCatalog,
+    src: *const BoltCatalog,
+    peer: []const u8,
+    bolt: []const u8,
+    revision: u32,
+) RecallError!SyncReport {
+    // Pass one: verify every resin in the revision's manifest; refuse whole on any mismatch.
+    var i: u32 = 0;
+    while (i < src.leaf_count) : (i += 1) {
+        const leaf = &src.leaves[i];
+        if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
+        if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
+        if (leaf.revision != revision) continue;
+        try verifyResin(leaf.digest_hex[0..64], leaf.bytes[0..leaf.bytes_len]);
+    }
+    // Pass two: count the lanes and append; appendLeaf keeps revisions immutable and ordered.
+    var report: SyncReport = .{ .total = 0, .had_already = 0, .needed = 0 };
+    i = 0;
+    while (i < src.leaf_count) : (i += 1) {
+        const leaf = &src.leaves[i];
+        if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
+        if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
+        if (leaf.revision != revision) continue;
+        report.total += 1;
+        if (dest.hasResin(leaf.digest_hex[0..64])) {
+            report.had_already += 1; // ref crosses, bytes stay home
+        } else {
+            report.needed += 1; // bytes cross once
+        }
+        try dest.appendLeaf(peer, bolt, revision, leaf.path[0..leaf.path_len], leaf.bytes[0..leaf.bytes_len], leaf.tilak[0..leaf.tilak_len]);
+    }
+    return report;
+}
 
 pub fn resolveBinding(name: Name) RecallOutcome {
     var cat: BoltCatalog = .empty();
@@ -320,9 +387,74 @@ fn runLap2Selftest(_: std.Io) !u8 {
     return 0;
 }
 
+fn runLap3Selftest(_: std.Io) !u8 {
+    // Peer B holds a bolt revision; peer A already holds one of its resins.
+    var src: BoltCatalog = .empty();
+    try src.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+
+    var dest: BoltCatalog = .empty();
+    try dest.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+
+    const report = try syncRevision(&dest, &src, "peerB", "b", 1);
+    assert(report.total == 2);
+    assert(report.had_already == 1); // a.txt "alpha" deduped — ref crosses, bytes stay home
+    assert(report.needed == 1); // b.txt "beta" — bytes cross once
+
+    // Referential transparency across peers: the same name recalls the same bytes on both.
+    const na = Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "a.txt" };
+    const nb = Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
+    var da: [128]u8 = undefined;
+    var db: [128]u8 = undefined;
+    var sa: [128]u8 = undefined;
+    var sb: [128]u8 = undefined;
+    const ra = try dest.recall(na, &da);
+    const rb = try dest.recall(nb, &db);
+    const src_ra = try src.recall(na, &sa);
+    const src_rb = try src.recall(nb, &sb);
+    assert(std.mem.eql(u8, da[0..ra.len], "alpha"));
+    assert(std.mem.eql(u8, db[0..rb.len], "beta"));
+    assert(std.mem.eql(u8, da[0..ra.len], sa[0..src_ra.len]));
+    assert(std.mem.eql(u8, db[0..rb.len], sb[0..src_rb.len]));
+
+    // Dest's own resin is untouched by the sync.
+    const nseed = Name{ .peer = "peerA", .bolt = "seed", .revision = 1, .path = "x" };
+    var ds: [128]u8 = undefined;
+    const rseed = try dest.recall(nseed, &ds);
+    assert(std.mem.eql(u8, ds[0..rseed.len], "alpha"));
+
+    // Unwelcome: a tampered resin refuses the whole crossing, appending nothing.
+    var src_bad: BoltCatalog = .empty();
+    try src_bad.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src_bad.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    src_bad.leaves[1].digest_hex[0] = if (src_bad.leaves[1].digest_hex[0] == 'a') 'b' else 'a';
+    var dest_bad: BoltCatalog = .empty();
+    if (syncRevision(&dest_bad, &src_bad, "peerB", "b", 1)) |_| {
+        return error.DigestMismatch;
+    } else |err| {
+        assert(err == error.DigestMismatch);
+    }
+    assert(dest_bad.leaf_count == 0);
+
+    // Unwelcome: re-syncing a revision already held is refused as immutable.
+    if (syncRevision(&dest, &src, "peerB", "b", 1)) |_| {
+        return error.RevisionImmutable;
+    } else |err| {
+        assert(err == error.RevisionImmutable);
+    }
+
+    print("nsl3: bolt synced — had-already {d}, need-resin {d}; recall identical on both peers\n", .{ report.had_already, report.needed });
+    print("nsl3: tampered resin refused whole — GREEN unwelcome path\n", .{});
+    print("nsl3: duplicate revision sync refused — GREEN unwelcome path\n", .{});
+    print("nsl3: version {s}\n", .{ns_version});
+    print("GREEN: NS-L3 sync a bolt revision — have-already and need-resin, referential transparency across peers.\n", .{});
+    return 0;
+}
+
 fn runSelftest(io: std.Io) !u8 {
     _ = try runLap1Selftest(io);
     _ = try runLap2Selftest(io);
+    _ = try runLap3Selftest(io);
     return 0;
 }
 
@@ -332,6 +464,7 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2) {
         if (std.mem.eql(u8, args[1], "selftest-lap2")) return runLap2Selftest(io);
         if (std.mem.eql(u8, args[1], "selftest-lap1")) return runLap1Selftest(io);
+        if (std.mem.eql(u8, args[1], "selftest-lap3") or std.mem.eql(u8, args[1], "sync")) return runLap3Selftest(io);
         if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
     }
     if (args.len >= 1) return runSelftest(io);
