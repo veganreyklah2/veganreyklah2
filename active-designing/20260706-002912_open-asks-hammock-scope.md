@@ -159,7 +159,7 @@ Named now; **not wired** until OA-L1 implementation greens on metal.
 2. **Fixture ask + golden fold** — pinned under `tools/fixtures/open_asks_*`
 3. **Hosted `.rye`** — `linengrow/open_asks.rye` (or beside receipt — one home, import `receipt_core`)
 4. **Witness** — `tools/open_asks_lap1.rish`
-5. **OA-L2 brief** — cross-party delivery over Comlink, only after OA-L1 witness green
+5. [x] **OA-L2 brief** — [`20260706-011512_open-asks-cross-party-delivery.md`](20260706-011512_open-asks-cross-party-delivery.md); cross-party delivery over Comlink, after OA-L1 witness green
 
 ---
 

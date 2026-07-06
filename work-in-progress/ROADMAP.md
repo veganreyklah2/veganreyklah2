@@ -79,6 +79,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **landed** `20260704.021800` — [`linengrow/receipt.rye`](../linengrow/receipt.rye) + witness at parity **152** | keypair + Mantra log + projection |
 | **SLC-L2** | Sealed delivery — signed receipt identity to identity under Comlink seal; **landed** `20260706.000812` — parity **155** | Comlink |
 | **OA-L1** | Closed ask loop — post, apply, accept, complete, verify; **landed** `20260706.010912` — parity **156** | Linengrow + SLC-L1 receipt |
+| **OA-L2** | Cross-party delivery — request + application under Comlink seal; scope [`../active-designing/20260706-011512_open-asks-cross-party-delivery.md`](../active-designing/20260706-011512_open-asks-cross-party-delivery.md) · awaits Kaeden edge affirmation | SLC-L2 + OA-L1 |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |

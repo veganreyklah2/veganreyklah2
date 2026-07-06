@@ -39,7 +39,11 @@
 
 - [x] **OA-L1 closed ask loop** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish`; post → apply → accept → complete → verify GREEN
 
-**Next climb (Cursor):** OA-L2 brief — cross-party delivery over Comlink (reuses SLC-L2 carriage).
+**OA-L2 scope seated `20260706.011512` — awaits Kaeden edge affirmation:**
+
+- [ ] **OA-L2 cross-party delivery** — brief [`20260706-011512_open-asks-cross-party-delivery.md`](../active-designing/20260706-011512_open-asks-cross-party-delivery.md); request + application under Comlink seal; parity **157** when wired
+
+**Next climb (Cursor):** OA-L2 implementation — after Kaeden affirms edge; mechanical on landed `open_asks.rye` + SLC-L2 carriage pattern.
 
 **Alongside:** SLC-L3 ladder softenings — proposed in verdict; await Kaeden word.
 
