@@ -202,6 +202,11 @@ let oal1 = run ["rishi/bin/rishi" "run" "tools/open_asks_lap1.rish"]
 assert oal1.ok else "OA-L1 closed ask loop witness failed"
 say "GREEN: OA-L1 closed ask loop witness passed."
 
+say "witness suite: OA-L2 cross-party delivery…"
+let oal2 = run ["rishi/bin/rishi" "run" "tools/open_asks_lap2.rish"]
+assert oal2.ok else "OA-L2 cross-party delivery witness failed"
+say "GREEN: OA-L2 cross-party delivery witness passed."
+
 say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
 let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]
 assert slog_arch.ok else "session-logs archive witness failed"

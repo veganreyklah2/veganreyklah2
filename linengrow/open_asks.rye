@@ -14,8 +14,12 @@ const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const rc = @import("receipt_core.rye");
 
 const oa1_version = "20260706.010912";
-const oa1_poster_seed = [_]u8{0x51} ** Ed25519.KeyPair.seed_length;
-const oa1_applicant_seed = [_]u8{0x52} ** Ed25519.KeyPair.seed_length;
+pub const poster_seed = [_]u8{0x51} ** Ed25519.KeyPair.seed_length;
+pub const applicant_seed = [_]u8{0x52} ** Ed25519.KeyPair.seed_length;
+const oa1_poster_seed = poster_seed;
+const oa1_applicant_seed = applicant_seed;
+
+pub const oa2_payload_header: u32 = Ed25519.Signature.encoded_length + 4;
 
 pub const ref_hex_len: u32 = Sha3_256.digest_length * 2;
 pub const max_oa_fact: u32 = 512;
@@ -247,6 +251,81 @@ pub fn classifyFact(fact: []const u8) error{InvalidFact}!enum { request, applica
     if (factHasKey(fact, "from") and factHasKey(fact, "amount")) return .completion;
     if (factHasKey(fact, "request_ref") and factHasKey(fact, "applicant")) return .acceptance;
     return error.InvalidFact;
+}
+
+pub fn encodeCompactPayload(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
+    if (fact.len > max_oa_fact) return error.Overflow;
+    const total: u32 = oa2_payload_header + @as(u32, @intCast(fact.len));
+    if (total > bufLenU32(out)) return error.Overflow;
+    const sig_bytes = sig.toBytes();
+    @memcpy(out[0..sig_bytes.len], &sig_bytes);
+    std.mem.writeInt(u32, out[Ed25519.Signature.encoded_length..][0..4], @intCast(fact.len), .little);
+    @memcpy(out[oa2_payload_header..][0..fact.len], fact);
+    return total;
+}
+
+pub fn decodeCompactPayload(buf: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidPayload}!struct { fact_len: u32 } {
+    if (buf.len < oa2_payload_header) return error.InvalidPayload;
+    const fact_len = std.mem.readInt(u32, buf[Ed25519.Signature.encoded_length..][0..4], .little);
+    if (fact_len > max_oa_fact) return error.InvalidPayload;
+    if (buf.len < oa2_payload_header + fact_len) return error.InvalidPayload;
+    if (sig_out.len < Ed25519.Signature.encoded_length) return error.InvalidPayload;
+    if (fact_out.len < fact_len) return error.InvalidPayload;
+    @memcpy(sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
+    @memcpy(fact_out[0..fact_len], buf[oa2_payload_header..][0..fact_len]);
+    return .{ .fact_len = fact_len };
+}
+
+pub fn foldAppliedLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25519.PublicKey) error{FoldFailed}!FoldState {
+    var state: FoldState = .{};
+    var pos: u32 = 0;
+    while (pos < bufLenU32(log)) {
+        const line_end = std.mem.indexOfScalarPos(u8, log, pos, '\n') orelse bufLenU32(log);
+        const line = log[pos..line_end];
+        pos = if (line_end < bufLenU32(log)) @as(u32, @intCast(line_end + 1)) else @as(u32, @intCast(line_end));
+        if (trimLine(line).len == 0) continue;
+
+        var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+        var fact_buf: [max_oa_fact]u8 = undefined;
+        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const fact = fact_buf[0..parsed.fact_len];
+
+        const kind = classifyFact(fact) catch return error.FoldFailed;
+        switch (kind) {
+            .request => {
+                if (state.posted) return error.FoldFailed;
+                var fields: RequestFields = undefined;
+                parseRequestFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                var poster_hex: [64]u8 = undefined;
+                const poster_kp_bytes = poster_pk.toBytes();
+                var i: u32 = 0;
+                while (i < 32) : (i += 1) {
+                    _ = std.fmt.bufPrint(poster_hex[i * 2 ..][0..2], "{x:0>2}", .{poster_kp_bytes[i]}) catch return error.FoldFailed;
+                }
+                if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
+                var ref_buf: [ref_hex_len]u8 = undefined;
+                requestRefHex(fact, &ref_buf);
+                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                state.request_ref_len = ref_hex_len;
+                state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
+                state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+                state.posted = true;
+            },
+            .application => {
+                if (!state.posted or state.applied) return error.FoldFailed;
+                var fields: ApplicationFields = undefined;
+                parseApplicationFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                state.applicant_hex_len = try copyHexField(fields.applicant, &state.applicant_hex);
+                state.applied = true;
+            },
+            else => return error.FoldFailed,
+        }
+    }
+    if (!state.posted or !state.applied) return error.FoldFailed;
+    return state;
 }
 
 pub fn foldLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25519.PublicKey) error{FoldFailed}!FoldState {

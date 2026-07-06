@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · CIVIC · Gall · Hammock
 **Register:** active-designing — names only our modules
-**Status:** Scope note — checkable-room hammock; **OA-L1 landed** parity **156**; **OA-L2 enters build only after Kaeden affirms this edge**
+**Status:** Seated — checkable-room lap brief; **OA-L2 landed** `20260706.011512`; witness at parity **157**
 
 **Ground:** [`20260706-002912_open-asks-hammock-scope.md`](20260706-002912_open-asks-hammock-scope.md) · [`20260706-000812_slcl2-sealed-delivery.md`](20260706-000812_slcl2-sealed-delivery.md) · [`linengrow/open_asks.rye`](../linengrow/open_asks.rye) · [`linengrow/delivery.rye`](../linengrow/delivery.rye) · [`comlink/wire_format.rye`](../comlink/wire_format.rye)
 
@@ -73,7 +73,7 @@ Encoded beside `linengrow/open_asks.rye`; sealed by `wire_format.sealMessage`.
 
 | Module | Role |
 |--------|------|
-| `linengrow/open_asks.rye` | Fact parsers, `requestRefHex`, `foldLog` — add compact encode/decode helpers |
+| `linengrow/open_asks.rye` | Fact parsers, `requestRefHex`, `foldLog`, `foldAppliedLog`, compact encode/decode |
 | `linengrow/open_asks_delivery.rye` | OA-L2 send / recv / demo / selftest |
 | `linengrow/delivery.rye` | SLC-L2 reference — same hosted UDP pattern |
 | `comlink/wire_format.rye` | `sealMessage` — arbitrary bounded plaintext |
@@ -92,24 +92,17 @@ Port **38474** — distinct from SLC-L2 delivery (**38473**) and hosted wire dem
 
 ---
 
-## Witness Sketch — `tools/open_asks_lap2.rish`
-
-Named now; **not wired** until OA-L2 implementation greens on metal.
+## Witness — `tools/open_asks_lap2.rish`
 
 **Welcome path:**
 
-1. Build `linengrow/bin/open-asks-delivery` (name TBD at implementation)
-2. Poster child: load `tools/fixtures/open_asks_request.bron`, listen for application
-3. Applicant child: listen for request, sign application with matching `request_ref`, send back
-4. Poster recv → append application → `foldLog` → `applied` for fixture ref
-5. Assert fold state GREEN
+1. Build `linengrow/bin/open-asks-delivery`
+2. `selftest` — seal request, open verify, seal application, open verify, fold `applied`
+3. `demo` — applicant child + poster child round trip on ports **38474** / **38475**
 
-**Unwelcome path:**
+**Unwelcome path:** application cites wrong `request_ref` → verify refuses.
 
-1. Applicant sends application citing wrong `request_ref`
-2. Poster fold or verify → fails; witness asserts refusal
-
-**Parity:** one block after OA-L1 → **157** when wired; increment documented in ROADMAP and TASKS.
+**Parity:** one block after OA-L1 → **157** (wired).
 
 ---
 
