@@ -43,11 +43,12 @@
 
 - [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
-**OA-L3 counsel seated `20260706.013012` — awaits Kaeden word:**
+**OA-L3 counsel seated `20260706.013012` — vocabulary gate:**
 
-- [ ] **OA-L3 escrow** — brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md); hold/release on one log; vocabulary, encoding, home, ladder mapping parked
+- [ ] **OA-L3 escrow** — brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md); encoding · inline home · M1/M2 **seated in counsel**; **vocabulary** awaits Kaeden word
+- [~] **Claude bench prepared** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md) + handoff [`session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md`](../session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md)
 
-**Next climb (Cursor):** OA-L3 implementation — after Kaeden speaks escrow names and home; parity **158** when wired on metal.
+**Next climb (Claude + Kaeden):** OA-L3 lap 1 — Kaeden speaks vocabulary, Claude implements → parity **158**.
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 

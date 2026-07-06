@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-05 (recursion v7–v9; Movement 1 landed)
+**Last updated:** 2026-07-06 (Claude OA-L3 bench `013512`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,6 +68,7 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260706.013512` | [Claude OA-L3 escrow first lap](20260706-013512_claude-oal3-escrow-first-lap.md) | Runnable bench — vocabulary gate, hold/release on one log, parity **158** |
 | `20260705.195812` | [Fidelity soften — thirteen title-drawn studies](20260705-195812_fidelity-soften-instructions.md) | Gratitude softening on #24–#36; Chitra and transcript-true batches untouched |
 | `20260705.190812` | [Claude recursion v9 — batch-6 bundle](20260705-190812_claude-recursion-v9.md) | Apply b1→b4→b5→b6 in order; commit/push/zip 47 |
 | `20260705.184612` | [Claude recursion v8](20260705-184612_claude-recursion-v8.md) | Mid-arc handoff before batch 6 |
