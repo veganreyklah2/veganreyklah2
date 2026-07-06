@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **162** · NS-L3 wire lap 1 hosted sync landed)
+**Last updated:** 2026-07-06 (parity **163** · NS-L3 resin-batch frame lap 3w-3a landed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -60,7 +60,8 @@
 - [x] **NS-L2 write revision** — `BoltCatalog.appendLeaf` + immutable prior revision recall; `tools/mantra_recall_lap2.rish`; parity **160**
 - [x] **NS-L3 bolt sync (logic)** — `syncRevision` between two catalogs: have-already resins cross as refs, need-resin as bytes once; every resin digest-verified before append (tampered resin refused whole); recall identical on both peers; duplicate revision refused; `tools/mantra_recall_lap3.rish`; parity **161**
 - [x] **NS-L3 wire carriage lap 2 (device)** — virtio guests `guest_sync_*`; ports **15561/15562**; `comlink/run_recall_sync_wire_lab.sh`; witness extended in `tools/mantra_recall_lap3_wire.rish`
-- [ ] **NS-L3 wire lap 3w-3 (resin-batch + chunking)** — `amphora_comlink_resin_batch` spec; resins >340 B
+- [x] **NS-L3 lap 3w-3a (resin-batch frame)** — `mantra/resin_batch.rye`: signed header + manifest (control plane), payloads prove by digest (data plane); many resins under one signature; have-already entries reconstructed locally; second sync moves zero payload bytes; bad signature, tampered payload, unknown Tilak refused whole; `tools/mantra_resin_batch.rish`; width-checked; parity **163**
+- [ ] **NS-L3 lap 3w-3b (beading)** — a resin larger than one frame is beaded into smaller content-addressed beads, named in order by a **bead-index** Tilak (content-defined beads + an index of bead digests; bead-granularity dedup); bead / beading / bead-index seated `20260706.163312`; the lap awaits Kaeden's word to build; batch-frame carriage over the wire (hosted, device) rides after
 
 - [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 
@@ -194,7 +195,7 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 
 Ground: [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (second pass) · [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md).
 
-- [x] **Archive verdict (Kaeden affirms)** — Amber's seal = Kumara-signed `.bron` manifest naming SHA3-256 **resins** cut at content-defined boundaries; each resin is the stored bytes, the manifest catalogs; SHA3-512 for canonical forever-names per [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md); chunk-store host seam today; mountable index = bootable-clone shape; tar transport wrapper only (`20260703.191312 UDT`, *for*).
+- [x] **Archive verdict (Kaeden affirms)** — Amber's seal = Kumara-signed `.bron` manifest naming SHA3-256 **resins** cut at content-defined boundaries; each resin is the stored bytes, the manifest catalogs; SHA3-512 for canonical forever-names per [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md); bead-store host seam today; mountable index = bootable-clone shape; tar transport wrapper only (`20260703.191312 UDT`, *for*).
 - [ ] **Puddle continuity invariant (recorded)** — one live instance per Kumara identity, enforced by a signed continuity fact; the double-boot hazard ruled out by construction.
 - [x] **Maitreya owns time (Kaeden affirms)** — one clock for audio and video: decode, sync, bounded buffers; Brushstroke owns space; codecs stay royalty-free host seams (the lossless, low-delay, general, and hybrid families, with their video kin); Lotus authors above; Realidream plays through the same seam (`20260703.191312 UDT`, *for*).
 - [ ] **Happy-zone pairing (TAME horizon)** — as module seams stabilize, each earns mirrored collaboration and contract witnesses; metalsmoke stays the thin edge's few honest integrated checks; enters TAME guidance on Kaeden's ruling.

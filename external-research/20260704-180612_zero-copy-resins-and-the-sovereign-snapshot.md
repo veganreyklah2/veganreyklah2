@@ -192,7 +192,7 @@ For a home snapshot of, say, 50–200 GiB working set:
 | **2** | Weave slice + Brix closure in manifest; import replay to HEAD on host (no bare metal yet) | New: `snapshot_replay_witness` — red then green |
 | **3** | Amphora vessel over Comlink; have-already + need-resin lanes | `amphora_comlink_resin_batch` |
 | **4** | Bootable Aurora image; microVM (Puddle host); double-boot refused | `aurora_snapshot_boot` |
-| **5** | Incremental export (rolling chunks); pack checkpoint resin | `snapshot_incremental` |
+| **5** | Incremental export (rolling beads); pack checkpoint resin | `snapshot_incremental` |
 
 No lap claims the Urbit sentence whole. Each closes one claim.
 
@@ -216,7 +216,7 @@ No lap claims the Urbit sentence whole. Each closes one claim.
 
 **Is the Urbit-like snapshot possible?** Yes as architecture — **replay the log, boot the pier** is already our fold doctrine. The maximum export is **Weave slice + resin closure + Brix + Kumara trust + Aurora boot spine**, not a mystery ISO.
 
-**What is not decided tonight:** checkpoint frequency, chunk size, whether Bron records inline small facts or always point to resins, and the exact Comlink frame layout. Those are **Kaeden-gated** or **witness-gated** stops — not gaps in the goal.
+**What is not decided tonight:** checkpoint frequency, bead size, whether Bron records inline small facts or always point to resins, and the exact Comlink frame layout. Those are **Kaeden-gated** or **witness-gated** stops — not gaps in the goal.
 
 ---
 

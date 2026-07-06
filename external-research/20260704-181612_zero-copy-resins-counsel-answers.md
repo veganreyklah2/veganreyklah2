@@ -29,11 +29,11 @@ Every parity number that follows is either one of the tree's existing pins (144,
 
 The minimum frame preserving batching without breaking Tally gardens is given whole in I1. Its spine: a small **signed batch header** (control plane), a bounded **manifest slice** whose entries carry Tilak, algorithm-tagged digest, length, and name (control plane), and an optional **payload section** of resin bytes exactly as stored (data plane). The signature covers header and manifest only — **payloads prove themselves by digest**, because the digest already rides inside the signed manifest. That is the zero-copy dividend stated precisely: one signature verification per batch, one SHA3 walk per resin, and no second integrity pass, no re-encode, no owned intermediate buffer unless absorb truly requires one.
 
-**Where toll attaches: to the fact, never to the resin.** The sorting in the ordering doctrine already answers this. Stone movement is owned-fact traffic — one hand names bytes, the other verifies them — so the have-already and need-resin lanes pay no ordering toll at all; they pay only the *egress budget*, which is a season constant at the tunnel mouth rather than a commons price. Toll lands **per batch** exactly when a batch carries facts that touch the commons — an availability claim published to a shared book, a MALA transfer riding as cargo — one signed header, one toll, one review. Per-peer-season is the accounting grain for the egress budget; per-vessel adds nothing the batch header does not already carry. Taxing resins would quietly turn synchronization into a commons expense, and the toll's whole economy rests on staying rare.
+**Where toll attaches: to the fact, never to the resin.** The sorting in the ordering doctrine already answers this. Resin movement is owned-fact traffic — one hand names bytes, the other verifies them — so the have-already and need-resin lanes pay no ordering toll at all; they pay only the *egress budget*, which is a season constant at the tunnel mouth rather than a commons price. Toll lands **per batch** exactly when a batch carries facts that touch the commons — an availability claim published to a shared book, a MALA transfer riding as cargo — one signed header, one toll, one review. Per-peer-season is the accounting grain for the egress budget; per-vessel adds nothing the batch header does not already carry. Taxing resins would quietly turn synchronization into a commons expense, and the toll's whole economy rests on staying rare.
 
 ### B. Same resins, many Tilaks: keep the tree's answer; decline a seated `resin` Tilak
 
-**Counsel: no seated `resin` Tilak.** A resin is an *addressing law* — how bytes are named, stored, and proven — while a Tilak is a *meaning mark* — what the bytes are. A content-addressed bytes marked `resin` would say "these bytes are bytes": a tautology mark that spends the seam's one label on the least informative fact about the cargo. The manifest line already carries the true mark per entry; the two hardcoded roots (`plain-bytes`, `manifest`) suffice for every resin whose meaning is still plain; and one-word-one-gate's spirit counsels against a second name for content-addressed bytes. Where the wire must say "this frame carries resin-law cargo," that is the **frame version field's** duty, never a Tilak's. Vision room, one sentence: if a future lap wants resins that carry their own layout promises — chunk-series resins, checkpoint resins — those earn *specific* Tilaks (`chunk-index`, `checkpoint`) at their laps, which is per-cargo marking working exactly as ratified.
+**Counsel: no seated `resin` Tilak.** A resin is an *addressing law* — how bytes are named, stored, and proven — while a Tilak is a *meaning mark* — what the bytes are. A content-addressed bytes marked `resin` would say "these bytes are bytes": a tautology mark that spends the seam's one label on the least informative fact about the cargo. The manifest line already carries the true mark per entry; the two hardcoded roots (`plain-bytes`, `manifest`) suffice for every resin whose meaning is still plain; and one-word-one-gate's spirit counsels against a second name for content-addressed bytes. Where the wire must say "this frame carries resin-law cargo," that is the **frame version field's** duty, never a Tilak's. Vision room, one sentence: if a future lap wants resins that carry their own layout promises — bead-series resins, checkpoint resins — those earn *specific* Tilaks (`bead-index`, `checkpoint`) at their laps, which is per-cargo marking working exactly as ratified.
 
 **When Amber's ring-1 manifest graduates from `relpath + digest` to `<mark> <digest> <name>`: first, before any wire work.** The hygiene lap (I6) is the smallest metal stop in this whole arc and it unifies cellar and vessel under one line law before the Comlink frame exists — sameness is the macro, applied in time. Migration story in I6: additive, two goldens for one lap, old shape readable forever, new shape written from the lap forward.
 
@@ -41,7 +41,7 @@ The minimum frame preserving batching without breaking Tally gardens is given wh
 
 **The smallest export that deserves the word *sovereign*:** the Kumara public trust bundle, the Weave slice to HEAD, Mantra's projection metadata, the resin closure those facts reference, and the signed manifest naming all of it — bundles A (public material only), B, D (referenced subset), and G. Sovereignty is *the ability to verify and reproduce state with no network and no third party*; that set already grants it, because a stranger holding only the export and the out-of-band fingerprint card can walk signature to root, replay the fold, and land on HEAD. The Brix closure makes the export *reconstructable*; the Aurora spine makes it *bootable*. Those are later, larger promises — worthy, and separate.
 
-**Lap-two witness scope (in):** export writes the Weave slice, the Brix closure, and the superset manifest; import verifies the seal, maps resins read-only, replays the fold on a host, and asserts **HEAD equality** — plus the refusal paths: tampered resin, unknown Tilak, duplicated name, each refused whole. **Horizon (out, vision room until claimed):** Pond and Caravan policy bundles, the Aurora boot spine, checkpoint resins, incremental chunking, warm WOV balances, and anything on bare metal. **The largest export that stays witnessable without thin-edge metalsmoke** is everything through lap three — the hosted Comlink crossing — because lap four's boot is the thin edge by definition, and a headless bench class can never claim it; that claim belongs to a hand at a machine, marked the metalsmoke way.
+**Lap-two witness scope (in):** export writes the Weave slice, the Brix closure, and the superset manifest; import verifies the seal, maps resins read-only, replays the fold on a host, and asserts **HEAD equality** — plus the refusal paths: tampered resin, unknown Tilak, duplicated name, each refused whole. **Horizon (out, vision room until claimed):** Pond and Caravan policy bundles, the Aurora boot spine, checkpoint resins, incremental beading, warm WOV balances, and anything on bare metal. **The largest export that stays witnessable without thin-edge metalsmoke** is everything through lap three — the hosted Comlink crossing — because lap four's boot is the thin edge by definition, and a headless bench class can never claim it; that claim belongs to a hand at a machine, marked the metalsmoke way.
 
 ### D. Lap order: replay-on-host first, Puddle before USB, and the continuity fact at customs
 
@@ -112,10 +112,10 @@ Manifest entry, the wire's superset of the seated three-field line:
 | `tilak` | bounded string ≤ `max_tilak_bytes` | Per-cargo meaning mark; unknown mark refuses the batch whole |
 | `algo` | `u8` enum: 1 = SHA3-256 · 2 = SHA3-512 | Resins law: tag when tiers mix; eras coexist on one wire |
 | `digest` | 32 or 64 bytes per `algo` | The address and the proof |
-| `length` | `u64` ≤ `max_stone_bytes` | Receiver bounds-checks before reading a single payload byte |
+| `length` | `u64` ≤ `max_resin_bytes` | Receiver bounds-checks before reading a single payload byte |
 | `name` | bounded ≤ `max_name_bytes`, unique in batch | Duplicate name refuses whole (eight-asks A6 law, promoted to the wire) |
 
-Payload section: resins concatenated in manifest order for misses only, **bytes exactly as stored** — the digest names what is stored, so nothing re-encodes on send. Refusal and error codes, named for the fault: `error.BadSignature` · `error.StaleParent` · `error.UnknownTilak` · `error.DuplicateName` · `error.DigestMismatch` · `error.LengthMismatch` · `error.OverBudget` (reason class *budget*) · `error.RefusedStone` (reason class *policy*, references a signed refusal fact) · `error.OverBounds` (reason class *bounds*). Every refusal is whole; partial trust of a batch does not exist.
+Payload section: resins concatenated in manifest order for misses only, **bytes exactly as stored** — the digest names what is stored, so nothing re-encodes on send. Refusal and error codes, named for the fault: `error.BadSignature` · `error.StaleParent` · `error.UnknownTilak` · `error.DuplicateName` · `error.DigestMismatch` · `error.LengthMismatch` · `error.OverBudget` (reason class *budget*) · `error.RefusedResin` (reason class *policy*, references a signed refusal fact) · `error.OverBounds` (reason class *bounds*). Every refusal is whole; partial trust of a batch does not exist.
 
 ### I2 — Snapshot export manifest
 
@@ -130,8 +130,8 @@ One distinguished first entry: the **head record** — a `manifest`-marked resin
 | `RECEIVE` | Vessel lands whole | media error → refuse |
 | `VERIFY_SEAL` | Signature to root; parent mark; algo tags known | `BadSignature` · `StaleParent` |
 | `VERIFY_MANIFEST` | Every line: known Tilak, unique name, length ≤ bound | `UnknownTilak` · `DuplicateName` · `OverBounds` |
-| `MAP_RO` | Stones mapped read-only (mmap where host allows; plain bounded reads otherwise — named honestly per host) | host error → refuse |
-| `VERIFY_STONES` | Batched SHA3 walk; every digest equal | `DigestMismatch` |
+| `MAP_RO` | Resins mapped read-only (mmap where host allows; plain bounded reads otherwise — named honestly per host) | host error → refuse |
+| `VERIFY_RESINS` | Batched SHA3 walk; every digest equal | `DigestMismatch` |
 | `CONTINUITY` | No live same-identity instance; epoch fresh | `ContinuityViolation` |
 | `REPLAY` | Pure fold of Weave facts; **assert HEAD equality** | `FoldMismatch` |
 | `SHAPE_CAST` | Brix closure cast; every brick's digest present | `MissingBrick` |
@@ -150,7 +150,7 @@ Nothing is visible outside the season garden until `PLACED`; a wreck at any stat
 | 2 | `snapshot_replay` | Export at HEAD; import on host replays to **equal HEAD**; tampered resin, unknown Tilak, duplicate name each refuse whole | `[Cursor: verify on metal]` |
 | 3 | `amphora_comlink_resin_batch` | Hosted wire: hits cross as refs only; misses cross once; second sync of same batch moves zero payload bytes | `[Cursor: verify on metal]` |
 | 4 | `aurora_snapshot_boot` | Boot-shaped replay — **thin edge**; first rung inside a Puddle microVM, final rung a hand at real metal, metalsmoke-marked | never claimed by a headless bench |
-| 5 | `snapshot_incremental` | Rolling-chunk export; small edit reseals a small region | horizon; waits for a measured red |
+| 5 | `snapshot_incremental` | Rolling-bead export; small edit reseals a small region | horizon; waits for a measured red |
 
 Red-then-green order within each lap, per standing law; every wire into `tools/parity.rish` lands with its own count verified on the wiring bench, never inherited from this table.
 
@@ -158,11 +158,11 @@ Red-then-green order within each lap, per standing law; every wire into `tools/p
 
 | Constant | Counsel default | Rationale |
 |----------|-----------------|-----------|
-| `max_manifest_lines` | 65 536 | `u32` count; one review sitting; a snapshot larger than this names a chunk-index resin instead |
+| `max_manifest_lines` | 65 536 | `u32` count; one review sitting; a snapshot larger than this names a bead-index resin instead |
 | `max_tilak_bytes` | 64 | A mark is a word, never a sentence |
 | `max_name_bytes` | 4 096 | Path-shaped; matches host path ceilings |
-| `max_stone_bytes` | 1 GiB | One sequential read per resin; larger objects arrive as chunk series at lap 5 |
-| `max_chunk_bytes` | 256 KiB | Lap 5 only; upper edge of the studied content-defined range in the Puddle second pass |
+| `max_resin_bytes` | 1 GiB | One sequential read per resin; larger objects arrive as bead series at lap 5 |
+| `max_bead_bytes` | 256 KiB | Lap 5 only; upper edge of the studied content-defined range in the Puddle second pass |
 | `max_batch_payload_bytes` | 16 MiB | Hosted lap: one bounded Tally garden holds one batch whole |
 | `max_vessel_bytes` | season constant | The egress budget's own child; per-crossing, per the tunnel-mouth story in H |
 | `max_replay_garden_bytes` | named at import | The fold streams; the garden bounds it; a snapshot demanding more names it in its head record |
@@ -263,7 +263,7 @@ New rows for the decoder's three-column table:
 
 **Kaeden's gates, listed and never pushed:** TWO_ROOMS seat · gloss spec go-ahead · crossing-seed module home · doorway witness word · Edit-5 slot assignment (F) · resin-Tilak ruling (B) · continuity-fact custody shape (D, I7) · civic export boundary (G) · snapshot-law seating when the spec drafts · journey's pause, always his. **Mechanical for Cursor on those words:** the I6 hygiene lap; drafting I2 then I1 into specs; wiring each witness red-then-green with counts verified on Cursor's own metal; applying the Part Three, Four, and Five deltas as staged hygiene commits; README rows and session logs per standing discipline.
 
-**Risks, named:** drafting the frame spec before the manifest law would mint two grammars for one line — mitigated by the I2-before-I1 order; chunking before a measured red is machinery without work — lap five waits, per the ordering doctrine's own patience; a headless bench can never claim lap four, and any summary that forgets this trades away the metal-path honesty — the thin edge stays a hand's; attaching toll to resins would tax the commons into every sync — the sorting in A is the wall; and the civic export is the one place a good tool could quietly become a surveillance bundle — the one-sentence boundary plus consent marks stand in front of it, and nothing civic crosses before Kaeden ratifies the wall.
+**Risks, named:** drafting the frame spec before the manifest law would mint two grammars for one line — mitigated by the I2-before-I1 order; beading before a measured red is machinery without work — lap five waits, per the ordering doctrine's own patience; a headless bench can never claim lap four, and any summary that forgets this trades away the metal-path honesty — the thin edge stays a hand's; attaching toll to resins would tax the commons into every sync — the sorting in A is the wall; and the civic export is the one place a good tool could quietly become a surveillance bundle — the one-sentence boundary plus consent marks stand in front of it, and nothing civic crosses before Kaeden ratifies the wall.
 
 ---
 

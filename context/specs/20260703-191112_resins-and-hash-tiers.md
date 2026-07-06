@@ -30,7 +30,7 @@ One hash family, two widths — chosen by the **promise the name makes**, not by
 | Tier | Algorithm | Promise | Examples |
 |------|-----------|---------|----------|
 | **Canonical** | **SHA3-512** | This name must mean one thing for as long as the work endures | Mantra weave states, sealed message content identity, Aurora stage names, long-lived weave facts |
-| **Working** | **SHA3-256** | High-volume store units, chunk filenames, hosts that pin an external oracle | Amber resins, Tablecloth blobs, manifest entry digests in lap one, Comlink refs where path size matters |
+| **Working** | **SHA3-256** | High-volume store units, bead filenames, hosts that pin an external oracle | Amber resins, Tablecloth blobs, manifest entry digests in lap one, Comlink refs where path size matters |
 
 SHA3-256 already carries collision resistance beyond any feasible reach at project scale. SHA3-512 is the **wider margin** where the promise is forever — not a fix for a weakness in working-tier resins.
 

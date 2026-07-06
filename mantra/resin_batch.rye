@@ -1,0 +1,408 @@
+//! mantra/resin_batch.rye — NS-L3 lap 3w-3a: the resin-batch frame (amphora_comlink_resin_batch).
+//!
+//! One frame shape for sync cargo: a signed header and manifest (control plane) and a
+//! payload section of resin bytes (data plane). The signature covers header and manifest
+//! only; payloads prove themselves by digest, because each digest already rides in the
+//! signed manifest. Have-already entries carry no bytes; the receiver reconstructs them
+//! from resins it already holds. Many resins cross under one signature, and a second sync
+//! of the same bolt moves zero payload bytes.
+//!
+//!   rye build mantra/resin_batch.rye -femit-bin=mantra/bin/resin-batch
+//!   mantra/bin/resin-batch selftest
+//!
+//! Scope: active-designing/20260706-023912_the-referential-namespace.md
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const ns = @import("recall_lap1.rye");
+const Ed25519 = std.crypto.sign.Ed25519;
+const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+
+pub const batch_version = "20260706.042612";
+const batch_kind: u8 = 0x03;
+
+pub const max_batch_entries: u32 = 16;
+pub const max_batch_bytes: u32 = 4096;
+
+pub const BatchError = error{
+    Overflow,
+    Truncated,
+    BadKind,
+    BadSignature,
+    DigestMismatch,
+    UnknownTilak,
+    DuplicateName,
+    TooManyEntries,
+    StoreMissing,
+};
+
+pub const BatchReport = struct {
+    total: u32,
+    had_already: u32,
+    needed: u32,
+    payload_bytes: u32,
+};
+
+const known_tilaks = [_][]const u8{ "plain-text", "plain-bytes", "manifest" };
+
+fn tilakKnown(t: []const u8) bool {
+    for (known_tilaks) |k| {
+        if (std.mem.eql(u8, k, t)) return true;
+    }
+    return false;
+}
+
+fn capU32(buf: []const u8) u32 {
+    assert(buf.len <= std.math.maxInt(u32));
+    return @intCast(buf.len);
+}
+
+fn digestHexOf(content: []const u8, out: *[64]u8) void {
+    var digest: [32]u8 = undefined;
+    Sha3_256.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn heldContains(held: []const [64]u8, digest_hex: []const u8) bool {
+    for (held) |h| {
+        if (std.mem.eql(u8, h[0..64], digest_hex)) return true;
+    }
+    return false;
+}
+
+fn putU16(out: []u8, off: *u32, v: u16) BatchError!void {
+    if (off.* + 2 > capU32(out)) return error.Overflow;
+    std.mem.writeInt(u16, out[off.*..][0..2], v, .little);
+    off.* += 2;
+}
+
+fn putU32(out: []u8, off: *u32, v: u32) BatchError!void {
+    if (off.* + 4 > capU32(out)) return error.Overflow;
+    std.mem.writeInt(u32, out[off.*..][0..4], v, .little);
+    off.* += 4;
+}
+
+fn putBytes(out: []u8, off: *u32, b: []const u8) BatchError!void {
+    const n: u32 = @intCast(b.len);
+    if (off.* + n > capU32(out)) return error.Overflow;
+    @memcpy(out[off.*..][0..b.len], b);
+    off.* += n;
+}
+
+fn putField(out: []u8, off: *u32, b: []const u8) BatchError!void {
+    if (b.len > std.math.maxInt(u16)) return error.Overflow;
+    try putU16(out, off, @intCast(b.len));
+    try putBytes(out, off, b);
+}
+
+fn getU16(payload: []const u8, off: *u32) BatchError!u16 {
+    if (off.* + 2 > capU32(payload)) return error.Truncated;
+    const v = std.mem.readInt(u16, payload[off.*..][0..2], .little);
+    off.* += 2;
+    return v;
+}
+
+fn getU32(payload: []const u8, off: *u32) BatchError!u32 {
+    if (off.* + 4 > capU32(payload)) return error.Truncated;
+    const v = std.mem.readInt(u32, payload[off.*..][0..4], .little);
+    off.* += 4;
+    return v;
+}
+
+fn getField(payload: []const u8, off: *u32) BatchError![]const u8 {
+    const n = try getU16(payload, off);
+    if (off.* + n > capU32(payload)) return error.Truncated;
+    const s = payload[off.*..][0..n];
+    off.* += n;
+    return s;
+}
+
+/// Build a resin-batch for (peer, bolt, revision) from src, given the digests the
+/// receiver already holds. Held entries cross as refs; the rest cross once.
+pub fn buildBatch(
+    src: *const ns.BoltCatalog,
+    peer: []const u8,
+    bolt: []const u8,
+    revision: u32,
+    held: []const [64]u8,
+    signer: Ed25519.KeyPair,
+    out: []u8,
+) BatchError!struct { len: u32, report: BatchReport } {
+    const count = src.revisionLeafCount(peer, bolt, revision);
+    if (count > max_batch_entries) return error.TooManyEntries;
+
+    var off: u32 = 0;
+    if (off + 1 > capU32(out)) return error.Overflow;
+    out[off] = batch_kind;
+    off += 1;
+    try putField(out, &off, peer);
+    try putField(out, &off, bolt);
+    try putU32(out, &off, revision);
+    try putU32(out, &off, count);
+
+    var report: BatchReport = .{
+        .total = count,
+        .had_already = 0,
+        .needed = 0,
+        .payload_bytes = 0,
+    };
+
+    // Manifest section (control plane).
+    var i: u32 = 0;
+    while (i < count) : (i += 1) {
+        const leaf = src.revisionLeafAt(peer, bolt, revision, i) orelse return error.Truncated;
+        const has_payload = !heldContains(held, leaf.digest_hex[0..64]);
+        try putField(out, &off, leaf.path);
+        try putField(out, &off, leaf.tilak);
+        try putBytes(out, &off, leaf.digest_hex[0..64]);
+        try putU32(out, &off, @intCast(leaf.bytes.len));
+        if (off + 1 > capU32(out)) return error.Overflow;
+        out[off] = if (has_payload) 1 else 0;
+        off += 1;
+        if (has_payload) {
+            report.needed += 1;
+        } else {
+            report.had_already += 1;
+        }
+    }
+
+    // Signature over header and manifest (control plane), one per batch.
+    const sig = signer.sign(out[0..off], null) catch return error.BadSignature;
+    const sig_bytes = sig.toBytes();
+    try putBytes(out, &off, &sig_bytes);
+
+    // Payload section (data plane): bytes for the need-resin entries, in manifest order.
+    i = 0;
+    while (i < count) : (i += 1) {
+        const leaf = src.revisionLeafAt(peer, bolt, revision, i) orelse return error.Truncated;
+        if (!heldContains(held, leaf.digest_hex[0..64])) {
+            try putBytes(out, &off, leaf.bytes);
+            report.payload_bytes += @intCast(leaf.bytes.len);
+        }
+    }
+
+    return .{ .len = off, .report = report };
+}
+
+const ParsedEntry = struct {
+    path: []const u8,
+    tilak: []const u8,
+    digest_hex: [64]u8,
+    length: u32,
+    has_payload: bool,
+    payload: []const u8,
+};
+
+/// Apply a resin-batch into dest: verify the one signature over header and manifest,
+/// verify every payload against its digest, then append. Any failure refuses the whole
+/// crossing before a single leaf is appended. Held entries are reconstructed locally.
+pub fn applyBatch(
+    dest: *ns.BoltCatalog,
+    batch: []const u8,
+    source_pk: Ed25519.PublicKey,
+) BatchError!BatchReport {
+    var off: u32 = 0;
+    if (off + 1 > capU32(batch)) return error.Truncated;
+    if (batch[off] != batch_kind) return error.BadKind;
+    off += 1;
+    const peer = try getField(batch, &off);
+    const bolt = try getField(batch, &off);
+    const revision = try getU32(batch, &off);
+    const count = try getU32(batch, &off);
+    if (count > max_batch_entries) return error.TooManyEntries;
+
+    var entries: [max_batch_entries]ParsedEntry = undefined;
+    var i: u32 = 0;
+    while (i < count) : (i += 1) {
+        const path = try getField(batch, &off);
+        const tilak = try getField(batch, &off);
+        if (off + 64 > capU32(batch)) return error.Truncated;
+        var digest: [64]u8 = undefined;
+        @memcpy(&digest, batch[off..][0..64]);
+        off += 64;
+        const length = try getU32(batch, &off);
+        if (off + 1 > capU32(batch)) return error.Truncated;
+        const has_payload = batch[off] == 1;
+        off += 1;
+        if (!tilakKnown(tilak)) return error.UnknownTilak;
+        var j: u32 = 0;
+        while (j < i) : (j += 1) {
+            if (std.mem.eql(u8, entries[j].path, path)) return error.DuplicateName;
+        }
+        entries[i] = .{
+            .path = path,
+            .tilak = tilak,
+            .digest_hex = digest,
+            .length = length,
+            .has_payload = has_payload,
+            .payload = "",
+        };
+    }
+
+    // Verify the one signature over header and manifest.
+    const sig_start = off;
+    const sig_len = Ed25519.Signature.encoded_length;
+    if (sig_start + sig_len > capU32(batch)) return error.Truncated;
+    const sig = Ed25519.Signature.fromBytes(batch[sig_start..][0..sig_len].*);
+    sig.verify(batch[0..sig_start], source_pk) catch return error.BadSignature;
+    off += sig_len;
+
+    // Payload section: bind each need-resin payload and verify it against its digest.
+    var report: BatchReport = .{
+        .total = count,
+        .had_already = 0,
+        .needed = 0,
+        .payload_bytes = 0,
+    };
+    i = 0;
+    while (i < count) : (i += 1) {
+        if (entries[i].has_payload) {
+            const n = entries[i].length;
+            if (off + n > capU32(batch)) return error.Truncated;
+            const bytes = batch[off..][0..n];
+            off += n;
+            var recomputed: [64]u8 = undefined;
+            digestHexOf(bytes, &recomputed);
+            const digest_ok = std.mem.eql(u8, recomputed[0..64], entries[i].digest_hex[0..64]);
+            if (!digest_ok) return error.DigestMismatch;
+            entries[i].payload = bytes;
+            report.needed += 1;
+            report.payload_bytes += n;
+        } else {
+            report.had_already += 1;
+        }
+    }
+
+    // Every check passed. Append all; held entries reconstructed from local resins.
+    i = 0;
+    while (i < count) : (i += 1) {
+        const bytes = if (entries[i].has_payload)
+            entries[i].payload
+        else
+            dest.bytesForDigest(entries[i].digest_hex[0..64]) orelse return error.StoreMissing;
+        dest.appendLeaf(peer, bolt, revision, entries[i].path, bytes, entries[i].tilak) catch
+            return error.Overflow;
+    }
+
+    return report;
+}
+
+fn runBatchSelftest(_: std.Io) !u8 {
+    const signer_seed = [_]u8{0x60} ** Ed25519.KeyPair.seed_length;
+    const signer = Ed25519.KeyPair.generateDeterministic(signer_seed) catch unreachable;
+
+    var src: ns.BoltCatalog = .empty();
+    try src.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try src.appendLeaf("peerB", "b", 1, "c.txt", "gamma", "plain-text");
+
+    var dest: ns.BoltCatalog = .empty();
+    try dest.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+
+    var alpha_digest: [64]u8 = undefined;
+    digestHexOf("alpha", &alpha_digest);
+    const held_one = [_][64]u8{alpha_digest};
+
+    var buf: [max_batch_bytes]u8 = undefined;
+    const built = try buildBatch(&src, "peerB", "b", 1, &held_one, signer, &buf);
+    assert(built.report.total == 3);
+    assert(built.report.had_already == 1);
+    assert(built.report.needed == 2);
+    assert(built.report.payload_bytes == 9);
+
+    const applied = try applyBatch(&dest, buf[0..built.len], signer.public_key);
+    assert(applied.needed == 2);
+    assert(applied.had_already == 1);
+
+    // Referential transparency across peers, including the reconstructed have-already leaf.
+    var out: [64]u8 = undefined;
+    const na = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "a.txt" };
+    const ra = try dest.recall(na, &out);
+    assert(std.mem.eql(u8, out[0..ra.len], "alpha"));
+    const nb = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
+    const rb = try dest.recall(nb, &out);
+    assert(std.mem.eql(u8, out[0..rb.len], "beta"));
+    const nc = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "c.txt" };
+    const rc = try dest.recall(nc, &out);
+    assert(std.mem.eql(u8, out[0..rc.len], "gamma"));
+
+    // Second sync: dest now holds every digest; the batch moves zero payload bytes.
+    var beta_digest: [64]u8 = undefined;
+    digestHexOf("beta", &beta_digest);
+    var gamma_digest: [64]u8 = undefined;
+    digestHexOf("gamma", &gamma_digest);
+    const held_all = [_][64]u8{ alpha_digest, beta_digest, gamma_digest };
+    var buf2: [max_batch_bytes]u8 = undefined;
+    const rebuilt = try buildBatch(&src, "peerB", "b", 1, &held_all, signer, &buf2);
+    assert(rebuilt.report.needed == 0);
+    assert(rebuilt.report.payload_bytes == 0);
+
+    // Unwelcome: a bad batch signature refuses the whole crossing.
+    {
+        var bad: [max_batch_bytes]u8 = undefined;
+        @memcpy(bad[0..built.len], buf[0..built.len]);
+        bad[3] = if (bad[3] == 'z') 'y' else bad[3] + 1;
+        var dest_bad: ns.BoltCatalog = .empty();
+        try dest_bad.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+        if (applyBatch(&dest_bad, bad[0..built.len], signer.public_key)) |_| {
+            return error.BadSignature;
+        } else |err| {
+            assert(err == error.BadSignature);
+        }
+    }
+
+    // Unwelcome: a tampered payload refuses by digest; the manifest signature still verifies.
+    {
+        var bad: [max_batch_bytes]u8 = undefined;
+        @memcpy(bad[0..built.len], buf[0..built.len]);
+        bad[built.len - 1] = if (bad[built.len - 1] == 'z') 'y' else bad[built.len - 1] + 1;
+        var dest_bad: ns.BoltCatalog = .empty();
+        try dest_bad.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+        if (applyBatch(&dest_bad, bad[0..built.len], signer.public_key)) |_| {
+            return error.DigestMismatch;
+        } else |err| {
+            assert(err == error.DigestMismatch);
+        }
+    }
+
+    // Unwelcome: an unknown Tilak refuses the whole crossing.
+    {
+        var src_mystery: ns.BoltCatalog = .empty();
+        try src_mystery.appendLeaf("peerB", "m", 1, "q.txt", "delta", "mystery");
+        var mbuf: [max_batch_bytes]u8 = undefined;
+        const mbuilt = try buildBatch(&src_mystery, "peerB", "m", 1, &[_][64]u8{}, signer, &mbuf);
+        var dest_m: ns.BoltCatalog = .empty();
+        if (applyBatch(&dest_m, mbuf[0..mbuilt.len], signer.public_key)) |_| {
+            return error.UnknownTilak;
+        } else |err| {
+            assert(err == error.UnknownTilak);
+        }
+    }
+
+    print("batch: {d} resins under one signature; had {d}, need {d}, {d} bytes\n", .{
+        built.report.total,
+        built.report.had_already,
+        built.report.needed,
+        built.report.payload_bytes,
+    });
+    print("batch: second sync moved zero payload bytes; have-already dividend GREEN\n", .{});
+    print("batch: bad signature, tampered payload, unknown Tilak refused whole GREEN\n", .{});
+    print("batch: version {s}\n", .{batch_version});
+    print("GREEN: NS-L3 3w-3a resin-batch frame; one signature per batch.\n", .{});
+    return 0;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
+    if (args.len >= 2) {
+        if (std.mem.eql(u8, args[1], "selftest") or std.mem.eql(u8, args[1], "batch")) {
+            return runBatchSelftest(io);
+        }
+    }
+    return runBatchSelftest(io);
+}

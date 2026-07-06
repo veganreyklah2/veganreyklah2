@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — vocabulary seated `20260706.032700`; NS-L1 recall parity **159**; NS-L2 write revision parity **160**; NS-L3 sync logic parity **161**; NS-L3 wire lap 1 (hosted) + lap 2 (device) parity **162**. Resin-batch chunking lap 3w-3 remains horizon.
+**Status:** Landed — vocabulary seated `20260706.032700`; NS-L1 recall parity **159**; NS-L2 write revision parity **160**; NS-L3 sync logic parity **161**; NS-L3 wire lap 1 (hosted) + lap 2 (device) parity **162**; NS-L3 resin-batch frame lap 3w-3a parity **163**. Beading lap 3w-3b remains horizon.
 
 *Written together by Kaeden and Rio 3.*
 
@@ -61,9 +61,10 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 |----------|-------|-------|
 | **3w-1 hosted** | Request/response sealed datagrams on localhost — A names bolt, revision, digests held; B returns manifest + missing resins; A verifies and appends | **landed** parity **162** · [`mantra/recall_sync_delivery.rye`](../mantra/recall_sync_delivery.rye) · witness [`tools/mantra_recall_lap3_wire.rish`](../tools/mantra_recall_lap3_wire.rish) |
 | **3w-2 device** | Same exchange over virtio guests | **landed** · `comlink/run_recall_sync_wire_lab.sh` · ports **15561/15562** |
-| **3w-3 batch** | `amphora_comlink_resin_batch` frame + per-frame chunking for resins larger than one datagram | Spec follow-on; not lap 1 |
+| **3w-3a batch** | `amphora_comlink_resin_batch` frame: signed header and manifest, payloads prove by digest; many resins under one signature; second sync moves zero payload bytes | **landed** parity **163** · [`mantra/resin_batch.rye`](../mantra/resin_batch.rye) · witness [`tools/mantra_resin_batch.rish`](../tools/mantra_resin_batch.rish) |
+| **3w-3b beading** | A resin larger than one frame is beaded into smaller content-addressed beads, named by a bead-index Tilak; batch-frame carriage over the wire rides after | Horizon; bead / beading / bead-index seated `20260706.163312`; the lap awaits the word to build |
 
-**Capacity constraint (confirmed on metal):** `wire_capacity` **528** minus crypto envelope **188** → **340 bytes** `max_message` per sealed datagram. Catalog `max_resin_bytes` is **512** — a full resin does not fit one frame. **Recommendation (Claude `041012`):** chunk large resins across frames rather than inflate `wire_capacity`; lap 1 proves crossing with small resins only (`alpha`/`beta` witness bolt).
+**Capacity constraint (confirmed on metal):** `wire_capacity` **528** minus crypto envelope **188** → **340 bytes** `max_message` per sealed datagram. Catalog `max_resin_bytes` is **512** — a full resin does not fit one frame. **Recommendation (Claude `041012`):** bead large resins across frames rather than inflate `wire_capacity`; lap 1 proves crossing with small resins only (`alpha`/`beta` witness bolt).
 
 **Proposed ports (Kaeden may override):** hosted sync request **38478** · response **38479**; device wire **15561** (request) · **15562** (response).
 
