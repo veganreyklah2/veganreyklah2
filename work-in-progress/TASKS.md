@@ -62,8 +62,8 @@
 - [x] **NS-L3 wire carriage lap 2 (device)** — virtio guests `guest_sync_*`; ports **15561/15562**; `comlink/run_recall_sync_wire_lab.sh`; witness extended in `tools/mantra_recall_lap3_wire.rish`
 - [x] **NS-L3 lap 3w-3a (resin-batch frame)** — `mantra/resin_batch.rye`: signed header + manifest (control plane), payloads prove by digest (data plane); many resins under one signature; have-already entries reconstructed locally; second sync moves zero payload bytes; bad signature, tampered payload, unknown Tilak refused whole; `tools/mantra_resin_batch.rish`; width-checked; parity **163**
 - [x] **NS-L3 recall_beaded** — `mantra/recall_beaded.rye`; derived paths `{path}.b{N}`; `tools/mantra_recall_beaded.rish`; parity **165**
-- [x] **NS-L3 lap 3w-4 batch wire (hosted + device)** — `recall_batch_wire.rye` + `recall_batch_delivery.rye`; hosted **38480/38481**; device `guest_batch_*` + `run_recall_batch_wire_lab.sh` **15563/15564**; `tools/mantra_recall_batch_wire.rish`; parity **166**
-- [ ] **NS-L3 multi-frame batch chunking** — batches larger than 340 B over wire; beaded bolt full crossing
+- [x] **NS-L3 multi-frame batch chunking** — kind **0x04** chunk wire + `BatchAssembler`; hosted `chunkdemo` + device lab (400 B beta, 2 frames); `virtio_net` multi-packet TX/RX; parity **166** extended
+- [ ] **NS-L3 beaded bolt full crossing** — bead-index + `.bN` leaves over batch wire
 
 - [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 

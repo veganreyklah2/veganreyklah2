@@ -382,7 +382,7 @@ pub const TxQueue = struct {
         avail.ring[0] = 0;
         self.avail_tail = 1;
         fence(); // ring contents visible before the index publishes
-        avail.idx = 1;
+        avail.idx += 1;
         fence(); // index visible before the doorbell
         mmioWrite(off_queue_notify, queue_tx);
 
@@ -390,8 +390,9 @@ pub const TxQueue = struct {
         while (used.idx == self.used_tail) : (spins += 1) {
             if (spins > 5_000_000) finishFail();
         }
-        self.used_tail = used.idx;
-        assert(used.ring[0].id == 0);
+        const slot = self.used_tail % queue_depth;
+        assert(used.ring[slot].id == 0);
+        self.used_tail += 1;
     }
 
     pub fn frame(self: *TxQueue) *[max_frame]u8 {
@@ -437,6 +438,17 @@ pub const RxQueue = struct {
         mmioWrite(off_queue_notify, queue_rx);
     }
 
+    /// Repost the RX buffer after a frame is consumed so another may arrive.
+    pub fn repost(self: *RxQueue) void {
+        _ = self;
+        const avail = availOf(rx_rings);
+        avail.ring[0] = 0;
+        fence();
+        avail.idx += 1;
+        fence();
+        mmioWrite(off_queue_notify, queue_rx);
+    }
+
     /// Wait for one frame; returns bytes the device wrote, or 0 on timeout.
     pub fn waitFrame(self: *RxQueue) u32 {
         const used = usedOf(rx_rings);
@@ -444,8 +456,9 @@ pub const RxQueue = struct {
         while (used.idx == self.used_tail) : (spins += 1) {
             if (spins > 2_000_000_000) return 0;
         }
-        self.used_tail = used.idx;
-        const elem = used.ring[0];
+        const slot = self.used_tail % queue_depth;
+        const elem = used.ring[slot];
+        self.used_tail += 1;
         assert(elem.id == 0);
         return elem.len;
     }

@@ -21,6 +21,23 @@ fn digestHexOf(content: []const u8, out: *[64]u8) void {
     }
 }
 
+fn sendSealedPayload(payload: []const u8) void {
+    var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const dg_len: u32 = @intCast(wf.sealMessage(payload, &scratch) catch unreachable);
+
+    const buf = tx.frame();
+    @memset(buf[0..vn.virtio_net_hdr_len], 0);
+    const eoff = vn.virtio_net_hdr_len;
+    var i: u32 = 0;
+    while (i < 6) : (i += 1) buf[eoff + i] = 0xff;
+    while (i < 12) : (i += 1) buf[eoff + i] = 0x00;
+    buf[eoff + 12] = @truncate(vn.lab_ethertype >> 8);
+    buf[eoff + 13] = @truncate(vn.lab_ethertype);
+    const poff = eoff + vn.eth_header_len;
+    @memcpy(buf[poff..][0..dg_len], scratch[0..dg_len]);
+    tx.send(poff + dg_len);
+}
+
 export fn _start() linksection(".text.init") callconv(.naked) noreturn {
     asm volatile (
         \\ li sp, 0x80100000
@@ -37,7 +54,10 @@ export fn kmain() callconv(.c) noreturn {
 
     var src: ns.BoltCatalog = .empty();
     ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "b.txt", "beta", "plain-text") catch unreachable;
+    var big: [400]u8 = undefined;
+    var bi: u32 = 0;
+    while (bi < 400) : (bi += 1) big[bi] = 'B';
+    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "b.txt", big[0..400], "plain-bytes") catch unreachable;
 
     var alpha_digest: [64]u8 = undefined;
     digestHexOf("alpha", &alpha_digest);
@@ -46,25 +66,20 @@ export fn kmain() callconv(.c) noreturn {
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
     const built = rb.buildBatch(&src, "peerB", "b", 1, &held, signer, &batch_buf) catch unreachable;
 
-    var payload: [bw.max_batch_wire]u8 = undefined;
-    const payload_len = bw.encodeBatchResponse(batch_buf[0..built.len], &payload) catch unreachable;
+    if (built.len <= bw.max_batch_wire) {
+        var payload: [bw.max_batch_wire]u8 = undefined;
+        const payload_len = bw.encodeBatchResponse(batch_buf[0..built.len], &payload) catch unreachable;
+        sendSealedPayload(payload[0..payload_len]);
+    } else {
+        const count = bw.batchChunkCount(built.len) catch unreachable;
+        var ci: u16 = 0;
+        while (ci < count) : (ci += 1) {
+            var payload: [bw.max_batch_wire]u8 = undefined;
+            const payload_len = bw.encodeBatchChunk(batch_buf[0..built.len], ci, &payload) catch unreachable;
+            sendSealedPayload(payload[0..payload_len]);
+        }
+    }
 
-    var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const dg_len: u32 = @intCast(wf.sealMessage(payload[0..payload_len], &scratch) catch unreachable);
-
-    const buf = tx.frame();
-    @memset(buf[0..vn.virtio_net_hdr_len], 0);
-    const eoff = vn.virtio_net_hdr_len;
-    var i: u32 = 0;
-    while (i < 6) : (i += 1) buf[eoff + i] = 0xff;
-    while (i < 12) : (i += 1) buf[eoff + i] = 0x00;
-    buf[eoff + 12] = @truncate(vn.lab_ethertype >> 8);
-    buf[eoff + 13] = @truncate(vn.lab_ethertype);
-    const poff = eoff + vn.eth_header_len;
-    @memcpy(buf[poff..][0..dg_len], scratch[0..dg_len]);
-    const total: u32 = poff + dg_len;
-
-    tx.send(total);
     vn.writeStr("rbw device wire: sealed batch response TX sent\n");
     vn.finishPass();
 }

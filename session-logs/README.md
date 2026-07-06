@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.184801 | [Multi-frame batch chunking](20260706-184801_multi-frame-batch-chunking.md) | kind 0x04 chunk wire; 660 B witness; virtio multi-packet fix; parity 166 GREEN |
 | 20260706.183844 | [Device batch wire](20260706-183844_device-batch-wire.md) | virtio guests 15563/15564; batch witness hosted + device; parity 166 GREEN |
 | 20260706.182500 | [Recall beaded + batch wire](20260706-182500_recall-beaded-batch-wire.md) | files (27) + Rio expansion: recall_beaded 165, hosted batch wire 166 |
 | 20260706.180300 | [Apply beading bundle](20260706-180300_apply-beading-bundle.md) | Cursor applied files (26).zip; parity 164 GREEN; four remotes pushed |

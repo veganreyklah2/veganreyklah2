@@ -25,35 +25,39 @@ export fn kmain() callconv(.c) noreturn {
 
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
 
-    const n = rx.waitFrame();
-    if (n == 0) {
-        vn.writeStr("rbw device wire: FAIL — fetcher RX timeout\n");
-        vn.finishFail();
-    }
-    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
-    if (n <= poff) {
-        vn.writeStr("rbw device wire: FAIL — fetcher frame too short\n");
-        vn.finishFail();
-    }
-    const buf = rx.frame();
-    const datagram = buf[poff..n];
+    var batch_asm: bw.BatchAssembler = .{};
+    while (true) {
+        const n = rx.waitFrame();
+        if (n == 0) {
+            vn.writeStr("rbw device wire: FAIL — fetcher RX timeout\n");
+            vn.finishFail();
+        }
+        const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+        if (n <= poff) {
+            vn.writeStr("rbw device wire: FAIL — fetcher frame too short\n");
+            vn.finishFail();
+        }
+        const buf = rx.frame();
+        const datagram = buf[poff..n];
 
-    var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(datagram, &opened) catch {
-        vn.writeStr("rbw device wire: FAIL — fetcher open refused\n");
-        vn.finishFail();
-    };
+        var opened: [@intCast(wf.max_message)]u8 = undefined;
+        const opened_len = wf.openDatagram(datagram, &opened) catch {
+            vn.writeStr("rbw device wire: FAIL — fetcher open refused\n");
+            vn.finishFail();
+        };
 
-    var batch_buf: [4096]u8 = undefined;
-    const batch_len = bw.decodeBatchResponse(opened[0..@intCast(opened_len)], &batch_buf) catch {
-        vn.writeStr("rbw device wire: FAIL — batch decode\n");
-        vn.finishFail();
-    };
+        const state = bw.BatchAssembler.feed(&batch_asm, opened[0..@intCast(opened_len)]) catch {
+            vn.writeStr("rbw device wire: FAIL — batch chunk feed\n");
+            vn.finishFail();
+        };
+        if (state == .ready) break;
+        rx.repost();
+    }
 
     var fetcher: ns.BoltCatalog = .empty();
     ns.BoltCatalog.appendLeaf(&fetcher, "peerA", "seed", 1, "x", "alpha", "plain-text") catch unreachable;
 
-    const report = bw.applyWireBatch(&fetcher, batch_buf[0..batch_len], signer.public_key) catch {
+    const report = bw.applyWireBatch(&fetcher, batch_asm.batch(), signer.public_key) catch {
         vn.writeStr("rbw device wire: FAIL — apply batch\n");
         vn.finishFail();
     };
@@ -63,12 +67,12 @@ export fn kmain() callconv(.c) noreturn {
     }
 
     const nb = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
-    var out: [64]u8 = undefined;
+    var out: [512]u8 = undefined;
     const r = ns.BoltCatalog.recall(&fetcher, nb, &out) catch {
         vn.writeStr("rbw device wire: FAIL — recall beta\n");
         vn.finishFail();
     };
-    if (r.len != 4 or out[0] != 'b' or out[1] != 'e' or out[2] != 't' or out[3] != 'a') {
+    if (r.len != 400 or out[0] != 'B' or out[399] != 'B') {
         vn.writeStr("rbw device wire: FAIL — beta bytes mismatch\n");
         vn.finishFail();
     }

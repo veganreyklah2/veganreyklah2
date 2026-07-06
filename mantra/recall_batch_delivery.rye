@@ -14,7 +14,7 @@ const rb = @import("resin_batch.rye");
 const bw = @import("recall_batch_wire.rye");
 const wf = @import("wire_format.rye");
 
-const rbw_version = "20260706.182012";
+const rbw_version = "20260706.184512";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -88,6 +88,21 @@ fn initWitnessSource(cat: *ns.BoltCatalog) !void {
     try cat.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
 }
 
+fn largeBetaBytes(out: *[400]u8) void {
+    var i: u32 = 0;
+    while (i < 400) : (i += 1) {
+        out[i] = 'B';
+    }
+}
+
+fn initChunkWitnessSource(cat: *ns.BoltCatalog) !void {
+    cat.* = .empty();
+    try cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    var big: [400]u8 = undefined;
+    largeBetaBytes(&big);
+    try cat.appendLeaf("peerB", "b", 1, "b.txt", big[0..400], "plain-bytes");
+}
+
 fn initWitnessFetcher(cat: *ns.BoltCatalog) !void {
     cat.* = .empty();
     try cat.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
@@ -103,6 +118,43 @@ fn buildHeldRequest() bw.WireError!bw.BatchWireRequest {
     };
     digestHexOf("alpha", &req.held_digests[0]);
     return req;
+}
+
+fn sendBatchPayload(port: u16, batch: []const u8) !void {
+    if (batch.len <= bw.max_batch_wire) {
+        var payload: [bw.max_batch_wire]u8 = undefined;
+        const payload_len = try bw.encodeBatchResponse(batch, &payload);
+        var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+        const out_len = try sealPayload(payload[0..payload_len], &out_wire);
+        try sendWire(port, out_wire[0..@intCast(out_len)]);
+        return;
+    }
+    const count = try bw.batchChunkCount(@intCast(batch.len));
+    var ci: u16 = 0;
+    while (ci < count) : (ci += 1) {
+        var payload: [bw.max_batch_wire]u8 = undefined;
+        const payload_len = try bw.encodeBatchChunk(batch, ci, &payload);
+        var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+        const out_len = try sealPayload(payload[0..payload_len], &out_wire);
+        try sendWire(port, out_wire[0..@intCast(out_len)]);
+    }
+}
+
+fn recvBatchPayload(port: u16, out: []u8) !u32 {
+    var batch_asm: bw.BatchAssembler = .{};
+    while (true) {
+        var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+        const recv_len = try recvWire(port, &recv_wire);
+        var opened: [@intCast(wf.max_message)]u8 = undefined;
+        const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
+        const state = try batch_asm.feed(opened[0..@intCast(opened_len)]);
+        if (state == .ready) {
+            const batch = batch_asm.batch();
+            if (batch.len > out.len) return error.Overflow;
+            @memcpy(out[0..batch.len], batch);
+            return @intCast(batch.len);
+        }
+    }
 }
 
 fn runSelftest(_: std.Io) !u8 {
@@ -175,6 +227,47 @@ fn runSelftest(_: std.Io) !u8 {
     });
     print("rbw: version {s} batch_wire {s}\n", .{ rbw_version, bw.batch_wire_version });
     print("GREEN: NS-L3 lap 3w-4 hosted resin-batch sync under Comlink seal.\n", .{});
+
+    try bw.runChunkWireSelftest();
+    print("rbw: multi-frame chunk assembler — GREEN\n", .{});
+
+    var chunk_src: ns.BoltCatalog = undefined;
+    try initChunkWitnessSource(&chunk_src);
+    var chunk_fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&chunk_fetcher);
+    const chunk_held = [_][64]u8{alpha_digest};
+    var chunk_batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const chunk_built = try rb.buildBatch(&chunk_src, "peerB", "b", 1, &chunk_held, signer, &chunk_batch_buf);
+    assert(chunk_built.len > bw.max_batch_wire);
+    assert((try bw.batchChunkCount(chunk_built.len)) >= 2);
+
+    var chunk_asm: bw.BatchAssembler = .{};
+    const chunk_count = try bw.batchChunkCount(chunk_built.len);
+    var cx: u16 = 0;
+    while (cx < chunk_count) : (cx += 1) {
+        var frame: [bw.max_batch_wire]u8 = undefined;
+        const flen = try bw.encodeBatchChunk(chunk_batch_buf[0..chunk_built.len], cx, &frame);
+        var frame_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+        const frame_wire_len = try sealPayload(frame[0..flen], &frame_wire);
+        var frame_opened: [@intCast(wf.max_message)]u8 = undefined;
+        const frame_opened_len = try openWire(frame_wire[0..@intCast(frame_wire_len)], &frame_opened);
+        const cstate = try chunk_asm.feed(frame_opened[0..@intCast(frame_opened_len)]);
+        if (cx + 1 < chunk_count) {
+            assert(cstate == .need_more);
+        } else {
+            assert(cstate == .ready);
+        }
+    }
+    const chunk_report = try bw.applyWireBatch(&chunk_fetcher, chunk_asm.batch(), signer.public_key);
+    assert(chunk_report.had_already == 1);
+    assert(chunk_report.needed == 1);
+    var big_out: [512]u8 = undefined;
+    const nb_big = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
+    const rb_big = try chunk_fetcher.recall(nb_big, &big_out);
+    assert(rb_big.len == 400);
+    assert(big_out[0] == 'B' and big_out[399] == 'B');
+    print("rbw: chunked batch {d} bytes over {d} frames — GREEN\n", .{ chunk_built.len, chunk_count });
+    print("GREEN: NS-L3 lap 3w-4 multi-frame batch chunking under Comlink seal.\n", .{});
     return 0;
 }
 
@@ -198,12 +291,7 @@ fn runSource(_: std.Io) !u8 {
     }
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
     const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
-
-    var payload: [bw.max_batch_wire]u8 = undefined;
-    const payload_len = try bw.encodeBatchResponse(batch_buf[0..built.len], &payload);
-    var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const out_len = try sealPayload(payload[0..payload_len], &out_wire);
-    try sendWire(fetcher_port, out_wire[0..@intCast(out_len)]);
+    try sendBatchPayload(fetcher_port, batch_buf[0..built.len]);
     print("rbw: source answered with sealed resin-batch\n", .{});
     return 0;
 }
@@ -220,17 +308,86 @@ fn runFetcher(_: std.Io) !u8 {
     const wire_len = try sealPayload(req_buf[0..req_len], &wire);
     try sendWire(source_port, wire[0..@intCast(wire_len)]);
 
-    var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const recv_len = try recvWire(fetcher_port, &recv_wire);
-    var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
-
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-    const batch_len = try bw.decodeBatchResponse(opened[0..@intCast(opened_len)], &batch_buf);
+    const batch_len = try recvBatchPayload(fetcher_port, &batch_buf);
     const report = try bw.applyWireBatch(&fetcher, batch_buf[0..batch_len], signer.public_key);
     if (report.needed != 1 or report.had_already != 1) return error.BatchFailed;
 
     print("rbw: fetcher applied batch — recall matches source GREEN\n", .{});
+    return 0;
+}
+
+fn runChunkDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+    const source_argv = try allocator.alloc([]const u8, 2);
+    source_argv[0] = self_path;
+    source_argv[1] = "chunk-source";
+    var source_child = try std.process.spawn(io, .{ .argv = source_argv });
+    var pause = c.timespec{ .sec = 0, .nsec = 50_000_000 };
+    _ = c.nanosleep(&pause, null);
+
+    const fetcher_argv = try allocator.alloc([]const u8, 2);
+    fetcher_argv[0] = self_path;
+    fetcher_argv[1] = "chunk-fetcher";
+    var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
+
+    const sc = try source_child.wait(io);
+    const fc = try fetcher_child.wait(io);
+    const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
+    const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
+    assert(s_code == 0 and f_code == 0);
+    print("rbw: chunk demo GREEN — multi-frame batch crossed localhost under Comlink seal\n", .{});
+    return 0;
+}
+
+fn runChunkSource(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var src: ns.BoltCatalog = undefined;
+    try initChunkWitnessSource(&src);
+
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try recvWire(source_port, &wire);
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+
+    var req: bw.BatchWireRequest = undefined;
+    try bw.decodeRequest(opened[0..@intCast(opened_len)], &req);
+
+    var held: [1][64]u8 = undefined;
+    var i: u32 = 0;
+    while (i < req.held_count) : (i += 1) {
+        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+    }
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
+    assert(built.len > bw.max_batch_wire);
+    try sendBatchPayload(fetcher_port, batch_buf[0..built.len]);
+    print("rbw: chunk source answered with sealed multi-frame batch\n", .{});
+    return 0;
+}
+
+fn runChunkFetcher(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&fetcher);
+
+    const req = try buildHeldRequest();
+    var req_buf: [bw.max_batch_wire]u8 = undefined;
+    const req_len = try bw.encodeRequest(req, &req_buf);
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try sealPayload(req_buf[0..req_len], &wire);
+    try sendWire(source_port, wire[0..@intCast(wire_len)]);
+
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const batch_len = try recvBatchPayload(fetcher_port, &batch_buf);
+    const report = try bw.applyWireBatch(&fetcher, batch_buf[0..batch_len], signer.public_key);
+    if (report.needed != 1 or report.had_already != 1) return error.BatchFailed;
+
+    var big_out: [512]u8 = undefined;
+    const nb = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
+    const rb_out = try fetcher.recall(nb, &big_out);
+    if (rb_out.len != 400) return error.BatchFailed;
+
+    print("rbw: chunk fetcher applied multi-frame batch — recall matches source GREEN\n", .{});
     return 0;
 }
 
@@ -265,6 +422,9 @@ pub fn main(init: std.process.Init) !u8 {
         if (std.mem.eql(u8, args[1], "fetcher")) return runFetcher(io);
         if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
         if (std.mem.eql(u8, args[1], "demo")) return runDemo(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "chunkdemo")) return runChunkDemo(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "chunk-source")) return runChunkSource(io);
+        if (std.mem.eql(u8, args[1], "chunk-fetcher")) return runChunkFetcher(io);
     }
     return runSelftest(io);
 }
