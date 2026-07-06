@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-04 (Rye core arc Radiant pass `215012`)
+**Last updated:** 2026-07-06 (settlement seat verification `005512`; device wire survey `235412`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -43,6 +43,8 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260706.005512` | [Settlement seat — verification and verdict](20260706-005512_settlement-seat-verification-and-verdict.md) | Verifies the Sui pivot against neutral sources; grounds the Monad symmetry; raises settlement-asset integrity as a first-class axis; sourcing rule; softenings proposed, seat stays Kaeden's |
+| `20260706.002612` | [The settlement seat under three lights](20260706-002612_the-settlement-seat-under-three-lights.md) | Parallel bench survey — Sui, Monad, NEAR read by TAME; hold the seat, two-lane witness proposed, NEAR parked |
 | `20260705.235412` | [Device wire dependencies down to Caravan and Tally](20260705-235412_device-wire-dependencies-down-to-caravan-tally.md) | SLC-L2 stack survey — Comlink, Aurora, host seams, supervision and garden horizon |
 | `20260704.214100` | [Subject-oriented programming and the Rye core](20260704-214100_subject-oriented-programming-and-the-rye-core.md) | Urbit explicit-subject philosophy applied to core+shell — horizon, read/mutate, lap ladder |
 | `20260704.211012` | [Rye cores and the gratitude lineage](20260704-211012_rye-cores-and-the-gratitude-lineage.md) | `.rye` core + Rishi shell vs gratitude designs — concepts adopted, names stay in the library |

@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.005612 | [Settlement zip 50 applied](20260706-005612_settlement-zip50-applied.md) | Cursor applied Claude bundle; doorway fix; parity 155 spot-check GREEN |
+| 20260706.005512 | [Settlement verdict and Radiant audit](20260706-005512_settlement-verdict-and-radiant-audit.md) | Zip 50 — Sui pivot verified; settlement counsel seated; softenings proposed |
 | 20260706.003112 | [Commits, pushes, parity 155 summary](20260706-003112_commits-pushes-parity-155-summary.md) | `71018bd` to four remotes; Claude handoff for parity 154–155 arc |
 | 20260706.002912 | [Open Asks hammock scope](20260706-002912_open-asks-hammock-scope.md) | OA-L1 closed loop scoped on SLC-L1 spine; witness named; awaits Kaeden edge |
 | 20260706.001512 | [SLC-L2 device wire variant](20260706-001512_slcl2-device-wire-variant.md) | Receipt guests over virtio; max_frame 512; slcl2 witness extended; parity 155 GREEN |

@@ -37,7 +37,7 @@
 
 **Next climb (Cursor):** **OA-L1** implementation after Kaeden affirms [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) edge — mechanical, reuses `receipt_core`.
 
-**Alongside:** SLC-L3 horizon shaping awaits counsel (Sui seam).
+**Alongside:** SLC-L3 settlement seat — counsel landed [`external-research/20260706-005512_settlement-seat-verification-and-verdict.md`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md); ladder softenings **proposed**, await Kaeden word. OA-L1 implementation awaits edge affirmation.
 
 **Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
 
