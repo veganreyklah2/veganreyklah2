@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **158** · OA-L3 escrow lap 1 + lap 2 landed · settlement softenings applied)
+**Last updated:** 2026-07-06 (parity **159** · NS-L1 recall landed · namespace vocabulary seated · stone retired)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -50,6 +50,14 @@
 - [x] **Claude bench prepared and run** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md); lap 1 implemented and verified on the bench, parity pinned on metal
 
 **Next climb (Kaeden's word opens either):** OA-L4 reputation-as-fold — or MALA module graduation at second consumer. Both are horizon; check in with Claude before either.
+
+**Namespace vocabulary seated `20260706.032700`:** Mantra grows the referential namespace; **recall** · **bolt** · peer/bolt/revision/path grammar; **stone** retired in favor of **resin** — tree-wide prose hygiene flagged below.
+
+**NS-L1 landed `20260706.032700` — parity 159:**
+
+- [x] **NS-L1 local recall** — `mantra/recall_lap1.rye` + `tools/mantra_recall_lap1.rish`; referential transparency + digest mismatch refused; parity **159**
+
+- [ ] **Stone → resin hygiene pass** — retire **stone** as content-addressed unit word across forward docs and archive-facing prose; paths like `stones/` wait for witness-gated rename per resins law
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 

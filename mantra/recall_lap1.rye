@@ -1,0 +1,139 @@
+//! mantra/recall_lap1.rye — NS-L1: local referentially-transparent recall.
+//!
+//!   rye build mantra/recall_lap1.rye -femit-bin=mantra/bin/recall-lap1
+//!   mantra/bin/recall-lap1 selftest
+//!
+//! Scope: [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md)
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+
+const ns_l1_version = "20260706.032700";
+
+pub const RecallOutcome = enum {
+    not_yet,
+    never,
+    here,
+};
+
+pub const RecallError = error{
+    DigestMismatch,
+    PathNotBound,
+    StoreMissing,
+    Overflow,
+};
+
+/// A name in the grammar peer / bolt / revision / path.
+pub const Name = struct {
+    peer: []const u8,
+    bolt: []const u8,
+    revision: u32,
+    path: []const u8,
+};
+
+/// Pinned witness leaf — local peer, one bolt, revision 1.
+const witness_peer = "local";
+const witness_bolt = "witness-bolt";
+const witness_revision: u32 = 1;
+const witness_path = "greeting.txt";
+const witness_content = "Meet me where the rye grows.";
+const witness_tilak = "plain-text";
+
+fn digestHexOf(content: []const u8, out: *[64]u8) void {
+    var digest: [32]u8 = undefined;
+    Sha3_256.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn hexEq(a: []const u8, b: []const u8) bool {
+    if (a.len != b.len) return false;
+    var i: u32 = 0;
+    while (i < a.len) : (i += 1) {
+        if (a[i] != b[i]) return false;
+    }
+    return true;
+}
+
+/// In-memory Amber stand-in for lap 1: digest hex → bytes.
+pub const ResinStore = struct {
+    digest_hex: [64]u8,
+    bytes: []const u8,
+
+    pub fn witness() ResinStore {
+        var digest: [64]u8 = undefined;
+        digestHexOf(witness_content, &digest);
+        return .{ .digest_hex = digest, .bytes = witness_content };
+    }
+};
+
+/// Resolve a name to a binding digest, or an honest absence outcome.
+pub fn resolveBinding(name: Name) RecallOutcome {
+    if (!std.mem.eql(u8, name.peer, witness_peer)) return .never;
+    if (!std.mem.eql(u8, name.bolt, witness_bolt)) return .never;
+    if (name.revision != witness_revision) return .never;
+    if (!std.mem.eql(u8, name.path, witness_path)) return .never;
+    return .here;
+}
+
+/// Referentially-transparent read: same name → same bytes, digest verified whole.
+pub fn recall(name: Name, store: ResinStore, out: []u8) RecallError!struct { outcome: RecallOutcome, len: u32, tilak: []const u8 } {
+    const outcome = resolveBinding(name);
+    switch (outcome) {
+        .not_yet, .never => return .{ .outcome = outcome, .len = 0, .tilak = "" },
+        .here => {},
+    }
+    var expected: [64]u8 = undefined;
+    digestHexOf(store.bytes, &expected);
+    if (!hexEq(expected[0..64], store.digest_hex[0..64])) return error.DigestMismatch;
+    if (store.bytes.len > out.len) return error.Overflow;
+    @memcpy(out[0..store.bytes.len], store.bytes);
+    return .{ .outcome = .here, .len = @intCast(store.bytes.len), .tilak = witness_tilak };
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    const store = ResinStore.witness();
+    const name = Name{
+        .peer = witness_peer,
+        .bolt = witness_bolt,
+        .revision = witness_revision,
+        .path = witness_path,
+    };
+
+    var buf_a: [128]u8 = undefined;
+    var buf_b: [128]u8 = undefined;
+    const first = try recall(name, store, &buf_a);
+    assert(first.outcome == .here);
+    const second = try recall(name, store, &buf_b);
+    assert(second.outcome == .here);
+    assert(first.len == second.len);
+    assert(std.mem.eql(u8, buf_a[0..first.len], buf_b[0..second.len]));
+    assert(std.mem.eql(u8, buf_a[0..first.len], witness_content));
+
+    const absent = Name{ .peer = witness_peer, .bolt = witness_bolt, .revision = witness_revision, .path = "missing.txt" };
+    assert(resolveBinding(absent) == .never);
+
+    var bad_store = store;
+    bad_store.digest_hex[0] = if (bad_store.digest_hex[0] == 'a') 'b' else 'a';
+    if (recall(name, bad_store, &buf_a)) |_| {
+        return error.DigestMismatch;
+    } else |_| {}
+
+    print("nsl1: recall twice yielded identical bytes — referential transparency GREEN\n", .{});
+    print("nsl1: digest mismatch refused whole — GREEN unwelcome path\n", .{});
+    print("nsl1: version {s}\n", .{ns_l1_version});
+    print("GREEN: NS-L1 local referentially-transparent recall.\n", .{});
+    return 0;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+    if (args.len >= 1) return runSelftest(io);
+    return 1;
+}

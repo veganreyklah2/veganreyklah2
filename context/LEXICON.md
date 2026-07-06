@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-05 (Two rooms · canonical gloss seated)
+**Last updated:** 2026-07-06 (recall · bolt seated · stone retired)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -54,7 +54,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Tally** | Memory in bounded gardens |
 | **Caravan** | Supervision and capabilities |
 | **Weave** | The append-only DAG of immutable signed facts — substrate beneath Mantra and Comlink; **aspect of Mantra** today at `mantra/src/weave.rye` |
-| **Mantra** | Version-control projection over Weave |
+| **Mantra** | Version-control projection over Weave; grows the referential namespace — **recall** and **bolt** seated `20260706.032700` |
 | **Comlink** | Transport of sealed facts over Weave |
 | **Brushstroke** | The drawn surface — values to pixels, immediate-mode |
 | **Skate** | Text grid → pixel buffer (aspect of Brushstroke today) |
@@ -76,6 +76,16 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Resin** | One content-addressed unit Amber seals — the stored bytes at a SHA3 name; the manifest catalogs, the digest proves; [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md) |
 | **SHA3-512 tier** | Canonical forever-names — weave states, sealed content identity, promises that must mean one thing for the life of the work |
 | **SHA3-256 tier** | Working-store names — resins, blob files, manifest entries where path size and external oracles matter |
+
+## Referential namespace *(seated `20260706.032700`)*
+
+| Term | One line |
+|------|----------|
+| **Recall** | The referentially-transparent read — a name resolves to the same bytes for all time, with honest not-yet / never / here outcomes; [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md) |
+| **Bolt** | A coherent, independently-versioned unit of content with its own history and dependencies — the unit a name selects before a path within it |
+| **Name grammar** | `peer / bolt / revision / path` — Kumara identity, bolt, revision (change, date, or label), path within the bolt |
+
+**Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); tree-wide hygiene flagged on TASKS.
 
 ## Type-marks and crossing *(ratified `20260703.203712 UDT`)*
 

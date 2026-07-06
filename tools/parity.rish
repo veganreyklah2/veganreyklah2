@@ -212,6 +212,11 @@ let oal3 = run ["rishi/bin/rishi" "run" "tools/open_asks_lap3.rish"]
 assert oal3.ok else "OA-L3 escrow witness failed"
 say "GREEN: OA-L3 escrow hold and release witness passed."
 
+say "witness suite: NS-L1 referentially-transparent recall…"
+let nsl1 = run ["rishi/bin/rishi" "run" "tools/mantra_recall_lap1.rish"]
+assert nsl1.ok else "NS-L1 recall witness failed"
+say "GREEN: NS-L1 referentially-transparent recall witness passed."
+
 say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
 let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]
 assert slog_arch.ok else "session-logs archive witness failed"
