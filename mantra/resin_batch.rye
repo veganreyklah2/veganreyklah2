@@ -44,7 +44,7 @@ pub const BatchReport = struct {
     payload_bytes: u32,
 };
 
-const known_tilaks = [_][]const u8{ "plain-text", "plain-bytes", "manifest" };
+const known_tilaks = [_][]const u8{ "plain-text", "plain-bytes", "manifest", "bead-index" };
 
 fn tilakKnown(t: []const u8) bool {
     for (known_tilaks) |k| {

@@ -1,0 +1,270 @@
+//! mantra/recall_batch_delivery.rye — NS-L3 lap 3w-4: hosted resin-batch sync under Comlink seal.
+//!
+//!   rye build mantra/recall_batch_delivery.rye -lc -femit-bin=mantra/bin/recall-batch-delivery
+//!   mantra/bin/recall-batch-delivery selftest
+//!   mantra/bin/recall-batch-delivery demo
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const c = std.c;
+const Ed25519 = std.crypto.sign.Ed25519;
+const ns = @import("recall_lap1.rye");
+const rb = @import("resin_batch.rye");
+const bw = @import("recall_batch_wire.rye");
+const wf = @import("wire_format.rye");
+
+const rbw_version = "20260706.182012";
+
+const AF_INET: c_uint = 2;
+const SOCK_DGRAM: c_uint = 2;
+const SOL_SOCKET: c_int = 1;
+const SO_REUSEADDR: c_int = 2;
+
+const fetcher_port: u16 = 38480;
+const source_port: u16 = 38481;
+
+const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+
+const sockaddr_in = extern struct {
+    sin_family: c_ushort = AF_INET,
+    sin_port: c_ushort,
+    sin_addr: [4]u8 = .{ 127, 0, 0, 1 },
+    sin_zero: [8]u8 = .{0} ** 8,
+};
+
+fn localhostAddr(port: u16) sockaddr_in {
+    return .{ .sin_port = std.mem.nativeToBig(u16, port) };
+}
+
+fn openSocket() !c.fd_t {
+    const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
+    if (fd < 0) return error.SocketFailed;
+    const yes: c_int = 1;
+    _ = c.setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &yes, @sizeOf(c_int));
+    return fd;
+}
+
+fn sendWire(port: u16, wire: []const u8) !void {
+    const fd = try openSocket();
+    defer _ = c.close(fd);
+    const dest = localhostAddr(port);
+    const sent = c.sendto(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
+    if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
+}
+
+fn recvWire(port: u16, wire: []u8) !u64 {
+    const fd = try openSocket();
+    defer _ = c.close(fd);
+    var bind_addr = localhostAddr(port);
+    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
+    var from: sockaddr_in = undefined;
+    var from_len: c.socklen_t = @sizeOf(sockaddr_in);
+    const n = c.recvfrom(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&from), &from_len);
+    if (n < 0) return error.RecvFailed;
+    return @intCast(n);
+}
+
+fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
+    return try wf.sealMessage(payload, wire);
+}
+
+fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
+    return try wf.openDatagram(wire, opened);
+}
+
+fn digestHexOf(content: []const u8, out: *[64]u8) void {
+    var digest: [32]u8 = undefined;
+    std.crypto.hash.sha3.Sha3_256.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn initWitnessSource(cat: *ns.BoltCatalog) !void {
+    cat.* = .empty();
+    try cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try cat.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+}
+
+fn initWitnessFetcher(cat: *ns.BoltCatalog) !void {
+    cat.* = .empty();
+    try cat.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+}
+
+fn buildHeldRequest() bw.WireError!bw.BatchWireRequest {
+    var req: bw.BatchWireRequest = .{
+        .peer = "peerB",
+        .bolt = "b",
+        .revision = 1,
+        .held_count = 1,
+        .held_digests = undefined,
+    };
+    digestHexOf("alpha", &req.held_digests[0]);
+    return req;
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var src: ns.BoltCatalog = undefined;
+    try initWitnessSource(&src);
+    var fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&fetcher);
+
+    const req = try buildHeldRequest();
+    var alpha_digest: [64]u8 = undefined;
+    digestHexOf("alpha", &alpha_digest);
+    const held = [_][64]u8{alpha_digest};
+
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const built = try rb.buildBatch(&src, "peerB", "b", 1, &held, signer, &batch_buf);
+    assert(built.report.total == 2);
+    assert(built.report.needed == 1);
+    assert(built.len <= bw.max_batch_wire);
+
+    var resp_payload: [bw.max_batch_wire]u8 = undefined;
+    const resp_len = try bw.encodeBatchResponse(batch_buf[0..built.len], &resp_payload);
+
+    var req_buf: [bw.max_batch_wire]u8 = undefined;
+    const req_len = try bw.encodeRequest(req, &req_buf);
+
+    var req_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const req_wire_len = try sealPayload(req_buf[0..req_len], &req_wire);
+    var req_opened: [@intCast(wf.max_message)]u8 = undefined;
+    const req_opened_len = try openWire(req_wire[0..@intCast(req_wire_len)], &req_opened);
+
+    var decoded_req: bw.BatchWireRequest = undefined;
+    try bw.decodeRequest(req_opened[0..@intCast(req_opened_len)], &decoded_req);
+
+    var rebuilt: [rb.max_batch_bytes]u8 = undefined;
+    const rebuilt_built = try rb.buildBatch(&src, decoded_req.peer, decoded_req.bolt, decoded_req.revision, &held, signer, &rebuilt);
+    assert(rebuilt_built.len == built.len);
+
+    var resp_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const resp_wire_len = try sealPayload(resp_payload[0..resp_len], &resp_wire);
+    var resp_opened: [@intCast(wf.max_message)]u8 = undefined;
+    const resp_opened_len = try openWire(resp_wire[0..@intCast(resp_wire_len)], &resp_opened);
+
+    var opened_batch: [rb.max_batch_bytes]u8 = undefined;
+    const batch_len = try bw.decodeBatchResponse(resp_opened[0..@intCast(resp_opened_len)], &opened_batch);
+
+    const report = try bw.applyWireBatch(&fetcher, opened_batch[0..batch_len], signer.public_key);
+    assert(report.had_already == 1);
+    assert(report.needed == 1);
+
+    const nb = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
+    var buf: [64]u8 = undefined;
+    const rb_out = try fetcher.recall(nb, &buf);
+    assert(std.mem.eql(u8, buf[0..rb_out.len], "beta"));
+
+    var corrupt: [@intCast(wf.wire_capacity)]u8 = undefined;
+    @memcpy(corrupt[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
+    corrupt[@intCast(resp_wire_len - 1)] ^= 0xff;
+    var junk: [@intCast(wf.max_message)]u8 = undefined;
+    if (openWire(corrupt[0..@intCast(resp_wire_len)], &junk)) |_| {
+        return error.VerifyFailed;
+    } else |_| {
+        print("rbw: bad Comlink seal refused — GREEN unwelcome path\n", .{});
+    }
+
+    print("rbw: batch {d} bytes under seal — had {d}, need {d}\n", .{
+        built.len,
+        report.had_already,
+        report.needed,
+    });
+    print("rbw: version {s} batch_wire {s}\n", .{ rbw_version, bw.batch_wire_version });
+    print("GREEN: NS-L3 lap 3w-4 hosted resin-batch sync under Comlink seal.\n", .{});
+    return 0;
+}
+
+fn runSource(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var src: ns.BoltCatalog = undefined;
+    try initWitnessSource(&src);
+
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try recvWire(source_port, &wire);
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+
+    var req: bw.BatchWireRequest = undefined;
+    try bw.decodeRequest(opened[0..@intCast(opened_len)], &req);
+
+    var held: [1][64]u8 = undefined;
+    var i: u32 = 0;
+    while (i < req.held_count) : (i += 1) {
+        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+    }
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
+
+    var payload: [bw.max_batch_wire]u8 = undefined;
+    const payload_len = try bw.encodeBatchResponse(batch_buf[0..built.len], &payload);
+    var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const out_len = try sealPayload(payload[0..payload_len], &out_wire);
+    try sendWire(fetcher_port, out_wire[0..@intCast(out_len)]);
+    print("rbw: source answered with sealed resin-batch\n", .{});
+    return 0;
+}
+
+fn runFetcher(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&fetcher);
+
+    const req = try buildHeldRequest();
+    var req_buf: [bw.max_batch_wire]u8 = undefined;
+    const req_len = try bw.encodeRequest(req, &req_buf);
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try sealPayload(req_buf[0..req_len], &wire);
+    try sendWire(source_port, wire[0..@intCast(wire_len)]);
+
+    var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const recv_len = try recvWire(fetcher_port, &recv_wire);
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
+
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const batch_len = try bw.decodeBatchResponse(opened[0..@intCast(opened_len)], &batch_buf);
+    const report = try bw.applyWireBatch(&fetcher, batch_buf[0..batch_len], signer.public_key);
+    if (report.needed != 1 or report.had_already != 1) return error.BatchFailed;
+
+    print("rbw: fetcher applied batch — recall matches source GREEN\n", .{});
+    return 0;
+}
+
+fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+    const source_argv = try allocator.alloc([]const u8, 2);
+    source_argv[0] = self_path;
+    source_argv[1] = "source";
+    var source_child = try std.process.spawn(io, .{ .argv = source_argv });
+    var pause = c.timespec{ .sec = 0, .nsec = 50_000_000 };
+    _ = c.nanosleep(&pause, null);
+
+    const fetcher_argv = try allocator.alloc([]const u8, 2);
+    fetcher_argv[0] = self_path;
+    fetcher_argv[1] = "fetcher";
+    var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
+
+    const sc = try source_child.wait(io);
+    const fc = try fetcher_child.wait(io);
+    const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
+    const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
+    assert(s_code == 0 and f_code == 0);
+    print("rbw: demo GREEN — resin-batch crossed localhost under Comlink seal\n", .{});
+    return 0;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const garden = init.arena.allocator();
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(garden);
+    if (args.len >= 2) {
+        if (std.mem.eql(u8, args[1], "source")) return runSource(io);
+        if (std.mem.eql(u8, args[1], "fetcher")) return runFetcher(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "demo")) return runDemo(garden, io, args[0]);
+    }
+    return runSelftest(io);
+}

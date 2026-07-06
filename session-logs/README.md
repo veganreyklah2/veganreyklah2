@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.182500 | [Recall beaded + batch wire](20260706-182500_recall-beaded-batch-wire.md) | files (27) + Rio expansion: recall_beaded 165, hosted batch wire 166 |
 | 20260706.180300 | [Apply beading bundle](20260706-180300_apply-beading-bundle.md) | Cursor applied files (26).zip; parity 164 GREEN; four remotes pushed |
 | 20260706.175412 | [NS-L3 beading 3w-3b](20260706-175412_ns-l3-3w-3b-beading.md) | Three rings: fixed-size, content-defined, bounded verify; bead-index Tilak |
 | 20260706.042612 | [NS-L3 resin-batch frame (3w-3a)](20260706-042612_ns-l3-resin-batch.md) | Signed header+manifest, payloads prove by digest; many resins one signature; second sync zero bytes; parity 163 |

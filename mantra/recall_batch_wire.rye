@@ -1,0 +1,51 @@
+//! mantra/recall_batch_wire.rye — wire payloads for resin-batch sync (hosted lap 3w-4).
+//!
+//! Reuses sync request shape; response carries one sealed batch body (≤ max_wire_payload).
+//! Scope: active-designing/20260706-023912_the-referential-namespace.md
+
+const std = @import("std");
+const sw = @import("recall_sync_wire.rye");
+const rb = @import("resin_batch.rye");
+
+pub const batch_wire_version = "20260706.182012";
+
+const kind_response_batch: u8 = 0x03;
+
+pub const max_batch_wire: u32 = sw.max_wire_payload;
+
+pub const WireError = sw.WireError;
+
+pub const BatchWireRequest = sw.SyncRequest;
+
+pub fn encodeRequest(req: BatchWireRequest, out: []u8) WireError!u32 {
+    return sw.encodeRequest(req, out);
+}
+
+pub fn decodeRequest(payload: []const u8, out: *BatchWireRequest) WireError!void {
+    return sw.decodeRequest(payload, out);
+}
+
+pub fn encodeBatchResponse(batch: []const u8, out: []u8) WireError!u32 {
+    if (batch.len > max_batch_wire) return error.Overflow;
+    if (out.len < 1 + batch.len) return error.Overflow;
+    out[0] = kind_response_batch;
+    @memcpy(out[1..][0..batch.len], batch);
+    return 1 + @as(u32, @intCast(batch.len));
+}
+
+pub fn decodeBatchResponse(payload: []const u8, out: []u8) WireError!u32 {
+    if (payload.len < 1 or payload[0] != kind_response_batch) return error.BadKind;
+    const body = payload[1..];
+    if (body.len > out.len) return error.Overflow;
+    @memcpy(out[0..body.len], body);
+    return @intCast(body.len);
+}
+
+/// Apply a wire batch into dest using resin_batch invariants.
+pub fn applyWireBatch(
+    dest: *@import("recall_lap1.rye").BoltCatalog,
+    batch: []const u8,
+    source_pk: std.crypto.sign.Ed25519.PublicKey,
+) rb.BatchError!rb.BatchReport {
+    return rb.applyBatch(dest, batch, source_pk);
+}
