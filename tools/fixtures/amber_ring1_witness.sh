@@ -13,11 +13,11 @@ sh "$ROOT/tools/fixtures/amber_ring1_verify.sh" "$tmpdir" "$GOLDEN"
 sh "$ROOT/tools/fixtures/amber_ring1_restore.sh" "$tmpdir" "$restore"
 diff -r "$SRC" "$restore" >/dev/null
 
-# unwelcome — one stone byte tampered must fail verify
-first_stone=$(ls "$tmpdir/stones" | head -n1)
-printf 'X' >> "$tmpdir/stones/$first_stone"
+# unwelcome — one resin byte tampered must fail verify
+first_resin=$(ls "$tmpdir/resins" | head -n1)
+printf 'X' >> "$tmpdir/resins/$first_resin"
 if sh "$ROOT/tools/fixtures/amber_ring1_verify.sh" "$tmpdir" 2>/dev/null; then
-  echo "FAIL tampered stone should not verify"
+  echo "FAIL tampered resin should not verify"
   exit 1
 fi
 

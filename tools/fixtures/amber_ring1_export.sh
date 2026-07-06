@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# amber_ring1_export.sh — export a directory tree to stones + manifest.bron
+# amber_ring1_export.sh — export a directory tree to resins + manifest.bron
 set -eu
 ROOT=$(CDPATH= cd "$(dirname "$0")/../.." && pwd)
 SRC=${1:-"$ROOT/tools/fixtures/amber_ring1_tree"}
@@ -7,7 +7,7 @@ OUT=${2:?usage: amber_ring1_export.sh [source] outdir}
 STAMP=${3:-20260703.051812}
 
 rm -rf "$OUT"
-mkdir -p "$OUT/stones"
+mkdir -p "$OUT/resins"
 MANIFEST="$OUT/manifest.bron"
 
 {
@@ -21,7 +21,7 @@ cd "$SRC"
 find . -type f | LC_ALL=C sort | while IFS= read -r path; do
   rel=${path#./}
   digest=$(openssl dgst -sha3-256 -r "$rel" | awk '{print $1}')
-  cp "$rel" "$OUT/stones/$digest"
+  cp "$rel" "$OUT/resins/$digest"
   printf 'entry %s %s\n' "$rel" "$digest" >> "$MANIFEST"
 done
 

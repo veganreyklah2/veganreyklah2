@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through NS-L3 beading parity **164**; recall_beaded parity **165**; resin-batch wire hosted + device + chunking + beaded parity **166**. Two-way sync remains horizon.
+**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through NS-L3 beading parity **164**; recall_beaded parity **165**; resin-batch wire hosted + device + chunking + beaded parity **166**; Amber export path **`resins/`** hygiene `20260706.235812`. **Next horizons (ruling Q3):** marks-on-read · two-way sync · host mirror · Tablecloth query last.
 
 *Written together by Kaeden and Rio 3.*
 

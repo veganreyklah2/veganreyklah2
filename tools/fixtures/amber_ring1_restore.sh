@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# amber_ring1_restore.sh — restore manifest + stones into a target directory tree
+# amber_ring1_restore.sh — restore manifest + resins into a target directory tree
 set -eu
 OUT=${1:?usage: amber_ring1_restore.sh outdir targetdir}
 TARGET=${2:?usage: amber_ring1_restore.sh outdir targetdir}
@@ -14,10 +14,10 @@ while read -r line; do
     entry\ *)
       relpath=$(printf '%s\n' "$line" | awk '{print $2}')
       digest=$(printf '%s\n' "$line" | awk '{print $3}')
-      stone="$OUT/stones/$digest"
+      resin="$OUT/resins/$digest"
       dest="$TARGET/$relpath"
       mkdir -p "$(dirname "$dest")"
-      cp "$stone" "$dest"
+      cp "$resin" "$dest"
       ;;
   esac
 done < "$MANIFEST"

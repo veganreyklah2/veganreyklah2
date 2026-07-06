@@ -4,5 +4,5 @@ format amber-ring1-v1
 stamp YYYYMMDD.HHMMSS
 source amber_ring1_tree
 entry <relpath> <sha3-256-hex-64>
-# stones live beside this file under stones/<digest> — one file per unique content
+# resins live beside this file under resins/<digest> — one file per unique content
 # manifest digest: openssl dgst -sha3-256 manifest.bron (pinned golden in witness)

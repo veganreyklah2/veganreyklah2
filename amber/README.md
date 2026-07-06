@@ -19,4 +19,4 @@ The functional spec lives at [`context/specs/20260701-221512_amber-functional-sp
 | Export / verify / restore | [`../tools/fixtures/amber_ring1_export.sh`](../tools/fixtures/amber_ring1_export.sh) · verify · restore |
 | Witness | [`../tools/amber_first_ring.rish`](../tools/amber_first_ring.rish) |
 
-Lap one uses `openssl dgst -sha3-256` as the independent host oracle; export paths still say `stones/` until a hygiene lap; **resins** is the ratified unit word (`20260703.191312`). Kumara signing waits for a later lap.
+Lap one uses `openssl dgst -sha3-256` as the independent host oracle; export paths use **`resins/`** per ratified law (`20260703.191312`, path hygiene `20260706.235812`). Kumara signing waits for a later lap.

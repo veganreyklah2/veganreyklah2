@@ -53,7 +53,7 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
 
-**Next climb (Kaeden's word):** `stones/`→`resins/` rename (witness-gated hygiene, ruling Q3 order) — or MALA graduation when OA-L4 becomes escrow's second consumer.
+**Next climb (Kaeden's word):** marks-on-read (ruling Q3 order) — or MALA graduation when OA-L4 becomes escrow's second consumer.
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 
@@ -67,7 +67,8 @@
 - [x] **NS-L3 multi-frame batch chunking** — kind **0x04** chunk wire + `BatchAssembler`; hosted `chunkdemo` + device lab (400 B beta, 2 frames); `virtio_net` multi-packet TX/RX; parity **166** extended
 - [x] **NS-L3 beaded bolt full crossing** — bead-index + `.bN` leaves over batch wire; `hydrateBeadStoreFromCatalog` + `beadeddemo`; witness per [`20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md); parity **166** extended
 
-- [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
+- [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept
+- [x] **`stones/` → `resins/` path rename** — Amber ring-1 export/verify/restore/witness; `amber/ring1_manifest_shape.bron`; resins law spec; golden manifest digest unchanged; parity **167** unchanged (`20260706.235812`)
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 

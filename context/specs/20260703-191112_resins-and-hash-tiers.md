@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
-**Status:** Ratified (`20260703.191312 UDT`) — Kaeden affirmed **for**; lap-1 paths may still say `resins/` until a hygiene lap renames them
+**Status:** Ratified (`20260703.191312 UDT`) — Kaeden affirmed **for**; lap-1 export paths renamed to **`resins/`** at hygiene `20260706.235812` (golden manifest digest unchanged).
 **Ground:** [`20260701-221512_amber-functional-spec.md`](20260701-221512_amber-functional-spec.md) · [`20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) · [`../../external-research/yonder/20260617-195312_mantra.md`](../../external-research/yonder/20260617-195312_mantra.md) · [`../active-designing/20260703-140212_the-bench.md`](../../active-designing/20260703-140212_the-bench.md)
 
 ---
@@ -19,7 +19,7 @@
 
 The manifest **catalogs**; it does not wrap the payload in an opaque bag. Each resin **is** the matter. The digest **is** the address and the proof — not a separate checksum file that could drift from the bytes it names. Compression, when a lap adopts it, transforms the resin's bytes; the digest names **what is stored**. Tar and zip remain **transport only** — never the trust boundary.
 
-Lap one today exports under `resins/` and pins `openssl dgst -sha3-256` as the independent host oracle. That seam stays honest until a witness-gated rename lands; the **word** may graduate to **resins** in law before the **path** does.
+Lap one exports under **`resins/`** and pins `openssl dgst -sha3-256` as the independent host oracle. Path and word now align at ring one.
 
 ---
 
@@ -46,7 +46,7 @@ A store may decline to hold a resin. The **resin-refusal fact** (today recorded 
 
 ## What ratification seated
 
-Kaeden affirmed **for** (`20260703.191312 UDT`). Agents cite this spec as standing law for archive units and digest tiers. Path renames and golden changes wait for witness-gated laps.
+Kaeden affirmed **for** (`20260703.191312 UDT`). Agents cite this spec as standing law for archive units and digest tiers. Path rename to `resins/` landed at `20260706.235812`; golden manifest digest unchanged.
 
 ---
 
