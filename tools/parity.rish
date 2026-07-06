@@ -247,10 +247,10 @@ let recall_beaded = run ["rishi/bin/rishi" "run" "tools/mantra_recall_beaded.ris
 assert recall_beaded.ok else "NS-L3 recall_beaded witness failed"
 say "GREEN: NS-L3 recall_beaded witness passed."
 
-say "witness suite: NS-L3 lap 3w-4 hosted resin-batch wire…"
+say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"
-say "GREEN: NS-L3 lap 3w-4 hosted resin-batch wire witness passed."
+say "GREEN: NS-L3 lap 3w-4 resin-batch wire witness passed (hosted + device)."
 
 say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
 let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]

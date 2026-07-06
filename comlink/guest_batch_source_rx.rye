@@ -1,0 +1,75 @@
+//! comlink/guest_batch_source_rx.rye — NS-L3 batch wire device: source RX (verify batch request).
+
+const vn = @import("virtio_net.rye");
+const wf = @import("wire_format.rye");
+const bw = @import("recall_batch_wire.rye");
+const Sha3_256 = @import("std").crypto.hash.sha3.Sha3_256;
+
+var rx: vn.RxQueue = undefined;
+
+fn digestHexOf(content: []const u8, out: *[64]u8) void {
+    var digest: [32]u8 = undefined;
+    Sha3_256.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = @import("std").fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+export fn _start() linksection(".text.init") callconv(.naked) noreturn {
+    asm volatile (
+        \\ li sp, 0x80100000
+        \\ j kmain
+    );
+}
+
+export fn kmain() callconv(.c) noreturn {
+    vn.initDevice();
+    rx.init();
+    vn.driverOk();
+    rx.kick();
+
+    const n = rx.waitFrame();
+    if (n == 0) {
+        vn.writeStr("rbw device wire: FAIL — source RX timeout\n");
+        vn.finishFail();
+    }
+    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+    if (n <= poff) {
+        vn.writeStr("rbw device wire: FAIL — frame too short\n");
+        vn.finishFail();
+    }
+    const buf = rx.frame();
+    const datagram = buf[poff..n];
+
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = wf.openDatagram(datagram, &opened) catch {
+        vn.writeStr("rbw device wire: FAIL — open refused\n");
+        vn.finishFail();
+    };
+
+    var req: bw.BatchWireRequest = undefined;
+    bw.decodeRequest(opened[0..@intCast(opened_len)], &req) catch {
+        vn.writeStr("rbw device wire: FAIL — request decode\n");
+        vn.finishFail();
+    };
+    if (!@import("std").mem.eql(u8, req.peer, "peerB") or !@import("std").mem.eql(u8, req.bolt, "b") or req.revision != 1) {
+        vn.writeStr("rbw device wire: FAIL — bolt/revision mismatch\n");
+        vn.finishFail();
+    }
+    if (req.held_count != 1) {
+        vn.writeStr("rbw device wire: FAIL — held digest count\n");
+        vn.finishFail();
+    }
+    var alpha: [64]u8 = undefined;
+    digestHexOf("alpha", &alpha);
+    var i: u32 = 0;
+    while (i < 64) : (i += 1) {
+        if (req.held_digests[0][i] != alpha[i]) {
+            vn.writeStr("rbw device wire: FAIL — held digest mismatch\n");
+            vn.finishFail();
+        }
+    }
+    vn.writeStr("rbw device wire: sealed batch request GREEN — verify passed\n");
+    vn.finishPass();
+}

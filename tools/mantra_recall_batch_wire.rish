@@ -1,4 +1,4 @@
-# mantra_recall_batch_wire.rish — NS-L3 lap 3w-4 hosted resin-batch wire witness.
+# mantra_recall_batch_wire.rish — NS-L3 lap 3w-4 resin-batch wire witness (hosted + device).
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/mantra_recall_batch_wire.rish
@@ -17,4 +17,8 @@ let demo = run ["sh" "-c" "${bin} demo 2>&1"]
 assert demo.ok else "recall batch delivery demo exited non-zero"
 assert demo.out contains "GREEN" else "recall batch delivery demo not GREEN"
 
-say "GREEN: NS-L3 lap 3w-4 hosted resin-batch wire witness passed."
+let device = run ["sh" "comlink/run_recall_batch_wire_lab.sh"]
+assert device.ok else "recall batch device wire lab failed"
+assert device.out contains "GREEN" else "recall batch device wire lab not GREEN"
+
+say "GREEN: NS-L3 lap 3w-4 resin-batch wire witness passed (hosted + device)."
