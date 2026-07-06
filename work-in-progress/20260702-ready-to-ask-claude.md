@@ -1,26 +1,35 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260706.190644` (zip **58** NS-L3 handoff · parity **166**)
+**Stamp:** `20260702.202612` · refreshed `20260706.234512` (OA-L4 parity **167** · zip **59** next)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Zip 58 — **queued** (`20260706.190644`)
+## Zip 58 — **ruled** (`20260706.232812`)
 
-**Tip:** `f2bbddf` (cut again at post-packet HEAD) · **parity 166 GREEN** on Cursor metal · NS-L3 wire ladder complete.
+**Tip:** `818a433` (relay) · **parity 166** unchanged · NS-L3 wire ladder complete · Claude ruling seated.
 
 | Item | Path |
 |------|------|
-| Claude sitting prompt | [`expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md`](../expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md) |
+| Claude ruling (Q1–Q5) | [`external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md`](../external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) |
+| Zip 58 handoff prompt | [`expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md`](../expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md) |
 | Handoff log | [`session-logs/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/20260706-190312_claude-handoff-ns-l3-complete.md) |
-| Witness bolt | [`active-designing/20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md) |
-| Compass | [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) |
 
-**Claude must rule:** OA-L4 vs MALA (Q1) · Edit-5 I2 vs proceed (Q2) · namespace horizon order (Q3).
+**Rulings (zip 58 `20260706.232812` — applied, TASKS seated):**
 
-Prior zip in tree logs: **52** @ OA-L3 parity 158 · zips 53–57 held off-repo or relay-only until Kaeden aligns numbering — **58** is the next seated cut.
+| Q | Ruling |
+|---|--------|
+| **Q1** | OA-L4 leads; MALA graduation at second consumer |
+| **Q2** | Edit-5 slot released; I2 reuses `resin_batch.rye` when drafted |
+| **Q3** | Horizons: rename → marks-on-read → two-way sync → host mirror → Tablecloth query |
+| **Q4** | Wire-serves-the-fold + compass affirmed |
+| **Q5** | Settlement rail orthogonal |
+
+**OA-L4 landed** parity **167** — `foldReputationLog` + `tools/open_asks_lap4.rish`.
+
+## Zip 58 — handoff archive (`20260706.190644`)
 
 ## Zip 43 — **superseded** by zip 58 numbering
 

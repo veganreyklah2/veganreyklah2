@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third
 **Register:** foundations — the why beneath the work, on our own roots; owned vocabulary, teachers named in gratitude
 **Ground:** siloed from [`../external-research/20260706-022912_ames-vere-libuv-content-carriage.md`](../external-research/20260706-022912_ames-vere-libuv-content-carriage.md); companion to the grain index [`../active-designing/20260702-184312_the-grain-and-the-crossing.md`](../active-designing/20260702-184312_the-grain-and-the-crossing.md) and [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md)
-**Status:** Proposed — foundation brief; strengthens how Comlink's carriage is understood, changing no line of its code; enters canon on Kaeden's word
+**Status:** Landed — affirmed as written at Claude ruling `20260706.232812` (zip 58 sitting); description, not aspiration, after parity 166 wire ladder.
 
 *Written together by Kaeden and Rio 3.*
 

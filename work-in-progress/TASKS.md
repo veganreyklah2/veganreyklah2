@@ -49,9 +49,11 @@
 - [x] **OA-L3 escrow lap 2** — `linengrow/open_asks_escrow_delivery.rye` + four virtio guests + `comlink/run_open_asks_escrow_wire_lab.sh`; hosted UDP (ports **38476**/**38477**) and device wire (ports **15559**/**15560**) hold + release hops GREEN; `tools/open_asks_lap3.rish` extended (parity **158** unchanged); `wire_capacity` **528** / `max_frame` **554** for escrow payload headroom
 - [x] **Claude bench prepared and run** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md); lap 1 implemented and verified on the bench, parity pinned on metal
 
-**Next climb (Kaeden's word opens either):** OA-L4 reputation-as-fold — or MALA module graduation at second consumer. Both are horizon; check in with Claude before either.
+**Next climb (Kaeden's word opens it):** OA-L4 reputation-as-fold, built in place inside Linengrow's open-asks log. MALA graduation is not a separate lap to order against it — the graduation rule fires it the moment OA-L4 becomes the escrow aspect's second consumer (Claude ruling `20260706.232812`).
 
-**Namespace vocabulary seated `20260706.032700`:** Mantra grows the referential namespace; **recall** · **bolt** · peer/bolt/revision/path grammar; **stone** retired in favor of **resin**.
+- [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
+
+**Next climb (Kaeden's word):** `stones/`→`resins/` rename (witness-gated hygiene, ruling Q3 order) — or MALA graduation when OA-L4 becomes escrow's second consumer.
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 
@@ -69,7 +71,7 @@
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 
-**Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
+**Edit-5 slot released:** I1 landed on the referential namespace foundation through parity 166. I2 snapshot export, whenever drafted, reuses `resin_batch.rye`'s proven manifest shape rather than a new one (Claude ruling `20260706.232812`).
 
 ---
 

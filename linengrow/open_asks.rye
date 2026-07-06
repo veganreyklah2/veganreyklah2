@@ -13,7 +13,7 @@ const Ed25519 = std.crypto.sign.Ed25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const rc = @import("receipt_core.rye");
 
-const oa1_version = "20260706.010912";
+const oa1_version = "20260706.234512";
 pub const poster_seed = [_]u8{0x51} ** Ed25519.KeyPair.seed_length;
 pub const applicant_seed = [_]u8{0x52} ** Ed25519.KeyPair.seed_length;
 const oa1_poster_seed = poster_seed;
@@ -32,6 +32,14 @@ pub const escrow_seed = [_]u8{0x53} ** Ed25519.KeyPair.seed_length;
 pub const escrow_hold_prefix = "escrow-hold request_ref=";
 pub const escrow_release_prefix = "escrow-release request_ref=";
 pub const EscrowRole = enum { hold, release };
+
+/// OA-L4 consent memo values — the applicant names whether this completion may
+/// count toward a private reputation fold. Withheld consent excludes the bounty
+/// entirely; missing consent after completion excludes it too.
+pub const consent_grant = "grant";
+pub const consent_withhold = "withhold";
+
+pub const max_reputation_cycles: u32 = 8;
 
 pub const oa2_payload_header: u32 = Ed25519.Signature.encoded_length + 4;
 
@@ -52,7 +60,7 @@ pub const witness_request_ref = "9cdb9aafd7672a6b58f1d9c123f58abce7a4eff29ff8557
 pub const ref_hex_len: u32 = Sha3_256.digest_length * 2;
 pub const max_oa_fact: u32 = 512;
 pub const max_line_len: u32 = rc.sig_hex_len + 1 + max_oa_fact * 2;
-pub const max_log_len: u32 = 8192;
+pub const max_log_len: u32 = 16384;
 
 pub const RequestFields = struct {
     poster: []const u8,
@@ -76,6 +84,30 @@ pub const AcceptanceFields = struct {
     request_ref: []const u8,
     applicant: []const u8,
     stamp: []const u8,
+};
+
+pub const ConsentFields = struct {
+    applicant: []const u8,
+    request_ref: []const u8,
+    consent: []const u8,
+    stamp: []const u8,
+};
+
+pub const ConsentChoice = enum { grant, withhold };
+
+pub const AskCycle = struct {
+    request_ref: [ref_hex_len]u8 = undefined,
+    request_ref_len: u32 = 0,
+    applicant_hex: [64]u8 = undefined,
+    applicant_hex_len: u32 = 0,
+    stipend: i64 = 0,
+    completed: bool = false,
+    consent: enum { none, grant, withhold } = .none,
+};
+
+pub const ReputationFoldState = struct {
+    consented_completions: u32 = 0,
+    consented_stipend: i64 = 0,
 };
 
 pub const FoldState = struct {
@@ -254,6 +286,61 @@ pub fn writeCanonicalAcceptance(fields: AcceptanceFields, out: []u8) error{Overf
     return bufLenU32(written);
 }
 
+pub fn parseConsentFields(text: []const u8, fields: *ConsentFields) error{InvalidFact}!void {
+    var applicant_set = false;
+    var ref_set = false;
+    var consent_set = false;
+    var stamp_set = false;
+
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trimLine(raw);
+        if (line.len == 0) continue;
+        if (line[0] == '#') continue;
+        const kv = parseKeyLine(line) catch return error.InvalidFact;
+        if (std.mem.eql(u8, kv.key, "applicant")) {
+            fields.applicant = kv.value;
+            applicant_set = true;
+        } else if (std.mem.eql(u8, kv.key, "request_ref")) {
+            if (kv.value.len != ref_hex_len) return error.InvalidFact;
+            fields.request_ref = kv.value;
+            ref_set = true;
+        } else if (std.mem.eql(u8, kv.key, "consent")) {
+            fields.consent = kv.value;
+            consent_set = true;
+        } else if (std.mem.eql(u8, kv.key, "stamp")) {
+            fields.stamp = kv.value;
+            stamp_set = true;
+        } else {
+            return error.InvalidFact;
+        }
+    }
+    if (!applicant_set or !ref_set or !consent_set or !stamp_set) return error.InvalidFact;
+}
+
+pub fn parseConsentChoice(text: []const u8) error{InvalidFact}!ConsentChoice {
+    if (std.mem.eql(u8, text, consent_grant)) return .grant;
+    if (std.mem.eql(u8, text, consent_withhold)) return .withhold;
+    return error.InvalidFact;
+}
+
+pub fn writeCanonicalConsent(fields: ConsentFields, out: []u8) error{Overflow}!u32 {
+    const written = std.fmt.bufPrint(
+        out,
+        "applicant {s}\nrequest_ref {s}\nconsent {s}\nstamp {s}\n",
+        .{ fields.applicant, fields.request_ref, fields.consent, fields.stamp },
+    ) catch return error.Overflow;
+    return bufLenU32(written);
+}
+
+fn findCycleByRef(cycles: []AskCycle, cycle_count: u32, ref_hex: []const u8) ?u32 {
+    var i: u32 = 0;
+    while (i < cycle_count) : (i += 1) {
+        if (std.mem.eql(u8, cycles[i].request_ref[0..cycles[i].request_ref_len], ref_hex)) return i;
+    }
+    return null;
+}
+
 pub fn requestRefHex(canonical: []const u8, out: *[ref_hex_len]u8) void {
     var digest: [Sha3_256.digest_length]u8 = undefined;
     Sha3_256.hash(canonical, &digest, .{});
@@ -276,9 +363,10 @@ fn factHasKey(text: []const u8, key: []const u8) bool {
     return false;
 }
 
-pub fn classifyFact(fact: []const u8) error{InvalidFact}!enum { request, application, acceptance, completion } {
+pub fn classifyFact(fact: []const u8) error{InvalidFact}!enum { request, application, acceptance, completion, consent } {
     if (factHasKey(fact, "title")) return .request;
     if (factHasKey(fact, "message")) return .application;
+    if (factHasKey(fact, "consent") and factHasKey(fact, "request_ref")) return .consent;
     if (factHasKey(fact, "from") and factHasKey(fact, "amount")) return .completion;
     if (factHasKey(fact, "request_ref") and factHasKey(fact, "applicant")) return .acceptance;
     return error.InvalidFact;
@@ -352,7 +440,7 @@ pub fn foldAppliedLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_p
                 state.applicant_hex_len = try copyHexField(fields.applicant, &state.applicant_hex);
                 state.applied = true;
             },
-            else => return error.FoldFailed,
+            .consent, .acceptance, .completion => return error.FoldFailed,
         }
     }
     if (!state.posted or !state.applied) return error.FoldFailed;
@@ -427,6 +515,7 @@ pub fn foldLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25
                 if (!std.mem.eql(u8, fields.to, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
                 state.completed = true;
             },
+            .consent => return error.FoldFailed,
         }
     }
     if (!state.completed) return error.FoldFailed;
@@ -554,12 +643,132 @@ pub fn foldEscrowLog(
                     },
                 }
             },
+            .consent => return error.FoldFailed,
         }
     }
     if (!state.posted or !state.applied or !state.accepted) return error.FoldFailed;
     if (!state.held or !state.released or !state.completed) return error.FoldFailed;
     if (state.escrow_balance != 0) return error.FoldFailed;
     return state;
+}
+
+/// OA-L4 reputation fold: many completed asks on one log; consent-before-counting
+/// governs what may be tallied about an applicant.
+///
+/// Invariants:
+///   - only completions with a matching applicant-signed consent `grant` count;
+///   - `withhold` and missing consent exclude the bounty entirely;
+///   - consent requires a prior completion for the same `request_ref`;
+///   - no double consent on one bounty;
+///   - the fold is deterministic — the same log always yields the same view.
+pub fn foldReputationLog(
+    log: []const u8,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+    target_applicant_hex: []const u8,
+) error{FoldFailed}!ReputationFoldState {
+    var cycles: [max_reputation_cycles]AskCycle = undefined;
+    var cycle_count: u32 = 0;
+
+    var poster_hex: [64]u8 = undefined;
+    hexOfKey(poster_pk, &poster_hex);
+    var applicant_hex: [64]u8 = undefined;
+    hexOfKey(applicant_pk, &applicant_hex);
+
+    var pos: u32 = 0;
+    while (pos < bufLenU32(log)) {
+        const line_end = std.mem.indexOfScalarPos(u8, log, pos, '\n') orelse bufLenU32(log);
+        const line = log[pos..line_end];
+        pos = if (line_end < bufLenU32(log)) @as(u32, @intCast(line_end + 1)) else @as(u32, @intCast(line_end));
+        if (trimLine(line).len == 0) continue;
+
+        var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+        var fact_buf: [max_oa_fact]u8 = undefined;
+        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const fact = fact_buf[0..parsed.fact_len];
+
+        const kind = classifyFact(fact) catch return error.FoldFailed;
+        switch (kind) {
+            .request => {
+                if (cycle_count >= max_reputation_cycles) return error.FoldFailed;
+                var fields: RequestFields = undefined;
+                parseRequestFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
+                var ref_buf: [ref_hex_len]u8 = undefined;
+                requestRefHex(fact, &ref_buf);
+                if (findCycleByRef(cycles[0..], cycle_count, ref_buf[0..ref_hex_len]) != null) return error.FoldFailed;
+                cycles[cycle_count] = .{};
+                var cycle = &cycles[cycle_count];
+                @memcpy(cycle.request_ref[0..ref_hex_len], &ref_buf);
+                cycle.request_ref_len = ref_hex_len;
+                cycle.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+                cycle_count += 1;
+            },
+            .application => {
+                var fields: ApplicationFields = undefined;
+                parseApplicationFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                const idx = findCycleByRef(cycles[0..], cycle_count, fields.request_ref) orelse return error.FoldFailed;
+                var cycle = &cycles[idx];
+                if (cycle.applicant_hex_len != 0) return error.FoldFailed;
+                cycle.applicant_hex_len = try copyHexField(fields.applicant, &cycle.applicant_hex);
+                if (!std.mem.eql(u8, cycle.applicant_hex[0..cycle.applicant_hex_len], applicant_hex[0..64])) return error.FoldFailed;
+            },
+            .acceptance => {
+                var fields: AcceptanceFields = undefined;
+                parseAcceptanceFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                const idx = findCycleByRef(cycles[0..], cycle_count, fields.request_ref) orelse return error.FoldFailed;
+                const cycle = &cycles[idx];
+                if (cycle.applicant_hex_len == 0) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.applicant, cycle.applicant_hex[0..cycle.applicant_hex_len])) return error.FoldFailed;
+            },
+            .completion => {
+                var fields: rc.FactFields = undefined;
+                rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                const expected_memo_prefix = "completion request_ref=";
+                if (!std.mem.startsWith(u8, fields.memo, expected_memo_prefix)) return error.FoldFailed;
+                const memo_ref = fields.memo[expected_memo_prefix.len..];
+                const idx = findCycleByRef(cycles[0..], cycle_count, memo_ref) orelse return error.FoldFailed;
+                var cycle = &cycles[idx];
+                if (cycle.completed) return error.FoldFailed;
+                if (cycle.applicant_hex_len == 0) return error.FoldFailed;
+                const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+                if (amount != cycle.stipend) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.to, cycle.applicant_hex[0..cycle.applicant_hex_len])) return error.FoldFailed;
+                cycle.completed = true;
+            },
+            .consent => {
+                var fields: ConsentFields = undefined;
+                parseConsentFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                const choice = parseConsentChoice(fields.consent) catch return error.FoldFailed;
+                const idx = findCycleByRef(cycles[0..], cycle_count, fields.request_ref) orelse return error.FoldFailed;
+                var cycle = &cycles[idx];
+                if (!cycle.completed) return error.FoldFailed;
+                if (cycle.consent != .none) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.applicant, cycle.applicant_hex[0..cycle.applicant_hex_len])) return error.FoldFailed;
+                cycle.consent = switch (choice) {
+                    .grant => .grant,
+                    .withhold => .withhold,
+                };
+            },
+        }
+    }
+
+    var result: ReputationFoldState = .{};
+    var i: u32 = 0;
+    while (i < cycle_count) : (i += 1) {
+        const cycle = cycles[i];
+        if (!cycle.completed) continue;
+        if (!std.mem.eql(u8, cycle.applicant_hex[0..cycle.applicant_hex_len], target_applicant_hex)) continue;
+        if (cycle.consent != .grant) continue;
+        result.consented_completions += 1;
+        result.consented_stipend += cycle.stipend;
+    }
+    return result;
 }
 
 fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
@@ -857,12 +1066,190 @@ fn runEscrowSelftest(io: std.Io) !u8 {
     return 0;
 }
 
+fn appendCompletedAsk(
+    poster_kp: Ed25519.KeyPair,
+    applicant_kp: Ed25519.KeyPair,
+    poster_hex: []const u8,
+    applicant_hex: []const u8,
+    req_fields: RequestFields,
+    consent: ?ConsentChoice,
+    log: []u8,
+    log_len: *u32,
+) !void {
+    var canonical_req: [max_oa_fact]u8 = undefined;
+    const req_len = try writeCanonicalRequest(req_fields, &canonical_req);
+    const req_sig = poster_kp.sign(canonical_req[0..req_len], null) catch unreachable;
+    try appendSigned(req_sig, canonical_req[0..req_len], log, log_len);
+
+    var ref_hex: [ref_hex_len]u8 = undefined;
+    requestRefHex(canonical_req[0..req_len], &ref_hex);
+
+    const app_fields = ApplicationFields{
+        .applicant = applicant_hex,
+        .request_ref = ref_hex[0..ref_hex_len],
+        .message = "Completed work for reputation witness.",
+        .stamp = req_fields.stamp,
+    };
+    var canonical_app: [max_oa_fact]u8 = undefined;
+    const app_len = try writeCanonicalApplication(app_fields, &canonical_app);
+    const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
+    try appendSigned(app_sig, canonical_app[0..app_len], log, log_len);
+
+    const acc_fields = AcceptanceFields{
+        .poster = poster_hex,
+        .request_ref = ref_hex[0..ref_hex_len],
+        .applicant = applicant_hex,
+        .stamp = req_fields.stamp,
+    };
+    var canonical_acc: [max_oa_fact]u8 = undefined;
+    const acc_len = try writeCanonicalAcceptance(acc_fields, &canonical_acc);
+    const acc_sig = poster_kp.sign(canonical_acc[0..acc_len], null) catch unreachable;
+    try appendSigned(acc_sig, canonical_acc[0..acc_len], log, log_len);
+
+    var memo_buf: [128]u8 = undefined;
+    const memo_written = try std.fmt.bufPrint(&memo_buf, "completion request_ref={s}", .{ref_hex[0..ref_hex_len]});
+    const completion_fields = rc.FactFields{
+        .from = poster_hex,
+        .to = applicant_hex,
+        .amount = req_fields.stipend,
+        .memo = memo_written,
+        .stamp = req_fields.stamp,
+    };
+    var canonical_pay: [max_oa_fact]u8 = undefined;
+    const pay_len = try rc.writeCanonicalFact(completion_fields, &canonical_pay);
+    const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
+    try appendSigned(pay_sig, canonical_pay[0..pay_len], log, log_len);
+
+    if (consent) |choice| {
+        const consent_text = if (choice == .grant) consent_grant else consent_withhold;
+        const consent_fields = ConsentFields{
+            .applicant = applicant_hex,
+            .request_ref = ref_hex[0..ref_hex_len],
+            .consent = consent_text,
+            .stamp = req_fields.stamp,
+        };
+        var canonical_consent: [max_oa_fact]u8 = undefined;
+        const consent_len = try writeCanonicalConsent(consent_fields, &canonical_consent);
+        const consent_sig = applicant_kp.sign(canonical_consent[0..consent_len], null) catch unreachable;
+        try appendSigned(consent_sig, canonical_consent[0..consent_len], log, log_len);
+    }
+}
+
+fn runReputationSelftest(io: std.Io) !u8 {
+    _ = io;
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa1_poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa1_applicant_seed) catch unreachable;
+
+    var poster_hex: [64]u8 = undefined;
+    var applicant_hex: [64]u8 = undefined;
+    hexOfKey(poster_kp.public_key, &poster_hex);
+    hexOfKey(applicant_kp.public_key, &applicant_hex);
+
+    var log: [max_log_len]u8 = undefined;
+    var log_len: u32 = 0;
+
+    // Witness bolt: three completed asks — two grant, one withhold.
+    const req_a = RequestFields{
+        .poster = poster_hex[0..64],
+        .title = "animator gig alpha",
+        .skills = "animation",
+        .bounds = "remote",
+        .stipend = "100",
+        .deadline = "20260715.235959",
+        .stamp = "20260706.234500",
+    };
+    const req_b = RequestFields{
+        .poster = poster_hex[0..64],
+        .title = "animator gig beta",
+        .skills = "animation",
+        .bounds = "remote",
+        .stipend = "100",
+        .deadline = "20260716.235959",
+        .stamp = "20260706.234501",
+    };
+    const req_c = RequestFields{
+        .poster = poster_hex[0..64],
+        .title = "animator gig gamma",
+        .skills = "animation",
+        .bounds = "remote",
+        .stipend = "100",
+        .deadline = "20260717.235959",
+        .stamp = "20260706.234502",
+    };
+
+    try appendCompletedAsk(poster_kp, applicant_kp, poster_hex[0..64], applicant_hex[0..64], req_a, .grant, &log, &log_len);
+    try appendCompletedAsk(poster_kp, applicant_kp, poster_hex[0..64], applicant_hex[0..64], req_b, .grant, &log, &log_len);
+    try appendCompletedAsk(poster_kp, applicant_kp, poster_hex[0..64], applicant_hex[0..64], req_c, .withhold, &log, &log_len);
+
+    const view_a = try foldReputationLog(log[0..log_len], poster_kp.public_key, applicant_kp.public_key, applicant_hex[0..64]);
+    const view_b = try foldReputationLog(log[0..log_len], poster_kp.public_key, applicant_kp.public_key, applicant_hex[0..64]);
+    assert(view_a.consented_completions == view_b.consented_completions);
+    assert(view_a.consented_stipend == view_b.consented_stipend);
+    assert(view_a.consented_completions == 2);
+    assert(view_a.consented_stipend == 200);
+    print("oal4: consented completions {d}, stipend {d} — withheld bounty excluded\n", .{ view_a.consented_completions, view_a.consented_stipend });
+
+    // Unwelcome path — consent before completion.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        var canonical_req: [max_oa_fact]u8 = undefined;
+        const req_len = try writeCanonicalRequest(req_a, &canonical_req);
+        const req_sig = poster_kp.sign(canonical_req[0..req_len], null) catch unreachable;
+        try appendSigned(req_sig, canonical_req[0..req_len], &bad, &bl);
+        var ref_hex: [ref_hex_len]u8 = undefined;
+        requestRefHex(canonical_req[0..req_len], &ref_hex);
+        const consent_fields = ConsentFields{
+            .applicant = applicant_hex[0..64],
+            .request_ref = ref_hex[0..ref_hex_len],
+            .consent = consent_grant,
+            .stamp = "20260706.234599",
+        };
+        var canonical_consent: [max_oa_fact]u8 = undefined;
+        const consent_len = try writeCanonicalConsent(consent_fields, &canonical_consent);
+        const consent_sig = applicant_kp.sign(canonical_consent[0..consent_len], null) catch unreachable;
+        try appendSigned(consent_sig, canonical_consent[0..consent_len], &bad, &bl);
+        if (foldReputationLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, applicant_hex[0..64])) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal4: consent before completion refused — GREEN unwelcome path\n", .{});
+    }
+
+    // Unwelcome path — double consent on one bounty.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try appendCompletedAsk(poster_kp, applicant_kp, poster_hex[0..64], applicant_hex[0..64], req_a, .grant, &bad, &bl);
+        var canonical_req: [max_oa_fact]u8 = undefined;
+        const req_len = try writeCanonicalRequest(req_a, &canonical_req);
+        var ref_hex: [ref_hex_len]u8 = undefined;
+        requestRefHex(canonical_req[0..req_len], &ref_hex);
+        const consent_fields = ConsentFields{
+            .applicant = applicant_hex[0..64],
+            .request_ref = ref_hex[0..ref_hex_len],
+            .consent = consent_grant,
+            .stamp = "20260706.234600",
+        };
+        var canonical_consent: [max_oa_fact]u8 = undefined;
+        const consent_len = try writeCanonicalConsent(consent_fields, &canonical_consent);
+        const consent_sig = applicant_kp.sign(canonical_consent[0..consent_len], null) catch unreachable;
+        try appendSigned(consent_sig, canonical_consent[0..consent_len], &bad, &bl);
+        if (foldReputationLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, applicant_hex[0..64])) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal4: double consent refused — GREEN unwelcome path\n", .{});
+    }
+
+    print("oal4: version {s}\n", .{oa1_version});
+    print("GREEN: OA-L4 reputation-as-fold — consent-before-counting on one log.\n", .{});
+    return 0;
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "escrow")) return runEscrowSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "reputation")) return runReputationSelftest(io);
     const oa1 = try runSelftest(io);
     if (oa1 != 0) return oa1;
     return runEscrowSelftest(io);

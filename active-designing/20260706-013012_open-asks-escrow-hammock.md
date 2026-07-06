@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — hammock scope and counsel; proposes candidate names that park for Kaeden's word; seats nothing
 **Ground:** [`../linengrow/open_asks.rye`](../linengrow/open_asks.rye) · [`20260706-002912_open-asks-hammock-scope.md`](20260706-002912_open-asks-hammock-scope.md) · [`20260706-011512_open-asks-cross-party-delivery.md`](20260706-011512_open-asks-cross-party-delivery.md) · [`../external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) · [`../external-research/20260706-005512_settlement-seat-verification-and-verdict.md`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md)
-**Status:** Landed — checkable-room lap 1 and lap 2 GREEN; escrow hold and release on one log plus hosted and device wire carriage, parity **158**. Vocabulary sealed `20260706.014512`: the escrow account is **Nyasa**; memo prefixes stay `escrow-hold` and `escrow-release`. MALA graduation and OA-L4 remain horizon.
+**Status:** Landed — checkable-room lap 1 and lap 2 GREEN; escrow hold and release on one log plus hosted and device wire carriage, parity **158**. Vocabulary sealed `20260706.014512`: the escrow account is **Nyasa**; memo prefixes stay `escrow-hold` and `escrow-release`. **OA-L4** reputation-as-fold lap 1 landed parity **167** (ruling `20260706.232812`). **Next:** MALA graduation when OA-L4 becomes escrow's second consumer.
 
 *Written together by Kaeden and Rio 3.*
 
