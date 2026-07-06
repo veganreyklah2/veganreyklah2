@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-06 (OA-L2 witness at parity **157**)
+**Last updated:** 2026-07-06 (OA-L3 escrow at parity **158**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -53,6 +53,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **SLC-L2** | **Sealed delivery** — a signed receipt sent identity to identity, under seal | Comlink · scope [`../active-designing/20260706-000812_slcl2-sealed-delivery.md`](../active-designing/20260706-000812_slcl2-sealed-delivery.md) · witness **155** |
 | **OA-L1** | **Closed ask loop** — post, apply, accept, complete, verify on one log | scope [`../active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) · witness **156** |
 | **OA-L2** | **Cross-party delivery** — request + application under Comlink seal | scope [`../active-designing/20260706-011512_open-asks-cross-party-delivery.md`](../active-designing/20260706-011512_open-asks-cross-party-delivery.md) · witness **157** |
+| **OA-L3** | **Escrow** — hold at acceptance, release at completion, the escrow balance closing at zero on one log | scope [`../active-designing/20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md) · witness **158** |
 | **SLC-L3** | **Settlement rail** — Sui seated, two-lane witness proposed; the receipt verifiable on the ledger | Sui / Mysticeti (witness proposed) |
 | **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |

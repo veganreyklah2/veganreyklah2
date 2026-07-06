@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **157** · OA-L3 counsel seated · settlement softenings applied)
+**Last updated:** 2026-07-06 (parity **158** · OA-L3 escrow lap 1 landed · settlement softenings applied)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -43,12 +43,12 @@
 
 - [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
-**OA-L3 counsel seated `20260706.013012` — vocabulary gate:**
+**OA-L3 escrow landed `20260706.014512` — parity 158:**
 
-- [ ] **OA-L3 escrow** — brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md); encoding · inline home · M1/M2 **seated in counsel**; **vocabulary** awaits Kaeden word
-- [~] **Claude bench prepared** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md) + handoff [`session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md`](../session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md)
+- [x] **OA-L3 escrow** — hold at acceptance, release at completion; **Nyasa** escrow account; conservation, no negatives, no double-hold or double-release, poster-signed, internal test units; welcome and five unwelcome paths in the selftest; `tools/open_asks_lap3.rish` wired parity **158**; brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md)
+- [x] **Claude bench prepared and run** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md); lap 1 implemented and verified on the bench, parity pinned on metal
 
-**Next climb (Claude + Kaeden):** OA-L3 lap 1 — Kaeden speaks vocabulary, Claude implements → parity **158**.
+**Next climb (Kaeden's word opens either):** OA-L3 lap 2 — escrow facts over the Comlink device wire — or OA-L4 reputation-as-fold. Both are horizon.
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 

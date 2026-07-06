@@ -19,6 +19,20 @@ pub const applicant_seed = [_]u8{0x52} ** Ed25519.KeyPair.seed_length;
 const oa1_poster_seed = poster_seed;
 const oa1_applicant_seed = applicant_seed;
 
+/// Nyasa — the escrow account (Kaeden's word, 20260706.014512): value held in
+/// trust between poster and applicant, from acceptance until completion. A
+/// reserved deterministic identity, so a hold and a release name it as an
+/// ordinary account without forking the fact shape.
+pub const escrow_seed = [_]u8{0x53} ** Ed25519.KeyPair.seed_length;
+
+/// OA-L3 escrow memo prefixes on the receipt-core fact. The hold is the M1
+/// commitment (poster to Nyasa); the release is the M2 delivery (Nyasa to
+/// applicant). The wire does not fork: an escrow fact is a receipt-core fact
+/// whose memo names its role.
+pub const escrow_hold_prefix = "escrow-hold request_ref=";
+pub const escrow_release_prefix = "escrow-release request_ref=";
+pub const EscrowRole = enum { hold, release };
+
 pub const oa2_payload_header: u32 = Ed25519.Signature.encoded_length + 4;
 
 /// Pinned witness request — canonical bytes for `tools/fixtures/open_asks_request.bron`.
@@ -76,6 +90,9 @@ pub const FoldState = struct {
     applicant_hex: [64]u8 = undefined,
     applicant_hex_len: u32 = 0,
     stipend: i64 = 0,
+    held: bool = false,
+    released: bool = false,
+    escrow_balance: i64 = 0,
 };
 
 fn copyHexField(src: []const u8, dest: []u8) error{FoldFailed}!u32 {
@@ -416,6 +433,135 @@ pub fn foldLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25
     return state;
 }
 
+fn hexOfKey(pk: Ed25519.PublicKey, out: *[64]u8) void {
+    const bytes = pk.toBytes();
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch unreachable;
+    }
+}
+
+/// OA-L3 escrow fold: post, apply, accept, hold, release — on one log.
+///
+/// Invariants (stated first in the session log, enforced here):
+///   - conservation: the release equals the held amount; the escrow balance
+///     opens at zero, rises by the hold, and closes at zero on the release;
+///   - the escrow balance is never negative at any step;
+///   - a release reaches only the accepted applicant, only for the accepted
+///     request, only in the held amount, and only after a matching hold;
+///   - a hold requires a prior acceptance; no double-hold and no double-release;
+///   - every escrow fact is poster-signed and every amount stays within bounds;
+///   - internal only: own log, own keys, test units, no external chain.
+pub fn foldEscrowLog(
+    log: []const u8,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+    escrow_pk: Ed25519.PublicKey,
+) error{FoldFailed}!FoldState {
+    var state: FoldState = .{};
+
+    var poster_hex: [64]u8 = undefined;
+    hexOfKey(poster_pk, &poster_hex);
+    var applicant_hex: [64]u8 = undefined;
+    hexOfKey(applicant_pk, &applicant_hex);
+    var escrow_hex: [64]u8 = undefined;
+    hexOfKey(escrow_pk, &escrow_hex);
+
+    var pos: u32 = 0;
+    while (pos < bufLenU32(log)) {
+        const line_end = std.mem.indexOfScalarPos(u8, log, pos, '\n') orelse bufLenU32(log);
+        const line = log[pos..line_end];
+        pos = if (line_end < bufLenU32(log)) @as(u32, @intCast(line_end + 1)) else @as(u32, @intCast(line_end));
+        if (trimLine(line).len == 0) continue;
+
+        var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+        var fact_buf: [max_oa_fact]u8 = undefined;
+        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const fact = fact_buf[0..parsed.fact_len];
+
+        const kind = classifyFact(fact) catch return error.FoldFailed;
+        switch (kind) {
+            .request => {
+                if (state.posted) return error.FoldFailed;
+                var fields: RequestFields = undefined;
+                parseRequestFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
+                var ref_buf: [ref_hex_len]u8 = undefined;
+                requestRefHex(fact, &ref_buf);
+                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                state.request_ref_len = ref_hex_len;
+                state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
+                state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+                if (state.stipend <= 0) return error.FoldFailed; // a bounty holds a positive stipend
+                state.posted = true;
+            },
+            .application => {
+                if (!state.posted or state.applied) return error.FoldFailed;
+                var fields: ApplicationFields = undefined;
+                parseApplicationFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                state.applicant_hex_len = try copyHexField(fields.applicant, &state.applicant_hex);
+                if (!std.mem.eql(u8, state.applicant_hex[0..state.applicant_hex_len], applicant_hex[0..64])) return error.FoldFailed;
+                state.applied = true;
+            },
+            .acceptance => {
+                if (!state.applied or state.accepted) return error.FoldFailed;
+                var fields: AcceptanceFields = undefined;
+                parseAcceptanceFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.applicant, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
+                state.accepted = true;
+            },
+            .completion => {
+                // An escrow fact is a receipt-core payment whose memo names its role.
+                var fields: rc.FactFields = undefined;
+                rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
+                const role: EscrowRole = if (std.mem.startsWith(u8, fields.memo, escrow_hold_prefix))
+                    .hold
+                else if (std.mem.startsWith(u8, fields.memo, escrow_release_prefix))
+                    .release
+                else
+                    return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed; // poster signs both legs
+                const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+                const prefix = if (role == .hold) escrow_hold_prefix else escrow_release_prefix;
+                const memo_ref = fields.memo[prefix.len..];
+                if (!std.mem.eql(u8, memo_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                switch (role) {
+                    .hold => {
+                        if (!state.accepted or state.held) return error.FoldFailed;
+                        if (amount != state.stipend) return error.FoldFailed;
+                        if (!std.mem.eql(u8, fields.from, poster_hex[0..64])) return error.FoldFailed;
+                        if (!std.mem.eql(u8, fields.to, escrow_hex[0..64])) return error.FoldFailed;
+                        if (state.escrow_balance != 0) return error.FoldFailed; // opens at zero
+                        state.escrow_balance += amount;
+                        if (state.escrow_balance < 0) return error.FoldFailed; // never negative
+                        state.held = true;
+                    },
+                    .release => {
+                        if (!state.held or state.released) return error.FoldFailed;
+                        if (amount != state.stipend) return error.FoldFailed;
+                        if (amount != state.escrow_balance) return error.FoldFailed; // release exactly what is held
+                        if (!std.mem.eql(u8, fields.from, escrow_hex[0..64])) return error.FoldFailed;
+                        if (!std.mem.eql(u8, fields.to, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
+                        state.escrow_balance -= amount;
+                        if (state.escrow_balance != 0) return error.FoldFailed; // closes at zero
+                        state.released = true;
+                        state.completed = true;
+                    },
+                }
+            },
+        }
+    }
+    if (!state.posted or !state.applied or !state.accepted) return error.FoldFailed;
+    if (!state.held or !state.released or !state.completed) return error.FoldFailed;
+    if (state.escrow_balance != 0) return error.FoldFailed;
+    return state;
+}
+
 fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [max_line_len]u8 = undefined;
     const line_len = try rc.formatLogLine(sig, fact, &line);
@@ -529,10 +675,182 @@ fn runSelftest(io: std.Io) !u8 {
     return error.UnwelcomePassed;
 }
 
+const EscrowKeys = struct {
+    poster: Ed25519.KeyPair,
+    applicant: Ed25519.KeyPair,
+    escrow: Ed25519.KeyPair,
+    poster_hex: [64]u8,
+    applicant_hex: [64]u8,
+    escrow_hex: [64]u8,
+};
+
+fn buildAcceptedPrefix(keys: EscrowKeys, req_fields: RequestFields, ref_hex: []const u8, log: []u8, log_len: *u32) !void {
+    var canonical_req: [max_oa_fact]u8 = undefined;
+    const req_len = try writeCanonicalRequest(req_fields, &canonical_req);
+    const req_sig = keys.poster.sign(canonical_req[0..req_len], null) catch unreachable;
+    try appendSigned(req_sig, canonical_req[0..req_len], log, log_len);
+
+    const app_fields = ApplicationFields{
+        .applicant = keys.applicant_hex[0..64],
+        .request_ref = ref_hex,
+        .message = "I animate science explainers and would love this gig.",
+        .stamp = "20260706.003000",
+    };
+    var canonical_app: [max_oa_fact]u8 = undefined;
+    const app_len = try writeCanonicalApplication(app_fields, &canonical_app);
+    const app_sig = keys.applicant.sign(canonical_app[0..app_len], null) catch unreachable;
+    try appendSigned(app_sig, canonical_app[0..app_len], log, log_len);
+
+    const acc_fields = AcceptanceFields{
+        .poster = keys.poster_hex[0..64],
+        .request_ref = ref_hex,
+        .applicant = keys.applicant_hex[0..64],
+        .stamp = "20260706.003100",
+    };
+    var canonical_acc: [max_oa_fact]u8 = undefined;
+    const acc_len = try writeCanonicalAcceptance(acc_fields, &canonical_acc);
+    const acc_sig = keys.poster.sign(canonical_acc[0..acc_len], null) catch unreachable;
+    try appendSigned(acc_sig, canonical_acc[0..acc_len], log, log_len);
+}
+
+fn buildEscrowFact(
+    signer: Ed25519.KeyPair,
+    role: EscrowRole,
+    from_hex: []const u8,
+    to_hex: []const u8,
+    amount_text: []const u8,
+    ref_hex: []const u8,
+    stamp: []const u8,
+    log: []u8,
+    log_len: *u32,
+) !void {
+    const prefix = if (role == .hold) escrow_hold_prefix else escrow_release_prefix;
+    var memo_buf: [128]u8 = undefined;
+    const memo = try std.fmt.bufPrint(&memo_buf, "{s}{s}", .{ prefix, ref_hex });
+    const fields = rc.FactFields{ .from = from_hex, .to = to_hex, .amount = amount_text, .memo = memo, .stamp = stamp };
+    var canonical: [max_oa_fact]u8 = undefined;
+    const clen = try rc.writeCanonicalFact(fields, &canonical);
+    const sig = signer.sign(canonical[0..clen], null) catch unreachable;
+    try appendSigned(sig, canonical[0..clen], log, log_len);
+}
+
+fn runEscrowSelftest(io: std.Io) !u8 {
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa1_poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa1_applicant_seed) catch unreachable;
+    const escrow_kp = Ed25519.KeyPair.generateDeterministic(escrow_seed) catch unreachable;
+
+    var keys: EscrowKeys = .{
+        .poster = poster_kp,
+        .applicant = applicant_kp,
+        .escrow = escrow_kp,
+        .poster_hex = undefined,
+        .applicant_hex = undefined,
+        .escrow_hex = undefined,
+    };
+    hexOfKey(poster_kp.public_key, &keys.poster_hex);
+    hexOfKey(applicant_kp.public_key, &keys.applicant_hex);
+    hexOfKey(escrow_kp.public_key, &keys.escrow_hex);
+
+    const cwd = Dir.cwd();
+    var fixture_buf: [max_oa_fact]u8 = undefined;
+    const fixture_read = try cwd.readFile(io, "tools/fixtures/open_asks_request.bron", &fixture_buf);
+    var req_fields: RequestFields = undefined;
+    try parseRequestFields(fixture_read, &req_fields);
+    assert(std.mem.eql(u8, req_fields.poster, keys.poster_hex[0..64]));
+
+    var canonical_req: [max_oa_fact]u8 = undefined;
+    const req_len = try writeCanonicalRequest(req_fields, &canonical_req);
+    var ref_hex: [ref_hex_len]u8 = undefined;
+    requestRefHex(canonical_req[0..req_len], &ref_hex);
+    const stipend_text = req_fields.stipend;
+
+    // Welcome path: post, apply, accept, hold, release.
+    var log: [max_log_len]u8 = undefined;
+    var log_len: u32 = 0;
+    try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &log, &log_len);
+    try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003200", &log, &log_len);
+    try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.applicant_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003300", &log, &log_len);
+
+    const state = try foldEscrowLog(log[0..log_len], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key);
+    assert(state.held);
+    assert(state.released);
+    assert(state.completed);
+    assert(state.escrow_balance == 0);
+    assert(state.stipend == 100);
+    print("oal3: hold then release folded — escrow closes at {d}, stipend {d}\n", .{ state.escrow_balance, state.stipend });
+
+    // Unwelcome path 1 — release with no prior hold.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &bad, &bl);
+        try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.applicant_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003300", &bad, &bl);
+        if (foldEscrowLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key)) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal3: release without hold refused — GREEN unwelcome path\n", .{});
+    }
+
+    // Unwelcome path 2 — release in the wrong amount.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &bad, &bl);
+        try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003200", &bad, &bl);
+        try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.applicant_hex[0..64], "50", ref_hex[0..ref_hex_len], "20260706.003300", &bad, &bl);
+        if (foldEscrowLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key)) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal3: wrong-amount release refused — GREEN unwelcome path\n", .{});
+    }
+
+    // Unwelcome path 3 — release to the wrong applicant.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &bad, &bl);
+        try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003200", &bad, &bl);
+        try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.poster_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003300", &bad, &bl);
+        if (foldEscrowLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key)) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal3: wrong-applicant release refused — GREEN unwelcome path\n", .{});
+    }
+
+    // Unwelcome path 4 — a second release on a settled bounty.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &bad, &bl);
+        try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003200", &bad, &bl);
+        try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.applicant_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003300", &bad, &bl);
+        try buildEscrowFact(poster_kp, .release, keys.escrow_hex[0..64], keys.applicant_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003400", &bad, &bl);
+        if (foldEscrowLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key)) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal3: double release refused — GREEN unwelcome path\n", .{});
+    }
+
+    // Unwelcome path 5 — a second hold on the same request.
+    {
+        var bad: [max_log_len]u8 = undefined;
+        var bl: u32 = 0;
+        try buildAcceptedPrefix(keys, req_fields, ref_hex[0..ref_hex_len], &bad, &bl);
+        try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003200", &bad, &bl);
+        try buildEscrowFact(poster_kp, .hold, keys.poster_hex[0..64], keys.escrow_hex[0..64], stipend_text, ref_hex[0..ref_hex_len], "20260706.003250", &bad, &bl);
+        if (foldEscrowLog(bad[0..bl], poster_kp.public_key, applicant_kp.public_key, escrow_kp.public_key)) |_| {
+            return error.UnwelcomePassed;
+        } else |_| print("oal3: double hold refused — GREEN unwelcome path\n", .{});
+    }
+
+    print("oal3: version {s}\n", .{oa1_version});
+    print("GREEN: OA-L3 escrow — hold, release, verify on one log.\n", .{});
+    return 0;
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "escrow")) return runEscrowSelftest(io);
+    const oa1 = try runSelftest(io);
+    if (oa1 != 0) return oa1;
+    return runEscrowSelftest(io);
 }
