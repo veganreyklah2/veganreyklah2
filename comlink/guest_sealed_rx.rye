@@ -43,7 +43,7 @@ export fn kmain() callconv(.c) noreturn {
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
-    var opened: [512]u8 = undefined;
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
     const msg_len = wf.openDatagram(datagram, &opened) catch {
         vn.writeStr("comlink device wire: sub-lap 3 FAIL — open refused\n");
         vn.finishFail();

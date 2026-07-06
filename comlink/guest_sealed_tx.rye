@@ -20,7 +20,7 @@ export fn kmain() callconv(.c) noreturn {
     tx.init();
     vn.driverOk();
 
-    var scratch: [512]u8 = undefined;
+    var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
     const dg_len: u32 = @intCast(wf.sealDatagram(&scratch));
 
     const buf = tx.frame();

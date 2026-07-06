@@ -1,0 +1,119 @@
+//! comlink/guest_open_asks_escrow_hold_rx.rye — OA-L3 lap 2 device wire hold RX guest.
+
+const std = @import("std");
+const vn = @import("virtio_net.rye");
+const wf = @import("wire_format.rye");
+const oa = @import("open_asks.rye");
+const rc = @import("receipt_core.rye");
+const Ed25519 = std.crypto.sign.Ed25519;
+
+var rx: vn.RxQueue = undefined;
+
+fn pubkeyHex(pk: Ed25519.PublicKey, out: *[64]u8) void {
+    const bytes = pk.toBytes();
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch unreachable;
+    }
+}
+
+fn hexEq(a: []const u8, b: []const u8) bool {
+    if (a.len != b.len) return false;
+    var i: u32 = 0;
+    while (i < a.len) : (i += 1) {
+        if (a[i] != b[i]) return false;
+    }
+    return true;
+}
+
+export fn _start() linksection(".text.init") callconv(.naked) noreturn {
+    asm volatile (
+        \\ li sp, 0x80100000
+        \\ j kmain
+    );
+}
+
+export fn kmain() callconv(.c) noreturn {
+    vn.initDevice();
+    rx.init();
+    vn.driverOk();
+    rx.kick();
+
+    const n = rx.waitFrame();
+    if (n == 0) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold RX timeout\n");
+        vn.finishFail();
+    }
+    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+    if (n <= poff) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold frame too short\n");
+        vn.finishFail();
+    }
+    const buf = rx.frame();
+    const datagram = buf[poff..n];
+
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = wf.openDatagram(datagram, &opened) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold open refused\n");
+        vn.finishFail();
+    };
+
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
+    const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
+    const poster_pk = poster_kp.public_key;
+
+    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var fact_buf: [oa.max_oa_fact]u8 = undefined;
+    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold payload decode\n");
+        vn.finishFail();
+    };
+    const fact = fact_buf[0..decoded.fact_len];
+    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold verify\n");
+        vn.finishFail();
+    };
+    const kind = oa.classifyFact(fact) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold classify\n");
+        vn.finishFail();
+    };
+    if (kind != .completion) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold not completion\n");
+        vn.finishFail();
+    }
+    var fields: rc.FactFields = undefined;
+    rc.parseFactFields(fact, &fields) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold parse\n");
+        vn.finishFail();
+    };
+    if (!std.mem.startsWith(u8, fields.memo, oa.escrow_hold_prefix)) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold memo\n");
+        vn.finishFail();
+    }
+    const memo_ref = fields.memo[oa.escrow_hold_prefix.len..];
+    var i: u32 = 0;
+    while (i < oa.ref_hex_len) : (i += 1) {
+        if (memo_ref[i] != oa.witness_request_ref[i]) {
+            vn.writeStr("oal3l2 device wire: FAIL — hold request_ref\n");
+            vn.finishFail();
+        }
+    }
+    const amount = rc.parseAmountSigned(fields.amount) catch {
+        vn.writeStr("oal3l2 device wire: FAIL — hold amount\n");
+        vn.finishFail();
+    };
+    if (amount != 100) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold stipend\n");
+        vn.finishFail();
+    }
+    var poster_hex: [64]u8 = undefined;
+    var escrow_hex: [64]u8 = undefined;
+    pubkeyHex(poster_pk, &poster_hex);
+    pubkeyHex(escrow_kp.public_key, &escrow_hex);
+    if (!hexEq(fields.from, poster_hex[0..64]) or !hexEq(fields.to, escrow_hex[0..64])) {
+        vn.writeStr("oal3l2 device wire: FAIL — hold from/to\n");
+        vn.finishFail();
+    }
+    vn.writeStr("oal3l2 device wire: sealed hold GREEN — verify and request_ref passed\n");
+    vn.finishPass();
+}

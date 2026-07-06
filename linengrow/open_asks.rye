@@ -724,14 +724,27 @@ fn buildEscrowFact(
     log: []u8,
     log_len: *u32,
 ) !void {
-    const prefix = if (role == .hold) escrow_hold_prefix else escrow_release_prefix;
-    var memo_buf: [128]u8 = undefined;
-    const memo = try std.fmt.bufPrint(&memo_buf, "{s}{s}", .{ prefix, ref_hex });
-    const fields = rc.FactFields{ .from = from_hex, .to = to_hex, .amount = amount_text, .memo = memo, .stamp = stamp };
     var canonical: [max_oa_fact]u8 = undefined;
-    const clen = try rc.writeCanonicalFact(fields, &canonical);
+    const clen = try writeEscrowPaymentCanonical(role, from_hex, to_hex, amount_text, ref_hex, stamp, &canonical);
     const sig = signer.sign(canonical[0..clen], null) catch unreachable;
     try appendSigned(sig, canonical[0..clen], log, log_len);
+}
+
+/// Canonical bytes for a poster-signed escrow payment fact (hold or release).
+pub fn writeEscrowPaymentCanonical(
+    role: EscrowRole,
+    from_hex: []const u8,
+    to_hex: []const u8,
+    amount_text: []const u8,
+    ref_hex: []const u8,
+    stamp: []const u8,
+    out: []u8,
+) error{Overflow}!u32 {
+    const prefix = if (role == .hold) escrow_hold_prefix else escrow_release_prefix;
+    var memo_buf: [128]u8 = undefined;
+    const memo = std.fmt.bufPrint(&memo_buf, "{s}{s}", .{ prefix, ref_hex }) catch return error.Overflow;
+    const fields = rc.FactFields{ .from = from_hex, .to = to_hex, .amount = amount_text, .memo = memo, .stamp = stamp };
+    return try rc.writeCanonicalFact(fields, out);
 }
 
 fn runEscrowSelftest(io: std.Io) !u8 {

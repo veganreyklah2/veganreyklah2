@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **158** · OA-L3 escrow lap 1 landed · settlement softenings applied)
+**Last updated:** 2026-07-06 (parity **158** · OA-L3 escrow lap 1 + lap 2 landed · settlement softenings applied)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -45,10 +45,11 @@
 
 **OA-L3 escrow landed `20260706.014512` — parity 158:**
 
-- [x] **OA-L3 escrow** — hold at acceptance, release at completion; **Nyasa** escrow account; conservation, no negatives, no double-hold or double-release, poster-signed, internal test units; welcome and five unwelcome paths in the selftest; `tools/open_asks_lap3.rish` wired parity **158**; brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md)
+- [x] **OA-L3 escrow lap 1** — hold at acceptance, release at completion; **Nyasa** escrow account; conservation, no negatives, no double-hold or double-release, poster-signed, internal test units; welcome and five unwelcome paths in the selftest; brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md)
+- [x] **OA-L3 escrow lap 2** — `linengrow/open_asks_escrow_delivery.rye` + four virtio guests + `comlink/run_open_asks_escrow_wire_lab.sh`; hosted UDP (ports **38476**/**38477**) and device wire (ports **15559**/**15560**) hold + release hops GREEN; `tools/open_asks_lap3.rish` extended (parity **158** unchanged); `wire_capacity` **528** / `max_frame` **554** for escrow payload headroom
 - [x] **Claude bench prepared and run** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md); lap 1 implemented and verified on the bench, parity pinned on metal
 
-**Next climb (Kaeden's word opens either):** OA-L3 lap 2 — escrow facts over the Comlink device wire — or OA-L4 reputation-as-fold. Both are horizon.
+**Next climb (Kaeden's word opens either):** OA-L4 reputation-as-fold — or MALA module graduation at second consumer. Both are horizon; check in with Claude before either.
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.021400 | [OA-L3 escrow lap 2](20260706-021400_oal3-escrow-lap2.md) | Hold and release under Comlink seal — hosted UDP + device wire; wire_capacity 528; parity 158 GREEN |
 | 20260706.014612 | [Zip 52 OA-L3 parity 158 landed](20260706-014612_zip52-oal3-parity-158-landed.md) | Cursor applied Claude bundle; Nyasa escrow; full parity GREEN on metal |
 | 20260706.014512 | [OA-L3 escrow lap 1](20260706-014512_oal3-escrow-lap1.md) | Nyasa escrow hold and release on one log; welcome and five unwelcome paths GREEN; parity 158 |
 | 20260706.013512 | [Claude OA-L3 bench prepared](20260706-013512_claude-oal3-bench-prepared.md) | Runnable bench packet for parity 158; vocabulary gate |

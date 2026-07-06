@@ -90,7 +90,7 @@ Port **38474** — distinct from SLC-L2 delivery (**38473**) and hosted wire dem
 | `comlink/guest_open_asks_poster_rx.rye` | Open application, verify, `foldAppliedLog` |
 | `comlink/run_open_asks_wire_lab.sh` | QEMU socket lab — request **15557**, application **15558** |
 
-`virtio_net.max_frame` **538** — virtio/eth headers plus full `wire_capacity` datagram.
+`virtio_net.max_frame` **554** — virtio/eth headers plus full `wire_capacity` datagram (**528**).
 
 ---
 

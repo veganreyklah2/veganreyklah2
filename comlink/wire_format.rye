@@ -17,7 +17,7 @@ const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
 
 pub const wire_format_version = "20260705.225412";
 
-pub const wire_capacity: u64 = 512;
+pub const wire_capacity: u64 = 528;
 
 pub const off_sender: u64 = 0;
 pub const off_nonce: u64 = off_sender + 32;
