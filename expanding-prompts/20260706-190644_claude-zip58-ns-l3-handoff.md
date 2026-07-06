@@ -14,8 +14,8 @@
 | Field | Value |
 |-------|--------|
 | **Zip** | **58** |
-| **Tip** | `b199561` |
-| **Archive** | `veganreyklah2-20260706-190644-ns-l3-wire-complete.zip` — 3.4 MB, 1748 files, comment `b1995614ac3dd833596dac3bb9f412b8e609df81` |
+| **Tip** | `05f7783` |
+| **Archive** | `veganreyklah2-20260706-190644-ns-l3-wire-complete.zip` — 3.4 MB, 1748 files, comment `05f7783deb650c775d6d5cb0103d6f8be685dc07` |
 | **Parity** | **166 witnesses** — Cursor metal GREEN through NS-L3 batch wire (hosted + device + chunk + beaded) |
 | **Recipe** | v5 — [`20260703-205212_bench-raise-recipe-v5-accretion.md`](20260703-205212_bench-raise-recipe-v5-accretion.md) |
 
