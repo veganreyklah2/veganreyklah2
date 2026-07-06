@@ -12,7 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260706.235512 | [OA-L4 reputation parity 167](20260706-235512_oal4-reputation-parity167.md) | Consent-before-counting fold; zip 59 cut |
+| 20260706.235512 | [Zip 59 cut](20260706-235512_zip59-cut.md) | OA-L4 parity 167 archive at `e995322` |
+| 20260706.235512 | [OA-L4 reputation parity 167](20260706-235512_oal4-reputation-parity167.md) | Consent-before-counting fold |
 | 20260706.234212 | [Zip 58 ruling seated](20260706-234212_zip58-ruling-seated.md) | OA-L4 leads; Edit-5 released; foundations affirmed |
 | 20260706.190812 | [Zip 58 numbering seated](20260706-190812_zip58-numbering-seated.md) | Kaeden correction; relay cut and four-remote push complete |
 | 20260706.190644 | [Zip 58 cut](20260706-190644_zip58-cut.md) | NS-L3 handoff archive; relay to Claude |
