@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **159** · NS-L1 recall landed · namespace vocabulary seated · stone retired)
+**Last updated:** 2026-07-06 (parity **160** · NS-L2 write revision landed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -56,6 +56,8 @@
 **NS-L1 landed `20260706.032700` — parity 159:**
 
 - [x] **NS-L1 local recall** — `mantra/recall_lap1.rye` + `tools/mantra_recall_lap1.rish`; referential transparency + digest mismatch refused; parity **159**
+
+- [x] **NS-L2 write revision** — `BoltCatalog.appendLeaf` + immutable prior revision recall; `tools/mantra_recall_lap2.rish`; parity **160**
 
 - [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 

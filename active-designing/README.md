@@ -47,7 +47,7 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
-| `20260706.023912` | [The referential namespace — Mantra grows to hold it](20260706-023912_the-referential-namespace.md) | **recall** and **bolt** seated; peer/bolt/revision/path grammar; NS-L1 local recall GREEN; parity **159** |
+| `20260706.023912` | [The referential namespace — Mantra grows to hold it](20260706-023912_the-referential-namespace.md) | **recall** and **bolt** seated; NS-L1 recall + NS-L2 write revision GREEN; parity **160** |
 | `20260705.225412` | [Comlink device wire](20260705-225412_comlink-device-wire.md) | Virtio carriage for sealed datagram — sub-lap 1 fixture selftest GREEN |
 | `20260705-045012` | [Rye astrology atelier](20260705-045012_rye-astrology-atelier.md) | Charts and calculations in Rye — ephemeris seam, golden cast witness, SVG fold; counsel only |
 | `20260704-211012` | [The Rye core and the shell](20260704-211012_the-rye-core-and-the-shell.md) | Lap law seated — core proves, shell witnesses; explicit subject, horizon, `preview`/`fold`, parity hygiene |

@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; Mantra role, **recall**, **bolt**, and peer/bolt/revision/path grammar seated `20260706.032700`; NS-L1 local recall GREEN, parity **159**
+**Status:** Landed — checkable-room; Mantra role, **recall**, **bolt**, and peer/bolt/revision/path grammar seated `20260706.032700`; NS-L1 local recall GREEN parity **159**; NS-L2 write revision GREEN parity **160**
 
 *Written together by Kaeden and Rio 3.*
 
@@ -51,7 +51,9 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Lap 1 (landed, parity 159):** a local referentially-transparent **recall**. Given a bolt, a revision, and a path, Mantra resolves the name to a resin's digest, Amber returns the resin, the digest is verified, and the bytes come back — and the witness reads the same name twice and asserts the same bytes both times, with a digest mismatch refused whole. No network, no conversion, no write. Implementation: [`mantra/recall_lap1.rye`](../mantra/recall_lap1.rye) · witness [`tools/mantra_recall_lap1.rish`](../tools/mantra_recall_lap1.rish).
 
-The later laps arrive each in season. Writing a revision appends a fact to the Weave and a resin to Amber, and the recall resolves the new revision while the old one still resolves unchanged. Sync carries a bolt between peers over Amphora's have-already and need-resin lanes. Marks-on-read lets a recall ask for a leaf in a different Tilak, express doing the conversion off the hot path. Query, held back until it can no longer be, is Tablecloth. And a host mirror, if ever wanted, reflects a bolt into the host filesystem the way the hosted wire already reflects a datagram. None of these is built now; each is a small step from the running seed, and each keeps the invariants above.
+**Lap 2 (landed, parity 160):** writing a revision appends a leaf binding and stores a resin in the in-memory catalog; **recall** on revision 1 still returns the original bytes after revision 2 lands, duplicate revisions are refused, and revision 3 honestly answers **not yet**. Witness: [`tools/mantra_recall_lap2.rish`](../tools/mantra_recall_lap2.rish).
+
+The later laps arrive each in season. Sync carries a bolt between peers over Amphora's have-already and need-resin lanes. Marks-on-read lets a recall ask for a leaf in a different Tilak, express doing the conversion off the hot path. Query, held back until it can no longer be, is Tablecloth. And a host mirror, if ever wanted, reflects a bolt into the host filesystem the way the hosted wire already reflects a datagram. None of these is built now; each is a small step from the running seed, and each keeps the invariants above.
 
 ## Kaeden's Word (`20260706.032700`)
 
