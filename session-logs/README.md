@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.025112 | [Zip apply carriage and namespace](20260706-025112_zip-apply-carriage-namespace.md) | Cursor applied anchor 023912 bundle; doorway GREEN; parity 158 unchanged |
+| 20260706.023912 | [Clay namespace research and design](20260706-023912_clay-namespace-research-and-design.md) | Clay studied; the referential namespace recommended as a Mantra role expansion; read and bolt words parked; docs only, parity 158 |
+| 20260706.022912 | [Ames, Vere, libuv study and carriage silo](20260706-022912_ames-libuv-research-and-silo.md) | Vere still rides libuv; study-not-link verdict; carriage first-principles siloed to foundations; docs only, parity 158 |
 | 20260706.021400 | [OA-L3 escrow lap 2](20260706-021400_oal3-escrow-lap2.md) | Hold and release under Comlink seal — hosted UDP + device wire; wire_capacity 528; parity 158 GREEN |
 | 20260706.014612 | [Zip 52 OA-L3 parity 158 landed](20260706-014612_zip52-oal3-parity-158-landed.md) | Cursor applied Claude bundle; Nyasa escrow; full parity GREEN on metal |
 | 20260706.014512 | [OA-L3 escrow lap 1](20260706-014512_oal3-escrow-lap1.md) | Nyasa escrow hold and release on one log; welcome and five unwelcome paths GREEN; parity 158 |
