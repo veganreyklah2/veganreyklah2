@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · CIVIC · Gall · Hammock
 **Register:** active-designing — names only our modules
-**Status:** Scope note — checkable-room hammock; **SLC-L1 and SLC-L2 landed** on metal; **OA-L1 enters build only after Kaeden affirms this edge**
+**Status:** Seated — checkable-room lap brief; **OA-L1 landed** `20260706.010912`; witness at parity **156**
 
 **Ground:** [`../external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md) · [`20260702-195426_slcl1-verifiable-receipt.md`](20260702-195426_slcl1-verifiable-receipt.md) · [`20260706-000812_slcl2-sealed-delivery.md`](20260706-000812_slcl2-sealed-delivery.md) · [`20260702-031312_modules-aspects-and-mailable-money.md`](20260702-031312_modules-aspects-and-mailable-money.md)
 
@@ -105,11 +105,11 @@ The completion record **links** to the ask loop by `request_ref` in `memo` — n
 
 ### In scope (OA-L1 is done when these hold)
 
-- [ ] Request, application, acceptance fact parsers and canonical writers (hosted `.rye`, beside `linengrow/`)
-- [ ] Fold over a plain log proving the closed loop for one fixture ask (movement memo micro-gig shape)
-- [ ] Completion receipt verified with existing SLC-L1 verify path
-- [ ] Witness `tools/open_asks_lap1.rish` — welcome path (full loop green); unwelcome path (application cites wrong `request_ref` → verify fails)
-- [ ] Fixture under `tools/fixtures/open_asks_*`; parity block when wired (count accretes from metal)
+- [x] Request, application, acceptance fact parsers and canonical writers (hosted `.rye`, beside `linengrow/`)
+- [x] Fold over a plain log proving the closed loop for one fixture ask (movement memo micro-gig shape)
+- [x] Completion receipt verified with existing SLC-L1 verify path
+- [x] Witness `tools/open_asks_lap1.rish` — welcome path (full loop green); unwelcome path (application cites wrong `request_ref` → verify fails)
+- [x] Fixture under `tools/fixtures/open_asks_*`; parity block wired (**156**)
 
 ### Out of scope (OA-L2 and later)
 

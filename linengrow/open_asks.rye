@@ -1,0 +1,445 @@
+//! linengrow/open_asks.rye — OA-L1 closed ask loop: post, apply, accept, complete, verify.
+//!
+//!   rye build linengrow/open_asks.rye -femit-bin=linengrow/bin/open-asks
+//!   linengrow/bin/open-asks selftest
+//!
+//! Scope: [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md)
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const Dir = std.Io.Dir;
+const Ed25519 = std.crypto.sign.Ed25519;
+const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+const rc = @import("receipt_core.rye");
+
+const oa1_version = "20260706.010912";
+const oa1_poster_seed = [_]u8{0x51} ** Ed25519.KeyPair.seed_length;
+const oa1_applicant_seed = [_]u8{0x52} ** Ed25519.KeyPair.seed_length;
+
+pub const ref_hex_len: u32 = Sha3_256.digest_length * 2;
+pub const max_oa_fact: u32 = 512;
+pub const max_line_len: u32 = rc.sig_hex_len + 1 + max_oa_fact * 2;
+pub const max_log_len: u32 = 8192;
+
+pub const RequestFields = struct {
+    poster: []const u8,
+    title: []const u8,
+    skills: []const u8,
+    bounds: []const u8,
+    stipend: []const u8,
+    deadline: []const u8,
+    stamp: []const u8,
+};
+
+pub const ApplicationFields = struct {
+    applicant: []const u8,
+    request_ref: []const u8,
+    message: []const u8,
+    stamp: []const u8,
+};
+
+pub const AcceptanceFields = struct {
+    poster: []const u8,
+    request_ref: []const u8,
+    applicant: []const u8,
+    stamp: []const u8,
+};
+
+pub const FoldState = struct {
+    request_ref: [ref_hex_len]u8 = undefined,
+    request_ref_len: u32 = 0,
+    posted: bool = false,
+    applied: bool = false,
+    accepted: bool = false,
+    completed: bool = false,
+    poster_hex: [64]u8 = undefined,
+    poster_hex_len: u32 = 0,
+    applicant_hex: [64]u8 = undefined,
+    applicant_hex_len: u32 = 0,
+    stipend: i64 = 0,
+};
+
+fn copyHexField(src: []const u8, dest: []u8) error{FoldFailed}!u32 {
+    if (src.len > bufLenU32(dest)) return error.FoldFailed;
+    @memcpy(dest[0..src.len], src);
+    return @intCast(src.len);
+}
+
+fn bufLenU32(buf: []const u8) u32 {
+    assert(buf.len <= std.math.maxInt(u32));
+    return @intCast(buf.len);
+}
+
+fn trimLine(line: []const u8) []const u8 {
+    return std.mem.trim(u8, line, " \t\r\n");
+}
+
+fn parseKeyLine(line: []const u8) error{InvalidFact}!struct { key: []const u8, value: []const u8 } {
+    const space = std.mem.indexOfScalar(u8, line, ' ') orelse return error.InvalidFact;
+    const key = line[0..space];
+    const value = trimLine(line[space + 1 ..]);
+    if (value.len == 0) return error.InvalidFact;
+    return .{ .key = key, .value = value };
+}
+
+pub fn parseRequestFields(text: []const u8, fields: *RequestFields) error{InvalidFact}!void {
+    var poster_set = false;
+    var title_set = false;
+    var skills_set = false;
+    var bounds_set = false;
+    var stipend_set = false;
+    var deadline_set = false;
+    var stamp_set = false;
+
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trimLine(raw);
+        if (line.len == 0) continue;
+        if (line[0] == '#') continue;
+        const kv = parseKeyLine(line) catch return error.InvalidFact;
+        if (std.mem.eql(u8, kv.key, "poster")) {
+            fields.poster = kv.value;
+            poster_set = true;
+        } else if (std.mem.eql(u8, kv.key, "title")) {
+            fields.title = kv.value;
+            title_set = true;
+        } else if (std.mem.eql(u8, kv.key, "skills")) {
+            fields.skills = kv.value;
+            skills_set = true;
+        } else if (std.mem.eql(u8, kv.key, "bounds")) {
+            fields.bounds = kv.value;
+            bounds_set = true;
+        } else if (std.mem.eql(u8, kv.key, "stipend")) {
+            fields.stipend = kv.value;
+            stipend_set = true;
+        } else if (std.mem.eql(u8, kv.key, "deadline")) {
+            fields.deadline = kv.value;
+            deadline_set = true;
+        } else if (std.mem.eql(u8, kv.key, "stamp")) {
+            fields.stamp = kv.value;
+            stamp_set = true;
+        } else {
+            return error.InvalidFact;
+        }
+    }
+    if (!poster_set or !title_set or !skills_set or !bounds_set or !stipend_set or !deadline_set or !stamp_set) {
+        return error.InvalidFact;
+    }
+}
+
+pub fn writeCanonicalRequest(fields: RequestFields, out: []u8) error{Overflow}!u32 {
+    const written = std.fmt.bufPrint(
+        out,
+        "poster {s}\ntitle {s}\nskills {s}\nbounds {s}\nstipend {s}\ndeadline {s}\nstamp {s}\n",
+        .{ fields.poster, fields.title, fields.skills, fields.bounds, fields.stipend, fields.deadline, fields.stamp },
+    ) catch return error.Overflow;
+    return bufLenU32(written);
+}
+
+pub fn parseApplicationFields(text: []const u8, fields: *ApplicationFields) error{InvalidFact}!void {
+    var applicant_set = false;
+    var ref_set = false;
+    var message_set = false;
+    var stamp_set = false;
+
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trimLine(raw);
+        if (line.len == 0) continue;
+        if (line[0] == '#') continue;
+        const kv = parseKeyLine(line) catch return error.InvalidFact;
+        if (std.mem.eql(u8, kv.key, "applicant")) {
+            fields.applicant = kv.value;
+            applicant_set = true;
+        } else if (std.mem.eql(u8, kv.key, "request_ref")) {
+            if (kv.value.len != ref_hex_len) return error.InvalidFact;
+            fields.request_ref = kv.value;
+            ref_set = true;
+        } else if (std.mem.eql(u8, kv.key, "message")) {
+            fields.message = kv.value;
+            message_set = true;
+        } else if (std.mem.eql(u8, kv.key, "stamp")) {
+            fields.stamp = kv.value;
+            stamp_set = true;
+        } else {
+            return error.InvalidFact;
+        }
+    }
+    if (!applicant_set or !ref_set or !message_set or !stamp_set) return error.InvalidFact;
+}
+
+pub fn writeCanonicalApplication(fields: ApplicationFields, out: []u8) error{Overflow}!u32 {
+    const written = std.fmt.bufPrint(
+        out,
+        "applicant {s}\nrequest_ref {s}\nmessage {s}\nstamp {s}\n",
+        .{ fields.applicant, fields.request_ref, fields.message, fields.stamp },
+    ) catch return error.Overflow;
+    return bufLenU32(written);
+}
+
+pub fn parseAcceptanceFields(text: []const u8, fields: *AcceptanceFields) error{InvalidFact}!void {
+    var poster_set = false;
+    var ref_set = false;
+    var applicant_set = false;
+    var stamp_set = false;
+
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trimLine(raw);
+        if (line.len == 0) continue;
+        if (line[0] == '#') continue;
+        const kv = parseKeyLine(line) catch return error.InvalidFact;
+        if (std.mem.eql(u8, kv.key, "poster")) {
+            fields.poster = kv.value;
+            poster_set = true;
+        } else if (std.mem.eql(u8, kv.key, "request_ref")) {
+            if (kv.value.len != ref_hex_len) return error.InvalidFact;
+            fields.request_ref = kv.value;
+            ref_set = true;
+        } else if (std.mem.eql(u8, kv.key, "applicant")) {
+            fields.applicant = kv.value;
+            applicant_set = true;
+        } else if (std.mem.eql(u8, kv.key, "stamp")) {
+            fields.stamp = kv.value;
+            stamp_set = true;
+        } else {
+            return error.InvalidFact;
+        }
+    }
+    if (!poster_set or !ref_set or !applicant_set or !stamp_set) return error.InvalidFact;
+}
+
+pub fn writeCanonicalAcceptance(fields: AcceptanceFields, out: []u8) error{Overflow}!u32 {
+    const written = std.fmt.bufPrint(
+        out,
+        "poster {s}\nrequest_ref {s}\napplicant {s}\nstamp {s}\n",
+        .{ fields.poster, fields.request_ref, fields.applicant, fields.stamp },
+    ) catch return error.Overflow;
+    return bufLenU32(written);
+}
+
+pub fn requestRefHex(canonical: []const u8, out: *[ref_hex_len]u8) void {
+    var digest: [Sha3_256.digest_length]u8 = undefined;
+    Sha3_256.hash(canonical, &digest, .{});
+    var i: u32 = 0;
+    while (i < Sha3_256.digest_length) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn factHasKey(text: []const u8, key: []const u8) bool {
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trimLine(raw);
+        if (line.len == 0 or line[0] == '#') continue;
+        const space = std.mem.indexOfScalar(u8, line, ' ');
+        if (space) |s| {
+            if (std.mem.eql(u8, line[0..s], key)) return true;
+        }
+    }
+    return false;
+}
+
+pub fn classifyFact(fact: []const u8) error{InvalidFact}!enum { request, application, acceptance, completion } {
+    if (factHasKey(fact, "title")) return .request;
+    if (factHasKey(fact, "message")) return .application;
+    if (factHasKey(fact, "from") and factHasKey(fact, "amount")) return .completion;
+    if (factHasKey(fact, "request_ref") and factHasKey(fact, "applicant")) return .acceptance;
+    return error.InvalidFact;
+}
+
+pub fn foldLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25519.PublicKey) error{FoldFailed}!FoldState {
+    var state: FoldState = .{};
+    var pos: u32 = 0;
+    while (pos < bufLenU32(log)) {
+        const line_end = std.mem.indexOfScalarPos(u8, log, pos, '\n') orelse bufLenU32(log);
+        const line = log[pos..line_end];
+        pos = if (line_end < bufLenU32(log)) @as(u32, @intCast(line_end + 1)) else @as(u32, @intCast(line_end));
+        if (trimLine(line).len == 0) continue;
+
+        var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+        var fact_buf: [max_oa_fact]u8 = undefined;
+        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const fact = fact_buf[0..parsed.fact_len];
+
+        const kind = classifyFact(fact) catch return error.FoldFailed;
+        switch (kind) {
+            .request => {
+                if (state.posted) return error.FoldFailed;
+                var fields: RequestFields = undefined;
+                parseRequestFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                var poster_hex: [64]u8 = undefined;
+                const poster_kp_bytes = poster_pk.toBytes();
+                var i: u32 = 0;
+                while (i < 32) : (i += 1) {
+                    _ = std.fmt.bufPrint(poster_hex[i * 2 ..][0..2], "{x:0>2}", .{poster_kp_bytes[i]}) catch return error.FoldFailed;
+                }
+                if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
+                var ref_buf: [ref_hex_len]u8 = undefined;
+                requestRefHex(fact, &ref_buf);
+                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                state.request_ref_len = ref_hex_len;
+                state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
+                state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+                state.posted = true;
+            },
+            .application => {
+                if (!state.posted or state.applied) return error.FoldFailed;
+                var fields: ApplicationFields = undefined;
+                parseApplicationFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                state.applicant_hex_len = try copyHexField(fields.applicant, &state.applicant_hex);
+                state.applied = true;
+            },
+            .acceptance => {
+                if (!state.applied or state.accepted) return error.FoldFailed;
+                var fields: AcceptanceFields = undefined;
+                parseAcceptanceFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.applicant, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
+                state.accepted = true;
+            },
+            .completion => {
+                if (!state.accepted or state.completed) return error.FoldFailed;
+                var fields: rc.FactFields = undefined;
+                rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
+                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                const expected_memo_prefix = "completion request_ref=";
+                if (!std.mem.startsWith(u8, fields.memo, expected_memo_prefix)) return error.FoldFailed;
+                const memo_ref = fields.memo[expected_memo_prefix.len..];
+                if (!std.mem.eql(u8, memo_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
+                const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+                if (amount != state.stipend) return error.FoldFailed;
+                if (!std.mem.eql(u8, fields.to, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
+                state.completed = true;
+            },
+        }
+    }
+    if (!state.completed) return error.FoldFailed;
+    return state;
+}
+
+fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
+    var line: [max_line_len]u8 = undefined;
+    const line_len = try rc.formatLogLine(sig, fact, &line);
+    if (log_len.* + line_len > bufLenU32(log)) return error.Overflow;
+    @memcpy(log[log_len.*..][0..line_len], line[0..line_len]);
+    log_len.* += line_len;
+}
+
+fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+    const bytes = kp.public_key.toBytes();
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch unreachable;
+    }
+}
+
+fn runSelftest(io: std.Io) !u8 {
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa1_poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa1_applicant_seed) catch unreachable;
+    const poster_pk = poster_kp.public_key;
+    const applicant_pk = applicant_kp.public_key;
+
+    var poster_hex: [64]u8 = undefined;
+    var applicant_hex: [64]u8 = undefined;
+    pubkeyHex(poster_kp, &poster_hex);
+    pubkeyHex(applicant_kp, &applicant_hex);
+
+    const fixture_path = "tools/fixtures/open_asks_request.bron";
+    const cwd = Dir.cwd();
+    var fixture_buf: [max_oa_fact]u8 = undefined;
+    const fixture_read = try cwd.readFile(io, fixture_path, &fixture_buf);
+    assert(fixture_read.len <= max_oa_fact);
+
+    var req_fields: RequestFields = undefined;
+    try parseRequestFields(fixture_read, &req_fields);
+    assert(std.mem.eql(u8, req_fields.poster, poster_hex[0..64]));
+
+    var canonical_req: [max_oa_fact]u8 = undefined;
+    const req_len = try writeCanonicalRequest(req_fields, &canonical_req);
+
+    var ref_hex: [ref_hex_len]u8 = undefined;
+    requestRefHex(canonical_req[0..req_len], &ref_hex);
+
+    var log: [max_log_len]u8 = undefined;
+    var log_len: u32 = 0;
+
+    const req_sig = poster_kp.sign(canonical_req[0..req_len], null) catch unreachable;
+    try appendSigned(req_sig, canonical_req[0..req_len], &log, &log_len);
+
+    const app_fields = ApplicationFields{
+        .applicant = applicant_hex[0..64],
+        .request_ref = ref_hex[0..ref_hex_len],
+        .message = "I animate science explainers and would love this gig.",
+        .stamp = "20260706.003000",
+    };
+    var canonical_app: [max_oa_fact]u8 = undefined;
+    const app_len = try writeCanonicalApplication(app_fields, &canonical_app);
+    const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
+    try appendSigned(app_sig, canonical_app[0..app_len], &log, &log_len);
+
+    const acc_fields = AcceptanceFields{
+        .poster = poster_hex[0..64],
+        .request_ref = ref_hex[0..ref_hex_len],
+        .applicant = applicant_hex[0..64],
+        .stamp = "20260706.003100",
+    };
+    var canonical_acc: [max_oa_fact]u8 = undefined;
+    const acc_len = try writeCanonicalAcceptance(acc_fields, &canonical_acc);
+    const acc_sig = poster_kp.sign(canonical_acc[0..acc_len], null) catch unreachable;
+    try appendSigned(acc_sig, canonical_acc[0..acc_len], &log, &log_len);
+
+    var memo_buf: [128]u8 = undefined;
+    const memo_written = try std.fmt.bufPrint(&memo_buf, "completion request_ref={s}", .{ref_hex[0..ref_hex_len]});
+    const completion_fields = rc.FactFields{
+        .from = poster_hex[0..64],
+        .to = applicant_hex[0..64],
+        .amount = req_fields.stipend,
+        .memo = memo_written,
+        .stamp = "20260706.003200",
+    };
+    var canonical_pay: [max_oa_fact]u8 = undefined;
+    const pay_len = try rc.writeCanonicalFact(completion_fields, &canonical_pay);
+    const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
+    try appendSigned(pay_sig, canonical_pay[0..pay_len], &log, &log_len);
+
+    const state = try foldLog(log[0..log_len], poster_pk, applicant_pk);
+    assert(state.completed);
+    assert(state.stipend == 100);
+
+    var bad_ref: [ref_hex_len]u8 = undefined;
+    @memset(&bad_ref, '0');
+    const bad_app = ApplicationFields{
+        .applicant = applicant_hex[0..64],
+        .request_ref = bad_ref[0..ref_hex_len],
+        .message = app_fields.message,
+        .stamp = app_fields.stamp,
+    };
+    var bad_canonical: [max_oa_fact]u8 = undefined;
+    const bad_len = try writeCanonicalApplication(bad_app, &bad_canonical);
+    const bad_sig = applicant_kp.sign(bad_canonical[0..bad_len], null) catch unreachable;
+    var bad_log: [max_log_len]u8 = undefined;
+    var bad_log_len: u32 = 0;
+    try appendSigned(req_sig, canonical_req[0..req_len], &bad_log, &bad_log_len);
+    try appendSigned(bad_sig, bad_canonical[0..bad_len], &bad_log, &bad_log_len);
+    _ = foldLog(bad_log[0..bad_log_len], poster_pk, applicant_pk) catch {
+        print("oal1: bad request_ref refused at fold — GREEN unwelcome path\n", .{});
+        print("oal1: version {s}\n", .{oa1_version});
+        print("GREEN: OA-L1 closed ask loop — post, apply, accept, complete, verify.\n", .{});
+        return 0;
+    };
+    return error.UnwelcomePassed;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const garden = init.arena.allocator();
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(garden);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+    return runSelftest(io);
+}

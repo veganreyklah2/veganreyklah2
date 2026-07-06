@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **155** · SLC-L2 complete · Open Asks hammock scope seated)
+**Last updated:** 2026-07-06 (parity **156** · OA-L1 landed · settlement counsel seated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -35,9 +35,13 @@
 
 - [x] **SLC-L2 sealed delivery** — `linengrow/delivery.rye` + `tools/slcl2_receipt.rish`; hosted UDP + **device wire** virtio guests GREEN; parity **155**
 
-**Next climb (Cursor):** **OA-L1** implementation after Kaeden affirms [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) edge — mechanical, reuses `receipt_core`.
+**OA-L1 landed `20260706.010912` — parity **156**:**
 
-**Alongside:** SLC-L3 settlement seat — counsel landed [`external-research/20260706-005512_settlement-seat-verification-and-verdict.md`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md); ladder softenings **proposed**, await Kaeden word. OA-L1 implementation awaits edge affirmation.
+- [x] **OA-L1 closed ask loop** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish`; post → apply → accept → complete → verify GREEN
+
+**Next climb (Cursor):** OA-L2 brief — cross-party delivery over Comlink (reuses SLC-L2 carriage).
+
+**Alongside:** SLC-L3 ladder softenings — proposed in verdict; await Kaeden word.
 
 **Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
 
@@ -139,8 +143,7 @@ Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](..
 Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md).
 
 - [x] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements; **proxy column** (public-market proxy present or absent) on the movement memo table per circulation survey Q1 (`20260703.191312 UDT`, *for*).
-- [x] **Open Asks hammock scope (OA-L1)** — [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md); closed loop: post → apply → accept → complete → verify; enters build after Kaeden affirms edge
-- [ ] **Open Asks room (implementation)** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish` per scope note; reputation-as-fold and board interop remain OA-L4+ horizon
+- [x] **Open Asks room (OA-L1)** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish`; parity **156**; OA-L2+ delivery and reputation remain horizon
 - [ ] **Sanctuary care log (flagship candidate)** — signed care facts per resident, schedules as projections, CIVIC dignity-floor accountability; design-only until its season.
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Resin-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a resin, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`; unit word ratified `20260703.191312`).
