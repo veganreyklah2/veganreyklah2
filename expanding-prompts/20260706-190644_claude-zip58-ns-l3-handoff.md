@@ -14,7 +14,8 @@
 | Field | Value |
 |-------|--------|
 | **Zip** | **58** |
-| **Tip** | `f2bbddf` (pre-handoff); re-cut at `git rev-parse HEAD` after this packet lands |
+| **Tip** | `7be7240` |
+| **Archive** | `veganreyklah2-20260706-190644-ns-l3-wire-complete.zip` — 3.4 MB, 1747 files, comment `7be724041dbe5f90ee36e5f404faccc3f7c5fecf` |
 | **Parity** | **166 witnesses** — Cursor metal GREEN through NS-L3 batch wire (hosted + device + chunk + beaded) |
 | **Recipe** | v5 — [`20260703-205212_bench-raise-recipe-v5-accretion.md`](20260703-205212_bench-raise-recipe-v5-accretion.md) |
 
