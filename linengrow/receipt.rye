@@ -10,198 +10,65 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const Dir = std.Io.Dir;
 const Ed25519 = std.crypto.sign.Ed25519;
-const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+const rc = @import("receipt_core.rye");
 
 const slcl1_version = "20260704.020800";
-const slcl1_seed = [_]u8{0x42} ** Ed25519.KeyPair.seed_length;
-const sig_hex_len: u32 = Ed25519.Signature.encoded_length * 2;
-const max_fact_len: u32 = 512;
-const max_line_len: u32 = sig_hex_len + 1 + max_fact_len * 2;
-const max_log_len: u32 = 4096;
-
-const FactFields = struct {
-    from: []const u8,
-    to: []const u8,
-    amount: []const u8,
-    memo: []const u8,
-    stamp: []const u8,
-};
-
-fn bufLenU32(buf: []const u8) u32 {
-    assert(buf.len <= std.math.maxInt(u32));
-    return @intCast(buf.len);
-}
-
-fn trimLine(line: []const u8) []const u8 {
-    return std.mem.trim(u8, line, " \t\r\n");
-}
-
-fn parseFactFields(text: []const u8, fields: *FactFields) error{InvalidFact}!void {
-    var from_set = false;
-    var to_set = false;
-    var amount_set = false;
-    var memo_set = false;
-    var stamp_set = false;
-
-    var lines = std.mem.splitScalar(u8, text, '\n');
-    while (lines.next()) |raw| {
-        const line = trimLine(raw);
-        if (line.len == 0) continue;
-        if (line[0] == '#') continue;
-        const space = std.mem.indexOfScalar(u8, line, ' ') orelse return error.InvalidFact;
-        const key = line[0..space];
-        const value = trimLine(line[space + 1 ..]);
-        if (value.len == 0) return error.InvalidFact;
-        if (std.mem.eql(u8, key, "from")) {
-            fields.from = value;
-            from_set = true;
-        } else if (std.mem.eql(u8, key, "to")) {
-            fields.to = value;
-            to_set = true;
-        } else if (std.mem.eql(u8, key, "amount")) {
-            fields.amount = value;
-            amount_set = true;
-        } else if (std.mem.eql(u8, key, "memo")) {
-            fields.memo = value;
-            memo_set = true;
-        } else if (std.mem.eql(u8, key, "stamp")) {
-            fields.stamp = value;
-            stamp_set = true;
-        } else {
-            return error.InvalidFact;
-        }
-    }
-    if (!from_set or !to_set or !amount_set or !memo_set or !stamp_set) return error.InvalidFact;
-}
-
-fn writeCanonicalFact(fields: FactFields, out: []u8) error{Overflow}!u32 {
-    const written = std.fmt.bufPrint(
-        out,
-        "from {s}\nto {s}\namount {s}\nmemo {s}\nstamp {s}\n",
-        .{ fields.from, fields.to, fields.amount, fields.memo, fields.stamp },
-    ) catch return error.Overflow;
-    return bufLenU32(written);
-}
-
-fn writeHexLower(bytes: []const u8, out: []u8) error{Overflow}!u32 {
-    if (out.len < bytes.len * 2) return error.Overflow;
-    var i: u32 = 0;
-    while (i < bufLenU32(bytes)) : (i += 1) {
-        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch return error.Overflow;
-    }
-    return @intCast(bytes.len * 2);
-}
-
-fn decodeHexLower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
-    if (hex.len % 2 != 0) return error.InvalidHex;
-    const nbytes: u32 = @intCast(hex.len / 2);
-    if (nbytes > bufLenU32(out)) return error.InvalidHex;
-    var i: u32 = 0;
-    while (i < nbytes) : (i += 1) {
-        const pair = hex[i * 2 ..][0..2];
-        out[i] = std.fmt.parseInt(u8, pair, 16) catch return error.InvalidHex;
-    }
-    return nbytes;
-}
-
-fn formatLogLine(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
-    const sig_bytes = sig.toBytes();
-    var pos: u32 = 0;
-    pos += try writeHexLower(&sig_bytes, out[pos..]);
-    if (pos >= bufLenU32(out)) return error.Overflow;
-    out[pos] = ' ';
-    pos += 1;
-    pos += try writeHexLower(fact, out[pos..]);
-    if (pos < bufLenU32(out)) out[pos] = '\n';
-    return pos + 1;
-}
-
-fn parseLogLine(line: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidLine}!struct { sig_len: u32, fact_len: u32 } {
-    const trimmed = trimLine(line);
-    if (trimmed.len < sig_hex_len + 2) return error.InvalidLine;
-    const sig_hex = trimmed[0..sig_hex_len];
-    if (trimmed[sig_hex_len] != ' ') return error.InvalidLine;
-    const fact_hex = trimLine(trimmed[sig_hex_len + 1 ..]);
-    const sig_len = decodeHexLower(sig_hex, sig_out) catch return error.InvalidLine;
-    const fact_len = decodeHexLower(fact_hex, fact_out) catch return error.InvalidLine;
-    return .{ .sig_len = sig_len, .fact_len = fact_len };
-}
-
-fn parseAmountSigned(amount_text: []const u8) error{InvalidAmount}!i64 {
-    return std.fmt.parseInt(i64, amount_text, 10) catch return error.InvalidAmount;
-}
-
-fn verifyRecord(sig_bytes: []const u8, fact: []const u8, pubkey: Ed25519.PublicKey) error{VerifyFailed}!void {
-    const sig = Ed25519.Signature.fromBytes(sig_bytes[0..Ed25519.Signature.encoded_length].*);
-    sig.verify(fact, pubkey) catch return error.VerifyFailed;
-}
-
-fn foldBalanceFromFacts(fact: []const u8, balance: *i64) error{InvalidAmount}!void {
-    var fields: FactFields = undefined;
-    parseFactFields(fact, &fields) catch return error.InvalidAmount;
-    const delta = try parseAmountSigned(fields.amount);
-    balance.* +%= delta;
-}
-
-fn digestLog(log: []const u8, digest: *[Sha3_256.digest_length]u8) void {
-    Sha3_256.hash(log[0..log.len], digest, .{});
-}
 
 fn runSelftest(io: std.Io) !u8 {
-    const kp = Ed25519.KeyPair.generateDeterministic(slcl1_seed) catch unreachable;
+    const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
     const fixture_path = "tools/fixtures/slcl1_fact.bron";
     const cwd = Dir.cwd();
 
-    var fact_buf: [max_fact_len]u8 = undefined;
+    var fact_buf: [rc.max_fact_len]u8 = undefined;
     const fact_read = try cwd.readFile(io, fixture_path, &fact_buf);
-    assert(fact_read.len <= max_fact_len);
+    assert(fact_read.len <= rc.max_fact_len);
 
-    var fields: FactFields = undefined;
-    try parseFactFields(fact_read, &fields);
+    var fields: rc.FactFields = undefined;
+    try rc.parseFactFields(fact_read, &fields);
 
-    var canonical: [max_fact_len]u8 = undefined;
-    const canonical_len = try writeCanonicalFact(fields, &canonical);
+    var canonical: [rc.max_fact_len]u8 = undefined;
+    const canonical_len = try rc.writeCanonicalFact(fields, &canonical);
 
     const sig = kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
-    var line: [max_line_len]u8 = undefined;
-    const line_len = try formatLogLine(sig, canonical[0..canonical_len], &line);
+    var line: [rc.max_line_len]u8 = undefined;
+    const line_len = try rc.formatLogLine(sig, canonical[0..canonical_len], &line);
 
-    var log: [max_log_len]u8 = undefined;
+    var log: [rc.max_log_len]u8 = undefined;
     @memcpy(log[0..line_len], line[0..line_len]);
     const log_len: u32 = line_len;
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    var fact_out: [max_fact_len]u8 = undefined;
-    const parsed = try parseLogLine(log[0..log_len], &sig_buf, &fact_out);
+    var fact_out: [rc.max_fact_len]u8 = undefined;
+    const parsed = try rc.parseLogLine(log[0..log_len], &sig_buf, &fact_out);
     assert(parsed.sig_len == Ed25519.Signature.encoded_length);
     assert(parsed.fact_len == canonical_len);
     assert(std.mem.eql(u8, fact_out[0..parsed.fact_len], canonical[0..canonical_len]));
 
     const pubkey = kp.public_key;
-    try verifyRecord(sig_buf[0..parsed.sig_len], fact_out[0..parsed.fact_len], pubkey);
+    try rc.verifyRecord(sig_buf[0..parsed.sig_len], fact_out[0..parsed.fact_len], pubkey);
 
     var balance: i64 = 0;
-    try foldBalanceFromFacts(fact_out[0..parsed.fact_len], &balance);
+    try rc.foldBalanceFromFacts(fact_out[0..parsed.fact_len], &balance);
     assert(balance == 100);
 
-    var digest: [Sha3_256.digest_length]u8 = undefined;
-    digestLog(log[0..log_len], &digest);
+    var digest: [32]u8 = undefined;
+    rc.digestLog(log[0..log_len], &digest);
     assert(digest[0] != 0 or digest[1] != 0);
 
-    var tampered: [max_log_len]u8 = undefined;
+    var tampered: [rc.max_log_len]u8 = undefined;
     @memcpy(tampered[0..log_len], log[0..log_len]);
     tampered[log_len - 3] +%= 1;
 
     var bad_sig: [Ed25519.Signature.encoded_length]u8 = undefined;
-    var bad_fact: [max_fact_len]u8 = undefined;
-    const bad_parsed = parseLogLine(tampered[0..log_len], &bad_sig, &bad_fact) catch {
+    var bad_fact: [rc.max_fact_len]u8 = undefined;
+    const bad_parsed = rc.parseLogLine(tampered[0..log_len], &bad_sig, &bad_fact) catch {
         print("slcl1: tampered log refused at parse — GREEN unwelcome path\n", .{});
         print("slcl1: version {s}\n", .{slcl1_version});
         print("GREEN: SLC-L1 verifiable receipt — sign, append, fold, verify.\n", .{});
         return 0;
     };
-    verifyRecord(bad_sig[0..bad_parsed.sig_len], bad_fact[0..bad_parsed.fact_len], pubkey) catch {
+    rc.verifyRecord(bad_sig[0..bad_parsed.sig_len], bad_fact[0..bad_parsed.fact_len], pubkey) catch {
         print("slcl1: tampered fact rejected at verify — GREEN unwelcome path\n", .{});
         print("slcl1: version {s}\n", .{slcl1_version});
         print("GREEN: SLC-L1 verifiable receipt — sign, append, fold, verify.\n", .{});

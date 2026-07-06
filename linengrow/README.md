@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-04 (SLC-L1 witness at parity **152**)
+**Last updated:** 2026-07-06 (SLC-L2 witness at parity **155**; SLC-L1 at **152**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -50,7 +50,8 @@ The full vision — a public benefit corporation, a computational data market, s
 | Lap | What | Grows from |
 |------|------|-----------|
 | **SLC-L1** | **A verifiable receipt** — sign a transaction fact, append it to the log, produce a receipt anyone can verify | keypair + Mantra log + projection · scope [`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) · witness **152** |
-| **SLC-L2** | **Sealed delivery** — a signed receipt sent identity to identity, under seal | Comlink |
+| **SLC-L2** | **Sealed delivery** — a signed receipt sent identity to identity, under seal | Comlink · scope [`../active-designing/20260706-000812_slcl2-sealed-delivery.md`](../active-designing/20260706-000812_slcl2-sealed-delivery.md) · witness **155** |
+| **OA-L1** | **Closed ask loop** — post, apply, accept, complete, verify on one log | scope [`../active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) · awaits Kaeden edge affirmation |
 | **SLC-L3** | **Settlement** — a transaction settled on Sui with USDsui, its receipt verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |

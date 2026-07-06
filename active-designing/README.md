@@ -55,7 +55,8 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 | `20260703-200712` | [What needs ordering](20260703-200712_what-needs-ordering.md) | Value-object ladder + compute choreography; silo companion to Pottery suite |
 | `20260703-140212` | [The bench — where claims become evidence](20260703-140212_the-bench.md) | Third in the metalsmoke/season family: metal, sitter, discipline; bench truth; harvest workflow economics absorbed |
 | `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally lap region + framed grid named; TAME canon passage boxed for Kaeden's word |
-| `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify, Open Asks gated |
+| `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify |
+| `20260706-002912` | [Open Asks — hammock scope (OA-L1)](20260706-002912_open-asks-hammock-scope.md) | Closed ask loop on SLC-L1 spine; OA-L2+ horizon named |
 | `20260702-185912` | [Brix — the composer and the system around it](20260702-185912_brix-the-composer.md) | Re-siloed: the ensemble table on our own strands; one bond as the override; sealed distribution at identity; first lap after the Amber season |
 | `20260702-184312` | [The grain and the crossing](20260702-184312_the-grain-and-the-crossing.md) | Canon: ten grain strands indexed; two-room crossing and closing test — what "siloed into our grain" means |
 | `20260702-180812` | [The small sharp toolset](20260702-180812_the-small-sharp-toolset.md) | Userland patterns in our grain: composed artifact, readiness as facts, man as value, one override combinator; ladder gated after Amber |

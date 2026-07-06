@@ -192,6 +192,11 @@ let slcl1 = run ["rishi/bin/rishi" "run" "tools/slcl1_receipt.rish"]
 assert slcl1.ok else "SLC-L1 receipt witness failed"
 say "GREEN: SLC-L1 verifiable receipt witness passed."
 
+say "witness suite: SLC-L2 sealed delivery…"
+let slcl2 = run ["rishi/bin/rishi" "run" "tools/slcl2_receipt.rish"]
+assert slcl2.ok else "SLC-L2 sealed delivery witness failed"
+say "GREEN: SLC-L2 sealed delivery witness passed."
+
 say "witness suite: session-logs archive hygiene (preview, fold, idempotency)…"
 let slog_arch = run ["rishi/bin/rishi" "run" "tools/session_logs_archive_witness.rish"]
 assert slog_arch.ok else "session-logs archive witness failed"
@@ -211,3 +216,8 @@ say "witness suite: two-rooms doorway (canon seated, forward pages name their ro
 let doorway = run ["rishi/bin/rishi" "run" "tools/two_rooms_doorway.rish"]
 assert doorway.ok else "two-rooms doorway witness failed"
 say "GREEN: two-rooms doorway witness passed."
+
+say "witness suite: Comlink device wire (pattern + sealed laps)…"
+let comlink_dw = run ["rishi/bin/rishi" "run" "tools/comlink_device_wire.rish"]
+assert comlink_dw.ok else "Comlink device wire witness failed"
+say "GREEN: Comlink device wire witness passed."

@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.002912 | [Open Asks hammock scope](20260706-002912_open-asks-hammock-scope.md) | OA-L1 closed loop scoped on SLC-L1 spine; witness named; awaits Kaeden edge |
+| 20260706.001512 | [SLC-L2 device wire variant](20260706-001512_slcl2-device-wire-variant.md) | Receipt guests over virtio; max_frame 512; slcl2 witness extended; parity 155 GREEN |
+| 20260706.000812 | [SLC-L2 sealed delivery — parity 155](20260706-000812_slcl2-sealed-delivery-parity-155.md) | Receipt over hosted Comlink; receipt_core extract; sealMessage; full parity GREEN |
+| 20260705.235412 | [Device wire dependencies and parity 154](20260705-235412_device-wire-dependencies-parity-154.md) | ER stack survey to Caravan/Tally; device wire witness wired; full parity GREEN |
 | 20260705.233012 | [Device wire sub-laps 2–3 landed](20260705-233012_device-wire-sublaps-2-3-landed.md) | Claude ruling applied; pattern + sealed laps GREEN; layout.ld boot fix |
 | 20260705.231512 | [Commits and pushes — sub-lap 2 scaffolding](20260705-231512_commits-pushes-sub-lap2.md) | `b862be2` pushed to four remotes |
 | 20260705.231300 | [Virtio TX counsel handoff for Claude](20260705-231300_virtio-tx-counsel-handoff.md) | Counsel brief seated; six ruled questions; repro for Claude on metal |

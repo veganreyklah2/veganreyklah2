@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-05 (parity **153** · vocabulary ground lap · season Linengrow-via-Comlink)
+**Last updated:** 2026-07-06 (parity **155** · SLC-L2 complete · Open Asks hammock scope seated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -26,9 +26,18 @@
 - [x] **LEXICON rows** — Two rooms · Canonical
 - [x] **ROADMAP/TASKS hygiene (A8)** — zip **47** · astrology silo bench closed (`e8d1919`) · season line recorded
 
-**Next climb (Cursor, in flight):** **Comlink device wire** — sub-lap 1 landed (`wire_format` + fixture selftest); sub-laps 2–3 QEMU guests; unlocks **SLC-L2**.
+**Device wire landed `20260705.235412` — parity **154**:**
 
-**Alongside (cheap):** Open Asks hammock scope note — no Comlink required.
+- [x] **Comlink device wire** — sub-laps 1–3 GREEN; `tools/comlink_device_wire.rish` wired parity **154**
+- [x] **Dependency survey** — [`external-research/20260705-235412_device-wire-dependencies-down-to-caravan-tally.md`](../external-research/20260705-235412_device-wire-dependencies-down-to-caravan-tally.md)
+
+**SLC-L2 landed `20260706.000812` — parity **155**:**
+
+- [x] **SLC-L2 sealed delivery** — `linengrow/delivery.rye` + `tools/slcl2_receipt.rish`; hosted UDP + **device wire** virtio guests GREEN; parity **155**
+
+**Next climb (Cursor):** **OA-L1** implementation after Kaeden affirms [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) edge — mechanical, reuses `receipt_core`.
+
+**Alongside:** SLC-L3 horizon shaping awaits counsel (Sui seam).
 
 **Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
 
@@ -130,7 +139,8 @@ Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](..
 Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md).
 
 - [x] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements; **proxy column** (public-market proxy present or absent) on the movement memo table per circulation survey Q1 (`20260703.191312 UDT`, *for*).
-- [ ] **Open Asks room (design candidate)** — requests, applications, acceptances, completion receipts, and reputation-as-fold as Linengrow's first application beside the receipt lap; hammock scope note may land alongside Comlink wire; enters build after edge drawn
+- [x] **Open Asks hammock scope (OA-L1)** — [`active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md); closed loop: post → apply → accept → complete → verify; enters build after Kaeden affirms edge
+- [ ] **Open Asks room (implementation)** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish` per scope note; reputation-as-fold and board interop remain OA-L4+ horizon
 - [ ] **Sanctuary care log (flagship candidate)** — signed care facts per resident, schedules as projections, CIVIC dignity-floor accountability; design-only until its season.
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Resin-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a resin, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`; unit word ratified `20260703.191312`).
@@ -225,7 +235,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Rye OS
 - [ ] **SLC-2 — Pond GUI** — the Rishi+Mantra loop in a Brushstroke/Skate window on x86_64. Simple, lovable, complete at a small scope.
-- [x] **Comlink device wire** — sub-laps 1–3 GREEN (`virtio_net.rye`, pattern + sealed guests, `run_device_wire_lab.sh`, `aurora/layout.ld` boot fix); witness GREEN; wire parity **154** on Kaeden word. Unlocks **SLC-L2** carriage.
+- [x] **Comlink device wire** — sub-laps 1–3 GREEN; witness wired parity **154**. Unlocks **SLC-L2** carriage.
 - [ ] **Comlink v1** — typed, content-named, sealed delivery between identities.
 - [ ] **Brix v1** — a `.brix` course evaluating into a closure of content-addressed bricks in Tablecloth, per [`active-designing/20260702-185912_brix-the-composer.md`](../active-designing/20260702-185912_brix-the-composer.md).
 - [ ] **Unified keys** — one owner seed deriving all keys.
@@ -233,7 +243,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L1 build** — verifiable receipts from keypair + Mantra log + projection; landed `20260704.021800` — see ladder above · parity **152**
-- [ ] **SLC-L2** — a signed receipt delivered identity to identity over Comlink, sealed.
+- [x] **SLC-L2** — signed receipt delivered identity to identity over Comlink hosted wire; parity **155**
 
 ### Ground
 - [ ] **Tablecloth v1** — the content-addressed store the package picture rests on.

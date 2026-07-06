@@ -88,7 +88,7 @@ The **signed envelope** wraps the canonical `.bron` bytes (UTF-8, LF line ending
 - **Settlement**, **currency**, **multi-party** consensus, **MALA** mint/send/market — M0–M4 ladder in [`20260702-031312_modules-aspects-and-mailable-money.md`](20260702-031312_modules-aspects-and-mailable-money.md)
 - **Comlink** delivery (SLC-L2)
 - **Sui** / USDsui ledger (SLC-L3)
-- **Open Asks room** — requests, applications, acceptances, reputation-as-fold — enters only after this note's edge is affirmed ([`../external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md))
+- **Open Asks room** — OA-L1 scope drawn [`20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md); implementation gated on Kaeden edge affirmation ([`../external-research/20260702-192712_the-movements-open-asks.md`](../external-research/20260702-192712_the-movements-open-asks.md))
 - Full Mantra weave for transaction logs — v1 uses a **plain append file** beside the Mantra store; Amber compatibility for Linengrow logs rides Amber's first lap as horizon
 
 ### Open ruling (recommended yes)

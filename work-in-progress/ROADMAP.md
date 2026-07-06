@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**The trio:** `parity.rish` (**153 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **two-rooms doorway**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-05`); additive-gate runs when std changes land.
+**The trio:** `parity.rish` (**155 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **SLC-L2 sealed delivery** + **two-rooms doorway** + **Comlink device wire**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-06`); additive-gate runs when std changes land.
 
 ---
 
@@ -76,8 +76,9 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 
 | Lap | What | Grows from |
 |------|------|-----------|
-| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **landed** `20260704.021800` — [`linengrow/receipt.rye`](../linengrow/receipt.rye) + witness at parity **152**; Open Asks room gated behind Kaeden edge affirmation | keypair + Mantra log + projection |
-| **SLC-L2** | Sealed delivery — a signed receipt sent identity to identity, under seal | Comlink |
+| **SLC-L1** | A verifiable receipt — sign a transaction fact, append it to the log, produce a receipt anyone can verify; **landed** `20260704.021800` — [`linengrow/receipt.rye`](../linengrow/receipt.rye) + witness at parity **152** | keypair + Mantra log + projection |
+| **SLC-L2** | Sealed delivery — signed receipt identity to identity under Comlink seal; **landed** `20260706.000812` — parity **155** | Comlink |
+| **OA-L1** | Closed ask loop — post, apply, accept, complete, verify; scope [`../active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md); **awaits Kaeden edge affirmation** | Linengrow + SLC-L1 receipt |
 | **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |

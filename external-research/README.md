@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260705.235412` | [Device wire dependencies down to Caravan and Tally](20260705-235412_device-wire-dependencies-down-to-caravan-tally.md) | SLC-L2 stack survey — Comlink, Aurora, host seams, supervision and garden horizon |
 | `20260704.214100` | [Subject-oriented programming and the Rye core](20260704-214100_subject-oriented-programming-and-the-rye-core.md) | Urbit explicit-subject philosophy applied to core+shell — horizon, read/mutate, lap ladder |
 | `20260704.211012` | [Rye cores and the gratitude lineage](20260704-211012_rye-cores-and-the-gratitude-lineage.md) | `.rye` core + Rishi shell vs gratitude designs — concepts adopted, names stay in the library |
 | `20260704.185412` | [Ends-first map orientation](20260704-185412_ends-first-map-orientation.md) | Age-banded lens affirmed with two refinements — middle held by default, promotable by any door; addendum to zip-42 counsel Part Three. |
