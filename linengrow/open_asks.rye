@@ -21,6 +21,20 @@ const oa1_applicant_seed = applicant_seed;
 
 pub const oa2_payload_header: u32 = Ed25519.Signature.encoded_length + 4;
 
+/// Pinned witness request — canonical bytes for `tools/fixtures/open_asks_request.bron`.
+pub const witness_canonical_request =
+    \\poster c050c5637a44fa8629fff3cccce2300cb362a63d99d95fc54145266f4332445a
+    \\title animator for researcher interview visuals
+    \\skills animation,video
+    \\bounds remote, 4 hours, paid micro-gig
+    \\stipend 100
+    \\deadline 20260715.235959
+    \\stamp 20260706.002912
+    \\
+;
+
+pub const witness_request_ref = "9cdb9aafd7672a6b58f1d9c123f58abce7a4eff29ff855795aa40474d0424390";
+
 pub const ref_hex_len: u32 = Sha3_256.digest_length * 2;
 pub const max_oa_fact: u32 = 512;
 pub const max_line_len: u32 = rc.sig_hex_len + 1 + max_oa_fact * 2;

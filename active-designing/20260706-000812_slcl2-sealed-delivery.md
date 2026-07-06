@@ -63,7 +63,7 @@ Port **38473** — distinct from hosted wire demo (**38472**).
 | `comlink/guest_receipt_rx.rye` | Open datagram, verify receipt, fold balance |
 | `comlink/run_receipt_wire_lab.sh` | QEMU socket lab on port **15556** |
 
-`virtio_net.max_frame` raised to **512** to match `wire_format.wire_capacity` — receipt datagrams exceed the prior 256-byte frame bound.
+`virtio_net.max_frame` raised to **538** — virtio/eth headers plus full `wire_format.wire_capacity` datagram (receipt and OA request payloads).
 
 `comlink/receipt_core.rye` symlinks `linengrow/receipt_core.rye` for freestanding import.
 

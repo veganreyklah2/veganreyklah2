@@ -80,15 +80,15 @@ Encoded beside `linengrow/open_asks.rye`; sealed by `wire_format.sealMessage`.
 
 Port **38474** — distinct from SLC-L2 delivery (**38473**) and hosted wire demo (**38472**).
 
-### Device wire variant (horizon — after hosted GREEN)
+### Device wire variant (landed `20260706.012112`)
 
 | Guest | Role |
 |-------|------|
-| `comlink/guest_open_asks_tx.rye` | Seal request or application, virtio TX |
-| `comlink/guest_open_asks_rx.rye` | Open datagram, verify OA fact |
-| `comlink/run_open_asks_wire_lab.sh` | QEMU socket lab — port TBD beside **15556** |
+| `comlink/guest_open_asks_tx.rye` | Seal witness request, virtio TX |
+| `comlink/guest_open_asks_rx.rye` | Open datagram, verify request + `request_ref` |
+| `comlink/run_open_asks_wire_lab.sh` | QEMU socket lab on port **15557** |
 
-`virtio_net.max_frame` already **512** — OA payloads fit the same bound as SLC-L2 receipts.
+`virtio_net.max_frame` raised to **538** — virtio/eth headers plus full `wire_capacity` datagram (OA request ~497 bytes on the wire).
 
 ---
 
@@ -99,8 +99,9 @@ Port **38474** — distinct from SLC-L2 delivery (**38473**) and hosted wire dem
 1. Build `linengrow/bin/open-asks-delivery`
 2. `selftest` — seal request, open verify, seal application, open verify, fold `applied`
 3. `demo` — applicant child + poster child round trip on ports **38474** / **38475**
+4. `comlink/run_open_asks_wire_lab.sh` — sealed request over virtio-net
 
-**Unwelcome path:** application cites wrong `request_ref` → verify refuses.
+**Unwelcome path:** application cites wrong `request_ref` → verify refuses (hosted selftest).
 
 **Parity:** one block after OA-L1 → **157** (wired).
 

@@ -18,4 +18,8 @@ let demo = run ["sh" "-c" "${bin} demo 2>&1"]
 assert demo.ok else "OA-L2 open asks delivery demo exited non-zero"
 assert demo.out contains "GREEN" else "OA-L2 open asks delivery demo not GREEN"
 
-say "GREEN: OA-L2 cross-party delivery witness passed."
+let device = run ["sh" "comlink/run_open_asks_wire_lab.sh"]
+assert device.ok else "OA-L2 device wire lab failed"
+assert device.out contains "GREEN" else "OA-L2 device wire lab not GREEN"
+
+say "GREEN: OA-L2 cross-party delivery witness passed (hosted + device wire)."

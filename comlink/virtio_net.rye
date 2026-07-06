@@ -58,8 +58,8 @@ pub const queue_rx: u32 = 0;
 pub const queue_tx: u32 = 1;
 
 pub const queue_depth: u32 = 4;
-/// Matches `wire_format.wire_capacity` — sealed datagrams can fill the full letter.
-pub const max_frame: u32 = 512;
+/// Room for virtio/eth link headers plus a full `wire_format.wire_capacity` datagram (512 + 12 + 14).
+pub const max_frame: u32 = 538;
 pub const legacy_vring_align: u32 = 4;
 pub const legacy_page_align: u32 = 4096;
 
