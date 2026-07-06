@@ -69,7 +69,7 @@ Full homonym map: [`20260704-002912_gates-arms-and-the-urbit-lineage.md`](202607
 
 | Tiger habit | Meaning there | Our Rye-core reading |
 |-------------|---------------|----------------------|
-| **Control plane / data plane** | Batch header signed once; payloads prove by hash | Comlink resin-batch counsel (I1): signature over header ‖ manifest; stones prove by digest |
+| **Control plane / data plane** | Batch header signed once; payloads prove by hash | Comlink resin-batch counsel (I1): signature over header ‖ manifest; resins prove by digest |
 | **In-place initialization** | Structs initialized through out-pointers; viral discipline | Rye structs at seams sized explicitly; gardens bounded before read |
 | **Safety → performance → DX** | Irrevocable order | Witness gates before ergonomics; `selftest` before shell sugar |
 | **Deterministic simulator** | Four years to production via simulated metal | Puddle microVM as happy-zone boot replay; parity suite as hosted simulator |

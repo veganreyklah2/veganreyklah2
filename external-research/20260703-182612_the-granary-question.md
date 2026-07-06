@@ -22,7 +22,7 @@ Kumara key; publishing is signing; there are no accounts to breach, only fingerp
 verify. **Namespace** — `person/weave` resolves through a global append-only registry of
 signed name-facts; a rename is a new fact beside the old, so links never rot
 (accrete-never-break at planet scale). **Sharing** — a weave is already content-addressed
-stones plus signed history; to host is to serve stones, to clone is to fold them, and every
+resins plus signed history; to host is to serve resins, to clone is to fold them, and every
 mirror is equal because the signatures travel with the bytes — every artist a node, the
 self-hosted ledger as the unit of sovereignty. **Exchange** — Puddle bundles and Linengrow
 data-bundles list beside the code they came from, priced in MALA, settled on WOV's L1 or L2
@@ -35,7 +35,7 @@ the thing edited.
 ## The first lap
 
 Read-only and local: one registry fixture of signed name-facts; resolve `person/weave`; clone
-by folding stones; render the weave's front page through Scribble to a drawn frame; one
+by folding resins; render the weave's front page through Scribble to a drawn frame; one
 witness refusing a name-fact whose signature lies. No payments, no federation, no writes —
 each waits behind its own gate.
 

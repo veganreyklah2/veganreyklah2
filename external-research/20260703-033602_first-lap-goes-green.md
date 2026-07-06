@@ -69,7 +69,7 @@ The drawn terminal's third lap added live session mirroring. Headless witness gr
 
 ### Amber — the next first lap (pre-staged)
 
-Amber remains *designed, not yet built* until rung **(e)** wires `tools/amber_first_ring.rish` at parity **144**. Then export emits stones and manifest; the manifest digest matches the hand-pinned golden; restore then `diff -r` stays clean; one tampered stone makes verify **fail** — and the functional spec's status may graduate. The cathedral spec stays on the shelf; the **first room** stands proven. Scrub seasons, drive docks, and cold-key ceremonies belong to later laps — they were never part of lap one's promise.
+Amber remains *designed, not yet built* until rung **(e)** wires `tools/amber_first_ring.rish` at parity **144**. Then export emits resins and manifest; the manifest digest matches the hand-pinned golden; restore then `diff -r` stays clean; one tampered resin makes verify **fail** — and the functional spec's status may graduate. The cathedral spec stays on the shelf; the **first room** stands proven. Scrub seasons, drive docks, and cold-key ceremonies belong to later laps — they were never part of lap one's promise.
 
 ---
 
@@ -87,7 +87,7 @@ It is **not** silent. The suite prints `GREEN:` lines; session logs accrete; RTA
 
 ## TAME Order on the Day a Lap Closes
 
-**Safety first:** the unwelcome path is asserted where the lap named one — tampered stone, wrong fingerprint, `:quit` that hangs — because the boundary between valid and invalid is where the interesting failures live.
+**Safety first:** the unwelcome path is asserted where the lap named one — tampered resin, wrong fingerprint, `:quit` that hangs — because the boundary between valid and invalid is where the interesting failures live.
 
 **Performance second:** the happy zone carries every check that *can* live there; metalsmoke and human closes stay **few**, because a thick edge blurs every red back into fog.
 

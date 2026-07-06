@@ -1,6 +1,6 @@
 # The Grain and the Crossing — What "Siloed Into Our Grain" Means
 
-*Two phrases have carried this tree's method for weeks — "researched with sources" and "siloed into our grain" — and tonight they receive their definitions. The grain is the set of standing commitments that give our wood its direction; the crossing is the disciplined passage an outside idea makes from the named world into the clean room. This brief accretes beside `../context/SILO_TECHNIQUE.md` and this stack's own foundation stone, saying what they left implicit: the grain itself, strand by strand, and the test every crossing must pass.*
+*Two phrases have carried this tree's method for weeks — "researched with sources" and "siloed into our grain" — and tonight they receive their definitions. The grain is the set of standing commitments that give our wood its direction; the crossing is the disciplined passage an outside idea makes from the named world into the clean room. This brief accretes beside `../context/SILO_TECHNIQUE.md` and this stack's own foundation resin, saying what they left implicit: the grain itself, strand by strand, and the test every crossing must pass.*
 
 **Stamp:** `20260702.184312`
 **Last updated:** 2026-07-04 (sameness strand seated — Kaeden `20260704.023400 UDT`)

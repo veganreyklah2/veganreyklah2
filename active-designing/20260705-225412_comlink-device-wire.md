@@ -38,7 +38,7 @@ The core-and-shell brief names this vow at the wire: *control before data — si
 
 **Deferred deliberately (I1 — Edit-5 slot, after I2):**
 
-Batching many resins under one signed batch header, the have-already and need-stone lanes, and the frame fields in counsel **I1** — that is the **batched generalization** of the single datagram this lap moves. Same law, more stones. When I1 opens, [`20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) and [`20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) are its direct blueprint.
+Batching many resins under one signed batch header, the have-already and need-resin lanes, and the frame fields in counsel **I1** — that is the **batched generalization** of the single datagram this lap moves. Same law, more resins. When I1 opens, [`20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) and [`20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) are its direct blueprint.
 
 **Order on the table (coherent, not in tension):** device wire proves rung three now · I2 snapshot export takes Edit-5 first when opened · I1 resin-batch frame second · this lap runs beside Edit-5 on its own ladder.
 

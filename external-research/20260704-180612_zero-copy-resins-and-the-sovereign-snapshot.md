@@ -32,7 +32,7 @@ A **resin** is one content-addressed unit at grain size: stored bytes at a SHA3 
 
 | Habit | Resin translation |
 |-------|-------------------|
-| **Control plane vs data plane** | Small signed **manifest deltas** and **toll** headers; large **stone bytes** on their own path |
+| **Control plane vs data plane** | Small signed **manifest deltas** and **toll** headers; large **resin bytes** on their own path |
 | **Batching** | Many resin refs per Comlink frame — one toll, one verify pass, one CPU chunk |
 | **No accidental copies** | Pass `*const` slices for payloads > 16 bytes; in-place struct init; no alias games |
 | **Explicit I/O** | Zig 0.16 `io` threaded through read/send; no hidden globals |
@@ -42,11 +42,11 @@ A **resin** is one content-addressed unit at grain size: stored bytes at a SHA3 
 
 Concretely, three lanes:
 
-1. **Have-already lane** — peer sends `(tilak, sha3-256, length)` only; receiver hits local Tablecloth/Amber stone store; **zero bytes** cross the wire.
-2. **Need-stone lane** — peer sends `(tilak, digest, length)` plus **raw stone bytes once**; receiver stores at content address; subsequent crosses use lane 1.
-3. **Vessel lane** — **Amphora (vessel software)** carries a Kumara-signed manifest naming many stones; Comlink fetches by digest; verified twice at mouth and receipt.
+1. **Have-already lane** — peer sends `(tilak, sha3-256, length)` only; receiver hits local Tablecloth/Amber resin store; **zero bytes** cross the wire.
+2. **Need-resin lane** — peer sends `(tilak, digest, length)` plus **raw resin bytes once**; receiver stores at content address; subsequent crosses use lane 1.
+3. **Vessel lane** — **Amphora (vessel software)** carries a Kumara-signed manifest naming many resins; Comlink fetches by digest; verified twice at mouth and receipt.
 
-Bron records and Weave facts should be **views** over immutable stone bytes (shape-cast at the seam), not parsed into heap graphs that re-encode on send. That is the Rye-side echo of TigerBeetle's fixed nouns: **the hot path names bytes; conversion is absorb's job, off the hot path.**
+Bron records and Weave facts should be **views** over immutable resin bytes (shape-cast at the seam), not parsed into heap graphs that re-encode on send. That is the Rye-side echo of TigerBeetle's fixed nouns: **the hot path names bytes; conversion is absorb's job, off the hot path.**
 
 ---
 
@@ -56,11 +56,11 @@ Bron records and Weave facts should be **views** over immutable stone bytes (sha
 
 - One **signed batch header** per Comlink message (Kumara, bounded fields, algorithm tag when tiers mix).
 - One **manifest slice** — N manifest lines, each `<tilak> <sha3-256-hex> <name>`, capped by Tally budgets.
-- Optional **stone payloads** only for misses — never re-send hits.
+- Optional **resin payloads** only for misses — never re-send hits.
 
-TigerBeetle teaches that the CPU wants **sprints**: one batch, one fold, one verification walk. A resin storm of single-stone RPCs would violate TAME performance second — and violate the itinerary law that prefers smallest **stops**, not smallest **packets**.
+TigerBeetle teaches that the CPU wants **sprints**: one batch, one fold, one verification walk. A resin storm of single-resin RPCs would violate TAME performance second — and violate the itinerary law that prefers smallest **stops**, not smallest **packets**.
 
-**Prepared operations only** enter the hot path: the sender prepares a batch (manifest + optional stones), signs it, sends it; the receiver refuses partial trust (Amphora **wreck rule** at vessel grain; unknown **Tilak** refused whole at type grain).
+**Prepared operations only** enter the hot path: the sender prepares a batch (manifest + optional resins), signs it, sends it; the receiver refuses partial trust (Amphora **wreck rule** at vessel grain; unknown **Tilak** refused whole at type grain).
 
 ---
 
@@ -75,7 +75,7 @@ Our clean-room translation:
 | Pier folder | **Kumara identity** + **Weave** subgraph + **Mantra** HEAD + **Brix** closure + cellar catalog |
 | Event log replay | Fold **signed facts** on **Weave** until **Mantra** projection matches pinned HEAD |
 | Desk / `%base` | **Brix** descriptors + golden base merge policy (Pond customs) |
-| Jam/cue wire | **Not adopted** — we carry **content-addressed stones** and **Bron** views, not noun jam |
+| Jam/cue wire | **Not adopted** — we carry **content-addressed resins** and **Bron** views, not noun jam |
 | Marks / conversions | **Tilak** + absorb / express / tend |
 
 **We do not import Urbit's gate, arm, or mark syntax** ([`gates-arms-and-the-urbit-lineage`](20260704-002912_gates-arms-and-the-urbit-lineage.md)). We import the **honesty**: *state is a fold over an append-only log of immutable signed facts* — already canon in Mantra · Weave · the receipt lap.
@@ -115,7 +115,7 @@ What belongs inside the **largest honest export** — the bounded union of every
 
 - The **Weave** fact slice from genesis (or last amber-sealed checkpoint) through **HEAD**.
 - **Mantra** projection metadata sufficient to verify HEAD without network.
-- Optional **checkpoint resin**: periodic folded state as its own content-addressed stone (pack analog — defragment replay cost, not truth).
+- Optional **checkpoint resin**: periodic folded state as its own content-addressed resin (pack analog — defragment replay cost, not truth).
 
 ### C. Composition (Brix)
 
@@ -124,7 +124,7 @@ What belongs inside the **largest honest export** — the bounded union of every
 
 ### D. Data plane (Tablecloth · resins)
 
-- Every **resin** referenced by the fold — content-named stones, manifest lines only point.
+- Every **resin** referenced by the fold — content-named resins, manifest lines only point.
 - Rolling-chunk lineage ([`puddle` second pass](20260702-035018_puddle-sandboxed-rye-containers.md) · casync study): reproducible tree encoding, random access, mountable index — **tar is not the index**.
 
 ### E. Policy and enclosure (Pond · Caravan)
@@ -134,7 +134,7 @@ What belongs inside the **largest honest export** — the bounded union of every
 
 ### F. Boot spine (Aurora)
 
-- Minimal **Aurora** stage that knows how to: verify manifest → map stones read-only → replay Weave → hand off to Rishi.
+- Minimal **Aurora** stage that knows how to: verify manifest → map resins read-only → replay Weave → hand off to Rishi.
 
 ### G. Catalog (Amber)
 
@@ -150,7 +150,7 @@ What belongs inside the **largest honest export** — the bounded union of every
 **Export rite (cellar season):**
 
 1. Quiesce — Caravan drains children; Mantra pins HEAD.
-2. Fold walk — enumerate Weave + Tablecloth closure; name every stone.
+2. Fold walk — enumerate Weave + Tablecloth closure; name every resin.
 3. Seal — write resins to working-tier paths; compose `.bron` manifest; Kumara-sign.
 4. Optional vessel — pour season into **Amphora** for offsite Comlink crossing.
 5. Verify twice — write-time digest + independent oracle (`openssl dgst -sha3-256` today).
@@ -158,7 +158,7 @@ What belongs inside the **largest honest export** — the bounded union of every
 **Import rite (boot or restore):**
 
 1. Verify manifest and signatures before any replay (Pond customs).
-2. Map stones **read-only** — mmap or sendfile-class path; no unpack-to-temp trust boundary.
+2. Map resins **read-only** — mmap or sendfile-class path; no unpack-to-temp trust boundary.
 3. Replay Weave facts to HEAD — pure fold; no network.
 4. Shape-cast Brix; run parity subset bundled with snapshot (snapshot carries its own witness claim).
 5. Refuse whole on unknown Tilak, bad digest, or continuity violation.
@@ -175,12 +175,12 @@ For a home snapshot of, say, 50–200 GiB working set:
 
 | Resource | Dominant cost | Zero-copy move |
 |----------|---------------|----------------|
-| **Network** (Comlink) | Round trips | Batch refs; have-already lane; zstd **inside** stone only |
-| **Disk** (archive tier) | Sequential read | Content-named files; one read per stone; checksum FS below Amber |
+| **Network** (Comlink) | Round trips | Batch refs; have-already lane; zstd **inside** resin only |
+| **Disk** (archive tier) | Sequential read | Content-named files; one read per resin; checksum FS below Amber |
 | **Memory** | Tally budget | Map read-only; stream decode in bounded garden; no whole-tree heap |
 | **CPU** | Hash + verify | Batch SHA3; verify manifest once per vessel; replay fold incremental |
 
-**Toll** buys deduplication: the second peer pays refs, not bytes. **Sameness** ([`sameness-is-the-macro`](../foundations/20260703-182612_sameness-is-the-macro.md)) is why one resin law serves cellar and vessel — same stone, same digest, same Tilak vocabulary; different software, same grain.
+**Toll** buys deduplication: the second peer pays refs, not bytes. **Sameness** ([`sameness-is-the-macro`](../foundations/20260703-182612_sameness-is-the-macro.md)) is why one resin law serves cellar and vessel — same resin, same digest, same Tilak vocabulary; different software, same grain.
 
 ---
 
@@ -190,7 +190,7 @@ For a home snapshot of, say, 50–200 GiB working set:
 |-----|----------|--------------|
 | **1** | Single-directory Amber export (today's ring-1 tree) + manifest line shape | `amber_first_ring` — **144** ✅ |
 | **2** | Weave slice + Brix closure in manifest; import replay to HEAD on host (no bare metal yet) | New: `snapshot_replay_witness` — red then green |
-| **3** | Amphora vessel over Comlink; have-already + need-stone lanes | `amphora_comlink_resin_batch` |
+| **3** | Amphora vessel over Comlink; have-already + need-resin lanes | `amphora_comlink_resin_batch` |
 | **4** | Bootable Aurora image; microVM (Puddle host); double-boot refused | `aurora_snapshot_boot` |
 | **5** | Incremental export (rolling chunks); pack checkpoint resin | `snapshot_incremental` |
 
@@ -203,7 +203,7 @@ No lap claims the Urbit sentence whole. Each closes one claim.
 - **Tar/zip/ISO as trust boundary** — transport only.
 - **Mutable resin bytes** — digest would lie.
 - **Silent re-encode on send** — breaks content addressing.
-- **Unbounded manifest** — Tally names max lines, max stone size, max batch bytes.
+- **Unbounded manifest** — Tally names max lines, max resin size, max batch bytes.
 - **Hot Kumara key on export disk** — ciphertext only; unlock is manual.
 - **Two live instances, one identity** — continuity fact or refusal.
 - **"Whole desktop works" as one witness** — happy-zone violation ([`claims-happy-zone-and-grain`](20260704-025600_claims-happy-zone-and-grain.md)).
@@ -212,11 +212,11 @@ No lap claims the Urbit sentence whole. Each closes one claim.
 
 ## Part Ten — Counsel Back to Kaeden
 
-**Should Amber and Amphora process the same resins?** Yes — **same stone bytes, same digest law, same Tilak registry** — different software duties (cellar vs vessel). Zero-copy is the reward for that sameness.
+**Should Amber and Amphora process the same resins?** Yes — **same resin bytes, same digest law, same Tilak registry** — different software duties (cellar vs vessel). Zero-copy is the reward for that sameness.
 
 **Is the Urbit-like snapshot possible?** Yes as architecture — **replay the log, boot the pier** is already our fold doctrine. The maximum export is **Weave slice + resin closure + Brix + Kumara trust + Aurora boot spine**, not a mystery ISO.
 
-**What is not decided tonight:** checkpoint frequency, chunk size, whether Bron records inline small facts or always point to stones, and the exact Comlink frame layout. Those are **Kaeden-gated** or **witness-gated** stops — not gaps in the goal.
+**What is not decided tonight:** checkpoint frequency, chunk size, whether Bron records inline small facts or always point to resins, and the exact Comlink frame layout. Those are **Kaeden-gated** or **witness-gated** stops — not gaps in the goal.
 
 ---
 
@@ -226,4 +226,4 @@ No lap claims the Urbit sentence whole. Each closes one claim.
 
 ---
 
-*May every stone cross the wire once, and every second crossing name a digest alone. May the cellar keep truth in place and the vessel keep truth in motion. And may the sovereign snapshot boot to the same HEAD the log earned — replay, not wish.*
+*May every resin cross the wire once, and every second crossing name a digest alone. May the cellar keep truth in place and the vessel keep truth in motion. And may the sovereign snapshot boot to the same HEAD the log earned — replay, not wish.*

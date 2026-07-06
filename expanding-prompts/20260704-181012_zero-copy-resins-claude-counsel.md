@@ -56,15 +56,15 @@ Answer as **counsel** — recommend, weigh tradeoffs, name risks. Rio 3 Radiant 
 
 ### A. Zero-copy over the wire — is the three-lane model right?
 
-The research proposes **have-already** (digest refs only), **need-stone** (bytes once), and **vessel** (Amphora batch) lanes. **Question:** Affirm, refine, or replace? Name the **minimum Comlink frame** shape (fields, bounds, algorithm tags) that preserves TigerBeetle batching without breaking Tally gardens. Where does **toll** attach — per batch, per vessel, per peer season?
+The research proposes **have-already** (digest refs only), **need-resin** (bytes once), and **vessel** (Amphora batch) lanes. **Question:** Affirm, refine, or replace? Name the **minimum Comlink frame** shape (fields, bounds, algorithm tags) that preserves TigerBeetle batching without breaking Tally gardens. Where does **toll** attach — per batch, per vessel, per peer season?
 
 ### B. Same resins, many Tilaks — unify or accrete?
 
-Kaeden asked whether cellar and vessel should share one maximum bounded type and one Tilak. The tree's answer so far: **same stone bytes + digest law**, **per-cargo Tilaks**. **Question:** Counsel on introducing a seated **`resin` Tilak** vs keeping `plain-bytes` + manifest catalog lines. When should Amber ring-1 manifest graduate from `relpath + digest` to `<mark> <digest> <name>`?
+Kaeden asked whether cellar and vessel should share one maximum bounded type and one Tilak. The tree's answer so far: **same resin bytes + digest law**, **per-cargo Tilaks**. **Question:** Counsel on introducing a seated **`resin` Tilak** vs keeping `plain-bytes` + manifest catalog lines. When should Amber ring-1 manifest graduate from `relpath + digest` to `<mark> <digest> <name>`?
 
 ### C. Sovereign snapshot — maximum honest contents
 
-The research lists seven bundles (Kumara trust, Weave slice, Brix closure, Tablecloth stones, Pond/Caravan policy, Aurora boot spine, Amber catalog). **Question:** What is **in** lap-two witness scope vs **horizon**? Name the **smallest export** that still deserves the word *sovereign* — and the **largest** that stays witnessable without metalsmoke on the thin edge.
+The research lists seven bundles (Kumara trust, Weave slice, Brix closure, Tablecloth resins, Pond/Caravan policy, Aurora boot spine, Amber catalog). **Question:** What is **in** lap-two witness scope vs **horizon**? Name the **smallest export** that still deserves the word *sovereign* — and the **largest** that stays witnessable without metalsmoke on the thin edge.
 
 ### D. Bootable clone vs sealed archive vs ISO wrapper
 
@@ -98,7 +98,7 @@ Deliver **designs Cursor can draft into `context/specs/` or `active-designing/` 
 | **I2** | **Snapshot export manifest** | Superset of crossing three-field line; what each bundle names; self-describing drive law alignment |
 | **I3** | **Import rite state machine** | Verify → map RO → replay → shape-cast → customs; wreck-rule exits |
 | **I4** | **Witness ladder** | Map research laps 1–5 to named `tools/*_witness.rish` claims; red-then-green order; **do not invent parity numbers** — mark `[Cursor verify on metal]` or cite existing |
-| **I5** | **Tally bounds table** | max stones per batch, max vessel bytes, max manifest lines, max replay garden — one row per bound with rationale |
+| **I5** | **Tally bounds table** | max resins per batch, max vessel bytes, max manifest lines, max replay garden — one row per bound with rationale |
 | **I6** | **Amber manifest hygiene lap** | Delta from ring-1 `relpath` to Tilak line; golden migration story |
 | **I7** | **Continuity / double-boot fact** | Bron shape sketch; Pond refusal rule |
 

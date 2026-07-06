@@ -82,7 +82,7 @@ Urbit's core cell is the ancestor of our **control-before-data** vow:
 - **Battery** — what may run (verify signature, parse manifest, fold paths).
 - **Payload** — what it runs on (bytes, digests, directory listings).
 
-Comlink's resin-batch counsel maps cleanly: **header** verified once (battery duty on a small subject); **stones** prove by digest (payload legs). The signed manifest is not re-parsed per stone — same separation as a vane's `+poke` accepting a cage versus `+peek` returning a read-only scry.
+Comlink's resin-batch counsel maps cleanly: **header** verified once (battery duty on a small subject); **resins** prove by digest (payload legs). The signed manifest is not re-parsed per resin — same separation as a vane's `+poke` accepting a cage versus `+peek` returning a read-only scry.
 
 ### Poke and peek at witness grain
 

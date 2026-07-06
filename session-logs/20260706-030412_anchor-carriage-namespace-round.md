@@ -13,7 +13,7 @@ Restored bundle README index rows, removed the stray log, ran `tools/two_rooms_d
 ## Observations
 
 - Round is docs-only: Ames/Vere/libuv study, carriage silo, libuv gratitude note, Clay study, referential-namespace design, apply prompt, two Claude session logs, four README edits.
-- Canon kept: resin = addressing law, stone = content-addressed unit; retire-stone remains Kaeden's word.
+- Canon seated: **resin** is the content-addressed unit per ratified law; **stone** retired forward-facing `20260706.032700`.
 - Parked: Mantra role, read word (recall), unit word (bolt), name grammar, first referential-read lap; libuv vendoring; OA-L4; MALA M0; settlement rail.
 
 ## Files

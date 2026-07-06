@@ -85,7 +85,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Bolt** | A coherent, independently-versioned unit of content with its own history and dependencies — the unit a name selects before a path within it |
 | **Name grammar** | `peer / bolt / revision / path` — Kumara identity, bolt, revision (change, date, or label), path within the bolt |
 
-**Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); tree-wide hygiene flagged on TASKS.
+**Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); forward-doc hygiene landed `20260706.033200`.
 
 ## Type-marks and crossing *(ratified `20260703.203712 UDT`)*
 

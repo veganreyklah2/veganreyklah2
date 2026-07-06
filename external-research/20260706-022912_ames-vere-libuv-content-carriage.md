@@ -31,7 +31,7 @@ Beneath all of it sits the same spine we already hold: only completed events are
 
 ## The Axis Where Ames and Comlink Differ
 
-One distinction must stay sharp, so the silo carries no borrowed error. Ames is identity-and-message-centric: it routes by ship identity and delivers sequenced, acknowledged, transactional messages. It is not content-addressed. Comlink's own turn is content-centric — a stone is named by the digest of its bytes, and the digest is both the address and the proof. These are different axes, and both are worth having. Ames teaches reliable carriage between named identities; our resin model teaches carriage of content proven by its own hash. The lessons we take from Ames therefore live on the carriage-and-reliability axis, while content-centrism remains ours to keep, drawn from the resin study rather than from Ames.
+One distinction must stay sharp, so the silo carries no borrowed error. Ames is identity-and-message-centric: it routes by ship identity and delivers sequenced, acknowledged, transactional messages. It is not content-addressed. Comlink's own turn is content-centric — a resin is named by the digest of its bytes, and the digest is both the address and the proof. These are different axes, and both are worth having. Ames teaches reliable carriage between named identities; our resin model teaches carriage of content proven by its own hash. The lessons we take from Ames therefore live on the carriage-and-reliability axis, while content-centrism remains ours to keep, drawn from the resin study rather than from Ames.
 
 ## libuv, Read as a Substrate
 

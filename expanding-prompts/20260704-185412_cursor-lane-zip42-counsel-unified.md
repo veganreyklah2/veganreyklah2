@@ -27,7 +27,7 @@ TWO_ROOMS seat · gloss go-ahead · crossing-seed module home · doorway witness
 1. **Amber manifest hygiene lap (I6)** — needs no new gate: writer emits the three-field `<mark> <sha3-256-hex> <name>` line with mark `plain-bytes`; second golden beside the elder; witness asserts both parse paths, tamper and unknown-mark refuse whole; red-then-green; wire into parity and report the count from Cursor metal only.
 2. **Snapshot export spec (I2)** into `context/specs/` when Kaeden speaks the Edit-5 slot — flat line law, bundle-prefixed names, SHA3-512 head record; then `snapshot_replay` witness red-then-green on host (I3's rite, HEAD-equality claim).
 3. **Amphora lap-two Tilak witness** (eight-asks A6 design) the day the seed-home gate opens.
-4. **Comlink resin-batch frame spec (I1)** at slot turnover, then the hosted have-already / need-stone witness (second sync of the same batch moves zero payload bytes).
+4. **Comlink resin-batch frame spec (I1)** at slot turnover, then the hosted have-already / need-resin witness (second sync of the same batch moves zero payload bytes).
 5. **ROADMAP · TASKS · decoder deltas** per counsel Parts Three–Five, staged hygiene commits, phrases and structure only — **and, if the ends-first lens earns *for***, fold the three-band presentation (oldest end · newest end · held middle, gates above all) and the season cadence (close-or-yonder one oldest, advance the newest lap, middle quiet unless a door opened) into the same ROADMAP batch.
 
 ## Cut discipline for zip 43

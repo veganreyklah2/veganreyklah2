@@ -51,13 +51,13 @@
 
 **Next climb (Kaeden's word opens either):** OA-L4 reputation-as-fold — or MALA module graduation at second consumer. Both are horizon; check in with Claude before either.
 
-**Namespace vocabulary seated `20260706.032700`:** Mantra grows the referential namespace; **recall** · **bolt** · peer/bolt/revision/path grammar; **stone** retired in favor of **resin** — tree-wide prose hygiene flagged below.
+**Namespace vocabulary seated `20260706.032700`:** Mantra grows the referential namespace; **recall** · **bolt** · peer/bolt/revision/path grammar; **stone** retired in favor of **resin**.
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 
 - [x] **NS-L1 local recall** — `mantra/recall_lap1.rye` + `tools/mantra_recall_lap1.rish`; referential transparency + digest mismatch refused; parity **159**
 
-- [ ] **Stone → resin hygiene pass** — retire **stone** as content-addressed unit word across forward docs and archive-facing prose; paths like `stones/` wait for witness-gated rename per resins law
+- [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 
@@ -85,7 +85,7 @@
    - [x] **(1) Module home:** `amber/` at top level
    - [x] **(2) Fixture tree:** `tools/fixtures/amber_ring1_tree/`
    - [x] **(3) Oracle:** `openssl dgst -sha3-256`; golden `97e0d0cd…d96f` in [`tools/fixtures/amber_ring1_golden.txt`](../tools/fixtures/amber_ring1_golden.txt)
-   - [x] **(4) Witness:** [`tools/amber_first_ring.rish`](../tools/amber_first_ring.rish) — welcome + tampered stone fails
+   - [x] **(4) Witness:** [`tools/amber_first_ring.rish`](../tools/amber_first_ring.rish) — welcome + tampered resin fails
    - [x] **(5) Parity 144** wired in same season
 4. [x] **(Kaeden) SLC-2b nod → (Cursor) Dexter bench** — prompt: [`20260702-030112_cursor-slc-2b-keyboard-from-window.md`](../expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md). **Landed `20260703.132112` — parity **145**:**
    - [x] **Nod (Kaeden):** **`pond/apps/` extension** — counsel's recommended placement (`20260703.131812`); keyboard input grows from Lap 3's poll loop in [`pond/apps/drawn_terminal.rye`](../pond/apps/drawn_terminal.rye); Skate stays in `brushstroke/`.
@@ -205,7 +205,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [ ] **Mycelium gate (recorded)** — the ordering aspect opens at M4's many-issuer season, never before.
 - [ ] **Road-keeper (exploration → first lap)** — Comlink's multipath aspect: per-road bounded queues and scorecards; first lap = one session surviving across two UDP paths under QEMU.
 - [ ] **Amber-compatibility contract (design)** — export / verify / restore for every log-bearing module (Mantra, Tablecloth, Linengrow, Realidream, MALA); first lap = a Mantra log slice sealed and restored, riding Amber's first lap.
-- [ ] **Brix packaging (first lap visible)** — one content-addressed, Kumara-signed package: descriptor read, stones fetched by digest over Comlink, verified on two paths, placed, run in Pond; `.bron` as the resolved-record carrier awaits Kaeden's affirmation.
+- [ ] **Brix packaging (first lap visible)** — one content-addressed, Kumara-signed package: descriptor read, resins fetched by digest over Comlink, verified on two paths, placed, run in Pond; `.bron` as the resolved-record carrier awaits Kaeden's affirmation.
 - [x] **Opening lines (canonized)** — three-line head in TAME guidance; **`tools/opening_lines_witness.rish`** in parity **140** (sixteen hosted files, including `pond/apps/drawn_terminal.rye`).
 - [ ] **Manual program (horizon)** — four rooms founded at [`manual/README.md`](../manual/README.md); first reference [`manual/reference/rishi-language.md`](../manual/reference/rishi-language.md) open; tutorials and module reference pages in season.
 - [x] **Pond clause (Kaeden completes)** — affirmed in [`pond/README.md`](../pond/README.md) (`20260703.012031`, `3320bed`).

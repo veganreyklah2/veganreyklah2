@@ -62,7 +62,7 @@ The later laps arrive each in season. Writing a revision appends a fact to the W
 | Unit word | **bolt** |
 | Name grammar peer / bolt / revision / path | **yes** |
 | First lap go-ahead | **open** — landed NS-L1 |
-| Retire **stone** as the content-addressed unit word | **yes** — use **resin** per ratified law; tree-wide hygiene flagged on TASKS |
+| Retire **stone** as the content-addressed unit word | **yes** — use **resin** per ratified law; forward-doc hygiene landed `20260706.033200` |
 | Vendor libuv source | **deferred** — keep the gratitude note only |
 
 ## Gratitude

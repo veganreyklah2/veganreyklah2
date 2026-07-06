@@ -31,7 +31,7 @@ their room.
 
 Puddle today is the bounded place where unknown things run without reaching the house. That
 *is* the app store's hard part, already named — concentric growth from harbor to marketplace.
-The growth is concentric. An **app bundle** is a Brix-described, content-addressed set of stones —
+The growth is concentric. An **app bundle** is a Brix-described, content-addressed set of resins —
 code, assets, manifest — signed by its maker's Kumara key. **Install** is a season: dock the
 bundle, verify signatures and budgets cold, seat it in a puddle with named ceilings (memory
 garden, wire budget, capability list — the chosen fold bounding bandwidth by construction).
@@ -44,7 +44,7 @@ labels on the render, never deletion of the log — the memo's geometry, kept.
 
 ## The first lap, Honestly Small
 
-One fixture bundle; one witness proving the harbor refuses a tampered stone, refuses an
+One fixture bundle; one witness proving the harbor refuses a tampered resin, refuses an
 unbudgeted manifest, seats a good bundle in a puddle, and runs it to one drawn frame. No
 network, no payment, no upgrade — those are later laps, each behind its own gate. Simple,
 lovable (an app you made, running in a puddle you own), complete at its scope.

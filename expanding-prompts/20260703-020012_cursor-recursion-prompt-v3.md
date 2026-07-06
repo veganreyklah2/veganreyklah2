@@ -48,7 +48,7 @@ demand map, the compiler-fork held-under status line, the two ER editor-memo yon
 confirmations): record each with his stamp in TASKS and the ground doc, and build nothing —
 WOV's exit-honesty spec waits until Amber's spec leaves designed-not-built flight, keeping the
 one-spec bound honest under both Door 3 branches; the four bandwidth-and-moderation concepts
-(egress budget, household headroom, moderation-fact shape, stone-refusal fact) stay recorded
+(egress budget, household headroom, moderation-fact shape, resin-refusal fact) stay recorded
 design, no rings before their seasons. ON APPETITE ONLY: the one-page fresh-bench tutorial;
 deepening purchase-guide part numbers; resting recursion prompt v2 in work-in-progress/yonder.
 HARD BOUNDS unchanged: never touch or simulate any (Kaeden …) box; amber/ sealed until Doors

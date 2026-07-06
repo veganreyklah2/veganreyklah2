@@ -27,7 +27,7 @@ A peer is named by its keypair, and we reach it by a signed claim rather than by
 
 ## A Fact Arrives Whole, or Not at All
 
-Refusal is whole and quiet at the seal. A fact whose seal does not verify is dropped as though it never came, leaving the record exactly as it was; no half-trusted fragment enters, and no partial state is kept. A fact that opens its seal yet reveals something malformed is refused entire, because that is the mark of a sender who is misbehaving rather than a line that merely dropped a byte. Between silence and refusal, there is no third path where a broken fact is partly believed. This is the same discipline the record keeps everywhere — a bad digest refuses the stone, a bad signature refuses the fact — carried out to the wire's edge.
+Refusal is whole and quiet at the seal. A fact whose seal does not verify is dropped as though it never came, leaving the record exactly as it was; no half-trusted fragment enters, and no partial state is kept. A fact that opens its seal yet reveals something malformed is refused entire, because that is the mark of a sender who is misbehaving rather than a line that merely dropped a byte. Between silence and refusal, there is no third path where a broken fact is partly believed. This is the same discipline the record keeps everywhere — a bad digest refuses the resin, a bad signature refuses the fact — carried out to the wire's edge.
 
 ## Reliable Carriage Is Transactional, and It Waits Its Lap
 
