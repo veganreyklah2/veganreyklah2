@@ -12,6 +12,8 @@ These rest beneath the specifications. The specs say what to build and how; thes
 
 **The grain** — ten standing strands and the crossing test live in [`../active-designing/20260702-184312_the-grain-and-the-crossing.md`](../active-designing/20260702-184312_the-grain-and-the-crossing.md); companion to [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md). Strand briefs that silo here point back to that index; the index points to each brief.
 
+**The compass** — the return habit (foundations → grain → active-designing → TASKS → witnesses) lives in [`20260706-185112_follow-our-compass.md`](20260706-185112_follow-our-compass.md) · **landed** `20260706.185512 UDT`. Say **follow our compass** for navigation; keep **grain strand** for structural fit.
+
 ## What Lives Here
 
 **Foundation briefs** — the why beneath the daily work, on our own roots:

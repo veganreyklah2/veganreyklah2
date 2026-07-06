@@ -119,6 +119,48 @@ pub fn recallBeaded(
     return .{ .outcome = .here, .len = re.len, .tilak = beading.tilak_bead_index };
 }
 
+/// After a resin-batch crossing, derived `{path}.b{N}` leaves sit in the catalog.
+/// This hydrates bead_store from those leaves so recallBeaded can reassemble the
+/// bead-index at `index_path`.
+pub fn hydrateBeadStoreFromCatalog(
+    catalog: *const recall_lap1.BoltCatalog,
+    store: *beading.BeadStore,
+    peer: []const u8,
+    bolt: []const u8,
+    revision: u32,
+    index_path: []const u8,
+) beading.BeadError!void {
+    var index_buf: [recall_lap1.max_resin_bytes]u8 = undefined;
+    const index_name = recall_lap1.Name{
+        .peer = peer,
+        .bolt = bolt,
+        .revision = revision,
+        .path = index_path,
+    };
+    const direct = catalog.recall(index_name, &index_buf) catch return error.StoreMissing;
+    if (direct.outcome != .here) return error.StoreMissing;
+    if (!std.mem.eql(u8, direct.tilak, beading.tilak_bead_index)) return error.UnknownTilak;
+    const bead_count = std.mem.readInt(u16, index_buf[34..36], .little);
+    var b: u32 = 0;
+    while (b < bead_count) : (b += 1) {
+        const dig_off: u32 = 36 + b * 32;
+        var bd: [32]u8 = undefined;
+        @memcpy(&bd, index_buf[dig_off..][0..32]);
+        var path_buf: [recall_lap1.max_path]u8 = undefined;
+        const derived = std.fmt.bufPrint(&path_buf, "{s}.b{d}", .{ index_path, b }) catch return error.Overflow;
+        const bead_name = recall_lap1.Name{
+            .peer = peer,
+            .bolt = bolt,
+            .revision = revision,
+            .path = derived,
+        };
+        var bead_buf: [beading.max_bead_bytes]u8 = undefined;
+        const br = catalog.recall(bead_name, &bead_buf) catch return error.StoreMissing;
+        if (br.outcome != .here) return error.StoreMissing;
+        _ = try store.deposit(&bd, bead_buf[0..br.len]);
+    }
+}
+
 fn patternFill(buf: []u8, seed: u32) void {
     var x: u32 = seed;
     var i: u32 = 0;

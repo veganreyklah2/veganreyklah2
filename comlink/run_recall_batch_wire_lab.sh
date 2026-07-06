@@ -61,7 +61,7 @@ run_hop "$sock_response" "$build_dir/batch-fetcher-rx.elf" "$build_dir/batch-sou
 request_ok=0
 response_ok=0
 grep -q "sealed batch request GREEN" "$build_dir/batch-source-rx.log" && request_ok=1
-grep -q "sealed batch response GREEN" "$build_dir/batch-fetcher-rx.log" && response_ok=1
+grep -q "sealed beaded batch response GREEN" "$build_dir/batch-fetcher-rx.log" && response_ok=1
 
 if [ "$request_ok" -eq 1 ] && [ "$response_ok" -eq 1 ]; then
     echo "rbw device wire lab: GREEN (request + batch)"

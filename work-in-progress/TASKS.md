@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **166** · recall_beaded + hosted batch wire landed)
+**Last updated:** 2026-07-06 (parity **166** · multi-frame batch chunking · witness bolt brief)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -63,7 +63,7 @@
 - [x] **NS-L3 lap 3w-3a (resin-batch frame)** — `mantra/resin_batch.rye`: signed header + manifest (control plane), payloads prove by digest (data plane); many resins under one signature; have-already entries reconstructed locally; second sync moves zero payload bytes; bad signature, tampered payload, unknown Tilak refused whole; `tools/mantra_resin_batch.rish`; width-checked; parity **163**
 - [x] **NS-L3 recall_beaded** — `mantra/recall_beaded.rye`; derived paths `{path}.b{N}`; `tools/mantra_recall_beaded.rish`; parity **165**
 - [x] **NS-L3 multi-frame batch chunking** — kind **0x04** chunk wire + `BatchAssembler`; hosted `chunkdemo` + device lab (400 B beta, 2 frames); `virtio_net` multi-packet TX/RX; parity **166** extended
-- [ ] **NS-L3 beaded bolt full crossing** — bead-index + `.bN` leaves over batch wire
+- [x] **NS-L3 beaded bolt full crossing** — bead-index + `.bN` leaves over batch wire; `hydrateBeadStoreFromCatalog` + `beadeddemo`; witness per [`20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md); parity **166** extended
 
 - [x] **Stone → resin hygiene pass (forward docs)** — active-designing, external-research, foundations carriage silo, context specs, work-in-progress, expanding-prompts (20260703+), recent session logs; **foundation stone** metaphor in READMEs kept; paths like `stones/` wait for witness-gated rename per resins law
 

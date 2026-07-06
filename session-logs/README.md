@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.185512 | [Device beaded wire + compass](20260706-185512_device-beaded-wire-compass.md) | virtio beaded witness GREEN; compass brief landed UDT |
+| 20260706.185112 | [Witness bolt, compass, beaded wire](20260706-185112_witness-bolt-compass-beaded-wire.md) | Witness bolt brief; compass proposal; beaded batch wire hosted GREEN |
 | 20260706.184801 | [Multi-frame batch chunking](20260706-184801_multi-frame-batch-chunking.md) | kind 0x04 chunk wire; 660 B witness; virtio multi-packet fix; parity 166 GREEN |
 | 20260706.183844 | [Device batch wire](20260706-183844_device-batch-wire.md) | virtio guests 15563/15564; batch witness hosted + device; parity 166 GREEN |
 | 20260706.182500 | [Recall beaded + batch wire](20260706-182500_recall-beaded-batch-wire.md) | files (27) + Rio expansion: recall_beaded 165, hosted batch wire 166 |

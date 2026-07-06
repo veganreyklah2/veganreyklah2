@@ -1,14 +1,25 @@
-//! comlink/guest_batch_fetcher_rx.rye — NS-L3 batch wire device: fetcher RX (apply batch, recall beta).
+//! comlink/guest_batch_fetcher_rx.rye — NS-L3 batch wire device: fetcher RX (apply beaded batch).
 
 const vn = @import("virtio_net.rye");
 const wf = @import("wire_format.rye");
 const bw = @import("recall_batch_wire.rye");
 const ns = @import("recall_lap1.rye");
+const rbd = @import("recall_beaded.rye");
+const bd = @import("beading.rye");
 const Ed25519 = @import("std").crypto.sign.Ed25519;
 
 var rx: vn.RxQueue = undefined;
 
 const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+
+fn witnessPatternFill(buf: []u8, seed: u32) void {
+    var x: u32 = seed;
+    var i: u32 = 0;
+    while (i < buf.len) : (i += 1) {
+        x = x *% 1664525 +% 1013904223;
+        buf[i] = @intCast((x >> 24) & 0xFF);
+    }
+}
 
 export fn _start() linksection(".text.init") callconv(.naked) noreturn {
     asm volatile (
@@ -61,21 +72,36 @@ export fn kmain() callconv(.c) noreturn {
         vn.writeStr("rbw device wire: FAIL — apply batch\n");
         vn.finishFail();
     };
-    if (report.had_already != 1 or report.needed != 1) {
+    if (report.had_already != 1 or report.needed < 2) {
         vn.writeStr("rbw device wire: FAIL — batch report mismatch\n");
         vn.finishFail();
     }
 
-    const nb = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
-    var out: [512]u8 = undefined;
-    const r = ns.BoltCatalog.recall(&fetcher, nb, &out) catch {
-        vn.writeStr("rbw device wire: FAIL — recall beta\n");
+    var fetch_beads: bd.BeadStore = .empty();
+    rbd.hydrateBeadStoreFromCatalog(&fetcher, &fetch_beads, "peerB", "b", 1, "large.bin") catch {
+        vn.writeStr("rbw device wire: FAIL — hydrate bead store\n");
         vn.finishFail();
     };
-    if (r.len != 400 or out[0] != 'B' or out[399] != 'B') {
-        vn.writeStr("rbw device wire: FAIL — beta bytes mismatch\n");
+
+    const n_large = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "large.bin" };
+    var out: [512]u8 = undefined;
+    const r = rbd.recallBeaded(&fetcher, &fetch_beads, n_large, &out) catch {
+        vn.writeStr("rbw device wire: FAIL — recallBeaded large.bin\n");
+        vn.finishFail();
+    };
+    if (r.outcome != .here or r.len != 400) {
+        vn.writeStr("rbw device wire: FAIL — large.bin length mismatch\n");
         vn.finishFail();
     }
-    vn.writeStr("rbw device wire: sealed batch response GREEN — verify and recall passed\n");
+    var expect: [400]u8 = undefined;
+    witnessPatternFill(&expect, 20260706);
+    var i: u32 = 0;
+    while (i < 400) : (i += 1) {
+        if (out[i] != expect[i]) {
+            vn.writeStr("rbw device wire: FAIL — large.bin bytes mismatch\n");
+            vn.finishFail();
+        }
+    }
+    vn.writeStr("rbw device wire: sealed beaded batch response GREEN — verify and recall passed\n");
     vn.finishPass();
 }

@@ -13,8 +13,10 @@ const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
 const bw = @import("recall_batch_wire.rye");
 const wf = @import("wire_format.rye");
+const rbd = @import("recall_beaded.rye");
+const bd = @import("beading.rye");
 
-const rbw_version = "20260706.184512";
+const rbw_version = "20260706.185512";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -101,6 +103,24 @@ fn initChunkWitnessSource(cat: *ns.BoltCatalog) !void {
     var big: [400]u8 = undefined;
     largeBetaBytes(&big);
     try cat.appendLeaf("peerB", "b", 1, "b.txt", big[0..400], "plain-bytes");
+}
+
+fn witnessPatternFill(buf: []u8, seed: u32) void {
+    var x: u32 = seed;
+    var i: u32 = 0;
+    while (i < buf.len) : (i += 1) {
+        x = x *% 1664525 +% 1013904223;
+        buf[i] = @intCast((x >> 24) & 0xFF);
+    }
+}
+
+fn initBeadedWitnessSource(cat: *ns.BoltCatalog, beads: *bd.BeadStore) !void {
+    cat.* = .empty();
+    beads.* = .empty();
+    try cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    var content: [400]u8 = undefined;
+    witnessPatternFill(&content, 20260706);
+    _ = try rbd.appendLeafBeaded(cat, beads, "peerB", "b", 1, "large.bin", content[0..], "plain-bytes");
 }
 
 fn initWitnessFetcher(cat: *ns.BoltCatalog) !void {
@@ -267,7 +287,48 @@ fn runSelftest(_: std.Io) !u8 {
     assert(rb_big.len == 400);
     assert(big_out[0] == 'B' and big_out[399] == 'B');
     print("rbw: chunked batch {d} bytes over {d} frames — GREEN\n", .{ chunk_built.len, chunk_count });
+
+    var beaded_src: ns.BoltCatalog = undefined;
+    var beaded_store: bd.BeadStore = undefined;
+    try initBeadedWitnessSource(&beaded_src, &beaded_store);
+    var beaded_fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&beaded_fetcher);
+    var beaded_fetch_store: bd.BeadStore = .empty();
+    const beaded_held = [_][64]u8{alpha_digest};
+    var beaded_batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const beaded_built = try rb.buildBatch(&beaded_src, "peerB", "b", 1, &beaded_held, signer, &beaded_batch_buf);
+    assert(beaded_built.report.had_already == 1);
+    assert(beaded_built.report.needed >= 2);
+
+    var beaded_asm: bw.BatchAssembler = .{};
+    if (beaded_built.len <= bw.max_batch_wire) {
+        var frame: [bw.max_batch_wire]u8 = undefined;
+        const flen = try bw.encodeBatchResponse(beaded_batch_buf[0..beaded_built.len], &frame);
+        _ = try beaded_asm.feed(frame[0..flen]);
+    } else {
+        const bc = try bw.batchChunkCount(beaded_built.len);
+        var bi: u16 = 0;
+        while (bi < bc) : (bi += 1) {
+            var frame: [bw.max_batch_wire]u8 = undefined;
+            const flen = try bw.encodeBatchChunk(beaded_batch_buf[0..beaded_built.len], bi, &frame);
+            const bstate = try beaded_asm.feed(frame[0..flen]);
+            if (bi + 1 < bc) assert(bstate == .need_more);
+        }
+    }
+    const beaded_report = try bw.applyWireBatch(&beaded_fetcher, beaded_asm.batch(), signer.public_key);
+    assert(beaded_report.had_already == 1);
+    try rbd.hydrateBeadStoreFromCatalog(&beaded_fetcher, &beaded_fetch_store, "peerB", "b", 1, "large.bin");
+    var beaded_out: [512]u8 = undefined;
+    const n_large = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "large.bin" };
+    const r_large = try rbd.recallBeaded(&beaded_fetcher, &beaded_fetch_store, n_large, &beaded_out);
+    assert(r_large.outcome == .here);
+    assert(r_large.len == 400);
+    var expect: [400]u8 = undefined;
+    witnessPatternFill(&expect, 20260706);
+    assert(std.mem.eql(u8, beaded_out[0..400], expect[0..400]));
+    print("rbw: beaded bolt batch {d} bytes — recallBeaded GREEN\n", .{beaded_built.len});
     print("GREEN: NS-L3 lap 3w-4 multi-frame batch chunking under Comlink seal.\n", .{});
+    print("GREEN: NS-L3 lap 3w-5 beaded bolt batch wire (in-process).\n", .{});
     return 0;
 }
 
@@ -391,6 +452,81 @@ fn runChunkFetcher(_: std.Io) !u8 {
     return 0;
 }
 
+fn runBeadedDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+    const source_argv = try allocator.alloc([]const u8, 2);
+    source_argv[0] = self_path;
+    source_argv[1] = "beaded-source";
+    var source_child = try std.process.spawn(io, .{ .argv = source_argv });
+    var pause = c.timespec{ .sec = 0, .nsec = 50_000_000 };
+    _ = c.nanosleep(&pause, null);
+
+    const fetcher_argv = try allocator.alloc([]const u8, 2);
+    fetcher_argv[0] = self_path;
+    fetcher_argv[1] = "beaded-fetcher";
+    var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
+
+    const sc = try source_child.wait(io);
+    const fc = try fetcher_child.wait(io);
+    const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
+    const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
+    assert(s_code == 0 and f_code == 0);
+    print("rbw: beaded demo GREEN — bead-index and beads crossed batch wire under Comlink seal\n", .{});
+    return 0;
+}
+
+fn runBeadedSource(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var src: ns.BoltCatalog = undefined;
+    var beads: bd.BeadStore = undefined;
+    try initBeadedWitnessSource(&src, &beads);
+
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try recvWire(source_port, &wire);
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+
+    var req: bw.BatchWireRequest = undefined;
+    try bw.decodeRequest(opened[0..@intCast(opened_len)], &req);
+
+    var held: [1][64]u8 = undefined;
+    var i: u32 = 0;
+    while (i < req.held_count) : (i += 1) {
+        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+    }
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
+    try sendBatchPayload(fetcher_port, batch_buf[0..built.len]);
+    print("rbw: beaded source answered with sealed resin-batch\n", .{});
+    return 0;
+}
+
+fn runBeadedFetcher(_: std.Io) !u8 {
+    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    var fetcher: ns.BoltCatalog = undefined;
+    try initWitnessFetcher(&fetcher);
+    var fetch_beads: bd.BeadStore = .empty();
+
+    const req = try buildHeldRequest();
+    var req_buf: [bw.max_batch_wire]u8 = undefined;
+    const req_len = try bw.encodeRequest(req, &req_buf);
+    var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const wire_len = try sealPayload(req_buf[0..req_len], &wire);
+    try sendWire(source_port, wire[0..@intCast(wire_len)]);
+
+    var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+    const batch_len = try recvBatchPayload(fetcher_port, &batch_buf);
+    _ = try bw.applyWireBatch(&fetcher, batch_buf[0..batch_len], signer.public_key);
+    try rbd.hydrateBeadStoreFromCatalog(&fetcher, &fetch_beads, "peerB", "b", 1, "large.bin");
+
+    var out: [512]u8 = undefined;
+    const n_large = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "large.bin" };
+    const r = try rbd.recallBeaded(&fetcher, &fetch_beads, n_large, &out);
+    if (r.outcome != .here or r.len != 400) return error.BatchFailed;
+
+    print("rbw: beaded fetcher recallBeaded — GREEN\n", .{});
+    return 0;
+}
+
 fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const source_argv = try allocator.alloc([]const u8, 2);
     source_argv[0] = self_path;
@@ -425,6 +561,9 @@ pub fn main(init: std.process.Init) !u8 {
         if (std.mem.eql(u8, args[1], "chunkdemo")) return runChunkDemo(garden, io, args[0]);
         if (std.mem.eql(u8, args[1], "chunk-source")) return runChunkSource(io);
         if (std.mem.eql(u8, args[1], "chunk-fetcher")) return runChunkFetcher(io);
+        if (std.mem.eql(u8, args[1], "beadeddemo")) return runBeadedDemo(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "beaded-source")) return runBeadedSource(io);
+        if (std.mem.eql(u8, args[1], "beaded-fetcher")) return runBeadedFetcher(io);
     }
     return runSelftest(io);
 }

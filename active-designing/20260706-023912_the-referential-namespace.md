@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through NS-L3 beading parity **164**; recall_beaded parity **165**; resin-batch wire hosted + device parity **166**; multi-frame batch chunking parity **166** (extended witness). Beaded bolt full crossing remains horizon.
+**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through NS-L3 beading parity **164**; recall_beaded parity **165**; resin-batch wire hosted + device + chunking + beaded parity **166**. Two-way sync remains horizon.
 
 *Written together by Kaeden and Rio 3.*
 
@@ -68,6 +68,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 | **3w-4 batch wire (hosted)** | Resin-batch frame crosses Comlink sealed datagrams (witness bolt fits one frame) | **landed** parity **166** · [`mantra/recall_batch_delivery.rye`](../mantra/recall_batch_delivery.rye) · ports **38480/38481** |
 | **3w-4 batch wire (device)** | Same exchange over virtio guests | **landed** · `comlink/run_recall_batch_wire_lab.sh` · ports **15563/15564** · multi-frame when batch > 340 B |
 | **3w-4 batch chunking** | Kind **0x04** chunk frames (331 B body) reassemble to one resin-batch | **landed** · [`mantra/recall_batch_wire.rye`](../mantra/recall_batch_wire.rye) · witness 400 B beta over 2 frames |
+| **3w-5 beaded batch wire** | Bead-index + `.bN` leaves cross resin-batch wire; fetcher hydrates bead store | **landed** parity **166** extended · hosted `beadeddemo` + device virtio lab |
 
 **Capacity constraint (confirmed on metal):** `wire_capacity` **528** minus crypto envelope **188** → **340 bytes** `max_message` per sealed datagram. Catalog `max_resin_bytes` is **512** — a full resin does not fit one frame. **Recommendation (Claude `041012`):** bead large resins across frames rather than inflate `wire_capacity`; lap 1 proves crossing with small resins only (`alpha`/`beta` witness bolt).
 
@@ -75,7 +76,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Invariants on the wire:** bad Comlink seal refuses whole; resin digest mismatch refuses whole; sync stays additive (NS-L2); referential transparency survives because digest is the proof.
 
-**Batch-frame carriage — landed `20260706.184512`:** batches larger than **340 B** cross as kind **0x04** chunk frames (**331 B** body each); `BatchAssembler` reassembles before `applyBatch`. Device virtio guests exercise a **660 B** witness batch (400 B beta resin). `virtio_net` TX/RX now repost rings for multi-packet hops.
+**Batch-frame carriage — landed `20260706.184512`:** batches larger than **340 B** cross as kind **0x04** chunk frames (**331 B** body each); `BatchAssembler` reassembles before `applyBatch`. Witness bolt variants: [`20260706-185112_the-witness-bolt.md`](20260706-185112_the-witness-bolt.md). Beaded bolt full crossing remains next lap.
 
 The later laps arrive each in season. Two-way sync and subscribe-to-changes are a later horizon. Marks-on-read, Tablecloth query, and host mirror each keep their season.
 

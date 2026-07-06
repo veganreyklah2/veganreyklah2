@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260705-203144` (vocabulary ground lap — TWO_ROOMS seated, doorway witness **153**)
-**Last updated:** 2026-07-05 (zip **47** · astrology silo bench closed · season **Linengrow-via-Comlink**)
+**Version:** `20260706.185112` (witness bolt + compass briefs · parity **166**)
+**Last updated:** 2026-07-06 (NS-L3 batch chunking landed · compass navigation brief proposed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

@@ -21,8 +21,12 @@ let chunkdemo = run ["sh" "-c" "${bin} chunkdemo 2>&1"]
 assert chunkdemo.ok else "recall batch chunk demo exited non-zero"
 assert chunkdemo.out contains "GREEN" else "recall batch chunk demo not GREEN"
 
+let beadeddemo = run ["sh" "-c" "${bin} beadeddemo 2>&1"]
+assert beadeddemo.ok else "recall batch beaded demo exited non-zero"
+assert beadeddemo.out contains "GREEN" else "recall batch beaded demo not GREEN"
+
 let device = run ["sh" "comlink/run_recall_batch_wire_lab.sh"]
 assert device.ok else "recall batch device wire lab failed"
 assert device.out contains "GREEN" else "recall batch device wire lab not GREEN"
 
-say "GREEN: NS-L3 lap 3w-4 resin-batch wire witness passed (hosted + device)."
+say "GREEN: NS-L3 lap 3w-4/3w-5 resin-batch wire witness passed (hosted + device, chunk + beaded)."

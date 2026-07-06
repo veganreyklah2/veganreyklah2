@@ -136,6 +136,10 @@ pub const BeadStore = struct {
     }
 
     /// Deposit a bead. Returns true when newly stored, false when already held (dedup).
+    pub fn deposit(self: *BeadStore, digest: *const [32]u8, bytes: []const u8) BeadError!bool {
+        return self.put(digest, bytes);
+    }
+
     fn put(self: *BeadStore, digest: *const [32]u8, bytes: []const u8) BeadError!bool {
         assert(bytes.len <= max_bead_bytes); // precondition: a bead fits its budget
         if (self.find(digest)) |_| return false; // content already held: dedup

@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-06 (OA-L3 escrow counsel `013012` · parity **157**)
+**Last updated:** 2026-07-06 (OA-L3 escrow counsel `013012` · parity **166** · witness bolt + compass briefs)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,7 +47,8 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
-| `20260706.023912` | [The referential namespace — Mantra grows to hold it](20260706-023912_the-referential-namespace.md) | **recall** and **bolt** seated; NS-L1–L3 GREEN; sync logic parity **161**; wire carriage next lap |
+| `20260706.185112` | [The witness bolt](20260706-185112_the-witness-bolt.md) | Minimal pinned catalog fixture for NS-L3 witnesses; small, chunk, and beaded variants |
+| `20260706.023912` | [The referential namespace — Mantra grows to hold it](20260706-023912_the-referential-namespace.md) | **recall** and **bolt** seated; NS-L1–L3 wire + batch chunking GREEN parity **166** |
 | `20260705.225412` | [Comlink device wire](20260705-225412_comlink-device-wire.md) | Virtio carriage for sealed datagram — sub-lap 1 fixture selftest GREEN |
 | `20260705-045012` | [Rye astrology atelier](20260705-045012_rye-astrology-atelier.md) | Charts and calculations in Rye — ephemeris seam, golden cast witness, SVG fold; counsel only |
 | `20260704-211012` | [The Rye core and the shell](20260704-211012_the-rye-core-and-the-shell.md) | Lap law seated — core proves, shell witnesses; explicit subject, horizon, `preview`/`fold`, parity hygiene |
