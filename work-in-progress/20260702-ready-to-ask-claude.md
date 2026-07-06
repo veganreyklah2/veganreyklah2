@@ -1,11 +1,30 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260704.185412 UDT` (zip **42** unified intake · both benches **152** · zero-copy counsel + ends-first orientation)
+**Stamp:** `20260702.202612` · refreshed `20260706.190644` (zip **58** NS-L3 handoff · parity **166**)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
+
+## Zip 58 — **queued** (`20260706.190644`)
+
+**Tip:** `f2bbddf` (cut again at post-packet HEAD) · **parity 166 GREEN** on Cursor metal · NS-L3 wire ladder complete.
+
+| Item | Path |
+|------|------|
+| Claude sitting prompt | [`expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md`](../expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md) |
+| Handoff log | [`session-logs/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/20260706-190312_claude-handoff-ns-l3-complete.md) |
+| Witness bolt | [`active-designing/20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md) |
+| Compass | [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) |
+
+**Claude must rule:** OA-L4 vs MALA (Q1) · Edit-5 I2 vs proceed (Q2) · namespace horizon order (Q3).
+
+Prior zip in tree logs: **52** @ OA-L3 parity 158 · zips 53–57 held off-repo or relay-only until Kaeden aligns numbering — **58** is the next seated cut.
+
+## Zip 43 — **superseded** by zip 58 numbering
+
+Full-tree zip discipline unchanged; use **58** not 43.
 
 ## Zip 42 intake landed (`20260704.185412 UDT`) — Claude Fable 5 · unified packet
 
@@ -40,7 +59,7 @@
 
 Prior tip: `43584d8` · zip 41 @ `2eb346b` superseded for counsel purposes
 
-## Zip 43 — **queued**
+## Zip 43 — **superseded** (see zip 58)
 
 Full-tree zip at `git rev-parse HEAD` after intake commits; comment **is** the tip hash. RTAC section gains whichever stops Kaeden's words opened.
 
