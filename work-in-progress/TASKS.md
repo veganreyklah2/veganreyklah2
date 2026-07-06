@@ -41,9 +41,9 @@
 
 **OA-L2 landed `20260706.011512` — parity **157**:**
 
-- [x] **OA-L2 cross-party delivery** — `linengrow/open_asks_delivery.rye` + `tools/open_asks_lap2.rish`; hosted UDP + **device wire** request hop GREEN
+- [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
-**Next climb (Cursor):** OA-L3 brief — MALA bounty escrow (M1→M2 ladder); or OA-L2 application-return device wire (second hop).
+**Next climb (Cursor):** OA-L3 brief — MALA bounty escrow (M1→M2 ladder); check in with Claude first.
 
 **Alongside:** SLC-L3 ladder softenings — proposed in verdict; await Kaeden word.
 

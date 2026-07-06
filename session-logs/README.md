@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.012412 | [OA-L2 application device wire](20260706-012412_oa-l2-application-device-wire.md) | Second virtio hop; request + application lab GREEN; fold applied on poster |
 | 20260706.012112 | [OA-L2 device wire](20260706-012112_oa-l2-device-wire.md) | Sealed request over virtio; max_frame 538; lap2 witness hosted + device GREEN |
 | 20260706.011800 | [OA-L2 parity 157 landed](20260706-011800_oa-l2-parity-157-landed.md) | Cross-party ask delivery under Comlink seal; Kaeden edge affirmed; full parity GREEN |
 | 20260706.011512 | [OA-L2 scope seated](20260706-011512_oa-l2-scope-seated.md) | Cross-party delivery hammock brief; doorway GREEN; awaits Kaeden edge |
