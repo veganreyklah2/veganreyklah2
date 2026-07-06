@@ -12,7 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260706.170100 | [Apply resin-batch bundle](20260706-170100_apply-resin-batch-bundle.md) | Cursor applied files (25).zip on metal; parity 163 GREEN; four remotes pushed |
+| 20260706.180300 | [Apply beading bundle](20260706-180300_apply-beading-bundle.md) | Cursor applied files (26).zip; parity 164 GREEN; four remotes pushed |
+| 20260706.175412 | [NS-L3 beading 3w-3b](20260706-175412_ns-l3-3w-3b-beading.md) | Three rings: fixed-size, content-defined, bounded verify; bead-index Tilak |
 | 20260706.042612 | [NS-L3 resin-batch frame (3w-3a)](20260706-042612_ns-l3-resin-batch.md) | Signed header+manifest, payloads prove by digest; many resins one signature; second sync zero bytes; parity 163 |
 | 20260706.042100 | [NS-L3 wire lap 2 device](20260706-042100_ns-l3-wire-lap2-device.md) | Virtio sync request/response on 15561/15562; witness hosted+device GREEN |
 | 20260706.041800 | [NS-L3 wire lap 1 hosted](20260706-041800_ns-l3-wire-lap1-hosted.md) | Hosted sync request/response under Comlink seal; parity 162 GREEN |
