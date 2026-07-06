@@ -56,9 +56,11 @@
 /tally/bin/
 /caravan/bin/
 /comlink/bin/
+/comlink/.build/
 /brushstroke/bin/
 /mantra/bin/
 /aurora/.build/
+/linengrow/bin/
 *.rye.zig
 .zig-cache/
 zig-cache/

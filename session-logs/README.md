@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260706.013200 | [Zip 51 OA-L3 counsel applied](20260706-013200_zip51-oal3-counsel-applied.md) | Cursor applied Claude bundle; settlement softenings; gitignore hygiene |
+| 20260706.013012 | [Open questions answered](20260706-013012_open-questions-answered.md) | Claude OA-L3 escrow counsel; softenings proposed; parity 157 reported from metal |
 | 20260706.012800 | [Open Asks arc commit-push summary](20260706-012800_commit-push-open-asks-arc-summary.md) | Full handoff summary OA-L1→OA-L2; four remotes at tip 3f23c73 |
 | 20260706.012412 | [OA-L2 application device wire](20260706-012412_oa-l2-application-device-wire.md) | Second virtio hop; request + application lab GREEN; fold applied on poster |
 | 20260706.012112 | [OA-L2 device wire](20260706-012112_oa-l2-device-wire.md) | Sealed request over virtio; max_frame 538; lap2 witness hosted + device GREEN |

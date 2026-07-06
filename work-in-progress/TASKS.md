@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **157** · OA-L2 landed · settlement counsel seated)
+**Last updated:** 2026-07-06 (parity **157** · OA-L3 counsel seated · settlement softenings applied)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -43,9 +43,13 @@
 
 - [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
-**Next climb (Cursor):** OA-L3 brief — MALA bounty escrow (M1→M2 ladder); check in with Claude first.
+**OA-L3 counsel seated `20260706.013012` — awaits Kaeden word:**
 
-**Alongside:** SLC-L3 ladder softenings — proposed in verdict; await Kaeden word.
+- [ ] **OA-L3 escrow** — brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md); hold/release on one log; vocabulary, encoding, home, ladder mapping parked
+
+**Next climb (Cursor):** OA-L3 implementation — after Kaeden speaks escrow names and home; parity **158** when wired on metal.
+
+**Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 
 **Edit-5 when opened:** I2 snapshot export before I1 Comlink resin-batch frame (zip-42 counsel holds).
 
@@ -272,7 +276,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [ ] **Inference stack** — Lantern, Lattice, Anvil, held furthest, after the living desktop composes.
 
 ### Linengrow
-- [ ] **SLC-L3 — settlement** — a transaction settled on Sui with USDsui; the receipt verifiable on the ledger.
+- [ ] **SLC-L3 — settlement** — settled on a proven rail; Sui seated, two-lane witness proposed, settlement asset chosen by the witness; the receipt verifiable on the ledger. Counsel: [`external-research/20260706-005512_settlement-seat-verification-and-verdict.md`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md).
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

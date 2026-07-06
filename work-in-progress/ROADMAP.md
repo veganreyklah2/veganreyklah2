@@ -80,7 +80,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **SLC-L2** | Sealed delivery — signed receipt identity to identity under Comlink seal; **landed** `20260706.000812` — parity **155** | Comlink |
 | **OA-L1** | Closed ask loop — post, apply, accept, complete, verify; **landed** `20260706.010912` — parity **156** | Linengrow + SLC-L1 receipt |
 | **OA-L2** | Cross-party delivery — request + application under Comlink seal; **landed** `20260706.011512` — parity **157** | SLC-L2 + OA-L1 |
-| **SLC-L3** | Settlement — a transaction settled on Sui with USDsui, verifiable on the ledger | Sui / Mysticeti |
+| **SLC-L3** | Settlement rail — Sui seated; two-lane witness proposed, settlement-asset integrity measured | Sui / Mysticeti (witness proposed) |
 | **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
