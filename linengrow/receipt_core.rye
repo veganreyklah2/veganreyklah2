@@ -5,18 +5,18 @@
 const std = @import("std");
 const assert = std.debug.assert;
 const tally_parse_int = @import("parse_int.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const tally_copy = @import("tally_copy.rye");
 
-pub const slcl1_seed = [_]u8{0x42} ** Ed25519.KeyPair.seed_length;
-pub const sig_hex_len: u32 = Ed25519.Signature.encoded_length * 2;
+pub const slcl1_seed = [_]u8{0x42} ** kumara.seed_length;
+pub const sig_hex_len: u32 = kumara.signature_length * 2;
 pub const max_fact_len: u32 = 512;
 pub const max_line_len: u32 = sig_hex_len + 1 + max_fact_len * 2;
 pub const max_log_len: u32 = 4096;
 
 /// Compact sealed payload: sig[64] | fact_len u32 LE | fact[fact_len]
-pub const slcl2_payload_header: u32 = Ed25519.Signature.encoded_length + 4;
+pub const slcl2_payload_header: u32 = kumara.signature_length + 4;
 pub const slcl2_max_fact: u32 = 256;
 
 /// Pinned witness fact — byte-identical to `tools/fixtures/slcl1_fact.bron` canonical form.
@@ -115,7 +115,7 @@ fn decode_hex_lower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
     return nbytes;
 }
 
-pub fn format_log_line(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
+pub fn format_log_line(sig: kumara.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
     const sig_bytes = sig.toBytes();
     var pos: u32 = 0;
     pos += try write_hex_lower(&sig_bytes, out[pos..]);
@@ -144,9 +144,8 @@ pub fn parse_amount_signed(amount_text: []const u8) error{InvalidAmount}!i64 {
     return tally_parse_int.parse_int(i64, amount_text, .{}) catch return error.InvalidAmount;
 }
 
-pub fn verify_record(sig_bytes: []const u8, fact: []const u8, pubkey: Ed25519.PublicKey) error{VerifyFailed}!void {
-    const sig = Ed25519.Signature.fromBytes(sig_bytes[0..Ed25519.Signature.encoded_length].*);
-    sig.verify(fact, pubkey) catch return error.VerifyFailed;
+pub fn verify_record(sig_bytes: []const u8, fact: []const u8, pubkey: kumara.PublicKey) error{VerifyFailed}!void {
+    return kumara.verify_bytes(fact, sig_bytes, pubkey);
 }
 
 pub fn fold_balance_from_facts(fact: []const u8, balance: *i64) error{InvalidAmount}!void {
@@ -160,25 +159,25 @@ pub fn digest_log(log: []const u8, digest: *[Sha3_256.digest_length]u8) void {
     Sha3_256.hash(log[0..log.len], digest, .{});
 }
 
-pub fn encode_compact_payload(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
+pub fn encode_compact_payload(sig: kumara.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
     if (fact.len > slcl2_max_fact) return error.Overflow;
     const total: u32 = slcl2_payload_header + @as(u32, @intCast(fact.len));
     if (total > buf_len_u32(out)) return error.Overflow;
     const sig_bytes = sig.toBytes();
     tally_copy.copy_disjoint(u8, out[0..sig_bytes.len], std.mem.asBytes(&sig_bytes));
-    std.mem.writeInt(u32, out[Ed25519.Signature.encoded_length..][0..4], @intCast(fact.len), .little);
+    std.mem.writeInt(u32, out[kumara.signature_length..][0..4], @intCast(fact.len), .little);
     tally_copy.copy_disjoint(u8, out[slcl2_payload_header..][0..fact.len], fact);
     return total;
 }
 
 pub fn decode_compact_payload(buf: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidPayload}!struct { fact_len: u32 } {
     if (buf.len < slcl2_payload_header) return error.InvalidPayload;
-    const fact_len = std.mem.readInt(u32, buf[Ed25519.Signature.encoded_length..][0..4], .little);
+    const fact_len = std.mem.readInt(u32, buf[kumara.signature_length..][0..4], .little);
     if (fact_len > slcl2_max_fact) return error.InvalidPayload;
     if (buf.len < slcl2_payload_header + fact_len) return error.InvalidPayload;
-    if (sig_out.len < Ed25519.Signature.encoded_length) return error.InvalidPayload;
+    if (sig_out.len < kumara.signature_length) return error.InvalidPayload;
     if (fact_out.len < fact_len) return error.InvalidPayload;
-    tally_copy.copy_disjoint(u8, sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
+    tally_copy.copy_disjoint(u8, sig_out[0..kumara.signature_length], buf[0..kumara.signature_length]);
     tally_copy.copy_disjoint(u8, fact_out[0..fact_len], buf[slcl2_payload_header..][0..fact_len]);
     return .{ .fact_len = fact_len };
 }

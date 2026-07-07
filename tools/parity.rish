@@ -122,6 +122,11 @@ let tcopy = run ["rishi/bin/rishi" "run" "tools/tally_copy.rish"]
 assert tcopy.ok else "tally copy_disjoint witness failed"
 say "GREEN: Tally copy_disjoint witness passed."
 
+say "witness suite: Kumara identity seam…"
+let kumara = run ["rishi/bin/rishi" "run" "tools/kumara_seed.rish"]
+assert kumara.ok else "kumara identity seam witness failed"
+say "GREEN: Kumara identity seam witness passed."
+
 say "witness suite: Rishi count idiom…"
 let rcount = run ["rishi/bin/rishi" "run" "tools/rish_count_selftest.rish"]
 assert rcount.ok else "Rishi count idiom selftest failed"

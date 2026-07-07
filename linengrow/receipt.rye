@@ -9,14 +9,14 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const Dir = std.Io.Dir;
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const rc = @import("receipt_core.rye");
 const tally_copy = @import("tally_copy.rye");
 
 const slcl1_version = "20260704.020800";
 
 fn run_selftest(io: std.Io) !u8 {
-    const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
+    const kp = kumara.keypair_from_seed(&rc.slcl1_seed);
     const fixture_path = "tools/fixtures/slcl1_fact.bron";
     const cwd = Dir.cwd();
 
@@ -30,7 +30,7 @@ fn run_selftest(io: std.Io) !u8 {
     var canonical: [rc.max_fact_len]u8 = undefined;
     const canonical_len = try rc.write_canonical_fact(fields, &canonical);
 
-    const sig = kp.sign(canonical[0..canonical_len], null) catch unreachable;
+    const sig = kumara.sign(canonical[0..canonical_len], kp, null);
 
     var line: [rc.max_line_len]u8 = undefined;
     const line_len = try rc.format_log_line(sig, canonical[0..canonical_len], &line);
@@ -39,10 +39,10 @@ fn run_selftest(io: std.Io) !u8 {
     tally_copy.copy_disjoint(u8, log[0..line_len], line[0..line_len]);
     const log_len: u32 = line_len;
 
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     var fact_out: [rc.max_fact_len]u8 = undefined;
     const parsed = try rc.parse_log_line(log[0..log_len], &sig_buf, &fact_out);
-    assert(parsed.sig_len == Ed25519.Signature.encoded_length);
+    assert(parsed.sig_len == kumara.signature_length);
     assert(parsed.fact_len == canonical_len);
     assert(std.mem.eql(u8, fact_out[0..parsed.fact_len], canonical[0..canonical_len]));
 
@@ -61,7 +61,7 @@ fn run_selftest(io: std.Io) !u8 {
     tally_copy.copy_disjoint(u8, tampered[0..log_len], log[0..log_len]);
     tampered[log_len - 3] +%= 1;
 
-    var bad_sig: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var bad_sig: [kumara.signature_length]u8 = undefined;
     var bad_fact: [rc.max_fact_len]u8 = undefined;
     const bad_parsed = rc.parse_log_line(tampered[0..log_len], &bad_sig, &bad_fact) catch {
         print("slcl1: tampered log refused at parse — GREEN unwelcome path\n", .{});
