@@ -72,8 +72,9 @@ When these pull against each other, safety wins. When safety and performance are
 
 **Ratchets print, never fail** — migrate on touch in every file you edit:
 
-- `@memcpy(` → `copy_disjoint` (sole intentional site may remain inside `copy_disjoint`)
+- `@memcpy(` application sites → `copy_disjoint` (1 intentional `@memcpy` remains inside `copy_disjoint` only)
 - camelCase `fn` → `snake_case` for all functions in the touched file; grep inbound references
 - functions past 70 lines → split at natural seams; run module witnesses
+- zero `assert(` in core modules → import assert; contract postconditions; see honest exempt list in scan script
 
 Run when touching authored `.rye`: `rishi/bin/rishi run tools/tame_style_check.rish`

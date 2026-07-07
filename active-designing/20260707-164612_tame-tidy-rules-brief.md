@@ -36,7 +36,7 @@ sh tools/fixtures/tame_style_scan.sh advise  # ratchet counts
 
 ## Bans — any hit fails the witness
 
-These string patterns are scanned across authored `.rye` under `mantra/`, `caravan/`, `linengrow/`, `comlink/`, `rishi/src/`, `tally/`, `aurora/`, `pond/`, `brushstroke/` (symlinks skipped).
+These string patterns are scanned across authored `.rye` under `mantra/`, `caravan/`, `linengrow/`, `comlink/`, `rishi/src/`, `tally/`, `aurora/`, `pond/`, `brushstroke/`, `rye/src/` (symlinks skipped).
 
 | Ban | Why |
 |-----|-----|
@@ -59,11 +59,12 @@ Ratchets **never fail** parity. They only count downward as files are touched.
 
 | Ratchet | On touch |
 |---------|----------|
-| `@memcpy(` sites | replace with `copy_disjoint` from `tally/copy.rye`; repoint symlinks if needed |
+| `@memcpy(` application sites | replace with `copy_disjoint` from `tally/copy.rye`; repoint symlinks if needed |
 | camelCase `fn` declarations | rename every camelCase `fn` in the touched file to `snake_case`; grep inbound references |
 | functions past 70 lines | split at natural seams; run targeted witnesses after |
+| zero `assert(` in core modules | import assert; add contract postconditions; exempt list in `tame_style_scan.sh` |
 
-**Standing counts (2026-07-07 evening bench):** `@memcpy` = **1** (intentional inside `copy_disjoint` only); camelCase ≈ **620** after OA-L5 + supervisor cluster; >70-line ledger **empty**.
+**Standing counts (2026-07-07 evening bench):** `@memcpy` application **0** + **1** canonical in `tally/copy.rye`; camelCase **0** in scan dirs; >70-line ledger **empty**; zero-assert non-exempt **0**. **`maybe`** parked RTAC (`counsel/20260707.183412`).
 
 ---
 

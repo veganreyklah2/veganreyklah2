@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (copy_disjoint ratchet arc · parity **191**)
+**Last updated:** 2026-07-07 (camelCase + assert-density ratchets clear; `maybe` parked RTAC)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -307,7 +307,10 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 - [ ] **Mantra CRDT weave (horizon)** — merge-always-succeeds-and-converges semantics from `external-research/yonder/20260617-195312_mantra.md`; SLC-1 seed uses LCS line weave only today.
 
-- [ ] **TAME hygiene (as-you-touch)** — assertion-density backlog, `// invariant:` prefix, and bare `print(...)` via `const print = std.debug.print` in older hosted `.rye`; address when each file is touched, not as a sweep.
+- [x] **camelCase ratchet** — scan dirs **0** through `rye/src` (`20260707.175312`); counsel folder split (`20260707.180712`)
+- [x] **Assert-density ratchet** — zero-assert non-exempt **0**; sync wire + snapshot delivery contract asserts (`20260707.183412`); counsel [`counsel/20260707-183412_claude-counsel-tb-std-prefix-assert-density.md`](../counsel/20260707-183412_claude-counsel-tb-std-prefix-assert-density.md)
+- [ ] **`maybe` (RTAC, Kaeden word)** — TigerBeetle dual of assert; natural home `tally/` beside `copy.rye`; parked per counsel `183412`, not a sweep
+- [ ] **TAME hygiene (as-you-touch)** — bare `print(...)` via `const print = std.debug.print` in older hosted `.rye`; address when each file is touched, not as a sweep.
 
 - [ ] **Content-centric Rishi messenger (horizon)** — smallest IRC-meets-Dojo CLI over sealed, content-named datagrams; from `expanding-prompts/yonder/20260618-212012_content-centric-messaging.md`; Aurora/Comlink carry the networking seeds today.
 
