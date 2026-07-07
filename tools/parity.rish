@@ -257,6 +257,11 @@ let ns_mark = run ["rishi/bin/rishi" "run" "tools/mantra_recall_by_mark.rish"]
 assert ns_mark.ok else "marks-on-read witness failed"
 say "GREEN: marks-on-read witness passed."
 
+say "witness suite: two-way sync (in-process)…"
+let ns_2way = run ["rishi/bin/rishi" "run" "tools/mantra_recall_two_way_sync.rish"]
+assert ns_2way.ok else "two-way sync witness failed"
+say "GREEN: two-way sync witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"
