@@ -46,7 +46,7 @@ fn format_prompt_status(
 ) ![]const u8 {
     if (transcript_full) return bound_status(garden, status_full_text);
     var buf: [status_max_len + 16]u8 = undefined;
-    const prompt = editor.promptSlice();
+    const prompt = editor.prompt_slice();
     const msg = if (prompt.len == 0)
         try std.fmt.bufPrint(&buf, "rishi> ", .{})
     else
@@ -98,7 +98,7 @@ fn feed_line_through_editor(
     line: []const u8,
 ) void {
     for (line) |ch| {
-        editor.pushChar(ch);
+        editor.push_char(ch);
     }
     editor.submit();
 }
@@ -118,7 +118,7 @@ fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.
         _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, line);
         const frame_lines = try compose_frame_lines(garden, &transcript, "");
         defer garden.free(frame_lines);
-        const sig = try surface.contentSignature(garden, frame_lines);
+        const sig = try surface.content_signature(garden, frame_lines);
         if (idx == 0) sig_1 = sig;
         if (idx == 1) sig_2 = sig;
         sig_final = sig;
@@ -137,12 +137,12 @@ fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.
     const final_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(final_lines);
     assert(lines_equal(&golden, final_lines));
-    const sig_golden = try surface.contentSignature(garden, final_lines);
+    const sig_golden = try surface.content_signature(garden, final_lines);
     assert(sig_final == sig_golden);
 
     const pre_full_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(pre_full_lines);
-    const sig_pre_full = try surface.contentSignature(garden, pre_full_lines);
+    const sig_pre_full = try surface.content_signature(garden, pre_full_lines);
 
     var fill: u32 = 0;
     var pad_buf: [fill_say_width + 16]u8 = undefined;
@@ -157,7 +157,7 @@ fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.
 
     const full_lines = try compose_frame_lines(garden, &transcript, status_full_text);
     defer garden.free(full_lines);
-    const sig_full = try surface.contentSignature(garden, full_lines);
+    const sig_full = try surface.content_signature(garden, full_lines);
     assert(sig_full != sig_pre_full);
     assert(std.mem.eql(u8, full_lines[full_lines.len - 1].text, status_full_text));
 
@@ -179,30 +179,30 @@ fn run_rw2_collaboration_witness(garden: std.mem.Allocator, io: std.Io, init: st
 
     const boot = try garden.alloc(surface.SkateLine, 1);
     boot[0] = .{ .text = "rw2 boot" };
-    const sig_boot = try surface.contentSignature(garden, boot);
+    const sig_boot = try surface.content_signature(garden, boot);
 
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let rw2 = 1");
     const frame_one = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_one);
-    const sig_one = try surface.contentSignature(garden, frame_one);
+    const sig_one = try surface.content_signature(garden, frame_one);
     assert(sig_boot != sig_one);
 
-    const sig_one_again = try surface.contentSignature(garden, frame_one);
+    const sig_one_again = try surface.content_signature(garden, frame_one);
     assert(sig_one_again == sig_one);
 
     const empty_transcript = rishi.Transcript{};
     const empty_lines = try compose_frame_lines(garden, &empty_transcript, "");
     defer garden.free(empty_lines);
-    const sig_empty = try surface.contentSignature(garden, empty_lines);
-    const sig_empty_again = try surface.contentSignature(garden, empty_lines);
+    const sig_empty = try surface.content_signature(garden, empty_lines);
+    const sig_empty_again = try surface.content_signature(garden, empty_lines);
     assert(sig_empty == sig_empty_again);
 
-    const sig_before_bad = try surface.contentSignature(garden, frame_one);
+    const sig_before_bad = try surface.content_signature(garden, frame_one);
     const bad_result = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, ":recall 99");
     assert(bad_result == .advance);
     const frame_after_bad = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_after_bad);
-    _ = try surface.contentSignature(garden, frame_after_bad);
+    _ = try surface.content_signature(garden, frame_after_bad);
     assert(sig_before_bad != sig_boot);
 
     var out: [128]u8 = undefined;
@@ -223,25 +223,25 @@ fn run_keyboard_witness(garden: std.mem.Allocator, io: std.Io, init: std.process
     var editor = window_input.LineEditor{};
 
     feed_line_through_editor(&editor, "let kb = 1");
-    const first_line = (try editor.takeSubmittedLine(garden)) orelse return 1;
+    const first_line = (try editor.take_submitted_line(garden)) orelse return 1;
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, first_line);
 
     const mid_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(mid_lines);
-    const sig_mid = try surface.contentSignature(garden, mid_lines);
+    const sig_mid = try surface.content_signature(garden, mid_lines);
     assert(std.mem.indexOf(u8, mid_lines[0].text, "let kb = 1") != null);
 
     var typing_editor = window_input.LineEditor{};
-    typing_editor.pushChar('a');
+    typing_editor.push_char('a');
     const typing_status = try format_prompt_status(garden, &typing_editor, false);
     const typing_lines = try compose_frame_lines(garden, &transcript, typing_status);
     defer garden.free(typing_lines);
-    const sig_typing = try surface.contentSignature(garden, typing_lines);
+    const sig_typing = try surface.content_signature(garden, typing_lines);
     assert(sig_typing != sig_mid);
     assert(std.mem.eql(u8, typing_lines[typing_lines.len - 1].text, "rishi> a"));
 
     feed_line_through_editor(&editor, ":quit");
-    const quit_line = (try editor.takeSubmittedLine(garden)) orelse return 1;
+    const quit_line = (try editor.take_submitted_line(garden)) orelse return 1;
     const signal = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, quit_line);
     assert(signal == .quit);
 
@@ -256,7 +256,7 @@ fn run_keyboard_witness(garden: std.mem.Allocator, io: std.Io, init: std.process
 }
 
 fn poll_stdin_and_display(app: *surface.SurfaceApp, stdin_fd: posix.fd_t) !enum { stdin_ready, display_ready, timeout } {
-    const display_fd = app.displayFd();
+    const display_fd = app.display_fd();
     var fds = [_]posix.pollfd{
         .{ .fd = display_fd, .events = posix.POLL.IN, .revents = 0 },
         .{ .fd = stdin_fd, .events = posix.POLL.IN, .revents = 0 },
@@ -277,7 +277,7 @@ fn redraw_prompt_frame(
     const status = try format_prompt_status(garden, editor, transcript.full);
     const frame_lines = try compose_frame_lines(garden, transcript, status);
     defer garden.free(frame_lines);
-    try app.updateFrame(frame_lines);
+    try app.update_frame(frame_lines);
 }
 
 fn run_submitted_line(
@@ -295,7 +295,7 @@ fn run_submitted_line(
     const status = if (transcript.full) status_full_text else "";
     const frame_lines = try compose_frame_lines(garden, transcript, status);
     defer garden.free(frame_lines);
-    try app.updateFrame(frame_lines);
+    try app.update_frame(frame_lines);
     if (signal == .quit) return signal;
     return signal;
 }
@@ -305,12 +305,12 @@ fn live_boot_app(garden: std.mem.Allocator, io: std.Io) !struct { app: surface.S
     const boot_lines = try garden.alloc(surface.SkateLine, 1);
     boot_lines[0] = .{ .text = "drawn terminal — type in the window; stdin still works for dev" };
 
-    var app = try surface.openSurface(garden, boot_lines);
-    app.enableKeyboard();
-    try app.prepareSurface();
-    app.setWindowTitle("drawn terminal");
-    app.setAppId("drawn-terminal");
-    try app.setFrame(boot_lines);
+    var app = try surface.open_surface(garden, boot_lines);
+    app.enable_keyboard();
+    try app.prepare_surface();
+    app.set_window_title("drawn terminal");
+    app.set_app_id("drawn-terminal");
+    try app.set_frame(boot_lines);
 
     try std.Io.File.stdout().writeStreamingAll(io, "drawn terminal live — keyboard focus in the window; stdin still works.\n");
     return .{ .app = app, .editor = editor };
@@ -327,12 +327,12 @@ fn live_drain_keyboard(
     store_ready: *bool,
     editor: *window_input.LineEditor,
 ) !?u8 {
-    while (app.hasKeyAction()) {
-        const key_action = app.popKeyAction();
+    while (app.has_key_action()) {
+        const key_action = app.pop_key_action();
         if (surface_action_to_editor(key_action)) |editor_action| {
-            editor.applyAction(editor_action);
+            editor.apply_action(editor_action);
             if (editor_action == .submit) {
-                if (try editor.takeSubmittedLine(garden)) |line| {
+                if (try editor.take_submitted_line(garden)) |line| {
                     if (try run_submitted_line(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
                         return 0;
                     }
@@ -386,9 +386,9 @@ fn run_live(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     const reader = &file_reader.interface;
 
     while (true) {
-        if (live.app.shouldClose()) return 0;
+        if (live.app.wants_close()) return 0;
         const ready = try poll_stdin_and_display(&live.app, stdin_fd);
-        try live.app.dispatchOnce(live_dispatch_ms);
+        try live.app.dispatch_once(live_dispatch_ms);
         switch (ready) {
             .display_ready, .timeout => {
                 if (try live_drain_keyboard(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, &live.editor)) |code| {
@@ -416,14 +416,14 @@ fn run_metal_smoke(garden: std.mem.Allocator, io: std.Io, init: std.process.Init
     const frame_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_lines);
 
-    var app = try surface.openSurface(garden, frame_lines);
+    var app = try surface.open_surface(garden, frame_lines);
     defer app.disconnect();
-    try app.prepareSurface();
-    try app.setFrame(frame_lines);
+    try app.prepare_surface();
+    try app.set_frame(frame_lines);
 
     var beat: u32 = 0;
     while (beat < 8) : (beat += 1) {
-        try app.dispatchOnce(50);
+        try app.dispatch_once(50);
     }
 
     try std.Io.File.stdout().writeStreamingAll(io, "drawn terminal metalsmoke: session mirrored on Wayland — GREEN\n");

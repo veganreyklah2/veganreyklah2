@@ -94,18 +94,18 @@ const Frame = struct {
         return .{ .lines = lines };
     }
 
-    fn toGrid(self: Frame, allocator: std.mem.Allocator) !skate.Grid {
+    fn to_grid(self: Frame, allocator: std.mem.Allocator) !skate.Grid {
         var grid = try skate.Grid.init(allocator, grid_cols, grid_rows);
         var i: u32 = 0;
         const line_count: u32 = @intCast(self.lines.len);
         while (i < line_count) : (i += 1) {
-            grid.putLine(i, self.lines[i].text);
+            grid.put_line(i, self.lines[i].text);
         }
         return grid;
     }
 };
 
-fn defaultLines(garden: std.mem.Allocator) ![]Line {
+fn default_lines(garden: std.mem.Allocator) ![]Line {
     const lines = try garden.alloc(Line, 3);
     lines[0] = .{ .text = "Skate grid seed" };
     lines[1] = .{ .text = "monospace cells from values" };
@@ -113,24 +113,24 @@ fn defaultLines(garden: std.mem.Allocator) ![]Line {
     return lines;
 }
 
-fn arbitraryWitnessLines(garden: std.mem.Allocator) ![]Line {
+fn arbitrary_witness_lines(garden: std.mem.Allocator) ![]Line {
     const lines = try garden.alloc(Line, 2);
     lines[0] = .{ .text = "rye" };
     lines[1] = .{ .text = "lotus" };
     return lines;
 }
 
-fn rasterLitForLines(garden: std.mem.Allocator, lines: []const Line) !u32 {
+fn raster_lit_for_lines(garden: std.mem.Allocator, lines: []const Line) !u32 {
     const frame = Frame.init(lines);
-    var grid = try frame.toGrid(garden);
+    var grid = try frame.to_grid(garden);
     const stride: u32 = @as(u32, @intCast(window_width)) * 4;
     const size: u32 = stride * @as(u32, @intCast(window_height));
     const pixels = try garden.alloc(u8, @intCast(size));
     grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
-    return grid.litPixelCount(pixels, stride, window_width, window_height, skate_bg);
+    return grid.lit_pixel_count(pixels, stride, window_width, window_height, skate_bg);
 }
 
-fn bufferSignature(pixels: []const u8) u64 {
+fn buffer_signature(pixels: []const u8) u64 {
     var hash: u64 = 0xcbf29ce484222325;
     for (pixels) |byte| {
         hash ^= byte;
@@ -139,31 +139,31 @@ fn bufferSignature(pixels: []const u8) u64 {
     return hash;
 }
 
-fn signatureFromGrid(garden: std.mem.Allocator, grid: *const skate.Grid) !u64 {
+fn signature_from_grid(garden: std.mem.Allocator, grid: *const skate.Grid) !u64 {
     const stride: u32 = @as(u32, @intCast(window_width)) * 4;
     const size: u32 = stride * @as(u32, @intCast(window_height));
     const pixels = try garden.alloc(u8, @intCast(size));
     grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
-    return bufferSignature(pixels);
+    return buffer_signature(pixels);
 }
 
-fn signatureFromLines(garden: std.mem.Allocator, lines: []const Line) !u64 {
-    var grid = try Frame.init(lines).toGrid(garden);
-    return signatureFromGrid(garden, &grid);
+fn signature_from_lines(garden: std.mem.Allocator, lines: []const Line) !u64 {
+    var grid = try Frame.init(lines).to_grid(garden);
+    return signature_from_grid(garden, &grid);
 }
 
-pub fn contentSignature(garden: std.mem.Allocator, lines: []const Line) !u64 {
-    return signatureFromLines(garden, lines);
+pub fn content_signature(garden: std.mem.Allocator, lines: []const Line) !u64 {
+    return signature_from_lines(garden, lines);
 }
 
-fn redrawLinesA(garden: std.mem.Allocator) ![]Line {
+fn redraw_lines_a(garden: std.mem.Allocator) ![]Line {
     const lines = try garden.alloc(Line, 2);
     lines[0] = .{ .text = "frame A" };
     lines[1] = .{ .text = "redraw seed" };
     return lines;
 }
 
-fn redrawLinesB(garden: std.mem.Allocator) ![]Line {
+fn redraw_lines_b(garden: std.mem.Allocator) ![]Line {
     const lines = try garden.alloc(Line, 2);
     lines[0] = .{ .text = "frame B" };
     lines[1] = .{ .text = "updated" };
@@ -195,47 +195,47 @@ const App = struct {
     grid: skate.Grid,
     garden: std.mem.Allocator,
 
-    fn enqueueKeyAction(self: *App, action: KeyAction) void {
+    fn enqueue_key_action(self: *App, action: KeyAction) void {
         const next_tail = (self.key_actions_tail + 1) % max_key_actions;
         if (next_tail == self.key_actions_head) return;
         self.key_actions[self.key_actions_tail] = action;
         self.key_actions_tail = next_tail;
     }
 
-    fn dequeueKeyAction(self: *App) KeyAction {
+    fn dequeue_key_action(self: *App) KeyAction {
         if (self.key_actions_head == self.key_actions_tail) return .none;
         const action = self.key_actions[self.key_actions_head];
         self.key_actions_head = (self.key_actions_head + 1) % max_key_actions;
         return action;
     }
 
-    fn clearKeymap(self: *App) void {
+    fn clear_keymap(self: *App) void {
         if (self.xkb_state) |state| c.xkb_state_unref(state);
         if (self.xkb_keymap) |keymap| c.xkb_keymap_unref(keymap);
         self.xkb_state = null;
         self.xkb_keymap = null;
     }
 
-    fn handleKeyPress(self: *App, keycode: u32) void {
+    fn handle_key_press(self: *App, keycode: u32) void {
         const xkb_state = self.xkb_state orelse return;
         const kc: c.xkb_keycode_t = @intCast(keycode + 8);
         const sym = c.xkb_state_key_get_one_sym(xkb_state, kc);
         if (sym == c.XKB_KEY_Return or sym == c.XKB_KEY_KP_Enter) {
-            self.enqueueKeyAction(.submit);
+            self.enqueue_key_action(.submit);
             return;
         }
         if (sym == c.XKB_KEY_BackSpace) {
-            self.enqueueKeyAction(.backspace);
+            self.enqueue_key_action(.backspace);
             return;
         }
         var utf8: [8]u8 = undefined;
         const n = c.xkb_state_key_get_utf8(xkb_state, kc, &utf8, utf8.len);
         if (n == 1) {
-            self.enqueueKeyAction(.{ .char_ = utf8[0] });
+            self.enqueue_key_action(.{ .char_ = utf8[0] });
         }
     }
 
-    fn registryGlobal(
+    fn registry_global(
         data: ?*anyopaque,
         registry: ?*c.wl_registry,
         id: u32,
@@ -255,7 +255,7 @@ const App = struct {
         }
     }
 
-    fn registryGlobalRemove(
+    fn registry_global_remove(
         data: ?*anyopaque,
         registry: ?*c.wl_registry,
         id: u32,
@@ -265,7 +265,7 @@ const App = struct {
         _ = id;
     }
 
-    fn xdgWmBasePing(
+    fn xdg_wm_base_ping(
         data: ?*anyopaque,
         wm_base: ?*c.xdg_wm_base,
         serial: u32,
@@ -274,7 +274,7 @@ const App = struct {
         c.xdg_wm_base_pong(wm_base, serial);
     }
 
-    fn xdgSurfaceConfigure(
+    fn xdg_surface_configure(
         data: ?*anyopaque,
         xdg_surface: ?*c.xdg_surface,
         serial: u32,
@@ -284,7 +284,7 @@ const App = struct {
         app.configured = true;
     }
 
-    fn xdgToplevelConfigure(
+    fn xdg_toplevel_configure(
         data: ?*anyopaque,
         xdg_toplevel: ?*c.xdg_toplevel,
         width: i32,
@@ -298,13 +298,13 @@ const App = struct {
         _ = states;
     }
 
-    fn xdgToplevelClose(data: ?*anyopaque, xdg_toplevel: ?*c.xdg_toplevel) callconv(.c) void {
+    fn xdg_toplevel_close(data: ?*anyopaque, xdg_toplevel: ?*c.xdg_toplevel) callconv(.c) void {
         _ = xdg_toplevel;
         const app: *App = @ptrCast(@alignCast(data));
         app.should_close = true;
     }
 
-    fn frameDone(
+    fn on_frame_done(
         data: ?*anyopaque,
         callback: ?*c.wl_callback,
         callback_data: u32,
@@ -315,7 +315,7 @@ const App = struct {
         c.wl_callback_destroy(callback);
     }
 
-    fn seatCapabilities(
+    fn seat_capabilities(
         data: ?*anyopaque,
         wl_seat: ?*c.wl_seat,
         capabilities: u32,
@@ -327,23 +327,23 @@ const App = struct {
             app.keyboard = c.wl_seat_get_keyboard(wl_seat);
             if (app.keyboard != null) {
                 const keyboard_listener = c.wl_keyboard_listener{
-                    .keymap = keyboardKeymap,
-                    .enter = keyboardEnter,
-                    .leave = keyboardLeave,
-                    .key = keyboardKey,
-                    .modifiers = keyboardModifiers,
-                    .repeat_info = keyboardRepeatInfo,
+                    .keymap = keyboard_keymap,
+                    .enter = keyboard_enter,
+                    .leave = keyboard_leave,
+                    .key = keyboard_key,
+                    .modifiers = keyboard_modifiers,
+                    .repeat_info = keyboard_repeat_info,
                 };
                 _ = c.wl_keyboard_add_listener(app.keyboard, &keyboard_listener, app);
             }
         } else if (!has_keyboard and app.keyboard != null) {
             c.wl_keyboard_destroy(app.keyboard);
             app.keyboard = null;
-            app.clearKeymap();
+            app.clear_keymap();
         }
     }
 
-    fn seatName(
+    fn seat_name(
         data: ?*anyopaque,
         wl_seat: ?*c.wl_seat,
         name: [*c]const u8,
@@ -353,7 +353,7 @@ const App = struct {
         _ = name;
     }
 
-    fn keyboardKeymap(
+    fn keyboard_keymap(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         format: u32,
@@ -377,7 +377,7 @@ const App = struct {
         ) catch return;
         defer posix.munmap(mapped);
 
-        app.clearKeymap();
+        app.clear_keymap();
         if (app.xkb_ctx == null) {
             app.xkb_ctx = c.xkb_context_new(c.XKB_CONTEXT_NO_FLAGS);
         }
@@ -392,7 +392,7 @@ const App = struct {
         app.xkb_state = c.xkb_state_new(app.xkb_keymap);
     }
 
-    fn keyboardEnter(
+    fn keyboard_enter(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         serial: u32,
@@ -406,7 +406,7 @@ const App = struct {
         app.keyboard_focused = surface == app.surface;
     }
 
-    fn keyboardLeave(
+    fn keyboard_leave(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         serial: u32,
@@ -419,7 +419,7 @@ const App = struct {
         app.keyboard_focused = false;
     }
 
-    fn keyboardKey(
+    fn keyboard_key(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         serial: u32,
@@ -433,10 +433,10 @@ const App = struct {
         const app: *App = @ptrCast(@alignCast(data));
         if (!app.keyboard_focused) return;
         if (state != c.WL_KEYBOARD_KEY_STATE_PRESSED) return;
-        app.handleKeyPress(key);
+        app.handle_key_press(key);
     }
 
-    fn keyboardModifiers(
+    fn keyboard_modifiers(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         serial: u32,
@@ -460,7 +460,7 @@ const App = struct {
         );
     }
 
-    fn keyboardRepeatInfo(
+    fn keyboard_repeat_info(
         data: ?*anyopaque,
         wl_keyboard: ?*c.wl_keyboard,
         rate: i32,
@@ -472,13 +472,13 @@ const App = struct {
         _ = delay;
     }
 
-    fn bindGlobals(self: *App) !void {
+    fn bind_globals(self: *App) !void {
         const registry = c.wl_display_get_registry(self.display.handle);
         if (registry == null) return error.NoRegistry;
 
         const listener = c.wl_registry_listener{
-            .global = registryGlobal,
-            .global_remove = registryGlobalRemove,
+            .global = registry_global,
+            .global_remove = registry_global_remove,
         };
         _ = c.wl_registry_add_listener(registry, &listener, self);
         try self.display.roundtrip();
@@ -488,15 +488,15 @@ const App = struct {
 
         if (self.keyboard_enabled and self.seat != null) {
             const seat_listener = c.wl_seat_listener{
-                .capabilities = seatCapabilities,
-                .name = seatName,
+                .capabilities = seat_capabilities,
+                .name = seat_name,
             };
             _ = c.wl_seat_add_listener(self.seat, &seat_listener, self);
             try self.display.roundtrip();
         }
     }
 
-    fn createSurface(self: *App) !void {
+    fn create_surface(self: *App) !void {
         self.surface = c.wl_compositor_create_surface(self.compositor);
         if (self.surface == null) return error.NoSurface;
 
@@ -504,7 +504,7 @@ const App = struct {
         if (self.xdg_surface == null) return error.NoXdgSurface;
 
         const xdg_surface_listener = c.xdg_surface_listener{
-            .configure = xdgSurfaceConfigure,
+            .configure = xdg_surface_configure,
         };
         _ = c.xdg_surface_add_listener(self.xdg_surface, &xdg_surface_listener, self);
 
@@ -516,13 +516,13 @@ const App = struct {
         _ = c.xdg_toplevel_set_min_size(self.xdg_toplevel, window_width, window_height);
 
         const toplevel_listener = c.xdg_toplevel_listener{
-            .configure = xdgToplevelConfigure,
-            .close = xdgToplevelClose,
+            .configure = xdg_toplevel_configure,
+            .close = xdg_toplevel_close,
         };
         _ = c.xdg_toplevel_add_listener(self.xdg_toplevel, &toplevel_listener, self);
 
         const wm_listener = c.xdg_wm_base_listener{
-            .ping = xdgWmBasePing,
+            .ping = xdg_wm_base_ping,
         };
         _ = c.xdg_wm_base_add_listener(self.wm_base, &wm_listener, self);
 
@@ -530,11 +530,11 @@ const App = struct {
         try self.display.flush();
     }
 
-    fn fillBuffer(self: *App, pixels: []u8, stride: u32) void {
+    fn fill_buffer(self: *App, pixels: []u8, stride: u32) void {
         self.grid.rasterize(pixels, stride, window_width, window_height, skate_bg, skate_fg, pixel_scale);
     }
 
-    fn commitFrame(self: *App) !void {
+    fn commit_frame(self: *App) !void {
         const stride: i32 = window_width * 4;
         const size: u32 = @intCast(stride * window_height);
 
@@ -552,7 +552,7 @@ const App = struct {
         );
         defer posix.munmap(mapped);
 
-        self.fillBuffer(mapped, @intCast(stride));
+        self.fill_buffer(mapped, @intCast(stride));
 
         const pool = c.wl_shm_create_pool(self.shm, fd, @intCast(size));
         if (pool == null) return error.NoShmPool;
@@ -574,7 +574,7 @@ const App = struct {
         const callback = c.wl_surface_frame(self.surface);
         if (callback == null) return error.NoFrameCallback;
         const frame_listener = c.wl_callback_listener{
-            .done = frameDone,
+            .done = on_frame_done,
         };
         _ = c.wl_callback_add_listener(callback, &frame_listener, self);
 
@@ -582,15 +582,15 @@ const App = struct {
         try self.display.flush();
     }
 
-    pub fn dispatchOnce(self: *App, timeout_ms: i32) !void {
+    pub fn dispatch_once(self: *App, timeout_ms: i32) !void {
         _ = c.wl_display_flush(self.display.handle);
         if (c.wl_display_prepare_read(self.display.handle) != 0) {
             if (c.wl_display_dispatch_pending(self.display.handle) < 0) return error.WaylandDispatchFailed;
             return;
         }
-        const display_fd = c.wl_display_get_fd(self.display.handle);
+        const wl_display_fd = c.wl_display_get_fd(self.display.handle);
         var poll_fds = [_]std.posix.pollfd{.{
-            .fd = display_fd,
+            .fd = wl_display_fd,
             .events = std.posix.POLL.IN,
             .revents = 0,
         }};
@@ -603,7 +603,7 @@ const App = struct {
         }
     }
 
-    fn waitForFrame(self: *App) !void {
+    fn wait_for_frame(self: *App) !void {
         var waits: u32 = 0;
         while (!self.frame_done and waits < 100) : (waits += 1) {
             if (c.wl_display_dispatch(self.display.handle) < 0) return error.WaylandDispatchFailed;
@@ -611,79 +611,79 @@ const App = struct {
         assert(self.frame_done);
     }
 
-    fn presentCurrentFrame(self: *App, wait: bool) !void {
+    fn present_current_frame(self: *App, wait: bool) !void {
         self.frame_done = false;
-        try self.commitFrame();
-        if (wait) try self.waitForFrame();
+        try self.commit_frame();
+        if (wait) try self.wait_for_frame();
     }
 
-    pub fn setFrame(self: *App, new_lines: []const Line) !void {
+    pub fn set_frame(self: *App, new_lines: []const Line) !void {
         self.frame = Frame.init(new_lines);
-        self.grid = try self.frame.toGrid(self.garden);
-        try self.presentCurrentFrame(true);
+        self.grid = try self.frame.to_grid(self.garden);
+        try self.present_current_frame(true);
     }
 
-    pub fn updateFrame(self: *App, new_lines: []const Line) !void {
+    pub fn update_frame(self: *App, new_lines: []const Line) !void {
         self.frame = Frame.init(new_lines);
-        self.grid = try self.frame.toGrid(self.garden);
-        try self.presentCurrentFrame(false);
+        self.grid = try self.frame.to_grid(self.garden);
+        try self.present_current_frame(false);
     }
 
-    pub fn prepareSurface(self: *App) !void {
-        try self.bindGlobals();
-        try self.createSurface();
+    pub fn prepare_surface(self: *App) !void {
+        try self.bind_globals();
+        try self.create_surface();
         try self.display.roundtrip();
 
         var configure_waits: u32 = 0;
         while (!self.configured and configure_waits < 100) : (configure_waits += 1) {
-            try self.dispatchOnce(50);
+            try self.dispatch_once(50);
         }
         assert(self.configured);
     }
 
     pub fn disconnect(self: *App) void {
-        self.releaseKeyboard();
+        self.release_keyboard();
         self.display.disconnect();
     }
 
-    pub fn displayFd(self: *const App) posix.fd_t {
+    pub fn display_fd(self: *const App) posix.fd_t {
         return c.wl_display_get_fd(self.display.handle);
     }
 
-    pub fn enableKeyboard(self: *App) void {
+    pub fn enable_keyboard(self: *App) void {
         self.keyboard_enabled = true;
     }
 
-    pub fn keyboardReady(self: *const App) bool {
+    pub fn keyboard_ready(self: *const App) bool {
         return self.xkb_state != null;
     }
 
-    pub fn hasKeyAction(self: *const App) bool {
+    pub fn has_key_action(self: *const App) bool {
         return self.key_actions_head != self.key_actions_tail;
     }
 
-    pub fn popKeyAction(self: *App) KeyAction {
-        return self.dequeueKeyAction();
+    pub fn pop_key_action(self: *App) KeyAction {
+        return self.dequeue_key_action();
     }
 
-    pub fn setWindowTitle(self: *App, title: [*:0]const u8) void {
+    pub fn set_window_title(self: *App, title: [*:0]const u8) void {
         if (self.xdg_toplevel) |toplevel| {
             _ = c.xdg_toplevel_set_title(toplevel, title);
         }
     }
 
-    pub fn setAppId(self: *App, app_id: [*:0]const u8) void {
+    pub fn set_app_id(self: *App, app_id: [*:0]const u8) void {
         if (self.xdg_toplevel) |toplevel| {
             _ = c.xdg_toplevel_set_app_id(toplevel, app_id);
         }
     }
 
-    pub fn shouldClose(self: *const App) bool {
+    pub fn wants_close(self: *const App) bool {
         return self.should_close;
     }
 
-    pub fn releaseKeyboard(self: *App) void {
-        self.clearKeymap();
+    pub fn release_keyboard(self: *App) void {
+        self.clear_keymap();
         if (self.xkb_ctx) |ctx| {
             c.xkb_context_unref(ctx);
             self.xkb_ctx = null;
@@ -695,36 +695,36 @@ const App = struct {
     }
 
     fn run(self: *App) !void {
-        try self.prepareSurface();
-        try self.presentCurrentFrame(true);
+        try self.prepare_surface();
+        try self.present_current_frame(true);
     }
 
-    fn runRedraw(self: *App, lines_b: []const Line) !void {
-        try self.prepareSurface();
-        try self.presentCurrentFrame(true);
+    fn run_redraw(self: *App, lines_b: []const Line) !void {
+        try self.prepare_surface();
+        try self.present_current_frame(true);
         var beat: u32 = 0;
         while (beat < 8) : (beat += 1) {
-            try self.dispatchOnce(50);
+            try self.dispatch_once(50);
         }
-        try self.setFrame(lines_b);
+        try self.set_frame(lines_b);
     }
 };
 
-fn runRedrawWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
-    const lines_a = try defaultLines(garden);
-    const lines_b = try arbitraryWitnessLines(garden);
+fn run_redraw_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const lines_a = try default_lines(garden);
+    const lines_b = try arbitrary_witness_lines(garden);
 
-    var grid = try Frame.init(lines_a).toGrid(garden);
-    const sig_a = try signatureFromGrid(garden, &grid);
+    var grid = try Frame.init(lines_a).to_grid(garden);
+    const sig_a = try signature_from_grid(garden, &grid);
 
-    grid = try Frame.init(lines_b).toGrid(garden);
-    const sig_b = try signatureFromGrid(garden, &grid);
-    const sig_fresh_b = try signatureFromLines(garden, lines_b);
+    grid = try Frame.init(lines_b).to_grid(garden);
+    const sig_b = try signature_from_grid(garden, &grid);
+    const sig_fresh_b = try signature_from_lines(garden, lines_b);
     assert(sig_b == sig_fresh_b);
     assert(sig_a != sig_b);
 
-    grid = try Frame.init(lines_a).toGrid(garden);
-    const sig_a2 = try signatureFromGrid(garden, &grid);
+    grid = try Frame.init(lines_a).to_grid(garden);
+    const sig_a2 = try signature_from_grid(garden, &grid);
     assert(sig_a2 == sig_a);
 
     var buf: [128]u8 = undefined;
@@ -737,7 +737,7 @@ fn runRedrawWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
-fn runBoundsWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
+fn run_bounds_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const over = max_lines + 1;
     const lines = try garden.alloc(Line, over);
     var i: u32 = 0;
@@ -757,19 +757,19 @@ fn runBoundsWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 1;
 }
 
-fn runRedrawMetal(garden: std.mem.Allocator, io: std.Io) !u8 {
-    const lines_a = try redrawLinesA(garden);
-    const lines_b = try redrawLinesB(garden);
-    var app = try presentValue(garden, lines_a);
+fn run_redraw_metal(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const lines_a = try redraw_lines_a(garden);
+    const lines_b = try redraw_lines_b(garden);
+    var app = try present_value(garden, lines_a);
     defer app.display.disconnect();
-    try app.runRedraw(lines_b);
+    try app.run_redraw(lines_b);
     try std.Io.File.stdout().writeStreamingAll(io, "brushstroke wayland seed: redraw A to B\n");
     return 0;
 }
 
-fn presentValue(garden: std.mem.Allocator, lines: []const Line) !App {
+fn present_value(garden: std.mem.Allocator, lines: []const Line) !App {
     const frame = Frame.init(lines);
-    const grid = try frame.toGrid(garden);
+    const grid = try frame.to_grid(garden);
     return App{
         .display = try Display.connect(),
         .frame = frame,
@@ -780,17 +780,17 @@ fn presentValue(garden: std.mem.Allocator, lines: []const Line) !App {
 
 pub const SurfaceApp = App;
 
-pub fn openSurface(garden: std.mem.Allocator, lines: []const Line) !App {
-    return presentValue(garden, lines);
+pub fn open_surface(garden: std.mem.Allocator, lines: []const Line) !App {
+    return present_value(garden, lines);
 }
 
-fn runSelftest(garden: std.mem.Allocator, io: std.Io) !u8 {
-    const lines = try defaultLines(garden);
-    const grid = try Frame.init(lines).toGrid(garden);
+fn run_selftest(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const lines = try default_lines(garden);
+    const grid = try Frame.init(lines).to_grid(garden);
     assert(grid.cols == grid_cols);
     assert(grid.rows == grid_rows);
 
-    const lit = try rasterLitForLines(garden, lines);
+    const lit = try raster_lit_for_lines(garden, lines);
     assert(lit > 200);
 
     var buf: [64]u8 = undefined;
@@ -799,11 +799,11 @@ fn runSelftest(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
-fn runArbitraryWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
-    const seed_lines = try defaultLines(garden);
-    const distinct_lines = try arbitraryWitnessLines(garden);
-    const seed_lit = try rasterLitForLines(garden, seed_lines);
-    const distinct_lit = try rasterLitForLines(garden, distinct_lines);
+fn run_arbitrary_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const seed_lines = try default_lines(garden);
+    const distinct_lines = try arbitrary_witness_lines(garden);
+    const seed_lit = try raster_lit_for_lines(garden, seed_lines);
+    const distinct_lit = try raster_lit_for_lines(garden, distinct_lines);
     assert(distinct_lit > 100);
     assert(distinct_lit != seed_lit);
 
@@ -822,23 +822,23 @@ pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
-        return runSelftest(garden, io);
+        return run_selftest(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "arbitrary")) {
-        return runArbitraryWitness(garden, io);
+        return run_arbitrary_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "redrawtest")) {
-        return runRedrawWitness(garden, io);
+        return run_redraw_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "boundstest")) {
-        return runBoundsWitness(garden, io);
+        return run_bounds_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "redraw")) {
-        return runRedrawMetal(garden, io);
+        return run_redraw_metal(garden, io);
     }
 
-    const lines = try defaultLines(garden);
-    var app = try presentValue(garden, lines);
+    const lines = try default_lines(garden);
+    var app = try present_value(garden, lines);
     defer app.display.disconnect();
 
     assert(app.frame.lines.len == 3);

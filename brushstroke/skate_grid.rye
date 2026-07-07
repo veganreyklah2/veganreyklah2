@@ -13,7 +13,7 @@ const assert = std.debug.assert;
 const font8x8 = @import("font8x8_data.rye");
 const tally_copy = @import("tally_copy.rye");
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -42,16 +42,16 @@ pub const Grid = struct {
         return .{ .cols = cols, .rows = rows, .cells = cells };
     }
 
-    pub fn putLine(self: *Grid, row: u32, text: []const u8) void {
+    pub fn put_line(self: *Grid, row: u32, text: []const u8) void {
         if (row >= self.rows) return;
         const base: usize = @intCast(row * self.cols);
         assert(base < self.cells.len);
-        const n: u32 = @min(bufLenU32(text), self.cols);
+        const n: u32 = @min(buf_len_u32(text), self.cols);
         const n_usize: usize = @intCast(n);
         tally_copy.copy_disjoint(u8, self.cells[base..][0..n_usize], text[0..n_usize]);
     }
 
-    pub fn litPixelCount(_: Grid, pixels: []const u8, stride: u32, width: i32, height: i32, bg: Color) u32 {
+    pub fn lit_pixel_count(_: Grid, pixels: []const u8, stride: u32, width: i32, height: i32, bg: Color) u32 {
         assert(width > 0);
         assert(height > 0);
         const width_u: u32 = @intCast(width);
@@ -114,7 +114,7 @@ pub const Grid = struct {
             var col: u32 = 0;
             while (col < self.cols) : (col += 1) {
                 const ch = self.cells[@as(usize, @intCast(grid_row * self.cols + col))];
-                drawGlyph(
+                draw_glyph(
                     pixels,
                     stride,
                     width,
@@ -130,7 +130,7 @@ pub const Grid = struct {
     }
 };
 
-fn drawGlyph(
+fn draw_glyph(
     pixels: []u8,
     stride: u32,
     width: i32,

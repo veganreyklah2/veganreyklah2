@@ -16,15 +16,15 @@ pub fn main() void {
     const fg = skate.Color{ .r = 0xe0, .g = 0xe0, .b = 0xe0 };
 
     var grid = skate.Grid.init(allocator, cols, rows) catch unreachable;
-    grid.putLine(0, "Skate grid test");
-    grid.putLine(1, "rye modules only");
+    grid.put_line(0, "Skate grid test");
+    grid.put_line(1, "rye modules only");
 
     const stride: u32 = @as(u32, @intCast(width)) * 4;
     const height_u: u32 = @intCast(height);
     const pixels = allocator.alloc(u8, @intCast(stride * height_u)) catch unreachable;
     grid.rasterize(pixels, stride, width, height, bg, fg, 1);
 
-    const lit = grid.litPixelCount(pixels, stride, width, height, bg);
+    const lit = grid.lit_pixel_count(pixels, stride, width, height, bg);
     assert(lit > 200);
 
     std.debug.print("rye: skate grid raster assertions confirmed ({d} lit pixels).\n", .{lit});

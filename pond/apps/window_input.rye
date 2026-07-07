@@ -24,7 +24,7 @@ pub const LineEditor = struct {
         self.pending_submit = false;
     }
 
-    pub fn pushChar(self: *LineEditor, ch: u8) void {
+    pub fn push_char(self: *LineEditor, ch: u8) void {
         if (self.len >= max_line_len) return;
         self.buf[self.len] = ch;
         self.len += 1;
@@ -38,19 +38,19 @@ pub const LineEditor = struct {
         self.pending_submit = true;
     }
 
-    pub fn promptSlice(self: *const LineEditor) []const u8 {
+    pub fn prompt_slice(self: *const LineEditor) []const u8 {
         return self.buf[0..self.len];
     }
 
-    pub fn applyAction(self: *LineEditor, action: Action) void {
+    pub fn apply_action(self: *LineEditor, action: Action) void {
         switch (action) {
-            .char_ => |ch| self.pushChar(ch),
+            .char_ => |ch| self.push_char(ch),
             .backspace => self.backspace(),
             .submit => self.submit(),
         }
     }
 
-    pub fn takeSubmittedLine(self: *LineEditor, garden: std.mem.Allocator) !?[]const u8 {
+    pub fn take_submitted_line(self: *LineEditor, garden: std.mem.Allocator) !?[]const u8 {
         if (!self.pending_submit) return null;
         self.pending_submit = false;
         const raw = self.buf[0..self.len];

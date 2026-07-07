@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.174440 | [wayland_seed snake_case](20260707-174440_wayland-seed-snake-case.md) | camelCase 142→86; SLC-2a + RW-2 surface witnesses GREEN |
+| 20260707.174217 | [Commit foundation bundle + window_input/skate_grid kg](20260707-174217_commit-foundation-pond-brushstroke-kg.md) | `b0bba53` on four remotes; camelCase 150→142 |
 | 20260707.173844 | [tally + aurora snake_case](20260707-173844_tally-aurora-snake-case.md) | camelCase 178→150; foundation_seeds + aurora QEMU GREEN |
 | 20260707.173634 | [Commit caravan bundle + virtio_net snake_case](20260707-173634_commit-caravan-virtio-net-snake-case.md) | `4eb515b` on four remotes; camelCase 206→178 |
 | 20260707.173432 | [caravan supervisor cluster snake_case](20260707-173432_caravan-supervisor-snake-case.md) | camelCase 234→206; caravan seeds/capabilities/restart GREEN |
