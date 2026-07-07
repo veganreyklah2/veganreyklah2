@@ -36,13 +36,13 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{
         .sin_port = std.mem.nativeToBig(u16, port),
     };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -50,18 +50,18 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn sendWire(port: u16, wire: []const u8) !void {
-    const fd = try openSocket();
+fn send_wire(port: u16, wire: []const u8) !void {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    const dest = localhostAddr(port);
+    const dest = localhost_addr(port);
     const sent = c.sendto(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recvWire(port: u16, wire: []u8) !u64 {
-    const fd = try openSocket();
+fn recv_wire(port: u16, wire: []u8) !u64 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    var bind_addr = localhostAddr(port);
+    var bind_addr = localhost_addr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
@@ -70,15 +70,15 @@ fn recvWire(port: u16, wire: []u8) !u64 {
     return @intCast(n);
 }
 
-fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
+fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
     return try wf.sealMessage(payload, wire);
 }
 
-fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
+fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.openDatagram(wire, opened);
 }
 
-fn hexOfKey(pk: Ed25519.PublicKey, out: *[64]u8) void {
+fn hex_of_key(pk: Ed25519.PublicKey, out: *[64]u8) void {
     const bytes = pk.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -86,7 +86,7 @@ fn hexOfKey(pk: Ed25519.PublicKey, out: *[64]u8) void {
     }
 }
 
-fn signEscrow(
+fn sign_escrow(
     poster_kp: Ed25519.KeyPair,
     role: oa.EscrowRole,
     from_hex: []const u8,
@@ -107,7 +107,7 @@ fn signEscrow(
     return .{ .sig = sig, .canonical = canonical, .canonical_len = clen };
 }
 
-fn verifyEscrowPayload(
+fn verify_escrow_payload(
     payload: []const u8,
     poster_pk: Ed25519.PublicKey,
     role: oa.EscrowRole,
@@ -143,7 +143,7 @@ fn verifyEscrowPayload(
     return decoded.fact_len;
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
@@ -152,29 +152,29 @@ fn runSelftest(_: std.Io) !u8 {
     var poster_hex: [64]u8 = undefined;
     var escrow_hex: [64]u8 = undefined;
     var applicant_hex: [64]u8 = undefined;
-    hexOfKey(poster_pk, &poster_hex);
-    hexOfKey(escrow_kp.public_key, &escrow_hex);
-    hexOfKey(applicant_kp.public_key, &applicant_hex);
+    hex_of_key(poster_pk, &poster_hex);
+    hex_of_key(escrow_kp.public_key, &escrow_hex);
+    hex_of_key(applicant_kp.public_key, &applicant_hex);
 
-    const signed_hold = try signEscrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
+    const signed_hold = try sign_escrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
     var hold_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const hold_payload_len = try oa.encodeCompactPayload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
     var hold_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const hold_wire_len = try sealPayload(hold_payload[0..hold_payload_len], &hold_wire);
+    const hold_wire_len = try seal_payload(hold_payload[0..hold_payload_len], &hold_wire);
     var hold_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const hold_opened_len = try openWire(hold_wire[0..@intCast(hold_wire_len)], &hold_opened);
+    const hold_opened_len = try open_wire(hold_wire[0..@intCast(hold_wire_len)], &hold_opened);
     var hold_fact: [oa.max_oa_fact]u8 = undefined;
-    _ = try verifyEscrowPayload(hold_opened[0..@intCast(hold_opened_len)], poster_pk, .hold, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &hold_fact);
+    _ = try verify_escrow_payload(hold_opened[0..@intCast(hold_opened_len)], poster_pk, .hold, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &hold_fact);
 
-    const signed_release = try signEscrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
+    const signed_release = try sign_escrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
     var release_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const release_payload_len = try oa.encodeCompactPayload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
     var release_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const release_wire_len = try sealPayload(release_payload[0..release_payload_len], &release_wire);
+    const release_wire_len = try seal_payload(release_payload[0..release_payload_len], &release_wire);
     var release_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const release_opened_len = try openWire(release_wire[0..@intCast(release_wire_len)], &release_opened);
+    const release_opened_len = try open_wire(release_wire[0..@intCast(release_wire_len)], &release_opened);
     var release_fact: [oa.max_oa_fact]u8 = undefined;
-    _ = try verifyEscrowPayload(release_opened[0..@intCast(release_opened_len)], poster_pk, .release, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &release_fact);
+    _ = try verify_escrow_payload(release_opened[0..@intCast(release_opened_len)], poster_pk, .release, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &release_fact);
 
     print("oal3l2: selftest GREEN — seal, open, verify hold and release in one process\n", .{});
     print("oal3l2: version {s} wire_format {s}\n", .{ oa3l2_version, wf.wire_format_version });
@@ -182,7 +182,7 @@ fn runSelftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runApplicant(_: std.Io) !u8 {
+fn run_applicant(_: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
@@ -191,29 +191,29 @@ fn runApplicant(_: std.Io) !u8 {
     var poster_hex: [64]u8 = undefined;
     var escrow_hex: [64]u8 = undefined;
     var applicant_hex: [64]u8 = undefined;
-    hexOfKey(poster_pk, &poster_hex);
-    hexOfKey(escrow_kp.public_key, &escrow_hex);
-    hexOfKey(applicant_kp.public_key, &applicant_hex);
+    hex_of_key(poster_pk, &poster_hex);
+    hex_of_key(escrow_kp.public_key, &escrow_hex);
+    hex_of_key(applicant_kp.public_key, &applicant_hex);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const hold_len = try recvWire(hold_port, &wire);
+    const hold_len = try recv_wire(hold_port, &wire);
     if (hold_len < wf.off_cipher or hold_len > wf.wire_capacity) return error.RecvFailed;
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const hold_opened_len = try openWire(wire[0..@intCast(hold_len)], &opened);
+    const hold_opened_len = try open_wire(wire[0..@intCast(hold_len)], &opened);
     var hold_fact: [oa.max_oa_fact]u8 = undefined;
-    _ = try verifyEscrowPayload(opened[0..@intCast(hold_opened_len)], poster_pk, .hold, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &hold_fact);
+    _ = try verify_escrow_payload(opened[0..@intCast(hold_opened_len)], poster_pk, .hold, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &hold_fact);
 
-    const release_len = try recvWire(release_port, &wire);
+    const release_len = try recv_wire(release_port, &wire);
     if (release_len < wf.off_cipher or release_len > wf.wire_capacity) return error.RecvFailed;
-    const release_opened_len = try openWire(wire[0..@intCast(release_len)], &opened);
+    const release_opened_len = try open_wire(wire[0..@intCast(release_len)], &opened);
     var release_fact: [oa.max_oa_fact]u8 = undefined;
-    _ = try verifyEscrowPayload(opened[0..@intCast(release_opened_len)], poster_pk, .release, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &release_fact);
+    _ = try verify_escrow_payload(opened[0..@intCast(release_opened_len)], poster_pk, .release, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &release_fact);
 
     print("oal3l2: applicant opened hold and release — carriage GREEN\n", .{});
     return 0;
 }
 
-fn runPoster(_: std.Io) !u8 {
+fn run_poster(_: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
@@ -221,29 +221,29 @@ fn runPoster(_: std.Io) !u8 {
     var poster_hex: [64]u8 = undefined;
     var escrow_hex: [64]u8 = undefined;
     var applicant_hex: [64]u8 = undefined;
-    hexOfKey(poster_kp.public_key, &poster_hex);
-    hexOfKey(escrow_kp.public_key, &escrow_hex);
-    hexOfKey(applicant_kp.public_key, &applicant_hex);
+    hex_of_key(poster_kp.public_key, &poster_hex);
+    hex_of_key(escrow_kp.public_key, &escrow_hex);
+    hex_of_key(applicant_kp.public_key, &applicant_hex);
 
-    const signed_hold = try signEscrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
+    const signed_hold = try sign_escrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
     var hold_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const hold_payload_len = try oa.encodeCompactPayload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
     var hold_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const hold_wire_len = try sealPayload(hold_payload[0..hold_payload_len], &hold_wire);
-    try sendWire(hold_port, hold_wire[0..@intCast(hold_wire_len)]);
+    const hold_wire_len = try seal_payload(hold_payload[0..hold_payload_len], &hold_wire);
+    try send_wire(hold_port, hold_wire[0..@intCast(hold_wire_len)]);
 
-    const signed_release = try signEscrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
+    const signed_release = try sign_escrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
     var release_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const release_payload_len = try oa.encodeCompactPayload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
     var release_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const release_wire_len = try sealPayload(release_payload[0..release_payload_len], &release_wire);
-    try sendWire(release_port, release_wire[0..@intCast(release_wire_len)]);
+    const release_wire_len = try seal_payload(release_payload[0..release_payload_len], &release_wire);
+    try send_wire(release_port, release_wire[0..@intCast(release_wire_len)]);
 
     print("oal3l2: poster sent sealed hold and release\n", .{});
     return 0;
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const applicant_argv = try allocator.alloc([]const u8, 2);
     applicant_argv[0] = self_path;
     applicant_argv[1] = "applicant";
@@ -284,12 +284,12 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "applicant")) return runApplicant(io);
-        if (std.mem.eql(u8, args[1], "poster")) return runPoster(io);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-        if (std.mem.eql(u8, args[1], "demo")) return runDemo(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "applicant")) return run_applicant(io);
+        if (std.mem.eql(u8, args[1], "poster")) return run_poster(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+        if (std.mem.eql(u8, args[1], "demo")) return run_demo(garden, io, args[0]);
     }
 
-    if (args.len >= 1) return runSelftest(io);
+    if (args.len >= 1) return run_selftest(io);
     return 1;
 }

@@ -37,13 +37,13 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{
         .sin_port = std.mem.nativeToBig(u16, port),
     };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -51,7 +51,7 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn loadSignedPayload(io: std.Io) !struct { payload: [rc.slcl2_payload_header + rc.slcl2_max_fact]u8, payload_len: u32, pubkey: Ed25519.PublicKey } {
+fn load_signed_payload(io: std.Io) !struct { payload: [rc.slcl2_payload_header + rc.slcl2_max_fact]u8, payload_len: u32, pubkey: Ed25519.PublicKey } {
     const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
     const fixture_path = "tools/fixtures/slcl1_fact.bron";
     const cwd = Dir.cwd();
@@ -79,7 +79,7 @@ fn loadSignedPayload(io: std.Io) !struct { payload: [rc.slcl2_payload_header + r
     };
 }
 
-fn verifyOpenedPayload(payload: []const u8, pubkey: Ed25519.PublicKey) !i64 {
+fn verify_opened_payload(payload: []const u8, pubkey: Ed25519.PublicKey) !i64 {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [rc.slcl2_max_fact]u8 = undefined;
     const decoded = try rc.decodeCompactPayload(payload, &sig_buf, &fact_buf);
@@ -89,8 +89,8 @@ fn verifyOpenedPayload(payload: []const u8, pubkey: Ed25519.PublicKey) !i64 {
     return balance;
 }
 
-fn runSelftest(io: std.Io) !u8 {
-    const signed = try loadSignedPayload(io);
+fn run_selftest(io: std.Io) !u8 {
+    const signed = try load_signed_payload(io);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const wire_len = try wf.sealMessage(signed.payload[0..signed.payload_len], &wire);
@@ -100,7 +100,7 @@ fn runSelftest(io: std.Io) !u8 {
     assert(opened_len == signed.payload_len);
     assert(std.mem.eql(u8, opened[0..@intCast(opened_len)], signed.payload[0..signed.payload_len]));
 
-    const balance = try verifyOpenedPayload(opened[0..@intCast(opened_len)], signed.pubkey);
+    const balance = try verify_opened_payload(opened[0..@intCast(opened_len)], signed.pubkey);
     assert(balance == 100);
 
     print("slcl2: selftest GREEN — seal, open, verify receipt in one process\n", .{});
@@ -109,16 +109,16 @@ fn runSelftest(io: std.Io) !u8 {
     return 0;
 }
 
-fn runSend(io: std.Io) !u8 {
-    const signed = try loadSignedPayload(io);
+fn run_send(io: std.Io) !u8 {
+    const signed = try load_signed_payload(io);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const wire_len = try wf.sealMessage(signed.payload[0..signed.payload_len], &wire);
 
-    const fd = try openSocket();
+    const fd = try open_socket();
     defer _ = c.close(fd);
 
-    const dest = localhostAddr(delivery_port);
+    const dest = localhost_addr(delivery_port);
     const sent = c.sendto(fd, &wire, @intCast(wire_len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != @as(usize, @intCast(wire_len))) return error.SendFailed;
 
@@ -126,14 +126,14 @@ fn runSend(io: std.Io) !u8 {
     return 0;
 }
 
-fn runRecv(_: std.Io) !u8 {
+fn run_recv(_: std.Io) !u8 {
     const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
     const pubkey = kp.public_key;
 
-    const fd = try openSocket();
+    const fd = try open_socket();
     defer _ = c.close(fd);
 
-    var bind_addr = localhostAddr(delivery_port);
+    var bind_addr = localhost_addr(delivery_port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
@@ -154,7 +154,7 @@ fn runRecv(_: std.Io) !u8 {
         return 1;
     };
 
-    const balance = verifyOpenedPayload(opened[0..@intCast(opened_len)], pubkey) catch {
+    const balance = verify_opened_payload(opened[0..@intCast(opened_len)], pubkey) catch {
         print("slcl2: receipt verify failed\n", .{});
         return 1;
     };
@@ -168,7 +168,7 @@ fn runRecv(_: std.Io) !u8 {
     return 0;
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const recv_argv = try allocator.alloc([]const u8, 2);
     recv_argv[0] = self_path;
     recv_argv[1] = "recv";
@@ -209,15 +209,15 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "send")) return runSend(io);
-        if (std.mem.eql(u8, args[1], "recv")) return runRecv(io);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "send")) return run_send(io);
+        if (std.mem.eql(u8, args[1], "recv")) return run_recv(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
         if (std.mem.eql(u8, args[1], "demo")) {
             assert(args.len >= 1);
-            return runDemo(garden, io, args[0]);
+            return run_demo(garden, io, args[0]);
         }
     }
 
-    if (args.len >= 1) return runDemo(garden, io, args[0]);
+    if (args.len >= 1) return run_demo(garden, io, args[0]);
     return 1;
 }
