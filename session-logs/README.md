@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.220256 | [July 7 full-day summary](20260707-220256_july7-full-day-summary.md) | 84 commits; arcs, parity pins, TAME standing, push map |
 | 20260707.215901 | [tame_style_scan advise commit and push](20260707-215901_tame-style-scan-advise-commit-push.md) | `fcd3aa4` to four remotes |
 | 20260707.215726 | [tame_style_scan advise native](20260707-215726_tame-style-scan-advise-native.md) | Advise half wired; selftests; TASKS + TAME_GUIDANCE updated |
 | 20260707.215000 | [`.sh` migration bans commit and push](20260707-215000_sh-migration-bans-commit-push.md) | `a52e5b8` to four remotes |
