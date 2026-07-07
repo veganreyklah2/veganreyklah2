@@ -186,7 +186,7 @@ fn catchUpWireInProcess(
     return report;
 }
 
-fn pollOneCycleWireInProcess(
+fn poll_one_cycle_wire_in_process(
     fetcher: *ns.BoltCatalog,
     source: *const ns.BoltCatalog,
     pairs: []const sp.PeerBoltPair,
@@ -257,7 +257,7 @@ fn catchUpWireOverSockets(
     return report;
 }
 
-fn pollOneCycleWireSockets(
+fn poll_one_cycle_wire_sockets(
     fetcher: *ns.BoltCatalog,
     pairs: []const sp.PeerBoltPair,
 ) !sp.PollCycleReport {
@@ -310,17 +310,17 @@ fn runSelftest(_: std.Io) !u8 {
 
     const one_pair = [_]sp.PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
 
-    const c1 = try pollOneCycleWireInProcess(&fetcher, &source, &one_pair);
+    const c1 = try poll_one_cycle_wire_in_process(&fetcher, &source, &one_pair);
     assert(c1.revisions_synced == 0);
     assert(c1.empty_asks == 1);
 
     try source.appendLeaf("peerB", "b", 2, witness_path, "rev-two", "plain-text");
 
-    const c2 = try pollOneCycleWireInProcess(&fetcher, &source, &one_pair);
+    const c2 = try poll_one_cycle_wire_in_process(&fetcher, &source, &one_pair);
     assert(c2.revisions_synced == 1);
     assert(c2.empty_asks == 1);
 
-    const c3 = try pollOneCycleWireInProcess(&fetcher, &source, &one_pair);
+    const c3 = try poll_one_cycle_wire_in_process(&fetcher, &source, &one_pair);
     assert(c3.revisions_synced == 0);
     assert(c3.empty_asks == 1);
 
@@ -335,7 +335,7 @@ fn runSelftest(_: std.Io) !u8 {
     var source2: ns.BoltCatalog = .empty();
     try source2.appendLeaf("peerB", "b", 1, witness_path, "rev-one", "plain-text");
     try source2.appendLeaf("peerB", "b", 2, witness_path, "rev-two", "plain-text");
-    const composed = try sp.pollOneCycle(&fetcher2, &source2, &one_pair);
+    const composed = try sp.poll_one_cycle(&fetcher2, &source2, &one_pair);
     assert(composed.revisions_synced == c2.revisions_synced);
 
     print("ns-pollw: delayed revision caught on wire cycle 2 — empty ask stops GREEN\n", .{});
@@ -395,10 +395,10 @@ fn runFetcherPollOnce(io: std.Io, sentinel_path: []const u8, interval_ns: u64) !
     try initDemoFetcher(&fetcher);
 
     const one_pair = [_]sp.PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
-    _ = try pollOneCycleWireSockets(&fetcher, &one_pair);
+    _ = try poll_one_cycle_wire_sockets(&fetcher, &one_pair);
 
     if (interval_ns > 0) {
-        sp.sleepIntervalNs(interval_ns);
+        sp.sleep_interval_ns(interval_ns);
         print("ns-pollw: slept {d} ns at cycle boundary\n", .{interval_ns});
     }
 
@@ -415,10 +415,10 @@ fn runFetcherPollMirrorOnce(io: std.Io, sentinel_path: []const u8, interval_ns: 
     var fetcher: ns.BoltCatalog = undefined;
     try initDemoMirrorFetcher(&fetcher);
 
-    const step = try pollOneCycleWireSockets(&fetcher, &mirror_pairs);
+    const step = try poll_one_cycle_wire_sockets(&fetcher, &mirror_pairs);
 
     if (interval_ns > 0) {
-        sp.sleepIntervalNs(interval_ns);
+        sp.sleep_interval_ns(interval_ns);
         print("ns-pollw: slept {d} ns at cycle boundary\n", .{interval_ns});
     }
 
@@ -434,7 +434,7 @@ fn runFetcherPollLegacy(_: std.Io, fail_after_first: bool) !u8 {
 
     const one_pair = [_]sp.PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
 
-    const c1 = try pollOneCycleWireSockets(&fetcher, &one_pair);
+    const c1 = try poll_one_cycle_wire_sockets(&fetcher, &one_pair);
     if (c1.revisions_synced != 1 or c1.empty_asks != 1) return error.SyncFailed;
 
     if (fail_after_first) {
@@ -442,7 +442,7 @@ fn runFetcherPollLegacy(_: std.Io, fail_after_first: bool) !u8 {
         return 1;
     }
 
-    const c2 = try pollOneCycleWireSockets(&fetcher, &one_pair);
+    const c2 = try poll_one_cycle_wire_sockets(&fetcher, &one_pair);
     if (c2.revisions_synced != 0 or c2.empty_asks != 1) return error.SyncFailed;
 
     const name2 = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 2, .path = witness_path };

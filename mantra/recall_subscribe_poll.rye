@@ -45,7 +45,7 @@ pub const PollReport = struct {
 };
 
 /// Sleep between poll cycles when `interval_ns` is non-zero.
-pub fn sleepIntervalNs(interval_ns: u64) void {
+pub fn sleep_interval_ns(interval_ns: u64) void {
     if (interval_ns == 0) return;
     var pause = c.timespec{
         .sec = @intCast(interval_ns / 1_000_000_000),
@@ -55,7 +55,7 @@ pub fn sleepIntervalNs(interval_ns: u64) void {
 }
 
 /// One poll cycle: catch-up every named pair against `source`.
-pub fn pollOneCycle(
+pub fn poll_one_cycle(
     fetcher: *recall_lap1.BoltCatalog,
     source: *const recall_lap1.BoltCatalog,
     pairs: []const PeerBoltPair,
@@ -72,7 +72,7 @@ pub fn pollOneCycle(
 }
 
 /// Repeat `max_cycles` poll cycles. `interval_ns` may be zero (witness uses zero).
-pub fn pollCycles(
+pub fn poll_cycles(
     fetcher: *recall_lap1.BoltCatalog,
     source: *const recall_lap1.BoltCatalog,
     pairs: []const PeerBoltPair,
@@ -87,24 +87,24 @@ pub fn pollCycles(
     };
     var cycle: u32 = 0;
     while (cycle < max_cycles) : (cycle += 1) {
-        const step = try pollOneCycle(fetcher, source, pairs);
+        const step = try poll_one_cycle(fetcher, source, pairs);
         report.cycles_run += 1;
         report.revisions_synced += step.revisions_synced;
         report.empty_asks += step.empty_asks;
         if (interval_ns > 0 and cycle + 1 < max_cycles) {
-            sleepIntervalNs(interval_ns);
+            sleep_interval_ns(interval_ns);
         }
     }
     return report;
 }
 
-fn monotonicNs() u64 {
+fn monotonic_ns() u64 {
     var ts: c.timespec = undefined;
     if (c.clock_gettime(c.CLOCK.MONOTONIC, &ts) != 0) return 0;
     return @as(u64, @intCast(ts.sec)) * 1_000_000_000 + @as(u64, @intCast(ts.nsec));
 }
 
-fn runIntervalSelftest(_: std.Io) !u8 {
+fn run_interval_selftest(_: std.Io) !u8 {
     const path = "bolt.txt";
     var source: recall_lap1.BoltCatalog = .empty();
     try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
@@ -114,9 +114,9 @@ fn runIntervalSelftest(_: std.Io) !u8 {
 
     const interval_ns = witness_poll_interval_ns;
     const max_cycles: u32 = 3;
-    const start = monotonicNs();
-    const report = try pollCycles(&fetcher, &source, &one_pair, max_cycles, interval_ns);
-    const elapsed = monotonicNs() -% start;
+    const start = monotonic_ns();
+    const report = try poll_cycles(&fetcher, &source, &one_pair, max_cycles, interval_ns);
+    const elapsed = monotonic_ns() -% start;
 
     assert(report.cycles_run == max_cycles);
     const min_elapsed = interval_ns * (@as(u64, max_cycles) - 1) * 8 / 10;
@@ -127,7 +127,7 @@ fn runIntervalSelftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn selftestSinglePairPoll(path: []const u8) !void {
+fn selftest_single_pair_poll(path: []const u8) !void {
     // Single pair: source gains rev 2 after cycle 1 — counsel witness shape.
     var source: recall_lap1.BoltCatalog = .empty();
     try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
@@ -137,21 +137,21 @@ fn selftestSinglePairPoll(path: []const u8) !void {
 
     const one_pair = [_]PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
 
-    const c1 = try pollOneCycle(&fetcher, &source, &one_pair);
+    const c1 = try poll_one_cycle(&fetcher, &source, &one_pair);
     assert(c1.revisions_synced == 0);
     assert(c1.empty_asks == 1);
 
     try source.appendLeaf("peerB", "b", 2, path, "rev-two", "plain-text");
 
-    const c2 = try pollOneCycle(&fetcher, &source, &one_pair);
+    const c2 = try poll_one_cycle(&fetcher, &source, &one_pair);
     assert(c2.revisions_synced == 1);
     assert(c2.empty_asks == 1);
 
-    const c3 = try pollOneCycle(&fetcher, &source, &one_pair);
+    const c3 = try poll_one_cycle(&fetcher, &source, &one_pair);
     assert(c3.revisions_synced == 0);
     assert(c3.empty_asks == 1);
 
-    const c4 = try pollOneCycle(&fetcher, &source, &one_pair);
+    const c4 = try poll_one_cycle(&fetcher, &source, &one_pair);
     assert(c4.revisions_synced == 0);
     assert(c4.empty_asks == 1);
 
@@ -161,7 +161,7 @@ fn selftestSinglePairPoll(path: []const u8) !void {
     assert(std.mem.eql(u8, buf[0..r2.len], "rev-two"));
 }
 
-fn selftestHostMirrorPoll(path: []const u8) !void {
+fn selftest_host_mirror_poll(path: []const u8) !void {
     // Host mirror: two named pairs; peerC gains rev 2 after cycle 1.
     var mirror_src: recall_lap1.BoltCatalog = .empty();
     try mirror_src.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
@@ -176,28 +176,28 @@ fn selftestHostMirrorPoll(path: []const u8) !void {
         .{ .peer = "peerC", .bolt = "c" },
     };
 
-    const m1 = try pollOneCycle(&mirror_fetch, &mirror_src, &mirror_pairs);
+    const m1 = try poll_one_cycle(&mirror_fetch, &mirror_src, &mirror_pairs);
     assert(m1.revisions_synced == 0);
     assert(m1.empty_asks == 2);
 
     try mirror_src.appendLeaf("peerC", "c", 2, path, "beta", "plain-text");
 
-    const m2 = try pollOneCycle(&mirror_fetch, &mirror_src, &mirror_pairs);
+    const m2 = try poll_one_cycle(&mirror_fetch, &mirror_src, &mirror_pairs);
     assert(m2.revisions_synced == 1);
     assert(m2.empty_asks == 2);
 
-    const bundled = try pollCycles(&mirror_fetch, &mirror_src, &mirror_pairs, 2, 0);
+    const bundled = try poll_cycles(&mirror_fetch, &mirror_src, &mirror_pairs, 2, 0);
     assert(bundled.cycles_run == 2);
     assert(bundled.pairs_per_cycle == 2);
     assert(bundled.revisions_synced == 0);
     assert(bundled.empty_asks == 4);
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     const path = "bolt.txt";
 
-    try selftestSinglePairPoll(path);
-    try selftestHostMirrorPoll(path);
+    try selftest_single_pair_poll(path);
+    try selftest_host_mirror_poll(path);
 
     print("ns-poll: delayed revision caught on cycle 2 — empty cycles cost one ask GREEN\n", .{});
     print("ns-poll: host mirror — two named pairs per cycle GREEN\n", .{});
@@ -209,7 +209,7 @@ fn runSelftest(_: std.Io) !u8 {
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "interval-selftest")) return runIntervalSelftest(io);
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "interval-selftest")) return run_interval_selftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+    return run_selftest(io);
 }

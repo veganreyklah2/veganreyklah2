@@ -35,18 +35,18 @@ const source_lost_exit: u8 = 3;
 
 const linux = std.os.linux;
 
-fn witnessModeAllowed(environ: *const std.process.Environ.Map) bool {
+fn witness_mode_allowed(environ: *const std.process.Environ.Map) bool {
     const v = environ.get(witness_mode_env) orelse return false;
     return std.mem.eql(u8, v, "1");
 }
 
-fn witnessMirrorEnabled(environ: *const std.process.Environ.Map) bool {
+fn witness_mirror_enabled(environ: *const std.process.Environ.Map) bool {
     const v = environ.get(witness_mirror_env) orelse return false;
     return std.mem.eql(u8, v, "1");
 }
 
 /// Non-blocking reap; returns the source exit code when the child has exited.
-fn pollSourceExit(source_child: *std.process.Child) ?u8 {
+fn poll_source_exit(source_child: *std.process.Child) ?u8 {
     const pid = source_child.id orelse return 0;
     var status: u32 = 0;
     const rc = linux.waitpid(@intCast(pid), &status, linux.W.NOHANG);
@@ -63,8 +63,8 @@ fn pollSourceExit(source_child: *std.process.Child) ?u8 {
     }
 }
 
-fn haltIfSourceDied(source_child: *std.process.Child) ?u8 {
-    if (pollSourceExit(source_child)) |code| {
+fn halt_if_source_died(source_child: *std.process.Child) ?u8 {
+    if (poll_source_exit(source_child)) |code| {
         print("caravan poll-service: source-loop died (exit {d}) — supervisor halting\n", .{code});
         return source_lost_exit;
     }
@@ -75,20 +75,20 @@ const max_fall_restarts: u32 = 5;
 const source_ready_ns: u64 = 50_000_000;
 const child_poll_ns: u64 = 20_000_000;
 
-fn statusToExitCode(status: u32) u8 {
+fn status_to_exit_code(status: u32) u8 {
     if (linux.W.IFEXITED(status)) {
         return linux.W.EXITSTATUS(status);
     }
     return 255;
 }
 
-fn waitFetcherOrSourceLost(
+fn wait_fetcher_or_source_lost(
     io: std.Io,
     source_child: *std.process.Child,
     fetcher_child: *std.process.Child,
 ) !union(enum) { fetcher_done: u8, source_lost: u8 } {
     while (fetcher_child.id != null) {
-        if (haltIfSourceDied(source_child)) |lost| {
+        if (halt_if_source_died(source_child)) |lost| {
             fetcher_child.kill(io);
             return .{ .source_lost = lost };
         }
@@ -99,7 +99,7 @@ fn waitFetcherOrSourceLost(
             .SUCCESS => {
                 if (rc != 0) {
                     fetcher_child.id = null;
-                    return .{ .fetcher_done = statusToExitCode(status) };
+                    return .{ .fetcher_done = status_to_exit_code(status) };
                 }
             },
             else => {},
@@ -125,13 +125,13 @@ pub fn main(init: std.process.Init) !u8 {
     else
         null;
 
-    if (witness_stop_after != null and !witnessModeAllowed(init.environ_map)) {
+    if (witness_stop_after != null and !witness_mode_allowed(init.environ_map)) {
         print("caravan poll-service: witness-stop-after-N is test-only; set CARAVAN_WITNESS_MODE=1 from a witness runner\n", .{});
         return 2;
     }
 
-    const mirror_mode = witnessMirrorEnabled(init.environ_map);
-    if (mirror_mode and !witnessModeAllowed(init.environ_map)) {
+    const mirror_mode = witness_mirror_enabled(init.environ_map);
+    if (mirror_mode and !witness_mode_allowed(init.environ_map)) {
         print("caravan poll-service: host mirror witness requires CARAVAN_WITNESS_MODE=1 from a witness runner\n", .{});
         return 2;
     }
@@ -141,10 +141,10 @@ pub fn main(init: std.process.Init) !u8 {
     else
         0;
 
-    return runSupervisor(garden, io, args[1], args[2], witness_stop_after, poll_interval_ns, mirror_mode);
+    return run_supervisor(garden, io, args[1], args[2], witness_stop_after, poll_interval_ns, mirror_mode);
 }
 
-fn createStopSentinel(io: std.Io, sentinel_path: []const u8) !void {
+fn create_stop_sentinel(io: std.Io, sentinel_path: []const u8) !void {
     const f = try std.Io.Dir.cwd().createFile(io, sentinel_path, .{});
     f.close(io);
 }
@@ -155,7 +155,7 @@ const SupervisorStep = union(enum) {
     exit: u8,
 };
 
-fn buildFetcherArgv(
+fn build_fetcher_argv(
     allocator: std.mem.Allocator,
     delivery_path: []const u8,
     sentinel_path: []const u8,
@@ -179,7 +179,7 @@ fn buildFetcherArgv(
     return argv;
 }
 
-fn applyFetcherExit(
+fn apply_fetcher_exit(
     code: u8,
     ordinary_seen: *u32,
     fall_restarts: *u32,
@@ -213,7 +213,7 @@ fn applyFetcherExit(
     return .{ .exit = code };
 }
 
-fn printSupervisorSuccess(mirror_mode: bool) void {
+fn print_supervisor_success(mirror_mode: bool) void {
     if (mirror_mode) {
         print("caravan poll-service: supervised host mirror — two named pairs per cycle — GREEN.\n", .{});
     } else {
@@ -224,7 +224,7 @@ fn printSupervisorSuccess(mirror_mode: bool) void {
     });
 }
 
-fn runSupervisor(
+fn run_supervisor(
     allocator: std.mem.Allocator,
     io: std.Io,
     delivery_path: []const u8,
@@ -253,26 +253,26 @@ fn runSupervisor(
     var fall_restarts: u32 = 0;
 
     while (true) {
-        if (haltIfSourceDied(&source_child)) |code| return code;
+        if (halt_if_source_died(&source_child)) |code| return code;
 
         var should_create_sentinel = ss.stopRequested();
         if (witness_stop_after) |n| {
             if (ordinary_seen == n) should_create_sentinel = true;
         }
         if (should_create_sentinel) {
-            try createStopSentinel(io, sentinel_path);
+            try create_stop_sentinel(io, sentinel_path);
         }
 
         var interval_buf: [32]u8 = undefined;
-        const fetcher_argv = try buildFetcherArgv(allocator, delivery_path, sentinel_path, poll_interval_ns, mirror_mode, &interval_buf);
+        const fetcher_argv = try build_fetcher_argv(allocator, delivery_path, sentinel_path, poll_interval_ns, mirror_mode, &interval_buf);
 
         var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
-        const code: u8 = switch (try waitFetcherOrSourceLost(io, &source_child, &fetcher_child)) {
+        const code: u8 = switch (try wait_fetcher_or_source_lost(io, &source_child, &fetcher_child)) {
             .fetcher_done => |c0| c0,
             .source_lost => |lost| return lost,
         };
 
-        switch (try applyFetcherExit(code, &ordinary_seen, &fall_restarts, &source_child, io)) {
+        switch (try apply_fetcher_exit(code, &ordinary_seen, &fall_restarts, &source_child, io)) {
             .continue_loop => continue,
             .stop_loop => break,
             .exit => |exit_code| return exit_code,
@@ -281,6 +281,6 @@ fn runSupervisor(
 
     if (witness_stop_after) |n| assert(ordinary_seen == n);
 
-    printSupervisorSuccess(mirror_mode);
+    print_supervisor_success(mirror_mode);
     return 0;
 }

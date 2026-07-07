@@ -34,17 +34,17 @@ const fill_line_count: u32 = 200;
 const fill_say_width: u32 = 400;
 const live_dispatch_ms: i32 = 16;
 
-fn boundStatus(garden: std.mem.Allocator, text: []const u8) ![]const u8 {
+fn bound_status(garden: std.mem.Allocator, text: []const u8) ![]const u8 {
     if (text.len <= status_max_len) return text;
     return try garden.dupe(u8, text[0..status_max_len]);
 }
 
-fn formatPromptStatus(
+fn format_prompt_status(
     garden: std.mem.Allocator,
     editor: *const window_input.LineEditor,
     transcript_full: bool,
 ) ![]const u8 {
-    if (transcript_full) return boundStatus(garden, status_full_text);
+    if (transcript_full) return bound_status(garden, status_full_text);
     var buf: [status_max_len + 16]u8 = undefined;
     const prompt = editor.promptSlice();
     const msg = if (prompt.len == 0)
@@ -54,7 +54,7 @@ fn formatPromptStatus(
     return try garden.dupe(u8, msg);
 }
 
-fn composeFrameLines(
+fn compose_frame_lines(
     garden: std.mem.Allocator,
     transcript: *const rishi.Transcript,
     status: []const u8,
@@ -63,7 +63,7 @@ fn composeFrameLines(
     assert(body_rows > 0);
     const session = try rishi.sessionLines(transcript, garden, body_rows);
     defer garden.free(session);
-    const status_line = try boundStatus(garden, status);
+    const status_line = try bound_status(garden, status);
     const total: u32 = @intCast(session.len + 1);
     assert(total <= surface.viewer_max_lines);
     const lines = try garden.alloc(surface.SkateLine, total);
@@ -75,7 +75,7 @@ fn composeFrameLines(
     return lines;
 }
 
-fn linesEqual(expected: []const []const u8, actual: []const surface.SkateLine) bool {
+fn lines_equal(expected: []const []const u8, actual: []const surface.SkateLine) bool {
     if (expected.len != actual.len) return false;
     var i: u32 = 0;
     while (i < expected.len) : (i += 1) {
@@ -84,7 +84,7 @@ fn linesEqual(expected: []const []const u8, actual: []const surface.SkateLine) b
     return true;
 }
 
-fn surfaceActionToEditor(action: surface.KeyAction) ?window_input.Action {
+fn surface_action_to_editor(action: surface.KeyAction) ?window_input.Action {
     return switch (action) {
         .none => null,
         .char_ => |ch| .{ .char_ = ch },
@@ -93,7 +93,7 @@ fn surfaceActionToEditor(action: surface.KeyAction) ?window_input.Action {
     };
 }
 
-fn feedLineThroughEditor(
+fn feed_line_through_editor(
     editor: *window_input.LineEditor,
     line: []const u8,
 ) void {
@@ -103,7 +103,7 @@ fn feedLineThroughEditor(
     editor.submit();
 }
 
-fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
     var transcript = rishi.Transcript{};
@@ -116,7 +116,7 @@ fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.In
 
     for (script, 0..) |line, idx| {
         _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, line);
-        const frame_lines = try composeFrameLines(garden, &transcript, "");
+        const frame_lines = try compose_frame_lines(garden, &transcript, "");
         defer garden.free(frame_lines);
         const sig = try surface.contentSignature(garden, frame_lines);
         if (idx == 0) sig_1 = sig;
@@ -134,13 +134,13 @@ fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.In
         "",
         "",
     };
-    const final_lines = try composeFrameLines(garden, &transcript, "");
+    const final_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(final_lines);
-    assert(linesEqual(&golden, final_lines));
+    assert(lines_equal(&golden, final_lines));
     const sig_golden = try surface.contentSignature(garden, final_lines);
     assert(sig_final == sig_golden);
 
-    const pre_full_lines = try composeFrameLines(garden, &transcript, "");
+    const pre_full_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(pre_full_lines);
     const sig_pre_full = try surface.contentSignature(garden, pre_full_lines);
 
@@ -155,7 +155,7 @@ fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.In
     }
     assert(transcript.full);
 
-    const full_lines = try composeFrameLines(garden, &transcript, status_full_text);
+    const full_lines = try compose_frame_lines(garden, &transcript, status_full_text);
     defer garden.free(full_lines);
     const sig_full = try surface.contentSignature(garden, full_lines);
     assert(sig_full != sig_pre_full);
@@ -171,7 +171,7 @@ fn runSessionWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.In
     return 0;
 }
 
-fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+fn run_rw2_collaboration_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
     var transcript = rishi.Transcript{};
@@ -182,7 +182,7 @@ fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.p
     const sig_boot = try surface.contentSignature(garden, boot);
 
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let rw2 = 1");
-    const frame_one = try composeFrameLines(garden, &transcript, "");
+    const frame_one = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_one);
     const sig_one = try surface.contentSignature(garden, frame_one);
     assert(sig_boot != sig_one);
@@ -191,7 +191,7 @@ fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.p
     assert(sig_one_again == sig_one);
 
     const empty_transcript = rishi.Transcript{};
-    const empty_lines = try composeFrameLines(garden, &empty_transcript, "");
+    const empty_lines = try compose_frame_lines(garden, &empty_transcript, "");
     defer garden.free(empty_lines);
     const sig_empty = try surface.contentSignature(garden, empty_lines);
     const sig_empty_again = try surface.contentSignature(garden, empty_lines);
@@ -200,7 +200,7 @@ fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.p
     const sig_before_bad = try surface.contentSignature(garden, frame_one);
     const bad_result = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, ":recall 99");
     assert(bad_result == .advance);
-    const frame_after_bad = try composeFrameLines(garden, &transcript, "");
+    const frame_after_bad = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_after_bad);
     _ = try surface.contentSignature(garden, frame_after_bad);
     assert(sig_before_bad != sig_boot);
@@ -215,32 +215,32 @@ fn runRw2CollaborationWitness(garden: std.mem.Allocator, io: std.Io, init: std.p
     return 0;
 }
 
-fn runKeyboardWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+fn run_keyboard_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
     var transcript = rishi.Transcript{};
     var store_ready = false;
     var editor = window_input.LineEditor{};
 
-    feedLineThroughEditor(&editor, "let kb = 1");
+    feed_line_through_editor(&editor, "let kb = 1");
     const first_line = (try editor.takeSubmittedLine(garden)) orelse return 1;
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, first_line);
 
-    const mid_lines = try composeFrameLines(garden, &transcript, "");
+    const mid_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(mid_lines);
     const sig_mid = try surface.contentSignature(garden, mid_lines);
     assert(std.mem.indexOf(u8, mid_lines[0].text, "let kb = 1") != null);
 
     var typing_editor = window_input.LineEditor{};
     typing_editor.pushChar('a');
-    const typing_status = try formatPromptStatus(garden, &typing_editor, false);
-    const typing_lines = try composeFrameLines(garden, &transcript, typing_status);
+    const typing_status = try format_prompt_status(garden, &typing_editor, false);
+    const typing_lines = try compose_frame_lines(garden, &transcript, typing_status);
     defer garden.free(typing_lines);
     const sig_typing = try surface.contentSignature(garden, typing_lines);
     assert(sig_typing != sig_mid);
     assert(std.mem.eql(u8, typing_lines[typing_lines.len - 1].text, "rishi> a"));
 
-    feedLineThroughEditor(&editor, ":quit");
+    feed_line_through_editor(&editor, ":quit");
     const quit_line = (try editor.takeSubmittedLine(garden)) orelse return 1;
     const signal = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, quit_line);
     assert(signal == .quit);
@@ -255,7 +255,7 @@ fn runKeyboardWitness(garden: std.mem.Allocator, io: std.Io, init: std.process.I
     return 0;
 }
 
-fn pollStdinAndDisplay(app: *surface.SurfaceApp, stdin_fd: posix.fd_t) !enum { stdin_ready, display_ready, timeout } {
+fn poll_stdin_and_display(app: *surface.SurfaceApp, stdin_fd: posix.fd_t) !enum { stdin_ready, display_ready, timeout } {
     const display_fd = app.displayFd();
     var fds = [_]posix.pollfd{
         .{ .fd = display_fd, .events = posix.POLL.IN, .revents = 0 },
@@ -268,19 +268,19 @@ fn pollStdinAndDisplay(app: *surface.SurfaceApp, stdin_fd: posix.fd_t) !enum { s
     return .timeout;
 }
 
-fn redrawPromptFrame(
+fn redraw_prompt_frame(
     garden: std.mem.Allocator,
     app: *surface.SurfaceApp,
     transcript: *const rishi.Transcript,
     editor: *const window_input.LineEditor,
 ) !void {
-    const status = try formatPromptStatus(garden, editor, transcript.full);
-    const frame_lines = try composeFrameLines(garden, transcript, status);
+    const status = try format_prompt_status(garden, editor, transcript.full);
+    const frame_lines = try compose_frame_lines(garden, transcript, status);
     defer garden.free(frame_lines);
     try app.updateFrame(frame_lines);
 }
 
-fn runSubmittedLine(
+fn run_submitted_line(
     garden: std.mem.Allocator,
     io: std.Io,
     init: std.process.Init,
@@ -293,14 +293,14 @@ fn runSubmittedLine(
 ) !?rishi.StepSignal {
     const signal = try rishi.runOneInput(garden, io, init, env, history, transcript, store_ready, line);
     const status = if (transcript.full) status_full_text else "";
-    const frame_lines = try composeFrameLines(garden, transcript, status);
+    const frame_lines = try compose_frame_lines(garden, transcript, status);
     defer garden.free(frame_lines);
     try app.updateFrame(frame_lines);
     if (signal == .quit) return signal;
     return signal;
 }
 
-fn liveBootApp(garden: std.mem.Allocator, io: std.Io) !struct { app: surface.SurfaceApp, editor: window_input.LineEditor } {
+fn live_boot_app(garden: std.mem.Allocator, io: std.Io) !struct { app: surface.SurfaceApp, editor: window_input.LineEditor } {
     const editor = window_input.LineEditor{};
     const boot_lines = try garden.alloc(surface.SkateLine, 1);
     boot_lines[0] = .{ .text = "drawn terminal — type in the window; stdin still works for dev" };
@@ -316,7 +316,7 @@ fn liveBootApp(garden: std.mem.Allocator, io: std.Io) !struct { app: surface.Sur
     return .{ .app = app, .editor = editor };
 }
 
-fn liveDrainKeyboard(
+fn live_drain_keyboard(
     garden: std.mem.Allocator,
     io: std.Io,
     init: std.process.Init,
@@ -329,23 +329,23 @@ fn liveDrainKeyboard(
 ) !?u8 {
     while (app.hasKeyAction()) {
         const key_action = app.popKeyAction();
-        if (surfaceActionToEditor(key_action)) |editor_action| {
+        if (surface_action_to_editor(key_action)) |editor_action| {
             editor.applyAction(editor_action);
             if (editor_action == .submit) {
                 if (try editor.takeSubmittedLine(garden)) |line| {
-                    if (try runSubmittedLine(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
+                    if (try run_submitted_line(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
                         return 0;
                     }
                 }
             } else {
-                try redrawPromptFrame(garden, app, transcript, editor);
+                try redraw_prompt_frame(garden, app, transcript, editor);
             }
         }
     }
     return null;
 }
 
-fn liveReadStdinSubmit(
+fn live_read_stdin_submit(
     garden: std.mem.Allocator,
     io: std.Io,
     init: std.process.Init,
@@ -364,19 +364,19 @@ fn liveReadStdinSubmit(
     };
     const line = std.mem.trim(u8, raw_line, " \t\r\n");
     if (line.len == 0) return null;
-    if (try runSubmittedLine(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
+    if (try run_submitted_line(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
         return 0;
     }
     return null;
 }
 
-fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+fn run_live(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
     var transcript = rishi.Transcript{};
     var store_ready = false;
 
-    var live = try liveBootApp(garden, io);
+    var live = try live_boot_app(garden, io);
     defer live.app.disconnect();
 
     const stdout = std.Io.File.stdout();
@@ -387,16 +387,16 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
 
     while (true) {
         if (live.app.shouldClose()) return 0;
-        const ready = try pollStdinAndDisplay(&live.app, stdin_fd);
+        const ready = try poll_stdin_and_display(&live.app, stdin_fd);
         try live.app.dispatchOnce(live_dispatch_ms);
         switch (ready) {
             .display_ready, .timeout => {
-                if (try liveDrainKeyboard(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, &live.editor)) |code| {
+                if (try live_drain_keyboard(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, &live.editor)) |code| {
                     return code;
                 }
             },
             .stdin_ready => {
-                if (try liveReadStdinSubmit(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, reader, stdout)) |code| {
+                if (try live_read_stdin_submit(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, reader, stdout)) |code| {
                     return code;
                 }
             },
@@ -404,7 +404,7 @@ fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     }
 }
 
-fn runMetalSmoke(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+fn run_metal_smoke(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
     var transcript = rishi.Transcript{};
@@ -413,7 +413,7 @@ fn runMetalSmoke(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) 
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let smoke = 1");
     _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "say \"metal\"");
 
-    const frame_lines = try composeFrameLines(garden, &transcript, "");
+    const frame_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_lines);
 
     var app = try surface.openSurface(garden, frame_lines);
@@ -435,16 +435,16 @@ pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "sessiontest")) {
-        return runSessionWitness(garden, io, init);
+        return run_session_witness(garden, io, init);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "rw2collabtest")) {
-        return runRw2CollaborationWitness(garden, io, init);
+        return run_rw2_collaboration_witness(garden, io, init);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
-        return runKeyboardWitness(garden, io, init);
+        return run_keyboard_witness(garden, io, init);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "metalsmoke")) {
-        return runMetalSmoke(garden, io, init);
+        return run_metal_smoke(garden, io, init);
     }
-    return runLive(garden, io, init);
+    return run_live(garden, io, init);
 }
