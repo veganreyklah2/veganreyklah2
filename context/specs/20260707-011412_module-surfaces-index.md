@@ -3,7 +3,7 @@
 **Stamp:** `20260707.011412 UDT` (Kaeden's clock)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **181** + I2 snapshot lap 1
+**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **182** + I2 snapshot lap 2
 **Register:** Reference — the looking-up room; meanings in our own words, one line each
 
 *Written by Kaeden and Rio 3.*
@@ -53,7 +53,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 
 ## Named, Not Yet Built (honest markers)
 
-**Brix** (composer; bricks/courses/bonds seated) · **Tablecloth** (Brix-facing application store — separate from **Tablecloth query** at parity 175; reconciled `20260707.011812`) · **Bron** (`.bron` notation; role open) · **Puddle** (sandboxed containers; first lap = snapshot export/verify/restore) · **Mycelium** (ordering aspect, gated to MALA M4) · **Dexter / Kumara-as-module** (graduation triggers recorded) · **I2 snapshot export** — lap 1 seated [`20260707-021512_snapshot-export-lap1.md`](20260707-021512_snapshot-export-lap1.md); horizon bundles open.
+**Brix** (composer; bricks/courses/bonds seated) · **Tablecloth** (Brix-facing application store — separate from **Tablecloth query** at parity 175; reconciled `20260707.011812`) · **Bron** (`.bron` notation; role open) · **Puddle** (sandboxed containers; first lap = snapshot export/verify/restore) · **Mycelium** (ordering aspect, gated to MALA M4) · **Dexter / Kumara-as-module** (graduation triggers recorded) · **I2 snapshot export** — lap 1 seated [`20260707-021512_snapshot-export-lap1.md`](20260707-021512_snapshot-export-lap1.md); lap 2 horizon bundles [`20260707-024712_snapshot-export-lap2.md`](20260707-024712_snapshot-export-lap2.md); weave/Brix slices open.
 
 ---
 

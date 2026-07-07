@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.024712 | [Snapshot horizon lap 2](20260707-024712_snapshot-horizon-lap2.md) | Bundle prefixes, SHA3-512 head record, continuity fact; parity **182** |
 | 20260707.024012 | [Poll interval lap 1](20260707-024012_poll-interval-lap1.md) | `sleepIntervalNs` at cycle boundary; parity **181** |
 | 20260707.023812 | [OA-L4 escrow-release fold fix](20260707-023812_oal4-escrow-release-fold-fix.md) | MALA graduation on hold; reputation fold reads escrow-release |
 | 20260707.023312 | [Claude handoff rings 179 + I2 180](20260707-023312_claude-handoff-rings179-i2-180.md) | Full summary; tip 98264e7; four remotes aligned |

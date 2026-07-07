@@ -3,7 +3,7 @@
 **Stamp:** `20260707.021512 UDT` (Kaeden's clock)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — lap 1 on metal; reuses §9 batch grammar; horizon bundles deferred
+**Status:** Seated — lap 1 on metal; lap 2 horizon bundles seated `20260707.024712`
 
 *Written by Kaeden and Rio 3.*
 

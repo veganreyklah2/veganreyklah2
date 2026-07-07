@@ -153,10 +153,11 @@ Every claim above is held by a witness the parity suite runs; counts are pinned 
 | 175 | Tablecloth query | `mantra_recall_tablecloth_query.rish` |
 | 180 | I2 snapshot export lap 1 | `mantra_snapshot_replay.rish` |
 | 181 | poll interval at cycle boundary | `mantra_recall_subscribe_poll_interval.rish` |
+| 182 | snapshot horizon bundles | `mantra_snapshot_horizon.rish` |
 
 ## §12 Open Items (Non-Normative)
 
-Graceful stop complete through parity **179**; **snapshot export lap 1** (parity **180**) reuses §9 batch grammar for catalog replay on host; **poll interval** (parity **181**) names a fixed nanosecond sleep between cycles. Snapshot horizon bundles (weave/Brix/continuity) remain open.
+Graceful stop complete through parity **179**; **snapshot export** lap 1 (parity **180**) reuses §9 batch grammar; lap 2 (parity **182**) adds bundle prefixes, SHA3-512 head record, and continuity fact sketch; **poll interval** (parity **181**) names a fixed nanosecond sleep between cycles. Weave/Brix snapshot slices and Pond customs remain open.
 
 ---
 

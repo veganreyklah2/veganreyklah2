@@ -1,8 +1,8 @@
-//! mantra/snapshot_export.rye — I2 lap 1: export a BoltCatalog snapshot, replay on host.
+//! mantra/snapshot_export.rye — I2 snapshot export: batch replay + horizon bundles.
 //!
-//! Reuses `resin_batch.rye` frames — one signed batch per (peer, bolt, revision),
-//! concatenated under a small snapshot header. No new manifest grammar; import
-//! applies each batch with `applyBatch` and refuses whole on any failure.
+//! Lap 1 reuses `resin_batch.rye` frames under a `0x06` snapshot header.
+//! Lap 2 adds bundle prefixes (`catalog/`, `trust/`), a SHA3-512 head record,
+//! and a continuity fact sketch per counsel I2 and I7.
 //!
 //!   rye build mantra/snapshot_export.rye -femit-bin=mantra/bin/snapshot-export
 //!   mantra/bin/snapshot-export selftest
@@ -16,11 +16,37 @@ const print = std.debug.print;
 const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
 const Ed25519 = std.crypto.sign.Ed25519;
+const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
+const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
-pub const snapshot_export_version = "20260707.021512";
+pub const snapshot_export_version = "20260707.024712";
+pub const snapshot_lap1_version = "20260707.021512";
 const snapshot_kind: u8 = 0x06;
 const max_revision_groups: u32 = 16;
 const max_snapshot_bytes: u32 = 65536;
+
+pub const bundle_catalog = "catalog/";
+pub const bundle_trust = "trust/";
+pub const head_record_path = "catalog/HEAD";
+pub const trust_signer_path = "trust/export-signer.pk";
+
+const meta_peer = "_snap";
+const meta_bolt = "_meta";
+const meta_revision: u32 = 1;
+const tilak_manifest = "manifest";
+
+pub const ContinuityKind = enum {
+    export_kind,
+    boot_kind,
+};
+
+pub const ContinuityFact = struct {
+    identity: Ed25519.PublicKey,
+    epoch: u64,
+    kind: ContinuityKind,
+    parent_hex: [64]u8,
+    stamp: []const u8,
+};
 
 pub const SnapshotError = error{
     Overflow,
@@ -29,6 +55,9 @@ pub const SnapshotError = error{
     BatchCountMismatch,
     LeafCountMismatch,
     ReplayMismatch,
+    HeadRecordMissing,
+    HeadDigestMismatch,
+    ContinuityViolation,
 };
 
 const RevisionKey = struct {
@@ -96,6 +125,48 @@ fn getField(payload: []const u8, off: *u32) SnapshotError![]const u8 {
     return s;
 }
 
+fn pathStartsWith(path: []const u8, prefix: []const u8) bool {
+    return path.len >= prefix.len and std.mem.eql(u8, path[0..prefix.len], prefix);
+}
+
+fn isHeadOrTrustLeaf(path: []const u8) bool {
+    return std.mem.eql(u8, path, head_record_path) or pathStartsWith(path, bundle_trust);
+}
+
+fn digestHex256Of(content: []const u8, out: *[64]u8) void {
+    var digest: [32]u8 = undefined;
+    Sha3_256.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn rebindLeafDigest(leaf: *ns.LeafBinding) void {
+    digestHex256Of(leaf.bytes[0..leaf.bytes_len], &leaf.digest_hex);
+}
+
+fn digestHex512Of(content: []const u8, out: *[128]u8) void {
+    var digest: [Sha3_512.digest_length]u8 = undefined;
+    Sha3_512.hash(content, &digest, .{});
+    var i: u32 = 0;
+    while (i < Sha3_512.digest_length) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{digest[i]}) catch unreachable;
+    }
+}
+
+fn pubkeyHex(pk: Ed25519.PublicKey, out: *[64]u8) void {
+    const bytes = pk.toBytes();
+    var i: u32 = 0;
+    while (i < bytes.len) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch unreachable;
+    }
+}
+
+fn hexEq128(a: []const u8, b: []const u8) bool {
+    return a.len == 128 and b.len == 128 and std.mem.eql(u8, a, b);
+}
+
 fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
     count.* = 0;
     var i: u32 = 0;
@@ -124,6 +195,229 @@ fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]Revi
             count.* += 1;
         }
     }
+}
+
+/// SHA3-512 HEAD over every catalog leaf digest in held order, excluding head/trust bundles.
+pub fn computeCatalogHead512(cat: *const ns.BoltCatalog, out: *[128]u8) SnapshotError!void {
+    var acc: [max_snapshot_bytes]u8 = undefined;
+    var acc_len: u32 = 0;
+    var i: u32 = 0;
+    while (i < cat.leaf_count) : (i += 1) {
+        const leaf = &cat.leaves[i];
+        const path = leaf.path[0..leaf.path_len];
+        if (isHeadOrTrustLeaf(path)) continue;
+        if (acc_len + 64 > capU32(&acc)) return error.Overflow;
+        @memcpy(acc[acc_len..][0..64], leaf.digest_hex[0..64]);
+        acc_len += 64;
+    }
+    digestHex512Of(acc[0..acc_len], out);
+}
+
+fn buildHeadRecordContent(
+    head_digest_hex: *const [128]u8,
+    export_stamp: []const u8,
+    identity_epoch: u64,
+    continuity: ContinuityFact,
+    parity_claim: []const u8,
+    out: []u8,
+) SnapshotError![]const u8 {
+    var identity_hex: [64]u8 = undefined;
+    pubkeyHex(continuity.identity, &identity_hex);
+    const kind_str: []const u8 = switch (continuity.kind) {
+        .export_kind => "export",
+        .boot_kind => "boot",
+    };
+    const written = std.fmt.bufPrint(out, "head 1\nhead-digest-sha3-512:{s}\nexport-stamp:{s}\nidentity-epoch:{d}\nparity-claim:{s}\ncontinuity-identity:{s}\ncontinuity-epoch:{d}\ncontinuity-kind:{s}\ncontinuity-parent:{s}\ncontinuity-stamp:{s}\n", .{
+        head_digest_hex,
+        export_stamp,
+        identity_epoch,
+        parity_claim,
+        identity_hex,
+        continuity.epoch,
+        kind_str,
+        continuity.parent_hex,
+        continuity.stamp,
+    }) catch return error.Overflow;
+    return written;
+}
+
+fn parseHeadRecordContent(content: []const u8) SnapshotError!struct {
+    head_digest_hex: [128]u8,
+    identity_epoch: u64,
+    continuity: ContinuityFact,
+    parity_claim: [64]u8,
+    parity_claim_len: u32,
+} {
+    var head_digest_hex: [128]u8 = undefined;
+    var identity_epoch: u64 = 0;
+    var continuity_epoch: u64 = 0;
+    var continuity_kind: ContinuityKind = .export_kind;
+    var continuity_parent: [64]u8 = undefined;
+    @memset(&continuity_parent, '0');
+    var continuity_stamp: [64]u8 = undefined;
+    var continuity_stamp_len: u32 = 0;
+    var identity_hex: [64]u8 = undefined;
+    @memset(&identity_hex, '0');
+    var parity_claim: [64]u8 = undefined;
+    var parity_claim_len: u32 = 0;
+    var have_head_digest = false;
+
+    var lines = std.mem.splitScalar(u8, content, '\n');
+    while (lines.next()) |line| {
+        if (line.len == 0) continue;
+        if (std.mem.startsWith(u8, line, "head-digest-sha3-512:")) {
+            const hex = line["head-digest-sha3-512:".len..];
+            if (hex.len != 128) return error.Truncated;
+            @memcpy(head_digest_hex[0..128], hex);
+            have_head_digest = true;
+        } else if (std.mem.startsWith(u8, line, "identity-epoch:")) {
+            identity_epoch = std.fmt.parseInt(u64, line["identity-epoch:".len..], 10) catch return error.Truncated;
+        } else if (std.mem.startsWith(u8, line, "parity-claim:")) {
+            const claim = line["parity-claim:".len..];
+            if (claim.len > parity_claim.len) return error.Truncated;
+            @memcpy(parity_claim[0..claim.len], claim);
+            parity_claim_len = @intCast(claim.len);
+        } else if (std.mem.startsWith(u8, line, "continuity-identity:")) {
+            const hex = line["continuity-identity:".len..];
+            if (hex.len != 64) return error.Truncated;
+            @memcpy(identity_hex[0..64], hex);
+        } else if (std.mem.startsWith(u8, line, "continuity-epoch:")) {
+            continuity_epoch = std.fmt.parseInt(u64, line["continuity-epoch:".len..], 10) catch return error.Truncated;
+        } else if (std.mem.startsWith(u8, line, "continuity-kind:")) {
+            const kind = line["continuity-kind:".len..];
+            if (std.mem.eql(u8, kind, "export")) {
+                continuity_kind = .export_kind;
+            } else if (std.mem.eql(u8, kind, "boot")) {
+                continuity_kind = .boot_kind;
+            } else {
+                return error.Truncated;
+            }
+        } else if (std.mem.startsWith(u8, line, "continuity-parent:")) {
+            const hex = line["continuity-parent:".len..];
+            if (hex.len != 64) return error.Truncated;
+            @memcpy(continuity_parent[0..64], hex);
+        } else if (std.mem.startsWith(u8, line, "continuity-stamp:")) {
+            const stamp = line["continuity-stamp:".len..];
+            if (stamp.len > continuity_stamp.len) return error.Truncated;
+            @memcpy(continuity_stamp[0..stamp.len], stamp);
+            continuity_stamp_len = @intCast(stamp.len);
+        }
+    }
+
+    if (!have_head_digest or continuity_epoch == 0) return error.Truncated;
+
+    var pk_bytes: [32]u8 = undefined;
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        const pair = identity_hex[i * 2 ..][0..2];
+        pk_bytes[i] = std.fmt.parseInt(u8, pair, 16) catch return error.Truncated;
+    }
+
+    return .{
+        .head_digest_hex = head_digest_hex,
+        .identity_epoch = identity_epoch,
+        .continuity = .{
+            .identity = Ed25519.PublicKey.fromBytes(pk_bytes) catch return error.Truncated,
+            .epoch = continuity_epoch,
+            .kind = continuity_kind,
+            .parent_hex = continuity_parent,
+            .stamp = continuity_stamp[0..continuity_stamp_len],
+        },
+        .parity_claim = parity_claim,
+        .parity_claim_len = parity_claim_len,
+    };
+}
+
+fn findLeafBytes(cat: *const ns.BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, path: []const u8) SnapshotError![]const u8 {
+    var i: u32 = 0;
+    while (i < cat.leaf_count) : (i += 1) {
+        const leaf = &cat.leaves[i];
+        if (leaf.revision != revision) continue;
+        if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
+        if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
+        if (!std.mem.eql(u8, leaf.path[0..leaf.path_len], path)) continue;
+        return leaf.bytes[0..leaf.bytes_len];
+    }
+    return error.HeadRecordMissing;
+}
+
+/// Verify the head record and continuity fact after batches apply.
+pub fn verifyHeadRecord(cat: *const ns.BoltCatalog, source_pk: Ed25519.PublicKey) SnapshotError!void {
+    const head_bytes = try findLeafBytes(cat, meta_peer, meta_bolt, meta_revision, head_record_path);
+    const parsed = try parseHeadRecordContent(head_bytes);
+
+    var recomputed: [128]u8 = undefined;
+    try computeCatalogHead512(cat, &recomputed);
+    if (!hexEq128(parsed.head_digest_hex[0..128], recomputed[0..128])) return error.HeadDigestMismatch;
+
+    if (parsed.continuity.epoch == 0) return error.ContinuityViolation;
+    if (!std.mem.eql(u8, &parsed.continuity.identity.toBytes(), &source_pk.toBytes())) return error.ContinuityViolation;
+
+    _ = parsed.identity_epoch;
+    _ = parsed.parity_claim;
+    _ = parsed.parity_claim_len;
+}
+
+fn catalogPrefixedPath(orig: []const u8, out: []u8) SnapshotError![]const u8 {
+    const prefixed = std.fmt.bufPrint(out, "{s}{s}", .{ bundle_catalog, orig }) catch return error.Overflow;
+    if (prefixed.len > ns.max_path) return error.Overflow;
+    return prefixed;
+}
+
+/// Stage a catalog with `catalog/` bundle prefixes plus head and trust leaves.
+pub fn stageHorizonCatalog(
+    src: *const ns.BoltCatalog,
+    signer: Ed25519.KeyPair,
+    identity_epoch: u64,
+    continuity_stamp: []const u8,
+    parity_claim: []const u8,
+    staged: *ns.BoltCatalog,
+) SnapshotError!void {
+    staged.* = .empty();
+
+    var path_buf: [ns.max_path]u8 = undefined;
+    var i: u32 = 0;
+    while (i < src.leaf_count) : (i += 1) {
+        const leaf = &src.leaves[i];
+        const orig_path = leaf.path[0..leaf.path_len];
+        const prefixed = try catalogPrefixedPath(orig_path, &path_buf);
+        staged.appendLeaf(
+            leaf.peer[0..leaf.peer_len],
+            leaf.bolt[0..leaf.bolt_len],
+            leaf.revision,
+            prefixed,
+            leaf.bytes[0..leaf.bytes_len],
+            leaf.tilak[0..leaf.tilak_len],
+        ) catch return error.Overflow;
+    }
+
+    var head_digest: [128]u8 = undefined;
+    try computeCatalogHead512(staged, &head_digest);
+
+    var parent_hex: [64]u8 = undefined;
+    @memset(&parent_hex, '0');
+
+    const continuity = ContinuityFact{
+        .identity = signer.public_key,
+        .epoch = 1,
+        .kind = .export_kind,
+        .parent_hex = parent_hex,
+        .stamp = continuity_stamp,
+    };
+
+    var head_buf: [ns.max_resin_bytes]u8 = undefined;
+    const head_content = try buildHeadRecordContent(
+        &head_digest,
+        snapshot_export_version,
+        identity_epoch,
+        continuity,
+        parity_claim,
+        &head_buf,
+    );
+    staged.appendLeaf(meta_peer, meta_bolt, meta_revision, head_record_path, head_content, tilak_manifest) catch return error.Overflow;
+
+    const pk_bytes = signer.public_key.toBytes();
+    staged.appendLeaf(meta_peer, meta_bolt, meta_revision, trust_signer_path, &pk_bytes, "plain-bytes") catch return error.Overflow;
 }
 
 /// Export every leaf in `src` as one or more resin-batch frames under a snapshot header.
@@ -164,6 +458,20 @@ pub fn exportCatalog(
     return off;
 }
 
+/// Export with bundle prefixes, head record, and trust signer leaf.
+pub fn exportCatalogHorizon(
+    src: *const ns.BoltCatalog,
+    signer: Ed25519.KeyPair,
+    identity_epoch: u64,
+    continuity_stamp: []const u8,
+    parity_claim: []const u8,
+    out: []u8,
+) SnapshotError!u32 {
+    var staged: ns.BoltCatalog = .empty();
+    try stageHorizonCatalog(src, signer, identity_epoch, continuity_stamp, parity_claim, &staged);
+    return try exportCatalog(&staged, signer, out);
+}
+
 /// Import a snapshot into `dest`, replacing nothing — appends via each batch apply.
 pub fn importCatalog(
     dest: *ns.BoltCatalog,
@@ -176,7 +484,11 @@ pub fn importCatalog(
     if (snapshot[off] != snapshot_kind) return error.BadKind;
     off += 1;
     const version = try getField(snapshot, &off);
-    if (!std.mem.eql(u8, version, snapshot_export_version)) return error.BadKind;
+    if (!std.mem.eql(u8, version, snapshot_export_version) and
+        !std.mem.eql(u8, version, snapshot_lap1_version))
+    {
+        return error.BadKind;
+    }
     const claimed_leaves = try getU32(snapshot, &off);
     const batch_count = try getU32(snapshot, &off);
 
@@ -193,6 +505,20 @@ pub fn importCatalog(
 
     if (dest.leaf_count != claimed_leaves) return error.LeafCountMismatch;
     return dest.leaf_count;
+}
+
+/// Import horizon snapshot and verify head record before returning.
+pub fn importCatalogHorizon(
+    dest: *ns.BoltCatalog,
+    snapshot: []const u8,
+    source_pk: Ed25519.PublicKey,
+) SnapshotError!u32 {
+    const imported = try importCatalog(dest, snapshot, source_pk);
+    verifyHeadRecord(dest, source_pk) catch {
+        dest.* = .empty();
+        return error.HeadDigestMismatch;
+    };
+    return imported;
 }
 
 /// Assert every leaf in `expect` recalls identically from `got`.
@@ -224,13 +550,16 @@ fn runSelftest(_: std.Io) !u8 {
     try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
     try src.appendLeaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text");
 
+    var staged_expect: ns.BoltCatalog = .empty();
+    try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &staged_expect);
+
     var snap: [max_snapshot_bytes]u8 = undefined;
-    const snap_len = try exportCatalog(&src, signer, &snap);
+    const snap_len = try exportCatalogHorizon(&src, signer, 1, snapshot_export_version, "witnesses=181", &snap);
 
     var dest: ns.BoltCatalog = .empty();
-    const imported = try importCatalog(&dest, snap[0..snap_len], signer.public_key);
-    assert(imported == 3);
-    try assertCatalogReplay(&src, &dest);
+    const imported = try importCatalogHorizon(&dest, snap[0..snap_len], signer.public_key);
+    assert(imported == staged_expect.leaf_count);
+    try assertCatalogReplay(&staged_expect, &dest);
 
     // Unwelcome: tampered batch byte refuses whole import.
     {
@@ -238,17 +567,47 @@ fn runSelftest(_: std.Io) !u8 {
         @memcpy(bad[0..snap_len], snap[0..snap_len]);
         bad[3] = if (bad[3] == 'z') 'y' else bad[3] + 1;
         var dest_bad: ns.BoltCatalog = .empty();
-        if (importCatalog(&dest_bad, bad[0..snap_len], signer.public_key)) |_| {
+        if (importCatalogHorizon(&dest_bad, bad[0..snap_len], signer.public_key)) |_| {
             return error.Truncated;
         } else |_| {}
         assert(dest_bad.leaf_count == 0);
     }
 
-    print("snapshot: exported {d} leaves in {d} revision batch(es)\n", .{ src.leaf_count, @as(u32, 2) });
+    // Unwelcome: head digest claim mismatch refuses after batches apply.
+    {
+        var bad_staged: ns.BoltCatalog = .empty();
+        try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &bad_staged);
+        var j: u32 = 0;
+        while (j < bad_staged.leaf_count) : (j += 1) {
+            const leaf = &bad_staged.leaves[j];
+            if (!std.mem.eql(u8, leaf.path[0..leaf.path_len], head_record_path)) continue;
+            const content = leaf.bytes[0..leaf.bytes_len];
+            const prefix = "head-digest-sha3-512:";
+            if (std.mem.indexOf(u8, content, prefix)) |pos| {
+                const hex_start = pos + prefix.len;
+                if (hex_start < content.len) {
+                    leaf.bytes[hex_start] = if (leaf.bytes[hex_start] == 'a') 'b' else 'a';
+                    rebindLeafDigest(leaf);
+                }
+            }
+            break;
+        }
+        var bad_snap: [max_snapshot_bytes]u8 = undefined;
+        const bad_len = try exportCatalog(&bad_staged, signer, &bad_snap);
+        var dest_bad: ns.BoltCatalog = .empty();
+        if (importCatalogHorizon(&dest_bad, bad_snap[0..bad_len], signer.public_key)) |_| {
+            return error.Truncated;
+        } else |_| {}
+        assert(dest_bad.leaf_count == 0);
+    }
+
+    print("snapshot: horizon export — {d} leaves with catalog/ trust/ head record\n", .{staged_expect.leaf_count});
+    print("snapshot: SHA3-512 HEAD verified on import GREEN\n", .{});
+    print("snapshot: continuity fact present — export kind GREEN\n", .{});
     print("snapshot: import replay — recall identical on every leaf GREEN\n", .{});
-    print("snapshot: tampered snapshot refused whole GREEN\n", .{});
+    print("snapshot: tampered batch and head refused whole GREEN\n", .{});
     print("snapshot: version {s} batch {s}\n", .{ snapshot_export_version, rb.batch_version });
-    print("GREEN: I2 snapshot export lap 1 — batch grammar replay on host.\n", .{});
+    print("GREEN: I2 snapshot export lap 2 — horizon bundles replay on host.\n", .{});
     return 0;
 }
 
