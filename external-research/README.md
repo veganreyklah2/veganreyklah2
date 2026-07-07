@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.004712` | [Claude counsel — outer subscribe and host mirror](20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md) | Bounded poll cycles now; host mirror = named pair list; Caravan restart ≠ poller |
 | `20260707.001612` | [Claude counsel — subscribe revisited](20260707-001612_claude-counsel-subscribe-revisited.md) | Catch-up-to-latest now; outer unattended loop waits Caravan scheduling |
 | `20260707.000112` | [Claude counsel — two-way sync and subscribe](20260707-000112_claude-counsel-two-way-sync-and-subscribe.md) | Split lap: symmetric syncRevision now; subscribe (poll-first) waits its own word |
 | `20260706.232812` | [Claude ruling — OA-L4, MALA, Edit-5, horizons](20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) | Zip 58 sitting — OA-L4 leads; Edit-5 slot released; namespace horizon order; parity unchanged |

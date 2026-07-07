@@ -277,6 +277,16 @@ let ns_catchupw = run ["rishi/bin/rishi" "run" "tools/mantra_recall_catch_up_wir
 assert ns_catchupw.ok else "catch-up wire witness failed"
 say "GREEN: catch-up-to-latest wire witness passed."
 
+say "witness suite: outer subscribe poll (in-process)…"
+let ns_poll = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll.rish"]
+assert ns_poll.ok else "outer subscribe poll witness failed"
+say "GREEN: outer subscribe poll witness passed."
+
+say "witness suite: outer subscribe poll wire (hosted + device)…"
+let ns_pollw = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll_wire.rish"]
+assert ns_pollw.ok else "outer subscribe poll wire witness failed"
+say "GREEN: outer subscribe poll wire witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"

@@ -1,0 +1,166 @@
+//! mantra/recall_subscribe_poll.rye — outer subscribe poll: bounded cycles over catch-up.
+//!
+//! Each cycle runs catch-up-to-latest for every named peer/bolt pair (host mirror
+//! configuration). A test-only cycle bound makes the loop witnessable without a
+//! live clock or Caravan scheduling. Composing rather than extending:
+//! recall_catch_up.rye is imported and not edited.
+//!
+//!   rye build mantra/recall_subscribe_poll.rye -femit-bin=mantra/bin/recall-subscribe-poll
+//!   mantra/bin/recall-subscribe-poll selftest
+//!
+//! Counsel: [`external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const c = std.c;
+const recall_lap1 = @import("recall_lap1.rye");
+const cu = @import("recall_catch_up.rye");
+
+pub const recall_subscribe_poll_version = "20260707.004712";
+
+pub const max_mirror_pairs: u32 = 4;
+
+pub const PeerBoltPair = struct {
+    peer: []const u8,
+    bolt: []const u8,
+};
+
+pub const PollCycleReport = struct {
+    revisions_synced: u32,
+    empty_asks: u32,
+};
+
+pub const PollReport = struct {
+    cycles_run: u32,
+    pairs_per_cycle: u32,
+    revisions_synced: u32,
+    empty_asks: u32,
+};
+
+/// One poll cycle: catch-up every named pair against `source`.
+pub fn pollOneCycle(
+    fetcher: *recall_lap1.BoltCatalog,
+    source: *const recall_lap1.BoltCatalog,
+    pairs: []const PeerBoltPair,
+) recall_lap1.RecallError!PollCycleReport {
+    var report: PollCycleReport = .{ .revisions_synced = 0, .empty_asks = 0 };
+    var i: u32 = 0;
+    while (i < pairs.len) : (i += 1) {
+        const pair = pairs[i];
+        const step = try cu.catchUpToLatest(fetcher, source, pair.peer, pair.bolt);
+        report.revisions_synced += step.revisions_synced;
+        report.empty_asks += step.empty_asks;
+    }
+    return report;
+}
+
+/// Repeat `max_cycles` poll cycles. `interval_ns` may be zero (witness uses zero).
+pub fn pollCycles(
+    fetcher: *recall_lap1.BoltCatalog,
+    source: *const recall_lap1.BoltCatalog,
+    pairs: []const PeerBoltPair,
+    max_cycles: u32,
+    interval_ns: u64,
+) recall_lap1.RecallError!PollReport {
+    var report: PollReport = .{
+        .cycles_run = 0,
+        .pairs_per_cycle = @intCast(pairs.len),
+        .revisions_synced = 0,
+        .empty_asks = 0,
+    };
+    var cycle: u32 = 0;
+    while (cycle < max_cycles) : (cycle += 1) {
+        const step = try pollOneCycle(fetcher, source, pairs);
+        report.cycles_run += 1;
+        report.revisions_synced += step.revisions_synced;
+        report.empty_asks += step.empty_asks;
+        if (interval_ns > 0 and cycle + 1 < max_cycles) {
+            var pause = c.timespec{
+                .sec = @intCast(interval_ns / 1_000_000_000),
+                .nsec = @intCast(interval_ns % 1_000_000_000),
+            };
+            _ = c.nanosleep(&pause, null);
+        }
+    }
+    return report;
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    const path = "bolt.txt";
+
+    // Single pair: source gains rev 2 after cycle 1 — counsel witness shape.
+    var source: recall_lap1.BoltCatalog = .empty();
+    try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+
+    var fetcher: recall_lap1.BoltCatalog = .empty();
+    try fetcher.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+
+    const one_pair = [_]PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
+
+    const c1 = try pollOneCycle(&fetcher, &source, &one_pair);
+    assert(c1.revisions_synced == 0);
+    assert(c1.empty_asks == 1);
+
+    try source.appendLeaf("peerB", "b", 2, path, "rev-two", "plain-text");
+
+    const c2 = try pollOneCycle(&fetcher, &source, &one_pair);
+    assert(c2.revisions_synced == 1);
+    assert(c2.empty_asks == 1);
+
+    const c3 = try pollOneCycle(&fetcher, &source, &one_pair);
+    assert(c3.revisions_synced == 0);
+    assert(c3.empty_asks == 1);
+
+    const c4 = try pollOneCycle(&fetcher, &source, &one_pair);
+    assert(c4.revisions_synced == 0);
+    assert(c4.empty_asks == 1);
+
+    const name2 = recall_lap1.Name{ .peer = "peerB", .bolt = "b", .revision = 2, .path = path };
+    var buf: [recall_lap1.max_resin_bytes]u8 = undefined;
+    const r2 = try fetcher.recall(name2, &buf);
+    assert(std.mem.eql(u8, buf[0..r2.len], "rev-two"));
+
+    // Host mirror: two named pairs; peerC gains rev 2 after cycle 1.
+    var mirror_src: recall_lap1.BoltCatalog = .empty();
+    try mirror_src.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try mirror_src.appendLeaf("peerC", "c", 1, path, "alpha", "plain-text");
+
+    var mirror_fetch: recall_lap1.BoltCatalog = .empty();
+    try mirror_fetch.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try mirror_fetch.appendLeaf("peerC", "c", 1, path, "alpha", "plain-text");
+
+    const mirror_pairs = [_]PeerBoltPair{
+        .{ .peer = "peerB", .bolt = "b" },
+        .{ .peer = "peerC", .bolt = "c" },
+    };
+
+    const m1 = try pollOneCycle(&mirror_fetch, &mirror_src, &mirror_pairs);
+    assert(m1.revisions_synced == 0);
+    assert(m1.empty_asks == 2);
+
+    try mirror_src.appendLeaf("peerC", "c", 2, path, "beta", "plain-text");
+
+    const m2 = try pollOneCycle(&mirror_fetch, &mirror_src, &mirror_pairs);
+    assert(m2.revisions_synced == 1);
+    assert(m2.empty_asks == 2);
+
+    const bundled = try pollCycles(&mirror_fetch, &mirror_src, &mirror_pairs, 2, 0);
+    assert(bundled.cycles_run == 2);
+    assert(bundled.pairs_per_cycle == 2);
+    assert(bundled.revisions_synced == 0);
+    assert(bundled.empty_asks == 4);
+
+    print("ns-poll: delayed revision caught on cycle 2 — empty cycles cost one ask GREEN\n", .{});
+    print("ns-poll: host mirror — two named pairs per cycle GREEN\n", .{});
+    print("ns-poll: version {s} catch_up {s}\n", .{ recall_subscribe_poll_version, cu.recall_catch_up_version });
+    print("GREEN: outer subscribe poll — bounded cycles over catch-up-to-latest, in-process.\n", .{});
+    return 0;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+    return runSelftest(io);
+}

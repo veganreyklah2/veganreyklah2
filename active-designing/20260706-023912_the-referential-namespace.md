@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; through catch-up-to-latest wire parity **172** (`20260707.002012`). **Next:** outer unattended subscribe loop (own word) · host mirror · Tablecloth query last.
+**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; through outer subscribe poll wire parity **174** (`20260707.005012`). **Next:** Tablecloth query last · production scheduling (open).
 
 *Written together by Kaeden and Rio 3.*
 
@@ -65,7 +65,11 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Catch-up-to-latest, in-process (landed, parity 171):** [`mantra/recall_catch_up.rye`](../mantra/recall_catch_up.rye) loops `syncRevision` until an empty ask; witness [`tools/mantra_recall_catch_up.rish`](../tools/mantra_recall_catch_up.rish).
 
-**Catch-up-to-latest, wire (landed, parity 172):** [`mantra/recall_catch_up_delivery.rye`](../mantra/recall_catch_up_delivery.rye) loops the NS-L3 sync exchange until `entry_count == 0` — hosted localhost ports **38484/38485**, device `comlink/run_recall_catch_up_wire_lab.sh` (ports **15565/15566**); witness [`tools/mantra_recall_catch_up_wire.rish`](../tools/mantra_recall_catch_up_wire.rish). Subscribe-to-changes splits per counsel `20260707.001612`: the outer unattended repeating loop waits on a real need to run one, and on Caravan's scheduling half maturing beside the restart half it already proves.
+**Catch-up-to-latest, wire (landed, parity 172):** [`mantra/recall_catch_up_delivery.rye`](../mantra/recall_catch_up_delivery.rye) loops the NS-L3 sync exchange until `entry_count == 0` — hosted localhost ports **38484/38485**, device `comlink/run_recall_catch_up_wire_lab.sh` (ports **15565/15566**); witness [`tools/mantra_recall_catch_up_wire.rish`](../tools/mantra_recall_catch_up_wire.rish).
+
+**Outer subscribe poll, in-process (landed, parity 173):** [`mantra/recall_subscribe_poll.rye`](../mantra/recall_subscribe_poll.rye) repeats bounded catch-up cycles over a named peer/bolt list; witness [`tools/mantra_recall_subscribe_poll.rish`](../tools/mantra_recall_subscribe_poll.rish).
+
+**Outer subscribe poll, wire (landed, parity 174):** [`mantra/recall_subscribe_poll_delivery.rye`](../mantra/recall_subscribe_poll_delivery.rye) runs bounded poll cycles over catch-up wire exchanges — hosted localhost ports **38486/38487**, device `comlink/run_recall_subscribe_poll_wire_lab.sh`; witness [`tools/mantra_recall_subscribe_poll_wire.rish`](../tools/mantra_recall_subscribe_poll_wire.rish). **Host mirror** is this loop configured with multiple pairs — the same loop, the same open production questions (graceful stop, crash recovery, real scheduling), one small list beside it (counsel `20260707.004712`).
 
 **Wire carriage — counsel `20260706.041012` (lap 1 landed):** the OA-L2-shaped hop — carry proven sync over Comlink sealed datagrams, hosted first, then device wire, same `wire_format` OA-L2 and OA-L3 escrow rode. No new wire vocabulary; reuses **recall**, **bolt**, **resin**, fetch-by-digest, have-already, need-resin, **manifest**, Amphora.
 
@@ -88,7 +92,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Batch-frame carriage — landed `20260706.184512`:** batches larger than **340 B** cross as kind **0x04** chunk frames (**331 B** body each); `BatchAssembler` reassembles before `applyBatch`. Witness bolt variants: [`20260706-185112_the-witness-bolt.md`](20260706-185112_the-witness-bolt.md). Beaded bolt full crossing remains next lap.
 
-The later laps arrive each in season. **Two-way sync** landed in-process and over wire (counsel `20260707.000112`). **Subscribe-to-changes** splits in two: catch-up-to-latest, a bounded inner loop over the existing one-shot exchange, crosses no seam and is buildable in its own small ring (counsel `20260707.001612`); the outer, unattended repeating loop waits on a real need to run one, and on Caravan's scheduling half maturing beside the restart half it already proves. Tablecloth query and host mirror each keep their season.
+The later laps arrive each in season. **Two-way sync** and **catch-up-to-latest** landed in-process and over wire. **Outer subscribe poll** (parity **173**) proves bounded repeat cycles over catch-up; **host mirror** is that loop with a named peer/bolt list rather than a separate seam (counsel `20260707.004712`). Production scheduling — graceful stop, crash recovery, unattended real runs — stays open. **Tablecloth query** keeps its season last.
 
 ## Kaeden's Word (`20260706.032700`)
 

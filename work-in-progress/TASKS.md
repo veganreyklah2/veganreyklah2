@@ -53,7 +53,7 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
 
-**Next climb (Kaeden's word):** outer unattended subscribe loop on its own word · host mirror · Tablecloth query last.
+**Next climb (Kaeden's word):** Tablecloth query last · production scheduling when Caravan grows its scheduling half.
 
 - [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; `recallByMark` by Tilak within peer/bolt/revision; path hint disambiguates; `tools/mantra_recall_by_mark.rish`; parity **168**
 
@@ -64,6 +64,10 @@
 - [x] **Catch-up-to-latest (in-process)** — `mantra/recall_catch_up.rye`; bounded inner loop over `syncRevision`; counsel `20260707.001612`; `tools/mantra_recall_catch_up.rish`; parity **171**
 
 - [x] **Catch-up-to-latest (wire)** — `mantra/recall_catch_up_delivery.rye`; wire loop until empty response; hosted **38484/38485** + device `comlink/run_recall_catch_up_wire_lab.sh`; `tools/mantra_recall_catch_up_wire.rish`; parity **172**
+
+- [x] **Outer subscribe poll (in-process)** — `mantra/recall_subscribe_poll.rye`; bounded cycles over catch-up; host mirror = named pair list; counsel `20260707.004712`; `tools/mantra_recall_subscribe_poll.rish`; parity **173**
+
+- [x] **Outer subscribe poll (wire)** — `mantra/recall_subscribe_poll_delivery.rye`; bounded poll cycles over catch-up wire; hosted **38486/38487** + device `comlink/run_recall_subscribe_poll_wire_lab.sh`; `tools/mantra_recall_subscribe_poll_wire.rish`; parity **174**
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 

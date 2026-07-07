@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.005412 | [Commit push parity 173–174](20260707-005412_commit-push-parity173-174.md) | Subscribe arc complete; counsel 004712; four remotes |
+| 20260707.005012 | [Outer subscribe poll wire parity 174](20260707-005012_outer-subscribe-poll-wire-parity174.md) | Subscribe arc complete through wire; Q3 item 3 done |
+| 20260707.004812 | [Outer subscribe poll parity 173](20260707-004812_outer-subscribe-poll-parity173.md) | Bounded poll cycles; host mirror = pair list |
 | 20260707.004512 | [Commit push parity 170–172](20260707-004512_commit-push-parity170-172.md) | Two-way wire + catch-up inner ring; four remotes |
 | 20260707.002012 | [Catch-up wire parity 172](20260707-002012_catch-up-wire-parity172.md) | Wire loop until empty; hosted + device |
 | 20260707.001712 | [Catch-up in-process parity 171](20260707-001712_catch-up-in-process-parity171.md) | Subscribe counsel revisited; bounded inner loop |
