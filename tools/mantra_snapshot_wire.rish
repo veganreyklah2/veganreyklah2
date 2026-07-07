@@ -1,4 +1,4 @@
-# mantra_snapshot_wire.rish — I2 snapshot export lap 3: hosted Comlink crossing.
+# mantra_snapshot_wire.rish — I2 snapshot export lap 3: hosted + device Comlink crossing.
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/mantra_snapshot_wire.rish
@@ -14,4 +14,8 @@ assert selftest.ok else "snapshot wire selftest exited non-zero"
 assert selftest.out contains "GREEN" else "snapshot wire selftest not GREEN"
 assert selftest.out contains "import and replay GREEN" else "snapshot wire import replay missing"
 
-say "GREEN: I2 snapshot export lap 3 hosted Comlink crossing witness passed."
+let device = run ["sh" "comlink/run_snapshot_export_wire_lab.sh"]
+assert device.ok else "snapshot device wire lab failed"
+assert device.out contains "GREEN" else "snapshot device wire lab not GREEN"
+
+say "GREEN: I2 snapshot export lap 3 hosted + device Comlink crossing witness passed."

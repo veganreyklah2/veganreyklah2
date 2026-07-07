@@ -29,10 +29,10 @@ The module grew as one foundation and a family of compositions. `recall_lap1.rye
 | `recall_subscribe_poll.rye` (+`_delivery`, **38486/38487**) | Bounded repeat cycles over catch-up; host mirror is the same loop with a named pair list; `sleepIntervalNs` at cycle boundary | `tools/mantra_recall_subscribe_poll*.rish` |
 | `recall_tablecloth_query.rye` | Optional-field filter over the bounded catalog; every match returned in held order | `tools/mantra_recall_tablecloth_query.rish` |
 | `snapshot_export.rye` | I2 lap 1–3: batch replay; lap 2 horizon bundles; lap 3 hosted wire per revision group | `tools/mantra_snapshot_replay.rish`, `tools/mantra_snapshot_horizon.rish`, `tools/mantra_snapshot_wire.rish` |
-| `snapshot_export_delivery.rye` | Lap 3: source-loop + fetcher over batch wire, hosted **38490/38491** | `tools/mantra_snapshot_wire.rish` |
+| `snapshot_export_delivery.rye` | Lap 3: source-loop + fetcher over batch wire, hosted **38490/38491**; device **15567/15568** | `tools/mantra_snapshot_wire.rish` |
 | `src/` | Mantra's own seed: `main.rye`, `diff.rye`, and the Weave aspect (`weave.rye`) beneath the namespace | SLC-1 witnesses |
 
-Device-wire labs mirror the hosted ports under `../comlink/run_*_lab.sh` (sync **15561/15562**, batch **15563/15564**, catch-up **15565/15566**).
+Device-wire labs mirror the hosted ports under `../comlink/run_*_lab.sh` (sync **15561/15562**, batch **15563/15564**, catch-up **15565/15566**, snapshot **15567/15568**).
 
 ## Building
 

@@ -1,0 +1,56 @@
+//! comlink/guest_snapshot_source_rx.rye — I2 snapshot lap 3 device: source RX (verify snapshot batch request).
+
+const vn = @import("virtio_net.rye");
+const wf = @import("wire_format.rye");
+const bw = @import("recall_batch_wire.rye");
+
+var rx: vn.RxQueue = undefined;
+
+export fn _start() linksection(".text.init") callconv(.naked) noreturn {
+    asm volatile (
+        \\ li sp, 0x80100000
+        \\ j kmain
+    );
+}
+
+export fn kmain() callconv(.c) noreturn {
+    vn.initDevice();
+    rx.init();
+    vn.driverOk();
+    rx.kick();
+
+    const n = rx.waitFrame();
+    if (n == 0) {
+        vn.writeStr("sed device wire: FAIL — source RX timeout\n");
+        vn.finishFail();
+    }
+    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+    if (n <= poff) {
+        vn.writeStr("sed device wire: FAIL — frame too short\n");
+        vn.finishFail();
+    }
+    const buf = rx.frame();
+    const datagram = buf[poff..n];
+
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = wf.openDatagram(datagram, &opened) catch {
+        vn.writeStr("sed device wire: FAIL — open refused\n");
+        vn.finishFail();
+    };
+
+    var req: bw.BatchWireRequest = undefined;
+    bw.decodeRequest(opened[0..@intCast(opened_len)], &req) catch {
+        vn.writeStr("sed device wire: FAIL — request decode\n");
+        vn.finishFail();
+    };
+    if (!@import("std").mem.eql(u8, req.peer, "peerB") or !@import("std").mem.eql(u8, req.bolt, "b") or req.revision != 1) {
+        vn.writeStr("sed device wire: FAIL — bolt/revision mismatch\n");
+        vn.finishFail();
+    }
+    if (req.held_count != 0) {
+        vn.writeStr("sed device wire: FAIL — snapshot expects held_count=0\n");
+        vn.finishFail();
+    }
+    vn.writeStr("sed device wire: sealed snapshot batch request GREEN — verify passed\n");
+    vn.finishPass();
+}

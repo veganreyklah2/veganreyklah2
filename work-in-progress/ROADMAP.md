@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260707.051012` (Caravan source-crash recovery · parity **187**)
-**Last updated:** 2026-07-07 (rings 1–2 of counsel `044112` order)
+**Version:** `20260707.051512` (I2 snapshot lap 3 device wire complete · parity **187**)
+**Last updated:** 2026-07-07 (lap 3 hosted + device; counsel `044112` ring 3)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

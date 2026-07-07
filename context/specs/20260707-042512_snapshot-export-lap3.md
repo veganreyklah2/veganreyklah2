@@ -20,14 +20,14 @@ Counsel: [`external-research/20260707-042512_claude-proposal-snapshot-lap3-and-c
 | Piece | Role |
 |-------|------|
 | `snapshot_export.rye` | `beginSnapshotAssembly`, `appendSnapshotBatch`, `witnessHorizonPlan` |
-| `snapshot_export_delivery.rye` | Source-loop + fetcher over batch wire; ports **38490**/**38491** |
+| `snapshot_export_delivery.rye` | Source-loop + fetcher over batch wire; ports **38490**/**38491**; device **15567**/**15568** |
 | `importCatalogHorizon` | Unchanged — placeholder continuity check only (epoch ≠ 0, identity matches signer) |
 
 No new wire mechanism, frame kind, or signature scheme.
 
 ## Witness
 
-`tools/mantra_snapshot_wire.rish` — parity **185**
+`tools/mantra_snapshot_wire.rish` — parity **187** (hosted selftest + device lab)
 
 ## Horizon (not lap 3)
 

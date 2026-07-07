@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (Caravan source-crash recovery · parity **187**)
+**Last updated:** 2026-07-07 (I2 snapshot lap 3 device wire · parity **187**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -84,7 +84,7 @@
 
 - [x] **`witness_stop_after` footgun** — `CARAVAN_WITNESS_MODE=1` required for third arg; exit 2 + named refusal otherwise; `tools/caravan_witness_stop_footgun.rish`; parity **186**
 - [x] **Source-crash recovery** — `linux.waitpid` poll while fetcher runs; exit **3** + named halt; `tools/caravan_subscribe_poll_source_crash.rish`; parity **187**
-- [ ] **I2 snapshot device wire** — lap 3 finishing on virtio (same lap number as hosted crossing)
+- [x] **I2 snapshot device wire** — lap 3 virtio leg; guests + `comlink/run_snapshot_export_wire_lab.sh`; ports **15567**/**15568**; witness extended in `tools/mantra_snapshot_wire.rish`; parity **187**
 - [ ] **Host-mirror under supervision** — each proven alone; never together with the service ring
 - [ ] **TASKS sweep** — checked items to session logs; prune heavy sections
 - [ ] **Extended-run stability** — deferred until something runs unattended for real (counsel `044112`)
