@@ -1,6 +1,7 @@
 //! comlink/guest_snapshot_source_tx.rye — I2 snapshot lap 3 device: source TX (witness revision batch).
 
 const vn = @import("virtio_net.rye");
+const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const bw = @import("recall_batch_wire.rye");
 const rb = @import("resin_batch.rye");
@@ -24,7 +25,7 @@ fn sendSealedPayload(payload: []const u8) void {
     buf[eoff + 12] = @truncate(vn.lab_ethertype >> 8);
     buf[eoff + 13] = @truncate(vn.lab_ethertype);
     const poff = eoff + vn.eth_header_len;
-    @memcpy(buf[poff..][0..dg_len], scratch[0..dg_len]);
+    tally_copy.copy_disjoint(u8, buf[poff..][0..dg_len], scratch[0..dg_len]);
     tx.send(poff + dg_len);
 }
 

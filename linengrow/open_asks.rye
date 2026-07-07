@@ -12,6 +12,7 @@ const Dir = std.Io.Dir;
 const Ed25519 = std.crypto.sign.Ed25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const rc = @import("receipt_core.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const oa1_version = "20260707.023512";
 pub const poster_seed = [_]u8{0x51} ** Ed25519.KeyPair.seed_length;
@@ -130,7 +131,7 @@ pub const FoldState = struct {
 
 fn copyHexField(src: []const u8, dest: []u8) error{FoldFailed}!u32 {
     if (src.len > bufLenU32(dest)) return error.FoldFailed;
-    @memcpy(dest[0..src.len], src);
+    tally_copy.copy_disjoint(u8, dest[0..src.len], src);
     return @intCast(src.len);
 }
 
@@ -378,9 +379,9 @@ pub fn encodeCompactPayload(sig: Ed25519.Signature, fact: []const u8, out: []u8)
     const total: u32 = oa2_payload_header + @as(u32, @intCast(fact.len));
     if (total > bufLenU32(out)) return error.Overflow;
     const sig_bytes = sig.toBytes();
-    @memcpy(out[0..sig_bytes.len], &sig_bytes);
+    tally_copy.copy_disjoint(u8, out[0..sig_bytes.len], std.mem.asBytes(&sig_bytes));
     std.mem.writeInt(u32, out[Ed25519.Signature.encoded_length..][0..4], @intCast(fact.len), .little);
-    @memcpy(out[oa2_payload_header..][0..fact.len], fact);
+    tally_copy.copy_disjoint(u8, out[oa2_payload_header..][0..fact.len], fact);
     return total;
 }
 
@@ -391,8 +392,8 @@ pub fn decodeCompactPayload(buf: []const u8, sig_out: []u8, fact_out: []u8) erro
     if (buf.len < oa2_payload_header + fact_len) return error.InvalidPayload;
     if (sig_out.len < Ed25519.Signature.encoded_length) return error.InvalidPayload;
     if (fact_out.len < fact_len) return error.InvalidPayload;
-    @memcpy(sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
-    @memcpy(fact_out[0..fact_len], buf[oa2_payload_header..][0..fact_len]);
+    tally_copy.copy_disjoint(u8, sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
+    tally_copy.copy_disjoint(u8, fact_out[0..fact_len], buf[oa2_payload_header..][0..fact_len]);
     return .{ .fact_len = fact_len };
 }
 
@@ -426,7 +427,7 @@ pub fn foldAppliedLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_p
                 if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
                 var ref_buf: [ref_hex_len]u8 = undefined;
                 requestRefHex(fact, &ref_buf);
-                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
                 state.request_ref_len = ref_hex_len;
                 state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
                 state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
@@ -478,7 +479,7 @@ pub fn foldLog(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed25
                 if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
                 var ref_buf: [ref_hex_len]u8 = undefined;
                 requestRefHex(fact, &ref_buf);
-                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
                 state.request_ref_len = ref_hex_len;
                 state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
                 state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
@@ -579,7 +580,7 @@ pub fn foldEscrowLog(
                 if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
                 var ref_buf: [ref_hex_len]u8 = undefined;
                 requestRefHex(fact, &ref_buf);
-                @memcpy(state.request_ref[0..ref_hex_len], &ref_buf);
+                tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
                 state.request_ref_len = ref_hex_len;
                 state.poster_hex_len = try copyHexField(fields.poster, &state.poster_hex);
                 state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
@@ -714,7 +715,7 @@ pub fn foldReputationLog(
                 if (findCycleByRef(cycles[0..], cycle_count, ref_buf[0..ref_hex_len]) != null) return error.FoldFailed;
                 cycles[cycle_count] = .{};
                 var cycle = &cycles[cycle_count];
-                @memcpy(cycle.request_ref[0..ref_hex_len], &ref_buf);
+                tally_copy.copy_disjoint(u8, cycle.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
                 cycle.request_ref_len = ref_hex_len;
                 cycle.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
                 cycle_count += 1;
@@ -789,7 +790,7 @@ fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u
     var line: [max_line_len]u8 = undefined;
     const line_len = try rc.formatLogLine(sig, fact, &line);
     if (log_len.* + line_len > bufLenU32(log)) return error.Overflow;
-    @memcpy(log[log_len.*..][0..line_len], line[0..line_len]);
+    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;
 }
 

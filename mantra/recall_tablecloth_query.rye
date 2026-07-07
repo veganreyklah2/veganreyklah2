@@ -15,6 +15,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const recall_lap1 = @import("recall_lap1.rye");
 const rbm = @import("recall_by_mark.rye");
+const tally_copy = @import("tally_copy.rye");
 
 pub const recall_tablecloth_query_version = "20260707.005612";
 
@@ -106,7 +107,7 @@ fn runSelftest(_: std.Io) !u8 {
     const exact = recall_lap1.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "notes.txt" };
     const by_name = try cat.recall(exact, &buf);
     var name_bytes: [recall_lap1.max_resin_bytes]u8 = undefined;
-    @memcpy(name_bytes[0..by_name.len], buf[0..by_name.len]);
+    tally_copy.copy_disjoint(u8, name_bytes[0..by_name.len], buf[0..by_name.len]);
     const by_mark = try rbm.recallByMark(&cat, .{
         .peer = "peerB",
         .bolt = "b",

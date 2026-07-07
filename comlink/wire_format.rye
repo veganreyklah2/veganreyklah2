@@ -14,6 +14,7 @@ const Ed25519 = std.crypto.sign.Ed25519;
 const X25519 = std.crypto.dh.X25519;
 const ChaCha20Poly1305 = std.crypto.aead.chacha_poly.ChaCha20Poly1305;
 const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
+const tally_copy = @import("tally_copy.rye");
 
 pub const wire_format_version = "20260705.225412";
 
@@ -48,7 +49,7 @@ fn freshNonce() [ChaCha20Poly1305.nonce_length]u8 {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(&counter_bytes, &digest, .{});
     var nonce: [ChaCha20Poly1305.nonce_length]u8 = undefined;
-    @memcpy(&nonce, digest[0..nonce.len]);
+    tally_copy.copy_disjoint(u8, nonce[0..], digest[0..nonce.len]);
     return nonce;
 }
 
@@ -79,12 +80,12 @@ pub fn sealMessage(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 
 
     const sender_bytes = alice_id.public_key.toBytes();
     const sig_bytes = sig.toBytes();
-    @memcpy(buf[@intCast(off_sender)..][0..32], &sender_bytes);
-    @memcpy(buf[@intCast(off_nonce)..][0..nonce.len], &nonce);
-    @memcpy(buf[@intCast(off_name)..][0..name.len], &name);
-    @memcpy(buf[@intCast(off_sig)..][0..sig_bytes.len], &sig_bytes);
-    @memcpy(buf[@intCast(off_tag)..][0..tag.len], &tag);
-    @memcpy(buf[@intCast(off_cipher)..][0..message.len], ciphertext[0..message.len]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_sender)..][0..32], sender_bytes[0..32]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_nonce)..][0..nonce.len], nonce[0..]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_name)..][0..name.len], name[0..]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_sig)..][0..sig_bytes.len], sig_bytes[0..sig_bytes.len]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_tag)..][0..tag.len], tag[0..]);
+    tally_copy.copy_disjoint(u8, buf[@intCast(off_cipher)..][0..message.len], ciphertext[0..message.len]);
     return off_cipher + @as(u64, @intCast(message.len));
 }
 

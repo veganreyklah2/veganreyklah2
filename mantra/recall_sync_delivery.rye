@@ -13,6 +13,7 @@ const c = std.c;
 const ns = @import("recall_lap1.rye");
 const sw = @import("recall_sync_wire.rye");
 const wf = @import("wire_format.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const nsw_version = "20260706.041512";
 
@@ -104,7 +105,7 @@ fn buildHeldRequest(fetcher: *const ns.BoltCatalog) sw.WireError!sw.SyncRequest 
     };
     var alpha_digest: [64]u8 = undefined;
     digestHexOf("alpha", &alpha_digest);
-    @memcpy(req.held_digests[0][0..64], alpha_digest[0..64]);
+    tally_copy.copy_disjoint(u8, req.held_digests[0][0..64], alpha_digest[0..64]);
     return req;
 }
 
@@ -177,7 +178,7 @@ fn runSelftest(_: std.Io) !u8 {
 
     // Unwelcome: bad Comlink seal refuses whole.
     var corrupt_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    @memcpy(corrupt_wire[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
+    tally_copy.copy_disjoint(u8, corrupt_wire[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
     corrupt_wire[@intCast(resp_wire_len - 1)] ^= 0xff;
     var junk: [@intCast(wf.max_message)]u8 = undefined;
     if (openWire(corrupt_wire[0..@intCast(resp_wire_len)], &junk)) |_| {

@@ -17,6 +17,7 @@ const rb = @import("resin_batch.rye");
 const bw = @import("recall_batch_wire.rye");
 const wf = @import("wire_format.rye");
 const snap = @import("snapshot_export.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const sed_version = "20260707.042512";
 
@@ -125,7 +126,7 @@ fn recvBatchPayload(port: u16, out: []u8) !u32 {
         if (state == .ready) {
             const batch = batch_asm.batch();
             if (batch.len > out.len) return error.Overflow;
-            @memcpy(out[0..batch.len], batch);
+            tally_copy.copy_disjoint(u8, out[0..batch.len], batch);
             return @intCast(batch.len);
         }
     }

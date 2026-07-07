@@ -7,6 +7,7 @@
 //! Scope: [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md)
 
 const std = @import("std");
+const tally_copy = @import("tally_copy.rye");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
@@ -169,16 +170,16 @@ pub const BoltCatalog = struct {
             return error.RevisionOutOfOrder;
         }
         var leaf: LeafBinding = undefined;
-        @memcpy(leaf.peer[0..peer.len], peer);
+        tally_copy.copy_disjoint(u8, leaf.peer[0..peer.len], peer);
         leaf.peer_len = @intCast(peer.len);
-        @memcpy(leaf.bolt[0..bolt.len], bolt);
+        tally_copy.copy_disjoint(u8, leaf.bolt[0..bolt.len], bolt);
         leaf.bolt_len = @intCast(bolt.len);
         leaf.revision = revision;
-        @memcpy(leaf.path[0..path.len], path);
+        tally_copy.copy_disjoint(u8, leaf.path[0..path.len], path);
         leaf.path_len = @intCast(path.len);
-        @memcpy(leaf.tilak[0..tilak.len], tilak);
+        tally_copy.copy_disjoint(u8, leaf.tilak[0..tilak.len], tilak);
         leaf.tilak_len = @intCast(tilak.len);
-        @memcpy(leaf.bytes[0..content.len], content);
+        tally_copy.copy_disjoint(u8, leaf.bytes[0..content.len], content);
         leaf.bytes_len = @intCast(content.len);
         digestHexOf(content, &leaf.digest_hex);
         self.leaves[self.leaf_count] = leaf;
@@ -207,7 +208,7 @@ pub const BoltCatalog = struct {
         digestHexOf(leaf.bytes[0..leaf.bytes_len], &expected);
         if (!hexEq(expected[0..64], leaf.digest_hex[0..64])) return error.DigestMismatch;
         if (leaf.bytes_len > out.len) return error.Overflow;
-        @memcpy(out[0..leaf.bytes_len], leaf.bytes[0..leaf.bytes_len]);
+        tally_copy.copy_disjoint(u8, out[0..leaf.bytes_len], leaf.bytes[0..leaf.bytes_len]);
         return .{ .outcome = .here, .len = leaf.bytes_len, .tilak = leaf.tilak[0..leaf.tilak_len] };
     }
 

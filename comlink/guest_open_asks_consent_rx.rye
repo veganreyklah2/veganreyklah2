@@ -4,6 +4,7 @@
 
 const std = @import("std");
 const vn = @import("virtio_net.rye");
+const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
@@ -22,7 +23,7 @@ fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
 fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = rc.formatLogLine(sig, fact, &line) catch unreachable;
-    @memcpy(log[log_len.*..][0..line_len], line[0..line_len]);
+    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;
 }
 

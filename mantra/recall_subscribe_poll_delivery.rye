@@ -18,6 +18,7 @@ const sw = @import("recall_sync_wire.rye");
 const wf = @import("wire_format.rye");
 const cu = @import("recall_catch_up.rye");
 const sp = @import("recall_subscribe_poll.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const npw_version = "20260707.052012";
 
@@ -112,7 +113,7 @@ fn buildCatchUpRequest(
             if (std.mem.eql(u8, req.held_digests[seen][0..64], digest)) break;
         }
         if (seen < req.held_count) continue;
-        @memcpy(req.held_digests[req.held_count][0..64], digest);
+        tally_copy.copy_disjoint(u8, req.held_digests[req.held_count][0..64], digest);
         req.held_count += 1;
     }
     return req;

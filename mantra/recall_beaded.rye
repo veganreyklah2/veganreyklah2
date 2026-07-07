@@ -32,6 +32,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const recall_lap1 = @import("recall_lap1.rye");
 const beading = @import("beading.rye");
+const tally_copy = @import("tally_copy.rye");
 
 pub const recall_beaded_version = "20260706.180712";
 
@@ -78,7 +79,7 @@ pub fn appendLeafBeaded(
     while (b < bead_count) : (b += 1) {
         const dig_off: u32 = 36 + b * 32;
         var bd: [32]u8 = undefined;
-        @memcpy(&bd, index_buf[dig_off..][0..32]);
+        tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_buf[dig_off..][0..32]);
         const bytes = bead_store.get(&bd) orelse return error.StoreMissing;
         var path_buf: [recall_lap1.max_path]u8 = undefined;
         const derived = std.fmt.bufPrint(&path_buf, "{s}.b{d}", .{ path, b }) catch return error.Overflow;
@@ -106,7 +107,7 @@ pub fn recallBeaded(
 
     if (!std.mem.eql(u8, direct.tilak, beading.tilak_bead_index)) {
         if (direct.len > out.len) return error.Overflow;
-        @memcpy(out[0..direct.len], index_buf[0..direct.len]);
+        tally_copy.copy_disjoint(u8, out[0..direct.len], index_buf[0..direct.len]);
         return direct;
     }
 
@@ -145,7 +146,7 @@ pub fn hydrateBeadStoreFromCatalog(
     while (b < bead_count) : (b += 1) {
         const dig_off: u32 = 36 + b * 32;
         var bd: [32]u8 = undefined;
-        @memcpy(&bd, index_buf[dig_off..][0..32]);
+        tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_buf[dig_off..][0..32]);
         var path_buf: [recall_lap1.max_path]u8 = undefined;
         const derived = std.fmt.bufPrint(&path_buf, "{s}.b{d}", .{ index_path, b }) catch return error.Overflow;
         const bead_name = recall_lap1.Name{
@@ -230,11 +231,11 @@ fn runSelftest(_: std.Io) !u8 {
     // long tail is unchanged, so content-defined beading re-syncs it, and the second
     // append deposits only the beads the edit actually touched.
     var content_v2: [403]u8 = undefined;
-    @memcpy(content_v2[0..30], content_v1[0..30]);
+    tally_copy.copy_disjoint(u8, content_v2[0..30], content_v1[0..30]);
     content_v2[30] = 'X';
     content_v2[31] = 'Y';
     content_v2[32] = 'Z';
-    @memcpy(content_v2[33..403], content_v1[30..400]);
+    tally_copy.copy_disjoint(u8, content_v2[33..403], content_v1[30..400]);
     const n_large_r2 = recall_lap1.Name{
         .peer = "local",
         .bolt = "notes",

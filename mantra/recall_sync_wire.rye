@@ -5,6 +5,7 @@
 
 const std = @import("std");
 const ns = @import("recall_lap1.rye");
+const tally_copy = @import("tally_copy.rye");
 
 pub const sync_wire_version = "20260706.041512";
 
@@ -63,12 +64,12 @@ pub fn encodeRequest(req: SyncRequest, out: []u8) WireError!u32 {
     out[off] = @intCast(req.peer.len);
     off += 1;
     if (off + req.peer.len > out.len) return error.Overflow;
-    @memcpy(out[off..][0..req.peer.len], req.peer);
+    tally_copy.copy_disjoint(u8, out[off..][0..req.peer.len], req.peer);
     off += @intCast(req.peer.len);
     out[off] = @intCast(req.bolt.len);
     off += 1;
     if (off + req.bolt.len + 5 > out.len) return error.Overflow;
-    @memcpy(out[off..][0..req.bolt.len], req.bolt);
+    tally_copy.copy_disjoint(u8, out[off..][0..req.bolt.len], req.bolt);
     off += @intCast(req.bolt.len);
     std.mem.writeInt(u32, out[off..][0..4], req.revision, .little);
     off += 4;
@@ -77,7 +78,7 @@ pub fn encodeRequest(req: SyncRequest, out: []u8) WireError!u32 {
     var i: u32 = 0;
     while (i < req.held_count) : (i += 1) {
         if (off + 64 > out.len) return error.Overflow;
-        @memcpy(out[off..][0..64], req.held_digests[i][0..64]);
+        tally_copy.copy_disjoint(u8, out[off..][0..64], req.held_digests[i][0..64]);
         off += 64;
     }
     return off;
@@ -105,7 +106,7 @@ pub fn decodeRequest(payload: []const u8, out: *SyncRequest) WireError!void {
     var i: u32 = 0;
     while (i < out.held_count) : (i += 1) {
         if (off + 64 > payload.len) return error.Truncated;
-        @memcpy(out.held_digests[i][0..64], payload[off..][0..64]);
+        tally_copy.copy_disjoint(u8, out.held_digests[i][0..64], payload[off..][0..64]);
         off += 64;
     }
 }
@@ -125,13 +126,13 @@ pub fn buildResponse(src: *const ns.BoltCatalog, req: *const SyncRequest, out: *
         const leaf = src.revisionLeafAt(req.peer, req.bolt, req.revision, ord) orelse return error.Truncated;
         const entry = &out.entries[out.entry_count];
         entry.path = leaf.path;
-        @memcpy(entry.digest_hex[0..64], leaf.digest_hex[0..64]);
+        tally_copy.copy_disjoint(u8, entry.digest_hex[0..64], leaf.digest_hex[0..64]);
         entry.tilak = leaf.tilak;
         if (digestHeld(req, leaf.digest_hex[0..64])) {
             entry.bytes_len = 0; // have-already lane — ref only
         } else {
             entry.bytes_len = @intCast(leaf.bytes.len);
-            @memcpy(entry.bytes[0..leaf.bytes.len], leaf.bytes);
+            tally_copy.copy_disjoint(u8, entry.bytes[0..leaf.bytes.len], leaf.bytes);
         }
         out.entry_count += 1;
     }
@@ -145,12 +146,12 @@ pub fn encodeResponse(resp: *const SyncResponse, out: []u8) WireError!u32 {
     out[off] = @intCast(resp.peer.len);
     off += 1;
     if (off + resp.peer.len > out.len) return error.Overflow;
-    @memcpy(out[off..][0..resp.peer.len], resp.peer);
+    tally_copy.copy_disjoint(u8, out[off..][0..resp.peer.len], resp.peer);
     off += @intCast(resp.peer.len);
     out[off] = @intCast(resp.bolt.len);
     off += 1;
     if (off + resp.bolt.len + 4 > out.len) return error.Overflow;
-    @memcpy(out[off..][0..resp.bolt.len], resp.bolt);
+    tally_copy.copy_disjoint(u8, out[off..][0..resp.bolt.len], resp.bolt);
     off += @intCast(resp.bolt.len);
     std.mem.writeInt(u32, out[off..][0..4], resp.revision, .little);
     off += 4;
@@ -164,18 +165,18 @@ pub fn encodeResponse(resp: *const SyncResponse, out: []u8) WireError!u32 {
         if (off + 1 + entry.path.len + 64 + 1 + entry.tilak.len + 2 + entry.bytes_len > out.len) return error.Overflow;
         out[off] = @intCast(entry.path.len);
         off += 1;
-        @memcpy(out[off..][0..entry.path.len], entry.path);
+        tally_copy.copy_disjoint(u8, out[off..][0..entry.path.len], entry.path);
         off += @intCast(entry.path.len);
-        @memcpy(out[off..][0..64], entry.digest_hex[0..64]);
+        tally_copy.copy_disjoint(u8, out[off..][0..64], entry.digest_hex[0..64]);
         off += 64;
         out[off] = @intCast(entry.tilak.len);
         off += 1;
-        @memcpy(out[off..][0..entry.tilak.len], entry.tilak);
+        tally_copy.copy_disjoint(u8, out[off..][0..entry.tilak.len], entry.tilak);
         off += @intCast(entry.tilak.len);
         std.mem.writeInt(u16, out[off..][0..2], @intCast(entry.bytes_len), .little);
         off += 2;
         if (entry.bytes_len > 0) {
-            @memcpy(out[off..][0..entry.bytes_len], entry.bytes[0..entry.bytes_len]);
+            tally_copy.copy_disjoint(u8, out[off..][0..entry.bytes_len], entry.bytes[0..entry.bytes_len]);
             off += entry.bytes_len;
         }
     }
@@ -210,7 +211,7 @@ pub fn decodeResponse(payload: []const u8, out: *SyncResponse) WireError!void {
         if (off + path_len + 64 + 1 > payload.len) return error.Truncated;
         entry.path = payload[off..][0..path_len];
         off += path_len;
-        @memcpy(entry.digest_hex[0..64], payload[off..][0..64]);
+        tally_copy.copy_disjoint(u8, entry.digest_hex[0..64], payload[off..][0..64]);
         off += 64;
         const tilak_len: u32 = payload[off];
         off += 1;
@@ -222,7 +223,7 @@ pub fn decodeResponse(payload: []const u8, out: *SyncResponse) WireError!void {
         if (entry.bytes_len > ns.max_resin_bytes) return error.Overflow;
         if (off + entry.bytes_len > payload.len) return error.Truncated;
         if (entry.bytes_len > 0) {
-            @memcpy(entry.bytes[0..entry.bytes_len], payload[off..][0..entry.bytes_len]);
+            tally_copy.copy_disjoint(u8, entry.bytes[0..entry.bytes_len], payload[off..][0..entry.bytes_len]);
             off += entry.bytes_len;
         }
     }

@@ -6,6 +6,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const Ed25519 = std.crypto.sign.Ed25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+const tally_copy = @import("tally_copy.rye");
 
 pub const slcl1_seed = [_]u8{0x42} ** Ed25519.KeyPair.seed_length;
 pub const sig_hex_len: u32 = Ed25519.Signature.encoded_length * 2;
@@ -161,9 +162,9 @@ pub fn encodeCompactPayload(sig: Ed25519.Signature, fact: []const u8, out: []u8)
     const total: u32 = slcl2_payload_header + @as(u32, @intCast(fact.len));
     if (total > bufLenU32(out)) return error.Overflow;
     const sig_bytes = sig.toBytes();
-    @memcpy(out[0..sig_bytes.len], &sig_bytes);
+    tally_copy.copy_disjoint(u8, out[0..sig_bytes.len], std.mem.asBytes(&sig_bytes));
     std.mem.writeInt(u32, out[Ed25519.Signature.encoded_length..][0..4], @intCast(fact.len), .little);
-    @memcpy(out[slcl2_payload_header..][0..fact.len], fact);
+    tally_copy.copy_disjoint(u8, out[slcl2_payload_header..][0..fact.len], fact);
     return total;
 }
 
@@ -174,7 +175,7 @@ pub fn decodeCompactPayload(buf: []const u8, sig_out: []u8, fact_out: []u8) erro
     if (buf.len < slcl2_payload_header + fact_len) return error.InvalidPayload;
     if (sig_out.len < Ed25519.Signature.encoded_length) return error.InvalidPayload;
     if (fact_out.len < fact_len) return error.InvalidPayload;
-    @memcpy(sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
-    @memcpy(fact_out[0..fact_len], buf[slcl2_payload_header..][0..fact_len]);
+    tally_copy.copy_disjoint(u8, sig_out[0..Ed25519.Signature.encoded_length], buf[0..Ed25519.Signature.encoded_length]);
+    tally_copy.copy_disjoint(u8, fact_out[0..fact_len], buf[slcl2_payload_header..][0..fact_len]);
     return .{ .fact_len = fact_len };
 }

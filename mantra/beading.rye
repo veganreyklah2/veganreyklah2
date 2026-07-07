@@ -30,6 +30,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
+const tally_copy = @import("tally_copy.rye");
 
 pub const beading_version = "20260706.175412";
 
@@ -147,7 +148,7 @@ pub const BeadStore = struct {
         var bead_new: Bead = undefined;
         bead_new.digest = digest.*;
         const n: u32 = @intCast(bytes.len);
-        @memcpy(bead_new.bytes[0..bytes.len], bytes);
+        tally_copy.copy_disjoint(u8, bead_new.bytes[0..bytes.len], bytes);
         bead_new.bytes_len = n;
         self.beads[self.count] = bead_new;
         self.count += 1;
@@ -182,7 +183,7 @@ pub fn bead(
     digestRaw(content, &whole_digest);
 
     var off: u32 = 0;
-    @memcpy(index_out[off..][0..32], &whole_digest);
+    tally_copy.copy_disjoint(u8, index_out[off..][0..32], whole_digest[0..32]);
     off += 32;
     std.mem.writeInt(u16, index_out[off..][0..2], @intCast(whole_len), .little);
     off += 2;
@@ -210,7 +211,7 @@ pub fn bead(
         } else {
             report.beads_deduped += 1;
         }
-        @memcpy(index_out[off..][0..32], &bd);
+        tally_copy.copy_disjoint(u8, index_out[off..][0..32], std.mem.asBytes(&bd));
         off += 32;
         start = end;
     }
@@ -254,7 +255,7 @@ pub fn beadContentDefined(
     const whole_len: u32 = @intCast(content.len);
     var whole_digest: [32]u8 = undefined;
     digestRaw(content, &whole_digest);
-    @memcpy(index_out[0..32], &whole_digest);
+    tally_copy.copy_disjoint(u8, index_out[0..32], whole_digest[0..32]);
     std.mem.writeInt(u16, index_out[32..34], @intCast(whole_len), .little);
 
     var report: BeadReport = .{
@@ -278,7 +279,7 @@ pub fn beadContentDefined(
         } else {
             report.beads_deduped += 1;
         }
-        @memcpy(index_out[off..][0..32], &bd0);
+        tally_copy.copy_disjoint(u8, index_out[off..][0..32], std.mem.asBytes(&bd0));
         off += 32;
         bead_count = 1;
     }
@@ -298,7 +299,7 @@ pub fn beadContentDefined(
         } else {
             report.beads_deduped += 1;
         }
-        @memcpy(index_out[off..][0..32], &bd);
+        tally_copy.copy_disjoint(u8, index_out[off..][0..32], std.mem.asBytes(&bd));
         off += 32;
         bead_count += 1;
         start = end;
@@ -324,7 +325,7 @@ fn parseIndexHeader(index_tilak: []const u8, index_bytes: []const u8) BeadError!
     if (!std.mem.eql(u8, index_tilak, tilak_bead_index)) return error.UnknownTilak;
     if (index_bytes.len < index_header_len) return error.Truncated;
     var head: IndexHeader = undefined;
-    @memcpy(&head.whole_digest, index_bytes[0..32]);
+    tally_copy.copy_disjoint(u8, std.mem.asBytes(&head.whole_digest), index_bytes[0..32]);
     head.whole_len = std.mem.readInt(u16, index_bytes[32..34], .little);
     head.bead_count = std.mem.readInt(u16, index_bytes[34..36], .little);
     if (head.bead_count > max_beads) return error.TooManyBeads;
@@ -351,7 +352,7 @@ pub fn verifyBeadIndex(
     while (i < head.bead_count) : (i += 1) {
         const off: u32 = index_header_len + i * digest_raw_len;
         var bd: [32]u8 = undefined;
-        @memcpy(&bd, index_bytes[off..][0..32]);
+        tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_bytes[off..][0..32]);
         const bytes = store.get(&bd) orelse return error.StoreMissing;
         var check: [32]u8 = undefined;
         digestRaw(bytes, &check); // each bead proves itself by digest
@@ -385,14 +386,14 @@ pub fn reassemble(
     while (i < head.bead_count) : (i += 1) {
         const off: u32 = index_header_len + i * digest_raw_len;
         var bd: [32]u8 = undefined;
-        @memcpy(&bd, index_bytes[off..][0..32]);
+        tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_bytes[off..][0..32]);
         const bytes = store.get(&bd) orelse return error.StoreMissing;
         var check: [32]u8 = undefined;
         digestRaw(bytes, &check); // a fetched bead must hash to its named digest
         if (!std.mem.eql(u8, check[0..], bd[0..])) return error.DigestMismatch;
         const n: u32 = @intCast(bytes.len);
         if (total + n > head.whole_len) return error.Overflow; // no bead past the promise
-        @memcpy(out[total..][0..bytes.len], bytes);
+        tally_copy.copy_disjoint(u8, out[total..][0..bytes.len], bytes);
         total += n;
     }
 
@@ -486,7 +487,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     // Unwelcome: a tampered whole-digest in the index refuses, even with every bead right.
     {
         var bad_index: [max_resin_bytes]u8 = undefined;
-        @memcpy(bad_index[0..bc.len], idx_c[0..bc.len]);
+        tally_copy.copy_disjoint(u8, bad_index[0..bc.len], idx_c[0..bc.len]);
         bad_index[0] +%= 1; // flip a byte of the recorded whole digest
         var scratch: [max_resin_bytes]u8 = undefined;
         if (reassemble(&store, tilak_bead_index, bad_index[0..bc.len], &scratch)) |_| {
@@ -531,11 +532,11 @@ fn runBeadingSelftest(_: std.Io) !u8 {
 
     // Q is P with three bytes inserted after offset 40; the long tail is unchanged.
     var content_q: [483]u8 = undefined;
-    @memcpy(content_q[0..40], content_p[0..40]);
+    tally_copy.copy_disjoint(u8, content_q[0..40], content_p[0..40]);
     content_q[40] = 'X';
     content_q[41] = 'Y';
     content_q[42] = 'Z';
-    @memcpy(content_q[43..483], content_p[40..480]);
+    tally_copy.copy_disjoint(u8, content_q[43..483], content_p[40..480]);
     var idx_q: [max_resin_bytes]u8 = undefined;
     const bq = try beadContentDefined(&store_cdc, content_q[0..], &idx_q);
     var out_q: [max_resin_bytes]u8 = undefined;
@@ -572,7 +573,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     {
         // A tampered index fails verify, the same as it fails reassembly.
         var bad: [max_resin_bytes]u8 = undefined;
-        @memcpy(bad[0..bp.len], idx_p[0..bp.len]);
+        tally_copy.copy_disjoint(u8, bad[0..bp.len], idx_p[0..bp.len]);
         bad[0] +%= 1; // corrupt the recorded whole digest
         if (verifyBeadIndex(&store_cdc, tilak_bead_index, bad[0..bp.len])) |_| {
             return error.DigestMismatch;
@@ -584,8 +585,8 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     // A deletion re-syncs too. Against P alone in fresh stores, content-defined beading
     // dedups beads across a three-byte deletion where fixed-size beading dedups none.
     var content_r: [477]u8 = undefined;
-    @memcpy(content_r[0..40], content_p[0..40]);
-    @memcpy(content_r[40..477], content_p[43..480]);
+    tally_copy.copy_disjoint(u8, content_r[0..40], content_p[0..40]);
+    tally_copy.copy_disjoint(u8, content_r[40..477], content_p[43..480]);
     var store_dc: BeadStore = .empty();
     var idx_pc: [max_resin_bytes]u8 = undefined;
     _ = try beadContentDefined(&store_dc, content_p[0..], &idx_pc);

@@ -7,6 +7,7 @@
 const std = @import("std");
 const sw = @import("recall_sync_wire.rye");
 const rb = @import("resin_batch.rye");
+const tally_copy = @import("tally_copy.rye");
 
 pub const batch_wire_version = "20260706.184512";
 
@@ -47,7 +48,7 @@ pub fn encodeBatchResponse(batch: []const u8, out: []u8) WireError!u32 {
     if (batch.len > max_batch_wire) return error.Overflow;
     if (out.len < 1 + batch.len) return error.Overflow;
     out[0] = kind_response_batch;
-    @memcpy(out[1..][0..batch.len], batch);
+    tally_copy.copy_disjoint(u8, out[1..][0..batch.len], batch);
     return 1 + @as(u32, @intCast(batch.len));
 }
 
@@ -62,7 +63,7 @@ pub fn encodeBatchChunk(batch: []const u8, chunk_index: u16, out: []u8) WireErro
     std.mem.writeInt(u16, out[1..][0..2], chunk_index, .little);
     std.mem.writeInt(u16, out[3..][0..2], count, .little);
     std.mem.writeInt(u32, out[5..][0..4], @intCast(batch.len), .little);
-    @memcpy(out[chunk_header_len..][0..take], batch[off_body..][0..take]);
+    tally_copy.copy_disjoint(u8, out[chunk_header_len..][0..take], batch[off_body..][0..take]);
     return chunk_header_len + @as(u32, @intCast(take));
 }
 
@@ -70,7 +71,7 @@ pub fn decodeBatchResponse(payload: []const u8, out: []u8) WireError!u32 {
     if (payload.len < 1 or payload[0] != kind_response_batch) return error.BadKind;
     const body = payload[1..];
     if (body.len > out.len) return error.Overflow;
-    @memcpy(out[0..body.len], body);
+    tally_copy.copy_disjoint(u8, out[0..body.len], body);
     return @intCast(body.len);
 }
 
@@ -90,7 +91,7 @@ pub const BatchAssembler = struct {
         if (payload[0] == kind_response_batch) {
             const body = payload[1..];
             if (body.len > self.buf.len) return error.Overflow;
-            @memcpy(self.buf[0..body.len], body);
+            tally_copy.copy_disjoint(u8, self.buf[0..body.len], body);
             self.total = @intCast(body.len);
             self.count = 1;
             self.received = 1;
@@ -121,7 +122,7 @@ pub const BatchAssembler = struct {
         }
         const bit: u16 = @as(u16, 1) << @intCast(index);
         if (self.mask & bit != 0) return error.BadChunk;
-        @memcpy(self.buf[off_body..][0..take], body);
+        tally_copy.copy_disjoint(u8, self.buf[off_body..][0..take], body);
         self.mask |= bit;
         self.received += 1;
         if (self.received < self.count) return .need_more;

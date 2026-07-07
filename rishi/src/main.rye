@@ -178,7 +178,7 @@ pub const Transcript = struct {
         if (add > max_transcript_bytes - self.len) return false; // bounded edge
         const start: usize = @intCast(self.len);
         const end: usize = @intCast(self.len + add);
-        @memcpy(self.bytes[start..end], text);
+        tally_copy.copy_disjoint(u8, self.bytes[start..end], text);
         self.len += add;
         assert(self.len <= max_transcript_bytes);
         return true;
@@ -1529,7 +1529,7 @@ const StrBuf = struct {
         if (self.len + add > self.bytes.len) return error.StringTooLong;
         const start: usize = @intCast(self.len);
         const end: usize = @intCast(self.len + add);
-        @memcpy(self.bytes[start..end], text);
+        tally_copy.copy_disjoint(u8, self.bytes[start..end], text);
         self.len += add;
     }
 

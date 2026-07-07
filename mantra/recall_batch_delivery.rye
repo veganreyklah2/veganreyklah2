@@ -15,6 +15,7 @@ const bw = @import("recall_batch_wire.rye");
 const wf = @import("wire_format.rye");
 const rbd = @import("recall_beaded.rye");
 const bd = @import("beading.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const rbw_version = "20260707.011412";
 
@@ -202,7 +203,7 @@ fn recvBatchPayload(port: u16, out: []u8) !u32 {
         if (state == .ready) {
             const batch = batch_asm.batch();
             if (batch.len > out.len) return error.Overflow;
-            @memcpy(out[0..batch.len], batch);
+            tally_copy.copy_disjoint(u8, out[0..batch.len], batch);
             return @intCast(batch.len);
         }
     }
@@ -262,7 +263,7 @@ fn runSelftest(_: std.Io) !u8 {
     assert(std.mem.eql(u8, buf[0..rb_out.len], "beta"));
 
     var corrupt: [@intCast(wf.wire_capacity)]u8 = undefined;
-    @memcpy(corrupt[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
+    tally_copy.copy_disjoint(u8, corrupt[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
     corrupt[@intCast(resp_wire_len - 1)] ^= 0xff;
     var junk: [@intCast(wf.max_message)]u8 = undefined;
     if (openWire(corrupt[0..@intCast(resp_wire_len)], &junk)) |_| {
@@ -380,7 +381,7 @@ fn runSource(_: std.Io) !u8 {
     var held: [1][64]u8 = undefined;
     var i: u32 = 0;
     while (i < req.held_count) : (i += 1) {
-        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+        tally_copy.copy_disjoint(u8, held[i][0..64], req.held_digests[i][0..64]);
     }
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
     const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
@@ -449,7 +450,7 @@ fn runChunkSource(_: std.Io) !u8 {
     var held: [1][64]u8 = undefined;
     var i: u32 = 0;
     while (i < req.held_count) : (i += 1) {
-        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+        tally_copy.copy_disjoint(u8, held[i][0..64], req.held_digests[i][0..64]);
     }
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
     const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);
@@ -525,7 +526,7 @@ fn runBeadedSource(_: std.Io) !u8 {
     var held: [1][64]u8 = undefined;
     var i: u32 = 0;
     while (i < req.held_count) : (i += 1) {
-        @memcpy(held[i][0..64], req.held_digests[i][0..64]);
+        tally_copy.copy_disjoint(u8, held[i][0..64], req.held_digests[i][0..64]);
     }
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
     const built = try rb.buildBatch(&src, req.peer, req.bolt, req.revision, held[0..req.held_count], signer, &batch_buf);

@@ -11,6 +11,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const Ed25519 = std.crypto.sign.Ed25519;
 const rc = @import("receipt_core.rye");
+const tally_copy = @import("tally_copy.rye");
 
 const slcl1_version = "20260704.020800";
 
@@ -35,7 +36,7 @@ fn runSelftest(io: std.Io) !u8 {
     const line_len = try rc.formatLogLine(sig, canonical[0..canonical_len], &line);
 
     var log: [rc.max_log_len]u8 = undefined;
-    @memcpy(log[0..line_len], line[0..line_len]);
+    tally_copy.copy_disjoint(u8, log[0..line_len], line[0..line_len]);
     const log_len: u32 = line_len;
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
@@ -57,7 +58,7 @@ fn runSelftest(io: std.Io) !u8 {
     assert(digest[0] != 0 or digest[1] != 0);
 
     var tampered: [rc.max_log_len]u8 = undefined;
-    @memcpy(tampered[0..log_len], log[0..log_len]);
+    tally_copy.copy_disjoint(u8, tampered[0..log_len], log[0..log_len]);
     tampered[log_len - 3] +%= 1;
 
     var bad_sig: [Ed25519.Signature.encoded_length]u8 = undefined;
