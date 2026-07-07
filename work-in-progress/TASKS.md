@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (TigerBeetle alignment leap · parity **190**)
+**Last updated:** 2026-07-07 (copy_disjoint ratchet arc · parity **191**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -56,6 +56,7 @@
 **Next climb (counsel `044112` complete):** MALA graduation **on hold** (trigger decides). Brix · Pond · continuity · sourcing note each wait their own word. Extended-run stability deferred until something runs unattended for real.
 
 - [x] **TigerBeetle alignment leap (`053212`)** — `tally/copy.rye` disjoint-copy law; `tools/tame_style_check.rish` bans + ratchets; 8-site `@memcpy` migration; 33 qualified asserts retired; 7 compound asserts split; Radiant vocabulary pass; study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md); parity **190**
+- [x] **`copy_disjoint` ratchet arc** — six on-touch turns across Mantra delivery/export, comlink virtio guests, canonical wire modules, beading cluster, linengrow OA/receipt stack, and `rishi/src/main.rye`; application `@memcpy` **121→1** (sole site intentional in `tally/copy.rye`); `linengrow/tally_copy.rye` symlink; commits `adb46e9`/`f2e69de`; full parity **191** GREEN (~146s); detail in [`session-logs/20260707-154812_copy-ratchet-commit-push.md`](../session-logs/20260707-154812_copy-ratchet-commit-push.md)
 
 **Held per counsel `025212` (not rejected — no code until each module has ground):**
 

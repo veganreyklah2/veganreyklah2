@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260707.053212` (TigerBeetle alignment leap · parity **190**)
-**Last updated:** 2026-07-07 (counsel `044112` rings complete; parity **188**)
+**Version:** `20260707.154812` (copy_disjoint ratchet arc · parity **191**)
+**Last updated:** 2026-07-07 (application `@memcpy` ratchet complete; full suite GREEN)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

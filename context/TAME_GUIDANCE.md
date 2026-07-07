@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-07 (second TigerStyle-alignment pass `20260707.053212` — disjoint-copy law, refined error-compare seam, compound-assert split enforced, ratchet counters live; study: [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md))
+**Last updated:** 2026-07-07 (copy_disjoint ratchet arc — application `@memcpy` **121→1**; parity **191**)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -241,7 +241,9 @@ For hosted seeds and modules, mirror the assert import: bind once per file — `
 overlap. New code carries that trust to `tally/copy.rye` instead — `copy_disjoint(T,
 target, source)` asserts both preconditions and then performs the copy it guards. Elder
 `@memcpy` sites migrate as their files are touched; `tools/tame_style_check.rish` prints
-the remaining count on every parity run, so the ratchet only ever turns one way.
+the remaining count on every parity run, so the ratchet only ever turns one way. As of
+parity **191**, every authored application site routes through `copy_disjoint`; the lone
+remaining `@memcpy` is intentional inside `tally/copy.rye`.
 `copyForwards` and `copyBackwards` are banned outright — where a genuinely overlapping
 move is one day needed, it earns its own asserting form beside this one.
 
