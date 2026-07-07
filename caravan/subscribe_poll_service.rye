@@ -10,6 +10,7 @@
 //!   rye build caravan/subscribe_poll_service.rye -lc -femit-bin=caravan/bin/subscribe-poll-service
 //!   caravan/bin/subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N] [interval-ns]
 //!
+//! The third argument is test-only: set `CARAVAN_WITNESS_MODE=1` from a witness runner.
 //! Counsel: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
 //! · [`external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md`](../external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md)
 //! · [`external-research/20260707-021012_claude-counsel-ring4-signal-handler.md`](../external-research/20260707-021012_claude-counsel-ring4-signal-handler.md)
@@ -21,10 +22,84 @@ const c = std.c;
 const se = @import("supervisor_exit.rye");
 const ss = @import("supervisor_signal.rye");
 
-const caravan_subscribe_poll_service_version = "20260707.024012";
+const caravan_subscribe_poll_service_version = "20260707.051012";
+
+const witness_mode_env = "CARAVAN_WITNESS_MODE";
+
+/// Supervisor halts when the long-lived source child dies unexpectedly.
+const source_lost_exit: u8 = 3;
+
+const linux = std.os.linux;
+
+fn witnessModeAllowed(environ: *const std.process.Environ.Map) bool {
+    const v = environ.get(witness_mode_env) orelse return false;
+    return std.mem.eql(u8, v, "1");
+}
+
+/// Non-blocking reap; returns the source exit code when the child has exited.
+fn pollSourceExit(source_child: *std.process.Child) ?u8 {
+    const pid = source_child.id orelse return 0;
+    var status: u32 = 0;
+    const rc = linux.waitpid(@intCast(pid), &status, linux.W.NOHANG);
+    switch (linux.errno(rc)) {
+        .SUCCESS => {
+            if (rc == 0) return null;
+            source_child.id = null;
+            if (linux.W.IFEXITED(status)) {
+                return linux.W.EXITSTATUS(status);
+            }
+            return 255;
+        },
+        else => return null,
+    }
+}
+
+fn haltIfSourceDied(source_child: *std.process.Child) ?u8 {
+    if (pollSourceExit(source_child)) |code| {
+        print("caravan poll-service: source-loop died (exit {d}) — supervisor halting\n", .{code});
+        return source_lost_exit;
+    }
+    return null;
+}
 
 const max_fall_restarts: u32 = 5;
 const source_ready_ns: u64 = 50_000_000;
+const child_poll_ns: u64 = 20_000_000;
+
+fn statusToExitCode(status: u32) u8 {
+    if (linux.W.IFEXITED(status)) {
+        return linux.W.EXITSTATUS(status);
+    }
+    return 255;
+}
+
+fn waitFetcherOrSourceLost(
+    io: std.Io,
+    source_child: *std.process.Child,
+    fetcher_child: *std.process.Child,
+) !union(enum) { fetcher_done: u8, source_lost: u8 } {
+    while (fetcher_child.id != null) {
+        if (haltIfSourceDied(source_child)) |lost| {
+            fetcher_child.kill(io);
+            return .{ .source_lost = lost };
+        }
+        var status: u32 = 0;
+        const fpid = fetcher_child.id.?;
+        const rc = linux.waitpid(@intCast(fpid), &status, linux.W.NOHANG);
+        switch (linux.errno(rc)) {
+            .SUCCESS => {
+                if (rc != 0) {
+                    fetcher_child.id = null;
+                    return .{ .fetcher_done = statusToExitCode(status) };
+                }
+            },
+            else => {},
+        }
+        var slice = c.timespec{ .sec = 0, .nsec = @intCast(child_poll_ns) };
+        _ = c.nanosleep(&slice, null);
+    }
+    return error.InvalidChild;
+}
 
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
@@ -40,6 +115,11 @@ pub fn main(init: std.process.Init) !u8 {
         try std.fmt.parseInt(u32, args[3], 10)
     else
         null;
+
+    if (witness_stop_after != null and !witnessModeAllowed(init.environ_map)) {
+        print("caravan poll-service: witness-stop-after-N is test-only; set CARAVAN_WITNESS_MODE=1 from a witness runner\n", .{});
+        return 2;
+    }
 
     const poll_interval_ns: u64 = if (args.len >= 5)
         try std.fmt.parseInt(u64, args[4], 10)
@@ -82,6 +162,8 @@ fn runSupervisor(
     var fall_restarts: u32 = 0;
 
     while (true) {
+        if (haltIfSourceDied(&source_child)) |code| return code;
+
         var should_create_sentinel = ss.stopRequested();
         if (witness_stop_after) |n| {
             if (ordinary_seen == n) should_create_sentinel = true;
@@ -107,10 +189,9 @@ fn runSupervisor(
         };
 
         var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
-        const term = try fetcher_child.wait(io);
-        const code: u8 = switch (term) {
-            .exited => |c0| c0,
-            else => 255,
+        const code: u8 = switch (try waitFetcherOrSourceLost(io, &source_child, &fetcher_child)) {
+            .fetcher_done => |c0| c0,
+            .source_lost => |lost| return lost,
         };
 
         if (se.supervisorStops(code)) {
