@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (I2 snapshot export lap 1 · parity **180**)
+**Last updated:** 2026-07-07 (poll interval lap 1 · parity **181**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -51,7 +51,9 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word):** MALA graduation **on hold** (counsel `023512` — not fired; fold gap closed) · real clock in poll loop · snapshot horizon bundles.
+**Next climb (Kaeden's word):** MALA graduation **on hold** (counsel `023512` — not fired; fold gap closed) · snapshot horizon bundles.
+
+- [x] **Real clock in poll loop** — `sleepIntervalNs` + `default_poll_interval_ns`; in-process `interval-selftest`; wire `fetcher-poll <sentinel> [interval-ns]`; supervisor optional `[interval-ns]`; `tools/mantra_recall_subscribe_poll_interval.rish`; parity **181**
 
 - [x] **OA-L4 escrow-release compatibility** — `foldReputationLog` recognizes `escrow-release` memos, skips holds; witness bolt extended; counsel `20260707.023512`; parity **167** witness extended
 

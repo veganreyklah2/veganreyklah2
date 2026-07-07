@@ -8,7 +8,7 @@
 //! the loop top creates the same sentinel the witness hook and a manual `touch` use.
 //!
 //!   rye build caravan/subscribe_poll_service.rye -lc -femit-bin=caravan/bin/subscribe-poll-service
-//!   caravan/bin/subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N]
+//!   caravan/bin/subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N] [interval-ns]
 //!
 //! Counsel: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
 //! · [`external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md`](../external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md)
@@ -21,7 +21,7 @@ const c = std.c;
 const se = @import("supervisor_exit.rye");
 const ss = @import("supervisor_signal.rye");
 
-const caravan_subscribe_poll_service_version = "20260707.021012";
+const caravan_subscribe_poll_service_version = "20260707.024012";
 
 const max_fall_restarts: u32 = 5;
 const source_ready_ns: u64 = 50_000_000;
@@ -32,7 +32,7 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len < 3) {
-        print("usage: subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N]\n", .{});
+        print("usage: subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N] [interval-ns]\n", .{});
         return 1;
     }
 
@@ -41,7 +41,12 @@ pub fn main(init: std.process.Init) !u8 {
     else
         null;
 
-    return runSupervisor(garden, io, args[1], args[2], witness_stop_after);
+    const poll_interval_ns: u64 = if (args.len >= 5)
+        try std.fmt.parseInt(u64, args[4], 10)
+    else
+        0;
+
+    return runSupervisor(garden, io, args[1], args[2], witness_stop_after, poll_interval_ns);
 }
 
 fn createStopSentinel(io: std.Io, sentinel_path: []const u8) !void {
@@ -55,6 +60,7 @@ fn runSupervisor(
     delivery_path: []const u8,
     sentinel_path: []const u8,
     witness_stop_after: ?u32,
+    poll_interval_ns: u64,
 ) !u8 {
     ss.installHandlers();
 
@@ -84,10 +90,21 @@ fn runSupervisor(
             try createStopSentinel(io, sentinel_path);
         }
 
-        const fetcher_argv = try allocator.alloc([]const u8, 3);
-        fetcher_argv[0] = delivery_path;
-        fetcher_argv[1] = "fetcher-poll";
-        fetcher_argv[2] = sentinel_path;
+        var interval_buf: [32]u8 = undefined;
+        const fetcher_argv = if (poll_interval_ns > 0) blk: {
+            const argv = try allocator.alloc([]const u8, 4);
+            argv[0] = delivery_path;
+            argv[1] = "fetcher-poll";
+            argv[2] = sentinel_path;
+            argv[3] = try std.fmt.bufPrint(&interval_buf, "{d}", .{poll_interval_ns});
+            break :blk argv;
+        } else blk: {
+            const argv = try allocator.alloc([]const u8, 3);
+            argv[0] = delivery_path;
+            argv[1] = "fetcher-poll";
+            argv[2] = sentinel_path;
+            break :blk argv;
+        };
 
         var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
         const term = try fetcher_child.wait(io);

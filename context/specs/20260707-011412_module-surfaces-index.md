@@ -3,7 +3,7 @@
 **Stamp:** `20260707.011412 UDT` (Kaeden's clock)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **180** + I2 snapshot lap 1
+**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **181** + I2 snapshot lap 1
 **Register:** Reference — the looking-up room; meanings in our own words, one line each
 
 *Written by Kaeden and Rio 3.*

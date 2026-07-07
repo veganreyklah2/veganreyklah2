@@ -302,6 +302,11 @@ let ns_poll = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll.r
 assert ns_poll.ok else "outer subscribe poll witness failed"
 say "GREEN: outer subscribe poll witness passed."
 
+say "witness suite: outer subscribe poll interval (in-process)…"
+let ns_pollint = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll_interval.rish"]
+assert ns_pollint.ok else "outer subscribe poll interval witness failed"
+say "GREEN: outer subscribe poll interval witness passed."
+
 say "witness suite: outer subscribe poll wire (hosted + device)…"
 let ns_pollw = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll_wire.rish"]
 assert ns_pollw.ok else "outer subscribe poll wire witness failed"

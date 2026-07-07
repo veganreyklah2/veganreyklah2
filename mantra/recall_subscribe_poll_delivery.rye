@@ -19,7 +19,7 @@ const wf = @import("wire_format.rye");
 const cu = @import("recall_catch_up.rye");
 const sp = @import("recall_subscribe_poll.rye");
 
-const npw_version = "20260707.015512";
+const npw_version = "20260707.024012";
 
 /// Matches `caravan/supervisor_exit.rye` — deliberate stop at a cycle boundary.
 const stop_requested: u8 = 8;
@@ -359,7 +359,7 @@ fn stopSentinelPresent(io: std.Io, path: []const u8) bool {
     return true;
 }
 
-fn runFetcherPollOnce(io: std.Io, sentinel_path: []const u8) !u8 {
+fn runFetcherPollOnce(io: std.Io, sentinel_path: []const u8, interval_ns: u64) !u8 {
     if (stopSentinelPresent(io, sentinel_path)) {
         print("ns-pollw: stop sentinel at boundary — stop_requested\n", .{});
         return stop_requested;
@@ -370,6 +370,11 @@ fn runFetcherPollOnce(io: std.Io, sentinel_path: []const u8) !u8 {
 
     const one_pair = [_]sp.PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
     _ = try pollOneCycleWireSockets(&fetcher, &one_pair);
+
+    if (interval_ns > 0) {
+        sp.sleepIntervalNs(interval_ns);
+        print("ns-pollw: slept {d} ns at cycle boundary\n", .{interval_ns});
+    }
 
     print("ns-pollw: one wire poll cycle at boundary — cycle_ok\n", .{});
     return 0;
@@ -435,7 +440,11 @@ pub fn main(init: std.process.Init) !u8 {
         if (std.mem.eql(u8, args[1], "fetcher-poll")) {
             if (args.len < 3) return error.SyncFailed;
             if (std.mem.eql(u8, args[2], "fail")) return runFetcherPollLegacy(io, true);
-            return runFetcherPollOnce(io, args[2]);
+            const interval_ns: u64 = if (args.len >= 4)
+                try std.fmt.parseInt(u64, args[3], 10)
+            else
+                0;
+            return runFetcherPollOnce(io, args[2], interval_ns);
         }
         if (std.mem.eql(u8, args[1], "fetcher-poll-legacy")) {
             const fail_mid = args.len >= 3 and std.mem.eql(u8, args[2], "fail");
