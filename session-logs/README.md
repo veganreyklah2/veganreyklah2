@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.213500 | [parseInt ratchet commit and push](20260707-213500_parse-int-ratchet-commit-push.md) | `fa546c8` to four remotes |
 | 20260707.213000 | [parseInt ratchet zero](20260707-213000_parse-int-ratchet-zero.md) | Final 4 sites; ratchet 4→0; SLC-1 recall GREEN |
 | 20260707.212500 | [parseInt ratchet — caravan cluster](20260707-212500_parse-int-ratchet-caravan-cluster.md) | 4 sites; ratchet 8→4; caravan witnesses GREEN |
 | 20260707.212000 | [parseInt ratchet — mantra cluster](20260707-212000_parse-int-ratchet-mantra-cluster.md) | 4 sites; ratchet 12→8; snapshot witnesses GREEN |
