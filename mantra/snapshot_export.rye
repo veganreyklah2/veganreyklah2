@@ -1,0 +1,260 @@
+//! mantra/snapshot_export.rye — I2 lap 1: export a BoltCatalog snapshot, replay on host.
+//!
+//! Reuses `resin_batch.rye` frames — one signed batch per (peer, bolt, revision),
+//! concatenated under a small snapshot header. No new manifest grammar; import
+//! applies each batch with `applyBatch` and refuses whole on any failure.
+//!
+//!   rye build mantra/snapshot_export.rye -femit-bin=mantra/bin/snapshot-export
+//!   mantra/bin/snapshot-export selftest
+//!
+//! Counsel: [`external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) I2
+//! · ruling [`external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md`](../external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md)
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const ns = @import("recall_lap1.rye");
+const rb = @import("resin_batch.rye");
+const Ed25519 = std.crypto.sign.Ed25519;
+
+pub const snapshot_export_version = "20260707.021512";
+const snapshot_kind: u8 = 0x06;
+const max_revision_groups: u32 = 16;
+const max_snapshot_bytes: u32 = 65536;
+
+pub const SnapshotError = error{
+    Overflow,
+    Truncated,
+    BadKind,
+    BatchCountMismatch,
+    LeafCountMismatch,
+    ReplayMismatch,
+};
+
+const RevisionKey = struct {
+    peer: [16]u8,
+    peer_len: u32,
+    bolt: [32]u8,
+    bolt_len: u32,
+    revision: u32,
+
+    fn peerSlice(self: *const RevisionKey) []const u8 {
+        return self.peer[0..self.peer_len];
+    }
+
+    fn boltSlice(self: *const RevisionKey) []const u8 {
+        return self.bolt[0..self.bolt_len];
+    }
+
+    fn matches(self: RevisionKey, peer: []const u8, bolt: []const u8, revision: u32) bool {
+        return std.mem.eql(u8, self.peerSlice(), peer) and
+            std.mem.eql(u8, self.boltSlice(), bolt) and
+            self.revision == revision;
+    }
+};
+
+fn capU32(buf: []const u8) u32 {
+    assert(buf.len <= std.math.maxInt(u32));
+    return @intCast(buf.len);
+}
+
+fn putU32(out: []u8, off: *u32, v: u32) SnapshotError!void {
+    if (off.* + 4 > capU32(out)) return error.Overflow;
+    std.mem.writeInt(u32, out[off.*..][0..4], v, .little);
+    off.* += 4;
+}
+
+fn putBytes(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
+    const n: u32 = @intCast(b.len);
+    if (off.* + n > capU32(out)) return error.Overflow;
+    @memcpy(out[off.*..][0..b.len], b);
+    off.* += n;
+}
+
+fn putField(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
+    if (b.len > std.math.maxInt(u16)) return error.Overflow;
+    if (off.* + 2 > capU32(out)) return error.Overflow;
+    std.mem.writeInt(u16, out[off.*..][0..2], @intCast(b.len), .little);
+    off.* += 2;
+    try putBytes(out, off, b);
+}
+
+fn getU32(payload: []const u8, off: *u32) SnapshotError!u32 {
+    if (off.* + 4 > capU32(payload)) return error.Truncated;
+    const v = std.mem.readInt(u32, payload[off.*..][0..4], .little);
+    off.* += 4;
+    return v;
+}
+
+fn getField(payload: []const u8, off: *u32) SnapshotError![]const u8 {
+    if (off.* + 2 > capU32(payload)) return error.Truncated;
+    const n = std.mem.readInt(u16, payload[off.*..][0..2], .little);
+    off.* += 2;
+    if (off.* + n > capU32(payload)) return error.Truncated;
+    const s = payload[off.*..][0..n];
+    off.* += n;
+    return s;
+}
+
+fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
+    count.* = 0;
+    var i: u32 = 0;
+    while (i < cat.leaf_count) : (i += 1) {
+        const leaf = &cat.leaves[i];
+        const peer = leaf.peer[0..leaf.peer_len];
+        const bolt = leaf.bolt[0..leaf.bolt_len];
+        const revision = leaf.revision;
+        var j: u32 = 0;
+        var seen = false;
+        while (j < count.*) : (j += 1) {
+            if (keys[j].matches(peer, bolt, revision)) {
+                seen = true;
+                break;
+            }
+        }
+        if (!seen) {
+            if (count.* >= max_revision_groups) return error.Overflow;
+            var key: RevisionKey = undefined;
+            @memcpy(key.peer[0..peer.len], peer);
+            key.peer_len = @intCast(peer.len);
+            @memcpy(key.bolt[0..bolt.len], bolt);
+            key.bolt_len = @intCast(bolt.len);
+            key.revision = revision;
+            keys[count.*] = key;
+            count.* += 1;
+        }
+    }
+}
+
+/// Export every leaf in `src` as one or more resin-batch frames under a snapshot header.
+pub fn exportCatalog(
+    src: *const ns.BoltCatalog,
+    signer: Ed25519.KeyPair,
+    out: []u8,
+) SnapshotError!u32 {
+    var keys: [max_revision_groups]RevisionKey = undefined;
+    var rev_count: u32 = 0;
+    try collectRevisions(src, &keys, &rev_count);
+
+    var off: u32 = 0;
+    if (off + 1 > capU32(out)) return error.Overflow;
+    out[off] = snapshot_kind;
+    off += 1;
+    try putField(out, &off, snapshot_export_version);
+    try putU32(out, &off, src.leaf_count);
+    try putU32(out, &off, rev_count);
+
+    var r: u32 = 0;
+    while (r < rev_count) : (r += 1) {
+        const key = keys[r];
+        var batch_buf: [rb.max_batch_bytes]u8 = undefined;
+        const built = rb.buildBatch(
+            src,
+            key.peerSlice(),
+            key.boltSlice(),
+            key.revision,
+            &[_][64]u8{},
+            signer,
+            &batch_buf,
+        ) catch return error.Overflow;
+        try putU32(out, &off, built.len);
+        try putBytes(out, &off, batch_buf[0..built.len]);
+    }
+
+    return off;
+}
+
+/// Import a snapshot into `dest`, replacing nothing — appends via each batch apply.
+pub fn importCatalog(
+    dest: *ns.BoltCatalog,
+    snapshot: []const u8,
+    source_pk: Ed25519.PublicKey,
+) SnapshotError!u32 {
+    dest.* = .empty();
+    var off: u32 = 0;
+    if (off + 1 > capU32(snapshot)) return error.Truncated;
+    if (snapshot[off] != snapshot_kind) return error.BadKind;
+    off += 1;
+    const version = try getField(snapshot, &off);
+    if (!std.mem.eql(u8, version, snapshot_export_version)) return error.BadKind;
+    const claimed_leaves = try getU32(snapshot, &off);
+    const batch_count = try getU32(snapshot, &off);
+
+    var b: u32 = 0;
+    while (b < batch_count) : (b += 1) {
+        const batch_len = try getU32(snapshot, &off);
+        if (off + batch_len > capU32(snapshot)) return error.Truncated;
+        _ = rb.applyBatch(dest, snapshot[off..][0..batch_len], source_pk) catch {
+            dest.* = .empty();
+            return error.Truncated;
+        };
+        off += batch_len;
+    }
+
+    if (dest.leaf_count != claimed_leaves) return error.LeafCountMismatch;
+    return dest.leaf_count;
+}
+
+/// Assert every leaf in `expect` recalls identically from `got`.
+pub fn assertCatalogReplay(expect: *const ns.BoltCatalog, got: *const ns.BoltCatalog) SnapshotError!void {
+    if (expect.leaf_count != got.leaf_count) return error.ReplayMismatch;
+    var i: u32 = 0;
+    while (i < expect.leaf_count) : (i += 1) {
+        const leaf = &expect.leaves[i];
+        const name = ns.Name{
+            .peer = leaf.peer[0..leaf.peer_len],
+            .bolt = leaf.bolt[0..leaf.bolt_len],
+            .revision = leaf.revision,
+            .path = leaf.path[0..leaf.path_len],
+        };
+        var buf: [ns.max_resin_bytes]u8 = undefined;
+        const er = expect.recall(name, &buf) catch return error.ReplayMismatch;
+        const gr = got.recall(name, &buf) catch return error.ReplayMismatch;
+        if (er.outcome != gr.outcome or er.len != gr.len) return error.ReplayMismatch;
+        if (!std.mem.eql(u8, buf[0..er.len], leaf.bytes[0..leaf.bytes_len])) return error.ReplayMismatch;
+    }
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    const signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+    const signer = Ed25519.KeyPair.generateDeterministic(signer_seed) catch unreachable;
+
+    var src: ns.BoltCatalog = .empty();
+    try src.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try src.appendLeaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text");
+
+    var snap: [max_snapshot_bytes]u8 = undefined;
+    const snap_len = try exportCatalog(&src, signer, &snap);
+
+    var dest: ns.BoltCatalog = .empty();
+    const imported = try importCatalog(&dest, snap[0..snap_len], signer.public_key);
+    assert(imported == 3);
+    try assertCatalogReplay(&src, &dest);
+
+    // Unwelcome: tampered batch byte refuses whole import.
+    {
+        var bad: [max_snapshot_bytes]u8 = undefined;
+        @memcpy(bad[0..snap_len], snap[0..snap_len]);
+        bad[3] = if (bad[3] == 'z') 'y' else bad[3] + 1;
+        var dest_bad: ns.BoltCatalog = .empty();
+        if (importCatalog(&dest_bad, bad[0..snap_len], signer.public_key)) |_| {
+            return error.Truncated;
+        } else |_| {}
+        assert(dest_bad.leaf_count == 0);
+    }
+
+    print("snapshot: exported {d} leaves in {d} revision batch(es)\n", .{ src.leaf_count, @as(u32, 2) });
+    print("snapshot: import replay — recall identical on every leaf GREEN\n", .{});
+    print("snapshot: tampered snapshot refused whole GREEN\n", .{});
+    print("snapshot: version {s} batch {s}\n", .{ snapshot_export_version, rb.batch_version });
+    print("GREEN: I2 snapshot export lap 1 — batch grammar replay on host.\n", .{});
+    return 0;
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+    return runSelftest(io);
+}

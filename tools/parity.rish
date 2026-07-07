@@ -312,6 +312,11 @@ let ns_tcq = run ["rishi/bin/rishi" "run" "tools/mantra_recall_tablecloth_query.
 assert ns_tcq.ok else "Tablecloth query witness failed"
 say "GREEN: Tablecloth query witness passed."
 
+say "witness suite: I2 snapshot replay (export → import)…"
+let ns_snap = run ["rishi/bin/rishi" "run" "tools/mantra_snapshot_replay.rish"]
+assert ns_snap.ok else "I2 snapshot replay witness failed"
+say "GREEN: I2 snapshot replay witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"

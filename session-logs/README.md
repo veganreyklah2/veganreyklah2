@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.021712 | [Snapshot export lap 1 parity 180](20260707-021712_snapshot-export-lap1-parity180.md) | I2 catalog export reuses batch grammar; replay witness GREEN |
 | 20260707.021212 | [SIGTERM ring parity 179](20260707-021212_sigterm-ring-parity179.md) | Signal → atomic flag → sentinel; counsel 021012 ring 4 |
 | 20260707.020712 | [Claude handoff graceful stop 178](20260707-020712_claude-handoff-graceful-stop-parity178.md) | Full summary; a30a52c pushed four remotes |
 | 20260707.020512 | [Graceful stop rings parity 178](20260707-020512_graceful-stop-rings-parity178.md) | Sentinel at poll boundary; supervisor restart-on-cycle_ok; rings 2–3 |

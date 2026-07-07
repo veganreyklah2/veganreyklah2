@@ -3,7 +3,7 @@
 **Stamp:** `20260707.011412 UDT` (Kaeden's clock)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **179** + SIGTERM ring
+**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **180** + I2 snapshot lap 1
 **Register:** Reference — the looking-up room; meanings in our own words, one line each
 
 *Written by Kaeden and Rio 3.*
@@ -18,7 +18,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 |---------|----------|------|-------|
 | **Rye** | The carrier language: `.rye` files, stock-std toolchain, width laws | `rye/` | parity trio gates every push |
 | **Rishi** | The shell: typed pipelines, run-results as values, asserts as gates | `rishi/` | SLC-1 witnesses; runs the suite itself |
-| **Mantra** | The referential namespace: recall, bolts, revisions, sync — see its own reference spec | `mantra/` | parity **159–175**; [`20260707-011412_mantra-referential-namespace-reference.md`](20260707-011412_mantra-referential-namespace-reference.md) |
+| **Mantra** | The referential namespace: recall, bolts, revisions, sync — see its own reference spec | `mantra/` | parity **159–180**; [`20260707-011412_mantra-referential-namespace-reference.md`](20260707-011412_mantra-referential-namespace-reference.md) |
 | — Weave (aspect) | Append-only DAG of signed facts beneath the namespace | `mantra/src/weave.rye` | graduation trigger recorded (second consumer) |
 | **Comlink** | Sealed carriage: one datagram shape over hosted UDP and device virtio | `comlink/` | parity **154**; wire labs 1556x |
 | — wire_format | The 528-byte sealed envelope, 340-byte message | `comlink/wire_format.rye` | every wire witness |
@@ -53,7 +53,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 
 ## Named, Not Yet Built (honest markers)
 
-**Brix** (composer; bricks/courses/bonds seated) · **Tablecloth** (Brix-facing application store — separate from **Tablecloth query** at parity 175; reconciled `20260707.011812`) · **Bron** (`.bron` notation; role open) · **Puddle** (sandboxed containers; first lap = snapshot export/verify/restore) · **Mycelium** (ordering aspect, gated to MALA M4) · **Dexter / Kumara-as-module** (graduation triggers recorded) · **I2 snapshot export** (slot released; reuses the batch manifest grammar when drafted).
+**Brix** (composer; bricks/courses/bonds seated) · **Tablecloth** (Brix-facing application store — separate from **Tablecloth query** at parity 175; reconciled `20260707.011812`) · **Bron** (`.bron` notation; role open) · **Puddle** (sandboxed containers; first lap = snapshot export/verify/restore) · **Mycelium** (ordering aspect, gated to MALA M4) · **Dexter / Kumara-as-module** (graduation triggers recorded) · **I2 snapshot export** — lap 1 seated [`20260707-021512_snapshot-export-lap1.md`](20260707-021512_snapshot-export-lap1.md); horizon bundles open.
 
 ---
 

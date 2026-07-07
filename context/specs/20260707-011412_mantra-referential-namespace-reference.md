@@ -154,7 +154,7 @@ Every claim above is held by a witness the parity suite runs; counts are pinned 
 
 ## §12 Open Items (Non-Normative)
 
-Graceful stop and real unattended clock for the poll loop; snapshot export (I2), which **should** reuse §9's manifest grammar when drafted.
+Graceful stop complete through parity **179**; **snapshot export lap 1** (parity **180**) reuses §9 batch grammar for catalog replay on host. Real unattended clock for the poll loop; snapshot horizon bundles (weave/Brix/continuity) remain open.
 
 ---
 

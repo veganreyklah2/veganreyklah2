@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (SIGTERM ring 4 · parity **179**)
+**Last updated:** 2026-07-07 (I2 snapshot export lap 1 · parity **180**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -51,7 +51,9 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word):** I2 snapshot export when drafted · MALA graduation at escrow second consumer · real clock in poll loop.
+**Next climb (Kaeden's word):** MALA graduation at escrow second consumer · real clock in poll loop · snapshot horizon bundles (weave/Brix/continuity).
+
+- [x] **I2 snapshot export lap 1** — `mantra/snapshot_export.rye`; resin-batch frames per revision; `tools/mantra_snapshot_replay.rish`; spec [`context/specs/20260707-021512_snapshot-export-lap1.md`](../context/specs/20260707-021512_snapshot-export-lap1.md); parity **180**
 
 - [x] **Exit-code ring (Caravan)** — `caravan/supervisor_exit.rye` + `caravan/restart_on_ok.rye`; `cycle_ok` restarts, `stop_requested` (8) halts; counsel `20260707.014212`; `tools/caravan_restart_on_ok.rish`; parity **177**
 - [x] **Stop sentinel at poll boundary (Mantra)** — `fetcher-poll <sentinel>` one cycle + exit 8 when present; `fetcher-poll-legacy` for demo/selftest; `tools/mantra_recall_subscribe_poll_stop.rish`; parity **178**
@@ -97,7 +99,7 @@
 
 **Alongside:** Sourcing-discipline note (verify vendor claims, name authors in ledger) — recommended; awaits Kaeden word for `context/` home.
 
-**Edit-5 slot released:** I1 landed on the referential namespace foundation through parity 166. I2 snapshot export, whenever drafted, reuses `resin_batch.rye`'s proven manifest shape rather than a new one (Claude ruling `20260706.232812`).
+**Edit-5 slot released:** I1 landed on the referential namespace foundation through parity 166. **I2 snapshot export lap 1** landed parity **180** — reuses `resin_batch.rye` manifest shape per ruling `20260706.232812`; spec [`context/specs/20260707-021512_snapshot-export-lap1.md`](../context/specs/20260707-021512_snapshot-export-lap1.md).
 
 ---
 
