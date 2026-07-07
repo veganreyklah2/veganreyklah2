@@ -34,13 +34,13 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{
         .sin_port = std.mem.nativeToBig(u16, port),
     };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -48,18 +48,18 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn sendWire(port: u16, wire: []const u8) !void {
-    const fd = try openSocket();
+fn send_wire(port: u16, wire: []const u8) !void {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    const dest = localhostAddr(port);
+    const dest = localhost_addr(port);
     const sent = c.sendto(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recvWire(port: u16, wire: []u8) !u64 {
-    const fd = try openSocket();
+fn recv_wire(port: u16, wire: []u8) !u64 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    var bind_addr = localhostAddr(port);
+    var bind_addr = localhost_addr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
@@ -68,15 +68,15 @@ fn recvWire(port: u16, wire: []u8) !u64 {
     return @intCast(n);
 }
 
-fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
+fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
     return try wf.sealMessage(payload, wire);
 }
 
-fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
+fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.openDatagram(wire, opened);
 }
 
-fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -84,7 +84,7 @@ fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     }
 }
 
-fn loadSignedRequest(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
+fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
     canonical: [oa.max_oa_fact]u8,
     canonical_len: u32,
     sig: Ed25519.Signature,
@@ -114,7 +114,7 @@ fn loadSignedRequest(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
     };
 }
 
-fn verifyRequestPayload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
+fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     const decoded = try oa.decodeCompactPayload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
@@ -126,7 +126,7 @@ fn verifyRequestPayload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_
     return .{ .fact_len = decoded.fact_len, .ref_hex = ref_hex };
 }
 
-fn verifyApplicationPayload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
+fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
@@ -138,7 +138,7 @@ fn verifyApplicationPayload(payload: []const u8, applicant_pk: Ed25519.PublicKey
     return decoded.fact_len;
 }
 
-fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
+fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = try rc.formatLogLine(sig, fact, &line);
     if (log_len.* + line_len > log.len) return error.Overflow;
@@ -146,7 +146,7 @@ fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u
     log_len.* += line_len;
 }
 
-fn selftestWireWelcomePath(
+fn selftest_wire_welcome_path(
     io: std.Io,
     poster_kp: Ed25519.KeyPair,
     applicant_kp: Ed25519.KeyPair,
@@ -157,21 +157,21 @@ fn selftestWireWelcomePath(
     app_fields: oa.ApplicationFields,
     applicant_hex: [64]u8,
 } {
-    const signed_req = try loadSignedRequest(io, poster_kp);
+    const signed_req = try load_signed_request(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const req_payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
 
     var req_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const req_wire_len = try sealPayload(req_payload[0..req_payload_len], &req_wire);
+    const req_wire_len = try seal_payload(req_payload[0..req_payload_len], &req_wire);
     var req_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const req_opened_len = try openWire(req_wire[0..@intCast(req_wire_len)], &req_opened);
+    const req_opened_len = try open_wire(req_wire[0..@intCast(req_wire_len)], &req_opened);
     var req_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const verified_req = try verifyRequestPayload(req_opened[0..@intCast(req_opened_len)], poster_pk, &req_fact_buf);
+    const verified_req = try verify_request_payload(req_opened[0..@intCast(req_opened_len)], poster_pk, &req_fact_buf);
     assert(std.mem.eql(u8, &verified_req.ref_hex, &signed_req.ref_hex));
 
     var applicant_hex: [64]u8 = undefined;
-    pubkeyHex(applicant_kp, &applicant_hex);
+    pubkey_hex(applicant_kp, &applicant_hex);
     const app_fields = oa.ApplicationFields{
         .applicant = applicant_hex[0..64],
         .request_ref = verified_req.ref_hex[0..oa.ref_hex_len],
@@ -185,18 +185,18 @@ fn selftestWireWelcomePath(
     var app_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const app_payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &app_payload);
     var app_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const app_wire_len = try sealPayload(app_payload[0..app_payload_len], &app_wire);
+    const app_wire_len = try seal_payload(app_payload[0..app_payload_len], &app_wire);
     var app_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const app_opened_len = try openWire(app_wire[0..@intCast(app_wire_len)], &app_opened);
+    const app_opened_len = try open_wire(app_wire[0..@intCast(app_wire_len)], &app_opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const app_fact_len = try verifyApplicationPayload(app_opened[0..@intCast(app_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
+    const app_fact_len = try verify_application_payload(app_opened[0..@intCast(app_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
     const wire_app_sig = Ed25519.Signature.fromBytes(app_sig_buf[0..Ed25519.Signature.encoded_length].*);
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
-    try appendSigned(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
-    try appendSigned(wire_app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
+    try append_signed(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
+    try append_signed(wire_app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
 
     const state = try oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk);
     assert(state.applied);
@@ -209,7 +209,7 @@ fn selftestWireWelcomePath(
     };
 }
 
-fn selftestWireUnwelcomeBadRef(
+fn selftest_wire_unwelcome_bad_ref(
     applicant_kp: Ed25519.KeyPair,
     applicant_pk: Ed25519.PublicKey,
     welcome: struct {
@@ -233,20 +233,20 @@ fn selftestWireUnwelcomeBadRef(
     const bad_payload_len = try oa.encodeCompactPayload(bad_sig, bad_canonical[0..bad_len], &bad_payload);
     var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    _ = verifyApplicationPayload(bad_payload[0..bad_payload_len], applicant_pk, welcome.verified_ref[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
+    _ = verify_application_payload(bad_payload[0..bad_payload_len], applicant_pk, welcome.verified_ref[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
         return;
     };
     return error.UnwelcomePassed;
 }
 
-fn runSelftest(io: std.Io) !u8 {
+fn run_selftest(io: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
 
-    const welcome = try selftestWireWelcomePath(io, poster_kp, applicant_kp, poster_pk, applicant_pk);
-    try selftestWireUnwelcomeBadRef(applicant_kp, applicant_pk, .{
+    const welcome = try selftest_wire_welcome_path(io, poster_kp, applicant_kp, poster_pk, applicant_pk);
+    try selftest_wire_unwelcome_bad_ref(applicant_kp, applicant_pk, .{
         .verified_ref = welcome.verified_ref,
         .app_fields = welcome.app_fields,
         .applicant_hex = welcome.applicant_hex,
@@ -258,22 +258,22 @@ fn runSelftest(io: std.Io) !u8 {
     return 0;
 }
 
-fn runApplicant(_: std.Io) !u8 {
+fn run_applicant(_: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     const poster_pk = poster_kp.public_key;
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try recvWire(applicant_port, &wire);
+    const wire_len = try recv_wire(applicant_port, &wire);
     if (wire_len < wf.off_cipher or wire_len > wf.wire_capacity) return error.RecvFailed;
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+    const opened_len = try open_wire(wire[0..@intCast(wire_len)], &opened);
     var req_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const verified = try verifyRequestPayload(opened[0..@intCast(opened_len)], poster_pk, &req_fact_buf);
+    const verified = try verify_request_payload(opened[0..@intCast(opened_len)], poster_pk, &req_fact_buf);
 
     var applicant_hex: [64]u8 = undefined;
-    pubkeyHex(applicant_kp, &applicant_hex);
+    pubkey_hex(applicant_kp, &applicant_hex);
     const app_fields = oa.ApplicationFields{
         .applicant = applicant_hex[0..64],
         .request_ref = verified.ref_hex[0..oa.ref_hex_len],
@@ -287,41 +287,41 @@ fn runApplicant(_: std.Io) !u8 {
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &payload);
     var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const out_wire_len = try sealPayload(payload[0..payload_len], &out_wire);
-    try sendWire(poster_port, out_wire[0..@intCast(out_wire_len)]);
+    const out_wire_len = try seal_payload(payload[0..payload_len], &out_wire);
+    try send_wire(poster_port, out_wire[0..@intCast(out_wire_len)]);
 
     print("oal2: applicant opened request and returned sealed application\n", .{});
     return 0;
 }
 
-fn runPoster(io: std.Io) !u8 {
+fn run_poster(io: std.Io) !u8 {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
 
-    const signed_req = try loadSignedRequest(io, poster_kp);
+    const signed_req = try load_signed_request(io, poster_kp);
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try sealPayload(payload[0..payload_len], &wire);
-    try sendWire(applicant_port, wire[0..@intCast(wire_len)]);
+    const wire_len = try seal_payload(payload[0..payload_len], &wire);
+    try send_wire(applicant_port, wire[0..@intCast(wire_len)]);
 
-    var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const recv_len = try recvWire(poster_port, &recv_wire);
+    var reply_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const recv_len = try recv_wire(poster_port, &reply_wire);
     if (recv_len < wf.off_cipher or recv_len > wf.wire_capacity) return error.RecvFailed;
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
+    const opened_len = try open_wire(reply_wire[0..@intCast(recv_len)], &opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const app_fact_len = try verifyApplicationPayload(opened[0..@intCast(opened_len)], applicant_pk, signed_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
+    const app_fact_len = try verify_application_payload(opened[0..@intCast(opened_len)], applicant_pk, signed_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
     const app_sig = Ed25519.Signature.fromBytes(app_sig_buf[0..Ed25519.Signature.encoded_length].*);
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
-    try appendSigned(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
-    try appendSigned(app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
+    try append_signed(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
+    try append_signed(app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
 
     const state = try oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk);
     if (!state.applied or state.stipend != 100) return error.FoldFailed;
@@ -330,7 +330,7 @@ fn runPoster(io: std.Io) !u8 {
     return 0;
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const applicant_argv = try allocator.alloc([]const u8, 2);
     applicant_argv[0] = self_path;
     applicant_argv[1] = "applicant";
@@ -371,15 +371,15 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "applicant")) return runApplicant(io);
-        if (std.mem.eql(u8, args[1], "poster")) return runPoster(io);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "applicant")) return run_applicant(io);
+        if (std.mem.eql(u8, args[1], "poster")) return run_poster(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
         if (std.mem.eql(u8, args[1], "demo")) {
             assert(args.len >= 1);
-            return runDemo(garden, io, args[0]);
+            return run_demo(garden, io, args[0]);
         }
     }
 
-    if (args.len >= 1) return runSelftest(io);
+    if (args.len >= 1) return run_selftest(io);
     return 1;
 }
