@@ -66,28 +66,28 @@ export fn kmain() callconv(.c) noreturn {
 
     var src: ns.BoltCatalog = .empty();
     var beads: bd.BeadStore = .empty();
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
     var content: [400]u8 = undefined;
     witness_pattern_fill(&content, 20260706);
-    _ = rbd.appendLeafBeaded(&src, &beads, "peerB", "b", 1, "large.bin", content[0..], "plain-bytes") catch unreachable;
+    _ = rbd.append_leaf_beaded(&src, &beads, "peerB", "b", 1, "large.bin", content[0..], "plain-bytes") catch unreachable;
 
     var alpha_digest: [64]u8 = undefined;
     digest_hex_of("alpha", &alpha_digest);
     const held = [_][64]u8{alpha_digest};
 
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-    const built = rb.buildBatch(&src, "peerB", "b", 1, &held, signer, &batch_buf) catch unreachable;
+    const built = rb.build_batch(&src, "peerB", "b", 1, &held, signer, &batch_buf) catch unreachable;
 
     if (built.len <= bw.max_batch_wire) {
         var payload: [bw.max_batch_wire]u8 = undefined;
-        const payload_len = bw.encodeBatchResponse(batch_buf[0..built.len], &payload) catch unreachable;
+        const payload_len = bw.encode_batch_response(batch_buf[0..built.len], &payload) catch unreachable;
         send_sealed_payload(payload[0..payload_len]);
     } else {
-        const count = bw.batchChunkCount(built.len) catch unreachable;
+        const count = bw.batch_chunk_count(built.len) catch unreachable;
         var ci: u16 = 0;
         while (ci < count) : (ci += 1) {
             var payload: [bw.max_batch_wire]u8 = undefined;
-            const payload_len = bw.encodeBatchChunk(batch_buf[0..built.len], ci, &payload) catch unreachable;
+            const payload_len = bw.encode_batch_chunk(batch_buf[0..built.len], ci, &payload) catch unreachable;
             send_sealed_payload(payload[0..payload_len]);
         }
     }

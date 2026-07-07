@@ -49,7 +49,7 @@ export fn kmain() callconv(.c) noreturn {
     };
 
     var req: bw.BatchWireRequest = undefined;
-    bw.decodeRequest(opened[0..@intCast(opened_len)], &req) catch {
+    bw.decode_request(opened[0..@intCast(opened_len)], &req) catch {
         vn.writeStr("rbw device wire: FAIL — request decode\n");
         vn.finishFail();
     };

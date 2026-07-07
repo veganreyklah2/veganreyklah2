@@ -15,7 +15,7 @@ const tally_copy = @import("tally_copy.rye");
 
 const slcl1_version = "20260704.020800";
 
-fn runSelftest(io: std.Io) !u8 {
+fn run_selftest(io: std.Io) !u8 {
     const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
     const fixture_path = "tools/fixtures/slcl1_fact.bron";
     const cwd = Dir.cwd();
@@ -82,6 +82,6 @@ pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+    return run_selftest(io);
 }

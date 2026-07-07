@@ -32,13 +32,13 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{
         .sin_port = std.mem.nativeToBig(u16, port),
     };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -46,18 +46,18 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn sendWire(port: u16, wire: []const u8) !void {
-    const fd = try openSocket();
+fn send_wire(port: u16, wire: []const u8) !void {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    const dest = localhostAddr(port);
+    const dest = localhost_addr(port);
     const sent = c.sendto(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recvWire(port: u16, wire: []u8) !u64 {
-    const fd = try openSocket();
+fn recv_wire(port: u16, wire: []u8) !u64 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    var bind_addr = localhostAddr(port);
+    var bind_addr = localhost_addr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
@@ -66,15 +66,15 @@ fn recvWire(port: u16, wire: []u8) !u64 {
     return @intCast(n);
 }
 
-fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
+fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
     return try wf.seal_message(payload, wire);
 }
 
-fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
+fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.open_datagram(wire, opened);
 }
 
-fn digestHexOf(content: []const u8, out: *[64]u8) void {
+fn digest_hex_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
     std.crypto.hash.sha3.Sha3_256.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -83,18 +83,18 @@ fn digestHexOf(content: []const u8, out: *[64]u8) void {
     }
 }
 
-fn initWitnessSource(cat: *ns.BoltCatalog) !void {
+fn init_witness_source(cat: *ns.BoltCatalog) !void {
     cat.* = .empty();
-    try cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
-    try cat.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try cat.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try cat.append_leaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
 }
 
-fn initWitnessFetcher(cat: *ns.BoltCatalog) !void {
+fn init_witness_fetcher(cat: *ns.BoltCatalog) !void {
     cat.* = .empty();
-    try cat.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+    try cat.append_leaf("peerA", "seed", 1, "x", "alpha", "plain-text");
 }
 
-fn buildHeldRequest(fetcher: *const ns.BoltCatalog) sw.WireError!sw.SyncRequest {
+fn build_held_request(fetcher: *const ns.BoltCatalog) sw.WireError!sw.SyncRequest {
     _ = fetcher;
     var req: sw.SyncRequest = .{
         .peer = "peerB",
@@ -104,49 +104,49 @@ fn buildHeldRequest(fetcher: *const ns.BoltCatalog) sw.WireError!sw.SyncRequest 
         .held_digests = undefined,
     };
     var alpha_digest: [64]u8 = undefined;
-    digestHexOf("alpha", &alpha_digest);
+    digest_hex_of("alpha", &alpha_digest);
     tally_copy.copy_disjoint(u8, req.held_digests[0][0..64], alpha_digest[0..64]);
     return req;
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     var src: ns.BoltCatalog = undefined;
-    try initWitnessSource(&src);
+    try init_witness_source(&src);
     var fetcher: ns.BoltCatalog = undefined;
-    try initWitnessFetcher(&fetcher);
+    try init_witness_fetcher(&fetcher);
 
-    const req = try buildHeldRequest(&fetcher);
+    const req = try build_held_request(&fetcher);
     var req_buf: [sw.max_wire_payload]u8 = undefined;
-    const req_len = try sw.encodeRequest(req, &req_buf);
+    const req_len = try sw.encode_request(req, &req_buf);
 
     var wire_resp: sw.SyncResponse = undefined;
-    try sw.buildResponse(&src, &req, &wire_resp);
+    try sw.build_response(&src, &req, &wire_resp);
     var resp_buf: [sw.max_wire_payload]u8 = undefined;
-    const resp_len = try sw.encodeResponse(&wire_resp, &resp_buf);
+    const resp_len = try sw.encode_response(&wire_resp, &resp_buf);
 
     assert(req_len < wf.max_message);
     assert(resp_len < wf.max_message);
 
     var req_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const req_wire_len = try sealPayload(req_buf[0..req_len], &req_wire);
+    const req_wire_len = try seal_payload(req_buf[0..req_len], &req_wire);
     var req_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const req_opened_len = try openWire(req_wire[0..@intCast(req_wire_len)], &req_opened);
+    const req_opened_len = try open_wire(req_wire[0..@intCast(req_wire_len)], &req_opened);
 
     var decoded_req: sw.SyncRequest = undefined;
-    try sw.decodeRequest(req_opened[0..@intCast(req_opened_len)], &decoded_req);
+    try sw.decode_request(req_opened[0..@intCast(req_opened_len)], &decoded_req);
     assert(std.mem.eql(u8, decoded_req.peer, "peerB"));
 
     var built_resp: sw.SyncResponse = undefined;
-    try sw.buildResponse(&src, &decoded_req, &built_resp);
+    try sw.build_response(&src, &decoded_req, &built_resp);
     var resp_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const resp_wire_len = try sealPayload(resp_buf[0..resp_len], &resp_wire);
+    const resp_wire_len = try seal_payload(resp_buf[0..resp_len], &resp_wire);
     var resp_opened: [@intCast(wf.max_message)]u8 = undefined;
-    const resp_opened_len = try openWire(resp_wire[0..@intCast(resp_wire_len)], &resp_opened);
+    const resp_opened_len = try open_wire(resp_wire[0..@intCast(resp_wire_len)], &resp_opened);
 
     var decoded_resp: sw.SyncResponse = undefined;
-    try sw.decodeResponse(resp_opened[0..@intCast(resp_opened_len)], &decoded_resp);
+    try sw.decode_response(resp_opened[0..@intCast(resp_opened_len)], &decoded_resp);
 
-    const report = try sw.applySyncResponse(&fetcher, &decoded_resp);
+    const report = try sw.apply_sync_response(&fetcher, &decoded_resp);
     assert(report.total == 2);
     assert(report.had_already == 1);
     assert(report.needed == 1);
@@ -168,8 +168,8 @@ fn runSelftest(_: std.Io) !u8 {
     var bad_resp = decoded_resp;
     bad_resp.entries[1].digest_hex[0] = if (bad_resp.entries[1].digest_hex[0] == 'a') 'b' else 'a';
     var dest_bad: ns.BoltCatalog = .empty();
-    try initWitnessFetcher(&dest_bad);
-    if (sw.applySyncResponse(&dest_bad, &bad_resp)) |_| {
+    try init_witness_fetcher(&dest_bad);
+    if (sw.apply_sync_response(&dest_bad, &bad_resp)) |_| {
         return error.DigestMismatch;
     } else |err| {
         assert(err == error.DigestMismatch);
@@ -181,7 +181,7 @@ fn runSelftest(_: std.Io) !u8 {
     tally_copy.copy_disjoint(u8, corrupt_wire[0..@intCast(resp_wire_len)], resp_wire[0..@intCast(resp_wire_len)]);
     corrupt_wire[@intCast(resp_wire_len - 1)] ^= 0xff;
     var junk: [@intCast(wf.max_message)]u8 = undefined;
-    if (openWire(corrupt_wire[0..@intCast(resp_wire_len)], &junk)) |_| {
+    if (open_wire(corrupt_wire[0..@intCast(resp_wire_len)], &junk)) |_| {
         return error.VerifyFailed;
     } else |_| {
         print("nsw1: bad Comlink seal refused — GREEN unwelcome path\n", .{});
@@ -194,54 +194,54 @@ fn runSelftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runSource(_: std.Io) !u8 {
+fn run_source(_: std.Io) !u8 {
     var src: ns.BoltCatalog = undefined;
-    try initWitnessSource(&src);
+    try init_witness_source(&src);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try recvWire(source_port, &wire);
+    const wire_len = try recv_wire(source_port, &wire);
     if (wire_len < wf.off_cipher or wire_len > wf.wire_capacity) return error.RecvFailed;
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+    const opened_len = try open_wire(wire[0..@intCast(wire_len)], &opened);
 
     var req: sw.SyncRequest = undefined;
-    try sw.decodeRequest(opened[0..@intCast(opened_len)], &req);
+    try sw.decode_request(opened[0..@intCast(opened_len)], &req);
 
     var resp: sw.SyncResponse = undefined;
-    try sw.buildResponse(&src, &req, &resp);
+    try sw.build_response(&src, &req, &resp);
     var payload: [sw.max_wire_payload]u8 = undefined;
-    const payload_len = try sw.encodeResponse(&resp, &payload);
+    const payload_len = try sw.encode_response(&resp, &payload);
 
     var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const out_wire_len = try sealPayload(payload[0..payload_len], &out_wire);
-    try sendWire(fetcher_port, out_wire[0..@intCast(out_wire_len)]);
+    const out_wire_len = try seal_payload(payload[0..payload_len], &out_wire);
+    try send_wire(fetcher_port, out_wire[0..@intCast(out_wire_len)]);
 
     print("nsw1: source answered sync request with manifest and missing resins\n", .{});
     return 0;
 }
 
-fn runFetcher(_: std.Io) !u8 {
+fn run_fetcher(_: std.Io) !u8 {
     var fetcher: ns.BoltCatalog = undefined;
-    try initWitnessFetcher(&fetcher);
+    try init_witness_fetcher(&fetcher);
 
-    const req = try buildHeldRequest(&fetcher);
+    const req = try build_held_request(&fetcher);
     var payload: [sw.max_wire_payload]u8 = undefined;
-    const payload_len = try sw.encodeRequest(req, &payload);
+    const payload_len = try sw.encode_request(req, &payload);
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try sealPayload(payload[0..payload_len], &wire);
-    try sendWire(source_port, wire[0..@intCast(wire_len)]);
+    const wire_len = try seal_payload(payload[0..payload_len], &wire);
+    try send_wire(source_port, wire[0..@intCast(wire_len)]);
 
-    var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const recv_len = try recvWire(fetcher_port, &recv_wire);
+    var recv_buf: [@intCast(wf.wire_capacity)]u8 = undefined;
+    const recv_len = try recv_wire(fetcher_port, &recv_buf);
     if (recv_len < wf.off_cipher or recv_len > wf.wire_capacity) return error.RecvFailed;
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
+    const opened_len = try open_wire(recv_buf[0..@intCast(recv_len)], &opened);
 
     var resp: sw.SyncResponse = undefined;
-    try sw.decodeResponse(opened[0..@intCast(opened_len)], &resp);
-    const report = try sw.applySyncResponse(&fetcher, &resp);
+    try sw.decode_response(opened[0..@intCast(opened_len)], &resp);
+    const report = try sw.apply_sync_response(&fetcher, &resp);
     if (report.total != 2 or report.had_already != 1 or report.needed != 1) return error.SyncFailed;
 
     const na = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
@@ -253,7 +253,7 @@ fn runFetcher(_: std.Io) !u8 {
     return 0;
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const source_argv = try allocator.alloc([]const u8, 2);
     source_argv[0] = self_path;
     source_argv[1] = "source";
@@ -294,15 +294,15 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "source")) return runSource(io);
-        if (std.mem.eql(u8, args[1], "fetcher")) return runFetcher(io);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "source")) return run_source(io);
+        if (std.mem.eql(u8, args[1], "fetcher")) return run_fetcher(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
         if (std.mem.eql(u8, args[1], "demo")) {
             assert(args.len >= 1);
-            return runDemo(garden, io, args[0]);
+            return run_demo(garden, io, args[0]);
         }
     }
 
-    if (args.len >= 1) return runSelftest(io);
+    if (args.len >= 1) return run_selftest(io);
     return 1;
 }

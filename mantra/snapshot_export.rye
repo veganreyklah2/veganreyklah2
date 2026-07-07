@@ -68,73 +68,73 @@ pub const RevisionKey = struct {
     bolt_len: u32,
     revision: u32,
 
-    pub fn peerSlice(self: *const RevisionKey) []const u8 {
+    pub fn peer_slice(self: *const RevisionKey) []const u8 {
         return self.peer[0..self.peer_len];
     }
 
-    pub fn boltSlice(self: *const RevisionKey) []const u8 {
+    pub fn bolt_slice(self: *const RevisionKey) []const u8 {
         return self.bolt[0..self.bolt_len];
     }
 
     fn matches(self: RevisionKey, peer: []const u8, bolt: []const u8, revision: u32) bool {
-        return std.mem.eql(u8, self.peerSlice(), peer) and
-            std.mem.eql(u8, self.boltSlice(), bolt) and
+        return std.mem.eql(u8, self.peer_slice(), peer) and
+            std.mem.eql(u8, self.bolt_slice(), bolt) and
             self.revision == revision;
     }
 };
 
-fn capU32(buf: []const u8) u32 {
+fn cap_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
 
-fn putU32(out: []u8, off: *u32, v: u32) SnapshotError!void {
-    if (off.* + 4 > capU32(out)) return error.Overflow;
+fn put_u32(out: []u8, off: *u32, v: u32) SnapshotError!void {
+    if (off.* + 4 > cap_u32(out)) return error.Overflow;
     std.mem.writeInt(u32, out[off.*..][0..4], v, .little);
     off.* += 4;
 }
 
-fn putBytes(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
+fn put_bytes(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
     const n: u32 = @intCast(b.len);
-    if (off.* + n > capU32(out)) return error.Overflow;
+    if (off.* + n > cap_u32(out)) return error.Overflow;
     tally_copy.copy_disjoint(u8, out[off.*..][0..b.len], b);
     off.* += n;
 }
 
-fn putField(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
+fn put_field(out: []u8, off: *u32, b: []const u8) SnapshotError!void {
     if (b.len > std.math.maxInt(u16)) return error.Overflow;
-    if (off.* + 2 > capU32(out)) return error.Overflow;
+    if (off.* + 2 > cap_u32(out)) return error.Overflow;
     std.mem.writeInt(u16, out[off.*..][0..2], @intCast(b.len), .little);
     off.* += 2;
-    try putBytes(out, off, b);
+    try put_bytes(out, off, b);
 }
 
-fn getU32(payload: []const u8, off: *u32) SnapshotError!u32 {
-    if (off.* + 4 > capU32(payload)) return error.Truncated;
+fn get_u32(payload: []const u8, off: *u32) SnapshotError!u32 {
+    if (off.* + 4 > cap_u32(payload)) return error.Truncated;
     const v = std.mem.readInt(u32, payload[off.*..][0..4], .little);
     off.* += 4;
     return v;
 }
 
-fn getField(payload: []const u8, off: *u32) SnapshotError![]const u8 {
-    if (off.* + 2 > capU32(payload)) return error.Truncated;
+fn get_field(payload: []const u8, off: *u32) SnapshotError![]const u8 {
+    if (off.* + 2 > cap_u32(payload)) return error.Truncated;
     const n = std.mem.readInt(u16, payload[off.*..][0..2], .little);
     off.* += 2;
-    if (off.* + n > capU32(payload)) return error.Truncated;
+    if (off.* + n > cap_u32(payload)) return error.Truncated;
     const s = payload[off.*..][0..n];
     off.* += n;
     return s;
 }
 
-fn pathStartsWith(path: []const u8, prefix: []const u8) bool {
+fn path_starts_with(path: []const u8, prefix: []const u8) bool {
     return path.len >= prefix.len and std.mem.eql(u8, path[0..prefix.len], prefix);
 }
 
-fn isHeadOrTrustLeaf(path: []const u8) bool {
-    return std.mem.eql(u8, path, head_record_path) or pathStartsWith(path, bundle_trust);
+fn is_head_or_trust_leaf(path: []const u8) bool {
+    return std.mem.eql(u8, path, head_record_path) or path_starts_with(path, bundle_trust);
 }
 
-fn digestHex256Of(content: []const u8, out: *[64]u8) void {
+fn digest_hex256_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
     Sha3_256.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -143,11 +143,11 @@ fn digestHex256Of(content: []const u8, out: *[64]u8) void {
     }
 }
 
-fn rebindLeafDigest(leaf: *ns.LeafBinding) void {
-    digestHex256Of(leaf.bytes[0..leaf.bytes_len], &leaf.digest_hex);
+fn rebind_leaf_digest(leaf: *ns.LeafBinding) void {
+    digest_hex256_of(leaf.bytes[0..leaf.bytes_len], &leaf.digest_hex);
 }
 
-fn digestHex512Of(content: []const u8, out: *[128]u8) void {
+fn digest_hex512_of(content: []const u8, out: *[128]u8) void {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -156,7 +156,7 @@ fn digestHex512Of(content: []const u8, out: *[128]u8) void {
     }
 }
 
-fn pubkeyHex(pk: Ed25519.PublicKey, out: *[64]u8) void {
+fn pubkey_hex(pk: Ed25519.PublicKey, out: *[64]u8) void {
     const bytes = pk.toBytes();
     var i: u32 = 0;
     while (i < bytes.len) : (i += 1) {
@@ -164,11 +164,11 @@ fn pubkeyHex(pk: Ed25519.PublicKey, out: *[64]u8) void {
     }
 }
 
-fn hexEq128(a: []const u8, b: []const u8) bool {
+fn hex_eq128(a: []const u8, b: []const u8) bool {
     return a.len == 128 and b.len == 128 and std.mem.eql(u8, a, b);
 }
 
-pub fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
+pub fn collect_revisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
     count.* = 0;
     var i: u32 = 0;
     while (i < cat.leaf_count) : (i += 1) {
@@ -199,22 +199,22 @@ pub fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]
 }
 
 /// SHA3-512 HEAD over every catalog leaf digest in held order, excluding head/trust bundles.
-pub fn computeCatalogHead512(cat: *const ns.BoltCatalog, out: *[128]u8) SnapshotError!void {
+pub fn compute_catalog_head512(cat: *const ns.BoltCatalog, out: *[128]u8) SnapshotError!void {
     var acc: [max_snapshot_bytes]u8 = undefined;
     var acc_len: u32 = 0;
     var i: u32 = 0;
     while (i < cat.leaf_count) : (i += 1) {
         const leaf = &cat.leaves[i];
         const path = leaf.path[0..leaf.path_len];
-        if (isHeadOrTrustLeaf(path)) continue;
-        if (acc_len + 64 > capU32(&acc)) return error.Overflow;
+        if (is_head_or_trust_leaf(path)) continue;
+        if (acc_len + 64 > cap_u32(&acc)) return error.Overflow;
         tally_copy.copy_disjoint(u8, acc[acc_len..][0..64], leaf.digest_hex[0..64]);
         acc_len += 64;
     }
-    digestHex512Of(acc[0..acc_len], out);
+    digest_hex512_of(acc[0..acc_len], out);
 }
 
-fn buildHeadRecordContent(
+fn build_head_record_content(
     head_digest_hex: *const [128]u8,
     export_stamp: []const u8,
     identity_epoch: u64,
@@ -223,7 +223,7 @@ fn buildHeadRecordContent(
     out: []u8,
 ) SnapshotError![]const u8 {
     var identity_hex: [64]u8 = undefined;
-    pubkeyHex(continuity.identity, &identity_hex);
+    pubkey_hex(continuity.identity, &identity_hex);
     const kind_str: []const u8 = switch (continuity.kind) {
         .export_kind => "export",
         .boot_kind => "boot",
@@ -242,7 +242,7 @@ fn buildHeadRecordContent(
     return written;
 }
 
-fn parseHeadRecordContent(content: []const u8) SnapshotError!struct {
+fn parse_head_record_content(content: []const u8) SnapshotError!struct {
     head_digest_hex: [128]u8,
     identity_epoch: u64,
     continuity: ContinuityFact,
@@ -329,7 +329,7 @@ fn parseHeadRecordContent(content: []const u8) SnapshotError!struct {
     };
 }
 
-fn findLeafBytes(cat: *const ns.BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, path: []const u8) SnapshotError![]const u8 {
+fn find_leaf_bytes(cat: *const ns.BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, path: []const u8) SnapshotError![]const u8 {
     var i: u32 = 0;
     while (i < cat.leaf_count) : (i += 1) {
         const leaf = &cat.leaves[i];
@@ -343,13 +343,13 @@ fn findLeafBytes(cat: *const ns.BoltCatalog, peer: []const u8, bolt: []const u8,
 }
 
 /// Verify the head record and continuity fact after batches apply.
-pub fn verifyHeadRecord(cat: *const ns.BoltCatalog, source_pk: Ed25519.PublicKey) SnapshotError!void {
-    const head_bytes = try findLeafBytes(cat, meta_peer, meta_bolt, meta_revision, head_record_path);
-    const parsed = try parseHeadRecordContent(head_bytes);
+pub fn verify_head_record(cat: *const ns.BoltCatalog, source_pk: Ed25519.PublicKey) SnapshotError!void {
+    const head_bytes = try find_leaf_bytes(cat, meta_peer, meta_bolt, meta_revision, head_record_path);
+    const parsed = try parse_head_record_content(head_bytes);
 
     var recomputed: [128]u8 = undefined;
-    try computeCatalogHead512(cat, &recomputed);
-    if (!hexEq128(parsed.head_digest_hex[0..128], recomputed[0..128])) return error.HeadDigestMismatch;
+    try compute_catalog_head512(cat, &recomputed);
+    if (!hex_eq128(parsed.head_digest_hex[0..128], recomputed[0..128])) return error.HeadDigestMismatch;
 
     if (parsed.continuity.epoch == 0) return error.ContinuityViolation;
     if (!std.mem.eql(u8, &parsed.continuity.identity.toBytes(), &source_pk.toBytes())) return error.ContinuityViolation;
@@ -359,14 +359,14 @@ pub fn verifyHeadRecord(cat: *const ns.BoltCatalog, source_pk: Ed25519.PublicKey
     _ = parsed.parity_claim_len;
 }
 
-fn catalogPrefixedPath(orig: []const u8, out: []u8) SnapshotError![]const u8 {
+fn catalog_prefixed_path(orig: []const u8, out: []u8) SnapshotError![]const u8 {
     const prefixed = std.fmt.bufPrint(out, "{s}{s}", .{ bundle_catalog, orig }) catch return error.Overflow;
     if (prefixed.len > ns.max_path) return error.Overflow;
     return prefixed;
 }
 
 /// Stage a catalog with `catalog/` bundle prefixes plus head and trust leaves.
-pub fn stageHorizonCatalog(
+pub fn stage_horizon_catalog(
     src: *const ns.BoltCatalog,
     signer: Ed25519.KeyPair,
     identity_epoch: u64,
@@ -381,8 +381,8 @@ pub fn stageHorizonCatalog(
     while (i < src.leaf_count) : (i += 1) {
         const leaf = &src.leaves[i];
         const orig_path = leaf.path[0..leaf.path_len];
-        const prefixed = try catalogPrefixedPath(orig_path, &path_buf);
-        staged.appendLeaf(
+        const prefixed = try catalog_prefixed_path(orig_path, &path_buf);
+        staged.append_leaf(
             leaf.peer[0..leaf.peer_len],
             leaf.bolt[0..leaf.bolt_len],
             leaf.revision,
@@ -393,7 +393,7 @@ pub fn stageHorizonCatalog(
     }
 
     var head_digest: [128]u8 = undefined;
-    try computeCatalogHead512(staged, &head_digest);
+    try compute_catalog_head512(staged, &head_digest);
 
     var parent_hex: [64]u8 = undefined;
     @memset(&parent_hex, '0');
@@ -407,7 +407,7 @@ pub fn stageHorizonCatalog(
     };
 
     var head_buf: [ns.max_resin_bytes]u8 = undefined;
-    const head_content = try buildHeadRecordContent(
+    const head_content = try build_head_record_content(
         &head_digest,
         snapshot_export_version,
         identity_epoch,
@@ -415,91 +415,91 @@ pub fn stageHorizonCatalog(
         parity_claim,
         &head_buf,
     );
-    staged.appendLeaf(meta_peer, meta_bolt, meta_revision, head_record_path, head_content, tilak_manifest) catch return error.Overflow;
+    staged.append_leaf(meta_peer, meta_bolt, meta_revision, head_record_path, head_content, tilak_manifest) catch return error.Overflow;
 
     const pk_bytes = signer.public_key.toBytes();
-    staged.appendLeaf(meta_peer, meta_bolt, meta_revision, trust_signer_path, &pk_bytes, "plain-bytes") catch return error.Overflow;
+    staged.append_leaf(meta_peer, meta_bolt, meta_revision, trust_signer_path, &pk_bytes, "plain-bytes") catch return error.Overflow;
 }
 
 /// Write snapshot header (kind, version, leaf_count, rev_count); returns offset ready for batch append.
-pub fn beginSnapshotAssembly(out: []u8, leaf_count: u32, rev_count: u32) SnapshotError!u32 {
+pub fn begin_snapshot_assembly(out: []u8, leaf_count: u32, rev_count: u32) SnapshotError!u32 {
     var off: u32 = 0;
-    if (off + 1 > capU32(out)) return error.Overflow;
+    if (off + 1 > cap_u32(out)) return error.Overflow;
     out[off] = snapshot_kind;
     off += 1;
-    try putField(out, &off, snapshot_export_version);
-    try putU32(out, &off, leaf_count);
-    try putU32(out, &off, rev_count);
+    try put_field(out, &off, snapshot_export_version);
+    try put_u32(out, &off, leaf_count);
+    try put_u32(out, &off, rev_count);
     return off;
 }
 
 /// Append one resin-batch frame into a snapshot buffer at `off`.
-pub fn appendSnapshotBatch(out: []u8, off: *u32, batch: []const u8) SnapshotError!void {
-    try putU32(out, off, @intCast(batch.len));
-    try putBytes(out, off, batch);
+pub fn append_snapshot_batch(out: []u8, off: *u32, batch: []const u8) SnapshotError!void {
+    try put_u32(out, off, @intCast(batch.len));
+    try put_bytes(out, off, batch);
 }
 
 /// Initialize witness source catalog (lap 2 selftest shape).
-pub fn initWitnessSourceCatalog(cat: *ns.BoltCatalog) SnapshotError!void {
+pub fn init_witness_source_catalog(cat: *ns.BoltCatalog) SnapshotError!void {
     cat.* = .empty();
-    cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text") catch return error.Overflow;
-    cat.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text") catch return error.Overflow;
-    cat.appendLeaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text") catch return error.Overflow;
+    cat.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text") catch return error.Overflow;
+    cat.append_leaf("peerB", "b", 1, "b.txt", "beta", "plain-text") catch return error.Overflow;
+    cat.append_leaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text") catch return error.Overflow;
 }
 
 /// Build staged horizon + revision list for the witness fixture.
-pub fn witnessHorizonPlan(
+pub fn witness_horizon_plan(
     signer: Ed25519.KeyPair,
     staged: *ns.BoltCatalog,
     keys: *[max_revision_groups]RevisionKey,
     rev_count: *u32,
 ) SnapshotError!void {
     var src: ns.BoltCatalog = .empty();
-    try initWitnessSourceCatalog(&src);
-    try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=185", staged);
-    try collectRevisions(staged, keys, rev_count);
+    try init_witness_source_catalog(&src);
+    try stage_horizon_catalog(&src, signer, 1, snapshot_export_version, "witnesses=185", staged);
+    try collect_revisions(staged, keys, rev_count);
 }
 
 /// Export every leaf in `src` as one or more resin-batch frames under a snapshot header.
-pub fn exportCatalog(
+pub fn export_catalog(
     src: *const ns.BoltCatalog,
     signer: Ed25519.KeyPair,
     out: []u8,
 ) SnapshotError!u32 {
     var keys: [max_revision_groups]RevisionKey = undefined;
     var rev_count: u32 = 0;
-    try collectRevisions(src, &keys, &rev_count);
+    try collect_revisions(src, &keys, &rev_count);
 
     var off: u32 = 0;
-    if (off + 1 > capU32(out)) return error.Overflow;
+    if (off + 1 > cap_u32(out)) return error.Overflow;
     out[off] = snapshot_kind;
     off += 1;
-    try putField(out, &off, snapshot_export_version);
-    try putU32(out, &off, src.leaf_count);
-    try putU32(out, &off, rev_count);
+    try put_field(out, &off, snapshot_export_version);
+    try put_u32(out, &off, src.leaf_count);
+    try put_u32(out, &off, rev_count);
 
     var r: u32 = 0;
     while (r < rev_count) : (r += 1) {
         const key = keys[r];
         var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-        const built = rb.buildBatch(
+        const built = rb.build_batch(
             src,
-            key.peerSlice(),
-            key.boltSlice(),
+            key.peer_slice(),
+            key.bolt_slice(),
             key.revision,
             &[_][64]u8{},
             signer,
             &batch_buf,
         ) catch return error.Overflow;
-        try putU32(out, &off, built.len);
-        try putBytes(out, &off, batch_buf[0..built.len]);
+        try put_u32(out, &off, built.len);
+        try put_bytes(out, &off, batch_buf[0..built.len]);
     }
 
     return off;
 }
 
 /// Export with bundle prefixes, head record, and trust signer leaf.
-pub fn exportCatalogHorizon(
+pub fn export_catalog_horizon(
     src: *const ns.BoltCatalog,
     signer: Ed25519.KeyPair,
     identity_epoch: u64,
@@ -508,35 +508,35 @@ pub fn exportCatalogHorizon(
     out: []u8,
 ) SnapshotError!u32 {
     var staged: ns.BoltCatalog = .empty();
-    try stageHorizonCatalog(src, signer, identity_epoch, continuity_stamp, parity_claim, &staged);
-    return try exportCatalog(&staged, signer, out);
+    try stage_horizon_catalog(src, signer, identity_epoch, continuity_stamp, parity_claim, &staged);
+    return try export_catalog(&staged, signer, out);
 }
 
 /// Import a snapshot into `dest`, replacing nothing — appends via each batch apply.
-pub fn importCatalog(
+pub fn import_catalog(
     dest: *ns.BoltCatalog,
     snapshot: []const u8,
     source_pk: Ed25519.PublicKey,
 ) SnapshotError!u32 {
     dest.* = .empty();
     var off: u32 = 0;
-    if (off + 1 > capU32(snapshot)) return error.Truncated;
+    if (off + 1 > cap_u32(snapshot)) return error.Truncated;
     if (snapshot[off] != snapshot_kind) return error.BadKind;
     off += 1;
-    const version = try getField(snapshot, &off);
+    const version = try get_field(snapshot, &off);
     if (!std.mem.eql(u8, version, snapshot_export_version) and
         !std.mem.eql(u8, version, snapshot_lap1_version))
     {
         return error.BadKind;
     }
-    const claimed_leaves = try getU32(snapshot, &off);
-    const batch_count = try getU32(snapshot, &off);
+    const claimed_leaves = try get_u32(snapshot, &off);
+    const batch_count = try get_u32(snapshot, &off);
 
     var b: u32 = 0;
     while (b < batch_count) : (b += 1) {
-        const batch_len = try getU32(snapshot, &off);
-        if (off + batch_len > capU32(snapshot)) return error.Truncated;
-        _ = rb.applyBatch(dest, snapshot[off..][0..batch_len], source_pk) catch {
+        const batch_len = try get_u32(snapshot, &off);
+        if (off + batch_len > cap_u32(snapshot)) return error.Truncated;
+        _ = rb.apply_batch(dest, snapshot[off..][0..batch_len], source_pk) catch {
             dest.* = .empty();
             return error.Truncated;
         };
@@ -548,13 +548,13 @@ pub fn importCatalog(
 }
 
 /// Import horizon snapshot and verify head record before returning.
-pub fn importCatalogHorizon(
+pub fn import_catalog_horizon(
     dest: *ns.BoltCatalog,
     snapshot: []const u8,
     source_pk: Ed25519.PublicKey,
 ) SnapshotError!u32 {
-    const imported = try importCatalog(dest, snapshot, source_pk);
-    verifyHeadRecord(dest, source_pk) catch {
+    const imported = try import_catalog(dest, snapshot, source_pk);
+    verify_head_record(dest, source_pk) catch {
         dest.* = .empty();
         return error.HeadDigestMismatch;
     };
@@ -562,7 +562,7 @@ pub fn importCatalogHorizon(
 }
 
 /// Assert every leaf in `expect` recalls identically from `got`.
-pub fn assertCatalogReplay(expect: *const ns.BoltCatalog, got: *const ns.BoltCatalog) SnapshotError!void {
+pub fn assert_catalog_replay(expect: *const ns.BoltCatalog, got: *const ns.BoltCatalog) SnapshotError!void {
     if (expect.leaf_count != got.leaf_count) return error.ReplayMismatch;
     var i: u32 = 0;
     while (i < expect.leaf_count) : (i += 1) {
@@ -581,25 +581,25 @@ pub fn assertCatalogReplay(expect: *const ns.BoltCatalog, got: *const ns.BoltCat
     }
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     const signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
     const signer = Ed25519.KeyPair.generateDeterministic(signer_seed) catch unreachable;
 
     var src: ns.BoltCatalog = .empty();
-    try src.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
-    try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
-    try src.appendLeaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text");
+    try src.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src.append_leaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try src.append_leaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text");
 
     var staged_expect: ns.BoltCatalog = .empty();
-    try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &staged_expect);
+    try stage_horizon_catalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &staged_expect);
 
     var snap: [max_snapshot_bytes]u8 = undefined;
-    const snap_len = try exportCatalogHorizon(&src, signer, 1, snapshot_export_version, "witnesses=181", &snap);
+    const snap_len = try export_catalog_horizon(&src, signer, 1, snapshot_export_version, "witnesses=181", &snap);
 
     var dest: ns.BoltCatalog = .empty();
-    const imported = try importCatalogHorizon(&dest, snap[0..snap_len], signer.public_key);
+    const imported = try import_catalog_horizon(&dest, snap[0..snap_len], signer.public_key);
     assert(imported == staged_expect.leaf_count);
-    try assertCatalogReplay(&staged_expect, &dest);
+    try assert_catalog_replay(&staged_expect, &dest);
 
     // Unwelcome: tampered batch byte refuses whole import.
     {
@@ -607,7 +607,7 @@ fn runSelftest(_: std.Io) !u8 {
         tally_copy.copy_disjoint(u8, bad[0..snap_len], snap[0..snap_len]);
         bad[3] = if (bad[3] == 'z') 'y' else bad[3] + 1;
         var dest_bad: ns.BoltCatalog = .empty();
-        if (importCatalogHorizon(&dest_bad, bad[0..snap_len], signer.public_key)) |_| {
+        if (import_catalog_horizon(&dest_bad, bad[0..snap_len], signer.public_key)) |_| {
             return error.Truncated;
         } else |_| {}
         assert(dest_bad.leaf_count == 0);
@@ -616,7 +616,7 @@ fn runSelftest(_: std.Io) !u8 {
     // Unwelcome: head digest claim mismatch refuses after batches apply.
     {
         var bad_staged: ns.BoltCatalog = .empty();
-        try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &bad_staged);
+        try stage_horizon_catalog(&src, signer, 1, snapshot_export_version, "witnesses=181", &bad_staged);
         var j: u32 = 0;
         while (j < bad_staged.leaf_count) : (j += 1) {
             const leaf = &bad_staged.leaves[j];
@@ -627,15 +627,15 @@ fn runSelftest(_: std.Io) !u8 {
                 const hex_start = pos + prefix.len;
                 if (hex_start < content.len) {
                     leaf.bytes[hex_start] = if (leaf.bytes[hex_start] == 'a') 'b' else 'a';
-                    rebindLeafDigest(leaf);
+                    rebind_leaf_digest(leaf);
                 }
             }
             break;
         }
         var bad_snap: [max_snapshot_bytes]u8 = undefined;
-        const bad_len = try exportCatalog(&bad_staged, signer, &bad_snap);
+        const bad_len = try export_catalog(&bad_staged, signer, &bad_snap);
         var dest_bad: ns.BoltCatalog = .empty();
-        if (importCatalogHorizon(&dest_bad, bad_snap[0..bad_len], signer.public_key)) |_| {
+        if (import_catalog_horizon(&dest_bad, bad_snap[0..bad_len], signer.public_key)) |_| {
             return error.Truncated;
         } else |_| {}
         assert(dest_bad.leaf_count == 0);
@@ -654,6 +654,6 @@ fn runSelftest(_: std.Io) !u8 {
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+    return run_selftest(io);
 }

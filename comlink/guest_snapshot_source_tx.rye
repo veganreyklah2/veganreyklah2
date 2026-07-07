@@ -44,14 +44,14 @@ export fn kmain() callconv(.c) noreturn {
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
 
     var src: ns.BoltCatalog = .empty();
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "b.txt", "beta", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "b.txt", "beta", "plain-text") catch unreachable;
 
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-    const built = rb.buildBatch(&src, "peerB", "b", 1, &[_][64]u8{}, signer, &batch_buf) catch unreachable;
+    const built = rb.build_batch(&src, "peerB", "b", 1, &[_][64]u8{}, signer, &batch_buf) catch unreachable;
 
     var payload: [bw.max_batch_wire]u8 = undefined;
-    const payload_len = bw.encodeBatchResponse(batch_buf[0..built.len], &payload) catch unreachable;
+    const payload_len = bw.encode_batch_response(batch_buf[0..built.len], &payload) catch unreachable;
     send_sealed_payload(payload[0..payload_len]);
 
     vn.writeStr("sed device wire: sealed snapshot batch response TX sent\n");

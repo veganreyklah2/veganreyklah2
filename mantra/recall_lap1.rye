@@ -52,7 +52,7 @@ const witness_tilak = "plain-text";
 const witness_revision2: u32 = 2;
 const witness_content2 = "The rye remembers every line.";
 
-fn digestHexOf(content: []const u8, out: *[64]u8) void {
+fn digest_hex_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
     Sha3_256.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -61,7 +61,7 @@ fn digestHexOf(content: []const u8, out: *[64]u8) void {
     }
 }
 
-fn hexEq(a: []const u8, b: []const u8) bool {
+fn hex_eq(a: []const u8, b: []const u8) bool {
     if (a.len != b.len) return false;
     var i: u32 = 0;
     while (i < a.len) : (i += 1) {
@@ -117,7 +117,7 @@ pub const BoltCatalog = struct {
         return .{ .leaves = undefined, .leaf_count = 0 };
     }
 
-    fn findLeaf(self: *const BoltCatalog, name: Name) ?*const LeafBinding {
+    fn find_leaf(self: *const BoltCatalog, name: Name) ?*const LeafBinding {
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {
             const leaf = &self.leaves[i];
@@ -129,7 +129,7 @@ pub const BoltCatalog = struct {
         return null;
     }
 
-    fn maxRevisionForPath(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, path: []const u8) ?u32 {
+    fn max_revision_for_path(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, path: []const u8) ?u32 {
         var found: ?u32 = null;
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {
@@ -146,12 +146,12 @@ pub const BoltCatalog = struct {
         return found;
     }
 
-    pub fn initWitness(self: *BoltCatalog) !void {
+    pub fn init_witness(self: *BoltCatalog) !void {
         self.* = .empty();
-        try self.appendLeaf(witness_peer, witness_bolt, witness_revision, witness_path, witness_content, witness_tilak);
+        try self.append_leaf(witness_peer, witness_bolt, witness_revision, witness_path, witness_content, witness_tilak);
     }
 
-    pub fn appendLeaf(
+    pub fn append_leaf(
         self: *BoltCatalog,
         peer: []const u8,
         bolt: []const u8,
@@ -163,8 +163,8 @@ pub const BoltCatalog = struct {
         if (self.leaf_count >= max_bindings) return error.CatalogFull;
         if (peer.len > 16 or bolt.len > 32 or path.len > max_path or tilak.len > max_tilak) return error.Overflow;
         if (content.len > max_resin_bytes) return error.Overflow;
-        if (self.findLeaf(.{ .peer = peer, .bolt = bolt, .revision = revision, .path = path })) |_| return error.RevisionImmutable;
-        if (self.maxRevisionForPath(peer, bolt, path)) |prev| {
+        if (self.find_leaf(.{ .peer = peer, .bolt = bolt, .revision = revision, .path = path })) |_| return error.RevisionImmutable;
+        if (self.max_revision_for_path(peer, bolt, path)) |prev| {
             if (revision != prev + 1) return error.RevisionOutOfOrder;
         } else if (revision != 1) {
             return error.RevisionOutOfOrder;
@@ -181,14 +181,14 @@ pub const BoltCatalog = struct {
         leaf.tilak_len = @intCast(tilak.len);
         tally_copy.copy_disjoint(u8, leaf.bytes[0..content.len], content);
         leaf.bytes_len = @intCast(content.len);
-        digestHexOf(content, &leaf.digest_hex);
+        digest_hex_of(content, &leaf.digest_hex);
         self.leaves[self.leaf_count] = leaf;
         self.leaf_count += 1;
     }
 
-    pub fn resolveBinding(self: *const BoltCatalog, name: Name) RecallOutcome {
-        if (self.findLeaf(name)) |_| return .here;
-        if (self.maxRevisionForPath(name.peer, name.bolt, name.path)) |max_rev| {
+    pub fn resolve_binding(self: *const BoltCatalog, name: Name) RecallOutcome {
+        if (self.find_leaf(name)) |_| return .here;
+        if (self.max_revision_for_path(name.peer, name.bolt, name.path)) |max_rev| {
             if (name.revision > max_rev + 1) return .never;
             if (name.revision == max_rev + 1) return .not_yet;
         } else if (name.revision > 1) {
@@ -198,15 +198,15 @@ pub const BoltCatalog = struct {
     }
 
     pub fn recall(self: *const BoltCatalog, name: Name, out: []u8) RecallError!RecallResult {
-        const outcome = self.resolveBinding(name);
+        const outcome = self.resolve_binding(name);
         switch (outcome) {
             .not_yet, .never => return .{ .outcome = outcome, .len = 0, .tilak = "" },
             .here => {},
         }
-        const leaf = self.findLeaf(name) orelse return error.PathNotBound;
+        const leaf = self.find_leaf(name) orelse return error.PathNotBound;
         var expected: [64]u8 = undefined;
-        digestHexOf(leaf.bytes[0..leaf.bytes_len], &expected);
-        if (!hexEq(expected[0..64], leaf.digest_hex[0..64])) return error.DigestMismatch;
+        digest_hex_of(leaf.bytes[0..leaf.bytes_len], &expected);
+        if (!hex_eq(expected[0..64], leaf.digest_hex[0..64])) return error.DigestMismatch;
         if (leaf.bytes_len > out.len) return error.Overflow;
         tally_copy.copy_disjoint(u8, out[0..leaf.bytes_len], leaf.bytes[0..leaf.bytes_len]);
         return .{ .outcome = .here, .len = leaf.bytes_len, .tilak = leaf.tilak[0..leaf.tilak_len] };
@@ -215,7 +215,7 @@ pub const BoltCatalog = struct {
     /// Does this catalog already hold a resin at the given digest? The have-already
     /// lane: when true, a sync crosses a ref rather than the bytes.
     /// Count leaves bound at peer/bolt/revision (for wire manifest).
-    pub fn revisionLeafCount(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32) u32 {
+    pub fn revision_leaf_count(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32) u32 {
         var count: u32 = 0;
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {
@@ -229,7 +229,7 @@ pub const BoltCatalog = struct {
     }
 
     /// Nth leaf at peer/bolt/revision (0-based among revision leaves only).
-    pub fn revisionLeafAt(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, ordinal: u32) ?struct {
+    pub fn revision_leaf_at(self: *const BoltCatalog, peer: []const u8, bolt: []const u8, revision: u32, ordinal: u32) ?struct {
         path: []const u8,
         tilak: []const u8,
         digest_hex: [64]u8,
@@ -256,21 +256,21 @@ pub const BoltCatalog = struct {
     }
 
     /// Return resin bytes already held at digest (have-already lane on wire).
-    pub fn bytesForDigest(self: *const BoltCatalog, digest_hex: []const u8) ?[]const u8 {
+    pub fn bytes_for_digest(self: *const BoltCatalog, digest_hex: []const u8) ?[]const u8 {
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {
             const leaf = &self.leaves[i];
-            if (hexEq(leaf.digest_hex[0..64], digest_hex)) {
+            if (hex_eq(leaf.digest_hex[0..64], digest_hex)) {
                 return leaf.bytes[0..leaf.bytes_len];
             }
         }
         return null;
     }
 
-    pub fn hasResin(self: *const BoltCatalog, digest_hex: []const u8) bool {
+    pub fn has_resin(self: *const BoltCatalog, digest_hex: []const u8) bool {
         var i: u32 = 0;
         while (i < self.leaf_count) : (i += 1) {
-            if (hexEq(self.leaves[i].digest_hex[0..64], digest_hex)) return true;
+            if (hex_eq(self.leaves[i].digest_hex[0..64], digest_hex)) return true;
         }
         return false;
     }
@@ -283,17 +283,17 @@ pub const ResinStore = struct {
 
     pub fn witness() ResinStore {
         var digest: [64]u8 = undefined;
-        digestHexOf(witness_content, &digest);
+        digest_hex_of(witness_content, &digest);
         return .{ .digest_hex = digest, .bytes = witness_content };
     }
 };
 
 /// A resin arriving from a peer must match its named digest, or the crossing
 /// refuses it whole. Content addressing makes integrity and identity one check.
-pub fn verifyResin(claimed_digest_hex: []const u8, bytes: []const u8) RecallError!void {
+pub fn verify_resin(claimed_digest_hex: []const u8, bytes: []const u8) RecallError!void {
     var recomputed: [64]u8 = undefined;
-    digestHexOf(bytes, &recomputed);
-    if (!hexEq(recomputed[0..64], claimed_digest_hex)) return error.DigestMismatch;
+    digest_hex_of(bytes, &recomputed);
+    if (!hex_eq(recomputed[0..64], claimed_digest_hex)) return error.DigestMismatch;
 }
 
 /// NS-L3: sync a bolt revision from a source peer into a destination catalog.
@@ -302,7 +302,7 @@ pub fn verifyResin(claimed_digest_hex: []const u8, bytes: []const u8) RecallErro
 /// is appended, so a tampered resin refuses the whole crossing; revisions append
 /// and never rewrite; a synced bolt recalls identically to its source, because a
 /// resin proven by its digest is the same bytes on every peer.
-pub fn syncRevision(
+pub fn sync_revision(
     dest: *BoltCatalog,
     src: *const BoltCatalog,
     peer: []const u8,
@@ -316,9 +316,9 @@ pub fn syncRevision(
         if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) continue;
         if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
         if (leaf.revision != revision) continue;
-        try verifyResin(leaf.digest_hex[0..64], leaf.bytes[0..leaf.bytes_len]);
+        try verify_resin(leaf.digest_hex[0..64], leaf.bytes[0..leaf.bytes_len]);
     }
-    // Pass two: count the lanes and append; appendLeaf keeps revisions immutable and ordered.
+    // Pass two: count the lanes and append; append_leaf keeps revisions immutable and ordered.
     var report: SyncReport = .{ .total = 0, .had_already = 0, .needed = 0 };
     i = 0;
     while (i < src.leaf_count) : (i += 1) {
@@ -327,30 +327,30 @@ pub fn syncRevision(
         if (!std.mem.eql(u8, leaf.bolt[0..leaf.bolt_len], bolt)) continue;
         if (leaf.revision != revision) continue;
         report.total += 1;
-        if (dest.hasResin(leaf.digest_hex[0..64])) {
+        if (dest.has_resin(leaf.digest_hex[0..64])) {
             report.had_already += 1; // ref crosses, bytes stay home
         } else {
             report.needed += 1; // bytes cross once
         }
-        try dest.appendLeaf(peer, bolt, revision, leaf.path[0..leaf.path_len], leaf.bytes[0..leaf.bytes_len], leaf.tilak[0..leaf.tilak_len]);
+        try dest.append_leaf(peer, bolt, revision, leaf.path[0..leaf.path_len], leaf.bytes[0..leaf.bytes_len], leaf.tilak[0..leaf.tilak_len]);
     }
     return report;
 }
 
-pub fn resolveBinding(name: Name) RecallOutcome {
+pub fn resolve_binding(name: Name) RecallOutcome {
     var cat: BoltCatalog = .empty();
-    cat.initWitness() catch unreachable;
-    return cat.resolveBinding(name);
+    cat.init_witness() catch unreachable;
+    return cat.resolve_binding(name);
 }
 
 pub fn recall(name: Name, store: ResinStore, out: []u8) RecallError!RecallResult {
     _ = store;
     var cat: BoltCatalog = .empty();
-    cat.initWitness() catch unreachable;
+    cat.init_witness() catch unreachable;
     return cat.recall(name, out);
 }
 
-fn runLap1Selftest(_: std.Io) !u8 {
+fn run_lap1_selftest(_: std.Io) !u8 {
     const store = ResinStore.witness();
     const name = Name{
         .peer = witness_peer,
@@ -370,10 +370,10 @@ fn runLap1Selftest(_: std.Io) !u8 {
     assert(std.mem.eql(u8, buf_a[0..first.len], witness_content));
 
     const absent = Name{ .peer = witness_peer, .bolt = witness_bolt, .revision = witness_revision, .path = "missing.txt" };
-    assert(resolveBinding(absent) == .never);
+    assert(resolve_binding(absent) == .never);
 
     var cat: BoltCatalog = .empty();
-    try cat.initWitness();
+    try cat.init_witness();
     var bad = cat.leaves[0];
     bad.digest_hex[0] = if (bad.digest_hex[0] == 'a') 'b' else 'a';
     cat.leaves[0] = bad;
@@ -388,9 +388,9 @@ fn runLap1Selftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runLap2Selftest(_: std.Io) !u8 {
+fn run_lap2_selftest(_: std.Io) !u8 {
     var cat: BoltCatalog = .empty();
-    try cat.initWitness();
+    try cat.init_witness();
 
     const name_r1 = Name{
         .peer = witness_peer,
@@ -409,7 +409,7 @@ fn runLap2Selftest(_: std.Io) !u8 {
     const before = try cat.recall(name_r1, &buf);
     assert(std.mem.eql(u8, buf[0..before.len], witness_content));
 
-    try cat.appendLeaf(witness_peer, witness_bolt, witness_revision2, witness_path, witness_content2, witness_tilak);
+    try cat.append_leaf(witness_peer, witness_bolt, witness_revision2, witness_path, witness_content2, witness_tilak);
 
     const after_r1 = try cat.recall(name_r1, &buf);
     assert(std.mem.eql(u8, buf[0..after_r1.len], witness_content));
@@ -418,21 +418,21 @@ fn runLap2Selftest(_: std.Io) !u8 {
     const r2 = try cat.recall(name_r2, &buf2);
     assert(std.mem.eql(u8, buf2[0..r2.len], witness_content2));
 
-    if (cat.appendLeaf(witness_peer, witness_bolt, witness_revision, witness_path, "overwrite", witness_tilak)) |_| {
+    if (cat.append_leaf(witness_peer, witness_bolt, witness_revision, witness_path, "overwrite", witness_tilak)) |_| {
         return error.RevisionImmutable;
     } else |err| {
         assert(err == error.RevisionImmutable);
     }
 
-    if (cat.appendLeaf(witness_peer, witness_bolt, witness_revision2, witness_path, "skip", witness_tilak)) |_| {
+    if (cat.append_leaf(witness_peer, witness_bolt, witness_revision2, witness_path, "skip", witness_tilak)) |_| {
         return error.RevisionImmutable;
     } else |err| {
         assert(err == error.RevisionImmutable);
     }
 
-    assert(cat.resolveBinding(name_r2) == .here);
+    assert(cat.resolve_binding(name_r2) == .here);
     const not_yet = Name{ .peer = witness_peer, .bolt = witness_bolt, .revision = 3, .path = witness_path };
-    assert(cat.resolveBinding(not_yet) == .not_yet);
+    assert(cat.resolve_binding(not_yet) == .not_yet);
 
     print("nsl2: revision 1 unchanged after revision 2 appended — immutability GREEN\n", .{});
     print("nsl2: duplicate revision refused — GREEN unwelcome path\n", .{});
@@ -441,16 +441,16 @@ fn runLap2Selftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runLap3Selftest(_: std.Io) !u8 {
+fn run_lap3_selftest(_: std.Io) !u8 {
     // Peer B holds a bolt revision; peer A already holds one of its resins.
     var src: BoltCatalog = .empty();
-    try src.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
-    try src.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try src.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src.append_leaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
 
     var dest: BoltCatalog = .empty();
-    try dest.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
+    try dest.append_leaf("peerA", "seed", 1, "x", "alpha", "plain-text");
 
-    const report = try syncRevision(&dest, &src, "peerB", "b", 1);
+    const report = try sync_revision(&dest, &src, "peerB", "b", 1);
     assert(report.total == 2);
     assert(report.had_already == 1); // a.txt "alpha" deduped — ref crosses, bytes stay home
     assert(report.needed == 1); // b.txt "beta" — bytes cross once
@@ -479,11 +479,11 @@ fn runLap3Selftest(_: std.Io) !u8 {
 
     // Unwelcome: a tampered resin refuses the whole crossing, appending nothing.
     var src_bad: BoltCatalog = .empty();
-    try src_bad.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
-    try src_bad.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
+    try src_bad.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
+    try src_bad.append_leaf("peerB", "b", 1, "b.txt", "beta", "plain-text");
     src_bad.leaves[1].digest_hex[0] = if (src_bad.leaves[1].digest_hex[0] == 'a') 'b' else 'a';
     var dest_bad: BoltCatalog = .empty();
-    if (syncRevision(&dest_bad, &src_bad, "peerB", "b", 1)) |_| {
+    if (sync_revision(&dest_bad, &src_bad, "peerB", "b", 1)) |_| {
         return error.DigestMismatch;
     } else |err| {
         assert(err == error.DigestMismatch);
@@ -491,7 +491,7 @@ fn runLap3Selftest(_: std.Io) !u8 {
     assert(dest_bad.leaf_count == 0);
 
     // Unwelcome: re-syncing a revision already held is refused as immutable.
-    if (syncRevision(&dest, &src, "peerB", "b", 1)) |_| {
+    if (sync_revision(&dest, &src, "peerB", "b", 1)) |_| {
         return error.RevisionImmutable;
     } else |err| {
         assert(err == error.RevisionImmutable);
@@ -505,10 +505,10 @@ fn runLap3Selftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runSelftest(io: std.Io) !u8 {
-    _ = try runLap1Selftest(io);
-    _ = try runLap2Selftest(io);
-    _ = try runLap3Selftest(io);
+fn run_selftest(io: std.Io) !u8 {
+    _ = try run_lap1_selftest(io);
+    _ = try run_lap2_selftest(io);
+    _ = try run_lap3_selftest(io);
     return 0;
 }
 
@@ -516,11 +516,11 @@ pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "selftest-lap2")) return runLap2Selftest(io);
-        if (std.mem.eql(u8, args[1], "selftest-lap1")) return runLap1Selftest(io);
-        if (std.mem.eql(u8, args[1], "selftest-lap3") or std.mem.eql(u8, args[1], "sync")) return runLap3Selftest(io);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "selftest-lap2")) return run_lap2_selftest(io);
+        if (std.mem.eql(u8, args[1], "selftest-lap1")) return run_lap1_selftest(io);
+        if (std.mem.eql(u8, args[1], "selftest-lap3") or std.mem.eql(u8, args[1], "sync")) return run_lap3_selftest(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
     }
-    if (args.len >= 1) return runSelftest(io);
+    if (args.len >= 1) return run_selftest(io);
     return 1;
 }

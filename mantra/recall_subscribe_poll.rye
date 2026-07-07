@@ -64,7 +64,7 @@ pub fn poll_one_cycle(
     var i: u32 = 0;
     while (i < pairs.len) : (i += 1) {
         const pair = pairs[i];
-        const step = try cu.catchUpToLatest(fetcher, source, pair.peer, pair.bolt);
+        const step = try cu.catch_up_to_latest(fetcher, source, pair.peer, pair.bolt);
         report.revisions_synced += step.revisions_synced;
         report.empty_asks += step.empty_asks;
     }
@@ -107,9 +107,9 @@ fn monotonic_ns() u64 {
 fn run_interval_selftest(_: std.Io) !u8 {
     const path = "bolt.txt";
     var source: recall_lap1.BoltCatalog = .empty();
-    try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try source.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
     var fetcher: recall_lap1.BoltCatalog = .empty();
-    try fetcher.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try fetcher.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
     const one_pair = [_]PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
 
     const interval_ns = witness_poll_interval_ns;
@@ -130,10 +130,10 @@ fn run_interval_selftest(_: std.Io) !u8 {
 fn selftest_single_pair_poll(path: []const u8) !void {
     // Single pair: source gains rev 2 after cycle 1 — counsel witness shape.
     var source: recall_lap1.BoltCatalog = .empty();
-    try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try source.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
 
     var fetcher: recall_lap1.BoltCatalog = .empty();
-    try fetcher.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try fetcher.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
 
     const one_pair = [_]PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
 
@@ -141,7 +141,7 @@ fn selftest_single_pair_poll(path: []const u8) !void {
     assert(c1.revisions_synced == 0);
     assert(c1.empty_asks == 1);
 
-    try source.appendLeaf("peerB", "b", 2, path, "rev-two", "plain-text");
+    try source.append_leaf("peerB", "b", 2, path, "rev-two", "plain-text");
 
     const c2 = try poll_one_cycle(&fetcher, &source, &one_pair);
     assert(c2.revisions_synced == 1);
@@ -164,12 +164,12 @@ fn selftest_single_pair_poll(path: []const u8) !void {
 fn selftest_host_mirror_poll(path: []const u8) !void {
     // Host mirror: two named pairs; peerC gains rev 2 after cycle 1.
     var mirror_src: recall_lap1.BoltCatalog = .empty();
-    try mirror_src.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
-    try mirror_src.appendLeaf("peerC", "c", 1, path, "alpha", "plain-text");
+    try mirror_src.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try mirror_src.append_leaf("peerC", "c", 1, path, "alpha", "plain-text");
 
     var mirror_fetch: recall_lap1.BoltCatalog = .empty();
-    try mirror_fetch.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
-    try mirror_fetch.appendLeaf("peerC", "c", 1, path, "alpha", "plain-text");
+    try mirror_fetch.append_leaf("peerB", "b", 1, path, "rev-one", "plain-text");
+    try mirror_fetch.append_leaf("peerC", "c", 1, path, "alpha", "plain-text");
 
     const mirror_pairs = [_]PeerBoltPair{
         .{ .peer = "peerB", .bolt = "b" },
@@ -180,7 +180,7 @@ fn selftest_host_mirror_poll(path: []const u8) !void {
     assert(m1.revisions_synced == 0);
     assert(m1.empty_asks == 2);
 
-    try mirror_src.appendLeaf("peerC", "c", 2, path, "beta", "plain-text");
+    try mirror_src.append_leaf("peerC", "c", 2, path, "beta", "plain-text");
 
     const m2 = try poll_one_cycle(&mirror_fetch, &mirror_src, &mirror_pairs);
     assert(m2.revisions_synced == 1);

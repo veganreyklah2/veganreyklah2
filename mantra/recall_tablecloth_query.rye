@@ -76,10 +76,10 @@ pub fn queryTablecloth(
 
 fn runSelftest(_: std.Io) !u8 {
     var cat: recall_lap1.BoltCatalog = .empty();
-    try cat.appendLeaf("peerB", "b", 1, "notes.txt", "alpha notes", "plain-text");
-    try cat.appendLeaf("peerB", "b", 1, "data.bin", "beta bytes", "plain-bytes");
-    try cat.appendLeaf("peerB", "b", 1, "config.toml", "gamma cfg", "plain-text");
-    try cat.appendLeaf("peerB", "b", 2, "notes.txt", "alpha notes v2", "plain-text");
+    try cat.append_leaf("peerB", "b", 1, "notes.txt", "alpha notes", "plain-text");
+    try cat.append_leaf("peerB", "b", 1, "data.bin", "beta bytes", "plain-bytes");
+    try cat.append_leaf("peerB", "b", 1, "config.toml", "gamma cfg", "plain-text");
+    try cat.append_leaf("peerB", "b", 2, "notes.txt", "alpha notes v2", "plain-text");
 
     var names: [recall_lap1.max_bindings]recall_lap1.Name = undefined;
     var buf: [recall_lap1.max_resin_bytes]u8 = undefined;

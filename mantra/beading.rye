@@ -14,7 +14,7 @@
 //! Content-defined beading is the second ring: boundaries follow the content, so an edit
 //! shifts only nearby beads and the rest re-sync and dedup. Both rings share one
 //! bead-index format, one reassembly, and one verify. A resin's name is its content
-//! digest either way, so beading stays invisible to a reader, and verifyBeadIndex
+//! digest either way, so beading stays invisible to a reader, and verify_bead_index
 //! confirms a beaded resin is whole in the space of a single bead. The batch-frame
 //! carriage of beads over the wire rides after this settles.
 //!
@@ -94,7 +94,7 @@ pub const BeadReport = struct {
     beads_deduped: u32, // beads already held, not re-stored
 };
 
-fn digestRaw(content: []const u8, out: *[32]u8) void {
+fn digest_raw(content: []const u8, out: *[32]u8) void {
     Sha3_256.hash(content, out, .{});
 }
 
@@ -180,7 +180,7 @@ pub fn bead(
     if (index_len > index_out.len) return error.Overflow;
 
     var whole_digest: [32]u8 = undefined;
-    digestRaw(content, &whole_digest);
+    digest_raw(content, &whole_digest);
 
     var off: u32 = 0;
     tally_copy.copy_disjoint(u8, index_out[off..][0..32], whole_digest[0..32]);
@@ -204,7 +204,7 @@ pub fn bead(
         if (end > whole_len) end = whole_len;
         const chunk = content[start..end];
         var bd: [32]u8 = undefined;
-        digestRaw(chunk, &bd);
+        digest_raw(chunk, &bd);
         const deposited = try store.put(&bd, chunk);
         if (deposited) {
             report.beads_deposited += 1;
@@ -225,7 +225,7 @@ pub fn bead(
 /// bead runs at least cdc_min_bead bytes and at most cdc_max_bead, cutting early where
 /// the gear hash meets the mask. The hash resets per bead, so a bead depends only on its
 /// own bytes, which is what lets beads downstream of an edit re-sync to the same content.
-fn nextBeadEnd(content: []const u8, start: u32) u32 {
+fn next_bead_end(content: []const u8, start: u32) u32 {
     const len: u32 = @intCast(content.len);
     assert(start < len); // precondition: there is content left to chunk
     var hard_max: u32 = start + cdc_max_bead;
@@ -244,7 +244,7 @@ fn nextBeadEnd(content: []const u8, start: u32) u32 {
 /// and the whole digest match fixed-size beading exactly, so reassembly is shared and a
 /// beaded resin recalls the same bytes unbeaded. This is the ring that dedups across a
 /// shift: an edit changes only the beads it touches, and the rest are recognized.
-pub fn beadContentDefined(
+pub fn bead_content_defined(
     store: *BeadStore,
     content: []const u8,
     index_out: []u8,
@@ -254,7 +254,7 @@ pub fn beadContentDefined(
 
     const whole_len: u32 = @intCast(content.len);
     var whole_digest: [32]u8 = undefined;
-    digestRaw(content, &whole_digest);
+    digest_raw(content, &whole_digest);
     tally_copy.copy_disjoint(u8, index_out[0..32], whole_digest[0..32]);
     std.mem.writeInt(u16, index_out[32..34], @intCast(whole_len), .little);
 
@@ -272,7 +272,7 @@ pub fn beadContentDefined(
     if (whole_len == 0) {
         // An empty resin beads into one empty bead, matching fixed-size beading.
         var bd0: [32]u8 = undefined;
-        digestRaw(content[0..0], &bd0);
+        digest_raw(content[0..0], &bd0);
         const dep0 = try store.put(&bd0, content[0..0]);
         if (dep0) {
             report.beads_deposited += 1;
@@ -285,14 +285,14 @@ pub fn beadContentDefined(
     }
 
     while (start < whole_len) {
-        const end = nextBeadEnd(content, start);
+        const end = next_bead_end(content, start);
         assert(end > start); // the chunker always makes forward progress
         if (bead_count >= max_beads) return error.TooManyBeads;
         if (off + digest_raw_len > max_resin_bytes) return error.Overflow;
         if (off + digest_raw_len > index_out.len) return error.Overflow;
         const chunk = content[start..end];
         var bd: [32]u8 = undefined;
-        digestRaw(chunk, &bd);
+        digest_raw(chunk, &bd);
         const deposited = try store.put(&bd, chunk);
         if (deposited) {
             report.beads_deposited += 1;
@@ -321,7 +321,7 @@ const IndexHeader = struct {
 /// Parse and bounds-check a bead-index header. The Tilak gates the layout, the count
 /// stays within the bound, and the index length must match the count exactly. Both
 /// reassembly and verification lean on this one gate, so the checks live in one place.
-fn parseIndexHeader(index_tilak: []const u8, index_bytes: []const u8) BeadError!IndexHeader {
+fn parse_index_header(index_tilak: []const u8, index_bytes: []const u8) BeadError!IndexHeader {
     if (!std.mem.eql(u8, index_tilak, tilak_bead_index)) return error.UnknownTilak;
     if (index_bytes.len < index_header_len) return error.Truncated;
     var head: IndexHeader = undefined;
@@ -340,12 +340,12 @@ fn parseIndexHeader(index_tilak: []const u8, index_bytes: []const u8) BeadError!
 /// prove the running hash against the recorded whole digest. No output buffer is held,
 /// so a resin of any size verifies in the space of a single bead. This is the cheap gate,
 /// answering "does this bead-index reassemble correctly?" without materializing the whole.
-pub fn verifyBeadIndex(
+pub fn verify_bead_index(
     store: *const BeadStore,
     index_tilak: []const u8,
     index_bytes: []const u8,
 ) BeadError!struct { len: u32, whole_digest: [32]u8 } {
-    const head = try parseIndexHeader(index_tilak, index_bytes);
+    const head = try parse_index_header(index_tilak, index_bytes);
     var hasher = Sha3_256.init(.{});
     var total: u32 = 0;
     var i: u32 = 0;
@@ -355,7 +355,7 @@ pub fn verifyBeadIndex(
         tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_bytes[off..][0..32]);
         const bytes = store.get(&bd) orelse return error.StoreMissing;
         var check: [32]u8 = undefined;
-        digestRaw(bytes, &check); // each bead proves itself by digest
+        digest_raw(bytes, &check); // each bead proves itself by digest
         if (!std.mem.eql(u8, check[0..], bd[0..])) return error.DigestMismatch;
         const n: u32 = @intCast(bytes.len);
         if (total + n > head.whole_len) return error.Overflow; // no bead past the promise
@@ -378,7 +378,7 @@ pub fn reassemble(
     index_bytes: []const u8,
     out: []u8,
 ) BeadError!struct { len: u32, whole_digest: [32]u8 } {
-    const head = try parseIndexHeader(index_tilak, index_bytes);
+    const head = try parse_index_header(index_tilak, index_bytes);
     if (head.whole_len > out.len) return error.Overflow;
 
     var total: u32 = 0;
@@ -389,7 +389,7 @@ pub fn reassemble(
         tally_copy.copy_disjoint(u8, std.mem.asBytes(&bd), index_bytes[off..][0..32]);
         const bytes = store.get(&bd) orelse return error.StoreMissing;
         var check: [32]u8 = undefined;
-        digestRaw(bytes, &check); // a fetched bead must hash to its named digest
+        digest_raw(bytes, &check); // a fetched bead must hash to its named digest
         if (!std.mem.eql(u8, check[0..], bd[0..])) return error.DigestMismatch;
         const n: u32 = @intCast(bytes.len);
         if (total + n > head.whole_len) return error.Overflow; // no bead past the promise
@@ -399,7 +399,7 @@ pub fn reassemble(
 
     if (total != head.whole_len) return error.DigestMismatch; // short or long is a mismatch
     var whole_check: [32]u8 = undefined;
-    digestRaw(out[0..total], &whole_check); // the whole proof
+    digest_raw(out[0..total], &whole_check); // the whole proof
     if (!std.mem.eql(u8, whole_check[0..], head.whole_digest[0..])) return error.DigestMismatch;
     return .{ .len = total, .whole_digest = head.whole_digest };
 }
@@ -409,7 +409,7 @@ fn fill(buf: []u8, byte: u8) void {
     while (i < buf.len) : (i += 1) buf[i] = byte;
 }
 
-fn patternFill(buf: []u8, seed: u32) void {
+fn pattern_fill(buf: []u8, seed: u32) void {
     var x: u32 = seed;
     var i: u32 = 0;
     while (i < buf.len) : (i += 1) {
@@ -418,7 +418,7 @@ fn patternFill(buf: []u8, seed: u32) void {
     }
 }
 
-fn runBeadingSelftest(_: std.Io) !u8 {
+fn run_beading_selftest(_: std.Io) !u8 {
     // A 400-byte resin: 256 bytes of 'A', then 144 bytes of 'B'. At a 256-byte bead
     // size it beads into two: a full 'A' bead and a 144-byte 'B' bead.
     var content_c: [400]u8 = undefined;
@@ -426,7 +426,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     fill(content_c[256..400], 'B');
 
     var expected_c: [32]u8 = undefined;
-    digestRaw(content_c[0..], &expected_c);
+    digest_raw(content_c[0..], &expected_c);
 
     var store: BeadStore = .empty();
     var idx_c: [max_resin_bytes]u8 = undefined;
@@ -521,10 +521,10 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     // Content-defined beading: the next ring. Boundaries follow the content, so an edit
     // shifts only nearby beads and the rest dedup. Prove the round-trip, then the shift.
     var content_p: [480]u8 = undefined;
-    patternFill(content_p[0..], 12345);
+    pattern_fill(content_p[0..], 12345);
     var store_cdc: BeadStore = .empty();
     var idx_p: [max_resin_bytes]u8 = undefined;
-    const bp = try beadContentDefined(&store_cdc, content_p[0..], &idx_p);
+    const bp = try bead_content_defined(&store_cdc, content_p[0..], &idx_p);
     assert(bp.report.bead_count >= 2); // structured content beads into several
     var out_p: [max_resin_bytes]u8 = undefined;
     const re_p = try reassemble(&store_cdc, tilak_bead_index, idx_p[0..bp.len], &out_p);
@@ -538,7 +538,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     content_q[42] = 'Z';
     tally_copy.copy_disjoint(u8, content_q[43..483], content_p[40..480]);
     var idx_q: [max_resin_bytes]u8 = undefined;
-    const bq = try beadContentDefined(&store_cdc, content_q[0..], &idx_q);
+    const bq = try bead_content_defined(&store_cdc, content_q[0..], &idx_q);
     var out_q: [max_resin_bytes]u8 = undefined;
     const re_q = try reassemble(&store_cdc, tilak_bead_index, idx_q[0..bq.len], &out_q);
     assert(std.mem.eql(u8, out_q[0..re_q.len], content_q[0..]));
@@ -559,7 +559,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     // The name is the content address, unchanged by beading. Both rings return the
     // resin's own digest, identical to the unbeaded content digest and to each other.
     var direct_p: [32]u8 = undefined;
-    digestRaw(content_p[0..], &direct_p);
+    digest_raw(content_p[0..], &direct_p);
     var store_np: BeadStore = .empty();
     var fixed_p: [max_resin_bytes]u8 = undefined;
     const fp = try bead(&store_np, content_p[0..], 128, &fixed_p);
@@ -567,7 +567,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     assert(std.mem.eql(u8, &bp.whole_digest, &direct_p)); // content-defined ring: same name
 
     // Bounded-memory verify agrees with reassembly and holds no output buffer.
-    const vp = try verifyBeadIndex(&store_cdc, tilak_bead_index, idx_p[0..bp.len]);
+    const vp = try verify_bead_index(&store_cdc, tilak_bead_index, idx_p[0..bp.len]);
     assert(vp.len == re_p.len);
     assert(std.mem.eql(u8, &vp.whole_digest, &bp.whole_digest));
     {
@@ -575,7 +575,7 @@ fn runBeadingSelftest(_: std.Io) !u8 {
         var bad: [max_resin_bytes]u8 = undefined;
         tally_copy.copy_disjoint(u8, bad[0..bp.len], idx_p[0..bp.len]);
         bad[0] +%= 1; // corrupt the recorded whole digest
-        if (verifyBeadIndex(&store_cdc, tilak_bead_index, bad[0..bp.len])) |_| {
+        if (verify_bead_index(&store_cdc, tilak_bead_index, bad[0..bp.len])) |_| {
             return error.DigestMismatch;
         } else |err| {
             assert(err == error.DigestMismatch);
@@ -589,9 +589,9 @@ fn runBeadingSelftest(_: std.Io) !u8 {
     tally_copy.copy_disjoint(u8, content_r[40..477], content_p[43..480]);
     var store_dc: BeadStore = .empty();
     var idx_pc: [max_resin_bytes]u8 = undefined;
-    _ = try beadContentDefined(&store_dc, content_p[0..], &idx_pc);
+    _ = try bead_content_defined(&store_dc, content_p[0..], &idx_pc);
     var idx_r: [max_resin_bytes]u8 = undefined;
-    const br = try beadContentDefined(&store_dc, content_r[0..], &idx_r);
+    const br = try bead_content_defined(&store_dc, content_r[0..], &idx_r);
     var out_r: [max_resin_bytes]u8 = undefined;
     const re_r = try reassemble(&store_dc, tilak_bead_index, idx_r[0..br.len], &out_r);
     assert(std.mem.eql(u8, out_r[0..re_r.len], content_r[0..]));
@@ -634,8 +634,8 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(init.arena.allocator());
     if (args.len >= 2) {
         if (std.mem.eql(u8, args[1], "selftest") or std.mem.eql(u8, args[1], "beading")) {
-            return runBeadingSelftest(io);
+            return run_beading_selftest(io);
         }
     }
-    return runBeadingSelftest(io);
+    return run_beading_selftest(io);
 }

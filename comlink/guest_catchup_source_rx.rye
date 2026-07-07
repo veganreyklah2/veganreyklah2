@@ -39,7 +39,7 @@ export fn kmain() callconv(.c) noreturn {
     };
 
     var req: sw.SyncRequest = undefined;
-    sw.decodeRequest(opened[0..@intCast(opened_len)], &req) catch {
+    sw.decode_request(opened[0..@intCast(opened_len)], &req) catch {
         vn.writeStr("ns-catchupw device: FAIL — request decode\n");
         vn.finishFail();
     };

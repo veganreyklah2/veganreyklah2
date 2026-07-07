@@ -25,7 +25,7 @@ pub const TwoWaySyncReport = struct {
 /// Sync peer-left's revision into catalog `left` and peer-right's revision into `right`.
 /// Each catalog must already hold its own peer's leaves; the crossing appends only what
 /// the destination lacks.
-pub fn syncBothWays(
+pub fn sync_both_ways(
     left: *recall_lap1.BoltCatalog,
     right: *recall_lap1.BoltCatalog,
     left_peer: []const u8,
@@ -35,20 +35,20 @@ pub fn syncBothWays(
     right_bolt: []const u8,
     right_revision: u32,
 ) recall_lap1.RecallError!TwoWaySyncReport {
-    const right_to_left = try recall_lap1.syncRevision(left, right, right_peer, right_bolt, right_revision);
-    const left_to_right = try recall_lap1.syncRevision(right, left, left_peer, left_bolt, left_revision);
+    const right_to_left = try recall_lap1.sync_revision(left, right, right_peer, right_bolt, right_revision);
+    const left_to_right = try recall_lap1.sync_revision(right, left, left_peer, left_bolt, left_revision);
     return .{ .right_to_left = right_to_left, .left_to_right = left_to_right };
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     // Each peer holds one leaf the other lacks; one shared digest exercises had-already.
     var left: recall_lap1.BoltCatalog = .empty();
-    try left.appendLeaf("peerA", "a", 1, "from-a.txt", "shared", "plain-text");
+    try left.append_leaf("peerA", "a", 1, "from-a.txt", "shared", "plain-text");
     var right: recall_lap1.BoltCatalog = .empty();
-    try right.appendLeaf("peerB", "b", 1, "shared.txt", "shared", "plain-text");
-    try right.appendLeaf("peerB", "b", 1, "from-b.txt", "unique-b", "plain-text");
+    try right.append_leaf("peerB", "b", 1, "shared.txt", "shared", "plain-text");
+    try right.append_leaf("peerB", "b", 1, "from-b.txt", "unique-b", "plain-text");
 
-    const report = try syncBothWays(&left, &right, "peerA", "a", 1, "peerB", "b", 1);
+    const report = try sync_both_ways(&left, &right, "peerA", "a", 1, "peerB", "b", 1);
     assert(report.right_to_left.total == 2);
     assert(report.right_to_left.had_already == 1);
     assert(report.right_to_left.needed == 1);
@@ -83,7 +83,7 @@ fn runSelftest(_: std.Io) !u8 {
     print("ns-2way: both peers recall both names — referential transparency GREEN\n", .{});
 
     // Re-syncing an already-crossed revision refuses whole per direction.
-    if (recall_lap1.syncRevision(&left, &right, "peerB", "b", 1)) |_| {
+    if (recall_lap1.sync_revision(&left, &right, "peerB", "b", 1)) |_| {
         return error.RevisionImmutable;
     } else |err| {
         assert(err == error.RevisionImmutable);
@@ -91,8 +91,8 @@ fn runSelftest(_: std.Io) !u8 {
     print("ns-2way: duplicate revision sync refused — GREEN unwelcome path\n", .{});
 
     // A new revision on one side crosses once; prior revision leaves stay recallable.
-    try right.appendLeaf("peerB", "b", 2, "from-b.txt", "unique-b-v2", "plain-text");
-    const rev2 = try recall_lap1.syncRevision(&left, &right, "peerB", "b", 2);
+    try right.append_leaf("peerB", "b", 2, "from-b.txt", "unique-b-v2", "plain-text");
+    const rev2 = try recall_lap1.sync_revision(&left, &right, "peerB", "b", 2);
     assert(rev2.total == 1);
     assert(rev2.needed == 1);
     const nrev2 = recall_lap1.Name{ .peer = "peerB", .bolt = "b", .revision = 2, .path = "from-b.txt" };
@@ -107,6 +107,6 @@ fn runSelftest(_: std.Io) !u8 {
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+    return run_selftest(io);
 }

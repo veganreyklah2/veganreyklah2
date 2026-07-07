@@ -40,16 +40,16 @@ export fn kmain() callconv(.c) noreturn {
     };
 
     var resp: sw.SyncResponse = undefined;
-    sw.decodeResponse(opened[0..@intCast(opened_len)], &resp) catch {
+    sw.decode_response(opened[0..@intCast(opened_len)], &resp) catch {
         vn.writeStr("ns-catchupw device: FAIL — response decode\n");
         vn.finishFail();
     };
 
     var fetcher: ns.BoltCatalog = .empty();
-    ns.BoltCatalog.appendLeaf(&fetcher, "peerB", "b", 1, "bolt.txt", "rev-one", "plain-text") catch unreachable;
-    ns.BoltCatalog.appendLeaf(&fetcher, "peerB", "b", 2, "bolt.txt", "rev-two", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&fetcher, "peerB", "b", 1, "bolt.txt", "rev-one", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&fetcher, "peerB", "b", 2, "bolt.txt", "rev-two", "plain-text") catch unreachable;
 
-    const report = sw.applySyncResponse(&fetcher, &resp) catch {
+    const report = sw.apply_sync_response(&fetcher, &resp) catch {
         vn.writeStr("ns-catchupw device: FAIL — apply sync\n");
         vn.finishFail();
     };

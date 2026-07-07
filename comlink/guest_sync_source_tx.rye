@@ -31,8 +31,8 @@ export fn kmain() callconv(.c) noreturn {
     vn.driverOk();
 
     var src: ns.BoltCatalog = .empty();
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
-    ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "b.txt", "beta", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "b.txt", "beta", "plain-text") catch unreachable;
 
     var req: sw.SyncRequest = .{
         .peer = "peerB",
@@ -44,10 +44,10 @@ export fn kmain() callconv(.c) noreturn {
     digest_hex_of("alpha", &req.held_digests[0]);
 
     var resp: sw.SyncResponse = undefined;
-    sw.buildResponse(&src, &req, &resp) catch unreachable;
+    sw.build_response(&src, &req, &resp) catch unreachable;
 
     var payload: [sw.max_wire_payload]u8 = undefined;
-    const payload_len = sw.encodeResponse(&resp, &payload) catch unreachable;
+    const payload_len = sw.encode_response(&resp, &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
     const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);

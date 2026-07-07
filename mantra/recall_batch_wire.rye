@@ -27,15 +27,15 @@ pub const WireError = sw.WireError || error{
 
 pub const BatchWireRequest = sw.SyncRequest;
 
-pub fn encodeRequest(req: BatchWireRequest, out: []u8) WireError!u32 {
-    return sw.encodeRequest(req, out);
+pub fn encode_request(req: BatchWireRequest, out: []u8) WireError!u32 {
+    return sw.encode_request(req, out);
 }
 
-pub fn decodeRequest(payload: []const u8, out: *BatchWireRequest) WireError!void {
-    return sw.decodeRequest(payload, out);
+pub fn decode_request(payload: []const u8, out: *BatchWireRequest) WireError!void {
+    return sw.decode_request(payload, out);
 }
 
-pub fn batchChunkCount(batch_len: u32) WireError!u16 {
+pub fn batch_chunk_count(batch_len: u32) WireError!u16 {
     if (batch_len == 0) return error.Truncated;
     if (batch_len > rb.max_batch_bytes) return error.Overflow;
     if (batch_len <= max_batch_wire) return 1;
@@ -44,7 +44,7 @@ pub fn batchChunkCount(batch_len: u32) WireError!u16 {
     return @intCast(n);
 }
 
-pub fn encodeBatchResponse(batch: []const u8, out: []u8) WireError!u32 {
+pub fn encode_batch_response(batch: []const u8, out: []u8) WireError!u32 {
     if (batch.len > max_batch_wire) return error.Overflow;
     if (out.len < 1 + batch.len) return error.Overflow;
     out[0] = kind_response_batch;
@@ -52,8 +52,8 @@ pub fn encodeBatchResponse(batch: []const u8, out: []u8) WireError!u32 {
     return 1 + @as(u32, @intCast(batch.len));
 }
 
-pub fn encodeBatchChunk(batch: []const u8, chunk_index: u16, out: []u8) WireError!u32 {
-    const count = try batchChunkCount(@intCast(batch.len));
+pub fn encode_batch_chunk(batch: []const u8, chunk_index: u16, out: []u8) WireError!u32 {
+    const count = try batch_chunk_count(@intCast(batch.len));
     if (chunk_index >= count) return error.BadChunk;
     const off_body = @as(u32, chunk_index) * max_chunk_body;
     const remain = batch.len - off_body;
@@ -67,7 +67,7 @@ pub fn encodeBatchChunk(batch: []const u8, chunk_index: u16, out: []u8) WireErro
     return chunk_header_len + @as(u32, @intCast(take));
 }
 
-pub fn decodeBatchResponse(payload: []const u8, out: []u8) WireError!u32 {
+pub fn decode_batch_response(payload: []const u8, out: []u8) WireError!u32 {
     if (payload.len < 1 or payload[0] != kind_response_batch) return error.BadKind;
     const body = payload[1..];
     if (body.len > out.len) return error.Overflow;
@@ -106,7 +106,7 @@ pub const BatchAssembler = struct {
         if (count == 0 or count > max_batch_chunks) return error.BadChunk;
         if (index >= count) return error.BadChunk;
         if (total == 0 or total > rb.max_batch_bytes) return error.BadChunk;
-        const expected = try batchChunkCount(total);
+        const expected = try batch_chunk_count(total);
         if (count != expected) return error.ChunkMismatch;
         const body = payload[chunk_header_len..];
         const off_body = @as(u32, index) * max_chunk_body;
@@ -134,7 +134,7 @@ pub const BatchAssembler = struct {
     }
 };
 
-pub fn runChunkWireSelftest() WireError!void {
+pub fn run_chunk_wire_selftest() WireError!void {
     const assert = std.debug.assert;
     var batch: [rb.max_batch_bytes]u8 = undefined;
     var i: u32 = 0;
@@ -142,14 +142,14 @@ pub fn runChunkWireSelftest() WireError!void {
         batch[i] = @intCast(i % 251);
     }
     const batch_len: u32 = 700;
-    const count = try batchChunkCount(batch_len);
+    const count = try batch_chunk_count(batch_len);
     assert(count >= 3);
 
     var batch_asm: BatchAssembler = .{};
     var c: u16 = 0;
     while (c < count) : (c += 1) {
         var frame: [max_batch_wire]u8 = undefined;
-        const flen = try encodeBatchChunk(batch[0..batch_len], c, &frame);
+        const flen = try encode_batch_chunk(batch[0..batch_len], c, &frame);
         const state = try batch_asm.feed(frame[0..flen]);
         if (c + 1 < count) {
             assert(state == .need_more);
@@ -161,7 +161,7 @@ pub fn runChunkWireSelftest() WireError!void {
 
     var single_out: [max_batch_wire]u8 = undefined;
     const small = batch[0..200];
-    const slen = try encodeBatchResponse(small, &single_out);
+    const slen = try encode_batch_response(small, &single_out);
     var single_asm: BatchAssembler = .{};
     const sstate = try single_asm.feed(single_out[0..slen]);
     assert(sstate == .ready);
@@ -169,10 +169,10 @@ pub fn runChunkWireSelftest() WireError!void {
 }
 
 /// Apply a wire batch into dest using resin_batch invariants.
-pub fn applyWireBatch(
+pub fn apply_wire_batch(
     dest: *@import("recall_lap1.rye").BoltCatalog,
     batch: []const u8,
     source_pk: std.crypto.sign.Ed25519.PublicKey,
 ) rb.BatchError!rb.BatchReport {
-    return rb.applyBatch(dest, batch, source_pk);
+    return rb.apply_batch(dest, batch, source_pk);
 }

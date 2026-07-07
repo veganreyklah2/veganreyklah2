@@ -40,11 +40,11 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{ .sin_port = std.mem.nativeToBig(u16, port) };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -52,22 +52,22 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn sendWire(port: u16, wire: []const u8) !void {
-    const fd = try openSocket();
+fn send_wire(port: u16, wire: []const u8) !void {
+    const fd = try open_socket();
     defer _ = c.close(fd);
-    const dest = localhostAddr(port);
+    const dest = localhost_addr(port);
     const sent = c.sendto(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recvWireTimeout(port: u16, wire: []u8, timeout_sec: u32) !u64 {
-    const fd = try openSocket();
+fn recv_wire_timeout(port: u16, wire: []u8, timeout_sec: u32) !u64 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
     if (timeout_sec > 0) {
         var tv = c.timeval{ .sec = @intCast(timeout_sec), .usec = 0 };
         _ = c.setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, @sizeOf(c.timeval));
     }
-    var bind_addr = localhostAddr(port);
+    var bind_addr = localhost_addr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
@@ -76,52 +76,52 @@ fn recvWireTimeout(port: u16, wire: []u8, timeout_sec: u32) !u64 {
     return @intCast(n);
 }
 
-fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
+fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
     return try wf.seal_message(payload, wire);
 }
 
-fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
+fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.open_datagram(wire, opened);
 }
 
-fn sendBatchPayload(port: u16, batch: []const u8) !void {
+fn send_batch_payload(port: u16, batch: []const u8) !void {
     if (batch.len <= bw.max_batch_wire) {
         var payload: [bw.max_batch_wire]u8 = undefined;
-        const payload_len = try bw.encodeBatchResponse(batch, &payload);
+        const payload_len = try bw.encode_batch_response(batch, &payload);
         var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const out_len = try sealPayload(payload[0..payload_len], &out_wire);
-        try sendWire(port, out_wire[0..@intCast(out_len)]);
+        const out_len = try seal_payload(payload[0..payload_len], &out_wire);
+        try send_wire(port, out_wire[0..@intCast(out_len)]);
         return;
     }
-    const count = try bw.batchChunkCount(@intCast(batch.len));
+    const count = try bw.batch_chunk_count(@intCast(batch.len));
     var ci: u16 = 0;
     while (ci < count) : (ci += 1) {
         var payload: [bw.max_batch_wire]u8 = undefined;
-        const payload_len = try bw.encodeBatchChunk(batch, ci, &payload);
+        const payload_len = try bw.encode_batch_chunk(batch, ci, &payload);
         var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const out_len = try sealPayload(payload[0..payload_len], &out_wire);
-        try sendWire(port, out_wire[0..@intCast(out_len)]);
+        const out_len = try seal_payload(payload[0..payload_len], &out_wire);
+        try send_wire(port, out_wire[0..@intCast(out_len)]);
     }
 }
 
-fn recvBatchPayload(port: u16, out: []u8) !u32 {
-    const fd = try openSocket();
+fn recv_batch_payload(port: u16, out: []u8) !u32 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
     var tv = c.timeval{ .sec = @intCast(batch_recv_timeout_sec), .usec = 0 };
     _ = c.setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, @sizeOf(c.timeval));
-    var bind_addr = localhostAddr(port);
+    var bind_addr = localhost_addr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
 
     var batch_asm: bw.BatchAssembler = .{};
     while (true) {
-        var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
+        var recv_buf: [@intCast(wf.wire_capacity)]u8 = undefined;
         var from: sockaddr_in = undefined;
         var from_len: c.socklen_t = @sizeOf(sockaddr_in);
-        const n = c.recvfrom(fd, &recv_wire, recv_wire.len, 0, @ptrCast(&from), &from_len);
+        const n = c.recvfrom(fd, &recv_buf, recv_buf.len, 0, @ptrCast(&from), &from_len);
         if (n < 0) return error.RecvFailed;
         const recv_len: u64 = @intCast(n);
         var opened: [@intCast(wf.max_message)]u8 = undefined;
-        const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
+        const opened_len = try open_wire(recv_buf[0..@intCast(recv_len)], &opened);
         const state = try batch_asm.feed(opened[0..@intCast(opened_len)]);
         if (state == .ready) {
             const batch = batch_asm.batch();
@@ -132,59 +132,59 @@ fn recvBatchPayload(port: u16, out: []u8) !u32 {
     }
 }
 
-fn fetchSnapshotOverWire(
+fn fetch_snapshot_over_wire(
     signer: Ed25519.KeyPair,
     staged: *const ns.BoltCatalog,
     keys: []const snap.RevisionKey,
     rev_count: u32,
     out: []u8,
 ) !u32 {
-    var off = try snap.beginSnapshotAssembly(out, staged.leaf_count, rev_count);
+    var off = try snap.begin_snapshot_assembly(out, staged.leaf_count, rev_count);
 
     var r: u32 = 0;
     while (r < rev_count) : (r += 1) {
         const key = keys[r];
         const req = bw.BatchWireRequest{
-            .peer = key.peerSlice(),
-            .bolt = key.boltSlice(),
+            .peer = key.peer_slice(),
+            .bolt = key.bolt_slice(),
             .revision = key.revision,
             .held_count = 0,
             .held_digests = undefined,
         };
         var req_buf: [bw.max_batch_wire]u8 = undefined;
-        const req_len = try bw.encodeRequest(req, &req_buf);
+        const req_len = try bw.encode_request(req, &req_buf);
         var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const wire_len = try sealPayload(req_buf[0..req_len], &wire);
-        try sendWire(source_port, wire[0..@intCast(wire_len)]);
+        const wire_len = try seal_payload(req_buf[0..req_len], &wire);
+        try send_wire(source_port, wire[0..@intCast(wire_len)]);
 
         var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-        const batch_len = try recvBatchPayload(fetcher_port, &batch_buf);
-        try snap.appendSnapshotBatch(out, &off, batch_buf[0..batch_len]);
+        const batch_len = try recv_batch_payload(fetcher_port, &batch_buf);
+        try snap.append_snapshot_batch(out, &off, batch_buf[0..batch_len]);
     }
 
     _ = signer;
     return off;
 }
 
-fn runSourceLoop(_: std.Io) !u8 {
+fn run_source_loop(_: std.Io) !u8 {
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
     var staged: ns.BoltCatalog = .empty();
     var keys: [snap.max_revision_groups]snap.RevisionKey = undefined;
     var rev_count: u32 = 0;
-    try snap.witnessHorizonPlan(signer, &staged, &keys, &rev_count);
+    try snap.witness_horizon_plan(signer, &staged, &keys, &rev_count);
 
     var served: u32 = 0;
     while (served < rev_count) : (served += 1) {
         var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const wire_len = try recvWireTimeout(source_port, &wire, batch_recv_timeout_sec);
+        const wire_len = try recv_wire_timeout(source_port, &wire, batch_recv_timeout_sec);
         var opened: [@intCast(wf.max_message)]u8 = undefined;
-        const opened_len = try openWire(wire[0..@intCast(wire_len)], &opened);
+        const opened_len = try open_wire(wire[0..@intCast(wire_len)], &opened);
 
         var req: bw.BatchWireRequest = undefined;
-        try bw.decodeRequest(opened[0..@intCast(opened_len)], &req);
+        try bw.decode_request(opened[0..@intCast(opened_len)], &req);
 
         var batch_buf: [rb.max_batch_bytes]u8 = undefined;
-        const built = try rb.buildBatch(
+        const built = try rb.build_batch(
             &staged,
             req.peer,
             req.bolt,
@@ -193,37 +193,37 @@ fn runSourceLoop(_: std.Io) !u8 {
             signer,
             &batch_buf,
         );
-        try sendBatchPayload(fetcher_port, batch_buf[0..built.len]);
+        try send_batch_payload(fetcher_port, batch_buf[0..built.len]);
     }
 
     print("sed: source answered {d} revision batch(es) under seal\n", .{rev_count});
     return 0;
 }
 
-fn runFetcher(_: std.Io) !u8 {
+fn run_fetcher(_: std.Io) !u8 {
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
     var staged_expect: ns.BoltCatalog = .empty();
     var keys: [snap.max_revision_groups]snap.RevisionKey = undefined;
     var rev_count: u32 = 0;
-    try snap.witnessHorizonPlan(signer, &staged_expect, &keys, &rev_count);
+    try snap.witness_horizon_plan(signer, &staged_expect, &keys, &rev_count);
 
     var snap_buf: [snap.max_snapshot_bytes]u8 = undefined;
-    const snap_len = try fetchSnapshotOverWire(signer, &staged_expect, keys[0..rev_count], rev_count, &snap_buf);
+    const snap_len = try fetch_snapshot_over_wire(signer, &staged_expect, keys[0..rev_count], rev_count, &snap_buf);
 
     var dest: ns.BoltCatalog = .empty();
-    const imported = try snap.importCatalogHorizon(&dest, snap_buf[0..snap_len], signer.public_key);
+    const imported = try snap.import_catalog_horizon(&dest, snap_buf[0..snap_len], signer.public_key);
     if (imported != staged_expect.leaf_count) return error.ReplayMismatch;
-    try snap.assertCatalogReplay(&staged_expect, &dest);
+    try snap.assert_catalog_replay(&staged_expect, &dest);
 
     print("sed: wire snapshot {d} bytes — import and replay GREEN\n", .{snap_len});
     return 0;
 }
 
-fn runSelftest(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
-    return runDemo(allocator, io, self_path);
+fn run_selftest(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+    return run_demo(allocator, io, self_path);
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const source_argv = try allocator.alloc([]const u8, 2);
     source_argv[0] = self_path;
     source_argv[1] = "source-loop";
@@ -260,12 +260,12 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "source-loop")) return runSourceLoop(io);
-        if (std.mem.eql(u8, args[1], "fetcher")) return runFetcher(io);
-        if (std.mem.eql(u8, args[1], "demo")) return runDemo(garden, io, args[0]);
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "source-loop")) return run_source_loop(io);
+        if (std.mem.eql(u8, args[1], "fetcher")) return run_fetcher(io);
+        if (std.mem.eql(u8, args[1], "demo")) return run_demo(garden, io, args[0]);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(garden, io, args[0]);
     }
 
-    if (args.len >= 1) return runSelftest(garden, io, args[0]);
+    if (args.len >= 1) return run_selftest(garden, io, args[0]);
     return 1;
 }

@@ -66,9 +66,9 @@ export fn kmain() callconv(.c) noreturn {
     }
 
     var fetcher: ns.BoltCatalog = .empty();
-    ns.BoltCatalog.appendLeaf(&fetcher, "peerA", "seed", 1, "x", "alpha", "plain-text") catch unreachable;
+    ns.BoltCatalog.append_leaf(&fetcher, "peerA", "seed", 1, "x", "alpha", "plain-text") catch unreachable;
 
-    const report = bw.applyWireBatch(&fetcher, batch_asm.batch(), signer.public_key) catch {
+    const report = bw.apply_wire_batch(&fetcher, batch_asm.batch(), signer.public_key) catch {
         vn.writeStr("rbw device wire: FAIL — apply batch\n");
         vn.finishFail();
     };
@@ -78,14 +78,14 @@ export fn kmain() callconv(.c) noreturn {
     }
 
     var fetch_beads: bd.BeadStore = .empty();
-    rbd.hydrateBeadStoreFromCatalog(&fetcher, &fetch_beads, "peerB", "b", 1, "large.bin") catch {
+    rbd.hydrate_bead_store_from_catalog(&fetcher, &fetch_beads, "peerB", "b", 1, "large.bin") catch {
         vn.writeStr("rbw device wire: FAIL — hydrate bead store\n");
         vn.finishFail();
     };
 
     const n_large = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "large.bin" };
     var out: [512]u8 = undefined;
-    const r = rbd.recallBeaded(&fetcher, &fetch_beads, n_large, &out) catch {
+    const r = rbd.recall_beaded(&fetcher, &fetch_beads, n_large, &out) catch {
         vn.writeStr("rbw device wire: FAIL — recallBeaded large.bin\n");
         vn.finishFail();
     };

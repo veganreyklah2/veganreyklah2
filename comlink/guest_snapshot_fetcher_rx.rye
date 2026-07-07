@@ -55,7 +55,7 @@ export fn kmain() callconv(.c) noreturn {
     }
 
     var fetcher: ns.BoltCatalog = .empty();
-    const report = bw.applyWireBatch(&fetcher, batch_asm.batch(), signer.public_key) catch {
+    const report = bw.apply_wire_batch(&fetcher, batch_asm.batch(), signer.public_key) catch {
         vn.writeStr("sed device wire: FAIL — apply batch\n");
         vn.finishFail();
     };

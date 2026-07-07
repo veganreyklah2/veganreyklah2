@@ -12,6 +12,14 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.173003 | [recall_two_way_sync + beading + snapshot_export snake_case](20260707-173003_recall-two-way-beading-snapshot-snake-case.md) | camelCase 284→242; two-way/beading/snapshot witnesses GREEN |
+| 20260707.172758 | [recall_batch + snapshot delivery snake_case](20260707-172758_recall-batch-snapshot-delivery-snake-case.md) | camelCase 324→284; batch_wire + snapshot_wire GREEN |
+| 20260707.172621 | [recall delivery modules snake_case](20260707-172621_recall-delivery-modules-snake-case.md) | camelCase 402→324; sync/catch-up/2way/subscribe wire witnesses GREEN |
+| 20260707.172437 | [recall_batch_wire snake_case](20260707-172437_recall-batch-wire-snake-case.md) | camelCase 410→402; batch_wire + resin_batch GREEN |
+| 20260707.172139 | [recall_sync_wire + recall_catch_up snake_case](20260707-172139_recall-sync-wire-catch-up-snake-case.md) | camelCase 421→410; sync/catch-up wire witnesses GREEN |
+| 20260707.171844 | [receipt + resin_batch + recall_lap1 snake_case](20260707-171844_receipt-resin-recall-lap1-snake-case.md) | camelCase 462→421; recall cluster witnesses GREEN |
+| 20260707.171312 | [receipt + resin_batch snake_case](20260707-171312_receipt-resin-batch-snake-case.md) | camelCase 462→447; SLC-L1 + resin_batch GREEN |
+| 20260707.171212 | [receipt_core commit and push](20260707-171212_receipt-core-commit-push.md) | `51ad20c` on all four remotes |
 | 20260707.170612 | [receipt_core snake_case](20260707-170612_receipt-core-snake-case.md) | camelCase 476→462; SLC-L2 + OA-L1 GREEN |
 | 20260707.170512 | [open_asks commit and push](20260707-170512_open-asks-commit-push.md) | `7ef7d0a` on all four remotes |
 | 20260707.170412 | [open_asks snake_case](20260707-170412_open-asks-snake-case.md) | camelCase 535→476; OA-L1–L5 witnesses GREEN |

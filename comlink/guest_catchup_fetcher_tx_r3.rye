@@ -40,7 +40,7 @@ export fn kmain() callconv(.c) noreturn {
     digest_hex_of("rev-two", &req.held_digests[1]);
 
     var payload: [sw.max_wire_payload]u8 = undefined;
-    const payload_len = sw.encodeRequest(req, &payload) catch unreachable;
+    const payload_len = sw.encode_request(req, &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
     const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);
