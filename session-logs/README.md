@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.010212 | [Tablecloth query parity 175](20260707-010212_tablecloth-query-parity175.md) | Q3 namespace list closed; optional-field catalog filter |
 | 20260707.005412 | [Commit push parity 173–174](20260707-005412_commit-push-parity173-174.md) | Subscribe arc complete; counsel 004712; four remotes |
 | 20260707.005012 | [Outer subscribe poll wire parity 174](20260707-005012_outer-subscribe-poll-wire-parity174.md) | Subscribe arc complete through wire; Q3 item 3 done |
 | 20260707.004812 | [Outer subscribe poll parity 173](20260707-004812_outer-subscribe-poll-parity173.md) | Bounded poll cycles; host mirror = pair list |

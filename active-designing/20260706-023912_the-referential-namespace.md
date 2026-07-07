@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; through outer subscribe poll wire parity **174** (`20260707.005012`). **Next:** Tablecloth query last · production scheduling (open).
+**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; through Tablecloth query parity **175** (`20260707.005612`). **Next:** production scheduling (open).
 
 *Written together by Kaeden and Rio 3.*
 
@@ -71,6 +71,8 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Outer subscribe poll, wire (landed, parity 174):** [`mantra/recall_subscribe_poll_delivery.rye`](../mantra/recall_subscribe_poll_delivery.rye) runs bounded poll cycles over catch-up wire exchanges — hosted localhost ports **38486/38487**, device `comlink/run_recall_subscribe_poll_wire_lab.sh`; witness [`tools/mantra_recall_subscribe_poll_wire.rish`](../tools/mantra_recall_subscribe_poll_wire.rish). **Host mirror** is this loop configured with multiple pairs — the same loop, the same open production questions (graceful stop, crash recovery, real scheduling), one small list beside it (counsel `20260707.004712`).
 
+**Tablecloth query, in-process (landed, parity 175):** [`mantra/recall_tablecloth_query.rye`](../mantra/recall_tablecloth_query.rye) filters the bounded catalog with optional peer, bolt, revision, and Tilak — every match returned in held order, empty when nothing matches; witness [`tools/mantra_recall_tablecloth_query.rish`](../tools/mantra_recall_tablecloth_query.rish). Read against this brief's foundational paragraph rather than the older Brix-facing store thread of the same name (counsel `20260707.005612`): recall_by_mark with peer, bolt, and revision loosened from required to optional and ambiguity answered with every match rather than a refusal — a filter over the existing bounded array, not a new store.
+
 **Wire carriage — counsel `20260706.041012` (lap 1 landed):** the OA-L2-shaped hop — carry proven sync over Comlink sealed datagrams, hosted first, then device wire, same `wire_format` OA-L2 and OA-L3 escrow rode. No new wire vocabulary; reuses **recall**, **bolt**, **resin**, fetch-by-digest, have-already, need-resin, **manifest**, Amphora.
 
 | Wire lap | Shape | Bench |
@@ -92,7 +94,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Batch-frame carriage — landed `20260706.184512`:** batches larger than **340 B** cross as kind **0x04** chunk frames (**331 B** body each); `BatchAssembler` reassembles before `applyBatch`. Witness bolt variants: [`20260706-185112_the-witness-bolt.md`](20260706-185112_the-witness-bolt.md). Beaded bolt full crossing remains next lap.
 
-The later laps arrive each in season. **Two-way sync** and **catch-up-to-latest** landed in-process and over wire. **Outer subscribe poll** (parity **173**) proves bounded repeat cycles over catch-up; **host mirror** is that loop with a named peer/bolt list rather than a separate seam (counsel `20260707.004712`). Production scheduling — graceful stop, crash recovery, unattended real runs — stays open. **Tablecloth query** keeps its season last.
+The later laps arrive each in season. **Two-way sync** and **catch-up-to-latest** landed in-process and over wire. **Outer subscribe poll** (parity **173**) proves bounded repeat cycles over catch-up; **host mirror** is that loop with a named peer/bolt list rather than a separate seam (counsel `20260707.004712`). **Tablecloth query** (parity **175**) closes the Q3 horizon list — optional-field filter over the bounded catalog, not a database (counsel `20260707.005612`). Production scheduling — graceful stop, crash recovery, unattended real runs — stays open.
 
 ## Kaeden's Word (`20260706.032700`)
 

@@ -53,7 +53,7 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
 
-**Next climb (Kaeden's word):** Tablecloth query last · production scheduling when Caravan grows its scheduling half.
+**Next climb (Kaeden's word):** production scheduling when Caravan grows its scheduling half · Q3 namespace list complete through Tablecloth query.
 
 - [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; `recallByMark` by Tilak within peer/bolt/revision; path hint disambiguates; `tools/mantra_recall_by_mark.rish`; parity **168**
 
@@ -68,6 +68,8 @@
 - [x] **Outer subscribe poll (in-process)** — `mantra/recall_subscribe_poll.rye`; bounded cycles over catch-up; host mirror = named pair list; counsel `20260707.004712`; `tools/mantra_recall_subscribe_poll.rish`; parity **173**
 
 - [x] **Outer subscribe poll (wire)** — `mantra/recall_subscribe_poll_delivery.rye`; bounded poll cycles over catch-up wire; hosted **38486/38487** + device `comlink/run_recall_subscribe_poll_wire_lab.sh`; `tools/mantra_recall_subscribe_poll_wire.rish`; parity **174**
+
+- [x] **Tablecloth query (in-process)** — `mantra/recall_tablecloth_query.rye`; optional peer/bolt/revision filter; every match in catalog order; counsel `20260707.005612`; `tools/mantra_recall_tablecloth_query.rish`; parity **175**
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 
