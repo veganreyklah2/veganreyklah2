@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.165212 | [Linengrow delivery commit and push](20260707-165212_linengrow-delivery-commit-push.md) | `b05a4fd` on all four remotes; camelCase 605→584 |
 | 20260707.165012 | [Linengrow delivery cluster snake_case](20260707-165012_oa3-escrow-delivery-snake-case.md) | camelCase 605→584; OA-L3 + SLC-L2 witnesses GREEN |
 | 20260707.164812 | [OA-L2 delivery snake_case](20260707-164812_oa-l2-delivery-snake-case.md) | camelCase 622→605; OA-L2 witness GREEN |
 | 20260707.164712 | [Tidy rules commit and push](20260707-164712_tidy-rules-commit-push.md) | `2b0b07a` on all four remotes |
