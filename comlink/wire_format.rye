@@ -42,7 +42,7 @@ var seal_nonce_counter: u64 = 0;
 
 pub const expected_message = "Meet me where the rye grows.";
 
-fn freshNonce() [ChaCha20Poly1305.nonce_length]u8 {
+fn fresh_nonce() [ChaCha20Poly1305.nonce_length]u8 {
     seal_nonce_counter += 1;
     var counter_bytes: [8]u8 = undefined;
     std.mem.writeInt(u64, &counter_bytes, seal_nonce_counter, .little);
@@ -53,13 +53,13 @@ fn freshNonce() [ChaCha20Poly1305.nonce_length]u8 {
     return nonce;
 }
 
-fn sealKey(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
+fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(&shared, &digest, .{});
     return digest[0..ChaCha20Poly1305.key_length].*;
 }
 
-pub fn sealMessage(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 {
+pub fn seal_message(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 {
     if (message.len > max_message) return error.MessageTooLarge;
 
     const alice_id = Ed25519.KeyPair.generateDeterministic(seed_alice) catch unreachable;
@@ -67,10 +67,10 @@ pub fn sealMessage(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 
     const alice_x = X25519.KeyPair.fromEd25519(alice_id) catch unreachable;
     const bob_x_pub = X25519.publicKeyFromEd25519(bob_pub) catch unreachable;
 
-    const nonce = freshNonce();
+    const nonce = fresh_nonce();
 
     const shared = X25519.scalarmult(alice_x.secret_key, bob_x_pub) catch unreachable;
-    const key = sealKey(shared);
+    const key = seal_key(shared);
     var ciphertext: [max_message]u8 = undefined;
     var tag: [ChaCha20Poly1305.tag_length]u8 = undefined;
     ChaCha20Poly1305.encrypt(ciphertext[0..message.len], &tag, message, "", nonce, key);
@@ -89,11 +89,11 @@ pub fn sealMessage(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 
     return off_cipher + @as(u64, @intCast(message.len));
 }
 
-pub fn sealDatagram(buf: *[@intCast(wire_capacity)]u8) u64 {
-    return sealMessage(expected_message, buf) catch unreachable;
+pub fn seal_datagram(buf: *[@intCast(wire_capacity)]u8) u64 {
+    return seal_message(expected_message, buf) catch unreachable;
 }
 
-pub fn openDatagram(buf: []const u8, opened: []u8) !u64 {
+pub fn open_datagram(buf: []const u8, opened: []u8) !u64 {
     assert(buf.len >= @as(usize, @intCast(off_cipher)));
     assert(buf.len <= @as(usize, @intCast(wire_capacity)));
     assert(opened.len >= @as(usize, @intCast(max_message)));
@@ -114,7 +114,7 @@ pub fn openDatagram(buf: []const u8, opened: []u8) !u64 {
     const bob_x = X25519.KeyPair.fromEd25519(bob_id) catch unreachable;
     const sender_x = X25519.publicKeyFromEd25519(sender) catch unreachable;
     const shared = X25519.scalarmult(bob_x.secret_key, sender_x) catch unreachable;
-    const key = sealKey(shared);
+    const key = seal_key(shared);
 
     ChaCha20Poly1305.decrypt(opened[0..ciphertext.len], ciphertext, tag, "", nonce, key) catch return error.OpenFailed;
     return @as(u64, @intCast(ciphertext.len));

@@ -70,11 +70,11 @@ fn recv_wire(port: u16, wire: []u8) !u64 {
 }
 
 fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
-    return try wf.sealMessage(payload, wire);
+    return try wf.seal_message(payload, wire);
 }
 
 fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
-    return try wf.openDatagram(wire, opened);
+    return try wf.open_datagram(wire, opened);
 }
 
 fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {

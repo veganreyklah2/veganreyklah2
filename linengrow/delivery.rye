@@ -93,10 +93,10 @@ fn run_selftest(io: std.Io) !u8 {
     const signed = try load_signed_payload(io);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try wf.sealMessage(signed.payload[0..signed.payload_len], &wire);
+    const wire_len = try wf.seal_message(signed.payload[0..signed.payload_len], &wire);
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = try wf.openDatagram(wire[0..@intCast(wire_len)], &opened);
+    const opened_len = try wf.open_datagram(wire[0..@intCast(wire_len)], &opened);
     assert(opened_len == signed.payload_len);
     assert(std.mem.eql(u8, opened[0..@intCast(opened_len)], signed.payload[0..signed.payload_len]));
 
@@ -113,7 +113,7 @@ fn run_send(io: std.Io) !u8 {
     const signed = try load_signed_payload(io);
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try wf.sealMessage(signed.payload[0..signed.payload_len], &wire);
+    const wire_len = try wf.seal_message(signed.payload[0..signed.payload_len], &wire);
 
     const fd = try open_socket();
     defer _ = c.close(fd);
@@ -149,7 +149,7 @@ fn run_recv(_: std.Io) !u8 {
     }
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(wire[0..@intCast(wire_len)], &opened) catch {
+    const opened_len = wf.open_datagram(wire[0..@intCast(wire_len)], &opened) catch {
         print("slcl2: open failed\n", .{});
         return 1;
     };

@@ -12,7 +12,7 @@ const Ed25519 = std.crypto.sign.Ed25519;
 
 var rx: vn.RxQueue = undefined;
 
-fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -20,7 +20,7 @@ fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     }
 }
 
-fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
+fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = rc.formatLogLine(sig, fact, &line) catch unreachable;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
@@ -46,8 +46,8 @@ export fn kmain() callconv(.c) noreturn {
     const applicant_pk = applicant_kp.public_key;
     var poster_hex: [64]u8 = undefined;
     var applicant_hex: [64]u8 = undefined;
-    pubkeyHex(poster_kp, &poster_hex);
-    pubkeyHex(applicant_kp, &applicant_hex);
+    pubkey_hex(poster_kp, &poster_hex);
+    pubkey_hex(applicant_kp, &applicant_hex);
 
     const n = rx.waitFrame();
     if (n == 0) {
@@ -63,7 +63,7 @@ export fn kmain() callconv(.c) noreturn {
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(datagram, &opened) catch {
+    const opened_len = wf.open_datagram(datagram, &opened) catch {
         vn.writeStr("oal5 device wire: FAIL — consent open refused\n");
         vn.finishFail();
     };
@@ -147,10 +147,10 @@ export fn kmain() callconv(.c) noreturn {
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
-    appendSigned(req_sig, oa.witness_canonical_request, &log, &log_len);
-    appendSigned(app_sig, canonical_app[0..app_len], &log, &log_len);
-    appendSigned(acc_sig, canonical_acc[0..acc_len], &log, &log_len);
-    appendSigned(pay_sig, canonical_pay[0..pay_len], &log, &log_len);
+    append_signed(req_sig, oa.witness_canonical_request, &log, &log_len);
+    append_signed(app_sig, canonical_app[0..app_len], &log, &log_len);
+    append_signed(acc_sig, canonical_acc[0..acc_len], &log, &log_len);
+    append_signed(pay_sig, canonical_pay[0..pay_len], &log, &log_len);
 
     const cycle_len = log_len;
     const state = oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk) catch {
@@ -162,7 +162,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
 
-    appendSigned(consent_sig, fact, &log, &log_len);
+    append_signed(consent_sig, fact, &log, &log_len);
 
     const rep = oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]) catch {
         vn.writeStr("oal5 device wire: FAIL — reputation fold\n");

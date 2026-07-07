@@ -17,7 +17,7 @@ const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
 
 /// Derive the symmetric seal key from a shared secret, through the strengthened
 /// hash — so the network's keys and Mantra's names rest on the same function.
-fn sealKey(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
+fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(&shared, &digest, .{});
     return digest[0..ChaCha20Poly1305.key_length].*;
@@ -36,7 +36,7 @@ pub fn main() void {
 
     // --- Alice seals to Bob ---
     const shared_a = X25519.scalarmult(alice_x.secret_key, bob_x.public_key) catch unreachable;
-    const key_a = sealKey(shared_a);
+    const key_a = seal_key(shared_a);
     var ciphertext: [message.len]u8 = undefined;
     var tag: [ChaCha20Poly1305.tag_length]u8 = undefined;
     ChaCha20Poly1305.encrypt(&ciphertext, &tag, message, "", nonce, key_a);
@@ -58,7 +58,7 @@ pub fn main() void {
     }
     // 3. The same shared secret, derived from Bob's own side.
     const shared_b = X25519.scalarmult(bob_x.secret_key, alice_x.public_key) catch unreachable;
-    const key_b = sealKey(shared_b);
+    const key_b = seal_key(shared_b);
     // 4. Open the seal.
     var opened: [message.len]u8 = undefined;
     ChaCha20Poly1305.decrypt(&opened, &ciphertext, tag, "", nonce, key_b) catch unreachable;

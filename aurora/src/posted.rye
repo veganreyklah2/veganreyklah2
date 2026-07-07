@@ -58,7 +58,7 @@ export fn kmain(hartid: usize) callconv(.c) noreturn {
 }
 
 /// Derive the symmetric seal key from a shared secret, through the strengthened hash.
-fn sealKey(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
+fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(&shared, &digest, .{});
     return digest[0..ChaCha20Poly1305.key_length].*;
@@ -77,7 +77,7 @@ fn sealAndPost() noreturn {
     const nonce = [_]u8{0x01} ** ChaCha20Poly1305.nonce_length;
 
     const shared = X25519.scalarmult(alice_x.secret_key, bob_x_pub) catch unreachable;
-    const key = sealKey(shared);
+    const key = seal_key(shared);
     var ciphertext: [message.len]u8 = undefined;
     var tag: [ChaCha20Poly1305.tag_length]u8 = undefined;
     ChaCha20Poly1305.encrypt(&ciphertext, &tag, message, "", nonce, key);
@@ -138,7 +138,7 @@ fn receiveAndOpen() noreturn {
     const bob_x = X25519.KeyPair.fromEd25519(bob_id) catch unreachable;
     const sender_x = X25519.publicKeyFromEd25519(sender) catch unreachable;
     const shared = X25519.scalarmult(bob_x.secret_key, sender_x) catch unreachable;
-    const key = sealKey(shared);
+    const key = seal_key(shared);
 
     var opened: [max_message]u8 = undefined;
     ChaCha20Poly1305.decrypt(opened[0..cipher_len], ciphertext, tag, "", nonce, key) catch unreachable;

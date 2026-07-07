@@ -12,7 +12,7 @@ const Ed25519 = @import("std").crypto.sign.Ed25519;
 
 var rx: vn.RxQueue = undefined;
 
-fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
+fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = rc.formatLogLine(sig, fact, &line) catch unreachable;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
@@ -53,7 +53,7 @@ export fn kmain() callconv(.c) noreturn {
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(datagram, &opened) catch {
+    const opened_len = wf.open_datagram(datagram, &opened) catch {
         vn.writeStr("oal2 device wire: FAIL — poster open refused\n");
         vn.finishFail();
     };
@@ -93,8 +93,8 @@ export fn kmain() callconv(.c) noreturn {
     const app_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
-    appendSigned(req_sig, oa.witness_canonical_request, &log, &log_len);
-    appendSigned(app_sig, fact, &log, &log_len);
+    append_signed(req_sig, oa.witness_canonical_request, &log, &log_len);
+    append_signed(app_sig, fact, &log, &log_len);
 
     const state = oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk) catch {
         vn.writeStr("oal2 device wire: FAIL — fold applied\n");

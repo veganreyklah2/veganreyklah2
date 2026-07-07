@@ -34,7 +34,7 @@ export fn kmain() callconv(.c) noreturn {
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(datagram, &opened) catch {
+    const opened_len = wf.open_datagram(datagram, &opened) catch {
         vn.writeStr("ns-2wayw device: FAIL — fetcher open refused\n");
         vn.finishFail();
     };

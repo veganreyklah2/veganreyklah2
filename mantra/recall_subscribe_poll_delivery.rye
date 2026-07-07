@@ -84,11 +84,11 @@ fn recvWire(port: u16, wire: []u8) !u64 {
 }
 
 fn sealPayload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
-    return try wf.sealMessage(payload, wire);
+    return try wf.seal_message(payload, wire);
 }
 
 fn openWire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
-    return try wf.openDatagram(wire, opened);
+    return try wf.open_datagram(wire, opened);
 }
 
 fn buildCatchUpRequest(

@@ -36,13 +36,13 @@ const sockaddr_in = extern struct {
     sin_zero: [8]u8 = .{0} ** 8,
 };
 
-fn localhostAddr(port: u16) sockaddr_in {
+fn localhost_addr(port: u16) sockaddr_in {
     return .{
         .sin_port = std.mem.nativeToBig(u16, port),
     };
 }
 
-fn openSocket() !c.fd_t {
+fn open_socket() !c.fd_t {
     const fd = c.socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0) return error.SocketFailed;
     const yes: c_int = 1;
@@ -50,24 +50,24 @@ fn openSocket() !c.fd_t {
     return fd;
 }
 
-fn runSelftest() !u8 {
+fn run_selftest() !u8 {
     var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const len = wf.sealDatagram(&buf);
+    const len = wf.seal_datagram(&buf);
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const msg_len = try wf.openDatagram(buf[0..@intCast(len)], &opened);
+    const msg_len = try wf.open_datagram(buf[0..@intCast(len)], &opened);
     if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], wf.expected_message)) return error.MessageWrong;
     print("comlink hosted wire: selftest GREEN — seal and open in one process\n", .{});
     return 0;
 }
 
-fn runSend() !u8 {
-    const fd = try openSocket();
+fn run_send() !u8 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
 
     var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const len = wf.sealDatagram(&buf);
+    const len = wf.seal_datagram(&buf);
 
-    const dest = localhostAddr(wire_port);
+    const dest = localhost_addr(wire_port);
     const sent = c.sendto(fd, &buf, @intCast(len), 0, @ptrCast(&dest), @sizeOf(sockaddr_in));
     if (sent < 0 or @as(usize, @intCast(sent)) != @as(usize, @intCast(len))) return error.SendFailed;
 
@@ -75,11 +75,11 @@ fn runSend() !u8 {
     return 0;
 }
 
-fn runRecv() !u8 {
-    const fd = try openSocket();
+fn run_recv() !u8 {
+    const fd = try open_socket();
     defer _ = c.close(fd);
 
-    var bind_addr = localhostAddr(wire_port);
+    var bind_addr = localhost_addr(wire_port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
 
     var buf: [@intCast(wf.wire_capacity)]u8 = undefined;
@@ -95,7 +95,7 @@ fn runRecv() !u8 {
     }
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const msg_len = wf.openDatagram(buf[0..@intCast(len)], &opened) catch {
+    const msg_len = wf.open_datagram(buf[0..@intCast(len)], &opened) catch {
         print("comlink hosted wire: open failed\n", .{});
         return 1;
     };
@@ -110,7 +110,7 @@ fn runRecv() !u8 {
     return 0;
 }
 
-fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
+fn run_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 {
     const recv_argv = try allocator.alloc([]const u8, 2);
     recv_argv[0] = self_path;
     recv_argv[1] = "recv";
@@ -152,15 +152,15 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "send")) return runSend();
-        if (std.mem.eql(u8, args[1], "recv")) return runRecv();
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest();
+        if (std.mem.eql(u8, args[1], "send")) return run_send();
+        if (std.mem.eql(u8, args[1], "recv")) return run_recv();
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest();
         if (std.mem.eql(u8, args[1], "demo")) {
             assert(args.len >= 1);
-            return runDemo(garden, io, args[0]);
+            return run_demo(garden, io, args[0]);
         }
     }
 
-    if (args.len >= 1) return runDemo(garden, io, args[0]);
+    if (args.len >= 1) return run_demo(garden, io, args[0]);
     return 1;
 }

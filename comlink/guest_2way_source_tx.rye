@@ -9,7 +9,7 @@ const Sha3_256 = @import("std").crypto.hash.sha3.Sha3_256;
 
 var tx: vn.TxQueue = undefined;
 
-fn digestHexOf(content: []const u8, out: *[64]u8) void {
+fn digest_hex_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
     Sha3_256.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -40,7 +40,7 @@ export fn kmain() callconv(.c) noreturn {
         .held_count = 1,
         .held_digests = undefined,
     };
-    digestHexOf("shared", &req.held_digests[0]);
+    digest_hex_of("shared", &req.held_digests[0]);
 
     var resp: sw.SyncResponse = undefined;
     sw.buildResponse(&src, &req, &resp) catch unreachable;
@@ -49,7 +49,7 @@ export fn kmain() callconv(.c) noreturn {
     const payload_len = sw.encodeResponse(&resp, &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const dg_len: u32 = @intCast(wf.sealMessage(payload[0..payload_len], &scratch) catch unreachable);
+    const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);
 
     const buf = tx.frame();
     @memset(buf[0..vn.virtio_net_hdr_len], 0);

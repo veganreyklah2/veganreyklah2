@@ -12,7 +12,7 @@ var tx: vn.TxQueue = undefined;
 const witness_stipend = "100";
 const witness_release_stamp = "20260706.003300";
 
-fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -37,8 +37,8 @@ export fn kmain() callconv(.c) noreturn {
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     var escrow_hex: [64]u8 = undefined;
     var applicant_hex: [64]u8 = undefined;
-    pubkeyHex(escrow_kp, &escrow_hex);
-    pubkeyHex(applicant_kp, &applicant_hex);
+    pubkey_hex(escrow_kp, &escrow_hex);
+    pubkey_hex(applicant_kp, &applicant_hex);
 
     var canonical: [oa.max_oa_fact]u8 = undefined;
     const canonical_len = oa.writeEscrowPaymentCanonical(
@@ -56,7 +56,7 @@ export fn kmain() callconv(.c) noreturn {
     const payload_len = oa.encodeCompactPayload(sig, canonical[0..canonical_len], &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const dg_len: u32 = @intCast(wf.sealMessage(payload[0..payload_len], &scratch) catch unreachable);
+    const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);
 
     const buf = tx.frame();
     @memset(buf[0..vn.virtio_net_hdr_len], 0);

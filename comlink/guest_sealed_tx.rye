@@ -22,7 +22,7 @@ export fn kmain() callconv(.c) noreturn {
     vn.driverOk();
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const dg_len: u32 = @intCast(wf.sealDatagram(&scratch));
+    const dg_len: u32 = @intCast(wf.seal_datagram(&scratch));
 
     const buf = tx.frame();
     @memset(buf[0..vn.virtio_net_hdr_len], 0);

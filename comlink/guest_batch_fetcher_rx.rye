@@ -12,7 +12,7 @@ var rx: vn.RxQueue = undefined;
 
 const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
 
-fn witnessPatternFill(buf: []u8, seed: u32) void {
+fn witness_pattern_fill(buf: []u8, seed: u32) void {
     var x: u32 = seed;
     var i: u32 = 0;
     while (i < buf.len) : (i += 1) {
@@ -52,7 +52,7 @@ export fn kmain() callconv(.c) noreturn {
         const datagram = buf[poff..n];
 
         var opened: [@intCast(wf.max_message)]u8 = undefined;
-        const opened_len = wf.openDatagram(datagram, &opened) catch {
+        const opened_len = wf.open_datagram(datagram, &opened) catch {
             vn.writeStr("rbw device wire: FAIL — fetcher open refused\n");
             vn.finishFail();
         };
@@ -94,7 +94,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
     var expect: [400]u8 = undefined;
-    witnessPatternFill(&expect, 20260706);
+    witness_pattern_fill(&expect, 20260706);
     var i: u32 = 0;
     while (i < 400) : (i += 1) {
         if (out[i] != expect[i]) {

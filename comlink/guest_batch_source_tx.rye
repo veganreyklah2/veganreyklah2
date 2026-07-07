@@ -15,7 +15,7 @@ var tx: vn.TxQueue = undefined;
 
 const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
 
-fn digestHexOf(content: []const u8, out: *[64]u8) void {
+fn digest_hex_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
     Sha3_256.hash(content, &digest, .{});
     var i: u32 = 0;
@@ -24,7 +24,7 @@ fn digestHexOf(content: []const u8, out: *[64]u8) void {
     }
 }
 
-fn witnessPatternFill(buf: []u8, seed: u32) void {
+fn witness_pattern_fill(buf: []u8, seed: u32) void {
     var x: u32 = seed;
     var i: u32 = 0;
     while (i < buf.len) : (i += 1) {
@@ -33,9 +33,9 @@ fn witnessPatternFill(buf: []u8, seed: u32) void {
     }
 }
 
-fn sendSealedPayload(payload: []const u8) void {
+fn send_sealed_payload(payload: []const u8) void {
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const dg_len: u32 = @intCast(wf.sealMessage(payload, &scratch) catch unreachable);
+    const dg_len: u32 = @intCast(wf.seal_message(payload, &scratch) catch unreachable);
 
     const buf = tx.frame();
     @memset(buf[0..vn.virtio_net_hdr_len], 0);
@@ -68,11 +68,11 @@ export fn kmain() callconv(.c) noreturn {
     var beads: bd.BeadStore = .empty();
     ns.BoltCatalog.appendLeaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
     var content: [400]u8 = undefined;
-    witnessPatternFill(&content, 20260706);
+    witness_pattern_fill(&content, 20260706);
     _ = rbd.appendLeafBeaded(&src, &beads, "peerB", "b", 1, "large.bin", content[0..], "plain-bytes") catch unreachable;
 
     var alpha_digest: [64]u8 = undefined;
-    digestHexOf("alpha", &alpha_digest);
+    digest_hex_of("alpha", &alpha_digest);
     const held = [_][64]u8{alpha_digest};
 
     var batch_buf: [rb.max_batch_bytes]u8 = undefined;
@@ -81,14 +81,14 @@ export fn kmain() callconv(.c) noreturn {
     if (built.len <= bw.max_batch_wire) {
         var payload: [bw.max_batch_wire]u8 = undefined;
         const payload_len = bw.encodeBatchResponse(batch_buf[0..built.len], &payload) catch unreachable;
-        sendSealedPayload(payload[0..payload_len]);
+        send_sealed_payload(payload[0..payload_len]);
     } else {
         const count = bw.batchChunkCount(built.len) catch unreachable;
         var ci: u16 = 0;
         while (ci < count) : (ci += 1) {
             var payload: [bw.max_batch_wire]u8 = undefined;
             const payload_len = bw.encodeBatchChunk(batch_buf[0..built.len], ci, &payload) catch unreachable;
-            sendSealedPayload(payload[0..payload_len]);
+            send_sealed_payload(payload[0..payload_len]);
         }
     }
 

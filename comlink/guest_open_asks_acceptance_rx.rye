@@ -9,7 +9,7 @@ const Ed25519 = std.crypto.sign.Ed25519;
 
 var rx: vn.RxQueue = undefined;
 
-fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -33,7 +33,7 @@ export fn kmain() callconv(.c) noreturn {
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     var applicant_hex: [64]u8 = undefined;
-    pubkeyHex(applicant_kp, &applicant_hex);
+    pubkey_hex(applicant_kp, &applicant_hex);
 
     const n = rx.waitFrame();
     if (n == 0) {
@@ -49,7 +49,7 @@ export fn kmain() callconv(.c) noreturn {
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const opened_len = wf.openDatagram(datagram, &opened) catch {
+    const opened_len = wf.open_datagram(datagram, &opened) catch {
         vn.writeStr("oal5 device wire: FAIL — acceptance open refused\n");
         vn.finishFail();
     };
