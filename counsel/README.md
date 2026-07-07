@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (next bench choice `20260707.214012`)
+**Last updated:** 2026-07-07 (roadmap synthesis `20260707.220912`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.220912` | [Roadmap synthesis](20260707-220912_claude-counsel-roadmap-synthesis.md) | Migration enough; Rishi/Nushell aligned; Open Questions + SLC-L3 prep next |
 | `20260707.214012` | [Next bench choice](20260707-214012_claude-counsel-next-bench-choice.md) | OA wire complete; `.sh` migration ready; lap 4 needs hands; season judgment to Kaeden |
 | `20260707.213212` | [TigerBeetle alignment arc closed](20260707-213212_claude-counsel-tigerbeetle-arc-closed.md) | All ratchets zero; no next TAME season lap; AST-grade rules wait on parser |
 | `20260707.203612` | [parse_int adoption + season close](20260707-203612_claude-counsel-parse-int-and-season-close.md) | `tally/parse_int.rye` seated; 3 sites migrated; 12-site ratchet; tools season confirmed closed |

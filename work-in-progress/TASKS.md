@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (next bench choice `20260707.214012`)
+**Last updated:** 2026-07-07 (roadmap synthesis `20260707.220912`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -57,7 +57,24 @@
 
 - [x] **TigerBeetle alignment arc** — **closed** (`20260707.213212`); all TAME ratchets **0** on `tame_style_check`; capstone counsel [`213212`](../counsel/20260707-213212_claude-counsel-tigerbeetle-arc-closed.md); AST-grade machine canon waits on Zig parser per original study
 
-## Next bench (counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md))
+## Next bench (counsel [`220912`](../counsel/20260707-220912_claude-counsel-roadmap-synthesis.md))
+
+**Direction:** not a new domain, not a Rishi rewrite, not Horizon 2's five v1s before their gates are ready. Clear the **Open Questions** backlog (bench-workable sittings) and **prepare SLC-L3** so settlement moves the moment Kaeden's word comes.
+
+| Priority | Item | Status | Notes |
+|----------|------|--------|-------|
+| **1** | Open Questions backlog | Bench-ready | Bron proposal, settlement refresh, graduation checks — no hands at a machine |
+| **2** | **SLC-L3 settlement prep** | Ruling-gated | Front of Linengrow queue; refresh three-lights survey + two-lane witness proposal |
+| — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
+| — | Astrology lane | Source material | Unchanged per `214012` |
+
+- [ ] **Settlement-seat refresh** — re-read three-lights survey + verdict; draft two-lane witness proposal for SLC-L3 *(bench-workable; counsel `220912`)*
+- [ ] **Bron beside Brix — first proposal** — what Bron describes that a Brix descriptor does not *(bench-workable; counsel `220912`)*
+- [x] **ROADMAP Linengrow table hygiene** — OA-L4 and OA-L5 landed rows added; parity **196** (`220912`)
+
+*(Prior next-bench counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md): `.sh` migration complete; OA wire verified not an open gap.)*
+
+## Prior bench (counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md))
 
 **Checked:** Open Asks Comlink wire ladder **complete** — `open_asks_lap5_delivery.rye` folds reputation after accept/complete/consent facts cross hosted + device wire (parity **184**). "More Linengrow wire" is **not** an open gap.
 
@@ -391,7 +408,12 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Bron** — proposed; role beside Brix still open. Brix describes *what a system is made of*; the `.bron` notation brief exists — what does Bron describe alongside it? *(Open ruling for Kaeden.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
-- **Dexter / Kumara as modules** — **Dexter:** keyboard-from-window aspect in `pond/apps/drawn_terminal.rye` until second external consumer; graduation trigger in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md) (`20260703.131812`). **Kumara:** name and doctrine; module home still open.
+- **Dexter / Kumara as modules** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect until a second Pond app, TAME editor surface, or sovereign framebuffer input path. **Kumara:** identity/doctrine name at seams; no module home — not a graduation candidate yet.
+- **`.sh` POSIX-seam pattern** — **answered** `20260707.220000` in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) (counsel `195912`): structural QEMU labs, cold-start bootstrap, external-interpreter seams; witness scans native.
+- **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export per [`context/specs/20260707-030412_weave-slice-ruling.md`](../context/specs/20260707-030412_weave-slice-ruling.md); no second external consumer (`mantra/src/diff.rye` only); stays Mantra aspect.
+- **Settlement-seat refresh** — three-lights survey not revisited since [`20260706-005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md); refresh before SLC-L3 opens *(bench task per counsel `220912`)*
+- **Bron beside Brix — first proposal** — `.bron` notation brief exists; concrete role draft pending bench sitting *(counsel `220912`)*
+- **ROADMAP Linengrow staleness** — **fixed** `220912`: OA-L4/OA-L5 rows added to `ROADMAP.md`
 - **Two-backend seam** — Wayland SHM to Mutter now (hosted); framebuffer-to-QEMU sovereign sibling named, not built. *(Pending Kaeden nod.)*
 - **Weave** — aspect of Mantra today (`mantra/src/weave.rye`); graduation trigger recorded in [`20260702-031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md).
 - **Research essays (authored, living)** — [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md); [`external-research/20260630-030312_after-victor-immediate-contact.md`](../external-research/20260630-030312_after-victor-immediate-contact.md); [`external-research/20260630-030312_the-hot-loop-as-the-forge.md`](../external-research/20260630-030312_the-hot-loop-as-the-forge.md).
