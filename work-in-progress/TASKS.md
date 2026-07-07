@@ -63,14 +63,14 @@
 
 | Choice | Status | Notes |
 |--------|--------|-------|
-| **`.sh` → `.rish` migration** | Bans half landed (`tame_style_scan_bans.rish`); advise half open | First target done; structural QEMU/cold-start `.sh` stay |
+| **`.sh` → `.rish` migration** | `tame_style_scan` native (bans + advise); structural QEMU/cold-start `.sh` stay | Witness-support scans done |
 | **Snapshot lap 4** (Puddle microVM boot replay) | Kaeden's hands | Headless bench cannot claim this lap — different session kind |
 | **New domain** (astrology lane, etc.) | Awaiting source material | Valid pivot; needs Kaeden's transcripts/readings, not bench alone |
 
 **Still open under Linengrow (not wire):** agent-writing intake (paste pending); moderation + resin-refusal fact shapes (design only); settlement seat (ruling-gated).
 
 - [x] **`.sh` migration — `tame_style_scan` bans half** — `tools/tame_style_scan_bans.rish` + selftest; `tame_style_check.rish` wired; `tame_style_scan.sh bans` delegates; counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md)
-- [ ] **`.sh` migration — `tame_style_scan` advise half** — state-tracking ratchet counts; needs accumulation proof per counsel `195912`
+- [x] **`.sh` migration — `tame_style_scan` advise half** — `tools/tame_style_scan_advise.rish` + selftest; map+join+sh sum idiom (`rish_count_selftest.rish`); `>70` ledger shell seam in `tame_style_long_fn.sh`; counsel `195912` / `214012`
 - [x] **TigerBeetle alignment leap (`053212`)** — `tally/copy.rye` disjoint-copy law; `tools/tame_style_check.rish` bans + ratchets; 8-site `@memcpy` migration; 33 qualified asserts retired; 7 compound asserts split; Radiant vocabulary pass; study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md); parity **190**
 - [x] **`copy_disjoint` ratchet arc** — six on-touch turns across Mantra delivery/export, comlink virtio guests, canonical wire modules, beading cluster, linengrow OA/receipt stack, and `rishi/src/main.rye`; application `@memcpy` **121→1** (sole site intentional in `tally/copy.rye`); `linengrow/tally_copy.rye` symlink; commits `adb46e9`/`f2e69de`; full parity **191** GREEN (~146s); detail in [`session-logs/20260707-154812_copy-ratchet-commit-push.md`](../session-logs/20260707-154812_copy-ratchet-commit-push.md)
 - [x] **General expansion round (`185612`)** — `tally/maybe.rye` + `tally/no_padding.rye` seated; `device_wire.rye` stale `negotiateFeatures` found and fixed; hosted selftest in `comlink_device_wire.rish`; tools/enrich safety net 2-of-3 (`align_session_logs`, `tame_usize_audit`); three module READMEs; counsel [`counsel/20260707-185612_claude-counsel-general-expansion-round.md`](../counsel/20260707-185612_claude-counsel-general-expansion-round.md); full parity **195** GREEN (~147s); apply [`expanding-prompts/20260707-185612_apply-general-expansion.md`](../expanding-prompts/20260707-185612_apply-general-expansion.md)

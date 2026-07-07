@@ -55,6 +55,10 @@ if [ "$MODE" = "bans-legacy" ]; then
 fi
 
 if [ "$MODE" = "advise" ]; then
+    exec ./rishi/bin/rishi run tools/tame_style_scan_advise.rish
+fi
+
+if [ "$MODE" = "advise-legacy" ]; then
     memcpy_total=$(grep -h "@memcpy(" $FILES 2>/dev/null | wc -l | tr -d ' ')
     memcpy_canonical=$(grep -c "@memcpy(" tally/copy.rye 2>/dev/null)
     memcpy_app=$((memcpy_total - memcpy_canonical))

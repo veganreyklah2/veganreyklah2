@@ -401,7 +401,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **Call-result compared to an error** | `) == error.` and `) != error.` banned at the call seam (silent `anyerror` upcast); a captured `\|err\|` compared inside an assert stays welcome — the refined seam, reasoned in the alignment study |
 | **`usingnamespace` · `!comptime` · `Self = @This()`** | banned verbatim, as upstream — `tools/tame_style_check.rish` (live) |
 
-**Ratchet advisories — print every parity run, never fail** (`tools/tame_style_check.rish` second half; hand-run `sh tools/fixtures/tame_style_scan.sh advise`):
+**Ratchet advisories — print every parity run, never fail** (`tools/tame_style_check.rish` second half; hand-run `rishi/bin/rishi run tools/tame_style_scan_advise.rish` or `sh tools/fixtures/tame_style_scan.sh advise`):
 
 | Ratchet | Law on touch |
 |---------|----------------|
@@ -413,7 +413,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 
 **Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season closed at **0** (`20260707.203612`); **`parseInt(` ratchet** closed at **0** (`20260707.213000`).
 
-**POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans: **`tame_style_scan.sh` `bans`** delegates to `tools/tame_style_scan_bans.rish` (`20260707.214500`); **`advise`** half still shell until state-tracking is proven in Rishi.
+**POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans: **`tame_style_scan.sh` `bans`** delegates to `tools/tame_style_scan_bans.rish`; **`advise`** delegates to `tools/tame_style_scan_advise.rish` (`20260707.220000`); legacy bodies remain as `bans-legacy` / `advise-legacy` for selftests. **Count idiom:** `for-each` cannot accumulate — use `map` → `join` with `" + "` → `sh -c "echo $((${expr}))"` (`tools/rish_count_selftest.rish`).
 
 **Standing exempt — intentional-violation fixtures:** files built to *hold* a violation the lint must catch (e.g. `tools/fixtures/width_check_authored_usize.rye` for TH-1 width) stay as wrong as their purpose requires. Migrating them toward compliance would disable the proof they supply — same logic as elder Amber goldens. No ratchet reaches for them.
 
@@ -425,7 +425,7 @@ At parity **196** the >70-line ledger cleared for authored `.rye` in scan dirs; 
 
 | Rule | Why it waits |
 |------|--------------|
-| **70 lines per function, hard gate** | textual advisory today (`tame_style_scan.sh advise`); AST hard gate when a parser lands |
+| **70 lines per function, hard gate** | textual advisory today (`tame_style_scan_advise.rish`; `tame_style_long_fn.sh` for `>70` ledger); AST hard gate when a parser lands |
 | **Parenthesize bitwise-with-arithmetic mixes** | needs the AST to read operator nodes |
 | **`defer` followed by a blank line** | needs token positions |
 | **Dead declarations and dead files** | needs identifier and import analysis |
