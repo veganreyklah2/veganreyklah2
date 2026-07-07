@@ -16,15 +16,21 @@ const wf = @import("wire_format.rye");
 const rbd = @import("recall_beaded.rye");
 const bd = @import("beading.rye");
 
-const rbw_version = "20260706.185512";
+const rbw_version = "20260707.011412";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
 const SOL_SOCKET: c_int = 1;
 const SO_REUSEADDR: c_int = 2;
+const SO_RCVTIMEO: c_int = 20;
 
 const fetcher_port: u16 = 38480;
 const source_port: u16 = 38481;
+
+// Dead-peer guard on the chunk-assembly recv loop. A silent peer yields RecvFailed
+// after this many seconds rather than an unbounded wait — the same class of fault
+// recall_catch_up_delivery's 20260707.002012 fix answered, mirrored here 20260707.011412.
+const batch_recv_timeout_sec: u32 = 2;
 
 const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
 
@@ -56,8 +62,16 @@ fn sendWire(port: u16, wire: []const u8) !void {
 }
 
 fn recvWire(port: u16, wire: []u8) !u64 {
+    return recvWireTimeout(port, wire, 0);
+}
+
+fn recvWireTimeout(port: u16, wire: []u8, timeout_sec: u32) !u64 {
     const fd = try openSocket();
     defer _ = c.close(fd);
+    if (timeout_sec > 0) {
+        var tv = c.timeval{ .sec = @intCast(timeout_sec), .usec = 0 };
+        _ = c.setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, @sizeOf(c.timeval));
+    }
     var bind_addr = localhostAddr(port);
     if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
     var from: sockaddr_in = undefined;
@@ -160,11 +174,27 @@ fn sendBatchPayload(port: u16, batch: []const u8) !void {
     }
 }
 
+// Invariant: one socket, bound once, receives every frame of one assembly. The prior
+// shape reopened and rebound per frame, and a chunk landing in that unbound window was
+// silently dropped — a race the multi-frame demos lost often enough to hang. Binding
+// once lets the kernel queue back-to-back frames; the timeout turns a silent peer into
+// error.RecvFailed rather than an unbounded wait (guard class per catch_up 20260707.002012).
 fn recvBatchPayload(port: u16, out: []u8) !u32 {
+    const fd = try openSocket();
+    defer _ = c.close(fd);
+    var tv = c.timeval{ .sec = @intCast(batch_recv_timeout_sec), .usec = 0 };
+    _ = c.setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, @sizeOf(c.timeval));
+    var bind_addr = localhostAddr(port);
+    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
+
     var batch_asm: bw.BatchAssembler = .{};
     while (true) {
         var recv_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const recv_len = try recvWire(port, &recv_wire);
+        var from: sockaddr_in = undefined;
+        var from_len: c.socklen_t = @sizeOf(sockaddr_in);
+        const n = c.recvfrom(fd, &recv_wire, recv_wire.len, 0, @ptrCast(&from), &from_len);
+        if (n < 0) return error.RecvFailed;
+        const recv_len: u64 = @intCast(n);
         var opened: [@intCast(wf.max_message)]u8 = undefined;
         const opened_len = try openWire(recv_wire[0..@intCast(recv_len)], &opened);
         const state = try batch_asm.feed(opened[0..@intCast(opened_len)]);

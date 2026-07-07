@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-06 (parity **166** · multi-frame batch chunking · witness bolt brief)
+**Last updated:** 2026-07-07 (synthesis sitting `011412` · parity **175**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -49,13 +49,16 @@
 - [x] **OA-L3 escrow lap 2** — `linengrow/open_asks_escrow_delivery.rye` + four virtio guests + `comlink/run_open_asks_escrow_wire_lab.sh`; hosted UDP (ports **38476**/**38477**) and device wire (ports **15559**/**15560**) hold + release hops GREEN; `tools/open_asks_lap3.rish` extended (parity **158** unchanged); `wire_capacity` **528** / `max_frame` **554** for escrow payload headroom
 - [x] **Claude bench prepared and run** — [`expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md`](../expanding-prompts/20260706-013512_claude-oal3-escrow-first-lap.md); lap 1 implemented and verified on the bench, parity pinned on metal
 
-**Next climb (Kaeden's word opens it):** OA-L4 reputation-as-fold, built in place inside Linengrow's open-asks log. MALA graduation is not a separate lap to order against it — the graduation rule fires it the moment OA-L4 becomes the escrow aspect's second consumer (Claude ruling `20260706.232812`).
+- [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-- [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
+**Next climb (Kaeden's word):** production scheduling for subscribe poll (wire poll under Caravan service supervision when drafted) · I2 snapshot export when drafted · MALA graduation at escrow second consumer.
 
-**Next climb (Kaeden's word):** production scheduling when Caravan grows its scheduling half · Q3 namespace list complete through Tablecloth query.
+**NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
 
-- [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; `recallByMark` by Tilak within peer/bolt/revision; path hint disambiguates; `tools/mantra_recall_by_mark.rish`; parity **168**
+- [x] **Synthesis `20260707.011412`** — batch delivery rebind-race repair (`recvBatchPayload` bind-once + 2s timeout); namespace reference spec + module surfaces index + `mantra/README.md` canon `20260707.011812`
+- [x] **Caravan service ring** — `caravan/service.rye`; bounded multi-tick supervised child (ring B); `tools/caravan_seeds.rish` extended (parity **175** unchanged)
+
+- [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; parity **168**
 
 - [x] **Two-way sync (in-process)** — `mantra/recall_two_way_sync.rye`; symmetric `syncRevision`; counsel `20260707.000112`; `tools/mantra_recall_two_way_sync.rish`; parity **169**
 
@@ -321,10 +324,9 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ## Open Questions
 
-- **Tablecloth horizon** — datastore + layout cluster now in `external-research/yonder/` and `expanding-prompts/yonder/`; shape when SLC bench allows.
 - **sixos/s6 infrastructure horizon** — study in `external-research/yonder/20260619-225212_s6-sixos-nix-infuse.md`; Caravan inherits supervision discipline when we reach for it.
 - **Bron** — proposed; role beside Brix still open. Brix describes *what a system is made of*; the `.bron` notation brief exists — what does Bron describe alongside it? *(Open ruling for Kaeden.)*
-- **Tablecloth** — proposed layout or structured-view layer; named, not yet shaped.
+- **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
 - **Dexter / Kumara as modules** — **Dexter:** keyboard-from-window aspect in `pond/apps/drawn_terminal.rye` until second external consumer; graduation trigger in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md) (`20260703.131812`). **Kumara:** name and doctrine; module home still open.
 - **Two-backend seam** — Wayland SHM to Mutter now (hosted); framebuffer-to-QEMU sovereign sibling named, not built. *(Pending Kaeden nod.)*

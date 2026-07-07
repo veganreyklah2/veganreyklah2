@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260707.005612` (Tablecloth query · parity **175**)
-**Last updated:** 2026-07-07 (Q3 namespace horizon complete through Tablecloth query)
+**Version:** `20260707.011412` (synthesis sitting · batch rebind fix · parity **175**)
+**Last updated:** 2026-07-07 (Q3 namespace complete · reference specs canon · Caravan service ring)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -38,12 +38,12 @@ Correctness by construction in the kernel becomes trust by construction in the p
 |--------|------|-----------|
 | **Rye** | Thin frontend; `rye/lib/std` → vendor symlink | **140** witness regression suite |
 | **Aurora** | Six-stage relay + deciding stage on RISC-V | Freestanding |
-| **Caravan** | seed → bounded → twin → chain → **capabilities** | Hosted, asserted; seeds + capabilities in parity |
+| **Caravan** | seed → bounded → twin → chain → **service** → capabilities | Hosted; seeds witness includes service ring (parity **175**) |
 | **Tally** | seed + named gardens (blob/diff/frame) | 15 invariants; seed + gardens in parity |
 | **Brix** | `.brix` descriptor, 10 tracked bricks | Read by Mantra |
-| **Tablecloth** | General-purpose database + object storage | Designed (future) |
 | **Bron** | Data notation (`.bron`) | Used by `.brix` |
-| **Mantra** | Weave + commit chain + add-all + log | 9/9 bricks wove |
+| **Tablecloth** | Application database + Brix artifact store (horizon); **Tablecloth query** = namespace filter at parity **175** | Store designed (future); query landed |
+| **Mantra** | Weave + referential namespace + reference spec `20260707-011412` | parity **159–175**; [`mantra/README.md`](../mantra/README.md) |
 | **Rishi** | Shell: typed values, file I/O, string builtins; **`repl`** — type, run, version, recall (SLC-1 **done**) | Gate trio + four SLC-1 witnesses incl. `slc1_accept.rish` |
 | **Brushstroke** | Hosted seed + Wayland seed (Skate grid on xdg toplevel) | Frame from values; seed + grid raster in parity |
 | **Skate** | Text grid: 8×8 monospace → ARGB8888 buffer | Headless selftest GREEN; feeds Wayland seed |

@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.013812 | [Synthesis recommendations applied](20260707-013812_synthesis-recommendations-applied.md) | Canon seated; batch fix; Caravan service ring; commit |
+| 20260707.011812 | [Apply synthesis bundle](20260707-011812_apply-synthesis-bundle.md) | Batch rebind fix applied; reference specs proposed; batch witness GREEN |
+| 20260707.011412 | [Claude state analysis and reference pass](20260707-011412_claude-state-analysis-and-reference-pass.md) | Batch rebind-race fix; namespace reference spec + module index proposed |
+| 20260707.010712 | [Claude handoff Q3 complete](20260707-010712_claude-handoff-q3-complete.md) | Full summary for Claude; parity 175 pushed four remotes |
 | 20260707.010212 | [Tablecloth query parity 175](20260707-010212_tablecloth-query-parity175.md) | Q3 namespace list closed; optional-field catalog filter |
 | 20260707.005412 | [Commit push parity 173–174](20260707-005412_commit-push-parity173-174.md) | Subscribe arc complete; counsel 004712; four remotes |
 | 20260707.005012 | [Outer subscribe poll wire parity 174](20260707-005012_outer-subscribe-poll-wire-parity174.md) | Subscribe arc complete through wire; Q3 item 3 done |

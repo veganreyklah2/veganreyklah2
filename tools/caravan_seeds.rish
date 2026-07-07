@@ -6,7 +6,7 @@
 let zig = "vendor/zig-toolchain/zig"
 let bin_dir = "caravan/bin"
 
-let build = run ["sh" "-c" "mkdir -p ${bin_dir} && env RYE_ZIG=${zig} rye/bin/rye build caravan/seed.rye -femit-bin=${bin_dir}/seed && env RYE_ZIG=${zig} rye/bin/rye build caravan/bounded.rye -femit-bin=${bin_dir}/bounded && env RYE_ZIG=${zig} rye/bin/rye build caravan/twin.rye -femit-bin=${bin_dir}/twin && env RYE_ZIG=${zig} rye/bin/rye build caravan/chain.rye -femit-bin=${bin_dir}/chain"]
+let build = run ["sh" "-c" "mkdir -p ${bin_dir} && env RYE_ZIG=${zig} rye/bin/rye build caravan/seed.rye -femit-bin=${bin_dir}/seed && env RYE_ZIG=${zig} rye/bin/rye build caravan/bounded.rye -femit-bin=${bin_dir}/bounded && env RYE_ZIG=${zig} rye/bin/rye build caravan/twin.rye -femit-bin=${bin_dir}/twin && env RYE_ZIG=${zig} rye/bin/rye build caravan/chain.rye -femit-bin=${bin_dir}/chain && env RYE_ZIG=${zig} rye/bin/rye build caravan/service.rye -femit-bin=${bin_dir}/service"]
 
 assert build.ok else "caravan seeds build failed"
 
@@ -25,5 +25,9 @@ assert twin.out contains "green" else "caravan twin missing green"
 let chain = run ["sh" "-c" "${bin_dir}/chain 2>&1"]
 assert chain.ok else "caravan chain supervisor exited non-zero"
 assert chain.out contains "chain complete" else "caravan chain missing completion line"
+
+let service = run ["sh" "-c" "${bin_dir}/service 2>&1"]
+assert service.ok else "caravan service supervisor exited non-zero"
+assert service.out contains "GREEN" else "caravan service missing GREEN"
 
 say "GREEN: Caravan supervision seeds witness passed."

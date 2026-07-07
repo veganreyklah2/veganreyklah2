@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (Tablecloth query counsel `005612`)
+**Last updated:** 2026-07-07 (state-of-the-tree analysis `011412`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.011412` | [State of the tree — compass analysis](20260707-011412_claude-analysis-state-of-the-tree.md) | Momentum audit; batch rebind-race fix; reference specs proposed; roadmap deltas |
 | `20260707.005612` | [Claude counsel — Tablecloth query](20260707-005612_claude-counsel-tablecloth-query.md) | Namespace query = optional peer/bolt/revision filter; every match in order; Brix store thread separate |
 | `20260707.004712` | [Claude counsel — outer subscribe and host mirror](20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md) | Bounded poll cycles now; host mirror = named pair list; Caravan restart ≠ poller |
 | `20260707.001612` | [Claude counsel — subscribe revisited](20260707-001612_claude-counsel-subscribe-revisited.md) | Catch-up-to-latest now; outer unattended loop waits Caravan scheduling |

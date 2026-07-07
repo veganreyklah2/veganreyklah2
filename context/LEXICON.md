@@ -65,7 +65,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition |
-| **Tablecloth** | Application data store (horizon — role still shaping) |
+| **Tablecloth** | Brix-facing application database and artifact store (horizon — not the namespace query) |
 | **Bron** | Data notation between modules (`.bron`); a Tilak in the proposed Bron-as-mark design |
 | **Amber** | **Cellar software** — preservation in place at home: signed, encrypted, bit-faithful **resins** on deep storage, append-only log, verified by folding; Mantra holds the living history, Amber seals the moment cold — [`amber/README.md`](../amber/README.md) · [`specs/20260701-221512_amber-functional-spec.md`](specs/20260701-221512_amber-functional-spec.md)
 
@@ -83,6 +83,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 |------|----------|
 | **Recall** | The referentially-transparent read — a name resolves to the same bytes for all time, with honest not-yet / never / here outcomes; [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md) |
 | **Bolt** | A coherent, independently-versioned unit of content with its own history and dependencies — the unit a name selects before a path within it |
+| **Tablecloth query** | Optional-field filter over the bounded namespace catalog — every match in held order; parity **175**; not the Brix artifact store (counsel `20260707.005612`) |
 | **Name grammar** | `peer / bolt / revision / path` — Kumara identity, bolt, revision (change, date, or label), path within the bolt |
 
 **Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); forward-doc hygiene landed `20260706.033200`.
@@ -122,7 +123,6 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, whole in gratitude at `59f2b99`); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty before any lap; first lap after MALA M2 only — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
-| **Tablecloth** | Named — layout or structured-view layer; horizon |
 | **`.brush`** | Surface-description extension when Brushstroke earns a small language |
 
 ---
