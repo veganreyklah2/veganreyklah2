@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.155812 | [Selftest 70-line splits](20260707-155812_selftest-70-line-splits.md) | `recall_beaded` + OA-L4 reputation selftests split |
 | 20260707.155512 | [Parity 191 commit push](20260707-155512_parity-191-commit-push.md) | `9b8be13`; four remotes |
 | 20260707.155312 | [Parity 191 copy ratchet](20260707-155312_parity-191-copy-ratchet.md) | Full suite GREEN; TASKS/ROADMAP/TAME pinned **191** |
 | 20260707.154812 | [Copy ratchet commit push](20260707-154812_copy-ratchet-commit-push.md) | Bundle `adb46e9`; four remotes |

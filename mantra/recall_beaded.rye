@@ -171,10 +171,10 @@ fn patternFill(buf: []u8, seed: u32) void {
     }
 }
 
-fn runSelftest(_: std.Io) !u8 {
-    var cat: recall_lap1.BoltCatalog = .empty();
-    var beads: beading.BeadStore = .empty();
-
+fn selftestDirectAndBeadedRoundTrip(
+    cat: *recall_lap1.BoltCatalog,
+    beads: *beading.BeadStore,
+) !struct { content_v1: [400]u8, rep_v1: beading.BeadReport, r_large: recall_lap1.RecallResult } {
     // Direct path: small content stores and recalls unchanged, under the caller's own
     // Tilak. Beading never enters, and appendLeafBeaded returns null to say so.
     const n_small = recall_lap1.Name{
@@ -184,8 +184,8 @@ fn runSelftest(_: std.Io) !u8 {
         .path = "short.txt",
     };
     const direct_report = try appendLeafBeaded(
-        &cat,
-        &beads,
+        cat,
+        beads,
         "local",
         "notes",
         1,
@@ -195,7 +195,7 @@ fn runSelftest(_: std.Io) !u8 {
     );
     assert(direct_report == null);
     var out_small: [128]u8 = undefined;
-    const r_small = try recallBeaded(&cat, &beads, n_small, &out_small);
+    const r_small = try recallBeaded(cat, beads, n_small, &out_small);
     assert(r_small.outcome == .here);
     assert(std.mem.eql(u8, out_small[0..r_small.len], "a short resin"));
     assert(std.mem.eql(u8, r_small.tilak, "plain-text")); // the caller's own Tilak, unchanged
@@ -211,8 +211,8 @@ fn runSelftest(_: std.Io) !u8 {
         .path = "large.bin",
     };
     const rep_v1 = (try appendLeafBeaded(
-        &cat,
-        &beads,
+        cat,
+        beads,
         "local",
         "notes",
         1,
@@ -222,11 +222,19 @@ fn runSelftest(_: std.Io) !u8 {
     )) orelse return error.Overflow;
     assert(rep_v1.bead_count >= 2);
     var out_large: [recall_lap1.max_resin_bytes]u8 = undefined;
-    const r_large = try recallBeaded(&cat, &beads, n_large, &out_large);
+    const r_large = try recallBeaded(cat, beads, n_large, &out_large);
     assert(r_large.outcome == .here);
     assert(std.mem.eql(u8, out_large[0..r_large.len], content_v1[0..]));
     assert(std.mem.eql(u8, r_large.tilak, beading.tilak_bead_index));
+    return .{ .content_v1 = content_v1, .rep_v1 = rep_v1, .r_large = r_large };
+}
 
+fn selftestBeadedRevisionDedup(
+    cat: *recall_lap1.BoltCatalog,
+    beads: *beading.BeadStore,
+    content_v1: *const [400]u8,
+    n_large: recall_lap1.Name,
+) !beading.BeadReport {
     // Dedup across revisions: revision 2 edits a handful of bytes near the front. The
     // long tail is unchanged, so content-defined beading re-syncs it, and the second
     // append deposits only the beads the edit actually touched.
@@ -243,8 +251,8 @@ fn runSelftest(_: std.Io) !u8 {
         .path = "large.bin",
     };
     const rep_v2 = (try appendLeafBeaded(
-        &cat,
-        &beads,
+        cat,
+        beads,
         "local",
         "notes",
         2,
@@ -255,14 +263,18 @@ fn runSelftest(_: std.Io) !u8 {
     assert(rep_v2.beads_deduped >= 1); // the unchanged tail's beads were already held
     assert(rep_v2.beads_deposited >= 1); // the edited region's beads are new
     var out_v2: [recall_lap1.max_resin_bytes]u8 = undefined;
-    const r_v2 = try recallBeaded(&cat, &beads, n_large_r2, &out_v2);
+    const r_v2 = try recallBeaded(cat, beads, n_large_r2, &out_v2);
     assert(std.mem.eql(u8, out_v2[0..r_v2.len], content_v2[0..]));
 
     // Revision 1 still recalls to its own bytes, untouched by revision 2 — accrete, not
     // overwrite, holds across the beaded path exactly as it holds across the direct one.
-    const r_v1_again = try recallBeaded(&cat, &beads, n_large, &out_large);
+    var out_large: [recall_lap1.max_resin_bytes]u8 = undefined;
+    const r_v1_again = try recallBeaded(cat, beads, n_large, &out_large);
     assert(std.mem.eql(u8, out_large[0..r_v1_again.len], content_v1[0..]));
+    return rep_v2;
+}
 
+fn selftestUnwelcomePaths(content_v1: *const [400]u8, cat: *recall_lap1.BoltCatalog, beads: *beading.BeadStore) !void {
     // Unwelcome: a corrupted bead is a failure the catalog's own digest check cannot
     // see, because that check covers only the index bytes, which are untouched. Beading's
     // own digest check, the second layer, catches it and refuses the whole recall.
@@ -303,14 +315,30 @@ fn runSelftest(_: std.Io) !u8 {
             .revision = 1,
             .path = "missing.bin",
         };
-        const r_absent = try recallBeaded(&cat, &beads, absent, &out_large);
+        var out_large: [recall_lap1.max_resin_bytes]u8 = undefined;
+        const r_absent = try recallBeaded(cat, beads, absent, &out_large);
         assert(r_absent.outcome == .never);
     }
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    var cat: recall_lap1.BoltCatalog = .empty();
+    var beads: beading.BeadStore = .empty();
+
+    const welcome = try selftestDirectAndBeadedRoundTrip(&cat, &beads);
+    const n_large = recall_lap1.Name{
+        .peer = "local",
+        .bolt = "notes",
+        .revision = 1,
+        .path = "large.bin",
+    };
+    const rep_v2 = try selftestBeadedRevisionDedup(&cat, &beads, &welcome.content_v1, n_large);
+    try selftestUnwelcomePaths(&welcome.content_v1, &cat, &beads);
 
     print("recall_beaded: direct path round-trips under the caller's own Tilak GREEN\n", .{});
     print("recall_beaded: beaded path round-trips {d} bytes across {d} beads GREEN\n", .{
-        r_large.len,
-        rep_v1.bead_count,
+        welcome.r_large.len,
+        welcome.rep_v1.bead_count,
     });
     print("recall_beaded: revision 2 deduped {d} beads, deposited {d} new GREEN\n", .{
         rep_v2.beads_deduped,
