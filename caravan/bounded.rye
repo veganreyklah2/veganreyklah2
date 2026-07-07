@@ -131,7 +131,7 @@ fn runBoundedChild(should_fail: bool) u8 {
 
     if (should_fail) {
         // Deliberately exceed the budget — ask for more than remains.
-        // This simulates a child that crashes from overallocation.
+        // This simulates a child that falls from overallocation.
         const too_much = garden.remaining() + 1;
         _ = garden.alloc(too_much) catch {
             print("bounded child: exceeded garden (intended failure)\n", .{});

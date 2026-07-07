@@ -301,7 +301,8 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
         const ft = try fetcher_child.wait(io);
         const sc: u8 = switch (st) { .exited => |c0| c0, else => 255 };
         const fc: u8 = switch (ft) { .exited => |c0| c0, else => 255 };
-        assert(sc == 0 and fc == 0);
+        assert(sc == 0);
+        assert(fc == 0);
     }
 
     // Exchange 2: right fetches peerA from left — roles reversed.
@@ -322,7 +323,8 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
         const ft = try fetcher_child.wait(io);
         const sc: u8 = switch (st) { .exited => |c0| c0, else => 255 };
         const fc: u8 = switch (ft) { .exited => |c0| c0, else => 255 };
-        assert(sc == 0 and fc == 0);
+        assert(sc == 0);
+        assert(fc == 0);
     }
 
     print("ns-2wayw: demo GREEN — two-way sync crossed localhost under Comlink seal\n", .{});

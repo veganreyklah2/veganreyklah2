@@ -1,18 +1,20 @@
 //! brushstroke/skate_grid.rye — Skate: monospace cell grid → ARGB8888 buffer.
 //!
-//! font8x8_basic is public domain (dhepper/font8x8). Grid mutations use
-//! strengthened `std.mem.copyForwards`; allocation uses strengthened
-//! `std.mem.Allocator.alloc`.
+//! font8x8_basic is public domain (dhepper/font8x8). Grid mutations copy
+//! through Tally's `copy_disjoint`, both preconditions asserted; allocation
+//! uses strengthened `std.mem.Allocator.alloc`.
 //!
 //! Build and prove (from repo root):
 //!   rye/bin/rye build brushstroke/skate_grid.rye -femit-bin=brushstroke/bin/skate-grid
 //!   brushstroke/bin/skate-grid
 
 const std = @import("std");
+const assert = std.debug.assert;
 const font8x8 = @import("font8x8_data.rye");
+const tally_copy = @import("tally_copy.rye");
 
 fn bufLenU32(buf: []const u8) u32 {
-    std.debug.assert(buf.len <= std.math.maxInt(u32));
+    assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
 
@@ -31,11 +33,11 @@ pub const Grid = struct {
     cells: []u8,
 
     pub fn init(allocator: std.mem.Allocator, cols: u32, rows: u32) !Grid {
-        std.debug.assert(cols > 0);
-        std.debug.assert(rows > 0);
+        assert(cols > 0);
+        assert(rows > 0);
         const cell_count: usize = @intCast(cols * rows);
         const cells = try allocator.alloc(u8, cell_count);
-        std.debug.assert(cells.len == cell_count);
+        assert(cells.len == cell_count);
         @memset(cells, ' ');
         return .{ .cols = cols, .rows = rows, .cells = cells };
     }
@@ -43,18 +45,18 @@ pub const Grid = struct {
     pub fn putLine(self: *Grid, row: u32, text: []const u8) void {
         if (row >= self.rows) return;
         const base: usize = @intCast(row * self.cols);
-        std.debug.assert(base < self.cells.len);
+        assert(base < self.cells.len);
         const n: u32 = @min(bufLenU32(text), self.cols);
         const n_usize: usize = @intCast(n);
-        std.mem.copyForwards(u8, self.cells[base..][0..n_usize], text[0..n_usize]);
+        tally_copy.copy_disjoint(u8, self.cells[base..][0..n_usize], text[0..n_usize]);
     }
 
     pub fn litPixelCount(_: Grid, pixels: []const u8, stride: u32, width: i32, height: i32, bg: Color) u32 {
-        std.debug.assert(width > 0);
-        std.debug.assert(height > 0);
+        assert(width > 0);
+        assert(height > 0);
         const width_u: u32 = @intCast(width);
         const height_u: u32 = @intCast(height);
-        std.debug.assert(stride >= width_u * 4);
+        assert(stride >= width_u * 4);
         const stride_usize: usize = @intCast(stride);
         var count: u32 = 0;
         var y: u32 = 0;
@@ -82,15 +84,15 @@ pub const Grid = struct {
         fg: Color,
         scale: u32,
     ) void {
-        std.debug.assert(scale > 0);
+        assert(scale > 0);
         const cell_pw = cell_w * scale;
         const cell_ph = cell_h * scale;
-        std.debug.assert(width > 0);
-        std.debug.assert(height > 0);
+        assert(width > 0);
+        assert(height > 0);
         const width_u: u32 = @intCast(width);
         const height_u: u32 = @intCast(height);
-        std.debug.assert(stride >= width_u * 4);
-        std.debug.assert(self.cells.len == @as(usize, @intCast(self.cols * self.rows)));
+        assert(stride >= width_u * 4);
+        assert(self.cells.len == @as(usize, @intCast(self.cols * self.rows)));
 
         const stride_usize: usize = @intCast(stride);
         var y: u32 = 0;
@@ -139,11 +141,11 @@ fn drawGlyph(
     fg: Color,
     scale: u32,
 ) void {
-    std.debug.assert(scale > 0);
-    std.debug.assert(width > 0);
-    std.debug.assert(height > 0);
+    assert(scale > 0);
+    assert(width > 0);
+    assert(height > 0);
     const width_u: u32 = @intCast(width);
-    std.debug.assert(stride >= width_u * 4);
+    assert(stride >= width_u * 4);
 
     const glyph = if (ch < 128) font8x8.font8x8_basic[ch] else [_]u8{0} ** 8;
     const stride_usize: usize = @intCast(stride);

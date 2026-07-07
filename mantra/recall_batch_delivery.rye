@@ -27,7 +27,7 @@ const SO_RCVTIMEO: c_int = 20;
 const fetcher_port: u16 = 38480;
 const source_port: u16 = 38481;
 
-// Dead-peer guard on the chunk-assembly recv loop. A silent peer yields RecvFailed
+// Silent-peer guard on the chunk-assembly recv loop. A quiet peer yields RecvFailed
 // after this many seconds rather than an unbounded wait — the same class of fault
 // recall_catch_up_delivery's 20260707.002012 fix answered, mirrored here 20260707.011412.
 const batch_recv_timeout_sec: u32 = 2;
@@ -176,7 +176,8 @@ fn sendBatchPayload(port: u16, batch: []const u8) !void {
 
 // Invariant: one socket, bound once, receives every frame of one assembly. The prior
 // shape reopened and rebound per frame, and a chunk landing in that unbound window was
-// silently dropped — a race the multi-frame demos lost often enough to hang. Binding
+// silently dropped — a race the multi-frame demos lost often enough to wait without
+// bound. Binding
 // once lets the kernel queue back-to-back frames; the timeout turns a silent peer into
 // error.RecvFailed rather than an unbounded wait (guard class per catch_up 20260707.002012).
 fn recvBatchPayload(port: u16, out: []u8) !u32 {
@@ -315,7 +316,8 @@ fn runSelftest(_: std.Io) !u8 {
     const nb_big = ns.Name{ .peer = "peerB", .bolt = "b", .revision = 1, .path = "b.txt" };
     const rb_big = try chunk_fetcher.recall(nb_big, &big_out);
     assert(rb_big.len == 400);
-    assert(big_out[0] == 'B' and big_out[399] == 'B');
+    assert(big_out[0] == 'B');
+    assert(big_out[399] == 'B');
     print("rbw: chunked batch {d} bytes over {d} frames — GREEN\n", .{ chunk_built.len, chunk_count });
 
     var beaded_src: ns.BoltCatalog = undefined;
@@ -425,7 +427,8 @@ fn runChunkDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8)
     const fc = try fetcher_child.wait(io);
     const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
     const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
-    assert(s_code == 0 and f_code == 0);
+    assert(s_code == 0);
+    assert(f_code == 0);
     print("rbw: chunk demo GREEN — multi-frame batch crossed localhost under Comlink seal\n", .{});
     return 0;
 }
@@ -499,7 +502,8 @@ fn runBeadedDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8
     const fc = try fetcher_child.wait(io);
     const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
     const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
-    assert(s_code == 0 and f_code == 0);
+    assert(s_code == 0);
+    assert(f_code == 0);
     print("rbw: beaded demo GREEN — bead-index and beads crossed batch wire under Comlink seal\n", .{});
     return 0;
 }
@@ -574,7 +578,8 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
     const fc = try fetcher_child.wait(io);
     const s_code: u8 = switch (sc) { .exited => |code| code, else => 255 };
     const f_code: u8 = switch (fc) { .exited => |code| code, else => 255 };
-    assert(s_code == 0 and f_code == 0);
+    assert(s_code == 0);
+    assert(f_code == 0);
     print("rbw: demo GREEN — resin-batch crossed localhost under Comlink seal\n", .{});
     return 0;
 }

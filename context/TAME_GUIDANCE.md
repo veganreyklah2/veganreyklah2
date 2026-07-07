@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-03 (Amber first lap wired at parity **144**)
+**Last updated:** 2026-07-07 (second TigerStyle-alignment pass `20260707.053212` — disjoint-copy law, refined error-compare seam, compound-assert split enforced, ratchet counters live; study: [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md))
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -235,6 +235,16 @@ For hosted seeds and modules, mirror the assert import: bind once per file — `
 - **No witness yet.** `tools/tame-check.rish` does not flag `std.debug.print(`; add that rule only if the need is proven, the way we defer AST-tier lints.
 - **Separate layers.** Rishi `.rish` pipelines speak through `say`; freestanding Aurora may grow its own logging seam when the boot path matures; `rye/tests/*` witnesses may keep the qualified form until touched.
 
+### Disjoint copies — never bare `@memcpy` in new code
+
+`@memcpy` trusts its caller twice: that the lengths agree, and that the regions never
+overlap. New code carries that trust to `tally/copy.rye` instead — `copy_disjoint(T,
+target, source)` asserts both preconditions and then performs the copy it guards. Elder
+`@memcpy` sites migrate as their files are touched; `tools/tame_style_check.rish` prints
+the remaining count on every parity run, so the ratchet only ever turns one way.
+`copyForwards` and `copyBackwards` are banned outright — where a genuinely overlapping
+move is one day needed, it earns its own asserting form beside this one.
+
 ### Named errors
 
 Error types are named for the **fault**, rather than the operation that discovered it: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`.
@@ -371,6 +381,11 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **Line length ≤ 100 columns** | flag lines past 100, allowing a URL or a multiline-string result that itself fits |
 | **One `# Title` per markdown** | flag any `.md` with zero or more than one top-level `#`, fenced code ignored — directly serving our doc-heavy tree |
 | **No leftover `FIXME` or `dbg(`** | flag both before merge; `FIXME` is welcome while iterating, gone before main |
+| **Disjoint copies through `tally/copy.rye`** | `copyForwards`/`copyBackwards` banned; `@memcpy` counted down as a ratchet; new code calls `copy_disjoint` — `tools/tame_style_check.rish` (live) |
+| **Qualified `debug.assert(` anywhere** | banned; import once, call bare — the import line carries no parenthesis, so the string alone convicts |
+| **Compound `assert(a and b)`** | banned; split so the failing half is named |
+| **Call-result compared to an error** | `) == error.` and `) != error.` banned at the call seam (silent `anyerror` upcast); a captured `\|err\|` compared inside an assert stays welcome — the refined seam, reasoned in the alignment study |
+| **`usingnamespace` · `!comptime` · `Self = @This()`** | banned verbatim, as upstream — `tools/tame_style_check.rish` (live) |
 
 **Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin edge today.
 
@@ -384,7 +399,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **Dead declarations and dead files** | needs identifier and import analysis |
 | **Switch on errors, not `== error.`** | a textual flag is a fair first pass; the AST makes it exact |
 
-The full enforcement we are learning from lives in TigerBeetle's `src/tidy.zig`. We borrow its rules in our own voice and at our own pace, and we keep its file in gratitude.
+Vocabulary keeps Radiant's register even where the borrowed lint's own comments do not: the standing swaps — misuse guard for footgun, fall for crash, silent-peer for dead-peer, wait-without-bound for hang — live in [`context/specs/20260707-053212_radiant-vocabulary-pass.md`](specs/20260707-053212_radiant-vocabulary-pass.md). The full enforcement we are learning from lives in TigerBeetle's `src/tidy.zig`. We borrow its rules in our own voice and at our own pace, and we keep its file in gratitude.
 
 ---
 

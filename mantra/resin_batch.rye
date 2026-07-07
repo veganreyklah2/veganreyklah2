@@ -16,6 +16,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const ns = @import("recall_lap1.rye");
+const tally_copy = @import("tally_copy.rye");
 const Ed25519 = std.crypto.sign.Ed25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
@@ -89,7 +90,7 @@ fn putU32(out: []u8, off: *u32, v: u32) BatchError!void {
 fn putBytes(out: []u8, off: *u32, b: []const u8) BatchError!void {
     const n: u32 = @intCast(b.len);
     if (off.* + n > capU32(out)) return error.Overflow;
-    @memcpy(out[off.*..][0..b.len], b);
+    tally_copy.copy_disjoint(u8, out[off.*..][0..b.len], b);
     off.* += n;
 }
 
@@ -222,7 +223,7 @@ pub fn applyBatch(
         const tilak = try getField(batch, &off);
         if (off + 64 > capU32(batch)) return error.Truncated;
         var digest: [64]u8 = undefined;
-        @memcpy(&digest, batch[off..][0..64]);
+        tally_copy.copy_disjoint(u8, digest[0..], batch[off..][0..64]);
         off += 64;
         const length = try getU32(batch, &off);
         if (off + 1 > capU32(batch)) return error.Truncated;
@@ -344,7 +345,7 @@ fn runBatchSelftest(_: std.Io) !u8 {
     // Unwelcome: a bad batch signature refuses the whole crossing.
     {
         var bad: [max_batch_bytes]u8 = undefined;
-        @memcpy(bad[0..built.len], buf[0..built.len]);
+        tally_copy.copy_disjoint(u8, bad[0..built.len], buf[0..built.len]);
         bad[3] = if (bad[3] == 'z') 'y' else bad[3] + 1;
         var dest_bad: ns.BoltCatalog = .empty();
         try dest_bad.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");
@@ -358,7 +359,7 @@ fn runBatchSelftest(_: std.Io) !u8 {
     // Unwelcome: a tampered payload refuses by digest; the manifest signature still verifies.
     {
         var bad: [max_batch_bytes]u8 = undefined;
-        @memcpy(bad[0..built.len], buf[0..built.len]);
+        tally_copy.copy_disjoint(u8, bad[0..built.len], buf[0..built.len]);
         bad[built.len - 1] = if (bad[built.len - 1] == 'z') 'y' else bad[built.len - 1] + 1;
         var dest_bad: ns.BoltCatalog = .empty();
         try dest_bad.appendLeaf("peerA", "seed", 1, "x", "alpha", "plain-text");

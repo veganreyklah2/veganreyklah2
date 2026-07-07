@@ -22,7 +22,7 @@ The module grew as one foundation and a family of compositions. `recall_lap1.rye
 | `beading.rye` | A resin too large for one frame beads into content-addressed beads under a `bead-index` | `tools/mantra_beading.rish` |
 | `recall_beaded.rye` | Append and recall transparent to size; beads land as derived `{path}.bN` leaves; `hydrateBeadStoreFromCatalog` | `tools/mantra_recall_beaded.rish` |
 | `recall_batch_wire.rye` | Batch response framing + chunking (kind `0x04`) and the bounded `BatchAssembler` | (via batch witness) |
-| `recall_batch_delivery.rye` | Batch sync over the wire, hosted **38480/38481**, chunked and beaded crossings; one bound socket per assembly with a dead-peer timeout | `tools/mantra_recall_batch_wire.rish` |
+| `recall_batch_delivery.rye` | Batch sync over the wire, hosted **38480/38481**, chunked and beaded crossings; one bound socket per assembly with a silent-peer timeout | `tools/mantra_recall_batch_wire.rish` |
 | `recall_by_mark.rye` | Read by Tilak within peer/bolt/revision; shared marks refuse without a path hint | `tools/mantra_recall_by_mark.rish` |
 | `recall_two_way_sync.rye` (+`_delivery`, **38482/38483**) | Both directions as two symmetric `syncRevision` calls | `tools/mantra_recall_two_way_sync*.rish` |
 | `recall_catch_up.rye` (+`_delivery`, **38484/38485**) | Try the next unheld revision until one ask comes back empty | `tools/mantra_recall_catch_up*.rish` |

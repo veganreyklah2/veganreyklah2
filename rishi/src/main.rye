@@ -39,6 +39,7 @@
 //!   rishi run <file.rish>    Read and run a single .rish script.
 
 const std = @import("std");
+const tally_copy = @import("tally_copy.rye");
 const assert = std.debug.assert;
 const print = std.debug.print;
 
@@ -1242,12 +1243,12 @@ fn doJoin(allocator: std.mem.Allocator, io: std.Io, env: *const Env, rest: []con
         };
         assert(s.len <= std.math.maxInt(u32));
         const slen: u32 = @intCast(s.len);
-        std.mem.copyForwards(u8, out[@intCast(pos)..][0..@intCast(slen)], s);
+        tally_copy.copy_disjoint(u8, out[@intCast(pos)..][0..@intCast(slen)], s);
         pos += slen;
         if (idx + 1 < items.len) {
             assert(sep.len <= std.math.maxInt(u32));
             const seplen: u32 = @intCast(sep.len);
-            std.mem.copyForwards(u8, out[@intCast(pos)..][0..@intCast(seplen)], sep);
+            tally_copy.copy_disjoint(u8, out[@intCast(pos)..][0..@intCast(seplen)], sep);
             pos += seplen;
         }
     }

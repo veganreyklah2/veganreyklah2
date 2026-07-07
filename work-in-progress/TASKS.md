@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (Caravan host mirror under supervision · parity **188**)
+**Last updated:** 2026-07-07 (TigerBeetle alignment leap · parity **190**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -55,6 +55,8 @@
 
 **Next climb (counsel `044112` complete):** MALA graduation **on hold** (trigger decides). Brix · Pond · continuity · sourcing note each wait their own word. Extended-run stability deferred until something runs unattended for real.
 
+- [x] **TigerBeetle alignment leap (`053212`)** — `tally/copy.rye` disjoint-copy law; `tools/tame_style_check.rish` bans + ratchets; 8-site `@memcpy` migration; 33 qualified asserts retired; 7 compound asserts split; Radiant vocabulary pass; study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md); parity **190**
+
 **Held per counsel `025212` (not rejected — no code until each module has ground):**
 
 - [x] **Weave slice in snapshot** — **closed** Kaeden `20260707.030412`: sovereign slice = I2 `catalog/` export (`BoltCatalog` accretion at HEAD); no `weave/` bundle; spec [`context/specs/20260707-030412_weave-slice-ruling.md`](../context/specs/20260707-030412_weave-slice-ruling.md)
@@ -82,7 +84,7 @@
 
 **Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../external-research/20260707-044112_claude-recommendation-path.md):
 
-- [x] **Footgun → source-crash → snapshot device wire → host mirror → TASKS sweep** — all five rings GREEN; mirror via `CARAVAN_WITNESS_MIRROR=1` + `source-loop-mirror` / `fetcher-poll-mirror`; `tools/caravan_subscribe_poll_mirror_service.rish`
+- [x] **Misuse-guard → source-fall → snapshot device wire → host mirror → TASKS sweep** — all five rings GREEN; mirror via `CARAVAN_WITNESS_MIRROR=1` + `source-loop-mirror` / `fetcher-poll-mirror`; `tools/caravan_subscribe_poll_mirror_service.rish`
 - [ ] **Extended-run stability** — deferred until something runs unattended for real (counsel `044112`)
 
 **NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
@@ -332,7 +334,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Ground
 - [ ] **Tablecloth v1** — the content-addressed store the package picture rests on.
-- [ ] **TAME lints, AST tier** — begin only when a Zig parser is at hand or the need is proven: 70-line function limit ratcheted, bitwise/arithmetic precedence, defer-blank-line, dead declarations. Do not clone `tidy.zig` ahead of the need.
+- [ ] **TAME lints, AST tier** — textual tier expanded at `053212` (`tame_style_check`); AST-grade rules (70-line hard gate, precedence parens, defer blank line, dead declarations) wait for a Zig parser — see study [`20260707-053212`](../external-research/20260707-053212_tigerbeetle-alignment-study.md)
 
 ---
 

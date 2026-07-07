@@ -11,6 +11,7 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const tally_copy = @import("tally_copy.rye");
 const print = std.debug.print;
 
 const caravan_capabilities_version = "20260630.042012";
@@ -59,7 +60,7 @@ const Capability = struct {
         assert(name.len <= max_name_len);
         var cap: Capability = .{};
         cap.name_len = bufLenU32(name);
-        @memcpy(cap.name[0..name.len], name);
+        tally_copy.copy_disjoint(u8, cap.name[0..name.len], name);
         cap.rights_mask = rights_mask;
         assert(cap.name_len <= max_name_len);
         return cap;
@@ -89,7 +90,7 @@ const ChildSlot = struct {
         assert(label.len <= max_name_len);
         var slot: ChildSlot = .{};
         slot.label_len = bufLenU32(label);
-        @memcpy(slot.label[0..label.len], label);
+        tally_copy.copy_disjoint(u8, slot.label[0..label.len], label);
         slot.active = true;
         assert(slot.cap_count == 0);
         return slot;

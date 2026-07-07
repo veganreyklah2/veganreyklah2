@@ -20,6 +20,7 @@
 //! Requires a running Wayland compositor (`WAYLAND_DISPLAY`) for the default mode.
 
 const std = @import("std");
+const assert = std.debug.assert;
 const posix = std.posix;
 const skate = @import("skate_grid.rye");
 
@@ -89,7 +90,7 @@ const Frame = struct {
     lines: []const Line,
 
     fn init(lines: []const Line) Frame {
-        std.debug.assert(lines.len <= max_lines);
+        assert(lines.len <= max_lines);
         return .{ .lines = lines };
     }
 
@@ -481,9 +482,9 @@ const App = struct {
         };
         _ = c.wl_registry_add_listener(registry, &listener, self);
         try self.display.roundtrip();
-        std.debug.assert(self.compositor != null);
-        std.debug.assert(self.shm != null);
-        std.debug.assert(self.wm_base != null);
+        assert(self.compositor != null);
+        assert(self.shm != null);
+        assert(self.wm_base != null);
 
         if (self.keyboard_enabled and self.seat != null) {
             const seat_listener = c.wl_seat_listener{
@@ -607,7 +608,7 @@ const App = struct {
         while (!self.frame_done and waits < 100) : (waits += 1) {
             if (c.wl_display_dispatch(self.display.handle) < 0) return error.WaylandDispatchFailed;
         }
-        std.debug.assert(self.frame_done);
+        assert(self.frame_done);
     }
 
     fn presentCurrentFrame(self: *App, wait: bool) !void {
@@ -637,7 +638,7 @@ const App = struct {
         while (!self.configured and configure_waits < 100) : (configure_waits += 1) {
             try self.dispatchOnce(50);
         }
-        std.debug.assert(self.configured);
+        assert(self.configured);
     }
 
     pub fn disconnect(self: *App) void {
@@ -719,12 +720,12 @@ fn runRedrawWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
     grid = try Frame.init(lines_b).toGrid(garden);
     const sig_b = try signatureFromGrid(garden, &grid);
     const sig_fresh_b = try signatureFromLines(garden, lines_b);
-    std.debug.assert(sig_b == sig_fresh_b);
-    std.debug.assert(sig_a != sig_b);
+    assert(sig_b == sig_fresh_b);
+    assert(sig_a != sig_b);
 
     grid = try Frame.init(lines_a).toGrid(garden);
     const sig_a2 = try signatureFromGrid(garden, &grid);
-    std.debug.assert(sig_a2 == sig_a);
+    assert(sig_a2 == sig_a);
 
     var buf: [128]u8 = undefined;
     const msg = try std.fmt.bufPrint(
@@ -786,11 +787,11 @@ pub fn openSurface(garden: std.mem.Allocator, lines: []const Line) !App {
 fn runSelftest(garden: std.mem.Allocator, io: std.Io) !u8 {
     const lines = try defaultLines(garden);
     const grid = try Frame.init(lines).toGrid(garden);
-    std.debug.assert(grid.cols == grid_cols);
-    std.debug.assert(grid.rows == grid_rows);
+    assert(grid.cols == grid_cols);
+    assert(grid.rows == grid_rows);
 
     const lit = try rasterLitForLines(garden, lines);
-    std.debug.assert(lit > 200);
+    assert(lit > 200);
 
     var buf: [64]u8 = undefined;
     const lit_msg = try std.fmt.bufPrint(&buf, "skate grid selftest: {d} lit pixels — GREEN\n", .{lit});
@@ -803,8 +804,8 @@ fn runArbitraryWitness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const distinct_lines = try arbitraryWitnessLines(garden);
     const seed_lit = try rasterLitForLines(garden, seed_lines);
     const distinct_lit = try rasterLitForLines(garden, distinct_lines);
-    std.debug.assert(distinct_lit > 100);
-    std.debug.assert(distinct_lit != seed_lit);
+    assert(distinct_lit > 100);
+    assert(distinct_lit != seed_lit);
 
     var buf: [96]u8 = undefined;
     const msg = try std.fmt.bufPrint(
@@ -840,7 +841,7 @@ pub fn main(init: std.process.Init) !u8 {
     var app = try presentValue(garden, lines);
     defer app.display.disconnect();
 
-    std.debug.assert(app.frame.lines.len == 3);
+    assert(app.frame.lines.len == 3);
 
     try app.run();
 
