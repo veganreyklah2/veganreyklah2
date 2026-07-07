@@ -12,6 +12,7 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const tally_parse_int = @import("parse_int.rye");
 const print = std.debug.print;
 const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
@@ -311,7 +312,7 @@ fn parse_head_record_content(content: []const u8) SnapshotError!struct {
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
         const pair = identity_hex[i * 2 ..][0..2];
-        pk_bytes[i] = std.fmt.parseInt(u8, pair, 16) catch return error.Truncated;
+        pk_bytes[i] = tally_parse_int.parse_int(u8, pair, .{ .base = 16, .allow_leading_zero = true }) catch return error.Truncated;
     }
 
     return .{

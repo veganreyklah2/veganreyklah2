@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (enrich migration order `20260707.201912`)
+**Last updated:** 2026-07-07 (parse_int adoption `20260707.203612`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.203612` | [parse_int adoption + season close](20260707-203612_claude-counsel-parse-int-and-season-close.md) | `tally/parse_int.rye` seated; 3 sites migrated; 12-site ratchet; tools season confirmed closed |
 | `20260707.201912` | [enrich migration order](20260707-201912_claude-counsel-enrich-migration-order.md) | 65 fn in 5 dependency tiers; `enrich_strengthening_docs.rye` repoint at tiers 1, 4, 5 |
 | `20260707.195912` | [Tools census + `.sh`/`.rish` boundary](20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md) | 114 camelCase confirmed; safety net complete — open `snake_case` season; POSIX seams named |
 | `20260707.193712` | [enrich_strengthening_docs witness](20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md) | Third tools/enrich safety-net piece; fixture + two-run idempotency; safety net complete |

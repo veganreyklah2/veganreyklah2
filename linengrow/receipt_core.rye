@@ -4,6 +4,7 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const tally_parse_int = @import("parse_int.rye");
 const Ed25519 = std.crypto.sign.Ed25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const tally_copy = @import("tally_copy.rye");
@@ -109,7 +110,7 @@ fn decode_hex_lower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
     var i: u32 = 0;
     while (i < nbytes) : (i += 1) {
         const pair = hex[i * 2 ..][0..2];
-        out[i] = std.fmt.parseInt(u8, pair, 16) catch return error.InvalidHex;
+        out[i] = tally_parse_int.parse_int(u8, pair, .{ .base = 16, .allow_leading_zero = true }) catch return error.InvalidHex;
     }
     return nbytes;
 }
@@ -138,7 +139,9 @@ pub fn parse_log_line(line: []const u8, sig_out: []u8, fact_out: []u8) error{Inv
 }
 
 pub fn parse_amount_signed(amount_text: []const u8) error{InvalidAmount}!i64 {
-    return std.fmt.parseInt(i64, amount_text, 10) catch return error.InvalidAmount;
+    // Strict by default: a financial amount carrying a leading zero is refused
+    // rather than silently parsed, the same footgun std.fmt.parseInt would allow.
+    return tally_parse_int.parse_int(i64, amount_text, .{}) catch return error.InvalidAmount;
 }
 
 pub fn verify_record(sig_bytes: []const u8, fact: []const u8, pubkey: Ed25519.PublicKey) error{VerifyFailed}!void {

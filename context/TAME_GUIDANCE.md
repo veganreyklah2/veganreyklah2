@@ -247,6 +247,17 @@ remaining `@memcpy` is intentional inside `tally/copy.rye`.
 `copyForwards` and `copyBackwards` are banned outright — where a genuinely overlapping
 move is one day needed, it earns its own asserting form beside this one.
 
+### Integer parsing — prefer `tally/parse_int.rye` over bare `std.fmt.parseInt`
+
+`std.fmt.parseInt` accepts a leading zero silently; TigerBeetle's `parse_int` refuses one
+by default — a leading zero on parsed input is far more often truncation, injected data, or
+a copy-paste seam than a number anyone meant to write that way. New code calls
+`tally/parse_int.rye` with explicit options at the call site; hex byte-pair decoders state
+`allow_leading_zero = true` in the open. Elder `parseInt(` sites migrate on touch;
+`tools/tame_style_check.rish` prints the remaining count every parity run. As of counsel
+`20260707.203612`, **12** application sites remain across seven files — counted, not banned
+yet, the same discipline `@memcpy` followed while large.
+
 ### Named errors
 
 Error types are named for the **fault**, rather than the operation that discovered it: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`.
@@ -394,11 +405,12 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | Ratchet | Law on touch |
 |---------|----------------|
 | **`@memcpy(` sites** | route through `tally/copy.rye` `copy_disjoint`; sole intentional `@memcpy` may remain inside `copy_disjoint` itself |
+| **`parseInt(` application sites** | route through `tally/parse_int.rye`; state `allow_leading_zero` explicitly for hex byte pairs; sole intentional `parseInt(` may remain inside `parse_int` itself |
 | **camelCase `fn` declarations** | rename to `snake_case` in every function you touch in that file; repoint inbound references before commit |
 | **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
 | **zero `assert(` in core modules** | import `const assert = std.debug.assert` and name contract postconditions; honest exempt list in `tame_style_scan.sh` (guests, aurora freestanding, signal handler, font table, line editor, exit constants) |
 
-**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season — census [`counsel/20260707-195912`](../counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md); **`enrich/` remainder** (65 fn) migrates in five dependency tiers per [`counsel/20260707-201912`](../counsel/20260707-201912_claude-counsel-enrich-migration-order.md); re-run `enrich_strengthening_docs.rish` after tiers 1, 4, and 5.
+**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season closed at **0** (`20260707.203612`); **`parseInt(` ratchet** — 12 remaining, migrate on touch per counsel `203612`.
 
 **POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans (e.g. `tame_style_scan.sh` bans half) may migrate to `.rish` in a later sitting — proven feasible for file-read loops; state-tracking ratchet counts stay open until scoped.
 

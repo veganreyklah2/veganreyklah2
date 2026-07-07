@@ -51,11 +51,16 @@ fi
 
 if [ "$MODE" = "advise" ]; then
     memcpy_total=$(grep -h "@memcpy(" $FILES 2>/dev/null | wc -l | tr -d ' ')
-    memcpy_app=$((memcpy_total - $(grep -c "@memcpy(" tally/copy.rye 2>/dev/null || echo 0)))
+    memcpy_canonical=$(grep -c "@memcpy(" tally/copy.rye 2>/dev/null)
+    memcpy_app=$((memcpy_total - memcpy_canonical))
     camel_total=$(grep -hE "^( *)?(pub )?fn [a-z]+[A-Z]" $FILES 2>/dev/null | wc -l | tr -d ' ')
+    parseint_total=$(grep -h "parseInt(" $FILES 2>/dev/null | wc -l | tr -d ' ')
+    parseint_canonical=$(grep -c "parseInt(" tally/parse_int.rye 2>/dev/null)
+    parseint_app=$((parseint_total - parseint_canonical))
     echo "ratchet: @memcpy application sites = ${memcpy_app} (migrate to copy_disjoint on touch)"
     echo "ratchet: @memcpy canonical in tally/copy.rye = 1 (intentional inside copy_disjoint)"
     echo "ratchet: camelCase fn declarations = ${camel_total} (snake_case on touch)"
+    echo "ratchet: parseInt( application sites = ${parseint_app} (migrate to tally/parse_int.rye on touch; leading-zero footgun otherwise silent)"
     echo "ratchet: functions past 70 lines —"
     zero_assert_total=0
     for f in $FILES; do

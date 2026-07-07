@@ -137,6 +137,11 @@ let tnp = run ["rishi/bin/rishi" "run" "tools/tally_no_padding.rish"]
 assert tnp.ok else "tally no_padding witness failed"
 say "GREEN: Tally no_padding witness passed."
 
+say "witness suite: Tally parse_int…"
+let tpi = run ["rishi/bin/rishi" "run" "tools/tally_parse_int.rish"]
+assert tpi.ok else "tally parse_int witness failed"
+say "GREEN: Tally parse_int witness passed."
+
 say "witness suite: align_session_logs (fixture only)…"
 let asl = run ["rishi/bin/rishi" "run" "tools/align_session_logs.rish"]
 assert asl.ok else "align_session_logs witness failed"

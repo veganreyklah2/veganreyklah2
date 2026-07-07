@@ -1,0 +1,13 @@
+# tally_parse_int.rish — the strict-by-default parse law's own witness.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/tally_parse_int.rish
+
+let build = run ["sh" "-c" "mkdir -p tally/bin && rye/bin/rye build tally/parse_int.rye -femit-bin=tally/bin/parse-int"]
+assert build.ok else "tally parse_int build failed"
+
+let self = run ["sh" "-c" "tally/bin/parse-int selftest 2>&1"]
+assert self.ok else "tally parse_int selftest exited non-zero"
+assert self.out contains "GREEN" else "tally parse_int selftest not GREEN"
+
+say "GREEN: tally parse_int witness passed."
