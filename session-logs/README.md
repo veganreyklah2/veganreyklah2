@@ -12,6 +12,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.210000 | [Tools snake_case — enrich Tier 5 complete](20260707-210000_tools-snake-case-enrich-tier5-complete.md) | Final 4 fn; tools census 0; season done |
+| 20260707.205500 | [Tools snake_case — enrich Tier 4](20260707-205500_tools-snake-case-enrich-tier4.md) | 5 fn; orchestrator repoint; census 9→4; witness GREEN |
+| 20260707.205000 | [Tools snake_case — enrich Tier 3](20260707-205000_tools-snake-case-enrich-tier3.md) | 15 fn; census 24→9; enrich witness GREEN |
+| 20260707.204500 | [Tools snake_case — enrich Tier 2](20260707-204500_tools-snake-case-enrich-tier2.md) | 22 fn; census 46→24 |
+| 20260707.204000 | [Tools snake_case — enrich Tier 1](20260707-204000_tools-snake-case-enrich-tier1.md) | 19 fn; census 65→46; enrich witness GREEN |
+| 20260707.203500 | [File enrich migration order counsel](20260707-203500_file-enrich-migration-order-counsel.md) | Counsel `201912` filed; five tiers; orchestrator risk named |
 | 20260707.203000 | [Commit tools snake_case push](20260707-203000_commit-tools-snake-case-push.md) | `7f041a4` on four remotes; 49 fn cleared |
 | 20260707.202500 | [Tools snake_case — session_logs_archive](20260707-202500_tools-snake-case-session-logs-archive.md) | 12 fn cleared; census 77→65; top-3 files done |
 | 20260707.202100 | [Tools snake_case — tame_usize_audit](20260707-202100_tools-snake-case-tame-usize-audit.md) | 18 fn cleared; census 95→77; enrich witness still GREEN |

@@ -3,16 +3,16 @@
 const std = @import("std");
 const constants = @import("constants.rye");
 
-pub fn witnessSlugForPassAlloc(a: std.mem.Allocator, name: []const u8, stem: []const u8) !?[]const u8 {
-    if (constants.witnessAlias(name)) |alias| return try a.dupe(u8, alias);
+pub fn witness_slug_for_pass_alloc(a: std.mem.Allocator, name: []const u8, stem: []const u8) !?[]const u8 {
+    if (constants.witness_alias(name)) |alias| return try a.dupe(u8, alias);
     const us = std.mem.indexOfScalar(u8, stem, '_') orelse return null;
     var slug = stem[us + 1 ..];
     if (std.mem.endsWith(u8, slug, "_strengthen")) slug = slug[0 .. slug.len - "_strengthen".len];
     return try std.fmt.allocPrint(a, "{s}_test", .{slug});
 }
 
-pub fn witnessPathForPass(a: std.mem.Allocator, io: std.Io, root: []const u8, name: []const u8, stem: []const u8) !?[]const u8 {
-    const slug = try witnessSlugForPassAlloc(a, name, stem) orelse return null;
+pub fn witness_path_for_pass(a: std.mem.Allocator, io: std.Io, root: []const u8, name: []const u8, stem: []const u8) !?[]const u8 {
+    const slug = try witness_slug_for_pass_alloc(a, name, stem) orelse return null;
     defer a.free(slug);
     const rel = try std.fmt.allocPrint(a, "rye/tests/{s}.rye", .{slug});
     defer a.free(rel);
@@ -22,7 +22,7 @@ pub fn witnessPathForPass(a: std.mem.Allocator, io: std.Io, root: []const u8, na
     return try a.dupe(u8, rel);
 }
 
-pub fn witnessSlugInParity(slug: []const u8, parity: []const u8) bool {
+pub fn witness_slug_in_parity(slug: []const u8, parity: []const u8) bool {
     if (std.mem.indexOf(u8, parity, slug) != null) return true;
     var buf: [128]u8 = undefined;
     const q1 = std.fmt.bufPrint(&buf, "\"{s}\"", .{slug}) catch return false;
@@ -31,7 +31,7 @@ pub fn witnessSlugInParity(slug: []const u8, parity: []const u8) bool {
     return std.mem.indexOf(u8, parity, q2) != null;
 }
 
-pub fn passAuditable(
+pub fn pass_auditable(
     a: std.mem.Allocator,
     io: std.Io,
     root: []const u8,
@@ -39,14 +39,14 @@ pub fn passAuditable(
     stem: []const u8,
     parity: []const u8,
 ) !bool {
-    if (constants.authoredModule(name)) |auth| return witnessSlugInParity(auth.witness, parity);
-    if (constants.metaPass(name) != null) return witnessSlugInParity("ed25519_sign_test", parity);
-    if (try witnessPathForPass(a, io, root, name, stem)) |wp| {
+    if (constants.authored_module(name)) |auth| return witness_slug_in_parity(auth.witness, parity);
+    if (constants.meta_pass(name) != null) return witness_slug_in_parity("ed25519_sign_test", parity);
+    if (try witness_path_for_pass(a, io, root, name, stem)) |wp| {
         defer a.free(wp);
         const base = std.fs.path.basename(wp);
         const no_ext = base[0 .. base.len - ".rye".len];
-        return witnessSlugInParity(no_ext, parity);
+        return witness_slug_in_parity(no_ext, parity);
     }
-    if (constants.witnessAlias(name)) |alias| return witnessSlugInParity(alias, parity);
+    if (constants.witness_alias(name)) |alias| return witness_slug_in_parity(alias, parity);
     return false;
 }

@@ -6,7 +6,7 @@ const blocks_surface = @import("blocks_surface.rye");
 const surfaces = @import("surfaces.rye");
 const zig_lookup = @import("zig_lookup.rye");
 
-pub fn enrichFile(
+pub fn enrich_file(
     a: std.mem.Allocator,
     io: std.Io,
     path: []const u8,
@@ -18,33 +18,33 @@ pub fn enrichFile(
     if (std.mem.indexOf(u8, text, constants.surface_section) != null and std.mem.indexOf(u8, text, constants.width_section) != null)
         return false;
     const surface: []const u8 = blk: {
-        if (constants.authoredModule(name)) |auth| {
+        if (constants.authored_module(name)) |auth| {
             break :blk try std.fmt.allocPrint(a,
                 \\{s}
                 \\
                 \\**Authored:** `{s}` — not an inherited `std` function. Width migration is Tier A in `992`.
             , .{ constants.surface_section, auth.mod });
         }
-        const names = try surfaces.extractStdNames(a, text);
+        const names = try surfaces.extract_std_names(a, text);
         defer a.free(names);
-        const guess = if (names.len == 0) try surfaces.filenameGuess(a, stem) else names;
+        const guess = if (names.len == 0) try surfaces.filename_guess(a, stem) else names;
         defer if (names.len == 0) a.free(guess);
-        break :blk try blocks_surface.buildSurfaceBlock(a, guess, sources);
+        break :blk try blocks_surface.build_surface_block(a, guess, sources);
     };
     defer a.free(surface);
     const width: []const u8 = blk: {
-        if (constants.authoredModule(name) != null) {
+        if (constants.authored_module(name) != null) {
             break :blk try std.fmt.allocPrint(a,
                 \\{s}
                 \\
                 \\Migrate struct fields and counters to `u32`/`u64` per `10024`; keep `usize` only at `buf[0..n]` slice seams with `bufLenU32` helpers.
             , .{constants.width_section});
         }
-        const names = try surfaces.extractStdNames(a, text);
+        const names = try surfaces.extract_std_names(a, text);
         defer a.free(names);
-        const guess = if (names.len == 0) try surfaces.filenameGuess(a, stem) else names;
+        const guess = if (names.len == 0) try surfaces.filename_guess(a, stem) else names;
         defer if (names.len == 0) a.free(guess);
-        break :blk try blocks_surface.buildWidthBlock(a, guess, sources);
+        break :blk try blocks_surface.build_width_block(a, guess, sources);
     };
     defer a.free(width);
     const markers = [_][]const u8{

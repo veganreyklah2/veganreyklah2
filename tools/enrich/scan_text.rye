@@ -2,7 +2,7 @@
 
 const std = @import("std");
 
-pub fn stripFencedCode(text: []const u8, a: std.mem.Allocator) ![]const u8 {
+pub fn strip_fenced_code(text: []const u8, a: std.mem.Allocator) ![]const u8 {
     var out = std.ArrayListUnmanaged(u8).empty;
     errdefer out.deinit(a);
     var i: usize = 0;
@@ -18,7 +18,7 @@ pub fn stripFencedCode(text: []const u8, a: std.mem.Allocator) ![]const u8 {
     return try out.toOwnedSlice(a);
 }
 
-pub fn findStdRefNames(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
+pub fn find_std_ref_names(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
     var i: usize = 0;
     while (i < text.len) {
         if (!std.mem.startsWith(u8, text[i..], "**`std.")) {
@@ -40,7 +40,7 @@ pub fn findStdRefNames(text: []const u8, a: std.mem.Allocator, names: *std.Array
     }
 }
 
-pub fn findBacktickStdNames(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
+pub fn find_backtick_std_names(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
     var i: usize = 0;
     while (i < text.len) {
         if (!std.mem.startsWith(u8, text[i..], "`std.")) {
@@ -62,7 +62,7 @@ pub fn findBacktickStdNames(text: []const u8, a: std.mem.Allocator, names: *std.
     }
 }
 
-pub fn findBacktickFns(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
+pub fn find_backtick_fns(text: []const u8, a: std.mem.Allocator, names: *std.ArrayListUnmanaged([]const u8)) !void {
     var i: usize = 0;
     while (i < text.len) {
         if (text[i] != '`') {
@@ -90,11 +90,11 @@ pub fn findBacktickFns(text: []const u8, a: std.mem.Allocator, names: *std.Array
     }
 }
 
-pub fn sectionHasPendingOrFail(section: []const u8, needle: []const u8) bool {
+pub fn section_has_pending_or_fail(section: []const u8, needle: []const u8) bool {
     return std.mem.indexOf(u8, section, needle) != null;
 }
 
-pub fn passNumFromName(name: []const u8) []const u8 {
+pub fn pass_num_from_name(name: []const u8) []const u8 {
     const us = std.mem.indexOfScalar(u8, name, '_') orelse return "?";
     return name[0..us];
 }

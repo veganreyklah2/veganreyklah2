@@ -4,7 +4,7 @@ const std = @import("std");
 
 pub const max_walk_depth: u32 = 32;
 
-pub fn resolveRoot(a: std.mem.Allocator, io: std.Io, init: std.process.Init) ![]const u8 {
+pub fn resolve_root(a: std.mem.Allocator, io: std.Io, init: std.process.Init) ![]const u8 {
     if (init.environ_map.get("VEGANREYKLAH2_ROOT")) |p| return try a.dupe(u8, p);
     var buf: [std.fs.max_path_bytes]u8 = undefined;
     const len = try std.Io.Dir.readLinkAbsolute(io, "/proc/self/cwd", &buf);

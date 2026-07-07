@@ -277,7 +277,7 @@ test "rewrite_readme_link is idempotent" {
 pub fn main(init: std.process.Init) !u8 {
     const a = init.arena.allocator();
     const io = init.io;
-    const root = try root_mod.resolveRoot(a, io, init);
+    const root = try root_mod.resolve_root(a, io, init);
     defer a.free(root);
 
     const args = init.minimal.args.toSlice(a) catch return error.OutOfMemory;

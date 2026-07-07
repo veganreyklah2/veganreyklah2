@@ -11,7 +11,7 @@
 #
 # Two runs matter here, not one: the first proves enrichment adds the surface
 # and width sections a properly backtick-wrapped std reference earns; the
-# second proves enrichFile's own idempotency check — a doc that already
+# second proves enrich_file's own idempotency check — a doc that already
 # carries both sections is left alone, reported as zero files enriched.
 #
 # Run from the repository root:
@@ -51,7 +51,7 @@ assert lexicon_out.out contains "9001_fixture_pass" else "lexicon output is miss
 
 let second = run ["sh" "-c" "VEGANREYKLAH2_ROOT=$(pwd)/${work} tools/bin/enrich-strengthening-docs 2>&1"]
 assert second.ok else "enrich_strengthening_docs second run failed"
-assert second.out contains "enriched 0 files" else "second run was not idempotent — enrichFile re-enriched an already-enriched doc"
+assert second.out contains "enriched 0 files" else "second run was not idempotent — enrich_file re-enriched an already-enriched doc"
 
 let real_after = run ["sh" "-c" "md5sum strengthening-compiler/0000_STRENGTHENING_LEXICON.md | cut -d' ' -f1"]
 assert real_after.ok else "could not checksum the real lexicon file after the run"

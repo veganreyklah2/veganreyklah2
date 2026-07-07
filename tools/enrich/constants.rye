@@ -11,22 +11,22 @@ pub const width_audit_section = "## Width audit";
 pub const audited_surfaces_section = "## Audited surfaces";
 pub const lexicon_stamp = "20260621.043312";
 
-pub fn shouldSkip(name: []const u8) bool {
+pub fn should_skip(name: []const u8) bool {
     return std.mem.eql(u8, name, skip_9999) or std.mem.eql(u8, name, skip_lexicon);
 }
 
-pub fn authoredModule(name: []const u8) ?struct { mod: []const u8, witness: []const u8 } {
+pub fn authored_module(name: []const u8) ?struct { mod: []const u8, witness: []const u8 } {
     if (std.mem.eql(u8, name, "9989_tally_gardens.md")) return .{ .mod = "tally/gardens.rye", .witness = "tally_gardens_test" };
     if (std.mem.eql(u8, name, "9990_mantra_seed.md")) return .{ .mod = "mantra/src/main.rye", .witness = "mantra_weave_test" };
     return null;
 }
 
-pub fn metaPass(name: []const u8) ?struct { path: []const u8, label: []const u8 } {
+pub fn meta_pass(name: []const u8) ?struct { path: []const u8, label: []const u8 } {
     if (std.mem.eql(u8, name, "9995_crypto_foundation.md")) return .{ .path = "meta/foundation", .label = "crypto foundation map" };
     return null;
 }
 
-pub fn witnessAlias(name: []const u8) ?[]const u8 {
+pub fn witness_alias(name: []const u8) ?[]const u8 {
     if (std.mem.eql(u8, name, "9982_alloc_print_trimend_strengthen.md")) return "alloc_print_test";
     if (std.mem.eql(u8, name, "9987_allocator_alloc_skate_grid.md")) return "allocator_alloc_test";
     if (std.mem.eql(u8, name, "9988_alloc_print_trimend.md")) return "alloc_print_test";
@@ -38,7 +38,7 @@ pub fn witnessAlias(name: []const u8) ?[]const u8 {
 
 pub const cover_fn_skip = [_][]const u8{ "std", "u32", "u64", "usize", "comptime", "assert", "maybe", "isize" };
 
-pub fn coverFnSkipped(name: []const u8) bool {
+pub fn cover_fn_skipped(name: []const u8) bool {
     for (cover_fn_skip) |s| {
         if (std.mem.eql(u8, s, name)) return true;
     }
