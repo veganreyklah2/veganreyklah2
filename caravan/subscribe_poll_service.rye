@@ -4,21 +4,24 @@
 //! from `supervisor_exit.rye`: **cycle_ok** (0) spawns again; **stop_requested** (8)
 //! halts; any other non-zero is a fall and restarts. A long-lived source child
 //! answers catch-up requests; each fetcher-poll worker runs one wire cycle and
-//! checks the stop sentinel at the boundary.
+//! checks the stop sentinel at the boundary. SIGTERM/SIGINT flip an atomic flag;
+//! the loop top creates the same sentinel the witness hook and a manual `touch` use.
 //!
 //!   rye build caravan/subscribe_poll_service.rye -lc -femit-bin=caravan/bin/subscribe-poll-service
-//!   caravan/bin/subscribe-poll-service <delivery> <sentinel-path> [witness-stop-after-N]
+//!   caravan/bin/subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N]
 //!
 //! Counsel: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
 //! · [`external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md`](../external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md)
+//! · [`external-research/20260707-021012_claude-counsel-ring4-signal-handler.md`](../external-research/20260707-021012_claude-counsel-ring4-signal-handler.md)
 
 const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const c = std.c;
 const se = @import("supervisor_exit.rye");
+const ss = @import("supervisor_signal.rye");
 
-const caravan_subscribe_poll_service_version = "20260707.015512";
+const caravan_subscribe_poll_service_version = "20260707.021012";
 
 const max_fall_restarts: u32 = 5;
 const source_ready_ns: u64 = 50_000_000;
@@ -41,6 +44,11 @@ pub fn main(init: std.process.Init) !u8 {
     return runSupervisor(garden, io, args[1], args[2], witness_stop_after);
 }
 
+fn createStopSentinel(io: std.Io, sentinel_path: []const u8) !void {
+    const f = try std.Io.Dir.cwd().createFile(io, sentinel_path, .{});
+    f.close(io);
+}
+
 fn runSupervisor(
     allocator: std.mem.Allocator,
     io: std.Io,
@@ -48,6 +56,8 @@ fn runSupervisor(
     sentinel_path: []const u8,
     witness_stop_after: ?u32,
 ) !u8 {
+    ss.installHandlers();
+
     print("caravan poll-service: supervisor alive. delivery {s} sentinel {s}\n", .{
         delivery_path, sentinel_path,
     });
@@ -66,11 +76,12 @@ fn runSupervisor(
     var fall_restarts: u32 = 0;
 
     while (true) {
+        var should_create_sentinel = ss.stopRequested();
         if (witness_stop_after) |n| {
-            if (ordinary_seen == n) {
-                const f = try std.Io.Dir.cwd().createFile(io, sentinel_path, .{});
-                f.close(io);
-            }
+            if (ordinary_seen == n) should_create_sentinel = true;
+        }
+        if (should_create_sentinel) {
+            try createStopSentinel(io, sentinel_path);
         }
 
         const fetcher_argv = try allocator.alloc([]const u8, 3);
@@ -115,6 +126,8 @@ fn runSupervisor(
     if (witness_stop_after) |n| assert(ordinary_seen == n);
 
     print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
-    print("caravan poll-service: version {s}\n", .{caravan_subscribe_poll_service_version});
+    print("caravan poll-service: version {s} signal {s}\n", .{
+        caravan_subscribe_poll_service_version, ss.supervisor_signal_version,
+    });
     return 0;
 }

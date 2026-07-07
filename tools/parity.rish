@@ -72,6 +72,11 @@ let caravan_pollsvc = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll
 assert caravan_pollsvc.ok else "Caravan subscribe poll service witness failed"
 say "GREEN: Caravan subscribe poll service witness passed."
 
+say "witness suite: Caravan subscribe poll SIGTERM (ring 4)…"
+let caravan_pollsig = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll_signal.rish"]
+assert caravan_pollsig.ok else "Caravan subscribe poll SIGTERM witness failed"
+say "GREEN: Caravan subscribe poll SIGTERM witness passed."
+
 say "witness suite: Mantra subscribe poll stop sentinel (graceful boundary)…"
 let mantra_pollstop = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll_stop.rish"]
 assert mantra_pollstop.ok else "Mantra subscribe poll stop sentinel witness failed"
