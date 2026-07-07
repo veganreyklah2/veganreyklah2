@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.223200 | [Evening counsel arc summary](20260707-223200_evening-counsel-arc-summary.md) | Commits, counsel, Open Questions, SLC-L3 standing |
 | 20260707.223115 | [Settlement/Bron commit and push](20260707-223115_settlement-bron-commit-push.md) | `4f7213d` to four remotes |
 | 20260707.223100 | [Open Questions batch two kg](20260707-223100_open-questions-batch-two-kg.md) | Counsel `223100`; Silo/Brix, Linengrow home, TASKS naming |
 | 20260707.222500 | [Open Questions kg — settlement + Bron](20260707-222500_open-questions-settlement-bron-kg.md) | Seat refresh; SLC-L3 witness proposal; Bron first proposal |
