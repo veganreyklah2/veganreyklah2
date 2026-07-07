@@ -51,4 +51,10 @@ Import's first act after batches apply: parse `catalog/HEAD`, recompute HEAD dig
 
 ## Horizon (not lap 2)
 
-`weave/` and `brix/` bundle slices, Pond customs, live-instance continuity refusal, thin-edge boot replay — per counsel I3–I4.
+Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md):
+
+- **`weave/` bundle** — held pending Kaeden word: sovereign-snapshot "Weave slice" may already mean the `catalog/` export (every leaf, every revision, HEAD record); `mantra/src/weave.rye` is diff-tool line history, not namespace history
+- **`brix/` bundle** — held; no closure code exists; Brix earns its own first lap
+- **Pond customs** — held; no policy concept in `pond/` yet
+- **Live-instance continuity refusal** — Kaeden gate (I7); lap 2 only checks epoch ≠ 0 and identity matches signer
+- **Thin-edge boot replay** — per counsel I3–I4 horizon

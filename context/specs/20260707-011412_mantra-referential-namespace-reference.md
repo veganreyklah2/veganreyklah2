@@ -157,7 +157,7 @@ Every claim above is held by a witness the parity suite runs; counts are pinned 
 
 ## §12 Open Items (Non-Normative)
 
-Graceful stop complete through parity **179**; **snapshot export** lap 1 (parity **180**) reuses §9 batch grammar; lap 2 (parity **182**) adds bundle prefixes, SHA3-512 head record, and continuity fact sketch; **poll interval** (parity **181**) names a fixed nanosecond sleep between cycles. Weave/Brix snapshot slices and Pond customs remain open.
+Graceful stop complete through parity **179**; **snapshot export** through lap 2 (parity **180**→**182**); **poll interval** (parity **181**). Weave/Brix bundle slices and Pond customs **held** per counsel `20260707.025212`. Continuity custody gate (live-instance + per-host epoch) remains Kaeden's only.
 
 ---
 

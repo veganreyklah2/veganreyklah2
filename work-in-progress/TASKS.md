@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (snapshot horizon lap 2 · parity **182**)
+**Last updated:** 2026-07-07 (counsel `025212` — weave/Brix/Pond held)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -51,7 +51,13 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word):** MALA graduation **on hold** (counsel `023512`) · weave/Brix snapshot slices · Pond customs.
+**Next climb (Kaeden's word):** **Weave slice** — one sentence: does it already mean what I2 exports (`BoltCatalog` accretion at HEAD), or a literal signed-fact DAG rebuild? (counsel `025212`) · MALA graduation **on hold** (`023512`) · continuity custody gate **unchanged** (live-instance + epoch rules — Kaeden only).
+
+**Held per counsel `025212` (not rejected — no code until each module has ground):**
+
+- [ ] **Weave slice in snapshot** — `mantra/src/weave.rye` is diff-tool line history only; namespace Weave metaphor may already be satisfied by I2 `catalog/` export; Kaeden confirms or opens a sitting
+- [ ] **Brix closure in snapshot** — no Brix code in tree; first lap is Brix's own, not an exporter side-effect
+- [ ] **Pond customs on import** — no Pond policy concept yet; first policy lap is Pond's own
 
 - [x] **Snapshot horizon bundles lap 2** — `catalog/` + `trust/` prefixes; SHA3-512 head record; continuity fact sketch; `tools/mantra_snapshot_horizon.rish`; spec [`context/specs/20260707-024712_snapshot-export-lap2.md`](../context/specs/20260707-024712_snapshot-export-lap2.md); parity **182**
 
