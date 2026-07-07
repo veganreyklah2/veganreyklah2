@@ -35,6 +35,7 @@
 //! RYE_LIB environment variable when it is set.
 
 const std = @import("std");
+const assert = std.debug.assert;
 
 /// Rye's version, stamped chronologically — YYYYMMDD.HHMMSS, where later is
 /// larger. The scheme itself was the first divergence from Zig (20260617.213112):
@@ -71,8 +72,8 @@ comptime {
     // The template stays relative on purpose: resolved against the binary's
     // real location, it bakes in no absolute path and assumes nothing about
     // the current directory.
-    std.debug.assert(rye_lib_relative_to_exe.len != 0);
-    std.debug.assert(rye_lib_relative_to_exe[0] != '/');
+    assert(rye_lib_relative_to_exe.len != 0);
+    assert(rye_lib_relative_to_exe[0] != '/');
 }
 
 pub fn main(init: std.process.Init) !u8 {
@@ -81,29 +82,29 @@ pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const args = try init.minimal.args.toSlice(garden);
     if (args.len < 2) {
-        printUsage();
+        print_usage();
         return 0;
     }
 
     const command = args[1];
     if (std.mem.eql(u8, command, "version")) {
-        printVersion();
+        print_version();
         return 0;
     } else if (std.mem.eql(u8, command, "run")) {
-        return bridgeToZig(init, args, "run", "run");
+        return bridge_to_zig(init, args, "run", "run");
     } else if (std.mem.eql(u8, command, "build")) {
-        return bridgeToZig(init, args, "build-exe", "build");
+        return bridge_to_zig(init, args, "build-exe", "build");
     } else if (std.mem.eql(u8, command, "help") or std.mem.eql(u8, command, "--help")) {
-        printUsage();
+        print_usage();
         return 0;
     } else {
         std.debug.print("rye: unknown command '{s}'\n\n", .{command});
-        printUsage();
+        print_usage();
         return 2;
     }
 }
 
-fn printUsage() void {
+fn print_usage() void {
     std.debug.print(
         \\rye {s} — a Zig {s} derivative
         \\
@@ -115,7 +116,7 @@ fn printUsage() void {
     , .{ rye_version, zig_backend_version });
 }
 
-fn printVersion() void {
+fn print_version() void {
     std.debug.print(
         \\rye {s}  (chronological: YYYYMMDD.HHMMSS, later is larger)
         \\backend: zig {s}  (Rye clock: {s}; live value via builtin.zig_version)
@@ -128,7 +129,7 @@ fn printVersion() void {
 /// the bridge away. `run` and `build` share this one path; only the toolchain
 /// verb and the spoken label differ. Flags after the file pass straight through,
 /// so a caller can aim a build at any target the toolchain supports.
-fn bridgeToZig(
+fn bridge_to_zig(
     init: std.process.Init,
     args: []const [:0]const u8,
     zig_subcommand: []const u8,
@@ -164,7 +165,7 @@ fn bridgeToZig(
     defer {
         for (staged_rye.items) |p| garden.free(p);
     }
-    const bridge_path = try bridgeRyeTree(io, dir, rye_path, true, &staged_rye, &bridge_zigs, garden, label);
+    const bridge_path = try bridge_rye_tree(io, dir, rye_path, true, &staged_rye, &bridge_zigs, garden, label);
 
     // Resolve the toolchain explicitly: an absolute RYE_ZIG, else `zig` on PATH.
     const zig = init.environ_map.get("RYE_ZIG") orelse "zig";
@@ -172,7 +173,7 @@ fn bridgeToZig(
     // Resolve Rye's own standard library, so `@import("std")` means *our* std.
     // Rye insists on its own std and never falls back to the toolchain's
     // silently: a build that succeeds is a build that used our standard library.
-    const rye_lib = resolveRyeLib(init, garden) catch |err| {
+    const rye_lib = resolve_rye_lib(init, garden) catch |err| {
         std.debug.print(
             "rye {s}: could not locate Rye's standard library ({s}). It should sit beside this binary at '{s}', or set RYE_LIB to point at rye/lib.\n",
             .{ label, @errorName(err), rye_lib_relative_to_exe },
@@ -223,7 +224,7 @@ fn bridgeToZig(
 /// that, we read this executable's own path and apply the relative template
 /// beside it — `<exe_dir>/../lib`, the layout the `rye` tree ships in. We
 /// return an error rather than a fallback, so the caller can insist on our std.
-fn resolveRyeLib(init: std.process.Init, garden: std.mem.Allocator) ![]const u8 {
+fn resolve_rye_lib(init: std.process.Init, garden: std.mem.Allocator) ![]const u8 {
     // An explicit RYE_LIB wins, for clarity and for hosts without `/proc`.
     if (init.environ_map.get("RYE_LIB")) |path| return path;
 
@@ -239,14 +240,14 @@ fn resolveRyeLib(init: std.process.Init, garden: std.mem.Allocator) ![]const u8 
 
 /// Ephemeral bridge path for a `.rye` source. The root file keeps the historical
 /// `{path}.rye.zig` shape; local imports bridge to `{basename}.zig` beside the source.
-fn bridgeZigPath(rye_path: []const u8, is_root: bool, garden: std.mem.Allocator) ![]const u8 {
+fn bridge_zig_path(rye_path: []const u8, is_root: bool, garden: std.mem.Allocator) ![]const u8 {
     if (is_root) return std.fmt.allocPrint(garden, "{s}.zig", .{rye_path});
     if (!std.mem.endsWith(u8, rye_path, ".rye")) return error.NotRyeFile;
     return std.fmt.allocPrint(garden, "{s}.zig", .{rye_path[0 .. rye_path.len - ".rye".len]});
 }
 
 /// Rewrite local `.rye` import paths to `.zig` for the toolchain bridge.
-fn rewriteRyeImports(source: []const u8, garden: std.mem.Allocator) ![]u8 {
+fn rewrite_rye_imports(source: []const u8, garden: std.mem.Allocator) ![]u8 {
     var out = std.ArrayListUnmanaged(u8).empty;
     errdefer out.deinit(garden);
 
@@ -277,7 +278,7 @@ fn rewriteRyeImports(source: []const u8, garden: std.mem.Allocator) ![]u8 {
     return try out.toOwnedSlice(garden);
 }
 
-fn bridgeAlreadyStaged(staged_rye: *const std.ArrayListUnmanaged([]const u8), rye_path: []const u8) bool {
+fn bridge_already_staged(staged_rye: *const std.ArrayListUnmanaged([]const u8), rye_path: []const u8) bool {
     for (staged_rye.items) |path| {
         if (std.mem.eql(u8, path, rye_path)) return true;
     }
@@ -285,7 +286,7 @@ fn bridgeAlreadyStaged(staged_rye: *const std.ArrayListUnmanaged([]const u8), ry
 }
 
 /// Bridge `rye_path` and every local `.rye` module it imports, recursively.
-fn bridgeRyeTree(
+fn bridge_rye_tree(
     io: std.Io,
     dir: std.Io.Dir,
     rye_path: []const u8,
@@ -295,8 +296,8 @@ fn bridgeRyeTree(
     garden: std.mem.Allocator,
     label: []const u8,
 ) ![]const u8 {
-    if (bridgeAlreadyStaged(staged_rye, rye_path)) {
-        return bridgeZigPath(rye_path, is_root, garden);
+    if (bridge_already_staged(staged_rye, rye_path)) {
+        return bridge_zig_path(rye_path, is_root, garden);
     }
 
     const source = dir.readFileAlloc(io, rye_path, garden, .unlimited) catch |err| {
@@ -334,11 +335,11 @@ fn bridgeRyeTree(
     }
 
     for (import_paths.items) |dep_rye| {
-        _ = try bridgeRyeTree(io, dir, dep_rye, false, staged_rye, bridge_zigs, garden, label);
+        _ = try bridge_rye_tree(io, dir, dep_rye, false, staged_rye, bridge_zigs, garden, label);
     }
 
-    const bridged_source = try rewriteRyeImports(source, garden);
-    const zig_path = try bridgeZigPath(rye_path, is_root, garden);
+    const bridged_source = try rewrite_rye_imports(source, garden);
+    const zig_path = try bridge_zig_path(rye_path, is_root, garden);
     dir.writeFile(io, .{ .sub_path = zig_path, .data = bridged_source }) catch |err| {
         std.debug.print("rye {s}: could not stage '{s}': {s}\n", .{ label, zig_path, @errorName(err) });
         return err;

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.175312 | [Claude counsel applied — rye/src scan](20260707-175312_claude-counsel-tooling-scope-applied.md) | Counsel filed; rye/src 8 fns; ratchet 0 without asterisk |
 | 20260707.175100 | [Commit mantra + rishi ratchet clear](20260707-175100_commit-mantra-rishi-ratchet-clear.md) | `288daa8` on four remotes; tame advisory 0 |
 | 20260707.175000 | [Rishi snake_case — ratchet clear](20260707-175000_rishi-snake-case-ratchet-clear.md) | camelCase 58→0 in scan dirs; SLC-1 + RW witnesses GREEN |
 | 20260707.174713 | [Commit brushstroke bundle + mantra/src kg](20260707-174713_commit-brushstroke-mantra-src-kg.md) | `32e7244` on four remotes; camelCase 86→58 |

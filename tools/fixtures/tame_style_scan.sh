@@ -18,11 +18,13 @@
 #   camelCase fn declarations   snake_case is the seated law; elder names migrate on touch.
 #   functions past 70 lines     split at the natural seam when next touched.
 #
-# Usage: sh tools/fixtures/tame_style_scan.sh [bans|advise]
+# Scan roster: mantra caravan linengrow comlink rishi/src tally aurora pond brushstroke rye/src.
+# tools/ is its own counted season (counsel 20260707.175312). Intentional-violation fixtures
+# (e.g. tools/fixtures/width_check_authored_usize.rye) stay exempt — see context/TAME_GUIDANCE.md.
 
 set -u
 MODE="${1:-bans}"
-FILES=$(find mantra caravan linengrow comlink rishi/src tally aurora pond brushstroke \
+FILES=$(find mantra caravan linengrow comlink rishi/src tally aurora pond brushstroke rye/src \
     -name "*.rye" ! -type l 2>/dev/null)
 
 if [ "$MODE" = "bans" ]; then
