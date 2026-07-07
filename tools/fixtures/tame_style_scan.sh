@@ -64,13 +64,14 @@ if [ "$MODE" = "advise" ]; then
         fi
         case "$f" in
             comlink/guest_*|aurora/src/*|brushstroke/font8x8_data.rye|\
-            caravan/supervisor_signal.rye|caravan/supervisor_exit.rye|pond/apps/window_input.rye)
+            caravan/supervisor_signal.rye|caravan/supervisor_exit.rye|pond/apps/window_input.rye|\
+            tally/maybe.rye)
                 continue ;;
         esac
         zero_assert_total=$((zero_assert_total + 1))
         echo "  $f (zero assert — review on touch)"
     done
-    echo "ratchet: zero assert( files remaining = ${zero_assert_total} (honest exempt: virtio guests, aurora freestanding, signal handler, font table, thin line editor, exit constants)"
+    echo "ratchet: zero assert( files remaining = ${zero_assert_total} (honest exempt: virtio guests, aurora freestanding, signal handler, font table, thin line editor, exit constants, the dual-of-assert mark itself)"
     for f in $FILES; do
         awk -v F="$f" '
             /^( *)?(pub )?fn /{ if (infn && n > 70) printf "  %s: %s = %d lines\n", F, name, n;

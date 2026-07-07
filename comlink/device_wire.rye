@@ -16,6 +16,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const wf = @import("wire_format.rye");
 const vn = @import("virtio_net.rye");
+const no_padding = @import("tally_no_padding.rye").no_padding;
 
 /// Explicit subject — every queue depth and buffer bound stated up front.
 pub const WireSubject = struct {
@@ -78,7 +79,7 @@ fn selftest_descriptor_fixture() !void {
     };
 
     const offered: u64 = vn.feat_mac | vn.feat_version_1;
-    const accepted = vn.negotiateFeatures(offered);
+    const accepted = vn.negotiate_features(offered);
     assert(accepted == vn.feat_mac | vn.feat_version_1);
 
     const total = try validate_chain(&subject, &ring);
@@ -93,7 +94,23 @@ fn selftest_wire_format_round_trip() !void {
     if (!std.mem.eql(u8, opened[0..@intCast(msg_len)], wf.expected_message)) return error.MessageWrong;
 }
 
+/// Every hand-designed virtio structure lays out exactly as written — no
+/// compiler-inserted gap between fields, none after the last one. The virtio
+/// device on the other end of this wire reads these bytes literally; a hidden
+/// padding byte here is not a style question, it is a guest that cannot speak
+/// to its host.
+fn selftest_layout_proof() !u8 {
+    comptime assert(no_padding(vn.VirtioNetHdr));
+    comptime assert(no_padding(vn.VqDesc));
+    comptime assert(no_padding(vn.VqAvail));
+    comptime assert(no_padding(vn.VqUsedElem));
+    comptime assert(no_padding(vn.VqUsed));
+    print("comlink device wire: five virtio structures proved padding-free at compile time\n", .{});
+    return 0;
+}
+
 fn run_selftest() !u8 {
+    _ = try selftest_layout_proof();
     try selftest_descriptor_fixture();
     try selftest_wire_format_round_trip();
     print("comlink device wire: selftest GREEN — sub-lap 1 descriptor algebra and seal/open on fixture\n", .{});

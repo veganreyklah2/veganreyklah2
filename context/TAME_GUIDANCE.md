@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-07 (camelCase + zero-assert ratchets clear; `maybe` parked RTAC per counsel `20260707.183412`)
+**Last updated:** 2026-07-07 (`maybe` + `no_padding` seated; general expansion round `20260707.185612`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -402,7 +402,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 
 **Standing exempt — intentional-violation fixtures:** files built to *hold* a violation the lint must catch (e.g. `tools/fixtures/width_check_authored_usize.rye` for TH-1 width) stay as wrong as their purpose requires. Migrating them toward compliance would disable the proof they supply — same logic as elder Amber goldens. No ratchet reaches for them.
 
-At parity **191** the >70-line ledger cleared for authored `.rye` in scan dirs; camelCase **0** through `rye/src` (`20260707.175312`); zero-assert non-exempt **0** after sync-wire and snapshot-delivery contract asserts (`20260707.183412`). **`maybe`** (TigerBeetle dual of assert) parks to RTAC — natural home `tally/` beside `copy.rye` on Kaeden's word. Full machine canon and Claude brief: [`active-designing/20260707-164612_tame-tidy-rules-brief.md`](../active-designing/20260707-164612_tame-tidy-rules-brief.md) · study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md).
+At parity **195** the >70-line ledger cleared for authored `.rye` in scan dirs; camelCase **0** through `rye/src` (`20260707.175312`); zero-assert non-exempt **0** after sync-wire and snapshot-delivery contract asserts (`20260707.183412`); **`maybe`** seated in `tally/maybe.rye` with first real caller in `no_padding` (`20260707.185612`). Full machine canon and Claude brief: [`active-designing/20260707-164612_tame-tidy-rules-brief.md`](../active-designing/20260707-164612_tame-tidy-rules-brief.md) · study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md).
 
 **Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin edge today.
 

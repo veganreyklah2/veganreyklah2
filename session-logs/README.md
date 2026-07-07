@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.192100 | [Apply general expansion round](20260707-192100_apply-general-expansion-round.md) | Zip 31 applied; parity **195** GREEN; doorway Status repaired |
+| 20260707.185612 | [General expansion round](20260707-185612_general-expansion-round.md) | Claude bench: `maybe`, `no_padding`, bug found, tools safety net 2/3 |
 | 20260707.184500 | [Commit TAME ratchet hygiene push](20260707-184500_commit-tame-ratchet-hygiene-push.md) | `c283049` on four remotes |
 | 20260707.184200 | [TAME ratchet advisory hygiene](20260707-184200_tame-ratchet-advisory-hygiene.md) | @memcpy advisory split; docs refreshed; all ratchets clear |
 | 20260707.183500 | [Commit TB assert density push](20260707-183500_commit-tb-assert-density-push.md) | `a3dda7b` on four remotes |

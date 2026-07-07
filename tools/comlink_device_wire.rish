@@ -3,11 +3,26 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/comlink_device_wire.rish
 #
+# The freestanding lab below proves the guests cross a real virtio link; it
+# never builds or runs device_wire.rye's own hosted selftest, so a rename
+# that missed this file's one call site could sit unnoticed indefinitely —
+# exactly what a prior camelCase pass left behind here. The hosted check
+# below closes that gap: fast, no QEMU, and it is where the layout proof for
+# virtio_net.rye's wire structures lives.
+#
 # Wire into tools/parity.rish only after a red-then-green pass on the wiring
 # bench, and pin the resulting count from metal.
+
+let build = run ["sh" "-c" "mkdir -p comlink/bin && rye/bin/rye build comlink/device_wire.rye -lc -femit-bin=comlink/bin/device-wire"]
+assert build.ok else "comlink device wire hosted build failed"
+
+let hosted = run ["sh" "-c" "comlink/bin/device-wire selftest 2>&1"]
+assert hosted.ok else "comlink device wire hosted selftest exited non-zero"
+assert hosted.out contains "GREEN" else "comlink device wire hosted selftest not GREEN"
+assert hosted.out contains "padding-free" else "comlink device wire layout proof did not run"
 
 let lab = run ["sh" "comlink/run_device_wire_lab.sh"]
 assert lab.ok else "comlink device wire lab failed"
 assert lab.out contains "GREEN" else "comlink device wire lab not GREEN"
 
-say "GREEN: Comlink device wire witness passed (sub-lap 2 + sub-lap 3)."
+say "GREEN: Comlink device wire witness passed (hosted selftest + sub-lap 2 + sub-lap 3)."

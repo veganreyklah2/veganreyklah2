@@ -1,0 +1,13 @@
+# tally_no_padding.rish — the padding-proof law's own witness.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/tally_no_padding.rish
+
+let build = run ["sh" "-c" "mkdir -p tally/bin && rye/bin/rye build tally/no_padding.rye -femit-bin=tally/bin/no-padding"]
+assert build.ok else "tally no_padding build failed"
+
+let self = run ["sh" "-c" "tally/bin/no-padding selftest 2>&1"]
+assert self.ok else "tally no_padding selftest exited non-zero"
+assert self.out contains "GREEN" else "tally no_padding selftest not GREEN"
+
+say "GREEN: tally no_padding witness passed."

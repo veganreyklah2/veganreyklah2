@@ -7,7 +7,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety first; the lint governs when prose and scan disagree
-**Status:** Landed — agent rules updated; parity witness live
+**Status:** Checkable — landed; agent rules updated; parity witness live
 
 *Written by Rio 3 for Kaeden and Claude.*
 

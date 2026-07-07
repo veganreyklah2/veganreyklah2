@@ -127,6 +127,26 @@ let tame = run ["rishi/bin/rishi" "run" "tools/tame_style_check.rish"]
 assert tame.ok else "TAME style witness failed"
 say "GREEN: TAME style witness passed."
 
+say "witness suite: Tally maybe…"
+let tmaybe = run ["rishi/bin/rishi" "run" "tools/tally_maybe.rish"]
+assert tmaybe.ok else "tally maybe witness failed"
+say "GREEN: Tally maybe witness passed."
+
+say "witness suite: Tally no_padding…"
+let tnp = run ["rishi/bin/rishi" "run" "tools/tally_no_padding.rish"]
+assert tnp.ok else "tally no_padding witness failed"
+say "GREEN: Tally no_padding witness passed."
+
+say "witness suite: align_session_logs (fixture only)…"
+let asl = run ["rishi/bin/rishi" "run" "tools/align_session_logs.rish"]
+assert asl.ok else "align_session_logs witness failed"
+say "GREEN: align_session_logs witness passed."
+
+say "witness suite: tame_usize_audit surfaceAuditOk…"
+let tua = run ["rishi/bin/rishi" "run" "tools/tame_usize_audit.rish"]
+assert tua.ok else "tame_usize_audit witness failed"
+say "GREEN: tame_usize_audit witness passed."
+
 say "witness suite: TH-2 tame-check gate…"
 let th2 = run ["rishi/bin/rishi" "run" "tools/tame_check_th2.rish"]
 assert th2.ok else "TH-2 tame-check witness failed"

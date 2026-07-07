@@ -1,0 +1,13 @@
+# tally_maybe.rish — the dual-of-assert law's own witness.
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/tally_maybe.rish
+
+let build = run ["sh" "-c" "mkdir -p tally/bin && rye/bin/rye build tally/maybe.rye -femit-bin=tally/bin/maybe"]
+assert build.ok else "tally maybe build failed"
+
+let self = run ["sh" "-c" "tally/bin/maybe selftest 2>&1"]
+assert self.ok else "tally maybe selftest exited non-zero"
+assert self.out contains "GREEN" else "tally maybe selftest not GREEN"
+
+say "GREEN: tally maybe witness passed."
