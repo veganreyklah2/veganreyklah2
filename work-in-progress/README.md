@@ -1,16 +1,16 @@
 # The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-07-02 (granularity pass `20260702.194512`; SLC-L1 scope `20260702.195426`)
+**Last updated:** 2026-07-07 (open questions batch two `223100`; TASKS = workbench alias)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Status:** Foundation
 
 ---
 
-## What This Folder Is
+This is the **workbench** — the live edges of the work. Where the external-research stack studies the world and the active-designing stack decides our design, this folder holds the threads still in motion. The questions waiting on a decision. The tasks chosen and not yet done, or offered and not yet taken. The housekeeping left ajar. We keep them here, in writing, so nothing slips between sessions, and so anyone returning to the work — a future us, or an agent picking it back up — can see at a glance exactly where we stand and what comes next.
 
-This is the workbench. Where the external-research stack studies the world and the active-designing stack decides our design, this folder holds the *live edges* of the work — the threads still in motion. The questions waiting on a decision. The tasks chosen and not yet done, or offered and not yet taken. The housekeeping left ajar. We keep them here, in writing, so nothing slips between sessions, and so anyone returning to the work — a future us, or an agent picking it back up — can see at a glance exactly where we stand and what comes next.
+The granular task list lives in [`TASKS.md`](TASKS.md) (filename stays stable; **workbench** is the warmer conversational name for the same file).
 
 It is a kindness to our future selves: memory for the *work*, the way Mantra is memory for the *code*.
 

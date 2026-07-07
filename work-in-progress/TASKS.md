@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (counsel `220912` applied — settlement refresh + Bron proposal `222500`)
+**Last updated:** 2026-07-07 (open questions batch two `20260707.223100`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -63,13 +63,14 @@
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | Open Questions backlog | Bench-ready | Bron proposal, settlement refresh, graduation checks — no hands at a machine |
+| **1** | Open Questions backlog | **Largely cleared** | Batch two counsel `223100`; two-backend seam and Kumara still open |
 | **2** | **SLC-L3 settlement prep** | Ruling-gated | Front of Linengrow queue; refresh three-lights survey + two-lane witness proposal |
 | — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
 | — | Astrology lane | Source material | Unchanged per `214012` |
 
 - [x] **Settlement-seat refresh** — refresh + two-lane witness proposal [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md); apply prompt [`expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md); seat holds; gate Kaeden's word
 - [x] **Bron beside Brix — first proposal** — counsel [`222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron = values at seams; Brix = composable wholes; graduation deferred
+- [x] **Open Questions batch two** — Brix/Silo, Linengrow home, TASKS naming — counsel [`223100`](../counsel/20260707-223100_claude-counsel-open-questions-batch-two.md)
 - [x] **ROADMAP Linengrow table hygiene** — OA-L4 and OA-L5 landed rows added; parity **196** (`220912`)
 
 *(Prior next-bench counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md): `.sh` migration complete; OA wire verified not an open gap.)*
@@ -418,10 +419,10 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Research essays (authored, living)** — [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md); [`external-research/20260630-030312_after-victor-immediate-contact.md`](../external-research/20260630-030312_after-victor-immediate-contact.md); [`external-research/20260630-030312_the-hot-loop-as-the-forge.md`](../external-research/20260630-030312_the-hot-loop-as-the-forge.md).
 - **Lotus** — DAW direction adopted in `active-designing/20260630-014012_lotus-the-daw.md`; REAPER docs and AP Mastering design in `gratitude/`; bench waits for SLC-2a.
 - **Kernel-direction brief held** — `expanding-prompts/20260628-120912_kernel-direction-brix-and-foundations.md` stays one level deep pending the kernel-direction memo (live Now task).
-- **Linengrow's home** — does Linengrow stay a folder in this repo, or graduate to its own repo (`xwb122m/linengrow-*`) once its first lap runs?
+- **Brix and Silo** — **answered** `223100`: **Silo module retired** (`20260620`); config = **Brix bonds** (infuse pattern); store = **Tablecloth**; lowercase **silo** = reading technique / astrology lane only. *(Kaeden affirms.)*
+- **Linengrow's home** — **proposal** `223100`: stay in this repo until **SLC-L3 witnessed** + deployable civic whole + Kaeden's word on `xwb122m/linengrow-*`. *(Open ruling.)*
+- **TASKS naming** — **proposal** `223100`: **keep `TASKS.md`**; **workbench** as conversational alias in [`work-in-progress/README.md`](README.md) only — no rename. *(Kaeden affirms.)*
 - **SLC-L1 and Sui** — **affirmed in scope note** [`20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md): first lap uses pure foundations (keypair + log + projection); no Sui; settlement deferred to SLC-L3.
-- **Brix and Silo** — `infuse.nix` once seeded a "Silo" configuration language; Brix is now the composer. Is Silo retired into Brix, or a distinct config layer? Worth one clear line.
-- **TASKS naming** — keep `TASKS.md`, or rename to the warmer `WORKBENCH.md`?
 - **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
 - **Birth-chart craft** — siloed library complete through studies **#57**, Brooke shelf dissociated, zip **47** at `e8d1919` (`20260705`); fidelity soften on title-drawn studies **#24–#36**; forward path: transcript-true revisions as transcripts arrive
 
