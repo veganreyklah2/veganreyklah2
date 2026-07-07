@@ -65,7 +65,7 @@ export fn kmain() callconv(.c) noreturn {
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+    const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.writeStr("oal3l2 device wire: FAIL — release payload decode\n");
         vn.finishFail();
     };
@@ -74,7 +74,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.writeStr("oal3l2 device wire: FAIL — release verify\n");
         vn.finishFail();
     };
-    const kind = oa.classifyFact(fact) catch {
+    const kind = oa.classify_fact(fact) catch {
         vn.writeStr("oal3l2 device wire: FAIL — release classify\n");
         vn.finishFail();
     };

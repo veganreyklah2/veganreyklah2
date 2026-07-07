@@ -60,7 +60,7 @@ export fn kmain() callconv(.c) noreturn {
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+    const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.writeStr("oal2 device wire: FAIL — application payload decode\n");
         vn.finishFail();
     };
@@ -69,7 +69,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.writeStr("oal2 device wire: FAIL — application verify\n");
         vn.finishFail();
     };
-    const kind = oa.classifyFact(fact) catch {
+    const kind = oa.classify_fact(fact) catch {
         vn.writeStr("oal2 device wire: FAIL — application classify\n");
         vn.finishFail();
     };
@@ -78,7 +78,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
     var fields: oa.ApplicationFields = undefined;
-    oa.parseApplicationFields(fact, &fields) catch {
+    oa.parse_application_fields(fact, &fields) catch {
         vn.writeStr("oal2 device wire: FAIL — application parse\n");
         vn.finishFail();
     };
@@ -96,7 +96,7 @@ export fn kmain() callconv(.c) noreturn {
     append_signed(req_sig, oa.witness_canonical_request, &log, &log_len);
     append_signed(app_sig, fact, &log, &log_len);
 
-    const state = oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk) catch {
+    const state = oa.fold_applied_log(log[0..log_len], poster_pk, applicant_pk) catch {
         vn.writeStr("oal2 device wire: FAIL — fold applied\n");
         vn.finishFail();
     };

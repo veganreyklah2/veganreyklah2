@@ -108,14 +108,14 @@ fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
     assert(fixture_read.len <= oa.max_oa_fact);
 
     var req_fields: oa.RequestFields = undefined;
-    try oa.parseRequestFields(fixture_read, &req_fields);
+    try oa.parse_request_fields(fixture_read, &req_fields);
 
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const canonical_len = try oa.writeCanonicalRequest(req_fields, &canonical);
+    const canonical_len = try oa.write_canonical_request(req_fields, &canonical);
     const sig = poster_kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
-    oa.requestRefHex(canonical[0..canonical_len], &ref_hex);
+    oa.request_ref_hex(canonical[0..canonical_len], &ref_hex);
 
     var stipend_buf: [16]u8 = undefined;
     if (req_fields.stipend.len > stipend_buf.len) return error.Overflow;
@@ -133,46 +133,46 @@ fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
 
 fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const decoded = try oa.decodeCompactPayload(payload, &sig_buf, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .request) return error.InvalidFact;
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
-    oa.requestRefHex(fact, &ref_hex);
+    oa.request_ref_hex(fact, &ref_hex);
     return .{ .fact_len = decoded.fact_len, .ref_hex = ref_hex };
 }
 
 fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
-    const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .application) return error.InvalidFact;
     var fields: oa.ApplicationFields = undefined;
-    try oa.parseApplicationFields(fact, &fields);
+    try oa.parse_application_fields(fact, &fields);
     if (!std.mem.eql(u8, fields.request_ref, expected_ref)) return error.FoldFailed;
     return decoded.fact_len;
 }
 
 fn verify_acceptance_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_applicant: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
-    const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .acceptance) return error.InvalidFact;
     var fields: oa.AcceptanceFields = undefined;
-    try oa.parseAcceptanceFields(fact, &fields);
+    try oa.parse_acceptance_fields(fact, &fields);
     if (!std.mem.eql(u8, fields.request_ref, expected_ref)) return error.FoldFailed;
     if (!std.mem.eql(u8, fields.applicant, expected_applicant)) return error.FoldFailed;
     return decoded.fact_len;
 }
 
 fn verify_completion_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_applicant: []const u8, expected_stipend: i64, sig_out: []u8, fact_out: []u8) !u32 {
-    const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .completion) return error.InvalidFact;
     var fields: rc.FactFields = undefined;
     try rc.parseFactFields(fact, &fields);
@@ -186,13 +186,13 @@ fn verify_completion_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, 
 }
 
 fn verify_consent_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_consent: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
-    const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .consent) return error.InvalidFact;
     var fields: oa.ConsentFields = undefined;
-    try oa.parseConsentFields(fact, &fields);
+    try oa.parse_consent_fields(fact, &fields);
     if (!std.mem.eql(u8, fields.request_ref, expected_ref)) return error.FoldFailed;
     if (!std.mem.eql(u8, fields.consent, expected_consent)) return error.FoldFailed;
     return decoded.fact_len;
@@ -217,7 +217,7 @@ fn build_signed_acceptance(
         .stamp = "20260706.003100",
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const len = try oa.writeCanonicalAcceptance(acc_fields, &canonical);
+    const len = try oa.write_canonical_acceptance(acc_fields, &canonical);
     const sig = poster_kp.sign(canonical[0..len], null) catch unreachable;
     return .{ .sig = sig, .canonical = canonical, .canonical_len = len };
 }
@@ -256,7 +256,7 @@ fn build_signed_consent(
         .stamp = "20260706.003300",
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const len = try oa.writeCanonicalConsent(consent_fields, &canonical);
+    const len = try oa.write_canonical_consent(consent_fields, &canonical);
     const sig = applicant_kp.sign(canonical[0..len], null) catch unreachable;
     return .{ .sig = sig, .canonical = canonical, .canonical_len = len };
 }
@@ -301,7 +301,7 @@ fn selftest_oa5_verify_request_wire(
     const signed_req = try load_signed_request(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const req_payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
+    const req_payload_len = try oa.encode_compact_payload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
     const req_opened_len = try seal_and_open(req_payload[0..req_payload_len], opened);
     var req_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const verified_req = try verify_request_payload(opened[0..@intCast(req_opened_len)], poster_pk, &req_fact_buf);
@@ -340,10 +340,10 @@ fn selftest_oa5_verify_application_wire(
         .stamp = "20260706.003000",
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
-    const app_len = try oa.writeCanonicalApplication(app_fields, &canonical_app);
+    const app_len = try oa.write_canonical_application(app_fields, &canonical_app);
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
     var app_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const app_payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &app_payload);
+    const app_payload_len = try oa.encode_compact_payload(app_sig, canonical_app[0..app_len], &app_payload);
     const app_opened_len = try seal_and_open(app_payload[0..app_payload_len], opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
@@ -377,7 +377,7 @@ fn selftest_oa5_verify_acc_pay_consent_wire(
 
     const signed_acc = try build_signed_acceptance(poster_kp, req.poster_hex[0..64], req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len]);
     var acc_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const acc_payload_len = try oa.encodeCompactPayload(signed_acc.sig, signed_acc.canonical[0..signed_acc.canonical_len], &acc_payload);
+    const acc_payload_len = try oa.encode_compact_payload(signed_acc.sig, signed_acc.canonical[0..signed_acc.canonical_len], &acc_payload);
     const acc_opened_len = try seal_and_open(acc_payload[0..acc_payload_len], opened);
     var acc_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const acc_fact_len = try verify_acceptance_payload(opened[0..@intCast(acc_opened_len)], poster_pk, req.ref_hex[0..oa.ref_hex_len], req.applicant_hex[0..64], &sig_buf, &acc_fact_buf);
@@ -385,7 +385,7 @@ fn selftest_oa5_verify_acc_pay_consent_wire(
 
     const signed_pay = try build_signed_completion(poster_kp, req.poster_hex[0..64], req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len], req.stipend_buf[0..req.stipend_len]);
     var pay_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const pay_payload_len = try oa.encodeCompactPayload(signed_pay.sig, signed_pay.canonical[0..signed_pay.canonical_len], &pay_payload);
+    const pay_payload_len = try oa.encode_compact_payload(signed_pay.sig, signed_pay.canonical[0..signed_pay.canonical_len], &pay_payload);
     const pay_opened_len = try seal_and_open(pay_payload[0..pay_payload_len], opened);
     var pay_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const pay_fact_len = try verify_completion_payload(opened[0..@intCast(pay_opened_len)], poster_pk, req.ref_hex[0..oa.ref_hex_len], req.applicant_hex[0..64], 100, &sig_buf, &pay_fact_buf);
@@ -393,7 +393,7 @@ fn selftest_oa5_verify_acc_pay_consent_wire(
 
     const signed_consent = try build_signed_consent(applicant_kp, req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len]);
     var consent_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const consent_payload_len = try oa.encodeCompactPayload(signed_consent.sig, signed_consent.canonical[0..signed_consent.canonical_len], &consent_payload);
+    const consent_payload_len = try oa.encode_compact_payload(signed_consent.sig, signed_consent.canonical[0..signed_consent.canonical_len], &consent_payload);
     const consent_opened_len = try seal_and_open(consent_payload[0..consent_payload_len], opened);
     var consent_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const consent_fact_len = try verify_consent_payload(opened[0..@intCast(consent_opened_len)], applicant_pk, req.ref_hex[0..oa.ref_hex_len], oa.consent_grant, &sig_buf, &consent_fact_buf);
@@ -457,12 +457,12 @@ fn selftest_oa5_fold_and_reputation(
     try append_signed(wire.wire_pay_sig, wire.pay_fact[0..wire.pay_fact_len], &log, &log_len);
 
     const cycle_len = log_len;
-    const state = try oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk);
+    const state = try oa.fold_log(log[0..cycle_len], poster_pk, applicant_pk);
     if (!state.completed or state.stipend != 100) return error.FoldFailed;
 
     try append_signed(wire.wire_consent_sig, wire.consent_fact[0..wire.consent_fact_len], &log, &log_len);
 
-    const rep = try oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, wire.applicant_hex[0..64]);
+    const rep = try oa.fold_reputation_log(log[0..log_len], poster_pk, applicant_pk, wire.applicant_hex[0..64]);
     if (rep.consented_completions != 1 or rep.consented_stipend != 100) return error.FoldFailed;
 }
 
@@ -495,7 +495,7 @@ fn run_applicant(_: std.Io) !u8 {
     const verified = try verify_request_payload(opened[0..@intCast(opened_len)], poster_pk, &req_fact_buf);
     const stipend = blk: {
         var fields: oa.RequestFields = undefined;
-        try oa.parseRequestFields(req_fact_buf[0..verified.fact_len], &fields);
+        try oa.parse_request_fields(req_fact_buf[0..verified.fact_len], &fields);
         break :blk try rc.parseAmountSigned(fields.stipend);
     };
 
@@ -509,10 +509,10 @@ fn run_applicant(_: std.Io) !u8 {
         .stamp = "20260706.003000",
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
-    const app_len = try oa.writeCanonicalApplication(app_fields, &canonical_app);
+    const app_len = try oa.write_canonical_application(app_fields, &canonical_app);
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
     var app_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const app_payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &app_payload);
+    const app_payload_len = try oa.encode_compact_payload(app_sig, canonical_app[0..app_len], &app_payload);
     var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const app_wire_len = try seal_payload(app_payload[0..app_payload_len], &out_wire);
     try send_wire(poster_port, out_wire[0..@intCast(app_wire_len)]);
@@ -530,7 +530,7 @@ fn run_applicant(_: std.Io) !u8 {
 
     const signed_consent = try build_signed_consent(applicant_kp, applicant_hex[0..64], verified.ref_hex[0..oa.ref_hex_len]);
     var consent_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const consent_payload_len = try oa.encodeCompactPayload(signed_consent.sig, signed_consent.canonical[0..signed_consent.canonical_len], &consent_payload);
+    const consent_payload_len = try oa.encode_compact_payload(signed_consent.sig, signed_consent.canonical[0..signed_consent.canonical_len], &consent_payload);
     const consent_wire_len = try seal_payload(consent_payload[0..consent_payload_len], &out_wire);
     try send_wire(poster_port, out_wire[0..@intCast(consent_wire_len)]);
 
@@ -551,7 +551,7 @@ fn run_poster(io: std.Io) !u8 {
 
     const signed_req = try load_signed_request(io, poster_kp);
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const req_payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
+    const req_payload_len = try oa.encode_compact_payload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const req_wire_len = try seal_payload(payload[0..req_payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(req_wire_len)]);
@@ -565,12 +565,12 @@ fn run_poster(io: std.Io) !u8 {
     const app_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
 
     const signed_acc = try build_signed_acceptance(poster_kp, poster_hex[0..64], applicant_hex[0..64], signed_req.ref_hex[0..oa.ref_hex_len]);
-    const acc_payload_len = try oa.encodeCompactPayload(signed_acc.sig, signed_acc.canonical[0..signed_acc.canonical_len], &payload);
+    const acc_payload_len = try oa.encode_compact_payload(signed_acc.sig, signed_acc.canonical[0..signed_acc.canonical_len], &payload);
     const acc_wire_len = try seal_payload(payload[0..acc_payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(acc_wire_len)]);
 
     const signed_pay = try build_signed_completion(poster_kp, poster_hex[0..64], applicant_hex[0..64], signed_req.ref_hex[0..oa.ref_hex_len], signed_req.stipend_buf[0..signed_req.stipend_len]);
-    const pay_payload_len = try oa.encodeCompactPayload(signed_pay.sig, signed_pay.canonical[0..signed_pay.canonical_len], &payload);
+    const pay_payload_len = try oa.encode_compact_payload(signed_pay.sig, signed_pay.canonical[0..signed_pay.canonical_len], &payload);
     const pay_wire_len = try seal_payload(payload[0..pay_payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(pay_wire_len)]);
 
@@ -596,12 +596,12 @@ fn run_poster(io: std.Io) !u8 {
     try append_signed(signed_pay.sig, pay_fact_buf[0..pay_fact_len], &log, &log_len);
 
     const cycle_len = log_len;
-    const state = try oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk);
+    const state = try oa.fold_log(log[0..cycle_len], poster_pk, applicant_pk);
     if (!state.completed or state.stipend != 100) return error.FoldFailed;
 
     try append_signed(consent_sig, consent_fact_buf[0..consent_fact_len], &log, &log_len);
 
-    const rep = try oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]);
+    const rep = try oa.fold_reputation_log(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]);
     if (rep.consented_completions != 1 or rep.consented_stipend != 100) return error.FoldFailed;
 
     print("oal5: poster folded full cycle with consent — GREEN\n", .{});

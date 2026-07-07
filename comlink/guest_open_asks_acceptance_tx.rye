@@ -43,11 +43,11 @@ export fn kmain() callconv(.c) noreturn {
         .stamp = "20260706.003100",
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const canonical_len = oa.writeCanonicalAcceptance(acc_fields, &canonical) catch unreachable;
+    const canonical_len = oa.write_canonical_acceptance(acc_fields, &canonical) catch unreachable;
     const sig = poster_kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const payload_len = oa.encodeCompactPayload(sig, canonical[0..canonical_len], &payload) catch unreachable;
+    const payload_len = oa.encode_compact_payload(sig, canonical[0..canonical_len], &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
     const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);

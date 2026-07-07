@@ -70,7 +70,7 @@ export fn kmain() callconv(.c) noreturn {
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+    const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.writeStr("oal5 device wire: FAIL — consent payload decode\n");
         vn.finishFail();
     };
@@ -79,7 +79,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.writeStr("oal5 device wire: FAIL — consent verify\n");
         vn.finishFail();
     };
-    const kind = oa.classifyFact(fact) catch {
+    const kind = oa.classify_fact(fact) catch {
         vn.writeStr("oal5 device wire: FAIL — consent classify\n");
         vn.finishFail();
     };
@@ -88,7 +88,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
     var consent_fields: oa.ConsentFields = undefined;
-    oa.parseConsentFields(fact, &consent_fields) catch {
+    oa.parse_consent_fields(fact, &consent_fields) catch {
         vn.writeStr("oal5 device wire: FAIL — consent parse\n");
         vn.finishFail();
     };
@@ -115,7 +115,7 @@ export fn kmain() callconv(.c) noreturn {
         .stamp = "20260706.011600",
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
-    const app_len = oa.writeCanonicalApplication(app_fields, &canonical_app) catch unreachable;
+    const app_len = oa.write_canonical_application(app_fields, &canonical_app) catch unreachable;
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
 
     const acc_fields = oa.AcceptanceFields{
@@ -125,7 +125,7 @@ export fn kmain() callconv(.c) noreturn {
         .stamp = "20260706.003100",
     };
     var canonical_acc: [oa.max_oa_fact]u8 = undefined;
-    const acc_len = oa.writeCanonicalAcceptance(acc_fields, &canonical_acc) catch unreachable;
+    const acc_len = oa.write_canonical_acceptance(acc_fields, &canonical_acc) catch unreachable;
     const acc_sig = poster_kp.sign(canonical_acc[0..acc_len], null) catch unreachable;
 
     var memo_buf: [128]u8 = undefined;
@@ -153,7 +153,7 @@ export fn kmain() callconv(.c) noreturn {
     append_signed(pay_sig, canonical_pay[0..pay_len], &log, &log_len);
 
     const cycle_len = log_len;
-    const state = oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk) catch {
+    const state = oa.fold_log(log[0..cycle_len], poster_pk, applicant_pk) catch {
         vn.writeStr("oal5 device wire: FAIL — fold completed\n");
         vn.finishFail();
     };
@@ -164,7 +164,7 @@ export fn kmain() callconv(.c) noreturn {
 
     append_signed(consent_sig, fact, &log, &log_len);
 
-    const rep = oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]) catch {
+    const rep = oa.fold_reputation_log(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]) catch {
         vn.writeStr("oal5 device wire: FAIL — reputation fold\n");
         vn.finishFail();
     };

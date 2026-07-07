@@ -48,7 +48,7 @@ export fn kmain() callconv(.c) noreturn {
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+    const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.writeStr("oal2 device wire: FAIL — payload decode\n");
         vn.finishFail();
     };
@@ -57,7 +57,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.writeStr("oal2 device wire: FAIL — request verify\n");
         vn.finishFail();
     };
-    const kind = oa.classifyFact(fact) catch {
+    const kind = oa.classify_fact(fact) catch {
         vn.writeStr("oal2 device wire: FAIL — fact classify\n");
         vn.finishFail();
     };
@@ -66,7 +66,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
     var ref_buf: [oa.ref_hex_len]u8 = undefined;
-    oa.requestRefHex(fact, &ref_buf);
+    oa.request_ref_hex(fact, &ref_buf);
     var i: u32 = 0;
     while (i < oa.ref_hex_len) : (i += 1) {
         if (ref_buf[i] != oa.witness_request_ref[i]) {

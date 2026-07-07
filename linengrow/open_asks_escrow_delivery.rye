@@ -94,7 +94,7 @@ fn sign_escrow(
     stamp: []const u8,
 ) !struct { sig: Ed25519.Signature, canonical: [oa.max_oa_fact]u8, canonical_len: u32 } {
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const clen = try oa.writeEscrowPaymentCanonical(
+    const clen = try oa.write_escrow_payment_canonical(
         role,
         from_hex,
         to_hex,
@@ -117,10 +117,10 @@ fn verify_escrow_payload(
     fact_out: []u8,
 ) !u32 {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const decoded = try oa.decodeCompactPayload(payload, &sig_buf, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .completion) return error.InvalidFact;
     var fields: rc.FactFields = undefined;
     try rc.parseFactFields(fact, &fields);
@@ -158,7 +158,7 @@ fn run_selftest(_: std.Io) !u8 {
 
     const signed_hold = try sign_escrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
     var hold_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const hold_payload_len = try oa.encodeCompactPayload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
+    const hold_payload_len = try oa.encode_compact_payload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
     var hold_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const hold_wire_len = try seal_payload(hold_payload[0..hold_payload_len], &hold_wire);
     var hold_opened: [@intCast(wf.max_message)]u8 = undefined;
@@ -168,7 +168,7 @@ fn run_selftest(_: std.Io) !u8 {
 
     const signed_release = try sign_escrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
     var release_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const release_payload_len = try oa.encodeCompactPayload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
+    const release_payload_len = try oa.encode_compact_payload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
     var release_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const release_wire_len = try seal_payload(release_payload[0..release_payload_len], &release_wire);
     var release_opened: [@intCast(wf.max_message)]u8 = undefined;
@@ -227,14 +227,14 @@ fn run_poster(_: std.Io) !u8 {
 
     const signed_hold = try sign_escrow(poster_kp, .hold, poster_hex[0..64], escrow_hex[0..64], witness_hold_stamp);
     var hold_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const hold_payload_len = try oa.encodeCompactPayload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
+    const hold_payload_len = try oa.encode_compact_payload(signed_hold.sig, signed_hold.canonical[0..signed_hold.canonical_len], &hold_payload);
     var hold_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const hold_wire_len = try seal_payload(hold_payload[0..hold_payload_len], &hold_wire);
     try send_wire(hold_port, hold_wire[0..@intCast(hold_wire_len)]);
 
     const signed_release = try sign_escrow(poster_kp, .release, escrow_hex[0..64], applicant_hex[0..64], witness_release_stamp);
     var release_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const release_payload_len = try oa.encodeCompactPayload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
+    const release_payload_len = try oa.encode_compact_payload(signed_release.sig, signed_release.canonical[0..signed_release.canonical_len], &release_payload);
     var release_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const release_wire_len = try seal_payload(release_payload[0..release_payload_len], &release_wire);
     try send_wire(release_port, release_wire[0..@intCast(release_wire_len)]);

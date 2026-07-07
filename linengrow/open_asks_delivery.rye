@@ -97,14 +97,14 @@ fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
     assert(fixture_read.len <= oa.max_oa_fact);
 
     var req_fields: oa.RequestFields = undefined;
-    try oa.parseRequestFields(fixture_read, &req_fields);
+    try oa.parse_request_fields(fixture_read, &req_fields);
 
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const canonical_len = try oa.writeCanonicalRequest(req_fields, &canonical);
+    const canonical_len = try oa.write_canonical_request(req_fields, &canonical);
     const sig = poster_kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
-    oa.requestRefHex(canonical[0..canonical_len], &ref_hex);
+    oa.request_ref_hex(canonical[0..canonical_len], &ref_hex);
 
     return .{
         .canonical = canonical,
@@ -116,24 +116,24 @@ fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
 
 fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const decoded = try oa.decodeCompactPayload(payload, &sig_buf, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .request) return error.InvalidFact;
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
-    oa.requestRefHex(fact, &ref_hex);
+    oa.request_ref_hex(fact, &ref_hex);
     return .{ .fact_len = decoded.fact_len, .ref_hex = ref_hex };
 }
 
 fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
-    const decoded = try oa.decodeCompactPayload(payload, sig_out, fact_out);
+    const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
     try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
-    const kind = try oa.classifyFact(fact);
+    const kind = try oa.classify_fact(fact);
     if (kind != .application) return error.InvalidFact;
     var fields: oa.ApplicationFields = undefined;
-    try oa.parseApplicationFields(fact, &fields);
+    try oa.parse_application_fields(fact, &fields);
     if (!std.mem.eql(u8, fields.request_ref, expected_ref)) return error.FoldFailed;
     return decoded.fact_len;
 }
@@ -160,7 +160,7 @@ fn selftest_wire_welcome_path(
     const signed_req = try load_signed_request(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const req_payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
+    const req_payload_len = try oa.encode_compact_payload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
 
     var req_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const req_wire_len = try seal_payload(req_payload[0..req_payload_len], &req_wire);
@@ -179,11 +179,11 @@ fn selftest_wire_welcome_path(
         .stamp = "20260706.011600",
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
-    const app_len = try oa.writeCanonicalApplication(app_fields, &canonical_app);
+    const app_len = try oa.write_canonical_application(app_fields, &canonical_app);
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
 
     var app_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const app_payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &app_payload);
+    const app_payload_len = try oa.encode_compact_payload(app_sig, canonical_app[0..app_len], &app_payload);
     var app_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const app_wire_len = try seal_payload(app_payload[0..app_payload_len], &app_wire);
     var app_opened: [@intCast(wf.max_message)]u8 = undefined;
@@ -198,7 +198,7 @@ fn selftest_wire_welcome_path(
     try append_signed(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
     try append_signed(wire_app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
 
-    const state = try oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk);
+    const state = try oa.fold_applied_log(log[0..log_len], poster_pk, applicant_pk);
     assert(state.applied);
     assert(state.stipend == 100);
 
@@ -227,10 +227,10 @@ fn selftest_wire_unwelcome_bad_ref(
         .stamp = welcome.app_fields.stamp,
     };
     var bad_canonical: [oa.max_oa_fact]u8 = undefined;
-    const bad_len = try oa.writeCanonicalApplication(bad_app, &bad_canonical);
+    const bad_len = try oa.write_canonical_application(bad_app, &bad_canonical);
     const bad_sig = applicant_kp.sign(bad_canonical[0..bad_len], null) catch unreachable;
     var bad_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const bad_payload_len = try oa.encodeCompactPayload(bad_sig, bad_canonical[0..bad_len], &bad_payload);
+    const bad_payload_len = try oa.encode_compact_payload(bad_sig, bad_canonical[0..bad_len], &bad_payload);
     var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     _ = verify_application_payload(bad_payload[0..bad_payload_len], applicant_pk, welcome.verified_ref[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
@@ -281,11 +281,11 @@ fn run_applicant(_: std.Io) !u8 {
         .stamp = "20260706.011600",
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
-    const app_len = try oa.writeCanonicalApplication(app_fields, &canonical_app);
+    const app_len = try oa.write_canonical_application(app_fields, &canonical_app);
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
 
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &payload);
+    const payload_len = try oa.encode_compact_payload(app_sig, canonical_app[0..app_len], &payload);
     var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const out_wire_len = try seal_payload(payload[0..payload_len], &out_wire);
     try send_wire(poster_port, out_wire[0..@intCast(out_wire_len)]);
@@ -302,7 +302,7 @@ fn run_poster(io: std.Io) !u8 {
 
     const signed_req = try load_signed_request(io, poster_kp);
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
-    const payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
+    const payload_len = try oa.encode_compact_payload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
     const wire_len = try seal_payload(payload[0..payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(wire_len)]);
@@ -323,7 +323,7 @@ fn run_poster(io: std.Io) !u8 {
     try append_signed(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
     try append_signed(app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
 
-    const state = try oa.foldAppliedLog(log[0..log_len], poster_pk, applicant_pk);
+    const state = try oa.fold_applied_log(log[0..log_len], poster_pk, applicant_pk);
     if (!state.applied or state.stipend != 100) return error.FoldFailed;
 
     print("oal2: poster received application — fold applied GREEN\n", .{});
