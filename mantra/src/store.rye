@@ -10,10 +10,10 @@
 //!
 //! Public surface:
 //!   Store.open(allocator, io, root_dir)  !Store
-//!   store.writeBlob(io, data)            ![]const u8  (returns the name)
-//!   store.readBlob(allocator, io, name)  ![]const u8  (returns the content)
-//!   store.readHead(allocator, io)        !?[]const u8 (null if absent)
-//!   store.writeHead(io, name)            !void
+//!   store.write_blob(io, data)            ![]const u8  (returns the name)
+//!   store.read_blob(allocator, io, name)  ![]const u8  (returns the content)
+//!   store.read_head(allocator, io)        !?[]const u8 (null if absent)
+//!   store.write_head(io, name)            !void
 
 const std  = @import("std");
 const assert = std.debug.assert;
@@ -48,13 +48,13 @@ pub const Store = struct {
     /// Write `data` as a blob. Returns the blob name (64-char hex string,
     /// allocated from `allocator`). If the blob already exists, a write is
     /// skipped — content-addressing guarantees the existing content matches.
-    pub fn writeBlob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, data: []const u8) ![]const u8 {
+    pub fn write_blob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, data: []const u8) ![]const u8 {
         assert(data.len > 0); // writing an empty blob is always a caller error
 
         // Compute the SHA3-256 digest and hex-encode it as the name.
         var digest: [Sha3.digest_length]u8 = undefined;
         Sha3.hash(data, &digest, .{});
-        const name = try hexEncode(allocator, &digest);
+        const name = try hex_encode(allocator, &digest);
 
         // Write the blob only if the name is new (content-addressing guarantee).
         self.blobs_dir.writeFile(io, .{ .sub_path = name, .data = data }) catch |err| {
@@ -66,7 +66,7 @@ pub const Store = struct {
     }
 
     /// Read a blob by its name. Returns the content, allocated from `allocator`.
-    pub fn readBlob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, name: []const u8) ![]u8 {
+    pub fn read_blob(self: *const Store, allocator: std.mem.Allocator, io: std.Io, name: []const u8) ![]u8 {
         assert(name.len == Sha3.digest_length * 2); // names are always 64 hex chars
         // Allocate a read buffer sized to the maximum we expect for a single-file weave.
         const buf = try allocator.alloc(u8, 1024 * 1024); // 1 MiB ceiling for seed
@@ -76,7 +76,7 @@ pub const Store = struct {
 
     /// Read HEAD. Returns null if HEAD does not exist (uninitialised repo).
     /// Returns the 64-char blob name, allocated from `allocator`, if present.
-    pub fn readHead(self: *const Store, allocator: std.mem.Allocator, io: std.Io) !?[]u8 {
+    pub fn read_head(self: *const Store, allocator: std.mem.Allocator, io: std.Io) !?[]u8 {
         var buf: [65]u8 = undefined; // 64 hex chars + optional newline
         const content = self.mantra_dir.readFile(io, "HEAD", &buf) catch |err| {
             if (err == error.FileNotFound) return null;
@@ -89,7 +89,7 @@ pub const Store = struct {
     }
 
     /// Write a new HEAD, pointing to `name` (a 64-char hex blob name).
-    pub fn writeHead(self: *const Store, io: std.Io, name: []const u8) !void {
+    pub fn write_head(self: *const Store, io: std.Io, name: []const u8) !void {
         assert(name.len == Sha3.digest_length * 2);
         // Write "name\n" as HEAD.
         var buf: [65]u8 = undefined;
@@ -99,7 +99,7 @@ pub const Store = struct {
 };
 
 /// Hex-encode `bytes` into a freshly allocated string.
-fn hexEncode(allocator: std.mem.Allocator, bytes: []const u8) ![]u8 {
+fn hex_encode(allocator: std.mem.Allocator, bytes: []const u8) ![]u8 {
     const out = try allocator.alloc(u8, bytes.len * 2);
     const hex = "0123456789abcdef";
     for (bytes, 0..) |b, i| {

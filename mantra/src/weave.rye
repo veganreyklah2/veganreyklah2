@@ -108,10 +108,10 @@ pub const Weave = struct {
         // arrival; a merge may interleave positions from two weave branches.
         const result = try out.toOwnedSlice(allocator);
         std.mem.sort(Line, result, {}, struct {
-            fn lessThan(_: void, a: Line, b: Line) bool {
+            fn less_than(_: void, a: Line, b: Line) bool {
                 return a.pos < b.pos;
             }
-        }.lessThan);
+        }.less_than);
 
         // Postcondition: result is sorted and all entries are present.
         for (result) |line| {

@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.175000 | [Rishi snake_case — ratchet clear](20260707-175000_rishi-snake-case-ratchet-clear.md) | camelCase 58→0 in scan dirs; SLC-1 + RW witnesses GREEN |
+| 20260707.174713 | [Commit brushstroke bundle + mantra/src kg](20260707-174713_commit-brushstroke-mantra-src-kg.md) | `32e7244` on four remotes; camelCase 86→58 |
 | 20260707.174440 | [wayland_seed snake_case](20260707-174440_wayland-seed-snake-case.md) | camelCase 142→86; SLC-2a + RW-2 surface witnesses GREEN |
 | 20260707.174217 | [Commit foundation bundle + window_input/skate_grid kg](20260707-174217_commit-foundation-pond-brushstroke-kg.md) | `b0bba53` on four remotes; camelCase 150→142 |
 | 20260707.173844 | [tally + aurora snake_case](20260707-173844_tally-aurora-snake-case.md) | camelCase 178→150; foundation_seeds + aurora QEMU GREEN |

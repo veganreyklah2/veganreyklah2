@@ -1,6 +1,6 @@
 //! pond/apps/drawn_terminal.rye — SLC-2a Lap 3 + SLC-2b Dexter keyboard.
 //!
-//! Composes Rishi's live session (runOneInput + sessionLines) with Brushstroke's
+//! Composes Rishi's live session (run_one_input + session_lines) with Brushstroke's
 //! Skate surface. SLC-2b carries keyboard input through Wayland so one typed
 //! line in the window runs through Rishi and redraws the frame.
 //!
@@ -61,7 +61,7 @@ fn compose_frame_lines(
 ) ![]surface.SkateLine {
     const body_rows = surface.viewer_max_lines - 1;
     assert(body_rows > 0);
-    const session = try rishi.sessionLines(transcript, garden, body_rows);
+    const session = try rishi.session_lines(transcript, garden, body_rows);
     defer garden.free(session);
     const status_line = try bound_status(garden, status);
     const total: u32 = @intCast(session.len + 1);
@@ -115,7 +115,7 @@ fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.
     var sig_final: u64 = 0;
 
     for (script, 0..) |line, idx| {
-        _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, line);
+        _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, line);
         const frame_lines = try compose_frame_lines(garden, &transcript, "");
         defer garden.free(frame_lines);
         const sig = try surface.content_signature(garden, frame_lines);
@@ -151,7 +151,7 @@ fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.
     while (!transcript.full and fill < fill_line_count) : (fill += 1) {
         var line_buf: [fill_say_width + 32]u8 = undefined;
         const pad_line = try std.fmt.bufPrint(&line_buf, "say \"{s}\"", .{pad_payload});
-        _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, pad_line);
+        _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, pad_line);
     }
     assert(transcript.full);
 
@@ -181,7 +181,7 @@ fn run_rw2_collaboration_witness(garden: std.mem.Allocator, io: std.Io, init: st
     boot[0] = .{ .text = "rw2 boot" };
     const sig_boot = try surface.content_signature(garden, boot);
 
-    _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let rw2 = 1");
+    _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, "let rw2 = 1");
     const frame_one = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_one);
     const sig_one = try surface.content_signature(garden, frame_one);
@@ -198,7 +198,7 @@ fn run_rw2_collaboration_witness(garden: std.mem.Allocator, io: std.Io, init: st
     assert(sig_empty == sig_empty_again);
 
     const sig_before_bad = try surface.content_signature(garden, frame_one);
-    const bad_result = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, ":recall 99");
+    const bad_result = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, ":recall 99");
     assert(bad_result == .advance);
     const frame_after_bad = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_after_bad);
@@ -224,7 +224,7 @@ fn run_keyboard_witness(garden: std.mem.Allocator, io: std.Io, init: std.process
 
     feed_line_through_editor(&editor, "let kb = 1");
     const first_line = (try editor.take_submitted_line(garden)) orelse return 1;
-    _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, first_line);
+    _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, first_line);
 
     const mid_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(mid_lines);
@@ -242,7 +242,7 @@ fn run_keyboard_witness(garden: std.mem.Allocator, io: std.Io, init: std.process
 
     feed_line_through_editor(&editor, ":quit");
     const quit_line = (try editor.take_submitted_line(garden)) orelse return 1;
-    const signal = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, quit_line);
+    const signal = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, quit_line);
     assert(signal == .quit);
 
     var out: [128]u8 = undefined;
@@ -291,7 +291,7 @@ fn run_submitted_line(
     store_ready: *bool,
     line: []const u8,
 ) !?rishi.StepSignal {
-    const signal = try rishi.runOneInput(garden, io, init, env, history, transcript, store_ready, line);
+    const signal = try rishi.run_one_input(garden, io, init, env, history, transcript, store_ready, line);
     const status = if (transcript.full) status_full_text else "";
     const frame_lines = try compose_frame_lines(garden, transcript, status);
     defer garden.free(frame_lines);
@@ -410,8 +410,8 @@ fn run_metal_smoke(garden: std.mem.Allocator, io: std.Io, init: std.process.Init
     var transcript = rishi.Transcript{};
     var store_ready = false;
 
-    _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "let smoke = 1");
-    _ = try rishi.runOneInput(garden, io, init, &env, &history, &transcript, &store_ready, "say \"metal\"");
+    _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, "let smoke = 1");
+    _ = try rishi.run_one_input(garden, io, init, &env, &history, &transcript, &store_ready, "say \"metal\"");
 
     const frame_lines = try compose_frame_lines(garden, &transcript, "");
     defer garden.free(frame_lines);

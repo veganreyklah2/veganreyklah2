@@ -109,7 +109,7 @@ pub fn diff(
 /// returned slice and all strings within it are allocated from `allocator`.
 /// A trailing newline produces no empty string at the end — the common case
 /// for text files.
-pub fn splitLines(allocator: std.mem.Allocator, text: []const u8) ![]const []const u8 {
+pub fn split_lines(allocator: std.mem.Allocator, text: []const u8) ![]const []const u8 {
     maybe(text.len == 0); // empty text is valid; yields zero lines
     var lines = std.ArrayListUnmanaged([]const u8){};
     var it = std.mem.splitScalar(u8, text, '\n');
