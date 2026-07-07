@@ -53,7 +53,7 @@ export fn kmain() callconv(.c) noreturn {
         .stamp = "20260706.003200",
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const canonical_len = rc.writeCanonicalFact(completion_fields, &canonical) catch unreachable;
+    const canonical_len = rc.write_canonical_fact(completion_fields, &canonical) catch unreachable;
     const sig = poster_kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;

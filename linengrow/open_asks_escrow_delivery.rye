@@ -119,16 +119,16 @@ fn verify_escrow_payload(
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .completion) return error.InvalidFact;
     var fields: rc.FactFields = undefined;
-    try rc.parseFactFields(fact, &fields);
+    try rc.parse_fact_fields(fact, &fields);
     const prefix = if (role == .hold) oa.escrow_hold_prefix else oa.escrow_release_prefix;
     if (!std.mem.startsWith(u8, fields.memo, prefix)) return error.InvalidFact;
     const memo_ref = fields.memo[prefix.len..];
     if (!std.mem.eql(u8, memo_ref, oa.witness_request_ref)) return error.FoldFailed;
-    const amount = try rc.parseAmountSigned(fields.amount);
+    const amount = try rc.parse_amount_signed(fields.amount);
     if (amount != 100) return error.FoldFailed;
     switch (role) {
         .hold => {

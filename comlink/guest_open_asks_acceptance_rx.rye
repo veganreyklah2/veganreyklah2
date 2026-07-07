@@ -61,7 +61,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_kp.public_key) catch {
+    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_kp.public_key) catch {
         vn.writeStr("oal5 device wire: FAIL — acceptance verify\n");
         vn.finishFail();
     };

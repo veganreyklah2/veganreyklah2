@@ -28,7 +28,7 @@ export fn kmain() callconv(.c) noreturn {
     const sig = kp.sign(fact, null) catch unreachable;
 
     var payload: [rc.slcl2_payload_header + rc.slcl2_max_fact]u8 = undefined;
-    const payload_len = rc.encodeCompactPayload(sig, fact, &payload) catch unreachable;
+    const payload_len = rc.encode_compact_payload(sig, fact, &payload) catch unreachable;
 
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
     const dg_len: u32 = @intCast(wf.seal_message(payload[0..payload_len], &scratch) catch unreachable);

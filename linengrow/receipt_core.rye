@@ -37,16 +37,16 @@ pub const FactFields = struct {
     stamp: []const u8,
 };
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
 
-fn trimLine(line: []const u8) []const u8 {
+fn trim_line(line: []const u8) []const u8 {
     return std.mem.trim(u8, line, " \t\r\n");
 }
 
-pub fn parseFactFields(text: []const u8, fields: *FactFields) error{InvalidFact}!void {
+pub fn parse_fact_fields(text: []const u8, fields: *FactFields) error{InvalidFact}!void {
     var from_set = false;
     var to_set = false;
     var amount_set = false;
@@ -55,12 +55,12 @@ pub fn parseFactFields(text: []const u8, fields: *FactFields) error{InvalidFact}
 
     var lines = std.mem.splitScalar(u8, text, '\n');
     while (lines.next()) |raw| {
-        const line = trimLine(raw);
+        const line = trim_line(raw);
         if (line.len == 0) continue;
         if (line[0] == '#') continue;
         const space = std.mem.indexOfScalar(u8, line, ' ') orelse return error.InvalidFact;
         const key = line[0..space];
-        const value = trimLine(line[space + 1 ..]);
+        const value = trim_line(line[space + 1 ..]);
         if (value.len == 0) return error.InvalidFact;
         if (std.mem.eql(u8, key, "from")) {
             fields.from = value;
@@ -84,28 +84,28 @@ pub fn parseFactFields(text: []const u8, fields: *FactFields) error{InvalidFact}
     if (!from_set or !to_set or !amount_set or !memo_set or !stamp_set) return error.InvalidFact;
 }
 
-pub fn writeCanonicalFact(fields: FactFields, out: []u8) error{Overflow}!u32 {
+pub fn write_canonical_fact(fields: FactFields, out: []u8) error{Overflow}!u32 {
     const written = std.fmt.bufPrint(
         out,
         "from {s}\nto {s}\namount {s}\nmemo {s}\nstamp {s}\n",
         .{ fields.from, fields.to, fields.amount, fields.memo, fields.stamp },
     ) catch return error.Overflow;
-    return bufLenU32(written);
+    return buf_len_u32(written);
 }
 
-fn writeHexLower(bytes: []const u8, out: []u8) error{Overflow}!u32 {
+fn write_hex_lower(bytes: []const u8, out: []u8) error{Overflow}!u32 {
     if (out.len < bytes.len * 2) return error.Overflow;
     var i: u32 = 0;
-    while (i < bufLenU32(bytes)) : (i += 1) {
+    while (i < buf_len_u32(bytes)) : (i += 1) {
         _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch return error.Overflow;
     }
     return @intCast(bytes.len * 2);
 }
 
-fn decodeHexLower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
+fn decode_hex_lower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
     if (hex.len % 2 != 0) return error.InvalidHex;
     const nbytes: u32 = @intCast(hex.len / 2);
-    if (nbytes > bufLenU32(out)) return error.InvalidHex;
+    if (nbytes > buf_len_u32(out)) return error.InvalidHex;
     var i: u32 = 0;
     while (i < nbytes) : (i += 1) {
         const pair = hex[i * 2 ..][0..2];
@@ -114,53 +114,53 @@ fn decodeHexLower(hex: []const u8, out: []u8) error{InvalidHex}!u32 {
     return nbytes;
 }
 
-pub fn formatLogLine(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
+pub fn format_log_line(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
     const sig_bytes = sig.toBytes();
     var pos: u32 = 0;
-    pos += try writeHexLower(&sig_bytes, out[pos..]);
-    if (pos >= bufLenU32(out)) return error.Overflow;
+    pos += try write_hex_lower(&sig_bytes, out[pos..]);
+    if (pos >= buf_len_u32(out)) return error.Overflow;
     out[pos] = ' ';
     pos += 1;
-    pos += try writeHexLower(fact, out[pos..]);
-    if (pos < bufLenU32(out)) out[pos] = '\n';
+    pos += try write_hex_lower(fact, out[pos..]);
+    if (pos < buf_len_u32(out)) out[pos] = '\n';
     return pos + 1;
 }
 
-pub fn parseLogLine(line: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidLine}!struct { sig_len: u32, fact_len: u32 } {
-    const trimmed = trimLine(line);
+pub fn parse_log_line(line: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidLine}!struct { sig_len: u32, fact_len: u32 } {
+    const trimmed = trim_line(line);
     if (trimmed.len < sig_hex_len + 2) return error.InvalidLine;
     const sig_hex = trimmed[0..sig_hex_len];
     if (trimmed[sig_hex_len] != ' ') return error.InvalidLine;
-    const fact_hex = trimLine(trimmed[sig_hex_len + 1 ..]);
-    const sig_len = decodeHexLower(sig_hex, sig_out) catch return error.InvalidLine;
-    const fact_len = decodeHexLower(fact_hex, fact_out) catch return error.InvalidLine;
+    const fact_hex = trim_line(trimmed[sig_hex_len + 1 ..]);
+    const sig_len = decode_hex_lower(sig_hex, sig_out) catch return error.InvalidLine;
+    const fact_len = decode_hex_lower(fact_hex, fact_out) catch return error.InvalidLine;
     return .{ .sig_len = sig_len, .fact_len = fact_len };
 }
 
-pub fn parseAmountSigned(amount_text: []const u8) error{InvalidAmount}!i64 {
+pub fn parse_amount_signed(amount_text: []const u8) error{InvalidAmount}!i64 {
     return std.fmt.parseInt(i64, amount_text, 10) catch return error.InvalidAmount;
 }
 
-pub fn verifyRecord(sig_bytes: []const u8, fact: []const u8, pubkey: Ed25519.PublicKey) error{VerifyFailed}!void {
+pub fn verify_record(sig_bytes: []const u8, fact: []const u8, pubkey: Ed25519.PublicKey) error{VerifyFailed}!void {
     const sig = Ed25519.Signature.fromBytes(sig_bytes[0..Ed25519.Signature.encoded_length].*);
     sig.verify(fact, pubkey) catch return error.VerifyFailed;
 }
 
-pub fn foldBalanceFromFacts(fact: []const u8, balance: *i64) error{InvalidAmount}!void {
+pub fn fold_balance_from_facts(fact: []const u8, balance: *i64) error{InvalidAmount}!void {
     var fields: FactFields = undefined;
-    parseFactFields(fact, &fields) catch return error.InvalidAmount;
-    const delta = try parseAmountSigned(fields.amount);
+    parse_fact_fields(fact, &fields) catch return error.InvalidAmount;
+    const delta = try parse_amount_signed(fields.amount);
     balance.* +%= delta;
 }
 
-pub fn digestLog(log: []const u8, digest: *[Sha3_256.digest_length]u8) void {
+pub fn digest_log(log: []const u8, digest: *[Sha3_256.digest_length]u8) void {
     Sha3_256.hash(log[0..log.len], digest, .{});
 }
 
-pub fn encodeCompactPayload(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
+pub fn encode_compact_payload(sig: Ed25519.Signature, fact: []const u8, out: []u8) error{Overflow}!u32 {
     if (fact.len > slcl2_max_fact) return error.Overflow;
     const total: u32 = slcl2_payload_header + @as(u32, @intCast(fact.len));
-    if (total > bufLenU32(out)) return error.Overflow;
+    if (total > buf_len_u32(out)) return error.Overflow;
     const sig_bytes = sig.toBytes();
     tally_copy.copy_disjoint(u8, out[0..sig_bytes.len], std.mem.asBytes(&sig_bytes));
     std.mem.writeInt(u32, out[Ed25519.Signature.encoded_length..][0..4], @intCast(fact.len), .little);
@@ -168,7 +168,7 @@ pub fn encodeCompactPayload(sig: Ed25519.Signature, fact: []const u8, out: []u8)
     return total;
 }
 
-pub fn decodeCompactPayload(buf: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidPayload}!struct { fact_len: u32 } {
+pub fn decode_compact_payload(buf: []const u8, sig_out: []u8, fact_out: []u8) error{InvalidPayload}!struct { fact_len: u32 } {
     if (buf.len < slcl2_payload_header) return error.InvalidPayload;
     const fact_len = std.mem.readInt(u32, buf[Ed25519.Signature.encoded_length..][0..4], .little);
     if (fact_len > slcl2_max_fact) return error.InvalidPayload;

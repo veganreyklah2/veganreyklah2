@@ -70,7 +70,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk) catch {
+    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk) catch {
         vn.writeStr("oal3l2 device wire: FAIL — release verify\n");
         vn.finishFail();
     };
@@ -83,7 +83,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     }
     var fields: rc.FactFields = undefined;
-    rc.parseFactFields(fact, &fields) catch {
+    rc.parse_fact_fields(fact, &fields) catch {
         vn.writeStr("oal3l2 device wire: FAIL — release parse\n");
         vn.finishFail();
     };
@@ -99,7 +99,7 @@ export fn kmain() callconv(.c) noreturn {
             vn.finishFail();
         }
     }
-    const amount = rc.parseAmountSigned(fields.amount) catch {
+    const amount = rc.parse_amount_signed(fields.amount) catch {
         vn.writeStr("oal3l2 device wire: FAIL — release amount\n");
         vn.finishFail();
     };

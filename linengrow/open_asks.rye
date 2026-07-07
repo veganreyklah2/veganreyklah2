@@ -408,7 +408,7 @@ pub fn fold_applied_log(log: []const u8, poster_pk: Ed25519.PublicKey, applicant
 
         var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
         var fact_buf: [max_oa_fact]u8 = undefined;
-        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const parsed = rc.parse_log_line(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
         const fact = fact_buf[0..parsed.fact_len];
 
         const kind = classify_fact(fact) catch return error.FoldFailed;
@@ -417,7 +417,7 @@ pub fn fold_applied_log(log: []const u8, poster_pk: Ed25519.PublicKey, applicant
                 if (state.posted) return error.FoldFailed;
                 var fields: RequestFields = undefined;
                 parse_request_fields(fact, &fields) catch return error.FoldFailed;
-                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
+                rc.verify_record(sig_buf[0..parsed.sig_len], fact, poster_pk) catch return error.FoldFailed;
                 var poster_hex: [64]u8 = undefined;
                 const poster_kp_bytes = poster_pk.toBytes();
                 var i: u32 = 0;
@@ -430,14 +430,14 @@ pub fn fold_applied_log(log: []const u8, poster_pk: Ed25519.PublicKey, applicant
                 tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
                 state.request_ref_len = ref_hex_len;
                 state.poster_hex_len = try copy_hex_field(fields.poster, &state.poster_hex);
-                state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+                state.stipend = rc.parse_amount_signed(fields.stipend) catch return error.FoldFailed;
                 state.posted = true;
             },
             .application => {
                 if (!state.posted or state.applied) return error.FoldFailed;
                 var fields: ApplicationFields = undefined;
                 parse_application_fields(fact, &fields) catch return error.FoldFailed;
-                rc.verifyRecord(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
+                rc.verify_record(sig_buf[0..parsed.sig_len], fact, applicant_pk) catch return error.FoldFailed;
                 if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
                 state.applicant_hex_len = try copy_hex_field(fields.applicant, &state.applicant_hex);
                 state.applied = true;
@@ -458,7 +458,7 @@ fn fold_log_on_request(
     if (state.posted) return error.FoldFailed;
     var fields: RequestFields = undefined;
     parse_request_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     var poster_hex: [64]u8 = undefined;
     hex_of_key(poster_pk, &poster_hex);
     if (!std.mem.eql(u8, fields.poster, poster_hex[0..64])) return error.FoldFailed;
@@ -467,7 +467,7 @@ fn fold_log_on_request(
     tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
     state.request_ref_len = ref_hex_len;
     state.poster_hex_len = try copy_hex_field(fields.poster, &state.poster_hex);
-    state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+    state.stipend = rc.parse_amount_signed(fields.stipend) catch return error.FoldFailed;
     state.posted = true;
 }
 
@@ -480,7 +480,7 @@ fn fold_log_on_application(
     if (!state.posted or state.applied) return error.FoldFailed;
     var fields: ApplicationFields = undefined;
     parse_application_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, applicant_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, applicant_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
     state.applicant_hex_len = try copy_hex_field(fields.applicant, &state.applicant_hex);
     state.applied = true;
@@ -495,7 +495,7 @@ fn fold_log_on_acceptance(
     if (!state.applied or state.accepted) return error.FoldFailed;
     var fields: AcceptanceFields = undefined;
     parse_acceptance_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
     if (!std.mem.eql(u8, fields.applicant, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
     state.accepted = true;
@@ -509,13 +509,13 @@ fn fold_log_on_completion(
 ) error{FoldFailed}!void {
     if (!state.accepted or state.completed) return error.FoldFailed;
     var fields: rc.FactFields = undefined;
-    rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.parse_fact_fields(fact, &fields) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     const expected_memo_prefix = "completion request_ref=";
     if (!std.mem.startsWith(u8, fields.memo, expected_memo_prefix)) return error.FoldFailed;
     const memo_ref = fields.memo[expected_memo_prefix.len..];
     if (!std.mem.eql(u8, memo_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
-    const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+    const amount = rc.parse_amount_signed(fields.amount) catch return error.FoldFailed;
     if (amount != state.stipend) return error.FoldFailed;
     if (!std.mem.eql(u8, fields.to, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
     state.completed = true;
@@ -532,7 +532,7 @@ pub fn fold_log(log: []const u8, poster_pk: Ed25519.PublicKey, applicant_pk: Ed2
 
         var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
         var fact_buf: [max_oa_fact]u8 = undefined;
-        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const parsed = rc.parse_log_line(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
         const fact = fact_buf[0..parsed.fact_len];
 
         const kind = classify_fact(fact) catch return error.FoldFailed;
@@ -567,14 +567,14 @@ fn fold_escrow_on_request(
     if (state.posted) return error.FoldFailed;
     var fields: RequestFields = undefined;
     parse_request_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.poster, poster_hex)) return error.FoldFailed;
     var ref_buf: [ref_hex_len]u8 = undefined;
     request_ref_hex(fact, &ref_buf);
     tally_copy.copy_disjoint(u8, state.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
     state.request_ref_len = ref_hex_len;
     state.poster_hex_len = try copy_hex_field(fields.poster, &state.poster_hex);
-    state.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+    state.stipend = rc.parse_amount_signed(fields.stipend) catch return error.FoldFailed;
     if (state.stipend <= 0) return error.FoldFailed; // a bounty holds a positive stipend
     state.posted = true;
 }
@@ -589,7 +589,7 @@ fn fold_escrow_on_application(
     if (!state.posted or state.applied) return error.FoldFailed;
     var fields: ApplicationFields = undefined;
     parse_application_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, applicant_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, applicant_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
     state.applicant_hex_len = try copy_hex_field(fields.applicant, &state.applicant_hex);
     if (!std.mem.eql(u8, state.applicant_hex[0..state.applicant_hex_len], applicant_hex)) return error.FoldFailed;
@@ -605,7 +605,7 @@ fn fold_escrow_on_acceptance(
     if (!state.applied or state.accepted) return error.FoldFailed;
     var fields: AcceptanceFields = undefined;
     parse_acceptance_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.request_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
     if (!std.mem.eql(u8, fields.applicant, state.applicant_hex[0..state.applicant_hex_len])) return error.FoldFailed;
     state.accepted = true;
@@ -620,15 +620,15 @@ fn fold_escrow_on_completion(
     escrow_hex: []const u8,
 ) error{FoldFailed}!void {
     var fields: rc.FactFields = undefined;
-    rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
+    rc.parse_fact_fields(fact, &fields) catch return error.FoldFailed;
     const role: EscrowRole = if (std.mem.startsWith(u8, fields.memo, escrow_hold_prefix))
         .hold
     else if (std.mem.startsWith(u8, fields.memo, escrow_release_prefix))
         .release
     else
         return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed; // poster signs both legs
-    const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed; // poster signs both legs
+    const amount = rc.parse_amount_signed(fields.amount) catch return error.FoldFailed;
     const prefix = if (role == .hold) escrow_hold_prefix else escrow_release_prefix;
     const memo_ref = fields.memo[prefix.len..];
     if (!std.mem.eql(u8, memo_ref, state.request_ref[0..state.request_ref_len])) return error.FoldFailed;
@@ -692,7 +692,7 @@ pub fn fold_escrow_log(
 
         var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
         var fact_buf: [max_oa_fact]u8 = undefined;
-        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const parsed = rc.parse_log_line(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
         const fact = fact_buf[0..parsed.fact_len];
 
         const kind = classify_fact(fact) catch return error.FoldFailed;
@@ -744,7 +744,7 @@ fn fold_reputation_on_request(
     if (cycle_count.* >= max_reputation_cycles) return error.FoldFailed;
     var fields: RequestFields = undefined;
     parse_request_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     if (!std.mem.eql(u8, fields.poster, poster_hex)) return error.FoldFailed;
     var ref_buf: [ref_hex_len]u8 = undefined;
     request_ref_hex(fact, &ref_buf);
@@ -753,7 +753,7 @@ fn fold_reputation_on_request(
     var cycle = &cycles[cycle_count.*];
     tally_copy.copy_disjoint(u8, cycle.request_ref[0..ref_hex_len], std.mem.asBytes(&ref_buf));
     cycle.request_ref_len = ref_hex_len;
-    cycle.stipend = rc.parseAmountSigned(fields.stipend) catch return error.FoldFailed;
+    cycle.stipend = rc.parse_amount_signed(fields.stipend) catch return error.FoldFailed;
     cycle_count.* += 1;
 }
 
@@ -767,7 +767,7 @@ fn fold_reputation_on_application(
 ) error{FoldFailed}!void {
     var fields: ApplicationFields = undefined;
     parse_application_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, applicant_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, applicant_pk) catch return error.FoldFailed;
     const idx = find_cycle_by_ref(cycles, cycle_count, fields.request_ref) orelse return error.FoldFailed;
     var cycle = &cycles[idx];
     if (cycle.applicant_hex_len != 0) return error.FoldFailed;
@@ -784,7 +784,7 @@ fn fold_reputation_on_acceptance(
 ) error{FoldFailed}!void {
     var fields: AcceptanceFields = undefined;
     parse_acceptance_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     const idx = find_cycle_by_ref(cycles, cycle_count, fields.request_ref) orelse return error.FoldFailed;
     const cycle = &cycles[idx];
     if (cycle.applicant_hex_len == 0) return error.FoldFailed;
@@ -799,15 +799,15 @@ fn fold_reputation_on_completion(
     poster_pk: Ed25519.PublicKey,
 ) error{FoldFailed}!void {
     var fields: rc.FactFields = undefined;
-    rc.parseFactFields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, poster_pk) catch return error.FoldFailed;
+    rc.parse_fact_fields(fact, &fields) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, poster_pk) catch return error.FoldFailed;
     const memo_ref = completion_request_ref(fields.memo) catch return error.FoldFailed;
     if (memo_ref) |ref| {
         const idx = find_cycle_by_ref(cycles, cycle_count, ref) orelse return error.FoldFailed;
         var cycle = &cycles[idx];
         if (cycle.completed) return error.FoldFailed;
         if (cycle.applicant_hex_len == 0) return error.FoldFailed;
-        const amount = rc.parseAmountSigned(fields.amount) catch return error.FoldFailed;
+        const amount = rc.parse_amount_signed(fields.amount) catch return error.FoldFailed;
         if (amount != cycle.stipend) return error.FoldFailed;
         if (!std.mem.eql(u8, fields.to, cycle.applicant_hex[0..cycle.applicant_hex_len])) return error.FoldFailed;
         cycle.completed = true;
@@ -823,7 +823,7 @@ fn fold_reputation_on_consent(
 ) error{FoldFailed}!void {
     var fields: ConsentFields = undefined;
     parse_consent_fields(fact, &fields) catch return error.FoldFailed;
-    rc.verifyRecord(sig, fact, applicant_pk) catch return error.FoldFailed;
+    rc.verify_record(sig, fact, applicant_pk) catch return error.FoldFailed;
     const choice = parse_consent_choice(fields.consent) catch return error.FoldFailed;
     const idx = find_cycle_by_ref(cycles, cycle_count, fields.request_ref) orelse return error.FoldFailed;
     var cycle = &cycles[idx];
@@ -873,7 +873,7 @@ pub fn fold_reputation_log(
 
         var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
         var fact_buf: [max_oa_fact]u8 = undefined;
-        const parsed = rc.parseLogLine(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
+        const parsed = rc.parse_log_line(line, &sig_buf, &fact_buf) catch return error.FoldFailed;
         const fact = fact_buf[0..parsed.fact_len];
 
         const kind = classify_fact(fact) catch return error.FoldFailed;
@@ -892,7 +892,7 @@ pub fn fold_reputation_log(
 
 fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [max_line_len]u8 = undefined;
-    const line_len = try rc.formatLogLine(sig, fact, &line);
+    const line_len = try rc.format_log_line(sig, fact, &line);
     if (log_len.* + line_len > buf_len_u32(log)) return error.Overflow;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;
@@ -925,7 +925,7 @@ fn append_oa1_completion_payment(
         .stamp = "20260706.003200",
     };
     var canonical_pay: [max_oa_fact]u8 = undefined;
-    const pay_len = try rc.writeCanonicalFact(completion_fields, &canonical_pay);
+    const pay_len = try rc.write_canonical_fact(completion_fields, &canonical_pay);
     const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
     try append_signed(pay_sig, canonical_pay[0..pay_len], log, log_len);
 }
@@ -995,7 +995,7 @@ fn append_oa1_welcome_log(
         .req_len = req_len,
         .app_fields = app_fields,
         .ref_hex = ref_hex,
-        .stipend = rc.parseAmountSigned(req_fields.stipend) catch unreachable,
+        .stipend = rc.parse_amount_signed(req_fields.stipend) catch unreachable,
     };
 }
 
@@ -1141,7 +1141,7 @@ pub fn write_escrow_payment_canonical(
     var memo_buf: [128]u8 = undefined;
     const memo = std.fmt.bufPrint(&memo_buf, "{s}{s}", .{ prefix, ref_hex }) catch return error.Overflow;
     const fields = rc.FactFields{ .from = from_hex, .to = to_hex, .amount = amount_text, .memo = memo, .stamp = stamp };
-    return try rc.writeCanonicalFact(fields, out);
+    return try rc.write_canonical_fact(fields, out);
 }
 
 fn run_escrow_selftest(io: std.Io) !u8 {
@@ -1364,7 +1364,7 @@ fn append_completed_ask(
         .stamp = req_fields.stamp,
     };
     var canonical_pay: [max_oa_fact]u8 = undefined;
-    const pay_len = try rc.writeCanonicalFact(completion_fields, &canonical_pay);
+    const pay_len = try rc.write_canonical_fact(completion_fields, &canonical_pay);
     const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
     try append_signed(pay_sig, canonical_pay[0..pay_len], log, log_len);
 

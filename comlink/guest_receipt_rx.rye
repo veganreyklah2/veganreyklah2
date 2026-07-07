@@ -47,16 +47,16 @@ export fn kmain() callconv(.c) noreturn {
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [rc.slcl2_max_fact]u8 = undefined;
-    const decoded = rc.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+    const decoded = rc.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.writeStr("slcl2 device wire: FAIL — payload decode\n");
         vn.finishFail();
     };
-    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey) catch {
+    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey) catch {
         vn.writeStr("slcl2 device wire: FAIL — receipt verify\n");
         vn.finishFail();
     };
     var balance: i64 = 0;
-    rc.foldBalanceFromFacts(fact_buf[0..decoded.fact_len], &balance) catch {
+    rc.fold_balance_from_facts(fact_buf[0..decoded.fact_len], &balance) catch {
         vn.writeStr("slcl2 device wire: FAIL — fold\n");
         vn.finishFail();
     };

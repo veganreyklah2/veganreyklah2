@@ -22,7 +22,7 @@ fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
 
 fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
-    const line_len = rc.formatLogLine(sig, fact, &line) catch unreachable;
+    const line_len = rc.format_log_line(sig, fact, &line) catch unreachable;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;
 }
@@ -75,7 +75,7 @@ export fn kmain() callconv(.c) noreturn {
         vn.finishFail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
+    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
         vn.writeStr("oal5 device wire: FAIL — consent verify\n");
         vn.finishFail();
     };
@@ -142,7 +142,7 @@ export fn kmain() callconv(.c) noreturn {
         .stamp = "20260706.003200",
     };
     var canonical_pay: [oa.max_oa_fact]u8 = undefined;
-    const pay_len = rc.writeCanonicalFact(completion_fields, &canonical_pay) catch unreachable;
+    const pay_len = rc.write_canonical_fact(completion_fields, &canonical_pay) catch unreachable;
     const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
 
     var log: [oa.max_log_len]u8 = undefined;

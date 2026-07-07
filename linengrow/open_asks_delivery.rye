@@ -118,7 +118,7 @@ fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fac
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .request) return error.InvalidFact;
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
@@ -129,7 +129,7 @@ fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fac
 fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
+    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .application) return error.InvalidFact;
     var fields: oa.ApplicationFields = undefined;
@@ -140,7 +140,7 @@ fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicK
 
 fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [oa.max_line_len]u8 = undefined;
-    const line_len = try rc.formatLogLine(sig, fact, &line);
+    const line_len = try rc.format_log_line(sig, fact, &line);
     if (log_len.* + line_len > log.len) return error.Overflow;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;

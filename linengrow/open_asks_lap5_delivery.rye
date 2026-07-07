@@ -87,7 +87,7 @@ fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
 
 fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [oa.max_line_len]u8 = undefined;
-    const line_len = try rc.formatLogLine(sig, fact, &line);
+    const line_len = try rc.format_log_line(sig, fact, &line);
     if (log_len.* + line_len > log.len) return error.Overflow;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
     log_len.* += line_len;
@@ -135,7 +135,7 @@ fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fac
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .request) return error.InvalidFact;
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
@@ -146,7 +146,7 @@ fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fac
 fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
+    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .application) return error.InvalidFact;
     var fields: oa.ApplicationFields = undefined;
@@ -158,7 +158,7 @@ fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicK
 fn verify_acceptance_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_applicant: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .acceptance) return error.InvalidFact;
     var fields: oa.AcceptanceFields = undefined;
@@ -171,13 +171,13 @@ fn verify_acceptance_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, 
 fn verify_completion_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_applicant: []const u8, expected_stipend: i64, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .completion) return error.InvalidFact;
     var fields: rc.FactFields = undefined;
-    try rc.parseFactFields(fact, &fields);
+    try rc.parse_fact_fields(fact, &fields);
     if (!std.mem.eql(u8, fields.to, expected_applicant)) return error.FoldFailed;
-    const amount = try rc.parseAmountSigned(fields.amount);
+    const amount = try rc.parse_amount_signed(fields.amount);
     if (amount != expected_stipend) return error.FoldFailed;
     var memo_buf: [128]u8 = undefined;
     const memo_written = try std.fmt.bufPrint(&memo_buf, "{s}{s}", .{ oa.completion_memo_prefix, expected_ref });
@@ -188,7 +188,7 @@ fn verify_completion_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, 
 fn verify_consent_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, expected_consent: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verifyRecord(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
+    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .consent) return error.InvalidFact;
     var fields: oa.ConsentFields = undefined;
@@ -239,7 +239,7 @@ fn build_signed_completion(
         .stamp = "20260706.003200",
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
-    const len = try rc.writeCanonicalFact(completion_fields, &canonical);
+    const len = try rc.write_canonical_fact(completion_fields, &canonical);
     const sig = poster_kp.sign(canonical[0..len], null) catch unreachable;
     return .{ .sig = sig, .canonical = canonical, .canonical_len = len };
 }
@@ -496,7 +496,7 @@ fn run_applicant(_: std.Io) !u8 {
     const stipend = blk: {
         var fields: oa.RequestFields = undefined;
         try oa.parse_request_fields(req_fact_buf[0..verified.fact_len], &fields);
-        break :blk try rc.parseAmountSigned(fields.stipend);
+        break :blk try rc.parse_amount_signed(fields.stipend);
     };
 
     var applicant_hex: [64]u8 = undefined;

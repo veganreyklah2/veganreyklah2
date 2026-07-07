@@ -61,16 +61,16 @@ fn load_signed_payload(io: std.Io) !struct { payload: [rc.slcl2_payload_header +
     assert(fact_read.len <= rc.max_fact_len);
 
     var fields: rc.FactFields = undefined;
-    try rc.parseFactFields(fact_read, &fields);
+    try rc.parse_fact_fields(fact_read, &fields);
 
     var canonical: [rc.max_fact_len]u8 = undefined;
-    const canonical_len = try rc.writeCanonicalFact(fields, &canonical);
+    const canonical_len = try rc.write_canonical_fact(fields, &canonical);
     assert(canonical_len <= rc.slcl2_max_fact);
 
     const sig = kp.sign(canonical[0..canonical_len], null) catch unreachable;
 
     var payload: [rc.slcl2_payload_header + rc.slcl2_max_fact]u8 = undefined;
-    const payload_len = try rc.encodeCompactPayload(sig, canonical[0..canonical_len], &payload);
+    const payload_len = try rc.encode_compact_payload(sig, canonical[0..canonical_len], &payload);
 
     return .{
         .payload = payload,
@@ -82,10 +82,10 @@ fn load_signed_payload(io: std.Io) !struct { payload: [rc.slcl2_payload_header +
 fn verify_opened_payload(payload: []const u8, pubkey: Ed25519.PublicKey) !i64 {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [rc.slcl2_max_fact]u8 = undefined;
-    const decoded = try rc.decodeCompactPayload(payload, &sig_buf, &fact_buf);
-    try rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey);
+    const decoded = try rc.decode_compact_payload(payload, &sig_buf, &fact_buf);
+    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey);
     var balance: i64 = 0;
-    try rc.foldBalanceFromFacts(fact_buf[0..decoded.fact_len], &balance);
+    try rc.fold_balance_from_facts(fact_buf[0..decoded.fact_len], &balance);
     return balance;
 }
 
