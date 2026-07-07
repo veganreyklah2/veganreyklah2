@@ -57,3 +57,23 @@ Tiger Style discipline: **`usize` is a boundary type, not a design type.** Read 
 Safety first — structural, not by convention. Performance second — measure before optimizing. Joy third — clarity, named things, the habit of saying why.
 
 When these pull against each other, safety wins. When safety and performance are equal, joy earns the vote.
+
+## Tidy rules (`tame_style_check`)
+
+**Witness:** `tools/tame_style_check.rish` · **Scan:** `tools/fixtures/tame_style_scan.sh` · **Brief:** `active-designing/20260707-164612_tame-tidy-rules-brief.md` · **Study:** `external-research/20260707-053212_tigerbeetle-alignment-study.md`
+
+**Bans fail parity** — fix before commit:
+
+- `) == error.` / `) != error.` at call seams (captured `|err|` in assert is welcome)
+- `std.debug.assert(` — unqualified `assert` only
+- `assert(a and b)` — split compound asserts
+- `copyForwards` / `copyBackwards` — use `tally/copy.rye` `copy_disjoint`
+- `Self = @This()`, `usingnamespace`, `!comptime`, `FIXME`, `dbg(`
+
+**Ratchets print, never fail** — migrate on touch in every file you edit:
+
+- `@memcpy(` → `copy_disjoint` (sole intentional site may remain inside `copy_disjoint`)
+- camelCase `fn` → `snake_case` for all functions in the touched file; grep inbound references
+- functions past 70 lines → split at natural seams; run module witnesses
+
+Run when touching authored `.rye`: `rishi/bin/rishi run tools/tame_style_check.rish`

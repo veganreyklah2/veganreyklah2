@@ -11,16 +11,16 @@ pub const supervisor_signal_version = "20260707.021012";
 
 var stop_flag = std.atomic.Value(bool).init(false);
 
-fn onStopSignal(sig: posix.SIG, info: *const posix.siginfo_t, ctx: ?*anyopaque) callconv(.c) void {
+fn on_stop_signal(sig: posix.SIG, info: *const posix.siginfo_t, ctx: ?*anyopaque) callconv(.c) void {
     _ = sig;
     _ = info;
     _ = ctx;
     stop_flag.store(true, .seq_cst);
 }
 
-pub fn installHandlers() void {
+pub fn install_handlers() void {
     const sa = posix.Sigaction{
-        .handler = .{ .sigaction = onStopSignal },
+        .handler = .{ .sigaction = on_stop_signal },
         .mask = posix.sigemptyset(),
         .flags = posix.SA.SIGINFO,
     };
@@ -28,6 +28,6 @@ pub fn installHandlers() void {
     posix.sigaction(posix.SIG.INT, &sa, null);
 }
 
-pub fn stopRequested() bool {
+pub fn stop_requested() bool {
     return stop_flag.load(.seq_cst);
 }

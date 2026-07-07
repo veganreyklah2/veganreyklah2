@@ -186,7 +186,7 @@ fn apply_fetcher_exit(
     source_child: *std.process.Child,
     io: std.Io,
 ) !SupervisorStep {
-    if (se.supervisorStops(code)) {
+    if (se.supervisor_stops(code)) {
         print("caravan poll-service: stop after {d} ordinary cycle(s), {d} fall restart(s)\n", .{
             ordinary_seen.*, fall_restarts.*,
         });
@@ -199,7 +199,7 @@ fn apply_fetcher_exit(
         return .continue_loop;
     }
 
-    if (se.supervisorRestartsAfterFall(code)) {
+    if (se.supervisor_restarts_after_fall(code)) {
         fall_restarts.* += 1;
         print("caravan poll-service: fall restart {d}/{d}\n", .{ fall_restarts.*, max_fall_restarts });
         if (fall_restarts.* >= max_fall_restarts) {
@@ -233,7 +233,7 @@ fn run_supervisor(
     poll_interval_ns: u64,
     mirror_mode: bool,
 ) !u8 {
-    ss.installHandlers();
+    ss.install_handlers();
 
     print("caravan poll-service: supervisor alive. delivery {s} sentinel {s}{s}\n", .{
         delivery_path, sentinel_path, if (mirror_mode) " mirror" else "",
@@ -255,7 +255,7 @@ fn run_supervisor(
     while (true) {
         if (halt_if_source_died(&source_child)) |code| return code;
 
-        var should_create_sentinel = ss.stopRequested();
+        var should_create_sentinel = ss.stop_requested();
         if (witness_stop_after) |n| {
             if (ordinary_seen == n) should_create_sentinel = true;
         }

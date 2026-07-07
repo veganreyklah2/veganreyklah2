@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.164612 | [Tidy rules and supervisor snake_case](20260707-164612_tidy-rules-and-supervisor-snake-case.md) | Agent rules + Claude brief; camelCase 627→622 |
+| 20260707.164412 | [OA-L5 delivery snake_case](20260707-164412_oa5-delivery-snake-case.md) | camelCase 654→627; OA-L5 witness GREEN |
 | 20260707.164312 | [Snake_case commit and push](20260707-164312_snake-case-commit-push.md) | `f55ccd8` on all four remotes; camelCase 692→654 |
 | 20260707.163712 | [Drawn terminal snake_case](20260707-163712_drawn-terminal-snake-case.md) | camelCase 671→654; Pond witnesses GREEN |
 | 20260707.163412 | [Subscribe poll snake_case](20260707-163412_subscribe-poll-snake-case.md) | camelCase ratchet 692→671; caravan + mantra witnesses GREEN |

@@ -389,13 +389,23 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **Call-result compared to an error** | `) == error.` and `) != error.` banned at the call seam (silent `anyerror` upcast); a captured `\|err\|` compared inside an assert stays welcome — the refined seam, reasoned in the alignment study |
 | **`usingnamespace` · `!comptime` · `Self = @This()`** | banned verbatim, as upstream — `tools/tame_style_check.rish` (live) |
 
+**Ratchet advisories — print every parity run, never fail** (`tools/tame_style_check.rish` second half; hand-run `sh tools/fixtures/tame_style_scan.sh advise`):
+
+| Ratchet | Law on touch |
+|---------|----------------|
+| **`@memcpy(` sites** | route through `tally/copy.rye` `copy_disjoint`; sole intentional `@memcpy` may remain inside `copy_disjoint` itself |
+| **camelCase `fn` declarations** | rename to `snake_case` in every function you touch in that file; repoint inbound references before commit |
+| **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
+
+At parity **191** the >70-line ledger cleared for authored `.rye`; camelCase **~627** remains on-touch. Full machine canon and Claude brief: [`active-designing/20260707-164612_tame-tidy-rules-brief.md`](../active-designing/20260707-164612_tame-tidy-rules-brief.md) · study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md).
+
 **Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin edge today.
 
 **Horizon — wait for a Zig parser** (build when Rye's own tooling can parse, or when the need is proven; do not clone `tidy.zig` ahead of the need):
 
 | Rule | Why it waits |
 |------|--------------|
-| **70 lines per function, ratcheted** | needs the AST to find function spans |
+| **70 lines per function, hard gate** | textual advisory today (`tame_style_scan.sh advise`); AST hard gate when a parser lands |
 | **Parenthesize bitwise-with-arithmetic mixes** | needs the AST to read operator nodes |
 | **`defer` followed by a blank line** | needs token positions |
 | **Dead declarations and dead files** | needs identifier and import analysis |

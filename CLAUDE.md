@@ -8,7 +8,7 @@ Write in **Radiant Style** — see `context/RADIANT_STYLE.md` and `.claude/rules
 
 ## Code discipline
 
-**TAME Guidance** governs `.rye`, `.rish`, `.brix`, and `.bron` — operational supplement at `context/TAME_GUIDANCE.md`, voiced canon at `external-research/TAME_GUIDANCE.md`. Agent rule: `.claude/rules/tame-guidance.md`. Lint surface: supplement section **What We Check, and When** (`tools/width-check.rish`, growing `tools/tame-check.rish`).
+**TAME Guidance** governs `.rye`, `.rish`, `.brix`, and `.bron` — operational supplement at `context/TAME_GUIDANCE.md`, voiced canon at `external-research/TAME_GUIDANCE.md`. Agent rule: `.claude/rules/tame-guidance.md`. Lint surface: supplement section **What We Check, and When** (`tools/width-check.rish`, `tools/tame_style_check.rish`, growing `tools/tame-check.rish`). Tidy brief for counsel: `active-designing/20260707-164612_tame-tidy-rules-brief.md`.
 
 ## Context home
 

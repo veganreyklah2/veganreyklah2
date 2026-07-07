@@ -12,10 +12,10 @@ pub const cycle_ok: u8 = 0;
 /// Deliberate stop at a safe boundary; supervisor should not spawn again.
 pub const stop_requested: u8 = 8;
 
-pub fn supervisorStops(exit_code: u8) bool {
+pub fn supervisor_stops(exit_code: u8) bool {
     return exit_code == stop_requested;
 }
 
-pub fn supervisorRestartsAfterFall(exit_code: u8) bool {
+pub fn supervisor_restarts_after_fall(exit_code: u8) bool {
     return exit_code != cycle_ok and exit_code != stop_requested;
 }

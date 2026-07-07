@@ -83,7 +83,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
             else => 255,
         };
 
-        if (se.supervisorStops(code)) {
+        if (se.supervisor_stops(code)) {
             print("caravan restart-on-ok: stop code after {d} ordinary cycle(s), {d} fall restart(s)\n", .{
                 ordinary_seen, fall_restarts,
             });
@@ -95,7 +95,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
             continue;
         }
 
-        if (se.supervisorRestartsAfterFall(code)) {
+        if (se.supervisor_restarts_after_fall(code)) {
             fall_restarts += 1;
             print("caravan restart-on-ok: fall restart {d}/{d}\n", .{ fall_restarts, max_fall_restarts });
             if (fall_restarts >= max_fall_restarts) return 1;
