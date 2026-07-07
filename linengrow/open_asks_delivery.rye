@@ -146,12 +146,17 @@ fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u
     log_len.* += line_len;
 }
 
-fn runSelftest(io: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
-    const poster_pk = poster_kp.public_key;
-    const applicant_pk = applicant_kp.public_key;
-
+fn selftestWireWelcomePath(
+    io: std.Io,
+    poster_kp: Ed25519.KeyPair,
+    applicant_kp: Ed25519.KeyPair,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+) !struct {
+    verified_ref: [oa.ref_hex_len]u8,
+    app_fields: oa.ApplicationFields,
+    applicant_hex: [64]u8,
+} {
     const signed_req = try loadSignedRequest(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
@@ -197,26 +202,60 @@ fn runSelftest(io: std.Io) !u8 {
     assert(state.applied);
     assert(state.stipend == 100);
 
+    return .{
+        .verified_ref = verified_req.ref_hex,
+        .app_fields = app_fields,
+        .applicant_hex = applicant_hex,
+    };
+}
+
+fn selftestWireUnwelcomeBadRef(
+    applicant_kp: Ed25519.KeyPair,
+    applicant_pk: Ed25519.PublicKey,
+    welcome: struct {
+        verified_ref: [oa.ref_hex_len]u8,
+        app_fields: oa.ApplicationFields,
+        applicant_hex: [64]u8,
+    },
+) !void {
     var bad_ref: [oa.ref_hex_len]u8 = undefined;
     @memset(&bad_ref, '0');
     const bad_app = oa.ApplicationFields{
-        .applicant = applicant_hex[0..64],
+        .applicant = welcome.applicant_hex[0..64],
         .request_ref = bad_ref[0..oa.ref_hex_len],
-        .message = app_fields.message,
-        .stamp = app_fields.stamp,
+        .message = welcome.app_fields.message,
+        .stamp = welcome.app_fields.stamp,
     };
     var bad_canonical: [oa.max_oa_fact]u8 = undefined;
     const bad_len = try oa.writeCanonicalApplication(bad_app, &bad_canonical);
     const bad_sig = applicant_kp.sign(bad_canonical[0..bad_len], null) catch unreachable;
     var bad_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const bad_payload_len = try oa.encodeCompactPayload(bad_sig, bad_canonical[0..bad_len], &bad_payload);
-    _ = verifyApplicationPayload(bad_payload[0..bad_payload_len], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
-        print("oal2: bad request_ref refused at verify — GREEN unwelcome path\n", .{});
-        print("oal2: version {s} wire_format {s}\n", .{ oa2_version, wf.wire_format_version });
-        print("GREEN: OA-L2 cross-party delivery — request and application under Comlink seal.\n", .{});
-        return 0;
+    var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
+    _ = verifyApplicationPayload(bad_payload[0..bad_payload_len], applicant_pk, welcome.verified_ref[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
+        return;
     };
     return error.UnwelcomePassed;
+}
+
+fn runSelftest(io: std.Io) !u8 {
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_pk = poster_kp.public_key;
+    const applicant_pk = applicant_kp.public_key;
+
+    const welcome = try selftestWireWelcomePath(io, poster_kp, applicant_kp, poster_pk, applicant_pk);
+    try selftestWireUnwelcomeBadRef(applicant_kp, applicant_pk, .{
+        .verified_ref = welcome.verified_ref,
+        .app_fields = welcome.app_fields,
+        .applicant_hex = welcome.applicant_hex,
+    });
+
+    print("oal2: bad request_ref refused at verify — GREEN unwelcome path\n", .{});
+    print("oal2: version {s} wire_format {s}\n", .{ oa2_version, wf.wire_format_version });
+    print("GREEN: OA-L2 cross-party delivery — request and application under Comlink seal.\n", .{});
+    return 0;
 }
 
 fn runApplicant(_: std.Io) !u8 {

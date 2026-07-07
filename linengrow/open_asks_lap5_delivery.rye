@@ -261,12 +261,32 @@ fn buildSignedConsent(
     return .{ .sig = sig, .canonical = canonical, .canonical_len = len };
 }
 
-fn runSelftest(io: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
-    const poster_pk = poster_kp.public_key;
-    const applicant_pk = applicant_kp.public_key;
+const Oa5SelftestWire = struct {
+    signed_req_sig: Ed25519.Signature,
+    signed_req_canonical: [oa.max_oa_fact]u8,
+    signed_req_len: u32,
+    applicant_hex: [64]u8,
+    wire_app_sig: Ed25519.Signature,
+    app_fact: [oa.max_oa_fact]u8,
+    app_fact_len: u32,
+    wire_acc_sig: Ed25519.Signature,
+    acc_fact: [oa.max_oa_fact]u8,
+    acc_fact_len: u32,
+    wire_pay_sig: Ed25519.Signature,
+    pay_fact: [oa.max_oa_fact]u8,
+    pay_fact_len: u32,
+    wire_consent_sig: Ed25519.Signature,
+    consent_fact: [oa.max_oa_fact]u8,
+    consent_fact_len: u32,
+};
 
+fn selftestOa5VerifyWireLegs(
+    io: std.Io,
+    poster_kp: Ed25519.KeyPair,
+    applicant_kp: Ed25519.KeyPair,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+) !Oa5SelftestWire {
     const signed_req = try loadSignedRequest(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
@@ -322,21 +342,56 @@ fn runSelftest(io: std.Io) !u8 {
     const consent_fact_len = try verifyConsentPayload(opened[0..@intCast(consent_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], oa.consent_grant, &sig_buf, &consent_fact_buf);
     const wire_consent_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
 
+    return .{
+        .signed_req_sig = signed_req.sig,
+        .signed_req_canonical = signed_req.canonical,
+        .signed_req_len = signed_req.canonical_len,
+        .applicant_hex = applicant_hex,
+        .wire_app_sig = wire_app_sig,
+        .app_fact = app_fact_buf,
+        .app_fact_len = app_fact_len,
+        .wire_acc_sig = wire_acc_sig,
+        .acc_fact = acc_fact_buf,
+        .acc_fact_len = acc_fact_len,
+        .wire_pay_sig = wire_pay_sig,
+        .pay_fact = pay_fact_buf,
+        .pay_fact_len = pay_fact_len,
+        .wire_consent_sig = wire_consent_sig,
+        .consent_fact = consent_fact_buf,
+        .consent_fact_len = consent_fact_len,
+    };
+}
+
+fn selftestOa5FoldAndReputation(
+    wire: Oa5SelftestWire,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+) !void {
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
-    try appendSigned(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &log, &log_len);
-    try appendSigned(wire_app_sig, app_fact_buf[0..app_fact_len], &log, &log_len);
-    try appendSigned(wire_acc_sig, acc_fact_buf[0..acc_fact_len], &log, &log_len);
-    try appendSigned(wire_pay_sig, pay_fact_buf[0..pay_fact_len], &log, &log_len);
+    try appendSigned(wire.signed_req_sig, wire.signed_req_canonical[0..wire.signed_req_len], &log, &log_len);
+    try appendSigned(wire.wire_app_sig, wire.app_fact[0..wire.app_fact_len], &log, &log_len);
+    try appendSigned(wire.wire_acc_sig, wire.acc_fact[0..wire.acc_fact_len], &log, &log_len);
+    try appendSigned(wire.wire_pay_sig, wire.pay_fact[0..wire.pay_fact_len], &log, &log_len);
 
     const cycle_len = log_len;
     const state = try oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk);
     if (!state.completed or state.stipend != 100) return error.FoldFailed;
 
-    try appendSigned(wire_consent_sig, consent_fact_buf[0..consent_fact_len], &log, &log_len);
+    try appendSigned(wire.wire_consent_sig, wire.consent_fact[0..wire.consent_fact_len], &log, &log_len);
 
-    const rep = try oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]);
+    const rep = try oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, wire.applicant_hex[0..64]);
     if (rep.consented_completions != 1 or rep.consented_stipend != 100) return error.FoldFailed;
+}
+
+fn runSelftest(io: std.Io) !u8 {
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_pk = poster_kp.public_key;
+    const applicant_pk = applicant_kp.public_key;
+
+    const wire = try selftestOa5VerifyWireLegs(io, poster_kp, applicant_kp, poster_pk, applicant_pk);
+    try selftestOa5FoldAndReputation(wire, poster_pk, applicant_pk);
 
     print("oal5: version {s} wire_format {s}\n", .{ oa5_version, wf.wire_format_version });
     print("GREEN: OA-L5 — accept, complete, consent crossed Comlink wire; fold and reputation GREEN.\n", .{});
