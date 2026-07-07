@@ -273,7 +273,7 @@ fn parse_head_record_content(content: []const u8) SnapshotError!struct {
             tally_copy.copy_disjoint(u8, head_digest_hex[0..128], hex);
             have_head_digest = true;
         } else if (std.mem.startsWith(u8, line, "identity-epoch:")) {
-            identity_epoch = std.fmt.parseInt(u64, line["identity-epoch:".len..], 10) catch return error.Truncated;
+            identity_epoch = tally_parse_int.parse_int(u64, line["identity-epoch:".len..], .{}) catch return error.Truncated;
         } else if (std.mem.startsWith(u8, line, "parity-claim:")) {
             const claim = line["parity-claim:".len..];
             if (claim.len > parity_claim.len) return error.Truncated;
@@ -284,7 +284,7 @@ fn parse_head_record_content(content: []const u8) SnapshotError!struct {
             if (hex.len != 64) return error.Truncated;
             tally_copy.copy_disjoint(u8, identity_hex[0..64], hex);
         } else if (std.mem.startsWith(u8, line, "continuity-epoch:")) {
-            continuity_epoch = std.fmt.parseInt(u64, line["continuity-epoch:".len..], 10) catch return error.Truncated;
+            continuity_epoch = tally_parse_int.parse_int(u64, line["continuity-epoch:".len..], .{}) catch return error.Truncated;
         } else if (std.mem.startsWith(u8, line, "continuity-kind:")) {
             const kind = line["continuity-kind:".len..];
             if (std.mem.eql(u8, kind, "export")) {

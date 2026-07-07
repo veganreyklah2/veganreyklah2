@@ -12,6 +12,7 @@
 const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
+const tally_parse_int = @import("parse_int.rye");
 
 const caravan_service_version = "20260707.011412";
 
@@ -25,7 +26,7 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 3 and std.mem.eql(u8, args[1], "child")) {
-        const attempt = std.fmt.parseInt(u32, args[2], 10) catch return 1;
+        const attempt = tally_parse_int.parse_int(u32, args[2], .{}) catch return 1;
         return run_service_child(attempt);
     }
 

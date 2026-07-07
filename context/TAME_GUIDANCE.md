@@ -254,9 +254,10 @@ by default — a leading zero on parsed input is far more often truncation, inje
 a copy-paste seam than a number anyone meant to write that way. New code calls
 `tally/parse_int.rye` with explicit options at the call site; hex byte-pair decoders state
 `allow_leading_zero = true` in the open. Elder `parseInt(` sites migrate on touch;
-`tools/tame_style_check.rish` prints the remaining count every parity run. As of counsel
-`20260707.203612`, **12** application sites remain across seven files — counted, not banned
-yet, the same discipline `@memcpy` followed while large.
+`tools/tame_style_check.rish` prints the remaining count every parity run. Seated at counsel
+`20260707.203612`; ratchet closed at **`0`** application sites (`20260707.213000`) — every
+scan-dir site routes through `tally/parse_int.rye`; the lone intentional `parseInt(` remains
+inside `parse_int` itself.
 
 ### Named errors
 
@@ -410,7 +411,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
 | **zero `assert(` in core modules** | import `const assert = std.debug.assert` and name contract postconditions; honest exempt list in `tame_style_scan.sh` (guests, aurora freestanding, signal handler, font table, line editor, exit constants) |
 
-**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season closed at **0** (`20260707.203612`); **`parseInt(` ratchet** — 12 remaining, migrate on touch per counsel `203612`.
+**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season closed at **0** (`20260707.203612`); **`parseInt(` ratchet** closed at **0** (`20260707.213000`).
 
 **POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans (e.g. `tame_style_scan.sh` bans half) may migrate to `.rish` in a later sitting — proven feasible for file-read loops; state-tracking ratchet counts stay open until scoped.
 

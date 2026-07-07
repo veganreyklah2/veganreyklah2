@@ -21,6 +21,7 @@
 const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
+const tally_parse_int = @import("parse_int.rye");
 
 /// Caravan seed version — stamped chronologically.
 const caravan_seed_version = "20260619.224512";
@@ -57,7 +58,7 @@ pub fn main(init: std.process.Init) !u8 {
 fn run_child(args: []const [:0]const u8) u8 {
     if (args.len < 3) return 1;
     // invariant: exit code is a single byte, 0–255
-    const code = std.fmt.parseInt(u8, args[2], 10) catch return 1;
+    const code = tally_parse_int.parse_int(u8, args[2], .{}) catch return 1;
     return code;
 }
 

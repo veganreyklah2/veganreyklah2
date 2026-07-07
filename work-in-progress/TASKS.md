@@ -316,7 +316,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [x] **Stale virtio rename found and fixed** — `device_wire.rye` called `vn.negotiateFeatures`; `virtio_net.rye` had migrated to `negotiate_features` a season ago; the parity suite never built `device_wire.rye`'s own hosted binary, only the freestanding lab downstream of it, so the break sat unnoticed. `tools/comlink_device_wire.rish` now builds and runs the hosted selftest first.
 - [x] **Tools/enrich safety net — complete (3/3)** — `align_session_logs`, `tame_usize_audit`, `enrich_strengthening_docs` witnesses GREEN; counsel [`193712`](../counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md)
 - [x] **Tools `snake_case` season** — **0** camelCase `fn` in `tools/` (**114** cleared); counsel [`201912`](../counsel/20260707-201912_claude-counsel-enrich-migration-order.md)
-- [~] **`parseInt(` ratchet** — **12** application sites remaining (3 migrated); counsel [`203612`](../counsel/20260707-203612_claude-counsel-parse-int-and-season-close.md); `tally/parse_int.rye` seated; witness `tally_parse_int.rish`
+- [x] **`parseInt(` ratchet** — **0** application sites (**12** migrated after counsel `203612` seated the module); counsel [`203612`](../counsel/20260707-203612_claude-counsel-parse-int-and-season-close.md); `tame_style_check` ratchet **0**
 - [x] **Three module READMEs** — `comlink/README.md`, `caravan/README.md`, `tally/README.md`, matching `amber/README.md`'s shape; named as a gap since the synthesis sitting, closed this round.
 - [ ] **TAME hygiene (as-you-touch)** — bare `print(...)` via `const print = std.debug.print` in older hosted `.rye`; address when each file is touched, not as a sweep.
 

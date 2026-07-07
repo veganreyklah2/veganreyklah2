@@ -27,6 +27,7 @@
 const std  = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
+const tally_parse_int = @import("../parse_int.rye");
 const Dir  = std.Io.Dir;
 const Sha3 = std.crypto.hash.sha3.Sha3_256;
 
@@ -330,8 +331,8 @@ fn deserialize_weave(allocator: std.mem.Allocator, blob: []const u8) !Weave {
         const gen_str  = fields.next() orelse return error.InvalidFormat;
         const pos_str  = fields.next() orelse return error.InvalidFormat;
         const text_str = fields.rest();
-        const gen = try std.fmt.parseInt(u32, gen_str, 10);
-        const pos = try std.fmt.parseInt(u32, pos_str, 10);
+        const gen = try tally_parse_int.parse_int(u32, gen_str, .{});
+        const pos = try tally_parse_int.parse_int(u32, pos_str, .{});
         assert(gen >= 1);
         const text = try allocator.dupe(u8, text_str);
         try w.lines.append(allocator, Line{ .text = text, .gen = gen, .pos = pos });

@@ -40,6 +40,7 @@
 
 const std = @import("std");
 const tally_copy = @import("tally_copy.rye");
+const tally_parse_int = @import("parse_int.rye");
 const assert = std.debug.assert;
 const print = std.debug.print;
 
@@ -336,7 +337,7 @@ fn recall_by_index(
         print("rishi: no history yet to recall\n", .{});
         return;
     }
-    const n = std.fmt.parseInt(u32, arg, 10) catch {
+    const n = tally_parse_int.parse_int(u32, arg, .{}) catch {
         print("rishi: usage — :recall <n>, where 1 <= n <= {d}\n", .{history.count});
         return;
     };
@@ -1392,7 +1393,7 @@ fn eval_operand(allocator: std.mem.Allocator, io: std.Io, env: *const Env, raw: 
     }
     if (std.mem.eql(u8, s, "true")) return .{ .boolean = true };
     if (std.mem.eql(u8, s, "false")) return .{ .boolean = false };
-    if (std.fmt.parseInt(i64, s, 10)) |x| {
+    if (tally_parse_int.parse_int(i64, s, .{})) |x| {
         return .{ .int = x };
     } else |_| {}
     // Unary string builtins — reachable from comparison arms via eval_operand.
