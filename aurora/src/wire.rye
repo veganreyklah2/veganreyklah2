@@ -52,14 +52,14 @@ fn receiver() noreturn {
     while (ready.* == 0) {}
     asm volatile ("fence" ::: .{ .memory = true }); // read the buffer only after the flag
     const len = mailbox_len.*;
-    writeStr("Aurora wire: hart 1 received from hart 0, across shared memory:\n  \"");
+    write_str("Aurora wire: hart 1 received from hart 0, across shared memory:\n  \"");
     var i: u32 = 0;
     while (i < len) : (i += 1) uart_tx.* = mailbox[i];
-    writeStr("\"\n");
+    write_str("\"\n");
     test_finisher.* = finisher_pass; // hart 1 powers the machine down
     while (true) {}
 }
 
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }

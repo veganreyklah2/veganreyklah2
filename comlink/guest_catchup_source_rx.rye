@@ -14,43 +14,43 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("ns-catchupw device: FAIL — source RX timeout\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — source RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("ns-catchupw device: FAIL — frame too short\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("ns-catchupw device: FAIL — open refused\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — open refused\n");
+        vn.finish_fail();
     };
 
     var req: sw.SyncRequest = undefined;
     sw.decode_request(opened[0..@intCast(opened_len)], &req) catch {
-        vn.writeStr("ns-catchupw device: FAIL — request decode\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — request decode\n");
+        vn.finish_fail();
     };
     if (!@import("std").mem.eql(u8, req.peer, "peerB") or !@import("std").mem.eql(u8, req.bolt, "b")) {
-        vn.writeStr("ns-catchupw device: FAIL — peer/bolt mismatch\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — peer/bolt mismatch\n");
+        vn.finish_fail();
     }
     if (req.revision < 2 or req.revision > 4) {
-        vn.writeStr("ns-catchupw device: FAIL — revision out of catch-up range\n");
-        vn.finishFail();
+        vn.write_str("ns-catchupw device: FAIL — revision out of catch-up range\n");
+        vn.finish_fail();
     }
-    vn.writeStr("ns-catchupw device: catch-up request GREEN — verify passed\n");
-    vn.finishPass();
+    vn.write_str("ns-catchupw device: catch-up request GREEN — verify passed\n");
+    vn.finish_pass();
 }

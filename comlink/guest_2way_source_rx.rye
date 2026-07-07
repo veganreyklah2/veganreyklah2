@@ -24,52 +24,52 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("ns-2wayw device: FAIL — source RX timeout\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — source RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("ns-2wayw device: FAIL — frame too short\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("ns-2wayw device: FAIL — open refused\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — open refused\n");
+        vn.finish_fail();
     };
 
     var req: sw.SyncRequest = undefined;
     sw.decode_request(opened[0..@intCast(opened_len)], &req) catch {
-        vn.writeStr("ns-2wayw device: FAIL — request decode\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — request decode\n");
+        vn.finish_fail();
     };
     if (!@import("std").mem.eql(u8, req.peer, "peerA") or !@import("std").mem.eql(u8, req.bolt, "a") or req.revision != 1) {
-        vn.writeStr("ns-2wayw device: FAIL — bolt/revision mismatch\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — bolt/revision mismatch\n");
+        vn.finish_fail();
     }
     if (req.held_count != 1) {
-        vn.writeStr("ns-2wayw device: FAIL — held digest count\n");
-        vn.finishFail();
+        vn.write_str("ns-2wayw device: FAIL — held digest count\n");
+        vn.finish_fail();
     }
     var shared: [64]u8 = undefined;
     digest_hex_of("shared", &shared);
     var i: u32 = 0;
     while (i < 64) : (i += 1) {
         if (req.held_digests[0][i] != shared[i]) {
-            vn.writeStr("ns-2wayw device: FAIL — held digest mismatch\n");
-            vn.finishFail();
+            vn.write_str("ns-2wayw device: FAIL — held digest mismatch\n");
+            vn.finish_fail();
         }
     }
-    vn.writeStr("ns-2wayw device: sealed peerA sync request GREEN — verify passed\n");
-    vn.finishPass();
+    vn.write_str("ns-2wayw device: sealed peerA sync request GREEN — verify passed\n");
+    vn.finish_pass();
 }

@@ -25,9 +25,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     tx.init();
-    vn.driverOk();
+    vn.driver_ok();
 
     const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
     var applicant_hex: [64]u8 = undefined;
@@ -62,6 +62,6 @@ export fn kmain() callconv(.c) noreturn {
     const total: u32 = poff + dg_len;
 
     tx.send(total);
-    vn.writeStr("oal5 device wire: sealed consent TX sent\n");
-    vn.finishPass();
+    vn.write_str("oal5 device wire: sealed consent TX sent\n");
+    vn.finish_pass();
 }

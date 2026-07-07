@@ -31,22 +31,22 @@ export fn kmain() callconv(.c) noreturn {
     var digest: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(message, &digest, .{});
 
-    writeStr("Aurora: content-named on the bare hart.\n");
-    writeStr("  message = ");
-    writeStr(message);
-    writeStr("\n  name = ");
-    for (digest[0..16]) |b| writeHexByte(b);
-    writeStr("...\n");
+    write_str("Aurora: content-named on the bare hart.\n");
+    write_str("  message = ");
+    write_str(message);
+    write_str("\n  name = ");
+    for (digest[0..16]) |b| write_hex_byte(b);
+    write_str("...\n");
 
     test_finisher.* = finisher_pass;
     while (true) {}
 }
 
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }
 
-fn writeHexByte(byte: u8) void {
+fn write_hex_byte(byte: u8) void {
     const hex = "0123456789abcdef";
     uart_tx.* = hex[byte >> 4];
     uart_tx.* = hex[byte & 0x0f];

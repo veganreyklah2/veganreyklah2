@@ -35,58 +35,58 @@ const Machine = struct {
 export fn _start() linksection(".text.init") callconv(.naked) noreturn {
     asm volatile (
         \\ li sp, 0x80100000
-        \\ j stageWake
+        \\ j stage_wake
     );
 }
 
 /// Stage one: wake, learn the machine's identity, and hand it to stage two.
-export fn stageWake() callconv(.c) noreturn {
+export fn stage_wake() callconv(.c) noreturn {
     const machine = Machine{
-        .hartid = readCsr("mhartid"),
-        .isa = readCsr("misa"),
+        .hartid = read_csr("mhartid"),
+        .isa = read_csr("misa"),
     };
-    stageProve(machine);
+    stage_prove(machine);
 }
 
 /// Stage two: prove what stage one found, speak it, and hand off to rest.
-fn stageProve(machine: Machine) noreturn {
+fn stage_prove(machine: Machine) noreturn {
     // The base integer ISA must be present — this very code could not run
     // otherwise. Naming the invariant means an impossible machine would stop
     // loudly, right here, rather than wander on.
     assert((machine.isa & isa_base_integer) != 0);
 
-    writeStr("Aurora relay:\n");
-    writeStr("  stage 1 -> woke hart ");
-    writeDec(machine.hartid);
-    writeStr("\n  stage 2 -> proved RV with base integer");
-    if ((machine.isa & isa_compressed) != 0) writeStr(" + compressed");
-    writeStr("\n  stage 3 -> resting.\n");
+    write_str("Aurora relay:\n");
+    write_str("  stage 1 -> woke hart ");
+    write_dec(machine.hartid);
+    write_str("\n  stage 2 -> proved RV with base integer");
+    if ((machine.isa & isa_compressed) != 0) write_str(" + compressed");
+    write_str("\n  stage 3 -> resting.\n");
 
-    stageRest();
+    stage_rest();
 }
 
 /// Stage three: rest. The relay is complete, so ask the machine to power down.
-fn stageRest() noreturn {
+fn stage_rest() noreturn {
     test_finisher.* = finisher_pass;
     while (true) {}
 }
 
 /// Read a machine control/status register by name. `comptime name` keeps the
 /// instruction exact, decided before the program ever runs.
-fn readCsr(comptime name: []const u8) usize {
+fn read_csr(comptime name: []const u8) usize {
     return asm volatile ("csrr %[out], " ++ name
         : [out] "=r" (-> usize),
     );
 }
 
 /// Write a string to the console, one byte at a time.
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }
 
 /// Write an unsigned value in decimal. Small and stack-only — there is no
 /// allocator on a bare hart, and none is needed for at most twenty digits.
-fn writeDec(value: usize) void {
+fn write_dec(value: usize) void {
     var buf: [20]u8 = undefined;
     var i: usize = buf.len;
     var v = value;
@@ -97,7 +97,7 @@ fn writeDec(value: usize) void {
         v /= 10;
         if (v == 0) break;
     }
-    writeStr(buf[i..]);
+    write_str(buf[i..]);
 }
 
 /// A bare-metal `assert`, the same idiom as the seed: with no standard library

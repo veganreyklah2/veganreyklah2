@@ -15,16 +15,16 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx_queue.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx_queue.kick(); // ring the RX doorbell once buffers are posted and the queue is live
 
-    if (!rx_queue.waitPattern()) {
-        vn.writeStr("comlink device wire: linktest FAIL — pattern mismatch or timeout\n");
-        vn.finishFail();
+    if (!rx_queue.wait_pattern()) {
+        vn.write_str("comlink device wire: linktest FAIL — pattern mismatch or timeout\n");
+        vn.finish_fail();
     }
 
-    vn.writeStr("comlink device wire: linktest GREEN — sub-lap 2 pattern TX/RX\n");
-    vn.finishPass();
+    vn.write_str("comlink device wire: linktest GREEN — sub-lap 2 pattern TX/RX\n");
+    vn.finish_pass();
 }

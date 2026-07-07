@@ -33,7 +33,7 @@ const print = std.debug.print;
 
 const tally_gardens_version = "20260620.211712";
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -50,13 +50,13 @@ pub const Region = struct {
 
     pub fn init(buf: []u8) Region {
         const r = Region{ .buf = buf, .pos = 0 };
-        assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= buf_len_u32(r.buf));
         return r;
     }
 
     /// Bump-allocate n bytes. Fails with OutOfBounds past the edge.
     pub fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
-        const cap = bufLenU32(self.buf);
+        const cap = buf_len_u32(self.buf);
         assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
@@ -71,12 +71,12 @@ pub const Region = struct {
     /// Clear whole — the season ends; fresh allocations may begin again.
     pub fn clear(self: *Region) void {
         self.pos = 0;
-        assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= buf_len_u32(self.buf));
     }
 
     /// Bytes remaining before the edge.
     pub fn remaining(self: *const Region) u32 {
-        return bufLenU32(self.buf) - self.pos;
+        return buf_len_u32(self.buf) - self.pos;
     }
 };
 
@@ -145,7 +145,7 @@ pub const Gardens = struct {
     /// Clear one named garden — the season ends for that garden only.
     /// Asserts the garden exists (a caller naming a non-existent garden
     /// is always a mistake).
-    pub fn clearOne(self: *Gardens, name: []const u8) void {
+    pub fn clear_one(self: *Gardens, name: []const u8) void {
         assert(name.len > 0);
         const n: usize = @intCast(self.count);
         for (self.entries[0..n]) |*e| {
@@ -158,7 +158,7 @@ pub const Gardens = struct {
     }
 
     /// Clear all gardens at once — the whole season ends.
-    pub fn clearAll(self: *Gardens) void {
+    pub fn clear_all(self: *Gardens) void {
         const n: usize = @intCast(self.count);
         for (self.entries[0..n]) |*e| {
             e.region.clear();
@@ -169,7 +169,7 @@ pub const Gardens = struct {
     }
 
     /// Total bytes remaining across all gardens.
-    pub fn totalRemaining(self: *const Gardens) u32 {
+    pub fn total_remaining(self: *const Gardens) u32 {
         var total: u32 = 0;
         const n: usize = @intCast(self.count);
         for (self.entries[0..n]) |e| {
@@ -222,8 +222,8 @@ pub fn main() void {
         else |err| assert(err == error.OutOfBounds);
     }
 
-    // --- clearOne resets one garden; others untouched --------------------
-    g.clearOne("diff");
+    // --- clear_one resets one garden; others untouched --------------------
+    g.clear_one("diff");
     assert(diff_r.pos == 0);
     assert(diff_r.remaining() == 256);
     assert(blob_r.remaining() == 412); // blob unchanged
@@ -233,17 +233,17 @@ pub fn main() void {
     assert(c.len == 256);
     assert(c.ptr == @as([*]u8, @ptrCast(&diff_buf[0])));
 
-    // --- clearAll resets every garden at once ----------------------------
-    g.clearAll();
+    // --- clear_all resets every garden at once ----------------------------
+    g.clear_all();
     assert(blob_r.pos  == 0);
     assert(diff_r.pos  == 0);
     const frame_r = g.get("frame") orelse unreachable;
     assert(frame_r.pos == 0);
 
-    // Total remaining after clearAll = sum of all backing sizes.
-    assert(g.totalRemaining() == 512 + 256 + 128);
+    // Total remaining after clear_all = sum of all backing sizes.
+    assert(g.total_remaining() == 512 + 256 + 128);
 
-    // --- Reuse after clearAll: same pointers, fresh season ---------------
+    // --- Reuse after clear_all: same pointers, fresh season ---------------
     const d = blob_r.alloc(512) catch unreachable;
     assert(d.len == 512);
     assert(d.ptr == @as([*]u8, @ptrCast(&blob_buf[0]))); // same backing memory

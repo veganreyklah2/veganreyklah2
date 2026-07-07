@@ -54,7 +54,7 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain(hartid: usize) callconv(.c) noreturn {
-    if (hartid == 0) sealAndPost() else receiveAndOpen();
+    if (hartid == 0) seal_and_post() else receive_and_open();
 }
 
 /// Derive the symmetric seal key from a shared secret, through the strengthened hash.
@@ -65,7 +65,7 @@ fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
 }
 
 /// Hart 0 (Alice): seal a message to Bob, lay it on the wire, raise the flag.
-fn sealAndPost() noreturn {
+fn seal_and_post() noreturn {
     const alice_id = Ed25519.KeyPair.generateDeterministic(seed_alice) catch unreachable;
     // Alice uses only Bob's public key — his published address. Deriving it from a
     // seed here is a test stand-in for looking it up; none of Bob's secret is read.
@@ -88,12 +88,12 @@ fn sealAndPost() noreturn {
     // Lay the datagram on the wire, field by field.
     const sender_bytes = alice_id.public_key.toBytes();
     const sig_bytes = sig.toBytes();
-    writeBytes(off_sender, &sender_bytes);
-    writeBytes(off_nonce, &nonce);
-    writeBytes(off_name, &name);
-    writeBytes(off_sig, &sig_bytes);
-    writeBytes(off_tag, &tag);
-    writeBytes(off_cipher, &ciphertext);
+    write_bytes(off_sender, &sender_bytes);
+    write_bytes(off_nonce, &nonce);
+    write_bytes(off_name, &name);
+    write_bytes(off_sig, &sig_bytes);
+    write_bytes(off_tag, &tag);
+    write_bytes(off_cipher, &ciphertext);
     wire_len.* = off_cipher + ciphertext.len;
     asm volatile ("fence" ::: .{ .memory = true }); // publish the datagram before the flag
     ready.* = 1;
@@ -101,7 +101,7 @@ fn sealAndPost() noreturn {
 }
 
 /// Hart 1 (Bob): take the raw bytes off the wire, shape-cast them, and open.
-fn receiveAndOpen() noreturn {
+fn receive_and_open() noreturn {
     while (ready.* == 0) {}
     asm volatile ("fence" ::: .{ .memory = true }); // read the datagram only after the flag
     const len = wire_len.*;
@@ -110,7 +110,7 @@ fn receiveAndOpen() noreturn {
     // shape holds. One shorter than its header, or longer than the wire, is refused
     // before a single byte is trusted (active-designing/992: validate at the edge).
     if (len < off_cipher or len > wire_capacity) {
-        writeStr("Aurora posted: a malformed datagram, refused at the wire.\n");
+        write_str("Aurora posted: a malformed datagram, refused at the wire.\n");
         test_finisher.* = finisher_pass;
         while (true) {}
     }
@@ -143,27 +143,27 @@ fn receiveAndOpen() noreturn {
     var opened: [max_message]u8 = undefined;
     ChaCha20Poly1305.decrypt(opened[0..cipher_len], ciphertext, tag, "", nonce, key) catch unreachable;
 
-    writeStr("Aurora posted: hart 1 opened a sealed datagram from hart 0.\n");
-    writeStr(if (name_ok) "  attestation verified, content-name matches.\n" else "  content-name MISMATCH.\n");
-    writeStr("  opened = ");
-    writeStr(opened[0..cipher_len]);
-    writeStr("\n  name = ");
-    for (name[0..16]) |b| writeHexByte(b);
-    writeStr("...\n");
+    write_str("Aurora posted: hart 1 opened a sealed datagram from hart 0.\n");
+    write_str(if (name_ok) "  attestation verified, content-name matches.\n" else "  content-name MISMATCH.\n");
+    write_str("  opened = ");
+    write_str(opened[0..cipher_len]);
+    write_str("\n  name = ");
+    for (name[0..16]) |b| write_hex_byte(b);
+    write_str("...\n");
 
     test_finisher.* = finisher_pass; // hart 1 powers the machine down once opened
     while (true) {}
 }
 
-fn writeBytes(offset: usize, bytes: []const u8) void {
+fn write_bytes(offset: usize, bytes: []const u8) void {
     for (bytes, 0..) |byte, i| wire[offset + i] = byte;
 }
 
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }
 
-fn writeHexByte(byte: u8) void {
+fn write_hex_byte(byte: u8) void {
     const hex = "0123456789abcdef";
     uart_tx.* = hex[byte >> 4];
     uart_tx.* = hex[byte & 0x0f];

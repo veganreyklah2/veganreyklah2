@@ -66,23 +66,23 @@ export fn kmain() callconv(.c) noreturn {
     var opened: [message.len]u8 = undefined;
     ChaCha20Poly1305.decrypt(&opened, &ciphertext, tag, "", nonce, key_b) catch unreachable;
 
-    writeStr("Aurora: a sealed datagram, opened on the bare hart.\n");
-    writeStr(if (name_ok) "  attestation verified, content-name matches.\n" else "  content-name MISMATCH.\n");
-    writeStr("  opened = ");
-    writeStr(&opened);
-    writeStr("\n  name = ");
-    for (name[0..16]) |b| writeHexByte(b);
-    writeStr("...\n");
+    write_str("Aurora: a sealed datagram, opened on the bare hart.\n");
+    write_str(if (name_ok) "  attestation verified, content-name matches.\n" else "  content-name MISMATCH.\n");
+    write_str("  opened = ");
+    write_str(&opened);
+    write_str("\n  name = ");
+    for (name[0..16]) |b| write_hex_byte(b);
+    write_str("...\n");
 
     test_finisher.* = finisher_pass;
     while (true) {}
 }
 
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }
 
-fn writeHexByte(byte: u8) void {
+fn write_hex_byte(byte: u8) void {
     const hex = "0123456789abcdef";
     uart_tx.* = hex[byte >> 4];
     uart_tx.* = hex[byte & 0x0f];

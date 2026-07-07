@@ -34,28 +34,28 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold RX timeout\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold frame too short\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold open refused\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold open refused\n");
+        vn.finish_fail();
     };
 
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
@@ -65,55 +65,55 @@ export fn kmain() callconv(.c) noreturn {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold payload decode\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold payload decode\n");
+        vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
     rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold verify\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold verify\n");
+        vn.finish_fail();
     };
     const kind = oa.classify_fact(fact) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold classify\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold classify\n");
+        vn.finish_fail();
     };
     if (kind != .completion) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold not completion\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold not completion\n");
+        vn.finish_fail();
     }
     var fields: rc.FactFields = undefined;
     rc.parse_fact_fields(fact, &fields) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold parse\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold parse\n");
+        vn.finish_fail();
     };
     if (!std.mem.startsWith(u8, fields.memo, oa.escrow_hold_prefix)) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold memo\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold memo\n");
+        vn.finish_fail();
     }
     const memo_ref = fields.memo[oa.escrow_hold_prefix.len..];
     var i: u32 = 0;
     while (i < oa.ref_hex_len) : (i += 1) {
         if (memo_ref[i] != oa.witness_request_ref[i]) {
-            vn.writeStr("oal3l2 device wire: FAIL — hold request_ref\n");
-            vn.finishFail();
+            vn.write_str("oal3l2 device wire: FAIL — hold request_ref\n");
+            vn.finish_fail();
         }
     }
     const amount = rc.parse_amount_signed(fields.amount) catch {
-        vn.writeStr("oal3l2 device wire: FAIL — hold amount\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold amount\n");
+        vn.finish_fail();
     };
     if (amount != 100) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold stipend\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold stipend\n");
+        vn.finish_fail();
     }
     var poster_hex: [64]u8 = undefined;
     var escrow_hex: [64]u8 = undefined;
     pubkey_hex(poster_pk, &poster_hex);
     pubkey_hex(escrow_kp.public_key, &escrow_hex);
     if (!hex_eq(fields.from, poster_hex[0..64]) or !hex_eq(fields.to, escrow_hex[0..64])) {
-        vn.writeStr("oal3l2 device wire: FAIL — hold from/to\n");
-        vn.finishFail();
+        vn.write_str("oal3l2 device wire: FAIL — hold from/to\n");
+        vn.finish_fail();
     }
-    vn.writeStr("oal3l2 device wire: sealed hold GREEN — verify and request_ref passed\n");
-    vn.finishPass();
+    vn.write_str("oal3l2 device wire: sealed hold GREEN — verify and request_ref passed\n");
+    vn.finish_pass();
 }

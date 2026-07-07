@@ -55,7 +55,7 @@ const Path = enum {
 export fn _start() linksection(".text.init") callconv(.naked) noreturn {
     asm volatile (
         \\ li sp, 0x80100000
-        \\ j stageWake
+        \\ j stage_wake
     );
 }
 
@@ -63,22 +63,22 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 // § Stage 1: Wake — read the machine
 // =========================================================================
 
-export fn stageWake() callconv(.c) noreturn {
+export fn stage_wake() callconv(.c) noreturn {
     const machine = Machine{
-        .hartid = readCsr("mhartid"),
-        .isa = readCsr("misa"),
+        .hartid = read_csr("mhartid"),
+        .isa = read_csr("misa"),
     };
-    stageProve(machine);
+    stage_prove(machine);
 }
 
 // =========================================================================
 // § Stage 2: Prove — assert the identity
 // =========================================================================
 
-fn stageProve(machine: Machine) noreturn {
+fn stage_prove(machine: Machine) noreturn {
     // invariant: base integer ISA present — this code could not run otherwise
     assert((machine.isa & isa_base_integer) != 0);
-    stageDecide(machine);
+    stage_decide(machine);
 }
 
 // =========================================================================
@@ -89,7 +89,7 @@ fn stageProve(machine: Machine) noreturn {
 /// configuration path. A full boot would select a kernel image by content
 /// hash; this seed chooses between two named paths so the concept — a stage
 /// that creates a value it chose, rather than passing one through — is proven.
-fn stageDecide(machine: Machine) noreturn {
+fn stage_decide(machine: Machine) noreturn {
     // Read the ISA extensions the machine offers.
     const has_atomics = (machine.isa & isa_atomic) != 0;
     const has_multiply = (machine.isa & isa_multiply) != 0;
@@ -115,26 +115,26 @@ fn stageDecide(machine: Machine) noreturn {
         .config_tag = config_tag,
     };
 
-    stageAnnounce(decision);
+    stage_announce(decision);
 }
 
 // =========================================================================
 // § Stage 4: Announce and rest
 // =========================================================================
 
-fn stageAnnounce(decision: Decision) noreturn {
-    writeStr("Aurora deciding:\n");
-    writeStr("  stage 1 -> woke hart ");
-    writeDec(decision.machine.hartid);
-    writeStr("\n  stage 2 -> proved base integer ISA\n");
-    writeStr("  stage 3 -> decided: path ");
+fn stage_announce(decision: Decision) noreturn {
+    write_str("Aurora deciding:\n");
+    write_str("  stage 1 -> woke hart ");
+    write_dec(decision.machine.hartid);
+    write_str("\n  stage 2 -> proved base integer ISA\n");
+    write_str("  stage 3 -> decided: path ");
     switch (decision.path) {
-        .full => writeStr("full (atomics + multiply + compressed)"),
-        .minimal => writeStr("minimal (base integer only)"),
+        .full => write_str("full (atomics + multiply + compressed)"),
+        .minimal => write_str("minimal (base integer only)"),
     }
-    writeStr("\n             config tag ");
-    writeHex(decision.config_tag);
-    writeStr("\n  stage 4 -> resting.\n");
+    write_str("\n             config tag ");
+    write_hex(decision.config_tag);
+    write_str("\n  stage 4 -> resting.\n");
 
     test_finisher.* = finisher_pass;
     while (true) {}
@@ -144,18 +144,18 @@ fn stageAnnounce(decision: Decision) noreturn {
 // § Console helpers (bare metal — no std beneath us)
 // =========================================================================
 
-fn readCsr(comptime name: []const u8) usize {
+fn read_csr(comptime name: []const u8) usize {
     // Register return is XLEN-wide; usize is the machine word on rv64.
     return asm volatile ("csrr %[out], " ++ name
         : [out] "=r" (-> usize),
     );
 }
 
-fn writeStr(text: []const u8) void {
+fn write_str(text: []const u8) void {
     for (text) |byte| uart_tx.* = byte;
 }
 
-fn writeDec(value: usize) void {
+fn write_dec(value: usize) void {
     var buf: [20]u8 = undefined;
     var i: usize = buf.len;
     var v = value;
@@ -165,10 +165,10 @@ fn writeDec(value: usize) void {
         v /= 10;
         if (v == 0) break;
     }
-    writeStr(buf[i..]);
+    write_str(buf[i..]);
 }
 
-fn writeHex(value: u32) void {
+fn write_hex(value: u32) void {
     const hex = "0123456789abcdef";
     var buf: [8]u8 = undefined;
     var i: usize = 8;
@@ -178,7 +178,7 @@ fn writeHex(value: u32) void {
         buf[i] = hex[@as(u4, @intCast(v & 0xf))];
         v >>= 4;
     }
-    writeStr(&buf);
+    write_str(&buf);
 }
 
 fn assert(ok: bool) void {

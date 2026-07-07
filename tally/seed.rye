@@ -28,7 +28,7 @@ const tally_seed_version = "20260620.211712";
 /// Stack backing for the proof — small enough to hold in mind, large enough to prove.
 const BACKING_LEN: u32 = 64;
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -47,7 +47,7 @@ const Region = struct {
     /// the edge; the cursor starts at zero — the beginning of the season.
     fn init(buf: []u8) Region {
         const r = Region{ .buf = buf, .pos = 0 };
-        assert(r.pos <= bufLenU32(r.buf)); // invariant holds at creation
+        assert(r.pos <= buf_len_u32(r.buf)); // invariant holds at creation
         return r;
     }
 
@@ -56,7 +56,7 @@ const Region = struct {
     /// would push the cursor past the edge — loudly, with a stated reason, and
     /// no silent wrap into memory that was never ours.
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
-        const cap = bufLenU32(self.buf);
+        const cap = buf_len_u32(self.buf);
         assert(self.pos <= cap); // invariant: in range before
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
@@ -73,12 +73,12 @@ const Region = struct {
     /// memory is left as-is — the region guarantees bounds, not erasure.
     fn clear(self: *Region) void {
         self.pos = 0;
-        assert(self.pos <= bufLenU32(self.buf)); // invariant: reset holds
+        assert(self.pos <= buf_len_u32(self.buf)); // invariant: reset holds
     }
 
     /// Bytes remaining before the edge.
     fn remaining(self: *const Region) u32 {
-        return bufLenU32(self.buf) - self.pos;
+        return buf_len_u32(self.buf) - self.pos;
     }
 };
 

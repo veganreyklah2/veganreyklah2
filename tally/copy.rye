@@ -35,7 +35,7 @@ pub fn copy_disjoint(comptime T: type, target: []T, source: []const T) void {
     @memcpy(target, source);
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     // Bytes, separate buffers.
     var a: [8]u8 = .{ 1, 2, 3, 4, 5, 6, 7, 8 };
     var b: [8]u8 = undefined;
@@ -67,7 +67,7 @@ pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
     if (args.len >= 2) {
-        if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
+        if (std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
     }
-    return runSelftest(io);
+    return run_selftest(io);
 }

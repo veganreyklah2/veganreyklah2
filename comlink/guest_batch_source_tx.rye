@@ -58,9 +58,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     tx.init();
-    vn.driverOk();
+    vn.driver_ok();
 
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
 
@@ -92,6 +92,6 @@ export fn kmain() callconv(.c) noreturn {
         }
     }
 
-    vn.writeStr("rbw device wire: sealed beaded batch response TX sent\n");
-    vn.finishPass();
+    vn.write_str("rbw device wire: sealed beaded batch response TX sent\n");
+    vn.finish_pass();
 }

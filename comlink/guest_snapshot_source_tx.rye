@@ -37,9 +37,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     tx.init();
-    vn.driverOk();
+    vn.driver_ok();
 
     const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
 
@@ -54,6 +54,6 @@ export fn kmain() callconv(.c) noreturn {
     const payload_len = bw.encode_batch_response(batch_buf[0..built.len], &payload) catch unreachable;
     send_sealed_payload(payload[0..payload_len]);
 
-    vn.writeStr("sed device wire: sealed snapshot batch response TX sent\n");
-    vn.finishPass();
+    vn.write_str("sed device wire: sealed snapshot batch response TX sent\n");
+    vn.finish_pass();
 }

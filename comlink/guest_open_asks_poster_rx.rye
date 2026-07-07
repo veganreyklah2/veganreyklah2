@@ -27,9 +27,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
@@ -39,54 +39,54 @@ export fn kmain() callconv(.c) noreturn {
 
     const req_sig = poster_kp.sign(oa.witness_canonical_request, null) catch unreachable;
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("oal2 device wire: FAIL — poster RX timeout\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — poster RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("oal2 device wire: FAIL — poster frame too short\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — poster frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("oal2 device wire: FAIL — poster open refused\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — poster open refused\n");
+        vn.finish_fail();
     };
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
-        vn.writeStr("oal2 device wire: FAIL — application payload decode\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — application payload decode\n");
+        vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
     rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
-        vn.writeStr("oal2 device wire: FAIL — application verify\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — application verify\n");
+        vn.finish_fail();
     };
     const kind = oa.classify_fact(fact) catch {
-        vn.writeStr("oal2 device wire: FAIL — application classify\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — application classify\n");
+        vn.finish_fail();
     };
     if (kind != .application) {
-        vn.writeStr("oal2 device wire: FAIL — not an application\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — not an application\n");
+        vn.finish_fail();
     }
     var fields: oa.ApplicationFields = undefined;
     oa.parse_application_fields(fact, &fields) catch {
-        vn.writeStr("oal2 device wire: FAIL — application parse\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — application parse\n");
+        vn.finish_fail();
     };
     var i: u32 = 0;
     while (i < oa.ref_hex_len) : (i += 1) {
         if (fields.request_ref[i] != oa.witness_request_ref[i]) {
-            vn.writeStr("oal2 device wire: FAIL — application request_ref mismatch\n");
-            vn.finishFail();
+            vn.write_str("oal2 device wire: FAIL — application request_ref mismatch\n");
+            vn.finish_fail();
         }
     }
 
@@ -97,13 +97,13 @@ export fn kmain() callconv(.c) noreturn {
     append_signed(app_sig, fact, &log, &log_len);
 
     const state = oa.fold_applied_log(log[0..log_len], poster_pk, applicant_pk) catch {
-        vn.writeStr("oal2 device wire: FAIL — fold applied\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — fold applied\n");
+        vn.finish_fail();
     };
     if (!state.applied or state.stipend != 100) {
-        vn.writeStr("oal2 device wire: FAIL — fold state mismatch\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — fold state mismatch\n");
+        vn.finish_fail();
     }
-    vn.writeStr("oal2 device wire: sealed application GREEN — verify and fold applied passed\n");
-    vn.finishPass();
+    vn.write_str("oal2 device wire: sealed application GREEN — verify and fold applied passed\n");
+    vn.finish_pass();
 }

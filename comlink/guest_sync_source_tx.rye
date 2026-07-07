@@ -26,9 +26,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     tx.init();
-    vn.driverOk();
+    vn.driver_ok();
 
     var src: ns.BoltCatalog = .empty();
     ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;
@@ -65,6 +65,6 @@ export fn kmain() callconv(.c) noreturn {
     const total: u32 = poff + dg_len;
 
     tx.send(total);
-    vn.writeStr("nsw2 device wire: sealed sync response TX sent\n");
-    vn.finishPass();
+    vn.write_str("nsw2 device wire: sealed sync response TX sent\n");
+    vn.finish_pass();
 }

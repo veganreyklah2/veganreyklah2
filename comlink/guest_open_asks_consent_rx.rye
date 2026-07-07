@@ -35,9 +35,9 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
     const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
@@ -49,59 +49,59 @@ export fn kmain() callconv(.c) noreturn {
     pubkey_hex(poster_kp, &poster_hex);
     pubkey_hex(applicant_kp, &applicant_hex);
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("oal5 device wire: FAIL — consent RX timeout\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("oal5 device wire: FAIL — consent frame too short\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("oal5 device wire: FAIL — consent open refused\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent open refused\n");
+        vn.finish_fail();
     };
 
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
-        vn.writeStr("oal5 device wire: FAIL — consent payload decode\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent payload decode\n");
+        vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
     rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
-        vn.writeStr("oal5 device wire: FAIL — consent verify\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent verify\n");
+        vn.finish_fail();
     };
     const kind = oa.classify_fact(fact) catch {
-        vn.writeStr("oal5 device wire: FAIL — consent classify\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent classify\n");
+        vn.finish_fail();
     };
     if (kind != .consent) {
-        vn.writeStr("oal5 device wire: FAIL — not consent\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — not consent\n");
+        vn.finish_fail();
     }
     var consent_fields: oa.ConsentFields = undefined;
     oa.parse_consent_fields(fact, &consent_fields) catch {
-        vn.writeStr("oal5 device wire: FAIL — consent parse\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent parse\n");
+        vn.finish_fail();
     };
     var i: u32 = 0;
     while (i < oa.ref_hex_len) : (i += 1) {
         if (consent_fields.request_ref[i] != oa.witness_request_ref[i]) {
-            vn.writeStr("oal5 device wire: FAIL — consent request_ref\n");
-            vn.finishFail();
+            vn.write_str("oal5 device wire: FAIL — consent request_ref\n");
+            vn.finish_fail();
         }
     }
     if (!std.mem.eql(u8, consent_fields.consent, oa.consent_grant)) {
-        vn.writeStr("oal5 device wire: FAIL — consent value\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — consent value\n");
+        vn.finish_fail();
     }
 
     const consent_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
@@ -154,25 +154,25 @@ export fn kmain() callconv(.c) noreturn {
 
     const cycle_len = log_len;
     const state = oa.fold_log(log[0..cycle_len], poster_pk, applicant_pk) catch {
-        vn.writeStr("oal5 device wire: FAIL — fold completed\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — fold completed\n");
+        vn.finish_fail();
     };
     if (!state.completed or state.stipend != 100) {
-        vn.writeStr("oal5 device wire: FAIL — fold state\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — fold state\n");
+        vn.finish_fail();
     }
 
     append_signed(consent_sig, fact, &log, &log_len);
 
     const rep = oa.fold_reputation_log(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]) catch {
-        vn.writeStr("oal5 device wire: FAIL — reputation fold\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — reputation fold\n");
+        vn.finish_fail();
     };
     if (rep.consented_completions != 1 or rep.consented_stipend != 100) {
-        vn.writeStr("oal5 device wire: FAIL — reputation state\n");
-        vn.finishFail();
+        vn.write_str("oal5 device wire: FAIL — reputation state\n");
+        vn.finish_fail();
     }
 
-    vn.writeStr("oal5 device wire: sealed consent GREEN — verify and reputation fold passed\n");
-    vn.finishPass();
+    vn.write_str("oal5 device wire: sealed consent GREEN — verify and reputation fold passed\n");
+    vn.finish_pass();
 }

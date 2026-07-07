@@ -25,33 +25,33 @@ fn same_message(a: []const u8) bool {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("comlink device wire: sub-lap 3 FAIL — RX timeout\n");
-        vn.finishFail();
+        vn.write_str("comlink device wire: sub-lap 3 FAIL — RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("comlink device wire: sub-lap 3 FAIL — frame too short\n");
-        vn.finishFail();
+        vn.write_str("comlink device wire: sub-lap 3 FAIL — frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const msg_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("comlink device wire: sub-lap 3 FAIL — open refused\n");
-        vn.finishFail();
+        vn.write_str("comlink device wire: sub-lap 3 FAIL — open refused\n");
+        vn.finish_fail();
     };
     if (!same_message(opened[0..@intCast(msg_len)])) {
-        vn.writeStr("comlink device wire: sub-lap 3 FAIL — message mismatch\n");
-        vn.finishFail();
+        vn.write_str("comlink device wire: sub-lap 3 FAIL — message mismatch\n");
+        vn.finish_fail();
     }
-    vn.writeStr("comlink device wire: sealed datagram GREEN — sub-lap 3 opened the message\n");
-    vn.finishPass();
+    vn.write_str("comlink device wire: sealed datagram GREEN — sub-lap 3 opened the message\n");
+    vn.finish_pass();
 }

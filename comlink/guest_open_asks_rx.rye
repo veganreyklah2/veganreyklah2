@@ -19,28 +19,28 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("oal2 device wire: FAIL — RX timeout\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("oal2 device wire: FAIL — frame too short\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("oal2 device wire: FAIL — open refused\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — open refused\n");
+        vn.finish_fail();
     };
 
     const kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
@@ -49,31 +49,31 @@ export fn kmain() callconv(.c) noreturn {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
-        vn.writeStr("oal2 device wire: FAIL — payload decode\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — payload decode\n");
+        vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
     rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, pubkey) catch {
-        vn.writeStr("oal2 device wire: FAIL — request verify\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — request verify\n");
+        vn.finish_fail();
     };
     const kind = oa.classify_fact(fact) catch {
-        vn.writeStr("oal2 device wire: FAIL — fact classify\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — fact classify\n");
+        vn.finish_fail();
     };
     if (kind != .request) {
-        vn.writeStr("oal2 device wire: FAIL — not a request\n");
-        vn.finishFail();
+        vn.write_str("oal2 device wire: FAIL — not a request\n");
+        vn.finish_fail();
     }
     var ref_buf: [oa.ref_hex_len]u8 = undefined;
     oa.request_ref_hex(fact, &ref_buf);
     var i: u32 = 0;
     while (i < oa.ref_hex_len) : (i += 1) {
         if (ref_buf[i] != oa.witness_request_ref[i]) {
-            vn.writeStr("oal2 device wire: FAIL — request_ref mismatch\n");
-            vn.finishFail();
+            vn.write_str("oal2 device wire: FAIL — request_ref mismatch\n");
+            vn.finish_fail();
         }
     }
-    vn.writeStr("oal2 device wire: sealed request GREEN — verify and request_ref passed\n");
-    vn.finishPass();
+    vn.write_str("oal2 device wire: sealed request GREEN — verify and request_ref passed\n");
+    vn.finish_pass();
 }

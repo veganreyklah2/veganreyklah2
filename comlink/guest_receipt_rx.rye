@@ -18,28 +18,28 @@ export fn _start() linksection(".text.init") callconv(.naked) noreturn {
 }
 
 export fn kmain() callconv(.c) noreturn {
-    vn.initDevice();
+    vn.init_device();
     rx.init();
-    vn.driverOk();
+    vn.driver_ok();
     rx.kick();
 
-    const n = rx.waitFrame();
+    const n = rx.wait_frame();
     if (n == 0) {
-        vn.writeStr("slcl2 device wire: FAIL — RX timeout\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — RX timeout\n");
+        vn.finish_fail();
     }
     const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
     if (n <= poff) {
-        vn.writeStr("slcl2 device wire: FAIL — frame too short\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — frame too short\n");
+        vn.finish_fail();
     }
     const buf = rx.frame();
     const datagram = buf[poff..n];
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = wf.open_datagram(datagram, &opened) catch {
-        vn.writeStr("slcl2 device wire: FAIL — open refused\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — open refused\n");
+        vn.finish_fail();
     };
 
     const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
@@ -48,22 +48,22 @@ export fn kmain() callconv(.c) noreturn {
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
     var fact_buf: [rc.slcl2_max_fact]u8 = undefined;
     const decoded = rc.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
-        vn.writeStr("slcl2 device wire: FAIL — payload decode\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — payload decode\n");
+        vn.finish_fail();
     };
     rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey) catch {
-        vn.writeStr("slcl2 device wire: FAIL — receipt verify\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — receipt verify\n");
+        vn.finish_fail();
     };
     var balance: i64 = 0;
     rc.fold_balance_from_facts(fact_buf[0..decoded.fact_len], &balance) catch {
-        vn.writeStr("slcl2 device wire: FAIL — fold\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — fold\n");
+        vn.finish_fail();
     };
     if (balance != rc.witness_expected_balance) {
-        vn.writeStr("slcl2 device wire: FAIL — balance mismatch\n");
-        vn.finishFail();
+        vn.write_str("slcl2 device wire: FAIL — balance mismatch\n");
+        vn.finish_fail();
     }
-    vn.writeStr("slcl2 device wire: sealed receipt GREEN — verify and fold passed\n");
-    vn.finishPass();
+    vn.write_str("slcl2 device wire: sealed receipt GREEN — verify and fold passed\n");
+    vn.finish_pass();
 }
