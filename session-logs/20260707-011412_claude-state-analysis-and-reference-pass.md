@@ -11,7 +11,7 @@
 
 ## The Word, and the Three Deliverables
 
-Kaeden's word opened three things at once: an analysis of the whole project along the compass, code improvements built and implemented where found, and documentation raised toward a professional reference for the completed work. This log records all three; the analysis itself rests in `external-research/20260707-011412_claude-analysis-state-of-the-tree.md`, and the reference documents rest in `context/specs/` as proposals.
+Kaeden's word opened three things at once: an analysis of the whole project along the compass, code improvements built and implemented where found, and documentation raised toward a professional reference for the completed work. This log records all three; the analysis itself rests in `counsel/20260707-011412_claude-analysis-state-of-the-tree.md`, and the reference documents rest in `context/specs/` as proposals.
 
 ## The Code Finding — a Latent Race, Reproduced, Repaired, Stress-Proven
 

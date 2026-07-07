@@ -6,7 +6,7 @@
 **Style:** Radiant (see `context/RADIANT_STYLE.md`) · **Lens:** TAME · Gall's Law
 **Register:** Proposal — both items assessed as mechanical; one caveat named for the first
 **Status:** Research for understanding — counsel and proposal; checkable claims cite code on disk; seats nothing by itself
-**Ground:** `external-research/20260704-181612_zero-copy-resins-counsel-answers.md` (part C, the lap numbering) · `mantra/snapshot_export.rye` (confirmed no wire code exists) · `mantra/recall_batch_delivery.rye` (`runSource`/`runFetcher`, read in full)
+**Ground:** `counsel/20260704-181612_zero-copy-resins-counsel-answers.md` (part C, the lap numbering) · `mantra/snapshot_export.rye` (confirmed no wire code exists) · `mantra/recall_batch_delivery.rye` (`runSource`/`runFetcher`, read in full)
 
 *Written by Kaeden and Rio 3.*
 

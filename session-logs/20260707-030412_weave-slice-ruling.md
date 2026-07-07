@@ -20,6 +20,6 @@ Brix closure, Pond customs, and full continuity custody rules remain held exactl
 - `context/specs/20260707-011412_mantra-referential-namespace-reference.md` — §12
 - `context/specs/20260707-011412_module-surfaces-index.md` — Weave row
 - `context/LEXICON.md` — Weave row clarified
-- `external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md` — addendum
+- `counsel/20260707-025212_claude-counsel-weave-brix-pond-customs.md` — addendum
 
 **Recommend:** keep going to the next mechanical item on the itinerary when Kaeden names it — Brix first lap and Pond policy each await their own ground; MALA and continuity custody remain gates.

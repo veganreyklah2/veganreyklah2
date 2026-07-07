@@ -23,7 +23,7 @@ Rebuilding `BoltCatalog` to rest on the literal text-history file would be real 
 
 ## What stays held
 
-Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md):
+Per counsel [`20260707-025212`](../counsel/20260707-025212_claude-counsel-weave-brix-pond-customs.md):
 
 | Item | Status |
 |------|--------|

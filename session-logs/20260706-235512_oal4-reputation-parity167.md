@@ -28,7 +28,7 @@ Applied TASKS lines 52 and 72. Implemented `foldReputationLog` in `linengrow/ope
 - `work-in-progress/20260702-ready-to-ask-claude.md` — OA-L4 seated
 - `active-designing/20260706-013012_open-asks-escrow-hammock.md` — OA-L4 landed
 - `active-designing/20260706-185112_the-witness-bolt.md` — doorway fix
-- `external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md` — Status line
+- `counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md` — Status line
 - `foundations/20260706-022912_the-wire-serves-the-fold.md` — landed (prior pass)
 - `session-logs/20260706-235512_oal4-reputation-parity167.md` — this log
 

@@ -16,7 +16,7 @@ Subscribe arc complete through witnessable outer poll in-process. Production sch
 
 ## Files
 
-- `external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md` — counsel (filed)
+- `counsel/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md` — counsel (filed)
 - `mantra/recall_subscribe_poll.rye` — outer poll (new)
 - `tools/mantra_recall_subscribe_poll.rish` — witness (new)
 - Docs, parity, width-check updated

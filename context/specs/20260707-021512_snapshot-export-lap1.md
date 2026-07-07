@@ -36,4 +36,4 @@ Import applies each batch with `resin_batch.applyBatch`; any refusal leaves the 
 
 ## Horizon (not lap 1)
 
-Bundle prefixes (`trust/`, `weave/`, `catalog/`), SHA3-512 head record, continuity fact, Pond customs, and thin-edge boot replay — per [`external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) I2–I4.
+Bundle prefixes (`trust/`, `weave/`, `catalog/`), SHA3-512 head record, continuity fact, Pond customs, and thin-edge boot replay — per [`counsel/20260704-181612_zero-copy-resins-counsel-answers.md`](../counsel/20260704-181612_zero-copy-resins-counsel-answers.md) I2–I4.

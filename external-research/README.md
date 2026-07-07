@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (state-of-the-tree analysis `011412`)
+**Last updated:** 2026-07-07 (counsel split — sixteen bench answers moved to [`../counsel/README.md`](../counsel/README.md))
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -11,7 +11,9 @@
 
 This is where curiosity lands. The `external-research/` folder holds our explorations — the questions we chase, the experiments we run, the outside systems we study, the findings we want to keep close. Each exploration earns its own file, written so a reader can follow it start to finish, the way every piece in this project is written.
 
-This folder is allowed to be experimental, informal, and overgrown at times. It is open to the world: it may name other projects, draw inspiration freely, and cite its sources, with the original works kept whole in the `gratitude/` folder. That openness is its purpose, and it is exactly what sets it apart from its disciplined sibling, the `active-designing/` stack, which carries only our own names and one fixed external and accrues slowly and intentionally. Here we roam; there we decide.
+This folder is allowed to be experimental, informal, and overgrown at times. It is open to the world: it may name other projects, draw inspiration freely, and cite its sources, with the original works kept whole in the `gratitude/` folder. That openness is its purpose, and it is exactly what sets it apart from its disciplined siblings — `active-designing/` (our own design decisions) and `counsel/` (the bench's proposals awaiting Kaeden's word). Here we roam; there we decide; counsel proposes.
+
+**Counsel lives elsewhere.** Analysis, rulings, proposals, and recommendations on pending project decisions moved to [`../counsel/`](../counsel/README.md) (`20260707.180712` reorg). This folder keeps genuine external studies and the settlement-seat register carve-out.
 
 This file is the foundation stone. It rests at the bottom of the stack and explains how the stack works, so that anyone who opens this folder for the first time understands the shape of it at a glance.
 
@@ -44,16 +46,6 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | Stamp | Note | Meaning |
 |-------|------|---------|
 | `20260707.053212` | [TigerBeetle alignment study](20260707-053212_tigerbeetle-alignment-study.md) | `tidy.zig` held against authored `.rye`; `copy_disjoint` + `tame_style_check`; Radiant vocabulary pass |
-| `20260707.025212` | [Weave/Brix snapshot slices and Pond customs](20260707-025212_claude-counsel-weave-brix-pond-customs.md) | Hold next-items; Weave slice may be I2 catalog; custody gate still Kaeden's |
-| `20260707.023512` | [MALA graduation + fold gap](20260707-023512_claude-counsel-mala-graduation-and-fold-gap.md) | Graduation not fired; escrow-release memo fix; hold MALA |
-| `20260707.021012` | [Ring 4 — SIGTERM to sentinel](20260707-021012_claude-counsel-ring4-signal-handler.md) | Atomic flag in handler; loop top creates sentinel; real kill witness |
-| `20260707.014212` | [Graceful stop reframed — exit-code ring first](20260707-014212_claude-counsel-graceful-stop-reframed.md) | cycle_ok restarts; stop code 8 halts; sentinel ring next |
-| `20260707.011412` | [State of the tree — compass analysis](20260707-011412_claude-analysis-state-of-the-tree.md) | Momentum audit; batch rebind-race fix; reference specs proposed; roadmap deltas |
-| `20260707.005612` | [Claude counsel — Tablecloth query](20260707-005612_claude-counsel-tablecloth-query.md) | Namespace query = optional peer/bolt/revision filter; every match in order; Brix store thread separate |
-| `20260707.004712` | [Claude counsel — outer subscribe and host mirror](20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md) | Bounded poll cycles now; host mirror = named pair list; Caravan restart ≠ poller |
-| `20260707.001612` | [Claude counsel — subscribe revisited](20260707-001612_claude-counsel-subscribe-revisited.md) | Catch-up-to-latest now; outer unattended loop waits Caravan scheduling |
-| `20260707.000112` | [Claude counsel — two-way sync and subscribe](20260707-000112_claude-counsel-two-way-sync-and-subscribe.md) | Split lap: symmetric syncRevision now; subscribe (poll-first) waits its own word |
-| `20260706.232812` | [Claude ruling — OA-L4, MALA, Edit-5, horizons](20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) | Zip 58 sitting — OA-L4 leads; Edit-5 slot released; namespace horizon order; parity unchanged |
 | `20260706.023912` | [Clay — the referentially-transparent namespace, studied for Rye](20260706-023912_clay-referential-namespace.md) | Typed git with continuous sync; a name resolves to the same bytes for all time; marks map to Tilak, store to Amber, sync to Amphora; design decides in active-designing |
 | `20260706.022912` | [The Ames vane, Vere, and libuv — carriage through TAME](20260706-022912_ames-vere-libuv-content-carriage.md) | Vere still rides libuv; Ames is identity-and-message-centric, not content-addressed; study the design, adopt no dependency; siloed to foundations |
 | `20260706.005512` | [Settlement seat — verification and verdict](20260706-005512_settlement-seat-verification-and-verdict.md) | Verifies the Sui pivot against neutral sources; grounds the Monad symmetry; raises settlement-asset integrity as a first-class axis; sourcing rule; softenings proposed, seat stays Kaeden's |
@@ -62,9 +54,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260704.214100` | [Subject-oriented programming and the Rye core](20260704-214100_subject-oriented-programming-and-the-rye-core.md) | Urbit explicit-subject philosophy applied to core+shell — horizon, read/mutate, lap ladder |
 | `20260704.211012` | [Rye cores and the gratitude lineage](20260704-211012_rye-cores-and-the-gratitude-lineage.md) | `.rye` core + Rishi shell vs gratitude designs — concepts adopted, names stay in the library |
 | `20260704.185412` | [Ends-first map orientation](20260704-185412_ends-first-map-orientation.md) | Age-banded lens affirmed with two refinements — middle held by default, promotable by any door; addendum to zip-42 counsel Part Three. |
-| `20260704.181612` | [Zero-copy resins counsel — answers](20260704-181612_zero-copy-resins-counsel-answers.md) | A–H answered, I1–I7 at spec grain, map deltas, civic wall; counsel only, every gate Kaeden's. |
 | `20260704.180612` | [Zero-copy resins and the sovereign snapshot](20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) | TigerBeetle-style resin batches over Comlink; maximum Aurora export replaying Weave + Brix — Urbit concepts, Rye words |
-| `20260704.031812` | [Eight asks, one sitting](20260704-031812_eight-asks-one-sitting.md) | Consolidated A1–A8 counsel — gloss spec, TWO_ROOMS seat, SLC-L1 edge, doorway witness, Amphora lap-two, fold home, ROADMAP refresh |
 | `20260704.031812` | [The view from the floor](20260704-031812_the-view-from-the-floor.md) | Whole system re-derived from Rye floor up; checkable-room voice; vision at the door |
 | `20260704.025600` | [Claims, happy zone, and grain](20260704-025600_claims-happy-zone-and-grain.md) | How claim discipline braids with happy-zone testing and each grain strand |
 | `20260704.024900` | [Claim](20260704-024900_claim.md) | Bounded proposition a witness may bind; one witness one claim |
@@ -72,7 +62,6 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260704.024600` | [Two rooms on the metal path](20260704-024600_two-rooms-on-the-metal-path.md) | Rye→Caravan→Tally→modules walk; compile vs runtime cases |
 | `20260703.033602` | [First lap goes green](20260703-033602_first-lap-goes-green.md) | Lap · green · Edit 5 graduation vocabulary — the shipping phrase whole |
 | `20260704.020800` | [One word, one gate](20260704-020800_one-word-one-gate.md) | Gate · witness · toll vocabulary ratified |
-| `20260704-004912` | [One Word, One Gate — unify counsel](20260704-004912_gate-unify-counsel.md) | Claude zip 40: gate=checkpoint, witness absorbs machine sense, toll proposed; delta table awaits Kaeden |
 | `20260704-002912` | [Gates, arms, and the Urbit lineage](20260704-002912_gates-arms-and-the-urbit-lineage.md) | Three gate families vs Hoon homonyms; Tilak triad vs grab/grow/grad; Zig function+struct sufficient — no Urbit gate/arm in Rye |
 | `20260704.030600` | [Itinerary and the crossing manifest](20260704-030600_itinerary-and-the-crossing-manifest.md) | Itinerary primer + crossing_manifest_seed — canonical |
 | `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | **Vessel software** — sealed traveling container; shoulder line, parent mark, manifest; cellar's sibling |

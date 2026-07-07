@@ -297,11 +297,11 @@ v1 used bash fixture with rishi `${}` interpolation bug — promoted to `.rye` p
 | **A7** Fold canon map | Lap 3 of canonical refinement | counsel |
 | **A8** ROADMAP/TASKS/decoder | Refresh on approval | Kaeden |
 
-ER: [`20260704-031812_the-view-from-the-floor.md`](../external-research/20260704-031812_the-view-from-the-floor.md) · [`20260704-031812_eight-asks-one-sitting.md`](../external-research/20260704-031812_eight-asks-one-sitting.md)
+ER: [`20260704-031812_the-view-from-the-floor.md`](../external-research/20260704-031812_the-view-from-the-floor.md) · [`20260704-031812_eight-asks-one-sitting.md`](../counsel/20260704-031812_eight-asks-one-sitting.md)
 
 ### Zip 42 — zero-copy counsel (landed `20260704.185412`)
 
-ER: [`20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) · ends-first: [`20260704-185412_ends-first-map-orientation.md`](../external-research/20260704-185412_ends-first-map-orientation.md)
+ER: [`20260704-181612_zero-copy-resins-counsel-answers.md`](../counsel/20260704-181612_zero-copy-resins-counsel-answers.md) · ends-first: [`20260704-185412_ends-first-map-orientation.md`](../external-research/20260704-185412_ends-first-map-orientation.md)
 
 #### Strategic answers A–H (summary)
 

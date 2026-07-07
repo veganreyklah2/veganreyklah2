@@ -10,7 +10,7 @@ One packet now carries the whole sitting, re-cut before anything landed — the 
 
 ## Files in this packet (additions-only at base `43584d8`)
 
-`external-research/20260704-181612_zero-copy-resins-counsel-answers.md` · `external-research/20260704-185412_ends-first-map-orientation.md` · `expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md` · `session-logs/20260704-181612_fresh-bench-intake-zip42-awaited.md` · `session-logs/20260704-181612_zip42-152-zero-copy-counsel.md` · `session-logs/20260704-185412_ends-first-orientation-counsel.md` · this log.
+`counsel/20260704-181612_zero-copy-resins-counsel-answers.md` · `external-research/20260704-185412_ends-first-map-orientation.md` · `expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md` · `session-logs/20260704-181612_fresh-bench-intake-zip42-awaited.md` · `session-logs/20260704-181612_zip42-152-zero-copy-counsel.md` · `session-logs/20260704-185412_ends-first-orientation-counsel.md` · this log.
 
 ## Next step
 

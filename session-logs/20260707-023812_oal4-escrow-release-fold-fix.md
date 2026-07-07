@@ -20,7 +20,7 @@ Deeper fix (reputation calls `foldEscrowLog`) deferred — value-model seam for 
 
 | File | Why |
 |------|-----|
-| `external-research/20260707-023512_claude-counsel-mala-graduation-and-fold-gap.md` | Counsel filed |
+| `counsel/20260707-023512_claude-counsel-mala-graduation-and-fold-gap.md` | Counsel filed |
 | `linengrow/open_asks.rye` | `completionRequestRef` + witness bolt |
 | `work-in-progress/TASKS.md` | MALA on hold; fold gap closed |
 

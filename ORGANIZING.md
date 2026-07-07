@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-07-04 (not-advice filing rule · grain pointer season)
+**Last updated:** 2026-07-07 (counsel folder split — sixteen files moved to `counsel/`)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
@@ -35,6 +35,8 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README. **Research for understanding, not advice:** surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course; policy and money choices belong to Kaeden in their own season. Say so in each file's status line; CIVIC stays policy-shaped in `context/`. Proposed register law: [`context/TWO_ROOMS.md`](context/TWO_ROOMS.md) (seats on Kaeden's word).
 
+**`counsel/`** — the bench's answer to a pending project decision. Analysis, rulings, proposals, and recommendations from Claude (or the bench) in response to a specific question Kaeden asked — propose-never-seat. Each piece stays as filed; Kaeden's word seats decisions in `active-designing/`, `context/specs/`, or the module home. Living README at [`counsel/README.md`](counsel/README.md).
+
 **`expanding-prompts/`** — intent expanded into runnable plans. Counts upward from `10000`; each prompt is a dated artifact that agents can execute.
 
 **`session-logs/`** — reasoning traces. One-clock filenames; newest-first index in `README.md`. What happened lives here; what is next lives in `TASKS.md`.
@@ -65,6 +67,7 @@ Read the piece aloud. Ask what it is *doing*:
 - **Teaching or looking something up** → `manual/` (tutorial, guide, or reference — only what runs).
 - **Carrying Linengrow's application vision** → `linengrow/`.
 - **Deciding our own design** → `active-designing/`.
+- **Advising on a decision this project is about to make** → `counsel/` (analysis, ruling, proposal, or recommendation — awaiting Kaeden's word).
 - **Studying an external work** → `external-research/`.
 - **Expanding intent into a runnable plan** → `expanding-prompts/`.
 - **Tracking what is open or next** → `work-in-progress/`.

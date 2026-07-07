@@ -17,7 +17,7 @@ Kaeden relayed Claude counsel `20260707.014212` reframing graceful stop: success
 
 | File | Why |
 |------|-----|
-| `external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md` | Filed counsel |
+| `counsel/20260707-014212_claude-counsel-graceful-stop-reframed.md` | Filed counsel |
 | `caravan/supervisor_exit.rye` | Shared three-way exit vocabulary |
 | `caravan/restart_on_ok.rye` | Ring D witness |
 | `tools/caravan_restart_on_ok.rish` | Parity **177** |

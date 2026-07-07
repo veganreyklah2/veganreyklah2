@@ -22,7 +22,7 @@ Next in order: snapshot device wire (lap 3 virtio leg), then host-mirror under s
 
 ## Files
 
-- `external-research/20260707-044112_claude-recommendation-path.md` — counsel order filed
+- `counsel/20260707-044112_claude-recommendation-path.md` — counsel order filed
 - `caravan/subscribe_poll_service.rye` — footgun gate + source poll + multiplexed fetcher wait
 - `tools/caravan_witness_stop_footgun.rish` — ring 1 witness
 - `tools/caravan_subscribe_poll_source_crash.rish` + `tools/fixtures/caravan_subscribe_poll_source_crash.sh` — ring 2 witness

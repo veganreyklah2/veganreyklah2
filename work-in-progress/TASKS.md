@@ -83,7 +83,7 @@
 - [x] **Production scheduling lap 2** — `subscribe_poll_service` imports `supervisor_exit`; restart on `cycle_ok`, halt on `stop_requested`; witness writes sentinel after N cycles; parity **178**
 - [x] **SIGTERM ring (Caravan)** — `caravan/supervisor_signal.rye`; atomic flag in handler; loop top unifies signal + witness + `touch`; `tools/caravan_subscribe_poll_signal.rish`; counsel `20260707.021012`; parity **179**
 
-**Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../external-research/20260707-044112_claude-recommendation-path.md):
+**Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../counsel/20260707-044112_claude-recommendation-path.md):
 
 - [x] **Misuse-guard → source-fall → snapshot device wire → host mirror → TASKS sweep** — all five rings GREEN; mirror via `CARAVAN_WITNESS_MIRROR=1` + `source-loop-mirror` / `fetcher-poll-mirror`; `tools/caravan_subscribe_poll_mirror_service.rish`
 - [ ] **Extended-run stability** — deferred until something runs unattended for real (counsel `044112`)

@@ -25,7 +25,7 @@ Caravan hardening remains counsel-only; four unchecked items filed in TASKS for 
 - `tools/mantra_snapshot_wire.rish` — lap 3 witness
 - `tools/parity.rish` — slot for lap 3 witness
 - `context/specs/20260707-042512_snapshot-export-lap3.md` — lap 3 spec
-- `external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md` — counsel filing
+- `counsel/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md` — counsel filing
 - `context/specs/20260707-024712_snapshot-export-lap2.md` — horizon note lap 3 landed
 - `mantra/README.md` — family table + parity arc
 - `work-in-progress/TASKS.md` — lap 3 done; Caravan menu

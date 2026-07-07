@@ -12,7 +12,7 @@ Extracted outer zip; verified inner packet comment `43584d8a3941a306cb98d90d39a3
 
 ## Files intook
 
-- `external-research/20260704-181612_zero-copy-resins-counsel-answers.md`
+- `counsel/20260704-181612_zero-copy-resins-counsel-answers.md`
 - `external-research/20260704-185412_ends-first-map-orientation.md`
 - `expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md`
 - `session-logs/20260704-181612_fresh-bench-intake-zip42-awaited.md`

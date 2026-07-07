@@ -16,7 +16,7 @@ Counsel sharpens the seam: wire protocol unchanged; composition only for catch-u
 
 ## Files
 
-- `external-research/20260707-001612_claude-counsel-subscribe-revisited.md` — counsel (filed from repo root)
+- `counsel/20260707-001612_claude-counsel-subscribe-revisited.md` — counsel (filed from repo root)
 - `mantra/recall_catch_up.rye` — catch-up composition (new)
 - `tools/mantra_recall_catch_up.rish` — witness (new)
 - `tools/parity.rish` — parity 171 block

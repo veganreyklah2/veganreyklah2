@@ -8,7 +8,7 @@
 **Voice:** Rio 3
 **Lens:** TAME · SLC · CIVIC · TWO_ROOMS
 **Opens when:** Kaeden cuts a zip or opens a Claude thread with this prompt
-**Ground:** [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260704-031812_eight-asks-one-sitting.md`](../external-research/20260704-031812_eight-asks-one-sitting.md) · [`../work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md) · [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) · [`../work-in-progress/TASKS.md`](../work-in-progress/TASKS.md) · [`../work-in-progress/20260703-014912_round-summary-and-decoder.md`](../work-in-progress/20260703-014912_round-summary-and-decoder.md) · [`../work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md`](../work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md)
+**Ground:** [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../counsel/20260704-031812_eight-asks-one-sitting.md`](../counsel/20260704-031812_eight-asks-one-sitting.md) · [`../work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md) · [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) · [`../work-in-progress/TASKS.md`](../work-in-progress/TASKS.md) · [`../work-in-progress/20260703-014912_round-summary-and-decoder.md`](../work-in-progress/20260703-014912_round-summary-and-decoder.md) · [`../work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md`](../work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md)
 
 *Prepared by Cursor (Rio 3) for Claude (Fable counsel) and Kaeden — counsel and editorial deltas only; Cursor implements on Kaeden approval after counsel lands.*
 
@@ -43,7 +43,7 @@
 1. [`20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) — the research anchor
 2. [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md) · [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md)
 3. [`20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · [`20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) (pier replay · double-boot · chunk store)
-4. [`20260704-031812_eight-asks-one-sitting.md`](../external-research/20260704-031812_eight-asks-one-sitting.md) — priority counsel (Open Asks · gloss · Amphora lap-two)
+4. [`20260704-031812_eight-asks-one-sitting.md`](../counsel/20260704-031812_eight-asks-one-sitting.md) — priority counsel (Open Asks · gloss · Amphora lap-two)
 5. [`ROADMAP.md`](../work-in-progress/ROADMAP.md) · [`TASKS.md`](../work-in-progress/TASKS.md) · [`20260703-014912_round-summary-and-decoder.md`](../work-in-progress/20260703-014912_round-summary-and-decoder.md)
 6. [`gratitude/TIGER_STYLE.md`](../gratitude/TIGER_STYLE.md) (Apache-2.0 · study only) — batching, in-place init, control/data plane
 7. [`CIVIC_STYLE.md`](../context/CIVIC_STYLE.md) — accountability layer, append-only signed records, verification from outside

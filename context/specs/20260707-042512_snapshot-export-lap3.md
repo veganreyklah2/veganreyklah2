@@ -13,7 +13,7 @@
 
 Lap 3 is the counsel-numbered *hosted Comlink crossing*: fetch each revision group's resin-batch over the existing batch wire exchange (`recall_batch_delivery.rye`), assemble the snapshot buffer the same way `exportCatalogHorizon` does locally, and hand the bundle to `importCatalogHorizon` unchanged.
 
-Counsel: [`external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md`](../external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md) · original lap order [`external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) part C.
+Counsel: [`counsel/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md`](../counsel/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md) · original lap order [`counsel/20260704-181612_zero-copy-resins-counsel-answers.md`](../counsel/20260704-181612_zero-copy-resins-counsel-answers.md) part C.
 
 ## Shape
 

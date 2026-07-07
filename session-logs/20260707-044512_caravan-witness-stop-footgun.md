@@ -18,7 +18,7 @@ Counsel order now seated: footgun ✓ → source-crash recovery → snapshot dev
 
 ## Files
 
-- `external-research/20260707-044112_claude-recommendation-path.md` — filed with Status line
+- `counsel/20260707-044112_claude-recommendation-path.md` — filed with Status line
 - `caravan/subscribe_poll_service.rye` — env gate + version bump
 - `tools/caravan_witness_stop_footgun.rish` — new witness
 - `tools/caravan_subscribe_poll_service.rish` — sets `CARAVAN_WITNESS_MODE=1`

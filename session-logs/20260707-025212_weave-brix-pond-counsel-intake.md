@@ -14,14 +14,14 @@ Counsel recommends holding all three next-items rather than furnishing empty roo
 
 ## Observations
 
-- Filed counsel at `external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md`
+- Filed counsel at `counsel/20260707-025212_claude-counsel-weave-brix-pond-customs.md`
 - TASKS updated: held rows + Weave-slice one-sentence question for Kaeden
 - Snapshot lap 2 spec and reference spec open items aligned with hold
 - Module surfaces index clarifies `weave.rye` vs namespace metaphor
 
 ## Files
 
-- `external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md` — counsel seated
+- `counsel/20260707-025212_claude-counsel-weave-brix-pond-customs.md` — counsel seated
 - `external-research/README.md` — index row
 - `work-in-progress/TASKS.md` — next climb + held items
 - `context/specs/20260707-024712_snapshot-export-lap2.md` — horizon section

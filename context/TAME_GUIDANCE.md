@@ -397,7 +397,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **camelCase `fn` declarations** | rename to `snake_case` in every function you touch in that file; repoint inbound references before commit |
 | **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
 
-**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** opens as its own counted season — counsel [`external-research/20260707-175312_claude-counsel-tooling-scope-ruling.md`](../external-research/20260707-175312_claude-counsel-tooling-scope-ruling.md).
+**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** opens as its own counted season — counsel [`counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md`](../counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md).
 
 **Standing exempt — intentional-violation fixtures:** files built to *hold* a violation the lint must catch (e.g. `tools/fixtures/width_check_authored_usize.rye` for TH-1 width) stay as wrong as their purpose requires. Migrating them toward compliance would disable the proof they supply — same logic as elder Amber goldens. No ratchet reaches for them.
 

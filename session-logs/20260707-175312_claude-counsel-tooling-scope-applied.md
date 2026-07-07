@@ -8,7 +8,7 @@
 
 ## Thinking trace
 
-Filed counsel at `external-research/20260707-175312_claude-counsel-tooling-scope-ruling.md`. Applied the mechanical parts of the ruling:
+Filed counsel at `counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md`. Applied the mechanical parts of the ruling:
 
 1. **`rye/src` joins scan roster** — `tools/fixtures/tame_style_scan.sh` now includes `rye/src` alongside the nine prior dirs.
 2. **Eight renames in `rye/src/main.rye`** — `print_usage`, `print_version`, `bridge_to_zig`, `resolve_rye_lib`, `bridge_zig_path`, `rewrite_rye_imports`, `bridge_already_staged`, `bridge_rye_tree` (in-file only).
@@ -25,7 +25,7 @@ Claude's verification narrative matches this bench: the >70-line ledger is real 
 
 | File | Why |
 |------|-----|
-| `external-research/20260707-175312_claude-counsel-tooling-scope-ruling.md` | Filed counsel from root |
+| `counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md` | Filed counsel from root |
 | `rye/src/main.rye` | snake_case + assert import |
 | `tools/fixtures/tame_style_scan.sh` | `rye/src` in roster; tools/fixture notes |
 | `context/TAME_GUIDANCE.md` | Scan roster, tools deferral, fixture exemption |

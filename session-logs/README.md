@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.180712 | [Counsel folder reorganization](20260707-180712_counsel-folder-reorganization.md) | 16 files to `counsel/`; ORGANIZING placement test; ~55 path repoints |
 | 20260707.180100 | [Commit Claude counsel rye/src scan](20260707-180100_commit-claude-counsel-rye-scan.md) | `3e30ac5` on four remotes; ratchet 0 without asterisk |
 | 20260707.175312 | [Claude counsel applied — rye/src scan](20260707-175312_claude-counsel-tooling-scope-applied.md) | Counsel filed; rye/src 8 fns; ratchet 0 without asterisk |
 | 20260707.175100 | [Commit mantra + rishi ratchet clear](20260707-175100_commit-mantra-rishi-ratchet-clear.md) | `288daa8` on four remotes; tame advisory 0 |

@@ -19,7 +19,7 @@ Filed counsel in `external-research/`. Applied namespace brief phrase split. Bui
 
 ## Files
 
-- `external-research/20260707-000112_claude-counsel-two-way-sync-and-subscribe.md` — counsel (filed)
+- `counsel/20260707-000112_claude-counsel-two-way-sync-and-subscribe.md` — counsel (filed)
 - `mantra/recall_two_way_sync.rye` — in-process two-way sync (new)
 - `tools/mantra_recall_two_way_sync.rish` — witness (new)
 - `tools/parity.rish` — parity 169

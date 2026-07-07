@@ -4,7 +4,7 @@
 **Stamp:** `20260705.203144 UDT`
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Status:** Seated — checkable-room vocabulary law; reviewed and kept
-**Ground:** [`external-research/20260704-031812_eight-asks-one-sitting.md`](../../external-research/20260704-031812_eight-asks-one-sitting.md) (A2) · [`../TWO_ROOMS.md`](../TWO_ROOMS.md)
+**Ground:** [`counsel/20260704-031812_eight-asks-one-sitting.md`](../../counsel/20260704-031812_eight-asks-one-sitting.md) (A2) · [`../TWO_ROOMS.md`](../TWO_ROOMS.md)
 
 ---
 

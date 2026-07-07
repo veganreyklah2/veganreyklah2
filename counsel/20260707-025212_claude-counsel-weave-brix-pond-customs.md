@@ -6,7 +6,7 @@
 **Style:** Radiant (see `context/RADIANT_STYLE.md`) · **Lens:** TAME · Gall's Law · the grain
 **Register:** Counsel only, on the two items explicitly flagged as needing a ruling
 **Status:** Research for understanding — counsel only; checkable claims cite code on disk; seats nothing by itself
-**Ground:** `mantra/src/weave.rye` (read in full) · `mantra/recall_lap1.rye` (grepped for any dependence on it — none found) · `context/specs/20260702-035018_graduation-rule.md` · `external-research/20260704-181612_zero-copy-resins-counsel-answers.md` (Part D, I7) · `pond/` (searched for any policy concept — none found) · a tree-wide search for Brix code (none found)
+**Ground:** `mantra/src/weave.rye` (read in full) · `mantra/recall_lap1.rye` (grepped for any dependence on it — none found) · `context/specs/20260702-035018_graduation-rule.md` · `counsel/20260704-181612_zero-copy-resins-counsel-answers.md` (Part D, I7) · `pond/` (searched for any policy concept — none found) · a tree-wide search for Brix code (none found)
 
 *Written by Kaeden and Rio 3.*
 

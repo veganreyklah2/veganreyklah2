@@ -28,7 +28,7 @@
 |------|------|--------|
 | **Edit** | `work-in-progress/20260702-190000_amber-first-ring-claude-brief.md` | Amber: chunk-store → bead-store; two stone-as-unit → resin |
 | **Edit** | `context/specs/20260703-191112_resins-and-hash-tiers.md` | bead filenames |
-| **Edit** | `external-research/20260704-181612_zero-copy-resins-counsel-answers.md` | bead-index / bead-series / incremental beading / `max_bead_bytes`; four stone-as-unit misses → resin (`max_resin_bytes`, `error.RefusedResin`, `VERIFY_RESINS`, Resin movement) |
+| **Edit** | `counsel/20260704-181612_zero-copy-resins-counsel-answers.md` | bead-index / bead-series / incremental beading / `max_bead_bytes`; four stone-as-unit misses → resin (`max_resin_bytes`, `error.RefusedResin`, `VERIFY_RESINS`, Resin movement) |
 | **Edit** | `external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md` | Amber's own plan: rolling beads, bead size (casync descriptions kept) |
 | **Edit** | `external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md` | content-defined beading |
 | **Edit** | `session-logs/20260706-041012_ns-l3-wire-carriage-counsel.md`, `…041800…`, `…042100…` | beading in place of chunking |

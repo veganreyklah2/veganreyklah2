@@ -13,7 +13,7 @@
 
 | Item | Path |
 |------|------|
-| Claude ruling (Q1–Q5) | [`external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md`](../external-research/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) |
+| Claude ruling (Q1–Q5) | [`counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md`](../counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) |
 | Zip 58 handoff prompt | [`expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md`](../expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md) |
 | Handoff log | [`session-logs/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/20260706-190312_claude-handoff-ns-l3-complete.md) |
 
@@ -41,7 +41,7 @@ Full-tree zip discipline unchanged; use **58** not 43.
 
 | Item | Path |
 |------|------|
-| Zero-copy counsel (A–H, I1–I7) | [`external-research/20260704-181612_zero-copy-resins-counsel-answers.md`](../external-research/20260704-181612_zero-copy-resins-counsel-answers.md) |
+| Zero-copy counsel (A–H, I1–I7) | [`counsel/20260704-181612_zero-copy-resins-counsel-answers.md`](../counsel/20260704-181612_zero-copy-resins-counsel-answers.md) |
 | Ends-first orientation (Part Three addendum) | [`external-research/20260704-185412_ends-first-map-orientation.md`](../external-research/20260704-185412_ends-first-map-orientation.md) |
 | Unified Cursor lane | [`expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md`](../expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md) |
 | Unified cut log | [`session-logs/20260704-185412_unified-packet-cut.md`](../session-logs/20260704-185412_unified-packet-cut.md) |
@@ -79,7 +79,7 @@ Full-tree zip at `git rev-parse HEAD` after intake commits; comment **is** the t
 | Item | Path |
 |------|------|
 | Orientation | [`external-research/20260704-031812_the-view-from-the-floor.md`](../external-research/20260704-031812_the-view-from-the-floor.md) |
-| Eight asks counsel | [`external-research/20260704-031812_eight-asks-one-sitting.md`](../external-research/20260704-031812_eight-asks-one-sitting.md) |
+| Eight asks counsel | [`counsel/20260704-031812_eight-asks-one-sitting.md`](../counsel/20260704-031812_eight-asks-one-sitting.md) |
 | Claude log | [`session-logs/20260704-031812_zip41-152-eight-asks.md`](../session-logs/20260704-031812_zip41-152-eight-asks.md) |
 
 ### Counsel summary (gates stay Kaeden's)
@@ -282,7 +282,7 @@ Current tip: `2eb346b` (+ intake files uncommitted)
 
 ## Claude — gate terminology unify counsel (`20260704.004912`) — **SEATED** (`20260704.020800`)
 
-**Memo:** [`external-research/20260704-004912_gate-unify-counsel.md`](../external-research/20260704-004912_gate-unify-counsel.md) · **Spec:** [`context/specs/20260704-020800_one-word-one-gate.md`](../context/specs/20260704-020800_one-word-one-gate.md)
+**Memo:** [`counsel/20260704-004912_gate-unify-counsel.md`](../counsel/20260704-004912_gate-unify-counsel.md) · **Spec:** [`context/specs/20260704-020800_one-word-one-gate.md`](../context/specs/20260704-020800_one-word-one-gate.md)
 
 | Strand | Seat |
 |--------|------|
@@ -395,7 +395,7 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 - **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
 - **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
 - **Itinerary vocabulary (`001012` → `030300` → `030600`):** **Itinerary** · **open itinerary** · **stops** · **journey's pause** · **off-route** — [`context/specs/20260704-030300_itinerary-retires-diet.md`](../context/specs/20260704-030300_itinerary-retires-diet.md); primer [`external-research/20260704-030600_itinerary-and-the-crossing-manifest.md`](../external-research/20260704-030600_itinerary-and-the-crossing-manifest.md); recursion prompt v4 [`expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md)
-- **Toll word (`004912` counsel):** **Toll** *(proposed)* — ordering price beside itinerary; *levy* · *the narrows* parked — [`external-research/20260704-004912_gate-unify-counsel.md`](../external-research/20260704-004912_gate-unify-counsel.md)
+- **Toll word (`004912` counsel):** **Toll** *(proposed)* — ordering price beside itinerary; *levy* · *the narrows* parked — [`counsel/20260704-004912_gate-unify-counsel.md`](../counsel/20260704-004912_gate-unify-counsel.md)
 - **Build watcher aspect:** *Tend* · *Agni* (no seat until a seed runs) — *Tend* also a Tilak duty; watcher name still open
 
 ## Landed `20260703.020909` — handoff ROUND ZERO (Cursor)

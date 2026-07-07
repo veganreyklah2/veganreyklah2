@@ -51,7 +51,7 @@ Import's first act after batches apply: parse `catalog/HEAD`, recompute HEAD dig
 
 ## Horizon (not lap 2)
 
-Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md) and Kaeden's ruling [`20260707-030412`](../context/specs/20260707-030412_weave-slice-ruling.md):
+Per counsel [`20260707-025212`](../counsel/20260707-025212_claude-counsel-weave-brix-pond-customs.md) and Kaeden's ruling [`20260707-030412`](../context/specs/20260707-030412_weave-slice-ruling.md):
 
 - **`weave/` bundle** — **closed** — sovereign "Weave slice" is the `catalog/` export (every leaf, every revision, HEAD record); no separate bundle
 - **`brix/` bundle** — held; no closure code exists; Brix earns its own first lap

@@ -21,7 +21,7 @@ Filed counsel to `external-research/`, removed the stray root copy. Implemented 
 
 | File | Why |
 |------|-----|
-| `external-research/20260707-005612_claude-counsel-tablecloth-query.md` | Filed counsel |
+| `counsel/20260707-005612_claude-counsel-tablecloth-query.md` | Filed counsel |
 | `mantra/recall_tablecloth_query.rye` | Tablecloth query implementation + selftest |
 | `tools/mantra_recall_tablecloth_query.rish` | Witness script |
 | `tools/parity.rish` | Parity **175** witness slot |

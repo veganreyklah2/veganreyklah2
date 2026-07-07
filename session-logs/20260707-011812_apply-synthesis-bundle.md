@@ -24,7 +24,7 @@ Verified batch witness GREEN including `chunkdemo` and `beadeddemo` (previously 
 | `mantra/README.md` | Module front door |
 | `context/specs/20260707-011412_mantra-referential-namespace-reference.md` | Normative reference (Proposed) |
 | `context/specs/20260707-011412_module-surfaces-index.md` | Tree-wide surface map (Proposed) |
-| `external-research/20260707-011412_claude-analysis-state-of-the-tree.md` | Compass analysis + Status line fix |
+| `counsel/20260707-011412_claude-analysis-state-of-the-tree.md` | Compass analysis + Status line fix |
 | `active-designing/20260706-023912_the-referential-namespace.md` | Reference spec pointer on status line |
 | `expanding-prompts/20260707-011412_apply-synthesis.md` | Apply-prompt filed |
 | `session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md` | Claude session log from bundle |
