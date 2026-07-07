@@ -67,6 +67,11 @@ let caravan_seeds = run ["rishi/bin/rishi" "run" "tools/caravan_seeds.rish"]
 assert caravan_seeds.ok else "Caravan supervision seeds witness failed"
 say "GREEN: Caravan supervision seeds witness passed."
 
+say "witness suite: Caravan subscribe poll service (production scheduling)…"
+let caravan_pollsvc = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll_service.rish"]
+assert caravan_pollsvc.ok else "Caravan subscribe poll service witness failed"
+say "GREEN: Caravan subscribe poll service witness passed."
+
 say "witness suite: Comlink hosted wire…"
 let comlink_hw = run ["rishi/bin/rishi" "run" "tools/comlink_hosted_wire.rish"]
 assert comlink_hw.ok else "Comlink hosted wire witness failed"

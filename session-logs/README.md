@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.014212 | [Production scheduling lap 1](20260707-014212_production-scheduling-lap1.md) | Caravan supervises subscribe poll wire; parity 176 |
 | 20260707.013812 | [Synthesis recommendations applied](20260707-013812_synthesis-recommendations-applied.md) | Canon seated; batch fix; Caravan service ring; commit |
 | 20260707.011812 | [Apply synthesis bundle](20260707-011812_apply-synthesis-bundle.md) | Batch rebind fix applied; reference specs proposed; batch witness GREEN |
 | 20260707.011412 | [Claude state analysis and reference pass](20260707-011412_claude-state-analysis-and-reference-pass.md) | Batch rebind-race fix; namespace reference spec + module index proposed |

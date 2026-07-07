@@ -51,12 +51,13 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word):** production scheduling for subscribe poll (wire poll under Caravan service supervision when drafted) · I2 snapshot export when drafted · MALA graduation at escrow second consumer.
+**Next climb (Kaeden's word):** I2 snapshot export when drafted · MALA graduation at escrow second consumer · graceful stop / real clock (open).
 
 **NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
 
-- [x] **Synthesis `20260707.011412`** — batch delivery rebind-race repair (`recvBatchPayload` bind-once + 2s timeout); namespace reference spec + module surfaces index + `mantra/README.md` canon `20260707.011812`
-- [x] **Caravan service ring** — `caravan/service.rye`; bounded multi-tick supervised child (ring B); `tools/caravan_seeds.rish` extended (parity **175** unchanged)
+- [x] **Synthesis `20260707.011412`** — batch delivery rebind-race repair; namespace reference spec + module surfaces index + `mantra/README.md` canon `20260707.011812`
+- [x] **Caravan service ring** — `caravan/service.rye`; bounded multi-tick supervised child (ring B); `tools/caravan_seeds.rish` extended
+- [x] **Production scheduling lap 1** — `caravan/subscribe_poll_service.rye` supervises `recall_subscribe_poll_delivery` source + fetcher-poll; one planned restart; `tools/caravan_subscribe_poll_service.rish`; parity **176**
 
 - [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; parity **168**
 

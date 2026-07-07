@@ -79,7 +79,7 @@ Normative source: `mantra/recall_lap1.rye` (`syncRevision`) and its compositions
 
 `syncRevision(dest, src, peer, bolt, revision)` runs two passes: verify every resin in the revision against its digest (any mismatch **must** refuse the whole crossing before anything appends), then append, counting the lanes — `had_already` when the destination holds the digest (a ref crosses; bytes stay home) and `needed` when bytes cross once. Re-syncing a held revision **must** refuse as `RevisionImmutable`. After a crossing, recall **must** be identical on both catalogs for every carried name.
 
-**Two-way** (`recall_two_way_sync.rye`): both directions are two symmetric calls with roles and peer swapped; no asymmetry exists to add. **Catch-up** (`recall_catch_up.rye`): from the highest revision held, try the next until one ask returns empty; a second call with nothing new **must** cost exactly one empty ask. **Subscribe poll** (`recall_subscribe_poll.rye`): repeat catch-up on a cycle; witnesses **must** bound cycles (`max_cycles`) and **may** zero the interval; **host mirror** is the same loop over a named list of at most `max_mirror_pairs = 4` peer/bolt pairs — configuration, not a second mechanism. Production scheduling (unattended runs, graceful stop, crash recovery) is out of scope here and open by counsel `20260707.010912`.
+**Two-way** (`recall_two_way_sync.rye`): both directions are two symmetric calls with roles and peer swapped; no asymmetry exists to add. **Catch-up** (`recall_catch_up.rye`): from the highest revision held, try the next until one ask returns empty; a second call with nothing new **must** cost exactly one empty ask. **Subscribe poll** (`recall_subscribe_poll.rye`): repeat catch-up on a cycle; witnesses **must** bound cycles (`max_cycles`) and **may** zero the interval; **host mirror** is the same loop over a named list of at most `max_mirror_pairs = 4` peer/bolt pairs — configuration, not a second mechanism. **Production scheduling lap 1** (`caravan/subscribe_poll_service.rye`, parity **176**): Caravan supervises `recall_subscribe_poll_delivery` — a long-lived source child plus a fetcher-poll worker restarted on fall; graceful stop and real clock remain open.
 
 ## §8 The Wire — Sealed Datagrams and Sync Payloads
 
@@ -154,7 +154,7 @@ Every claim above is held by a witness the parity suite runs; counts are pinned 
 
 ## §12 Open Items (Non-Normative)
 
-Production scheduling for the poll loop (Caravan's service semantic, then real signals) per counsel `20260707.010912`; the older Brix-facing Tablecloth store thread, a separate meaning awaiting its own reconciling line; snapshot export (I2), which **should** reuse §9's manifest grammar when drafted.
+Graceful stop and real unattended clock for the poll loop; snapshot export (I2), which **should** reuse §9's manifest grammar when drafted.
 
 ---
 

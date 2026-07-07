@@ -1,0 +1,91 @@
+//! caravan/subscribe_poll_service.rye — production scheduling ring: supervise poll wire work.
+//!
+//! Ring C composes Caravan's service semantic with Mantra's subscribe-poll delivery:
+//! a long-lived source child answers catch-up requests; the supervisor restarts the
+//! fetcher-poll worker on fall until it completes clean. One planned mid-service
+//! fall proves restart-to-success without OS signals or unbounded waits.
+//!
+//!   rye build caravan/subscribe_poll_service.rye -femit-bin=caravan/bin/subscribe-poll-service
+//!   caravan/bin/subscribe-poll-service mantra/bin/recall-subscribe-poll-delivery
+//!
+//! Counsel shape: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const c = std.c;
+
+const caravan_subscribe_poll_service_version = "20260707.014212";
+
+const planned_failures: u32 = 1;
+const max_restarts: u32 = 5;
+const source_ready_ns: u64 = 50_000_000;
+
+pub fn main(init: std.process.Init) !u8 {
+    const io = init.io;
+    const garden = init.arena.allocator();
+    const args = try init.minimal.args.toSlice(garden);
+
+    if (args.len < 2) {
+        print("usage: subscribe-poll-service <delivery-binary>\n", .{});
+        return 1;
+    }
+    return runSupervisor(garden, io, args[1]);
+}
+
+fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, delivery_path: []const u8) !u8 {
+    print("caravan poll-service: supervisor alive. delivery {s}\n", .{delivery_path});
+
+    const source_argv = try allocator.alloc([]const u8, 2);
+    source_argv[0] = delivery_path;
+    source_argv[1] = "source-loop";
+
+    var source_child = try std.process.spawn(io, .{ .argv = source_argv });
+    var pause = c.timespec{ .sec = 0, .nsec = @intCast(source_ready_ns) };
+    _ = c.nanosleep(&pause, null);
+
+    var restarts: u32 = 0;
+    while (true) {
+        assert(restarts <= max_restarts);
+
+        const fail_mid = restarts < planned_failures;
+        const fetcher_argv = if (fail_mid)
+            try allocator.alloc([]const u8, 3)
+        else
+            try allocator.alloc([]const u8, 2);
+        fetcher_argv[0] = delivery_path;
+        fetcher_argv[1] = "fetcher-poll";
+        if (fail_mid) fetcher_argv[2] = "fail";
+
+        var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
+        const term = try fetcher_child.wait(io);
+        const code: u8 = switch (term) {
+            .exited => |c0| c0,
+            else => 255,
+        };
+
+        if (code == 0) {
+            print("caravan poll-service: fetcher completed after {d} restart(s).\n", .{restarts});
+            break;
+        }
+
+        restarts += 1;
+        print("caravan poll-service: fetcher fell (code {d}), restart {d}/{d}\n", .{
+            code, restarts, max_restarts,
+        });
+        if (restarts >= max_restarts) {
+            print("caravan poll-service: restart limit reached — giving up.\n", .{});
+            source_child.kill(io);
+            return 1;
+        }
+    }
+
+    assert(restarts == planned_failures);
+    const st = try source_child.wait(io);
+    const sc: u8 = switch (st) { .exited => |c0| c0, else => 255 };
+    if (sc != 0) return sc;
+
+    print("caravan poll-service: supervised subscribe poll wire — GREEN.\n", .{});
+    print("caravan poll-service: version {s}\n", .{caravan_subscribe_poll_service_version});
+    return 0;
+}

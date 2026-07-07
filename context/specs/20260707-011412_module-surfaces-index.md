@@ -24,7 +24,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 | — wire_format | The 528-byte sealed envelope, 340-byte message | `comlink/wire_format.rye` | every wire witness |
 | — hosted / device / virtio_net | The three substrates one logic rides | `comlink/*.rye` | `run_*_lab.sh` |
 | **Tally** | Bounds as a discipline: gardens, budgets, named ceilings | `tally/` | foundation seeds in parity (138+) |
-| **Caravan** | Supervision: parent watches child, restart-to-success proven; **service ring** supervises bounded multi-tick work (ring B) | `caravan/` | `tools/caravan_seeds.rish` (parity **175**) |
+| **Caravan** | Supervision through **poll service** (ring C): supervises subscribe-poll wire delivery | `caravan/` | seeds + `tools/caravan_subscribe_poll_service.rish` parity **176** |
 | **Brushstroke** (+ Skate aspect) | Drawing to a surface; Skate is the grid | `brushstroke/` | seed in parity |
 | **Pond** (+ drawn terminal; Dexter aspect) | The enclosure where composed things run; Lap-3 metal-closed terminal | `pond/` | Doors 1–2 closed on GNOME |
 | **Aurora** | The freestanding RISC-V seed toward verified boot | `aurora/` | freestanding relay witnesses |
