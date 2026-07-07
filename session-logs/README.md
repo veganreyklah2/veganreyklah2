@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.222500 | [Open Questions kg — settlement + Bron](20260707-222500_open-questions-settlement-bron-kg.md) | Seat refresh; SLC-L3 witness proposal; Bron first proposal |
 | 20260707.221943 | [Roadmap synthesis counsel applied](20260707-221943_roadmap-synthesis-counsel-applied.md) | Counsel `220912` filed; TASKS + ROADMAP hygiene |
 | 20260707.220256 | [July 7 full-day summary](20260707-220256_july7-full-day-summary.md) | 84 commits; arcs, parity pins, TAME standing, push map |
 | 20260707.215901 | [tame_style_scan advise commit and push](20260707-215901_tame-style-scan-advise-commit-push.md) | `fcd3aa4` to four remotes |

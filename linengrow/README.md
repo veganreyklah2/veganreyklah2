@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-06 (OA-L3 escrow at parity **158**)
+**Last updated:** 2026-07-07 (OA-L5 at parity **184**; SLC-L3 witness proposed `222500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -54,7 +54,9 @@ The full vision — a public benefit corporation, a computational data market, s
 | **OA-L1** | **Closed ask loop** — post, apply, accept, complete, verify on one log | scope [`../active-designing/20260706-002912_open-asks-hammock-scope.md`](../active-designing/20260706-002912_open-asks-hammock-scope.md) · witness **156** |
 | **OA-L2** | **Cross-party delivery** — request + application under Comlink seal | scope [`../active-designing/20260706-011512_open-asks-cross-party-delivery.md`](../active-designing/20260706-011512_open-asks-cross-party-delivery.md) · witness **157** |
 | **OA-L3** | **Escrow** — hold at acceptance, release at completion, the escrow balance closing at zero on one log | scope [`../active-designing/20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md) · witness **158** |
-| **SLC-L3** | **Settlement rail** — Sui seated, two-lane witness proposed; the receipt verifiable on the ledger | Sui / Mysticeti (witness proposed) |
+| **OA-L4** | **Reputation-as-fold** — applicant consent facts; witness bolt | witness **167** |
+| **OA-L5** | **Accept, complete, consent wire** — hosted + device | witness **184** |
+| **SLC-L3** | **Settlement rail** — Sui seated, two-lane witness proposed; witness proposal [`../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) | Sui / Mysticeti (witness proposed) |
 | **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK foundations |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 

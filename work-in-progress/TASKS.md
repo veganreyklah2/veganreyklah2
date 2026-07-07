@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (roadmap synthesis `20260707.220912`)
+**Last updated:** 2026-07-07 (counsel `220912` applied — settlement refresh + Bron proposal `222500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -68,8 +68,8 @@
 | — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
 | — | Astrology lane | Source material | Unchanged per `214012` |
 
-- [ ] **Settlement-seat refresh** — re-read three-lights survey + verdict; draft two-lane witness proposal for SLC-L3 *(bench-workable; counsel `220912`)*
-- [ ] **Bron beside Brix — first proposal** — what Bron describes that a Brix descriptor does not *(bench-workable; counsel `220912`)*
+- [x] **Settlement-seat refresh** — refresh + two-lane witness proposal [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md); apply prompt [`expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md); seat holds; gate Kaeden's word
+- [x] **Bron beside Brix — first proposal** — counsel [`222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron = values at seams; Brix = composable wholes; graduation deferred
 - [x] **ROADMAP Linengrow table hygiene** — OA-L4 and OA-L5 landed rows added; parity **196** (`220912`)
 
 *(Prior next-bench counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md): `.sh` migration complete; OA wire verified not an open gap.)*
@@ -405,14 +405,13 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 ## Open Questions
 
 - **sixos/s6 infrastructure horizon** — study in `external-research/yonder/20260619-225212_s6-sixos-nix-infuse.md`; Caravan inherits supervision discipline when we reach for it.
-- **Bron** — proposed; role beside Brix still open. Brix describes *what a system is made of*; the `.bron` notation brief exists — what does Bron describe alongside it? *(Open ruling for Kaeden.)*
+- **Bron** — **first proposal filed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams** (facts, policies, receipts); Brix carries **composable system descriptions** (courses, bonds, services). Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Open ruling for Kaeden.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
 - **Dexter / Kumara as modules** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect until a second Pond app, TAME editor surface, or sovereign framebuffer input path. **Kumara:** identity/doctrine name at seams; no module home — not a graduation candidate yet.
 - **`.sh` POSIX-seam pattern** — **answered** `20260707.220000` in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) (counsel `195912`): structural QEMU labs, cold-start bootstrap, external-interpreter seams; witness scans native.
 - **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export per [`context/specs/20260707-030412_weave-slice-ruling.md`](../context/specs/20260707-030412_weave-slice-ruling.md); no second external consumer (`mantra/src/diff.rye` only); stays Mantra aspect.
-- **Settlement-seat refresh** — three-lights survey not revisited since [`20260706-005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md); refresh before SLC-L3 opens *(bench task per counsel `220912`)*
-- **Bron beside Brix — first proposal** — `.bron` notation brief exists; concrete role draft pending bench sitting *(counsel `220912`)*
+- **Settlement-seat refresh** — **done** `222500`: seat holds; no post-May Sui incidents found; SLC-L3 two-lane witness proposal seated — [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md)
 - **ROADMAP Linengrow staleness** — **fixed** `220912`: OA-L4/OA-L5 rows added to `ROADMAP.md`
 - **Two-backend seam** — Wayland SHM to Mutter now (hosted); framebuffer-to-QEMU sovereign sibling named, not built. *(Pending Kaeden nod.)*
 - **Weave** — aspect of Mantra today (`mantra/src/weave.rye`); graduation trigger recorded in [`20260702-031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md).
