@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.170612 | [receipt_core snake_case](20260707-170612_receipt-core-snake-case.md) | camelCase 476→462; SLC-L2 + OA-L1 GREEN |
+| 20260707.170512 | [open_asks commit and push](20260707-170512_open-asks-commit-push.md) | `7ef7d0a` on all four remotes |
 | 20260707.170412 | [open_asks snake_case](20260707-170412_open-asks-snake-case.md) | camelCase 535→476; OA-L1–L5 witnesses GREEN |
 | 20260707.170212 | [Comlink wire commit and push](20260707-170212_comlink-wire-commit-push.md) | `d895bab` on all four remotes; camelCase 584→535 |
 | 20260707.165312 | [Comlink wire snake_case](20260707-165312_comlink-wire-snake-case.md) | camelCase 584→535; wire_format + guests |
