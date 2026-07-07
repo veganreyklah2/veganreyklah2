@@ -31,7 +31,7 @@ pub const QueryError = error{
     ResultOverflow,
 } || recall_lap1.RecallError;
 
-fn leafMatches(leaf: *const recall_lap1.LeafBinding, query: TableclothQuery) bool {
+fn leaf_matches(leaf: *const recall_lap1.LeafBinding, query: TableclothQuery) bool {
     if (query.peer) |peer| {
         if (!std.mem.eql(u8, leaf.peer[0..leaf.peer_len], peer)) return false;
     }
@@ -52,7 +52,7 @@ fn leafMatches(leaf: *const recall_lap1.LeafBinding, query: TableclothQuery) boo
 
 /// Filter the catalog once; write matching names into `out_names` in held order.
 /// Returns the number of hits (zero when nothing matches).
-pub fn queryTablecloth(
+pub fn query_tablecloth(
     catalog: *const recall_lap1.BoltCatalog,
     query: TableclothQuery,
     out_names: []recall_lap1.Name,
@@ -61,7 +61,7 @@ pub fn queryTablecloth(
     var i: u32 = 0;
     while (i < catalog.leaf_count) : (i += 1) {
         const leaf = &catalog.leaves[i];
-        if (!leafMatches(leaf, query)) continue;
+        if (!leaf_matches(leaf, query)) continue;
         if (count >= out_names.len) return error.ResultOverflow;
         out_names[count] = .{
             .peer = leaf.peer[0..leaf.peer_len],
@@ -74,7 +74,7 @@ pub fn queryTablecloth(
     return count;
 }
 
-fn runSelftest(_: std.Io) !u8 {
+fn run_selftest(_: std.Io) !u8 {
     var cat: recall_lap1.BoltCatalog = .empty();
     try cat.append_leaf("peerB", "b", 1, "notes.txt", "alpha notes", "plain-text");
     try cat.append_leaf("peerB", "b", 1, "data.bin", "beta bytes", "plain-bytes");
@@ -85,20 +85,20 @@ fn runSelftest(_: std.Io) !u8 {
     var buf: [recall_lap1.max_resin_bytes]u8 = undefined;
 
     // Peer + bolt, revision open — both revisions walk.
-    const n_bolt = try queryTablecloth(&cat, .{
+    const n_bolt = try query_tablecloth(&cat, .{
         .peer = "peerB",
         .bolt = "b",
     }, &names);
     assert(n_bolt == 4);
 
     // Tilak alone — crosses revisions; plain-text hits three leaves.
-    const n_mark = try queryTablecloth(&cat, .{
+    const n_mark = try query_tablecloth(&cat, .{
         .tilak = "plain-text",
     }, &names);
     assert(n_mark == 3);
 
     // Absent tilak — empty result, no refusal.
-    const n_none = try queryTablecloth(&cat, .{
+    const n_none = try query_tablecloth(&cat, .{
         .tilak = "bead-index",
     }, &names);
     assert(n_none == 0);
@@ -108,7 +108,7 @@ fn runSelftest(_: std.Io) !u8 {
     const by_name = try cat.recall(exact, &buf);
     var name_bytes: [recall_lap1.max_resin_bytes]u8 = undefined;
     tally_copy.copy_disjoint(u8, name_bytes[0..by_name.len], buf[0..by_name.len]);
-    const by_mark = try rbm.recallByMark(&cat, .{
+    const by_mark = try rbm.recall_by_mark(&cat, .{
         .peer = "peerB",
         .bolt = "b",
         .revision = 1,
@@ -119,7 +119,7 @@ fn runSelftest(_: std.Io) !u8 {
     assert(by_mark.outcome == .here);
     assert(std.mem.eql(u8, buf[0..by_mark.len], name_bytes[0..by_name.len]));
 
-    const n_one = try queryTablecloth(&cat, .{
+    const n_one = try query_tablecloth(&cat, .{
         .peer = "peerB",
         .bolt = "b",
         .revision = 1,
@@ -142,6 +142,6 @@ fn runSelftest(_: std.Io) !u8 {
 pub fn main(init: std.process.Init) !u8 {
     const io = init.io;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
-    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
-    return runSelftest(io);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) return run_selftest(io);
+    return run_selftest(io);
 }

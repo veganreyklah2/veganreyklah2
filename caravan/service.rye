@@ -26,13 +26,13 @@ pub fn main(init: std.process.Init) !u8 {
 
     if (args.len >= 3 and std.mem.eql(u8, args[1], "child")) {
         const attempt = std.fmt.parseInt(u32, args[2], 10) catch return 1;
-        return runServiceChild(attempt);
+        return run_service_child(attempt);
     }
 
-    return runSupervisor(garden, io, args);
+    return run_supervisor(garden, io, args);
 }
 
-fn runServiceChild(attempt: u32) u8 {
+fn run_service_child(attempt: u32) u8 {
     assert(attempt <= max_restarts);
     print("caravan service: child attempt {d}, ticks {d}\n", .{ attempt, max_ticks });
 
@@ -47,7 +47,7 @@ fn runServiceChild(attempt: u32) u8 {
     return 0;
 }
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     assert(args.len >= 1);
     const self_path = args[0];
 

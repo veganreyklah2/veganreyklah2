@@ -25,7 +25,7 @@ const max_caps_per_child: u32 = 8;
 /// Maximum bytes in a child label or resource name.
 const max_name_len: u32 = 48;
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -59,14 +59,14 @@ const Capability = struct {
     fn init(name: []const u8, rights_mask: u8) Capability {
         assert(name.len <= max_name_len);
         var cap: Capability = .{};
-        cap.name_len = bufLenU32(name);
+        cap.name_len = buf_len_u32(name);
         tally_copy.copy_disjoint(u8, cap.name[0..name.len], name);
         cap.rights_mask = rights_mask;
         assert(cap.name_len <= max_name_len);
         return cap;
     }
 
-    fn nameSlice(self: *const Capability) []const u8 {
+    fn name_slice(self: *const Capability) []const u8 {
         assert(self.name_len <= max_name_len);
         const n: usize = @intCast(self.name_len);
         assert(n <= self.name.len);
@@ -89,14 +89,14 @@ const ChildSlot = struct {
     fn init(label: []const u8) ChildSlot {
         assert(label.len <= max_name_len);
         var slot: ChildSlot = .{};
-        slot.label_len = bufLenU32(label);
+        slot.label_len = buf_len_u32(label);
         tally_copy.copy_disjoint(u8, slot.label[0..label.len], label);
         slot.active = true;
         assert(slot.cap_count == 0);
         return slot;
     }
 
-    fn labelSlice(self: *const ChildSlot) []const u8 {
+    fn label_slice(self: *const ChildSlot) []const u8 {
         assert(self.label_len <= max_name_len);
         const n: usize = @intCast(self.label_len);
         return self.label[0..n];
@@ -121,7 +121,7 @@ const CapabilityTable = struct {
     children: [max_children]ChildSlot = undefined,
     child_count: u32 = 0,
 
-    fn addChild(self: *CapabilityTable, label: []const u8) error{TableFull}!*ChildSlot {
+    fn add_child(self: *CapabilityTable, label: []const u8) error{TableFull}!*ChildSlot {
         assert(self.child_count <= max_children);
         if (self.child_count >= max_children) return error.TableFull;
         self.children[self.child_count] = ChildSlot.init(label);
@@ -131,12 +131,12 @@ const CapabilityTable = struct {
         return slot;
     }
 
-    fn findChild(self: *const CapabilityTable, label: []const u8) ?*const ChildSlot {
+    fn find_child(self: *const CapabilityTable, label: []const u8) ?*const ChildSlot {
         var i: u32 = 0;
         while (i < self.child_count) : (i += 1) {
             assert(i < max_children);
             const slot = &self.children[i];
-            if (slot.active and std.mem.eql(u8, slot.labelSlice(), label)) return slot;
+            if (slot.active and std.mem.eql(u8, slot.label_slice(), label)) return slot;
         }
         return null;
     }
@@ -144,13 +144,13 @@ const CapabilityTable = struct {
     /// Returns true when the named child holds a capability for the resource
     /// that includes every requested right bit.
     fn allows(self: *const CapabilityTable, child_label: []const u8, resource: []const u8, need: u8) bool {
-        const slot = self.findChild(child_label) orelse return false;
+        const slot = self.find_child(child_label) orelse return false;
         assert(slot.cap_count <= max_caps_per_child);
         var i: u32 = 0;
         while (i < slot.cap_count) : (i += 1) {
             assert(i < max_caps_per_child);
             const cap = &slot.caps[i];
-            if (std.mem.eql(u8, cap.nameSlice(), resource)) {
+            if (std.mem.eql(u8, cap.name_slice(), resource)) {
                 return Rights.contains(cap.rights_mask, need);
             }
         }
@@ -162,17 +162,17 @@ const CapabilityTable = struct {
 // § Demo table — mirrors the microkernel brief's example services
 // =========================================================================
 
-fn demoTable() !CapabilityTable {
+fn demo_table() !CapabilityTable {
     var table: CapabilityTable = .{};
 
-    const vfs = try table.addChild("vfs");
+    const vfs = try table.add_child("vfs");
     try vfs.grant(Capability.init("/usr", right_read));
     try vfs.grant(Capability.init("/lib", right_read));
 
-    const display = try table.addChild("display");
+    const display = try table.add_child("display");
     try display.grant(Capability.init("gpu0", right_read | right_device));
 
-    const repl = try table.addChild("repl");
+    const repl = try table.add_child("repl");
     try repl.grant(Capability.init("/home/xy/veganreyklah2", right_read));
     try repl.grant(Capability.init("here", right_read | right_write));
 
@@ -184,8 +184,8 @@ fn demoTable() !CapabilityTable {
 // § Self-test — assert the table enforces named boundaries
 // =========================================================================
 
-fn runSelfTest() u8 {
-    const table = demoTable() catch {
+fn run_self_test() u8 {
+    const table = demo_table() catch {
         print("capabilities: demo table build failed\n", .{});
         return 1;
     };
@@ -222,9 +222,9 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(allocator);
 
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
-        return runSelfTest();
+        return run_self_test();
     }
 
     if (args.len >= 2) return 1;
-    return runSelfTest();
+    return run_self_test();
 }

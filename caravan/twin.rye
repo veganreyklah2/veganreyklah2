@@ -19,7 +19,7 @@ const print = std.debug.print;
 
 const caravan_twin_version = "20260621.020512";
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -31,12 +31,12 @@ const Region = struct {
     fn init(buf: []u8) Region {
         assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= buf_len_u32(r.buf));
         return r;
     }
 
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
-        const cap = bufLenU32(self.buf);
+        const cap = buf_len_u32(self.buf);
         assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
@@ -50,11 +50,11 @@ const Region = struct {
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= buf_len_u32(self.buf));
     }
 
     fn remaining(self: *const Region) u32 {
-        return bufLenU32(self.buf) - self.pos;
+        return buf_len_u32(self.buf) - self.pos;
     }
 };
 
@@ -74,29 +74,29 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 4 and std.mem.eql(u8, args[1], "child")) {
-        const id = parseChildId(args[2]) orelse return 1;
+        const id = parse_child_id(args[2]) orelse return 1;
         const should_fail = std.mem.eql(u8, args[3], "fail");
-        return runBoundedChild(id, should_fail);
+        return run_bounded_child(id, should_fail);
     }
 
-    return runSupervisor(garden, io, args);
+    return run_supervisor(garden, io, args);
 }
 
-fn parseChildId(name: []const u8) ?ChildId {
+fn parse_child_id(name: []const u8) ?ChildId {
     if (std.mem.eql(u8, name, "a")) return .a;
     if (std.mem.eql(u8, name, "b")) return .b;
     return null;
 }
 
-fn budgetFor(child: ChildId) u32 {
+fn budget_for(child: ChildId) u32 {
     return switch (child) {
         .a => child_a_budget,
         .b => child_b_budget,
     };
 }
 
-fn runBoundedChild(child: ChildId, should_fail: bool) u8 {
-    const budget = budgetFor(child);
+fn run_bounded_child(child: ChildId, should_fail: bool) u8 {
+    const budget = budget_for(child);
     var backing: [max_child_budget]u8 = undefined;
     var region = Region.init(backing[0..budget]);
 
@@ -133,15 +133,15 @@ fn runBoundedChild(child: ChildId, should_fail: bool) u8 {
     return 0;
 }
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     assert(args.len >= 1);
     const self_path = args[0];
 
     print("caravan twin: supervisor alive. version {s}\n", .{caravan_twin_version});
     print("caravan twin: child A budget {d}, child B budget {d}\n", .{ child_a_budget, child_b_budget });
 
-    const restarts_a = try superviseChild(allocator, io, self_path, .a, planned_failures_a);
-    const restarts_b = try superviseChild(allocator, io, self_path, .b, planned_failures_b);
+    const restarts_a = try supervise_child(allocator, io, self_path, .a, planned_failures_a);
+    const restarts_b = try supervise_child(allocator, io, self_path, .b, planned_failures_b);
 
     assert(restarts_a == planned_failures_a);
     assert(restarts_b == planned_failures_b);
@@ -151,7 +151,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     return 0;
 }
 
-fn superviseChild(
+fn supervise_child(
     allocator: std.mem.Allocator,
     io: std.Io,
     self_path: []const u8,

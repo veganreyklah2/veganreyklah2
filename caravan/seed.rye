@@ -40,11 +40,11 @@ pub fn main(init: std.process.Init) !u8 {
 
     // Child mode: exit with the given code.
     if (args.len >= 2 and std.mem.eql(u8, args[1], "child")) {
-        return runChild(args);
+        return run_child(args);
     }
 
     // Supervisor mode.
-    return runSupervisor(allocator, io, args);
+    return run_supervisor(allocator, io, args);
 }
 
 // =========================================================================
@@ -54,7 +54,7 @@ pub fn main(init: std.process.Init) !u8 {
 /// In child mode, exit with the code given as the second argument.
 /// A child that cannot parse its exit code exits 1 — a stated failure,
 /// not a silent one.
-fn runChild(args: []const [:0]const u8) u8 {
+fn run_child(args: []const [:0]const u8) u8 {
     if (args.len < 3) return 1;
     // invariant: exit code is a single byte, 0–255
     const code = std.fmt.parseInt(u8, args[2], 10) catch return 1;
@@ -67,7 +67,7 @@ fn runChild(args: []const [:0]const u8) u8 {
 
 /// The supervision loop. Spawns the child, waits for it, restarts on
 /// non-zero exit. Asserts the restart count matches the plan.
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     // invariant: we have at least argv[0] — our own path
     assert(args.len >= 1);
     const self_path = args[0];

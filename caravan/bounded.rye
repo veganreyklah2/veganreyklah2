@@ -26,7 +26,7 @@ const print = std.debug.print;
 
 const caravan_bounded_version = "20260621.015712";
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -44,12 +44,12 @@ const Region = struct {
         // invariant: buffer is non-empty
         assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= buf_len_u32(r.buf));
         return r;
     }
 
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
-        const cap = bufLenU32(self.buf);
+        const cap = buf_len_u32(self.buf);
         assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
@@ -63,11 +63,11 @@ const Region = struct {
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= buf_len_u32(self.buf));
     }
 
     fn remaining(self: *const Region) u32 {
-        return bufLenU32(self.buf) - self.pos;
+        return buf_len_u32(self.buf) - self.pos;
     }
 };
 
@@ -97,17 +97,17 @@ pub fn main(init: std.process.Init) !u8 {
 
     if (args.len >= 2 and std.mem.eql(u8, args[1], "child")) {
         const should_fail = args.len >= 3 and std.mem.eql(u8, args[2], "fail");
-        return runBoundedChild(should_fail);
+        return run_bounded_child(should_fail);
     }
 
-    return runSupervisor(allocator, io, args);
+    return run_supervisor(allocator, io, args);
 }
 
 // =========================================================================
 // § Bounded child — works inside a Tally garden
 // =========================================================================
 
-fn runBoundedChild(should_fail: bool) u8 {
+fn run_bounded_child(should_fail: bool) u8 {
     // Create a garden with a stated budget.
     var backing: [child_budget]u8 = undefined;
     var garden = Region.init(&backing);
@@ -164,7 +164,7 @@ fn runBoundedChild(should_fail: bool) u8 {
 // § Supervisor — watches the bounded child
 // =========================================================================
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     // invariant: we have at least argv[0]
     assert(args.len >= 1);
     const self_path = args[0];

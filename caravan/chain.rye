@@ -18,7 +18,7 @@ const print = std.debug.print;
 
 const caravan_chain_version = "20260622.235512";
 
-fn bufLenU32(buf: []const u8) u32 {
+fn buf_len_u32(buf: []const u8) u32 {
     assert(buf.len <= std.math.maxInt(u32));
     return @intCast(buf.len);
 }
@@ -30,12 +30,12 @@ const Region = struct {
     fn init(buf: []u8) Region {
         assert(buf.len > 0);
         const r = Region{ .buf = buf, .pos = 0 };
-        assert(r.pos <= bufLenU32(r.buf));
+        assert(r.pos <= buf_len_u32(r.buf));
         return r;
     }
 
     fn alloc(self: *Region, n: u32) error{OutOfBounds}![]u8 {
-        const cap = bufLenU32(self.buf);
+        const cap = buf_len_u32(self.buf);
         assert(self.pos <= cap);
         if (n > cap - self.pos) return error.OutOfBounds;
         const start: usize = @intCast(self.pos);
@@ -49,11 +49,11 @@ const Region = struct {
 
     fn clear(self: *Region) void {
         self.pos = 0;
-        assert(self.pos <= bufLenU32(self.buf));
+        assert(self.pos <= buf_len_u32(self.buf));
     }
 
     fn remaining(self: *const Region) u32 {
-        return bufLenU32(self.buf) - self.pos;
+        return buf_len_u32(self.buf) - self.pos;
     }
 };
 
@@ -72,28 +72,28 @@ pub fn main(init: std.process.Init) !u8 {
     const args = try init.minimal.args.toSlice(garden);
 
     if (args.len >= 4 and std.mem.eql(u8, args[1], "child")) {
-        const stage = parseStage(args[2]) orelse return 1;
+        const stage = parse_stage(args[2]) orelse return 1;
         const should_fail = std.mem.eql(u8, args[3], "fail");
-        return runStageChild(stage, should_fail);
+        return run_stage_child(stage, should_fail);
     }
 
-    return runSupervisor(garden, io, args);
+    return run_supervisor(garden, io, args);
 }
 
-fn parseStage(name: []const u8) ?Stage {
+fn parse_stage(name: []const u8) ?Stage {
     if (std.mem.eql(u8, name, "wake")) return .wake;
     if (std.mem.eql(u8, name, "prove")) return .prove;
     return null;
 }
 
-fn plannedFailures(stage: Stage) u32 {
+fn failures_for_stage(stage: Stage) u32 {
     return switch (stage) {
         .wake => planned_failures_wake,
         .prove => planned_failures_prove,
     };
 }
 
-fn runStageChild(stage: Stage, should_fail: bool) u8 {
+fn run_stage_child(stage: Stage, should_fail: bool) u8 {
     switch (stage) {
         .wake => {
             if (should_fail) {
@@ -136,7 +136,7 @@ fn runStageChild(stage: Stage, should_fail: bool) u8 {
     }
 }
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     assert(args.len >= 1);
     const self_path = args[0];
 
@@ -148,7 +148,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
 
     for (chain) |stage| {
         assert(stage_index < chain.len);
-        const restarts = try superviseStage(allocator, io, self_path, stage, plannedFailures(stage));
+        const restarts = try supervise_stage(allocator, io, self_path, stage, failures_for_stage(stage));
         total_restarts += restarts;
         print("caravan chain: stage {s} green after {d} restart(s).\n", .{ @tagName(stage), restarts });
         stage_index += 1;
@@ -162,7 +162,7 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]con
     return 0;
 }
 
-fn superviseStage(
+fn supervise_stage(
     allocator: std.mem.Allocator,
     io: std.Io,
     self_path: []const u8,

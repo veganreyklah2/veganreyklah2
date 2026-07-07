@@ -27,13 +27,13 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2 and std.mem.eql(u8, args[1], "worker")) {
         const stop = args.len >= 3 and std.mem.eql(u8, args[2], "stop");
         const fail = args.len >= 3 and std.mem.eql(u8, args[2], "fail");
-        return runWorker(stop, fail);
+        return run_worker(stop, fail);
     }
 
-    return runSupervisor(garden, io, args);
+    return run_supervisor(garden, io, args);
 }
 
-fn runWorker(stop: bool, fail: bool) u8 {
+fn run_worker(stop: bool, fail: bool) u8 {
     if (fail) {
         print("caravan restart-on-ok: worker fell — restart expected\n", .{});
         return 1;
@@ -46,7 +46,7 @@ fn runWorker(stop: bool, fail: bool) u8 {
     return se.cycle_ok;
 }
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
+fn run_supervisor(allocator: std.mem.Allocator, io: std.Io, args: []const [:0]const u8) !u8 {
     assert(args.len >= 1);
     const self_path = args[0];
 

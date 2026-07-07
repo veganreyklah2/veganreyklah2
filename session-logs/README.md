@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.173432 | [caravan supervisor cluster snake_case](20260707-173432_caravan-supervisor-snake-case.md) | camelCase 234→206; caravan seeds/capabilities/restart GREEN |
+| 20260707.173238 | [Commit recall bundle + by_mark/tablecloth kg](20260707-173238_commit-recall-bundle-by-mark-kg.md) | `76442ef` on four remotes; camelCase 242→234 |
 | 20260707.173003 | [recall_two_way_sync + beading + snapshot_export snake_case](20260707-173003_recall-two-way-beading-snapshot-snake-case.md) | camelCase 284→242; two-way/beading/snapshot witnesses GREEN |
 | 20260707.172758 | [recall_batch + snapshot delivery snake_case](20260707-172758_recall-batch-snapshot-delivery-snake-case.md) | camelCase 324→284; batch_wire + snapshot_wire GREEN |
 | 20260707.172621 | [recall delivery modules snake_case](20260707-172621_recall-delivery-modules-snake-case.md) | camelCase 402→324; sync/catch-up/2way/subscribe wire witnesses GREEN |
