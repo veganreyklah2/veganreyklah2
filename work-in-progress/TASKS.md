@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (I2 snapshot lap 3 device wire · parity **187**)
+**Last updated:** 2026-07-07 (Caravan host mirror under supervision · parity **188**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -53,7 +53,7 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word, counsel `044112`):** Caravan hardening ranked — footgun guard → source-crash recovery → snapshot device wire (lap 3 finish) → host-mirror under supervision → TASKS sweep. MALA graduation **on hold** (trigger decides). Brix · Pond · continuity · sourcing note each wait their own word.
+**Next climb (counsel `044112` complete):** MALA graduation **on hold** (trigger decides). Brix · Pond · continuity · sourcing note each wait their own word. Extended-run stability deferred until something runs unattended for real.
 
 **Held per counsel `025212` (not rejected — no code until each module has ground):**
 
@@ -80,13 +80,9 @@
 - [x] **Production scheduling lap 2** — `subscribe_poll_service` imports `supervisor_exit`; restart on `cycle_ok`, halt on `stop_requested`; witness writes sentinel after N cycles; parity **178**
 - [x] **SIGTERM ring (Caravan)** — `caravan/supervisor_signal.rye`; atomic flag in handler; loop top unifies signal + witness + `touch`; `tools/caravan_subscribe_poll_signal.rish`; counsel `20260707.021012`; parity **179**
 
-**Caravan production hardening (counsel `044112` — ranked order)** — [`external-research/20260707-044112_claude-recommendation-path.md`](../external-research/20260707-044112_claude-recommendation-path.md) · menu [`042512`](../external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md):
+**Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../external-research/20260707-044112_claude-recommendation-path.md):
 
-- [x] **`witness_stop_after` footgun** — `CARAVAN_WITNESS_MODE=1` required for third arg; exit 2 + named refusal otherwise; `tools/caravan_witness_stop_footgun.rish`; parity **186**
-- [x] **Source-crash recovery** — `linux.waitpid` poll while fetcher runs; exit **3** + named halt; `tools/caravan_subscribe_poll_source_crash.rish`; parity **187**
-- [x] **I2 snapshot device wire** — lap 3 virtio leg; guests + `comlink/run_snapshot_export_wire_lab.sh`; ports **15567**/**15568**; witness extended in `tools/mantra_snapshot_wire.rish`; parity **187**
-- [ ] **Host-mirror under supervision** — each proven alone; never together with the service ring
-- [ ] **TASKS sweep** — checked items to session logs; prune heavy sections
+- [x] **Footgun → source-crash → snapshot device wire → host mirror → TASKS sweep** — all five rings GREEN; mirror via `CARAVAN_WITNESS_MIRROR=1` + `source-loop-mirror` / `fetcher-poll-mirror`; `tools/caravan_subscribe_poll_mirror_service.rish`
 - [ ] **Extended-run stability** — deferred until something runs unattended for real (counsel `044112`)
 
 **NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):

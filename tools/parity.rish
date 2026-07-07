@@ -82,6 +82,11 @@ let caravan_srccrash = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_pol
 assert caravan_srccrash.ok else "Caravan source-crash recovery witness failed"
 say "GREEN: Caravan source-loop crash recovery witness passed."
 
+say "witness suite: Caravan host mirror under supervision…"
+let caravan_pollmirror = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll_mirror_service.rish"]
+assert caravan_pollmirror.ok else "Caravan host mirror supervision witness failed"
+say "GREEN: Caravan host mirror under supervision witness passed."
+
 say "witness suite: Caravan subscribe poll SIGTERM (ring 4)…"
 let caravan_pollsig = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll_signal.rish"]
 assert caravan_pollsig.ok else "Caravan subscribe poll SIGTERM witness failed"

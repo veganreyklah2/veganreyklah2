@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.052212 | [Caravan host mirror under supervision](20260707-052212_caravan-host-mirror-supervision.md) | Counsel `044112` ring 4; mirror + supervisor together; parity **188** |
 | 20260707.051512 | [Snapshot lap 3 device wire](20260707-051512_snapshot-lap3-device-wire.md) | Virtio guests **15567**/**15568**; lap 3 complete on both substrates |
 | 20260707.051012 | [Caravan source-crash recovery](20260707-051012_caravan-source-crash-recovery.md) | Rings 1–2 of counsel `044112`; source poll + footgun; parity **187** |
 | 20260707.044512 | [Caravan witness-stop footgun](20260707-044512_caravan-witness-stop-footgun.md) | Counsel order committed; `CARAVAN_WITNESS_MODE` gate; parity **186** |

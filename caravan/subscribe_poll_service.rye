@@ -10,6 +10,9 @@
 //!   rye build caravan/subscribe_poll_service.rye -lc -femit-bin=caravan/bin/subscribe-poll-service
 //!   caravan/bin/subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N] [interval-ns]
 //!
+//! Set `CARAVAN_WITNESS_MIRROR=1` (with `CARAVAN_WITNESS_MODE=1`) to supervise host mirror
+//! delivery — `source-loop-mirror` + `fetcher-poll-mirror` over two named peer/bolt pairs.
+//!
 //! The third argument is test-only: set `CARAVAN_WITNESS_MODE=1` from a witness runner.
 //! Counsel: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
 //! · [`external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md`](../external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md)
@@ -22,9 +25,10 @@ const c = std.c;
 const se = @import("supervisor_exit.rye");
 const ss = @import("supervisor_signal.rye");
 
-const caravan_subscribe_poll_service_version = "20260707.051012";
+const caravan_subscribe_poll_service_version = "20260707.052212";
 
 const witness_mode_env = "CARAVAN_WITNESS_MODE";
+const witness_mirror_env = "CARAVAN_WITNESS_MIRROR";
 
 /// Supervisor halts when the long-lived source child dies unexpectedly.
 const source_lost_exit: u8 = 3;
@@ -33,6 +37,11 @@ const linux = std.os.linux;
 
 fn witnessModeAllowed(environ: *const std.process.Environ.Map) bool {
     const v = environ.get(witness_mode_env) orelse return false;
+    return std.mem.eql(u8, v, "1");
+}
+
+fn witnessMirrorEnabled(environ: *const std.process.Environ.Map) bool {
+    const v = environ.get(witness_mirror_env) orelse return false;
     return std.mem.eql(u8, v, "1");
 }
 
@@ -121,12 +130,18 @@ pub fn main(init: std.process.Init) !u8 {
         return 2;
     }
 
+    const mirror_mode = witnessMirrorEnabled(init.environ_map);
+    if (mirror_mode and !witnessModeAllowed(init.environ_map)) {
+        print("caravan poll-service: host mirror witness requires CARAVAN_WITNESS_MODE=1 from a witness runner\n", .{});
+        return 2;
+    }
+
     const poll_interval_ns: u64 = if (args.len >= 5)
         try std.fmt.parseInt(u64, args[4], 10)
     else
         0;
 
-    return runSupervisor(garden, io, args[1], args[2], witness_stop_after, poll_interval_ns);
+    return runSupervisor(garden, io, args[1], args[2], witness_stop_after, poll_interval_ns, mirror_mode);
 }
 
 fn createStopSentinel(io: std.Io, sentinel_path: []const u8) !void {
@@ -141,18 +156,19 @@ fn runSupervisor(
     sentinel_path: []const u8,
     witness_stop_after: ?u32,
     poll_interval_ns: u64,
+    mirror_mode: bool,
 ) !u8 {
     ss.installHandlers();
 
-    print("caravan poll-service: supervisor alive. delivery {s} sentinel {s}\n", .{
-        delivery_path, sentinel_path,
+    print("caravan poll-service: supervisor alive. delivery {s} sentinel {s}{s}\n", .{
+        delivery_path, sentinel_path, if (mirror_mode) " mirror" else "",
     });
 
     std.Io.Dir.cwd().deleteFile(io, sentinel_path) catch {};
 
     const source_argv = try allocator.alloc([]const u8, 2);
     source_argv[0] = delivery_path;
-    source_argv[1] = "source-loop";
+    source_argv[1] = if (mirror_mode) "source-loop-mirror" else "source-loop";
 
     var source_child = try std.process.spawn(io, .{ .argv = source_argv });
     var pause = c.timespec{ .sec = 0, .nsec = @intCast(source_ready_ns) };
@@ -173,17 +189,18 @@ fn runSupervisor(
         }
 
         var interval_buf: [32]u8 = undefined;
+        const fetcher_cmd = if (mirror_mode) "fetcher-poll-mirror" else "fetcher-poll";
         const fetcher_argv = if (poll_interval_ns > 0) blk: {
             const argv = try allocator.alloc([]const u8, 4);
             argv[0] = delivery_path;
-            argv[1] = "fetcher-poll";
+            argv[1] = fetcher_cmd;
             argv[2] = sentinel_path;
             argv[3] = try std.fmt.bufPrint(&interval_buf, "{d}", .{poll_interval_ns});
             break :blk argv;
         } else blk: {
             const argv = try allocator.alloc([]const u8, 3);
             argv[0] = delivery_path;
-            argv[1] = "fetcher-poll";
+            argv[1] = fetcher_cmd;
             argv[2] = sentinel_path;
             break :blk argv;
         };
@@ -223,7 +240,11 @@ fn runSupervisor(
 
     if (witness_stop_after) |n| assert(ordinary_seen == n);
 
-    print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
+    if (mirror_mode) {
+        print("caravan poll-service: supervised host mirror — two named pairs per cycle — GREEN.\n", .{});
+    } else {
+        print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
+    }
     print("caravan poll-service: version {s} signal {s}\n", .{
         caravan_subscribe_poll_service_version, ss.supervisor_signal_version,
     });
