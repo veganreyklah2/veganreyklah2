@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.023812 | [OA-L4 escrow-release fold fix](20260707-023812_oal4-escrow-release-fold-fix.md) | MALA graduation on hold; reputation fold reads escrow-release |
 | 20260707.023312 | [Claude handoff rings 179 + I2 180](20260707-023312_claude-handoff-rings179-i2-180.md) | Full summary; tip 98264e7; four remotes aligned |
 | 20260707.021712 | [Snapshot export lap 1 parity 180](20260707-021712_snapshot-export-lap1-parity180.md) | I2 catalog export reuses batch grammar; replay witness GREEN |
 | 20260707.021212 | [SIGTERM ring parity 179](20260707-021212_sigterm-ring-parity179.md) | Signal → atomic flag → sentinel; counsel 021012 ring 4 |

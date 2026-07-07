@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.023512` | [MALA graduation + fold gap](20260707-023512_claude-counsel-mala-graduation-and-fold-gap.md) | Graduation not fired; escrow-release memo fix; hold MALA |
 | `20260707.021012` | [Ring 4 — SIGTERM to sentinel](20260707-021012_claude-counsel-ring4-signal-handler.md) | Atomic flag in handler; loop top creates sentinel; real kill witness |
 | `20260707.014212` | [Graceful stop reframed — exit-code ring first](20260707-014212_claude-counsel-graceful-stop-reframed.md) | cycle_ok restarts; stop code 8 halts; sentinel ring next |
 | `20260707.011412` | [State of the tree — compass analysis](20260707-011412_claude-analysis-state-of-the-tree.md) | Momentum audit; batch rebind-race fix; reference specs proposed; roadmap deltas |
