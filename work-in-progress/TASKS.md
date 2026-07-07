@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (open questions batch two `20260707.223100`)
+**Last updated:** 2026-07-07 (open questions final pass `20260707.222812`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -57,7 +57,24 @@
 
 - [x] **TigerBeetle alignment arc** — **closed** (`20260707.213212`); all TAME ratchets **0** on `tame_style_check`; capstone counsel [`213212`](../counsel/20260707-213212_claude-counsel-tigerbeetle-arc-closed.md); AST-grade machine canon waits on Zig parser per original study
 
-## Next bench (counsel [`220912`](../counsel/20260707-220912_claude-counsel-roadmap-synthesis.md))
+## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md))
+
+**Direction:** Open Questions largely closed on paper. Next mechanical lap: **extract Kumara** (extraction, not graduation). SLC-L3 preparation is complete; **gate is Kaeden's** (custody).
+
+| Priority | Item | Status | Notes |
+|----------|------|--------|-------|
+| **1** | **Kumara extraction** | Bench-ready | Zero `.rye` named Kumara today; ~40 direct `Ed25519` sites; [`expanding-prompts/20260707-223300_apply-kumara-extraction.md`](../expanding-prompts/20260707-223300_apply-kumara-extraction.md) |
+| **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready; touches real money on public chain |
+| — | Two-backend seam | **Lean: wait** | Wayland hosted GREEN; sovereign framebuffer when Aurora needs a screen |
+| — | Agent-writing paste | Awaiting paste | — |
+| — | Snapshot lap 4 | Kaeden's hands | — |
+| — | Astrology lane | Declined this season | — |
+
+- [ ] **Kumara extraction — first lap** — `tally/kumara.rye` + symlinks; one cluster repointed; witness; counsel `222812`
+
+*(Prior: Open Questions batch two `223100`, settlement refresh `222500`, roadmap synthesis `220912`.)*
+
+## Prior bench (counsel [`220912`](../counsel/20260707-220912_claude-counsel-roadmap-synthesis.md))
 
 **Direction:** not a new domain, not a Rishi rewrite, not Horizon 2's five v1s before their gates are ready. Clear the **Open Questions** backlog (bench-workable sittings) and **prepare SLC-L3** so settlement moves the moment Kaeden's word comes.
 
@@ -409,12 +426,11 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Bron** — **first proposal filed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams** (facts, policies, receipts); Brix carries **composable system descriptions** (courses, bonds, services). Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Open ruling for Kaeden.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
-- **Dexter / Kumara as modules** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect until a second Pond app, TAME editor surface, or sovereign framebuffer input path. **Kumara:** identity/doctrine name at seams; no module home — not a graduation candidate yet.
-- **`.sh` POSIX-seam pattern** — **answered** `20260707.220000` in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) (counsel `195912`): structural QEMU labs, cold-start bootstrap, external-interpreter seams; witness scans native.
-- **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export per [`context/specs/20260707-030412_weave-slice-ruling.md`](../context/specs/20260707-030412_weave-slice-ruling.md); no second external consumer (`mantra/src/diff.rye` only); stays Mantra aspect.
-- **Settlement-seat refresh** — **done** `222500`: seat holds; no post-May Sui incidents found; SLC-L3 two-lane witness proposal seated — [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md)
-- **ROADMAP Linengrow staleness** — **fixed** `220912`: OA-L4/OA-L5 rows added to `ROADMAP.md`
-- **Two-backend seam** — Wayland SHM to Mutter now (hosted); framebuffer-to-QEMU sovereign sibling named, not built. *(Pending Kaeden nod.)*
+- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect. **Kumara (resolved `222812`):** not a graduation question — **extraction** question; zero `.rye` files name Kumara; identity work is scattered `Ed25519` (~40 files); extract to `tally/kumara.rye` first lap per counsel `222812`.
+- **Two-backend seam** — **lean `222812`: wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before. *(Taste question fairly Kaeden's.)*
+- **`.sh` POSIX-seam pattern** — **answered** in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) and [`ORGANIZING.md`](../ORGANIZING.md) (counsel `195912`).
+- **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export; stays Mantra aspect.
+- **Settlement-seat refresh** — **done** `222500`; SLC-L3 witness proposal seated.
 - **Weave** — aspect of Mantra today (`mantra/src/weave.rye`); graduation trigger recorded in [`20260702-031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md).
 - **Research essays (authored, living)** — [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md); [`external-research/20260630-030312_after-victor-immediate-contact.md`](../external-research/20260630-030312_after-victor-immediate-contact.md); [`external-research/20260630-030312_the-hot-loop-as-the-forge.md`](../external-research/20260630-030312_the-hot-loop-as-the-forge.md).
 - **Lotus** — DAW direction adopted in `active-designing/20260630-014012_lotus-the-daw.md`; REAPER docs and AP Mastering design in `gratitude/`; bench waits for SLC-2a.
