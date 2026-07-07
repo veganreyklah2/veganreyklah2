@@ -18,7 +18,7 @@
 | Surface | Path |
 |---------|------|
 | **Parity witness** | `tools/tame_style_check.rish` |
-| **Scan script** (hand-run) | `tools/fixtures/tame_style_scan.sh` |
+| **Scan script** (hand-run) | `tools/fixtures/tame_style_scan.sh` (`advise`); `tools/tame_style_scan_bans.rish` (`bans`) |
 | **Operational supplement** | `context/TAME_GUIDANCE.md` → **What We Check, and When** |
 | **Cursor agent rule** | `.cursor/rules/tame-guidance.mdc` → **Tidy rules** |
 | **Claude agent rule** | `.claude/rules/tame-guidance.md` → **Tidy rules** |
@@ -28,8 +28,8 @@ Run by hand:
 
 ```bash
 rishi/bin/rishi run tools/tame_style_check.rish
-sh tools/fixtures/tame_style_scan.sh bans    # failures only
 sh tools/fixtures/tame_style_scan.sh advise  # ratchet counts
+rishi/bin/rishi run tools/tame_style_scan_bans.rish  # bans only
 ```
 
 ---

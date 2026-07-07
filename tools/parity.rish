@@ -122,6 +122,11 @@ let tcopy = run ["rishi/bin/rishi" "run" "tools/tally_copy.rish"]
 assert tcopy.ok else "tally copy_disjoint witness failed"
 say "GREEN: Tally copy_disjoint witness passed."
 
+say "witness suite: TAME style bans native idiom…"
+let tame_bans = run ["rishi/bin/rishi" "run" "tools/tame_style_scan_bans_selftest.rish"]
+assert tame_bans.ok else "TAME style bans native idiom selftest failed"
+say "GREEN: TAME style bans native idiom selftest passed."
+
 say "witness suite: TAME style bans…"
 let tame = run ["rishi/bin/rishi" "run" "tools/tame_style_check.rish"]
 assert tame.ok else "TAME style witness failed"

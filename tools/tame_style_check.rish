@@ -1,13 +1,12 @@
 # tame_style_check.rish — TAME textual lint, in tidy.zig's spirit and our own voice.
 #
 # Bans fail the witness; ratchet advisories print their counts and never fail.
-# The scan itself lives at tools/fixtures/tame_style_scan.sh so a hand can run
-# either half alone.
+# Bans half: tools/tame_style_scan_bans.rish (native). Advise half: tame_style_scan.sh.
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/tame_style_check.rish
 
-let bans = run ["sh" "tools/fixtures/tame_style_scan.sh" "bans"]
+let bans = run ["rishi/bin/rishi" "run" "tools/tame_style_scan_bans.rish"]
 say bans.out
 assert bans.ok else "TAME style bans found violations — see lines above"
 

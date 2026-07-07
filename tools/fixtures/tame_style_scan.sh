@@ -1,7 +1,8 @@
 #!/bin/sh
 # tame_style_scan.sh — textual TAME lint over authored .rye, in tidy.zig's spirit.
 #
-# Bans (any hit = nonzero exit, file:line printed):
+# Bans (any hit = nonzero exit, file:line printed) — default `bans` mode delegates to
+# tools/tame_style_scan_bans.rish; `bans-legacy` keeps the original grep loop for diff.
 #   ) == error. / ) != error.   call-result compared to an error (silent anyerror upcast);
 #                               a captured |err| compared inside assert stays welcome — the
 #                               trap lives at the call seam, and the refined form bans it there.
@@ -29,6 +30,10 @@ FILES=$(find mantra caravan linengrow comlink rishi/src tally aurora pond brushs
     -name "*.rye" ! -type l 2>/dev/null)
 
 if [ "$MODE" = "bans" ]; then
+    exec ./rishi/bin/rishi run tools/tame_style_scan_bans.rish
+fi
+
+if [ "$MODE" = "bans-legacy" ]; then
     fail=0
     for pat in ") == error." ") != error." "std.debug.assert(" "Self = @This()" \
                "usingnamespace" "!comptime" "copyForwards" "copyBackwards" \
