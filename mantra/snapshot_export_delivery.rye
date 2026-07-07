@@ -53,6 +53,7 @@ fn open_socket() !c.fd_t {
 }
 
 fn send_wire(port: u16, wire: []const u8) !void {
+    assert(wire.len <= wf.wire_capacity);
     const fd = try open_socket();
     defer _ = c.close(fd);
     const dest = localhost_addr(port);
@@ -73,15 +74,23 @@ fn recv_wire_timeout(port: u16, wire: []u8, timeout_sec: u32) !u64 {
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
     const n = c.recvfrom(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&from), &from_len);
     if (n < 0) return error.RecvFailed;
-    return @intCast(n);
+    const recv_len: u64 = @intCast(n);
+    assert(recv_len <= wire.len);
+    return recv_len;
 }
 
 fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
-    return try wf.seal_message(payload, wire);
+    assert(payload.len <= wf.max_message);
+    const len = try wf.seal_message(payload, wire);
+    assert(len <= wf.wire_capacity);
+    return len;
 }
 
 fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
-    return try wf.open_datagram(wire, opened);
+    assert(wire.len <= wf.wire_capacity);
+    const len = try wf.open_datagram(wire, opened);
+    assert(len <= wf.max_message);
+    return len;
 }
 
 fn send_batch_payload(port: u16, batch: []const u8) !void {
@@ -90,6 +99,7 @@ fn send_batch_payload(port: u16, batch: []const u8) !void {
         const payload_len = try bw.encode_batch_response(batch, &payload);
         var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
         const out_len = try seal_payload(payload[0..payload_len], &out_wire);
+        assert(out_len <= wf.wire_capacity);
         try send_wire(port, out_wire[0..@intCast(out_len)]);
         return;
     }
@@ -100,6 +110,7 @@ fn send_batch_payload(port: u16, batch: []const u8) !void {
         const payload_len = try bw.encode_batch_chunk(batch, ci, &payload);
         var out_wire: [@intCast(wf.wire_capacity)]u8 = undefined;
         const out_len = try seal_payload(payload[0..payload_len], &out_wire);
+        assert(out_len <= wf.wire_capacity);
         try send_wire(port, out_wire[0..@intCast(out_len)]);
     }
 }
@@ -122,11 +133,13 @@ fn recv_batch_payload(port: u16, out: []u8) !u32 {
         const recv_len: u64 = @intCast(n);
         var opened: [@intCast(wf.max_message)]u8 = undefined;
         const opened_len = try open_wire(recv_buf[0..@intCast(recv_len)], &opened);
+        assert(opened_len <= wf.max_message);
         const state = try batch_asm.feed(opened[0..@intCast(opened_len)]);
         if (state == .ready) {
             const batch = batch_asm.batch();
             if (batch.len > out.len) return error.Overflow;
             tally_copy.copy_disjoint(u8, out[0..batch.len], batch);
+            assert(batch.len <= out.len);
             return @intCast(batch.len);
         }
     }
@@ -155,6 +168,7 @@ fn fetch_snapshot_over_wire(
         const req_len = try bw.encode_request(req, &req_buf);
         var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
         const wire_len = try seal_payload(req_buf[0..req_len], &wire);
+        assert(wire_len <= wf.wire_capacity);
         try send_wire(source_port, wire[0..@intCast(wire_len)]);
 
         var batch_buf: [rb.max_batch_bytes]u8 = undefined;
@@ -163,6 +177,8 @@ fn fetch_snapshot_over_wire(
     }
 
     _ = signer;
+    assert(off <= out.len);
+    assert(off <= snap.max_snapshot_bytes);
     return off;
 }
 
@@ -177,8 +193,10 @@ fn run_source_loop(_: std.Io) !u8 {
     while (served < rev_count) : (served += 1) {
         var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
         const wire_len = try recv_wire_timeout(source_port, &wire, batch_recv_timeout_sec);
+        assert(wire_len <= wf.wire_capacity);
         var opened: [@intCast(wf.max_message)]u8 = undefined;
         const opened_len = try open_wire(wire[0..@intCast(wire_len)], &opened);
+        assert(opened_len <= wf.max_message);
 
         var req: bw.BatchWireRequest = undefined;
         try bw.decode_request(opened[0..@intCast(opened_len)], &req);
@@ -209,6 +227,7 @@ fn run_fetcher(_: std.Io) !u8 {
 
     var snap_buf: [snap.max_snapshot_bytes]u8 = undefined;
     const snap_len = try fetch_snapshot_over_wire(signer, &staged_expect, keys[0..rev_count], rev_count, &snap_buf);
+    assert(snap_len <= snap.max_snapshot_bytes);
 
     var dest: ns.BoltCatalog = .empty();
     const imported = try snap.import_catalog_horizon(&dest, snap_buf[0..snap_len], signer.public_key);

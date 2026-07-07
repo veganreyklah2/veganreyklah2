@@ -17,6 +17,7 @@
 #   @memcpy( sites remaining    migrate to tally copy_disjoint as files are touched.
 #   camelCase fn declarations   snake_case is the seated law; elder names migrate on touch.
 #   functions past 70 lines     split at the natural seam when next touched.
+#   zero assert( sites          core modules should import assert; honest exempt list below.
 #
 # Scan roster: mantra caravan linengrow comlink rishi/src tally aurora pond brushstroke rye/src.
 # tools/ is its own counted season (counsel 20260707.175312). Intentional-violation fixtures
@@ -54,6 +55,20 @@ if [ "$MODE" = "advise" ]; then
     echo "ratchet: @memcpy sites remaining = ${memcpy_total} (migrate to copy_disjoint on touch)"
     echo "ratchet: camelCase fn declarations = ${camel_total} (snake_case on touch)"
     echo "ratchet: functions past 70 lines —"
+    zero_assert_total=0
+    for f in $FILES; do
+        if grep -qE '\bassert\(' "$f" 2>/dev/null; then
+            continue
+        fi
+        case "$f" in
+            comlink/guest_*|aurora/src/*|brushstroke/font8x8_data.rye|\
+            caravan/supervisor_signal.rye|caravan/supervisor_exit.rye|pond/apps/window_input.rye)
+                continue ;;
+        esac
+        zero_assert_total=$((zero_assert_total + 1))
+        echo "  $f (zero assert — review on touch)"
+    done
+    echo "ratchet: zero assert( files remaining = ${zero_assert_total} (honest exempt: virtio guests, aurora freestanding, signal handler, font table, thin line editor, exit constants)"
     for f in $FILES; do
         awk -v F="$f" '
             /^( *)?(pub )?fn /{ if (infn && n > 70) printf "  %s: %s = %d lines\n", F, name, n;

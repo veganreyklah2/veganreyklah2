@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.183412` | [TB std prefixes + assert density](20260707-183412_claude-counsel-tb-std-prefix-assert-density.md) | `std.` habit matches TB majority; `maybe` parked RTAC; sync wire + sed contract asserts |
 | `20260707.175312` | [Tooling scope ruling](20260707-175312_claude-counsel-tooling-scope-ruling.md) | `rye/src` joins scan; `tools/` deferred; intentional-violation fixtures exempt |
 | `20260707.044112` | [Recommendation path](20260707-044112_claude-recommendation-path.md) | Caravan production hardening order |
 | `20260707.042512` | [Snapshot lap 3 + Caravan hardening](20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md) | Lap 3 wire proposal; caravan witness bundle |
