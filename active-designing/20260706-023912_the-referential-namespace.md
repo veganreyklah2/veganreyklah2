@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · Gall's Law
 **Register:** active-designing — checkable-room design counsel; vocabulary seated; lap 1 on metal
 **Ground:** [`../external-research/20260706-023912_clay-referential-namespace.md`](../external-research/20260706-023912_clay-referential-namespace.md) · [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md`](../external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md) · [`../external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md)
-**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through NS-L3 beading parity **164**; recall_beaded parity **165**; resin-batch wire hosted + device + chunking + beaded parity **166**; Amber export path **`resins/`** hygiene `20260706.235812`. **Next horizons (ruling Q3):** marks-on-read · two-way sync · host mirror · Tablecloth query last.
+**Status:** Landed — checkable-room; vocabulary seated `20260706.032700`; NS-L1 recall parity **159** through beaded batch wire parity **166**; marks-on-read parity **168** (`20260707.000012`). **Next horizons (ruling Q3):** two-way sync · host mirror · Tablecloth query last.
 
 *Written together by Kaeden and Rio 3.*
 
@@ -57,6 +57,8 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Recall, beaded (landed, parity 165):** [`mantra/recall_beaded.rye`](../mantra/recall_beaded.rye) composes recall and beading; derived bead paths `{path}.b{ordinal}` seat bead leaves for batch carriage; witness [`tools/mantra_recall_beaded.rish`](../tools/mantra_recall_beaded.rish).
 
+**Marks-on-read (landed, parity 168):** [`mantra/recall_by_mark.rye`](../mantra/recall_by_mark.rye) recalls by Tilak within a bolt revision; unique mark resolves directly; shared mark narrows with optional path hint; witness [`tools/mantra_recall_by_mark.rish`](../tools/mantra_recall_by_mark.rish).
+
 **Wire carriage — counsel `20260706.041012` (lap 1 landed):** the OA-L2-shaped hop — carry proven sync over Comlink sealed datagrams, hosted first, then device wire, same `wire_format` OA-L2 and OA-L3 escrow rode. No new wire vocabulary; reuses **recall**, **bolt**, **resin**, fetch-by-digest, have-already, need-resin, **manifest**, Amphora.
 
 | Wire lap | Shape | Bench |
@@ -78,7 +80,7 @@ The namespace climbs in small, witnessed steps, each a single closed claim.
 
 **Batch-frame carriage — landed `20260706.184512`:** batches larger than **340 B** cross as kind **0x04** chunk frames (**331 B** body each); `BatchAssembler` reassembles before `applyBatch`. Witness bolt variants: [`20260706-185112_the-witness-bolt.md`](20260706-185112_the-witness-bolt.md). Beaded bolt full crossing remains next lap.
 
-The later laps arrive each in season. Two-way sync and subscribe-to-changes are a later horizon. Marks-on-read, Tablecloth query, and host mirror each keep their season.
+The later laps arrive each in season. Two-way sync and subscribe-to-changes are the next horizon. Tablecloth query and host mirror each keep their season.
 
 ## Kaeden's Word (`20260706.032700`)
 

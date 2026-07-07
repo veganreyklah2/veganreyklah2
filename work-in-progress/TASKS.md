@@ -53,7 +53,9 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
 
-**Next climb (Kaeden's word):** marks-on-read (ruling Q3 order) — or MALA graduation when OA-L4 becomes escrow's second consumer.
+**Next climb (Kaeden's word):** two-way sync and subscribe-to-changes (ruling Q3 order) — or MALA graduation when OA-L4 becomes escrow's second consumer.
+
+- [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; `recallByMark` by Tilak within peer/bolt/revision; path hint disambiguates; `tools/mantra_recall_by_mark.rish`; parity **168**
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 

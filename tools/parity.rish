@@ -252,6 +252,11 @@ let recall_beaded = run ["rishi/bin/rishi" "run" "tools/mantra_recall_beaded.ris
 assert recall_beaded.ok else "NS-L3 recall_beaded witness failed"
 say "GREEN: NS-L3 recall_beaded witness passed."
 
+say "witness suite: marks-on-read (recall by Tilak)…"
+let ns_mark = run ["rishi/bin/rishi" "run" "tools/mantra_recall_by_mark.rish"]
+assert ns_mark.ok else "marks-on-read witness failed"
+say "GREEN: marks-on-read witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"
