@@ -147,6 +147,11 @@ let tua = run ["rishi/bin/rishi" "run" "tools/tame_usize_audit.rish"]
 assert tua.ok else "tame_usize_audit witness failed"
 say "GREEN: tame_usize_audit witness passed."
 
+say "witness suite: enrich_strengthening_docs (fixture only)…"
+let esd = run ["rishi/bin/rishi" "run" "tools/enrich_strengthening_docs.rish"]
+assert esd.ok else "enrich_strengthening_docs witness failed"
+say "GREEN: enrich_strengthening_docs witness passed."
+
 say "witness suite: TH-2 tame-check gate…"
 let th2 = run ["rishi/bin/rishi" "run" "tools/tame_check_th2.rish"]
 assert th2.ok else "TH-2 tame-check witness failed"

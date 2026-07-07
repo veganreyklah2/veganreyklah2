@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.194900 | [Apply enrich witness](20260707-194900_apply-enrich-witness.md) | Zip 32 applied; fixture `work-in-progress/` fix; parity **196** |
+| 20260707.193712 | [enrich_strengthening_docs witness](20260707-193712_enrich-strengthening-docs-witness.md) | Claude bench: third safety-net piece; two-run idempotency |
 | 20260707.193200 | [Commit general expansion push](20260707-193200_commit-general-expansion-push.md) | `6f0e6dc` on four remotes; parity **195** |
 | 20260707.192100 | [Apply general expansion round](20260707-192100_apply-general-expansion-round.md) | Zip 31 applied; parity **195** GREEN; doorway Status repaired |
 | 20260707.185612 | [General expansion round](20260707-185612_general-expansion-round.md) | Claude bench: `maybe`, `no_padding`, bug found, tools safety net 2/3 |

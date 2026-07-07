@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (general expansion round `185612` · parity **195**)
+**Last updated:** 2026-07-07 (enrich safety net complete · parity **196**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -58,6 +58,7 @@
 - [x] **TigerBeetle alignment leap (`053212`)** — `tally/copy.rye` disjoint-copy law; `tools/tame_style_check.rish` bans + ratchets; 8-site `@memcpy` migration; 33 qualified asserts retired; 7 compound asserts split; Radiant vocabulary pass; study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md); parity **190**
 - [x] **`copy_disjoint` ratchet arc** — six on-touch turns across Mantra delivery/export, comlink virtio guests, canonical wire modules, beading cluster, linengrow OA/receipt stack, and `rishi/src/main.rye`; application `@memcpy` **121→1** (sole site intentional in `tally/copy.rye`); `linengrow/tally_copy.rye` symlink; commits `adb46e9`/`f2e69de`; full parity **191** GREEN (~146s); detail in [`session-logs/20260707-154812_copy-ratchet-commit-push.md`](../session-logs/20260707-154812_copy-ratchet-commit-push.md)
 - [x] **General expansion round (`185612`)** — `tally/maybe.rye` + `tally/no_padding.rye` seated; `device_wire.rye` stale `negotiateFeatures` found and fixed; hosted selftest in `comlink_device_wire.rish`; tools/enrich safety net 2-of-3 (`align_session_logs`, `tame_usize_audit`); three module READMEs; counsel [`counsel/20260707-185612_claude-counsel-general-expansion-round.md`](../counsel/20260707-185612_claude-counsel-general-expansion-round.md); full parity **195** GREEN (~147s); apply [`expanding-prompts/20260707-185612_apply-general-expansion.md`](../expanding-prompts/20260707-185612_apply-general-expansion.md)
+- [x] **enrich_strengthening_docs witness (`193712`)** — third tools/enrich safety-net piece; fixture at `tools/fixtures/enrich_strengthening_docs_fixture/`; two-run idempotency + real-tree checksums; counsel [`counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md`](../counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md); parity **196** GREEN (~147s); apply [`expanding-prompts/20260707-193712_apply-enrich-witness.md`](../expanding-prompts/20260707-193712_apply-enrich-witness.md)
 
 **Held per counsel `025212` (not rejected — no code until each module has ground):**
 
@@ -313,7 +314,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [x] **`maybe` seated** — TigerBeetle dual of assert; `tally/maybe.rye`; witness `tools/tally_maybe.rish`; counsel [`counsel/20260707-185612_claude-counsel-general-expansion-round.md`](../counsel/20260707-185612_claude-counsel-general-expansion-round.md)
 - [x] **`no_padding` seated** — TigerBeetle `stdx.no_padding`, ported and honestly simplified (no `u128` branch — unneeded); `tally/no_padding.rye`; real application at `comlink/device_wire.rye`'s hosted selftest, asserted against all five `virtio_net.rye` wire structures
 - [x] **Stale virtio rename found and fixed** — `device_wire.rye` called `vn.negotiateFeatures`; `virtio_net.rye` had migrated to `negotiate_features` a season ago; the parity suite never built `device_wire.rye`'s own hosted binary, only the freestanding lab downstream of it, so the break sat unnoticed. `tools/comlink_device_wire.rish` now builds and runs the hosted selftest first.
-- [ ] **Tools/enrich safety net — two of three built** — `tools/align_session_logs.rish` (real fixture, `VEGANREYKLAH2_ROOT` override, checksums the real tree untouched) and `tools/tame_usize_audit.rish` (pure-function proof) both GREEN. `enrich_strengthening_docs.rye`'s witness deferred — larger fixture surface (crosswalk + lexicon + multiple output paths), needs its own sitting.
+- [x] **Tools/enrich safety net — complete (3/3)** — `align_session_logs`, `tame_usize_audit`, `enrich_strengthening_docs` witnesses GREEN; counsel [`193712`](../counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md); tools `snake_case` season may open per counsel `175312`
 - [x] **Three module READMEs** — `comlink/README.md`, `caravan/README.md`, `tally/README.md`, matching `amber/README.md`'s shape; named as a gap since the synthesis sitting, closed this round.
 - [ ] **TAME hygiene (as-you-touch)** — bare `print(...)` via `const print = std.debug.print` in older hosted `.rye`; address when each file is touched, not as a sweep.
 
