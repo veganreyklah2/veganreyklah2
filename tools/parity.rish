@@ -262,6 +262,21 @@ let ns_2way = run ["rishi/bin/rishi" "run" "tools/mantra_recall_two_way_sync.ris
 assert ns_2way.ok else "two-way sync witness failed"
 say "GREEN: two-way sync witness passed."
 
+say "witness suite: two-way sync wire (hosted + device)…"
+let ns_2wayw = run ["rishi/bin/rishi" "run" "tools/mantra_recall_two_way_sync_wire.rish"]
+assert ns_2wayw.ok else "two-way sync wire witness failed"
+say "GREEN: two-way sync wire witness passed."
+
+say "witness suite: catch-up-to-latest (in-process)…"
+let ns_catchup = run ["rishi/bin/rishi" "run" "tools/mantra_recall_catch_up.rish"]
+assert ns_catchup.ok else "catch-up-to-latest witness failed"
+say "GREEN: catch-up-to-latest witness passed."
+
+say "witness suite: catch-up-to-latest wire (hosted + device)…"
+let ns_catchupw = run ["rishi/bin/rishi" "run" "tools/mantra_recall_catch_up_wire.rish"]
+assert ns_catchupw.ok else "catch-up wire witness failed"
+say "GREEN: catch-up-to-latest wire witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"

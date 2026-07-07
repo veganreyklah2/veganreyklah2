@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.004512 | [Commit push parity 170–172](20260707-004512_commit-push-parity170-172.md) | Two-way wire + catch-up inner ring; four remotes |
+| 20260707.002012 | [Catch-up wire parity 172](20260707-002012_catch-up-wire-parity172.md) | Wire loop until empty; hosted + device |
+| 20260707.001712 | [Catch-up in-process parity 171](20260707-001712_catch-up-in-process-parity171.md) | Subscribe counsel revisited; bounded inner loop |
+| 20260707.001512 | [Two-way sync wire parity 170](20260707-001512_two-way-sync-wire-parity170.md) | Hosted + device; exchange twice roles reversed |
+| 20260707.001212 | [Commit push two-way sync parity 169](20260707-001212_commit-push-two-way-sync-parity169.md) | Counsel + in-process lap committed `e317fe1`; four remotes |
 | 20260707.000212 | [Two-way sync in-process parity 169](20260707-000212_two-way-sync-in-process-parity169.md) | Counsel seated; symmetric syncRevision; subscribe split |
 | 20260707.000012 | [Marks-on-read parity 168](20260707-000012_marks-on-read-parity168.md) | recallByMark by Tilak; path hint disambiguates |
 | 20260706.235812 | [stones→resins path rename](20260706-235812_stones-to-resins-path-rename.md) | Amber ring-1 export paths; golden unchanged; parity 167 |

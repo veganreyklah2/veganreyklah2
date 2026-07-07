@@ -53,11 +53,17 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167**
 
-**Next climb (Kaeden's word):** two-way sync **wire lap** (reverse roles on existing sync exchange) — subscribe-to-changes on its own word (poll-first per counsel `20260707.000112`).
+**Next climb (Kaeden's word):** outer unattended subscribe loop on its own word · host mirror · Tablecloth query last.
 
 - [x] **Marks-on-read** — `mantra/recall_by_mark.rye`; `recallByMark` by Tilak within peer/bolt/revision; path hint disambiguates; `tools/mantra_recall_by_mark.rish`; parity **168**
 
 - [x] **Two-way sync (in-process)** — `mantra/recall_two_way_sync.rye`; symmetric `syncRevision`; counsel `20260707.000112`; `tools/mantra_recall_two_way_sync.rish`; parity **169**
+
+- [x] **Two-way sync (wire)** — `mantra/recall_two_way_sync_delivery.rye`; exchange twice with roles reversed; hosted **38482/38483** + device `comlink/run_recall_two_way_sync_wire_lab.sh`; `tools/mantra_recall_two_way_sync_wire.rish`; parity **170**
+
+- [x] **Catch-up-to-latest (in-process)** — `mantra/recall_catch_up.rye`; bounded inner loop over `syncRevision`; counsel `20260707.001612`; `tools/mantra_recall_catch_up.rish`; parity **171**
+
+- [x] **Catch-up-to-latest (wire)** — `mantra/recall_catch_up_delivery.rye`; wire loop until empty response; hosted **38484/38485** + device `comlink/run_recall_catch_up_wire_lab.sh`; `tools/mantra_recall_catch_up_wire.rish`; parity **172**
 
 **NS-L1 landed `20260706.032700` — parity 159:**
 

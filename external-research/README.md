@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (two-way sync counsel `000112`)
+**Last updated:** 2026-07-07 (subscribe counsel revisited `001612`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.001612` | [Claude counsel — subscribe revisited](20260707-001612_claude-counsel-subscribe-revisited.md) | Catch-up-to-latest now; outer unattended loop waits Caravan scheduling |
 | `20260707.000112` | [Claude counsel — two-way sync and subscribe](20260707-000112_claude-counsel-two-way-sync-and-subscribe.md) | Split lap: symmetric syncRevision now; subscribe (poll-first) waits its own word |
 | `20260706.232812` | [Claude ruling — OA-L4, MALA, Edit-5, horizons](20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) | Zip 58 sitting — OA-L4 leads; Edit-5 slot released; namespace horizon order; parity unchanged |
 | `20260706.023912` | [Clay — the referentially-transparent namespace, studied for Rye](20260706-023912_clay-referential-namespace.md) | Typed git with continuous sync; a name resolves to the same bytes for all time; marks map to Tilak, store to Amber, sync to Amphora; design decides in active-designing |
