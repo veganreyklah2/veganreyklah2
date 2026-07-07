@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.215000 | [`.sh` migration bans commit and push](20260707-215000_sh-migration-bans-commit-push.md) | `a52e5b8` to four remotes |
 | 20260707.214500 | [`.sh` migration — tame_style_scan bans](20260707-214500_sh-migration-tame-style-scan-bans.md) | Native bans.rish; selftest; tame_style_check wired |
 | 20260707.214100 | [Next bench choice counsel filed](20260707-214100_next-bench-choice-counsel-filed.md) | Counsel `214012`; OA wire verified complete; TASKS next-bench table |
 | 20260707.214000 | [TigerBeetle arc capstone commit and push](20260707-214000_tigerbeetle-arc-capstone-commit-push.md) | `4140dd4` to four remotes |
