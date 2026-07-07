@@ -1,24 +1,26 @@
-//! caravan/subscribe_poll_service.rye — production scheduling ring: supervise poll wire work.
+//! caravan/subscribe_poll_service.rye — production scheduling: supervise poll wire work.
 //!
-//! Ring C composes Caravan's service semantic with Mantra's subscribe-poll delivery:
-//! a long-lived source child answers catch-up requests; the supervisor restarts the
-//! fetcher-poll worker on fall until it completes clean. One planned mid-service
-//! fall proves restart-to-success without OS signals or unbounded waits.
+//! Ring C supervises Mantra's subscribe-poll delivery with the exit-code convention
+//! from `supervisor_exit.rye`: **cycle_ok** (0) spawns again; **stop_requested** (8)
+//! halts; any other non-zero is a fall and restarts. A long-lived source child
+//! answers catch-up requests; each fetcher-poll worker runs one wire cycle and
+//! checks the stop sentinel at the boundary.
 //!
-//!   rye build caravan/subscribe_poll_service.rye -femit-bin=caravan/bin/subscribe-poll-service
-//!   caravan/bin/subscribe-poll-service mantra/bin/recall-subscribe-poll-delivery
+//!   rye build caravan/subscribe_poll_service.rye -lc -femit-bin=caravan/bin/subscribe-poll-service
+//!   caravan/bin/subscribe-poll-service <delivery> <sentinel-path> [witness-stop-after-N]
 //!
-//! Counsel shape: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
+//! Counsel: [`external-research/20260707-004712`](../external-research/20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md)
+//! · [`external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md`](../external-research/20260707-014212_claude-counsel-graceful-stop-reframed.md)
 
 const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const c = std.c;
+const se = @import("supervisor_exit.rye");
 
-const caravan_subscribe_poll_service_version = "20260707.014212";
+const caravan_subscribe_poll_service_version = "20260707.015512";
 
-const planned_failures: u32 = 1;
-const max_restarts: u32 = 5;
+const max_fall_restarts: u32 = 5;
 const source_ready_ns: u64 = 50_000_000;
 
 pub fn main(init: std.process.Init) !u8 {
@@ -26,15 +28,31 @@ pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const args = try init.minimal.args.toSlice(garden);
 
-    if (args.len < 2) {
-        print("usage: subscribe-poll-service <delivery-binary>\n", .{});
+    if (args.len < 3) {
+        print("usage: subscribe-poll-service <delivery-binary> <stop-sentinel-path> [witness-stop-after-N]\n", .{});
         return 1;
     }
-    return runSupervisor(garden, io, args[1]);
+
+    const witness_stop_after: ?u32 = if (args.len >= 4)
+        try std.fmt.parseInt(u32, args[3], 10)
+    else
+        null;
+
+    return runSupervisor(garden, io, args[1], args[2], witness_stop_after);
 }
 
-fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, delivery_path: []const u8) !u8 {
-    print("caravan poll-service: supervisor alive. delivery {s}\n", .{delivery_path});
+fn runSupervisor(
+    allocator: std.mem.Allocator,
+    io: std.Io,
+    delivery_path: []const u8,
+    sentinel_path: []const u8,
+    witness_stop_after: ?u32,
+) !u8 {
+    print("caravan poll-service: supervisor alive. delivery {s} sentinel {s}\n", .{
+        delivery_path, sentinel_path,
+    });
+
+    std.Io.Dir.cwd().deleteFile(io, sentinel_path) catch {};
 
     const source_argv = try allocator.alloc([]const u8, 2);
     source_argv[0] = delivery_path;
@@ -44,18 +62,21 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, delivery_path: []cons
     var pause = c.timespec{ .sec = 0, .nsec = @intCast(source_ready_ns) };
     _ = c.nanosleep(&pause, null);
 
-    var restarts: u32 = 0;
-    while (true) {
-        assert(restarts <= max_restarts);
+    var ordinary_seen: u32 = 0;
+    var fall_restarts: u32 = 0;
 
-        const fail_mid = restarts < planned_failures;
-        const fetcher_argv = if (fail_mid)
-            try allocator.alloc([]const u8, 3)
-        else
-            try allocator.alloc([]const u8, 2);
+    while (true) {
+        if (witness_stop_after) |n| {
+            if (ordinary_seen == n) {
+                const f = try std.Io.Dir.cwd().createFile(io, sentinel_path, .{});
+                f.close(io);
+            }
+        }
+
+        const fetcher_argv = try allocator.alloc([]const u8, 3);
         fetcher_argv[0] = delivery_path;
         fetcher_argv[1] = "fetcher-poll";
-        if (fail_mid) fetcher_argv[2] = "fail";
+        fetcher_argv[2] = sentinel_path;
 
         var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
         const term = try fetcher_child.wait(io);
@@ -64,28 +85,36 @@ fn runSupervisor(allocator: std.mem.Allocator, io: std.Io, delivery_path: []cons
             else => 255,
         };
 
-        if (code == 0) {
-            print("caravan poll-service: fetcher completed after {d} restart(s).\n", .{restarts});
+        if (se.supervisorStops(code)) {
+            print("caravan poll-service: stop after {d} ordinary cycle(s), {d} fall restart(s)\n", .{
+                ordinary_seen, fall_restarts,
+            });
+            source_child.kill(io);
             break;
         }
 
-        restarts += 1;
-        print("caravan poll-service: fetcher fell (code {d}), restart {d}/{d}\n", .{
-            code, restarts, max_restarts,
-        });
-        if (restarts >= max_restarts) {
-            print("caravan poll-service: restart limit reached — giving up.\n", .{});
-            source_child.kill(io);
-            return 1;
+        if (code == se.cycle_ok) {
+            ordinary_seen += 1;
+            continue;
         }
+
+        if (se.supervisorRestartsAfterFall(code)) {
+            fall_restarts += 1;
+            print("caravan poll-service: fall restart {d}/{d}\n", .{ fall_restarts, max_fall_restarts });
+            if (fall_restarts >= max_fall_restarts) {
+                source_child.kill(io);
+                return 1;
+            }
+            continue;
+        }
+
+        source_child.kill(io);
+        return code;
     }
 
-    assert(restarts == planned_failures);
-    const st = try source_child.wait(io);
-    const sc: u8 = switch (st) { .exited => |c0| c0, else => 255 };
-    if (sc != 0) return sc;
+    if (witness_stop_after) |n| assert(ordinary_seen == n);
 
-    print("caravan poll-service: supervised subscribe poll wire — GREEN.\n", .{});
+    print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
     print("caravan poll-service: version {s}\n", .{caravan_subscribe_poll_service_version});
     return 0;
 }

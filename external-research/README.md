@@ -43,6 +43,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.014212` | [Graceful stop reframed — exit-code ring first](20260707-014212_claude-counsel-graceful-stop-reframed.md) | cycle_ok restarts; stop code 8 halts; sentinel ring next |
 | `20260707.011412` | [State of the tree — compass analysis](20260707-011412_claude-analysis-state-of-the-tree.md) | Momentum audit; batch rebind-race fix; reference specs proposed; roadmap deltas |
 | `20260707.005612` | [Claude counsel — Tablecloth query](20260707-005612_claude-counsel-tablecloth-query.md) | Namespace query = optional peer/bolt/revision filter; every match in order; Brix store thread separate |
 | `20260707.004712` | [Claude counsel — outer subscribe and host mirror](20260707-004712_claude-counsel-outer-subscribe-and-host-mirror.md) | Bounded poll cycles now; host mirror = named pair list; Caravan restart ≠ poller |

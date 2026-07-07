@@ -72,6 +72,16 @@ let caravan_pollsvc = run ["rishi/bin/rishi" "run" "tools/caravan_subscribe_poll
 assert caravan_pollsvc.ok else "Caravan subscribe poll service witness failed"
 say "GREEN: Caravan subscribe poll service witness passed."
 
+say "witness suite: Mantra subscribe poll stop sentinel (graceful boundary)…"
+let mantra_pollstop = run ["rishi/bin/rishi" "run" "tools/mantra_recall_subscribe_poll_stop.rish"]
+assert mantra_pollstop.ok else "Mantra subscribe poll stop sentinel witness failed"
+say "GREEN: Mantra subscribe poll stop sentinel witness passed."
+
+say "witness suite: Caravan restart on cycle_ok (exit-code ring)…"
+let caravan_reok = run ["rishi/bin/rishi" "run" "tools/caravan_restart_on_ok.rish"]
+assert caravan_reok.ok else "Caravan restart-on-ok witness failed"
+say "GREEN: Caravan restart-on-ok witness passed."
+
 say "witness suite: Comlink hosted wire…"
 let comlink_hw = run ["rishi/bin/rishi" "run" "tools/comlink_hosted_wire.rish"]
 assert comlink_hw.ok else "Comlink hosted wire witness failed"

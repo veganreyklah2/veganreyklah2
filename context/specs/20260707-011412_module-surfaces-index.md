@@ -3,7 +3,7 @@
 **Stamp:** `20260707.011412 UDT` (Kaeden's clock)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **175** + Caravan service ring
+**Status:** Seated — living reference map; canon `20260707.011812`; rows correct through parity **178** + graceful stop rings
 **Register:** Reference — the looking-up room; meanings in our own words, one line each
 
 *Written by Kaeden and Rio 3.*
@@ -24,7 +24,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 | — wire_format | The 528-byte sealed envelope, 340-byte message | `comlink/wire_format.rye` | every wire witness |
 | — hosted / device / virtio_net | The three substrates one logic rides | `comlink/*.rye` | `run_*_lab.sh` |
 | **Tally** | Bounds as a discipline: gardens, budgets, named ceilings | `tally/` | foundation seeds in parity (138+) |
-| **Caravan** | Supervision through **poll service** (ring C): supervises subscribe-poll wire delivery | `caravan/` | seeds + `tools/caravan_subscribe_poll_service.rish` parity **176** |
+| **Caravan** | Supervision: exit vocabulary + poll service with stop sentinel at cycle boundary | `caravan/` | `supervisor_exit` parity **177**; `subscribe_poll_service` + `mantra_recall_subscribe_poll_stop` parity **178** |
 | **Brushstroke** (+ Skate aspect) | Drawing to a surface; Skate is the grid | `brushstroke/` | seed in parity |
 | **Pond** (+ drawn terminal; Dexter aspect) | The enclosure where composed things run; Lap-3 metal-closed terminal | `pond/` | Doors 1–2 closed on GNOME |
 | **Aurora** | The freestanding RISC-V seed toward verified boot | `aurora/` | freestanding relay witnesses |

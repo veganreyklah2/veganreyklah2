@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (synthesis sitting `011412` · parity **175**)
+**Last updated:** 2026-07-07 (graceful stop rings 2–3 · parity **178**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -51,7 +51,11 @@
 
 - [x] **OA-L4 reputation-as-fold lap 1** — `foldReputationLog` + applicant-signed consent facts (`grant` / `withhold`); witness bolt (3 completions, 2 consented, 1 withheld); `tools/open_asks_lap4.rish`; parity **167** (ruling `20260706.232812` — MALA graduation fires at escrow's second consumer, not a rival lap)
 
-**Next climb (Kaeden's word):** I2 snapshot export when drafted · MALA graduation at escrow second consumer · graceful stop / real clock (open).
+**Next climb (Kaeden's word):** SIGTERM → sentinel file (counsel `014212` ring 4) · I2 snapshot export when drafted · MALA graduation at escrow second consumer.
+
+- [x] **Exit-code ring (Caravan)** — `caravan/supervisor_exit.rye` + `caravan/restart_on_ok.rye`; `cycle_ok` restarts, `stop_requested` (8) halts; counsel `20260707.014212`; `tools/caravan_restart_on_ok.rish`; parity **177**
+- [x] **Stop sentinel at poll boundary (Mantra)** — `fetcher-poll <sentinel>` one cycle + exit 8 when present; `fetcher-poll-legacy` for demo/selftest; `tools/mantra_recall_subscribe_poll_stop.rish`; parity **178**
+- [x] **Production scheduling lap 2** — `subscribe_poll_service` imports `supervisor_exit`; restart on `cycle_ok`, halt on `stop_requested`; witness writes sentinel after N cycles; parity **178** (service witness updated)
 
 **NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
 

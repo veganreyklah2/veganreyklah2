@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260707.014212` (production scheduling lap 1 · parity **176**)
-**Last updated:** 2026-07-07 (Caravan supervises subscribe poll wire)
+**Version:** `20260707.015512` (graceful stop rings 2–3 · parity **178**)
+**Last updated:** 2026-07-07 (stop sentinel at poll boundary + supervisor restart-on-cycle_ok)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -38,7 +38,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 |--------|------|-----------|
 | **Rye** | Thin frontend; `rye/lib/std` → vendor symlink | **140** witness regression suite |
 | **Aurora** | Six-stage relay + deciding stage on RISC-V | Freestanding |
-| **Caravan** | seed → bounded → twin → chain → **service** → **poll service** → capabilities | Hosted; poll service parity **176** |
+| **Caravan** | seed → bounded → twin → chain → service → poll service → **restart-on-ok** → capabilities | Hosted; graceful stop rings parity **177–178** |
 | **Tally** | seed + named gardens (blob/diff/frame) | 15 invariants; seed + gardens in parity |
 | **Brix** | `.brix` descriptor, 10 tracked bricks | Read by Mantra |
 | **Bron** | Data notation (`.bron`) | Used by `.brix` |
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**The trio:** `parity.rish` (**176 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **Comlink device wire**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-07`); additive-gate runs when std changes land.
+**The trio:** `parity.rish` (**178 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **Comlink device wire**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-07`); additive-gate runs when std changes land.
 
 ---
 

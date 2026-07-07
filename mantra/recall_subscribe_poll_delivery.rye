@@ -19,7 +19,10 @@ const wf = @import("wire_format.rye");
 const cu = @import("recall_catch_up.rye");
 const sp = @import("recall_subscribe_poll.rye");
 
-const npw_version = "20260707.014212";
+const npw_version = "20260707.015512";
+
+/// Matches `caravan/supervisor_exit.rye` — deliberate stop at a cycle boundary.
+const stop_requested: u8 = 8;
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -326,10 +329,9 @@ fn runSourceLoop(_: std.Io) !u8 {
     var src: ns.BoltCatalog = undefined;
     try initDemoSource(&src);
 
-    var hops: u32 = 0;
-    while (hops < 12) : (hops += 1) {
+    while (true) {
         var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-        const wire_len = recvWireTimeout(source_port, &wire, 2) catch break;
+        const wire_len = recvWireTimeout(source_port, &wire, 2) catch continue;
         if (wire_len < wf.off_cipher or wire_len > wf.wire_capacity) return error.RecvFailed;
 
         var opened: [@intCast(wf.max_message)]u8 = undefined;
@@ -351,7 +353,29 @@ fn runSourceLoop(_: std.Io) !u8 {
     return 0;
 }
 
-fn runFetcherPoll(_: std.Io, fail_after_first: bool) !u8 {
+fn stopSentinelPresent(io: std.Io, path: []const u8) bool {
+    if (path.len == 0) return false;
+    std.Io.Dir.cwd().access(io, path, .{}) catch return false;
+    return true;
+}
+
+fn runFetcherPollOnce(io: std.Io, sentinel_path: []const u8) !u8 {
+    if (stopSentinelPresent(io, sentinel_path)) {
+        print("ns-pollw: stop sentinel at boundary — stop_requested\n", .{});
+        return stop_requested;
+    }
+
+    var fetcher: ns.BoltCatalog = undefined;
+    try initDemoFetcher(&fetcher);
+
+    const one_pair = [_]sp.PeerBoltPair{.{ .peer = "peerB", .bolt = "b" }};
+    _ = try pollOneCycleWireSockets(&fetcher, &one_pair);
+
+    print("ns-pollw: one wire poll cycle at boundary — cycle_ok\n", .{});
+    return 0;
+}
+
+fn runFetcherPollLegacy(_: std.Io, fail_after_first: bool) !u8 {
     var fetcher: ns.BoltCatalog = undefined;
     try initDemoFetcher(&fetcher);
 
@@ -387,7 +411,7 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
 
     const fetcher_argv = try allocator.alloc([]const u8, 2);
     fetcher_argv[0] = self_path;
-    fetcher_argv[1] = "fetcher-poll";
+    fetcher_argv[1] = "fetcher-poll-legacy";
     var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
 
     const st = try source_child.wait(io);
@@ -409,8 +433,13 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2) {
         if (std.mem.eql(u8, args[1], "source-loop")) return runSourceLoop(io);
         if (std.mem.eql(u8, args[1], "fetcher-poll")) {
+            if (args.len < 3) return error.SyncFailed;
+            if (std.mem.eql(u8, args[2], "fail")) return runFetcherPollLegacy(io, true);
+            return runFetcherPollOnce(io, args[2]);
+        }
+        if (std.mem.eql(u8, args[1], "fetcher-poll-legacy")) {
             const fail_mid = args.len >= 3 and std.mem.eql(u8, args[2], "fail");
-            return runFetcherPoll(io, fail_mid);
+            return runFetcherPollLegacy(io, fail_mid);
         }
         if (std.mem.eql(u8, args[1], "selftest")) return runSelftest(io);
         if (std.mem.eql(u8, args[1], "demo")) {
