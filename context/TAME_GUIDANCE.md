@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-07 (`maybe` + `no_padding` seated; general expansion round `20260707.185612`)
+**Last updated:** 2026-07-07 (tools census `195912` · POSIX `.sh` seam named)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -398,11 +398,13 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
 | **zero `assert(` in core modules** | import `const assert = std.debug.assert` and name contract postconditions; honest exempt list in `tame_style_scan.sh` (guests, aurora freestanding, signal handler, font table, line editor, exit constants) |
 
-**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** opens as its own counted season — counsel [`counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md`](../counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md).
+**Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** is its own counted season — counsel [`counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md`](../counsel/20260707-175312_claude-counsel-tooling-scope-ruling.md) · census confirmed [`counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md`](../counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md): **114** camelCase `fn` across **20** `.rye` files (**2,671** lines); safety net complete — season may open on touch.
+
+**POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans (e.g. `tame_style_scan.sh` bans half) may migrate to `.rish` in a later sitting — proven feasible for file-read loops; state-tracking ratchet counts stay open until scoped.
 
 **Standing exempt — intentional-violation fixtures:** files built to *hold* a violation the lint must catch (e.g. `tools/fixtures/width_check_authored_usize.rye` for TH-1 width) stay as wrong as their purpose requires. Migrating them toward compliance would disable the proof they supply — same logic as elder Amber goldens. No ratchet reaches for them.
 
-At parity **195** the >70-line ledger cleared for authored `.rye` in scan dirs; camelCase **0** through `rye/src` (`20260707.175312`); zero-assert non-exempt **0** after sync-wire and snapshot-delivery contract asserts (`20260707.183412`); **`maybe`** seated in `tally/maybe.rye` with first real caller in `no_padding` (`20260707.185612`). Full machine canon and Claude brief: [`active-designing/20260707-164612_tame-tidy-rules-brief.md`](../active-designing/20260707-164612_tame-tidy-rules-brief.md) · study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md).
+At parity **196** the >70-line ledger cleared for authored `.rye` in scan dirs; camelCase **0** through `rye/src` (`20260707.175312`); zero-assert non-exempt **0** after sync-wire and snapshot-delivery contract asserts (`20260707.183412`); **`maybe`** seated in `tally/maybe.rye` with first real caller in `no_padding` (`20260707.185612`); tools enrich safety net complete (`20260707.193712`). Full machine canon and Claude brief: [`active-designing/20260707-164612_tame-tidy-rules-brief.md`](../active-designing/20260707-164612_tame-tidy-rules-brief.md) · study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md).
 
 **Horizon — witness pairing (gated on Kaeden ruling):** as module seams stabilize, each earns mirrored **collaboration** and **contract** witnesses at the boundary — see [`foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) and the first-pass census at [`work-in-progress/20260702-180812_testing-audit-first-pass.md`](../work-in-progress/20260702-180812_testing-audit-first-pass.md). Metalsmoke and parity stay the thin edge today.
 

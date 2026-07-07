@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.202500 | [Tools snake_case — session_logs_archive](20260707-202500_tools-snake-case-session-logs-archive.md) | 12 fn cleared; census 77→65; top-3 files done |
+| 20260707.202100 | [Tools snake_case — tame_usize_audit](20260707-202100_tools-snake-case-tame-usize-audit.md) | 18 fn cleared; census 95→77; enrich witness still GREEN |
+| 20260707.201500 | [Tools snake_case — align_session_logs](20260707-201500_tools-snake-case-align-session-logs.md) | 19 fn cleared; tools census 114→95; witness GREEN |
+| 20260707.200900 | [File tools census counsel](20260707-200900_file-tools-census-counsel.md) | Counsel `195912` filed; census verified; POSIX `.sh` seam in guidance |
 | 20260707.195700 | [Commit enrich witness push](20260707-195700_commit-enrich-witness-push.md) | `5d52e20` on four remotes; parity **196** |
 | 20260707.194900 | [Apply enrich witness](20260707-194900_apply-enrich-witness.md) | Zip 32 applied; fixture `work-in-progress/` fix; parity **196** |
 | 20260707.193712 | [enrich_strengthening_docs witness](20260707-193712_enrich-strengthening-docs-witness.md) | Claude bench: third safety-net piece; two-run idempotency |

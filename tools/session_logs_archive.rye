@@ -15,19 +15,19 @@ const root_mod = @import("enrich/root.rye");
 
 const fixture_root = "tools/fixtures/session_logs_archive";
 
-pub fn dayFromLogFname(fname: []const u8) ?[]const u8 {
+pub fn day_from_log_fname(fname: []const u8) ?[]const u8 {
     if (fname.len < 9 or fname[8] != '-') return null;
     const ymd = fname[0..8];
     for (ymd) |c| if (c < '0' or c > '9') return null;
     return ymd;
 }
 
-pub fn shouldFoldFlat(fname: []const u8, today: []const u8) bool {
-    const day = dayFromLogFname(fname) orelse return false;
+pub fn should_fold_flat(fname: []const u8, today: []const u8) bool {
+    const day = day_from_log_fname(fname) orelse return false;
     return !std.mem.eql(u8, day, today);
 }
 
-pub fn rewriteReadmeLink(readme: []const u8, fname: []const u8, day: []const u8, a: std.mem.Allocator) ![]const u8 {
+pub fn rewrite_readme_link(readme: []const u8, fname: []const u8, day: []const u8, a: std.mem.Allocator) ![]const u8 {
     const archived = try std.fmt.allocPrint(a, "](archive/{s}/{s})", .{ day, fname });
     defer a.free(archived);
     if (std.mem.indexOf(u8, readme, archived) != null) return try a.dupe(u8, readme);
@@ -36,7 +36,7 @@ pub fn rewriteReadmeLink(readme: []const u8, fname: []const u8, day: []const u8,
     return std.mem.replaceOwned(u8, a, readme, flat, archived);
 }
 
-fn listFlatLogs(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8) ![][]const u8 {
+fn list_flat_logs(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8) ![][]const u8 {
     const cwd = std.Io.Dir.cwd();
     const dir = try cwd.openDir(io, logs_dir, .{ .iterate = true });
     var it = dir.iterate();
@@ -49,7 +49,7 @@ fn listFlatLogs(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8) ![][]con
         if (entry.kind != .file) continue;
         if (!std.mem.endsWith(u8, entry.name, ".md")) continue;
         if (std.mem.eql(u8, entry.name, "README.md")) continue;
-        if (dayFromLogFname(entry.name) == null) continue;
+        if (day_from_log_fname(entry.name) == null) continue;
         try names.append(a, try a.dupe(u8, entry.name));
     }
     std.mem.sort([]const u8, names.items, {}, struct {
@@ -60,7 +60,7 @@ fn listFlatLogs(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8) ![][]con
     return try names.toOwnedSlice(a);
 }
 
-fn moveLogFile(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8, fname: []const u8, day: []const u8) !void {
+fn move_log_file(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8, fname: []const u8, day: []const u8) !void {
     const cwd = std.Io.Dir.cwd();
     const src = try std.fs.path.join(a, &.{ logs_dir, fname });
     defer a.free(src);
@@ -91,11 +91,11 @@ fn moveLogFile(a: std.mem.Allocator, io: std.Io, logs_dir: []const u8, fname: []
     if (mv_code != 0) return error.MoveFailed;
 }
 
-pub fn foldSessionLogs(a: std.mem.Allocator, io: std.Io, root: []const u8, today: []const u8, dry_run: bool) !u32 {
+pub fn fold_session_logs(a: std.mem.Allocator, io: std.Io, root: []const u8, today: []const u8, dry_run: bool) !u32 {
     std.debug.assert(today.len == 8);
     const logs_dir = try std.fs.path.join(a, &.{ root, "session-logs" });
     defer a.free(logs_dir);
-    const names = try listFlatLogs(a, io, logs_dir);
+    const names = try list_flat_logs(a, io, logs_dir);
     defer {
         for (names) |n| a.free(n);
         a.free(names);
@@ -103,10 +103,10 @@ pub fn foldSessionLogs(a: std.mem.Allocator, io: std.Io, root: []const u8, today
 
     var moved: u32 = 0;
     for (names) |fname| {
-        const day = dayFromLogFname(fname) orelse continue;
-        if (!shouldFoldFlat(fname, today)) continue;
+        const day = day_from_log_fname(fname) orelse continue;
+        if (!should_fold_flat(fname, today)) continue;
         if (!dry_run) {
-            try moveLogFile(a, io, logs_dir, fname, day);
+            try move_log_file(a, io, logs_dir, fname, day);
         }
         moved += 1;
     }
@@ -120,9 +120,9 @@ pub fn foldSessionLogs(a: std.mem.Allocator, io: std.Io, root: []const u8, today
         var current: []const u8 = readme;
         var owned: ?[]const u8 = null;
         for (names) |fname| {
-            const day = dayFromLogFname(fname) orelse continue;
+            const day = day_from_log_fname(fname) orelse continue;
             if (std.mem.eql(u8, day, today)) continue;
-            const next = try rewriteReadmeLink(current, fname, day, a);
+            const next = try rewrite_readme_link(current, fname, day, a);
             if (owned) |o| a.free(o);
             owned = next;
             current = next;
@@ -134,7 +134,7 @@ pub fn foldSessionLogs(a: std.mem.Allocator, io: std.Io, root: []const u8, today
     return moved;
 }
 
-fn copyTree(a: std.mem.Allocator, io: std.Io, src_root: []const u8, dst_root: []const u8) !void {
+fn copy_tree(a: std.mem.Allocator, io: std.Io, src_root: []const u8, dst_root: []const u8) !void {
     const cwd = std.Io.Dir.cwd();
     try cwd.createDirPath(io, dst_root);
     const src = try cwd.openDir(io, src_root, .{ .iterate = true });
@@ -160,13 +160,13 @@ fn copyTree(a: std.mem.Allocator, io: std.Io, src_root: []const u8, dst_root: []
     try cwd.writeFile(io, .{ .sub_path = readme_dst, .data = readme });
 }
 
-fn pathExists(io: std.Io, path: []const u8) bool {
+fn path_exists(io: std.Io, path: []const u8) bool {
     const cwd = std.Io.Dir.cwd();
     cwd.access(io, path, .{}) catch return false;
     return true;
 }
 
-fn runSelftest(a: std.mem.Allocator, io: std.Io, root: []const u8) !void {
+fn run_selftest(a: std.mem.Allocator, io: std.Io, root: []const u8) !void {
     const sandbox = try std.fs.path.join(a, &.{ root, fixture_root, "_sandbox" });
     defer a.free(sandbox);
     const fixture = try std.fs.path.join(a, &.{ root, fixture_root });
@@ -176,25 +176,25 @@ fn runSelftest(a: std.mem.Allocator, io: std.Io, root: []const u8) !void {
 
     const cwd = std.Io.Dir.cwd();
     cwd.deleteTree(io, sandbox) catch {};
-    try copyTree(a, io, fixture, logs);
+    try copy_tree(a, io, fixture, logs);
 
     const today = "20260704";
 
-    const preview_count = try foldSessionLogs(a, io, sandbox, today, true);
+    const preview_count = try fold_session_logs(a, io, sandbox, today, true);
     if (preview_count != 1) return error.SelftestPreviewCount;
     const alpha_flat = try std.fs.path.join(a, &.{ logs, "20260703-100000_alpha.md" });
     defer a.free(alpha_flat);
-    if (!pathExists(io, alpha_flat)) return error.SelftestPreviewMutated;
+    if (!path_exists(io, alpha_flat)) return error.SelftestPreviewMutated;
 
-    const moved1 = try foldSessionLogs(a, io, sandbox, today, false);
+    const moved1 = try fold_session_logs(a, io, sandbox, today, false);
     if (moved1 != 1) return error.SelftestMovedCount;
 
     const alpha_arch = try std.fs.path.join(a, &.{ logs, "archive", "20260703", "20260703-100000_alpha.md" });
     defer a.free(alpha_arch);
     const beta_flat = try std.fs.path.join(a, &.{ logs, "20260704-100000_beta.md" });
     defer a.free(beta_flat);
-    if (!pathExists(io, alpha_arch)) return error.SelftestAlphaNotArchived;
-    if (!pathExists(io, beta_flat)) return error.SelftestBetaNotFlat;
+    if (!path_exists(io, alpha_arch)) return error.SelftestAlphaNotArchived;
+    if (!path_exists(io, beta_flat)) return error.SelftestBetaNotFlat;
 
     const readme_path = try std.fs.path.join(a, &.{ logs, "README.md" });
     defer a.free(readme_path);
@@ -202,7 +202,7 @@ fn runSelftest(a: std.mem.Allocator, io: std.Io, root: []const u8) !void {
     defer a.free(readme1);
     if (std.mem.indexOf(u8, readme1, "](archive/20260703/20260703-100000_alpha.md)") == null) return error.SelftestReadmeLink;
 
-    const moved2 = try foldSessionLogs(a, io, sandbox, today, false);
+    const moved2 = try fold_session_logs(a, io, sandbox, today, false);
     if (moved2 != 0) return error.SelftestNotIdempotent;
 
     const readme2 = try cwd.readFileAlloc(io, readme_path, a, .unlimited);
@@ -212,7 +212,7 @@ fn runSelftest(a: std.mem.Allocator, io: std.Io, root: []const u8) !void {
     std.debug.print("GREEN: session_logs_archive selftest — preview, fold, link rewrite, idempotency.\n", .{});
 }
 
-fn parseTodayArg(a: std.mem.Allocator, args: []const []const u8, start: usize) !?[]const u8 {
+fn parse_today_arg(a: std.mem.Allocator, args: []const []const u8, start: usize) !?[]const u8 {
     var i = start;
     while (i < args.len) : (i += 1) {
         if (std.mem.eql(u8, args[i], "--today") and i + 1 < args.len) {
@@ -223,11 +223,11 @@ fn parseTodayArg(a: std.mem.Allocator, args: []const []const u8, start: usize) !
     return null;
 }
 
-fn runPreviewOrFold(a: std.mem.Allocator, io: std.Io, root: []const u8, dry_run: bool, args: []const []const u8) !u8 {
-    const today_owned = try parseTodayArg(a, args, 2);
+fn run_preview_or_fold(a: std.mem.Allocator, io: std.Io, root: []const u8, dry_run: bool, args: []const []const u8) !u8 {
+    const today_owned = try parse_today_arg(a, args, 2);
     defer if (today_owned) |t| a.free(t);
-    const today = today_owned orelse try todayFromEnvOrDate(a, io);
-    const moved = try foldSessionLogs(a, io, root, today, dry_run);
+    const today = today_owned orelse try today_from_env_or_date(a, io);
+    const moved = try fold_session_logs(a, io, root, today, dry_run);
     std.debug.print("moved={d}\n", .{moved});
     if (dry_run) {
         std.debug.print("PREVIEW: no files moved; README untouched.\n", .{});
@@ -237,7 +237,7 @@ fn runPreviewOrFold(a: std.mem.Allocator, io: std.Io, root: []const u8, dry_run:
     return 0;
 }
 
-fn todayFromEnvOrDate(a: std.mem.Allocator, io: std.Io) ![]const u8 {
+fn today_from_env_or_date(a: std.mem.Allocator, io: std.Io) ![]const u8 {
     const result = try std.process.run(a, io, .{ .argv = &.{ "date", "+%Y%m%d" } });
     defer {
         a.free(result.stdout);
@@ -253,23 +253,23 @@ fn todayFromEnvOrDate(a: std.mem.Allocator, io: std.Io) ![]const u8 {
     return try a.dupe(u8, trimmed);
 }
 
-test "dayFromLogFname parses stamp prefix" {
-    try std.testing.expectEqualStrings("20260703", dayFromLogFname("20260703-100000_alpha.md").?);
-    try std.testing.expect(dayFromLogFname("README.md") == null);
+test "day_from_log_fname parses stamp prefix" {
+    try std.testing.expectEqualStrings("20260703", day_from_log_fname("20260703-100000_alpha.md").?);
+    try std.testing.expect(day_from_log_fname("README.md") == null);
 }
 
-test "shouldFoldFlat keeps today flat" {
-    try std.testing.expect(shouldFoldFlat("20260703-100000_alpha.md", "20260704"));
-    try std.testing.expect(!shouldFoldFlat("20260704-100000_beta.md", "20260704"));
+test "should_fold_flat keeps today flat" {
+    try std.testing.expect(should_fold_flat("20260703-100000_alpha.md", "20260704"));
+    try std.testing.expect(!should_fold_flat("20260704-100000_beta.md", "20260704"));
 }
 
-test "rewriteReadmeLink is idempotent" {
+test "rewrite_readme_link is idempotent" {
     const a = std.testing.allocator;
     const readme = "| [alpha](20260703-100000_alpha.md) | note |\n";
-    const once = try rewriteReadmeLink(readme, "20260703-100000_alpha.md", "20260703", a);
+    const once = try rewrite_readme_link(readme, "20260703-100000_alpha.md", "20260703", a);
     defer a.free(once);
     try std.testing.expect(std.mem.indexOf(u8, once, "archive/20260703/") != null);
-    const twice = try rewriteReadmeLink(once, "20260703-100000_alpha.md", "20260703", a);
+    const twice = try rewrite_readme_link(once, "20260703-100000_alpha.md", "20260703", a);
     defer a.free(twice);
     try std.testing.expectEqualStrings(once, twice);
 }
@@ -287,14 +287,14 @@ pub fn main(init: std.process.Init) !u8 {
     }
 
     if (std.mem.eql(u8, args[1], "selftest")) {
-        try runSelftest(a, io, root);
+        try run_selftest(a, io, root);
         return 0;
     }
     if (std.mem.eql(u8, args[1], "preview")) {
-        return runPreviewOrFold(a, io, root, true, args);
+        return run_preview_or_fold(a, io, root, true, args);
     }
     if (std.mem.eql(u8, args[1], "fold")) {
-        return runPreviewOrFold(a, io, root, false, args);
+        return run_preview_or_fold(a, io, root, false, args);
     }
     std.debug.print("unknown subcommand: {s}\n", .{args[1]});
     return 2;

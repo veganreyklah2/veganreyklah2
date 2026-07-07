@@ -51,7 +51,7 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **Module homes** — `rye/`, `rishi/`, `tally/`, `caravan/`, `mantra/`, `brushstroke/`, `comlink/`, `pond/`, `aurora/`, `linengrow/` (vision until graduation), and the rest: each grows a seed toward a running whole.
 
-**`tools/`** — gates, witnesses, launch scripts, and the strict checks that keep the tree honest.
+**`tools/`** — gates, witnesses, launch scripts, and the strict checks that keep the tree honest. Some `.sh` scripts are POSIX seams (QEMU backgrounding, cold-start bootstrap, external interpreters) and stay `.sh` by design — see [`context/TAME_GUIDANCE.md`](context/TAME_GUIDANCE.md) · counsel [`counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md`](counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md).
 
 **Root** — `SOURCE.md`, `CLAUDE.md`, this guide, and a few allow-listed files that orient newcomers before they dive.
 

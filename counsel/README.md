@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (enrich safety net complete `20260707.193712`)
+**Last updated:** 2026-07-07 (tools census `20260707.195912`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260707.195912` | [Tools census + `.sh`/`.rish` boundary](20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md) | 114 camelCase confirmed; safety net complete — open `snake_case` season; POSIX seams named |
 | `20260707.193712` | [enrich_strengthening_docs witness](20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md) | Third tools/enrich safety-net piece; fixture + two-run idempotency; safety net complete |
 | `20260707.185612` | [General expansion round](20260707-185612_claude-counsel-general-expansion-round.md) | `maybe` + `no_padding` seated; device_wire bug found; tools safety net 2/3; three READMEs |
 | `20260707.183412` | [TB std prefixes + assert density](20260707-183412_claude-counsel-tb-std-prefix-assert-density.md) | `std.` habit matches TB majority; `maybe` parked RTAC; sync wire + sed contract asserts |
