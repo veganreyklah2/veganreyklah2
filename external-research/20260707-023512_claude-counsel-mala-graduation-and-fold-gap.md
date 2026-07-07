@@ -5,6 +5,7 @@
 **Language:** EN
 **Style:** Radiant (see `context/RADIANT_STYLE.md`) · **Lens:** TAME · the grain · graduation rule
 **Register:** Counsel only, on the seam explicitly named as needing a seated ruling
+**Status:** Research for understanding — counsel only; checkable claims cite code on disk; seats nothing by itself
 **Ground:** `linengrow/open_asks.rye` (`classifyFact`, `foldReputationLog`, `foldEscrowLog`, `appendCompletedAsk`, read in full) · `active-designing/20260706-013012_open-asks-escrow-hammock.md` · `context/specs/20260702-035018_graduation-rule.md`
 
 *Written by Kaeden and Rio 3.*

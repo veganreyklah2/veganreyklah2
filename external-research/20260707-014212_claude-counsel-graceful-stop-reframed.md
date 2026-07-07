@@ -5,6 +5,7 @@
 **Language:** EN
 **Style:** Radiant (see `context/RADIANT_STYLE.md`) · **Lens:** TAME · sameness as compression
 **Register:** Counsel only, correcting a presupposition before answering the question asked
+**Status:** Research for understanding — counsel only; checkable claims cite code on disk; seats nothing by itself
 **Ground:** `caravan/service.rye`, `caravan/subscribe_poll_service.rye` (both read past their own doc comments) · `mantra/recall_subscribe_poll_delivery.rye` (`runFetcherPoll`) · `mantra/recall_subscribe_poll.rye` (`pollCycles`) · prior counsel `20260707.010912`
 
 *Written by Kaeden and Rio 3.*

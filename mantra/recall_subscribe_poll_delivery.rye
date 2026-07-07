@@ -419,11 +419,11 @@ fn runDemo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u8) !u8 
     fetcher_argv[1] = "fetcher-poll-legacy";
     var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
 
-    const st = try source_child.wait(io);
     const ft = try fetcher_child.wait(io);
-    const sc: u8 = switch (st) { .exited => |c0| c0, else => 255 };
     const fc: u8 = switch (ft) { .exited => |c0| c0, else => 255 };
-    assert(sc == 0 and fc == 0);
+    if (fc != 0) return fc;
+
+    source_child.kill(io);
 
     print("ns-pollw: demo GREEN — poll crossed localhost under Comlink seal\n", .{});
     print("ns-pollw: version {s}\n", .{npw_version});

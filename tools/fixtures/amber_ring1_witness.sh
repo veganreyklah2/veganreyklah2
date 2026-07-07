@@ -8,7 +8,7 @@ tmpdir=$(mktemp -d)
 restore=$(mktemp -d)
 trap 'rm -rf "$tmpdir" "$restore"' EXIT
 
-sh "$ROOT/tools/fixtures/amber_ring1_export.sh" "$SRC" "$tmpdir"
+sh "$ROOT/tools/fixtures/amber_ring1_export_legacy.sh" "$SRC" "$tmpdir"
 sh "$ROOT/tools/fixtures/amber_ring1_verify.sh" "$tmpdir" "$GOLDEN"
 sh "$ROOT/tools/fixtures/amber_ring1_restore.sh" "$tmpdir" "$restore"
 diff -r "$SRC" "$restore" >/dev/null

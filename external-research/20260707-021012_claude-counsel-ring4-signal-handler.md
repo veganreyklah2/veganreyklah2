@@ -5,6 +5,7 @@
 **Language:** EN
 **Style:** Radiant (see `context/RADIANT_STYLE.md`) · **Lens:** TAME · sameness as compression
 **Register:** Counsel only, on the seam explicitly named as needing a seated policy
+**Status:** Research for understanding — counsel only; checkable claims cite code on disk; seats nothing by itself
 **Ground:** `caravan/subscribe_poll_service.rye`, `caravan/supervisor_exit.rye` (read in full) · `mantra/recall_subscribe_poll_delivery.rye` (`stopSentinelPresent`, `runFetcherPollOnce`, `runSourceLoop`, read in full) · `std/posix.zig` (`Sigaction`, `sigaction`, `kill`, `raise`, `sigemptyset`) — every API named below spiked and run on this bench before being recommended
 
 *Written by Kaeden and Rio 3.*

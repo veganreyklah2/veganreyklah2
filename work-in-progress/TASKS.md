@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (Weave slice ruling `030412`)
+**Last updated:** 2026-07-07 (I6 Tilak hygiene + OA-L5 wire · parity **184**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -43,6 +43,8 @@
 
 - [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
+- [x] **OA-L5 accept, complete, consent wire** — finishes the open-asks Comlink path; ports **38488**/**38489**; parity **184**
+
 **OA-L3 escrow landed `20260706.014512` — parity 158:**
 
 - [x] **OA-L3 escrow lap 1** — hold at acceptance, release at completion; **Nyasa** escrow account; conservation, no negatives, no double-hold or double-release, poster-signed, internal test units; welcome and five unwelcome paths in the selftest; brief [`20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md)
@@ -64,6 +66,10 @@
 - [x] **Real clock in poll loop** — `sleepIntervalNs` + `default_poll_interval_ns`; in-process `interval-selftest`; wire `fetcher-poll <sentinel> [interval-ns]`; supervisor optional `[interval-ns]`; `tools/mantra_recall_subscribe_poll_interval.rish`; parity **181**
 
 - [x] **OA-L4 escrow-release compatibility** — `foldReputationLog` recognizes `escrow-release` memos, skips holds; witness bolt extended; counsel `20260707.023512`; parity **167** witness extended
+
+- [x] **I6 Amber manifest Tilak hygiene** — export writes `format amber-ring1-v2-tilak` + `entry plain-bytes <digest> <name>`; verify/restore accept legacy two-field and Tilak three-field; elder golden preserved; tamper + unknown mark refuse; `tools/amber_manifest_tilak.rish`; parity **183**
+
+- [x] **OA-L5 accept, complete, consent wire** — `linengrow/open_asks_lap5_delivery.rye`; hosted UDP ports **38488**/**38489**; same Comlink seal pattern as OA-L2; `foldLog` on four facts, `foldReputationLog` with wired consent; `tools/open_asks_lap5.rish`; parity **184**
 
 - [x] **I2 snapshot export lap 1** — `mantra/snapshot_export.rye`; resin-batch frames per revision; `tools/mantra_snapshot_replay.rish`; spec [`context/specs/20260707-021512_snapshot-export-lap1.md`](../context/specs/20260707-021512_snapshot-export-lap1.md); parity **180**
 
@@ -212,7 +218,7 @@ Ground: [`external-research/20260702-192712_the-movements-open-asks.md`](../exte
 
 - [x] **Demand map (Kaeden affirms)** — the eight-category → module-ensemble table; interop-first, consent-before-counting, and reward-points-at-the-good held as requirements; **proxy column** (public-market proxy present or absent) on the movement memo table per circulation survey Q1 (`20260703.191312 UDT`, *for*).
 - [x] **Open Asks room (OA-L1)** — `linengrow/open_asks.rye` + `tools/open_asks_lap1.rish`; parity **156**
-- [x] **Open Asks cross-party (OA-L2)** — `linengrow/open_asks_delivery.rye` + `tools/open_asks_lap2.rish`; parity **157**; OA-L3+ escrow and reputation remain horizon
+- [x] **Open Asks cross-party (OA-L2)** — `linengrow/open_asks_delivery.rye` + `tools/open_asks_lap2.rish`; parity **157**; OA-L5 completes the wire through consent (parity **184**)
 - [ ] **Sanctuary care log (flagship candidate)** — signed care facts per resident, schedules as projections, CIVIC dignity-floor accountability; design-only until its season.
 - [ ] **Moderation-fact shape (recorded, design-only)** — label · limit · mute as small signed facts referencing a stated community rule; moderation as fold-choice with receipts; chosen, composable label sources; reputation stays a fold over signed receipts under consent-before-counting. Enters the ladder beside the Open Asks room, after SLC-L1 draws its edge. Ground: [`external-research/20260703-015512_bandwidth-and-moderation.md`](../external-research/20260703-015512_bandwidth-and-moderation.md) (`20260703.015512`).
 - [ ] **Resin-refusal fact (recorded)** — media never lives in the log, only digests; each store is sovereign to purge and decline a resin, and a signed refusal fact gives the no its receipt without describing the refused (`20260703.015512`; unit word ratified `20260703.191312`).

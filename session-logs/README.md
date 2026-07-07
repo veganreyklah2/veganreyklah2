@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.041012 | [Parity GREEN hygiene commit](20260707-041012_parity-green-hygiene-commit.md) | I6 + OA-L5 committed; poll demo hang fixed; doorway counsel Status; parity **184** GREEN |
+| 20260707.032512 | [I6 Tilak hygiene and OA-L5 wire](20260707-032512_i6-tilak-and-oal5-wire.md) | Amber manifest Tilak export; open-asks accept/complete/consent on Comlink wire; parity **184** |
+| 20260707.031312 | [Bench orientation and dependencies](20260707-031312_bench-orientation-and-dependencies.md) | Where we are; dependency map; recommendations after Weave ruling |
 | 20260707.030412 | [Weave slice ruling](20260707-030412_weave-slice-ruling.md) | Kaeden: sovereign slice = I2 catalog export; prose closure |
 | 20260707.025212 | [Weave/Brix/Pond counsel intake](20260707-025212_weave-brix-pond-counsel-intake.md) | Hold snapshot horizon items; custody gate affirmed |
 | 20260707.024712 | [Snapshot horizon lap 2](20260707-024712_snapshot-horizon-lap2.md) | Bundle prefixes, SHA3-512 head record, continuity fact; parity **182** |

@@ -192,6 +192,11 @@ let amber1 = run ["rishi/bin/rishi" "run" "tools/amber_first_ring.rish"]
 assert amber1.ok else "amber first lap witness failed"
 say "GREEN: amber first lap witness passed."
 
+say "witness suite: amber manifest Tilak hygiene (I6)…"
+let amber_i6 = run ["rishi/bin/rishi" "run" "tools/amber_manifest_tilak.rish"]
+assert amber_i6.ok else "amber manifest tilak witness failed"
+say "GREEN: amber manifest Tilak witness passed."
+
 say "witness suite: SLC-2b keyboard from window…"
 let slc2b = run ["rishi/bin/rishi" "run" "tools/slc2b_keyboard.rish"]
 assert slc2b.ok else "SLC-2b keyboard witness failed"
@@ -236,6 +241,11 @@ say "witness suite: OA-L4 reputation-as-fold…"
 let oal4 = run ["rishi/bin/rishi" "run" "tools/open_asks_lap4.rish"]
 assert oal4.ok else "OA-L4 reputation witness failed"
 say "GREEN: OA-L4 reputation-as-fold witness passed."
+
+say "witness suite: OA-L5 accept, complete, consent wire…"
+let oal5 = run ["rishi/bin/rishi" "run" "tools/open_asks_lap5.rish"]
+assert oal5.ok else "OA-L5 completion wire witness failed"
+say "GREEN: OA-L5 accept, complete, consent wire witness passed."
 
 say "witness suite: NS-L1 referentially-transparent recall…"
 let nsl1 = run ["rishi/bin/rishi" "run" "tools/mantra_recall_lap1.rish"]
