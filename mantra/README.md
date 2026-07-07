@@ -9,7 +9,7 @@
 
 Mantra is where names live. A name is **peer / bolt / revision / path**, and **recall** of a name returns the same bytes for all time — referential transparency held as a law, verified by digest on every read. Content is a **resin** at a SHA3-256 address; history accretes and never rewrites; a **Tilak** marks each leaf's layout. The full why rests in the namespace brief at [`../active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md); the normative surface rests in the reference spec at [`../context/specs/20260707-011412_mantra-referential-namespace-reference.md`](../context/specs/20260707-011412_mantra-referential-namespace-reference.md).
 
-The module grew as one foundation and a family of compositions. `recall_lap1.rye` holds the catalog and its laws; every file after it **imports that foundation and edits nothing beneath itself** — the pattern held across the entire arc, parity 159 through 182.
+The module grew as one foundation and a family of compositions. `recall_lap1.rye` holds the catalog and its laws; every file after it **imports that foundation and edits nothing beneath itself** — the pattern held across the entire arc, parity 159 through 185.
 
 ## The Family
 
@@ -28,7 +28,8 @@ The module grew as one foundation and a family of compositions. `recall_lap1.rye
 | `recall_catch_up.rye` (+`_delivery`, **38484/38485**) | Try the next unheld revision until one ask comes back empty | `tools/mantra_recall_catch_up*.rish` |
 | `recall_subscribe_poll.rye` (+`_delivery`, **38486/38487**) | Bounded repeat cycles over catch-up; host mirror is the same loop with a named pair list; `sleepIntervalNs` at cycle boundary | `tools/mantra_recall_subscribe_poll*.rish` |
 | `recall_tablecloth_query.rye` | Optional-field filter over the bounded catalog; every match returned in held order | `tools/mantra_recall_tablecloth_query.rish` |
-| `snapshot_export.rye` | I2 lap 1–2: batch replay; lap 2 adds `catalog/`/`trust/` bundles, SHA3-512 head record, continuity fact | `tools/mantra_snapshot_replay.rish`, `tools/mantra_snapshot_horizon.rish` |
+| `snapshot_export.rye` | I2 lap 1–3: batch replay; lap 2 horizon bundles; lap 3 hosted wire per revision group | `tools/mantra_snapshot_replay.rish`, `tools/mantra_snapshot_horizon.rish`, `tools/mantra_snapshot_wire.rish` |
+| `snapshot_export_delivery.rye` | Lap 3: source-loop + fetcher over batch wire, hosted **38490/38491** | `tools/mantra_snapshot_wire.rish` |
 | `src/` | Mantra's own seed: `main.rye`, `diff.rye`, and the Weave aspect (`weave.rye`) beneath the namespace | SLC-1 witnesses |
 
 Device-wire labs mirror the hosted ports under `../comlink/run_*_lab.sh` (sync **15561/15562**, batch **15563/15564**, catch-up **15565/15566**).

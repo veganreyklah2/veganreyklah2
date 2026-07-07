@@ -58,3 +58,5 @@ Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-coun
 - **Pond customs** — held; no policy concept in `pond/` yet
 - **Live-instance continuity refusal** — Kaeden gate (I7); lap 2 only checks epoch ≠ 0 and identity matches signer
 - **Thin-edge boot replay** — per counsel I3–I4 horizon
+
+**Lap 3 (hosted Comlink crossing)** — landed parity **185** · [`context/specs/20260707-042512_snapshot-export-lap3.md`](../context/specs/20260707-042512_snapshot-export-lap3.md)

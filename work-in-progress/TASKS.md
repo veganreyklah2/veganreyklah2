@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-07 (I6 Tilak hygiene + OA-L5 wire · parity **184**)
+**Last updated:** 2026-07-07 (I2 snapshot lap 3 hosted wire · parity **185**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -67,6 +67,8 @@
 
 - [x] **OA-L4 escrow-release compatibility** — `foldReputationLog` recognizes `escrow-release` memos, skips holds; witness bolt extended; counsel `20260707.023512`; parity **167** witness extended
 
+- [x] **I2 snapshot export lap 3 (hosted Comlink crossing)** — `mantra/snapshot_export_delivery.rye`; batch wire per revision group; ports **38490**/**38491**; `importCatalogHorizon` unchanged; spec [`context/specs/20260707-042512_snapshot-export-lap3.md`](../context/specs/20260707-042512_snapshot-export-lap3.md); parity **185**
+
 - [x] **I6 Amber manifest Tilak hygiene** — export writes `format amber-ring1-v2-tilak` + `entry plain-bytes <digest> <name>`; verify/restore accept legacy two-field and Tilak three-field; elder golden preserved; tamper + unknown mark refuse; `tools/amber_manifest_tilak.rish`; parity **183**
 
 - [x] **OA-L5 accept, complete, consent wire** — `linengrow/open_asks_lap5_delivery.rye`; hosted UDP ports **38488**/**38489**; device virtio ports **15561**/**15562**/**15563**; `tools/open_asks_lap5.rish` + `comlink/run_open_asks_lap5_wire_lab.sh`; parity **184**
@@ -77,6 +79,13 @@
 - [x] **Stop sentinel at poll boundary (Mantra)** — `fetcher-poll <sentinel>` one cycle + exit 8 when present; `fetcher-poll-legacy` for demo/selftest; `tools/mantra_recall_subscribe_poll_stop.rish`; parity **178**
 - [x] **Production scheduling lap 2** — `subscribe_poll_service` imports `supervisor_exit`; restart on `cycle_ok`, halt on `stop_requested`; witness writes sentinel after N cycles; parity **178**
 - [x] **SIGTERM ring (Caravan)** — `caravan/supervisor_signal.rye`; atomic flag in handler; loop top unifies signal + witness + `touch`; `tools/caravan_subscribe_poll_signal.rish`; counsel `20260707.021012`; parity **179**
+
+**Caravan production hardening (counsel menu — pick one; no ranking)** — [`external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md`](../external-research/20260707-042512_claude-proposal-snapshot-lap3-and-caravan-hardening.md):
+
+- [ ] **Source-crash recovery** — long-lived source dies mid-service; nothing witnesses recovery today
+- [ ] **Extended-run stability** — dozens of supervised cycles; every witness so far bounds to a handful
+- [ ] **`witness_stop_after` footgun** — loud refusal when the test-only knob is passed outside a witness
+- [ ] **Host-mirror under supervision** — each proven alone; never together with the service ring
 
 **NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
 

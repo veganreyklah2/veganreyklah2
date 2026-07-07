@@ -337,6 +337,11 @@ let ns_snaph = run ["rishi/bin/rishi" "run" "tools/mantra_snapshot_horizon.rish"
 assert ns_snaph.ok else "I2 snapshot horizon witness failed"
 say "GREEN: I2 snapshot horizon witness passed."
 
+say "witness suite: I2 snapshot wire lap 3 (hosted Comlink crossing)…"
+let ns_snapw = run ["rishi/bin/rishi" "run" "tools/mantra_snapshot_wire.rish"]
+assert ns_snapw.ok else "I2 snapshot wire lap 3 witness failed"
+say "GREEN: I2 snapshot wire lap 3 witness passed."
+
 say "witness suite: NS-L3 lap 3w-4 resin-batch wire (hosted + device)…"
 let rbwire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_batch_wire.rish"]
 assert rbwire.ok else "NS-L3 batch wire witness failed"

@@ -22,8 +22,8 @@ const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 pub const snapshot_export_version = "20260707.024712";
 pub const snapshot_lap1_version = "20260707.021512";
 const snapshot_kind: u8 = 0x06;
-const max_revision_groups: u32 = 16;
-const max_snapshot_bytes: u32 = 65536;
+pub const max_revision_groups: u32 = 16;
+pub const max_snapshot_bytes: u32 = 65536;
 
 pub const bundle_catalog = "catalog/";
 pub const bundle_trust = "trust/";
@@ -60,18 +60,18 @@ pub const SnapshotError = error{
     ContinuityViolation,
 };
 
-const RevisionKey = struct {
+pub const RevisionKey = struct {
     peer: [16]u8,
     peer_len: u32,
     bolt: [32]u8,
     bolt_len: u32,
     revision: u32,
 
-    fn peerSlice(self: *const RevisionKey) []const u8 {
+    pub fn peerSlice(self: *const RevisionKey) []const u8 {
         return self.peer[0..self.peer_len];
     }
 
-    fn boltSlice(self: *const RevisionKey) []const u8 {
+    pub fn boltSlice(self: *const RevisionKey) []const u8 {
         return self.bolt[0..self.bolt_len];
     }
 
@@ -167,7 +167,7 @@ fn hexEq128(a: []const u8, b: []const u8) bool {
     return a.len == 128 and b.len == 128 and std.mem.eql(u8, a, b);
 }
 
-fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
+pub fn collectRevisions(cat: *const ns.BoltCatalog, keys: *[max_revision_groups]RevisionKey, count: *u32) SnapshotError!void {
     count.* = 0;
     var i: u32 = 0;
     while (i < cat.leaf_count) : (i += 1) {
@@ -418,6 +418,45 @@ pub fn stageHorizonCatalog(
 
     const pk_bytes = signer.public_key.toBytes();
     staged.appendLeaf(meta_peer, meta_bolt, meta_revision, trust_signer_path, &pk_bytes, "plain-bytes") catch return error.Overflow;
+}
+
+/// Write snapshot header (kind, version, leaf_count, rev_count); returns offset ready for batch append.
+pub fn beginSnapshotAssembly(out: []u8, leaf_count: u32, rev_count: u32) SnapshotError!u32 {
+    var off: u32 = 0;
+    if (off + 1 > capU32(out)) return error.Overflow;
+    out[off] = snapshot_kind;
+    off += 1;
+    try putField(out, &off, snapshot_export_version);
+    try putU32(out, &off, leaf_count);
+    try putU32(out, &off, rev_count);
+    return off;
+}
+
+/// Append one resin-batch frame into a snapshot buffer at `off`.
+pub fn appendSnapshotBatch(out: []u8, off: *u32, batch: []const u8) SnapshotError!void {
+    try putU32(out, off, @intCast(batch.len));
+    try putBytes(out, off, batch);
+}
+
+/// Initialize witness source catalog (lap 2 selftest shape).
+pub fn initWitnessSourceCatalog(cat: *ns.BoltCatalog) SnapshotError!void {
+    cat.* = .empty();
+    cat.appendLeaf("peerB", "b", 1, "a.txt", "alpha", "plain-text") catch return error.Overflow;
+    cat.appendLeaf("peerB", "b", 1, "b.txt", "beta", "plain-text") catch return error.Overflow;
+    cat.appendLeaf("peerB", "b", 2, "b.txt", "beta-two", "plain-text") catch return error.Overflow;
+}
+
+/// Build staged horizon + revision list for the witness fixture.
+pub fn witnessHorizonPlan(
+    signer: Ed25519.KeyPair,
+    staged: *ns.BoltCatalog,
+    keys: *[max_revision_groups]RevisionKey,
+    rev_count: *u32,
+) SnapshotError!void {
+    var src: ns.BoltCatalog = .empty();
+    try initWitnessSourceCatalog(&src);
+    try stageHorizonCatalog(&src, signer, 1, snapshot_export_version, "witnesses=185", staged);
+    try collectRevisions(staged, keys, rev_count);
 }
 
 /// Export every leaf in `src` as one or more resin-batch frames under a snapshot header.
