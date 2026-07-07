@@ -18,4 +18,8 @@ let demo = run ["sh" "-c" "${bin} demo 2>&1"]
 assert demo.ok else "OA-L5 open asks lap5 delivery demo exited non-zero"
 assert demo.out contains "GREEN" else "OA-L5 open asks lap5 delivery demo not GREEN"
 
-say "GREEN: OA-L5 acceptance, completion, consent wire witness passed."
+let device = run ["sh" "comlink/run_open_asks_lap5_wire_lab.sh"]
+assert device.ok else "OA-L5 device wire lab failed"
+assert device.out contains "GREEN" else "OA-L5 device wire lab not GREEN"
+
+say "GREEN: OA-L5 acceptance, completion, consent wire witness passed (hosted + device)."

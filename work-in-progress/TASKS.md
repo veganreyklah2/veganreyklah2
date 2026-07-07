@@ -43,7 +43,7 @@
 
 - [x] **OA-L2 cross-party delivery** — hosted UDP + device wire **request + application** hops GREEN
 
-- [x] **OA-L5 accept, complete, consent wire** — finishes the open-asks Comlink path; ports **38488**/**38489**; parity **184**
+- [x] **OA-L5 accept, complete, consent wire** — finishes the open-asks Comlink path; hosted **38488**/**38489**; device **15561–15563**; parity **184**
 
 **OA-L3 escrow landed `20260706.014512` — parity 158:**
 
@@ -69,7 +69,7 @@
 
 - [x] **I6 Amber manifest Tilak hygiene** — export writes `format amber-ring1-v2-tilak` + `entry plain-bytes <digest> <name>`; verify/restore accept legacy two-field and Tilak three-field; elder golden preserved; tamper + unknown mark refuse; `tools/amber_manifest_tilak.rish`; parity **183**
 
-- [x] **OA-L5 accept, complete, consent wire** — `linengrow/open_asks_lap5_delivery.rye`; hosted UDP ports **38488**/**38489**; same Comlink seal pattern as OA-L2; `foldLog` on four facts, `foldReputationLog` with wired consent; `tools/open_asks_lap5.rish`; parity **184**
+- [x] **OA-L5 accept, complete, consent wire** — `linengrow/open_asks_lap5_delivery.rye`; hosted UDP ports **38488**/**38489**; device virtio ports **15561**/**15562**/**15563**; `tools/open_asks_lap5.rish` + `comlink/run_open_asks_lap5_wire_lab.sh`; parity **184**
 
 - [x] **I2 snapshot export lap 1** — `mantra/snapshot_export.rye`; resin-batch frames per revision; `tools/mantra_snapshot_replay.rish`; spec [`context/specs/20260707-021512_snapshot-export-lap1.md`](../context/specs/20260707-021512_snapshot-export-lap1.md); parity **180**
 

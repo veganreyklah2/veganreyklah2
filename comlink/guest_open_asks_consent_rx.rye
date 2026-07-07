@@ -1,0 +1,177 @@
+//! comlink/guest_open_asks_consent_rx.rye — OA-L5 device wire consent RX guest.
+//!
+//! Receives sealed consent, verifies it, rebuilds the witness log, and folds reputation.
+
+const std = @import("std");
+const vn = @import("virtio_net.rye");
+const wf = @import("wire_format.rye");
+const oa = @import("open_asks.rye");
+const rc = @import("receipt_core.rye");
+const Ed25519 = std.crypto.sign.Ed25519;
+
+var rx: vn.RxQueue = undefined;
+
+fn pubkeyHex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+    const bytes = kp.public_key.toBytes();
+    var i: u32 = 0;
+    while (i < 32) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch unreachable;
+    }
+}
+
+fn appendSigned(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
+    var line: [oa.max_line_len]u8 = undefined;
+    const line_len = rc.formatLogLine(sig, fact, &line) catch unreachable;
+    @memcpy(log[log_len.*..][0..line_len], line[0..line_len]);
+    log_len.* += line_len;
+}
+
+export fn _start() linksection(".text.init") callconv(.naked) noreturn {
+    asm volatile (
+        \\ li sp, 0x80100000
+        \\ j kmain
+    );
+}
+
+export fn kmain() callconv(.c) noreturn {
+    vn.initDevice();
+    rx.init();
+    vn.driverOk();
+    rx.kick();
+
+    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
+    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_pk = poster_kp.public_key;
+    const applicant_pk = applicant_kp.public_key;
+    var poster_hex: [64]u8 = undefined;
+    var applicant_hex: [64]u8 = undefined;
+    pubkeyHex(poster_kp, &poster_hex);
+    pubkeyHex(applicant_kp, &applicant_hex);
+
+    const n = rx.waitFrame();
+    if (n == 0) {
+        vn.writeStr("oal5 device wire: FAIL — consent RX timeout\n");
+        vn.finishFail();
+    }
+    const poff = vn.virtio_net_hdr_len + vn.eth_header_len;
+    if (n <= poff) {
+        vn.writeStr("oal5 device wire: FAIL — consent frame too short\n");
+        vn.finishFail();
+    }
+    const buf = rx.frame();
+    const datagram = buf[poff..n];
+
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const opened_len = wf.openDatagram(datagram, &opened) catch {
+        vn.writeStr("oal5 device wire: FAIL — consent open refused\n");
+        vn.finishFail();
+    };
+
+    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var fact_buf: [oa.max_oa_fact]u8 = undefined;
+    const decoded = oa.decodeCompactPayload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
+        vn.writeStr("oal5 device wire: FAIL — consent payload decode\n");
+        vn.finishFail();
+    };
+    const fact = fact_buf[0..decoded.fact_len];
+    rc.verifyRecord(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
+        vn.writeStr("oal5 device wire: FAIL — consent verify\n");
+        vn.finishFail();
+    };
+    const kind = oa.classifyFact(fact) catch {
+        vn.writeStr("oal5 device wire: FAIL — consent classify\n");
+        vn.finishFail();
+    };
+    if (kind != .consent) {
+        vn.writeStr("oal5 device wire: FAIL — not consent\n");
+        vn.finishFail();
+    }
+    var consent_fields: oa.ConsentFields = undefined;
+    oa.parseConsentFields(fact, &consent_fields) catch {
+        vn.writeStr("oal5 device wire: FAIL — consent parse\n");
+        vn.finishFail();
+    };
+    var i: u32 = 0;
+    while (i < oa.ref_hex_len) : (i += 1) {
+        if (consent_fields.request_ref[i] != oa.witness_request_ref[i]) {
+            vn.writeStr("oal5 device wire: FAIL — consent request_ref\n");
+            vn.finishFail();
+        }
+    }
+    if (!std.mem.eql(u8, consent_fields.consent, oa.consent_grant)) {
+        vn.writeStr("oal5 device wire: FAIL — consent value\n");
+        vn.finishFail();
+    }
+
+    const consent_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
+
+    const req_sig = poster_kp.sign(oa.witness_canonical_request, null) catch unreachable;
+
+    const app_fields = oa.ApplicationFields{
+        .applicant = applicant_hex[0..64],
+        .request_ref = oa.witness_request_ref,
+        .message = "I animate science explainers and would love this gig.",
+        .stamp = "20260706.011600",
+    };
+    var canonical_app: [oa.max_oa_fact]u8 = undefined;
+    const app_len = oa.writeCanonicalApplication(app_fields, &canonical_app) catch unreachable;
+    const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
+
+    const acc_fields = oa.AcceptanceFields{
+        .poster = poster_hex[0..64],
+        .request_ref = oa.witness_request_ref,
+        .applicant = applicant_hex[0..64],
+        .stamp = "20260706.003100",
+    };
+    var canonical_acc: [oa.max_oa_fact]u8 = undefined;
+    const acc_len = oa.writeCanonicalAcceptance(acc_fields, &canonical_acc) catch unreachable;
+    const acc_sig = poster_kp.sign(canonical_acc[0..acc_len], null) catch unreachable;
+
+    var memo_buf: [128]u8 = undefined;
+    var mi: u32 = 0;
+    const prefix = oa.completion_memo_prefix;
+    while (mi < prefix.len) : (mi += 1) memo_buf[mi] = prefix[mi];
+    var ri: u32 = 0;
+    while (ri < oa.ref_hex_len) : (ri += 1) memo_buf[mi + ri] = oa.witness_request_ref[ri];
+    const completion_fields = rc.FactFields{
+        .from = poster_hex[0..64],
+        .to = applicant_hex[0..64],
+        .amount = "100",
+        .memo = memo_buf[0 .. mi + ri],
+        .stamp = "20260706.003200",
+    };
+    var canonical_pay: [oa.max_oa_fact]u8 = undefined;
+    const pay_len = rc.writeCanonicalFact(completion_fields, &canonical_pay) catch unreachable;
+    const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
+
+    var log: [oa.max_log_len]u8 = undefined;
+    var log_len: u32 = 0;
+    appendSigned(req_sig, oa.witness_canonical_request, &log, &log_len);
+    appendSigned(app_sig, canonical_app[0..app_len], &log, &log_len);
+    appendSigned(acc_sig, canonical_acc[0..acc_len], &log, &log_len);
+    appendSigned(pay_sig, canonical_pay[0..pay_len], &log, &log_len);
+
+    const cycle_len = log_len;
+    const state = oa.foldLog(log[0..cycle_len], poster_pk, applicant_pk) catch {
+        vn.writeStr("oal5 device wire: FAIL — fold completed\n");
+        vn.finishFail();
+    };
+    if (!state.completed or state.stipend != 100) {
+        vn.writeStr("oal5 device wire: FAIL — fold state\n");
+        vn.finishFail();
+    }
+
+    appendSigned(consent_sig, fact, &log, &log_len);
+
+    const rep = oa.foldReputationLog(log[0..log_len], poster_pk, applicant_pk, applicant_hex[0..64]) catch {
+        vn.writeStr("oal5 device wire: FAIL — reputation fold\n");
+        vn.finishFail();
+    };
+    if (rep.consented_completions != 1 or rep.consented_stipend != 100) {
+        vn.writeStr("oal5 device wire: FAIL — reputation state\n");
+        vn.finishFail();
+    }
+
+    vn.writeStr("oal5 device wire: sealed consent GREEN — verify and reputation fold passed\n");
+    vn.finishPass();
+}

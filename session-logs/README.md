@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.041812 | [OA-L5 device wire](20260707-041812_oal5-device-wire.md) | Virtio guests for accept/complete/consent; lab GREEN; parity **184** |
 | 20260707.041012 | [Parity GREEN hygiene commit](20260707-041012_parity-green-hygiene-commit.md) | I6 + OA-L5 committed; poll demo hang fixed; doorway counsel Status; parity **184** GREEN |
 | 20260707.032512 | [I6 Tilak hygiene and OA-L5 wire](20260707-032512_i6-tilak-and-oal5-wire.md) | Amber manifest Tilak export; open-asks accept/complete/consent on Comlink wire; parity **184** |
 | 20260707.031312 | [Bench orientation and dependencies](20260707-031312_bench-orientation-and-dependencies.md) | Where we are; dependency map; recommendations after Weave ruling |
