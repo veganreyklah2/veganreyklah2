@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.000012 | [Marks-on-read parity 168](20260707-000012_marks-on-read-parity168.md) | recallByMark by Tilak; path hint disambiguates |
 | 20260706.235812 | [stones→resins path rename](20260706-235812_stones-to-resins-path-rename.md) | Amber ring-1 export paths; golden unchanged; parity 167 |
 | 20260706.235512 | [Zip 59 cut](20260706-235512_zip59-cut.md) | OA-L4 parity 167 archive at `e995322` |
 | 20260706.235512 | [OA-L4 reputation parity 167](20260706-235512_oal4-reputation-parity167.md) | Consent-before-counting fold |
