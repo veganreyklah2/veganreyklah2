@@ -127,9 +127,7 @@ fn runIntervalSelftest(_: std.Io) !u8 {
     return 0;
 }
 
-fn runSelftest(_: std.Io) !u8 {
-    const path = "bolt.txt";
-
+fn selftestSinglePairPoll(path: []const u8) !void {
     // Single pair: source gains rev 2 after cycle 1 — counsel witness shape.
     var source: recall_lap1.BoltCatalog = .empty();
     try source.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
@@ -161,7 +159,9 @@ fn runSelftest(_: std.Io) !u8 {
     var buf: [recall_lap1.max_resin_bytes]u8 = undefined;
     const r2 = try fetcher.recall(name2, &buf);
     assert(std.mem.eql(u8, buf[0..r2.len], "rev-two"));
+}
 
+fn selftestHostMirrorPoll(path: []const u8) !void {
     // Host mirror: two named pairs; peerC gains rev 2 after cycle 1.
     var mirror_src: recall_lap1.BoltCatalog = .empty();
     try mirror_src.appendLeaf("peerB", "b", 1, path, "rev-one", "plain-text");
@@ -191,6 +191,13 @@ fn runSelftest(_: std.Io) !u8 {
     assert(bundled.pairs_per_cycle == 2);
     assert(bundled.revisions_synced == 0);
     assert(bundled.empty_asks == 4);
+}
+
+fn runSelftest(_: std.Io) !u8 {
+    const path = "bolt.txt";
+
+    try selftestSinglePairPoll(path);
+    try selftestHostMirrorPoll(path);
 
     print("ns-poll: delayed revision caught on cycle 2 — empty cycles cost one ask GREEN\n", .{});
     print("ns-poll: host mirror — two named pairs per cycle GREEN\n", .{});

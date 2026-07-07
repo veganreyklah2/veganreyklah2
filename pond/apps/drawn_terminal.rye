@@ -300,81 +300,105 @@ fn runSubmittedLine(
     return signal;
 }
 
-fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
-    var env = rishi.Env{};
-    var history = rishi.History{};
-    var transcript = rishi.Transcript{};
-    var store_ready = false;
-    var editor = window_input.LineEditor{};
-
+fn liveBootApp(garden: std.mem.Allocator, io: std.Io) !struct { app: surface.SurfaceApp, editor: window_input.LineEditor } {
+    const editor = window_input.LineEditor{};
     const boot_lines = try garden.alloc(surface.SkateLine, 1);
     boot_lines[0] = .{ .text = "drawn terminal — type in the window; stdin still works for dev" };
 
     var app = try surface.openSurface(garden, boot_lines);
-    defer app.disconnect();
     app.enableKeyboard();
     try app.prepareSurface();
     app.setWindowTitle("drawn terminal");
     app.setAppId("drawn-terminal");
     try app.setFrame(boot_lines);
 
-    const stdout = std.Io.File.stdout();
-    try stdout.writeStreamingAll(io, "drawn terminal live — keyboard focus in the window; stdin still works.\n");
+    try std.Io.File.stdout().writeStreamingAll(io, "drawn terminal live — keyboard focus in the window; stdin still works.\n");
+    return .{ .app = app, .editor = editor };
+}
 
+fn liveDrainKeyboard(
+    garden: std.mem.Allocator,
+    io: std.Io,
+    init: std.process.Init,
+    app: *surface.SurfaceApp,
+    env: *rishi.Env,
+    history: *rishi.History,
+    transcript: *rishi.Transcript,
+    store_ready: *bool,
+    editor: *window_input.LineEditor,
+) !?u8 {
+    while (app.hasKeyAction()) {
+        const key_action = app.popKeyAction();
+        if (surfaceActionToEditor(key_action)) |editor_action| {
+            editor.applyAction(editor_action);
+            if (editor_action == .submit) {
+                if (try editor.takeSubmittedLine(garden)) |line| {
+                    if (try runSubmittedLine(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
+                        return 0;
+                    }
+                }
+            } else {
+                try redrawPromptFrame(garden, app, transcript, editor);
+            }
+        }
+    }
+    return null;
+}
+
+fn liveReadStdinSubmit(
+    garden: std.mem.Allocator,
+    io: std.Io,
+    init: std.process.Init,
+    app: *surface.SurfaceApp,
+    env: *rishi.Env,
+    history: *rishi.History,
+    transcript: *rishi.Transcript,
+    store_ready: *bool,
+    reader: *std.Io.Reader,
+    stdout: std.Io.File,
+) !?u8 {
+    try stdout.writeStreamingAll(io, "rishi> ");
+    const raw_line = reader.takeDelimiterInclusive('\n') catch |err| switch (err) {
+        error.EndOfStream => return 0,
+        else => return 1,
+    };
+    const line = std.mem.trim(u8, raw_line, " \t\r\n");
+    if (line.len == 0) return null;
+    if (try runSubmittedLine(garden, io, init, app, env, history, transcript, store_ready, line)) |_| {
+        return 0;
+    }
+    return null;
+}
+
+fn runLive(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
+    var env = rishi.Env{};
+    var history = rishi.History{};
+    var transcript = rishi.Transcript{};
+    var store_ready = false;
+
+    var live = try liveBootApp(garden, io);
+    defer live.app.disconnect();
+
+    const stdout = std.Io.File.stdout();
     const stdin_fd: posix.fd_t = posix.STDIN_FILENO;
     var stdin_buffer: [4096]u8 = undefined;
     var file_reader = std.Io.File.Reader.initStreaming(std.Io.File.stdin(), io, &stdin_buffer);
     const reader = &file_reader.interface;
 
     while (true) {
-        if (app.shouldClose()) return 0;
-        const ready = try pollStdinAndDisplay(&app, stdin_fd);
-        try app.dispatchOnce(live_dispatch_ms);
+        if (live.app.shouldClose()) return 0;
+        const ready = try pollStdinAndDisplay(&live.app, stdin_fd);
+        try live.app.dispatchOnce(live_dispatch_ms);
         switch (ready) {
             .display_ready, .timeout => {
-                while (app.hasKeyAction()) {
-                    const key_action = app.popKeyAction();
-                    if (surfaceActionToEditor(key_action)) |editor_action| {
-                        editor.applyAction(editor_action);
-                        if (editor_action == .submit) {
-                            if (try editor.takeSubmittedLine(garden)) |line| {
-                                if (try runSubmittedLine(
-                                    garden,
-                                    io,
-                                    init,
-                                    &app,
-                                    &env,
-                                    &history,
-                                    &transcript,
-                                    &store_ready,
-                                    line,
-                                )) |_| return 0;
-                            }
-                        } else {
-                            try redrawPromptFrame(garden, &app, &transcript, &editor);
-                        }
-                    }
+                if (try liveDrainKeyboard(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, &live.editor)) |code| {
+                    return code;
                 }
             },
             .stdin_ready => {
-                try stdout.writeStreamingAll(io, "rishi> ");
-                const raw_line = reader.takeDelimiterInclusive('\n') catch |err| switch (err) {
-                    error.EndOfStream => return 0,
-                    else => return 1,
-                };
-                const line = std.mem.trim(u8, raw_line, " \t\r\n");
-                if (line.len == 0) continue;
-                if (try runSubmittedLine(
-                    garden,
-                    io,
-                    init,
-                    &app,
-                    &env,
-                    &history,
-                    &transcript,
-                    &store_ready,
-                    line,
-                )) |_| return 0;
+                if (try liveReadStdinSubmit(garden, io, init, &live.app, &env, &history, &transcript, &store_ready, reader, stdout)) |code| {
+                    return code;
+                }
             },
         }
     }

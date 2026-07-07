@@ -149,6 +149,81 @@ fn createStopSentinel(io: std.Io, sentinel_path: []const u8) !void {
     f.close(io);
 }
 
+const SupervisorStep = union(enum) {
+    continue_loop,
+    stop_loop,
+    exit: u8,
+};
+
+fn buildFetcherArgv(
+    allocator: std.mem.Allocator,
+    delivery_path: []const u8,
+    sentinel_path: []const u8,
+    poll_interval_ns: u64,
+    mirror_mode: bool,
+    interval_buf: *[32]u8,
+) ![]const []const u8 {
+    const fetcher_cmd = if (mirror_mode) "fetcher-poll-mirror" else "fetcher-poll";
+    if (poll_interval_ns > 0) {
+        const argv = try allocator.alloc([]const u8, 4);
+        argv[0] = delivery_path;
+        argv[1] = fetcher_cmd;
+        argv[2] = sentinel_path;
+        argv[3] = try std.fmt.bufPrint(interval_buf, "{d}", .{poll_interval_ns});
+        return argv;
+    }
+    const argv = try allocator.alloc([]const u8, 3);
+    argv[0] = delivery_path;
+    argv[1] = fetcher_cmd;
+    argv[2] = sentinel_path;
+    return argv;
+}
+
+fn applyFetcherExit(
+    code: u8,
+    ordinary_seen: *u32,
+    fall_restarts: *u32,
+    source_child: *std.process.Child,
+    io: std.Io,
+) !SupervisorStep {
+    if (se.supervisorStops(code)) {
+        print("caravan poll-service: stop after {d} ordinary cycle(s), {d} fall restart(s)\n", .{
+            ordinary_seen.*, fall_restarts.*,
+        });
+        source_child.kill(io);
+        return .stop_loop;
+    }
+
+    if (code == se.cycle_ok) {
+        ordinary_seen.* += 1;
+        return .continue_loop;
+    }
+
+    if (se.supervisorRestartsAfterFall(code)) {
+        fall_restarts.* += 1;
+        print("caravan poll-service: fall restart {d}/{d}\n", .{ fall_restarts.*, max_fall_restarts });
+        if (fall_restarts.* >= max_fall_restarts) {
+            source_child.kill(io);
+            return .{ .exit = 1 };
+        }
+        return .continue_loop;
+    }
+
+    source_child.kill(io);
+    return .{ .exit = code };
+}
+
+fn printSupervisorSuccess(mirror_mode: bool) void {
+    if (mirror_mode) {
+        print("caravan poll-service: supervised host mirror — two named pairs per cycle — GREEN.\n", .{});
+    } else {
+        print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
+    }
+    print("caravan poll-service: version {s} signal {s}\n", .{
+        caravan_subscribe_poll_service_version, ss.supervisor_signal_version,
+    });
+}
+
 fn runSupervisor(
     allocator: std.mem.Allocator,
     io: std.Io,
@@ -189,21 +264,7 @@ fn runSupervisor(
         }
 
         var interval_buf: [32]u8 = undefined;
-        const fetcher_cmd = if (mirror_mode) "fetcher-poll-mirror" else "fetcher-poll";
-        const fetcher_argv = if (poll_interval_ns > 0) blk: {
-            const argv = try allocator.alloc([]const u8, 4);
-            argv[0] = delivery_path;
-            argv[1] = fetcher_cmd;
-            argv[2] = sentinel_path;
-            argv[3] = try std.fmt.bufPrint(&interval_buf, "{d}", .{poll_interval_ns});
-            break :blk argv;
-        } else blk: {
-            const argv = try allocator.alloc([]const u8, 3);
-            argv[0] = delivery_path;
-            argv[1] = fetcher_cmd;
-            argv[2] = sentinel_path;
-            break :blk argv;
-        };
+        const fetcher_argv = try buildFetcherArgv(allocator, delivery_path, sentinel_path, poll_interval_ns, mirror_mode, &interval_buf);
 
         var fetcher_child = try std.process.spawn(io, .{ .argv = fetcher_argv });
         const code: u8 = switch (try waitFetcherOrSourceLost(io, &source_child, &fetcher_child)) {
@@ -211,42 +272,15 @@ fn runSupervisor(
             .source_lost => |lost| return lost,
         };
 
-        if (se.supervisorStops(code)) {
-            print("caravan poll-service: stop after {d} ordinary cycle(s), {d} fall restart(s)\n", .{
-                ordinary_seen, fall_restarts,
-            });
-            source_child.kill(io);
-            break;
+        switch (try applyFetcherExit(code, &ordinary_seen, &fall_restarts, &source_child, io)) {
+            .continue_loop => continue,
+            .stop_loop => break,
+            .exit => |exit_code| return exit_code,
         }
-
-        if (code == se.cycle_ok) {
-            ordinary_seen += 1;
-            continue;
-        }
-
-        if (se.supervisorRestartsAfterFall(code)) {
-            fall_restarts += 1;
-            print("caravan poll-service: fall restart {d}/{d}\n", .{ fall_restarts, max_fall_restarts });
-            if (fall_restarts >= max_fall_restarts) {
-                source_child.kill(io);
-                return 1;
-            }
-            continue;
-        }
-
-        source_child.kill(io);
-        return code;
     }
 
     if (witness_stop_after) |n| assert(ordinary_seen == n);
 
-    if (mirror_mode) {
-        print("caravan poll-service: supervised host mirror — two named pairs per cycle — GREEN.\n", .{});
-    } else {
-        print("caravan poll-service: supervised poll — restart on cycle_ok, stop on sentinel — GREEN.\n", .{});
-    }
-    print("caravan poll-service: version {s} signal {s}\n", .{
-        caravan_subscribe_poll_service_version, ss.supervisor_signal_version,
-    });
+    printSupervisorSuccess(mirror_mode);
     return 0;
 }

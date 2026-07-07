@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.162712 | [Drawn terminal runLive split](20260707-162712_drawn-terminal-runlive-split.md) | `runLive` under 70 lines; >70 ratchet clear |
+| 20260707.162412 | [Subscribe poll selftest split](20260707-162412_subscribe-poll-selftest-split.md) | `recall_subscribe_poll` selftest under 70 lines |
+| 20260707.162112 | [Caravan supervisor split](20260707-162112_caravan-supervisor-split.md) | `runSupervisor` under 70 lines; five caravan witnesses GREEN |
+| 20260707.161812 | [OA-L5 wire verify split](20260707-161812_oa5-wire-verify-split.md) | `selftestOa5VerifyWireLegs` split; lap5 clear of >70 |
 | 20260707.161512 | [open_asks ratchet commit push](20260707-161512_open-asks-ratchet-commit-push.md) | `fce83dd`; four remotes |
 | 20260707.161112 | [open_asks 70-line ratchet](20260707-161112_open-asks-append-fold-splits.md) | Folds, append helpers, OA-L2/L5 selftest splits |
 | 20260707.160812 | [open_asks fold splits commit push](20260707-160812_open-asks-fold-splits-commit-push.md) | `a60cc7c`; four remotes |

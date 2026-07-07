@@ -280,19 +280,29 @@ const Oa5SelftestWire = struct {
     consent_fact_len: u32,
 };
 
-fn selftestOa5VerifyWireLegs(
+const Oa5RequestWire = struct {
+    signed_req_sig: Ed25519.Signature,
+    signed_req_canonical: [oa.max_oa_fact]u8,
+    signed_req_len: u32,
+    ref_hex: [oa.ref_hex_len]u8,
+    stipend_buf: [16]u8,
+    stipend_len: u32,
+    poster_hex: [64]u8,
+    applicant_hex: [64]u8,
+};
+
+fn selftestOa5VerifyRequestWire(
     io: std.Io,
     poster_kp: Ed25519.KeyPair,
     applicant_kp: Ed25519.KeyPair,
     poster_pk: Ed25519.PublicKey,
-    applicant_pk: Ed25519.PublicKey,
-) !Oa5SelftestWire {
+    opened: *[@intCast(wf.max_message)]u8,
+) !Oa5RequestWire {
     const signed_req = try loadSignedRequest(io, poster_kp);
 
     var req_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const req_payload_len = try oa.encodeCompactPayload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &req_payload);
-    var opened: [@intCast(wf.max_message)]u8 = undefined;
-    const req_opened_len = try sealAndOpen(req_payload[0..req_payload_len], &opened);
+    const req_opened_len = try sealAndOpen(req_payload[0..req_payload_len], opened);
     var req_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const verified_req = try verifyRequestPayload(opened[0..@intCast(req_opened_len)], poster_pk, &req_fact_buf);
 
@@ -301,9 +311,31 @@ fn selftestOa5VerifyWireLegs(
     pubkeyHex(applicant_kp, &applicant_hex);
     pubkeyHex(poster_kp, &poster_hex);
 
+    return .{
+        .signed_req_sig = signed_req.sig,
+        .signed_req_canonical = signed_req.canonical,
+        .signed_req_len = signed_req.canonical_len,
+        .ref_hex = verified_req.ref_hex,
+        .stipend_buf = signed_req.stipend_buf,
+        .stipend_len = signed_req.stipend_len,
+        .poster_hex = poster_hex,
+        .applicant_hex = applicant_hex,
+    };
+}
+
+fn selftestOa5VerifyApplicationWire(
+    req: Oa5RequestWire,
+    applicant_kp: Ed25519.KeyPair,
+    applicant_pk: Ed25519.PublicKey,
+    opened: *[@intCast(wf.max_message)]u8,
+) !struct {
+    wire_app_sig: Ed25519.Signature,
+    app_fact: [oa.max_oa_fact]u8,
+    app_fact_len: u32,
+} {
     const app_fields = oa.ApplicationFields{
-        .applicant = applicant_hex[0..64],
-        .request_ref = verified_req.ref_hex[0..oa.ref_hex_len],
+        .applicant = req.applicant_hex[0..64],
+        .request_ref = req.ref_hex[0..oa.ref_hex_len],
         .message = "I animate science explainers and would love this gig.",
         .stamp = "20260706.003000",
     };
@@ -312,44 +344,62 @@ fn selftestOa5VerifyWireLegs(
     const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
     var app_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const app_payload_len = try oa.encodeCompactPayload(app_sig, canonical_app[0..app_len], &app_payload);
-    const app_opened_len = try sealAndOpen(app_payload[0..app_payload_len], &opened);
+    const app_opened_len = try sealAndOpen(app_payload[0..app_payload_len], opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
-    const app_fact_len = try verifyApplicationPayload(opened[0..@intCast(app_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], &sig_buf, &app_fact_buf);
-    const wire_app_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
+    const app_fact_len = try verifyApplicationPayload(opened[0..@intCast(app_opened_len)], applicant_pk, req.ref_hex[0..oa.ref_hex_len], &sig_buf, &app_fact_buf);
+    return .{
+        .wire_app_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*),
+        .app_fact = app_fact_buf,
+        .app_fact_len = app_fact_len,
+    };
+}
 
-    const signed_acc = try buildSignedAcceptance(poster_kp, poster_hex[0..64], applicant_hex[0..64], verified_req.ref_hex[0..oa.ref_hex_len]);
+fn selftestOa5VerifyAccPayConsentWire(
+    req: Oa5RequestWire,
+    poster_kp: Ed25519.KeyPair,
+    applicant_kp: Ed25519.KeyPair,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+    opened: *[@intCast(wf.max_message)]u8,
+) !struct {
+    wire_acc_sig: Ed25519.Signature,
+    acc_fact: [oa.max_oa_fact]u8,
+    acc_fact_len: u32,
+    wire_pay_sig: Ed25519.Signature,
+    pay_fact: [oa.max_oa_fact]u8,
+    pay_fact_len: u32,
+    wire_consent_sig: Ed25519.Signature,
+    consent_fact: [oa.max_oa_fact]u8,
+    consent_fact_len: u32,
+} {
+    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+
+    const signed_acc = try buildSignedAcceptance(poster_kp, req.poster_hex[0..64], req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len]);
     var acc_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const acc_payload_len = try oa.encodeCompactPayload(signed_acc.sig, signed_acc.canonical[0..signed_acc.canonical_len], &acc_payload);
-    const acc_opened_len = try sealAndOpen(acc_payload[0..acc_payload_len], &opened);
+    const acc_opened_len = try sealAndOpen(acc_payload[0..acc_payload_len], opened);
     var acc_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const acc_fact_len = try verifyAcceptancePayload(opened[0..@intCast(acc_opened_len)], poster_pk, verified_req.ref_hex[0..oa.ref_hex_len], applicant_hex[0..64], &sig_buf, &acc_fact_buf);
+    const acc_fact_len = try verifyAcceptancePayload(opened[0..@intCast(acc_opened_len)], poster_pk, req.ref_hex[0..oa.ref_hex_len], req.applicant_hex[0..64], &sig_buf, &acc_fact_buf);
     const wire_acc_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
 
-    const signed_pay = try buildSignedCompletion(poster_kp, poster_hex[0..64], applicant_hex[0..64], verified_req.ref_hex[0..oa.ref_hex_len], signed_req.stipend_buf[0..signed_req.stipend_len]);
+    const signed_pay = try buildSignedCompletion(poster_kp, req.poster_hex[0..64], req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len], req.stipend_buf[0..req.stipend_len]);
     var pay_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const pay_payload_len = try oa.encodeCompactPayload(signed_pay.sig, signed_pay.canonical[0..signed_pay.canonical_len], &pay_payload);
-    const pay_opened_len = try sealAndOpen(pay_payload[0..pay_payload_len], &opened);
+    const pay_opened_len = try sealAndOpen(pay_payload[0..pay_payload_len], opened);
     var pay_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const pay_fact_len = try verifyCompletionPayload(opened[0..@intCast(pay_opened_len)], poster_pk, verified_req.ref_hex[0..oa.ref_hex_len], applicant_hex[0..64], 100, &sig_buf, &pay_fact_buf);
+    const pay_fact_len = try verifyCompletionPayload(opened[0..@intCast(pay_opened_len)], poster_pk, req.ref_hex[0..oa.ref_hex_len], req.applicant_hex[0..64], 100, &sig_buf, &pay_fact_buf);
     const wire_pay_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
 
-    const signed_consent = try buildSignedConsent(applicant_kp, applicant_hex[0..64], verified_req.ref_hex[0..oa.ref_hex_len]);
+    const signed_consent = try buildSignedConsent(applicant_kp, req.applicant_hex[0..64], req.ref_hex[0..oa.ref_hex_len]);
     var consent_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const consent_payload_len = try oa.encodeCompactPayload(signed_consent.sig, signed_consent.canonical[0..signed_consent.canonical_len], &consent_payload);
-    const consent_opened_len = try sealAndOpen(consent_payload[0..consent_payload_len], &opened);
+    const consent_opened_len = try sealAndOpen(consent_payload[0..consent_payload_len], opened);
     var consent_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    const consent_fact_len = try verifyConsentPayload(opened[0..@intCast(consent_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], oa.consent_grant, &sig_buf, &consent_fact_buf);
+    const consent_fact_len = try verifyConsentPayload(opened[0..@intCast(consent_opened_len)], applicant_pk, req.ref_hex[0..oa.ref_hex_len], oa.consent_grant, &sig_buf, &consent_fact_buf);
     const wire_consent_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
 
     return .{
-        .signed_req_sig = signed_req.sig,
-        .signed_req_canonical = signed_req.canonical,
-        .signed_req_len = signed_req.canonical_len,
-        .applicant_hex = applicant_hex,
-        .wire_app_sig = wire_app_sig,
-        .app_fact = app_fact_buf,
-        .app_fact_len = app_fact_len,
         .wire_acc_sig = wire_acc_sig,
         .acc_fact = acc_fact_buf,
         .acc_fact_len = acc_fact_len,
@@ -359,6 +409,38 @@ fn selftestOa5VerifyWireLegs(
         .wire_consent_sig = wire_consent_sig,
         .consent_fact = consent_fact_buf,
         .consent_fact_len = consent_fact_len,
+    };
+}
+
+fn selftestOa5VerifyWireLegs(
+    io: std.Io,
+    poster_kp: Ed25519.KeyPair,
+    applicant_kp: Ed25519.KeyPair,
+    poster_pk: Ed25519.PublicKey,
+    applicant_pk: Ed25519.PublicKey,
+) !Oa5SelftestWire {
+    var opened: [@intCast(wf.max_message)]u8 = undefined;
+    const req = try selftestOa5VerifyRequestWire(io, poster_kp, applicant_kp, poster_pk, &opened);
+    const app = try selftestOa5VerifyApplicationWire(req, applicant_kp, applicant_pk, &opened);
+    const close = try selftestOa5VerifyAccPayConsentWire(req, poster_kp, applicant_kp, poster_pk, applicant_pk, &opened);
+
+    return .{
+        .signed_req_sig = req.signed_req_sig,
+        .signed_req_canonical = req.signed_req_canonical,
+        .signed_req_len = req.signed_req_len,
+        .applicant_hex = req.applicant_hex,
+        .wire_app_sig = app.wire_app_sig,
+        .app_fact = app.app_fact,
+        .app_fact_len = app.app_fact_len,
+        .wire_acc_sig = close.wire_acc_sig,
+        .acc_fact = close.acc_fact,
+        .acc_fact_len = close.acc_fact_len,
+        .wire_pay_sig = close.wire_pay_sig,
+        .pay_fact = close.pay_fact,
+        .pay_fact_len = close.pay_fact_len,
+        .wire_consent_sig = close.wire_consent_sig,
+        .consent_fact = close.consent_fact,
+        .consent_fact_len = close.consent_fact_len,
     };
 }
 
