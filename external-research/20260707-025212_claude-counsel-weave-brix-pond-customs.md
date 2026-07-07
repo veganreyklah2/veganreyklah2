@@ -38,3 +38,9 @@ Hold both named next-items exactly where they are. For Weave, the recommendation
 ---
 
 *May a name be resolved before the code that would need it is written. May a closure never be asked to close over nothing, and a customs house never be built with no country behind it. And may the gate that was never meant to be improvised stay exactly as closed as the hand that set it down.*
+
+---
+
+## Kaeden's word (`20260707.030412`)
+
+Following this counsel, Kaeden ruled: **sovereign "Weave slice" means what I2 exports today** — `BoltCatalog` accretion under `catalog/` with HEAD record. The namespace brief's Weave line is metaphor, not a dependency on `weave.rye`. No `weave/` snapshot bundle. Full ruling: [`context/specs/20260707-030412_weave-slice-ruling.md`](../context/specs/20260707-030412_weave-slice-ruling.md).

@@ -19,7 +19,7 @@ This index answers one question fast: **what exists, where does it live, and wha
 | **Rye** | The carrier language: `.rye` files, stock-std toolchain, width laws | `rye/` | parity trio gates every push |
 | **Rishi** | The shell: typed pipelines, run-results as values, asserts as gates | `rishi/` | SLC-1 witnesses; runs the suite itself |
 | **Mantra** | The referential namespace: recall, bolts, revisions, sync — see its own reference spec | `mantra/` | parity **159–180**; [`20260707-011412_mantra-referential-namespace-reference.md`](20260707-011412_mantra-referential-namespace-reference.md) |
-| — Weave (aspect) | Text-buffer line history under `diff.rye` today — **not** the namespace's signed-fact DAG metaphor; graduation trigger recorded | `mantra/src/weave.rye` | counsel `025212`: sovereign "Weave slice" may already be I2 `catalog/` export |
+| — Weave (aspect) | Text-buffer line history under `diff.rye`; namespace "Weave" = metaphor for `BoltCatalog` accretion — sovereign slice is I2 `catalog/` export (Kaeden `030412`) | `mantra/src/weave.rye` | graduation trigger when Comlink serves named data from Weave |
 | **Comlink** | Sealed carriage: one datagram shape over hosted UDP and device virtio | `comlink/` | parity **154**; wire labs 1556x |
 | — wire_format | The 528-byte sealed envelope, 340-byte message | `comlink/wire_format.rye` | every wire witness |
 | — hosted / device / virtio_net | The three substrates one logic rides | `comlink/*.rye` | `run_*_lab.sh` |

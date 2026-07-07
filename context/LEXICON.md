@@ -53,7 +53,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Aurora** | The boot — dawn on open hardware |
 | **Tally** | Memory in bounded gardens |
 | **Caravan** | Supervision and capabilities |
-| **Weave** | The append-only DAG of immutable signed facts — substrate beneath Mantra and Comlink; **aspect of Mantra** today at `mantra/src/weave.rye` |
+| **Weave** | Bolt revision history as append-only accretion in `BoltCatalog` — sovereign snapshot slice is I2 `catalog/` export (Kaeden `030412`); **aspect** at `mantra/src/weave.rye` is diff-tool line history until graduation |
 | **Mantra** | Version-control projection over Weave; grows the referential namespace — **recall** and **bolt** seated `20260706.032700` |
 | **Comlink** | Transport of sealed facts over Weave |
 | **Brushstroke** | The drawn surface — values to pixels, immediate-mode |

@@ -51,9 +51,9 @@ Import's first act after batches apply: parse `catalog/HEAD`, recompute HEAD dig
 
 ## Horizon (not lap 2)
 
-Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md):
+Per counsel [`20260707-025212`](../external-research/20260707-025212_claude-counsel-weave-brix-pond-customs.md) and Kaeden's ruling [`20260707-030412`](../context/specs/20260707-030412_weave-slice-ruling.md):
 
-- **`weave/` bundle** — held pending Kaeden word: sovereign-snapshot "Weave slice" may already mean the `catalog/` export (every leaf, every revision, HEAD record); `mantra/src/weave.rye` is diff-tool line history, not namespace history
+- **`weave/` bundle** — **closed** — sovereign "Weave slice" is the `catalog/` export (every leaf, every revision, HEAD record); no separate bundle
 - **`brix/` bundle** — held; no closure code exists; Brix earns its own first lap
 - **Pond customs** — held; no policy concept in `pond/` yet
 - **Live-instance continuity refusal** — Kaeden gate (I7); lap 2 only checks epoch ≠ 0 and identity matches signer

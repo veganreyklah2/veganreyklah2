@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260707.030412 | [Weave slice ruling](20260707-030412_weave-slice-ruling.md) | Kaeden: sovereign slice = I2 catalog export; prose closure |
 | 20260707.025212 | [Weave/Brix/Pond counsel intake](20260707-025212_weave-brix-pond-counsel-intake.md) | Hold snapshot horizon items; custody gate affirmed |
 | 20260707.024712 | [Snapshot horizon lap 2](20260707-024712_snapshot-horizon-lap2.md) | Bundle prefixes, SHA3-512 head record, continuity fact; parity **182** |
 | 20260707.024012 | [Poll interval lap 1](20260707-024012_poll-interval-lap1.md) | `sleepIntervalNs` at cycle boundary; parity **181** |

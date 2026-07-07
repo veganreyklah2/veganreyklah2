@@ -157,7 +157,7 @@ Every claim above is held by a witness the parity suite runs; counts are pinned 
 
 ## §12 Open Items (Non-Normative)
 
-Graceful stop complete through parity **179**; **snapshot export** through lap 2 (parity **180**→**182**); **poll interval** (parity **181**). Weave/Brix bundle slices and Pond customs **held** per counsel `20260707.025212`. Continuity custody gate (live-instance + per-host epoch) remains Kaeden's only.
+Graceful stop complete through parity **179**; **snapshot export** through lap 2 (parity **180**→**182**); **poll interval** (parity **181**). **Weave slice** closed — Kaeden `20260707.030412`: I2 `catalog/` export is the sovereign slice. **Brix** closure and **Pond** customs held per counsel `025212`. Continuity custody gate (live-instance + per-host epoch) remains Kaeden's only.
 
 ---
 
