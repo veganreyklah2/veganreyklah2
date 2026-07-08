@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.160400 | [Go — sh-migration batch](20260708-160400_go-sh-migration-batch.md) | Six native scans + delegates to four remotes |
+| 20260708.160300 | [Sh-migration chrono_version_scan](20260708-160300_sh-migration-chrono-version.md) | Semver needles native; sweep witness GREEN |
+| 20260708.160200 | [Sh-migration thin delegates](20260708-160200_sh-migration-thin-delegates.md) | Five migrated `.sh` elders delegate to `.rish` |
+| 20260708.160100 | [Sh-migration tame_check_scan](20260708-160100_sh-migration-tame-check-scan.md) | TH-2 global scan native; output matches .sh |
+| 20260708.155500 | [Sh-migration opening-lines + TH-2b](20260708-155500_sh-migration-opening-lines-th2b.md) | Native map+record scans; witnesses GREEN |
 | 20260708.044800 | [Mantra parse_int + RW-1 GREEN](20260708-044800_mantra-parse-int-rw1-green.md) | Symlink seam; exact-probe guard; contract witness passes |
 | 20260708.044200 | [Apply sh-migration bundle 39](20260708-044200_apply-sh-migration-bundle39.md) | RS-1 GREEN; RW-1 repointed; `where` wall documented |
 | 20260708.041000 | [Settlement counsel July refresh](20260708-041000_settlement-counsel-july-refresh.md) | Horizon facts + SLC-L4 shapes; witness unchanged |
