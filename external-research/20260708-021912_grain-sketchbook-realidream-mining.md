@@ -7,6 +7,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Category:** Source-of-inspiration study — the source is Kaeden's own archived project (`grain-sketchbook`, Zig 0.15.2 era, ~168k lines, built across a long Cursor span), read the way this tree reads external teachers
+**Status:** Research for understanding — mining study; seats nothing; no code crosses over
 **Ground:** `readme.md` · `docs/realidream.md` · `docs/dag_ui_synthesis.md` · `src/grain_core/dag.zig` (read whole) · `src/realidream_protocol.zig` · `src/grain_skate/slc_dag_integration.ry` · `src/grain_skate/gui/skate_app.zig` (read whole) · `src/aurora_dag_integration.zig` · `THIRD_PARTY_LICENSES.md`
 
 *Written by Rio 3 for Kaeden.*

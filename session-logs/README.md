@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.160900 | [Go — doorway + designed_not_built](20260708-160900_go-doorway-designed-not-built.md) | `160700`–`160800` to four remotes |
+| 20260708.160800 | [Sh-migration designed_not_built](20260708-160800_sh-migration-designed-not-built.md) | Chained where native; witness repointed |
+| 20260708.160700 | [Kg — doorway hygiene; map ceiling](20260708-160700_kg-doorway-hygiene-map-ceiling.md) | TWO_ROOMS GREEN; inner-map wall named |
 | 20260708.160600 | [Go — identity_shape native](20260708-160600_go-identity-shape.md) | `160500` batch to four remotes |
 | 20260708.160500 | [Sh-migration identity_shape](20260708-160500_sh-migration-identity-shape.md) | PGP shape native; sequential where chain |
 | 20260708.160400 | [Go — sh-migration batch](20260708-160400_go-sh-migration-batch.md) | Six native scans + delegates to four remotes |

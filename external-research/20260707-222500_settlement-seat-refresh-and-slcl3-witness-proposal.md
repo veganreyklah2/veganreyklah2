@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first · SLC · stop-and-park on custody
 **Category:** External research — refresh and witness proposal; counsels only; no treasury action
 **Ground:** [`20260706-002612_the-settlement-seat-under-three-lights.md`](20260706-002612_the-settlement-seat-under-three-lights.md) · [`20260706-005512_settlement-seat-verification-and-verdict.md`](20260706-005512_settlement-seat-verification-and-verdict.md) · [`../active-designing/20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) · counsel [`220912`](../counsel/20260707-220912_claude-counsel-roadmap-synthesis.md)
-**Status:** Proposed — ready for Kaeden's word on SLC-L3 opening; seat unchanged
+**Status:** Research for understanding — proposed witness refresh; ready for Kaeden's word on SLC-L3 opening; seat unchanged
 
 *Written by Rio 3 for Kaeden.*
 

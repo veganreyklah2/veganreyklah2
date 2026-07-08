@@ -7,7 +7,7 @@
 **Style:** Radiant · **Lens:** TAME — safety first; horizon facts verified, not vendor prose
 **Category:** External research — refresh only; counsels; gate stays Kaeden's
 **Ground:** [`20260706-005512_settlement-seat-verification-and-verdict.md`](20260706-005512_settlement-seat-verification-and-verdict.md) · [`20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md)
-**Status:** Proposed — informational; witness proposal unchanged
+**Status:** Research for understanding — informational refresh; witness proposal unchanged
 
 *Written by Kaeden, Claude, and Rio 3.*
 
