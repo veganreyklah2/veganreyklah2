@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.030500 | [Post-Kumara plans + spawn EP](20260708-030500_post-kumara-plans-spawn-ep.md) | ROADMAP hygiene; spawn apply prompt filed |
+| 20260708.030400 | [What Kaeden needs to decide](20260708-030400_what-kaeden-needs-to-decide.md) | Queue after Kumara arc closure |
+| 20260708.030200 | [Ed25519 ratchet scan precision](20260708-030200_ed25519-ratchet-scan-precision.md) | `publicKeyFromEd25519` excluded; ratchet **0** |
+| 20260708.025300 | [Kaeden Kumara arc verified](20260708-025300_kaeden-kumara-arc-verified.md) | Independent verification; SLC-L3 gate affirmed |
+| 20260708.025200 | [Kumara virtio go push](20260708-025200_kumara-virtio-go-push.md) | `03879e7` on four remotes |
 | 20260708.025100 | [Kumara virtio open_asks complete](20260708-025100_kumara-virtio-open-asks-complete.md) | Virtio cluster done; ratchet **4** |
 | 20260708.024900 | [Kumara virtio wire tier 1](20260708-024900_kumara-virtio-wire-tier1.md) | Receipt + batch + snapshot guests; ratchet **73** |
 | 20260708.024800 | [Kumara open_asks go push](20260708-024800_kumara-open-asks-go-push.md) | `ea6146e` on four remotes |

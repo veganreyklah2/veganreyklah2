@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260708.021912` (the Visual Track — Realidream lane opened from the grain-sketchbook mining · parity **196** unchanged, plans-and-design round)
-**Last updated:** 2026-07-08 (Kumara open_asks cluster `015312` + Realidream Visual Track `021912`; parity **196** unchanged)
+**Version:** `20260708.030200` (Kumara arc closed — Ed25519 ratchet **0** · scan precision for X25519 conversion seams)
+**Last updated:** 2026-07-08 (Kumara virtio cluster complete `03879e7` · ratchet **0** `030200`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -97,7 +97,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 
 | Rung | Name | State | Gate |
 |------|------|-------|------|
-| 0 | **Weave slice + Kumara** | **landed** — the log a frame folds from; the seam every visual fact signs through | — |
+| 0 | **Weave slice + Kumara** | **landed** — I2 export + identity seam; Ed25519 ratchet **0** (`030200`) | — |
 | 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung, unchanged** — compositor, window, drawn surface | already in Now |
 | 2 | **Pond's first policy** | held | Pond's own word |
 | 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |

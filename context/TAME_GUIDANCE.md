@@ -266,8 +266,10 @@ across modules hides the seam where a Kumara keypair signs before a fact enters 
 New code calls `tally/kumara.rye` for deterministic keypair, sign, and verify; elder
 `Ed25519` sites migrate on touch. `tools/tame_style_check.rish` prints the remaining count
 every parity run. Seated at counsel `222812`; first lap `20260707.224101` (receipt cluster);
-ratchet at **4** application sites (`20260708.025100`) — virtio guest cluster complete; remainder is `rye/tests` primitive witnesses only. Prior: **73** wire guests (`024900`); **91** `open_asks` product cluster (`015312`); **276** hosted + Aurora (`a086f08`).
-sole intentional `Ed25519` block remains inside `tally/kumara.rye`.
+ratchet closed at **0** application sites (`20260708.030200`) — virtio guest cluster complete;
+scan excludes X25519 `fromEd25519` / `publicKeyFromEd25519` conversion seams (Zig spells both).
+Arc: **326** opened → **276** hosted + Aurora → **91** product → virtio guests → **0**.
+The sole intentional `Ed25519` block remains inside `tally/kumara.rye`.
 
 ### Named errors
 
