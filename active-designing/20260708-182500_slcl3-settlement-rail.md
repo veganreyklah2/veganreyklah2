@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · stop-and-park on custody
-**Status:** Scope note — **first lap landed** `20260708.182500`; witness at parity **198**; mainnet treasury still out of scope
+**Status:** Landed — checkable-room hammock scope; two-lane witness GREEN `20260708.182500`; parity **198**; mainnet treasury still out of scope
 
 **Ground:** [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) · counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) · apply prompt [`20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md)
 

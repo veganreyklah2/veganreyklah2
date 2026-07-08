@@ -59,7 +59,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — product surface, Aurora, and all twenty virtio guests repointed; Ed25519 ratchet **0** (X25519 conversion seams excluded from count). **Realidream lane opened** as horizon (`021912`). Next real-money decision: **SLC-L3** — gate is Kaeden's (custody).
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — product surface, Aurora, and all twenty virtio guests repointed; Ed25519 ratchet **0** (X25519 conversion seams excluded from count). **SLC-L3 settlement witnessed** `182500` — two lanes GREEN, parity **198**; mainnet treasury still Kaeden's custody gate. **Next Linengrow lap:** SLC-L4 selective disclosure (design only until ground); **Realidream** Visual Track unblocked for settlement-receipt views.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -436,7 +436,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L3 — settlement** — **landed** `20260708.182500` — two-lane witness GREEN; parity **198**; mainnet treasury still gated; settlement asset scored by witness, not crowned in prose. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md). Scope: [`20260708-182500_slcl3-settlement-rail.md`](../active-designing/20260708-182500_slcl3-settlement-rail.md).
-- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; waits on SLC-L3 receipt + Sui ZK ground — no code until lap opens
+- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; SLC-L3 receipt landed `182500`; waits on Sui ZK ground — no code until lap opens
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

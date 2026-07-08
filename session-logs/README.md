@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.193500 | [Parity 198 cloud GREEN](20260708-193500_parity-198-cloud-green.md) | Full suite GREEN; doorway fix for SLC-L3 hammock |
 | 20260708.183000 | [SLC-L3 settlement witness](20260708-183000_slcl3-settlement-witness.md) | Gate crossed; two lanes GREEN; parity **198** |
 | 20260708.180200 | [Parity 197 cloud GREEN](20260708-180200_parity-197-cloud-green.md) | Full suite ~2m28s; identity stanza included |
 | 20260708.180100 | [Autonomous identity parity](20260708-180100_autonomous-identity-parity.md) | Wired identity witness; GREEN on metal; parity **197** |
