@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.032800 | [Spawn lap 2 recall batch wire](20260708-032800_spawn-lap2-recall-batch-wire.md) | NS-L3 batch two-hop lab in Rishi |
+| 20260708.032700 | [Spawn lap 2 recall sync wire](20260708-032700_spawn-lap2-recall-sync-wire.md) | NS-L3 sync two-hop lab in Rishi |
+| 20260708.032500 | [Spawn lap 2 escrow wire](20260708-032500_spawn-lap2-escrow-wire.md) | OA-L3 hold + release lab in Rishi |
+| 20260708.032300 | [Spawn lap 2 open asks wire](20260708-032300_spawn-lap2-open-asks-wire.md) | OA-L2 two-hop lab in native Rishi |
+| 20260708.032200 | [Spawn lap 2 receipt wire](20260708-032200_spawn-lap2-receipt-wire.md) | SLC-L2 receipt lab in native Rishi |
 | 20260708.031800 | [Spawn lap 2 device wire](20260708-031800_spawn-lap2-device-wire.md) | First wire-lab migration to spawn/wait-for |
 | 20260708.031500 | [Spawn / wait-for lap 1](20260708-031500_spawn-wait-for-lap1.md) | `spawn` + `wait-for` witnesses GREEN; `slot.live` fix |
 | 20260708.030500 | [Post-Kumara plans + spawn EP](20260708-030500_post-kumara-plans-spawn-ep.md) | ROADMAP hygiene; spawn apply prompt filed |
