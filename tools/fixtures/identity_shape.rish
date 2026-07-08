@@ -8,12 +8,14 @@
 let template = run ["sh" "-c" "test -f PUBKEYS.template.md"]
 assert template.ok else "template missing"
 
-let has_pubkeys = run ["sh" "-c" "test -f PUBKEYS.md"]
-if (has_pubkeys.ok == false) then say "PUBKEYS.md not in this checkout — forks begin from PUBKEYS.template.md."
-if (has_pubkeys.ok == false) then say "IDENTITY-GREEN (template-only)"
-if (has_pubkeys.ok == false) then exit 0
+let has_root = run ["sh" "-c" "test -f PUBKEYS.md"]
+let has_context = run ["sh" "-c" "test -f context/PUBKEYS.md"]
+if (has_root.ok == false) then if (has_context.ok == false) then say "No PUBKEYS.md at root or context/ — forks begin from PUBKEYS.template.md."
+if (has_root.ok == false) then if (has_context.ok == false) then say "IDENTITY-GREEN (template-only)"
+if (has_root.ok == false) then if (has_context.ok == false) then exit 0
 
-let all_lines = lines (read-file "PUBKEYS.md")
+let raw = run ["sh" "-c" "if test -f PUBKEYS.md; then cat PUBKEYS.md; else cat context/PUBKEYS.md; fi"]
+let all_lines = lines raw.out
 
 let ssh_lines = where all_lines as ln: ln starts-with "SHA256:"
 

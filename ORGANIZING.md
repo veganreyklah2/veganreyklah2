@@ -129,7 +129,7 @@ A re-stamp that bubbles a file to the bottom suits an *ordinary, lightly-cited* 
 
 ## The Identity Layer, and Tidy Days
 
-The tree signs its work. The keeper's canonical fingerprints live in `PUBKEYS.md` at the root of the keeper's checkout; a fork begins from `PUBKEYS.template.md` and records its own four public lines, and `tools/identity_check.rish` proves the shape either way — template-only checkouts pass kindly, and a present `PUBKEYS.md` must carry exactly two SSH and two OpenPGP fingerprints. The private halves never enter the tree.
+The tree signs its work. The keeper's canonical fingerprints live in `context/PUBKEYS.md` (committed); a keeper may also place `PUBKEYS.md` at the repository root for local override. A fork begins from `PUBKEYS.template.md` and records its own four public lines, and `tools/identity_check.rish` proves the shape either way — template-only checkouts pass kindly, and when a pubkey file is present it must carry exactly two SSH and two OpenPGP fingerprints. The private halves never enter the tree.
 
 Session logs keep the working day flat and fold every earlier day beneath `session-logs/archive/YYYYMMDD/`. **Preview** (read-only): `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold** (mutate): `rishi/bin/rishi run tools/session_logs_archive.rish` — core logic in `tools/session_logs_archive.rye`; witness `tools/session_logs_archive_witness.rish` proves correctness and idempotency on fixtures. Run fold at a day's close, on Kaeden's word.
 

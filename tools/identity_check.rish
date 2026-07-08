@@ -1,10 +1,11 @@
 # identity_check.rish — the repository's public identity, checked in shape.
 #
-# Canonical fingerprints live in PUBKEYS.md at the root of the keeper's
-# checkout; a fork writes its own from PUBKEYS.template.md. The verdict script
-# handles both worlds: template-only checkouts pass kindly, and when PUBKEYS.md
-# is present it must carry exactly two SSH and two OpenPGP lines, printed for
-# eyes-on comparison with `ssh-keygen -lf <pub>` and `gpg --fingerprint`.
+# Canonical fingerprints live in context/PUBKEYS.md (committed); a keeper may
+# override with PUBKEYS.md at the repository root. A fork writes its own from
+# PUBKEYS.template.md. The verdict script handles all three worlds: template-only
+# checkouts pass kindly; when either pubkey file is present it must carry exactly
+# two SSH and two OpenPGP lines, printed for eyes-on comparison with
+# `ssh-keygen -lf <pub>` and `gpg --fingerprint`.
 # Run from the repository root:
 #   rishi/bin/rishi run tools/identity_check.rish
 
