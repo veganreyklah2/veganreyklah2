@@ -66,10 +66,15 @@ if [ "$MODE" = "advise-legacy" ]; then
     parseint_total=$(grep -h "parseInt(" $FILES 2>/dev/null | wc -l | tr -d ' ')
     parseint_canonical=$(grep -c "parseInt(" tally/parse_int.rye 2>/dev/null)
     parseint_app=$((parseint_total - parseint_canonical))
+    ed25519_total=$(grep -h "Ed25519" $FILES 2>/dev/null | wc -l | tr -d ' ')
+    ed25519_canonical=$(grep -c "Ed25519" tally/kumara.rye 2>/dev/null)
+    ed25519_app=$((ed25519_total - ed25519_canonical))
     echo "ratchet: @memcpy application sites = ${memcpy_app} (migrate to copy_disjoint on touch)"
     echo "ratchet: @memcpy canonical in tally/copy.rye = 1 (intentional inside copy_disjoint)"
     echo "ratchet: camelCase fn declarations = ${camel_total} (snake_case on touch)"
     echo "ratchet: parseInt( application sites = ${parseint_app} (migrate to tally/parse_int.rye on touch; leading-zero footgun otherwise silent)"
+    echo "ratchet: Ed25519 application sites = ${ed25519_app} (migrate to tally/kumara.rye on touch; identity at the seam)"
+    echo "ratchet: Ed25519 canonical in tally/kumara.rye = ${ed25519_canonical} (intentional inside kumara seam)"
     echo "ratchet: functions past 70 lines —"
     zero_assert_total=0
     for f in $FILES; do

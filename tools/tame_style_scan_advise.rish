@@ -28,10 +28,19 @@ let parseint_canonical = length (where (lines (read-file "tally/parse_int.rye"))
 let parseint_app_run = run ["sh" "-c" "echo $((${parseint_expr} - ${parseint_canonical}))"]
 let parseint_app = parseint_app_run.out
 
+let per_ed25519 = map files as f: length (where (lines (read-file f)) as ln: ln contains "Ed25519")
+let per_ed25519_str = map per_ed25519 as n: "${n}"
+let ed25519_expr = join per_ed25519_str " + "
+let ed25519_canonical = length (where (lines (read-file "tally/kumara.rye")) as ln: ln contains "Ed25519")
+let ed25519_app_run = run ["sh" "-c" "echo $((${ed25519_expr} - ${ed25519_canonical}))"]
+let ed25519_app = ed25519_app_run.out
+
 say "ratchet: @memcpy application sites = ${trim memcpy_app} (migrate to copy_disjoint on touch)"
 say "ratchet: @memcpy canonical in tally/copy.rye = 1 (intentional inside copy_disjoint)"
 say "ratchet: camelCase fn declarations = ${trim camel_run.out} (snake_case on touch)"
 say "ratchet: parseInt( application sites = ${trim parseint_app} (migrate to tally/parse_int.rye on touch; leading-zero footgun otherwise silent)"
+say "ratchet: Ed25519 application sites = ${trim ed25519_app} (migrate to tally/kumara.rye on touch; identity at the seam)"
+say "ratchet: Ed25519 canonical in tally/kumara.rye = ${ed25519_canonical} (intentional inside kumara seam)"
 say "ratchet: functions past 70 lines —"
 
 let za1 = where files as f: (read-file f) contains "assert(" == false

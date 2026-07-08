@@ -8,7 +8,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const c = std.c;
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
 const bw = @import("recall_batch_wire.rye");
@@ -33,7 +33,11 @@ const source_port: u16 = 38481;
 // recall_catch_up_delivery's 20260707.002012 fix answered, mirrored here 20260707.011412.
 const batch_recv_timeout_sec: u32 = 2;
 
-const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+const batch_signer_seed = [_]u8{0x61} ** kumara.seed_length;
+
+fn batch_signer() kumara.KeyPair {
+    return kumara.keypair_from_seed(&batch_signer_seed);
+}
 
 const sockaddr_in = extern struct {
     sin_family: c_ushort = AF_INET,
@@ -210,7 +214,7 @@ fn recv_batch_payload(port: u16, out: []u8) !u32 {
 }
 
 fn run_selftest(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var src: ns.BoltCatalog = undefined;
     try init_witness_source(&src);
     var fetcher: ns.BoltCatalog = undefined;
@@ -366,7 +370,7 @@ fn run_selftest(_: std.Io) !u8 {
 }
 
 fn run_source(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var src: ns.BoltCatalog = undefined;
     try init_witness_source(&src);
 
@@ -391,7 +395,7 @@ fn run_source(_: std.Io) !u8 {
 }
 
 fn run_fetcher(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var fetcher: ns.BoltCatalog = undefined;
     try init_witness_fetcher(&fetcher);
 
@@ -435,7 +439,7 @@ fn run_chunk_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const u
 }
 
 fn run_chunk_source(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var src: ns.BoltCatalog = undefined;
     try init_chunk_witness_source(&src);
 
@@ -461,7 +465,7 @@ fn run_chunk_source(_: std.Io) !u8 {
 }
 
 fn run_chunk_fetcher(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var fetcher: ns.BoltCatalog = undefined;
     try init_witness_fetcher(&fetcher);
 
@@ -510,7 +514,7 @@ fn run_beaded_demo(allocator: std.mem.Allocator, io: std.Io, self_path: []const 
 }
 
 fn run_beaded_source(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var src: ns.BoltCatalog = undefined;
     var beads: bd.BeadStore = undefined;
     try init_beaded_witness_source(&src, &beads);
@@ -536,7 +540,7 @@ fn run_beaded_source(_: std.Io) !u8 {
 }
 
 fn run_beaded_fetcher(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var fetcher: ns.BoltCatalog = undefined;
     try init_witness_fetcher(&fetcher);
     var fetch_beads: bd.BeadStore = .empty();

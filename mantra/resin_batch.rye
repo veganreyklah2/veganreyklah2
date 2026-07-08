@@ -17,7 +17,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const ns = @import("recall_lap1.rye");
 const tally_copy = @import("tally_copy.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
 pub const batch_version = "20260706.042612";
@@ -130,7 +130,7 @@ pub fn build_batch(
     bolt: []const u8,
     revision: u32,
     held: []const [64]u8,
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     out: []u8,
 ) BatchError!struct { len: u32, report: BatchReport } {
     const count = src.revision_leaf_count(peer, bolt, revision);
@@ -172,7 +172,7 @@ pub fn build_batch(
     }
 
     // Signature over header and manifest (control plane), one per batch.
-    const sig = signer.sign(out[0..off], null) catch return error.BadSignature;
+    const sig = kumara.sign(out[0..off], signer, null);
     const sig_bytes = sig.toBytes();
     try put_bytes(out, &off, &sig_bytes);
 
@@ -204,7 +204,7 @@ const ParsedEntry = struct {
 pub fn apply_batch(
     dest: *ns.BoltCatalog,
     batch: []const u8,
-    source_pk: Ed25519.PublicKey,
+    source_pk: kumara.PublicKey,
 ) BatchError!BatchReport {
     var off: u32 = 0;
     if (off + 1 > cap_u32(batch)) return error.Truncated;
@@ -246,10 +246,9 @@ pub fn apply_batch(
 
     // Verify the one signature over header and manifest.
     const sig_start = off;
-    const sig_len = Ed25519.Signature.encoded_length;
+    const sig_len = kumara.signature_length;
     if (sig_start + sig_len > cap_u32(batch)) return error.Truncated;
-    const sig = Ed25519.Signature.fromBytes(batch[sig_start..][0..sig_len].*);
-    sig.verify(batch[0..sig_start], source_pk) catch return error.BadSignature;
+    kumara.verify_bytes(batch[0..sig_start], batch[sig_start..], source_pk) catch return error.BadSignature;
     off += sig_len;
 
     // Payload section: bind each need-resin payload and verify it against its digest.
@@ -293,8 +292,8 @@ pub fn apply_batch(
 }
 
 fn run_batch_selftest(_: std.Io) !u8 {
-    const signer_seed = [_]u8{0x60} ** Ed25519.KeyPair.seed_length;
-    const signer = Ed25519.KeyPair.generateDeterministic(signer_seed) catch unreachable;
+    const signer_seed = [_]u8{0x60} ** kumara.seed_length;
+    const signer = kumara.keypair_from_seed(&signer_seed);
 
     var src: ns.BoltCatalog = .empty();
     try src.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");

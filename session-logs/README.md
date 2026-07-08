@@ -12,6 +12,14 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.014700 | [Kumara Aurora sealed](20260708-014700_kumara-aurora-sealed.md) | Single-hart sealed stage; ratchet 276 |
+| 20260708.014659 | [Kumara Aurora posted](20260708-014659_kumara-aurora-posted.md) | Two-hart sealed datagram; ratchet 281 |
+| 20260708.014450 | [Kumara SLC-L2 delivery](20260708-014450_kumara-slcl2-delivery.md) | `linengrow/delivery.rye`; ratchet 290 |
+| 20260708.014118 | [Kumara batch wire + snapshot delivery](20260708-014118_kumara-batch-wire-snapshot-delivery.md) | I2 lap 3 + wire type seam; ratchet 297 |
+| 20260708.013951 | [Kumara wire_format migration](20260708-013951_kumara-wire-format.md) | Comlink seal seam; ratchet 303 |
+| 20260708.013826 | [Kumara recall_batch_delivery](20260708-013826_kumara-recall-batch-delivery.md) | NS-L3 delivery repointed; ratchet 310 |
+| 20260708.013657 | [Kumara resin_batch migration](20260708-013657_kumara-resin-batch.md) | NS-L3 frame repointed; ratchet 319 |
+| 20260707.225337 | [Kumara snapshot_export + ratchet](20260707-225337_kumara-snapshot-export-ratchet.md) | Lap 2 migration; Ed25519 ratchet 326 sites |
 | 20260707.224101 | [Kumara extraction first lap](20260707-224101_kumara-extraction-first-lap.md) | `tally/kumara.rye` + receipt cluster; witness in parity |
 | 20260707.223300 | [Open Questions final pass applied](20260707-223300_open-questions-final-pass-applied.md) | Counsel `222812`; Kumara extraction next; two-backend wait |
 | 20260707.223200 | [Evening counsel arc summary](20260707-223200_evening-counsel-arc-summary.md) | Commits, counsel, Open Questions, SLC-L3 standing |

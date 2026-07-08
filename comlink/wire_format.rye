@@ -10,7 +10,7 @@
 const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const X25519 = std.crypto.dh.X25519;
 const ChaCha20Poly1305 = std.crypto.aead.chacha_poly.ChaCha20Poly1305;
 const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
@@ -24,7 +24,7 @@ pub const off_sender: u64 = 0;
 pub const off_nonce: u64 = off_sender + 32;
 pub const off_name: u64 = off_nonce + ChaCha20Poly1305.nonce_length;
 pub const off_sig: u64 = off_name + Sha3_512.digest_length;
-pub const off_tag: u64 = off_sig + Ed25519.Signature.encoded_length;
+pub const off_tag: u64 = off_sig + kumara.signature_length;
 pub const off_cipher: u64 = off_tag + ChaCha20Poly1305.tag_length;
 pub const max_message: u64 = wire_capacity - off_cipher;
 
@@ -62,8 +62,8 @@ fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
 pub fn seal_message(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64 {
     if (message.len > max_message) return error.MessageTooLarge;
 
-    const alice_id = Ed25519.KeyPair.generateDeterministic(seed_alice) catch unreachable;
-    const bob_pub = (Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable).public_key;
+    const alice_id = kumara.keypair_from_seed(&seed_alice);
+    const bob_pub = kumara.keypair_from_seed(&seed_bob).public_key;
     const alice_x = X25519.KeyPair.fromEd25519(alice_id) catch unreachable;
     const bob_x_pub = X25519.publicKeyFromEd25519(bob_pub) catch unreachable;
 
@@ -76,7 +76,7 @@ pub fn seal_message(message: []const u8, buf: *[@intCast(wire_capacity)]u8) !u64
     ChaCha20Poly1305.encrypt(ciphertext[0..message.len], &tag, message, "", nonce, key);
     var name: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(ciphertext[0..message.len], &name, .{});
-    const sig = alice_id.sign(&name, null) catch unreachable;
+    const sig = kumara.sign(&name, alice_id, null);
 
     const sender_bytes = alice_id.public_key.toBytes();
     const sig_bytes = sig.toBytes();
@@ -98,19 +98,18 @@ pub fn open_datagram(buf: []const u8, opened: []u8) !u64 {
     assert(buf.len <= @as(usize, @intCast(wire_capacity)));
     assert(opened.len >= @as(usize, @intCast(max_message)));
 
-    const sender = Ed25519.PublicKey.fromBytes(buf[@intCast(off_sender)..][0..32].*) catch return error.BadSender;
+    const sender = kumara.PublicKey.fromBytes(buf[@intCast(off_sender)..][0..32].*) catch return error.BadSender;
     const nonce = buf[@intCast(off_nonce)..][0..ChaCha20Poly1305.nonce_length].*;
     const name = buf[@intCast(off_name)..][0..Sha3_512.digest_length].*;
-    const sig = Ed25519.Signature.fromBytes(buf[@intCast(off_sig)..][0..Ed25519.Signature.encoded_length].*);
     const tag = buf[@intCast(off_tag)..][0..ChaCha20Poly1305.tag_length].*;
     const ciphertext = buf[@intCast(off_cipher)..];
 
-    sig.verify(&name, sender) catch return error.VerifyFailed;
+    kumara.verify_bytes(&name, buf[@intCast(off_sig)..], sender) catch return error.VerifyFailed;
     var check: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(ciphertext, &check, .{});
     if (!std.mem.eql(u8, &name, &check)) return error.NameMismatch;
 
-    const bob_id = Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable;
+    const bob_id = kumara.keypair_from_seed(&seed_bob);
     const bob_x = X25519.KeyPair.fromEd25519(bob_id) catch unreachable;
     const sender_x = X25519.publicKeyFromEd25519(sender) catch unreachable;
     const shared = X25519.scalarmult(bob_x.secret_key, sender_x) catch unreachable;

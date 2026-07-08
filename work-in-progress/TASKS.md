@@ -63,7 +63,7 @@
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | **Kumara extraction** | **Done (first lap)** | `tally/kumara.rye` + symlinks; receipt cluster repointed; `tools/kumara_seed.rish` in parity; counsel `222812` |
+| **1** | **Kumara extraction** | **Lap 2 in flight** | Receipt cluster + `snapshot_export`; ratchet **326** sites / **33** files; counsel `222812` |
 | **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready; touches real money on public chain |
 | — | Two-backend seam | **Lean: wait** | Wayland hosted GREEN; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -71,6 +71,7 @@
 | — | Astrology lane | Declined this season | — |
 
 - [x] **Kumara extraction — first lap** — `tally/kumara.rye` + symlinks; receipt cluster repointed; `tools/kumara_seed.rish`; counsel `222812`
+- [x] **Kumara extraction — Aurora sealed** — `aurora/src/sealed.rye` repointed; ratchet **276**
 
 *(Prior: Open Questions batch two `223100`, settlement refresh `222500`, roadmap synthesis `220912`.)*
 
@@ -426,7 +427,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Bron** — **first proposal filed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams** (facts, policies, receipts); Brix carries **composable system descriptions** (courses, bonds, services). Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Open ruling for Kaeden.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
-- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect. **Kumara (first lap `223300`):** `tally/kumara.rye` + symlinks; receipt cluster (`receipt_core`, `receipt`) repointed; `tools/kumara_seed.rish` in parity; ~40 other `Ed25519` sites remain on touch.
+- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect. **Kumara (`014700`):** hosted + Aurora stages repointed; Ed25519 ratchet **276** sites / **28** files; migrate on touch.
 - **Two-backend seam** — **lean `222812`: wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before. *(Taste question fairly Kaeden's.)*
 - **`.sh` POSIX-seam pattern** — **answered** in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) and [`ORGANIZING.md`](../ORGANIZING.md) (counsel `195912`).
 - **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export; stays Mantra aspect.

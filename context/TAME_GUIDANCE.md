@@ -259,6 +259,16 @@ a copy-paste seam than a number anyone meant to write that way. New code calls
 scan-dir site routes through `tally/parse_int.rye`; the lone intentional `parseInt(` remains
 inside `parse_int` itself.
 
+### Identity at the seam — prefer `tally/kumara.rye` over bare `std.crypto.sign.Ed25519`
+
+Every signed fact in this tree reaches identity through Ed25519. Scattering `Ed25519` imports
+across modules hides the seam where a Kumara keypair signs before a fact enters a log.
+New code calls `tally/kumara.rye` for deterministic keypair, sign, and verify; elder
+`Ed25519` sites migrate on touch. `tools/tame_style_check.rish` prints the remaining count
+every parity run. Seated at counsel `222812`; first lap `20260707.224101` (receipt cluster);
+ratchet opened at **276** application sites across **28** files (`20260708.014700`) — the
+sole intentional `Ed25519` block remains inside `tally/kumara.rye`.
+
 ### Named errors
 
 Error types are named for the **fault**, rather than the operation that discovered it: `error.OutOfBounds`, `error.InvalidFormat`, `error.NotFound`.
@@ -407,6 +417,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 |---------|----------------|
 | **`@memcpy(` sites** | route through `tally/copy.rye` `copy_disjoint`; sole intentional `@memcpy` may remain inside `copy_disjoint` itself |
 | **`parseInt(` application sites** | route through `tally/parse_int.rye`; state `allow_leading_zero` explicitly for hex byte pairs; sole intentional `parseInt(` may remain inside `parse_int` itself |
+| **`Ed25519` application sites** | route through `tally/kumara.rye`; sole intentional `Ed25519` block may remain inside `kumara` itself |
 | **camelCase `fn` declarations** | rename to `snake_case` in every function you touch in that file; repoint inbound references before commit |
 | **functions past 70 lines** | split at the natural seam (welcome/unwelcome, per-kind arms, wire hops, loop bodies); one idea per function |
 | **zero `assert(` in core modules** | import `const assert = std.debug.assert` and name contract postconditions; honest exempt list in `tame_style_scan.sh` (guests, aurora freestanding, signal handler, font table, line editor, exit constants) |

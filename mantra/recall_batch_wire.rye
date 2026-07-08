@@ -7,6 +7,7 @@
 const std = @import("std");
 const sw = @import("recall_sync_wire.rye");
 const rb = @import("resin_batch.rye");
+const kumara = @import("kumara.rye");
 const tally_copy = @import("tally_copy.rye");
 
 pub const batch_wire_version = "20260706.184512";
@@ -172,7 +173,7 @@ pub fn run_chunk_wire_selftest() WireError!void {
 pub fn apply_wire_batch(
     dest: *@import("recall_lap1.rye").BoltCatalog,
     batch: []const u8,
-    source_pk: std.crypto.sign.Ed25519.PublicKey,
+    source_pk: kumara.PublicKey,
 ) rb.BatchError!rb.BatchReport {
     return rb.apply_batch(dest, batch, source_pk);
 }

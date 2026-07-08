@@ -14,7 +14,7 @@
 //! Run with `RYE_SMP=2 ../run.sh posted`.
 
 const std = @import("std");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const X25519 = std.crypto.dh.X25519;
 const ChaCha20Poly1305 = std.crypto.aead.chacha_poly.ChaCha20Poly1305;
 const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
@@ -29,11 +29,11 @@ const wire_len: *volatile u32 = @ptrFromInt(0x8020_0010);
 const wire: [*]volatile u8 = @ptrFromInt(0x8020_0040);
 
 // The datagram's shape on the wire: fixed-size fields, then the ciphertext.
-const off_sender: usize = 0; // Ed25519 public key — who sealed it
+const off_sender: usize = 0; // signer public key — who sealed it
 const off_nonce: usize = off_sender + 32; // AEAD nonce
 const off_name: usize = off_nonce + ChaCha20Poly1305.nonce_length; // SHA3-512 content-name
-const off_sig: usize = off_name + Sha3_512.digest_length; // Ed25519 attestation over the name
-const off_tag: usize = off_sig + Ed25519.Signature.encoded_length; // Poly1305 tag
+const off_sig: usize = off_name + Sha3_512.digest_length; // identity attestation over the name
+const off_tag: usize = off_sig + kumara.signature_length; // Poly1305 tag
 const off_cipher: usize = off_tag + ChaCha20Poly1305.tag_length; // ciphertext begins here
 const wire_capacity: usize = 512;
 const max_message: usize = wire_capacity - off_cipher;
@@ -66,10 +66,10 @@ fn seal_key(shared: [32]u8) [ChaCha20Poly1305.key_length]u8 {
 
 /// Hart 0 (Alice): seal a message to Bob, lay it on the wire, raise the flag.
 fn seal_and_post() noreturn {
-    const alice_id = Ed25519.KeyPair.generateDeterministic(seed_alice) catch unreachable;
+    const alice_id = kumara.keypair_from_seed(&seed_alice);
     // Alice uses only Bob's public key — his published address. Deriving it from a
     // seed here is a test stand-in for looking it up; none of Bob's secret is read.
-    const bob_pub = (Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable).public_key;
+    const bob_pub = kumara.keypair_from_seed(&seed_bob).public_key;
     const alice_x = X25519.KeyPair.fromEd25519(alice_id) catch unreachable;
     const bob_x_pub = X25519.publicKeyFromEd25519(bob_pub) catch unreachable;
 
@@ -83,7 +83,7 @@ fn seal_and_post() noreturn {
     ChaCha20Poly1305.encrypt(&ciphertext, &tag, message, "", nonce, key);
     var name: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(&ciphertext, &name, .{});
-    const sig = alice_id.sign(&name, null) catch unreachable;
+    const sig = kumara.sign(&name, alice_id, null);
 
     // Lay the datagram on the wire, field by field.
     const sender_bytes = alice_id.public_key.toBytes();
@@ -120,21 +120,20 @@ fn receive_and_open() noreturn {
     var i: usize = 0;
     while (i < len) : (i += 1) buf[i] = wire[i];
 
-    const sender = Ed25519.PublicKey.fromBytes(buf[off_sender..][0..32].*) catch unreachable;
+    const sender = kumara.PublicKey.fromBytes(buf[off_sender..][0..32].*) catch unreachable;
     const nonce = buf[off_nonce..][0..ChaCha20Poly1305.nonce_length].*;
     const name = buf[off_name..][0..Sha3_512.digest_length].*;
-    const sig = Ed25519.Signature.fromBytes(buf[off_sig..][0..Ed25519.Signature.encoded_length].*);
     const tag = buf[off_tag..][0..ChaCha20Poly1305.tag_length].*;
     const ciphertext = buf[off_cipher..len];
 
     // Bob trusts only his own secret and what arrived. He verifies the attestation,
     // confirms the content-name binds the bytes, derives the shared secret, opens.
-    sig.verify(&name, sender) catch unreachable;
+    kumara.verify_bytes(&name, buf[off_sig..], sender) catch unreachable;
     var check: [Sha3_512.digest_length]u8 = undefined;
     Sha3_512.hash(ciphertext, &check, .{});
     const name_ok = std.mem.eql(u8, &name, &check);
 
-    const bob_id = Ed25519.KeyPair.generateDeterministic(seed_bob) catch unreachable;
+    const bob_id = kumara.keypair_from_seed(&seed_bob);
     const bob_x = X25519.KeyPair.fromEd25519(bob_id) catch unreachable;
     const sender_x = X25519.publicKeyFromEd25519(sender) catch unreachable;
     const shared = X25519.scalarmult(bob_x.secret_key, sender_x) catch unreachable;

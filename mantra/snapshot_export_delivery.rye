@@ -11,7 +11,7 @@ const std = @import("std");
 const assert = std.debug.assert;
 const print = std.debug.print;
 const c = std.c;
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
 const bw = @import("recall_batch_wire.rye");
@@ -31,7 +31,11 @@ const fetcher_port: u16 = 38490;
 const source_port: u16 = 38491;
 const batch_recv_timeout_sec: u32 = 2;
 
-const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+const batch_signer_seed = [_]u8{0x61} ** kumara.seed_length;
+
+fn batch_signer() kumara.KeyPair {
+    return kumara.keypair_from_seed(&batch_signer_seed);
+}
 
 const sockaddr_in = extern struct {
     sin_family: c_ushort = AF_INET,
@@ -146,7 +150,7 @@ fn recv_batch_payload(port: u16, out: []u8) !u32 {
 }
 
 fn fetch_snapshot_over_wire(
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     staged: *const ns.BoltCatalog,
     keys: []const snap.RevisionKey,
     rev_count: u32,
@@ -183,7 +187,7 @@ fn fetch_snapshot_over_wire(
 }
 
 fn run_source_loop(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var staged: ns.BoltCatalog = .empty();
     var keys: [snap.max_revision_groups]snap.RevisionKey = undefined;
     var rev_count: u32 = 0;
@@ -219,7 +223,7 @@ fn run_source_loop(_: std.Io) !u8 {
 }
 
 fn run_fetcher(_: std.Io) !u8 {
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = batch_signer();
     var staged_expect: ns.BoltCatalog = .empty();
     var keys: [snap.max_revision_groups]snap.RevisionKey = undefined;
     var rev_count: u32 = 0;

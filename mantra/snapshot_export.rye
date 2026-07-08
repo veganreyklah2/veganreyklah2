@@ -16,7 +16,7 @@ const tally_parse_int = @import("parse_int.rye");
 const print = std.debug.print;
 const ns = @import("recall_lap1.rye");
 const rb = @import("resin_batch.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const Sha3_512 = std.crypto.hash.sha3.Sha3_512;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 const tally_copy = @import("tally_copy.rye");
@@ -43,7 +43,7 @@ pub const ContinuityKind = enum {
 };
 
 pub const ContinuityFact = struct {
-    identity: Ed25519.PublicKey,
+    identity: kumara.PublicKey,
     epoch: u64,
     kind: ContinuityKind,
     parent_hex: [64]u8,
@@ -157,7 +157,7 @@ fn digest_hex512_of(content: []const u8, out: *[128]u8) void {
     }
 }
 
-fn pubkey_hex(pk: Ed25519.PublicKey, out: *[64]u8) void {
+fn pubkey_hex(pk: kumara.PublicKey, out: *[64]u8) void {
     const bytes = pk.toBytes();
     var i: u32 = 0;
     while (i < bytes.len) : (i += 1) {
@@ -319,7 +319,7 @@ fn parse_head_record_content(content: []const u8) SnapshotError!struct {
         .head_digest_hex = head_digest_hex,
         .identity_epoch = identity_epoch,
         .continuity = .{
-            .identity = Ed25519.PublicKey.fromBytes(pk_bytes) catch return error.Truncated,
+            .identity = kumara.PublicKey.fromBytes(pk_bytes) catch return error.Truncated,
             .epoch = continuity_epoch,
             .kind = continuity_kind,
             .parent_hex = continuity_parent,
@@ -344,7 +344,7 @@ fn find_leaf_bytes(cat: *const ns.BoltCatalog, peer: []const u8, bolt: []const u
 }
 
 /// Verify the head record and continuity fact after batches apply.
-pub fn verify_head_record(cat: *const ns.BoltCatalog, source_pk: Ed25519.PublicKey) SnapshotError!void {
+pub fn verify_head_record(cat: *const ns.BoltCatalog, source_pk: kumara.PublicKey) SnapshotError!void {
     const head_bytes = try find_leaf_bytes(cat, meta_peer, meta_bolt, meta_revision, head_record_path);
     const parsed = try parse_head_record_content(head_bytes);
 
@@ -369,7 +369,7 @@ fn catalog_prefixed_path(orig: []const u8, out: []u8) SnapshotError![]const u8 {
 /// Stage a catalog with `catalog/` bundle prefixes plus head and trust leaves.
 pub fn stage_horizon_catalog(
     src: *const ns.BoltCatalog,
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     identity_epoch: u64,
     continuity_stamp: []const u8,
     parity_claim: []const u8,
@@ -450,7 +450,7 @@ pub fn init_witness_source_catalog(cat: *ns.BoltCatalog) SnapshotError!void {
 
 /// Build staged horizon + revision list for the witness fixture.
 pub fn witness_horizon_plan(
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     staged: *ns.BoltCatalog,
     keys: *[max_revision_groups]RevisionKey,
     rev_count: *u32,
@@ -464,7 +464,7 @@ pub fn witness_horizon_plan(
 /// Export every leaf in `src` as one or more resin-batch frames under a snapshot header.
 pub fn export_catalog(
     src: *const ns.BoltCatalog,
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     out: []u8,
 ) SnapshotError!u32 {
     var keys: [max_revision_groups]RevisionKey = undefined;
@@ -502,7 +502,7 @@ pub fn export_catalog(
 /// Export with bundle prefixes, head record, and trust signer leaf.
 pub fn export_catalog_horizon(
     src: *const ns.BoltCatalog,
-    signer: Ed25519.KeyPair,
+    signer: kumara.KeyPair,
     identity_epoch: u64,
     continuity_stamp: []const u8,
     parity_claim: []const u8,
@@ -517,7 +517,7 @@ pub fn export_catalog_horizon(
 pub fn import_catalog(
     dest: *ns.BoltCatalog,
     snapshot: []const u8,
-    source_pk: Ed25519.PublicKey,
+    source_pk: kumara.PublicKey,
 ) SnapshotError!u32 {
     dest.* = .empty();
     var off: u32 = 0;
@@ -552,7 +552,7 @@ pub fn import_catalog(
 pub fn import_catalog_horizon(
     dest: *ns.BoltCatalog,
     snapshot: []const u8,
-    source_pk: Ed25519.PublicKey,
+    source_pk: kumara.PublicKey,
 ) SnapshotError!u32 {
     const imported = try import_catalog(dest, snapshot, source_pk);
     verify_head_record(dest, source_pk) catch {
@@ -583,8 +583,8 @@ pub fn assert_catalog_replay(expect: *const ns.BoltCatalog, got: *const ns.BoltC
 }
 
 fn run_selftest(_: std.Io) !u8 {
-    const signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
-    const signer = Ed25519.KeyPair.generateDeterministic(signer_seed) catch unreachable;
+    const signer_seed = [_]u8{0x61} ** kumara.seed_length;
+    const signer = kumara.keypair_from_seed(&signer_seed);
 
     var src: ns.BoltCatalog = .empty();
     try src.append_leaf("peerB", "b", 1, "a.txt", "alpha", "plain-text");
