@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.215237 | [Apply chain-read seams bundle 40](20260708-215237_apply-chain-read-seams-bundle40.md) | `214500` seams live-verified; witnesses wired |
 | 20260708.211637 | [iOS session pull — Claude review brief](20260708-211637_ios-session-claude-review-brief.md) | Pulled `605ac30`; review brief for Claude |
 | 20260708.194500 | [SLC-L4 design hammock](20260708-194500_slcl4-design-hammock.md) | Three ZK passes named; design only; counsel `041000` filed |
 | 20260708.193500 | [Parity 198 cloud GREEN](20260708-193500_parity-198-cloud-green.md) | Full suite GREEN; doorway fix for SLC-L3 hammock |

@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260708.030200` (Kumara arc closed — Ed25519 ratchet **0** · scan precision for X25519 conversion seams)
-**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500` · gate crossed)
+**Version:** `20260708.214500` (Realidream chain-read seams — live verified metal `211637`)
+**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500`; `comlink/chain_read_sui.sh` + `chain_read_monad.sh` built; live round trip GREEN on metal — counsel `214500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

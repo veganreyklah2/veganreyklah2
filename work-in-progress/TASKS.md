@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500` · gate crossed)
+**Last updated:** 2026-07-08 (chain-read seams built `214500` — live verified metal `211637`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -84,6 +84,9 @@
 - [x] **`.sh` witness-support census (`042112`–`161200`)** — native: [`tame_style_scan`](../tools/tame_style_scan.rish) router + halves, [`rs1_args_max`](../tools/fixtures/rs1_args_max.rish), [`rw1_exact_probe`](../tools/fixtures/rw1_exact_probe.rish), [`opening_lines_scan`](../tools/fixtures/opening_lines_scan.rish), [`tame_check_mantra`](../tools/fixtures/tame_check_mantra.rish), [`tame_check_scan`](../tools/fixtures/tame_check_scan.rish), [`chrono_version_scan`](../tools/fixtures/chrono_version_scan.rish), [`identity_shape`](../tools/fixtures/identity_shape.rish), [`designed_not_built_scan`](../tools/fixtures/designed_not_built_scan.rish), [`two_rooms_doorway_scan`](../tools/fixtures/two_rooms_doorway_scan.rish), [`tame_style_long_fn`](../tools/fixtures/tame_style_long_fn.rish); thin-delegate elders; `slc1_*` stay `.sh`; counsel [`042112`](../counsel/20260708-042112_claude-counsel-sh-migration-wall-found.md)
 - [x] **Identity witness (`180000`)** — `PUBKEYS.template.md` at root; `identity_shape.rish` reads `context/PUBKEYS.md` when no root override; wired parity **197**
 - [x] **SLC-L3 settlement (`182500`)** — `linengrow/settlement.rye` + `tools/slcl3_settlement_witness.rish`; two lanes (Sui + Monad testnet seams); three-axis witness; parity **198**; gate crossed Kaeden `182500`
+- [x] **Realidream wallet-free receipt viewer — data seams built (`214500`)** — [`comlink/chain_read_sui.sh`](../comlink/chain_read_sui.sh) (gRPC `sui.rpc.v2.LedgerService/GetTransaction`; GraphQL mainnet-only — correction to `212212` plan) and [`comlink/chain_read_monad.sh`](../comlink/chain_read_monad.sh) (`eth_getTransactionByHash`). Fixture branches verified; **live round trip GREEN on metal** `211637` (Monad always; Sui needs `grpcurl` on PATH). Witnesses [`chain_read_monad.rish`](../tools/chain_read_monad.rish) / [`chain_read_sui.rish`](../tools/chain_read_sui.rish). Counsel [`214500`](../counsel/20260708-214500_claude-counsel-chain-read-seams-built.md)
+- [x] **Wire chain-read seams** — `tools/chain_read_sui.rish` / `tools/chain_read_monad.rish` (not yet in `parity.rish` — network seam; run on demand)
+- [ ] **"Own MALA L1 / WOV L2" — held at Horizon 3** — implementation discipline narrows implementation-class risk; protocol-design and economic-incentive risk need adversarial scrutiny beyond TAME alone; revisit from mature whole (counsel `212212`, `213312`)
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 
