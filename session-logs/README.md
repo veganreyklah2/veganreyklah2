@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.023630 | [Bundles 36+35 unified](20260708-023630_bundles-36-35-unified.md) | Kumara open_asks at 91 + Realidream lane |
+| 20260708.023255 | [Realidream lane bundle applied](20260708-023255_realidream-lane-bundle-applied.md) | Counsel `021912`; Visual Track; docs-only |
+| 20260708.014800 | [Kumara arc go push](20260708-014800_kumara-arc-go-push.md) | `a086f08` to four remotes |
 | 20260708.014700 | [Kumara Aurora sealed](20260708-014700_kumara-aurora-sealed.md) | Single-hart sealed stage; ratchet 276 |
 | 20260708.014659 | [Kumara Aurora posted](20260708-014659_kumara-aurora-posted.md) | Two-hart sealed datagram; ratchet 281 |
 | 20260708.014450 | [Kumara SLC-L2 delivery](20260708-014450_kumara-slcl2-delivery.md) | `linengrow/delivery.rye`; ratchet 290 |

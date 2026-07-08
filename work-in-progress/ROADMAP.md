@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260707.220912` (roadmap synthesis counsel · parity **196**)
-**Last updated:** 2026-07-07 (Linengrow OA-L4/OA-L5 rows; parity **196**)
+**Version:** `20260708.021912` (the Visual Track — Realidream lane opened from the grain-sketchbook mining · parity **196** unchanged, plans-and-design round)
+**Last updated:** 2026-07-08 (Kumara open_asks cluster `015312` + Realidream Visual Track `021912`; parity **196** unchanged)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -88,6 +88,22 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
+
+---
+
+## The Visual Track — Realidream (horizon lane, ladder already named)
+
+*Where Linengrow's SLC product gets designed and **seen** — every surface a pure fold from Weave to the frame, per the three living essays. Opened `20260708.021912` from the grain-sketchbook mining ([study](../external-research/20260708-021912_grain-sketchbook-realidream-mining.md) · [counsel](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md)); the sketchbook's unified DAG UI backend (Aurora + Skate + Realidream) is this lane's direct ancestor, its event DAG the unsigned ancestor of Weave itself.*
+
+| Rung | Name | State | Gate |
+|------|------|-------|------|
+| 0 | **Weave slice + Kumara** | **landed** — the log a frame folds from; the seam every visual fact signs through | — |
+| 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung, unchanged** — compositor, window, drawn surface | already in Now |
+| 2 | **Pond's first policy** | held | Pond's own word |
+| 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |
+| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave | rungs 1–3 |
+
+**Gratitude shelf for the lane:** Hyperfiddle (Dustin Getz — UIs as streaming DAGs) · Matklad (project-wide semantic graph) · the Nostr protocol (signed-event, relay-subscribed shape) · TigerBeetle (already kept). **Parked for Kaeden's word:** vendoring the grain-sketchbook into `gratitude/`; a line for Noah B.'s *Realidream* EP, the name's source. **Departures the lane keeps:** immutable facts re-folded, never nodes patched; meaning per-entry via Tilak, never one shared enum across consumers; values cross seams as Bron, never JSON-in-a-payload.
 
 ---
 

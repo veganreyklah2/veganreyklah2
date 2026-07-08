@@ -8,9 +8,9 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const kumara = @import("kumara.rye");
 const print = std.debug.print;
 const c = std.c;
-const Ed25519 = std.crypto.sign.Ed25519;
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
 const wf = @import("wire_format.rye");
@@ -78,7 +78,7 @@ fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.open_datagram(wire, opened);
 }
 
-fn hex_of_key(pk: Ed25519.PublicKey, out: *[64]u8) void {
+fn hex_of_key(pk: kumara.PublicKey, out: *[64]u8) void {
     const bytes = pk.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -87,12 +87,12 @@ fn hex_of_key(pk: Ed25519.PublicKey, out: *[64]u8) void {
 }
 
 fn sign_escrow(
-    poster_kp: Ed25519.KeyPair,
+    poster_kp: kumara.KeyPair,
     role: oa.EscrowRole,
     from_hex: []const u8,
     to_hex: []const u8,
     stamp: []const u8,
-) !struct { sig: Ed25519.Signature, canonical: [oa.max_oa_fact]u8, canonical_len: u32 } {
+) !struct { sig: kumara.Signature, canonical: [oa.max_oa_fact]u8, canonical_len: u32 } {
     var canonical: [oa.max_oa_fact]u8 = undefined;
     const clen = try oa.write_escrow_payment_canonical(
         role,
@@ -109,17 +109,17 @@ fn sign_escrow(
 
 fn verify_escrow_payload(
     payload: []const u8,
-    poster_pk: Ed25519.PublicKey,
+    poster_pk: kumara.PublicKey,
     role: oa.EscrowRole,
     poster_hex: []const u8,
     escrow_hex: []const u8,
     applicant_hex: []const u8,
     fact_out: []u8,
 ) !u32 {
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_buf[0..kumara.signature_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .completion) return error.InvalidFact;
     var fields: rc.FactFields = undefined;
@@ -144,9 +144,9 @@ fn verify_escrow_payload(
 }
 
 fn run_selftest(_: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const escrow_kp = kumara.keypair_from_seed(&oa.escrow_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
 
     var poster_hex: [64]u8 = undefined;
@@ -183,9 +183,9 @@ fn run_selftest(_: std.Io) !u8 {
 }
 
 fn run_applicant(_: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const escrow_kp = kumara.keypair_from_seed(&oa.escrow_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
 
     var poster_hex: [64]u8 = undefined;
@@ -214,9 +214,9 @@ fn run_applicant(_: std.Io) !u8 {
 }
 
 fn run_poster(_: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const escrow_kp = kumara.keypair_from_seed(&oa.escrow_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
 
     var poster_hex: [64]u8 = undefined;
     var escrow_hex: [64]u8 = undefined;

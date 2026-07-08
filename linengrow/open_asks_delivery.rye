@@ -8,10 +8,10 @@
 
 const std = @import("std");
 const assert = std.debug.assert;
+const kumara = @import("kumara.rye");
 const print = std.debug.print;
 const c = std.c;
 const Dir = std.Io.Dir;
-const Ed25519 = std.crypto.sign.Ed25519;
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
 const wf = @import("wire_format.rye");
@@ -76,7 +76,7 @@ fn open_wire(wire: []const u8, opened: *[@intCast(wf.max_message)]u8) !u64 {
     return try wf.open_datagram(wire, opened);
 }
 
-fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: kumara.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -84,10 +84,10 @@ fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     }
 }
 
-fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
+fn load_signed_request(io: std.Io, poster_kp: kumara.KeyPair) !struct {
     canonical: [oa.max_oa_fact]u8,
     canonical_len: u32,
-    sig: Ed25519.Signature,
+    sig: kumara.Signature,
     ref_hex: [oa.ref_hex_len]u8,
 } {
     const fixture_path = "tools/fixtures/open_asks_request.bron";
@@ -114,11 +114,11 @@ fn load_signed_request(io: std.Io, poster_kp: Ed25519.KeyPair) !struct {
     };
 }
 
-fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+fn verify_request_payload(payload: []const u8, poster_pk: kumara.PublicKey, fact_out: []u8) !struct { fact_len: u32, ref_hex: [oa.ref_hex_len]u8 } {
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     const decoded = try oa.decode_compact_payload(payload, &sig_buf, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk);
+    try rc.verify_record(sig_buf[0..kumara.signature_length], fact, poster_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .request) return error.InvalidFact;
     var ref_hex: [oa.ref_hex_len]u8 = undefined;
@@ -126,10 +126,10 @@ fn verify_request_payload(payload: []const u8, poster_pk: Ed25519.PublicKey, fac
     return .{ .fact_len = decoded.fact_len, .ref_hex = ref_hex };
 }
 
-fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
+fn verify_application_payload(payload: []const u8, applicant_pk: kumara.PublicKey, expected_ref: []const u8, sig_out: []u8, fact_out: []u8) !u32 {
     const decoded = try oa.decode_compact_payload(payload, sig_out, fact_out);
     const fact = fact_out[0..decoded.fact_len];
-    try rc.verify_record(sig_out[0..Ed25519.Signature.encoded_length], fact, applicant_pk);
+    try rc.verify_record(sig_out[0..kumara.signature_length], fact, applicant_pk);
     const kind = try oa.classify_fact(fact);
     if (kind != .application) return error.InvalidFact;
     var fields: oa.ApplicationFields = undefined;
@@ -138,7 +138,7 @@ fn verify_application_payload(payload: []const u8, applicant_pk: Ed25519.PublicK
     return decoded.fact_len;
 }
 
-fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
+fn append_signed(sig: kumara.Signature, fact: []const u8, log: []u8, log_len: *u32) error{Overflow}!void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = try rc.format_log_line(sig, fact, &line);
     if (log_len.* + line_len > log.len) return error.Overflow;
@@ -148,10 +148,10 @@ fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *
 
 fn selftest_wire_welcome_path(
     io: std.Io,
-    poster_kp: Ed25519.KeyPair,
-    applicant_kp: Ed25519.KeyPair,
-    poster_pk: Ed25519.PublicKey,
-    applicant_pk: Ed25519.PublicKey,
+    poster_kp: kumara.KeyPair,
+    applicant_kp: kumara.KeyPair,
+    poster_pk: kumara.PublicKey,
+    applicant_pk: kumara.PublicKey,
 ) !struct {
     verified_ref: [oa.ref_hex_len]u8,
     app_fields: oa.ApplicationFields,
@@ -189,9 +189,9 @@ fn selftest_wire_welcome_path(
     var app_opened: [@intCast(wf.max_message)]u8 = undefined;
     const app_opened_len = try open_wire(app_wire[0..@intCast(app_wire_len)], &app_opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var app_sig_buf: [kumara.signature_length]u8 = undefined;
     const app_fact_len = try verify_application_payload(app_opened[0..@intCast(app_opened_len)], applicant_pk, verified_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
-    const wire_app_sig = Ed25519.Signature.fromBytes(app_sig_buf[0..Ed25519.Signature.encoded_length].*);
+    const wire_app_sig = kumara.Signature.fromBytes(app_sig_buf[0..kumara.signature_length].*);
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
@@ -210,8 +210,8 @@ fn selftest_wire_welcome_path(
 }
 
 fn selftest_wire_unwelcome_bad_ref(
-    applicant_kp: Ed25519.KeyPair,
-    applicant_pk: Ed25519.PublicKey,
+    applicant_kp: kumara.KeyPair,
+    applicant_pk: kumara.PublicKey,
     welcome: struct {
         verified_ref: [oa.ref_hex_len]u8,
         app_fields: oa.ApplicationFields,
@@ -231,7 +231,7 @@ fn selftest_wire_unwelcome_bad_ref(
     const bad_sig = applicant_kp.sign(bad_canonical[0..bad_len], null) catch unreachable;
     var bad_payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const bad_payload_len = try oa.encode_compact_payload(bad_sig, bad_canonical[0..bad_len], &bad_payload);
-    var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var app_sig_buf: [kumara.signature_length]u8 = undefined;
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
     _ = verify_application_payload(bad_payload[0..bad_payload_len], applicant_pk, welcome.verified_ref[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf) catch {
         return;
@@ -240,8 +240,8 @@ fn selftest_wire_unwelcome_bad_ref(
 }
 
 fn run_selftest(io: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
 
@@ -259,8 +259,8 @@ fn run_selftest(io: std.Io) !u8 {
 }
 
 fn run_applicant(_: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
 
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
@@ -295,8 +295,8 @@ fn run_applicant(_: std.Io) !u8 {
 }
 
 fn run_poster(io: std.Io) !u8 {
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
 
@@ -314,9 +314,9 @@ fn run_poster(io: std.Io) !u8 {
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const opened_len = try open_wire(reply_wire[0..@intCast(recv_len)], &opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
-    var app_sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var app_sig_buf: [kumara.signature_length]u8 = undefined;
     const app_fact_len = try verify_application_payload(opened[0..@intCast(opened_len)], applicant_pk, signed_req.ref_hex[0..oa.ref_hex_len], &app_sig_buf, &app_fact_buf);
-    const app_sig = Ed25519.Signature.fromBytes(app_sig_buf[0..Ed25519.Signature.encoded_length].*);
+    const app_sig = kumara.Signature.fromBytes(app_sig_buf[0..kumara.signature_length].*);
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;

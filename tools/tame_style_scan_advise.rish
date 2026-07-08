@@ -28,7 +28,7 @@ let parseint_canonical = length (where (lines (read-file "tally/parse_int.rye"))
 let parseint_app_run = run ["sh" "-c" "echo $((${parseint_expr} - ${parseint_canonical}))"]
 let parseint_app = parseint_app_run.out
 
-let per_ed25519 = map files as f: length (where (lines (read-file f)) as ln: ln contains "Ed25519")
+let per_ed25519 = map files as f: length (where (where (lines (read-file f)) as ln: ln contains "Ed25519") as ln2: ln2 contains "fromEd25519" == false)
 let per_ed25519_str = map per_ed25519 as n: "${n}"
 let ed25519_expr = join per_ed25519_str " + "
 let ed25519_canonical = length (where (lines (read-file "tally/kumara.rye")) as ln: ln contains "Ed25519")
