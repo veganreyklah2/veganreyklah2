@@ -84,7 +84,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **OA-L4** | Reputation-as-fold — applicant consent facts; witness bolt; **landed** `20260706.232812` — parity **167** | OA-L1 + escrow |
 | **OA-L5** | Accept, complete, consent wire — hosted + device; **landed** `20260707` — parity **184** | OA-L3 + wire |
 | **SLC-L3** | Settlement rail — two-lane witness GREEN; three-axis score; **landed** `20260708.182500` — parity **198** | Sui / Monad testnet seams |
-| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | keypair + Sui ZK foundations; **next design lap** — SLC-L3 receipt landed `182500` |
+| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); Sui ZK ground + Kaeden's lap word |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.

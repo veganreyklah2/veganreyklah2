@@ -436,7 +436,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L3 — settlement** — **landed** `20260708.182500` — two-lane witness GREEN; parity **198**; mainnet treasury still gated; settlement asset scored by witness, not crowned in prose. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md). Scope: [`20260708-182500_slcl3-settlement-rail.md`](../active-designing/20260708-182500_slcl3-settlement-rail.md).
-- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; SLC-L3 receipt landed `182500`; waits on Sui ZK ground — no code until lap opens
+- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; hammock scope [`20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); SLC-L3 receipt landed `182500`; waits on Sui ZK ground — no code until lap opens
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 
