@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.172100 | [Progress snapshot](20260708-172100_progress-snapshot.md) | Pulled main; landscape read for Kaeden |
 | 20260708.161300 | [Go — witness-support census](20260708-161300_go-witness-support-census.md) | `161000`–`161200` to four remotes |
 | 20260708.161200 | [Sh-migration tame_style_scan router](20260708-161200_sh-migration-tame-style-scan-router.md) | Mode router native; legacy scripts extracted |
 | 20260708.161100 | [Sh-migration tame_style_long_fn](20260708-161100_sh-migration-tame-style-long-fn.md) | >70 ledger native orchestration; advise repointed |
