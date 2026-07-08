@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-06 (recall · bolt seated · stone retired)
+**Last updated:** 2026-07-08 (six proposals affirmed `174500`; recall · bolt seated · stone retired)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -64,9 +64,9 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy |
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
-| **Brix** | What a system is made of — lawful composition |
+| **Brix** | What a system is made of — lawful composition; **bond overrides** carry the infuse pattern (Silo module name retired `174500`) |
 | **Tablecloth** | Brix-facing application database and artifact store (horizon — not the namespace query) |
-| **Bron** | Data notation between modules (`.bron`); a Tilak in the proposed Bron-as-mark design |
+| **Bron** | Immutable values at seams (`.bron` facts, policies, receipts); Brix composes wholes that bind Bron values — affirmed `174500` per [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md) |
 | **Amber** | **Cellar software** — preservation in place at home: signed, encrypted, bit-faithful **resins** on deep storage, append-only log, verified by folding; Mantra holds the living history, Amber seals the moment cold — [`amber/README.md`](../amber/README.md) · [`specs/20260701-221512_amber-functional-spec.md`](specs/20260701-221512_amber-functional-spec.md)
 
 ## Archive and digest *(ratified `20260703.191312`)*
@@ -86,7 +86,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Tablecloth query** | Optional-field filter over the bounded namespace catalog — every match in held order; parity **175**; not the Brix artifact store (counsel `20260707.005612`) |
 | **Name grammar** | `peer / bolt / revision / path` — Kumara identity, bolt, revision (change, date, or label), path within the bolt |
 
-**Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); forward-doc hygiene landed `20260706.033200`.
+**Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); forward-doc hygiene landed `20260706.033200`. **Silo** as a Rye OS module name — retired `174500`; configuration composition lives in **Brix bonds**; lowercase **silo** names only the reading technique and astrology lane.
 
 ## Type-marks and crossing *(ratified `20260703.203712 UDT`)*
 

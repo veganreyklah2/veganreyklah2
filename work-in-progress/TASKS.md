@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (`.sh` census `042112` · settlement counsel `9300d35`)
+**Last updated:** 2026-07-08 (six small proposals affirmed `174500` · gate-sorted counsel `171712`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -66,7 +66,7 @@
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
 | **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready (`222500`); horizon refresh [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) — **run witness, do not crown in prose** |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
-| — | Two-backend seam | **Lean: wait** | Wayland hosted GREEN; sovereign framebuffer when Aurora needs a screen |
+| — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
 | — | Snapshot lap 4 | Kaeden's hands | — |
 | — | Astrology lane | Declined this season | — |
@@ -77,8 +77,8 @@
 
 *The visual home of SLC design; ladder and gratitude in [ROADMAP — the Visual Track](ROADMAP.md); mining study and counsel filed same stamp. Nothing here enters Now — SLC-2a keeps the active rung, now visible as this lane's rung 1.*
 
-- [ ] **Sketchbook vendoring (Kaeden's word)** — vendor `grain-sketchbook` into `gratitude/grain-sketchbook/` as a kept source, or leave archived; taste question, no license question
-- [ ] **Gratitude lines (Kaeden's word)** — Hyperfiddle (Dustin Getz), Matklad, Nostr protocol onto the shelf formally; a line for Noah B.'s *Realidream* EP, the name's source
+- [x] **Sketchbook vendoring (Kaeden affirms `174500`)** — [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md); extract archived zip into `gratitude/grain-sketchbook/` when placed
+- [x] **Gratitude lines (Kaeden affirms `174500`)** — [`hyperfiddle.md`](../gratitude/hyperfiddle.md), [`matklad.md`](../gratitude/matklad.md), Nostr via [`nips/`](../gratitude/nips/) (already kept), [`noah-b-realidream.md`](../gratitude/noah-b-realidream.md)
 - [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink (`60fe5c5`)
 - [x] **Spawn lap 2 — wire-lab `.sh` migration** — all eleven `comlink/run_*_wire_lab.sh` + `aurora/run.sh` delegate to [`tools/comlink_*_wire_lab.rish`](../tools/) and [`tools/aurora_run.rish`](../tools/aurora_run.rish) (`033600`); structural POSIX seam closed; permanent `.sh`: bootstrap + external interpreters only
 - [x] **`.sh` witness-support census (`042112`–`161200`)** — native: [`tame_style_scan`](../tools/tame_style_scan.rish) router + halves, [`rs1_args_max`](../tools/fixtures/rs1_args_max.rish), [`rw1_exact_probe`](../tools/fixtures/rw1_exact_probe.rish), [`opening_lines_scan`](../tools/fixtures/opening_lines_scan.rish), [`tame_check_mantra`](../tools/fixtures/tame_check_mantra.rish), [`tame_check_scan`](../tools/fixtures/tame_check_scan.rish), [`chrono_version_scan`](../tools/fixtures/chrono_version_scan.rish), [`identity_shape`](../tools/fixtures/identity_shape.rish), [`designed_not_built_scan`](../tools/fixtures/designed_not_built_scan.rish), [`two_rooms_doorway_scan`](../tools/fixtures/two_rooms_doorway_scan.rish), [`tame_style_long_fn`](../tools/fixtures/tame_style_long_fn.rish); thin-delegate elders; `slc1_*` stay `.sh`; counsel [`042112`](../counsel/20260708-042112_claude-counsel-sh-migration-wall-found.md)
@@ -100,7 +100,7 @@
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | Open Questions backlog | **Largely cleared** | Batch two counsel `223100`; two-backend seam and Kumara still open |
+| **1** | Open Questions backlog | **Cleared** | Six small proposals affirmed `174500`; SLC-L3 alone remains Kaeden's custody gate |
 | **2** | **SLC-L3 settlement prep** | Ruling-gated | Front of Linengrow queue; refresh three-lights survey + two-lane witness proposal |
 | — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
 | — | Astrology lane | Source material | Unchanged per `214012` |
@@ -444,11 +444,11 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 ## Open Questions
 
 - **sixos/s6 infrastructure horizon** — study in `external-research/yonder/20260619-225212_s6-sixos-nix-infuse.md`; Caravan inherits supervision discipline when we reach for it.
-- **Bron** — **first proposal filed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams** (facts, policies, receipts); Brix carries **composable system descriptions** (courses, bonds, services). Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Open ruling for Kaeden.)*
+- **Bron** — **affirmed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams**; Brix carries **composable system descriptions**. Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Kaeden affirms `174500`.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
 - **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect; Realidream viewer named as natural second consumer (`021912`). **Kumara arc closed (`030200`):** product surface + all virtio guests repointed; Ed25519 ratchet **0** — X25519 conversion seams excluded, not Kumara identity work.
-- **Two-backend seam** — **lean `222812`: wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before. *(Taste question fairly Kaeden's.)*
+- **Two-backend seam** — **affirmed `174500`:** lean **wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before.
 - **`.sh` POSIX-seam pattern** — **answered** in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) and [`ORGANIZING.md`](../ORGANIZING.md) (counsel `195912`).
 - **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export; stays Mantra aspect.
 - **Settlement-seat refresh** — **done** `222500`; SLC-L3 witness proposal seated.
@@ -456,9 +456,9 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Research essays (authored, living)** — [`external-research/20260630-030312_the-interface-as-a-fold.md`](../external-research/20260630-030312_the-interface-as-a-fold.md); [`external-research/20260630-030312_after-victor-immediate-contact.md`](../external-research/20260630-030312_after-victor-immediate-contact.md); [`external-research/20260630-030312_the-hot-loop-as-the-forge.md`](../external-research/20260630-030312_the-hot-loop-as-the-forge.md).
 - **Lotus** — DAW direction adopted in `active-designing/20260630-014012_lotus-the-daw.md`; REAPER docs and AP Mastering design in `gratitude/`; bench waits for SLC-2a.
 - **Kernel-direction brief held** — `expanding-prompts/20260628-120912_kernel-direction-brix-and-foundations.md` stays one level deep pending the kernel-direction memo (live Now task).
-- **Brix and Silo** — **answered** `223100`: **Silo module retired** (`20260620`); config = **Brix bonds** (infuse pattern); store = **Tablecloth**; lowercase **silo** = reading technique / astrology lane only. *(Kaeden affirms.)*
-- **Linengrow's home** — **proposal** `223100`: stay in this repo until **SLC-L3 witnessed** + deployable civic whole + Kaeden's word on `xwb122m/linengrow-*`. *(Open ruling.)*
-- **TASKS naming** — **proposal** `223100`: **keep `TASKS.md`**; **workbench** as conversational alias in [`work-in-progress/README.md`](README.md) only — no rename. *(Kaeden affirms.)*
+- **Brix and Silo** — **affirmed** `223100`: **Silo module retired** (`20260620`); config = **Brix bonds** (infuse pattern); store = **Tablecloth**; lowercase **silo** = reading technique / astrology lane only. *(Kaeden affirms `174500`.)*
+- **Linengrow's home** — **affirmed** `223100`: stay in this repo until **SLC-L3 witnessed** + deployable civic whole + Kaeden's word on `xwb122m/linengrow-*`. *(Kaeden affirms `174500`.)*
+- **TASKS naming** — **affirmed** `223100`: **keep `TASKS.md`**; **workbench** as conversational alias in [`work-in-progress/README.md`](README.md) only — no rename. *(Kaeden affirms `174500`.)*
 - **SLC-L1 and Sui** — **affirmed in scope note** [`20260702-195426_slcl1-verifiable-receipt.md`](../active-designing/20260702-195426_slcl1-verifiable-receipt.md): first lap uses pure foundations (keypair + log + projection); no Sui; settlement deferred to SLC-L3.
 - **OCuLink companion memo** — blueprint [`20260701-213412`](../external-research/20260701-213412_deep-archive-and-sovereign-host-blueprint.md) awaits the server-workstation research memo; bridge into `external-research/` when Kaeden supplies it.
 - **Birth-chart craft** — siloed library complete through studies **#57**, Brooke shelf dissociated, zip **47** at `e8d1919` (`20260705`); fidelity soften on title-drawn studies **#24–#36**; forward path: transcript-true revisions as transcripts arrive

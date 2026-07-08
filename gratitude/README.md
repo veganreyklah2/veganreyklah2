@@ -1,7 +1,7 @@
 # Gratitude
 
 **Language:** EN
-**Last updated:** 2026-07-02 (Rio round; Integrated Tests teaching)
+**Last updated:** 2026-07-08 (Realidream lane gratitude `174500`; Integrated Tests teaching)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -40,7 +40,7 @@ When we adapt one of these works into Radiant Style, the rewrite lives elsewhere
 - **`sixos/`** — Adam Joseph's nixpkgs-based operating system that runs s6 in place of systemd. Its services-as-packages design and careful layering shape our thinking on the Caravan kernel, explored in `../external-research/yonder/20260617-195712_caravan-tally-networking.md` and `../external-research/yonder/20260617-195612_ownerboot-riscv-caravan.md`. Cloned whole and unmodified (rev `a984ac7`).
   - Source: <https://codeberg.org/amjoseph/sixos>
   - A gentle caution: this repository's `AGENTS.md` carries a deliberately false claim aimed at automated readers. The code itself is ordinary Nix configuration; we read the claim for the trap it is and study the real work.
-- **`infuse.nix/`** — Adam Joseph's composable override combinator, one lawful operation that generalizes `pipe` and `recursiveUpdate`. It seeds our thinking on the Silo configuration language, explored in `../external-research/yonder/20260617-195712_caravan-tally-networking.md`. Cloned whole and unmodified (rev `d3f4e49`).
+- **`infuse.nix/`** — Adam Joseph's composable override combinator, one lawful operation that generalizes `pipe` and `recursiveUpdate`. Its pattern seeds **Brix bond overrides** (the Silo module name is retired; see counsel `223100`). Explored in `../external-research/yonder/20260617-195712_caravan-tally-networking.md`. Cloned whole and unmodified (rev `d3f4e49`).
   - Source: <https://codeberg.org/amjoseph/infuse.nix>
 - **`manyana/`** — Bram Cohen's CRDT-based version-control demonstration: the weave, never-failing merges, informative conflicts, and rebase-and-squash that preserve history. It seeds our thinking on the Mantra version-control module and its interplay with Silo, explored in `../external-research/yonder/20260617-195312_mantra.md`. Cloned whole and unmodified (rev `bd77d48`), public domain.
   - Source: <https://github.com/bramcohen/manyana>, essay at <https://bramcohen.com/p/manyana>
@@ -71,6 +71,14 @@ When we adapt one of these works into Radiant Style, the rewrite lives elsewhere
 - **`genesis-daw.md`** — Andrew Kelley's **Genesis** DAW (GPL-3, gitlink distance) — the hot loop that birthed Zig; honored in `../gratitude/genesis-daw.md`; **Lotus** is our own studio name.
 - **`reaper.md`** + **`reaper/docs/`** — Cockos REAPER public web documentation (proprietary; study copies parsed 2026-06-30). Workflow lodestar for **Lotus**. Refresh: `tools/fetch_gratitude_web.sh reaper`.
 - **`ap-mastering.md`** — Alain Paul / AP Mastering plugin design (Curvature, Versatile Compressor, etc.) — surface craft inspiration for Lotus plugin faces; public pages and YouTube only.
+
+### The Realidream lane (`174500` — Kaeden affirms)
+
+- **`hyperfiddle.md`** — Dustin Getz's *UIs are streaming DAGs* (Hytradboi 2022) — the vision the grain-sketchbook credited for its unified DAG backend; Rye OS carries it as Weave + fold + Tilak. Study the talk; never copy Electric source.
+- **`matklad.md`** — Alex Kladov (matklad) — project-wide semantic understanding via rust-analyzer's resolved workspace model; Aurora's editor head in the sketchbook reached toward the same ground.
+- **`grain-sketchbook.md`** — Kaeden's own archived Zig prototype (*Aurora + Skate + Realidream*); kept source at `grain-sketchbook/` when the zip is extracted. Mining study: `../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`.
+- **`noah-b-realidream.md`** — Noah B. — artistic source for the *Reality* and *Dream* pairing in the Realidream name.
+- **`nips/`** — (already above) Nostr protocol — formal gratitude line for the Realidream lane's signed-event, relay-subscribed social shape.
 
 ---
 
