@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (six small proposals affirmed `174500` · gate-sorted counsel `171712`)
+**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500` · gate crossed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -59,12 +59,12 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — product surface, Aurora, and all twenty virtio guests repointed; Ed25519 ratchet **0** (X25519 conversion seams excluded from count). **Realidream lane opened** as horizon (`021912`). Next real-money decision: **SLC-L3** — gate is Kaeden's (custody).
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — product surface, Aurora, and all twenty virtio guests repointed; Ed25519 ratchet **0** (X25519 conversion seams excluded from count). **SLC-L3 settlement witnessed** `182500` — two lanes GREEN, parity **198**; mainnet treasury still Kaeden's custody gate. **Next Linengrow lap:** SLC-L4 selective disclosure (design only until ground); **Realidream** Visual Track unblocked for settlement-receipt views.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
-| **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready (`222500`); horizon refresh [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) — **run witness, do not crown in prose** |
+| **2** | **SLC-L3 settlement** | **Landed** `182500` | Two-lane witness GREEN; parity **198**; mainnet still out of scope; counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) — **run witness, do not crown in prose** |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -83,6 +83,7 @@
 - [x] **Spawn lap 2 — wire-lab `.sh` migration** — all eleven `comlink/run_*_wire_lab.sh` + `aurora/run.sh` delegate to [`tools/comlink_*_wire_lab.rish`](../tools/) and [`tools/aurora_run.rish`](../tools/aurora_run.rish) (`033600`); structural POSIX seam closed; permanent `.sh`: bootstrap + external interpreters only
 - [x] **`.sh` witness-support census (`042112`–`161200`)** — native: [`tame_style_scan`](../tools/tame_style_scan.rish) router + halves, [`rs1_args_max`](../tools/fixtures/rs1_args_max.rish), [`rw1_exact_probe`](../tools/fixtures/rw1_exact_probe.rish), [`opening_lines_scan`](../tools/fixtures/opening_lines_scan.rish), [`tame_check_mantra`](../tools/fixtures/tame_check_mantra.rish), [`tame_check_scan`](../tools/fixtures/tame_check_scan.rish), [`chrono_version_scan`](../tools/fixtures/chrono_version_scan.rish), [`identity_shape`](../tools/fixtures/identity_shape.rish), [`designed_not_built_scan`](../tools/fixtures/designed_not_built_scan.rish), [`two_rooms_doorway_scan`](../tools/fixtures/two_rooms_doorway_scan.rish), [`tame_style_long_fn`](../tools/fixtures/tame_style_long_fn.rish); thin-delegate elders; `slc1_*` stay `.sh`; counsel [`042112`](../counsel/20260708-042112_claude-counsel-sh-migration-wall-found.md)
 - [x] **Identity witness (`180000`)** — `PUBKEYS.template.md` at root; `identity_shape.rish` reads `context/PUBKEYS.md` when no root override; wired parity **197**
+- [x] **SLC-L3 settlement (`182500`)** — `linengrow/settlement.rye` + `tools/slcl3_settlement_witness.rish`; two lanes (Sui + Monad testnet seams); three-axis witness; parity **198**; gate crossed Kaeden `182500`
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 
@@ -434,8 +435,8 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [ ] **Inference stack** — Lantern, Lattice, Anvil, held furthest, after the living desktop composes.
 
 ### Linengrow
-- [ ] **SLC-L3 — settlement** — settled on a proven rail; Sui seated, two-lane witness proposed (**unchanged** `222500`); horizon refresh [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); settlement asset chosen by the witness; **gate Kaeden's word**. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md).
-- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; waits on SLC-L3 receipt + Sui ZK ground — no code until lap opens
+- [x] **SLC-L3 — settlement** — **landed** `20260708.182500` — two-lane witness GREEN; parity **198**; mainnet treasury still gated; settlement asset scored by witness, not crowned in prose. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md). Scope: [`20260708-182500_slcl3-settlement-rail.md`](../active-designing/20260708-182500_slcl3-settlement-rail.md).
+- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; SLC-L3 receipt landed `182500`; waits on Sui ZK ground — no code until lap opens
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

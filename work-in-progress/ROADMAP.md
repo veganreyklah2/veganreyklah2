@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260708.030200` (Kumara arc closed — Ed25519 ratchet **0** · scan precision for X25519 conversion seams)
-**Last updated:** 2026-07-08 (settlement horizon refresh `041000` · spawn lap 2 `7dfdf46`)
+**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500` · gate crossed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**The trio:** `parity.rish` (**197 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + **Amber manifest Tilak (I6)** + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **OA-L5 accept/complete/consent wire** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **I2 snapshot replay** + **I2 snapshot horizon** + **I2 snapshot wire lap 3** + **Caravan witness-stop footgun** + **Caravan source-crash recovery** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **identity check** + **Comlink device wire**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-08` cloud bench, **197**, ~2m28s; identity stanza included).
+**The trio:** `parity.rish` (**198 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + **Amber manifest Tilak (I6)** + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **OA-L5 accept/complete/consent wire** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **I2 snapshot replay** + **I2 snapshot horizon** + **I2 snapshot wire lap 3** + **Caravan witness-stop footgun** + **Caravan source-crash recovery** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **identity check** + **Comlink device wire** + **SLC-L3 two-lane settlement**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal (`2026-07-08` cloud bench, **198**, ~2m30s; SLC-L3 settlement stanza included).
 
 ---
 
@@ -83,8 +83,8 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **OA-L3** | Escrow — hold at acceptance, release at completion, verified with the escrow balance closing at zero on one log; **landed** `20260706.014512` — parity **158** | Linengrow + OA-L1 |
 | **OA-L4** | Reputation-as-fold — applicant consent facts; witness bolt; **landed** `20260706.232812` — parity **167** | OA-L1 + escrow |
 | **OA-L5** | Accept, complete, consent wire — hosted + device; **landed** `20260707` — parity **184** | OA-L3 + wire |
-| **SLC-L3** | Settlement rail — Sui seated; two-lane witness proposed, settlement-asset integrity measured; **next Linengrow lap** — ruling-gated | Sui / Mysticeti (witness proposed) |
-| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | keypair + Sui ZK foundations; after SLC-L3 receipt |
+| **SLC-L3** | Settlement rail — two-lane witness GREEN; three-axis score; **landed** `20260708.182500` — parity **198** | Sui / Monad testnet seams |
+| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | keypair + Sui ZK foundations; **next design lap** — SLC-L3 receipt landed `182500` |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
@@ -101,7 +101,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung, unchanged** — compositor, window, drawn surface | already in Now |
 | 2 | **Pond's first policy** | held | Pond's own word |
 | 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |
-| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; **first visual need = SLC-L3 settlement receipt** | rungs 1–3 |
+| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; **settlement receipt shape landed** `182500` — first visual object available | rungs 1–3 |
 
 **Gratitude shelf for the lane:** Hyperfiddle (Dustin Getz — UIs as streaming DAGs) · Matklad (project-wide semantic graph) · the Nostr protocol (signed-event, relay-subscribed shape — [`nips/`](../gratitude/nips/)) · TigerBeetle (already kept) · grain-sketchbook (Kaeden's archived prototype — [`grain-sketchbook.md`](../gratitude/grain-sketchbook.md)) · Noah B. (name's artistic source — [`noah-b-realidream.md`](../gratitude/noah-b-realidream.md)). **Affirmed `174500`.** **Departures the lane keeps:** immutable facts re-folded, never nodes patched; meaning per-entry via Tilak, never one shared enum across consumers; values cross seams as Bron, never JSON-in-a-payload.
 
