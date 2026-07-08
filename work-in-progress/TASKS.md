@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (spawn lap 1 GREEN `031500` · Kumara arc closed `030200`)
+**Last updated:** 2026-07-08 (spawn lap 2 device wire `031800` · lap 1 `60fe5c5`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -79,7 +79,8 @@
 
 - [ ] **Sketchbook vendoring (Kaeden's word)** — vendor `grain-sketchbook` into `gratitude/grain-sketchbook/` as a kept source, or leave archived; taste question, no license question
 - [ ] **Gratitude lines (Kaeden's word)** — Hyperfiddle (Dustin Getz), Matklad, Nostr protocol onto the shelf formally; a line for Noah B.'s *Realidream* EP, the name's source
-- [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink; **lap 2:** migrate seven wire-lab `.sh` scripts + `aurora/run.sh` (parity not wired this lap)
+- [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink (`60fe5c5`)
+- [ ] **Spawn lap 2 — wire-lab `.sh` migration** — `comlink/run_device_wire_lab.sh` → [`tools/comlink_device_wire_lab.rish`](../tools/comlink_device_wire_lab.rish) GREEN (`031800`); shell entry delegates; **remaining:** six `comlink/run_*_wire_lab.sh` + `aurora/run.sh`
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 
