@@ -14,8 +14,9 @@
 # here — never guessed at.
 #
 # New tool dependency, named honestly: this needs grpcurl, not just curl.
-# Install: https://github.com/fullstorydev/grpcurl (a single static binary,
-# no language runtime required).
+# Bench bootstrap: tools/ensure_grpcurl.sh fetches v1.9.3 into gitignored
+# tools/.build/grpcurl on first use (same family as qrencode).
+# Manual install: https://github.com/fullstorydev/grpcurl
 #
 # Usage: comlink/chain_read_sui.sh <base58_digest> [grpc_endpoint]
 #   base58_digest   the transaction digest, base58-encoded
@@ -40,10 +41,13 @@ if [ -z "${DIGEST}" ]; then
   exit 2
 fi
 
-if ! command -v grpcurl >/dev/null 2>&1; then
-  echo "chain_read_sui: RED — grpcurl missing on PATH"
-  echo "chain_read_sui: install from https://github.com/fullstorydev/grpcurl"
-  exit 1
+if command -v grpcurl >/dev/null 2>&1; then
+  GRPCURL=grpcurl
+elif [ -x "${ROOT}/tools/.build/grpcurl" ]; then
+  GRPCURL="${ROOT}/tools/.build/grpcurl"
+else
+  "${ROOT}/tools/ensure_grpcurl.sh" || exit 1
+  GRPCURL="${ROOT}/tools/.build/grpcurl"
 fi
 
 echo "chain_read_sui: prepare — ${METHOD} against ${ENDPOINT}"
@@ -54,7 +58,7 @@ BODY=$(printf '{"digest":"%s","read_mask":{"paths":["digest","transaction","effe
 # file. If the endpoint declines reflection, fall back to Sui's published
 # proto, fetched fresh rather than vendored, since this file's whole schema
 # is the part of this seam most likely to shift under an active migration.
-RESPONSE=$(grpcurl -d "${BODY}" "${ENDPOINT}" "${METHOD}" 2>/tmp/chain_read_sui_grpcurl_err.txt) && REFLECTION_OK=1 || REFLECTION_OK=0
+RESPONSE=$("${GRPCURL}" -d "${BODY}" "${ENDPOINT}" "${METHOD}" 2>/tmp/chain_read_sui_grpcurl_err.txt) && REFLECTION_OK=1 || REFLECTION_OK=0
 
 if [ "${REFLECTION_OK}" = "0" ]; then
   echo "chain_read_sui: reflection unavailable, trying with a fetched proto"
@@ -66,7 +70,7 @@ if [ "${REFLECTION_OK}" = "0" ]; then
       "https://raw.githubusercontent.com/MystenLabs/sui-apis/main/proto/sui/rpc/v2/ledger_service.proto" || true
   fi
   if [ -f "${PROTO_DIR}/ledger_service.proto" ]; then
-    RESPONSE=$(grpcurl -proto "${PROTO_DIR}/ledger_service.proto" -import-path "${PROTO_DIR}" \
+    RESPONSE=$("${GRPCURL}" -proto "${PROTO_DIR}/ledger_service.proto" -import-path "${PROTO_DIR}" \
       -d "${BODY}" "${ENDPOINT}" "${METHOD}") || {
       echo "chain_read_sui: RED — request failed even with a fetched proto"
       exit 1

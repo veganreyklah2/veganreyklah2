@@ -3,16 +3,16 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/chain_read_sui.rish
 #
-# Requires grpcurl on PATH. Pinned digest from testnet at metal verify `20260708.211637`.
+# Bootstraps grpcurl via tools/ensure_grpcurl.sh when needed.
+# Pinned digest from testnet at metal verify `20260708.211637`.
 
 let missing = run ["comlink/chain_read_sui.sh"]
 assert missing.code == 2 else "chain_read_sui must refuse empty digest"
 
-let tool = run ["sh" "-c" "command -v grpcurl"]
-if tool.ok == false then say "SKIP: chain_read_sui live round trip — grpcurl missing on PATH; install per comlink/chain_read_sui.sh header."
-if tool.ok == false then exit 0
+let ensure = run ["tools/ensure_grpcurl.sh"]
+assert ensure.ok else "ensure_grpcurl failed"
 
 let live = run ["comlink/chain_read_sui.sh" "2K5XzjE3PUhRdQoDh51jgz5SUZALAYLDDD8Y7qykeebu"]
 assert live.ok else "chain_read_sui live call failed"
 assert live.out contains "chain_read_sui: GREEN" else "chain_read_sui live parse must GREEN"
-say "GREEN: chain_read_sui — argument guard + live testnet round trip."
+say "GREEN: chain_read_sui — argument guard + ensure_grpcurl + live testnet round trip."
