@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (spawn lap 2 recall batch wire `032800`)
+**Last updated:** 2026-07-08 (spawn lap 2 snapshot wire `033400` — all comlink labs)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -80,7 +80,7 @@
 - [ ] **Sketchbook vendoring (Kaeden's word)** — vendor `grain-sketchbook` into `gratitude/grain-sketchbook/` as a kept source, or leave archived; taste question, no license question
 - [ ] **Gratitude lines (Kaeden's word)** — Hyperfiddle (Dustin Getz), Matklad, Nostr protocol onto the shelf formally; a line for Noah B.'s *Realidream* EP, the name's source
 - [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink (`60fe5c5`)
-- [ ] **Spawn lap 2 — wire-lab `.sh` migration** — six comlink wire labs in [`tools/comlink_*_wire_lab.rish`](../tools/) (`032800`); shell entries delegate; **remaining:** five recall/snapshot/lap5 `comlink/run_*_wire_lab.sh` + `aurora/run.sh`
+- [ ] **Spawn lap 2 — wire-lab `.sh` migration** — all eleven `comlink/run_*_wire_lab.sh` entries delegate to [`tools/comlink_*_wire_lab.rish`](../tools/) (`033400`); **remaining:** `aurora/run.sh` only
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 

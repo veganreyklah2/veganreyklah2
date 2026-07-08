@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.033400 | [Spawn lap 2 snapshot wire](20260708-033400_spawn-lap2-snapshot-wire.md) | Last comlink wire lab in Rishi |
+| 20260708.033300 | [Spawn lap 2 OA-L5 wire](20260708-033300_spawn-lap2-oal5-wire.md) | Three-hop accept/complete/consent lab |
+| 20260708.033200 | [Spawn lap 2 subscribe-poll wire](20260708-033200_spawn-lap2-subscribe-poll-wire.md) | Poll-cycle catch-up lab in Rishi |
+| 20260708.033100 | [Spawn lap 2 catch-up wire](20260708-033100_spawn-lap2-catch-up-wire.md) | Rev2+rev3 four-hop catch-up lab in Rishi |
+| 20260708.033000 | [Spawn lap 2 two-way sync wire](20260708-033000_spawn-lap2-two-way-sync-wire.md) | Four-hop peerB+peerA lab in Rishi |
 | 20260708.032800 | [Spawn lap 2 recall batch wire](20260708-032800_spawn-lap2-recall-batch-wire.md) | NS-L3 batch two-hop lab in Rishi |
 | 20260708.032700 | [Spawn lap 2 recall sync wire](20260708-032700_spawn-lap2-recall-sync-wire.md) | NS-L3 sync two-hop lab in Rishi |
 | 20260708.032500 | [Spawn lap 2 escrow wire](20260708-032500_spawn-lap2-escrow-wire.md) | OA-L3 hold + release lab in Rishi |
