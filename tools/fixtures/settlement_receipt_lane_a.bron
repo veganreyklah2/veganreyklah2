@@ -1,0 +1,8 @@
+# settlement receipt — lane A golden (testnet selftest pinned)
+log_digest runtime_computed
+chain sui-testnet
+asset usdsui
+tx_id 7xK9suiTESTNETpinnedDIGESTlaneA0001
+amount 100
+fact_stamp 20260702.195426
+stamp 20260708.182500

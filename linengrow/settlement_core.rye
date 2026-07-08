@@ -1,0 +1,121 @@
+//! linengrow/settlement_core.rye — SLC-L3 settlement receipt shape and verify.
+
+const std = @import("std");
+const assert = std.debug.assert;
+const tally_parse_int = @import("parse_int.rye");
+const rc = @import("receipt_core.rye");
+
+pub const max_digest_hex: u32 = 64;
+pub const max_chain_len: u32 = 32;
+pub const max_asset_len: u32 = 32;
+pub const max_tx_id_len: u32 = 80;
+pub const max_stamp_len: u32 = 32;
+pub const max_receipt_len: u32 = 512;
+
+pub const SettlementFields = struct {
+    log_digest: []const u8,
+    chain: []const u8,
+    asset: []const u8,
+    tx_id: []const u8,
+    amount: []const u8,
+    fact_stamp: []const u8,
+    stamp: []const u8,
+};
+
+fn trim_line(line: []const u8) []const u8 {
+    return std.mem.trim(u8, line, " \t\r\n");
+}
+
+pub fn parse_settlement_receipt(text: []const u8, fields: *SettlementFields) error{InvalidReceipt}!void {
+    var digest_set = false;
+    var chain_set = false;
+    var asset_set = false;
+    var tx_set = false;
+    var amount_set = false;
+    var fact_stamp_set = false;
+    var stamp_set = false;
+
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = trim_line(raw);
+        if (line.len == 0) continue;
+        if (line[0] == '#') continue;
+        const space = std.mem.indexOfScalar(u8, line, ' ') orelse return error.InvalidReceipt;
+        const key = line[0..space];
+        const value = trim_line(line[space + 1 ..]);
+        if (value.len == 0) return error.InvalidReceipt;
+        if (std.mem.eql(u8, key, "log_digest")) {
+            fields.log_digest = value;
+            digest_set = true;
+        } else if (std.mem.eql(u8, key, "chain")) {
+            fields.chain = value;
+            chain_set = true;
+        } else if (std.mem.eql(u8, key, "asset")) {
+            fields.asset = value;
+            asset_set = true;
+        } else if (std.mem.eql(u8, key, "tx_id")) {
+            fields.tx_id = value;
+            tx_set = true;
+        } else if (std.mem.eql(u8, key, "amount")) {
+            fields.amount = value;
+            amount_set = true;
+        } else if (std.mem.eql(u8, key, "fact_stamp")) {
+            fields.fact_stamp = value;
+            fact_stamp_set = true;
+        } else if (std.mem.eql(u8, key, "stamp")) {
+            fields.stamp = value;
+            stamp_set = true;
+        } else {
+            return error.InvalidReceipt;
+        }
+    }
+    if (!digest_set or !chain_set or !asset_set or !tx_set or !amount_set or !fact_stamp_set or !stamp_set) {
+        return error.InvalidReceipt;
+    }
+}
+
+pub fn write_canonical_receipt(fields: SettlementFields, out: []u8) error{Overflow}!u32 {
+    const written = std.fmt.bufPrint(
+        out,
+        "log_digest {s}\nchain {s}\nasset {s}\ntx_id {s}\namount {s}\nfact_stamp {s}\nstamp {s}\n",
+        .{ fields.log_digest, fields.chain, fields.asset, fields.tx_id, fields.amount, fields.fact_stamp, fields.stamp },
+    ) catch return error.Overflow;
+    if (written.len > max_receipt_len) return error.Overflow;
+    return @intCast(written.len);
+}
+
+pub fn digest_hex_from_log(log: []const u8, out: []u8) error{Overflow}!u32 {
+    var digest: [32]u8 = undefined;
+    rc.digest_log(log, &digest);
+    return rc_write_hex_lower(&digest, out);
+}
+
+fn rc_write_hex_lower(bytes: []const u8, out: []u8) error{Overflow}!u32 {
+    if (out.len < bytes.len * 2) return error.Overflow;
+    var i: u32 = 0;
+    while (i < bytes.len) : (i += 1) {
+        _ = std.fmt.bufPrint(out[i * 2 ..][0..2], "{x:0>2}", .{bytes[i]}) catch return error.Overflow;
+    }
+    return @intCast(bytes.len * 2);
+}
+
+pub fn verify_amount_matches_fact(fact: []const u8, receipt_amount: []const u8) error{AmountMismatch}!void {
+    var fields: rc.FactFields = undefined;
+    rc.parse_fact_fields(fact, &fields) catch return error.AmountMismatch;
+    const fact_amount = rc.parse_amount_signed(fields.amount) catch return error.AmountMismatch;
+    const receipt_val = tally_parse_int.parse_int(i64, receipt_amount, .{}) catch return error.AmountMismatch;
+    if (fact_amount != receipt_val) return error.AmountMismatch;
+}
+
+pub fn verify_digest_matches_log(log: []const u8, digest_hex: []const u8) error{DigestMismatch}!void {
+    var computed: [max_digest_hex]u8 = undefined;
+    const clen = digest_hex_from_log(log, &computed) catch return error.DigestMismatch;
+    if (clen != digest_hex.len) return error.DigestMismatch;
+    if (!std.mem.eql(u8, computed[0..clen], digest_hex)) return error.DigestMismatch;
+}
+
+pub fn verify_lane_binding(fields: SettlementFields, expect_chain: []const u8, expect_asset: []const u8, expect_tx: []const u8) error{LaneMismatch}!void {
+    if (!std.mem.eql(u8, fields.chain, expect_chain)) return error.LaneMismatch;
+    if (!std.mem.eql(u8, fields.asset, expect_asset)) return error.LaneMismatch;
+    if (!std.mem.eql(u8, fields.tx_id, expect_tx)) return error.LaneMismatch;
+}
