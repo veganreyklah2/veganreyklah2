@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.160600 | [Go — identity_shape native](20260708-160600_go-identity-shape.md) | `160500` batch to four remotes |
+| 20260708.160500 | [Sh-migration identity_shape](20260708-160500_sh-migration-identity-shape.md) | PGP shape native; sequential where chain |
 | 20260708.160400 | [Go — sh-migration batch](20260708-160400_go-sh-migration-batch.md) | Six native scans + delegates to four remotes |
 | 20260708.160300 | [Sh-migration chrono_version_scan](20260708-160300_sh-migration-chrono-version.md) | Semver needles native; sweep witness GREEN |
 | 20260708.160200 | [Sh-migration thin delegates](20260708-160200_sh-migration-thin-delegates.md) | Five migrated `.sh` elders delegate to `.rish` |
