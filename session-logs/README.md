@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.031500 | [Spawn / wait-for lap 1](20260708-031500_spawn-wait-for-lap1.md) | `spawn` + `wait-for` witnesses GREEN; `slot.live` fix |
 | 20260708.030500 | [Post-Kumara plans + spawn EP](20260708-030500_post-kumara-plans-spawn-ep.md) | ROADMAP hygiene; spawn apply prompt filed |
 | 20260708.030400 | [What Kaeden needs to decide](20260708-030400_what-kaeden-needs-to-decide.md) | Queue after Kumara arc closure |
 | 20260708.030200 | [Ed25519 ratchet scan precision](20260708-030200_ed25519-ratchet-scan-precision.md) | `publicKeyFromEd25519` excluded; ratchet **0** |
