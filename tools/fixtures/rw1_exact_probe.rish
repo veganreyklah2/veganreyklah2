@@ -11,4 +11,4 @@
 # tab-separated field of that line (index 2).
 
 let files = list-dir ".mantra/blobs"
-for-each files as f do if (split ((lines (read-file (join [".mantra/blobs/" f] "")))[1]) "	")[2] == "let x = 1" then say "MATCH"
+for-each files as f do if (length (split ((lines (read-file (join [".mantra/blobs/" f] "")))[1]) "	") == 3) then if ((split ((lines (read-file (join [".mantra/blobs/" f] "")))[1]) "	")[2] == "let x = 1") then say "MATCH"

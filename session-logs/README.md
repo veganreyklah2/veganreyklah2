@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.044800 | [Mantra parse_int + RW-1 GREEN](20260708-044800_mantra-parse-int-rw1-green.md) | Symlink seam; exact-probe guard; contract witness passes |
 | 20260708.044200 | [Apply sh-migration bundle 39](20260708-044200_apply-sh-migration-bundle39.md) | RS-1 GREEN; RW-1 repointed; `where` wall documented |
 | 20260708.041000 | [Settlement counsel July refresh](20260708-041000_settlement-counsel-july-refresh.md) | Horizon facts + SLC-L4 shapes; witness unchanged |
 | 20260708.033600 | [Spawn lap 2 aurora complete](20260708-033600_spawn-lap2-aurora-run-complete.md) | Structural POSIX seam closed |
