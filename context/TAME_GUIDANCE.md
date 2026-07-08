@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-07 (tools census `195912` · POSIX `.sh` seam named)
+**Last updated:** 2026-07-08 (spawn lap 2 complete `033600` · POSIX structural seam closed)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -426,7 +426,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 
 **Scan roster** (`tools/fixtures/tame_style_scan.sh`): `mantra`, `caravan`, `linengrow`, `comlink`, `rishi/src`, `tally`, `aurora`, `pond`, `brushstroke`, `rye/src`. **`tools/`** snake_case season closed at **0** (`20260707.203612`); **`parseInt(` ratchet** closed at **0** (`20260707.213000`).
 
-**POSIX seams — keep `.sh`:** not every script beside `.rish` is a migration candidate. Three families (counsel `195912`): **structural** — QEMU labs that background a guest (`comlink/run_*_wire_lab.sh`, `aurora/run.sh`) because `run` blocks until exit; **cold start** — `rye/bootstrap.sh` before a `rye` binary exists; **external interpreter** — e.g. `classical-vedic-astrology/cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`. Witness-support pure-text scans: **`tame_style_scan.sh` `bans`** delegates to `tools/tame_style_scan_bans.rish`; **`advise`** delegates to `tools/tame_style_scan_advise.rish` (`20260707.220000`); legacy bodies remain as `bans-legacy` / `advise-legacy` for selftests. **Count idiom:** `for-each` cannot accumulate — use `map` → `join` with `" + "` → `sh -c "echo $((${expr}))"` (`tools/rish_count_selftest.rish`).
+**POSIX seams — keep `.sh` entry points, orchestration in `.rish`:** witness-support scans migrated (`tame_style_scan` bans + advise). **Structural QEMU orchestration** — all eleven `comlink/run_*_wire_lab.sh` and `aurora/run.sh` thin-delegate to `tools/*_wire_lab.rish` / `tools/aurora_run.rish` using `spawn` / `wait-for` (wire labs) or blocking `run` (aurora single-process wake); counsel `20260708.035600`. **Permanent `.sh`:** `rye/bootstrap.sh` (cold start before `rye` exists); external interpreters (`cast_a_chart_host.sh`, `tools/cursor-jail.sh`, `tools/fetch_gratitude_web.sh`). **Count idiom:** `for-each` cannot accumulate — use `map` → `join` with `" + "` → `sh -c "echo $((${expr}))"` (`tools/rish_count_selftest.rish`).
 
 **Standing exempt — intentional-violation fixtures:** files built to *hold* a violation the lint must catch (e.g. `tools/fixtures/width_check_authored_usize.rye` for TH-1 width) stay as wrong as their purpose requires. Migrating them toward compliance would disable the proof they supply — same logic as elder Amber goldens. No ratchet reaches for them.
 

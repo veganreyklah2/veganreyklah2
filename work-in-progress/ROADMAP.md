@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260708.030200` (Kumara arc closed — Ed25519 ratchet **0** · scan precision for X25519 conversion seams)
-**Last updated:** 2026-07-08 (Kumara virtio cluster complete `03879e7` · ratchet **0** `030200`)
+**Last updated:** 2026-07-08 (spawn lap 2 complete `033600` · Kumara ratchet **0**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
