@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.041000 | [Settlement counsel July refresh](20260708-041000_settlement-counsel-july-refresh.md) | Horizon facts + SLC-L4 shapes; witness unchanged |
 | 20260708.033600 | [Spawn lap 2 aurora complete](20260708-033600_spawn-lap2-aurora-run-complete.md) | Structural POSIX seam closed |
 | 20260708.033500 | [Spawn lap 2 go — full summary](20260708-033500_spawn-lap2-go-full-summary.md) | `e8a24ad` — all eleven comlink wire labs shipped |
 | 20260708.033400 | [Spawn lap 2 snapshot wire](20260708-033400_spawn-lap2-snapshot-wire.md) | Last comlink wire lab in Rishi |

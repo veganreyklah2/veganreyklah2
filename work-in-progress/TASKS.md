@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (spawn lap 2 complete `033600` · aurora run native)
+**Last updated:** 2026-07-08 (settlement counsel `041000` · spawn lap 2 `7dfdf46`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -64,7 +64,7 @@
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
-| **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready (`222500`); touches real money on public chain |
+| **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready (`222500`); horizon refresh [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) — **run witness, do not crown in prose** |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Lean: wait** | Wayland hosted GREEN; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -103,7 +103,7 @@
 | — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
 | — | Astrology lane | Source material | Unchanged per `214012` |
 
-- [x] **Settlement-seat refresh** — refresh + two-lane witness proposal [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md); apply prompt [`expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md); seat holds; gate Kaeden's word
+- [x] **Settlement-seat refresh** — refresh + two-lane witness proposal [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md); July horizon refresh [`external-research/20260708-041000_settlement-horizon-refresh-july-2026.md`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); apply prompt [`expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md); seat holds; gate Kaeden's word
 - [x] **Bron beside Brix — first proposal** — counsel [`222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron = values at seams; Brix = composable wholes; graduation deferred
 - [x] **Open Questions batch two** — Brix/Silo, Linengrow home, TASKS naming — counsel [`223100`](../counsel/20260707-223100_claude-counsel-open-questions-batch-two.md)
 - [x] **ROADMAP Linengrow table hygiene** — OA-L4 and OA-L5 landed rows added; parity **196** (`220912`)
@@ -432,7 +432,8 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - [ ] **Inference stack** — Lantern, Lattice, Anvil, held furthest, after the living desktop composes.
 
 ### Linengrow
-- [ ] **SLC-L3 — settlement** — settled on a proven rail; Sui seated, two-lane witness proposed, settlement asset chosen by the witness; the receipt verifiable on the ledger. Counsel: [`external-research/20260706-005512_settlement-seat-verification-and-verdict.md`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md).
+- [ ] **SLC-L3 — settlement** — settled on a proven rail; Sui seated, two-lane witness proposed (**unchanged** `222500`); horizon refresh [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); settlement asset chosen by the witness; **gate Kaeden's word**. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md).
+- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; ZK proves claim without revealing underlying data; waits on SLC-L3 receipt + Sui ZK ground — no code until lap opens
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

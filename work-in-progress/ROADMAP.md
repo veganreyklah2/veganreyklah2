@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260708.030200` (Kumara arc closed — Ed25519 ratchet **0** · scan precision for X25519 conversion seams)
-**Last updated:** 2026-07-08 (spawn lap 2 complete `033600` · Kumara ratchet **0**)
+**Last updated:** 2026-07-08 (settlement horizon refresh `041000` · spawn lap 2 `7dfdf46`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -84,7 +84,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **OA-L4** | Reputation-as-fold — applicant consent facts; witness bolt; **landed** `20260706.232812` — parity **167** | OA-L1 + escrow |
 | **OA-L5** | Accept, complete, consent wire — hosted + device; **landed** `20260707` — parity **184** | OA-L3 + wire |
 | **SLC-L3** | Settlement rail — Sui seated; two-lane witness proposed, settlement-asset integrity measured; **next Linengrow lap** — ruling-gated | Sui / Mysticeti (witness proposed) |
-| **SLC-L4** | The selective-disclosure pass — a zero-knowledge credential proving a claim without revealing the data behind it | keypair + Sui ZK foundations |
+| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | keypair + Sui ZK foundations; after SLC-L3 receipt |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
@@ -101,7 +101,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung, unchanged** — compositor, window, drawn surface | already in Now |
 | 2 | **Pond's first policy** | held | Pond's own word |
 | 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |
-| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave | rungs 1–3 |
+| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; **first visual need = SLC-L3 settlement receipt** | rungs 1–3 |
 
 **Gratitude shelf for the lane:** Hyperfiddle (Dustin Getz — UIs as streaming DAGs) · Matklad (project-wide semantic graph) · the Nostr protocol (signed-event, relay-subscribed shape) · TigerBeetle (already kept). **Parked for Kaeden's word:** vendoring the grain-sketchbook into `gratitude/`; a line for Noah B.'s *Realidream* EP, the name's source. **Departures the lane keeps:** immutable facts re-folded, never nodes patched; meaning per-entry via Tilak, never one shared enum across consumers; values cross seams as Bron, never JSON-in-a-payload.
 
