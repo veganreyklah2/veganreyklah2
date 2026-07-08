@@ -1,7 +1,8 @@
-# identity_shape.rish — one verdict for the identity witness, both worlds handled.
+# identity_shape.rish — one verdict for the identity witness, three worlds handled.
 #
 # Native repoint of identity_shape.sh — PGP lines matched by shape (ten
 # four-hex groups); SSH lines by starts-with SHA256: at column zero.
+# Reads root PUBKEYS.md when present, else context/PUBKEYS.md (shell cat seam).
 # Run from the repository root:
 #   rishi/bin/rishi run tools/fixtures/identity_shape.rish
 

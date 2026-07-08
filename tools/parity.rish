@@ -442,6 +442,11 @@ let doorway = run ["rishi/bin/rishi" "run" "tools/two_rooms_doorway.rish"]
 assert doorway.ok else "two-rooms doorway witness failed"
 say "GREEN: two-rooms doorway witness passed."
 
+say "witness suite: identity check (PUBKEYS template + context path)…"
+let identity = run ["rishi/bin/rishi" "run" "tools/identity_check.rish"]
+assert identity.ok else "identity check witness failed"
+say "GREEN: identity check witness passed."
+
 say "witness suite: Comlink device wire (pattern + sealed laps)…"
 let comlink_dw = run ["rishi/bin/rishi" "run" "tools/comlink_device_wire.rish"]
 assert comlink_dw.ok else "Comlink device wire witness failed"
