@@ -52,9 +52,9 @@ Source: counsel [`171712`](../counsel/20260708-171712_claude-counsel-every-gate-
 | **Linengrow home** | TASKS Open Questions — stay in repo until SLC-L3 witnessed + deployable whole |
 | **TASKS.md name** | `work-in-progress/README.md` — keep name; "workbench" as alias only |
 | **Two-backend seam** | TASKS — **wait** until Aurora needs sovereign framebuffer |
-| **Realidream gratitude shelf** | `gratitude/hyperfiddle.md`, `matklad.md`, `noah-b-realidream.md`, `grain-sketchbook/` hold |
+| **Realidream gratitude shelf** | `gratitude/hyperfiddle.md`, `matklad.md`, `noah-b-realidream.md`, `grain-sketchbook.md` (shelf-only) |
 
-**Note:** grain-sketchbook zip not yet in tree — shelf entry and empty hold directory ready for extract.
+**Note:** grain-sketchbook archive stays outside the tree (Kaeden `222852`); the single shelf note is enough.
 
 ---
 
@@ -130,7 +130,7 @@ Three Linengrow-native ZK passes named per counsel `041000`:
 | Donor-amount privacy | Donation satisfies policy | Exact public amount |
 | Reputation-threshold | Meets floor for open ask | Full reputation ledger |
 
-**No code until:** Sui ZK ground pinned + Kaeden's lap word. Inherits OA-L4 consent discipline and SLC-L3 receipt shape where dollar settlement applies.
+**No code until:** Kaeden's lap word — ZK ground pinned [`223327`](20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) (`sui::groth16`). Inherits OA-L4 consent discipline and SLC-L3 receipt shape where dollar settlement applies.
 
 ---
 
@@ -167,7 +167,7 @@ Full `parity.rish` hung once on OA-L5 demo (>15m) during early SLC-L3 pass — k
 
 4. **Realidream Visual Track** — ROADMAP unblocked for settlement-receipt views. Does a Realidream lap pair naturally with SLC-L4 design, or should visual work start on L3 receipt shape first?
 
-5. **Grain-sketchbook extract** — Affirmed vendoring; zip not in tree. Any counsel on placement or clean-room boundary before extract?
+5. **Grain-sketchbook** — **Closed shelf-only** (Kaeden `222852`): single `.md`; archive stays outside the tree.
 
 6. **`let…in` / block-body** — Still optional per `171712`; no consumers blocked. Worth elevating or stay parked?
 

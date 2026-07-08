@@ -6,9 +6,9 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · CIVIC · Hammock
-**Status:** Design only — checkable-room hammock scope; SLC-L3 receipt landed `182500`; **no code until Sui ZK ground and Kaeden's lap word**
+**Status:** Design only — checkable-room hammock scope; SLC-L3 receipt landed `182500`; **Sui ZK ground pinned** [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) (`sui::groth16`); **no code until Kaeden's lap word**. Sequencing `221612`: **donor-amount privacy** first.
 
-**Ground:** counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) · SLC-L3 scope [`20260708-182500_slcl3-settlement-rail.md`](20260708-182500_slcl3-settlement-rail.md) · OA-L4 reputation [`20260706-232812`](../session-logs/20260706-232812_open-asks-lap4-reputation-fold.md)
+**Ground:** counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) · six open points [`221612`](../counsel/20260708-221612_claude-counsel-six-open-points.md) · ZK pin [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) · SLC-L3 scope [`20260708-182500_slcl3-settlement-rail.md`](20260708-182500_slcl3-settlement-rail.md) · OA-L4 reputation [`20260706-232812`](../session-logs/20260706-232812_open-asks-lap4-reputation-fold.md)
 
 **Direction:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) · [`../work-in-progress/TASKS.md`](../work-in-progress/TASKS.md)
 
@@ -50,15 +50,19 @@ Each pass inherits **OA-L4** consent-before-counting discipline where reputation
 
 ## Proof Receipt — Fields (Proposed)
 
-The proof receipt is a **`.bron` value** — one field per line, space-separated, no quotes. Exact field set waits on Sui ZK API pin at lap open; proposed minimum:
+The proof receipt is a **`.bron` value** — one field per line, space-separated, no quotes. Field set refined after ZK pin `223327` (Groth16):
 
 | Field | Meaning |
 |-------|---------|
 | `claim` | one of `sanctuary-eligibility` · `donor-amount-privacy` · `reputation-threshold` |
 | `log_digest` | digest of the signed fact the proof references |
-| `proof_id` | chain-verifiable proof digest |
-| `public_inputs` | pinned public inputs (hex or bron sub-record) |
+| `curve` | `bn254` \| `bls12381` (v1 prefers `bn254`) |
+| `vk_id` | pinned hash / content id of the verifying key |
+| `proof` | hex Groth16 proof points |
+| `public_inputs` | hex serialized public inputs (≤ **8** field elements) |
 | `stamp` | `YYYYMMDD.HHMMSS` witness pin |
+
+On-chain object id after a verify tx may join later as `proof_id`; offline selftest uses content hash of `proof` + `public_inputs`.
 
 ---
 
@@ -76,7 +80,7 @@ The proof receipt is a **`.bron` value** — one field per line, space-separated
 - Mainnet treasury
 - All three passes in one binary — one pass per lap iteration
 - Generic credential marketplace
-- Code before Sui ZK foundations are pinned on the bench
+- Code before Kaeden's lap word (ZK foundations pinned `223327` — study complete; build still gated)
 
 ---
 

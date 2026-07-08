@@ -32,7 +32,7 @@ Two ideas from the sketchbook have no current counterpart and deserve the roadma
 
 ## Parked for Kaeden's Word
 
-Whether the sketchbook zip itself is vendored into `gratitude/grain-sketchbook/` as a kept source (it is Kaeden's own work, so the shelf choice is a taste question, not a license one), and whether Noah B.'s *Realidream* EP earns a line in the gratitude ledger the way other named inspirations have.
+Whether the sketchbook zip itself is vendored into `gratitude/grain-sketchbook/` as a kept source (it is Kaeden's own work, so the shelf choice is a taste question, not a license one), and whether Noah B.'s *Realidream* EP earns a line in the gratitude ledger the way other named inspirations have. **Closed `222852`:** shelf note [`../gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) alone; archive stays outside the tree. Noah B. line affirmed `174500`.
 
 ---
 

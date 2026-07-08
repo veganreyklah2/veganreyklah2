@@ -76,7 +76,7 @@ When we adapt one of these works into Radiant Style, the rewrite lives elsewhere
 
 - **`hyperfiddle.md`** — Dustin Getz's *UIs are streaming DAGs* (Hytradboi 2022) — the vision the grain-sketchbook credited for its unified DAG backend; Rye OS carries it as Weave + fold + Tilak. Study the talk; never copy Electric source.
 - **`matklad.md`** — Alex Kladov (matklad) — project-wide semantic understanding via rust-analyzer's resolved workspace model; Aurora's editor head in the sketchbook reached toward the same ground.
-- **`grain-sketchbook.md`** — Kaeden's own archived Zig prototype (*Aurora + Skate + Realidream*); kept source at `grain-sketchbook/` when the zip is extracted. Mining study: `../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`.
+- **`grain-sketchbook.md`** — Kaeden's own archived Zig prototype (*Aurora + Skate + Realidream*); shelf note only — archive stays outside the tree (Kaeden `222852`). Mining study: `../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`.
 - **`noah-b-realidream.md`** — Noah B. — artistic source for the *Reality* and *Dream* pairing in the Realidream name.
 - **`nips/`** — (already above) Nostr protocol — formal gratitude line for the Realidream lane's signed-event, relay-subscribed social shape.
 

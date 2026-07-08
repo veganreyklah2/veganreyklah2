@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (chain-read seams built `214500` — live verified metal `211637`)
+**Last updated:** 2026-07-08 (Sui ZK pin `223327` · six open points `221612` · sketchbook shelf-only `222852`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -77,7 +77,7 @@
 
 *The visual home of SLC design; ladder and gratitude in [ROADMAP — the Visual Track](ROADMAP.md); mining study and counsel filed same stamp. Nothing here enters Now — SLC-2a keeps the active rung, now visible as this lane's rung 1.*
 
-- [x] **Sketchbook vendoring (Kaeden affirms `174500`)** — [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md); extract archived zip into `gratitude/grain-sketchbook/` when placed
+- [x] **Sketchbook gratitude (Kaeden affirms `174500`; shelf-only `222852`)** — [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) alone; archive stays outside the tree
 - [x] **Gratitude lines (Kaeden affirms `174500`)** — [`hyperfiddle.md`](../gratitude/hyperfiddle.md), [`matklad.md`](../gratitude/matklad.md), Nostr via [`nips/`](../gratitude/nips/) (already kept), [`noah-b-realidream.md`](../gratitude/noah-b-realidream.md)
 - [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink (`60fe5c5`)
 - [x] **Spawn lap 2 — wire-lab `.sh` migration** — all eleven `comlink/run_*_wire_lab.sh` + `aurora/run.sh` delegate to [`tools/comlink_*_wire_lab.rish`](../tools/) and [`tools/aurora_run.rish`](../tools/aurora_run.rish) (`033600`); structural POSIX seam closed; permanent `.sh`: bootstrap + external interpreters only
@@ -87,6 +87,16 @@
 - [x] **Realidream wallet-free receipt viewer — data seams built (`214500`)** — [`comlink/chain_read_sui.sh`](../comlink/chain_read_sui.sh) (gRPC `sui.rpc.v2.LedgerService/GetTransaction`; GraphQL mainnet-only — correction to `212212` plan) and [`comlink/chain_read_monad.sh`](../comlink/chain_read_monad.sh) (`eth_getTransactionByHash`). Fixture branches verified; **live round trip GREEN on metal** `211637` (Monad always; Sui needs `grpcurl` on PATH). Witnesses [`chain_read_monad.rish`](../tools/chain_read_monad.rish) / [`chain_read_sui.rish`](../tools/chain_read_sui.rish). Counsel [`214500`](../counsel/20260708-214500_claude-counsel-chain-read-seams-built.md)
 - [x] **Wire chain-read seams** — hosts [`chain_read_monad.rish`](../tools/chain_read_monad.rish) / [`chain_read_sui.rish`](../tools/chain_read_sui.rish) delegate to POSIX seams; witnesses [`chain_read_monad_witness.rish`](../tools/chain_read_monad_witness.rish) / [`chain_read_sui_witness.rish`](../tools/chain_read_sui_witness.rish); `tools/ensure_grpcurl.sh` bootstraps gitignored `tools/.build/grpcurl` (not in `parity.rish` — network seam)
 - [ ] **"Own MALA L1 / WOV L2" — held at Horizon 3** — implementation discipline narrows implementation-class risk; protocol-design and economic-incentive risk need adversarial scrutiny beyond TAME alone; revisit from mature whole (counsel `212212`, `213312`)
+
+## Six Open Points, Counseled (`221612`)
+
+1. **Settlement-seat crown** — deferred on purpose, not stalled. Both lanes GREEN proves technical viability, not which to lead with; that question only becomes urgent at the mainnet event below, since nothing touches real money while both stay testnet.
+2. **Mainnet treasury custody event** — the moment any real asset is intended to move: needs a separate, explicit word from Kaeden; real scrutiny of `settlement_core.rye`'s verification logic specifically; actual legal/tax/regulatory counsel (outside engineering judgment entirely); recommend a real-asks-on-testnet trial period first.
+3. **SLC-L4 first pass** — **donor-amount privacy** recommended. **ZK ground pinned `223327`:** [`external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) — `sui::groth16` + Circom threshold circuit; zkLogin/Seal/Nautilus out of v1. Lap open still waits on Kaeden's word.
+4. **Realidream viewer UI** — still held; data seams ready removes a future blocker, doesn't touch Pond/Dexter's present gate.
+5. **Parity for network seams** — **do not wire in.** A live-network witness can fail for reasons unrelated to this tree's own code (rate limits, aged-out digests, ordinary flakiness); `chain_read_*_witness.rish` stay on-demand, a second, correctly-distinct test category, matching TigerBeetle's own testing philosophy.
+6. **Grain-sketchbook** — **closed shelf-only** (Kaeden `222852`): [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) is enough; no copy of the archive into this tree. Counsel `221612` had left a local `cp -r` open; Kaeden declined the hold directory.
+
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 
@@ -439,7 +449,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L3 — settlement** — **landed** `20260708.182500` — two-lane witness GREEN; parity **198**; mainnet treasury still gated; settlement asset scored by witness, not crowned in prose. Counsel: [`005512`](../external-research/20260706-005512_settlement-seat-verification-and-verdict.md) · [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md). Scope: [`20260708-182500_slcl3-settlement-rail.md`](../active-designing/20260708-182500_slcl3-settlement-rail.md).
-- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; hammock scope [`20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); SLC-L3 receipt landed `182500`; waits on Sui ZK ground — no code until lap opens
+- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; hammock scope [`20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); SLC-L3 receipt landed `182500`; **ZK ground pinned `223327`** ([`sui::groth16`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) + Circom threshold; zkLogin/Seal/Nautilus out of v1) — **no code until Kaeden's lap word**. **Sequencing `221612`:** donor-amount privacy first (inherits SLC-L3 directly, simpler single-value proof).
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

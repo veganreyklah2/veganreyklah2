@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.224209 | [Kg — ZK study wiring](20260708-224209_kg-zk-study-wiring.md) | Stale TASKS/ROADMAP rows; `223327` pin cited; Composer 2.5 |
+| 20260708.222852 | [Six open points + sketchbook shelf](20260708-222852_six-open-points-sketchbook-shelf.md) | Counsel `221612`; Kaeden shelf-only; Grok 4.5 High first pass |
 | 20260708.220951 | [Go — full summary Jul 8 evening](20260708-220951_go-full-summary-jul8-evening.md) | Arc `605ac30`→`4b7ce20`; four remotes pushed |
 | 20260708.220612 | [Kg — chain-read native hosts](20260708-220612_kg-chain-read-hosts.md) | Host `.rish` delegates to POSIX seams; witnesses split |
 | 20260708.215812 | [Kg — ensure_grpcurl bootstrap](20260708-215812_kg-ensure-grpcurl.md) | `tools/.build/grpcurl`; Sui witness GREEN without system install |

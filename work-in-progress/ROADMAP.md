@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260708.214500` (Realidream chain-read seams — live verified metal `211637`)
-**Last updated:** 2026-07-08 (SLC-L3 settlement witnessed `182500`; `comlink/chain_read_sui.sh` + `chain_read_monad.sh` built; live round trip GREEN on metal — counsel `214500`)
+**Version:** `20260708.223327` (Sui ZK pin for SLC-L4 — `sui::groth16` named; lap still Kaeden-gated)
+**Last updated:** 2026-07-08 (ZK study `223327`; six-point counsel `221612`; sketchbook shelf-only `222852`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -84,7 +84,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **OA-L4** | Reputation-as-fold — applicant consent facts; witness bolt; **landed** `20260706.232812` — parity **167** | OA-L1 + escrow |
 | **OA-L5** | Accept, complete, consent wire — hosted + device; **landed** `20260707` — parity **184** | OA-L3 + wire |
 | **SLC-L3** | Settlement rail — two-lane witness GREEN; three-axis score; **landed** `20260708.182500` — parity **198** | Sui / Monad testnet seams |
-| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); Sui ZK ground + Kaeden's lap word |
+| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); ZK pin [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) (`sui::groth16`); donor-amount first; lap waits on Kaeden |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
