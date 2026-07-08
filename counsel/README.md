@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (open questions final pass `20260707.222812`)
+**Last updated:** 2026-07-08 (every gate sorted `20260708.171712`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260708.171712` | [Every gate sorted](20260708-171712_claude-counsel-every-gate-sorted.md) | Decision briefing — SLC-L3 alone; six small proposals; four non-gates |
 | `20260707.222812` | [Open Questions final pass](20260707-222812_claude-counsel-open-questions-final-pass.md) | Kumara = extraction not graduation; two-backend lean wait; next = Kumara lap |
 | `20260707.223100` | [Open Questions batch two](20260707-223100_claude-counsel-open-questions-batch-two.md) | Silo retired into Brix bonds; Linengrow stays until SLC-L3; keep TASKS.md |
 | `20260707.222500` | [Bron beside Brix — first proposal](20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md) | Bron = values at seams; Brix = composable wholes; graduation rule for `bron/` |
