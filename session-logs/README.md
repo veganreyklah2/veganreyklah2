@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.161300 | [Go — witness-support census](20260708-161300_go-witness-support-census.md) | `161000`–`161200` to four remotes |
+| 20260708.161200 | [Sh-migration tame_style_scan router](20260708-161200_sh-migration-tame-style-scan-router.md) | Mode router native; legacy scripts extracted |
+| 20260708.161100 | [Sh-migration tame_style_long_fn](20260708-161100_sh-migration-tame-style-long-fn.md) | >70 ledger native orchestration; advise repointed |
+| 20260708.161000 | [Sh-migration two_rooms doorway](20260708-161000_sh-migration-two-rooms-doorway.md) | Native orchestration + scan_one seam; parity exact |
 | 20260708.160900 | [Go — doorway + designed_not_built](20260708-160900_go-doorway-designed-not-built.md) | `160700`–`160800` to four remotes |
 | 20260708.160800 | [Sh-migration designed_not_built](20260708-160800_sh-migration-designed-not-built.md) | Chained where native; witness repointed |
 | 20260708.160700 | [Kg — doorway hygiene; map ceiling](20260708-160700_kg-doorway-hygiene-map-ceiling.md) | TWO_ROOMS GREEN; inner-map wall named |

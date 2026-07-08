@@ -1,7 +1,7 @@
 # tame_style_scan_advise.rish — TAME ratchet advisories over the scan roster.
 #
 # Counts use map + length + join + shell arithmetic (for-each cannot accumulate).
-# camelCase and >70-line ledger use grep/awk seams; zero-assert scan is native.
+# camelCase uses grep seam; >70-line ledger via tame_style_long_fn.rish orchestration.
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/tame_style_scan_advise.rish
@@ -54,5 +54,5 @@ let za8 = where za7 as f: f == "tally/maybe.rye" == false
 for-each za8 as f do say "  ${f} (zero assert — review on touch)"
 say "ratchet: zero assert( files remaining = ${length za8} (honest exempt: virtio guests, aurora freestanding, signal handler, font table, thin line editor, exit constants, the dual-of-assert mark itself)"
 
-let long_fn = run ["sh" "tools/fixtures/tame_style_long_fn.sh"]
+let long_fn = run ["rishi/bin/rishi" "run" "tools/fixtures/tame_style_long_fn.rish"]
 say long_fn.out

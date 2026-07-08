@@ -2,7 +2,7 @@
 #
 # File enumeration uses find (list-dir does not recurse). Compound-assert line
 # match still uses grep for the one-line regex; fixed-string bans are native.
-# Advise half remains in tools/fixtures/tame_style_scan.sh.
+# Mode router: tools/tame_style_scan.rish · advise: tools/tame_style_scan_advise.rish
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/tame_style_scan_bans.rish
