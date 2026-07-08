@@ -1,0 +1,13 @@
+# chain_read_monad_witness.rish — Monad chain-read seam witness (live round trip).
+#
+# Run from the repository root:
+#   rishi/bin/rishi run tools/chain_read_monad_witness.rish
+
+let missing = run ["rishi/bin/rishi" "run" "tools/chain_read_monad.rish"]
+assert missing.code == 2 else "chain_read_monad host must refuse empty tx_hash"
+
+let live = run ["rishi/bin/rishi" "run" "tools/chain_read_monad.rish" "0xe343791396cdf92800383401d26bbb5164a61e3a51802eea11471ce247a2c462"]
+assert live.ok else "chain_read_monad live call failed"
+assert live.out contains "chain_read_monad: GREEN" else "chain_read_monad live parse must GREEN"
+
+say "GREEN: chain_read_monad witness — host + POSIX seam + live testnet round trip."

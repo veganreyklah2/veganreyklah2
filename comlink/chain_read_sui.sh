@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # comlink/chain_read_sui.sh — POSIX seam for reading a Sui testnet transaction.
 #
-# Hosted by a future tools/chain_read_sui.rish. Read-only, wallet-free: this
+# Hosted by tools/chain_read_sui.rish. Read-only, wallet-free: this
 # asks Sui's own public ledger what it recorded, the way anyone is entitled
 # to ask, and prints the answer as JSON for a caller to parse.
 #
@@ -24,7 +24,7 @@
 #                   override for a provider's dedicated endpoint if the
 #                   public one rate-limits or restricts testnet access
 #
-# Canonical entry, once wired: rishi/bin/rishi run tools/chain_read_sui.rish
+# Canonical entry: rishi/bin/rishi run tools/chain_read_sui.rish
 
 set -eu
 

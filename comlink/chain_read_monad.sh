@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # comlink/chain_read_monad.sh — POSIX seam for reading a Monad testnet transaction.
 #
-# Hosted by a future tools/chain_read_monad.rish. Read-only, wallet-free: this
+# Hosted by tools/chain_read_monad.rish. Read-only, wallet-free: this
 # asks Monad's own public ledger what it recorded, the way anyone is entitled
 # to ask, and prints the answer as JSON for a caller to parse.
 #
@@ -15,7 +15,7 @@
 #   rpc_url   defaults to Monad's public testnet RPC; override for a paid
 #             endpoint if the public one rate-limits during real use
 #
-# Canonical entry, once wired: rishi/bin/rishi run tools/chain_read_monad.rish
+# Canonical entry: rishi/bin/rishi run tools/chain_read_monad.rish
 
 set -eu
 
