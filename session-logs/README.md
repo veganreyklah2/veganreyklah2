@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.033500 | [Spawn lap 2 go — full summary](20260708-033500_spawn-lap2-go-full-summary.md) | `e8a24ad` — all eleven comlink wire labs shipped |
 | 20260708.033400 | [Spawn lap 2 snapshot wire](20260708-033400_spawn-lap2-snapshot-wire.md) | Last comlink wire lab in Rishi |
 | 20260708.033300 | [Spawn lap 2 OA-L5 wire](20260708-033300_spawn-lap2-oal5-wire.md) | Three-hop accept/complete/consent lab |
 | 20260708.033200 | [Spawn lap 2 subscribe-poll wire](20260708-033200_spawn-lap2-subscribe-poll-wire.md) | Poll-cycle catch-up lab in Rishi |
