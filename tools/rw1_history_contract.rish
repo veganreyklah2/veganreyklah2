@@ -27,7 +27,7 @@ assert add.ok else "add after a session line must succeed"
 let head_after = run ["sh" "-c" "test -f .mantra/HEAD && echo HEADYES"]
 assert head_after.out contains "HEADYES" else "add must bring HEAD into being and advance it"
 
-let exact = run ["sh" "tools/fixtures/rw1_exact_probe.sh"]
+let exact = run ["rishi/bin/rishi" "run" "tools/fixtures/rw1_exact_probe.rish"]
 assert exact.out contains "MATCH" else "a weave blob must return the exact prior-line bytes"
 
 let history = run ["mantra/bin/mantra" "log"]

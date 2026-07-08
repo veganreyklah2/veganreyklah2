@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (settlement counsel `041000` · spawn lap 2 `7dfdf46`)
+**Last updated:** 2026-07-08 (`.sh` census `042112` · settlement counsel `9300d35`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law
@@ -81,6 +81,7 @@
 - [ ] **Gratitude lines (Kaeden's word)** — Hyperfiddle (Dustin Getz), Matklad, Nostr protocol onto the shelf formally; a line for Noah B.'s *Realidream* EP, the name's source
 - [x] **Rishi `spawn` / `wait-for` verb pair — lap 1** — `spawn` returns bounded handle `{id, pid}` (max **8** live); `wait-for` returns `{out, err, code, ok}`; witnesses [`rish_spawn_witness.rish`](../tools/rish_spawn_witness.rish) + [`rish_wait_for_witness.rish`](../tools/rish_wait_for_witness.rish) GREEN; `pond/apps/rishi/main.rye` twinned via hardlink (`60fe5c5`)
 - [x] **Spawn lap 2 — wire-lab `.sh` migration** — all eleven `comlink/run_*_wire_lab.sh` + `aurora/run.sh` delegate to [`tools/comlink_*_wire_lab.rish`](../tools/) and [`tools/aurora_run.rish`](../tools/aurora_run.rish) (`033600`); structural POSIX seam closed; permanent `.sh`: bootstrap + external interpreters only
+- [x] **`.sh` witness-support census (`042112`)** — all 25 remaining `tools/fixtures/*.sh` read; landed [`rs1_args_max.rish`](../tools/fixtures/rs1_args_max.rish) (RS-1 witness GREEN), [`rw1_exact_probe.rish`](../tools/fixtures/rw1_exact_probe.rish) (core logic verified; `rw1_history_contract` repointed); **wall:** `where` needs bound name not complex expr — blocks `opening_lines_scan.sh`, `tame_check_mantra.sh`; regex-dependent stay `.sh`; counsel [`042112`](../counsel/20260708-042112_claude-counsel-sh-migration-wall-found.md)
 - [ ] **Labeled `continue :state` switch (on-touch)** — for Rishi's dispatcher and any future Bron/Tilak parser next time those files open; proven in the vendored stdlib's own tokenizer; never a sweep
 - [ ] **Bond-naming habit (standing)** — future cross-cutting extraction counsels name their bond in so many words, so [`rye-os-in-brix-terms`](../active-designing/20260708-021912_rye-os-in-brix-terms.md)'s descriptor accretes truthfully; Brix's gate unmoved
 

@@ -15,8 +15,8 @@ let oob = run ["rishi/bin/rishi" "run" "tools/fixtures/rs1_args_oob.rish" "only"
 assert (oob.ok == false) else "out-of-range index must fail"
 assert oob.err contains "out of range" else "out-of-range must print a friendly message"
 
-let many = run ["sh" "tools/fixtures/rs1_args_max.sh"]
+let many = run ["rishi/bin/rishi" "run" "tools/fixtures/rs1_args_max.rish"]
 assert (many.ok == false) else "more than max_args must fail"
-assert many.err contains "too many arguments" else "max_args must fail friendly"
+assert many.out contains "too many arguments" else "max_args must fail friendly"
 
 say "GREEN: RS-1 — args pre-bound as .list of .string; .len and [n] work."
