@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.025100 | [Kumara virtio open_asks complete](20260708-025100_kumara-virtio-open-asks-complete.md) | Virtio cluster done; ratchet **4** |
+| 20260708.024900 | [Kumara virtio wire tier 1](20260708-024900_kumara-virtio-wire-tier1.md) | Receipt + batch + snapshot guests; ratchet **73** |
+| 20260708.024800 | [Kumara open_asks go push](20260708-024800_kumara-open-asks-go-push.md) | `ea6146e` on four remotes |
 | 20260708.023630 | [Bundles 36+35 unified](20260708-023630_bundles-36-35-unified.md) | Kumara open_asks at 91 + Realidream lane |
 | 20260708.023255 | [Realidream lane bundle applied](20260708-023255_realidream-lane-bundle-applied.md) | Counsel `021912`; Visual Track; docs-only |
 | 20260708.014800 | [Kumara arc go push](20260708-014800_kumara-arc-go-push.md) | `a086f08` to four remotes |

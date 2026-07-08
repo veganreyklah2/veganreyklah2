@@ -59,11 +59,11 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara product surface complete** — receipt cluster, hosted wire, Aurora bare metal, and the full `open_asks` cluster (base + OA-L2/L3/L5 delivery) repointed and reselftested; ratchet **326 → 91**. **Realidream lane opened** as horizon (`021912`). What remains is almost entirely the virtio guest cluster — its own smaller season. Next real-money decision: **SLC-L3** — gate is Kaeden's (custody).
+**Direction:** Open Questions closed on paper. **Kumara virtio guest cluster complete** — all twenty Ed25519-bearing guests repointed; ratchet **4** (primitive tests in `rye/tests` only). **Realidream lane opened** as horizon (`021912`). Next real-money decision: **SLC-L3** — gate is Kaeden's (custody).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | **Kumara — virtio guest cluster** | **Ready, own season** | ~20 guest tx/rx files, ~91 sites; tier by wire capability, not one sweep |
+| **1** | **Kumara — virtio guest cluster** | **Done** | receipt + batch + snapshot + open_asks guests; OA-L1–L5 device labs GREEN; ratchet **4** |
 | **2** | **SLC-L3 settlement** | Kaeden's gate | Witness proposal ready (`222500`); touches real money on public chain |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Lean: wait** | Wayland hosted GREEN; sovereign framebuffer when Aurora needs a screen |
@@ -71,7 +71,7 @@
 | — | Snapshot lap 4 | Kaeden's hands | — |
 | — | Astrology lane | Declined this season | — |
 
-**Kumara ratchet history:** 326 (opened) → 276 (hosted + Aurora, `a086f08`) → **91** (full `open_asks` product cluster, `015312`) — ratchet excludes `fromEd25519` false positives; virtio guests the last mile.
+**Kumara ratchet history:** 326 (opened) → 276 (hosted + Aurora, `a086f08`) → **91** (`open_asks` product, `015312`) → **73** (virtio wire guests, `024900`) → **4** (virtio open_asks guests complete, `025100`; `rye/tests` primitive witnesses only) — excludes `fromEd25519` false positives.
 
 ## The Realidream Lane (horizon — opened `20260708.021912`)
 
@@ -86,6 +86,8 @@
 - [x] **Kumara extraction — first lap** — `tally/kumara.rye` + symlinks; receipt cluster; `tools/kumara_seed.rish`; counsel `222812` (`dc9ebd8`)
 - [x] **Kumara extraction — expansion arc** — snapshot_export, resin_batch, recall_batch_delivery, wire_format, batch_wire, snapshot_delivery, SLC-L2 delivery, Aurora posted + sealed (`a086f08`)
 - [x] **Kumara extraction — open_asks cluster** — `open_asks.rye` + OA-L2/L3/L5 delivery; ratchet **91**; counsel `015312`
+- [x] **Kumara extraction — virtio wire guests (tier 1)** — `guest_receipt_*`, `guest_batch_*`, `guest_snapshot_*`; slcl2 + batch + snapshot device labs GREEN; ratchet **73**
+- [x] **Kumara extraction — virtio open_asks guests (tier 2)** — fourteen `guest_open_asks_*`; OA-L1–L5 device labs GREEN; virtio cluster complete; ratchet **4**
 
 *(Prior: Open Questions batch two `223100`, settlement refresh `222500`, roadmap synthesis `220912`.)*
 
@@ -441,7 +443,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Bron** — **first proposal filed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams** (facts, policies, receipts); Brix carries **composable system descriptions** (courses, bonds, services). Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Open ruling for Kaeden.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
-- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect; Realidream viewer named as natural second consumer (`021912`). **Kumara (`015312`):** receipt + hosted + Aurora + full `open_asks*` product cluster repointed; Ed25519 ratchet **91** sites / **24** files (excludes `fromEd25519` false positives); virtio guests remain on touch.
+- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect; Realidream viewer named as natural second consumer (`021912`). **Kumara arc complete (`025100`):** product surface + all virtio guests repointed; Ed25519 ratchet **4** (`rye/tests` primitive witnesses only).
 - **Two-backend seam** — **lean `222812`: wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before. *(Taste question fairly Kaeden's.)*
 - **`.sh` POSIX-seam pattern** — **answered** in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) and [`ORGANIZING.md`](../ORGANIZING.md) (counsel `195912`).
 - **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export; stays Mantra aspect.

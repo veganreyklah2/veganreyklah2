@@ -4,11 +4,11 @@ const vn = @import("virtio_net.rye");
 const wf = @import("wire_format.rye");
 const bw = @import("recall_batch_wire.rye");
 const ns = @import("recall_lap1.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var rx: vn.RxQueue = undefined;
 
-const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+const batch_signer_seed = [_]u8{0x61} ** kumara.seed_length;
 
 export fn _start() linksection(".text.init") callconv(.naked) noreturn {
     asm volatile (
@@ -23,7 +23,7 @@ export fn kmain() callconv(.c) noreturn {
     vn.driver_ok();
     rx.kick();
 
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = kumara.keypair_from_seed(&batch_signer_seed);
 
     const n = rx.wait_frame();
     if (n == 0) {

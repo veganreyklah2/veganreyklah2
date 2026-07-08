@@ -5,11 +5,11 @@ const vn = @import("virtio_net.rye");
 const wf = @import("wire_format.rye");
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var rx: vn.RxQueue = undefined;
 
-fn pubkey_hex(pk: Ed25519.PublicKey, out: *[64]u8) void {
+fn pubkey_hex(pk: kumara.PublicKey, out: *[64]u8) void {
     const bytes = pk.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -58,19 +58,19 @@ export fn kmain() callconv(.c) noreturn {
         vn.finish_fail();
     };
 
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const escrow_kp = Ed25519.KeyPair.generateDeterministic(oa.escrow_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const escrow_kp = kumara.keypair_from_seed(&oa.escrow_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
 
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.write_str("oal3l2 device wire: FAIL — release payload decode\n");
         vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, poster_pk) catch {
+    rc.verify_record(sig_buf[0..kumara.signature_length], fact, poster_pk) catch {
         vn.write_str("oal3l2 device wire: FAIL — release verify\n");
         vn.finish_fail();
     };

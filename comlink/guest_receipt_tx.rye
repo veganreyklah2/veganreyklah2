@@ -7,7 +7,7 @@ const vn = @import("virtio_net.rye");
 const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const rc = @import("receipt_core.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var tx: vn.TxQueue = undefined;
 
@@ -23,9 +23,9 @@ export fn kmain() callconv(.c) noreturn {
     tx.init();
     vn.driver_ok();
 
-    const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
+    const kp = kumara.keypair_from_seed(&rc.slcl1_seed);
     const fact = rc.witness_canonical_fact;
-    const sig = kp.sign(fact, null) catch unreachable;
+    const sig = kumara.sign(fact, kp, null);
 
     var payload: [rc.slcl2_payload_header + rc.slcl2_max_fact]u8 = undefined;
     const payload_len = rc.encode_compact_payload(sig, fact, &payload) catch unreachable;

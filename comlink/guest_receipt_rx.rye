@@ -6,7 +6,7 @@
 const vn = @import("virtio_net.rye");
 const wf = @import("wire_format.rye");
 const rc = @import("receipt_core.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var rx: vn.RxQueue = undefined;
 
@@ -42,16 +42,16 @@ export fn kmain() callconv(.c) noreturn {
         vn.finish_fail();
     };
 
-    const kp = Ed25519.KeyPair.generateDeterministic(rc.slcl1_seed) catch unreachable;
+    const kp = kumara.keypair_from_seed(&rc.slcl1_seed);
     const pubkey = kp.public_key;
 
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     var fact_buf: [rc.slcl2_max_fact]u8 = undefined;
     const decoded = rc.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.write_str("slcl2 device wire: FAIL — payload decode\n");
         vn.finish_fail();
     };
-    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact_buf[0..decoded.fact_len], pubkey) catch {
+    rc.verify_record(sig_buf[0..kumara.signature_length], fact_buf[0..decoded.fact_len], pubkey) catch {
         vn.write_str("slcl2 device wire: FAIL — receipt verify\n");
         vn.finish_fail();
     };

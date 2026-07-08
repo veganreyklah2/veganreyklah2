@@ -6,11 +6,11 @@ const wf = @import("wire_format.rye");
 const bw = @import("recall_batch_wire.rye");
 const rb = @import("resin_batch.rye");
 const ns = @import("recall_lap1.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var tx: vn.TxQueue = undefined;
 
-const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+const batch_signer_seed = [_]u8{0x61} ** kumara.seed_length;
 
 fn send_sealed_payload(payload: []const u8) void {
     var scratch: [@intCast(wf.wire_capacity)]u8 = undefined;
@@ -41,7 +41,7 @@ export fn kmain() callconv(.c) noreturn {
     tx.init();
     vn.driver_ok();
 
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = kumara.keypair_from_seed(&batch_signer_seed);
 
     var src: ns.BoltCatalog = .empty();
     ns.BoltCatalog.append_leaf(&src, "peerB", "b", 1, "a.txt", "alpha", "plain-text") catch unreachable;

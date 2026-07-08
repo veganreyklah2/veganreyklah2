@@ -5,11 +5,11 @@ const vn = @import("virtio_net.rye");
 const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const oa = @import("open_asks.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var tx: vn.TxQueue = undefined;
 
-fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: kumara.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -29,7 +29,7 @@ export fn kmain() callconv(.c) noreturn {
     tx.init();
     vn.driver_ok();
 
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     var applicant_hex: [64]u8 = undefined;
     pubkey_hex(applicant_kp, &applicant_hex);
 
@@ -41,7 +41,7 @@ export fn kmain() callconv(.c) noreturn {
     };
     var canonical: [oa.max_oa_fact]u8 = undefined;
     const canonical_len = oa.write_canonical_consent(consent_fields, &canonical) catch unreachable;
-    const sig = applicant_kp.sign(canonical[0..canonical_len], null) catch unreachable;
+    const sig = kumara.sign(canonical[0..canonical_len], applicant_kp, null);
 
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const payload_len = oa.encode_compact_payload(sig, canonical[0..canonical_len], &payload) catch unreachable;

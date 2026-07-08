@@ -8,11 +8,11 @@ const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var rx: vn.RxQueue = undefined;
 
-fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
+fn append_signed(sig: kumara.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = rc.format_log_line(sig, fact, &line) catch unreachable;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
@@ -32,12 +32,12 @@ export fn kmain() callconv(.c) noreturn {
     vn.driver_ok();
     rx.kick();
 
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
 
-    const req_sig = poster_kp.sign(oa.witness_canonical_request, null) catch unreachable;
+    const req_sig = kumara.sign(oa.witness_canonical_request, poster_kp, null);
 
     const n = rx.wait_frame();
     if (n == 0) {
@@ -58,14 +58,14 @@ export fn kmain() callconv(.c) noreturn {
         vn.finish_fail();
     };
 
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.write_str("oal2 device wire: FAIL — application payload decode\n");
         vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
+    rc.verify_record(sig_buf[0..kumara.signature_length], fact, applicant_pk) catch {
         vn.write_str("oal2 device wire: FAIL — application verify\n");
         vn.finish_fail();
     };
@@ -90,7 +90,7 @@ export fn kmain() callconv(.c) noreturn {
         }
     }
 
-    const app_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
+    const app_sig = kumara.Signature.fromBytes(sig_buf[0..kumara.signature_length].*);
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;
     append_signed(req_sig, oa.witness_canonical_request, &log, &log_len);

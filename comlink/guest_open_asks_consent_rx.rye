@@ -8,11 +8,11 @@ const tally_copy = @import("tally_copy.rye");
 const wf = @import("wire_format.rye");
 const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
-const Ed25519 = std.crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 
 var rx: vn.RxQueue = undefined;
 
-fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
+fn pubkey_hex(kp: kumara.KeyPair, out: *[64]u8) void {
     const bytes = kp.public_key.toBytes();
     var i: u32 = 0;
     while (i < 32) : (i += 1) {
@@ -20,7 +20,7 @@ fn pubkey_hex(kp: Ed25519.KeyPair, out: *[64]u8) void {
     }
 }
 
-fn append_signed(sig: Ed25519.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
+fn append_signed(sig: kumara.Signature, fact: []const u8, log: []u8, log_len: *u32) void {
     var line: [oa.max_line_len]u8 = undefined;
     const line_len = rc.format_log_line(sig, fact, &line) catch unreachable;
     tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
@@ -40,8 +40,8 @@ export fn kmain() callconv(.c) noreturn {
     vn.driver_ok();
     rx.kick();
 
-    const poster_kp = Ed25519.KeyPair.generateDeterministic(oa.poster_seed) catch unreachable;
-    const applicant_kp = Ed25519.KeyPair.generateDeterministic(oa.applicant_seed) catch unreachable;
+    const poster_kp = kumara.keypair_from_seed(&oa.poster_seed);
+    const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
     const applicant_pk = applicant_kp.public_key;
     var poster_hex: [64]u8 = undefined;
@@ -68,14 +68,14 @@ export fn kmain() callconv(.c) noreturn {
         vn.finish_fail();
     };
 
-    var sig_buf: [Ed25519.Signature.encoded_length]u8 = undefined;
+    var sig_buf: [kumara.signature_length]u8 = undefined;
     var fact_buf: [oa.max_oa_fact]u8 = undefined;
     const decoded = oa.decode_compact_payload(opened[0..@intCast(opened_len)], &sig_buf, &fact_buf) catch {
         vn.write_str("oal5 device wire: FAIL — consent payload decode\n");
         vn.finish_fail();
     };
     const fact = fact_buf[0..decoded.fact_len];
-    rc.verify_record(sig_buf[0..Ed25519.Signature.encoded_length], fact, applicant_pk) catch {
+    rc.verify_record(sig_buf[0..kumara.signature_length], fact, applicant_pk) catch {
         vn.write_str("oal5 device wire: FAIL — consent verify\n");
         vn.finish_fail();
     };
@@ -104,9 +104,9 @@ export fn kmain() callconv(.c) noreturn {
         vn.finish_fail();
     }
 
-    const consent_sig = Ed25519.Signature.fromBytes(sig_buf[0..Ed25519.Signature.encoded_length].*);
+    const consent_sig = kumara.Signature.fromBytes(sig_buf[0..kumara.signature_length].*);
 
-    const req_sig = poster_kp.sign(oa.witness_canonical_request, null) catch unreachable;
+    const req_sig = kumara.sign(oa.witness_canonical_request, poster_kp, null);
 
     const app_fields = oa.ApplicationFields{
         .applicant = applicant_hex[0..64],
@@ -116,7 +116,7 @@ export fn kmain() callconv(.c) noreturn {
     };
     var canonical_app: [oa.max_oa_fact]u8 = undefined;
     const app_len = oa.write_canonical_application(app_fields, &canonical_app) catch unreachable;
-    const app_sig = applicant_kp.sign(canonical_app[0..app_len], null) catch unreachable;
+    const app_sig = kumara.sign(canonical_app[0..app_len], applicant_kp, null);
 
     const acc_fields = oa.AcceptanceFields{
         .poster = poster_hex[0..64],
@@ -126,7 +126,7 @@ export fn kmain() callconv(.c) noreturn {
     };
     var canonical_acc: [oa.max_oa_fact]u8 = undefined;
     const acc_len = oa.write_canonical_acceptance(acc_fields, &canonical_acc) catch unreachable;
-    const acc_sig = poster_kp.sign(canonical_acc[0..acc_len], null) catch unreachable;
+    const acc_sig = kumara.sign(canonical_acc[0..acc_len], poster_kp, null);
 
     var memo_buf: [128]u8 = undefined;
     var mi: u32 = 0;
@@ -143,7 +143,7 @@ export fn kmain() callconv(.c) noreturn {
     };
     var canonical_pay: [oa.max_oa_fact]u8 = undefined;
     const pay_len = rc.write_canonical_fact(completion_fields, &canonical_pay) catch unreachable;
-    const pay_sig = poster_kp.sign(canonical_pay[0..pay_len], null) catch unreachable;
+    const pay_sig = kumara.sign(canonical_pay[0..pay_len], poster_kp, null);
 
     var log: [oa.max_log_len]u8 = undefined;
     var log_len: u32 = 0;

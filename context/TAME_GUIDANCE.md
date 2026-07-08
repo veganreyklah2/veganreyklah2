@@ -266,7 +266,7 @@ across modules hides the seam where a Kumara keypair signs before a fact enters 
 New code calls `tally/kumara.rye` for deterministic keypair, sign, and verify; elder
 `Ed25519` sites migrate on touch. `tools/tame_style_check.rish` prints the remaining count
 every parity run. Seated at counsel `222812`; first lap `20260707.224101` (receipt cluster);
-ratchet opened at **91** application sites across **24** files (`20260708.015312`) — excludes `fromEd25519` false positives; virtio guests the last mile. Prior: **276** hosted + Aurora (`a086f08`).
+ratchet at **4** application sites (`20260708.025100`) — virtio guest cluster complete; remainder is `rye/tests` primitive witnesses only. Prior: **73** wire guests (`024900`); **91** `open_asks` product cluster (`015312`); **276** hosted + Aurora (`a086f08`).
 sole intentional `Ed25519` block remains inside `tally/kumara.rye`.
 
 ### Named errors

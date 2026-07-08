@@ -8,12 +8,12 @@ const rb = @import("resin_batch.rye");
 const ns = @import("recall_lap1.rye");
 const rbd = @import("recall_beaded.rye");
 const bd = @import("beading.rye");
-const Ed25519 = @import("std").crypto.sign.Ed25519;
+const kumara = @import("kumara.rye");
 const Sha3_256 = @import("std").crypto.hash.sha3.Sha3_256;
 
 var tx: vn.TxQueue = undefined;
 
-const batch_signer_seed = [_]u8{0x61} ** Ed25519.KeyPair.seed_length;
+const batch_signer_seed = [_]u8{0x61} ** kumara.seed_length;
 
 fn digest_hex_of(content: []const u8, out: *[64]u8) void {
     var digest: [32]u8 = undefined;
@@ -62,7 +62,7 @@ export fn kmain() callconv(.c) noreturn {
     tx.init();
     vn.driver_ok();
 
-    const signer = Ed25519.KeyPair.generateDeterministic(batch_signer_seed) catch unreachable;
+    const signer = kumara.keypair_from_seed(&batch_signer_seed);
 
     var src: ns.BoltCatalog = .empty();
     var beads: bd.BeadStore = .empty();
