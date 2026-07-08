@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260708.220951 | [Go — full summary Jul 8 evening](20260708-220951_go-full-summary-jul8-evening.md) | Arc `605ac30`→`4b7ce20`; four remotes pushed |
 | 20260708.220612 | [Kg — chain-read native hosts](20260708-220612_kg-chain-read-hosts.md) | Host `.rish` delegates to POSIX seams; witnesses split |
 | 20260708.215812 | [Kg — ensure_grpcurl bootstrap](20260708-215812_kg-ensure-grpcurl.md) | `tools/.build/grpcurl`; Sui witness GREEN without system install |
 | 20260708.215237 | [Apply chain-read seams bundle 40](20260708-215237_apply-chain-read-seams-bundle40.md) | `214500` seams live-verified; witnesses wired |
