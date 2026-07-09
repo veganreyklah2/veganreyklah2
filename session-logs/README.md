@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225820 | [Go — session-logs archive fold](20260709-225820_go-session-logs-archive-fold.md) | 354 prior-day logs folded; four remotes |
+| 20260709.225751 | [Session-logs archive fold](20260709-225751_session-logs-archive-fold.md) | Today flat; earlier days under archive/ |
 | 20260709.225720 | [Go — pause affirmed](20260709-225720_go-pause-affirmed.md) | Hygiene green; four remotes; rest |
 | 20260709.225711 | [Keep-going — pause affirmed](20260709-225711_keep-going-pause-affirmed.md) | Doorway + identity GREEN; soak holds |
 | 20260709.225650 | [Session close — soak](20260709-225650_session-close-parity-205-soak.md) | Parity **205**; W1/seam B soak; pause |
@@ -81,352 +83,352 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 | 20260709.014227 | [Landscape — bench and what to open](20260709-014227_landscape-bench-what-to-open.md) | Gate map after `51b7c1e`; three paths named |
 | 20260709.013817 | [Go — memcpy hygiene + log backlog](20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |
 | 20260709.012913 | [Apply memcpy mention hygiene bundle 42](20260709-012913_apply-memcpy-mention-hygiene-bundle42.md) | Counsel `011912`; git-signing rule pair; forward-only |
-| 20260708.224900 | [Full summary — late evening](20260708-224900_full-summary-jul8-late-evening.md) | Arc through `de04722`; commits + pushes |
-| 20260708.224627 | [Go — counsel + ZK + sketchbook](20260708-224627_go-counsel-zk-sketchbook.md) | `de04722` to four remotes; bundle 41 shipped |
-| 20260708.224209 | [Kg — ZK study wiring](20260708-224209_kg-zk-study-wiring.md) | Stale TASKS/ROADMAP rows; `223327` pin cited; Composer 2.5 |
-| 20260708.222852 | [Six open points + sketchbook shelf](20260708-222852_six-open-points-sketchbook-shelf.md) | Counsel `221612`; Kaeden shelf-only; Grok 4.5 High first pass |
-| 20260708.220951 | [Go — full summary Jul 8 evening](20260708-220951_go-full-summary-jul8-evening.md) | Arc `605ac30`→`4b7ce20`; four remotes pushed |
-| 20260708.220612 | [Kg — chain-read native hosts](20260708-220612_kg-chain-read-hosts.md) | Host `.rish` delegates to POSIX seams; witnesses split |
-| 20260708.215812 | [Kg — ensure_grpcurl bootstrap](20260708-215812_kg-ensure-grpcurl.md) | `tools/.build/grpcurl`; Sui witness GREEN without system install |
-| 20260708.215237 | [Apply chain-read seams bundle 40](20260708-215237_apply-chain-read-seams-bundle40.md) | `214500` seams live-verified; witnesses wired |
-| 20260708.211637 | [iOS session pull — Claude review brief](20260708-211637_ios-session-claude-review-brief.md) | Pulled `605ac30`; review brief for Claude |
-| 20260708.194500 | [SLC-L4 design hammock](20260708-194500_slcl4-design-hammock.md) | Three ZK passes named; design only; counsel `041000` filed |
-| 20260708.193500 | [Parity 198 cloud GREEN](20260708-193500_parity-198-cloud-green.md) | Full suite GREEN; doorway fix for SLC-L3 hammock |
-| 20260708.183000 | [SLC-L3 settlement witness](20260708-183000_slcl3-settlement-witness.md) | Gate crossed; two lanes GREEN; parity **198** |
-| 20260708.180200 | [Parity 197 cloud GREEN](20260708-180200_parity-197-cloud-green.md) | Full suite ~2m28s; identity stanza included |
-| 20260708.180100 | [Autonomous identity parity](20260708-180100_autonomous-identity-parity.md) | Wired identity witness; GREEN on metal; parity **197** |
-| 20260708.180000 | [Identity check PUBKEYS](20260708-180000_identity-check-pubkeys.md) | Template + context path; counsel `171712` gap closed |
-| 20260708.175200 | [Kaeden six proposals yes](20260708-175200_kaeden-six-proposals-yes.md) | Affirmed all six from counsel `171712` |
-| 20260708.174336 | [Go — four remotes reconciled](20260708-174336_go-four-remotes-reconcile.md) | Parallel histories merged; all four at `a115db3` |
-| 20260708.174300 | [Progress snapshot — counsel](20260708-174300_progress-snapshot-counsel.md) | Pulled `41d468e`; gate-sorted briefing read |
-| 20260708.172100 | [Progress snapshot](20260708-172100_progress-snapshot.md) | Pulled main; landscape read for Kaeden |
-| 20260708.172000 | [Go — counsel every gate sorted](20260708-172000_go-counsel-every-gate-sorted.md) | `171712` counsel to four remotes |
-| 20260708.171900 | [Counsel every gate sorted](20260708-171900_counsel-every-gate-sorted.md) | Filed `171712`; identity_check verified on metal |
-| 20260708.161300 | [Go — witness-support census](20260708-161300_go-witness-support-census.md) | `161000`–`161200` to four remotes |
-| 20260708.161200 | [Sh-migration tame_style_scan router](20260708-161200_sh-migration-tame-style-scan-router.md) | Mode router native; legacy scripts extracted |
-| 20260708.161100 | [Sh-migration tame_style_long_fn](20260708-161100_sh-migration-tame-style-long-fn.md) | >70 ledger native orchestration; advise repointed |
-| 20260708.161000 | [Sh-migration two_rooms doorway](20260708-161000_sh-migration-two-rooms-doorway.md) | Native orchestration + scan_one seam; parity exact |
-| 20260708.160900 | [Go — doorway + designed_not_built](20260708-160900_go-doorway-designed-not-built.md) | `160700`–`160800` to four remotes |
-| 20260708.160800 | [Sh-migration designed_not_built](20260708-160800_sh-migration-designed-not-built.md) | Chained where native; witness repointed |
-| 20260708.160700 | [Kg — doorway hygiene; map ceiling](20260708-160700_kg-doorway-hygiene-map-ceiling.md) | TWO_ROOMS GREEN; inner-map wall named |
-| 20260708.160600 | [Go — identity_shape native](20260708-160600_go-identity-shape.md) | `160500` batch to four remotes |
-| 20260708.160500 | [Sh-migration identity_shape](20260708-160500_sh-migration-identity-shape.md) | PGP shape native; sequential where chain |
-| 20260708.160400 | [Go — sh-migration batch](20260708-160400_go-sh-migration-batch.md) | Six native scans + delegates to four remotes |
-| 20260708.160300 | [Sh-migration chrono_version_scan](20260708-160300_sh-migration-chrono-version.md) | Semver needles native; sweep witness GREEN |
-| 20260708.160200 | [Sh-migration thin delegates](20260708-160200_sh-migration-thin-delegates.md) | Five migrated `.sh` elders delegate to `.rish` |
-| 20260708.160100 | [Sh-migration tame_check_scan](20260708-160100_sh-migration-tame-check-scan.md) | TH-2 global scan native; output matches .sh |
-| 20260708.155500 | [Sh-migration opening-lines + TH-2b](20260708-155500_sh-migration-opening-lines-th2b.md) | Native map+record scans; witnesses GREEN |
-| 20260708.044800 | [Mantra parse_int + RW-1 GREEN](20260708-044800_mantra-parse-int-rw1-green.md) | Symlink seam; exact-probe guard; contract witness passes |
-| 20260708.044200 | [Apply sh-migration bundle 39](20260708-044200_apply-sh-migration-bundle39.md) | RS-1 GREEN; RW-1 repointed; `where` wall documented |
-| 20260708.041000 | [Settlement counsel July refresh](20260708-041000_settlement-counsel-july-refresh.md) | Horizon facts + SLC-L4 shapes; witness unchanged |
-| 20260708.033600 | [Spawn lap 2 aurora complete](20260708-033600_spawn-lap2-aurora-run-complete.md) | Structural POSIX seam closed |
-| 20260708.033500 | [Spawn lap 2 go — full summary](20260708-033500_spawn-lap2-go-full-summary.md) | `e8a24ad` — all eleven comlink wire labs shipped |
-| 20260708.033400 | [Spawn lap 2 snapshot wire](20260708-033400_spawn-lap2-snapshot-wire.md) | Last comlink wire lab in Rishi |
-| 20260708.033300 | [Spawn lap 2 OA-L5 wire](20260708-033300_spawn-lap2-oal5-wire.md) | Three-hop accept/complete/consent lab |
-| 20260708.033200 | [Spawn lap 2 subscribe-poll wire](20260708-033200_spawn-lap2-subscribe-poll-wire.md) | Poll-cycle catch-up lab in Rishi |
-| 20260708.033100 | [Spawn lap 2 catch-up wire](20260708-033100_spawn-lap2-catch-up-wire.md) | Rev2+rev3 four-hop catch-up lab in Rishi |
-| 20260708.033000 | [Spawn lap 2 two-way sync wire](20260708-033000_spawn-lap2-two-way-sync-wire.md) | Four-hop peerB+peerA lab in Rishi |
-| 20260708.032800 | [Spawn lap 2 recall batch wire](20260708-032800_spawn-lap2-recall-batch-wire.md) | NS-L3 batch two-hop lab in Rishi |
-| 20260708.032700 | [Spawn lap 2 recall sync wire](20260708-032700_spawn-lap2-recall-sync-wire.md) | NS-L3 sync two-hop lab in Rishi |
-| 20260708.032500 | [Spawn lap 2 escrow wire](20260708-032500_spawn-lap2-escrow-wire.md) | OA-L3 hold + release lab in Rishi |
-| 20260708.032300 | [Spawn lap 2 open asks wire](20260708-032300_spawn-lap2-open-asks-wire.md) | OA-L2 two-hop lab in native Rishi |
-| 20260708.032200 | [Spawn lap 2 receipt wire](20260708-032200_spawn-lap2-receipt-wire.md) | SLC-L2 receipt lab in native Rishi |
-| 20260708.031800 | [Spawn lap 2 device wire](20260708-031800_spawn-lap2-device-wire.md) | First wire-lab migration to spawn/wait-for |
-| 20260708.031500 | [Spawn / wait-for lap 1](20260708-031500_spawn-wait-for-lap1.md) | `spawn` + `wait-for` witnesses GREEN; `slot.live` fix |
-| 20260708.030500 | [Post-Kumara plans + spawn EP](20260708-030500_post-kumara-plans-spawn-ep.md) | ROADMAP hygiene; spawn apply prompt filed |
-| 20260708.030400 | [What Kaeden needs to decide](20260708-030400_what-kaeden-needs-to-decide.md) | Queue after Kumara arc closure |
-| 20260708.030200 | [Ed25519 ratchet scan precision](20260708-030200_ed25519-ratchet-scan-precision.md) | `publicKeyFromEd25519` excluded; ratchet **0** |
-| 20260708.025300 | [Kaeden Kumara arc verified](20260708-025300_kaeden-kumara-arc-verified.md) | Independent verification; SLC-L3 gate affirmed |
-| 20260708.025200 | [Kumara virtio go push](20260708-025200_kumara-virtio-go-push.md) | `03879e7` on four remotes |
-| 20260708.025100 | [Kumara virtio open_asks complete](20260708-025100_kumara-virtio-open-asks-complete.md) | Virtio cluster done; ratchet **4** |
-| 20260708.024900 | [Kumara virtio wire tier 1](20260708-024900_kumara-virtio-wire-tier1.md) | Receipt + batch + snapshot guests; ratchet **73** |
-| 20260708.024800 | [Kumara open_asks go push](20260708-024800_kumara-open-asks-go-push.md) | `ea6146e` on four remotes |
-| 20260708.023630 | [Bundles 36+35 unified](20260708-023630_bundles-36-35-unified.md) | Kumara open_asks at 91 + Realidream lane |
-| 20260708.023255 | [Realidream lane bundle applied](20260708-023255_realidream-lane-bundle-applied.md) | Counsel `021912`; Visual Track; docs-only |
-| 20260708.014800 | [Kumara arc go push](20260708-014800_kumara-arc-go-push.md) | `a086f08` to four remotes |
-| 20260708.014700 | [Kumara Aurora sealed](20260708-014700_kumara-aurora-sealed.md) | Single-hart sealed stage; ratchet 276 |
-| 20260708.014659 | [Kumara Aurora posted](20260708-014659_kumara-aurora-posted.md) | Two-hart sealed datagram; ratchet 281 |
-| 20260708.014450 | [Kumara SLC-L2 delivery](20260708-014450_kumara-slcl2-delivery.md) | `linengrow/delivery.rye`; ratchet 290 |
-| 20260708.014118 | [Kumara batch wire + snapshot delivery](20260708-014118_kumara-batch-wire-snapshot-delivery.md) | I2 lap 3 + wire type seam; ratchet 297 |
-| 20260708.013951 | [Kumara wire_format migration](20260708-013951_kumara-wire-format.md) | Comlink seal seam; ratchet 303 |
-| 20260708.013826 | [Kumara recall_batch_delivery](20260708-013826_kumara-recall-batch-delivery.md) | NS-L3 delivery repointed; ratchet 310 |
-| 20260708.013657 | [Kumara resin_batch migration](20260708-013657_kumara-resin-batch.md) | NS-L3 frame repointed; ratchet 319 |
-| 20260707.225337 | [Kumara snapshot_export + ratchet](20260707-225337_kumara-snapshot-export-ratchet.md) | Lap 2 migration; Ed25519 ratchet 326 sites |
-| 20260707.224101 | [Kumara extraction first lap](20260707-224101_kumara-extraction-first-lap.md) | `tally/kumara.rye` + receipt cluster; witness in parity |
-| 20260707.223300 | [Open Questions final pass applied](20260707-223300_open-questions-final-pass-applied.md) | Counsel `222812`; Kumara extraction next; two-backend wait |
-| 20260707.223200 | [Evening counsel arc summary](20260707-223200_evening-counsel-arc-summary.md) | Commits, counsel, Open Questions, SLC-L3 standing |
-| 20260707.223115 | [Settlement/Bron commit and push](20260707-223115_settlement-bron-commit-push.md) | `4f7213d` to four remotes |
-| 20260707.223100 | [Open Questions batch two kg](20260707-223100_open-questions-batch-two-kg.md) | Counsel `223100`; Silo/Brix, Linengrow home, TASKS naming |
-| 20260707.222500 | [Open Questions kg — settlement + Bron](20260707-222500_open-questions-settlement-bron-kg.md) | Seat refresh; SLC-L3 witness proposal; Bron first proposal |
-| 20260707.221943 | [Roadmap synthesis counsel applied](20260707-221943_roadmap-synthesis-counsel-applied.md) | Counsel `220912` filed; TASKS + ROADMAP hygiene |
-| 20260707.220256 | [July 7 full-day summary](20260707-220256_july7-full-day-summary.md) | 84 commits; arcs, parity pins, TAME standing, push map |
-| 20260707.215901 | [tame_style_scan advise commit and push](20260707-215901_tame-style-scan-advise-commit-push.md) | `fcd3aa4` to four remotes |
-| 20260707.215726 | [tame_style_scan advise native](20260707-215726_tame-style-scan-advise-native.md) | Advise half wired; selftests; TASKS + TAME_GUIDANCE updated |
-| 20260707.215000 | [`.sh` migration bans commit and push](20260707-215000_sh-migration-bans-commit-push.md) | `a52e5b8` to four remotes |
-| 20260707.214500 | [`.sh` migration — tame_style_scan bans](20260707-214500_sh-migration-tame-style-scan-bans.md) | Native bans.rish; selftest; tame_style_check wired |
-| 20260707.214100 | [Next bench choice counsel filed](20260707-214100_next-bench-choice-counsel-filed.md) | Counsel `214012`; OA wire verified complete; TASKS next-bench table |
-| 20260707.214000 | [TigerBeetle arc capstone commit and push](20260707-214000_tigerbeetle-arc-capstone-commit-push.md) | `4140dd4` to four remotes |
-| 20260707.213700 | [TigerBeetle arc closed counsel filed](20260707-213700_tigerbeetle-arc-closed-counsel-filed.md) | Capstone `213212`; ratchets re-verified zero |
-| 20260707.213500 | [parseInt ratchet commit and push](20260707-213500_parse-int-ratchet-commit-push.md) | `fa546c8` to four remotes |
-| 20260707.213000 | [parseInt ratchet zero](20260707-213000_parse-int-ratchet-zero.md) | Final 4 sites; ratchet 4→0; SLC-1 recall GREEN |
-| 20260707.212500 | [parseInt ratchet — caravan cluster](20260707-212500_parse-int-ratchet-caravan-cluster.md) | 4 sites; ratchet 8→4; caravan witnesses GREEN |
-| 20260707.212000 | [parseInt ratchet — mantra cluster](20260707-212000_parse-int-ratchet-mantra-cluster.md) | 4 sites; ratchet 12→8; snapshot witnesses GREEN |
-| 20260707.211500 | [parse_int adoption commit and push](20260707-211500_parse-int-adoption-commit-push.md) | `fca2a1b` to four remotes |
-| 20260707.211000 | [parse_int adoption counsel 203612](20260707-211000_parse-int-adoption-counsel-203612.md) | tally/parse_int seated; 12-site ratchet; comlink symlink fix; parity GREEN |
-| 20260707.210500 | [Tools snake_case season commit and push](20260707-210500_tools-snake-case-season-commit-push.md) | `062c03a` to four remotes; season closed |
-| 20260707.210000 | [Tools snake_case — enrich Tier 5 complete](20260707-210000_tools-snake-case-enrich-tier5-complete.md) | Final 4 fn; tools census 0; season done |
-| 20260707.205500 | [Tools snake_case — enrich Tier 4](20260707-205500_tools-snake-case-enrich-tier4.md) | 5 fn; orchestrator repoint; census 9→4; witness GREEN |
-| 20260707.205000 | [Tools snake_case — enrich Tier 3](20260707-205000_tools-snake-case-enrich-tier3.md) | 15 fn; census 24→9; enrich witness GREEN |
-| 20260707.204500 | [Tools snake_case — enrich Tier 2](20260707-204500_tools-snake-case-enrich-tier2.md) | 22 fn; census 46→24 |
-| 20260707.204000 | [Tools snake_case — enrich Tier 1](20260707-204000_tools-snake-case-enrich-tier1.md) | 19 fn; census 65→46; enrich witness GREEN |
-| 20260707.203500 | [File enrich migration order counsel](20260707-203500_file-enrich-migration-order-counsel.md) | Counsel `201912` filed; five tiers; orchestrator risk named |
-| 20260707.203000 | [Commit tools snake_case push](20260707-203000_commit-tools-snake-case-push.md) | `7f041a4` on four remotes; 49 fn cleared |
-| 20260707.202500 | [Tools snake_case — session_logs_archive](20260707-202500_tools-snake-case-session-logs-archive.md) | 12 fn cleared; census 77→65; top-3 files done |
-| 20260707.202100 | [Tools snake_case — tame_usize_audit](20260707-202100_tools-snake-case-tame-usize-audit.md) | 18 fn cleared; census 95→77; enrich witness still GREEN |
-| 20260707.201500 | [Tools snake_case — align_session_logs](20260707-201500_tools-snake-case-align-session-logs.md) | 19 fn cleared; tools census 114→95; witness GREEN |
-| 20260707.200900 | [File tools census counsel](20260707-200900_file-tools-census-counsel.md) | Counsel `195912` filed; census verified; POSIX `.sh` seam in guidance |
-| 20260707.195700 | [Commit enrich witness push](20260707-195700_commit-enrich-witness-push.md) | `5d52e20` on four remotes; parity **196** |
-| 20260707.194900 | [Apply enrich witness](20260707-194900_apply-enrich-witness.md) | Zip 32 applied; fixture `work-in-progress/` fix; parity **196** |
-| 20260707.193712 | [enrich_strengthening_docs witness](20260707-193712_enrich-strengthening-docs-witness.md) | Claude bench: third safety-net piece; two-run idempotency |
-| 20260707.193200 | [Commit general expansion push](20260707-193200_commit-general-expansion-push.md) | `6f0e6dc` on four remotes; parity **195** |
-| 20260707.192100 | [Apply general expansion round](20260707-192100_apply-general-expansion-round.md) | Zip 31 applied; parity **195** GREEN; doorway Status repaired |
-| 20260707.185612 | [General expansion round](20260707-185612_general-expansion-round.md) | Claude bench: `maybe`, `no_padding`, bug found, tools safety net 2/3 |
-| 20260707.184500 | [Commit TAME ratchet hygiene push](20260707-184500_commit-tame-ratchet-hygiene-push.md) | `c283049` on four remotes |
-| 20260707.184200 | [TAME ratchet advisory hygiene](20260707-184200_tame-ratchet-advisory-hygiene.md) | @memcpy advisory split; docs refreshed; all ratchets clear |
-| 20260707.183500 | [Commit TB assert density push](20260707-183500_commit-tb-assert-density-push.md) | `a3dda7b` on four remotes |
-| 20260707.183412 | [TB std-prefix + assert density](20260707-183412_tb-std-prefix-assert-density.md) | 28 contract asserts; zero-assert advisory 0; wire witnesses GREEN |
-| 20260707.182000 | [Commit counsel folder push](20260707-182000_commit-counsel-folder-push.md) | `f376bf6` + `2fc3021` on four remotes; counsel/ whitelisted |
-| 20260707.180712 | [Counsel folder reorganization](20260707-180712_counsel-folder-reorganization.md) | 16 files to `counsel/`; ORGANIZING placement test; ~55 path repoints |
-| 20260707.180100 | [Commit Claude counsel rye/src scan](20260707-180100_commit-claude-counsel-rye-scan.md) | `3e30ac5` on four remotes; ratchet 0 without asterisk |
-| 20260707.175312 | [Claude counsel applied — rye/src scan](20260707-175312_claude-counsel-tooling-scope-applied.md) | Counsel filed; rye/src 8 fns; ratchet 0 without asterisk |
-| 20260707.175100 | [Commit mantra + rishi ratchet clear](20260707-175100_commit-mantra-rishi-ratchet-clear.md) | `288daa8` on four remotes; tame advisory 0 |
-| 20260707.175000 | [Rishi snake_case — ratchet clear](20260707-175000_rishi-snake-case-ratchet-clear.md) | camelCase 58→0 in scan dirs; SLC-1 + RW witnesses GREEN |
-| 20260707.174713 | [Commit brushstroke bundle + mantra/src kg](20260707-174713_commit-brushstroke-mantra-src-kg.md) | `32e7244` on four remotes; camelCase 86→58 |
-| 20260707.174440 | [wayland_seed snake_case](20260707-174440_wayland-seed-snake-case.md) | camelCase 142→86; SLC-2a + RW-2 surface witnesses GREEN |
-| 20260707.174217 | [Commit foundation bundle + window_input/skate_grid kg](20260707-174217_commit-foundation-pond-brushstroke-kg.md) | `b0bba53` on four remotes; camelCase 150→142 |
-| 20260707.173844 | [tally + aurora snake_case](20260707-173844_tally-aurora-snake-case.md) | camelCase 178→150; foundation_seeds + aurora QEMU GREEN |
-| 20260707.173634 | [Commit caravan bundle + virtio_net snake_case](20260707-173634_commit-caravan-virtio-net-snake-case.md) | `4eb515b` on four remotes; camelCase 206→178 |
-| 20260707.173432 | [caravan supervisor cluster snake_case](20260707-173432_caravan-supervisor-snake-case.md) | camelCase 234→206; caravan seeds/capabilities/restart GREEN |
-| 20260707.173238 | [Commit recall bundle + by_mark/tablecloth kg](20260707-173238_commit-recall-bundle-by-mark-kg.md) | `76442ef` on four remotes; camelCase 242→234 |
-| 20260707.173003 | [recall_two_way_sync + beading + snapshot_export snake_case](20260707-173003_recall-two-way-beading-snapshot-snake-case.md) | camelCase 284→242; two-way/beading/snapshot witnesses GREEN |
-| 20260707.172758 | [recall_batch + snapshot delivery snake_case](20260707-172758_recall-batch-snapshot-delivery-snake-case.md) | camelCase 324→284; batch_wire + snapshot_wire GREEN |
-| 20260707.172621 | [recall delivery modules snake_case](20260707-172621_recall-delivery-modules-snake-case.md) | camelCase 402→324; sync/catch-up/2way/subscribe wire witnesses GREEN |
-| 20260707.172437 | [recall_batch_wire snake_case](20260707-172437_recall-batch-wire-snake-case.md) | camelCase 410→402; batch_wire + resin_batch GREEN |
-| 20260707.172139 | [recall_sync_wire + recall_catch_up snake_case](20260707-172139_recall-sync-wire-catch-up-snake-case.md) | camelCase 421→410; sync/catch-up wire witnesses GREEN |
-| 20260707.171844 | [receipt + resin_batch + recall_lap1 snake_case](20260707-171844_receipt-resin-recall-lap1-snake-case.md) | camelCase 462→421; recall cluster witnesses GREEN |
-| 20260707.171312 | [receipt + resin_batch snake_case](20260707-171312_receipt-resin-batch-snake-case.md) | camelCase 462→447; SLC-L1 + resin_batch GREEN |
-| 20260707.171212 | [receipt_core commit and push](20260707-171212_receipt-core-commit-push.md) | `51ad20c` on all four remotes |
-| 20260707.170612 | [receipt_core snake_case](20260707-170612_receipt-core-snake-case.md) | camelCase 476→462; SLC-L2 + OA-L1 GREEN |
-| 20260707.170512 | [open_asks commit and push](20260707-170512_open-asks-commit-push.md) | `7ef7d0a` on all four remotes |
-| 20260707.170412 | [open_asks snake_case](20260707-170412_open-asks-snake-case.md) | camelCase 535→476; OA-L1–L5 witnesses GREEN |
-| 20260707.170212 | [Comlink wire commit and push](20260707-170212_comlink-wire-commit-push.md) | `d895bab` on all four remotes; camelCase 584→535 |
-| 20260707.165312 | [Comlink wire snake_case](20260707-165312_comlink-wire-snake-case.md) | camelCase 584→535; wire_format + guests |
-| 20260707.165212 | [Linengrow delivery commit and push](20260707-165212_linengrow-delivery-commit-push.md) | `b05a4fd` on all four remotes; camelCase 605→584 |
-| 20260707.165012 | [Linengrow delivery cluster snake_case](20260707-165012_oa3-escrow-delivery-snake-case.md) | camelCase 605→584; OA-L3 + SLC-L2 witnesses GREEN |
-| 20260707.164812 | [OA-L2 delivery snake_case](20260707-164812_oa-l2-delivery-snake-case.md) | camelCase 622→605; OA-L2 witness GREEN |
-| 20260707.164712 | [Tidy rules commit and push](20260707-164712_tidy-rules-commit-push.md) | `2b0b07a` on all four remotes |
-| 20260707.164612 | [Tidy rules and supervisor snake_case](20260707-164612_tidy-rules-and-supervisor-snake-case.md) | Agent rules + Claude brief; camelCase 627→622 |
-| 20260707.164412 | [OA-L5 delivery snake_case](20260707-164412_oa5-delivery-snake-case.md) | camelCase 654→627; OA-L5 witness GREEN |
-| 20260707.164312 | [Snake_case commit and push](20260707-164312_snake-case-commit-push.md) | `f55ccd8` on all four remotes; camelCase 692→654 |
-| 20260707.163712 | [Drawn terminal snake_case](20260707-163712_drawn-terminal-snake-case.md) | camelCase 671→654; Pond witnesses GREEN |
-| 20260707.163412 | [Subscribe poll snake_case](20260707-163412_subscribe-poll-snake-case.md) | camelCase ratchet 692→671; caravan + mantra witnesses GREEN |
-| 20260707.163112 | [Four-file ratchet commit and push](20260707-163112_four-file-ratchet-commit-push.md) | `1a49e8b` on all four remotes; >70 ledger clear |
-| 20260707.162712 | [Drawn terminal runLive split](20260707-162712_drawn-terminal-runlive-split.md) | `runLive` under 70 lines; >70 ratchet clear |
-| 20260707.162412 | [Subscribe poll selftest split](20260707-162412_subscribe-poll-selftest-split.md) | `recall_subscribe_poll` selftest under 70 lines |
-| 20260707.162112 | [Caravan supervisor split](20260707-162112_caravan-supervisor-split.md) | `runSupervisor` under 70 lines; five caravan witnesses GREEN |
-| 20260707.161812 | [OA-L5 wire verify split](20260707-161812_oa5-wire-verify-split.md) | `selftestOa5VerifyWireLegs` split; lap5 clear of >70 |
-| 20260707.161512 | [open_asks ratchet commit push](20260707-161512_open-asks-ratchet-commit-push.md) | `fce83dd`; four remotes |
-| 20260707.161112 | [open_asks 70-line ratchet](20260707-161112_open-asks-append-fold-splits.md) | Folds, append helpers, OA-L2/L5 selftest splits |
-| 20260707.160812 | [open_asks fold splits commit push](20260707-160812_open-asks-fold-splits-commit-push.md) | `a60cc7c`; four remotes |
-| 20260707.160312 | [open_asks fold splits](20260707-160312_open-asks-fold-splits.md) | Fold handlers + OA-L1 selftest under 70 lines |
-| 20260707.160012 | [Selftest splits commit push](20260707-160012_selftest-splits-commit-push.md) | `1444d46`; four remotes |
-| 20260707.155812 | [Selftest 70-line splits](20260707-155812_selftest-70-line-splits.md) | `recall_beaded` + OA-L4 reputation selftests split |
-| 20260707.155512 | [Parity 191 commit push](20260707-155512_parity-191-commit-push.md) | `9b8be13`; four remotes |
-| 20260707.155312 | [Parity 191 copy ratchet](20260707-155312_parity-191-copy-ratchet.md) | Full suite GREEN; TASKS/ROADMAP/TAME pinned **191** |
-| 20260707.154812 | [Copy ratchet commit push](20260707-154812_copy-ratchet-commit-push.md) | Bundle `adb46e9`; four remotes |
-| 20260707.154512 | [Linengrow copy ratchet](20260707-154512_linengrow-copy-ratchet.md) | OA + receipt stack; ratchet **25→1** (canonical `copy.rye` only) |
-| 20260707.154412 | [Beading copy ratchet](20260707-154412_beading-copy-ratchet.md) | `beading` + `recall_beaded`; ratchet **46→25** |
-| 20260707.154112 | [Wire modules copy ratchet](20260707-154112_wire-modules-copy-ratchet.md) | Four canonical wire modules; ratchet **78→46** |
-| 20260707.153812 | [Comlink guests copy ratchet](20260707-153812_comlink-guests-copy-ratchet.md) | 23 virtio guests; ratchet **101→78** |
-| 20260707.141712 | [Snapshot export copy ratchet](20260707-141712_snapshot-export-copy-ratchet.md) | Ten sites in `snapshot_export.rye`; ratchet **111→101** |
-| 20260707.140812 | [Delivery copy ratchet turn](20260707-140812_delivery-copy-ratchet-turn.md) | Eleven sites on five wire delivery files; ratchet **121→111** |
-| 20260707.140512 | [TigerBeetle alignment commit and push](20260707-140512_tigerbeetle-alignment-commit-push.md) | `9941c7f` on four remotes; parity **190** |
-| 20260707.053212 | [TigerBeetle alignment and Radiant pass](20260707-053212_tigerbeetle-alignment-and-radiant-pass.md) | `copy_disjoint` law + `tame_style_check` gate; parity **190** |
-| 20260707.052912 | [Host mirror commit and push](20260707-052912_host-mirror-commit-push.md) | `2860d6a` on four remotes; parity **188** |
-| 20260707.052212 | [Caravan host mirror under supervision](20260707-052212_caravan-host-mirror-supervision.md) | Counsel `044112` ring 4; mirror + supervisor together; parity **188** |
-| 20260707.051512 | [Snapshot lap 3 device wire](20260707-051512_snapshot-lap3-device-wire.md) | Virtio guests **15567**/**15568**; lap 3 complete on both substrates |
-| 20260707.051012 | [Caravan source-crash recovery](20260707-051012_caravan-source-crash-recovery.md) | Rings 1–2 of counsel `044112`; source poll + footgun; parity **187** |
-| 20260707.044512 | [Caravan witness-stop footgun](20260707-044512_caravan-witness-stop-footgun.md) | Counsel order committed; `CARAVAN_WITNESS_MODE` gate; parity **186** |
-| 20260707.043012 | [Snapshot lap 3 hosted wire](20260707-043012_snapshot-lap3-hosted-wire.md) | Batch wire per revision group; ports **38490**/**38491**; parity **185** |
-| 20260707.041812 | [OA-L5 device wire](20260707-041812_oal5-device-wire.md) | Virtio guests for accept/complete/consent; lab GREEN; parity **184** |
-| 20260707.041012 | [Parity GREEN hygiene commit](20260707-041012_parity-green-hygiene-commit.md) | I6 + OA-L5 committed; poll demo hang fixed; doorway counsel Status; parity **184** GREEN |
-| 20260707.032512 | [I6 Tilak hygiene and OA-L5 wire](20260707-032512_i6-tilak-and-oal5-wire.md) | Amber manifest Tilak export; open-asks accept/complete/consent on Comlink wire; parity **184** |
-| 20260707.031312 | [Bench orientation and dependencies](20260707-031312_bench-orientation-and-dependencies.md) | Where we are; dependency map; recommendations after Weave ruling |
-| 20260707.030412 | [Weave slice ruling](20260707-030412_weave-slice-ruling.md) | Kaeden: sovereign slice = I2 catalog export; prose closure |
-| 20260707.025212 | [Weave/Brix/Pond counsel intake](20260707-025212_weave-brix-pond-counsel-intake.md) | Hold snapshot horizon items; custody gate affirmed |
-| 20260707.024712 | [Snapshot horizon lap 2](20260707-024712_snapshot-horizon-lap2.md) | Bundle prefixes, SHA3-512 head record, continuity fact; parity **182** |
-| 20260707.024012 | [Poll interval lap 1](20260707-024012_poll-interval-lap1.md) | `sleepIntervalNs` at cycle boundary; parity **181** |
-| 20260707.023812 | [OA-L4 escrow-release fold fix](20260707-023812_oal4-escrow-release-fold-fix.md) | MALA graduation on hold; reputation fold reads escrow-release |
-| 20260707.023312 | [Claude handoff rings 179 + I2 180](20260707-023312_claude-handoff-rings179-i2-180.md) | Full summary; tip 98264e7; four remotes aligned |
-| 20260707.021712 | [Snapshot export lap 1 parity 180](20260707-021712_snapshot-export-lap1-parity180.md) | I2 catalog export reuses batch grammar; replay witness GREEN |
-| 20260707.021212 | [SIGTERM ring parity 179](20260707-021212_sigterm-ring-parity179.md) | Signal → atomic flag → sentinel; counsel 021012 ring 4 |
-| 20260707.020712 | [Claude handoff graceful stop 178](20260707-020712_claude-handoff-graceful-stop-parity178.md) | Full summary; a30a52c pushed four remotes |
-| 20260707.020512 | [Graceful stop rings parity 178](20260707-020512_graceful-stop-rings-parity178.md) | Sentinel at poll boundary; supervisor restart-on-cycle_ok; rings 2–3 |
-| 20260707.015312 | [Exit-code ring parity 177](20260707-015312_exit-code-ring-parity177.md) | cycle_ok restarts; stop code 8; counsel 014212 ring 1 |
-| 20260707.014512 | [Claude handoff synthesis + scheduling](20260707-014512_claude-handoff-synthesis-and-scheduling.md) | Full summary; parity 176; two commits pushed |
-| 20260707.014212 | [Production scheduling lap 1](20260707-014212_production-scheduling-lap1.md) | Caravan supervises subscribe poll wire; parity 176 |
-| 20260707.013812 | [Synthesis recommendations applied](20260707-013812_synthesis-recommendations-applied.md) | Canon seated; batch fix; Caravan service ring; commit |
-| 20260707.011812 | [Apply synthesis bundle](20260707-011812_apply-synthesis-bundle.md) | Batch rebind fix applied; reference specs proposed; batch witness GREEN |
-| 20260707.011412 | [Claude state analysis and reference pass](20260707-011412_claude-state-analysis-and-reference-pass.md) | Batch rebind-race fix; namespace reference spec + module index proposed |
-| 20260707.010712 | [Claude handoff Q3 complete](20260707-010712_claude-handoff-q3-complete.md) | Full summary for Claude; parity 175 pushed four remotes |
-| 20260707.010212 | [Tablecloth query parity 175](20260707-010212_tablecloth-query-parity175.md) | Q3 namespace list closed; optional-field catalog filter |
-| 20260707.005412 | [Commit push parity 173–174](20260707-005412_commit-push-parity173-174.md) | Subscribe arc complete; counsel 004712; four remotes |
-| 20260707.005012 | [Outer subscribe poll wire parity 174](20260707-005012_outer-subscribe-poll-wire-parity174.md) | Subscribe arc complete through wire; Q3 item 3 done |
-| 20260707.004812 | [Outer subscribe poll parity 173](20260707-004812_outer-subscribe-poll-parity173.md) | Bounded poll cycles; host mirror = pair list |
-| 20260707.004512 | [Commit push parity 170–172](20260707-004512_commit-push-parity170-172.md) | Two-way wire + catch-up inner ring; four remotes |
-| 20260707.002012 | [Catch-up wire parity 172](20260707-002012_catch-up-wire-parity172.md) | Wire loop until empty; hosted + device |
-| 20260707.001712 | [Catch-up in-process parity 171](20260707-001712_catch-up-in-process-parity171.md) | Subscribe counsel revisited; bounded inner loop |
-| 20260707.001512 | [Two-way sync wire parity 170](20260707-001512_two-way-sync-wire-parity170.md) | Hosted + device; exchange twice roles reversed |
-| 20260707.001212 | [Commit push two-way sync parity 169](20260707-001212_commit-push-two-way-sync-parity169.md) | Counsel + in-process lap committed `e317fe1`; four remotes |
-| 20260707.000212 | [Two-way sync in-process parity 169](20260707-000212_two-way-sync-in-process-parity169.md) | Counsel seated; symmetric syncRevision; subscribe split |
-| 20260707.000012 | [Marks-on-read parity 168](20260707-000012_marks-on-read-parity168.md) | recallByMark by Tilak; path hint disambiguates |
-| 20260706.235812 | [stones→resins path rename](20260706-235812_stones-to-resins-path-rename.md) | Amber ring-1 export paths; golden unchanged; parity 167 |
-| 20260706.235512 | [Zip 59 cut](20260706-235512_zip59-cut.md) | OA-L4 parity 167 archive at `e995322` |
-| 20260706.235512 | [OA-L4 reputation parity 167](20260706-235512_oal4-reputation-parity167.md) | Consent-before-counting fold |
-| 20260706.234212 | [Zip 58 ruling seated](20260706-234212_zip58-ruling-seated.md) | OA-L4 leads; Edit-5 released; foundations affirmed |
-| 20260706.190812 | [Zip 58 numbering seated](20260706-190812_zip58-numbering-seated.md) | Kaeden correction; relay cut and four-remote push complete |
-| 20260706.190644 | [Zip 58 cut](20260706-190644_zip58-cut.md) | NS-L3 handoff archive; relay to Claude |
-| 20260706.190644 | [Claude handoff NS-L3 complete](20260706-190312_claude-handoff-ns-l3-complete.md) | zip **58** packet; OA-L4 vs MALA questions for Claude |
-| 20260706.185512 | [Device beaded wire + compass](20260706-185512_device-beaded-wire-compass.md) | virtio beaded witness GREEN; compass brief landed UDT |
-| 20260706.185112 | [Witness bolt, compass, beaded wire](20260706-185112_witness-bolt-compass-beaded-wire.md) | Witness bolt brief; compass proposal; beaded batch wire hosted GREEN |
-| 20260706.184801 | [Multi-frame batch chunking](20260706-184801_multi-frame-batch-chunking.md) | kind 0x04 chunk wire; 660 B witness; virtio multi-packet fix; parity 166 GREEN |
-| 20260706.183844 | [Device batch wire](20260706-183844_device-batch-wire.md) | virtio guests 15563/15564; batch witness hosted + device; parity 166 GREEN |
-| 20260706.182500 | [Recall beaded + batch wire](20260706-182500_recall-beaded-batch-wire.md) | files (27) + Rio expansion: recall_beaded 165, hosted batch wire 166 |
-| 20260706.180300 | [Apply beading bundle](20260706-180300_apply-beading-bundle.md) | Cursor applied files (26).zip; parity 164 GREEN; four remotes pushed |
-| 20260706.175412 | [NS-L3 beading 3w-3b](20260706-175412_ns-l3-3w-3b-beading.md) | Three rings: fixed-size, content-defined, bounded verify; bead-index Tilak |
-| 20260706.042612 | [NS-L3 resin-batch frame (3w-3a)](20260706-042612_ns-l3-resin-batch.md) | Signed header+manifest, payloads prove by digest; many resins one signature; second sync zero bytes; parity 163 |
-| 20260706.042100 | [NS-L3 wire lap 2 device](20260706-042100_ns-l3-wire-lap2-device.md) | Virtio sync request/response on 15561/15562; witness hosted+device GREEN |
-| 20260706.041800 | [NS-L3 wire lap 1 hosted](20260706-041800_ns-l3-wire-lap1-hosted.md) | Hosted sync request/response under Comlink seal; parity 162 GREEN |
-| 20260706.041012 | [NS-L3 wire carriage counsel](20260706-041012_ns-l3-wire-carriage-counsel.md) | Anchor 041012 seated — hosted-first wire sync, 340 B frame vs 512 B resin, beading follow-on; awaits Kaeden proceed |
-| 20260706.040700 | [Apply anchor 035512 NS-L3](20260706-040700_apply-anchor-035512-nsl3.md) | Cursor applied NS-L3 sync logic bundle; parity 161 GREEN on metal; four remotes pushed |
-| 20260706.035512 | [NS-L3 bolt sync (logic)](20260706-035512_ns-l3-sync-lap1.md) | Sync a bolt revision between peers; have-already/need-resin; tampered refused whole; recall identical on both; parity 161 |
-| 20260706.034900 | [Namespace arc commits pushes summary](20260706-034900_commits-pushes-namespace-arc-summary.md) | Confirmed four remotes at 08b3d70; full arc summary through parity 160 |
-| 20260706.033400 | [NS-L2 write revision](20260706-033400_nsl2-write-revision.md) | Append revision 2; revision 1 recall unchanged; duplicate refused; parity 160 GREEN |
-| 20260706.033200 | [Stone resin forward hygiene](20260706-033200_stone-resin-forward-hygiene.md) | Retired stone as content-addressed unit word across forward docs; need-resin lanes; parity 159 unchanged |
-| 20260706.032700 | [Recall bolt vocabulary NS-L1](20260706-032700_recall-bolt-vocabulary-nsl1.md) | Kaeden seated recall, bolt, Mantra role; stone retired; NS-L1 local recall GREEN; parity 159 |
-| 20260706.031200 | [Commits pushes anchor 030412 summary](20260706-031200_commits-pushes-anchor-030412-summary.md) | Confirmed four remotes at 09b8ea3; full summary with parked questions for Kaeden |
-| 20260706.030412 | [Anchor carriage and namespace round](20260706-030412_anchor-carriage-namespace-round.md) | Verified twelve-file bundle at parent 2252109; doorway GREEN; stray 025112 log removed; parity 158 unchanged |
-| 20260706.023912 | [Clay namespace research and design](20260706-023912_clay-namespace-research-and-design.md) | Clay studied; the referential namespace recommended as a Mantra role expansion; read and bolt words parked; docs only, parity 158 |
-| 20260706.022912 | [Ames, Vere, libuv study and carriage silo](20260706-022912_ames-libuv-research-and-silo.md) | Vere still rides libuv; study-not-link verdict; carriage first-principles siloed to foundations; docs only, parity 158 |
-| 20260706.021400 | [OA-L3 escrow lap 2](20260706-021400_oal3-escrow-lap2.md) | Hold and release under Comlink seal — hosted UDP + device wire; wire_capacity 528; parity 158 GREEN |
-| 20260706.014612 | [Zip 52 OA-L3 parity 158 landed](20260706-014612_zip52-oal3-parity-158-landed.md) | Cursor applied Claude bundle; Nyasa escrow; full parity GREEN on metal |
-| 20260706.014512 | [OA-L3 escrow lap 1](20260706-014512_oal3-escrow-lap1.md) | Nyasa escrow hold and release on one log; welcome and five unwelcome paths GREEN; parity 158 |
-| 20260706.013512 | [Claude OA-L3 bench prepared](20260706-013512_claude-oal3-bench-prepared.md) | Runnable bench packet for parity 158; vocabulary gate |
-| 20260706.013512 | [Claude OA-L3 escrow handoff](20260706-013512_claude-oal3-escrow-handoff-summary.md) | Full handoff summary and paste-ready intake for Claude |
-| 20260706.013200 | [Zip 51 OA-L3 counsel applied](20260706-013200_zip51-oal3-counsel-applied.md) | Cursor applied Claude bundle; settlement softenings; gitignore hygiene |
-| 20260706.013012 | [Open questions answered](20260706-013012_open-questions-answered.md) | Claude OA-L3 escrow counsel; softenings proposed; parity 157 reported from metal |
-| 20260706.012800 | [Open Asks arc commit-push summary](20260706-012800_commit-push-open-asks-arc-summary.md) | Full handoff summary OA-L1→OA-L2; four remotes at tip 3f23c73 |
-| 20260706.012412 | [OA-L2 application device wire](20260706-012412_oa-l2-application-device-wire.md) | Second virtio hop; request + application lab GREEN; fold applied on poster |
-| 20260706.012112 | [OA-L2 device wire](20260706-012112_oa-l2-device-wire.md) | Sealed request over virtio; max_frame 538; lap2 witness hosted + device GREEN |
-| 20260706.011800 | [OA-L2 parity 157 landed](20260706-011800_oa-l2-parity-157-landed.md) | Cross-party ask delivery under Comlink seal; Kaeden edge affirmed; full parity GREEN |
-| 20260706.011512 | [OA-L2 scope seated](20260706-011512_oa-l2-scope-seated.md) | Cross-party delivery hammock brief; doorway GREEN; awaits Kaeden edge |
-| 20260706.011200 | [OA-L1 parity 156 landed](20260706-011200_oa-l1-parity-156-landed.md) | Closed ask loop on SLC-L1 spine; full parity GREEN; four-remote push |
-| 20260706.005612 | [Settlement zip 50 applied](20260706-005612_settlement-zip50-applied.md) | Cursor applied Claude bundle; doorway fix; parity 155 spot-check GREEN |
-| 20260706.005512 | [Settlement verdict and Radiant audit](20260706-005512_settlement-verdict-and-radiant-audit.md) | Zip 50 — Sui pivot verified; settlement counsel seated; softenings proposed |
-| 20260706.003112 | [Commits, pushes, parity 155 summary](20260706-003112_commits-pushes-parity-155-summary.md) | `71018bd` to four remotes; Claude handoff for parity 154–155 arc |
-| 20260706.002912 | [Open Asks hammock scope](20260706-002912_open-asks-hammock-scope.md) | OA-L1 closed loop scoped on SLC-L1 spine; witness named; awaits Kaeden edge |
-| 20260706.001512 | [SLC-L2 device wire variant](20260706-001512_slcl2-device-wire-variant.md) | Receipt guests over virtio; max_frame 512; slcl2 witness extended; parity 155 GREEN |
-| 20260706.000812 | [SLC-L2 sealed delivery — parity 155](20260706-000812_slcl2-sealed-delivery-parity-155.md) | Receipt over hosted Comlink; receipt_core extract; sealMessage; full parity GREEN |
-| 20260705.235412 | [Device wire dependencies and parity 154](20260705-235412_device-wire-dependencies-parity-154.md) | ER stack survey to Caravan/Tally; device wire witness wired; full parity GREEN |
-| 20260705.233012 | [Device wire sub-laps 2–3 landed](20260705-233012_device-wire-sublaps-2-3-landed.md) | Claude ruling applied; pattern + sealed laps GREEN; layout.ld boot fix |
-| 20260705.231512 | [Commits and pushes — sub-lap 2 scaffolding](20260705-231512_commits-pushes-sub-lap2.md) | `b862be2` pushed to four remotes |
-| 20260705.231300 | [Virtio TX counsel handoff for Claude](20260705-231300_virtio-tx-counsel-handoff.md) | Counsel brief seated; six ruled questions; repro for Claude on metal |
-| 20260705.230100 | [Device wire sub-lap 2 climb and grain check](20260705-230100_device-wire-sub-lap2-grain.md) | Sub-lap 2 scaffolding; virtio TX blocked on transitional MMIO; grain verified; sub-lap 1 GREEN |
-| 20260705.225412 | [Comlink device wire sub-lap 1](20260705-225412_comlink-device-wire-sub-lap1.md) | wire_format extracted; fixture selftest GREEN |
-| 20260705.224612 | [Full summary — commits and pushes](20260705-224612_full-summary-commits-pushes.md) | Evening arc from silo bench through parity 153 |
-| 20260705.203144 | [Vocabulary ground — parity 153](20260705-203144_vocabulary-ground-parity-153.md) | TWO_ROOMS seated; gloss spec; doorway witness; season opens |
-| 20260705.202301 | [Zip 47 — silo deepening complete](20260705-202301_zip47-silo-deepening-complete.md) | `70f15cd` — git archive; bench arc sealed |
-| 20260705.202122 | [Fidelity soften — thirteen studies](20260705-202122_fidelity-soften-thirteen-studies.md) | Gratitude softened on #24–#36; fidelity item closed |
-| 20260705.195720 | [Silo deepening full summary](20260705-195720_silo-deepening-full-summary.md) | Commits, pushes, and bench state for Kaeden |
-| 20260705.195609 | [Movement 2 pass two and Movement 3 recompose](20260705-195609_movement2-pass-two-m3-recompose.md) | Nine Brooke chapters thinned; composed reading synced |
-| 20260705.195800 | [Movement 2 dissociation pass one](20260705-195800_movement2-dissociation-pass-one.md) | Studies #55–#57; six Brooke chapters cite shelf |
-| 20260705.195200 | [Files 18 intake — Movement 1 batches 1–5](20260705-195200_files18-movement1-batches-landed.md) | Nested zips extracted; studies #24–#54 indexed |
-| 20260705.194600 | [Gates open — rising-signs and Chitra revised](20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved before files 18 land |
-| 20260705.193800 | [Silo batch-6 intake — anchor 190812](20260705-193800_silo-batch6-intake.md) | Five homed studies seated; b1–b5 pending; two gates held |
-| 20260705.182612 | [Silo deepening — Movement 1, batch 5 (Sun, nodes, and craft)](20260705-182612_silo-deepening-movement1-batch5-sun-nodes-and-craft.md) | Studies #42–#47 — Sun in the 12th and 7th, the nodes on two axes, and two craft teachings |
-| 20260705.180812 | [Silo deepening — Movement 1, batch 4 (nakshatra cluster)](20260705-180812_silo-deepening-movement1-batch4-nakshatra-cluster.md) | Studies #37–#41 — Ardra and the Rudra–Shiva arc, siloed from real transcripts |
-| 20260705.174412 | [Handoff v7 — silo deepening, window close](20260705-174412_handoff-v7-and-close.md) | v7 prompt written; studies #24–#36 batches 1–3 bundled |
-| 20260705.173112 | [Silo deepening — Movement 1, batch 3](20260705-173112_silo-deepening-movement1-batch3.md) | Studies #33–#36 — the Moon cluster from Vic DiCara |
-| 20260705.172312 | [Silo deepening — Movement 1, batch 2](20260705-172312_silo-deepening-movement1-batch2.md) | Studies #29–#32 — the Venus cycle from Parisa Yazdi |
-| 20260705.171012 | [Silo deepening — Movement 1, batch 1](20260705-171012_silo-deepening-movement1-batch1.md) | Studies #24–#28 from six Vic talks; Chitra #22 deepened on bench |
-| 20260705.162200 | [Commit push Claude transcript bench](20260705-162200_commit-push-claude-transcript-bench.md) | Runnable bench + handoff at tip; four remotes pushed |
-| 20260705.161900 | [Claude silo deepening handoff summary](20260705-161900_claude-silo-deepening-handoff-summary.md) | Runnable Claude prompt + granular handoff for transcript bench |
-| 20260705.161700 | [Intake acknowledged — silo deepening landed](20260705-161700_intake-acknowledged.md) | Anchor `160712` received; fresh bench routed for transcript intake |
-| 20260705.161212 | [Silo deepening commit push](20260705-161212_silo-deepening-commit-push.md) | `24a5d35` — #22–#23 and recursion v1 at tip |
-| 20260705.161012 | [Silo deepening intake — Cursor](20260705-161012_silo-deepening-intake-cursor.md) | `files (17).zip` at `5c322fd`; studies #22–#23, recursion v1, staged log |
-| 20260705.160712 | [Silo deepening staged](20260705-160712_silo-deepening-staged.md) | Recursion v1 for deepening bench; exemplars #22–#23; recomposition rite defined |
-| 20260705.053212 | [Zip 45 commit and push](20260705-053212_zip45-commit-and-push.md) | `f134d8b` — shelf, sweeps, method, study #21; zip 45 at tip |
-| 20260705.050012 | [Zip 45 astrology progress intake](20260705-050012_zip45-astrology-progress-intake.md) | Shelf, Makara/Chitra/steward sweeps, method, study #21, wheel v4 |
-| 20260705.045812 | [Divine mother teacher](20260705-045812_divine-mother-teacher.md) | Steward vocabulary healed; teacher feminized; study harmonized |
-| 20260705.045012 | [Brihaspati and atelier](20260705-045012_brihaspati-and-atelier.md) | Rye astrology atelier silo; SVG generation method |
-| 20260705.043312 | [Makara sweep](20260705-043312_makara-sweep.md) | Beast corrected; Rudrani strength woven |
-| 20260705.042512 | [Final reading canon](20260705-042512_final-reading-canon.md) | Canon structure ruled; Chitra seated |
-| 20260705.041312 | [Privacy audit clean](20260705-041312_privacy-audit-clean.md) | Working tree placeholders only; history pickaxe awaits pairs |
-| 20260705.031812 | [Wheel v4 and Brooke shelf](20260705-031812_wheel-v4-and-brooke-shelf.md) | Diurnal method + shelf counsel |
-| 20260705.024812 | [Verification pass parity green](20260705-024812_verification-pass-parity-green.md) | Parity GREEN at `d30d39a`; cast seam skipped (no pyswisseph); tree clean |
-| 20260705.024412 | [Brooke round commit push zip 44](20260705-024412_brooke-round-commit-push-zip44.md) | `755cc75` — round sealed; cast_a_chart.rish; zip 44 at tip |
-| 20260705.022512 | [Zip 43 Brooke round intake — Cursor](20260705-022512_zip43-brooke-round-intake-cursor.md) | `files (15).zip` at `38893b7`; batches A–C; fifteen chapter silos; yonder + template |
-| 20260705.022512 | [Final unification — Brooke round](20260705-022512_final-astrology-unification.md) | Claude bench: bundle split, template derived, gate silent; vessel cut |
-| 20260704.221612 | [Astrology reorg commit and push](20260704-221612_astrology-reorg-commit-and-push.md) | `d6e7848` — topic folders land; four remotes at tip |
-| 20260704.221412 | [Astrology topic folder reorg](20260704-221412_astrology-topic-folder-reorg.md) | Studies `00`–`20` into nakshatras, planets-in-signs, planet-in-house, …; templates/readings split |
-| 20260704.221112 | [Rye-core arc commit and push](20260704-221112_rye-core-arc-commit-and-push.md) | `239557f` landed — silo, ER pair, archive tooling, parity hygiene; four remotes |
-| 20260704.220812 | [Checkpoint — rye-core grain, roadmap, tasks](20260704-220812_checkpoint-rye-core-grain-roadmap-tasks.md) | Self-contained progress save — full Jul 4 arc, lap grain, parity ladder, zip 41/42 counsel, TASKS, uncommitted batch |
-| 20260704.215012 | [Radiant pass — Rye core arc](20260704-215012_radiant-pass-rye-core-arc.md) | Radiant sweep of silo, ER pair, archive comments; Last updated `215012` |
-| 20260704.214600 | [Archive preview/fold + parity wire](20260704-214600_archive-preview-fold-parity.md) | Split read/mutate subcommands; archive witness joins parity — all GREEN |
-| 20260704.214400 | [Silo accrete subject + horizon](20260704-214400_silo-accrete-subject-horizon.md) | Merged `214100` insights into `211012` silo in place — explicit subject, horizon, catalog column |
-| 20260704.214100 | [Subject-oriented programming ER](20260704-214100_subject-oriented-programming-er.md) | Urbit SOP applied to Rye core+shell — horizon, poke/peek, lap ladder |
-| 20260704.211200 | [Rye cores ER and silo](20260704-211200_rye-cores-er-and-silo.md) | Gratitude survey + siloed two-layer lap law (core proves, shell witnesses) |
-| 20260704.203100 | [Session logs archive — Rye + Rishi witnesses](20260704-203100_session-logs-archive-rishi-witnesses.md) | Archive fold in `.rye` with selftest; Rishi witness proves idempotency |
-| 20260704.202900 | [Session logs archive fold](20260704-202900_session-logs-archive-fold.md) | First archive run — 500 logs into 12 day folders; tool fixed via shell fixture |
-| 20260704.194300 | [Zip 42 unified intake — Cursor](20260704-194300_zip42-unified-intake-cursor.md) | Packet `files (14).zip` intook at `43584d8`; parity 152 re-verified; README rows + RTAC updated |
-| 20260704.185412 | [Unified packet cut](20260704-185412_unified-packet-cut.md) | Whole sitting gathered into one vessel; prior lane and zips superseded pre-intake; consolidated rows authoritative. |
-| 20260704.185412 | [Ends-first orientation counsel](20260704-185412_ends-first-orientation-counsel.md) | Lens counsel shipped; spot-check green on tree stamps; names parked; gates untouched. |
-| 20260704.181612 | [Zip 42 — 152 pinned, zero-copy counsel](20260704-181612_zip42-152-zero-copy-counsel.md) | Comment verified at 43584d8; 152 GREEN from bare (116+36); dnb count=0; counsel ER + Cursor lane shipped additions-only. |
-| 20260704.181612 | [Fresh bench intake — zip 42 awaited](20260704-181612_fresh-bench-intake-zip42-awaited.md) | Fresh bench seated; handoff packet's parent mark verified verbatim at 43584d8; zip 42 absent, so raise and counsel wait at its door; toolchain pre-staged (ziglang 0.16.0, wayland/xkbcommon headers); voice-name parked for Kaeden's word. |
-| 20260704.181800 | [Commit and push zip 41 arc](20260704-181800_commit-push-zip41-cellar-vessel.md) | `b4b7103` to four remotes — intake, cellar/vessel, zero-copy |
-| 20260704.181512 | [Cursor session journey — composition](20260704-181512_cursor-session-journey-composition.md) | Full Jul 3–4 thread: parity 152, vocabulary, zip 41, open threads |
-| 20260704.181012 | [Zero-copy resins expanding prompt](20260704-181012_zero-copy-resins-expanding-prompt.md) | Claude counsel prompt — snapshot, Comlink batch, WIP refresh |
-| 20260704.180612 | [Zero-copy resins research](20260704-180612_zero-copy-resins-sovereign-snapshot.md) | ER essay — TigerBeetle batching, sovereign snapshot, Urbit concepts clean-room |
-| 20260704.174800 | [Cellar and vessel vocabulary infusion](20260704-174800_cellar-vessel-vocabulary-infusion.md) | Amber = cellar software, Amphora = vessel software — LEXICON pair table and doc sweep |
-| 20260704.031812 | [Zip 41 intake — Cursor](20260704-031812_zip41-intake-cursor.md) | Packet intook; RTAC and indexes updated; both benches 152 |
-| 20260704.031812 | [Zip 41 at 152 + eight asks](20260704-031812_zip41-152-eight-asks.md) | Trio green from bare at 2eb346b — parity 152 on second metal; orientation + consolidated A1–A8 counsel |
-| 20260704.031200 | [Zip 41 commit, push, Amphora brief](20260704-031200_zip41-commit-push-amphora-brief.md) | zip **41** · four remotes · RTAC Amphora exchange for Claude |
-| 20260704.031000 | [Canonical refinement counsel](20260704-031000_canonical-refinement-counsel.md) | four-lap plan to seat glosses and sweep loose *canonical* |
-| 20260704.030800 | [Canonical vocabulary audit](20260704-030800_canonical-vocabulary-audit.md) | nine senses of *canonical* mapped to grain; tensions named |
-| 20260704.030600 | [Diet writings archived](20260704-030600_diet-writings-archived.md) | itinerary primer canonical; diet ER moved to archive |
-| 20260704.030300 | [Itinerary retires diet — audit](20260704-030300_itinerary-retires-diet-audit.md) | full forward-facing sweep; v4 prompt; ER primer rewrite |
-| 20260704.030200 | [Radiant pass — Jul 3 cluster](20260704-030200_radiant-pass-jul3-cluster.md) | second lap on harvest + counsel essays; forward links |
-| 20260704.030000 | [Radiant pass — recent writings](20260704-030000_radiant-pass-recent-writings.md) | vocabulary cluster + TWO_ROOMS; surgical Radiant freshen |
-| 20260704.025600 | [Claims × happy zone × grain](20260704-025600_claims-happy-zone-grain.md) | braid essay — grain strands shape claims; happy zone habitats |
-| 20260704.024900 | [Claim vocabulary essay](20260704-024900_claim-essay.md) | bounded proposition; LEXICON row |
-| 20260704.024800 | [Checkable room essay](20260704-024800_checkable-room-essay.md) | definition of checkable register |
-| 20260704.024600 | [Two rooms metal-path research](20260704-024600_two-rooms-metal-path.md) | programs mapped to two registers |
-| 20260704.023800 | [Parity 152 + not-advice](20260704-023800_parity-152-not-advice.md) | full suite GREEN; ORGANIZING filing rule; RTAC pins |
-| 20260704.023700 | [Foundations grain pointer](20260704-023700_foundations-grain-pointer.md) | README index to active-designing grain brief |
-| 20260704.023600 | [Grain doc — silo into foundations?](20260704-023600_grain-filing-counsel.md) | Kaeden asked filing; counsel: no duplicate silo |
-| 20260704.023400 | [Sameness grain seated](20260704-023400_sameness-grain-seated.md) | Kaeden affirmed; tenth grain strand |
-| 20260704.023100 | [Fold canon + sameness silo](20260704-023100_fold-canon-sameness-silo.md) | stack fold map; interface affirm; foundations sameness companion |
-| 20260704.023000 | [Fold canon — interface-as-a-fold check](20260704-023000_fold-canon-interface-check.md) | Kaeden asked currency of fold documentation and stamp policy |
-| 20260704.022400 | [SLC-L1 check-in explained](20260704-022400_slcl1-check-in-explained.md) | Kaeden asked what gates remain after parity 152 |
-| 20260704.021800 | [SLC-L1 receipt — parity 152](20260704-021800_slcl1-receipt-witness-152.md) | linengrow/receipt.rye + slcl1_receipt.rish; full parity GREEN |
-| 20260704.020800 | [Toll seated + crossing witness — 151](20260704-020800_toll-crossing-witness-151.md) | one-word-one-gate spec; toll deltas; crossing_manifest_seed at parity 151 |
-| 20260704.020100 | [Lap vocabulary — Rishi sweep](20260704-020100_lap-vocabulary-rish-sweep.md) | Kaeden chose lap; word-boundary sweep + audit GREEN |
-| 20260704.011512 | [Zip 40 intake — gate counsel seated](20260704-011512_zip40-intake-gate-counsel.md) | Claude relay seated; both benches 150; park lifted; memo awaits Kaeden for deltas |
-| 20260704.004912 | [Zip 40 green + gate counsel](20260704-004912_zip40-green-gate-counsel.md) | Claude bench: v5 raise green from bare; gate-unify memo delivered |
-| 20260704.005312 | [Push to four remotes](20260704-005312_push-four-remotes.md) | `4ab032d` on origin · github · gp36-codeberg · gp36-github |
-| 20260704.004912 | [Itinerary, gates, commit and push](20260704-004912_itinerary-gates-commit-push.md) | Vocabulary batch committed; Claude gate-unify counsel staged in RTAC |
-| 20260704.002912 | [Gates, arms, Urbit lineage](20260704-002912_gates-arms-urbit-lineage.md) | ER survey: three gate families vs Hoon homonyms; Zig sufficient; no Urbit gate/arm in Rye |
-| 20260704.001012 | [Itinerary seated](20260704-001012_itinerary-seated.md) | Kaeden chose itinerary over diet; stops · journey's pause · off-route in LEXICON and RTAC |
+| 20260708.224900 | [Full summary — late evening](archive/20260708/20260708-224900_full-summary-jul8-late-evening.md) | Arc through `de04722`; commits + pushes |
+| 20260708.224627 | [Go — counsel + ZK + sketchbook](archive/20260708/20260708-224627_go-counsel-zk-sketchbook.md) | `de04722` to four remotes; bundle 41 shipped |
+| 20260708.224209 | [Kg — ZK study wiring](archive/20260708/20260708-224209_kg-zk-study-wiring.md) | Stale TASKS/ROADMAP rows; `223327` pin cited; Composer 2.5 |
+| 20260708.222852 | [Six open points + sketchbook shelf](archive/20260708/20260708-222852_six-open-points-sketchbook-shelf.md) | Counsel `221612`; Kaeden shelf-only; Grok 4.5 High first pass |
+| 20260708.220951 | [Go — full summary Jul 8 evening](archive/20260708/20260708-220951_go-full-summary-jul8-evening.md) | Arc `605ac30`→`4b7ce20`; four remotes pushed |
+| 20260708.220612 | [Kg — chain-read native hosts](archive/20260708/20260708-220612_kg-chain-read-hosts.md) | Host `.rish` delegates to POSIX seams; witnesses split |
+| 20260708.215812 | [Kg — ensure_grpcurl bootstrap](archive/20260708/20260708-215812_kg-ensure-grpcurl.md) | `tools/.build/grpcurl`; Sui witness GREEN without system install |
+| 20260708.215237 | [Apply chain-read seams bundle 40](archive/20260708/20260708-215237_apply-chain-read-seams-bundle40.md) | `214500` seams live-verified; witnesses wired |
+| 20260708.211637 | [iOS session pull — Claude review brief](archive/20260708/20260708-211637_ios-session-claude-review-brief.md) | Pulled `605ac30`; review brief for Claude |
+| 20260708.194500 | [SLC-L4 design hammock](archive/20260708/20260708-194500_slcl4-design-hammock.md) | Three ZK passes named; design only; counsel `041000` filed |
+| 20260708.193500 | [Parity 198 cloud GREEN](archive/20260708/20260708-193500_parity-198-cloud-green.md) | Full suite GREEN; doorway fix for SLC-L3 hammock |
+| 20260708.183000 | [SLC-L3 settlement witness](archive/20260708/20260708-183000_slcl3-settlement-witness.md) | Gate crossed; two lanes GREEN; parity **198** |
+| 20260708.180200 | [Parity 197 cloud GREEN](archive/20260708/20260708-180200_parity-197-cloud-green.md) | Full suite ~2m28s; identity stanza included |
+| 20260708.180100 | [Autonomous identity parity](archive/20260708/20260708-180100_autonomous-identity-parity.md) | Wired identity witness; GREEN on metal; parity **197** |
+| 20260708.180000 | [Identity check PUBKEYS](archive/20260708/20260708-180000_identity-check-pubkeys.md) | Template + context path; counsel `171712` gap closed |
+| 20260708.175200 | [Kaeden six proposals yes](archive/20260708/20260708-175200_kaeden-six-proposals-yes.md) | Affirmed all six from counsel `171712` |
+| 20260708.174336 | [Go — four remotes reconciled](archive/20260708/20260708-174336_go-four-remotes-reconcile.md) | Parallel histories merged; all four at `a115db3` |
+| 20260708.174300 | [Progress snapshot — counsel](archive/20260708/20260708-174300_progress-snapshot-counsel.md) | Pulled `41d468e`; gate-sorted briefing read |
+| 20260708.172100 | [Progress snapshot](archive/20260708/20260708-172100_progress-snapshot.md) | Pulled main; landscape read for Kaeden |
+| 20260708.172000 | [Go — counsel every gate sorted](archive/20260708/20260708-172000_go-counsel-every-gate-sorted.md) | `171712` counsel to four remotes |
+| 20260708.171900 | [Counsel every gate sorted](archive/20260708/20260708-171900_counsel-every-gate-sorted.md) | Filed `171712`; identity_check verified on metal |
+| 20260708.161300 | [Go — witness-support census](archive/20260708/20260708-161300_go-witness-support-census.md) | `161000`–`161200` to four remotes |
+| 20260708.161200 | [Sh-migration tame_style_scan router](archive/20260708/20260708-161200_sh-migration-tame-style-scan-router.md) | Mode router native; legacy scripts extracted |
+| 20260708.161100 | [Sh-migration tame_style_long_fn](archive/20260708/20260708-161100_sh-migration-tame-style-long-fn.md) | >70 ledger native orchestration; advise repointed |
+| 20260708.161000 | [Sh-migration two_rooms doorway](archive/20260708/20260708-161000_sh-migration-two-rooms-doorway.md) | Native orchestration + scan_one seam; parity exact |
+| 20260708.160900 | [Go — doorway + designed_not_built](archive/20260708/20260708-160900_go-doorway-designed-not-built.md) | `160700`–`160800` to four remotes |
+| 20260708.160800 | [Sh-migration designed_not_built](archive/20260708/20260708-160800_sh-migration-designed-not-built.md) | Chained where native; witness repointed |
+| 20260708.160700 | [Kg — doorway hygiene; map ceiling](archive/20260708/20260708-160700_kg-doorway-hygiene-map-ceiling.md) | TWO_ROOMS GREEN; inner-map wall named |
+| 20260708.160600 | [Go — identity_shape native](archive/20260708/20260708-160600_go-identity-shape.md) | `160500` batch to four remotes |
+| 20260708.160500 | [Sh-migration identity_shape](archive/20260708/20260708-160500_sh-migration-identity-shape.md) | PGP shape native; sequential where chain |
+| 20260708.160400 | [Go — sh-migration batch](archive/20260708/20260708-160400_go-sh-migration-batch.md) | Six native scans + delegates to four remotes |
+| 20260708.160300 | [Sh-migration chrono_version_scan](archive/20260708/20260708-160300_sh-migration-chrono-version.md) | Semver needles native; sweep witness GREEN |
+| 20260708.160200 | [Sh-migration thin delegates](archive/20260708/20260708-160200_sh-migration-thin-delegates.md) | Five migrated `.sh` elders delegate to `.rish` |
+| 20260708.160100 | [Sh-migration tame_check_scan](archive/20260708/20260708-160100_sh-migration-tame-check-scan.md) | TH-2 global scan native; output matches .sh |
+| 20260708.155500 | [Sh-migration opening-lines + TH-2b](archive/20260708/20260708-155500_sh-migration-opening-lines-th2b.md) | Native map+record scans; witnesses GREEN |
+| 20260708.044800 | [Mantra parse_int + RW-1 GREEN](archive/20260708/20260708-044800_mantra-parse-int-rw1-green.md) | Symlink seam; exact-probe guard; contract witness passes |
+| 20260708.044200 | [Apply sh-migration bundle 39](archive/20260708/20260708-044200_apply-sh-migration-bundle39.md) | RS-1 GREEN; RW-1 repointed; `where` wall documented |
+| 20260708.041000 | [Settlement counsel July refresh](archive/20260708/20260708-041000_settlement-counsel-july-refresh.md) | Horizon facts + SLC-L4 shapes; witness unchanged |
+| 20260708.033600 | [Spawn lap 2 aurora complete](archive/20260708/20260708-033600_spawn-lap2-aurora-run-complete.md) | Structural POSIX seam closed |
+| 20260708.033500 | [Spawn lap 2 go — full summary](archive/20260708/20260708-033500_spawn-lap2-go-full-summary.md) | `e8a24ad` — all eleven comlink wire labs shipped |
+| 20260708.033400 | [Spawn lap 2 snapshot wire](archive/20260708/20260708-033400_spawn-lap2-snapshot-wire.md) | Last comlink wire lab in Rishi |
+| 20260708.033300 | [Spawn lap 2 OA-L5 wire](archive/20260708/20260708-033300_spawn-lap2-oal5-wire.md) | Three-hop accept/complete/consent lab |
+| 20260708.033200 | [Spawn lap 2 subscribe-poll wire](archive/20260708/20260708-033200_spawn-lap2-subscribe-poll-wire.md) | Poll-cycle catch-up lab in Rishi |
+| 20260708.033100 | [Spawn lap 2 catch-up wire](archive/20260708/20260708-033100_spawn-lap2-catch-up-wire.md) | Rev2+rev3 four-hop catch-up lab in Rishi |
+| 20260708.033000 | [Spawn lap 2 two-way sync wire](archive/20260708/20260708-033000_spawn-lap2-two-way-sync-wire.md) | Four-hop peerB+peerA lab in Rishi |
+| 20260708.032800 | [Spawn lap 2 recall batch wire](archive/20260708/20260708-032800_spawn-lap2-recall-batch-wire.md) | NS-L3 batch two-hop lab in Rishi |
+| 20260708.032700 | [Spawn lap 2 recall sync wire](archive/20260708/20260708-032700_spawn-lap2-recall-sync-wire.md) | NS-L3 sync two-hop lab in Rishi |
+| 20260708.032500 | [Spawn lap 2 escrow wire](archive/20260708/20260708-032500_spawn-lap2-escrow-wire.md) | OA-L3 hold + release lab in Rishi |
+| 20260708.032300 | [Spawn lap 2 open asks wire](archive/20260708/20260708-032300_spawn-lap2-open-asks-wire.md) | OA-L2 two-hop lab in native Rishi |
+| 20260708.032200 | [Spawn lap 2 receipt wire](archive/20260708/20260708-032200_spawn-lap2-receipt-wire.md) | SLC-L2 receipt lab in native Rishi |
+| 20260708.031800 | [Spawn lap 2 device wire](archive/20260708/20260708-031800_spawn-lap2-device-wire.md) | First wire-lab migration to spawn/wait-for |
+| 20260708.031500 | [Spawn / wait-for lap 1](archive/20260708/20260708-031500_spawn-wait-for-lap1.md) | `spawn` + `wait-for` witnesses GREEN; `slot.live` fix |
+| 20260708.030500 | [Post-Kumara plans + spawn EP](archive/20260708/20260708-030500_post-kumara-plans-spawn-ep.md) | ROADMAP hygiene; spawn apply prompt filed |
+| 20260708.030400 | [What Kaeden needs to decide](archive/20260708/20260708-030400_what-kaeden-needs-to-decide.md) | Queue after Kumara arc closure |
+| 20260708.030200 | [Ed25519 ratchet scan precision](archive/20260708/20260708-030200_ed25519-ratchet-scan-precision.md) | `publicKeyFromEd25519` excluded; ratchet **0** |
+| 20260708.025300 | [Kaeden Kumara arc verified](archive/20260708/20260708-025300_kaeden-kumara-arc-verified.md) | Independent verification; SLC-L3 gate affirmed |
+| 20260708.025200 | [Kumara virtio go push](archive/20260708/20260708-025200_kumara-virtio-go-push.md) | `03879e7` on four remotes |
+| 20260708.025100 | [Kumara virtio open_asks complete](archive/20260708/20260708-025100_kumara-virtio-open-asks-complete.md) | Virtio cluster done; ratchet **4** |
+| 20260708.024900 | [Kumara virtio wire tier 1](archive/20260708/20260708-024900_kumara-virtio-wire-tier1.md) | Receipt + batch + snapshot guests; ratchet **73** |
+| 20260708.024800 | [Kumara open_asks go push](archive/20260708/20260708-024800_kumara-open-asks-go-push.md) | `ea6146e` on four remotes |
+| 20260708.023630 | [Bundles 36+35 unified](archive/20260708/20260708-023630_bundles-36-35-unified.md) | Kumara open_asks at 91 + Realidream lane |
+| 20260708.023255 | [Realidream lane bundle applied](archive/20260708/20260708-023255_realidream-lane-bundle-applied.md) | Counsel `021912`; Visual Track; docs-only |
+| 20260708.014800 | [Kumara arc go push](archive/20260708/20260708-014800_kumara-arc-go-push.md) | `a086f08` to four remotes |
+| 20260708.014700 | [Kumara Aurora sealed](archive/20260708/20260708-014700_kumara-aurora-sealed.md) | Single-hart sealed stage; ratchet 276 |
+| 20260708.014659 | [Kumara Aurora posted](archive/20260708/20260708-014659_kumara-aurora-posted.md) | Two-hart sealed datagram; ratchet 281 |
+| 20260708.014450 | [Kumara SLC-L2 delivery](archive/20260708/20260708-014450_kumara-slcl2-delivery.md) | `linengrow/delivery.rye`; ratchet 290 |
+| 20260708.014118 | [Kumara batch wire + snapshot delivery](archive/20260708/20260708-014118_kumara-batch-wire-snapshot-delivery.md) | I2 lap 3 + wire type seam; ratchet 297 |
+| 20260708.013951 | [Kumara wire_format migration](archive/20260708/20260708-013951_kumara-wire-format.md) | Comlink seal seam; ratchet 303 |
+| 20260708.013826 | [Kumara recall_batch_delivery](archive/20260708/20260708-013826_kumara-recall-batch-delivery.md) | NS-L3 delivery repointed; ratchet 310 |
+| 20260708.013657 | [Kumara resin_batch migration](archive/20260708/20260708-013657_kumara-resin-batch.md) | NS-L3 frame repointed; ratchet 319 |
+| 20260707.225337 | [Kumara snapshot_export + ratchet](archive/20260707/20260707-225337_kumara-snapshot-export-ratchet.md) | Lap 2 migration; Ed25519 ratchet 326 sites |
+| 20260707.224101 | [Kumara extraction first lap](archive/20260707/20260707-224101_kumara-extraction-first-lap.md) | `tally/kumara.rye` + receipt cluster; witness in parity |
+| 20260707.223300 | [Open Questions final pass applied](archive/20260707/20260707-223300_open-questions-final-pass-applied.md) | Counsel `222812`; Kumara extraction next; two-backend wait |
+| 20260707.223200 | [Evening counsel arc summary](archive/20260707/20260707-223200_evening-counsel-arc-summary.md) | Commits, counsel, Open Questions, SLC-L3 standing |
+| 20260707.223115 | [Settlement/Bron commit and push](archive/20260707/20260707-223115_settlement-bron-commit-push.md) | `4f7213d` to four remotes |
+| 20260707.223100 | [Open Questions batch two kg](archive/20260707/20260707-223100_open-questions-batch-two-kg.md) | Counsel `223100`; Silo/Brix, Linengrow home, TASKS naming |
+| 20260707.222500 | [Open Questions kg — settlement + Bron](archive/20260707/20260707-222500_open-questions-settlement-bron-kg.md) | Seat refresh; SLC-L3 witness proposal; Bron first proposal |
+| 20260707.221943 | [Roadmap synthesis counsel applied](archive/20260707/20260707-221943_roadmap-synthesis-counsel-applied.md) | Counsel `220912` filed; TASKS + ROADMAP hygiene |
+| 20260707.220256 | [July 7 full-day summary](archive/20260707/20260707-220256_july7-full-day-summary.md) | 84 commits; arcs, parity pins, TAME standing, push map |
+| 20260707.215901 | [tame_style_scan advise commit and push](archive/20260707/20260707-215901_tame-style-scan-advise-commit-push.md) | `fcd3aa4` to four remotes |
+| 20260707.215726 | [tame_style_scan advise native](archive/20260707/20260707-215726_tame-style-scan-advise-native.md) | Advise half wired; selftests; TASKS + TAME_GUIDANCE updated |
+| 20260707.215000 | [`.sh` migration bans commit and push](archive/20260707/20260707-215000_sh-migration-bans-commit-push.md) | `a52e5b8` to four remotes |
+| 20260707.214500 | [`.sh` migration — tame_style_scan bans](archive/20260707/20260707-214500_sh-migration-tame-style-scan-bans.md) | Native bans.rish; selftest; tame_style_check wired |
+| 20260707.214100 | [Next bench choice counsel filed](archive/20260707/20260707-214100_next-bench-choice-counsel-filed.md) | Counsel `214012`; OA wire verified complete; TASKS next-bench table |
+| 20260707.214000 | [TigerBeetle arc capstone commit and push](archive/20260707/20260707-214000_tigerbeetle-arc-capstone-commit-push.md) | `4140dd4` to four remotes |
+| 20260707.213700 | [TigerBeetle arc closed counsel filed](archive/20260707/20260707-213700_tigerbeetle-arc-closed-counsel-filed.md) | Capstone `213212`; ratchets re-verified zero |
+| 20260707.213500 | [parseInt ratchet commit and push](archive/20260707/20260707-213500_parse-int-ratchet-commit-push.md) | `fa546c8` to four remotes |
+| 20260707.213000 | [parseInt ratchet zero](archive/20260707/20260707-213000_parse-int-ratchet-zero.md) | Final 4 sites; ratchet 4→0; SLC-1 recall GREEN |
+| 20260707.212500 | [parseInt ratchet — caravan cluster](archive/20260707/20260707-212500_parse-int-ratchet-caravan-cluster.md) | 4 sites; ratchet 8→4; caravan witnesses GREEN |
+| 20260707.212000 | [parseInt ratchet — mantra cluster](archive/20260707/20260707-212000_parse-int-ratchet-mantra-cluster.md) | 4 sites; ratchet 12→8; snapshot witnesses GREEN |
+| 20260707.211500 | [parse_int adoption commit and push](archive/20260707/20260707-211500_parse-int-adoption-commit-push.md) | `fca2a1b` to four remotes |
+| 20260707.211000 | [parse_int adoption counsel 203612](archive/20260707/20260707-211000_parse-int-adoption-counsel-203612.md) | tally/parse_int seated; 12-site ratchet; comlink symlink fix; parity GREEN |
+| 20260707.210500 | [Tools snake_case season commit and push](archive/20260707/20260707-210500_tools-snake-case-season-commit-push.md) | `062c03a` to four remotes; season closed |
+| 20260707.210000 | [Tools snake_case — enrich Tier 5 complete](archive/20260707/20260707-210000_tools-snake-case-enrich-tier5-complete.md) | Final 4 fn; tools census 0; season done |
+| 20260707.205500 | [Tools snake_case — enrich Tier 4](archive/20260707/20260707-205500_tools-snake-case-enrich-tier4.md) | 5 fn; orchestrator repoint; census 9→4; witness GREEN |
+| 20260707.205000 | [Tools snake_case — enrich Tier 3](archive/20260707/20260707-205000_tools-snake-case-enrich-tier3.md) | 15 fn; census 24→9; enrich witness GREEN |
+| 20260707.204500 | [Tools snake_case — enrich Tier 2](archive/20260707/20260707-204500_tools-snake-case-enrich-tier2.md) | 22 fn; census 46→24 |
+| 20260707.204000 | [Tools snake_case — enrich Tier 1](archive/20260707/20260707-204000_tools-snake-case-enrich-tier1.md) | 19 fn; census 65→46; enrich witness GREEN |
+| 20260707.203500 | [File enrich migration order counsel](archive/20260707/20260707-203500_file-enrich-migration-order-counsel.md) | Counsel `201912` filed; five tiers; orchestrator risk named |
+| 20260707.203000 | [Commit tools snake_case push](archive/20260707/20260707-203000_commit-tools-snake-case-push.md) | `7f041a4` on four remotes; 49 fn cleared |
+| 20260707.202500 | [Tools snake_case — session_logs_archive](archive/20260707/20260707-202500_tools-snake-case-session-logs-archive.md) | 12 fn cleared; census 77→65; top-3 files done |
+| 20260707.202100 | [Tools snake_case — tame_usize_audit](archive/20260707/20260707-202100_tools-snake-case-tame-usize-audit.md) | 18 fn cleared; census 95→77; enrich witness still GREEN |
+| 20260707.201500 | [Tools snake_case — align_session_logs](archive/20260707/20260707-201500_tools-snake-case-align-session-logs.md) | 19 fn cleared; tools census 114→95; witness GREEN |
+| 20260707.200900 | [File tools census counsel](archive/20260707/20260707-200900_file-tools-census-counsel.md) | Counsel `195912` filed; census verified; POSIX `.sh` seam in guidance |
+| 20260707.195700 | [Commit enrich witness push](archive/20260707/20260707-195700_commit-enrich-witness-push.md) | `5d52e20` on four remotes; parity **196** |
+| 20260707.194900 | [Apply enrich witness](archive/20260707/20260707-194900_apply-enrich-witness.md) | Zip 32 applied; fixture `work-in-progress/` fix; parity **196** |
+| 20260707.193712 | [enrich_strengthening_docs witness](archive/20260707/20260707-193712_enrich-strengthening-docs-witness.md) | Claude bench: third safety-net piece; two-run idempotency |
+| 20260707.193200 | [Commit general expansion push](archive/20260707/20260707-193200_commit-general-expansion-push.md) | `6f0e6dc` on four remotes; parity **195** |
+| 20260707.192100 | [Apply general expansion round](archive/20260707/20260707-192100_apply-general-expansion-round.md) | Zip 31 applied; parity **195** GREEN; doorway Status repaired |
+| 20260707.185612 | [General expansion round](archive/20260707/20260707-185612_general-expansion-round.md) | Claude bench: `maybe`, `no_padding`, bug found, tools safety net 2/3 |
+| 20260707.184500 | [Commit TAME ratchet hygiene push](archive/20260707/20260707-184500_commit-tame-ratchet-hygiene-push.md) | `c283049` on four remotes |
+| 20260707.184200 | [TAME ratchet advisory hygiene](archive/20260707/20260707-184200_tame-ratchet-advisory-hygiene.md) | @memcpy advisory split; docs refreshed; all ratchets clear |
+| 20260707.183500 | [Commit TB assert density push](archive/20260707/20260707-183500_commit-tb-assert-density-push.md) | `a3dda7b` on four remotes |
+| 20260707.183412 | [TB std-prefix + assert density](archive/20260707/20260707-183412_tb-std-prefix-assert-density.md) | 28 contract asserts; zero-assert advisory 0; wire witnesses GREEN |
+| 20260707.182000 | [Commit counsel folder push](archive/20260707/20260707-182000_commit-counsel-folder-push.md) | `f376bf6` + `2fc3021` on four remotes; counsel/ whitelisted |
+| 20260707.180712 | [Counsel folder reorganization](archive/20260707/20260707-180712_counsel-folder-reorganization.md) | 16 files to `counsel/`; ORGANIZING placement test; ~55 path repoints |
+| 20260707.180100 | [Commit Claude counsel rye/src scan](archive/20260707/20260707-180100_commit-claude-counsel-rye-scan.md) | `3e30ac5` on four remotes; ratchet 0 without asterisk |
+| 20260707.175312 | [Claude counsel applied — rye/src scan](archive/20260707/20260707-175312_claude-counsel-tooling-scope-applied.md) | Counsel filed; rye/src 8 fns; ratchet 0 without asterisk |
+| 20260707.175100 | [Commit mantra + rishi ratchet clear](archive/20260707/20260707-175100_commit-mantra-rishi-ratchet-clear.md) | `288daa8` on four remotes; tame advisory 0 |
+| 20260707.175000 | [Rishi snake_case — ratchet clear](archive/20260707/20260707-175000_rishi-snake-case-ratchet-clear.md) | camelCase 58→0 in scan dirs; SLC-1 + RW witnesses GREEN |
+| 20260707.174713 | [Commit brushstroke bundle + mantra/src kg](archive/20260707/20260707-174713_commit-brushstroke-mantra-src-kg.md) | `32e7244` on four remotes; camelCase 86→58 |
+| 20260707.174440 | [wayland_seed snake_case](archive/20260707/20260707-174440_wayland-seed-snake-case.md) | camelCase 142→86; SLC-2a + RW-2 surface witnesses GREEN |
+| 20260707.174217 | [Commit foundation bundle + window_input/skate_grid kg](archive/20260707/20260707-174217_commit-foundation-pond-brushstroke-kg.md) | `b0bba53` on four remotes; camelCase 150→142 |
+| 20260707.173844 | [tally + aurora snake_case](archive/20260707/20260707-173844_tally-aurora-snake-case.md) | camelCase 178→150; foundation_seeds + aurora QEMU GREEN |
+| 20260707.173634 | [Commit caravan bundle + virtio_net snake_case](archive/20260707/20260707-173634_commit-caravan-virtio-net-snake-case.md) | `4eb515b` on four remotes; camelCase 206→178 |
+| 20260707.173432 | [caravan supervisor cluster snake_case](archive/20260707/20260707-173432_caravan-supervisor-snake-case.md) | camelCase 234→206; caravan seeds/capabilities/restart GREEN |
+| 20260707.173238 | [Commit recall bundle + by_mark/tablecloth kg](archive/20260707/20260707-173238_commit-recall-bundle-by-mark-kg.md) | `76442ef` on four remotes; camelCase 242→234 |
+| 20260707.173003 | [recall_two_way_sync + beading + snapshot_export snake_case](archive/20260707/20260707-173003_recall-two-way-beading-snapshot-snake-case.md) | camelCase 284→242; two-way/beading/snapshot witnesses GREEN |
+| 20260707.172758 | [recall_batch + snapshot delivery snake_case](archive/20260707/20260707-172758_recall-batch-snapshot-delivery-snake-case.md) | camelCase 324→284; batch_wire + snapshot_wire GREEN |
+| 20260707.172621 | [recall delivery modules snake_case](archive/20260707/20260707-172621_recall-delivery-modules-snake-case.md) | camelCase 402→324; sync/catch-up/2way/subscribe wire witnesses GREEN |
+| 20260707.172437 | [recall_batch_wire snake_case](archive/20260707/20260707-172437_recall-batch-wire-snake-case.md) | camelCase 410→402; batch_wire + resin_batch GREEN |
+| 20260707.172139 | [recall_sync_wire + recall_catch_up snake_case](archive/20260707/20260707-172139_recall-sync-wire-catch-up-snake-case.md) | camelCase 421→410; sync/catch-up wire witnesses GREEN |
+| 20260707.171844 | [receipt + resin_batch + recall_lap1 snake_case](archive/20260707/20260707-171844_receipt-resin-recall-lap1-snake-case.md) | camelCase 462→421; recall cluster witnesses GREEN |
+| 20260707.171312 | [receipt + resin_batch snake_case](archive/20260707/20260707-171312_receipt-resin-batch-snake-case.md) | camelCase 462→447; SLC-L1 + resin_batch GREEN |
+| 20260707.171212 | [receipt_core commit and push](archive/20260707/20260707-171212_receipt-core-commit-push.md) | `51ad20c` on all four remotes |
+| 20260707.170612 | [receipt_core snake_case](archive/20260707/20260707-170612_receipt-core-snake-case.md) | camelCase 476→462; SLC-L2 + OA-L1 GREEN |
+| 20260707.170512 | [open_asks commit and push](archive/20260707/20260707-170512_open-asks-commit-push.md) | `7ef7d0a` on all four remotes |
+| 20260707.170412 | [open_asks snake_case](archive/20260707/20260707-170412_open-asks-snake-case.md) | camelCase 535→476; OA-L1–L5 witnesses GREEN |
+| 20260707.170212 | [Comlink wire commit and push](archive/20260707/20260707-170212_comlink-wire-commit-push.md) | `d895bab` on all four remotes; camelCase 584→535 |
+| 20260707.165312 | [Comlink wire snake_case](archive/20260707/20260707-165312_comlink-wire-snake-case.md) | camelCase 584→535; wire_format + guests |
+| 20260707.165212 | [Linengrow delivery commit and push](archive/20260707/20260707-165212_linengrow-delivery-commit-push.md) | `b05a4fd` on all four remotes; camelCase 605→584 |
+| 20260707.165012 | [Linengrow delivery cluster snake_case](archive/20260707/20260707-165012_oa3-escrow-delivery-snake-case.md) | camelCase 605→584; OA-L3 + SLC-L2 witnesses GREEN |
+| 20260707.164812 | [OA-L2 delivery snake_case](archive/20260707/20260707-164812_oa-l2-delivery-snake-case.md) | camelCase 622→605; OA-L2 witness GREEN |
+| 20260707.164712 | [Tidy rules commit and push](archive/20260707/20260707-164712_tidy-rules-commit-push.md) | `2b0b07a` on all four remotes |
+| 20260707.164612 | [Tidy rules and supervisor snake_case](archive/20260707/20260707-164612_tidy-rules-and-supervisor-snake-case.md) | Agent rules + Claude brief; camelCase 627→622 |
+| 20260707.164412 | [OA-L5 delivery snake_case](archive/20260707/20260707-164412_oa5-delivery-snake-case.md) | camelCase 654→627; OA-L5 witness GREEN |
+| 20260707.164312 | [Snake_case commit and push](archive/20260707/20260707-164312_snake-case-commit-push.md) | `f55ccd8` on all four remotes; camelCase 692→654 |
+| 20260707.163712 | [Drawn terminal snake_case](archive/20260707/20260707-163712_drawn-terminal-snake-case.md) | camelCase 671→654; Pond witnesses GREEN |
+| 20260707.163412 | [Subscribe poll snake_case](archive/20260707/20260707-163412_subscribe-poll-snake-case.md) | camelCase ratchet 692→671; caravan + mantra witnesses GREEN |
+| 20260707.163112 | [Four-file ratchet commit and push](archive/20260707/20260707-163112_four-file-ratchet-commit-push.md) | `1a49e8b` on all four remotes; >70 ledger clear |
+| 20260707.162712 | [Drawn terminal runLive split](archive/20260707/20260707-162712_drawn-terminal-runlive-split.md) | `runLive` under 70 lines; >70 ratchet clear |
+| 20260707.162412 | [Subscribe poll selftest split](archive/20260707/20260707-162412_subscribe-poll-selftest-split.md) | `recall_subscribe_poll` selftest under 70 lines |
+| 20260707.162112 | [Caravan supervisor split](archive/20260707/20260707-162112_caravan-supervisor-split.md) | `runSupervisor` under 70 lines; five caravan witnesses GREEN |
+| 20260707.161812 | [OA-L5 wire verify split](archive/20260707/20260707-161812_oa5-wire-verify-split.md) | `selftestOa5VerifyWireLegs` split; lap5 clear of >70 |
+| 20260707.161512 | [open_asks ratchet commit push](archive/20260707/20260707-161512_open-asks-ratchet-commit-push.md) | `fce83dd`; four remotes |
+| 20260707.161112 | [open_asks 70-line ratchet](archive/20260707/20260707-161112_open-asks-append-fold-splits.md) | Folds, append helpers, OA-L2/L5 selftest splits |
+| 20260707.160812 | [open_asks fold splits commit push](archive/20260707/20260707-160812_open-asks-fold-splits-commit-push.md) | `a60cc7c`; four remotes |
+| 20260707.160312 | [open_asks fold splits](archive/20260707/20260707-160312_open-asks-fold-splits.md) | Fold handlers + OA-L1 selftest under 70 lines |
+| 20260707.160012 | [Selftest splits commit push](archive/20260707/20260707-160012_selftest-splits-commit-push.md) | `1444d46`; four remotes |
+| 20260707.155812 | [Selftest 70-line splits](archive/20260707/20260707-155812_selftest-70-line-splits.md) | `recall_beaded` + OA-L4 reputation selftests split |
+| 20260707.155512 | [Parity 191 commit push](archive/20260707/20260707-155512_parity-191-commit-push.md) | `9b8be13`; four remotes |
+| 20260707.155312 | [Parity 191 copy ratchet](archive/20260707/20260707-155312_parity-191-copy-ratchet.md) | Full suite GREEN; TASKS/ROADMAP/TAME pinned **191** |
+| 20260707.154812 | [Copy ratchet commit push](archive/20260707/20260707-154812_copy-ratchet-commit-push.md) | Bundle `adb46e9`; four remotes |
+| 20260707.154512 | [Linengrow copy ratchet](archive/20260707/20260707-154512_linengrow-copy-ratchet.md) | OA + receipt stack; ratchet **25→1** (canonical `copy.rye` only) |
+| 20260707.154412 | [Beading copy ratchet](archive/20260707/20260707-154412_beading-copy-ratchet.md) | `beading` + `recall_beaded`; ratchet **46→25** |
+| 20260707.154112 | [Wire modules copy ratchet](archive/20260707/20260707-154112_wire-modules-copy-ratchet.md) | Four canonical wire modules; ratchet **78→46** |
+| 20260707.153812 | [Comlink guests copy ratchet](archive/20260707/20260707-153812_comlink-guests-copy-ratchet.md) | 23 virtio guests; ratchet **101→78** |
+| 20260707.141712 | [Snapshot export copy ratchet](archive/20260707/20260707-141712_snapshot-export-copy-ratchet.md) | Ten sites in `snapshot_export.rye`; ratchet **111→101** |
+| 20260707.140812 | [Delivery copy ratchet turn](archive/20260707/20260707-140812_delivery-copy-ratchet-turn.md) | Eleven sites on five wire delivery files; ratchet **121→111** |
+| 20260707.140512 | [TigerBeetle alignment commit and push](archive/20260707/20260707-140512_tigerbeetle-alignment-commit-push.md) | `9941c7f` on four remotes; parity **190** |
+| 20260707.053212 | [TigerBeetle alignment and Radiant pass](archive/20260707/20260707-053212_tigerbeetle-alignment-and-radiant-pass.md) | `copy_disjoint` law + `tame_style_check` gate; parity **190** |
+| 20260707.052912 | [Host mirror commit and push](archive/20260707/20260707-052912_host-mirror-commit-push.md) | `2860d6a` on four remotes; parity **188** |
+| 20260707.052212 | [Caravan host mirror under supervision](archive/20260707/20260707-052212_caravan-host-mirror-supervision.md) | Counsel `044112` ring 4; mirror + supervisor together; parity **188** |
+| 20260707.051512 | [Snapshot lap 3 device wire](archive/20260707/20260707-051512_snapshot-lap3-device-wire.md) | Virtio guests **15567**/**15568**; lap 3 complete on both substrates |
+| 20260707.051012 | [Caravan source-crash recovery](archive/20260707/20260707-051012_caravan-source-crash-recovery.md) | Rings 1–2 of counsel `044112`; source poll + footgun; parity **187** |
+| 20260707.044512 | [Caravan witness-stop footgun](archive/20260707/20260707-044512_caravan-witness-stop-footgun.md) | Counsel order committed; `CARAVAN_WITNESS_MODE` gate; parity **186** |
+| 20260707.043012 | [Snapshot lap 3 hosted wire](archive/20260707/20260707-043012_snapshot-lap3-hosted-wire.md) | Batch wire per revision group; ports **38490**/**38491**; parity **185** |
+| 20260707.041812 | [OA-L5 device wire](archive/20260707/20260707-041812_oal5-device-wire.md) | Virtio guests for accept/complete/consent; lab GREEN; parity **184** |
+| 20260707.041012 | [Parity GREEN hygiene commit](archive/20260707/20260707-041012_parity-green-hygiene-commit.md) | I6 + OA-L5 committed; poll demo hang fixed; doorway counsel Status; parity **184** GREEN |
+| 20260707.032512 | [I6 Tilak hygiene and OA-L5 wire](archive/20260707/20260707-032512_i6-tilak-and-oal5-wire.md) | Amber manifest Tilak export; open-asks accept/complete/consent on Comlink wire; parity **184** |
+| 20260707.031312 | [Bench orientation and dependencies](archive/20260707/20260707-031312_bench-orientation-and-dependencies.md) | Where we are; dependency map; recommendations after Weave ruling |
+| 20260707.030412 | [Weave slice ruling](archive/20260707/20260707-030412_weave-slice-ruling.md) | Kaeden: sovereign slice = I2 catalog export; prose closure |
+| 20260707.025212 | [Weave/Brix/Pond counsel intake](archive/20260707/20260707-025212_weave-brix-pond-counsel-intake.md) | Hold snapshot horizon items; custody gate affirmed |
+| 20260707.024712 | [Snapshot horizon lap 2](archive/20260707/20260707-024712_snapshot-horizon-lap2.md) | Bundle prefixes, SHA3-512 head record, continuity fact; parity **182** |
+| 20260707.024012 | [Poll interval lap 1](archive/20260707/20260707-024012_poll-interval-lap1.md) | `sleepIntervalNs` at cycle boundary; parity **181** |
+| 20260707.023812 | [OA-L4 escrow-release fold fix](archive/20260707/20260707-023812_oal4-escrow-release-fold-fix.md) | MALA graduation on hold; reputation fold reads escrow-release |
+| 20260707.023312 | [Claude handoff rings 179 + I2 180](archive/20260707/20260707-023312_claude-handoff-rings179-i2-180.md) | Full summary; tip 98264e7; four remotes aligned |
+| 20260707.021712 | [Snapshot export lap 1 parity 180](archive/20260707/20260707-021712_snapshot-export-lap1-parity180.md) | I2 catalog export reuses batch grammar; replay witness GREEN |
+| 20260707.021212 | [SIGTERM ring parity 179](archive/20260707/20260707-021212_sigterm-ring-parity179.md) | Signal → atomic flag → sentinel; counsel 021012 ring 4 |
+| 20260707.020712 | [Claude handoff graceful stop 178](archive/20260707/20260707-020712_claude-handoff-graceful-stop-parity178.md) | Full summary; a30a52c pushed four remotes |
+| 20260707.020512 | [Graceful stop rings parity 178](archive/20260707/20260707-020512_graceful-stop-rings-parity178.md) | Sentinel at poll boundary; supervisor restart-on-cycle_ok; rings 2–3 |
+| 20260707.015312 | [Exit-code ring parity 177](archive/20260707/20260707-015312_exit-code-ring-parity177.md) | cycle_ok restarts; stop code 8; counsel 014212 ring 1 |
+| 20260707.014512 | [Claude handoff synthesis + scheduling](archive/20260707/20260707-014512_claude-handoff-synthesis-and-scheduling.md) | Full summary; parity 176; two commits pushed |
+| 20260707.014212 | [Production scheduling lap 1](archive/20260707/20260707-014212_production-scheduling-lap1.md) | Caravan supervises subscribe poll wire; parity 176 |
+| 20260707.013812 | [Synthesis recommendations applied](archive/20260707/20260707-013812_synthesis-recommendations-applied.md) | Canon seated; batch fix; Caravan service ring; commit |
+| 20260707.011812 | [Apply synthesis bundle](archive/20260707/20260707-011812_apply-synthesis-bundle.md) | Batch rebind fix applied; reference specs proposed; batch witness GREEN |
+| 20260707.011412 | [Claude state analysis and reference pass](archive/20260707/20260707-011412_claude-state-analysis-and-reference-pass.md) | Batch rebind-race fix; namespace reference spec + module index proposed |
+| 20260707.010712 | [Claude handoff Q3 complete](archive/20260707/20260707-010712_claude-handoff-q3-complete.md) | Full summary for Claude; parity 175 pushed four remotes |
+| 20260707.010212 | [Tablecloth query parity 175](archive/20260707/20260707-010212_tablecloth-query-parity175.md) | Q3 namespace list closed; optional-field catalog filter |
+| 20260707.005412 | [Commit push parity 173–174](archive/20260707/20260707-005412_commit-push-parity173-174.md) | Subscribe arc complete; counsel 004712; four remotes |
+| 20260707.005012 | [Outer subscribe poll wire parity 174](archive/20260707/20260707-005012_outer-subscribe-poll-wire-parity174.md) | Subscribe arc complete through wire; Q3 item 3 done |
+| 20260707.004812 | [Outer subscribe poll parity 173](archive/20260707/20260707-004812_outer-subscribe-poll-parity173.md) | Bounded poll cycles; host mirror = pair list |
+| 20260707.004512 | [Commit push parity 170–172](archive/20260707/20260707-004512_commit-push-parity170-172.md) | Two-way wire + catch-up inner ring; four remotes |
+| 20260707.002012 | [Catch-up wire parity 172](archive/20260707/20260707-002012_catch-up-wire-parity172.md) | Wire loop until empty; hosted + device |
+| 20260707.001712 | [Catch-up in-process parity 171](archive/20260707/20260707-001712_catch-up-in-process-parity171.md) | Subscribe counsel revisited; bounded inner loop |
+| 20260707.001512 | [Two-way sync wire parity 170](archive/20260707/20260707-001512_two-way-sync-wire-parity170.md) | Hosted + device; exchange twice roles reversed |
+| 20260707.001212 | [Commit push two-way sync parity 169](archive/20260707/20260707-001212_commit-push-two-way-sync-parity169.md) | Counsel + in-process lap committed `e317fe1`; four remotes |
+| 20260707.000212 | [Two-way sync in-process parity 169](archive/20260707/20260707-000212_two-way-sync-in-process-parity169.md) | Counsel seated; symmetric syncRevision; subscribe split |
+| 20260707.000012 | [Marks-on-read parity 168](archive/20260707/20260707-000012_marks-on-read-parity168.md) | recallByMark by Tilak; path hint disambiguates |
+| 20260706.235812 | [stones→resins path rename](archive/20260706/20260706-235812_stones-to-resins-path-rename.md) | Amber ring-1 export paths; golden unchanged; parity 167 |
+| 20260706.235512 | [Zip 59 cut](archive/20260706/20260706-235512_zip59-cut.md) | OA-L4 parity 167 archive at `e995322` |
+| 20260706.235512 | [OA-L4 reputation parity 167](archive/20260706/20260706-235512_oal4-reputation-parity167.md) | Consent-before-counting fold |
+| 20260706.234212 | [Zip 58 ruling seated](archive/20260706/20260706-234212_zip58-ruling-seated.md) | OA-L4 leads; Edit-5 released; foundations affirmed |
+| 20260706.190812 | [Zip 58 numbering seated](archive/20260706/20260706-190812_zip58-numbering-seated.md) | Kaeden correction; relay cut and four-remote push complete |
+| 20260706.190644 | [Zip 58 cut](archive/20260706/20260706-190644_zip58-cut.md) | NS-L3 handoff archive; relay to Claude |
+| 20260706.190644 | [Claude handoff NS-L3 complete](archive/20260706/20260706-190312_claude-handoff-ns-l3-complete.md) | zip **58** packet; OA-L4 vs MALA questions for Claude |
+| 20260706.185512 | [Device beaded wire + compass](archive/20260706/20260706-185512_device-beaded-wire-compass.md) | virtio beaded witness GREEN; compass brief landed UDT |
+| 20260706.185112 | [Witness bolt, compass, beaded wire](archive/20260706/20260706-185112_witness-bolt-compass-beaded-wire.md) | Witness bolt brief; compass proposal; beaded batch wire hosted GREEN |
+| 20260706.184801 | [Multi-frame batch chunking](archive/20260706/20260706-184801_multi-frame-batch-chunking.md) | kind 0x04 chunk wire; 660 B witness; virtio multi-packet fix; parity 166 GREEN |
+| 20260706.183844 | [Device batch wire](archive/20260706/20260706-183844_device-batch-wire.md) | virtio guests 15563/15564; batch witness hosted + device; parity 166 GREEN |
+| 20260706.182500 | [Recall beaded + batch wire](archive/20260706/20260706-182500_recall-beaded-batch-wire.md) | files (27) + Rio expansion: recall_beaded 165, hosted batch wire 166 |
+| 20260706.180300 | [Apply beading bundle](archive/20260706/20260706-180300_apply-beading-bundle.md) | Cursor applied files (26).zip; parity 164 GREEN; four remotes pushed |
+| 20260706.175412 | [NS-L3 beading 3w-3b](archive/20260706/20260706-175412_ns-l3-3w-3b-beading.md) | Three rings: fixed-size, content-defined, bounded verify; bead-index Tilak |
+| 20260706.042612 | [NS-L3 resin-batch frame (3w-3a)](archive/20260706/20260706-042612_ns-l3-resin-batch.md) | Signed header+manifest, payloads prove by digest; many resins one signature; second sync zero bytes; parity 163 |
+| 20260706.042100 | [NS-L3 wire lap 2 device](archive/20260706/20260706-042100_ns-l3-wire-lap2-device.md) | Virtio sync request/response on 15561/15562; witness hosted+device GREEN |
+| 20260706.041800 | [NS-L3 wire lap 1 hosted](archive/20260706/20260706-041800_ns-l3-wire-lap1-hosted.md) | Hosted sync request/response under Comlink seal; parity 162 GREEN |
+| 20260706.041012 | [NS-L3 wire carriage counsel](archive/20260706/20260706-041012_ns-l3-wire-carriage-counsel.md) | Anchor 041012 seated — hosted-first wire sync, 340 B frame vs 512 B resin, beading follow-on; awaits Kaeden proceed |
+| 20260706.040700 | [Apply anchor 035512 NS-L3](archive/20260706/20260706-040700_apply-anchor-035512-nsl3.md) | Cursor applied NS-L3 sync logic bundle; parity 161 GREEN on metal; four remotes pushed |
+| 20260706.035512 | [NS-L3 bolt sync (logic)](archive/20260706/20260706-035512_ns-l3-sync-lap1.md) | Sync a bolt revision between peers; have-already/need-resin; tampered refused whole; recall identical on both; parity 161 |
+| 20260706.034900 | [Namespace arc commits pushes summary](archive/20260706/20260706-034900_commits-pushes-namespace-arc-summary.md) | Confirmed four remotes at 08b3d70; full arc summary through parity 160 |
+| 20260706.033400 | [NS-L2 write revision](archive/20260706/20260706-033400_nsl2-write-revision.md) | Append revision 2; revision 1 recall unchanged; duplicate refused; parity 160 GREEN |
+| 20260706.033200 | [Stone resin forward hygiene](archive/20260706/20260706-033200_stone-resin-forward-hygiene.md) | Retired stone as content-addressed unit word across forward docs; need-resin lanes; parity 159 unchanged |
+| 20260706.032700 | [Recall bolt vocabulary NS-L1](archive/20260706/20260706-032700_recall-bolt-vocabulary-nsl1.md) | Kaeden seated recall, bolt, Mantra role; stone retired; NS-L1 local recall GREEN; parity 159 |
+| 20260706.031200 | [Commits pushes anchor 030412 summary](archive/20260706/20260706-031200_commits-pushes-anchor-030412-summary.md) | Confirmed four remotes at 09b8ea3; full summary with parked questions for Kaeden |
+| 20260706.030412 | [Anchor carriage and namespace round](archive/20260706/20260706-030412_anchor-carriage-namespace-round.md) | Verified twelve-file bundle at parent 2252109; doorway GREEN; stray 025112 log removed; parity 158 unchanged |
+| 20260706.023912 | [Clay namespace research and design](archive/20260706/20260706-023912_clay-namespace-research-and-design.md) | Clay studied; the referential namespace recommended as a Mantra role expansion; read and bolt words parked; docs only, parity 158 |
+| 20260706.022912 | [Ames, Vere, libuv study and carriage silo](archive/20260706/20260706-022912_ames-libuv-research-and-silo.md) | Vere still rides libuv; study-not-link verdict; carriage first-principles siloed to foundations; docs only, parity 158 |
+| 20260706.021400 | [OA-L3 escrow lap 2](archive/20260706/20260706-021400_oal3-escrow-lap2.md) | Hold and release under Comlink seal — hosted UDP + device wire; wire_capacity 528; parity 158 GREEN |
+| 20260706.014612 | [Zip 52 OA-L3 parity 158 landed](archive/20260706/20260706-014612_zip52-oal3-parity-158-landed.md) | Cursor applied Claude bundle; Nyasa escrow; full parity GREEN on metal |
+| 20260706.014512 | [OA-L3 escrow lap 1](archive/20260706/20260706-014512_oal3-escrow-lap1.md) | Nyasa escrow hold and release on one log; welcome and five unwelcome paths GREEN; parity 158 |
+| 20260706.013512 | [Claude OA-L3 bench prepared](archive/20260706/20260706-013512_claude-oal3-bench-prepared.md) | Runnable bench packet for parity 158; vocabulary gate |
+| 20260706.013512 | [Claude OA-L3 escrow handoff](archive/20260706/20260706-013512_claude-oal3-escrow-handoff-summary.md) | Full handoff summary and paste-ready intake for Claude |
+| 20260706.013200 | [Zip 51 OA-L3 counsel applied](archive/20260706/20260706-013200_zip51-oal3-counsel-applied.md) | Cursor applied Claude bundle; settlement softenings; gitignore hygiene |
+| 20260706.013012 | [Open questions answered](archive/20260706/20260706-013012_open-questions-answered.md) | Claude OA-L3 escrow counsel; softenings proposed; parity 157 reported from metal |
+| 20260706.012800 | [Open Asks arc commit-push summary](archive/20260706/20260706-012800_commit-push-open-asks-arc-summary.md) | Full handoff summary OA-L1→OA-L2; four remotes at tip 3f23c73 |
+| 20260706.012412 | [OA-L2 application device wire](archive/20260706/20260706-012412_oa-l2-application-device-wire.md) | Second virtio hop; request + application lab GREEN; fold applied on poster |
+| 20260706.012112 | [OA-L2 device wire](archive/20260706/20260706-012112_oa-l2-device-wire.md) | Sealed request over virtio; max_frame 538; lap2 witness hosted + device GREEN |
+| 20260706.011800 | [OA-L2 parity 157 landed](archive/20260706/20260706-011800_oa-l2-parity-157-landed.md) | Cross-party ask delivery under Comlink seal; Kaeden edge affirmed; full parity GREEN |
+| 20260706.011512 | [OA-L2 scope seated](archive/20260706/20260706-011512_oa-l2-scope-seated.md) | Cross-party delivery hammock brief; doorway GREEN; awaits Kaeden edge |
+| 20260706.011200 | [OA-L1 parity 156 landed](archive/20260706/20260706-011200_oa-l1-parity-156-landed.md) | Closed ask loop on SLC-L1 spine; full parity GREEN; four-remote push |
+| 20260706.005612 | [Settlement zip 50 applied](archive/20260706/20260706-005612_settlement-zip50-applied.md) | Cursor applied Claude bundle; doorway fix; parity 155 spot-check GREEN |
+| 20260706.005512 | [Settlement verdict and Radiant audit](archive/20260706/20260706-005512_settlement-verdict-and-radiant-audit.md) | Zip 50 — Sui pivot verified; settlement counsel seated; softenings proposed |
+| 20260706.003112 | [Commits, pushes, parity 155 summary](archive/20260706/20260706-003112_commits-pushes-parity-155-summary.md) | `71018bd` to four remotes; Claude handoff for parity 154–155 arc |
+| 20260706.002912 | [Open Asks hammock scope](archive/20260706/20260706-002912_open-asks-hammock-scope.md) | OA-L1 closed loop scoped on SLC-L1 spine; witness named; awaits Kaeden edge |
+| 20260706.001512 | [SLC-L2 device wire variant](archive/20260706/20260706-001512_slcl2-device-wire-variant.md) | Receipt guests over virtio; max_frame 512; slcl2 witness extended; parity 155 GREEN |
+| 20260706.000812 | [SLC-L2 sealed delivery — parity 155](archive/20260706/20260706-000812_slcl2-sealed-delivery-parity-155.md) | Receipt over hosted Comlink; receipt_core extract; sealMessage; full parity GREEN |
+| 20260705.235412 | [Device wire dependencies and parity 154](archive/20260705/20260705-235412_device-wire-dependencies-parity-154.md) | ER stack survey to Caravan/Tally; device wire witness wired; full parity GREEN |
+| 20260705.233012 | [Device wire sub-laps 2–3 landed](archive/20260705/20260705-233012_device-wire-sublaps-2-3-landed.md) | Claude ruling applied; pattern + sealed laps GREEN; layout.ld boot fix |
+| 20260705.231512 | [Commits and pushes — sub-lap 2 scaffolding](archive/20260705/20260705-231512_commits-pushes-sub-lap2.md) | `b862be2` pushed to four remotes |
+| 20260705.231300 | [Virtio TX counsel handoff for Claude](archive/20260705/20260705-231300_virtio-tx-counsel-handoff.md) | Counsel brief seated; six ruled questions; repro for Claude on metal |
+| 20260705.230100 | [Device wire sub-lap 2 climb and grain check](archive/20260705/20260705-230100_device-wire-sub-lap2-grain.md) | Sub-lap 2 scaffolding; virtio TX blocked on transitional MMIO; grain verified; sub-lap 1 GREEN |
+| 20260705.225412 | [Comlink device wire sub-lap 1](archive/20260705/20260705-225412_comlink-device-wire-sub-lap1.md) | wire_format extracted; fixture selftest GREEN |
+| 20260705.224612 | [Full summary — commits and pushes](archive/20260705/20260705-224612_full-summary-commits-pushes.md) | Evening arc from silo bench through parity 153 |
+| 20260705.203144 | [Vocabulary ground — parity 153](archive/20260705/20260705-203144_vocabulary-ground-parity-153.md) | TWO_ROOMS seated; gloss spec; doorway witness; season opens |
+| 20260705.202301 | [Zip 47 — silo deepening complete](archive/20260705/20260705-202301_zip47-silo-deepening-complete.md) | `70f15cd` — git archive; bench arc sealed |
+| 20260705.202122 | [Fidelity soften — thirteen studies](archive/20260705/20260705-202122_fidelity-soften-thirteen-studies.md) | Gratitude softened on #24–#36; fidelity item closed |
+| 20260705.195720 | [Silo deepening full summary](archive/20260705/20260705-195720_silo-deepening-full-summary.md) | Commits, pushes, and bench state for Kaeden |
+| 20260705.195609 | [Movement 2 pass two and Movement 3 recompose](archive/20260705/20260705-195609_movement2-pass-two-m3-recompose.md) | Nine Brooke chapters thinned; composed reading synced |
+| 20260705.195800 | [Movement 2 dissociation pass one](archive/20260705/20260705-195800_movement2-dissociation-pass-one.md) | Studies #55–#57; six Brooke chapters cite shelf |
+| 20260705.195200 | [Files 18 intake — Movement 1 batches 1–5](archive/20260705/20260705-195200_files18-movement1-batches-landed.md) | Nested zips extracted; studies #24–#54 indexed |
+| 20260705.194600 | [Gates open — rising-signs and Chitra revised](archive/20260705/20260705-194600_gates-open-rising-signs-chitra.md) | v9 gates resolved before files 18 land |
+| 20260705.193800 | [Silo batch-6 intake — anchor 190812](archive/20260705/20260705-193800_silo-batch6-intake.md) | Five homed studies seated; b1–b5 pending; two gates held |
+| 20260705.182612 | [Silo deepening — Movement 1, batch 5 (Sun, nodes, and craft)](archive/20260705/20260705-182612_silo-deepening-movement1-batch5-sun-nodes-and-craft.md) | Studies #42–#47 — Sun in the 12th and 7th, the nodes on two axes, and two craft teachings |
+| 20260705.180812 | [Silo deepening — Movement 1, batch 4 (nakshatra cluster)](archive/20260705/20260705-180812_silo-deepening-movement1-batch4-nakshatra-cluster.md) | Studies #37–#41 — Ardra and the Rudra–Shiva arc, siloed from real transcripts |
+| 20260705.174412 | [Handoff v7 — silo deepening, window close](archive/20260705/20260705-174412_handoff-v7-and-close.md) | v7 prompt written; studies #24–#36 batches 1–3 bundled |
+| 20260705.173112 | [Silo deepening — Movement 1, batch 3](archive/20260705/20260705-173112_silo-deepening-movement1-batch3.md) | Studies #33–#36 — the Moon cluster from Vic DiCara |
+| 20260705.172312 | [Silo deepening — Movement 1, batch 2](archive/20260705/20260705-172312_silo-deepening-movement1-batch2.md) | Studies #29–#32 — the Venus cycle from Parisa Yazdi |
+| 20260705.171012 | [Silo deepening — Movement 1, batch 1](archive/20260705/20260705-171012_silo-deepening-movement1-batch1.md) | Studies #24–#28 from six Vic talks; Chitra #22 deepened on bench |
+| 20260705.162200 | [Commit push Claude transcript bench](archive/20260705/20260705-162200_commit-push-claude-transcript-bench.md) | Runnable bench + handoff at tip; four remotes pushed |
+| 20260705.161900 | [Claude silo deepening handoff summary](archive/20260705/20260705-161900_claude-silo-deepening-handoff-summary.md) | Runnable Claude prompt + granular handoff for transcript bench |
+| 20260705.161700 | [Intake acknowledged — silo deepening landed](archive/20260705/20260705-161700_intake-acknowledged.md) | Anchor `160712` received; fresh bench routed for transcript intake |
+| 20260705.161212 | [Silo deepening commit push](archive/20260705/20260705-161212_silo-deepening-commit-push.md) | `24a5d35` — #22–#23 and recursion v1 at tip |
+| 20260705.161012 | [Silo deepening intake — Cursor](archive/20260705/20260705-161012_silo-deepening-intake-cursor.md) | `files (17).zip` at `5c322fd`; studies #22–#23, recursion v1, staged log |
+| 20260705.160712 | [Silo deepening staged](archive/20260705/20260705-160712_silo-deepening-staged.md) | Recursion v1 for deepening bench; exemplars #22–#23; recomposition rite defined |
+| 20260705.053212 | [Zip 45 commit and push](archive/20260705/20260705-053212_zip45-commit-and-push.md) | `f134d8b` — shelf, sweeps, method, study #21; zip 45 at tip |
+| 20260705.050012 | [Zip 45 astrology progress intake](archive/20260705/20260705-050012_zip45-astrology-progress-intake.md) | Shelf, Makara/Chitra/steward sweeps, method, study #21, wheel v4 |
+| 20260705.045812 | [Divine mother teacher](archive/20260705/20260705-045812_divine-mother-teacher.md) | Steward vocabulary healed; teacher feminized; study harmonized |
+| 20260705.045012 | [Brihaspati and atelier](archive/20260705/20260705-045012_brihaspati-and-atelier.md) | Rye astrology atelier silo; SVG generation method |
+| 20260705.043312 | [Makara sweep](archive/20260705/20260705-043312_makara-sweep.md) | Beast corrected; Rudrani strength woven |
+| 20260705.042512 | [Final reading canon](archive/20260705/20260705-042512_final-reading-canon.md) | Canon structure ruled; Chitra seated |
+| 20260705.041312 | [Privacy audit clean](archive/20260705/20260705-041312_privacy-audit-clean.md) | Working tree placeholders only; history pickaxe awaits pairs |
+| 20260705.031812 | [Wheel v4 and Brooke shelf](archive/20260705/20260705-031812_wheel-v4-and-brooke-shelf.md) | Diurnal method + shelf counsel |
+| 20260705.024812 | [Verification pass parity green](archive/20260705/20260705-024812_verification-pass-parity-green.md) | Parity GREEN at `d30d39a`; cast seam skipped (no pyswisseph); tree clean |
+| 20260705.024412 | [Brooke round commit push zip 44](archive/20260705/20260705-024412_brooke-round-commit-push-zip44.md) | `755cc75` — round sealed; cast_a_chart.rish; zip 44 at tip |
+| 20260705.022512 | [Zip 43 Brooke round intake — Cursor](archive/20260705/20260705-022512_zip43-brooke-round-intake-cursor.md) | `files (15).zip` at `38893b7`; batches A–C; fifteen chapter silos; yonder + template |
+| 20260705.022512 | [Final unification — Brooke round](archive/20260705/20260705-022512_final-astrology-unification.md) | Claude bench: bundle split, template derived, gate silent; vessel cut |
+| 20260704.221612 | [Astrology reorg commit and push](archive/20260704/20260704-221612_astrology-reorg-commit-and-push.md) | `d6e7848` — topic folders land; four remotes at tip |
+| 20260704.221412 | [Astrology topic folder reorg](archive/20260704/20260704-221412_astrology-topic-folder-reorg.md) | Studies `00`–`20` into nakshatras, planets-in-signs, planet-in-house, …; templates/readings split |
+| 20260704.221112 | [Rye-core arc commit and push](archive/20260704/20260704-221112_rye-core-arc-commit-and-push.md) | `239557f` landed — silo, ER pair, archive tooling, parity hygiene; four remotes |
+| 20260704.220812 | [Checkpoint — rye-core grain, roadmap, tasks](archive/20260704/20260704-220812_checkpoint-rye-core-grain-roadmap-tasks.md) | Self-contained progress save — full Jul 4 arc, lap grain, parity ladder, zip 41/42 counsel, TASKS, uncommitted batch |
+| 20260704.215012 | [Radiant pass — Rye core arc](archive/20260704/20260704-215012_radiant-pass-rye-core-arc.md) | Radiant sweep of silo, ER pair, archive comments; Last updated `215012` |
+| 20260704.214600 | [Archive preview/fold + parity wire](archive/20260704/20260704-214600_archive-preview-fold-parity.md) | Split read/mutate subcommands; archive witness joins parity — all GREEN |
+| 20260704.214400 | [Silo accrete subject + horizon](archive/20260704/20260704-214400_silo-accrete-subject-horizon.md) | Merged `214100` insights into `211012` silo in place — explicit subject, horizon, catalog column |
+| 20260704.214100 | [Subject-oriented programming ER](archive/20260704/20260704-214100_subject-oriented-programming-er.md) | Urbit SOP applied to Rye core+shell — horizon, poke/peek, lap ladder |
+| 20260704.211200 | [Rye cores ER and silo](archive/20260704/20260704-211200_rye-cores-er-and-silo.md) | Gratitude survey + siloed two-layer lap law (core proves, shell witnesses) |
+| 20260704.203100 | [Session logs archive — Rye + Rishi witnesses](archive/20260704/20260704-203100_session-logs-archive-rishi-witnesses.md) | Archive fold in `.rye` with selftest; Rishi witness proves idempotency |
+| 20260704.202900 | [Session logs archive fold](archive/20260704/20260704-202900_session-logs-archive-fold.md) | First archive run — 500 logs into 12 day folders; tool fixed via shell fixture |
+| 20260704.194300 | [Zip 42 unified intake — Cursor](archive/20260704/20260704-194300_zip42-unified-intake-cursor.md) | Packet `files (14).zip` intook at `43584d8`; parity 152 re-verified; README rows + RTAC updated |
+| 20260704.185412 | [Unified packet cut](archive/20260704/20260704-185412_unified-packet-cut.md) | Whole sitting gathered into one vessel; prior lane and zips superseded pre-intake; consolidated rows authoritative. |
+| 20260704.185412 | [Ends-first orientation counsel](archive/20260704/20260704-185412_ends-first-orientation-counsel.md) | Lens counsel shipped; spot-check green on tree stamps; names parked; gates untouched. |
+| 20260704.181612 | [Zip 42 — 152 pinned, zero-copy counsel](archive/20260704/20260704-181612_zip42-152-zero-copy-counsel.md) | Comment verified at 43584d8; 152 GREEN from bare (116+36); dnb count=0; counsel ER + Cursor lane shipped additions-only. |
+| 20260704.181612 | [Fresh bench intake — zip 42 awaited](archive/20260704/20260704-181612_fresh-bench-intake-zip42-awaited.md) | Fresh bench seated; handoff packet's parent mark verified verbatim at 43584d8; zip 42 absent, so raise and counsel wait at its door; toolchain pre-staged (ziglang 0.16.0, wayland/xkbcommon headers); voice-name parked for Kaeden's word. |
+| 20260704.181800 | [Commit and push zip 41 arc](archive/20260704/20260704-181800_commit-push-zip41-cellar-vessel.md) | `b4b7103` to four remotes — intake, cellar/vessel, zero-copy |
+| 20260704.181512 | [Cursor session journey — composition](archive/20260704/20260704-181512_cursor-session-journey-composition.md) | Full Jul 3–4 thread: parity 152, vocabulary, zip 41, open threads |
+| 20260704.181012 | [Zero-copy resins expanding prompt](archive/20260704/20260704-181012_zero-copy-resins-expanding-prompt.md) | Claude counsel prompt — snapshot, Comlink batch, WIP refresh |
+| 20260704.180612 | [Zero-copy resins research](archive/20260704/20260704-180612_zero-copy-resins-sovereign-snapshot.md) | ER essay — TigerBeetle batching, sovereign snapshot, Urbit concepts clean-room |
+| 20260704.174800 | [Cellar and vessel vocabulary infusion](archive/20260704/20260704-174800_cellar-vessel-vocabulary-infusion.md) | Amber = cellar software, Amphora = vessel software — LEXICON pair table and doc sweep |
+| 20260704.031812 | [Zip 41 intake — Cursor](archive/20260704/20260704-031812_zip41-intake-cursor.md) | Packet intook; RTAC and indexes updated; both benches 152 |
+| 20260704.031812 | [Zip 41 at 152 + eight asks](archive/20260704/20260704-031812_zip41-152-eight-asks.md) | Trio green from bare at 2eb346b — parity 152 on second metal; orientation + consolidated A1–A8 counsel |
+| 20260704.031200 | [Zip 41 commit, push, Amphora brief](archive/20260704/20260704-031200_zip41-commit-push-amphora-brief.md) | zip **41** · four remotes · RTAC Amphora exchange for Claude |
+| 20260704.031000 | [Canonical refinement counsel](archive/20260704/20260704-031000_canonical-refinement-counsel.md) | four-lap plan to seat glosses and sweep loose *canonical* |
+| 20260704.030800 | [Canonical vocabulary audit](archive/20260704/20260704-030800_canonical-vocabulary-audit.md) | nine senses of *canonical* mapped to grain; tensions named |
+| 20260704.030600 | [Diet writings archived](archive/20260704/20260704-030600_diet-writings-archived.md) | itinerary primer canonical; diet ER moved to archive |
+| 20260704.030300 | [Itinerary retires diet — audit](archive/20260704/20260704-030300_itinerary-retires-diet-audit.md) | full forward-facing sweep; v4 prompt; ER primer rewrite |
+| 20260704.030200 | [Radiant pass — Jul 3 cluster](archive/20260704/20260704-030200_radiant-pass-jul3-cluster.md) | second lap on harvest + counsel essays; forward links |
+| 20260704.030000 | [Radiant pass — recent writings](archive/20260704/20260704-030000_radiant-pass-recent-writings.md) | vocabulary cluster + TWO_ROOMS; surgical Radiant freshen |
+| 20260704.025600 | [Claims × happy zone × grain](archive/20260704/20260704-025600_claims-happy-zone-grain.md) | braid essay — grain strands shape claims; happy zone habitats |
+| 20260704.024900 | [Claim vocabulary essay](archive/20260704/20260704-024900_claim-essay.md) | bounded proposition; LEXICON row |
+| 20260704.024800 | [Checkable room essay](archive/20260704/20260704-024800_checkable-room-essay.md) | definition of checkable register |
+| 20260704.024600 | [Two rooms metal-path research](archive/20260704/20260704-024600_two-rooms-metal-path.md) | programs mapped to two registers |
+| 20260704.023800 | [Parity 152 + not-advice](archive/20260704/20260704-023800_parity-152-not-advice.md) | full suite GREEN; ORGANIZING filing rule; RTAC pins |
+| 20260704.023700 | [Foundations grain pointer](archive/20260704/20260704-023700_foundations-grain-pointer.md) | README index to active-designing grain brief |
+| 20260704.023600 | [Grain doc — silo into foundations?](archive/20260704/20260704-023600_grain-filing-counsel.md) | Kaeden asked filing; counsel: no duplicate silo |
+| 20260704.023400 | [Sameness grain seated](archive/20260704/20260704-023400_sameness-grain-seated.md) | Kaeden affirmed; tenth grain strand |
+| 20260704.023100 | [Fold canon + sameness silo](archive/20260704/20260704-023100_fold-canon-sameness-silo.md) | stack fold map; interface affirm; foundations sameness companion |
+| 20260704.023000 | [Fold canon — interface-as-a-fold check](archive/20260704/20260704-023000_fold-canon-interface-check.md) | Kaeden asked currency of fold documentation and stamp policy |
+| 20260704.022400 | [SLC-L1 check-in explained](archive/20260704/20260704-022400_slcl1-check-in-explained.md) | Kaeden asked what gates remain after parity 152 |
+| 20260704.021800 | [SLC-L1 receipt — parity 152](archive/20260704/20260704-021800_slcl1-receipt-witness-152.md) | linengrow/receipt.rye + slcl1_receipt.rish; full parity GREEN |
+| 20260704.020800 | [Toll seated + crossing witness — 151](archive/20260704/20260704-020800_toll-crossing-witness-151.md) | one-word-one-gate spec; toll deltas; crossing_manifest_seed at parity 151 |
+| 20260704.020100 | [Lap vocabulary — Rishi sweep](archive/20260704/20260704-020100_lap-vocabulary-rish-sweep.md) | Kaeden chose lap; word-boundary sweep + audit GREEN |
+| 20260704.011512 | [Zip 40 intake — gate counsel seated](archive/20260704/20260704-011512_zip40-intake-gate-counsel.md) | Claude relay seated; both benches 150; park lifted; memo awaits Kaeden for deltas |
+| 20260704.004912 | [Zip 40 green + gate counsel](archive/20260704/20260704-004912_zip40-green-gate-counsel.md) | Claude bench: v5 raise green from bare; gate-unify memo delivered |
+| 20260704.005312 | [Push to four remotes](archive/20260704/20260704-005312_push-four-remotes.md) | `4ab032d` on origin · github · gp36-codeberg · gp36-github |
+| 20260704.004912 | [Itinerary, gates, commit and push](archive/20260704/20260704-004912_itinerary-gates-commit-push.md) | Vocabulary batch committed; Claude gate-unify counsel staged in RTAC |
+| 20260704.002912 | [Gates, arms, Urbit lineage](archive/20260704/20260704-002912_gates-arms-urbit-lineage.md) | ER survey: three gate families vs Hoon homonyms; Zig sufficient; no Urbit gate/arm in Rye |
+| 20260704.001012 | [Itinerary seated](archive/20260704/20260704-001012_itinerary-seated.md) | Kaeden chose itinerary over diet; stops · journey's pause · off-route in LEXICON and RTAC |
 | 20260703.235912 | [Diet and crossing manifest research](archive/20260703/20260703-235912_diet-and-crossing-manifest-research.md) | ER survey: diet, name candidates, manifest seed primer |
 | 20260703.235512 | [RW-2 mirrored pair landed](archive/20260703/20260703-235512_rw2-mirrored-pair-landed.md) | App↔Brushstroke pair wired; parity **150** on Cursor metal |
 | 20260703.205312 | [Zip 39 relay — Cursor re-pin](archive/20260703/20260703-205312_intake-zip39-relay-cursor-repin.md) | Claude parked RW-1 @ 178d2fa; v5 recipe |
