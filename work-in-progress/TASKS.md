@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M2 hosted landed `191634`; parity **199**)
+**Last updated:** 2026-07-09 (OA-L3/L5 UDP bind-before-send hang fix `192631`; MALA M2 hosted `191634`; parity **199**)
 
 - [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
 
@@ -92,6 +92,7 @@
 - [x] **MALA M0 token-fact shapes (on paper)** — `mala:mint` and `mala:send` memo prefixes; field table in [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md)
 - [x] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198** (`20260709.184051`); prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md)
 - [x] **MALA M2 — mailable (hosted)** — mint crosses Comlink UDP; receipt crosses back; `mala_core.rye` + `mala_delivery.rye` + `tools/mala_m2_witness.rish`; parity **199** (`20260709.191634`); prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
+- [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
 - [ ] **MALA M2b — device wire** — virtio twin of hosted M2; waits Kaeden word
 - [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; **WOV** exit-honesty then first lap; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 

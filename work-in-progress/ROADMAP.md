@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260709.152612` (MALA/WOV path realigned — own-L1 decision honored via the tree's own already-designed July 2nd architecture, not new invention)
-**Last updated:** 2026-07-09 (MALA M2 hosted landed `191634`; parity **199**)
+**Last updated:** 2026-07-09 (MALA M2 hosted `191634`; OA UDP hang fix `192631`; parity **199**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

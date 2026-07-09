@@ -15,7 +15,7 @@ const oa = @import("open_asks.rye");
 const rc = @import("receipt_core.rye");
 const wf = @import("wire_format.rye");
 
-const oa3l2_version = "20260706.014612";
+const oa3l2_version = "20260709.192631";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -58,16 +58,29 @@ fn send_wire(port: u16, wire: []const u8) !void {
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recv_wire(port: u16, wire: []u8) !u64 {
+/// Bind before any peer send — UDP has no listener queue across close/rebind.
+fn bind_socket(port: u16) !c.fd_t {
     const fd = try open_socket();
-    defer _ = c.close(fd);
     var bind_addr = localhost_addr(port);
-    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
+    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) {
+        _ = c.close(fd);
+        return error.BindFailed;
+    }
+    return fd;
+}
+
+fn recv_on(fd: c.fd_t, wire: []u8) !u64 {
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
     const n = c.recvfrom(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&from), &from_len);
     if (n < 0) return error.RecvFailed;
     return @intCast(n);
+}
+
+fn recv_wire(port: u16, wire: []u8) !u64 {
+    const fd = try bind_socket(port);
+    defer _ = c.close(fd);
+    return recv_on(fd, wire);
 }
 
 fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
@@ -195,15 +208,22 @@ fn run_applicant(_: std.Io) !u8 {
     hex_of_key(escrow_kp.public_key, &escrow_hex);
     hex_of_key(applicant_kp.public_key, &applicant_hex);
 
+    // Bind hold and release before the poster sends — poster emits both
+    // datagrams back-to-back; a late release bind drops the second under load.
+    const hold_fd = try bind_socket(hold_port);
+    defer _ = c.close(hold_fd);
+    const release_fd = try bind_socket(release_port);
+    defer _ = c.close(release_fd);
+
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const hold_len = try recv_wire(hold_port, &wire);
+    const hold_len = try recv_on(hold_fd, &wire);
     if (hold_len < wf.off_cipher or hold_len > wf.wire_capacity) return error.RecvFailed;
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const hold_opened_len = try open_wire(wire[0..@intCast(hold_len)], &opened);
     var hold_fact: [oa.max_oa_fact]u8 = undefined;
     _ = try verify_escrow_payload(opened[0..@intCast(hold_opened_len)], poster_pk, .hold, poster_hex[0..64], escrow_hex[0..64], applicant_hex[0..64], &hold_fact);
 
-    const release_len = try recv_wire(release_port, &wire);
+    const release_len = try recv_on(release_fd, &wire);
     if (release_len < wf.off_cipher or release_len > wf.wire_capacity) return error.RecvFailed;
     const release_opened_len = try open_wire(wire[0..@intCast(release_len)], &opened);
     var release_fact: [oa.max_oa_fact]u8 = undefined;

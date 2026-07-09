@@ -12,8 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260709.192224 | [Go — MALA M2 parity 199](20260709-192224_go-mala-m2-parity-199.md) | Commit + four-remote push; M2 hosted landed |
-| 20260709.191909 | [MALA M2 kg landed](20260709-191909_mala-m2-kg-landed.md) | Hosted mailable; parity **199**; OA-L3 flake noted |
+| 20260709.193819 | [Go — OA UDP hang fix](20260709-193819_go-hang-fix-mala-m2-199.md) | Bind-before-send; parity **199** unchanged; four remotes |
+| 20260709.193237 | [OA-L3/L5 UDP hang fix](20260709-193237_hang-fix-mala-m2.md) | Listen sockets before peer send; suite GREEN |
+| 20260709.192224 | [Go — MALA M2 parity 199](20260709-192224_go-mala-m2-parity-199.md) | Hosted mint + receipt-back already on remotes |
+| 20260709.191909 | [MALA M2 kg landed](20260709-191909_mala-m2-kg-landed.md) | `mala_core` + `mala_delivery`; parity **199** |
 | 20260709.191359 | [Go — MALA M1 parity 198](20260709-191359_go-mala-m1-parity-198.md) | Commit + four-remote push; M1 landed |
 | 20260709.191319 | [Aborted parity shells noted](20260709-191319_aborted-parity-shells-noted.md) | Hung kg re-runs already cleared; M1 still ready for `go` |
 | 20260709.184753 | [MALA M1 kg confirm](20260709-184753_mala-m1-kg-confirm.md) | README hygiene; M1 GREEN; OA-L3 re-run flake noted |

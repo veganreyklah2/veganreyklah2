@@ -18,7 +18,7 @@ const rc = @import("receipt_core.rye");
 const wf = @import("wire_format.rye");
 const tally_copy = @import("tally_copy.rye");
 
-const oa5_version = "20260707.031912";
+const oa5_version = "20260709.192631";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -57,16 +57,29 @@ fn send_wire(port: u16, wire: []const u8) !void {
     if (sent < 0 or @as(usize, @intCast(sent)) != wire.len) return error.SendFailed;
 }
 
-fn recv_wire(port: u16, wire: []u8) !u64 {
+/// Bind before any peer send — UDP has no listener queue across close/rebind.
+fn bind_socket(port: u16) !c.fd_t {
     const fd = try open_socket();
-    defer _ = c.close(fd);
     var bind_addr = localhost_addr(port);
-    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) return error.BindFailed;
+    if (c.bind(fd, @ptrCast(&bind_addr), @sizeOf(sockaddr_in)) < 0) {
+        _ = c.close(fd);
+        return error.BindFailed;
+    }
+    return fd;
+}
+
+fn recv_on(fd: c.fd_t, wire: []u8) !u64 {
     var from: sockaddr_in = undefined;
     var from_len: c.socklen_t = @sizeOf(sockaddr_in);
     const n = c.recvfrom(fd, wire.ptr, @intCast(wire.len), 0, @ptrCast(&from), &from_len);
     if (n < 0) return error.RecvFailed;
     return @intCast(n);
+}
+
+fn recv_wire(port: u16, wire: []u8) !u64 {
+    const fd = try bind_socket(port);
+    defer _ = c.close(fd);
+    return recv_on(fd, wire);
 }
 
 fn seal_payload(payload: []const u8, wire: *[@intCast(wf.wire_capacity)]u8) !u64 {
@@ -485,8 +498,13 @@ fn run_applicant(_: std.Io) !u8 {
     const applicant_kp = kumara.keypair_from_seed(&oa.applicant_seed);
     const poster_pk = poster_kp.public_key;
 
+    // One bind for request + acceptance + payment — poster sends acceptance
+    // and payment back-to-back; rebinding between them drops the second.
+    const listen_fd = try bind_socket(applicant_port);
+    defer _ = c.close(listen_fd);
+
     var wire: [@intCast(wf.wire_capacity)]u8 = undefined;
-    const wire_len = try recv_wire(applicant_port, &wire);
+    const wire_len = try recv_on(listen_fd, &wire);
     if (wire_len < wf.off_cipher or wire_len > wf.wire_capacity) return error.RecvFailed;
 
     var opened: [@intCast(wf.max_message)]u8 = undefined;
@@ -517,13 +535,13 @@ fn run_applicant(_: std.Io) !u8 {
     const app_wire_len = try seal_payload(app_payload[0..app_payload_len], &out_wire);
     try send_wire(poster_port, out_wire[0..@intCast(app_wire_len)]);
 
-    const acc_wire_len = try recv_wire(applicant_port, &wire);
+    const acc_wire_len = try recv_on(listen_fd, &wire);
     const acc_opened_len = try open_wire(wire[0..@intCast(acc_wire_len)], &opened);
     var sig_buf: [kumara.signature_length]u8 = undefined;
     var acc_fact_buf: [oa.max_oa_fact]u8 = undefined;
     _ = try verify_acceptance_payload(opened[0..@intCast(acc_opened_len)], poster_pk, verified.ref_hex[0..oa.ref_hex_len], applicant_hex[0..64], &sig_buf, &acc_fact_buf);
 
-    const pay_wire_len = try recv_wire(applicant_port, &wire);
+    const pay_wire_len = try recv_on(listen_fd, &wire);
     const pay_opened_len = try open_wire(wire[0..@intCast(pay_wire_len)], &opened);
     var pay_fact_buf: [oa.max_oa_fact]u8 = undefined;
     _ = try verify_completion_payload(opened[0..@intCast(pay_opened_len)], poster_pk, verified.ref_hex[0..oa.ref_hex_len], applicant_hex[0..64], stipend, &sig_buf, &pay_fact_buf);
@@ -549,6 +567,10 @@ fn run_poster(io: std.Io) !u8 {
     pubkey_hex(poster_kp, &poster_hex);
     pubkey_hex(applicant_kp, &applicant_hex);
 
+    // Bind reply port before first send so application and consent land here.
+    const listen_fd = try bind_socket(poster_port);
+    defer _ = c.close(listen_fd);
+
     const signed_req = try load_signed_request(io, poster_kp);
     var payload: [oa.oa2_payload_header + oa.max_oa_fact]u8 = undefined;
     const req_payload_len = try oa.encode_compact_payload(signed_req.sig, signed_req.canonical[0..signed_req.canonical_len], &payload);
@@ -556,7 +578,7 @@ fn run_poster(io: std.Io) !u8 {
     const req_wire_len = try seal_payload(payload[0..req_payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(req_wire_len)]);
 
-    const app_recv_len = try recv_wire(poster_port, &wire);
+    const app_recv_len = try recv_on(listen_fd, &wire);
     var opened: [@intCast(wf.max_message)]u8 = undefined;
     const app_opened_len = try open_wire(wire[0..@intCast(app_recv_len)], &opened);
     var app_fact_buf: [oa.max_oa_fact]u8 = undefined;
@@ -574,7 +596,7 @@ fn run_poster(io: std.Io) !u8 {
     const pay_wire_len = try seal_payload(payload[0..pay_payload_len], &wire);
     try send_wire(applicant_port, wire[0..@intCast(pay_wire_len)]);
 
-    const consent_recv_len = try recv_wire(poster_port, &wire);
+    const consent_recv_len = try recv_on(listen_fd, &wire);
     const consent_opened_len = try open_wire(wire[0..@intCast(consent_recv_len)], &opened);
     var consent_fact_buf: [oa.max_oa_fact]u8 = undefined;
     const consent_fact_len = try verify_consent_payload(opened[0..@intCast(consent_opened_len)], applicant_pk, signed_req.ref_hex[0..oa.ref_hex_len], oa.consent_grant, &sig_buf, &consent_fact_buf);
