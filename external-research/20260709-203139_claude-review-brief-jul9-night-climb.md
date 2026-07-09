@@ -94,7 +94,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 1. **WOV TigerBeetle client next?** — **Answered by keep-going:** seam A host landed `223700` (parity **204**). Pin still has no Rye `@import`. Remaining: live REPL on metal (io_uring; SKIP in ai-jail), then seam B only if measured red demands it.
 
-2. **Dual monarch timing** — Spec allows two signers; lap 1 is solo. Any reason to open dual-control before TB, or keep it after a single-monarch TB lap?
+2. **Dual monarch timing** — Design filed [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md): after single-monarch TB (already true); choose **D1** twin-lines vs **D2** envelope. Bench leans D1. Affirm before code?
 
 3. **SLC-L4 lap 2 width** — **W0 cleared** [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md). Remaining: affirm **W1** (OR-tiers) vs hold, and **W2** still later.
 
@@ -104,7 +104,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 6. **Evening-close Q1–Q6** — Which of [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md)'s six questions still need answers now that M1–M2b, Sigma, and WOV lap 1 are facts? (Especially removal-vs-supersede headers and M0 functional-spec slot.)
 
-7. **Next keep-going default** — If Kaeden says keep going again without a new word, what should the default be: Claude-gated pause, TB pin lap-open brief only (no code), or another mechanical hygiene climb (e.g. doorway/docs)?
+7. **Next keep-going default** — Design briefs for dual monarch and SLC-L4 width are filed; W0 cleared. Further keep-going without affirm should **pause or hygiene only** — not open D1/W1/seam-B code. Affirm?
 
 ---
 
@@ -116,6 +116,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 | **B** | WOV TB pin presence | **Landed** `203527` / parity **203** |
 | **B′** | WOV host seam A | **Landed** `223700` / parity **204** — live REPL on metal still optional |
 | **C** | SLC-L4 W0 review | **Cleared** [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated |
+| **D** | WOV dual-monarch design | **Filed** [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) — affirm D1 vs D2 before code |
 | — | Full Realidream / Pond / Dexter | Held |
 
 ---

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (SLC-L4 W0 review `224426`; width design; WOV seam A; parity **204**)
+**Last updated:** 2026-07-09 (WOV dual-monarch design `224531`; SLC-L4 W0; parity **204**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -75,6 +75,7 @@
 | **6** | **WOV TB pin presence** | **Landed** | rev `59f2b99` witnessed; no client link; parity **203**; prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) |
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
 | **8** | **SLC-L4 lap 2 width** | **W0 cleared** | review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
+| **9** | **WOV dual monarch** | **Design filed** | D1 twin-lines vs D2 envelope; gated [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -109,7 +110,8 @@
 - [x] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed; **M1–M2b + WOV lap 1 + pin + seam A** on metal; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 - [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
 - [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; soak affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
-- [ ] **WOV dual monarch** — waits Claude/Kaeden; after single-monarch TB path
+- [x] **WOV dual-monarch design** — D1 twin log lines vs D2 two-sig envelope; timing after seam A; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md); lap-open [`224531`](../expanding-prompts/20260709-224531_wov-dual-monarch-gated.md) **gated**
+- [ ] **WOV dual-monarch code** — waits Claude/Kaeden affirm of D1 vs D2
 - [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
 - [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
 
