@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.201353 | [Go — WOV lap 1 parity 201](20260709-201353_go-wov-lap1-parity-201.md) | Exit honesty on metal; four remotes |
+| 20260709.200729 | [WOV lap 1 exit honesty](20260709-200729_wov-lap1-exit-honesty.md) | In-memory book + golden; parity **201** GREEN |
 | 20260709.200600 | [Go — WOV exit-honesty spec](20260709-200600_go-wov-exit-honesty-spec.md) | Spec + lap-open brief; four remotes; parity **200** |
 | 20260709.200443 | [WOV exit-honesty spec](20260709-200443_wov-exit-honesty-spec.md) | Root facts + exit bundles; code gated on affirm |
 | 20260709.200022 | [Pedersen and Sigma plainly](20260709-200022_pedersen-and-sigma-plainly.md) | Kitchen-language note for SLC-L4 crypto words |

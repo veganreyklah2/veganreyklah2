@@ -307,6 +307,11 @@ let slcl4 = run ["rishi/bin/rishi" "run" "tools/slcl4_sigma.rish"]
 assert slcl4.ok else "SLC-L4 Sigma witness failed"
 say "GREEN: SLC-L4 fixed-tier Sigma witness passed."
 
+say "witness suite: WOV exit honesty (in-memory lap 1)…"
+let wov = run ["rishi/bin/rishi" "run" "tools/wov_exit_honesty.rish"]
+assert wov.ok else "WOV exit-honesty witness failed"
+say "GREEN: WOV exit-honesty witness passed."
+
 say "witness suite: SLC-L2 sealed delivery…"
 let slcl2 = run ["rishi/bin/rishi" "run" "tools/slcl2_receipt.rish"]
 assert slcl2.ok else "SLC-L2 sealed delivery witness failed"
