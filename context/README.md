@@ -22,7 +22,7 @@ Everything here lives inside the persistent project directory, so it survives ev
 - **`SILO_TECHNIQUE.md`** — the siloing technique: how an outside idea becomes an owned, understood concept in our own voice, with gratitude kept apart and honored. Portable, and meant to travel beside the voice guide and the identity note.
 - **`LEXICON.md`** — module names and one-line meanings; Weave, Dexter, Kumara, Bookie, the open horizons, and the **preservation pair** (Amber = cellar software, Amphora = vessel software).
 
-- **`specs/`** — plain-English radiant specs. … **`20260702-035018_graduation-rule.md`** — when an aspect earns a module home (second consumer). **`20260701-221512_amber-functional-spec.md`** — Amber preservation module; designed, not yet built.
+- **`specs/`** — plain-English radiant specs. … **`20260702-035018_graduation-rule.md`** — when an aspect earns a module home (second consumer). **`20260701-221512_amber-functional-spec.md`** — Amber preservation module; designed, not yet built. **`20260709-200443_wov-exit-honesty.md`** — WOV safety spec (root facts + exit bundles) before any throughput-lane code.
 
 Hand new sessions and collaborators the **voice guide**, the **identity note** (`RIO3.md` this season), and the **silo guide** together by default.
 

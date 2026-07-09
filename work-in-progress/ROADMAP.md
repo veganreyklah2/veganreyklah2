@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.152612` (MALA/WOV path realigned — own-L1 decision honored via the tree's own already-designed July 2nd architecture, not new invention)
-**Last updated:** 2026-07-09 (SLC-L4 Sigma landed `194437`; parity **200**; parity essay `194437`)
+**Version:** `20260709.200443` (WOV exit-honesty spec seated; MALA M2 cleared; code lap waits affirm)
+**Last updated:** 2026-07-09 (WOV exit-honesty `200443`; SLC-L4 Sigma; parity **200**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

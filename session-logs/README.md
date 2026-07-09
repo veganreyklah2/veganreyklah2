@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.200600 | [Go — WOV exit-honesty spec](20260709-200600_go-wov-exit-honesty-spec.md) | Spec + lap-open brief; four remotes; parity **200** |
+| 20260709.200443 | [WOV exit-honesty spec](20260709-200443_wov-exit-honesty-spec.md) | Root facts + exit bundles; code gated on affirm |
 | 20260709.200022 | [Pedersen and Sigma plainly](20260709-200022_pedersen-and-sigma-plainly.md) | Kitchen-language note for SLC-L4 crypto words |
 | 20260709.195800 | [Full summary — parity essay + SLC-L4](20260709-195800_full-summary-parity-essay-slcl4.md) | Arc through `66ca878`; essay + Sigma; four remotes |
 | 20260709.195700 | [Go — parity essay + SLC-L4 200](20260709-195700_go-parity-essay-slcl4-200.md) | Essay + Sigma lap; parity **200**; four remotes |

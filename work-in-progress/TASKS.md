@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (SLC-L4 Sigma landed `194437`; parity essay; parity **200**)
+**Last updated:** 2026-07-09 (WOV exit-honesty spec `200443`; SLC-L4 Sigma; parity **200**)
 
 - [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
 
@@ -63,13 +63,14 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2 landed**; **SLC-L4 Sigma landed** `194437`. Parity **200**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2 landed**; **SLC-L4 Sigma landed** `194437`; **WOV exit-honesty spec seated** `200443`. Parity **200**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
 | **2** | **MALA M1–M2** | **Landed** | M1 parity **198**; M2 hosted parity **199**; counsel [`191634`](../counsel/20260709-191634_grok-counsel-mala-m2-open.md) |
 | **3** | **SLC-L4 Sigma** | **Landed** | fixed-tier prove/verify; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
+| **4** | **WOV exit honesty** | **Spec seated** | [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md); code lap waits Kaeden affirm |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -96,7 +97,9 @@
 - [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
 - [x] **SLC-L4 fixed-tier Sigma** — Pedersen + proof of opening to declared tier; `disclosure_core.rye` + `pedersen.rye` + `tools/slcl4_sigma.rish`; parity **200** (`20260709.194437`); prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 - [ ] **MALA M2b — device wire** — virtio twin of hosted M2; waits Kaeden word
-- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; **WOV** exit-honesty then first lap; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md); lap-open brief [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md) filed, code gated
+- [ ] **WOV first code lap** — waits Kaeden affirm of WOV gate; DoD in expanding-prompt `200443`
+- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; exit-honesty **spec seated** `200443`; first WOV code lap after affirm; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 
 ## Six Open Points, Counseled (`221612`)
 
@@ -293,7 +296,7 @@
 
 Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md).
 
-- [ ] **WOV gate (Kaeden affirms)** — throughput lane over pinned TigerBeetle (pin, never fork, until a Rye-shaped change demands); one or two monarchs, never three (three is Mycelium's door at M4); **exit-honesty spec written before any lap** (root facts + balance proofs sufficient for holder exit); first lap after MALA M2 only.
+- [ ] **WOV gate (Kaeden affirms)** — throughput lane over pinned TigerBeetle (pin, never fork, until a Rye-shaped change demands); one or two monarchs, never three (three is Mycelium's door at M4); **exit-honesty spec written** [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md) (root facts + balance proofs sufficient for holder exit); first code lap after affirm only (MALA M2 already cleared).
 - [x] **Hardware fit (recorded)** — the sovereign-host blueprint covers MALA M0–M2 and WOV's first lap through the two-monarch season with headroom; two deltas named: a dedicated power-loss-protected M.2 NVMe for the WOV data file beside the settlement U.2, and ECC as the value-bearing-monarch threshold with the blueprint's apex tower as its pre-written answer; the x1 gentle-slot rule extends to every ledger tenant. Ground: [`external-research/20260702-215212_wov-mala-hardware-fit.md`](../external-research/20260702-215212_wov-mala-hardware-fit.md) (`20260702.215212`).
 - [x] **Build verdict (recorded)** — no new module: the build system grows as `rye`'s verbs (`rye test` runner is the first witness-gated horizon, a watcher later), declared by Brix, typed by Bron's mark triad, versioned where Mantra already stands; watcher name-candidates parked in RTAC for Kaeden (`20260702.211312`).
 - [ ] **Living build counsel (recorded, design-only)** — builder as projection over Weave/Mantra, never a second state holder; Brix declared graph + resins-law SHA3-256 content keys; three SLC laps (watch loop · Brix-keyed cache with no-work witness · Salsa-shaped sub-file queries on proven need); lap two waits for measured red. Ground: [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) (`20260703.193012`).
