@@ -98,7 +98,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 3. **SLC-L4 lap 2 width** — **W0 cleared** [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md). Remaining: affirm **W1** (OR-tiers) vs hold, and **W2** still later.
 
-4. **Thin view as Dexter pressure** — Thin view uses drawn terminal + Skate only. Does composing local facts into a frame count as a second consumer that should move Dexter graduation, or does it correctly stay an exception until a true Realidream viewer arrives?
+4. **Thin view as Dexter pressure** — **Answered** [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md): stays exception; not Dexter's second consumer.
 
 5. **MALA `kind` field** — Design filed [`225159`](../context/specs/20260709-225159_mala-kind-field.md): **K0** memos through M3 vs **K1** dedicated field. Bench leans K0. Affirm?
 
