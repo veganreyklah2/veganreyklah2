@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.203250 | [Keep going — Claude brief](20260709-203250_keep-going-claude-brief.md) | Night-climb brief shipped `c346d5d` |
 | 20260709.203200 | [Go — Claude night-climb brief](20260709-203200_go-claude-brief-night-climb.md) | Brief `203139`; four remotes; parity **202** |
 | 20260709.203139 | [Claude brief — night climb](20260709-203139_claude-brief-night-climb.md) | Arc through thin view; questions for counsel |
 | 20260709.203100 | [Keep going — thin view](20260709-203100_keep-going-thin-view.md) | Opened thin view; shipped `70d08e4` |
