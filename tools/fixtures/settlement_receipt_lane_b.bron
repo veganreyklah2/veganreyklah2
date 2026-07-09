@@ -1,8 +1,0 @@
-# settlement receipt — lane B golden (testnet selftest pinned)
-log_digest runtime_computed
-chain monad-testnet
-asset usdc
-tx_id 0xMonadTESTNETpinnedDIGESTlaneB0002
-amount 100
-fact_stamp 20260702.195426
-stamp 20260708.182500

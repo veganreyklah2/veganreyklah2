@@ -3,7 +3,8 @@
 **Stamp:** `20260709.034527`
 **Voice:** Rio 3
 **Editor:** Cursor (desktop) · **Model:** Composer 2.5
-**Register:** Decision briefing — full arc through Zig-native SLC-L4 correction, lap-open prompt filed, bench ready for Kaeden's word
+**Register:** Decision briefing — full arc through Zig-native SLC-L4 correction, lap-open prompt filed, MALA realignment
+**Status:** Checkable-room research — Claude review brief; superseded by [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md)
 **Ground:** `bc97a93` → `e633386` on all four remotes; supersedes [`20260709-015832`](20260709-015832_claude-review-brief-jul9-evening-arc.md) for Claude analysis
 
 *Written for Claude counsel review.*
@@ -12,7 +13,7 @@
 
 ## Executive Landscape
 
-Parity **198** unchanged. SLC-L4 moved from design-only + Sui Groth16 pin (`223327`) through a **brief Circom detour** (`021112`, commit `9900aef`) to a **corrected Zig-native path** (`023112`, commit `e633386`). **Lap-open expanding prompt `031612` is filed and ready** — no code until Kaeden's lap word. Kaeden's **testnet → low-value → third-party audit** sequencing is affirmed and answers prior protocol-risk counsel.
+Parity **197** after SLC-L3 removal. SLC-L4 moved from design-only + Sui Groth16 pin (`223327`) through a **brief Circom detour** (`021112`, commit `9900aef`) to a **corrected Zig-native path** (`023112`, commit `e633386`). **Lap-open expanding prompt `031612` is filed and ready** — no code until Kaeden's lap word. Kaeden's **testnet → low-value → third-party audit** sequencing is affirmed and answers prior protocol-risk counsel.
 
 | Milestone | Stamp | Parity | Status |
 |-----------|-------|--------|--------|

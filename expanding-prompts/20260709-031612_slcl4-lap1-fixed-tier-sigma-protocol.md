@@ -21,7 +21,7 @@ Build SLC-L4's first lap: a Zig-native, pairing-free proof that a donation amoun
 
 - A Pedersen commitment to `amount`, built from `Edwards25519.mulDoubleBasePublic(G, amount, H, blinding)` — the same curve family Kumara already signs with, no new curve, no new key type.
 - `H`, the second generator, derived once via `Edwards25519.fromUniform` on a fixed, named domain-separation string — pin the exact bytes in the module and assert them at startup, so `H` is reproducible and never silently re-derived differently between prove and verify.
-- A Sigma protocol proving the committed amount equals one of a **fixed, named set of tiers** — propose three to start: `1000`, `5000`, `10000` (smallest currency unit, matching SLC-L1's own amount convention). This is a disjunctive proof of knowledge — "the commitment opens to tier A, or tier B, or tier C" — not a general range proof. Naming the tiers explicitly, rather than reaching for an arbitrary-range circuit, is this lap's whole reason for being smaller than the general case.
+- A Sigma protocol proving the committed amount **opens to a declared, publicly-checked tier** — three named candidates to start: `1000`, `5000`, `10000` (smallest currency unit, matching SLC-L1's own amount convention). This is a **single proof of knowledge** for the declared tier — not a disjunctive OR-proof across tiers (the tier is public; nothing to disjoin). Naming the tiers explicitly, rather than reaching for an arbitrary-range circuit, is this lap's whole reason for being smaller than the general case.
 - Fiat-Shamir via SHA3-256, exactly as this tree already hashes everything else — the challenge is the hash of the commitment and all public tier candidates; no interaction, no separate randomness beacon.
 - Offline prove and verify, both in one process, both asserted in the same selftest: build a commitment, prove it opens to a chosen tier, verify the proof against the commitment and the public tier list, and — the unwelcome path — verify that a forged proof or a wrong tier claim is refused.
 - A `.bron` proof receipt, fields drawn directly from the hammock as refined: `claim` (`donor-amount-privacy`), `log_digest`, `commitment` (hex), `tier_claimed`, `proof` (the Sigma-protocol transcript, hex), `stamp`.
@@ -32,11 +32,11 @@ Build SLC-L4's first lap: a Zig-native, pairing-free proof that a donation amoun
 - Arbitrary-range proofs (any amount, any threshold) — a real, separate, harder lap.
 - Any live Sui verify transaction — stays on-demand, its own witness, wired only after this offline half is settled.
 - Sanctuary eligibility and reputation-threshold privacy — later passes, own laps.
-- Anything resembling a security audit claim. This lap proves the pattern runs correctly against its own selftest. It does not prove the protocol is sound against an adversary who has studied it, and nothing in this lap's own language should imply otherwise — that is exactly what Kaeden's testnet-then-audit sequencing exists to supply, later, deliberately, not implicitly borrowed here.
+- Anything resembling a security audit claim. This lap proves the pattern runs correctly against its own selftest. It does not prove the protocol is sound against an adversary who has studied it, and nothing in this lap's own language should imply otherwise — that is exactly what Kaeden's testnet-then-audit sequencing exists to supply, later, deliberately, not implicitly borrowed here. A **lightweight design review** of the Sigma construction is recommended before this lap is called finished — distinct from the later formal audit.
 
 ## New Names, Proposed and Parked for the Same Word That Opens the Lap
 
-- `linengrow/disclosure_core.rye` — the module home, mirroring `settlement_core.rye`'s own shape.
+- `linengrow/disclosure_core.rye` — the module home, mirroring the settlement-core pattern from SLC-L3 (implementation since removed).
 - `tally/pedersen.rye` — if the commitment and generator-derivation logic earns its own small file the way `copy_disjoint` and `kumara` did; propose this at build time rather than force it in advance.
 
 ## Dependencies, Named Plainly — There Are None New
@@ -45,7 +45,7 @@ Every operation this lap needs already lives in Zig's vendored 0.16 stdlib: `std
 
 ## Verification Shape
 
-Build from bare. Run the offline selftest: commitment construction, honest proof for each of the three tiers (welcome path, three times), a forged proof rejected, a true commitment claimed against the wrong tier rejected (unwelcome path, at least twice). Confirm the `.bron` golden matches the hammock's field order exactly. Only once all of that is green does this lap wire into `tools/parity.rish` and get called finished.
+Build from bare. Run the offline selftest: commitment construction, honest proof for each of the three tiers (welcome path, three times — one declared tier per proof), a forged proof rejected, a true commitment claimed against the wrong tier rejected (unwelcome path, at least twice). Confirm the `.bron` golden matches the hammock's field order exactly. Only once all of that is green does this lap wire into `tools/parity.rish` and get called finished.
 
 ---
 

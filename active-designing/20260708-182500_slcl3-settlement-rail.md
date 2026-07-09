@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · stop-and-park on custody
-**Status:** Landed — checkable-room hammock scope; two-lane witness GREEN `20260708.182500`; parity **198**; mainnet treasury still out of scope
+**Status:** Hammock record — checkable room; landed `182500`; implementation removed `152612` (MALA path); parity **197**.
 
 **Ground:** [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) · counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) · apply prompt [`20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md)
 
@@ -79,12 +79,12 @@ Live mode (`SLCL3_LIVE=1`) exits **2** on this bench — pinned selftest is the 
 
 ## Edge of Complete — In and Out
 
-### In scope (SLC-L3 v1 is done when these hold)
+### In scope (landed `182500`; implementation removed `152612`)
 
-- One pinned `slcl1_fact.bron` settled on **both** testnet lanes
-- `linengrow/settlement.rye` selftest GREEN — welcome + unwelcome paths
-- `tools/slcl3_settlement_witness.rish` wired parity **198**
-- Settlement receipt goldens per lane
+- One pinned `slcl1_fact.bron` settled on **both** testnet lanes — **was** GREEN before removal
+- ~~`linengrow/settlement.rye`~~ — **removed**
+- ~~`tools/slcl3_settlement_witness.rish`~~ — **removed** from parity (**197**)
+- Settlement receipt goldens — **removed**; counsel/hammock kept as record
 
 ### Out of scope (later seasons)
 
@@ -96,15 +96,15 @@ Live mode (`SLCL3_LIVE=1`) exits **2** on this bench — pinned selftest is the 
 
 ---
 
-## Implementation Map
+## Implementation Map (historical — files removed `152612`)
 
 | File | Role |
 |------|------|
-| `linengrow/settlement_core.rye` | Receipt parse/write; digest, amount, lane verify |
-| `linengrow/settlement.rye` | Two-lane selftest; three-axis output |
-| `tools/fixtures/slcl3_lane_*_settle.sh` | POSIX seams (external interpreter family) |
-| `tools/fixtures/settlement_receipt_lane_*.bron` | Pinned goldens |
-| `tools/slcl3_settlement_witness.rish` | Build + run witness |
+| ~~`linengrow/settlement_core.rye`~~ | Removed |
+| ~~`linengrow/settlement.rye`~~ | Removed |
+| ~~`tools/fixtures/slcl3_lane_*_settle.sh`~~ | Removed |
+| ~~`tools/fixtures/settlement_receipt_lane_*.bron`~~ | Removed |
+| ~~`tools/slcl3_settlement_witness.rish`~~ | Removed from parity |
 
 ---
 

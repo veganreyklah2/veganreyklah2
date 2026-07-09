@@ -12,6 +12,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.183326 | [Go — MALA removal parity 197](20260709-183326_go-mala-removal-parity-197.md) | Claude brief `183326`; commit + four-remote push |
+| 20260709.182354 | [MALA M1 lap-open brief](20260709-182354_mala-m1-lap-open-brief.md) | M0 gate verified; expanding-prompt `182354` filed |
+| 20260709.182051 | [Parity 197 GREEN — OA-L3 clear](20260709-182051_parity-197-green-oal3-clear.md) | Full parity ~150s; no code fix needed |
+| 20260709.171101 | [Parity runs aborted at OA-L3](20260709-171101_parity-runs-aborted-oal3.md) | Two parity shells stalled on escrow lap; removal stack unchanged |
+| 20260709.163549 | [Remove SLC-L3 settlement and retired seams](20260709-163549_remove-slcl3-settlement-retired.md) | Deleted settlement + chain-read; doorway GREEN; parity **197** |
+| 20260709.155520 | [Apply MALA/WOV bundle 45](20260709-155520_apply-mala-wov-bundle45.md) | Counsel `152612`; own-L1 via July 2 design; Sui path retired |
 | 20260709.034527 | [Go — Claude brief late arc](20260709-034527_go-claude-brief-late-arc.md) | Brief `034527`; arc through `e633386` for Claude |
 | 20260709.033030 | [Go — bundle 44 + lap-open prompt](20260709-033030_go-bundle44-lap-open-prompt.md) | Zig-native `023112`; prompt `031612`; four remotes |
 | 20260709.031010 | [Apply Zig-native ZK bundle 44](20260709-031010_apply-zig-native-zk-bundle44.md) | Counsel `023112`; Groth16 out; Pedersen+Sigma in |

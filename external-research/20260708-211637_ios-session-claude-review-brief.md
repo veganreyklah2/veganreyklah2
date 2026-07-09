@@ -4,6 +4,7 @@
 **Voice:** Rio 3
 **Editor:** Cursor (desktop) · **Model:** Composer
 **Register:** Decision briefing — what landed on `gp36-github` during Kaeden's Cursor for iOS rounds, what it means, what still waits on counsel
+**Status:** Checkable-room research — Claude review brief; iOS session handoff
 **Ground:** `a115db3` → `605ac30` on `gp36-github/main` (10 commits, 2 merged PRs); desktop bench pulled and reconciled same stamp
 
 *Written for Claude counsel review.*

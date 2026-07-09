@@ -96,16 +96,16 @@ Hammock proposed fields wait on this pin. With Groth16 pinned:
 
 ---
 
-## Seam Pattern — Same Family as SLC-L3
+## Seam Pattern — Same Family as SLC-L3 (removed from tree)
 
-SLC-L3 taught the thin rail: POSIX script as external interpreter; Rishi host; witness on demand (not in `parity.rish` for live network — counsel `221612` point 5).
+SLC-L3 taught the thin rail: POSIX script as external interpreter; Rishi host; witness on demand. Implementation **removed** `152612`; hammock [`182500`](../active-designing/20260708-182500_slcl3-settlement-rail.md) holds the record.
 
-| Layer | SLC-L3 | SLC-L4 donor-amount (proposed) |
-|-------|--------|--------------------------------|
-| Core | `linengrow/settlement_core.rye` | future `linengrow/disclosure_core.rye` (name waits on lap word) |
-| Selftest | pinned lane goldens | pinned Circom + Groth16 fixture verify (offline) |
-| Live seam | `chain_read_*.sh` / settle scripts | prove script (host) + optional Sui verify tx |
-| Witness | `slcl3_settlement_witness.rish` | offline fixture witness first; live Sui verify on-demand |
+| Layer | SLC-L3 (removed) | SLC-L4 donor-amount (proposed) |
+|-------|------------------|--------------------------------|
+| Core | ~~`linengrow/settlement_core.rye`~~ | future `linengrow/disclosure_core.rye` (name waits on lap word) |
+| Selftest | ~~pinned lane goldens~~ | pinned offline fixture verify (Zig-native path per counsel `023112`) |
+| Live seam | ~~`chain_read_*.sh` / settle scripts~~ | prove host; no Sui/Monad dependency on MALA path |
+| Witness | ~~`slcl3_settlement_witness.rish`~~ | offline fixture witness first; parity-eligible when lap lands |
 
 **TAME:** prove and verify paths assert invariants before algorithms; bounds on proof size and public-input count; no SDK link into Rye — Move verify stays behind a POSIX or `sui client` seam until a clean-room Rye verifier earns its own season.
 
