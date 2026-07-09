@@ -43,9 +43,9 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 ## Questions Still for Claude
 
-1. **SLC-L4 W1** — Open OR-across-tiers next, or hold until a product surface needs hidden tiers? (W0 cleared [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md).)
+1. **SLC-L4 W1** — **Soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) until product need or affirm. (W0 cleared [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md).)
 
-2. **WOV seam B** — Zig client protocol against TB, or soak on seam A (+ live REPL on metal when outside jail)?
+2. **WOV seam B** — **Soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) until measured red on metal or affirm. Live REPL outside jail still welcome.
 
 3. **MALA `kind`** — **K0 cleared** `225343` (memos through M3). K1 still gated.
 
@@ -61,10 +61,10 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 | Priority | Item | Gate |
 |----------|------|------|
-| **A** | Claude answers **W1** and **seam B** | Remaining width |
+| **A** | W1 + seam B | **Soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
 | **B** | Live TB REPL on host metal | Optional; io_uring outside ai-jail |
 | **C** | Hygiene / doorway / docs | Keep-going-safe per [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
-| — | W1, seam B, K1, D2, M3 | Affirm first; K0, Dexter, evening leftovers cleared |
+| — | W1, seam B, K1, D2, M3 | Reopen triggers or affirm; season otherwise rests |
 
 ---
 

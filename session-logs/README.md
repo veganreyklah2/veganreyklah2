@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225650 | [Session close — soak](20260709-225650_session-close-parity-205-soak.md) | Parity **205**; W1/seam B soak; pause |
+| 20260709.225640 | [Go — W1 + seam B soak](20260709-225640_go-w1-seam-b-soak.md) | Soak counsel; four remotes |
+| 20260709.225614 | [W1 + seam B soak](20260709-225614_w1-seam-b-soak.md) | Reopen triggers named |
 | 20260709.225540 | [Go — evening leftovers](20260709-225540_go-evening-leftovers.md) | Removal/M0/keep-going default; four remotes |
 | 20260709.225508 | [Evening leftovers cleared](20260709-225508_evening-leftovers-cleared.md) | Counsel `225508`; parity **205** |
 | 20260709.225400 | [Go — K0 + Dexter exception](20260709-225400_go-k0-dexter-exception.md) | Memos through M3; thin view not second consumer |

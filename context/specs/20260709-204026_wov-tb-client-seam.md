@@ -103,7 +103,7 @@ After every TB mutation batch that a root covers:
 | Claude/Kaeden affirm seam A vs B | **Cleared** — Kaeden keep-going chose A |
 | Lap 2b code (seam A) | **Landed** `223700` / parity **204** |
 | Live REPL under ai-jail | **SKIP** — io_uring blocked by seccomp; lab greens on host metal |
-| Seam B (Zig client protocol) | Later |
+| Seam B (Zig client protocol) | **Soak** [`225614`](../../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) until measured red or affirm |
 
 ---
 

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (evening leftovers counsel `225508`; K0; parity **205**)
+**Last updated:** 2026-07-09 (W1 + seam B soak `225614`; parity **205**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -79,6 +79,7 @@
 | **10** | **MALA `kind` field** | **K0 cleared** | memos through M3; K1 gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
 | **11** | **Thin view / Dexter** | **Exception affirmed** | not a second consumer; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) |
 | **12** | **Evening leftovers** | **Cleared** | removal headers on-touch; M0 spec not required; keep-going default; [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
+| **13** | **W1 + seam B** | **Soak** | reopen triggers named; [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -115,9 +116,10 @@
 - [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; soak affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
 - [x] **WOV dual-monarch design** — D1 twin log lines vs D2 two-sig envelope; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md)
 - [x] **WOV dual-monarch D1 (code)** — `publish_root_dual` / `verify_latest_root_dual` / `accept_exit_dual`; `selftest-dual`; `tools/wov_dual_monarch.rish`; parity **205** (`20260709.224634`)
-- [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
+- [ ] **WOV TB seam B** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on measured red or affirm
 - [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
-- [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
+- [ ] **SLC-L4 W1/W2 code** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on product need or affirm
+- [x] **W1 + seam B soak ruling** — counsel [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); keep-going does not open them
 - [x] **MALA `kind` field design** — K0/K1 named; [`225159`](../context/specs/20260709-225159_mala-kind-field.md)
 - [x] **MALA `kind` K0** — keep memo prefixes through M3; affirmed `225343`; K1 still gated
 - [ ] **MALA `kind` K1 code** — waits affirm
