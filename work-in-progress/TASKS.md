@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA kind design + late-night Claude brief `225159`; dual D1; parity **205**)
+**Last updated:** 2026-07-09 (K0 + thin-view/Dexter ruling `225343`; parity **205**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -76,7 +76,8 @@
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
 | **8** | **SLC-L4 lap 2 width** | **W0 cleared** | review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
 | **9** | **WOV dual monarch D1** | **Landed** | twin log lines; solo refused; parity **205**; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
-| **10** | **MALA `kind` field** | **Design filed** | K0 memos vs K1 column; gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
+| **10** | **MALA `kind` field** | **K0 cleared** | memos through M3; K1 gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
+| **11** | **Thin view / Dexter** | **Exception affirmed** | not a second consumer; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -116,16 +117,18 @@
 - [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
 - [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
 - [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
-- [x] **MALA `kind` field design** — K0 keep memos vs K1 dedicated field; bench leans K0 through M3; [`225159`](../context/specs/20260709-225159_mala-kind-field.md); lap-open [`225159`](../expanding-prompts/20260709-225159_mala-kind-field-gated.md) **gated**
-- [ ] **MALA `kind` K1 code** — waits affirm; K0 needs no code
+- [x] **MALA `kind` field design** — K0/K1 named; [`225159`](../context/specs/20260709-225159_mala-kind-field.md)
+- [x] **MALA `kind` K0** — keep memo prefixes through M3; affirmed `225343`; K1 still gated
+- [ ] **MALA `kind` K1 code** — waits affirm
 - [x] **Late-night Claude brief** — parity **205** landscape; [`225159`](../external-research/20260709-225159_claude-review-brief-jul9-late-night.md) supersedes `203139` for open Qs
+- [x] **Thin view / Dexter exception** — thin view is not Dexter's second consumer; Dexter stays aspect; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
 ## Six Open Points, Counseled (`221612`)
 
 1. **Settlement-seat crown** — **moot** — Sui/Monad path removed `152612`; MALA is own-issuer money.
 2. **Mainnet treasury custody event** — separate custody event when real value moves; legal/tax counsel required; MALA path replaces external-chain settlement.
 3. **SLC-L4 first pass** — **landed** `194437` — fixed-tier Sigma (declared tier; blinding private); parity **200**; **W0 review** `224426`. W1 OR-tiers / W2 range remain later.
-4. **Realidream viewer UI** — still held; data seams ready removes a future blocker, doesn't touch Pond/Dexter's present gate.
+4. **Realidream viewer UI** — still held; thin view exception affirmed `225343` (not Dexter graduation); full viewer still horizon.
 5. **Parity for network seams** — **resolved** — chain-read witnesses removed with settlement path `152612`.
 6. **Grain-sketchbook** — **closed shelf-only** (Kaeden `222852`): [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) is enough; no copy of the archive into this tree. Counsel `221612` had left a local `cp -r` open; Kaeden declined the hold directory.
 
@@ -496,7 +499,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 - **Bron** — **affirmed** [`counsel/20260707-222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron carries **immutable values at seams**; Brix carries **composable system descriptions**. Brix uses Bron as surface syntax; Bron stands alone at every seam. `bron/` module waits on parser + second consumer. *(Kaeden affirms `174500`.)*
 - **Tablecloth** — **Tablecloth** names the Brix-facing application store (horizon); **Tablecloth query** names the namespace optional-field filter (parity **175**); reconciled `20260707.011812` per counsel `005612`.
 - **`.brush`** — surface-description extension for the day Brushstroke becomes a small language; horizon only.
-- **Dexter / Kumara** — **Dexter (checked `220912`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); stays aspect; Realidream viewer named as natural second consumer (`021912`). **Kumara arc closed (`030200`):** product surface + all virtio guests repointed; Ed25519 ratchet **0** — X25519 conversion seams excluded, not Kumara identity work.
+- **Dexter / Kumara** — **Dexter (re-affirmed `225343`):** still one external consumer (`pond/apps/drawn_terminal.rye` → `window_input.rye`); thin view is **not** a second consumer; stays aspect; full Realidream viewer remains the natural second-consumer candidate. **Kumara arc closed (`030200`):** Ed25519 ratchet **0**.
 - **Two-backend seam** — **affirmed `174500`:** lean **wait** — hosted Wayland path witnessed (parity **145**+); sovereign framebuffer-to-QEMU sibling builds when Aurora's path needs a screen without a compositor, not before.
 - **`.sh` POSIX-seam pattern** — **answered** in [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) and [`ORGANIZING.md`](../ORGANIZING.md) (counsel `195912`).
 - **Weave graduation (checked `220912`)** — sovereign slice = I2 `catalog/` export; stays Mantra aspect.

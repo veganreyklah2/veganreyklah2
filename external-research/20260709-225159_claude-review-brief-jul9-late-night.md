@@ -47,9 +47,9 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 2. **WOV seam B** — Zig client protocol against TB, or soak on seam A (+ live REPL on metal when outside jail)?
 
-3. **MALA `kind`** — Affirm **K0** (memos through M3) vs **K1** (dedicated field)? Design [`225159`](../context/specs/20260709-225159_mala-kind-field.md).
+3. **MALA `kind`** — **K0 cleared** `225343` (memos through M3). K1 still gated.
 
-4. **Thin view / Dexter** — Still an exception, or second-consumer pressure? (Unchanged from `203139` Q4.)
+4. **Thin view / Dexter** — **Exception affirmed** [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) — not Dexter's second consumer.
 
 5. **Evening-close leftovers** — Removal-vs-supersede headers; M0 functional-spec slot — still needed?
 
@@ -61,10 +61,10 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 | Priority | Item | Gate |
 |----------|------|------|
-| **A** | Claude answers 1–3, 6 | This brief |
+| **A** | Claude answers 1–2, 6 (W1, seam B, keep-going default) | This brief |
 | **B** | Live TB REPL on host metal | Optional; io_uring outside ai-jail |
 | **C** | Hygiene / doorway / docs | Keep-going-safe |
-| — | W1, seam B, K1, D2, M3 | Affirm first |
+| — | W1, seam B, K1, D2, M3 | Affirm first; K0 + Dexter exception cleared |
 
 ---
 

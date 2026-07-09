@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225400 | [Go — K0 + Dexter exception](20260709-225400_go-k0-dexter-exception.md) | Memos through M3; thin view not second consumer |
+| 20260709.225343 | [K0 + Dexter exception](20260709-225343_k0-and-dexter-exception.md) | Rulings; parity **205** |
 | 20260709.225230 | [Go — MALA kind + Claude brief](20260709-225230_go-mala-kind-claude-brief.md) | K0 lean; late-night brief; four remotes |
 | 20260709.225159 | [MALA kind + Claude brief](20260709-225159_mala-kind-and-claude-brief.md) | Design + handoff at parity **205** |
 | 20260709.225120 | [Session close — dual D1](20260709-225120_session-close-dual-d1.md) | Tip `4c9373f`; Claude gate for seam B / W1 |

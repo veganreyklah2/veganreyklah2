@@ -2,14 +2,14 @@
 
 **Stamp:** `20260709.225159`
 **Voice:** Rio 3
-**Status:** Design brief **filed**; **do not implement K1** until Claude/Kaeden affirm; **K0** (keep memos) is the bench default
+**Status:** **K0 landed** `20260709.225343` (keep memos); **do not implement K1** until affirm
 **Ground:** [`../context/specs/20260709-225159_mala-kind-field.md`](../context/specs/20260709-225159_mala-kind-field.md)
 
 ---
 
 ## Affirm
 
-Choose **K0** (keep memo prefixes through M3) or **K1** (dedicated `kind` + migration). Bench leaning: **K0**.
+Kaeden keep-going chose **K0**. M3 may add new memo prefixes. **K1** still waits affirm.
 
 ## DoD (only if K1 opens)
 
