@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.204130 | [Keep going — client seam](20260709-204130_keep-going-client-seam.md) | Design shipped `336b49a`; code gated |
 | 20260709.204100 | [Go — WOV client-seam design](20260709-204100_go-wov-client-seam-design.md) | Seam A vs B filed; gated; four remotes |
 | 20260709.204026 | [WOV TB client-seam design](20260709-204026_wov-tb-client-seam-design.md) | Design + lap-open; no client code; parity **203** |
 | 20260709.203950 | [Keep going — WOV TB pin](20260709-203950_keep-going-wov-tb-pin.md) | Pin presence shipped `80e0375` |
