@@ -12,8 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260709.022837 | [Go — approve SLC-L4 path bundle 43](20260709-022837_go-approve-slcl4-path-bundle43.md) | Kaeden approves counsel `021112`; four remotes |
-| 20260709.022446 | [Apply SLC-L4 top path bundle 43](20260709-022446_apply-slcl4-top-path-bundle43.md) | Counsel `021112`; circuit shape ruled; thin-demo named |
+| 20260709.033030 | [Go — bundle 44 + lap-open prompt](20260709-033030_go-bundle44-lap-open-prompt.md) | Zig-native `023112`; prompt `031612`; four remotes |
+| 20260709.031010 | [Apply Zig-native ZK bundle 44](20260709-031010_apply-zig-native-zk-bundle44.md) | Counsel `023112`; Groth16 out; Pedersen+Sigma in |
 | 20260709.015832 | [Go — Claude brief Jul 9](20260709-015832_go-claude-brief-jul9.md) | Review brief `015832`; landscape log; four remotes |
 | 20260709.014227 | [Landscape — bench and what to open](20260709-014227_landscape-bench-what-to-open.md) | Gate map after `51b7c1e`; three paths named |
 | 20260709.013817 | [Go — memcpy hygiene + log backlog](20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |

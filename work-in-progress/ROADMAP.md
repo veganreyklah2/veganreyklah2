@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.021112` (SLC-L4 implementation shape ruled — circomlib comparator confirmed on bench; lap still Kaeden-gated)
-**Last updated:** 2026-07-09 (counsel `021112` answers Cursor's own brief in full — circuit shape, lap-open brief contents, thin-demo exception named, settlement note, testnet-trial framing)
+**Version:** `20260709.023112` (SLC-L4 corrected to a Zig-native, pairing-free path — Groth16 ruled out by checking the stdlib directly; lap still Kaeden-gated)
+**Last updated:** 2026-07-09 (counsel `023112` — Curve25519 Pedersen commitment + Sigma-protocol threshold proof replaces Circom/Groth16 per Kaeden's own no-JS-no-Rust direction; MALA/WOV Horizon-3 reasoning updated with Kaeden's own testnet-then-audit sequencing)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -84,7 +84,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **OA-L4** | Reputation-as-fold — applicant consent facts; witness bolt; **landed** `20260706.232812` — parity **167** | OA-L1 + escrow |
 | **OA-L5** | Accept, complete, consent wire — hosted + device; **landed** `20260707` — parity **184** | OA-L3 + wire |
 | **SLC-L3** | Settlement rail — two-lane witness GREEN; three-axis score; **landed** `20260708.182500` — parity **198** | Sui / Monad testnet seams |
-| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); ZK pin [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) (`sui::groth16`); donor-amount first; lap waits on Kaeden |
+| **SLC-L4** | Selective-disclosure pass — three named shapes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy** (ZK proves claim, not raw data) | hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); ZK study [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) kept for the record; **path corrected [`023112`](../counsel/20260709-023112_claude-counsel-zig-native-zk-path.md) to Zig-native** — Curve25519 Pedersen commitment + Sigma-protocol (no Groth16, no pairing curves in Zig's stdlib); donor-amount first, fixed threshold tiers before arbitrary range; lap waits on Kaeden |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
