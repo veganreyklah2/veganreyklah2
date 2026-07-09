@@ -12,6 +12,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.195700 | [Go — parity essay + SLC-L4 200](20260709-195700_go-parity-essay-slcl4-200.md) | Essay + Sigma lap; parity **200**; four remotes |
+| 20260709.195559 | [SLC-L4 Sigma parity 200](20260709-195559_slcl4-sigma-parity-200.md) | Pedersen + tier proof; doorway Status fix; suite GREEN |
+| 20260709.194437 | [What parity is](20260709-194437_what-parity-is.md) | Plain-language external-research on the witness suite |
 | 20260709.193819 | [Go — OA UDP hang fix](20260709-193819_go-hang-fix-mala-m2-199.md) | Bind-before-send; parity **199** unchanged; four remotes |
 | 20260709.193237 | [OA-L3/L5 UDP hang fix](20260709-193237_hang-fix-mala-m2.md) | Listen sockets before peer send; suite GREEN |
 | 20260709.192224 | [Go — MALA M2 parity 199](20260709-192224_go-mala-m2-parity-199.md) | Hosted mint + receipt-back already on remotes |

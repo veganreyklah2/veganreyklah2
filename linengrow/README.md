@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M2 hosted at parity **199**; SLC-L3 settlement removed `152612`)
+**Last updated:** 2026-07-09 (SLC-L4 Sigma at parity **200**; MALA M2 hosted **199**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -59,7 +59,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **SLC-L3** | **Settlement rail** — landed then **removed** `152612` (Sui/Monad path superseded by MALA); hammock kept as record | superseded by MALA |
 | **MALA M1** | **One issuer, one holder** — mint, send, balance-as-fold on one node; [`mala.rye`](mala.rye) · witness **198** | design [`../active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) |
 | **MALA M2** | **Mailable (hosted)** — mint under Comlink seal; receipt back; [`mala_delivery.rye`](mala_delivery.rye) · witness **199** | prompt [`../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md) |
-| **SLC-L4** | **Selective disclosure** — donor-amount privacy first; Zig-native Sigma path; lap-open waits Kaeden | hammock [`../active-designing/20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md) |
+| **SLC-L4** | **Fixed-tier Sigma** — donor-amount privacy; [`disclosure_core.rye`](disclosure_core.rye) + [`../tally/pedersen.rye`](../tally/pedersen.rye) · witness **200** | prompt [`../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.

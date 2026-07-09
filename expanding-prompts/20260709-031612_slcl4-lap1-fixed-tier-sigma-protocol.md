@@ -4,7 +4,7 @@
 **Voice:** Rio 3
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Ready to run the moment Kaeden gives the lap word — written now so nothing about scope needs re-deriving at that moment
+**Status:** **Landed** `20260709.194437` — `tally/pedersen.rye` + `linengrow/disclosure_core.rye` + witness at parity **200**; opened on Kaeden's keep-going word
 **Ground:** counsel [`20260709-021112`](../counsel/20260709-021112_claude-counsel-slcl4-top-recommended-path.md) and [`20260709-023112`](../counsel/20260709-023112_claude-counsel-zig-native-zk-path.md) — this prompt changes neither's reasoning, only assembles their conclusions into one scope note a bench can run from directly
 
 *Written by Kaeden and Rio 3.*

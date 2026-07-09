@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · CIVIC · Hammock
-**Status:** Design only — checkable-room hammock scope; SLC-L3 receipt landed `182500`; **implementation path corrected** [`023112`](../counsel/20260709-023112_claude-counsel-zig-native-zk-path.md) (Curve25519 Pedersen + Sigma-protocol, Zig-native); study [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) kept for Sui record; **no code until Kaeden's lap word**. Sequencing `221612`: **donor-amount privacy** first; fixed threshold tiers before arbitrary range.
+**Status:** Checkable-room hammock — lap 1 (fixed-tier Sigma) **landed** `20260709.194437` at parity **200**; later passes still design. Path [`023112`](../counsel/20260709-023112_claude-counsel-zig-native-zk-path.md); study [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) kept for Sui record.
 
 **Ground:** counsel [`041000`](../counsel/20260708-041000_claude-counsel-settlement-recommendation-july-2026.md) · six open points [`221612`](../counsel/20260708-221612_claude-counsel-six-open-points.md) · Zig-native path [`023112`](../counsel/20260709-023112_claude-counsel-zig-native-zk-path.md) · ZK study [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) · SLC-L3 scope [`20260708-182500_slcl3-settlement-rail.md`](20260708-182500_slcl3-settlement-rail.md) · OA-L4 reputation [`20260706-232812`](../session-logs/20260706-232812_open-asks-lap4-reputation-fold.md)
 

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (OA-L3/L5 UDP bind-before-send hang fix `192631`; MALA M2 hosted `191634`; parity **199**)
+**Last updated:** 2026-07-09 (SLC-L4 Sigma landed `194437`; parity essay; parity **200**)
 
 - [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
 
@@ -63,12 +63,13 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2 landed** (`184051` / `191634`); **SLC-L4** on Kaeden's word. Parity **199**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2 landed**; **SLC-L4 Sigma landed** `194437`. Parity **200**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
 | **2** | **MALA M1–M2** | **Landed** | M1 parity **198**; M2 hosted parity **199**; counsel [`191634`](../counsel/20260709-191634_grok-counsel-mala-m2-open.md) |
+| **3** | **SLC-L4 Sigma** | **Landed** | fixed-tier prove/verify; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -93,6 +94,7 @@
 - [x] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198** (`20260709.184051`); prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md)
 - [x] **MALA M2 — mailable (hosted)** — mint crosses Comlink UDP; receipt crosses back; `mala_core.rye` + `mala_delivery.rye` + `tools/mala_m2_witness.rish`; parity **199** (`20260709.191634`); prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
 - [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
+- [x] **SLC-L4 fixed-tier Sigma** — Pedersen + proof of opening to declared tier; `disclosure_core.rye` + `pedersen.rye` + `tools/slcl4_sigma.rish`; parity **200** (`20260709.194437`); prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 - [ ] **MALA M2b — device wire** — virtio twin of hosted M2; waits Kaeden word
 - [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; **WOV** exit-honesty then first lap; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 
@@ -100,7 +102,7 @@
 
 1. **Settlement-seat crown** — **moot** — Sui/Monad path removed `152612`; MALA is own-issuer money.
 2. **Mainnet treasury custody event** — separate custody event when real value moves; legal/tax counsel required; MALA path replaces external-chain settlement.
-3. **SLC-L4 first pass** — **donor-amount privacy** recommended. **Implementation path corrected `023112`:** Zig-native Curve25519 Pedersen commitment + Sigma-protocol (fixed threshold tiers first); study [`223327`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) kept for Sui/Groth16 record — superseded for a Zig-only build. Lap open still waits on Kaeden's word.
+3. **SLC-L4 first pass** — **landed** `194437` — fixed-tier Sigma (donor-amount privacy); `tally/pedersen.rye` + `linengrow/disclosure_core.rye`; parity **200**. Arbitrary-range and other passes remain later.
 4. **Realidream viewer UI** — still held; data seams ready removes a future blocker, doesn't touch Pond/Dexter's present gate.
 5. **Parity for network seams** — **resolved** — chain-read witnesses removed with settlement path `152612`.
 6. **Grain-sketchbook** — **closed shelf-only** (Kaeden `222852`): [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) is enough; no copy of the archive into this tree. Counsel `221612` had left a local `cp -r` open; Kaeden declined the hold directory.
@@ -460,7 +462,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L3 — settlement** — **landed** `20260708.182500`, **removed from tree** `152612` — witness dropped from parity (**197**); implementation deleted; hammock + counsel kept as record. Superseded by MALA per counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md).
-- [ ] **SLC-L4 — selective disclosure (design)** — three named passes: **sanctuary eligibility**, **donor-amount privacy**, **reputation-threshold privacy**; hammock scope [`20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md); SLC-L3 receipt landed `182500`; **ZK ground pinned `223327`** ([`sui::groth16`](../external-research/20260708-223327_sui-zk-primitives-for-donor-amount-privacy.md) study — genuine research, kept for the record) — **no code until Kaeden's lap word**. **Sequencing `221612`:** donor-amount privacy first (inherits SLC-L3 directly, simpler single-value proof). **Implementation path corrected `023112` — Zig-native, no JavaScript or Rust:** Kaeden's own direction. `sui::groth16`/Circom is **out** for a Zig-only build — checked directly against the vendored Zig 0.16 stdlib, `std.crypto.pcurves` has no pairing-friendly curve (only P256/P384/secp256k1) and no pairing operation anywhere; Groth16 needs both. **In:** a Curve25519 Pedersen commitment + Sigma-protocol threshold proof, entirely within `std.crypto.25519` (`Edwards25519.mulDoubleBasePublic` computes the commitment formula directly; SHA3 stands in for the Fiat-Shamir challenge) — the same curve family Kumara already signs with, no pairing, no trusted-setup ceremony. **First lap scoped smaller than the general case:** prove commitment opens to a declared, publicly-checked tier (e.g., $10/$50/$100) — smallest first, same discipline as everywhere else. Offline prove+verify pair belongs in `tools/parity.rish` once green; live Sui verify stays on-demand. Counsel `023112`. **Lap-open prompt ready `031612`, corrected `034812`:** [`expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) — runs on Kaeden's lap word only. **Protocol shape corrected `034812`:** not a disjunctive OR-proof (tier is public, nothing to disjoin) — a single proof of knowledge of opening to the declared tier; `H`'s domain-separation string pinned; a lightweight design review recommended *before* this lap is called finished, distinct from the later formal audit Kaeden's own sequence already names; `sui::groth16` ruled out Zig-native only, not ruled out forever as a future external-interpreter-seam lap.
+- [x] **SLC-L4 lap 1 — fixed-tier Sigma** — **landed** `20260709.194437` — `tally/pedersen.rye` + `linengrow/disclosure_core.rye` + `tools/slcl4_sigma.rish`; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md). Selftest honesty only; lightweight design review still recommended before calling the protocol finished. Later: arbitrary-range, sanctuary eligibility, reputation-threshold; live Sui verify on-demand.
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 
