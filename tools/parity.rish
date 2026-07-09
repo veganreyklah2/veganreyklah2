@@ -297,6 +297,11 @@ let mala_m1 = run ["rishi/bin/rishi" "run" "tools/mala_m1_witness.rish"]
 assert mala_m1.ok else "MALA M1 witness failed"
 say "GREEN: MALA M1 one-issuer one-holder witness passed."
 
+say "witness suite: MALA M2 mailable Comlink (hosted)…"
+let mala_m2 = run ["rishi/bin/rishi" "run" "tools/mala_m2_witness.rish"]
+assert mala_m2.ok else "MALA M2 witness failed"
+say "GREEN: MALA M2 mailable Comlink (hosted) witness passed."
+
 say "witness suite: SLC-L2 sealed delivery…"
 let slcl2 = run ["rishi/bin/rishi" "run" "tools/slcl2_receipt.rish"]
 assert slcl2.ok else "SLC-L2 sealed delivery witness failed"

@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M1 at parity **198**; SLC-L3 settlement removed `152612`)
+**Last updated:** 2026-07-09 (MALA M2 hosted at parity **199**; SLC-L3 settlement removed `152612`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -58,6 +58,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **OA-L5** | **Accept, complete, consent wire** — hosted + device | witness **184** |
 | **SLC-L3** | **Settlement rail** — landed then **removed** `152612` (Sui/Monad path superseded by MALA); hammock kept as record | superseded by MALA |
 | **MALA M1** | **One issuer, one holder** — mint, send, balance-as-fold on one node; [`mala.rye`](mala.rye) · witness **198** | design [`../active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) |
+| **MALA M2** | **Mailable (hosted)** — mint under Comlink seal; receipt back; [`mala_delivery.rye`](mala_delivery.rye) · witness **199** | prompt [`../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md) |
 | **SLC-L4** | **Selective disclosure** — donor-amount privacy first; Zig-native Sigma path; lap-open waits Kaeden | hammock [`../active-designing/20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
