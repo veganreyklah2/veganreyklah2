@@ -102,9 +102,9 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 5. **MALA `kind` field** — Design filed [`225159`](../context/specs/20260709-225159_mala-kind-field.md): **K0** memos through M3 vs **K1** dedicated field. Bench leans K0. Affirm?
 
-6. **Evening-close Q1–Q6** — Which of [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md)'s six questions still need answers now that M1–M2b, Sigma, and WOV lap 1 are facts? (Especially removal-vs-supersede headers and M0 functional-spec slot.)
+6. **Evening-close Q1–Q6** — **Cleared** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) (+ metal answers for Q2–Q5).
 
-7. **Next keep-going default** — Design briefs for dual monarch and SLC-L4 width are filed; W0 cleared. Further keep-going without affirm should **pause or hygiene only** — not open D1/W1/seam-B code. Affirm?
+7. **Next keep-going default** — **Cleared** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md): hygiene + design rulings; no W1/seam B/K1 code without affirm.
 
 ---
 

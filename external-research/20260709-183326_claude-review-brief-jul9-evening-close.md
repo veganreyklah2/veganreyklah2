@@ -165,17 +165,17 @@ Neither requires Claude ruling before `kg` once the word lands — scope is boun
 
 ## Questions for Claude Review
 
-1. **Removal vs supersede** — Kaeden chose delete over the tree's usual supersede-and-keep pattern. Any counsel on whether historical briefs (`211637`, `015832`) that still cite landed settlement files need a one-line "removed `152612`" header, or stay as dated record untouched?
+1. **Removal vs supersede** — **Answered** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md): on-touch one-liner; no mass rewrite. Headers added on `015832` / `034527` this stamp.
 
-2. **MALA M1 fact shapes** — Are `mala:mint` / `mala:send` memo prefixes on the SLC-L1 envelope the right M0 binding, or should MALA introduce a dedicated `kind` field before M1 code?
+2. **MALA M1 fact shapes** — **Answered** by M1 land + **K0** `225343`: memo prefixes through M3; K1 gated.
 
-3. **Lap sequencing** — With MALA M1 and SLC-L4 both lap-open, does counsel affirm MALA-first per `152612`, or should donor-amount privacy precede own-issuer money?
+3. **Lap sequencing** — **Answered** by metal: MALA M1–M2b then SLC-L4 then WOV (parity **198→205**).
 
-4. **Sigma single-tier proof** — Confirm the corrected `031612` framing (declared tier public, single proof of knowledge — not OR across tiers) matches sound practice for the fixed-tier lap.
+4. **Sigma single-tier proof** — **Answered** by lap 1 + W0 review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md).
 
-5. **WOV timing** — Counsel `152612` says WOV after MALA M2. Any adjustment now that settlement rails are gone?
+5. **WOV timing** — **Answered** by path: WOV after M2; pin, seam A, dual D1 on metal.
 
-6. **M0 functional spec** — Filing `182354` includes M0 shapes on paper. Does that satisfy the Edit 5 designed-not-built bound, or should a `context/specs/` functional spec earn the slot before M1 code?
+6. **M0 functional spec** — **Answered** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md): `182354` + M1 green suffice; no separate M0 functional-spec file required.
 
 ---
 

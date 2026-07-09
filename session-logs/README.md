@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225540 | [Go — evening leftovers](20260709-225540_go-evening-leftovers.md) | Removal/M0/keep-going default; four remotes |
+| 20260709.225508 | [Evening leftovers cleared](20260709-225508_evening-leftovers-cleared.md) | Counsel `225508`; parity **205** |
 | 20260709.225400 | [Go — K0 + Dexter exception](20260709-225400_go-k0-dexter-exception.md) | Memos through M3; thin view not second consumer |
 | 20260709.225343 | [K0 + Dexter exception](20260709-225343_k0-and-dexter-exception.md) | Rulings; parity **205** |
 | 20260709.225230 | [Go — MALA kind + Claude brief](20260709-225230_go-mala-kind-claude-brief.md) | K0 lean; late-night brief; four remotes |

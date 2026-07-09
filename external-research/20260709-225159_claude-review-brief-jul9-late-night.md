@@ -51,9 +51,9 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 4. **Thin view / Dexter** — **Exception affirmed** [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) — not Dexter's second consumer.
 
-5. **Evening-close leftovers** — Removal-vs-supersede headers; M0 functional-spec slot — still needed?
+5. **Evening-close leftovers** — **Cleared** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md): on-touch removal headers; M0 functional-spec file not required.
 
-6. **Keep-going default** — Bench now: design briefs + mechanical hygiene only; **no** W1 / seam B / K1 code without affirm. Confirm?
+6. **Keep-going default** — **Cleared** [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md): hygiene + design rulings; no W1 / seam B / K1 code without affirm.
 
 ---
 
@@ -61,10 +61,10 @@ From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sig
 
 | Priority | Item | Gate |
 |----------|------|------|
-| **A** | Claude answers 1–2, 6 (W1, seam B, keep-going default) | This brief |
+| **A** | Claude answers **W1** and **seam B** | Remaining width |
 | **B** | Live TB REPL on host metal | Optional; io_uring outside ai-jail |
-| **C** | Hygiene / doorway / docs | Keep-going-safe |
-| — | W1, seam B, K1, D2, M3 | Affirm first; K0 + Dexter exception cleared |
+| **C** | Hygiene / doorway / docs | Keep-going-safe per [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
+| — | W1, seam B, K1, D2, M3 | Affirm first; K0, Dexter, evening leftovers cleared |
 
 ---
 

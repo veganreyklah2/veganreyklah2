@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (K0 + thin-view/Dexter ruling `225343`; parity **205**)
+**Last updated:** 2026-07-09 (evening leftovers counsel `225508`; K0; parity **205**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -78,6 +78,7 @@
 | **9** | **WOV dual monarch D1** | **Landed** | twin log lines; solo refused; parity **205**; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
 | **10** | **MALA `kind` field** | **K0 cleared** | memos through M3; K1 gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
 | **11** | **Thin view / Dexter** | **Exception affirmed** | not a second consumer; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) |
+| **12** | **Evening leftovers** | **Cleared** | removal headers on-touch; M0 spec not required; keep-going default; [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -122,6 +123,7 @@
 - [ ] **MALA `kind` K1 code** — waits affirm
 - [x] **Late-night Claude brief** — parity **205** landscape; [`225159`](../external-research/20260709-225159_claude-review-brief-jul9-late-night.md) supersedes `203139` for open Qs
 - [x] **Thin view / Dexter exception** — thin view is not Dexter's second consumer; Dexter stays aspect; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
+- [x] **Evening-close leftovers** — removal-vs-supersede on-touch; M0 functional-spec slot closed; keep-going default named; counsel [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md)
 
 ## Six Open Points, Counseled (`221612`)
 
