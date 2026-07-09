@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225230 | [Go — MALA kind + Claude brief](20260709-225230_go-mala-kind-claude-brief.md) | K0 lean; late-night brief; four remotes |
+| 20260709.225159 | [MALA kind + Claude brief](20260709-225159_mala-kind-and-claude-brief.md) | Design + handoff at parity **205** |
 | 20260709.225120 | [Session close — dual D1](20260709-225120_session-close-dual-d1.md) | Tip `4c9373f`; Claude gate for seam B / W1 |
 | 20260709.225053 | [Go — WOV dual D1 205](20260709-225053_go-wov-dual-d1-205.md) | Twin lines on metal; four remotes; parity **205** |
 | 20260709.224634 | [WOV dual monarch D1](20260709-224634_wov-dual-monarch-d1.md) | Twin log lines; solo refused; parity **205** |
