@@ -312,6 +312,11 @@ let wov = run ["rishi/bin/rishi" "run" "tools/wov_exit_honesty.rish"]
 assert wov.ok else "WOV exit-honesty witness failed"
 say "GREEN: WOV exit-honesty witness passed."
 
+say "witness suite: WOV TigerBeetle pin presence (no client link)…"
+let wov_pin = run ["rishi/bin/rishi" "run" "tools/wov_tb_pin.rish"]
+assert wov_pin.ok else "WOV TigerBeetle pin witness failed"
+say "GREEN: WOV TigerBeetle pin presence witness passed."
+
 say "witness suite: SLC-L2 sealed delivery…"
 let slcl2 = run ["rishi/bin/rishi" "run" "tools/slcl2_receipt.rish"]
 assert slcl2.ok else "SLC-L2 sealed delivery witness failed"

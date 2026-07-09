@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (Realidream thin view `202427`; parity **202**)
+**Last updated:** 2026-07-09 (WOV TB pin presence `203527`; parity **203**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma landed**; **WOV lap 1 landed**; **Realidream thin view landed** `202427`. Parity **202**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma landed**; **WOV lap 1 + TB pin presence landed**; **Realidream thin view landed**. Parity **203**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -72,6 +72,7 @@
 | **3** | **SLC-L4 Sigma** | **Landed** | fixed-tier prove/verify; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **4** | **WOV exit honesty** | **Landed** | in-memory lap 1; parity **201**; spec [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md) |
 | **5** | **Realidream thin view** | **Landed** | local fixtures → Skate; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md) |
+| **6** | **WOV TB pin presence** | **Landed** | rev `59f2b99` witnessed; no client link; parity **203**; prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -100,7 +101,9 @@
 - [x] **MALA M2b — device wire** — virtio twin of hosted M2; ports **15569**/**15570**; four guests + `comlink/run_mala_wire_lab.sh`; extends `mala_m2_witness` (`20260709.201734`)
 - [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md)
 - [x] **WOV lap 1 (in-memory)** — mint/transfer, publish root + golden bundle, prove balance, accept exit, refuse double/tamper; `linengrow/wov_core.rye` + `tools/wov_exit_honesty.rish`; parity **201** (`20260709.200729`); prompt [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md)
-- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; **WOV lap 1 landed**; TigerBeetle pin / dual monarch later; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [x] **WOV lap 2a — TigerBeetle pin presence** — gitlink `59f2b99` + Apache + TIGER_STYLE + `src/tigerbeetle.zig`; no Rye `@import` of the pin; `tools/wov_tb_pin.rish`; parity **203** (`20260709.203527`); prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md)
+- [ ] **WOV lap 2b — TB client wrapper** — waits Claude/Kaeden after pin soak; night brief [`203139`](../external-research/20260709-203139_claude-review-brief-jul9-night-climb.md) Q1
+- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2b landed**; **WOV lap 1 + pin presence landed**; client wrapper / dual monarch later; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 
 ## Six Open Points, Counseled (`221612`)
 
@@ -297,7 +300,7 @@
 
 Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md).
 
-- [x] **WOV gate + lap 1** — exit-honesty spec [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md); in-memory first lap at parity **201** (`200729`); TigerBeetle pin and dual monarch remain later; one or two monarchs, never three (three is Mycelium's door at M4).
+- [x] **WOV gate + lap 1 + pin presence** — exit-honesty spec [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md); in-memory lap 1 at parity **201**; pin presence at parity **203** (`203527`); TB client wrapper and dual monarch remain later; one or two monarchs, never three (three is Mycelium's door at M4).
 - [x] **Hardware fit (recorded)** — the sovereign-host blueprint covers MALA M0–M2 and WOV's first lap through the two-monarch season with headroom; two deltas named: a dedicated power-loss-protected M.2 NVMe for the WOV data file beside the settlement U.2, and ECC as the value-bearing-monarch threshold with the blueprint's apex tower as its pre-written answer; the x1 gentle-slot rule extends to every ledger tenant. Ground: [`external-research/20260702-215212_wov-mala-hardware-fit.md`](../external-research/20260702-215212_wov-mala-hardware-fit.md) (`20260702.215212`).
 - [x] **Build verdict (recorded)** — no new module: the build system grows as `rye`'s verbs (`rye test` runner is the first witness-gated horizon, a watcher later), declared by Brix, typed by Bron's mark triad, versioned where Mantra already stands; watcher name-candidates parked in RTAC for Kaeden (`20260702.211312`).
 - [ ] **Living build counsel (recorded, design-only)** — builder as projection over Weave/Mantra, never a second state holder; Brix declared graph + resins-law SHA3-256 content keys; three SLC laps (watch loop · Brix-keyed cache with no-work witness · Salsa-shaped sub-file queries on proven need); lap two waits for measured red. Ground: [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) (`20260703.193012`).

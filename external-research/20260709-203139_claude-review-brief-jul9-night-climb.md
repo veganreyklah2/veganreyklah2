@@ -92,7 +92,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 ## Questions for Claude Review
 
-1. **WOV TigerBeetle pin next?** — Lap 1 is in-memory by design. Is the next WOV climb a thin TB pin wrapper (still one monarch, same exit bundle), or should exit-honesty soak longer before any gratitude/tigerbeetle link surface?
+1. **WOV TigerBeetle client next?** — Pin presence landed `203527` (parity **203**, no Rye `@import`). Is the next climb a thin TB client wrapper (still one monarch, same exit bundle), or should the pin soak longer before any gratitude/tigerbeetle link surface?
 
 2. **Dual monarch timing** — Spec allows two signers; lap 1 is solo. Any reason to open dual-control before TB, or keep it after a single-monarch TB lap?
 
