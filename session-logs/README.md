@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.034527 | [Go — Claude brief late arc](20260709-034527_go-claude-brief-late-arc.md) | Brief `034527`; arc through `e633386` for Claude |
 | 20260709.033030 | [Go — bundle 44 + lap-open prompt](20260709-033030_go-bundle44-lap-open-prompt.md) | Zig-native `023112`; prompt `031612`; four remotes |
 | 20260709.031010 | [Apply Zig-native ZK bundle 44](20260709-031010_apply-zig-native-zk-bundle44.md) | Counsel `023112`; Groth16 out; Pedersen+Sigma in |
 | 20260709.015832 | [Go — Claude brief Jul 9](20260709-015832_go-claude-brief-jul9.md) | Review brief `015832`; landscape log; four remotes |
