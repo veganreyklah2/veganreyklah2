@@ -1,7 +1,7 @@
 # Comlink — the Sealed Wire, Hosted and on Real Virtio
 
 **Language:** EN
-**Last updated:** 2026-07-07 (device wire hosted selftest gains the padding proof; a stale rename found and fixed)
+**Last updated:** 2026-07-09 (MALA M2b device wire ports **15569**/**15570**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Comlink carries a sealed datagram, and the format never forks.** `wire_format.rye` defines one offset layout and one seal/open pair, and every rung above it — a hosted UDP socket on localhost, or a real virtio-net link between two freestanding guests on QEMU virt — reads and writes exactly the same bytes. A fact that crosses this wire arrives whole or not at all; nothing here retries a partial frame.
@@ -32,6 +32,7 @@ Every Mantra and Linengrow wire capability that crosses onto real virtio carries
 | Subscribe poll | 38486 / 38487 | 15565 / 15566 |
 | Open Asks (OA-L5) | 38488 / 38489 | 15561–15563 |
 | Snapshot lap 3 | 38490 / 38491 | 15567 / 15568 |
+| MALA M2 / M2b | 38492 / 38493 | 15569 / 15570 |
 
 Ports repeat across unrelated laps by design — each witness binds, uses, and releases its own pair within one bounded run, and Comlink's laps never run concurrently against the same address.
 

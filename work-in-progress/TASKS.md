@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV lap 1 exit honesty `200729`; parity **201**)
+**Last updated:** 2026-07-09 (MALA M2b device wire `201734`; WOV lap 1; parity **201**)
 
 - [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
 
@@ -68,7 +68,7 @@
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
-| **2** | **MALA M1–M2** | **Landed** | M1 parity **198**; M2 hosted parity **199**; counsel [`191634`](../counsel/20260709-191634_grok-counsel-mala-m2-open.md) |
+| **2** | **MALA M1–M2** | **Landed** | M1 **198**; M2 hosted **199**; M2b device wire `201734`; counsel [`191634`](../counsel/20260709-191634_grok-counsel-mala-m2-open.md) |
 | **3** | **SLC-L4 Sigma** | **Landed** | fixed-tier prove/verify; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **4** | **WOV exit honesty** | **Landed** | in-memory lap 1; parity **201**; spec [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
@@ -96,7 +96,7 @@
 - [x] **MALA M2 — mailable (hosted)** — mint crosses Comlink UDP; receipt crosses back; `mala_core.rye` + `mala_delivery.rye` + `tools/mala_m2_witness.rish`; parity **199** (`20260709.191634`); prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
 - [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
 - [x] **SLC-L4 fixed-tier Sigma** — Pedersen + proof of opening to declared tier; `disclosure_core.rye` + `pedersen.rye` + `tools/slcl4_sigma.rish`; parity **200** (`20260709.194437`); prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
-- [ ] **MALA M2b — device wire** — virtio twin of hosted M2; waits Kaeden word
+- [x] **MALA M2b — device wire** — virtio twin of hosted M2; ports **15569**/**15570**; four guests + `comlink/run_mala_wire_lab.sh`; extends `mala_m2_witness` (`20260709.201734`)
 - [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md)
 - [x] **WOV lap 1 (in-memory)** — mint/transfer, publish root + golden bundle, prove balance, accept exit, refuse double/tamper; `linengrow/wov_core.rye` + `tools/wov_exit_honesty.rish`; parity **201** (`20260709.200729`); prompt [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md)
 - [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2 landed**; **WOV lap 1 landed**; TigerBeetle pin / dual monarch later; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
@@ -369,7 +369,7 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [x] **MALA M0 (design lap)** — token-fact shapes on paper in expanding-prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); gate cleared `182354`
 - [x] **MALA M1 (code lap)** — landed `184051`; parity **198**; brief [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md)
 - [x] **MALA M2 (mailable, hosted)** — landed `191634`; parity **199**; brief [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
-- [ ] **MALA M2b (device wire)** — virtio carriage; waits Kaeden word
+- [x] **MALA M2b (device wire)** — virtio carriage landed `201734`; ports **15569**/**15570**
 - [ ] **Digital land = M3 (design only)** — plots as name-claim facts with extent in Realidream's graph, deeds bound to Kumara holders, traded in MALA; ordinary internet and dock-wire alike.
 - [ ] **Mycelium gate (recorded)** — the ordering aspect opens at M4's many-issuer season, never before.
 - [ ] **Road-keeper (exploration → first lap)** — Comlink's multipath aspect: per-road bounded queues and scorecards; first lap = one session surviving across two UDP paths under QEMU.

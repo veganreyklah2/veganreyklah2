@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV lap 1 exit honesty at parity **201**; SLC-L4 **200**; MALA M2 **199**)
+**Last updated:** 2026-07-09 (MALA M2b device wire; WOV lap 1 at parity **201**; SLC-L4 **200**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -59,6 +59,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **SLC-L3** | **Settlement rail** — landed then **removed** `152612` (Sui/Monad path superseded by MALA); hammock kept as record | superseded by MALA |
 | **MALA M1** | **One issuer, one holder** — mint, send, balance-as-fold on one node; [`mala.rye`](mala.rye) · witness **198** | design [`../active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) |
 | **MALA M2** | **Mailable (hosted)** — mint under Comlink seal; receipt back; [`mala_delivery.rye`](mala_delivery.rye) · witness **199** | prompt [`../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md) |
+| **MALA M2b** | **Device wire** — virtio mint + receipt hops; ports **15569**/**15570**; extends M2 witness | prompt [`../expanding-prompts/20260709-201734_mala-m2b-device-wire.md`](../expanding-prompts/20260709-201734_mala-m2b-device-wire.md) |
 | **SLC-L4** | **Fixed-tier Sigma** — donor-amount privacy; [`disclosure_core.rye`](disclosure_core.rye) + [`../tally/pedersen.rye`](../tally/pedersen.rye) · witness **200** | prompt [`../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **WOV lap 1** | **Exit honesty** — in-memory book, root fact, prove, exit; [`wov_core.rye`](wov_core.rye) · witness **201** | spec [`../context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |

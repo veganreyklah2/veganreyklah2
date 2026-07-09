@@ -26,4 +26,9 @@ assert demo.ok else "MALA M2 demo exited non-zero"
 assert demo.out contains "GREEN" else "MALA M2 demo not GREEN"
 assert demo.out contains "receipt crossed back" else "MALA M2 demo missing receipt-back"
 
-say "GREEN: MALA M2 mailable Comlink (hosted) witness passed."
+let device = run ["sh" "comlink/run_mala_wire_lab.sh"]
+assert device.ok else "MALA M2b device wire lab failed"
+assert device.out contains "GREEN" else "MALA M2b device wire lab not GREEN"
+assert device.out contains "mint + receipt" else "MALA M2b missing mint+receipt banner"
+
+say "GREEN: MALA M2 mailable Comlink witness passed (hosted + device wire)."
