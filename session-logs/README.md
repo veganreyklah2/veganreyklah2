@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.203027 | [Go — Realidream thin view 202](20260709-203027_go-realidream-thin-view-202.md) | Local fixtures → Skate; parity **202**; four remotes |
+| 20260709.202427 | [Realidream thin view](20260709-202427_realidream-thin-view.md) | Re-scoped thin-demo; `thinviewtest` GREEN |
 | 20260709.202341 | [Keep going — MALA M2b](20260709-202341_keep-going-mala-m2b.md) | Opened M2b; shipped `dfa5265` |
 | 20260709.202248 | [Go — MALA M2b device wire](20260709-202248_go-mala-m2b-device-wire.md) | Virtio mint+receipt; parity **201**; four remotes |
 | 20260709.201734 | [MALA M2b device wire](20260709-201734_mala-m2b-device-wire.md) | Four guests; ports **15569**/**15570**; lab GREEN |

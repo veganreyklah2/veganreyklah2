@@ -1,9 +1,9 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M2b device wire `201734`; WOV lap 1; parity **201**)
+**Last updated:** 2026-07-09 (Realidream thin view `202427`; parity **202**)
 
-- [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
+- [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
 - [x] **Commit-message mention hygiene** — GitHub linkifies `@memcpy` in commit subjects (a real, unrelated account), checked against GitHub's own Nov 2025 changelog: notification side-effect removed, cosmetic linkification remains. `.claude/rules/git-signing.md` + newly-written `.cursor/rules/git-signing.mdc` (the latter didn't exist before, unlike every other rule's matching pair) now say: no bare `@builtin` in commit subject/body text; file content and documentation keep `` `@memcpy` `` exactly as styled. History not rewritten — commit messages are dated artifacts under the same one-clock law protecting session logs. Counsel `011912`.
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2 landed**; **SLC-L4 Sigma landed** `194437`; **WOV lap 1 exit honesty landed** `200729`. Parity **201**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma landed**; **WOV lap 1 landed**; **Realidream thin view landed** `202427`. Parity **202**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -71,7 +71,8 @@
 | **2** | **MALA M1–M2** | **Landed** | M1 **198**; M2 hosted **199**; M2b device wire `201734`; counsel [`191634`](../counsel/20260709-191634_grok-counsel-mala-m2-open.md) |
 | **3** | **SLC-L4 Sigma** | **Landed** | fixed-tier prove/verify; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **4** | **WOV exit honesty** | **Landed** | in-memory lap 1; parity **201**; spec [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md) |
-| — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
+| **5** | **Realidream thin view** | **Landed** | local fixtures → Skate; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md) |
+| — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
 | — | Snapshot lap 4 | Kaeden's hands | — |

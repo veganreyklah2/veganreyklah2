@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.201734` (MALA M2b device wire; WOV lap 1; parity **201**)
-**Last updated:** 2026-07-09 (MALA M2b `201734`; WOV lap 1; parity **201**)
+**Version:** `20260709.202427` (Realidream thin view; MALA M2b; WOV lap 1; parity **202**)
+**Last updated:** 2026-07-09 (thin view `202427`; parity **202**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -100,10 +100,10 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | Rung | Name | State | Gate |
 |------|------|-------|------|
 | 0 | **Weave slice + Kumara** | **landed** — I2 export + identity seam; Ed25519 ratchet **0** (`030200`) | — |
-| 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung, unchanged** — compositor, window, drawn surface | already in Now |
+| 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung** — compositor, window, drawn surface; **thin view** of local MALA/WOV fixtures landed `202427` (parity **202**) | already in Now |
 | 2 | **Pond's first policy** | held | Pond's own word |
 | 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |
-| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; **settlement receipt shape landed** `182500` — first visual object available | rungs 1–3 |
+| 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; thin-view exception proves local facts → frame without Pond/Dexter | rungs 1–3 |
 
 **Gratitude shelf for the lane:** Hyperfiddle (Dustin Getz — UIs as streaming DAGs) · Matklad (project-wide semantic graph) · the Nostr protocol (signed-event, relay-subscribed shape — [`nips/`](../gratitude/nips/)) · TigerBeetle (already kept) · grain-sketchbook (Kaeden's archived prototype — [`grain-sketchbook.md`](../gratitude/grain-sketchbook.md)) · Noah B. (name's artistic source — [`noah-b-realidream.md`](../gratitude/noah-b-realidream.md)). **Affirmed `174500`.** **Departures the lane keeps:** immutable facts re-folded, never nodes patched; meaning per-entry via Tilak, never one shared enum across consumers; values cross seams as Bron, never JSON-in-a-payload.
 
