@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.224400 | [Go — SLC-L4 width design](20260709-224400_go-slcl4-width-design.md) | W0/W1/W2 filed; four remotes; parity **204** |
+| 20260709.224325 | [SLC-L4 lap 2 width design](20260709-224325_slcl4-lap2-width-design.md) | Gated; MALA/WOV path checkbox closed |
 | 20260709.224233 | [Go — WOV seam A 204](20260709-224233_go-wov-seam-a-204.md) | Commit + four remotes; parity **204** |
 | 20260709.224210 | [WOV lap 2b seam A host](20260709-224210_wov-lap2b-seam-a-host.md) | Projection → exit honesty; parity **204**; live SKIP in jail |
 | 20260709.204153 | [Session close — client seam](20260709-204153_session-close-client-seam.md) | Tip `c8f3b6f`; Claude gate named |

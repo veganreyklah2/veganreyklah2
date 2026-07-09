@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV 2b seam A host `223700`; parity **204**)
+**Last updated:** 2026-07-09 (SLC-L4 lap 2 width design `224325`; WOV seam A; parity **204**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -74,6 +74,7 @@
 | **5** | **Realidream thin view** | **Landed** | local fixtures → Skate; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md) |
 | **6** | **WOV TB pin presence** | **Landed** | rev `59f2b99` witnessed; no client link; parity **203**; prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) |
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
+| **8** | **SLC-L4 lap 2 width** | **Design filed** | W0 soak / W1 OR-tiers / W2 range; gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -105,7 +106,11 @@
 - [x] **WOV lap 2a — TigerBeetle pin presence** — gitlink `59f2b99` + Apache + TIGER_STYLE + `src/tigerbeetle.zig`; no Rye `@import` of the pin; `tools/wov_tb_pin.rish`; parity **203** (`20260709.203527`); prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md)
 - [x] **WOV lap 2b client-seam design** — seam A (POSIX host) vs B (Zig protocol); account mapping; exit honesty unchanged; [`context/specs/20260709-204026_wov-tb-client-seam.md`](../context/specs/20260709-204026_wov-tb-client-seam.md); lap-open [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md)
 - [x] **WOV lap 2b — TB host seam A (code)** — `wov_tb_host.rye` + ensure/REPL scripts; projection golden; parity **204** (`20260709.223700`); live REPL needs io_uring (SKIP in ai-jail); seam B later
-- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2b landed**; **WOV lap 1 + pin + seam A landed**; dual monarch / seam B later; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [x] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed; **M1–M2b + WOV lap 1 + pin + seam A** on metal; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; code gated; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
+- [ ] **WOV dual monarch** — waits Claude/Kaeden; after single-monarch TB path
+- [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
+- [ ] **SLC-L4 lap 2 code** — waits affirm of W0 vs W1 vs W2; night brief Q3
 
 ## Six Open Points, Counseled (`221612`)
 

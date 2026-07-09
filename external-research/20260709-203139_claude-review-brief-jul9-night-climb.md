@@ -96,7 +96,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 2. **Dual monarch timing** — Spec allows two signers; lap 1 is solo. Any reason to open dual-control before TB, or keep it after a single-monarch TB lap?
 
-3. **SLC-L4 lap 2 width** — Fixed-tier declared proof is on metal. Affirm that OR-across-tiers / arbitrary-range still wait a design ruling (and likely audit sequencing), rather than another keep-going code lap?
+3. **SLC-L4 lap 2 width** — Design filed [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md): **W0** soak/review, **W1** OR-across-tiers, **W2** arbitrary-range. Bench leans W0. Affirm before any lap-2 code?
 
 4. **Thin view as Dexter pressure** — Thin view uses drawn terminal + Skate only. Does composing local facts into a frame count as a second consumer that should move Dexter graduation, or does it correctly stay an exception until a true Realidream viewer arrives?
 
@@ -115,7 +115,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 | **A** | Claude answers above (esp. 1, 3, 7) | This brief |
 | **B** | WOV TB pin presence | **Landed** `203527` / parity **203** |
 | **B′** | WOV host seam A | **Landed** `223700` / parity **204** — live REPL on metal still optional |
-| **C** | SLC-L4 lap 2 design note (not code) if A affirms width | Claude |
+| **C** | SLC-L4 lap 2 width design | **Filed** [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) — affirm W0/W1/W2 before code |
 | — | Full Realidream / Pond / Dexter | Held |
 
 ---
