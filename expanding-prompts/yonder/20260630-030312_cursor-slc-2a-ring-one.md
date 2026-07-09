@@ -52,7 +52,7 @@ Gate every irreversible step — show the diff and wait for Kaeden's word before
 
 ## Record and Push
 
-Commit as one honest unit — the value-as-input edit, the witness, the parity wiring, and the session log. Log at `session-logs/20260630-030312_slc-2a-ring-1-value-driven-viewer.md`: the value named as the viewer's input, the arbitrary-value witness added and green, the window unchanged on metal. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as one honest unit — the value-as-input edit, the witness, the parity wiring, and the session log. Log at `session-logs/archive/20260630/20260630-030312_slc-2a-ring-1-value-driven-viewer.md`: the value named as the viewer's input, the arbitrary-value witness added and green, the window unchanged on metal. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

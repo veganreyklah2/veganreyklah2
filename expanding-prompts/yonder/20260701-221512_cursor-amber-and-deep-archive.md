@@ -76,7 +76,7 @@ Gate the irreversible as always — especially any `yonder/` move of the superse
 
 ## Record and Push
 
-Commit as honest units — the blueprint-and-companion placement (with any yonder move), then the Amber seating (spec, lexicon, stack touch, TASKS, and Edit 5 if ruled for), then the Ring 3 amendments if the prompt lives in the tree (otherwise note in the session log that they were applied on the bench) — with the session log at `session-logs/20260701-221512_amber-and-deep-archive.md`: the blueprint placed beside its companion and verified, Amber specified and seated seam-honest, the rulings recorded, the prompt amended, the rung held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as honest units — the blueprint-and-companion placement (with any yonder move), then the Amber seating (spec, lexicon, stack touch, TASKS, and Edit 5 if ruled for), then the Ring 3 amendments if the prompt lives in the tree (otherwise note in the session log that they were applied on the bench) — with the session log at `session-logs/archive/20260701/20260701-221512_amber-and-deep-archive.md`: the blueprint placed beside its companion and verified, Amber specified and seated seam-honest, the rulings recorded, the prompt amended, the rung held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

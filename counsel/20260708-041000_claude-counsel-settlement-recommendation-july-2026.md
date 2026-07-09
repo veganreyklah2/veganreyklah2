@@ -3,7 +3,7 @@
 **Stamp:** `20260708.041000 UDT`
 **Voice:** Rio 3
 **Register:** informational counsel toward the witness; **SLC-L3 gate unchanged** — Kaeden's word only
-**Ground:** [`external-research/20260708-041000_settlement-horizon-refresh-july-2026.md`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md) · witness proposal [`20260707-222500`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) · spawn lap 2 closed [`7dfdf46`](../session-logs/20260708-033600_spawn-lap2-aurora-run-complete.md)
+**Ground:** [`external-research/20260708-041000_settlement-horizon-refresh-july-2026.md`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md) · witness proposal [`20260707-222500`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) · spawn lap 2 closed [`7dfdf46`](../session-logs/archive/20260708/20260708-033600_spawn-lap2-aurora-run-complete.md)
 
 *Written by Kaeden and Claude; filed by Rio 3.*
 

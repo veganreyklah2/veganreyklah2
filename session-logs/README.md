@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.230050 | [Go — repoint session-log refs](20260709-230050_go-repoint-session-log-refs.md) | 28 inbound links; four remotes |
+| 20260709.230038 | [Repoint archived session-log refs](20260709-230038_repoint-archived-session-log-refs.md) | Post-fold collaboration hygiene |
 | 20260709.225820 | [Go — session-logs archive fold](20260709-225820_go-session-logs-archive-fold.md) | 354 prior-day logs folded; four remotes |
 | 20260709.225751 | [Session-logs archive fold](20260709-225751_session-logs-archive-fold.md) | Today flat; earlier days under archive/ |
 | 20260709.225720 | [Go — pause affirmed](20260709-225720_go-pause-affirmed.md) | Hygiene green; four remotes; rest |

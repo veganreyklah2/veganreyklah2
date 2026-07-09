@@ -20,7 +20,7 @@
 | **Edit** | `work-in-progress/ROADMAP.md` — trio count **162 → 163**, resin-batch named |
 | **Edit** | `work-in-progress/TASKS.md` — parity 163; 3w-3a landed, 3w-3b beading parked |
 | **Edit** | `session-logs/README.md` — one newest-first index row |
-| **Add** | `session-logs/20260706-042612_ns-l3-resin-batch.md` |
+| **Add** | `session-logs/archive/20260706/20260706-042612_ns-l3-resin-batch.md` |
 
 **Also in this bundle — forward bead / stone hygiene.** The content-addressing word is now **bead** everywhere Rye and Amber speak their own vocabulary, matching the earlier stone→resin pass. A named teacher's own term stays as written (systemd casync's "chunk store" reads as casync's word, in study context), and the unrelated reorg-batch labels in the archive index are left as historical filenames.
 
@@ -31,7 +31,7 @@
 | **Edit** | `counsel/20260704-181612_zero-copy-resins-counsel-answers.md` | bead-index / bead-series / incremental beading / `max_bead_bytes`; four stone-as-unit misses → resin (`max_resin_bytes`, `error.RefusedResin`, `VERIFY_RESINS`, Resin movement) |
 | **Edit** | `external-research/20260704-180612_zero-copy-resins-and-the-sovereign-snapshot.md` | Amber's own plan: rolling beads, bead size (casync descriptions kept) |
 | **Edit** | `external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md` | content-defined beading |
-| **Edit** | `session-logs/20260706-041012_ns-l3-wire-carriage-counsel.md`, `…041800…`, `…042100…` | beading in place of chunking |
+| **Edit** | `session-logs/archive/20260706/20260706-041012_ns-l3-wire-carriage-counsel.md`, `…041800…`, `…042100…` | beading in place of chunking |
 
 ## Invariants the witness binds
 

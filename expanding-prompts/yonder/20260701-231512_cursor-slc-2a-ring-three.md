@@ -77,7 +77,7 @@ Gate every irreversible step — especially the **Pond genesis** (`pond/apps/dra
 
 ## Record and Push
 
-Commit as one honest unit — the Rishi extraction and projection, the drawn-terminal app, the witness, the parity wiring, and the session log. Log at `session-logs/20260701-231512_slc-2a-ring-3-session-mirror.md`: the live session mirrored in the window, the window answering the desktop between commands, the ceiling speaking, the scripted-session witness green at 139 with its golden, Pond born from its first application, and the supersession of the `205712` bench copy named. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as one honest unit — the Rishi extraction and projection, the drawn-terminal app, the witness, the parity wiring, and the session log. Log at `session-logs/archive/20260701/20260701-231512_slc-2a-ring-3-session-mirror.md`: the live session mirrored in the window, the window answering the desktop between commands, the ceiling speaking, the scripted-session witness green at 139 with its golden, Pond born from its first application, and the supersession of the `205712` bench copy named. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

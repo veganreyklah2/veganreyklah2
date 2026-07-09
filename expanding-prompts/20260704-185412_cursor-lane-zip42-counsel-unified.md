@@ -16,7 +16,7 @@ Zip 42's comment read `43584d8a3941a306cb98d90d39a3e8c9a054bc18` verbatim on the
 
 ## Intake (on Kaeden's approval only) — one packet, one commit family
 
-The unified packet arrives additions-only at base `43584d8` — six files, the whole sitting: the **zero-copy counsel ER** (`181612`), the **ends-first orientation ER** (`185412`, an addendum to the counsel's Part Three), **this lane prompt**, and **four session logs** (fresh-bench intake, zip-42 counsel round, orientation round, unified cut). Commit the intake with README rows prepended from the consolidated block in `session-logs/20260704-185412_unified-packet-cut.md` — that block is authoritative and already omits the superseded lane's row. Push the four remotes. History untouched; nothing renamed; nothing seated by the commit itself.
+The unified packet arrives additions-only at base `43584d8` — six files, the whole sitting: the **zero-copy counsel ER** (`181612`), the **ends-first orientation ER** (`185412`, an addendum to the counsel's Part Three), **this lane prompt**, and **four session logs** (fresh-bench intake, zip-42 counsel round, orientation round, unified cut). Commit the intake with README rows prepended from the consolidated block in `session-logs/archive/20260704/20260704-185412_unified-packet-cut.md` — that block is authoritative and already omits the superseded lane's row. Push the four remotes. History untouched; nothing renamed; nothing seated by the commit itself.
 
 ## The words that are Kaeden's (list at his door; never push)
 

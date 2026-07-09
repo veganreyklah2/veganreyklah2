@@ -3,7 +3,7 @@
 **Stamp:** `20260706.190644`
 **Language:** EN · **Style:** Radiant (`context/RADIANT_STYLE.md`) · **Lens:** TAME · TWO_ROOMS
 **Opens when:** Kaeden relayed zip **58** to Claude — **answered** at ruling [`20260706-232812`](../counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md)
-**Ground:** [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md) · [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md) · [`active-designing/20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md) · [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · [`session-logs/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/20260706-190312_claude-handoff-ns-l3-complete.md)
+**Ground:** [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md) · [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md) · [`active-designing/20260706-185112_the-witness-bolt.md`](../active-designing/20260706-185112_the-witness-bolt.md) · [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · [`session-logs/archive/20260706/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/archive/20260706/20260706-190312_claude-handoff-ns-l3-complete.md)
 
 *Written by Rio 3 for Kaeden → Claude.*
 

@@ -269,7 +269,7 @@ New rows for the decoder's three-column table:
 
 ## Session Log Stub (for this packet)
 
-`session-logs/20260704-181612_zip42-152-zero-copy-counsel.md` · Editor: Claude (claude.ai bench) · Model: Claude Fable 5 · Voice: awaiting Kaeden's word · Stamp: `20260704.181612 UDT` · Prompt: zip 42 raised and pinned at 152 from bare; four readings in order; counsel A–H and I1–I7 delivered as this proposed ER; Cursor-lane response composed; every gate left with Kaeden.
+`session-logs/archive/20260704/20260704-181612_zip42-152-zero-copy-counsel.md` · Editor: Claude (claude.ai bench) · Model: Claude Fable 5 · Voice: awaiting Kaeden's word · Stamp: `20260704.181612 UDT` · Prompt: zip 42 raised and pinned at 152 from bare; four readings in order; counsel A–H and I1–I7 delivered as this proposed ER; Cursor-lane response composed; every gate left with Kaeden.
 
 ---
 

@@ -12,7 +12,7 @@ This bundle carries one new module, its witness, roster and parity entries, a sp
 - `tools/parity.rish` — **edit.** The NS-L3 recall_beaded witness stanza added after the 3w-3b beading stanza.
 - `tools/width-check.rish` — **edit.** `mantra/recall_beaded.rye` added to the roster after `mantra/beading.rye`.
 - `active-designing/20260706-023912_the-referential-namespace.md` — **edit.** Status line; a new "Recall, beaded" paragraph after Lap 3; a new "3w-4 beaded carriage" table row; a new "Batch-frame carriage of beads" counsel paragraph.
-- `session-logs/20260706-180712_ns-l3-recall-beaded-and-wire-counsel.md` — **new.**
+- `session-logs/archive/20260706/20260706-180712_ns-l3-recall-beaded-and-wire-counsel.md` — **new.**
 
 ## The Module's Public Surface
 

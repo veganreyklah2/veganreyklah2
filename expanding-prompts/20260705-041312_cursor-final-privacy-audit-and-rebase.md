@@ -15,7 +15,7 @@ On a fresh clone: `git log --all --oneline -S with each guarded name (capitalize
 
 ## Step two-A — if the audit is CLEAN (expected)
 
-No rewrite. Record the audit as `session-logs/20260705-041312_privacy-audit-clean.md` (counts, commands, verdict: the names never entered history), commit, push four remotes normally, cut zip 45. Destructive surgery needs a wound; a clean audit is the better ending.
+No rewrite. Record the audit as `session-logs/archive/20260705/20260705-041312_privacy-audit-clean.md` (counts, commands, verdict: the names never entered history), commit, push four remotes normally, cut zip 45. Destructive surgery needs a wound; a clean audit is the better ending.
 
 ## Step two-B — if ANY commit matches
 

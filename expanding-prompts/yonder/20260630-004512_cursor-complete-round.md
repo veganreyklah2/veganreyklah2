@@ -82,7 +82,7 @@ Confirm `TASKS.md` still names **SLC-2a — the drawn terminal (the Skate viewer
 
 ## Record and Push
 
-Commit as honest units — sensibly grouped (the record and Weave; the three names and the thinking log; the gratitude; the open threads) or as one clean unit if you prefer, with the session log. Log at `session-logs/20260630-004512_architecture-weave-names-and-threads.md`: the record placed, Weave named, Dexter/Kumara/Bookie named with their reasons logged, gratitude honored, open threads recorded, SLC-2a held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as honest units — sensibly grouped (the record and Weave; the three names and the thinking log; the gratitude; the open threads) or as one clean unit if you prefer, with the session log. Log at `session-logs/archive/20260630/20260630-004512_architecture-weave-names-and-threads.md`: the record placed, Weave named, Dexter/Kumara/Bookie named with their reasons logged, gratitude honored, open threads recorded, SLC-2a held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

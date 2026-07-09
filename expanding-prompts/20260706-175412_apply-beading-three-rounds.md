@@ -18,7 +18,7 @@ This one bundle carries the whole beading lap, grown over three bench rounds and
 - `tools/parity.rish` — **edit.** The NS-L3 3w-3b beading stanza added after the 3w-3a resin-batch stanza.
 - `tools/width-check.rish` — **edit.** `mantra/beading.rye` added to the roster after `mantra/resin_batch.rye`.
 - `active-designing/20260706-023912_the-referential-namespace.md` — **edit.** Status line and 3w-3b row recording all three rings.
-- `session-logs/20260706-175412_ns-l3-3w-3b-beading.md` — **new.** One consolidated log for the whole lap.
+- `session-logs/archive/20260706/20260706-175412_ns-l3-3w-3b-beading.md` — **new.** One consolidated log for the whole lap.
 
 No `.zig` shims, no `bin/` artifacts.
 

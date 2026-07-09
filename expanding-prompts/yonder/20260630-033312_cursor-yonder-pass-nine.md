@@ -97,7 +97,7 @@ These stay where they are — the design narratives of our current and core modu
 
 ## Record and Push
 
-Commit as one honest unit, or two if the round runs heavy (moves, then affirmations), with the session log. Log at `session-logs/20260630-033312_yonder-pass-nine.md`: 24 moved by category, 10 canonical narratives kept and de-numbered, 1 held, threads lifted. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as one honest unit, or two if the round runs heavy (moves, then affirmations), with the session log. Log at `session-logs/archive/20260630/20260630-033312_yonder-pass-nine.md`: 24 moved by category, 10 canonical narratives kept and de-numbered, 1 held, threads lifted. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

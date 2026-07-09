@@ -2,7 +2,7 @@
 
 **Stamp:** `20260706.013512 UDT` · **Style:** Radiant for logs and scope updates · **Base:** tip `2272dbe` (parity **157** on metal)
 **Counsel:** [`../active-designing/20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md)
-**Handoff summary:** [`../session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md`](../session-logs/20260706-013512_claude-oal3-escrow-handoff-summary.md)
+**Handoff summary:** [`../session-logs/archive/20260706/20260706-013512_claude-oal3-escrow-handoff-summary.md`](../session-logs/archive/20260706/20260706-013512_claude-oal3-escrow-handoff-summary.md)
 
 *Written by Kaeden and Rio 3 (Cursor). Kaeden speaks the bench voice-name and the escrow vocabulary in his first message; the one-clock, stop-and-park, and TAME laws inherit whole.*
 

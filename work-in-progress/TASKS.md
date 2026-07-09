@@ -180,7 +180,7 @@
 - [x] **`.sh` migration — `tame_style_scan` bans half** — `tools/tame_style_scan_bans.rish` + selftest; `tame_style_check.rish` wired; `tame_style_scan.sh bans` delegates; counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md)
 - [x] **`.sh` migration — `tame_style_scan` advise half** — `tools/tame_style_scan_advise.rish` + selftest; map+join+sh sum idiom (`rish_count_selftest.rish`); `>70` ledger shell seam in `tame_style_long_fn.sh`; counsel `195912` / `214012`
 - [x] **TigerBeetle alignment leap (`053212`)** — `tally/copy.rye` disjoint-copy law; `tools/tame_style_check.rish` bans + ratchets; 8-site `@memcpy` migration; 33 qualified asserts retired; 7 compound asserts split; Radiant vocabulary pass; study [`external-research/20260707-053212_tigerbeetle-alignment-study.md`](../external-research/20260707-053212_tigerbeetle-alignment-study.md); parity **190**
-- [x] **`copy_disjoint` ratchet arc** — six on-touch turns across Mantra delivery/export, comlink virtio guests, canonical wire modules, beading cluster, linengrow OA/receipt stack, and `rishi/src/main.rye`; application `@memcpy` **121→1** (sole site intentional in `tally/copy.rye`); `linengrow/tally_copy.rye` symlink; commits `adb46e9`/`f2e69de`; full parity **191** GREEN (~146s); detail in [`session-logs/20260707-154812_copy-ratchet-commit-push.md`](../session-logs/20260707-154812_copy-ratchet-commit-push.md)
+- [x] **`copy_disjoint` ratchet arc** — six on-touch turns across Mantra delivery/export, comlink virtio guests, canonical wire modules, beading cluster, linengrow OA/receipt stack, and `rishi/src/main.rye`; application `@memcpy` **121→1** (sole site intentional in `tally/copy.rye`); `linengrow/tally_copy.rye` symlink; commits `adb46e9`/`f2e69de`; full parity **191** GREEN (~146s); detail in [`session-logs/archive/20260707/20260707-154812_copy-ratchet-commit-push.md`](../session-logs/archive/20260707/20260707-154812_copy-ratchet-commit-push.md)
 - [x] **General expansion round (`185612`)** — `tally/maybe.rye` + `tally/no_padding.rye` seated; `device_wire.rye` stale `negotiateFeatures` found and fixed; hosted selftest in `comlink_device_wire.rish`; tools/enrich safety net 2-of-3 (`align_session_logs`, `tame_usize_audit`); three module READMEs; counsel [`counsel/20260707-185612_claude-counsel-general-expansion-round.md`](../counsel/20260707-185612_claude-counsel-general-expansion-round.md); full parity **195** GREEN (~147s); apply [`expanding-prompts/20260707-185612_apply-general-expansion.md`](../expanding-prompts/20260707-185612_apply-general-expansion.md)
 - [x] **enrich_strengthening_docs witness (`193712`)** — third tools/enrich safety-net piece; fixture at `tools/fixtures/enrich_strengthening_docs_fixture/`; two-run idempotency + real-tree checksums; counsel [`counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md`](../counsel/20260707-193712_claude-counsel-enrich-strengthening-docs-witness.md); parity **196** GREEN (~147s); apply [`expanding-prompts/20260707-193712_apply-enrich-witness.md`](../expanding-prompts/20260707-193712_apply-enrich-witness.md)
 
@@ -209,12 +209,12 @@
 - [x] **Production scheduling lap 2** — `subscribe_poll_service` imports `supervisor_exit`; restart on `cycle_ok`, halt on `stop_requested`; witness writes sentinel after N cycles; parity **178**
 - [x] **SIGTERM ring (Caravan)** — `caravan/supervisor_signal.rye`; atomic flag in handler; loop top unifies signal + witness + `touch`; `tools/caravan_subscribe_poll_signal.rish`; counsel `20260707.021012`; parity **179**
 
-**Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../counsel/20260707-044112_claude-recommendation-path.md):
+**Caravan production hardening (counsel `044112` — landed parity **186**→**188**)** — detail: [`session-logs/archive/20260707/20260707-052212_caravan-host-mirror-supervision.md`](../session-logs/archive/20260707/20260707-052212_caravan-host-mirror-supervision.md) · counsel [`044112`](../counsel/20260707-044112_claude-recommendation-path.md):
 
 - [x] **Misuse-guard → source-fall → snapshot device wire → host mirror → TASKS sweep** — all five rings GREEN; mirror via `CARAVAN_WITNESS_MIRROR=1` + `source-loop-mirror` / `fetcher-poll-mirror`; `tools/caravan_subscribe_poll_mirror_service.rish`
 - [ ] **Extended-run stability** — deferred until something runs unattended for real (counsel `044112`)
 
-**NS Q3 horizon — landed through parity 175** (detail: [`session-logs/20260707-010212_tablecloth-query-parity175.md`](../session-logs/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/20260707-011412_claude-state-analysis-and-reference-pass.md)):
+**NS Q3 horizon — landed through parity 175** (detail: [`session-logs/archive/20260707/20260707-010212_tablecloth-query-parity175.md`](../session-logs/archive/20260707/20260707-010212_tablecloth-query-parity175.md) · synthesis: [`session-logs/archive/20260707/20260707-011412_claude-state-analysis-and-reference-pass.md`](../session-logs/archive/20260707/20260707-011412_claude-state-analysis-and-reference-pass.md)):
 
 - [x] **Synthesis `20260707.011412`** — batch delivery rebind-race repair; namespace reference spec + module surfaces index + `mantra/README.md` canon `20260707.011812`
 - [x] **Caravan service ring** — `caravan/service.rye`; bounded multi-tick supervised child (ring B); `tools/caravan_seeds.rish` extended
@@ -330,7 +330,7 @@ Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`]
 
 ### Crossing suite — Pottery, Amphora, type-marks (`20260703.200712`–`202312`)
 
-Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md).
+Ground: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · [`active-designing/20260703-202312_the-marked-value.md`](../active-designing/20260703-202312_the-marked-value.md) · [`session-logs/archive/20260703/20260703-202312_the-marked-value-round.md`](../session-logs/archive/20260703/20260703-202312_the-marked-value-round.md).
 
 - [x] **Pottery seat (Kaeden)** — value-object tier; `.pott` working extension; greenware · kiln · glaze aspect family (`20260703.203712 UDT`, *for*).
 - [x] **Amphora seat (Kaeden)** — crossing-vessel vocabulary; companion silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) (`20260703.203712 UDT`, *for*).
@@ -428,7 +428,7 @@ Ground: [`external-research/20260702-014112_comlink-beyond-dns-and-sockets.md`](
 
 - [ ] **Width migration Phase 1b (as-you-touch)** — `mantra/*` next per the living baseline [`20260620-212126_usize-width-baseline.md`](20260620-212126_usize-width-baseline.md); decoupled from any compiler fork; re-anchored here so the oldest live thread stays on the granular plan (`20260703.013412`).
 
-Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and prior TH/RS logs. Hosted `width-check` blocks in parity (**138** witnesses).
+Record: `session-logs/archive/20260629/20260629-204910_th7-width-gate-yonder-convention.md` and prior TH/RS logs. Hosted `width-check` blocks in parity (**138** witnesses).
 
 **Horizon and optional (still open):**
 

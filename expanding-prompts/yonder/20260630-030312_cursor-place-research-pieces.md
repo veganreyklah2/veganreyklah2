@@ -46,7 +46,7 @@ Confirm `TASKS.md` still names **SLC-2a Ring 1 — the value-driven viewer** as 
 
 ## Record and Push
 
-Commit as one honest unit — the three essays, the cross-links, the TASKS update, and the session log. Log at `session-logs/20260630-030312_research-pieces-placed.md`: three essays placed and cross-linked, reservations closed, the live rung held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as one honest unit — the three essays, the cross-links, the TASKS update, and the session log. Log at `session-logs/archive/20260630/20260630-030312_research-pieces-placed.md`: three essays placed and cross-linked, reservations closed, the live rung held. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

@@ -44,7 +44,7 @@ The counsel `171712` gate-sort held: six small proposals and one custody gate (S
 
 ## Kaeden's Six Proposals — All Affirmed (`174500`)
 
-Source: counsel [`171712`](../counsel/20260708-171712_claude-counsel-every-gate-sorted.md). Session log: [`175200`](../session-logs/20260708-175200_kaeden-six-proposals-yes.md).
+Source: counsel [`171712`](../counsel/20260708-171712_claude-counsel-every-gate-sorted.md). Session log: [`175200`](../session-logs/archive/20260708/20260708-175200_kaeden-six-proposals-yes.md).
 
 | Proposal | Affirmation landed in |
 |----------|----------------------|

@@ -101,7 +101,7 @@ Example (illustrative marks):
 ```text
 research 6047187a66560393a010859c0efc98207607a5a90a99639b0d13090e5e385330 external-research/20260703-200712_mysticetis-blocks-and-the-object-path.md
 silo 36c7d27794069bf1d74d6818f4a7acd65f3def0961cd00778d5587aca401ae5c active-designing/20260703-200712_what-needs-ordering.md
-log b2fb8e1bbd3110fd7c7b18ec429e978a3ab13f6331017b1c5a857a4784f02e5d session-logs/20260703-200712_pottery-and-suite-reissue.md
+log b2fb8e1bbd3110fd7c7b18ec429e978a3ab13f6331017b1c5a857a4784f02e5d session-logs/archive/20260703/20260703-200712_pottery-and-suite-reissue.md
 ```
 
 The parser **refuses damage whole** — wrong field count, uppercase hex, missing name — matching the Amphora wreck rule at the line grain.

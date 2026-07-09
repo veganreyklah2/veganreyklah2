@@ -214,7 +214,7 @@ State, at the end of the pass, exactly which gates ran green by running and whic
 
 Commit in honest, reviewable units — one logical change per commit, the session log shipping in the same commit whenever it can. A natural grouping: Phase 1 ground; Steps 2–3 together with their witnesses; the width lint and migration together; the assert lint and Mantra compliance; the Brix mend; the Aurora comments. Push over HTTPS to the usual remotes the way the last pass did, with Kaeden bridging from the host.
 
-Write the session log at `session-logs/20260629-004912_slc1-version-recall-and-tame.md`, coauthored, in Radiant voice: the thinking trace, the observations, the files touched, and — clearly — what ran green by running versus what awaits metal.
+Write the session log at `session-logs/archive/20260629/20260629-004912_slc1-version-recall-and-tame.md`, coauthored, in Radiant voice: the thinking trace, the observations, the files touched, and — clearly — what ran green by running versus what awaits metal.
 
 ---
 

@@ -71,7 +71,7 @@ Gate every irreversible step — show the diff and wait for Kaeden's word before
 
 ## Record and Push
 
-Commit as one honest unit — `setFrame`, the signature helper, the witness, the parity wiring, the metal mode, and the session log. Log at `session-logs/20260630-033312_slc-2a-ring-2-redraw.md`: redraw on change landed, staleness witness green at 134, the window updating on metal. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
+Commit as one honest unit — `setFrame`, the signature helper, the witness, the parity wiring, the metal mode, and the session log. Log at `session-logs/archive/20260630/20260630-033312_slc-2a-ring-2-redraw.md`: redraw on change landed, staleness witness green at 134, the window updating on metal. Push over HTTPS to the four remotes; Berry on the tip if it pleases you.
 
 ## Before You Move On — Recommend the Next Step
 

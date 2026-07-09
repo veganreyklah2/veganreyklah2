@@ -15,7 +15,7 @@
 |------|------|
 | Claude ruling (Q1–Q5) | [`counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md`](../counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md) |
 | Zip 58 handoff prompt | [`expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md`](../expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md) |
-| Handoff log | [`session-logs/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/20260706-190312_claude-handoff-ns-l3-complete.md) |
+| Handoff log | [`session-logs/archive/20260706/20260706-190312_claude-handoff-ns-l3-complete.md`](../session-logs/archive/20260706/20260706-190312_claude-handoff-ns-l3-complete.md) |
 
 **Rulings (zip 58 `20260706.232812` — applied, TASKS seated):**
 
@@ -44,7 +44,7 @@ Full-tree zip discipline unchanged; use **58** not 43.
 | Zero-copy counsel (A–H, I1–I7) | [`counsel/20260704-181612_zero-copy-resins-counsel-answers.md`](../counsel/20260704-181612_zero-copy-resins-counsel-answers.md) |
 | Ends-first orientation (Part Three addendum) | [`external-research/20260704-185412_ends-first-map-orientation.md`](../external-research/20260704-185412_ends-first-map-orientation.md) |
 | Unified Cursor lane | [`expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md`](../expanding-prompts/20260704-185412_cursor-lane-zip42-counsel-unified.md) |
-| Unified cut log | [`session-logs/20260704-185412_unified-packet-cut.md`](../session-logs/20260704-185412_unified-packet-cut.md) |
+| Unified cut log | [`session-logs/archive/20260704/20260704-185412_unified-packet-cut.md`](../session-logs/archive/20260704/20260704-185412_unified-packet-cut.md) |
 
 **Superseded pre-intake:** `181612` lane prompt and three prior proposal zips — re-cut into this packet; lineage in unified cut log.
 
@@ -80,7 +80,7 @@ Full-tree zip at `git rev-parse HEAD` after intake commits; comment **is** the t
 |------|------|
 | Orientation | [`external-research/20260704-031812_the-view-from-the-floor.md`](../external-research/20260704-031812_the-view-from-the-floor.md) |
 | Eight asks counsel | [`counsel/20260704-031812_eight-asks-one-sitting.md`](../counsel/20260704-031812_eight-asks-one-sitting.md) |
-| Claude log | [`session-logs/20260704-031812_zip41-152-eight-asks.md`](../session-logs/20260704-031812_zip41-152-eight-asks.md) |
+| Claude log | [`session-logs/archive/20260704/20260704-031812_zip41-152-eight-asks.md`](../session-logs/archive/20260704/20260704-031812_zip41-152-eight-asks.md) |
 
 ### Counsel summary (gates stay Kaeden's)
 
@@ -141,7 +141,7 @@ Claude bench still pins **150** until recipe v5 re-run on Claude metal at zip **
 | Item | Path | Ask |
 |------|------|-----|
 | **Two Rooms** | `context/TWO_ROOMS.md` | Seat as context canon? Counsel on register law vs bench law |
-| **Canonical gloss** | *(not yet drafted)* | Four-lap refinement plan in [`session-logs/20260704-031000_canonical-refinement-counsel.md`](../session-logs/20260704-031000_canonical-refinement-counsel.md) |
+| **Canonical gloss** | *(not yet drafted)* | Four-lap refinement plan in [`session-logs/archive/20260704/20260704-031000_canonical-refinement-counsel.md`](../session-logs/archive/20260704/20260704-031000_canonical-refinement-counsel.md) |
 
 #### External-research — vocabulary quartet (programs → registers)
 
@@ -180,7 +180,7 @@ Broad forward-facing sweep: lap/toll/itinerary vocabulary across active-designin
 
 #### Canonical vocabulary audit (counsel only)
 
-[`session-logs/20260704-030800_canonical-vocabulary-audit.md`](../session-logs/20260704-030800_canonical-vocabulary-audit.md) — ~58 files · nine senses · mostly grain-aligned; tensions: *canonical primer* vs *proposed canon*; plural *fold canon*.
+[`session-logs/archive/20260704/20260704-030800_canonical-vocabulary-audit.md`](../session-logs/archive/20260704/20260704-030800_canonical-vocabulary-audit.md) — ~58 files · nine senses · mostly grain-aligned; tensions: *canonical primer* vs *proposed canon*; plural *fold canon*.
 
 ### Claude — explicit asks (advice + implementation)
 
@@ -207,7 +207,7 @@ Broad forward-facing sweep: lap/toll/itinerary vocabulary across active-designin
 6. `context/TWO_ROOMS.md`
 7. `foundations/20260703-182612_sameness-is-the-macro.md`
 8. `linengrow/receipt.rye` + `active-designing/20260702-195426_slcl1-verifiable-receipt.md`
-9. `session-logs/20260704-030800_canonical-vocabulary-audit.md` + `031000_canonical-refinement-counsel.md`
+9. `session-logs/archive/20260704/20260704-030800_canonical-vocabulary-audit.md` + `031000_canonical-refinement-counsel.md`
 10. `expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`
 
 ### Amphora / Tilak / Pottery marks (dogfood)
@@ -329,7 +329,7 @@ Law: [`active-designing/20260703-202312_the-marked-value.md`](../active-designin
 | Amphora (research) | [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) |
 | Pottery suite (4 research) | `200712` mysticeti · move-for-rye · compute-commerce · cloneable-repo |
 | Seed (witnessed) | [`work-in-progress/20260703-202312_crossing_manifest_seed.rye`](20260703-202312_crossing_manifest_seed.rye) · `tools/crossing_manifest_seed.rish` |
-| Log | [`session-logs/20260703-202312_the-marked-value-round.md`](../session-logs/20260703-202312_the-marked-value-round.md) |
+| Log | [`session-logs/archive/20260703/20260703-202312_the-marked-value-round.md`](../session-logs/archive/20260703/20260703-202312_the-marked-value-round.md) |
 
 Working-tier manifest digests verified against packet as-cut; path hygiene (`../context/`) applied post-verify. **Tilak**, **Pottery**, **Amphora** seated `20260703.203712 UDT`. Crossing manifest seed witness landed `20260704.020800` — parity **151**.
 
@@ -340,7 +340,7 @@ Prior tip: `ecb6a0b`
 | Item | Path |
 |------|------|
 | Survey | [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) |
-| Log | [`session-logs/20260703-193012_bench-as-block-research.md`](../session-logs/20260703-193012_bench-as-block-research.md) |
+| Log | [`session-logs/archive/20260703/20260703-193012_bench-as-block-research.md`](../session-logs/archive/20260703/20260703-193012_bench-as-block-research.md) |
 
 Counsel only — seats nothing. Three extraction candidates await Kaeden word. **Bron** (message-seam sense) parks in RTAC; LEXICON already holds **Bron** as `.bron` notation. Open itinerary unchanged: chrono wire first; full-tree zip at `999359e` restores metal truth.
 
@@ -361,7 +361,7 @@ Prior tip: `999359e`
 | Item | Path |
 |------|------|
 | Season vocabulary | [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
-| Placement counsel | [`session-logs/20260703-071212_placement-counsel.md`](../session-logs/20260703-071212_placement-counsel.md) — recommends `pond/apps` + Dexter graduation trigger; ratifications order; not-advice in ORGANIZING |
+| Placement counsel | [`session-logs/archive/20260703/20260703-071212_placement-counsel.md`](../session-logs/archive/20260703/20260703-071212_placement-counsel.md) — recommends `pond/apps` + Dexter graduation trigger; ratifications order; not-advice in ORGANIZING |
 
 **Cursor metal:** parity **144 GREEN** · chrono **148** after seat · Amber lap 1 held from tip `7395bd1`. LEXICON season/lap/green rows + spec scrub companion line seated with intake.
 
@@ -373,7 +373,7 @@ Prior tip: `7395bd1`
 |------|------|
 | Silo | [`external-research/20260703-043912_the-issuers-ledger.md`](../external-research/20260703-043912_the-issuers-ledger.md) |
 | Survey | [`external-research/20260703-043912_circulation-portfolio-survey.md`](../external-research/20260703-043912_circulation-portfolio-survey.md) |
-| Log | [`session-logs/20260703-043912_issuers-ledger-circulation-survey.md`](../session-logs/20260703-043912_issuers-ledger-circulation-survey.md) |
+| Log | [`session-logs/archive/20260703/20260703-043912_issuers-ledger-circulation-survey.md`](../session-logs/archive/20260703/20260703-043912_issuers-ledger-circulation-survey.md) |
 
 Zip comment `df88223` verified character-for-character. **Cursor metal:** parity **143 GREEN** (116 std + 27 blocks), chrono **147 GREEN**, designed-not-built **GREEN** at count=1. Three staged words untouched. Counsel brief sealed.
 

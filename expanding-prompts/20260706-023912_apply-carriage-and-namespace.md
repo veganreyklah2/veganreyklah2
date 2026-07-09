@@ -21,7 +21,7 @@ Two studies and their design, all documentation. The first studies Urbit's Ames 
 | **Edit** | `foundations/README.md` — one `What Lives Here` entry (carriage silo) |
 | **Edit** | `active-designing/README.md` — one newest-first index row (referential namespace) |
 | **Edit** | `session-logs/README.md` — two newest-first index rows |
-| **Add** | `session-logs/20260706-022912_ames-libuv-research-and-silo.md` and `session-logs/20260706-023912_clay-namespace-research-and-design.md` |
+| **Add** | `session-logs/archive/20260706/20260706-022912_ames-libuv-research-and-silo.md` and `session-logs/archive/20260706/20260706-023912_clay-namespace-research-and-design.md` |
 
 ## Ground laws for this apply
 

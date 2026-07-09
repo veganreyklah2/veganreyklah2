@@ -34,7 +34,7 @@ Every file below sits at its tree path inside this vessel, split by the bundle's
 
 **C — Registrations.** Refresh `templates/reading-template.md`'s silo map with rows for every Batch A–B file; lane `README.md` last-updated line; session log per the round summary above (Editor: Cursor · Model: Claude Fable 5 · Voice: Rio 3 · Stamp: `20260705.020812 UDT` · Prompt: this file) plus a log row for this final prompt at `20260705.022512`. Commit: `Lane registrations and session logs — the Brooke round sealed`. Then, on Kaeden's word, push all four remotes and cut **zip 44** at `git rev-parse HEAD`, comment = the tip hash, exclusions standing.
 
-**D — If not already landed:** the astrology handoff trio (`expanding-prompts/20260704-221612_claude-astrology-reading-recursion-v1.md`, `…_cursor-progress-brief-zip43.md`, `session-logs/20260704-221612_astrology-handoff-cut.md`) intakes from its own vessel in the same sitting.
+**D — If not already landed:** the astrology handoff trio (`expanding-prompts/20260704-221612_claude-astrology-reading-recursion-v1.md`, `…_cursor-progress-brief-zip43.md`, `session-logs/archive/20260704/20260704-221612_astrology-handoff-cut.md`) intakes from its own vessel in the same sitting.
 
 ## RTAC — Parked for Kaeden's Word (carried whole, two additions)
 
