@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (W1 + seam B soak `225614`; parity **205**)
+**Last updated:** 2026-07-09 (compass rose + twin-keys plain story `230414`; parity **206**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**. Parity **205**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **compass rose + twin-keys plain story**. Parity **206**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -80,6 +80,7 @@
 | **11** | **Thin view / Dexter** | **Exception affirmed** | not a second consumer; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) |
 | **12** | **Evening leftovers** | **Cleared** | removal headers on-touch; M0 spec not required; keep-going default; [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
 | **13** | **W1 + seam B** | **Soak** | reopen triggers named; [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
+| **14** | **Compass rose + twin-keys story** | **Landed** | jail-safe clarity; parity **206**; [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -120,6 +121,7 @@
 - [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
 - [ ] **SLC-L4 W1/W2 code** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on product need or affirm
 - [x] **W1 + seam B soak ruling** — counsel [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); keep-going does not open them
+- [x] **Twin-keys plain story + compass rose** — kitchen-language dual D1 [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md); `tools/compass_rose.rish` walks the navigation habit; parity **206** (`20260709.230414`)
 - [x] **MALA `kind` field design** — K0/K1 named; [`225159`](../context/specs/20260709-225159_mala-kind-field.md)
 - [x] **MALA `kind` K0** — keep memo prefixes through M3; affirmed `225343`; K1 still gated
 - [ ] **MALA `kind` K1 code** — waits affirm

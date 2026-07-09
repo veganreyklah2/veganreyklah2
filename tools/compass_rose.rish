@@ -1,0 +1,39 @@
+# compass_rose.rish — walk the navigation habit; assert the rose is seated.
+#
+# Creative, jail-safe hygiene: no network, no TigerBeetle, no protocol width.
+# Run from the repository root:
+#   rishi/bin/rishi run tools/compass_rose.rish
+#
+# Ground: foundations/20260706-185112_follow-our-compass.md
+
+say "compass rose: foundations…"
+let f = run ["sh" "-c" "test -f foundations/20260706-185112_follow-our-compass.md && test -f foundations/README.md && echo FOUNDATIONS_OK"]
+assert f.ok else "foundations missing"
+assert f.out contains "FOUNDATIONS_OK" else "foundations check failed"
+
+say "compass rose: grain index…"
+let g = run ["sh" "-c" "test -f active-designing/20260702-184312_the-grain-and-the-crossing.md && echo GRAIN_OK"]
+assert g.ok else "grain index missing"
+assert g.out contains "GRAIN_OK" else "grain check failed"
+
+say "compass rose: two rooms…"
+let r = run ["sh" "-c" "test -f context/TWO_ROOMS.md && echo ROOMS_OK"]
+assert r.ok else "TWO_ROOMS missing"
+assert r.out contains "ROOMS_OK" else "two-rooms check failed"
+
+say "compass rose: active-designing ladder…"
+let a = run ["sh" "-c" "test -f active-designing/README.md && echo LADDER_OK"]
+assert a.ok else "active-designing README missing"
+assert a.out contains "LADDER_OK" else "ladder check failed"
+
+say "compass rose: now (TASKS) and order (ROADMAP)…"
+let n = run ["sh" "-c" "test -f work-in-progress/TASKS.md && test -f work-in-progress/ROADMAP.md && echo NOW_OK"]
+assert n.ok else "TASKS or ROADMAP missing"
+assert n.out contains "NOW_OK" else "now/order check failed"
+
+say "compass rose: tonight's plain stories seated…"
+let p = run ["sh" "-c" "test -f external-research/20260709-200022_pedersen-and-sigma-plainly.md && test -f external-research/20260709-230414_twin-keys-and-the-exit-bundle.md && echo STORIES_OK"]
+assert p.ok else "plain stories missing"
+assert p.out contains "STORIES_OK" else "stories check failed"
+
+say "GREEN: compass rose — foundations, grain, two rooms, ladder, now, order; twin-keys story seated."

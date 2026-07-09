@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.225614` (W1 + seam B soak; parity **205**)
-**Last updated:** 2026-07-09 (soak `225614`; evening leftovers; dual D1; parity **205**)
+**Version:** `20260709.230414` (compass rose + twin-keys story; parity **206**)
+**Last updated:** 2026-07-09 (creative jail climb `230414`; soak holds; parity **206**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

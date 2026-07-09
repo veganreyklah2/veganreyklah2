@@ -476,6 +476,11 @@ let thin_view = run ["rishi/bin/rishi" "run" "tools/realidream_thin_view.rish"]
 assert thin_view.ok else "Realidream thin view witness failed"
 say "GREEN: Realidream thin view witness passed."
 
+say "witness suite: compass rose (navigation habit seated)…"
+let compass = run ["rishi/bin/rishi" "run" "tools/compass_rose.rish"]
+assert compass.ok else "compass rose witness failed"
+say "GREEN: compass rose witness passed."
+
 say "witness suite: two-rooms doorway (canon seated, forward pages name their room)…"
 let doorway = run ["rishi/bin/rishi" "run" "tools/two_rooms_doorway.rish"]
 assert doorway.ok else "two-rooms doorway witness failed"
