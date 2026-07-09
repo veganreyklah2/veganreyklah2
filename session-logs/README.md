@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.202341 | [Keep going — MALA M2b](20260709-202341_keep-going-mala-m2b.md) | Opened M2b; shipped `dfa5265` |
 | 20260709.202248 | [Go — MALA M2b device wire](20260709-202248_go-mala-m2b-device-wire.md) | Virtio mint+receipt; parity **201**; four remotes |
 | 20260709.201734 | [MALA M2b device wire](20260709-201734_mala-m2b-device-wire.md) | Four guests; ports **15569**/**15570**; lab GREEN |
 | 20260709.201353 | [Go — WOV lap 1 parity 201](20260709-201353_go-wov-lap1-parity-201.md) | Exit honesty on metal; four remotes |
