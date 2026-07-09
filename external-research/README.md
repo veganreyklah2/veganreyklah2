@@ -45,6 +45,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260709.200022` | [Pedersen and Sigma, plainly](20260709-200022_pedersen-and-sigma-plainly.md) | Sealed envelopes and prove-you-know rituals for SLC-L4 |
 | `20260709.194437` | [What parity is](20260709-194437_what-parity-is.md) | Plain-language map of the witness suite, the trio, and how the count grows |
 | `20260707.222500` | [Settlement seat refresh + SLC-L3 witness](20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) | Seat holds; two-lane testnet witness proposal; inherits SLC-L1/OA wire ground |
 | `20260706.023912` | [Clay — the referentially-transparent namespace, studied for Rye](20260706-023912_clay-referential-namespace.md) | Typed git with continuous sync; a name resolves to the same bytes for all time; marks map to Tilak, store to Amber, sync to Amphora; design decides in active-designing |
