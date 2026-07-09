@@ -4,7 +4,7 @@
 **Voice:** Rio 3
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Ready to run the moment Kaeden gives the lap word — M0 gate verified; no code until that word
+**Status:** **Landed** `20260709.184051` — `linengrow/mala.rye` + witness at parity **198**; M0 gate verified before open
 **Ground:** counsel [`20260709-152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md) · design [`20260702-031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) · SLC-L1 spine [`receipt_core.rye`](../linengrow/receipt_core.rye)
 
 *Written by Kaeden and Rio 3.*

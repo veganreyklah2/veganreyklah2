@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-07 (OA-L5 at parity **184**; SLC-L3 witness proposed `222500`)
+**Last updated:** 2026-07-09 (MALA M1 at parity **198**; SLC-L3 settlement removed `152612`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -21,7 +21,7 @@ Linengrow shares Rye OS's architectural spine exactly: state as a pure fold over
 - The **Mantra log** that versions a file records a transaction, kept whole, nothing grasped back.
 - The **projection** that folds a log into a view folds transactions into a verifiable receipt and a balance.
 - The **capability** that isolates a process in Caravan names ownership and permission in Linengrow.
-- **Comlink** seals delivery identity to identity; a **proven settlement rail** settles when settlement is needed (Sui seated, two-lane witness proposed); **Pond** confines each application in a bounded, policy-as-value enclosure.
+- **Comlink** seals delivery identity to identity; **MALA** is Linengrow's own-issuer money (M1 landed); **Pond** confines each application in a bounded, policy-as-value enclosure.
 
 Correctness by construction in the kernel becomes trust by construction in the platform. The same discipline that makes a kernel safe makes a marketplace honest.
 
@@ -56,8 +56,9 @@ The full vision — a public benefit corporation, a computational data market, s
 | **OA-L3** | **Escrow** — hold at acceptance, release at completion, the escrow balance closing at zero on one log | scope [`../active-designing/20260706-013012_open-asks-escrow-hammock.md`](../active-designing/20260706-013012_open-asks-escrow-hammock.md) · witness **158** |
 | **OA-L4** | **Reputation-as-fold** — applicant consent facts; witness bolt | witness **167** |
 | **OA-L5** | **Accept, complete, consent wire** — hosted + device | witness **184** |
-| **SLC-L3** | **Settlement rail** — Sui seated, two-lane witness proposed; witness proposal [`../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md) | Sui / Mysticeti (witness proposed) |
-| **SLC-L4** | **The selective-disclosure pass** — a zero-knowledge credential that proves a claim without revealing the data behind it (verified creator, disclosed sponsorship, access granted) | keypair + Sui ZK foundations |
+| **SLC-L3** | **Settlement rail** — landed then **removed** `152612` (Sui/Monad path superseded by MALA); hammock kept as record | superseded by MALA |
+| **MALA M1** | **One issuer, one holder** — mint, send, balance-as-fold on one node; [`mala.rye`](mala.rye) · witness **198** | design [`../active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) |
+| **SLC-L4** | **Selective disclosure** — donor-amount privacy first; Zig-native Sigma path; lap-open waits Kaeden | hammock [`../active-designing/20260708-194500_slcl4-selective-disclosure.md`](../active-designing/20260708-194500_slcl4-selective-disclosure.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.
@@ -69,7 +70,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 - `20260628-124512_linengrow-business-model.md` — the business model and investor-outreach approach: the public benefit corporation, four transparent revenue channels, the market opportunity, the go-to-market, and the conscience rubric that tests every decision against whether it nourishes, circulates, and returns what it takes.
 - `20260628-124512_linengrow-venture-pitch.md` — the venture pitch: the problem of an opaque attention economy, the architecture of transparency, the business model in brief, and the longer horizon.
 
-Both are generalized templates, debranded and repurposed onto a proven settlement rail (Sui seated, two-lane witness proposed), so the vision stays reusable across regions and rounds while Linengrow carries it forward as our own.
+Both are generalized templates; settlement now rides MALA's own-issuer path rather than an external chain, so the vision stays reusable across regions and rounds while Linengrow carries it forward as our own.
 
 ---
 

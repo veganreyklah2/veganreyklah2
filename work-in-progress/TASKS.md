@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M1 lap-open brief `182354`; M0 gate verified; parity **197**)
+**Last updated:** 2026-07-09 (MALA M1 landed `184051`; parity **198**)
 
 - [ ] **Realidream thin-demo exception, named not yet built (`021112`)** — a chain-read-only render through SLC-2a's *already-active* drawn terminal, no new input handling, no Pond policy, no Dexter graduation — genuinely different from the full Visual Track lap. Worth a small parallel track alongside SLC-L4 backend work *only if* it stays that thin; if it turns out to need anything from Pond or Dexter, it was never really an exception.
 
@@ -63,12 +63,12 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1 lap-open brief filed** `182354` (M0 gate verified); **SLC-L4** on Kaeden's word. Parity **197**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1 landed** `184051` (parity **198**); **SLC-L4** on Kaeden's word. Parity **198**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **Kumara extraction** | **Closed** | ratchet **0**; virtio + product surface GREEN; scan precision fix `030200` |
-| **2** | **MALA M1** | **Lap-open brief filed** | Gate verified `182354`; prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); waits Kaeden lap word |
+| **2** | **MALA M1** | **Landed** | `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198**; counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; SLC-2a keeps active rung |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -90,8 +90,9 @@
 - [x] **SLC-L3 settlement + chain-read seams — removed `152612`** — was `linengrow/settlement.rye`, `settlement_core.rye`, `slcl3_settlement_witness.rish`, `comlink/chain_read_*.sh`, `chain_read_*` hosts/witnesses, `ensure_grpcurl.sh`; landed `182500` then removed per MALA realignment; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md); hammock [`182500`](../active-designing/20260708-182500_slcl3-settlement-rail.md) kept as record
 - [x] **MALA M0 gate — verified `182354`** — Edit 5 (`143`) + Amber first lap (`144`) GREEN on metal; `designed_not_built` count **0**
 - [x] **MALA M0 token-fact shapes (on paper)** — `mala:mint` and `mala:send` memo prefixes; field table in [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md)
-- [ ] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; lap-open brief [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); **no code until Kaeden's lap word**
-- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **WOV** waits MALA M2; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [x] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198** (`20260709.184051`); prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md)
+- [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1 landed**; **WOV** waits MALA M2; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
+- [ ] **MALA M2 — mailable** — MALA crosses Comlink fact lane; waits Kaeden lap word
 
 ## Six Open Points, Counseled (`221612`)
 
@@ -359,7 +360,8 @@ Ground: [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md
 - [x] **Module/aspect vocabulary** — definitions and graduation rule in [`context/specs/20260702-035018_graduation-rule.md`](../context/specs/20260702-035018_graduation-rule.md).
 - [ ] **Weave graduation trigger (recorded)** — the day Comlink serves named data straight from Weave, `mantra/src/weave.rye` graduates to `weave/` and Mantra imports it like everyone else.
 - [x] **MALA M0 (design lap)** — token-fact shapes on paper in expanding-prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); gate cleared `182354`
-- [ ] **MALA M1 (code lap)** — waits Kaeden lap word; brief [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md)
+- [x] **MALA M1 (code lap)** — landed `184051`; parity **198**; brief [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md)
+- [ ] **MALA M2 (mailable)** — Comlink fact-lane crossing; waits Kaeden lap word
 - [ ] **Digital land = M3 (design only)** — plots as name-claim facts with extent in Realidream's graph, deeds bound to Kumara holders, traded in MALA; ordinary internet and dock-wire alike.
 - [ ] **Mycelium gate (recorded)** — the ordering aspect opens at M4's many-issuer season, never before.
 - [ ] **Road-keeper (exploration → first lap)** — Comlink's multipath aspect: per-road bounded queues and scorecards; first lap = one session surviving across two UDP paths under QEMU.

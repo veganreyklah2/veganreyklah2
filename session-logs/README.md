@@ -12,6 +12,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.191359 | [Go — MALA M1 parity 198](20260709-191359_go-mala-m1-parity-198.md) | Commit + four-remote push; M1 landed |
+| 20260709.191319 | [Aborted parity shells noted](20260709-191319_aborted-parity-shells-noted.md) | Hung kg re-runs already cleared; M1 still ready for `go` |
+| 20260709.184753 | [MALA M1 kg confirm](20260709-184753_mala-m1-kg-confirm.md) | README hygiene; M1 GREEN; OA-L3 re-run flake noted |
+| 20260709.184555 | [MALA M1 kg landed](20260709-184555_mala-m1-kg-landed.md) | `mala.rye` + witness; parity **198** GREEN; counsel `184051` |
+| 20260709.183819 | [Grok agent evening handoff](20260709-183819_grok-agent-evening-handoff.md) | Cursor Grok 4.5; parity **197**; two laps wait word |
 | 20260709.183326 | [Go — MALA removal parity 197](20260709-183326_go-mala-removal-parity-197.md) | Claude brief `183326`; commit + four-remote push |
 | 20260709.182354 | [MALA M1 lap-open brief](20260709-182354_mala-m1-lap-open-brief.md) | M0 gate verified; expanding-prompt `182354` filed |
 | 20260709.182051 | [Parity 197 GREEN — OA-L3 clear](20260709-182051_parity-197-green-oal3-clear.md) | Full parity ~150s; no code fix needed |

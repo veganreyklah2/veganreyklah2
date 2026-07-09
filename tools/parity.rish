@@ -292,6 +292,11 @@ let slcl1 = run ["rishi/bin/rishi" "run" "tools/slcl1_receipt.rish"]
 assert slcl1.ok else "SLC-L1 receipt witness failed"
 say "GREEN: SLC-L1 verifiable receipt witness passed."
 
+say "witness suite: MALA M1 one issuer, one holder…"
+let mala_m1 = run ["rishi/bin/rishi" "run" "tools/mala_m1_witness.rish"]
+assert mala_m1.ok else "MALA M1 witness failed"
+say "GREEN: MALA M1 one-issuer one-holder witness passed."
+
 say "witness suite: SLC-L2 sealed delivery…"
 let slcl2 = run ["rishi/bin/rishi" "run" "tools/slcl2_receipt.rish"]
 assert slcl2.ok else "SLC-L2 sealed delivery witness failed"
