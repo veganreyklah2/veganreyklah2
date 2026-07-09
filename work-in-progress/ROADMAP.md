@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260708.223327` (Sui ZK pin for SLC-L4 — `sui::groth16` named; lap still Kaeden-gated)
-**Last updated:** 2026-07-08 (ZK study `223327`; six-point counsel `221612`; sketchbook shelf-only `222852`)
+**Version:** `20260709.021112` (SLC-L4 implementation shape ruled — circomlib comparator confirmed on bench; lap still Kaeden-gated)
+**Last updated:** 2026-07-09 (counsel `021112` answers Cursor's own brief in full — circuit shape, lap-open brief contents, thin-demo exception named, settlement note, testnet-trial framing)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
