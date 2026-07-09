@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.203950 | [Keep going — WOV TB pin](20260709-203950_keep-going-wov-tb-pin.md) | Pin presence shipped `80e0375` |
 | 20260709.203916 | [Go — WOV TB pin 203](20260709-203916_go-wov-tb-pin-203.md) | Pin presence; parity **203**; four remotes |
 | 20260709.203527 | [WOV TB pin presence](20260709-203527_wov-tb-pin-presence.md) | gitlink `59f2b99` witnessed; no client link |
 | 20260709.203250 | [Keep going — Claude brief](20260709-203250_keep-going-claude-brief.md) | Night-climb brief shipped `c346d5d` |
