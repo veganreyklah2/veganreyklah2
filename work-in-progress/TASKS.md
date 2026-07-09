@@ -1,7 +1,9 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-08 (Sui ZK pin `223327` · six open points `221612` · sketchbook shelf-only `222852`)
+**Last updated:** 2026-07-09 (commit-message `@memcpy` mention hygiene `011912` — going forward only, no history rewrite)
+
+- [x] **Commit-message mention hygiene** — GitHub linkifies `@memcpy` in commit subjects (a real, unrelated account), checked against GitHub's own Nov 2025 changelog: notification side-effect removed, cosmetic linkification remains. `.claude/rules/git-signing.md` + newly-written `.cursor/rules/git-signing.mdc` (the latter didn't exist before, unlike every other rule's matching pair) now say: no bare `@builtin` in commit subject/body text; file content and documentation keep `` `@memcpy` `` exactly as styled. History not rewritten — commit messages are dated artifacts under the same one-clock law protecting session logs. Counsel `011912`.
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; SLC; Gall's Law

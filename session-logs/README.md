@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.013817 | [Go — memcpy hygiene + log backlog](20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |
+| 20260709.012913 | [Apply memcpy mention hygiene bundle 42](20260709-012913_apply-memcpy-mention-hygiene-bundle42.md) | Counsel `011912`; git-signing rule pair; forward-only |
+| 20260708.224900 | [Full summary — late evening](20260708-224900_full-summary-jul8-late-evening.md) | Arc through `de04722`; commits + pushes |
+| 20260708.224627 | [Go — counsel + ZK + sketchbook](20260708-224627_go-counsel-zk-sketchbook.md) | `de04722` to four remotes; bundle 41 shipped |
 | 20260708.224209 | [Kg — ZK study wiring](20260708-224209_kg-zk-study-wiring.md) | Stale TASKS/ROADMAP rows; `223327` pin cited; Composer 2.5 |
 | 20260708.222852 | [Six open points + sketchbook shelf](20260708-222852_six-open-points-sketchbook-shelf.md) | Counsel `221612`; Kaeden shelf-only; Grok 4.5 High first pass |
 | 20260708.220951 | [Go — full summary Jul 8 evening](20260708-220951_go-full-summary-jul8-evening.md) | Arc `605ac30`→`4b7ce20`; four remotes pushed |

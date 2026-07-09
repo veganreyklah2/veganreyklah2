@@ -1,3 +1,8 @@
+---
+description: Git commit signing — GPG required, four-remote push, commit message hygiene against accidental @mentions
+alwaysApply: true
+---
+
 # Git Commit Signing
 
 All commits MUST be GPG-signed. The global config already sets `commit.gpgsign=true` and names the signing key. Never bypass this:
