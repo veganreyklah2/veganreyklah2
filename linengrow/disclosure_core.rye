@@ -56,6 +56,7 @@ fn challenge(
 }
 
 /// Prove knowledge of blinding for C = tier·G + r·H (tier public).
+/// Callers outside the witness must supply fresh blinding and nonce scalars.
 pub fn prove_tier(
     tier: u64,
     blinding: *const [pedersen.scalar_len]u8,

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (SLC-L4 lap 2 width design `224325`; WOV seam A; parity **204**)
+**Last updated:** 2026-07-09 (SLC-L4 W0 review `224426`; width design; WOV seam A; parity **204**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -74,7 +74,7 @@
 | **5** | **Realidream thin view** | **Landed** | local fixtures → Skate; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md) |
 | **6** | **WOV TB pin presence** | **Landed** | rev `59f2b99` witnessed; no client link; parity **203**; prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) |
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
-| **8** | **SLC-L4 lap 2 width** | **Design filed** | W0 soak / W1 OR-tiers / W2 range; gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
+| **8** | **SLC-L4 lap 2 width** | **W0 cleared** | review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -107,16 +107,17 @@
 - [x] **WOV lap 2b client-seam design** — seam A (POSIX host) vs B (Zig protocol); account mapping; exit honesty unchanged; [`context/specs/20260709-204026_wov-tb-client-seam.md`](../context/specs/20260709-204026_wov-tb-client-seam.md); lap-open [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md)
 - [x] **WOV lap 2b — TB host seam A (code)** — `wov_tb_host.rye` + ensure/REPL scripts; projection golden; parity **204** (`20260709.223700`); live REPL needs io_uring (SKIP in ai-jail); seam B later
 - [x] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed; **M1–M2b + WOV lap 1 + pin + seam A** on metal; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
-- [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; code gated; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
+- [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
+- [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; soak affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
 - [ ] **WOV dual monarch** — waits Claude/Kaeden; after single-monarch TB path
 - [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
-- [ ] **SLC-L4 lap 2 code** — waits affirm of W0 vs W1 vs W2; night brief Q3
+- [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
 
 ## Six Open Points, Counseled (`221612`)
 
 1. **Settlement-seat crown** — **moot** — Sui/Monad path removed `152612`; MALA is own-issuer money.
 2. **Mainnet treasury custody event** — separate custody event when real value moves; legal/tax counsel required; MALA path replaces external-chain settlement.
-3. **SLC-L4 first pass** — **landed** `194437` — fixed-tier Sigma (donor-amount privacy); `tally/pedersen.rye` + `linengrow/disclosure_core.rye`; parity **200**. Arbitrary-range and other passes remain later.
+3. **SLC-L4 first pass** — **landed** `194437` — fixed-tier Sigma (declared tier; blinding private); parity **200**; **W0 review** `224426`. W1 OR-tiers / W2 range remain later.
 4. **Realidream viewer UI** — still held; data seams ready removes a future blocker, doesn't touch Pond/Dexter's present gate.
 5. **Parity for network seams** — **resolved** — chain-read witnesses removed with settlement path `152612`.
 6. **Grain-sketchbook** — **closed shelf-only** (Kaeden `222852`): [`gratitude/grain-sketchbook.md`](../gratitude/grain-sketchbook.md) is enough; no copy of the archive into this tree. Counsel `221612` had left a local `cp -r` open; Kaeden declined the hold directory.
@@ -476,7 +477,7 @@ Record: `session-logs/20260629-204910_th7-width-gate-yonder-convention.md` and p
 
 ### Linengrow
 - [x] **SLC-L3 — settlement** — **landed** `20260708.182500`, **removed from tree** `152612` — witness dropped from parity (**197**); implementation deleted; hammock + counsel kept as record. Superseded by MALA per counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md).
-- [x] **SLC-L4 lap 1 — fixed-tier Sigma** — **landed** `20260709.194437` — `tally/pedersen.rye` + `linengrow/disclosure_core.rye` + `tools/slcl4_sigma.rish`; parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md). Selftest honesty only; lightweight design review still recommended before calling the protocol finished. Later: arbitrary-range, sanctuary eligibility, reputation-threshold; live Sui verify on-demand.
+- [x] **SLC-L4 lap 1 — fixed-tier Sigma** — **landed** `20260709.194437` — parity **200**; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md). **W0 design review** cleared `224426` ([`counsel/224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md)). Later: W1 OR-tiers, W2 range, sanctuary eligibility; live chain verify on-demand.
 - [ ] **The platform horizons** — the computational data market, premium tiers, state-currency circulation, infrastructure licensing — grown from the business model in `../linengrow/`.
 - [ ] **The civic horizons** — PBC formation, investor outreach, the first transparency campaign as proof of concept.
 

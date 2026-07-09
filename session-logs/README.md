@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.224500 | [Go — SLC-L4 W0 review](20260709-224500_go-slcl4-w0-review.md) | Design review cleared; four remotes; parity **204** |
+| 20260709.224426 | [SLC-L4 W0 design review](20260709-224426_slcl4-w0-design-review.md) | Lap-1 Sigma reviewed; W1/W2 gated |
 | 20260709.224400 | [Go — SLC-L4 width design](20260709-224400_go-slcl4-width-design.md) | W0/W1/W2 filed; four remotes; parity **204** |
 | 20260709.224325 | [SLC-L4 lap 2 width design](20260709-224325_slcl4-lap2-width-design.md) | Gated; MALA/WOV path checkbox closed |
 | 20260709.224233 | [Go — WOV seam A 204](20260709-224233_go-wov-seam-a-204.md) | Commit + four remotes; parity **204** |

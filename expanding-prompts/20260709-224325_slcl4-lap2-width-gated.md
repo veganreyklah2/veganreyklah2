@@ -2,23 +2,26 @@
 
 **Stamp:** `20260709.224325`
 **Voice:** Rio 3
-**Status:** Lap-open brief **filed**; **do not implement** until Claude/Kaeden affirm width W0 / W1 / W2
-**Ground:** design [`../context/specs/20260709-224325_slcl4-lap2-width.md`](../context/specs/20260709-224325_slcl4-lap2-width.md) · lap 1 [`031612`](20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
+**Status:** **W0 landed** `20260709.224426` (design review); W1/W2 still **do not implement** until affirm
+**Ground:** design [`../context/specs/20260709-224325_slcl4-lap2-width.md`](../context/specs/20260709-224325_slcl4-lap2-width.md) · W0 review [`../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md) · lap 1 [`031612`](20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 
 ---
 
-## Affirm Before Code
+## Affirm
 
-Choose **W0** (soak + design review), **W1** (OR across fixed tiers), or **W2** (arbitrary range — hold). Bench leaning: **W0 first**.
+Kaeden keep-going after width design chose **W0**. Review filed; soak continues. **W1** / **W2** still wait affirm.
 
-## DoD (when opened)
+## DoD
 
-Named in the design spec §4 for the chosen width. Parity only for W1/W2 code laps.
+| Width | Status |
+|-------|--------|
+| **W0** | Cleared — counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md) |
+| **W1** / **W2** | Named in design §4; open only on affirm; parity only for code laps |
 
-## Out of scope until affirm
+## Out of scope until W1/W2 affirm
 
 Any new Sigma transcript; any change to lap-1 golden; live chain verify.
 
 ---
 
-*Open only on affirm.*
+*W0 soaks. W1 whispers only when a product surface asks.*
