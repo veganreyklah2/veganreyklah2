@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225720 | [Go — pause affirmed](20260709-225720_go-pause-affirmed.md) | Hygiene green; four remotes; rest |
+| 20260709.225711 | [Keep-going — pause affirmed](20260709-225711_keep-going-pause-affirmed.md) | Doorway + identity GREEN; soak holds |
 | 20260709.225650 | [Session close — soak](20260709-225650_session-close-parity-205-soak.md) | Parity **205**; W1/seam B soak; pause |
 | 20260709.225640 | [Go — W1 + seam B soak](20260709-225640_go-w1-seam-b-soak.md) | Soak counsel; four remotes |
 | 20260709.225614 | [W1 + seam B soak](20260709-225614_w1-seam-b-soak.md) | Reopen triggers named |
