@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.015832 | [Go — Claude brief Jul 9](20260709-015832_go-claude-brief-jul9.md) | Review brief `015832`; landscape log; four remotes |
+| 20260709.014227 | [Landscape — bench and what to open](20260709-014227_landscape-bench-what-to-open.md) | Gate map after `51b7c1e`; three paths named |
 | 20260709.013817 | [Go — memcpy hygiene + log backlog](20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |
 | 20260709.012913 | [Apply memcpy mention hygiene bundle 42](20260709-012913_apply-memcpy-mention-hygiene-bundle42.md) | Counsel `011912`; git-signing rule pair; forward-only |
 | 20260708.224900 | [Full summary — late evening](20260708-224900_full-summary-jul8-late-evening.md) | Arc through `de04722`; commits + pushes |
