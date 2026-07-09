@@ -113,7 +113,8 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 | Priority | Item | Gate |
 |----------|------|------|
 | **A** | Claude answers above (esp. 1, 3, 7) | This brief |
-| **B** | WOV TB pin lap-open brief (docs only) if A affirms | Claude + Kaeden |
+| **B** | WOV TB pin presence | **Landed** `203527` / parity **203** |
+| **B′** | WOV client-seam design + gated lap-open | **Filed** [`204026`](../context/specs/20260709-204026_wov-tb-client-seam.md) — affirm A vs B before code |
 | **C** | SLC-L4 lap 2 design note (not code) if A affirms width | Claude |
 | — | Full Realidream / Pond / Dexter | Held |
 

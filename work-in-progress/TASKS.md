@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV TB pin presence `203527`; parity **203**)
+**Last updated:** 2026-07-09 (WOV 2b client-seam design `204026`; pin presence; parity **203**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -102,7 +102,8 @@
 - [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md)
 - [x] **WOV lap 1 (in-memory)** — mint/transfer, publish root + golden bundle, prove balance, accept exit, refuse double/tamper; `linengrow/wov_core.rye` + `tools/wov_exit_honesty.rish`; parity **201** (`20260709.200729`); prompt [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md)
 - [x] **WOV lap 2a — TigerBeetle pin presence** — gitlink `59f2b99` + Apache + TIGER_STYLE + `src/tigerbeetle.zig`; no Rye `@import` of the pin; `tools/wov_tb_pin.rish`; parity **203** (`20260709.203527`); prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md)
-- [ ] **WOV lap 2b — TB client wrapper** — waits Claude/Kaeden after pin soak; night brief [`203139`](../external-research/20260709-203139_claude-review-brief-jul9-night-climb.md) Q1
+- [x] **WOV lap 2b client-seam design** — seam A (POSIX host) vs B (Zig protocol); account mapping; exit honesty unchanged; [`context/specs/20260709-204026_wov-tb-client-seam.md`](../context/specs/20260709-204026_wov-tb-client-seam.md); lap-open [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) **gated**
+- [ ] **WOV lap 2b — TB client wrapper (code)** — waits Claude/Kaeden affirm of seam A vs B; night brief [`203139`](../external-research/20260709-203139_claude-review-brief-jul9-night-climb.md) Q1
 - [ ] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed `152612`; **MALA M1–M2b landed**; **WOV lap 1 + pin presence landed**; client wrapper / dual monarch later; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 
 ## Six Open Points, Counseled (`221612`)
