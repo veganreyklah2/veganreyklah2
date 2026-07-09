@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.224531` (WOV dual-monarch design; SLC-L4 W0; parity **204**)
-**Last updated:** 2026-07-09 (dual `224531`; W0 `224426`; parity **204**)
+**Version:** `20260709.224634` (WOV dual-monarch D1 landed; parity **205**)
+**Last updated:** 2026-07-09 (dual D1 `224634`; parity **205**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

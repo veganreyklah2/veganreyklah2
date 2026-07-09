@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.225053 | [Go — WOV dual D1 205](20260709-225053_go-wov-dual-d1-205.md) | Twin lines on metal; four remotes; parity **205** |
+| 20260709.224634 | [WOV dual monarch D1](20260709-224634_wov-dual-monarch-d1.md) | Twin log lines; solo refused; parity **205** |
 | 20260709.224600 | [Go — WOV dual-monarch design](20260709-224600_go-wov-dual-monarch-design.md) | D1/D2 filed; four remotes; parity **204** |
 | 20260709.224531 | [WOV dual-monarch design](20260709-224531_wov-dual-monarch-design.md) | Twin-lines vs envelope; code gated |
 | 20260709.224500 | [Go — SLC-L4 W0 review](20260709-224500_go-slcl4-w0-review.md) | Design review cleared; four remotes; parity **204** |

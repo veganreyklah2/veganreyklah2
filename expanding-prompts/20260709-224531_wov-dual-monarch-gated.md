@@ -2,27 +2,27 @@
 
 **Stamp:** `20260709.224531`
 **Voice:** Rio 3
-**Status:** Lap-open brief **filed**; **do not implement** until Claude/Kaeden affirm D1 vs D2
+**Status:** **Landed** `20260709.224634` — **D1** twin log lines; parity **205**
 **Ground:** design [`../context/specs/20260709-224531_wov-dual-monarch.md`](../context/specs/20260709-224531_wov-dual-monarch.md) · exit honesty [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md) · seam A parity **204**
 
 ---
 
-## Affirm Before Code
+## Affirm
 
-Choose **D1** (twin log lines) or **D2** (two-sig envelope). Bench leaning: **D1 first**. Timing: after single-monarch TB path (already true).
+Kaeden keep-going after design `224531` chose **D1**.
 
-## DoD (when opened)
+## DoD
 
-1. Instance config names two monarch pubkeys.
-2. Dual root accepted only with both signatures over the same body.
-3. Exit bundle + prove + exit GREEN (same grammar as lap 1).
-4. Solo-signed root refused under dual config.
-5. Parity stanza GREEN.
+1. Two monarch seeds; fact `from` A / `to` B; identical canonical bytes — GREEN.
+2. Twin signatures required — GREEN (`verify_latest_root_dual`).
+3. Exit bundle + prove + exit GREEN.
+4. Solo-signed root refused under dual verify — GREEN.
+5. Parity **205** — `tools/wov_dual_monarch.rish`.
 
-## Out of scope
+## Out of scope (still)
 
-Three+ monarchs; Mycelium; seam B; changing TB projection.
+Three+ monarchs; Mycelium; D2 envelope; seam B.
 
 ---
 
-*Open only on affirm.*
+*Two keys, one body, honest exits.*

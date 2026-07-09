@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV dual-monarch design `224531`; SLC-L4 W0; parity **204**)
+**Last updated:** 2026-07-09 (WOV dual-monarch D1 `224634`; parity **205**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma landed**; **WOV lap 1 + TB pin + seam A host landed**; **Realidream thin view landed**. Parity **204**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**. Parity **205**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -75,7 +75,7 @@
 | **6** | **WOV TB pin presence** | **Landed** | rev `59f2b99` witnessed; no client link; parity **203**; prompt [`203527`](../expanding-prompts/20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) |
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
 | **8** | **SLC-L4 lap 2 width** | **W0 cleared** | review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
-| **9** | **WOV dual monarch** | **Design filed** | D1 twin-lines vs D2 envelope; gated [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
+| **9** | **WOV dual monarch D1** | **Landed** | twin log lines; solo refused; parity **205**; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -110,9 +110,10 @@
 - [x] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed; **M1–M2b + WOV lap 1 + pin + seam A** on metal; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 - [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
 - [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; soak affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
-- [x] **WOV dual-monarch design** — D1 twin log lines vs D2 two-sig envelope; timing after seam A; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md); lap-open [`224531`](../expanding-prompts/20260709-224531_wov-dual-monarch-gated.md) **gated**
-- [ ] **WOV dual-monarch code** — waits Claude/Kaeden affirm of D1 vs D2
+- [x] **WOV dual-monarch design** — D1 twin log lines vs D2 two-sig envelope; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md)
+- [x] **WOV dual-monarch D1 (code)** — `publish_root_dual` / `verify_latest_root_dual` / `accept_exit_dual`; `selftest-dual`; `tools/wov_dual_monarch.rish`; parity **205** (`20260709.224634`)
 - [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
+- [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
 - [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
 
 ## Six Open Points, Counseled (`221612`)
@@ -310,7 +311,7 @@
 
 Ground: [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md).
 
-- [x] **WOV gate + lap 1 + pin + seam A** — exit-honesty [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md); lap 1 **201**; pin **203**; host seam A **204** (`223700`); dual monarch and seam B remain later; one or two monarchs, never three (three is Mycelium's door at M4).
+- [x] **WOV gate + lap 1 + pin + seam A + dual D1** — exit-honesty [`200443`](../context/specs/20260709-200443_wov-exit-honesty.md); lap 1 **201**; pin **203**; seam A **204**; dual D1 **205** (`224634`); seam B / D2 later; one or two monarchs, never three (three is Mycelium's door at M4).
 - [x] **Hardware fit (recorded)** — the sovereign-host blueprint covers MALA M0–M2 and WOV's first lap through the two-monarch season with headroom; two deltas named: a dedicated power-loss-protected M.2 NVMe for the WOV data file beside the settlement U.2, and ECC as the value-bearing-monarch threshold with the blueprint's apex tower as its pre-written answer; the x1 gentle-slot rule extends to every ledger tenant. Ground: [`external-research/20260702-215212_wov-mala-hardware-fit.md`](../external-research/20260702-215212_wov-mala-hardware-fit.md) (`20260702.215212`).
 - [x] **Build verdict (recorded)** — no new module: the build system grows as `rye`'s verbs (`rye test` runner is the first witness-gated horizon, a watcher later), declared by Brix, typed by Bron's mark triad, versioned where Mantra already stands; watcher name-candidates parked in RTAC for Kaeden (`20260702.211312`).
 - [ ] **Living build counsel (recorded, design-only)** — builder as projection over Weave/Mantra, never a second state holder; Brix declared graph + resins-law SHA3-256 content keys; three SLC laps (watch loop · Brix-keyed cache with no-work witness · Salsa-shaped sub-file queries on proven need); lap two waits for measured red. Ground: [`external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md`](../external-research/20260703-193012_the-bench-as-a-block-and-the-living-build.md) (`20260703.193012`).
