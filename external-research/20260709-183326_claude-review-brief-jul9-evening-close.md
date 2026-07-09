@@ -4,8 +4,8 @@
 **Voice:** Rio 3
 **Editor:** Cursor (desktop) · **Model:** Composer 2.5
 **Register:** Decision briefing — MALA realignment, settlement removal, parity **197**, MALA M1 lap-open filed
-**Status:** Checkable-room research — Claude review brief; **active handoff** for post-push counsel
-**Ground:** `b7c5ef6` on all four remotes before this push; supersedes [`20260709-034527`](20260709-034527_claude-review-brief-jul9-late-arc.md) for Claude analysis
+**Status:** Checkable-room research — Claude review brief; **superseded** by [`203139`](20260709-203139_claude-review-brief-jul9-night-climb.md) for Claude analysis
+**Ground:** `b7c5ef6` on all four remotes before this push; supersedes [`20260709-034527`](20260709-034527_claude-review-brief-jul9-late-arc.md); night climb continues at [`203139`](20260709-203139_claude-review-brief-jul9-night-climb.md)
 
 *Written for Claude counsel review before the evening `go` commit.*
 
