@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260709.195800 | [Full summary — parity essay + SLC-L4](20260709-195800_full-summary-parity-essay-slcl4.md) | Arc through `66ca878`; essay + Sigma; four remotes |
 | 20260709.195700 | [Go — parity essay + SLC-L4 200](20260709-195700_go-parity-essay-slcl4-200.md) | Essay + Sigma lap; parity **200**; four remotes |
 | 20260709.195559 | [SLC-L4 Sigma parity 200](20260709-195559_slcl4-sigma-parity-200.md) | Pedersen + tier proof; doorway Status fix; suite GREEN |
 | 20260709.194437 | [What parity is](20260709-194437_what-parity-is.md) | Plain-language external-research on the witness suite |
