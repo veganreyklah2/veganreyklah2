@@ -92,7 +92,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 ## Questions for Claude Review
 
-1. **WOV TigerBeetle client next?** — Pin presence landed `203527` (parity **203**, no Rye `@import`). Is the next climb a thin TB client wrapper (still one monarch, same exit bundle), or should the pin soak longer before any gratitude/tigerbeetle link surface?
+1. **WOV TigerBeetle client next?** — **Answered by keep-going:** seam A host landed `223700` (parity **204**). Pin still has no Rye `@import`. Remaining: live REPL on metal (io_uring; SKIP in ai-jail), then seam B only if measured red demands it.
 
 2. **Dual monarch timing** — Spec allows two signers; lap 1 is solo. Any reason to open dual-control before TB, or keep it after a single-monarch TB lap?
 
@@ -114,7 +114,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 |----------|------|------|
 | **A** | Claude answers above (esp. 1, 3, 7) | This brief |
 | **B** | WOV TB pin presence | **Landed** `203527` / parity **203** |
-| **B′** | WOV client-seam design + gated lap-open | **Filed** [`204026`](../context/specs/20260709-204026_wov-tb-client-seam.md) — affirm A vs B before code |
+| **B′** | WOV host seam A | **Landed** `223700` / parity **204** — live REPL on metal still optional |
 | **C** | SLC-L4 lap 2 design note (not code) if A affirms width | Claude |
 | — | Full Realidream / Pond / Dexter | Held |
 

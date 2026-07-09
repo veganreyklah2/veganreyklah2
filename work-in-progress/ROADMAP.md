@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.204026` (WOV TB client-seam design filed; pin presence; parity **203**)
-**Last updated:** 2026-07-09 (client seam `204026`; pin `203527`; parity **203**)
+**Version:** `20260709.223700` (WOV TB host seam A landed; parity **204**)
+**Last updated:** 2026-07-09 (seam A `223700`; pin `203527`; parity **204**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)

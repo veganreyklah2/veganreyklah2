@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
 **Lens:** TAME — pin, never fork; clean room; exit honesty unchanged
-**Status:** Checkable-room design — **no client code**; waits Claude/Kaeden affirm after pin presence `203527`
+**Status:** Seam **A** affirmed and **landed** `20260709.223700` (parity **204**); seam B remains later
 **Ground:** exit honesty [`200443`](20260709-200443_wov-exit-honesty.md) · lap 1 [`../linengrow/wov_core.rye`](../linengrow/wov_core.rye) · pin presence parity **203** · night brief [`203139`](../../external-research/20260709-203139_claude-review-brief-jul9-night-climb.md) · gratitude pin `59f2b99` Apache-2.0
 
 *Written by Kaeden and Rio 3 (Grok).*
@@ -100,8 +100,10 @@ After every TB mutation batch that a root covers:
 | Exit-honesty spec | Cleared |
 | Lap 1 in-memory | Cleared (parity **201**) |
 | Pin presence | Cleared (parity **203**) |
-| Claude/Kaeden affirm seam A vs B | **Open** |
-| Lap 2b code | After affirm |
+| Claude/Kaeden affirm seam A vs B | **Cleared** — Kaeden keep-going chose A |
+| Lap 2b code (seam A) | **Landed** `223700` / parity **204** |
+| Live REPL under ai-jail | **SKIP** — io_uring blocked by seccomp; lab greens on host metal |
+| Seam B (Zig client protocol) | Later |
 
 ---
 
