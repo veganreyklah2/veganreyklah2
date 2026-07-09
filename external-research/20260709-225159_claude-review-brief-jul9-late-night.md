@@ -1,0 +1,71 @@
+# Jul 9 Late Night — Claude Review Brief (Parity 205)
+
+**Stamp:** `20260709.225159`
+**Voice:** Rio 3
+**Editor:** Cursor · **Model:** Grok 4.5
+**Register:** Decision briefing — night climb through dual D1; what still needs Claude
+**Status:** Checkable-room research — **supersedes** [`203139`](20260709-203139_claude-review-brief-jul9-night-climb.md) for open questions
+**Ground:** tip `54014ce` on four remotes; parity **205** GREEN (~173s)
+
+*Written by Kaeden and Rio 3 (Grok).*
+
+---
+
+## Executive Landscape
+
+From evening close **197** through tonight: MALA M1–M2b, SLC-L4 fixed-tier Sigma + W0 review, WOV exit honesty, TB pin, host seam A, dual-monarch **D1**. Keep-going treated design leans as affirms (seam A, W0, D1). Code that still crosses protocol width waits Claude.
+
+| Milestone | Stamp | Parity |
+|-----------|-------|--------|
+| MALA M1 | `184051` | **198** |
+| Hang fix + MALA M2 | `191634` | **199** |
+| SLC-L4 Sigma | `194437` | **200** |
+| WOV lap 1 | `200729` | **201** |
+| Realidream thin view | `202427` | **202** |
+| WOV TB pin | `203527` | **203** |
+| WOV TB host seam A | `223700` | **204** |
+| WOV dual D1 | `224634` | **205** |
+
+**Remote tip:** `54014ce`.
+
+---
+
+## What Landed Since Night Brief `203139`
+
+| Item | Outcome |
+|------|---------|
+| WOV seam A | Projection → exit honesty; live REPL SKIP in ai-jail (io_uring) |
+| SLC-L4 width + W0 | Design + lap-1 Sigma design review; W1/W2 gated |
+| WOV dual monarch | Design then **D1** twin log lines on metal |
+| MALA `kind` | Design filed this stamp — K0 lean |
+
+---
+
+## Questions Still for Claude
+
+1. **SLC-L4 W1** — Open OR-across-tiers next, or hold until a product surface needs hidden tiers? (W0 cleared [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md).)
+
+2. **WOV seam B** — Zig client protocol against TB, or soak on seam A (+ live REPL on metal when outside jail)?
+
+3. **MALA `kind`** — Affirm **K0** (memos through M3) vs **K1** (dedicated field)? Design [`225159`](../context/specs/20260709-225159_mala-kind-field.md).
+
+4. **Thin view / Dexter** — Still an exception, or second-consumer pressure? (Unchanged from `203139` Q4.)
+
+5. **Evening-close leftovers** — Removal-vs-supersede headers; M0 functional-spec slot — still needed?
+
+6. **Keep-going default** — Bench now: design briefs + mechanical hygiene only; **no** W1 / seam B / K1 code without affirm. Confirm?
+
+---
+
+## Path Forward (bench)
+
+| Priority | Item | Gate |
+|----------|------|------|
+| **A** | Claude answers 1–3, 6 | This brief |
+| **B** | Live TB REPL on host metal | Optional; io_uring outside ai-jail |
+| **C** | Hygiene / doorway / docs | Keep-going-safe |
+| — | W1, seam B, K1, D2, M3 | Affirm first |
+
+---
+
+*May Claude meet a ladder that already ran to dual roots. May the next code lap wait for a named width. And may keep-going stay generous without inventing protocol.*

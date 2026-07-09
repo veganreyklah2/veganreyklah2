@@ -4,8 +4,8 @@
 **Voice:** Rio 3
 **Editor:** Cursor · **Model:** Grok 4.5 High Fast
 **Register:** Decision briefing — MALA M1→M2b, SLC-L4 Sigma, WOV exit honesty, Realidream thin view; parity **197→202**
-**Status:** Checkable-room research — Claude review brief; **active handoff** for counsel
-**Ground:** tip **`c44f237`** on all four remotes; supersedes [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md) for Claude analysis
+**Status:** Checkable-room research — **superseded** for open questions by [`225159`](20260709-225159_claude-review-brief-jul9-late-night.md)
+**Ground:** tip **`c44f237`** at filing; later climb through dual D1 at `54014ce` / parity **205**; supersedes [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md)
 
 *Written for Claude counsel review after Kaeden's keep-going climb from evening close through thin view.*
 
@@ -100,7 +100,7 @@ M2b extended the existing MALA M2 witness (no new slot). Suite GREEN at tip (~17
 
 4. **Thin view as Dexter pressure** — Thin view uses drawn terminal + Skate only. Does composing local facts into a frame count as a second consumer that should move Dexter graduation, or does it correctly stay an exception until a true Realidream viewer arrives?
 
-5. **MALA `kind` field** — M1–M2b shipped on memo prefixes. Revisit whether a dedicated `kind` belongs before M3 (digital land), or leave memos as the binding?
+5. **MALA `kind` field** — Design filed [`225159`](../context/specs/20260709-225159_mala-kind-field.md): **K0** memos through M3 vs **K1** dedicated field. Bench leans K0. Affirm?
 
 6. **Evening-close Q1–Q6** — Which of [`183326`](20260709-183326_claude-review-brief-jul9-evening-close.md)'s six questions still need answers now that M1–M2b, Sigma, and WOV lap 1 are facts? (Especially removal-vs-supersede headers and M0 functional-spec slot.)
 

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (WOV dual-monarch D1 `224634`; parity **205**)
+**Last updated:** 2026-07-09 (MALA kind design + late-night Claude brief `225159`; dual D1; parity **205**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -76,6 +76,7 @@
 | **7** | **WOV TB host seam A** | **Landed** | projection → exit honesty; binary ensure; live REPL skip-or-green; parity **204**; prompt [`204026`](../expanding-prompts/20260709-204026_wov-lap2b-tb-client-wrapper.md) |
 | **8** | **SLC-L4 lap 2 width** | **W0 cleared** | review [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); W1/W2 still gated [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md) |
 | **9** | **WOV dual monarch D1** | **Landed** | twin log lines; solo refused; parity **205**; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md) |
+| **10** | **MALA `kind` field** | **Design filed** | K0 memos vs K1 column; gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -115,6 +116,9 @@
 - [ ] **WOV TB seam B** — Zig client protocol; only if measured red demands it after seam A
 - [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
 - [ ] **SLC-L4 W1/W2 code** — waits affirm; OR-across-tiers or arbitrary-range
+- [x] **MALA `kind` field design** — K0 keep memos vs K1 dedicated field; bench leans K0 through M3; [`225159`](../context/specs/20260709-225159_mala-kind-field.md); lap-open [`225159`](../expanding-prompts/20260709-225159_mala-kind-field-gated.md) **gated**
+- [ ] **MALA `kind` K1 code** — waits affirm; K0 needs no code
+- [x] **Late-night Claude brief** — parity **205** landscape; [`225159`](../external-research/20260709-225159_claude-review-brief-jul9-late-night.md) supersedes `203139` for open Qs
 
 ## Six Open Points, Counseled (`221612`)
 
