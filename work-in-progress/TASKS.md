@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb fill+tb+fence+err_stop `190319`; parity **279**)
+**Last updated:** 2026-07-10 (Compass climb copy+rye-prefix+plain+stop `190800`; parity **283**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -160,6 +160,10 @@
 | **91** | **Greencandy TB view** | **Landed** | Trial balance → Skate `tbviewtest`; parity **277**; stamp `190319` |
 | **92** | **Scribble fence kinds view** | **Landed** | rye/rish/plain counts → Skate `scribblefenceviewtest`; parity **278**; stamp `190319` |
 | **93** | **Lantern lap 5 err_stop** | **Landed** | err_stop fixture pin; parity **279**; stamp `190319` |
+| **94** | **Lattice lap 8 copy** | **Landed** | Shape-asserted tensor copy; parity **280**; stamp `190800` |
+| **95** | **Anvil corpus rye prefix view** | **Landed** | rye + pond/ → Skate `corpusryeprefixviewtest`; parity **281**; stamp `190800` |
+| **96** | **Scribble lap 6 plain snippets** | **Landed** | `extract_plain_snippets` from fence_kinds; parity **282**; stamp `190800` |
+| **97** | **Lantern lap 6 stop_sequence** | **Landed** | stop_sequence fixture pin; parity **283**; stamp `190800` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

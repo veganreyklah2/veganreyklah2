@@ -860,3 +860,23 @@ say "witness suite: Lantern lap 5 (err_stop)…"
 let lantern_lap5 = run ["rishi/bin/rishi" "run" "tools/lantern_lap5.rish"]
 assert lantern_lap5.ok else "Lantern lap 5 witness failed"
 say "GREEN: Lantern lap 5 witness passed."
+
+say "witness suite: Lattice lap 8 (copy)…"
+let lattice_lap9 = run ["rishi/bin/rishi" "run" "tools/lattice_lap9.rish"]
+assert lattice_lap9.ok else "Lattice lap 8 witness failed"
+say "GREEN: Lattice lap 8 witness passed."
+
+say "witness suite: Anvil corpus rye prefix view (rye + pond/ → Skate)…"
+let rye_prefix_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_rye_prefix_view.rish"]
+assert rye_prefix_view.ok else "Anvil corpus rye prefix view witness failed"
+say "GREEN: Anvil corpus rye prefix view witness passed."
+
+say "witness suite: Scribble lap 6 (plain snippets)…"
+let scribble_lap7 = run ["rishi/bin/rishi" "run" "tools/scribble_lap7.rish"]
+assert scribble_lap7.ok else "Scribble lap 6 witness failed"
+say "GREEN: Scribble lap 6 witness passed."
+
+say "witness suite: Lantern lap 6 (stop_sequence)…"
+let lantern_lap6 = run ["rishi/bin/rishi" "run" "tools/lantern_lap6.rish"]
+assert lantern_lap6.ok else "Lantern lap 6 witness failed"
+say "GREEN: Lantern lap 6 witness passed."

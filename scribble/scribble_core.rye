@@ -1,6 +1,6 @@
-//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 5).
+//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 6).
 //!
-//! Headings, paragraphs, fenced code (rye / rish / plain). Heading, paragraph, and fence-kind extract for views.
+//! Headings, paragraphs, fenced code (rye / rish / plain). Heading, paragraph, fence-kind, and plain-snippet extract for views.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -169,6 +169,11 @@ pub fn extract_rye_snippets(blocks: []const Block, out: []Snippet) ParseError!u3
 /// Collect every `rish_fence` body in source order — witness-script snippets for Anvil forge.
 pub fn extract_rish_snippets(blocks: []const Block, out: []Snippet) ParseError!u32 {
     return extract_kind_snippets(blocks, .rish_fence, out);
+}
+
+/// Collect every plain `code_fence` body in source order — unmarked fences for corpus work.
+pub fn extract_plain_snippets(blocks: []const Block, out: []Snippet) ParseError!u32 {
+    return extract_kind_snippets(blocks, .code_fence, out);
 }
 
 fn extract_kind_snippets(blocks: []const Block, kind: BlockKind, out: []Snippet) ParseError!u32 {
