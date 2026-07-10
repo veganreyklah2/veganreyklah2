@@ -1,30 +1,32 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant pass `182821`; lap 3 temperature+seed `181653`; parity **258**)
+**Last updated:** 2026-07-10 (lap 4 top_p `185947`; parity **275**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–3 green (fixture · max_tokens · allow-list · temperature/seed)
+**Status:** Checkable-room module — laps 0–4 green (fixture · max_tokens · allow-list · temperature/seed · top_p)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, then `temperature` and `seed` on the request with fixture pins for a deterministic path. Weights named by hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, then `top_p` with fixture pins for a deterministic path. Weights named by hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
 | **0** | Request validation · model hash match · fixture response | parity **213** |
-| **1** | `max_tokens` truncate · length stop · zero budget refused | `tools/lantern_lap1.rish` (`180111`) |
-| **2** | Model allow-list gate · unknown hash refused | parity **252** · `tools/lantern_lap2.rish` (`180747`) |
-| **3** | `temperature` + `seed` · range and pin checks | parity **258** · `tools/lantern_lap3.rish` (`181653`) |
+| **1** | `max_tokens` truncate · length stop · zero budget refused | `tools/lantern_lap1.rish` |
+| **2** | Model allow-list gate · unknown hash refused | parity **252** · `tools/lantern_lap2.rish` |
+| **3** | `temperature` + `seed` · range and pin checks | parity **258** · `tools/lantern_lap3.rish` |
+| **4** | `top_p` · range and pin checks | parity **275** · `tools/lantern_lap4.rish` (`185947`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget + allow-list + seed |
+| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget + allow-list + seed + top_p |
 | [`lantern.rye`](lantern.rye) | Selftest |
 | [`fixtures/completion.bron`](fixtures/completion.bron) | Lap 0 pinned completion |
 | [`fixtures/completion_length.bron`](fixtures/completion_length.bron) | Lap 1 long completion |
 | [`fixtures/allowed_models.bron`](fixtures/allowed_models.bron) | Lap 2 model-hash allow-list |
 | [`fixtures/completion_seed.bron`](fixtures/completion_seed.bron) | Lap 3 seed + temperature pin |
+| [`fixtures/completion_top_p.bron`](fixtures/completion_top_p.bron) | Lap 4 top_p pin |
 
-*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed pins keep the fixture path deterministic.*
+*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed and top_p pins keep the fixture path deterministic.*

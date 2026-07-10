@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb transpose+rish+paragraphs+pnl `185542`; parity **271**)
+**Last updated:** 2026-07-10 (Compass climb mul+para-view+bs+top_p `185947`; parity **275**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -152,6 +152,10 @@
 | **83** | **Anvil corpus rish view** | **Landed** | kind rish → Skate `corpusrishviewtest`; parity **269**; stamp `185542` |
 | **84** | **Scribble lap 4 paragraphs** | **Landed** | `extract_paragraphs` from outline; parity **270**; stamp `185542` |
 | **85** | **Greencandy P&L view** | **Landed** | Income statement → Skate `pnlviewtest`; parity **271**; stamp `185542` |
+| **86** | **Lattice lap 6 mul** | **Landed** | Elementwise Hadamard mul; parity **272**; stamp `185947` |
+| **87** | **Scribble paragraphs view** | **Landed** | Prose bodies → Skate `scribbleparaviewtest`; parity **273**; stamp `185947` |
+| **88** | **Greencandy BS view** | **Landed** | Balance sheet → Skate `bsviewtest`; parity **274**; stamp `185947` |
+| **89** | **Lantern lap 4 top_p** | **Landed** | top_p range + fixture pin; parity **275**; stamp `185947` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
