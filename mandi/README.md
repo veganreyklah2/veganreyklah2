@@ -2,7 +2,7 @@
 
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
-**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); live TB waits  
+**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); settle view lap 4 (`172955`); live TB waits  
 **Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) · settle [`../context/specs/20260710-171202_mandi-listing-settle-seated.md`](../context/specs/20260710-171202_mandi-listing-settle-seated.md)  
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)
 
@@ -44,9 +44,19 @@ rishi/bin/rishi run tools/mandi_listing_settle.rish
 
 Witness → parity **242**.
 
+## Settle view (lap 4)
+
+Citizen window on Skate — six lines: settle title, listing receipt, price, payment prefix, settled, fold green. Double settle refused.
+
+```sh
+rishi/bin/rishi run tools/mandi_settle_view.rish
+```
+
+Witness → parity **244** (`mandisettletest`).
+
 ## Held
 
-Live TigerBeetle settlement and Granary weave settle wait their own gates.
+Live TigerBeetle settlement waits its own gate.
 
 ---
 
