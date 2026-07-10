@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (commerce compass hygiene `171707`; Mandi listing settle `171202`; parity **242**)
+**Last updated:** 2026-07-10 (Granary weave settle `172625`; commerce compass hygiene `171707`; Mandi listing settle `171202`; parity **243**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **Realidream forge view landed** `143000`; **Amphora lap 1 + forge query landed** `143500`; **Amphora lap 2 pour/scrub landed** `143726`; **Amphora lap 3 Comlink fetch landed** `144309`; **Amphora device wire landed** `144833`; **Amphora Kumara vessel stamp landed** `145843`; **Amphora Amber vessel seal landed** `153745`; **Amphora resin chunk landed** `154300`; **Pond customs landed** `161125`; **Amphora purchase delivery landed** `161358`; **Granary name seated** `163043`; **Granary four doors through Exchange listing** through `165348`; **Mandi name + lap 1** `165634`; **Granary device-wire resin serve** `170132`; **Mandi floor view** `170700`; **Granary Exchange view** `170838`; **Mandi listing settle** `171202`; **commerce compass hygiene** `171707`; **kitchen-twin shelf** (shipping + custody + thin-edge spine + two-roofs commerce); **universal foundations affirmed**. Parity **242**. Commerce rest bench: Granary weave settle · live TB parked until brief.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **Realidream forge view landed** `143000`; **Amphora lap 1 + forge query landed** `143500`; **Amphora lap 2 pour/scrub landed** `143726`; **Amphora lap 3 Comlink fetch landed** `144309`; **Amphora device wire landed** `144833`; **Amphora Kumara vessel stamp landed** `145843`; **Amphora Amber vessel seal landed** `153745`; **Amphora resin chunk landed** `154300`; **Pond customs landed** `161125`; **Amphora purchase delivery landed** `161358`; **Granary name seated** `163043`; **Granary four doors through Exchange listing** through `165348`; **Mandi name + lap 1** `165634`; **Granary device-wire resin serve** `170132`; **Mandi floor view** `170700`; **Granary Exchange view** `170838`; **Mandi listing settle** `171202`; **commerce compass hygiene** `171707`; **Granary weave settle** `172625`; **kitchen-twin shelf** (shipping + custody + thin-edge spine + two-roofs commerce); **universal foundations affirmed**. Parity **243**. Commerce rest bench: live TB parked until brief.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -121,7 +121,8 @@
 | **52** | **Granary Exchange view** | **Landed** | Weave listing → Skate `exchangeviewtest`; six-line frame; parity **241**; stamp `170838` |
 | **53** | **Mandi listing settle** | **Landed** | `vessel-settle-v1` binds listing receipt + MALA/WOV payment; parity **242**; stamp `171202` — [`171202`](../context/specs/20260710-171202_mandi-listing-settle-seated.md) |
 | **54** | **Commerce compass hygiene** | **Landed** | Kitchen twin + compass_rose packet; rest bench; stamp `171707` — [`171707`](../external-research/20260710-171707_granary-mandi-commerce-plainly.md) |
-| — | **Rest bench (commerce)** | **Parked** | Granary weave settle · live TB — wait for brief; soak (W1/seam B) unchanged |
+| **55** | **Granary weave settle** | **Landed** | `weave-settle-v1` binds Exchange receipt + MALA/WOV payment; parity **243**; stamp `172625` — [`172625`](../context/specs/20260710-172625_granary-weave-settle-seated.md) |
+| — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |

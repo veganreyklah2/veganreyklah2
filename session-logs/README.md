@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.172625 | [Granary weave settle — MALA + WOV in-process](20260710-172625_granary-weave-settle.md) | weave-settle-v1; parity **243** |
 | 20260710.171707 | [Commerce compass hygiene — two roofs on the rose](20260710-171707_commerce-compass-hygiene.md) | Kitchen twin + rose packet; rest bench |
 | 20260710.171202 | [Mandi listing settle — MALA + WOV in-process](20260710-171202_mandi-listing-settle.md) | vessel-settle-v1; parity **242** |
 | 20260710.170838 | [Granary Exchange view — weave listing on Skate](20260710-170838_granary-exchange-view.md) | Six-line frame; parity **241** |
