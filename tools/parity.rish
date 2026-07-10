@@ -975,3 +975,23 @@ say "witness suite: Lantern lap 10 (text pin)…"
 let lantern_lap10 = run ["rishi/bin/rishi" "run" "tools/lantern_lap10.rish"]
 assert lantern_lap10.ok else "Lantern lap 10 witness failed"
 say "GREEN: Lantern lap 10 witness passed."
+
+say "witness suite: Lattice lap 13 (abs)…"
+let lattice_lap14 = run ["rishi/bin/rishi" "run" "tools/lattice_lap14.rish"]
+assert lattice_lap14.ok else "Lattice lap 13 witness failed"
+say "GREEN: Lattice lap 13 witness passed."
+
+say "witness suite: Anvil corpus apps prefix view (pond/apps/ → Skate)…"
+let apps_prefix_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_apps_prefix_view.rish"]
+assert apps_prefix_view.ok else "Anvil corpus apps prefix view witness failed"
+say "GREEN: Anvil corpus apps prefix view witness passed."
+
+say "witness suite: Inference assist sight lap 4 (chart on carriage)…"
+let assist_sight_lap4 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap4.rish"]
+assert assist_sight_lap4.ok else "Inference assist sight lap 4 witness failed"
+say "GREEN: Inference assist sight lap 4 witness passed."
+
+say "witness suite: Lantern lap 11 (temperature pin)…"
+let lantern_lap11 = run ["rishi/bin/rishi" "run" "tools/lantern_lap11.rish"]
+assert lantern_lap11.ok else "Lantern lap 11 witness failed"
+say "GREEN: Lantern lap 11 witness passed."
