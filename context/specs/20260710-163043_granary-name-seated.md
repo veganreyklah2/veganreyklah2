@@ -3,7 +3,7 @@
 **Stamp:** `20260710.163043` (Kaeden's word: "okay, go with Granary")
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — the **name** for the Mantra global namespace / weave-sharing surface; laps 1–4 + weave view through `20260710.164944` (parity **232**–**236**)
+**Status:** Seated — four doors through Exchange listing `20260710.165348` (parity **232**–**237**); WOV settlement and Mandi wait
 **Ground:** study [`../../external-research/20260703-182612_the-granary-question.md`](../../external-research/20260703-182612_the-granary-question.md) · counsel [`../../session-logs/20260710-162312_granary-naming-mission.md`](../../session-logs/20260710-162312_granary-naming-mission.md)
 
 *Written by Kaeden and Rio 3.*
@@ -31,7 +31,7 @@ Forge · Grove · Orchard · Sangha · Weavehall · Bakery — warm or legible, 
 
 ## First lap (landed `20260710.163304`)
 
-Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. Skate weave view landed `20260710.163557` (`granaryviewtest`; parity **233**). Write gate lap 2 landed `20260710.164237` — durable `publish` + reload; parity **234**. Sharing door lap 3 landed `20260710.164514` — host serve + mirror clone; parity **235**. Comlink resin serve lap 4 landed `20260710.164944` — ports **38496**/**38497**; parity **236**. No payments until Exchange's own gate; device wire later.
+Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. Skate weave view landed `20260710.163557` (`granaryviewtest`; parity **233**). Write gate lap 2 landed `20260710.164237` — durable `publish` + reload; parity **234**. Sharing door lap 3 landed `20260710.164514` — host serve + mirror clone; parity **235**. Comlink resin serve lap 4 landed `20260710.164944` — ports **38496**/**38497**; parity **236**. Exchange listing lap 5 landed `20260710.165348` — weave priced in MALA, receipt without identities; parity **237**. WOV settlement and Mandi wait.
 
 ---
 
