@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb sub+journal+plain+stop-pin `191112`; parity **287**)
+**Last updated:** 2026-07-10 (Assist/sight composition journal+plain `192018`; parity **290**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -168,6 +168,9 @@
 | **99** | **Greencandy journal view** | **Landed** | Journal entries → Skate `journalviewtest`; parity **285**; stamp `191112` |
 | **100** | **Scribble plain snippets view** | **Landed** | Unmarked fences → Skate `scribbleplainviewtest`; parity **286**; stamp `191112` |
 | **101** | **Lantern lap 7 stop_sequence pin** | **Landed** | Request-side stop_sequence pin; parity **287**; stamp `191112` |
+| **102** | **Assist view lap 5 plain+journal** | **Landed** | Plain fences + journal memos on assist fold; parity **288**; stamp `192018` |
+| **103** | **Assist sight lap 3 plain+journal** | **Landed** | Plain + journal on carriage assist fold; parity **289**; stamp `192018` |
+| **104** | **Linengrow sight lap 2 journal** | **Landed** | Journal memos on steward glass; parity **290**; stamp `192018` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

@@ -441,6 +441,12 @@ fn compose_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     const pl = income_from_nets(&nets);
     const bs = balance_from_nets(&nets);
     assert(bs.cash == bs.equity + bs.retained);
+    _ = pl;
+
+    var entries: [greencandy.max_entries]greencandy.Entry = undefined;
+    var entry_count: u32 = 0;
+    try greencandy.parse_journal(journal, &entries, &entry_count);
+    if (entry_count != 2) return error.BadJournal;
 
     const lines = try garden.alloc(surface.SkateLine, sight_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "linengrow sight view") };
@@ -449,7 +455,7 @@ fn compose_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     lines[3] = .{ .text = try garden.dupe(u8, conservation) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d}", .{nets[0]}) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "books BS retained {d}", .{bs.retained}) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
     lines[7] = .{ .text = try garden.dupe(u8, "sight fold green") };
     return lines;
 }
@@ -476,15 +482,15 @@ fn run_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "conservation 1000 issued 1000 redeemed 0",
         "books cash 800",
         "books BS retained 800",
-        "books P&L net 800",
+        "journal entries 2 stipend received",
         "sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [160]u8 = undefined;
+    var out: [180]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal sight view: sig={x} lines={d} — GREEN\n",
+        "drawn terminal sight view: journal=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -503,7 +509,7 @@ fn count_corpus_kinds(text: []const u8) struct { rye: u32, rish: u32 } {
     return .{ .rye = rye, .rish = rish };
 }
 
-/// Inference assist — Anvil corpus + Scribble snippets + Lantern + books on one Skate frame.
+/// Inference assist — Anvil corpus + Scribble snippets + Lantern + journal on one Skate frame.
 fn count_scribble_fence_kinds(text: []const u8) struct { rye: u32, rish: u32 } {
     var rye: u32 = 0;
     var rish: u32 = 0;
@@ -531,6 +537,8 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const journal = try cwd.readFile(io, greencandy_journal_fixture, &journal_buf);
     var snippets_buf: [4096]u8 = undefined;
     const snippets = try cwd.readFile(io, scribble_snippets_fixture, &snippets_buf);
+    var fence_kinds_buf: [scribble.max_doc_bytes]u8 = undefined;
+    const fence_kinds = try cwd.readFile(io, scribble_fence_kinds_fixture, &fence_kinds_buf);
 
     const kinds = count_corpus_kinds(corpus);
     assert(kinds.rye == 2);
@@ -538,6 +546,10 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const fences = count_scribble_fence_kinds(snippets);
     assert(fences.rye == 2);
     assert(fences.rish == 1);
+    var fence_blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const fence_n = try scribble.parse_markdown(fence_kinds, &fence_blocks);
+    const plain_kinds = scribble.count_fence_kinds(fence_blocks[0..fence_n]);
+    assert(plain_kinds.plain == 1);
 
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
@@ -545,18 +557,19 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const suggestion = field_value(lantern, "text") orelse return error.BadLanternFixture;
     const model = field_value(lantern, "model_hash") orelse return error.BadLanternFixture;
 
-    var nets: [4]i64 = undefined;
-    try fold_greencandy_fixture(journal, &nets);
-    const pl = income_from_nets(&nets);
+    var entries: [greencandy.max_entries]greencandy.Entry = undefined;
+    var entry_count: u32 = 0;
+    try greencandy.parse_journal(journal, &entries, &entry_count);
+    if (entry_count != 2) return error.BadJournal;
 
     const lines = try garden.alloc(surface.SkateLine, assist_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "inference assist view") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d}", .{ fences.rye, fences.rish }) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d}", .{ fences.rye, fences.rish, plain_kinds.plain }) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist fold green") };
     return lines;
 }
@@ -579,19 +592,19 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const golden = [_][]const u8{
         "inference assist view",
         "corpus rye 2 rish 1",
-        "snippets rye 2 rish 1",
+        "snippets rye 2 rish 1 plain 1",
         "model sha3-256-rye-forge-lap0",
         "lantern 24/12 eos",
         "suggest use init.garden not ArgIterator",
-        "books P&L net 800",
+        "journal entries 2 stipend received",
         "assist fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [180]u8 = undefined;
+    var out: [200]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist view: snippets=3 rye=2 rish=1 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -613,6 +626,8 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     const journal = try cwd.readFile(io, greencandy_journal_fixture, &journal_buf);
     var snippets_buf: [4096]u8 = undefined;
     const snippets = try cwd.readFile(io, scribble_snippets_fixture, &snippets_buf);
+    var fence_kinds_buf: [scribble.max_doc_bytes]u8 = undefined;
+    const fence_kinds = try cwd.readFile(io, scribble_fence_kinds_fixture, &fence_kinds_buf);
 
     const amount = field_value(mint, "amount") orelse return error.BadMintFixture;
     const seq = field_value(wov, "seq") orelse return error.BadWovFixture;
@@ -622,22 +637,27 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     const fences = count_scribble_fence_kinds(snippets);
     assert(fences.rye == 2);
     assert(fences.rish == 1);
+    var fence_blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const fence_n = try scribble.parse_markdown(fence_kinds, &fence_blocks);
+    const plain_kinds = scribble.count_fence_kinds(fence_blocks[0..fence_n]);
+    assert(plain_kinds.plain == 1);
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
     const stopped = field_value(lantern, "stopped_reason") orelse return error.BadLanternFixture;
 
-    var nets: [4]i64 = undefined;
-    try fold_greencandy_fixture(journal, &nets);
-    const pl = income_from_nets(&nets);
+    var entries: [greencandy.max_entries]greencandy.Entry = undefined;
+    var entry_count: u32 = 0;
+    try greencandy.parse_journal(journal, &entries, &entry_count);
+    if (entry_count != 2) return error.BadJournal;
 
     const lines = try garden.alloc(surface.SkateLine, assist_sight_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "inference assist sight") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "carriage mala:mint amount {s}", .{amount}) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d}", .{ fences.rye, fences.rish }) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d}", .{ fences.rye, fences.rish, plain_kinds.plain }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist sight fold green") };
     return lines;
 }
@@ -662,17 +682,17 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage mala:mint amount 1000",
         "carriage wov seq 1",
         "corpus rye 2 rish 1",
-        "snippets rye 2 rish 1",
+        "snippets rye 2 rish 1 plain 1",
         "lantern 24/12 eos",
-        "books P&L net 800",
+        "journal entries 2 stipend received",
         "assist sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [180]u8 = undefined;
+    var out: [200]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist sight: snippets=3 rye=2 rish=1 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);

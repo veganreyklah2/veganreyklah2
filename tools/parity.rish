@@ -900,3 +900,18 @@ say "witness suite: Lantern lap 7 (stop_sequence request pin)…"
 let lantern_lap7 = run ["rishi/bin/rishi" "run" "tools/lantern_lap7.rish"]
 assert lantern_lap7.ok else "Lantern lap 7 witness failed"
 say "GREEN: Lantern lap 7 witness passed."
+
+say "witness suite: Inference assist view lap 5 (plain + journal)…"
+let assist_view_lap5 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap5.rish"]
+assert assist_view_lap5.ok else "Inference assist view lap 5 witness failed"
+say "GREEN: Inference assist view lap 5 witness passed."
+
+say "witness suite: Inference assist sight lap 3 (plain + journal)…"
+let assist_sight_lap3 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap3.rish"]
+assert assist_sight_lap3.ok else "Inference assist sight lap 3 witness failed"
+say "GREEN: Inference assist sight lap 3 witness passed."
+
+say "witness suite: Linengrow sight view lap 2 (journal on glass)…"
+let sight_view_lap2 = run ["rishi/bin/rishi" "run" "tools/greencandy_sight_view_lap2.rish"]
+assert sight_view_lap2.ok else "Linengrow sight view lap 2 witness failed"
+say "GREEN: Linengrow sight view lap 2 witness passed."
