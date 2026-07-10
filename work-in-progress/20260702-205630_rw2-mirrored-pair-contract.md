@@ -76,7 +76,7 @@ Exercises Brushstroke surface API directly — no full Pond app — proving the 
 
 ---
 
-## Out of scope
+## What Stays Outside This Contract
 
 - Full Wayland metalsmoke (thin edge — stays in Lap 3 witness)
 - Keyboard-from-window (SLC-2b Dexter)

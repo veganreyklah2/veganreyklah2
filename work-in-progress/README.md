@@ -1,7 +1,7 @@
 # The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-07-08 (six proposals affirmed `174500`; TASKS = workbench alias)
+**Last updated:** 2026-07-10 (Radiant Style pass round 2 · workbench alias)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Status:** Foundation
@@ -28,13 +28,13 @@ A snapshot is a faithful gathering, not a contract. An item leaves the next snap
 
 ---
 
-## What Belongs Here, and What Does Not
+## What Belongs Here, and Sister Rooms
 
 **Here:** open questions awaiting a person's call, tasks queued or offered, roadmap not yet walked, housekeeping still ajar — anything in flight that would be a quiet loss to forget.
 
-**Not here:** finished work (it lives in its own folder, committed), settled design (active-designing), or study and comparison (external-research). When a thread is truly done, it graduates out of this stack into the place its result belongs, and the next snapshot notes the graduation.
+**Sister rooms:** finished work lives in its own folder, committed; settled design lives in active-designing; study and comparison live in external-research. When a thread is truly done, it graduates out of this stack into the place its result belongs, and the next snapshot notes the graduation.
 
-The discipline is simple: if reading a line aloud would make a newcomer ask "so what happens next?", it belongs here until the answer is no longer in doubt.
+The discipline is simple: if reading a line aloud would make a newcomer ask "so what happens next?", it belongs here until the answer rests in clear sight.
 
 ---
 

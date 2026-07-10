@@ -2,8 +2,8 @@
 //!
 //! recall_by_mark requires peer, bolt, and revision and refuses ambiguous marks.
 //! This file loosens those fields to optional and returns every matching leaf in
-//! catalog order — a filter walked once over the bounded array, not an index.
-//! Composing rather than extending: recall_lap1.rye is imported and not edited.
+//! catalog order — a filter walked once over the bounded array, rather than an index.
+//! Composing rather than extending: recall_lap1.rye is imported and left standing.
 //!
 //!   rye build mantra/recall_tablecloth_query.rye -femit-bin=mantra/bin/recall-tablecloth-query
 //!   mantra/bin/recall-tablecloth-query selftest

@@ -86,7 +86,7 @@ Live mode (`SLCL3_LIVE=1`) exits **2** on this bench — pinned selftest is the 
 - ~~`tools/slcl3_settlement_witness.rish`~~ — **removed** from parity (**197**)
 - Settlement receipt goldens — **removed**; counsel/hammock kept as record
 
-### Out of scope (later seasons)
+### Horizon for later seasons
 
 - Mainnet treasury or real funds
 - MALA mint

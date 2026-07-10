@@ -89,7 +89,7 @@ Port **38473** — distinct from hosted wire demo (**38472**).
 - Reuse `tools/fixtures/slcl1_fact.bron`
 - Witness green on metal
 
-### Out of scope (later laps)
+### Horizon for later laps
 
 - Device wire variant of SLC-L2 (civic proof path — carriage already green)
 - Caravan-supervised peers

@@ -83,7 +83,7 @@ The **signed envelope** wraps the canonical `.bron` bytes (UTF-8, LF line ending
 - [x] Witness `tools/slcl1_receipt.rish` runs green: welcome path (sign → append → fold → verify match); unwelcome path (tampered log byte → verify fails)
 - [x] Scope note and witness registered; parity **152** (`20260704.021800`)
 
-### Out of scope (SLC-L2 and later)
+### Horizon (SLC-L2 and later)
 
 - **Settlement**, **currency**, **multi-party** consensus, **MALA** mint/send/market — M0–M4 ladder in [`20260702-031312_modules-aspects-and-mailable-money.md`](20260702-031312_modules-aspects-and-mailable-money.md)
 - **Comlink** delivery (SLC-L2)

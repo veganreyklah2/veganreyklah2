@@ -2,7 +2,7 @@
 
 **Language:** EN
 **Version:** `20260620.033912` (Rye chronological stamp)
-**Last updated:** 2026-06-20
+**Last updated:** 2026-07-10 (Radiant Style pass round 2)
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Guidance (`../external-research/TAME_GUIDANCE.md`)
 **Status:** Living
 
@@ -76,7 +76,7 @@ Because the `rye` command is itself a Rye program (`src/main.rye`), Rye builds i
 ./bootstrap.sh
 ```
 
-From then on, Rye rebuilds itself with its own `build` verb, self-hosting the build and dogfooding the `std` it ships. We write the new binary beside the old one and move it into place, because a program's file cannot be overwritten while it runs — the move swaps the directory entry instead, and the running process keeps the old copy until it exits:
+From then on, Rye rebuilds itself with its own `build` verb, self-hosting the build and dogfooding the `std` it ships. We write the new binary beside the old one and move it into place — a running program keeps its open file, so the move swaps the directory entry while the process finishes on the prior copy:
 
 ```sh
 export RYE_ZIG="$PWD/../vendor/zig-toolchain/zig"

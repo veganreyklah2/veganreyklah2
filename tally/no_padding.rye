@@ -12,15 +12,15 @@
 //! This is where it matters most in this tree: `comlink/virtio_net.rye`'s five
 //! hand-designed structures — `VirtioNetHdr`, `VqDesc`, `VqAvail`, `VqUsedElem`,
 //! `VqUsed` — describe a wire format the virtio device itself expects to read
-//! byte for byte. A silent padding byte there is not a style question; it is a
-//! guest that cannot talk to its host.
+//! byte for byte. A silent padding byte there leaves a guest mute to its host
+//! rather than a style question.
 //!
 //! Ported from TigerBeetle's `stdx.no_padding`, simplified honestly: the
 //! upstream form carries a u128-alignment check this tree has no field wide
 //! enough to need yet, so that branch is left for the day a real one appears,
 //! rather than carried here unused. The enum branch's `maybe(info.is_exhaustive)`
 //! is kept exactly as TigerBeetle wrote it — a real, borrowed use of the mark
-//! the moment it enters this tree, not a demonstration built to justify one.
+//! the moment it enters this tree, rather than a demonstration built to justify one.
 //!
 //! Gratitude: TigerBeetle's `stdx.no_padding`, ported at the letter where the
 //! letter still fits, simplified where it does not yet.
