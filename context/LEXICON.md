@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary Exchange listing `165348`; resin wire `164944`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
+**Last updated:** 2026-07-10 (Granary settle view `173353`; Granary Exchange listing `165348`; resin wire `164944`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -63,7 +63,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Lotus** | Our digital audio workstation — hot-loop studio above Maitreya; horizon after SLC-2 |
 | **Uddhava** | Spatial driver — real-time 3D, CAD, and scene graph (horizon; Unity-shaped role in our vocabulary) |
 | **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy; **customs** first policy lap landed `161125` (place / hold / refuse per Tilak) |
-| **Granary** | **Sharing surface** — Mantra global namespace where signed weaves are named, shared, mirrored, and optionally sold (four doors: Identity · Namespace · Sharing · Exchange); name seated `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Sharing device wire `20260710.170132` (parity **239**); Exchange view `20260710.170838` (parity **241**); weave settle `20260710.172625` (parity **243**) — [`specs/20260710-163043_granary-name-seated.md`](specs/20260710-163043_granary-name-seated.md) · settle [`specs/20260710-172625_granary-weave-settle-seated.md`](specs/20260710-172625_granary-weave-settle-seated.md) · [`../granary/README.md`](../granary/README.md) · study [`../external-research/20260703-182612_the-granary-question.md`](../external-research/20260703-182612_the-granary-question.md) |
+| **Granary** | **Sharing surface** — Mantra global namespace where signed weaves are named, shared, mirrored, and optionally sold (four doors: Identity · Namespace · Sharing · Exchange); name seated `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Sharing device wire `20260710.170132` (parity **239**); Exchange view `20260710.170838` (parity **241**); weave settle `20260710.172625` (parity **243**); settle view `20260710.173353` (parity **245**) — [`specs/20260710-163043_granary-name-seated.md`](specs/20260710-163043_granary-name-seated.md) · settle [`specs/20260710-172625_granary-weave-settle-seated.md`](specs/20260710-172625_granary-weave-settle-seated.md) · [`../granary/README.md`](../granary/README.md) · study [`../external-research/20260703-182612_the-granary-question.md`](../external-research/20260703-182612_the-granary-question.md) |
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition; **bond overrides** carry the infuse pattern (Silo module name retired `174500`) |

@@ -112,7 +112,7 @@ assert inf.ok else "inference stack lap 0 packet missing"
 assert inf.out contains "INFERENCE_OK" else "inference packet check failed"
 
 say "compass rose: Granary and Mandi commerce packet…"
-let cm = run ["sh" "-c" "test -d granary && test -d mandi && test -f context/specs/20260710-163043_granary-name-seated.md && test -f context/specs/20260710-165634_mandi-name-seated.md && test -f context/specs/20260710-171202_mandi-listing-settle-seated.md && test -f context/specs/20260710-172625_granary-weave-settle-seated.md && test -f external-research/20260710-171707_granary-mandi-commerce-plainly.md && test -f tools/granary_exchange_view.rish && test -f tools/mandi_listing_settle.rish && test -f tools/granary_weave_settle.rish && test -f mandi/listing_settle_core.rye && test -f granary/exchange_listing.rye && test -f granary/weave_settle_core.rye && echo COMMERCE_OK"]
+let cm = run ["sh" "-c" "test -d granary && test -d mandi && test -f context/specs/20260710-163043_granary-name-seated.md && test -f context/specs/20260710-165634_mandi-name-seated.md && test -f context/specs/20260710-171202_mandi-listing-settle-seated.md && test -f context/specs/20260710-172625_granary-weave-settle-seated.md && test -f external-research/20260710-171707_granary-mandi-commerce-plainly.md && test -f tools/granary_exchange_view.rish && test -f tools/granary_settle_view.rish && test -f tools/mandi_listing_settle.rish && test -f tools/mandi_settle_view.rish && test -f tools/granary_weave_settle.rish && test -f mandi/listing_settle_core.rye && test -f granary/exchange_listing.rye && test -f granary/weave_settle_core.rye && echo COMMERCE_OK"]
 assert cm.ok else "Granary/Mandi commerce packet missing"
 assert cm.out contains "COMMERCE_OK" else "commerce packet check failed"
 
