@@ -1,4 +1,4 @@
-//! scribble/scribble.rye — Scribble lap 4 selftest (parse · rye/rish · headings · paragraphs).
+//! scribble/scribble.rye — Scribble lap 5 selftest (parse · rye/rish · headings · paragraphs · fence kinds).
 //!
 //!   rye build scribble/scribble.rye -femit-bin=scribble/bin/scribble
 //!   scribble/bin/scribble selftest
@@ -9,11 +9,12 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const sc = @import("scribble_core.rye");
 
-const scribble_version = "20260710.185542";
+const scribble_version = "20260710.190319";
 pub const fixture_path = "scribble/fixtures/sample.md";
 pub const session_fixture_path = "scribble/fixtures/session_snippets.md";
 pub const session_rish_fixture_path = "scribble/fixtures/session_rish_snippets.md";
 pub const outline_fixture_path = "scribble/fixtures/outline.md";
+pub const fence_kinds_fixture_path = "scribble/fixtures/fence_kinds.md";
 
 fn welcome_parse() !void {
     const sample =
@@ -174,6 +175,19 @@ fn unwelcome_paragraph_overflow(io: std.Io) !void {
     print("scribble: paragraph overflow refused\n", .{});
 }
 
+fn welcome_fence_kinds(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, fence_kinds_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    const kinds = sc.count_fence_kinds(blocks[0..n]);
+    assert(kinds.rye == 1);
+    assert(kinds.rish == 1);
+    assert(kinds.plain == 1);
+    print("scribble: fence kinds — rye={d} rish={d} plain={d}\n", .{ kinds.rye, kinds.rish, kinds.plain });
+}
+
 fn unwelcome_unclosed_fence() !void {
     const bad =
         \\```rye
@@ -204,8 +218,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_rish_snippet_overflow(io);
         try unwelcome_heading_overflow(io);
         try unwelcome_paragraph_overflow(io);
+        try welcome_fence_kinds(io);
         try unwelcome_unclosed_fence();
-        print("scribble lap5: version {s} — GREEN\n", .{scribble_version});
+        print("scribble lap6: version {s} — GREEN\n", .{scribble_version});
         return 0;
     }
     print("usage: scribble selftest\n", .{});

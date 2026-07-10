@@ -840,3 +840,23 @@ say "witness suite: Lantern lap 4 (top_p)…"
 let lantern_lap4 = run ["rishi/bin/rishi" "run" "tools/lantern_lap4.rish"]
 assert lantern_lap4.ok else "Lantern lap 4 witness failed"
 say "GREEN: Lantern lap 4 witness passed."
+
+say "witness suite: Lattice lap 7 (fill)…"
+let lattice_lap8 = run ["rishi/bin/rishi" "run" "tools/lattice_lap8.rish"]
+assert lattice_lap8.ok else "Lattice lap 7 witness failed"
+say "GREEN: Lattice lap 7 witness passed."
+
+say "witness suite: Greencandy TB view (trial balance → Skate)…"
+let tb_view = run ["rishi/bin/rishi" "run" "tools/greencandy_tb_view.rish"]
+assert tb_view.ok else "Greencandy TB view witness failed"
+say "GREEN: Greencandy TB view witness passed."
+
+say "witness suite: Scribble fence kinds view (rye/rish/plain → Skate)…"
+let scribble_fence_view = run ["rishi/bin/rishi" "run" "tools/inference_scribble_fence_view.rish"]
+assert scribble_fence_view.ok else "Scribble fence kinds view witness failed"
+say "GREEN: Scribble fence kinds view witness passed."
+
+say "witness suite: Lantern lap 5 (err_stop)…"
+let lantern_lap5 = run ["rishi/bin/rishi" "run" "tools/lantern_lap5.rish"]
+assert lantern_lap5.ok else "Lantern lap 5 witness failed"
+say "GREEN: Lantern lap 5 witness passed."
