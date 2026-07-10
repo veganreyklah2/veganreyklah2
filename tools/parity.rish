@@ -800,3 +800,23 @@ say "witness suite: Greencandy exception view (refused drafts → Skate)…"
 let exception_view = run ["rishi/bin/rishi" "run" "tools/greencandy_exception_view.rish"]
 assert exception_view.ok else "Greencandy exception view witness failed"
 say "GREEN: Greencandy exception view witness passed."
+
+say "witness suite: Lattice lap 5 (transpose)…"
+let lattice_lap6 = run ["rishi/bin/rishi" "run" "tools/lattice_lap6.rish"]
+assert lattice_lap6.ok else "Lattice lap 5 witness failed"
+say "GREEN: Lattice lap 5 witness passed."
+
+say "witness suite: Anvil corpus rish view (kind rish → Skate)…"
+let anvil_rish_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_rish_view.rish"]
+assert anvil_rish_view.ok else "Anvil corpus rish view witness failed"
+say "GREEN: Anvil corpus rish view witness passed."
+
+say "witness suite: Scribble lap 4 (paragraph extract)…"
+let scribble_lap5 = run ["rishi/bin/rishi" "run" "tools/scribble_lap5.rish"]
+assert scribble_lap5.ok else "Scribble lap 4 witness failed"
+say "GREEN: Scribble lap 4 witness passed."
+
+say "witness suite: Greencandy P&L view (income statement → Skate)…"
+let pnl_view = run ["rishi/bin/rishi" "run" "tools/greencandy_pnl_view.rish"]
+assert pnl_view.ok else "Greencandy P&L view witness failed"
+say "GREEN: Greencandy P&L view witness passed."

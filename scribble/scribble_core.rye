@@ -1,6 +1,6 @@
-//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 3).
+//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 4).
 //!
-//! Headings, paragraphs, fenced code (rye / rish / plain). Heading extract for outline view.
+//! Headings, paragraphs, fenced code (rye / rish / plain). Heading and paragraph extract for views.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -213,6 +213,35 @@ pub fn extract_headings(blocks: []const Block, out: []Heading) ParseError!u32 {
         @memcpy(heading.text[0..body.len], body);
         heading.text_len = @intCast(body.len);
         out[count] = heading;
+        count += 1;
+    }
+    return count;
+}
+
+pub const Paragraph = struct {
+    text: [max_block_text]u8 = .{0} ** max_block_text,
+    text_len: u32 = 0,
+
+    pub fn text_slice(self: *const Paragraph) []const u8 {
+        return self.text[0..self.text_len];
+    }
+};
+
+pub const max_paragraphs: u32 = 16;
+
+/// Collect every paragraph body in source order — prose fold for Scribble view.
+pub fn extract_paragraphs(blocks: []const Block, out: []Paragraph) ParseError!u32 {
+    var count: u32 = 0;
+    var i: u32 = 0;
+    while (i < blocks.len) : (i += 1) {
+        if (blocks[i].kind != .paragraph) continue;
+        if (count >= out.len) return error.SnippetOverflow;
+        const body = blocks[i].text_slice();
+        if (body.len > max_block_text) return error.BlockTooLarge;
+        var paragraph: Paragraph = .{};
+        @memcpy(paragraph.text[0..body.len], body);
+        paragraph.text_len = @intCast(body.len);
+        out[count] = paragraph;
         count += 1;
     }
     return count;
