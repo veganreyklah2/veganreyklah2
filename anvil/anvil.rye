@@ -1,4 +1,4 @@
-//! anvil/anvil.rye — Anvil corpus lap 0 selftest.
+//! anvil/anvil.rye — Anvil corpus selftest (catalog · query · overflow).
 //!
 //!   rye build anvil/anvil.rye -femit-bin=anvil/bin/anvil
 //!   anvil/bin/anvil selftest

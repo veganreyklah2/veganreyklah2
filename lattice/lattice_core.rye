@@ -1,6 +1,6 @@
 //! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 4).
 //!
-//! Parity-gated matmul before Lantern. Laps: matmul · add · reshape · reduce_sum · scale.
+//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale.
 
 const std = @import("std");
 const assert = std.debug.assert;

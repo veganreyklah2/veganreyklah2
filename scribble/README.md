@@ -1,13 +1,13 @@
 # Scribble — Markdown as Values
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 3 headings + outline view `182118`; parity **261**/**262**)
+**Last updated:** 2026-07-10 (Radiant pass `182821`; lap 3 headings + outline view `182118`; parity **261**/**262**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–3 green (parse · rye/rish snippets · headings)
 
 ---
 
-Scribble turns human prose into block values — headings, paragraphs, and fenced code with `rye_fence` / `rish_fence` kinds for corpus work. Heading extract feeds the outline Skate view.
+Scribble turns human prose into block values — headings, paragraphs, and fenced code with `rye_fence` / `rish_fence` kinds for corpus work. Heading extract feeds the outline Skate view, so what we write can be seen as a fold.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|

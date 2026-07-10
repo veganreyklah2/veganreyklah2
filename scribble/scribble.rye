@@ -1,4 +1,4 @@
-//! scribble/scribble.rye — Scribble lap 0 selftest.
+//! scribble/scribble.rye — Scribble lap 3 selftest (parse · rye/rish snippets · headings).
 //!
 //!   rye build scribble/scribble.rye -femit-bin=scribble/bin/scribble
 //!   scribble/bin/scribble selftest

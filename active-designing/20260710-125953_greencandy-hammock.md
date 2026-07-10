@@ -1,11 +1,11 @@
 # Greencandy — Hammock Scope (Lap 1)
 
-*Centralized books of record for Linengrow: chart, journal, fold, Skate view. Complements MALA (mailable) rather than replacing it. Visual Track: books seen through Brushstroke/Skate on the drawn terminal — Realidream thin-view pattern, not full Realidream module.*
+*Centralized books of record for Linengrow: chart, journal, fold, Skate view. Complements MALA (mailable) and keeps each role clear. Visual Track: books seen through Brushstroke/Skate on the drawn terminal — Realidream thin-view pattern.*
 
 **Stamp:** `20260710.125953`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 1 green (chart · journal · fold · books view); parity **207**/**208**
+**Status:** Checkable-room hammock — lap 1 green (chart · journal · fold · books view); parity **207**/**208**; exception view later at **267**
 **Ground:** clean-room study [`../external-research/20260710-125953_greencandy-kick-digits-clean-room.md`](../external-research/20260710-125953_greencandy-kick-digits-clean-room.md) · Visual Track · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md) · resins/Amber seasons plainly
 
 *Written by Kaeden and Rio 3 (Grok).*
@@ -14,7 +14,7 @@
 
 ## Mission
 
-Ship the **first honest room** of Greencandy: a steward can post balanced journal entries into an append-only log, fold a trial balance that conserves to zero, refuse unwelcome posts, and see the books as a Skate frame — without bank sync, AI categorization, tax package, or multi-entity.
+Ship the **first honest room** of Greencandy: a steward can post balanced journal entries into an append-only log, fold a trial balance that conserves to zero, refuse unwelcome posts, and see the books as a Skate frame. Bank sync, AI categorization, tax package, and multi-entity wait later rooms.
 
 ## In Scope (Lap 1)
 

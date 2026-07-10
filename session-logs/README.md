@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.182821 | [Radiant Style pass — living module docs and comments](20260710-182821_radiant-style-pass-living-docs.md) | Affirmative READMEs, hammocks, `//!` headers |
 | 20260710.182502 | [Compass climb — Lattice scale, corpus prefix, assist sight kinds, exception view](20260710-182502_compass-climb-scale-prefix-sight-exception.md) | Parity **264**–**267**; soak closed |
 | 20260710.182118 | [Compass climb — Lattice reduce, Scribble headings, outline view, assist kinds](20260710-182118_compass-climb-reduce-headings-scribble-assist.md) | Parity **260**–**263**; soak closed |
 | 20260710.181653 | [Compass climb — forge query device, Lattice reshape, Lantern seed, corpus view](20260710-181653_compass-climb-device-reshape-seed-corpus.md) | Parity **256**–**259**; soak closed |

@@ -1,13 +1,13 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 3 temperature+seed `181653`; lap 2 `180747`; lap 1 `180111`)
+**Last updated:** 2026-07-10 (Radiant pass `182821`; lap 3 temperature+seed `181653`; parity **258**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–3 green (fixture · max_tokens · allow-list · temperature/seed)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Lap 0 pins a fixture completion; lap 1 enforces `max_tokens`; lap 2 allow-lists model hashes; lap 3 carries `temperature` and `seed` on the request (fixture-pinned for determinism). Weights-by-hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, then `temperature` and `seed` on the request with fixture pins for a deterministic path. Weights named by hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|

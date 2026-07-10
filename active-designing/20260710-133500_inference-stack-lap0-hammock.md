@@ -14,7 +14,7 @@
 
 ## Mission
 
-Open the **Inference Track** on proven ground — not wafer pretrain, not PyTorch-in-Rye:
+Open the **Inference Track** on proven ground — Rye-literate modules, fixture-served Lantern, and Skate folds that stay thin:
 
 | Module | Lap 0 claim |
 |--------|-------------|
@@ -28,15 +28,15 @@ Open the **Inference Track** on proven ground — not wafer pretrain, not PyTorc
 
 Lattice → Lantern → Anvil training. Scribble feeds corpus and eval alongside.
 
-## Out of scope (lap 0)
+## Horizon for later laps
 
-- ROCm host seam · live model weights · Pond policy · LoRA overnight runs  
-- Embedding index in Tablecloth · editor inline assist on Wayland metal  
+- ROCm host seam · live model weights · Pond policy · LoRA overnight runs
+- Embedding index in Tablecloth · editor inline assist on Wayland metal
 
 ## Success
 
-- Witnesses **211**–**215** green  
-- `drawn-terminal assistviewtest` → `lines=8` GREEN  
+- Witnesses **211**–**215** green
+- `drawn-terminal assistviewtest` → `lines=8` GREEN
 
 ---
 

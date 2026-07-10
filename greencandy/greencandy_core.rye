@@ -1,6 +1,6 @@
 //! greencandy/greencandy_core.rye — Greencandy: chart, journal, trial-balance fold, reports.
 //!
-//! Centralized books of record. Debit-positive nets; conservation = sum of nets == 0.
+//! Centralized books of record. Debit-positive nets; conservation holds when the sum of nets is zero.
 //! Lap 2 adds income-statement and balance-sheet projections from the same fold.
 
 const std = @import("std");

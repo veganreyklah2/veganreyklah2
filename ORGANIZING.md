@@ -92,7 +92,7 @@ Every dated artifact names itself `YYYYMMDD-HHMMSS_short-slug.md`. Later is alwa
 
 ## Sort as Priority: the `yonder/` Horizon
 
-A folder's own alphabetical order carries its priority, so the listing itself shows what matters now. Presently active implementation — the specs, prompts, and strategies driving an SLC or a working product in progress — rests one level deep, where date-stamped names surface the recent first. Deferred-but-alive work rests one level deeper, in a **`yonder/`** whose name sorts toward the bottom and points ahead: dormant strategies, horizon ideas, research whose module has since been built, prompts already consumed whose ideas still beckon.
+A folder's own alphabetical order carries its priority, so the listing itself shows what matters now. Presently active implementation — the specs, prompts, and strategies driving an SLC or a working product in progress — rests one level deep, where date-stamped names surface the recent first. Deferred yet alive work rests one level deeper, in a **`yonder/`** whose name sorts toward the bottom and points ahead: dormant strategies, horizon ideas, research whose module has since been built, prompts already consumed whose ideas still beckon.
 
 Three tiers, each with a clear purpose:
 

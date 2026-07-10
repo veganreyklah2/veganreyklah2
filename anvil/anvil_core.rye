@@ -1,6 +1,6 @@
-//! anvil/anvil_core.rye — Rye corpus catalog for local forge (lap 0).
+//! anvil/anvil_core.rye — Rye corpus catalog for local forge (query + views).
 //!
-//! Chunks name paths in our tree only — no gratitude/vendor bytes.
+//! Chunks name paths in our tree — gratitude and vendor stay in their reading rooms.
 
 const std = @import("std");
 const assert = std.debug.assert;
