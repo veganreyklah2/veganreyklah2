@@ -1,7 +1,8 @@
-//! granary/granary.rye — Granary lap 1 selftest.
+//! granary/granary.rye — Granary lap 1 + lap 2 (write gate) selftest.
 //!
 //!   rye build granary/granary.rye -femit-bin=granary/bin/granary
 //!   granary/bin/granary selftest
+//!   granary/bin/granary selftest-lap2
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -9,6 +10,8 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const gc = @import("granary_core.rye");
 const tally_copy = @import("tally_copy.rye");
+
+const write_gate_log_path = "granary/bin/write_gate_witness.bron";
 
 fn welcome_registry_resolve_clone_frame(io: std.Io) !void {
     const cwd = Dir.cwd();
@@ -146,6 +149,96 @@ fn unwelcome_bad_path() !void {
     print("granary: bad resolve path refused\n", .{});
 }
 
+fn welcome_write_gate(io: std.Io) !void {
+    var store = gc.ResinStore.empty();
+    const d1 = try gc.put_resin(&store, "# greeting v1\n");
+    const d2 = try gc.put_resin(&store, "# sketch v1\n");
+    const d3 = try gc.put_resin(&store, "# sketch v2\n");
+
+    var f1: [gc.max_fact_len]u8 = undefined;
+    var f2: [gc.max_fact_len]u8 = undefined;
+    var f3: [gc.max_fact_len]u8 = undefined;
+    const n1 = try gc.sign_name_fact(gc.granary_version, "rio", "greeting", &d1, &f1);
+    const n2 = try gc.sign_name_fact(gc.granary_version, "rio", "sketch", &d2, &f2);
+    const n3 = try gc.sign_name_fact(gc.granary_version, "rio", "sketch", &d3, &f3);
+
+    var reg = gc.Registry.empty();
+    var log: [gc.max_log_bytes]u8 = undefined;
+    var log_len: u32 = 0;
+
+    try gc.publish(&reg, &log, &log_len, f1[0..n1]);
+    const greeting_before = try gc.resolve(&reg, "rio/greeting");
+    assert(std.mem.eql(u8, greeting_before.resin_digest, &d1));
+
+    try gc.publish(&reg, &log, &log_len, f2[0..n2]);
+    // Prior weave unchanged after a second publish.
+    const greeting_after = try gc.resolve(&reg, "rio/greeting");
+    assert(std.mem.eql(u8, greeting_after.resin_digest, &d1));
+    assert(std.mem.eql(u8, greeting_after.stamp_sig, greeting_before.stamp_sig));
+
+    try gc.publish(&reg, &log, &log_len, f3[0..n3]);
+    const sketch = try gc.resolve(&reg, "rio/sketch");
+    assert(std.mem.eql(u8, sketch.resin_digest, &d3));
+    assert(reg.fact_count == 3);
+    print("granary lap2: publish accrete — prior greeting unchanged\n", .{});
+
+    const cwd = Dir.cwd();
+    try cwd.writeFile(io, .{ .sub_path = write_gate_log_path, .data = log[0..log_len] });
+
+    var reloaded = gc.Registry.empty();
+    var file_buf: [gc.max_log_bytes]u8 = undefined;
+    const disk = try cwd.readFile(io, write_gate_log_path, &file_buf);
+    try gc.load_log(&reloaded, disk);
+    assert(reloaded.fact_count == 3);
+    const g2 = try gc.resolve(&reloaded, "rio/greeting");
+    const s2 = try gc.resolve(&reloaded, "rio/sketch");
+    assert(std.mem.eql(u8, g2.resin_digest, &d1));
+    assert(std.mem.eql(u8, s2.resin_digest, &d3));
+    print("granary lap2: durable log reload — three facts restored\n", .{});
+}
+
+fn unwelcome_duplicate_publish() !void {
+    var store = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&store, "once\n");
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const n = try gc.sign_name_fact(gc.granary_version, "rio", "once", &digest, &fact);
+    var reg = gc.Registry.empty();
+    var log: [gc.max_log_bytes]u8 = undefined;
+    var log_len: u32 = 0;
+    try gc.publish(&reg, &log, &log_len, fact[0..n]);
+    if (gc.publish(&reg, &log, &log_len, fact[0..n])) |_| {
+        return error.DuplicateAccepted;
+    } else |err| {
+        assert(err == error.DuplicateFact);
+    }
+    assert(reg.fact_count == 1);
+    print("granary lap2: exact replay refused\n", .{});
+}
+
+fn unwelcome_lying_publish() !void {
+    var store = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&store, "gate\n");
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const n = try gc.sign_name_fact(gc.granary_version, "rio", "gate", &digest, &fact);
+    var lying: [gc.max_fact_len]u8 = undefined;
+    tally_copy.copy_disjoint(u8, lying[0..n], fact[0..n]);
+    const sig_key = "stamp_sig ";
+    const sig_at = std.mem.indexOf(u8, lying[0..n], sig_key) orelse return error.MissingSig;
+    lying[sig_at + sig_key.len] = if (lying[sig_at + sig_key.len] == '0') '1' else '0';
+
+    var reg = gc.Registry.empty();
+    var log: [gc.max_log_bytes]u8 = undefined;
+    var log_len: u32 = 0;
+    if (gc.publish(&reg, &log, &log_len, lying[0..n])) |_| {
+        return error.LyingPublished;
+    } else |err| {
+        assert(err == error.VerifyFailed);
+    }
+    assert(reg.fact_count == 0);
+    assert(log_len == 0);
+    print("granary lap2: lying publish refused — log untouched\n", .{});
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
@@ -159,6 +252,13 @@ pub fn main(init: std.process.Init) !u8 {
         print("granary lap1: version {s} — GREEN\n", .{gc.granary_version});
         return 0;
     }
-    print("usage: granary selftest\n", .{});
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest-lap2")) {
+        try welcome_write_gate(io);
+        try unwelcome_duplicate_publish();
+        try unwelcome_lying_publish();
+        print("granary lap2: version {s} — GREEN\n", .{gc.granary_version});
+        return 0;
+    }
+    print("usage: granary selftest | selftest-lap2\n", .{});
     return 1;
 }

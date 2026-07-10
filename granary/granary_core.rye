@@ -11,13 +11,14 @@ const tally_copy = @import("tally_copy.rye");
 const scribble = @import("scribble_core.rye");
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
-pub const granary_version = "20260710.163304";
+pub const granary_version = "20260710.164237";
 
 pub const max_facts: u32 = 16;
 pub const max_person: u32 = 32;
 pub const max_weave: u32 = 32;
 pub const max_stamp: u32 = 32;
 pub const max_fact_len: u32 = 2048;
+pub const max_log_bytes: u32 = 8192;
 pub const max_resin_bytes: u32 = 4096;
 pub const max_resins: u32 = 8;
 pub const max_frame_lines: u32 = 32;
@@ -41,6 +42,8 @@ pub const NameFactError = error{
     StoreFull,
     FrameOverflow,
     PathBad,
+    DuplicateFact,
+    LogOverflow,
 };
 
 pub const NameFact = struct {
@@ -283,6 +286,7 @@ pub fn append_fact(reg: *Registry, text: []const u8) NameFactError!void {
     if (reg.fact_count >= max_facts) return error.Overflow;
     var fields: NameFact = undefined;
     try parse_name_fact(text, &fields);
+    if (find_by_sig(reg, fields.stamp_sig) != null) return error.DuplicateFact;
     var stored: StoredFact = .{};
     try copy_field(&stored.stamp, &stored.stamp_len, fields.stamp);
     try copy_field(&stored.person, &stored.person_len, fields.person);
@@ -291,6 +295,14 @@ pub fn append_fact(reg: *Registry, text: []const u8) NameFactError!void {
     tally_copy.copy_disjoint(u8, &stored.stamp_sig, fields.stamp_sig);
     reg.facts[reg.fact_count] = stored;
     reg.fact_count += 1;
+}
+
+fn find_by_sig(reg: *const Registry, stamp_sig: []const u8) ?*const StoredFact {
+    var i: u32 = 0;
+    while (i < reg.fact_count) : (i += 1) {
+        if (std.mem.eql(u8, &reg.facts[i].stamp_sig, stamp_sig)) return &reg.facts[i];
+    }
+    return null;
 }
 
 /// Resolve `person/weave` — latest matching name-fact wins (accrete-never-break).
@@ -310,6 +322,47 @@ pub fn resolve(reg: *const Registry, path: []const u8) NameFactError!NameFact {
     }
     if (found) |idx| return reg.facts[idx].as_view();
     return error.UnknownName;
+}
+
+/// Append a verified name-fact to the durable log buffer, then to the registry.
+/// Write gate: verify signature before any mutation; refuse exact replay.
+pub fn publish(reg: *Registry, log: []u8, log_len: *u32, fact_text: []const u8) NameFactError!void {
+    try verify_name_fact(fact_text);
+    var fields: NameFact = undefined;
+    try parse_name_fact(fact_text, &fields);
+    if (find_by_sig(reg, fields.stamp_sig) != null) return error.DuplicateFact;
+    if (reg.fact_count >= max_facts) return error.Overflow;
+
+    const sep: []const u8 = if (log_len.* == 0) "" else "---\n";
+    const need_nl: u32 = if (fact_text.len == 0 or fact_text[fact_text.len - 1] != '\n') 1 else 0;
+    const need = sep.len + fact_text.len + need_nl;
+    if (log_len.* + need > log.len) return error.LogOverflow;
+    if (sep.len > 0) {
+        tally_copy.copy_disjoint(u8, log[log_len.*..][0..sep.len], sep);
+        log_len.* += @intCast(sep.len);
+    }
+    tally_copy.copy_disjoint(u8, log[log_len.*..][0..fact_text.len], fact_text);
+    log_len.* += @intCast(fact_text.len);
+    if (need_nl == 1) {
+        log[log_len.*] = '\n';
+        log_len.* += 1;
+    }
+
+    try append_fact(reg, fact_text);
+}
+
+/// Load an append-only registry log (`---` separated name-facts). Each fact verified.
+pub fn load_log(reg: *Registry, text: []const u8) NameFactError!void {
+    var blocks = std.mem.splitSequence(u8, text, "---\n");
+    while (blocks.next()) |raw| {
+        const block = std.mem.trim(u8, raw, " \t\r\n");
+        if (block.len == 0) continue;
+        var with_nl: [max_fact_len]u8 = undefined;
+        if (block.len + 1 > with_nl.len) return error.Overflow;
+        tally_copy.copy_disjoint(u8, with_nl[0..block.len], block);
+        with_nl[block.len] = '\n';
+        try append_fact(reg, with_nl[0 .. block.len + 1]);
+    }
 }
 
 pub fn put_resin(store: *ResinStore, content: []const u8) NameFactError![digest_hex_len]u8 {
