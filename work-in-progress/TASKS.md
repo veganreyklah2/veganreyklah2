@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Anvil corpus lap 2 `225320`; parity **386**)
+**Last updated:** 2026-07-10 (Greencandy lap 4 `230433`; parity **394**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -268,6 +268,14 @@
 | **199** | **Anvil max_lines view** | **Landed** | max_lines → Skate; parity **384**; stamp `225320` |
 | **200** | **Anvil path_suffix view** | **Landed** | path_suffix → Skate; parity **385**; stamp `225320` |
 | **201** | **Anvil sum_lines view — lap 2 close** | **Landed** | sum_lines → Skate; tip **386**; Anvil corpus lap 2 closed; stamp `225320` |
+| **202** | **Greencandy lap 4 account filter** | **Landed** | filter_by_account; parity **387**; stamp `230433` |
+| **203** | **Greencandy lap 4 memo prefix** | **Landed** | filter_by_memo_prefix; parity **388**; stamp `230433` |
+| **204** | **Greencandy lap 4 cash flow** | **Landed** | fold_cash_flow; parity **389**; stamp `230433` |
+| **205** | **Greencandy lap 4 sum amounts** | **Landed** | sum_amounts; parity **390**; stamp `230433` |
+| **206** | **Greencandy cash account view** | **Landed** | cash filter → Skate; parity **391**; stamp `230433` |
+| **207** | **Greencandy memo prefix view** | **Landed** | memo prefix → Skate; parity **392**; stamp `230433` |
+| **208** | **Greencandy cash flow view** | **Landed** | cash flow → Skate; parity **393**; stamp `230433` |
+| **209** | **Greencandy sum amounts view — lap 4 close** | **Landed** | sum amounts → Skate; tip **394**; Greencandy lap 4 closed; stamp `230433` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

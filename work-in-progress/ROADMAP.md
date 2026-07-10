@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (Anvil corpus lap 2 closed `225320`; parity **386**)
+**Last updated:** 2026-07-10 (Greencandy lap 4 closed `230433`; parity **394**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -87,7 +87,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **SLC-L4** | Fixed-tier Sigma (donor-amount privacy) — Zig-native Pedersen + proof of opening; **landed** `20260709.194437` — [`disclosure_core.rye`](../linengrow/disclosure_core.rye) + [`pedersen.rye`](../tally/pedersen.rye) at parity **200** | prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) · hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md) |
 | **MALA M1** | One issuer, one holder — mint, send, receipt, balance-as-fold on one node; **landed** `20260709.184051` — [`linengrow/mala.rye`](../linengrow/mala.rye) + witness at parity **198** | design [`031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) · prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md) |
 | **MALA M2** | Mailable — mint crosses Comlink hosted UDP; receipt crosses back; **landed** `20260709.191634` — [`mala_delivery.rye`](../linengrow/mala_delivery.rye) + witness at parity **199** (device wire = M2b) | prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md) |
-| **Greencandy** | Centralized books — chart, journal, fold, P&L/BS, exception queue, sight view; **own root** `greencandy/`; **landed** laps 1–3 `20260710.132548` — parity **207**–**210** | hammock [`125953`](../active-designing/20260710-125953_greencandy-hammock.md) · sight [`132548`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`131956`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md) |
+| **Greencandy** | Centralized books — chart, journal, fold, P&L/BS, exception queue, sight view, lap-4 filters; **own root** `greencandy/`; **landed** laps 1–4 `20260710.230433` — parity **207**–**210** · **387**–**394** | hammock [`125953`](../active-designing/20260710-125953_greencandy-hammock.md) · lap 4 [`230433`](../active-designing/20260710-230433_greencandy-lap4-filters.md) · sight [`132548`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`131956`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
@@ -151,6 +151,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **1af** | **Minimum · h1+blocks · sight kinds · presence_penalty** | **landed** `20260710.224805` — minimum **371**; h1+blocks **372**; sight kinds **373**; presence_penalty **374** | — |
 | **1ag** | **Elu · assist kinds · n pin — lap 1 close** | **landed** `20260710.224805` — elu **375**; assist sight/view kinds **376**/**377**; n pin **378**; **Inference Track lap 1 closed** | — |
 | **Anvil corpus lap 2** | **min/max lines · path_suffix · sum_lines + views** | **landed** `20260710.225320` — filters **379**–**382**; Skate views **383**–**386**; **Anvil corpus lap 2 closed** | keep-going after lap-1 close |
+| **Greencandy lap 4** | **account/memo filters · cash flow · sum amounts + views** | **landed** `20260710.230433` — filters **387**–**390**; Skate views **391**–**394**; **Greencandy lap 4 closed** | keep-going after Anvil lap 2 |
 | **2** | **ROCm host seam** | horizon | hardware + ship policy; opens after lap-1 close |
 | **3** | **Lantern in Pond** | horizon | Pond policy word |
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
@@ -158,7 +159,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 
 Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · hammock: [`active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · progress: [`20260710-220706_slc-and-inference-progress.md`](20260710-220706_slc-and-inference-progress.md)
 
-**Lap 1 close (`224805`):** the fixture-served contract family is whole — activations through ELU/min/max, sampling pins through `n`/`presence_penalty`, Scribble combos, and exception folds on glass. **Anvil corpus lap 2** (`225320`) deepens catalog filters and Skate views through tip **386**. Further Inference Track work opens at rung **2** (ROCm) or another named lap on Kaeden's word.
+**Lap 1 close (`224805`):** the fixture-served contract family is whole — activations through ELU/min/max, sampling pins through `n`/`presence_penalty`, Scribble combos, and exception folds on glass. **Anvil corpus lap 2** (`225320`) deepens catalog filters through tip **386**. **Greencandy lap 4** (`230433`) deepens journal filters and cash flow through tip **394**. Further Inference Track work opens at rung **2** (ROCm) or another named lap on Kaeden's word.
 
 
 ---
@@ -170,7 +171,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 | **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | **Lap 1 closed** tip **378** (`224805`); **Anvil corpus lap 2 closed** tip **386** (`225320`) — min/max/suffix/sum + views; next rung **2** ROCm (horizon) |
+| **Inference stack** | **Lap 1 closed** tip **378** (`224805`); **Anvil corpus lap 2** tip **386** (`225320`); **Greencandy lap 4** tip **394** (`230433`); next rung **2** ROCm (horizon) |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

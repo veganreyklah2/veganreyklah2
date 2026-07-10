@@ -1397,3 +1397,43 @@ say "witness suite: Anvil corpus sum_lines view…"
 let anvil_sum_lines_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_sum_lines_view.rish"]
 assert anvil_sum_lines_view.ok else "Anvil corpus sum_lines view witness failed"
 say "GREEN: Anvil corpus sum_lines view witness passed."
+
+say "witness suite: Greencandy lap 4 (account filter)…"
+let greencandy_lap4 = run ["rishi/bin/rishi" "run" "tools/greencandy_lap4.rish"]
+assert greencandy_lap4.ok else "Greencandy lap 4 witness failed"
+say "GREEN: Greencandy lap 4 witness passed."
+
+say "witness suite: Greencandy lap 5 (memo prefix)…"
+let greencandy_lap5 = run ["rishi/bin/rishi" "run" "tools/greencandy_lap5.rish"]
+assert greencandy_lap5.ok else "Greencandy lap 5 witness failed"
+say "GREEN: Greencandy lap 5 witness passed."
+
+say "witness suite: Greencandy lap 6 (cash flow)…"
+let greencandy_lap6 = run ["rishi/bin/rishi" "run" "tools/greencandy_lap6.rish"]
+assert greencandy_lap6.ok else "Greencandy lap 6 witness failed"
+say "GREEN: Greencandy lap 6 witness passed."
+
+say "witness suite: Greencandy lap 7 (sum amounts)…"
+let greencandy_lap7 = run ["rishi/bin/rishi" "run" "tools/greencandy_lap7.rish"]
+assert greencandy_lap7.ok else "Greencandy lap 7 witness failed"
+say "GREEN: Greencandy lap 7 witness passed."
+
+say "witness suite: Greencandy cash account view…"
+let greencandy_cash_account = run ["rishi/bin/rishi" "run" "tools/greencandy_cash_account_view.rish"]
+assert greencandy_cash_account.ok else "Greencandy cash account view witness failed"
+say "GREEN: Greencandy cash account view witness passed."
+
+say "witness suite: Greencandy memo prefix view…"
+let greencandy_memo_prefix = run ["rishi/bin/rishi" "run" "tools/greencandy_memo_prefix_view.rish"]
+assert greencandy_memo_prefix.ok else "Greencandy memo prefix view witness failed"
+say "GREEN: Greencandy memo prefix view witness passed."
+
+say "witness suite: Greencandy cash flow view…"
+let greencandy_cash_flow = run ["rishi/bin/rishi" "run" "tools/greencandy_cash_flow_view.rish"]
+assert greencandy_cash_flow.ok else "Greencandy cash flow view witness failed"
+say "GREEN: Greencandy cash flow view witness passed."
+
+say "witness suite: Greencandy sum amounts view…"
+let greencandy_sum_amounts = run ["rishi/bin/rishi" "run" "tools/greencandy_sum_amounts_view.rish"]
+assert greencandy_sum_amounts.ok else "Greencandy sum amounts view witness failed"
+say "GREEN: Greencandy sum amounts view witness passed."

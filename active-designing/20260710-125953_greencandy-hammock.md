@@ -5,7 +5,7 @@
 **Stamp:** `20260710.125953`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 1 green (chart · journal · fold · books view); parity **207**/**208**; exception **267**; journal view **285**; sight journal **290**
+**Status:** Checkable-room hammock — lap 1 green (chart · journal · fold · books view); parity **207**/**208**; exception **267**; journal view **285**; sight journal **290**; **lap 4 closed** tip **394** (`230433`)
 **Ground:** clean-room study [`../external-research/20260710-125953_greencandy-kick-digits-clean-room.md`](../external-research/20260710-125953_greencandy-kick-digits-clean-room.md) · Visual Track · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md) · resins/Amber seasons plainly
 
 *Written by Kaeden and Rio 3 (Grok).*
