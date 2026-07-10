@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 31).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 33).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen through tokens_out · tokens_in pins.
+//! Weights live in Tablecloth by hash. Laps deepen through echo · user pins.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -16,6 +16,7 @@ pub const max_frequency_penalty: f32 = 2.0;
 pub const max_presence_penalty: f32 = 2.0;
 pub const max_n: u32 = 8;
 pub const max_stop_sequence_len: u32 = 32;
+pub const max_user_len: u32 = 64;
 
 pub const StoppedReason = enum(u8) {
     eos,
@@ -56,6 +57,9 @@ pub const LanternError = error{
     NMismatch,
     TokensOutMismatch,
     TokensInMismatch,
+    EchoMismatch,
+    UserMismatch,
+    BadUser,
 };
 
 pub const Request = struct {
@@ -76,6 +80,8 @@ pub const Request = struct {
     n: u32 = 1,
     expect_tokens_out: ?u32 = null,
     expect_tokens_in: ?u32 = null,
+    echo: bool = false,
+    user: []const u8 = "",
 };
 
 pub const Response = struct {
@@ -95,6 +101,7 @@ pub fn validate_request(req: Request) LanternError!void {
     if (req.presence_penalty < -max_presence_penalty or req.presence_penalty > max_presence_penalty) return error.BadPresencePenalty;
     if (req.n == 0 or req.n > max_n) return error.BadN;
     if (req.stop_sequence.len > max_stop_sequence_len) return error.BadStopSequence;
+    if (req.user.len > max_user_len) return error.BadUser;
 }
 
 fn field_value(text: []const u8, key: []const u8) ?[]const u8 {
@@ -214,6 +221,18 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
         const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
         const expect = req.expect_tokens_in orelse return error.TokensInMismatch;
         if (expect != pinned) return error.TokensInMismatch;
+    }
+    if (field_value(fixture_text, "echo")) |pinned_text| {
+        const pinned = if (std.mem.eql(u8, pinned_text, "1"))
+            true
+        else if (std.mem.eql(u8, pinned_text, "0"))
+            false
+        else
+            return error.BadFixture;
+        if (req.echo != pinned) return error.EchoMismatch;
+    }
+    if (field_value(fixture_text, "user")) |pinned| {
+        if (!std.mem.eql(u8, req.user, pinned)) return error.UserMismatch;
     }
     if (field_value(fixture_text, "prompt")) |pinned| {
         if (!std.mem.eql(u8, req.prompt, pinned)) return error.PromptMismatch;

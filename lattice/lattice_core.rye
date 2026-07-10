@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 35).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 39).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through softsign · square · sign · reciprocal.
+//! Parity-gated tensor ops before Lantern. Laps through hard_sigmoid · rsqrt · hardtanh · cube.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -537,6 +537,59 @@ pub fn reciprocal(src: *const Matrix, out: *Matrix) TensorError!void {
             const v = src.at(r, c);
             if (v == 0.0) return error.DivideByZero;
             out.set(r, c, 1.0 / v);
+        }
+    }
+}
+
+/// Elementwise hard sigmoid — clamp(0.2·v + 0.5, 0, 1); shapes must match.
+pub fn hard_sigmoid(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = 0.2 * src.at(r, c) + 0.5;
+            out.set(r, c, if (v < 0.0) 0.0 else if (v > 1.0) 1.0 else v);
+        }
+    }
+}
+
+/// Elementwise rsqrt — 1/√v; non-positive refused; shapes must match.
+pub fn rsqrt(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            if (v <= 0.0) return error.NonPositiveInput;
+            out.set(r, c, 1.0 / @sqrt(v));
+        }
+    }
+}
+
+/// Elementwise hardtanh — clamp(v, −1, 1); shapes must match.
+pub fn hardtanh(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v < -1.0) -1.0 else if (v > 1.0) 1.0 else v);
+        }
+    }
+}
+
+/// Elementwise cube — v·v·v; shapes must match.
+pub fn cube(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, v * v * v);
         }
     }
 }
