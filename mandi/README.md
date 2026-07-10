@@ -2,13 +2,13 @@
 
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
-**Status:** Seated — name + lap 1 vessel listing (`20260710.165634`); floor view lap 2 (`20260710.170700`); WOV settlement waits  
-**Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md)  
+**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); live TB waits  
+**Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) · settle [`../context/specs/20260710-171202_mandi-listing-settle-seated.md`](../context/specs/20260710-171202_mandi-listing-settle-seated.md)  
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)
 
 ## What this room is
 
-Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA price under Kumara (seed `0x67`). The receipt is a digest of the canonical body — no buyer, no seller. Amphora purchase delivery remains the carriage rite; Mandi is the floor.
+Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA price under Kumara (seed `0x67`). The receipt is a digest of the canonical body — no buyer, no seller. A sale closes with `vessel-settle-v1` (seed `0x68`) binding that receipt to a payment digest of MALA send + WOV transfer. Amphora purchase delivery remains the carriage rite.
 
 **Not this room:** Granary (weave-sharing four doors). Mela and Haat stay parked as warm siblings.
 
@@ -34,9 +34,19 @@ rishi/bin/rishi run tools/mandi_floor_view.rish
 
 Witness → parity **240** (`mandiviewtest`).
 
+## Listing settle (lap 3)
+
+In-process close: listing receipt + `vessel-payment-v1` (MALA send digest + WOV transfer digest) under seed `0x68`. Refuses zero, lying, mismatches, overdraft, insufficient, double settle.
+
+```sh
+rishi/bin/rishi run tools/mandi_listing_settle.rish
+```
+
+Witness → parity **242**.
+
 ## Held
 
-Live WOV settlement of a Mandi sale waits its own gate.
+Live TigerBeetle settlement and Granary weave settle wait their own gates.
 
 ---
 
