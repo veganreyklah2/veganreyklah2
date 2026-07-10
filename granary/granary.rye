@@ -1,0 +1,164 @@
+//! granary/granary.rye — Granary lap 1 selftest.
+//!
+//!   rye build granary/granary.rye -femit-bin=granary/bin/granary
+//!   granary/bin/granary selftest
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const Dir = std.Io.Dir;
+const gc = @import("granary_core.rye");
+const tally_copy = @import("tally_copy.rye");
+
+fn welcome_registry_resolve_clone_frame(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var md_buf: [gc.max_resin_bytes]u8 = undefined;
+    const markdown = try cwd.readFile(io, gc.fixture_front_page, &md_buf);
+
+    var store = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&store, markdown);
+
+    var fact_buf: [gc.max_fact_len]u8 = undefined;
+    const fact_len = try gc.sign_name_fact(
+        gc.granary_version,
+        "rio",
+        "greeting",
+        &digest,
+        &fact_buf,
+    );
+    try gc.verify_name_fact(fact_buf[0..fact_len]);
+
+    var reg = gc.Registry.empty();
+    try gc.append_fact(&reg, fact_buf[0..fact_len]);
+
+    // Second fact for another weave — registry holds more than one.
+    const other_md = "# other\n\nparked.\n";
+    const other_digest = try gc.put_resin(&store, other_md);
+    var other_buf: [gc.max_fact_len]u8 = undefined;
+    const other_len = try gc.sign_name_fact(
+        gc.granary_version,
+        "rio",
+        "other",
+        &other_digest,
+        &other_buf,
+    );
+    try gc.append_fact(&reg, other_buf[0..other_len]);
+    assert(reg.fact_count == 2);
+
+    const resolved = try gc.resolve(&reg, "rio/greeting");
+    assert(std.mem.eql(u8, resolved.person, "rio"));
+    assert(std.mem.eql(u8, resolved.weave, "greeting"));
+    assert(std.mem.eql(u8, resolved.resin_digest, &digest));
+    print("granary: resolved rio/greeting → resin {s}\n", .{resolved.resin_digest[0..16]});
+
+    var clone: [gc.max_resin_bytes]u8 = undefined;
+    const clone_len = try gc.clone_resin(&store, resolved.resin_digest, &clone);
+    assert(clone_len == markdown.len);
+    assert(std.mem.eql(u8, clone[0..clone_len], markdown));
+    print("granary: clone fold matched front-page resin\n", .{});
+
+    var frame: gc.Frame = .{};
+    try gc.render_front_page(clone[0..clone_len], &frame);
+    assert(frame.line_count >= 3);
+    assert(std.mem.indexOf(u8, frame.lines[0].slice(), "granary front page") != null);
+    var saw_heading = false;
+    var i: u32 = 0;
+    while (i < frame.line_count) : (i += 1) {
+        if (std.mem.indexOf(u8, frame.lines[i].slice(), "rio/greeting") != null) saw_heading = true;
+        if (std.mem.indexOf(u8, frame.lines[i].slice(), "# rio/greeting") != null) saw_heading = true;
+    }
+    assert(saw_heading);
+    print("granary: Scribble front page drawn — lines={d}\n", .{frame.line_count});
+    i = 0;
+    while (i < frame.line_count) : (i += 1) {
+        print("  {s}\n", .{frame.lines[i].slice()});
+    }
+}
+
+fn welcome_accrete_rename() !void {
+    var store = gc.ResinStore.empty();
+    const first = try gc.put_resin(&store, "# v1\n");
+    const second = try gc.put_resin(&store, "# v2\n");
+    var reg = gc.Registry.empty();
+    var a: [gc.max_fact_len]u8 = undefined;
+    var b: [gc.max_fact_len]u8 = undefined;
+    const al = try gc.sign_name_fact(gc.granary_version, "kaeden", "sketch", &first, &a);
+    const bl = try gc.sign_name_fact(gc.granary_version, "kaeden", "sketch", &second, &b);
+    try gc.append_fact(&reg, a[0..al]);
+    try gc.append_fact(&reg, b[0..bl]);
+    const resolved = try gc.resolve(&reg, "kaeden/sketch");
+    assert(std.mem.eql(u8, resolved.resin_digest, &second));
+    print("granary: accrete rename — latest name-fact wins\n", .{});
+}
+
+fn unwelcome_lying_signature() !void {
+    var store = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&store, "honest bytes\n");
+    var fact_buf: [gc.max_fact_len]u8 = undefined;
+    const fact_len = try gc.sign_name_fact(gc.granary_version, "rio", "lie", &digest, &fact_buf);
+
+    // Flip one hex nibble in stamp_sig — signature lies.
+    var lying: [gc.max_fact_len]u8 = undefined;
+    tally_copy.copy_disjoint(u8, lying[0..fact_len], fact_buf[0..fact_len]);
+    const sig_key = "stamp_sig ";
+    const sig_at = std.mem.indexOf(u8, lying[0..fact_len], sig_key) orelse return error.MissingSig;
+    const hex_at = sig_at + sig_key.len;
+    assert(hex_at < fact_len);
+    lying[hex_at] = if (lying[hex_at] == '0') '1' else '0';
+
+    if (gc.verify_name_fact(lying[0..fact_len])) |_| {
+        return error.LyingAccepted;
+    } else |err| {
+        assert(err == error.VerifyFailed);
+    }
+
+    var reg = gc.Registry.empty();
+    if (gc.append_fact(&reg, lying[0..fact_len])) |_| {
+        return error.LyingAppended;
+    } else |err| {
+        assert(err == error.VerifyFailed);
+    }
+    print("granary: lying signature refused\n", .{});
+}
+
+fn unwelcome_unknown_name() !void {
+    var reg = gc.Registry.empty();
+    if (gc.resolve(&reg, "nobody/nowhere")) |_| {
+        return error.UnknownPassed;
+    } else |err| {
+        assert(err == error.UnknownName);
+    }
+    print("granary: unknown person/weave refused\n", .{});
+}
+
+fn unwelcome_bad_path() !void {
+    var reg = gc.Registry.empty();
+    if (gc.resolve(&reg, "noshslash")) |_| {
+        return error.BadPathPassed;
+    } else |err| {
+        assert(err == error.PathBad);
+    }
+    if (gc.resolve(&reg, "a/b/c")) |_| {
+        return error.NestedPassed;
+    } else |err| {
+        assert(err == error.PathBad);
+    }
+    print("granary: bad resolve path refused\n", .{});
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const garden = init.arena.allocator();
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(garden);
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
+        try welcome_registry_resolve_clone_frame(io);
+        try welcome_accrete_rename();
+        try unwelcome_lying_signature();
+        try unwelcome_unknown_name();
+        try unwelcome_bad_path();
+        print("granary lap1: version {s} — GREEN\n", .{gc.granary_version});
+        return 0;
+    }
+    print("usage: granary selftest\n", .{});
+    return 1;
+}
