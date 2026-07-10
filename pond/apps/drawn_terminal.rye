@@ -45,6 +45,7 @@
 //!   pond/bin/drawn-terminal scribbleh2viewtest # Scribble h2 headings → Skate
 //!   pond/bin/drawn-terminal scribbleh3viewtest # Scribble h3 headings → Skate
 //!   pond/bin/drawn-terminal scribbledepthviewtest # Scribble h1/h2/h3 depth tallies → Skate
+//!   pond/bin/drawn-terminal scribbletallyviewtest # Scribble headings+paragraphs tally → Skate
 //!   pond/bin/drawn-terminal corpusryecandyprefixviewtest # Anvil rye + greencandy/ → Skate
 //!   pond/bin/drawn-terminal corpusrishtoolsprefixviewtest # Anvil rish + tools/ → Skate
 //!   pond/bin/drawn-terminal corpusryeappsprefixviewtest # Anvil rye + pond/apps/ → Skate
@@ -121,6 +122,7 @@ const scribble_h1_view_max_lines: u32 = 5;
 const scribble_h2_view_max_lines: u32 = 5;
 const scribble_h3_view_max_lines: u32 = 5;
 const scribble_depth_view_max_lines: u32 = 5;
+const scribble_tally_view_max_lines: u32 = 5;
 const exception_view_max_lines: u32 = 5;
 const pnl_view_max_lines: u32 = 5;
 const bs_view_max_lines: u32 = 5;
@@ -475,12 +477,18 @@ fn compose_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     try greencandy.parse_journal(journal, &entries, &entry_count);
     if (entry_count != 2) return error.BadJournal;
 
+    var tb_sum: i64 = 0;
+    {
+        var ti: u32 = 0;
+        while (ti < 4) : (ti += 1) tb_sum += nets[ti];
+    }
+
     const lines = try garden.alloc(surface.SkateLine, sight_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "linengrow sight view") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "carriage mala:mint amount {s}", .{amount}) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try garden.dupe(u8, conservation) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d} retained {d} · pnl net {d} · bs equity {d}", .{ nets[0], bs.retained, pl.net, bs.equity }) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d} retained {d} · pnl net {d} · bs equity {d} · tb {d}", .{ nets[0], bs.retained, pl.net, bs.equity, tb_sum }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "chart {s} {s} {s} {s}", .{
         greencandy.Account.cash.name(),
@@ -512,7 +520,7 @@ fn run_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage mala:mint amount 1000",
         "carriage wov seq 1",
         "conservation 1000 issued 1000 redeemed 0",
-        "books cash 800 retained 800 · pnl net 800 · bs equity 0",
+        "books cash 800 retained 800 · pnl net 800 · bs equity 0 · tb 0",
         "journal entries 2 stipend received",
         "chart cash revenue expense equity",
         "sight fold green",
@@ -522,7 +530,7 @@ fn run_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     var out: [220]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal sight view: journal=2 chart=4 pnl=800 equity=0 sig={x} lines={d} — GREEN\n",
+        "drawn terminal sight view: journal=2 chart=4 pnl=800 equity=0 tb=0 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -605,7 +613,8 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d}", .{
+    const bs = balance_from_nets(&nets);
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d}", .{
         entry_count,
         entries[0].memo,
         greencandy.Account.cash.name(),
@@ -613,6 +622,7 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
         greencandy.Account.expense.name(),
         greencandy.Account.equity.name(),
         pl.net,
+        bs.equity,
     }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist fold green") };
     return lines;
@@ -640,7 +650,7 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "model sha3-256-rye-forge-lap0",
         "lantern 24/12 eos",
         "suggest use init.garden not ArgIterator",
-        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800",
+        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0",
         "assist fold green",
     };
     assert(lines_equal(&golden, frame));
@@ -648,7 +658,7 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     var out: [240]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -705,7 +715,8 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d}", .{ fences.rye, fences.rish, plain_kinds.plain }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d}", .{
+    const bs = balance_from_nets(&nets);
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d}", .{
         entry_count,
         entries[0].memo,
         greencandy.Account.cash.name(),
@@ -713,6 +724,7 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
         greencandy.Account.expense.name(),
         greencandy.Account.equity.name(),
         pl.net,
+        bs.equity,
     }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist sight fold green") };
     return lines;
@@ -740,7 +752,7 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "corpus rye 2 rish 1",
         "snippets rye 2 rish 1 plain 1",
         "lantern 24/12 eos",
-        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800",
+        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0",
         "assist sight fold green",
     };
     assert(lines_equal(&golden, frame));
@@ -748,7 +760,7 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     var out: [240]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -2904,6 +2916,62 @@ fn run_corpus_rye_apps_prefix_view_witness(garden: std.mem.Allocator, io: std.Io
     return 0;
 }
 
+/// Scribble tally view — heading + paragraph counts on Skate.
+fn compose_scribble_tally_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [scribble.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, scribble_outline_fixture, &buf);
+    var blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const n = try scribble.parse_markdown(text, &blocks);
+    var headings: [scribble.max_headings]scribble.Heading = undefined;
+    const hn = try scribble.extract_headings(blocks[0..n], &headings);
+    var paragraphs: [scribble.max_paragraphs]scribble.Paragraph = undefined;
+    const pn = try scribble.extract_paragraphs(blocks[0..n], &paragraphs);
+    if (hn != 3 or pn != 3) return error.BadScribbleFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, scribble_tally_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "scribble tally view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "headings {d}", .{hn}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "paragraphs {d}", .{pn}) };
+    lines[3] = .{ .text = try garden.dupe(u8, "outline prose") };
+    lines[4] = .{ .text = try garden.dupe(u8, "tally fold green") };
+    return lines;
+}
+
+fn run_scribble_tally_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_scribble_tally_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == scribble_tally_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "scribble tally view",
+        "headings 3",
+        "paragraphs 3",
+        "outline prose",
+        "tally fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [180]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal scribble tally view: headings=3 paragraphs=3 sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 /// Granary weave view — resolve person/weave, fold-clone resin, Scribble → Skate.
 fn compose_granary_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
     const cwd = std.Io.Dir.cwd();
@@ -3858,6 +3926,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbledepthviewtest")) {
         return run_scribble_depth_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbletallyviewtest")) {
+        return run_scribble_tally_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
         return run_exception_view_witness(garden, io);

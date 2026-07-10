@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 19 exp · log `213317`; parity **323**/**327**)
+**Last updated:** 2026-07-10 (lap 21 pow · relu `213738`; parity **331**/**335**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–19 green (ops through exp · log)
+**Status:** Checkable-room module — laps 0–21 green (ops through pow · relu)
 
 ---
 
@@ -31,17 +31,19 @@ Lattice holds explicit tensor math in bounded gardens. Build order places **Latt
 | **17** | Elementwise `sqrt` · negative refuse | parity **319** · `tools/lattice_lap18.rish` (`212715`) |
 | **18** | Elementwise `exp` · shape assert | parity **323** · `tools/lattice_lap19.rish` (`213317`) |
 | **19** | Elementwise `log` · non-positive refuse | parity **327** · `tools/lattice_lap20.rish` (`213317`) |
+| **20** | Elementwise `pow` · negative refuse | parity **331** · `tools/lattice_lap21.rish` (`213738`) |
+| **21** | Elementwise `relu` · shape assert | parity **335** · `tools/lattice_lap22.rish` (`213738`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through exp · log |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through pow · relu |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap19.rish
-rishi/bin/rishi run tools/lattice_lap20.rish
+rishi/bin/rishi run tools/lattice_lap21.rish
+rishi/bin/rishi run tools/lattice_lap22.rish
 ```
 
 *May the numbers stay honest before the model runs.*

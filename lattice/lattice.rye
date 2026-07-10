@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 19 selftest (ops through exp · log).
+//! lattice/lattice.rye — Lattice lap 21 selftest (ops through pow · relu).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.213317";
+const lattice_version = "20260710.213738";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -327,6 +327,36 @@ fn welcome_log() !void {
     print("lattice: log 2x2 green — o00={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_pow() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 2);
+    src.set(0, 1, 3);
+    src.set(1, 0, 4);
+    src.set(1, 1, 1);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.pow(&src, 2.0, &out);
+    assert(out.at(0, 0) == 4);
+    assert(out.at(0, 1) == 9);
+    assert(out.at(1, 0) == 16);
+    assert(out.at(1, 1) == 1);
+    print("lattice: pow 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
+}
+
+fn welcome_relu() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, -3);
+    src.set(0, 1, 4);
+    src.set(1, 0, -5);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.relu(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 4);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: relu 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -500,6 +530,43 @@ fn unwelcome_log_nonpositive() !void {
     print("lattice: log nonpositive refused\n", .{});
 }
 
+fn unwelcome_pow_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.pow(&src, 2.0, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: pow shape mismatch refused\n", .{});
+}
+
+fn unwelcome_pow_negative() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, -2);
+    src.set(1, 0, 3);
+    src.set(1, 1, 4);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.pow(&src, 2.0, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.NegativeInput);
+    }
+    print("lattice: pow negative refused\n", .{});
+}
+
+fn unwelcome_relu_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.relu(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: relu shape mismatch refused\n", .{});
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -611,6 +678,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_sqrt();
         try welcome_exp();
         try welcome_log();
+        try welcome_pow();
+        try welcome_relu();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -632,8 +701,11 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_exp_shape();
         try unwelcome_log_shape();
         try unwelcome_log_nonpositive();
+        try unwelcome_pow_shape();
+        try unwelcome_pow_negative();
+        try unwelcome_relu_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap19: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap21: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
