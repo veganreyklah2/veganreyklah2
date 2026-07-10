@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 13 abs `200819`; parity **303**)
+**Last updated:** 2026-07-10 (lap 15 clamp · reduce_max `211930`; parity **307**/**311**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–13 green (matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs)
+**Status:** Checkable-room module — laps 0–15 green (matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs · clamp · reduce_max)
 
 ---
 
@@ -25,16 +25,19 @@ Lattice holds explicit tensor math in bounded gardens. Build order places **Latt
 | **11** | Elementwise `div` · shape assert · zero refuse | parity **295** · `tools/lattice_lap12.rish` (`193358`) |
 | **12** | `reduce_mean` into 1×1 · shape assert | parity **299** · `tools/lattice_lap13.rish` (`200203`) |
 | **13** | Elementwise `abs` · shape assert | parity **303** · `tools/lattice_lap14.rish` (`200819`) |
+| **14** | Elementwise `clamp` · shape assert | parity **307** · `tools/lattice_lap15.rish` (`211930`) |
+| **15** | `reduce_max` into 1×1 · shape assert | parity **311** · `tools/lattice_lap16.rish` (`211930`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through abs |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through clamp · reduce_max |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap14.rish
+rishi/bin/rishi run tools/lattice_lap15.rish
+rishi/bin/rishi run tools/lattice_lap16.rish
 ```
 
 *May the numbers stay honest before the model runs.*

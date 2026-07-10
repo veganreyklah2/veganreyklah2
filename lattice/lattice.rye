@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 13 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs).
+//! lattice/lattice.rye — Lattice lap 15 selftest (ops through clamp · reduce_max).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.200819";
+const lattice_version = "20260710.211930";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -243,6 +243,33 @@ fn welcome_abs() !void {
     print("lattice: abs 2x2 green — o00={d} o10={d}\n", .{ out.at(0, 0), out.at(1, 0) });
 }
 
+fn welcome_clamp() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, -3);
+    src.set(0, 1, 4);
+    src.set(1, 0, -5);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.clamp(&src, 0.0, 4.0, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 4);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: clamp 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
+}
+
+fn welcome_reduce_max() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, -3);
+    a.set(0, 1, 4);
+    a.set(1, 0, -5);
+    a.set(1, 1, 0);
+    var out = try lc.Matrix.init(1, 1);
+    try lc.reduce_max(&a, &out);
+    assert(out.at(0, 0) == 4);
+    print("lattice: reduce_max 2x2 green — max={d}\n", .{out.at(0, 0)});
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -318,6 +345,28 @@ fn unwelcome_abs_shape() !void {
         assert(err == error.ShapeMismatch);
     }
     print("lattice: abs shape mismatch refused\n", .{});
+}
+
+fn unwelcome_clamp_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.clamp(&src, 0.0, 1.0, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: clamp shape mismatch refused\n", .{});
+}
+
+fn unwelcome_reduce_max_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    if (lc.reduce_max(&a, &b)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: reduce_max shape mismatch refused\n", .{});
 }
 
 fn unwelcome_shape_mismatch() !void {
@@ -425,10 +474,13 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_neg();
         try welcome_div();
         try welcome_abs();
+        try welcome_clamp();
+        try welcome_reduce_max();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
         try unwelcome_reduce_mean_shape();
+        try unwelcome_reduce_max_shape();
         try unwelcome_scale_shape();
         try unwelcome_transpose_shape();
         try unwelcome_mul_shape();
@@ -438,8 +490,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_div_shape();
         try unwelcome_div_zero();
         try unwelcome_abs_shape();
+        try unwelcome_clamp_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap13: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap15: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 13).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 15).
 //!
-//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs.
+//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs · clamp · reduce_max.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -227,4 +227,32 @@ pub fn abs(src: *const Matrix, out: *Matrix) TensorError!void {
             out.set(r, c, if (v < 0.0) -v else v);
         }
     }
+}
+
+/// Elementwise clamp into [lo, hi] — shapes must match.
+pub fn clamp(src: *const Matrix, lo: f32, hi: f32, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            const clipped = if (v < lo) lo else if (v > hi) hi else v;
+            out.set(r, c, clipped);
+        }
+    }
+}
+
+/// Full-matrix max into a 1×1 — asserts output shape at entry.
+pub fn reduce_max(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != 1 or out.cols != 1) return error.ShapeMismatch;
+    var max_v: f32 = src.at(0, 0);
+    var i: u32 = 1;
+    while (i < src.len()) : (i += 1) {
+        const r = i / src.cols;
+        const c = i % src.cols;
+        const v = src.at(r, c);
+        if (v > max_v) max_v = v;
+    }
+    out.set(0, 0, max_v);
 }

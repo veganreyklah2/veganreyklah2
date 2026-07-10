@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.211930 | [Compass climb — clamp, heading depth, assist chart, seed pin, reduce_max, h2, sight P&L, TopPMismatch](20260710-211930_compass-climb-clamp-heading-seed-pin.md) | Parity **307**–**314**; climbs **1p**/**1q** |
 | 20260710.210433 | [Rest-until and Steep naming](20260710-210433_rest-until-steep-naming.md) | Soak → Rest-until; Steep = p2p share horizon |
 | 20260710.200819 | [Compass climb — Lattice abs, apps prefix, assist chart, Lantern temperature pin](20260710-200819_compass-climb-abs-apps-assist-temp.md) | Parity **303**–**306**; then SLC summary |
 | 20260710.200203 | [Compass climb — Lattice mean, rish view, sight chart, Lantern text pin](20260710-200203_compass-climb-mean-rish-sight-text.md) | Parity **299**–**302**; soak closed |

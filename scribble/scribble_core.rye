@@ -1,6 +1,6 @@
-//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 6).
+//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 7).
 //!
-//! Headings, paragraphs, fenced code (rye / rish / plain). Heading, paragraph, fence-kind, and plain-snippet extract for views.
+//! Headings, paragraphs, fenced code (rye / rish / plain). Heading, paragraph, fence-kind, plain-snippet extract, and heading-depth filter for views.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -211,6 +211,25 @@ pub fn extract_headings(blocks: []const Block, out: []Heading) ParseError!u32 {
     var i: u32 = 0;
     while (i < blocks.len) : (i += 1) {
         if (blocks[i].kind != .heading) continue;
+        if (count >= out.len) return error.SnippetOverflow;
+        const body = blocks[i].text_slice();
+        if (body.len > max_block_text) return error.BlockTooLarge;
+        var heading: Heading = .{ .depth = blocks[i].depth };
+        @memcpy(heading.text[0..body.len], body);
+        heading.text_len = @intCast(body.len);
+        out[count] = heading;
+        count += 1;
+    }
+    return count;
+}
+
+/// Collect headings at one depth — h1/h2 outline folds for Scribble views.
+pub fn extract_headings_at_depth(blocks: []const Block, depth: u8, out: []Heading) ParseError!u32 {
+    var count: u32 = 0;
+    var i: u32 = 0;
+    while (i < blocks.len) : (i += 1) {
+        if (blocks[i].kind != .heading) continue;
+        if (blocks[i].depth != depth) continue;
         if (count >= out.len) return error.SnippetOverflow;
         const body = blocks[i].text_slice();
         if (body.len > max_block_text) return error.BlockTooLarge;
