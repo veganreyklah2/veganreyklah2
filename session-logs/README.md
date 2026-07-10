@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.223456 | [Scribble vs Brushstroke — keep both](20260710-223456_scribble-brushstroke-keep-both.md) | Different seams: parse vs draw; both names stay |
 | 20260710.223413 | [Mantrapod stack and architecture](20260710-223413_mantrapod-stack-arch.md) | RISC-V-first map: Aurora·Tally·Caravan·Rishi·Skate; Realidream far horizon |
 | 20260710.221906 | [Mantrapod explained for kids](20260710-221906_mantrapod-for-kids.md) | Kid-facing story of the pocket computer that forgets on purpose |
 | 20260710.220833 | [Machines and organizing thought](20260710-220833_machines-organize-thoughts.md) | Reflection: machines externalize and witness; choosing stays human |
