@@ -22,7 +22,7 @@ It is **not** Granary. Granary is the weave-sharing surface (four doors). Mandi 
 
 ## First lap (landed `20260710.165634`)
 
-Signed vessel listing: `vessel_parent` + MALA price under Kumara; receipt digest without buyer/seller; bind check against a known parent digest; refuse zero price, lying sig, and parent mismatch. Module home `mandi/`; witness `tools/mandi_lap1.rish`; parity **238**. Floor view lap 2 landed `20260710.170700` — Skate `mandiviewtest`; parity **240**. Listing settle lap 3 landed `20260710.171202` — `vessel-settle-v1` binds listing receipt + MALA/WOV payment; parity **242**. Amphora purchase delivery remains the carriage rite; Mandi is the floor that names and closes the offer. Live TigerBeetle waits its own gate.
+Signed vessel listing: `vessel_parent` + MALA price under Kumara; receipt digest without buyer/seller; bind check against a known parent digest; refuse zero price, lying sig, and parent mismatch. Module home `mandi/`; witness `tools/mandi_lap1.rish`; parity **238**. Floor view lap 2 landed `20260710.170700` — Skate `mandiviewtest`; parity **240**. Listing settle lap 3 landed `20260710.171202` — `vessel-settle-v1` binds listing receipt + MALA/WOV payment; parity **242**. Settle view lap 4 landed `20260710.172955` — Skate `mandisettletest`; parity **244**. Amphora purchase delivery remains the carriage rite; Mandi is the floor that names and closes the offer. Live TigerBeetle waits its own gate.
 
 ---
 
