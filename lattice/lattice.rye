@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 35 selftest (ops through softsign · square · sign · reciprocal).
+//! lattice/lattice.rye — Lattice lap 39 selftest (ops through hard_sigmoid · rsqrt · hardtanh · cube).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.231151";
+const lattice_version = "20260710.232158";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -578,6 +578,66 @@ fn welcome_reciprocal() !void {
     print("lattice: reciprocal 2x2 green — o00={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_hard_sigmoid() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 10);
+    src.set(1, 0, -10);
+    src.set(1, 1, 2.5);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.hard_sigmoid(&src, &out);
+    assert(out.at(0, 0) == 0.5);
+    assert(out.at(0, 1) == 1);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 1);
+    print("lattice: hard_sigmoid 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_rsqrt() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, 4);
+    src.set(1, 0, 16);
+    src.set(1, 1, 0.25);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.rsqrt(&src, &out);
+    assert(out.at(0, 0) == 1);
+    assert(out.at(0, 1) == 0.5);
+    assert(out.at(1, 0) == 0.25);
+    assert(out.at(1, 1) == 2);
+    print("lattice: rsqrt 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_hardtanh() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0.5);
+    src.set(0, 1, 2);
+    src.set(1, 0, -2);
+    src.set(1, 1, -0.25);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.hardtanh(&src, &out);
+    assert(out.at(0, 0) == 0.5);
+    assert(out.at(0, 1) == 1);
+    assert(out.at(1, 0) == -1);
+    assert(out.at(1, 1) == -0.25);
+    print("lattice: hardtanh 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_cube() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 2);
+    src.set(0, 1, -2);
+    src.set(1, 0, 1);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.cube(&src, &out);
+    assert(out.at(0, 0) == 8);
+    assert(out.at(0, 1) == -8);
+    assert(out.at(1, 0) == 1);
+    assert(out.at(1, 1) == 0);
+    print("lattice: cube 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
 
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
@@ -958,6 +1018,62 @@ fn unwelcome_reciprocal_zero() !void {
     print("lattice: reciprocal zero refused\n", .{});
 }
 
+fn unwelcome_hard_sigmoid_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.hard_sigmoid(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: hard_sigmoid shape mismatch refused\n", .{});
+}
+
+fn unwelcome_rsqrt_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.rsqrt(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: rsqrt shape mismatch refused\n", .{});
+}
+
+fn unwelcome_rsqrt_nonpositive() !void {
+    var src = try lc.Matrix.init(1, 1);
+    src.set(0, 0, 0);
+    var out = try lc.Matrix.init(1, 1);
+    if (lc.rsqrt(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.NonPositiveInput);
+    }
+    print("lattice: rsqrt non-positive refused\n", .{});
+}
+
+fn unwelcome_hardtanh_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.hardtanh(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: hardtanh shape mismatch refused\n", .{});
+}
+
+fn unwelcome_cube_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.cube(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: cube shape mismatch refused\n", .{});
+}
+
 
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
@@ -1086,6 +1202,10 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_square();
         try welcome_sign();
         try welcome_reciprocal();
+        try welcome_hard_sigmoid();
+        try welcome_rsqrt();
+        try welcome_hardtanh();
+        try welcome_cube();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -1125,8 +1245,13 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_sign_shape();
         try unwelcome_reciprocal_shape();
         try unwelcome_reciprocal_zero();
+        try unwelcome_hard_sigmoid_shape();
+        try unwelcome_rsqrt_shape();
+        try unwelcome_rsqrt_nonpositive();
+        try unwelcome_hardtanh_shape();
+        try unwelcome_cube_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap35: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap39: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
