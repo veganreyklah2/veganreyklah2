@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 10).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 11).
 //!
-//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg.
+//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -16,6 +16,7 @@ pub const TensorError = error{
     ShapeMismatch,
     DimOverflow,
     EmptyMatrix,
+    DivideByZero,
 };
 
 pub const Matrix = struct {
@@ -183,6 +184,21 @@ pub fn neg(src: *const Matrix, out: *Matrix) TensorError!void {
         var c: u32 = 0;
         while (c < src.cols) : (c += 1) {
             out.set(r, c, -src.at(r, c));
+        }
+    }
+}
+
+/// Elementwise divide — shapes must match; zero divisor refused.
+pub fn div(a: *const Matrix, b: *const Matrix, out: *Matrix) TensorError!void {
+    if (a.rows != b.rows or a.cols != b.cols) return error.ShapeMismatch;
+    if (out.rows != a.rows or out.cols != a.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < a.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < a.cols) : (c += 1) {
+            const denom = b.at(r, c);
+            if (denom == 0.0) return error.DivideByZero;
+            out.set(r, c, a.at(r, c) / denom);
         }
     }
 }
