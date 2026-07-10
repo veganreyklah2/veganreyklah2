@@ -8,7 +8,7 @@ study draws the design and parks the name candidates in RTAC, seating nothing.*
 
 **Stamp:** `20260703.182612` (supplied verbatim by Kaeden)
 **Language:** EN · **Style:** Radiant · **Lens:** TAME · CIVIC · SLC
-**Status:** External research — design study; **name seated** `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Mandi vessel floor seated separately `20260710.165634`
+**Status:** External research — design study; **name seated** `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Sharing device wire `20260710.170132` (parity **239**); Mandi vessel floor seated separately `20260710.165634`
 **Companions:** seating ruling [`../context/specs/20260710-163043_granary-name-seated.md`](../context/specs/20260710-163043_granary-name-seated.md) · the Scribble/Forge sketch (`../active-designing/20260620-020712_scribble-lantern-and-lattice.md`) · Puddle harbor study (same stamp) · the drawing-room harvest · SLC-L1 receipt note · the second harvest (*every artist a node*)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice. Name affirmed by Kaeden `20260710.163043`.*

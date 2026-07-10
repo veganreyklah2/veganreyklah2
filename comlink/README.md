@@ -1,7 +1,7 @@
 # Comlink — the Sealed Wire, Hosted and on Real Virtio
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary resin serve ports **38496**/**38497**; MALA M2b device **15569**/**15570**)
+**Last updated:** 2026-07-10 (Granary device wire **15573**/**15574**; hosted resin serve **38496**/**38497**; MALA M2b device **15569**/**15570**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Comlink carries a sealed datagram, and the format never forks.** `wire_format.rye` defines one offset layout and one seal/open pair, and every rung above it — a hosted UDP socket on localhost, or a real virtio-net link between two freestanding guests on QEMU virt — reads and writes exactly the same bytes. A fact that crosses this wire arrives whole or not at all; nothing here retries a partial frame.
@@ -19,7 +19,7 @@
 
 ## The Guest Fleet
 
-Every Mantra and Linengrow wire capability that crosses onto real virtio carries a matched pair of freestanding guests — one transmitting, one receiving — named for the capability they prove: `pattern`, `sealed`, `receipt`, `sync`, `batch`, `2way`, `catchup` (with revision-numbered variants `_r2`/`_r3` as the catch-up protocol grew a second and third rung), `snapshot`, and the full `open_asks` ladder (`application`, `acceptance`, `escrow_hold`, `escrow_release`, `completion`, `consent`, plus `poster` and the bare `open_asks` request pair). Forty-three guest files in total, each one small and single-purpose by design — a guest proves one crossing, not a general-purpose client.
+Every Mantra and Linengrow wire capability that crosses onto real virtio carries a matched pair of freestanding guests — one transmitting, one receiving — named for the capability they prove: `pattern`, `sealed`, `receipt`, `sync`, `batch`, `2way`, `catchup` (with revision-numbered variants `_r2`/`_r3` as the catch-up protocol grew a second and third rung), `snapshot`, the full `open_asks` ladder (`application`, `acceptance`, `escrow_hold`, `escrow_release`, `completion`, `consent`, plus `poster` and the bare `open_asks` request pair), Amphora `vessel_fetch_*`, and Granary `granary_resin_*`. Each guest is small and single-purpose by design — a guest proves one crossing, not a general-purpose client.
 
 ## Port Map
 
@@ -34,7 +34,7 @@ Every Mantra and Linengrow wire capability that crosses onto real virtio carries
 | Snapshot lap 3 | 38490 / 38491 | 15567 / 15568 |
 | MALA M2 / M2b | 38492 / 38493 | 15569 / 15570 |
 | Amphora lap 3 vessel fetch | 38494 / 38495 | 15571 / 15572 |
-| Granary lap 4 resin serve | 38496 / 38497 | — (device later) |
+| Granary lap 4 resin serve | 38496 / 38497 | 15573 / 15574 |
 
 Ports repeat across unrelated laps by design — each witness binds, uses, and releases its own pair within one bounded run, and Comlink's laps never run concurrently against the same address.
 
