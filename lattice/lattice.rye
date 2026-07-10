@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 15 selftest (ops through clamp · reduce_max).
+//! lattice/lattice.rye — Lattice lap 17 selftest (ops through reduce_min · sqrt).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.211930";
+const lattice_version = "20260710.212715";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -270,6 +270,33 @@ fn welcome_reduce_max() !void {
     print("lattice: reduce_max 2x2 green — max={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_reduce_min() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, -3);
+    a.set(0, 1, 4);
+    a.set(1, 0, -5);
+    a.set(1, 1, 0);
+    var out = try lc.Matrix.init(1, 1);
+    try lc.reduce_min(&a, &out);
+    assert(out.at(0, 0) == -5);
+    print("lattice: reduce_min 2x2 green — min={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_sqrt() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 4);
+    src.set(0, 1, 9);
+    src.set(1, 0, 0);
+    src.set(1, 1, 16);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.sqrt(&src, &out);
+    assert(out.at(0, 0) == 2);
+    assert(out.at(0, 1) == 3);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 4);
+    print("lattice: sqrt 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -367,6 +394,43 @@ fn unwelcome_reduce_max_shape() !void {
         assert(err == error.ShapeMismatch);
     }
     print("lattice: reduce_max shape mismatch refused\n", .{});
+}
+
+fn unwelcome_reduce_min_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    if (lc.reduce_min(&a, &b)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: reduce_min shape mismatch refused\n", .{});
+}
+
+fn unwelcome_sqrt_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.sqrt(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: sqrt shape mismatch refused\n", .{});
+}
+
+fn unwelcome_sqrt_negative() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, -1);
+    src.set(1, 0, 4);
+    src.set(1, 1, 9);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.sqrt(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.NegativeInput);
+    }
+    print("lattice: sqrt negative refused\n", .{});
 }
 
 fn unwelcome_shape_mismatch() !void {
@@ -476,11 +540,14 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_abs();
         try welcome_clamp();
         try welcome_reduce_max();
+        try welcome_reduce_min();
+        try welcome_sqrt();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
         try unwelcome_reduce_mean_shape();
         try unwelcome_reduce_max_shape();
+        try unwelcome_reduce_min_shape();
         try unwelcome_scale_shape();
         try unwelcome_transpose_shape();
         try unwelcome_mul_shape();
@@ -491,8 +558,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_div_zero();
         try unwelcome_abs_shape();
         try unwelcome_clamp_shape();
+        try unwelcome_sqrt_shape();
+        try unwelcome_sqrt_negative();
         try unwelcome_dim_overflow();
-        print("lattice lap15: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap17: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

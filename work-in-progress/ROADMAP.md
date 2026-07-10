@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (compass climb `211930`; parity **314**)
+**Last updated:** 2026-07-10 (compass climb `212715`; parity **322**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -134,6 +134,8 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **1o** | **Abs · apps prefix · assist chart · temperature pin** | **landed** `20260710.200819` — Lattice abs **303**; apps prefix **304**; assist chart **305**; Lantern temperature pin **306** | — |
 | **1p** | **Clamp · heading depth · assist chart · seed pin** | **landed** `20260710.211930` — Lattice clamp **307**; Scribble depth+h1 **308**; assist chart **309**; Lantern seed pin **310** | — |
 | **1q** | **Reduce_max · h2 view · sight P&L · TopPMismatch** | **landed** `20260710.211930` — Lattice reduce_max **311**; h2 view **312**; sight P&L **313**; Lantern TopPMismatch **314** | — |
+| **1r** | **Reduce_min · h3 · rye+candy · err_stop pin** | **landed** `20260710.212715` — Lattice reduce_min **315**; h3 view **316**; rye+greencandy **317**; Lantern err_stop pin **318** | — |
+| **1s** | **Sqrt · rish+tools · assist P&L · length_stop pin** | **landed** `20260710.212715` — Lattice sqrt **319**; rish+tools **320**; assist sight P&L **321**; Lantern length_stop pin **322** | — |
 | **2** | **ROCm host seam** | horizon | hardware + ship policy |
 | **3** | **Lantern in Pond** | horizon | Pond policy word |
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
@@ -150,7 +152,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 | **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | Lattice through **307**/**311** · Scribble through **308**/**312** · Lantern through **310**/**314** · Anvil through **304** · assist through **309** · sight through **313** · climb `211930` tip **314**; ROCm/LoRA/Pond/Steep still horizon |
+| **Inference stack** | Lattice through **315**/**319** · Scribble through **316** · Lantern through **318**/**322** · Anvil through **317**/**320** · assist sight through **321** · climb `212715` tip **322**; ROCm/LoRA/Pond/Steep still horizon |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

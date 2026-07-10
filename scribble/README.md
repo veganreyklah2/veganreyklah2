@@ -1,13 +1,13 @@
 # Scribble — Markdown as Values
 
 **Language:** EN
-**Last updated:** 2026-07-10 (heading depth · h1/h2 views `211930`; parity **308**/**312**)
+**Last updated:** 2026-07-10 (h3 view `212715`; parity **316**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–7 green (parse · rye/rish/plain snippets · headings · depth filter · paragraphs · fence kinds); rye/rish/plain/fence/paragraph/outline/h1/h2 views on Skate
+**Status:** Checkable-room module — laps 0–7 green (parse · rye/rish/plain snippets · headings · depth filter · paragraphs · fence kinds); rye/rish/plain/fence/paragraph/outline/h1/h2/h3 views on Skate
 
 ---
 
-Scribble turns human prose into block values — headings, paragraphs, and fenced code with `rye_fence` / `rish_fence` / plain kinds for corpus work. Heading extract feeds the outline Skate view; depth filter selects h1 or h2 folds; paragraph extract gathers prose bodies in source order; fence-kinds count folds rye/rish/plain tallies; plain-snippet extract gathers unmarked fence bodies.
+Scribble turns human prose into block values — headings, paragraphs, and fenced code with `rye_fence` / `rish_fence` / plain kinds for corpus work. Heading extract feeds the outline Skate view; depth filter selects h1, h2, or h3 folds; paragraph extract gathers prose bodies in source order; fence-kinds count folds rye/rish/plain tallies; plain-snippet extract gathers unmarked fence bodies.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
@@ -25,6 +25,7 @@ Scribble turns human prose into block values — headings, paragraphs, and fence
 | **rish snippets view** | Rish fences → five-line Skate frame | parity **300** · `tools/inference_scribble_rish_view.rish` (`200203`) |
 | **7** | `extract_headings_at_depth` · h1 Skate view | parity **308** · `tools/scribble_lap8.rish` · `tools/inference_scribble_h1_view.rish` (`211930`) |
 | **h2 view** | Depth-2 headings → five-line Skate frame | parity **312** · `tools/inference_scribble_h2_view.rish` (`211930`) |
+| **h3 view** | Depth-3 headings → five-line Skate frame | parity **316** · `tools/inference_scribble_h3_view.rish` (`212715`) |
 
 ## Layout
 
@@ -36,6 +37,7 @@ Scribble turns human prose into block values — headings, paragraphs, and fence
 | [`fixtures/session_snippets.md`](fixtures/session_snippets.md) | Rye training fences |
 | [`fixtures/session_rish_snippets.md`](fixtures/session_rish_snippets.md) | Rish training fences |
 | [`fixtures/outline.md`](fixtures/outline.md) | Heading + paragraph outline |
+| [`fixtures/outline_h3.md`](fixtures/outline_h3.md) | Depth-three outline for h3 view |
 | [`fixtures/fence_kinds.md`](fixtures/fence_kinds.md) | One rye · one rish · one plain fence |
 | `pond/apps/scribble/scribble_core.rye` | Symlink for drawn-terminal import |
 
@@ -43,6 +45,7 @@ Scribble turns human prose into block values — headings, paragraphs, and fence
 rishi/bin/rishi run tools/scribble_lap8.rish
 rishi/bin/rishi run tools/inference_scribble_h1_view.rish
 rishi/bin/rishi run tools/inference_scribble_h2_view.rish
+rishi/bin/rishi run tools/inference_scribble_h3_view.rish
 ```
 
 *May what we write become values the stack can diff and render.*
