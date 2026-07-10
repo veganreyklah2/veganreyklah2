@@ -1,6 +1,6 @@
-//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 4).
+//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 5).
 //!
-//! Headings, paragraphs, fenced code (rye / rish / plain). Heading and paragraph extract for views.
+//! Headings, paragraphs, fenced code (rye / rish / plain). Heading, paragraph, and fence-kind extract for views.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -245,4 +245,25 @@ pub fn extract_paragraphs(blocks: []const Block, out: []Paragraph) ParseError!u3
         count += 1;
     }
     return count;
+}
+
+pub const FenceKinds = struct {
+    rye: u32 = 0,
+    rish: u32 = 0,
+    plain: u32 = 0,
+};
+
+/// Count rye / rish / plain fences in source order — fence-kinds fold for Scribble view.
+pub fn count_fence_kinds(blocks: []const Block) FenceKinds {
+    var kinds: FenceKinds = .{};
+    var i: u32 = 0;
+    while (i < blocks.len) : (i += 1) {
+        switch (blocks[i].kind) {
+            .rye_fence => kinds.rye += 1,
+            .rish_fence => kinds.rish += 1,
+            .code_fence => kinds.plain += 1,
+            else => {},
+        }
+    }
+    return kinds;
 }

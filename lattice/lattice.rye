@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 6 selftest (matmul · add · reshape · reduce · scale · transpose · mul).
+//! lattice/lattice.rye — Lattice lap 7 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.185947";
+const lattice_version = "20260710.190319";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -136,6 +136,16 @@ fn welcome_mul() !void {
     print("lattice: mul 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
 }
 
+fn welcome_fill() !void {
+    var out = try lc.Matrix.init(2, 2);
+    lc.fill(&out, 7.0);
+    assert(out.at(0, 0) == 7);
+    assert(out.at(0, 1) == 7);
+    assert(out.at(1, 0) == 7);
+    assert(out.at(1, 1) == 7);
+    print("lattice: fill 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -223,6 +233,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_scale();
         try welcome_transpose();
         try welcome_mul();
+        try welcome_fill();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -230,7 +241,7 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_transpose_shape();
         try unwelcome_mul_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap6: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap7: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
