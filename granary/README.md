@@ -1,8 +1,8 @@
 # Granary — weave-sharing surface
 
 **Language:** EN
-**Stamp:** `20260710.172625`
-**Status:** Landed — four doors open; Sharing on hosted + device wire; Exchange listing + view + in-process settle; live TB waits; Mandi is its own room
+**Stamp:** `20260710.173353`
+**Status:** Landed — four doors open; Sharing on hosted + device wire; Exchange listing + view + in-process settle + settle view; live TB waits; Mandi is its own room
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Granary** is the place where signed weaves are named, shared, mirrored, and optionally sold — every artist a node.
@@ -18,9 +18,10 @@
 | **5 (landed)** | Exchange listing — weave priced in MALA; receipt digest without identities |
 | **Exchange view (landed)** | Skate `exchangeviewtest` — six-line citizen's window on a priced weave |
 | **6 (landed)** | Weave settle — `weave-settle-v1` binds listing receipt + MALA/WOV payment |
+| **Settle view (landed)** | Skate `settlevie` — six-line citizen's window on a closed weave |
 
 **Not this room:** Amphora vessel market floor is **Mandi** (seated `20260710.165634`). Live TigerBeetle waits.
 
-**Witnesses:** **232**–**237**, **239**, **241**, **243** (`tools/granary_lap1.rish` · `granary_weave_view.rish` · `granary_lap2.rish` · `granary_lap3.rish` · `granary_resin_wire.rish` · `granary_exchange.rish` · `granary_device_wire.rish` · `granary_exchange_view.rish` · `granary_weave_settle.rish`)
+**Witnesses:** **232**–**237**, **239**, **241**, **243**, **245** (`tools/granary_lap1.rish` · `granary_weave_view.rish` · `granary_lap2.rish` · `granary_lap3.rish` · `granary_resin_wire.rish` · `granary_exchange.rish` · `granary_device_wire.rish` · `granary_exchange_view.rish` · `granary_weave_settle.rish` · `granary_settle_view.rish`)
 
 *May the namespace never forget a name. May every mirror be equal. May every receipt stay quiet about who paid.*

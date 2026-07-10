@@ -27,8 +27,8 @@ Two markets. Two roofs. One tree. Confusing them blurs both.
 
 | Roof | Landed on metal | Still held |
 |------|-----------------|------------|
-| **Granary** | Registry · weave view · write gate · Sharing (hosted + device) · Exchange listing · Exchange Skate view · weave settle (parity **232**–**237**, **239**, **241**, **243**) | Live TigerBeetle |
-| **Mandi** | Vessel listing · floor view · listing settle binding MALA send + WOV transfer (parity **238**, **240**, **242**) | Live TigerBeetle; Amphora carriage stays its own rite |
+| **Granary** | Registry · weave view · write gate · Sharing (hosted + device) · Exchange listing · Exchange Skate view · weave settle · settle Skate view (parity **232**–**237**, **239**, **241**, **243**, **245**) | Live TigerBeetle |
+| **Mandi** | Vessel listing · floor view · listing settle · settle Skate view (parity **238**, **240**, **242**, **244**) | Live TigerBeetle; Amphora carriage stays its own rite |
 
 **What weave settle is:** In-process only (same shape as Mandi). Exchange listing receipt + payment digest (MALA + WOV). No buyer/seller fields. No live TB.
 
