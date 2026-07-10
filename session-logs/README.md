@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.220833 | [Machines and organizing thought](20260710-220833_machines-organize-thoughts.md) | Reflection: machines externalize and witness; choosing stays human |
 | 20260710.220706 | [SLC and inference progress document](20260710-220706_slc-inference-progress-doc.md) | Durable brief at tip **354**; pushed to all remotes |
 | 20260710.220459 | [How the inference climb serves the SLCs](20260710-220459_slc-inference-climb-explain.md) | Tip **347**–**354** as Gall growth under SLC-2a glass, not a new product lap |
 | 20260710.215613 | [Compass climb — tanh, gelu, stream pin, fence+heading, exception reason](20260710-215613_compass-climb-tanh-gelu-stream-fence.md) | Parity **347**–**354**; climbs **1z**/**1aa**; Rest-until stays closed |
