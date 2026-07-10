@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.192749 | [Compass climb — Lattice neg, chart view, tools prefix, Lantern prompt pin](20260710-192749_compass-climb-neg-chart-tools-prompt.md) | Parity **291**–**294**; soak closed |
 | 20260710.192018 | [Assist/sight composition — plain fences and journal memos on the glass](20260710-192018_assist-sight-composition-journal-plain.md) | Parity **288**–**290**; composition lap |
 | 20260710.191541 | [Counsel — roadmap standing, UX from foundations, next word](20260710-191541_counsel-roadmap-ux-next.md) | Tip **287**; composition over bolt-accretion |
 | 20260710.191112 | [Compass climb — Lattice sub, journal view, plain view, Lantern stop pin](20260710-191112_compass-climb-sub-journal-plain-stop-pin.md) | Parity **284**–**287**; soak closed |

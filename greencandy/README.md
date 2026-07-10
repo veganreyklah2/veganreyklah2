@@ -1,9 +1,9 @@
 # Greencandy — Centralized Books of Record
 
 **Language:** EN
-**Last updated:** 2026-07-10 (journal view `191112`; parity **285**)
+**Last updated:** 2026-07-10 (chart view `192749`; parity **292**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 1–3 green; sight, exception, P&L, BS, TB, and journal views on Skate
+**Status:** Checkable-room module — laps 1–3 green; sight, exception, P&L, BS, TB, journal, and chart views on Skate
 
 ---
 
@@ -19,6 +19,7 @@ Greencandy is Linengrow's **centralized books**: one steward's chart of accounts
 | **BS view** | Balance sheet alone → five-line Skate frame | parity **274** · `tools/greencandy_bs_view.rish` |
 | **TB view** | Trial balance alone → six-line Skate frame | parity **277** · `tools/greencandy_tb_view.rish` |
 | **journal view** | Entry memos alone → five-line Skate frame | parity **285** · `tools/greencandy_journal_view.rish` (`191112`) |
+| **chart view** | Account names alone → six-line Skate frame | parity **292** · `tools/greencandy_chart_view.rish` (`192749`) |
 
 ## Layout
 
@@ -40,6 +41,7 @@ rishi/bin/rishi run tools/greencandy_pnl_view.rish
 rishi/bin/rishi run tools/greencandy_bs_view.rish
 rishi/bin/rishi run tools/greencandy_tb_view.rish
 rishi/bin/rishi run tools/greencandy_journal_view.rish
+rishi/bin/rishi run tools/greencandy_chart_view.rish
 ```
 
 **Design:** hammock [`../active-designing/20260710-125953_greencandy-hammock.md`](../active-designing/20260710-125953_greencandy-hammock.md) · lap 2 [`../active-designing/20260710-131212_greencandy-lap2-reports.md`](../active-designing/20260710-131212_greencandy-lap2-reports.md) · lap 3 sight [`../active-designing/20260710-132548_greencandy-lap3-sight-view.md`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`../external-research/20260710-131956_seen-books-living-desktop-horizon.md`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md)

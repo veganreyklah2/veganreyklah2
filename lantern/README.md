@@ -1,13 +1,13 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 7 stop_sequence pin `191112`; parity **287**)
+**Last updated:** 2026-07-10 (lap 8 prompt pin `192749`; parity **294**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–7 green (fixture · max_tokens · allow-list · temperature/seed · top_p · err_stop · stop_sequence response + request pin)
+**Status:** Checkable-room module — laps 0–8 green (fixture · max_tokens · allow-list · temperature/seed · top_p · err_stop · stop_sequence response + request pin · prompt pin)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, then a request-side `stop_sequence` pin. Weights named by hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, a request-side `stop_sequence` pin, then a request-side `prompt` pin. Weights named by hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
@@ -19,12 +19,13 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | **5** | `err_stop` · fixture pin | parity **279** · `tools/lantern_lap5.rish` |
 | **6** | `stop_sequence` · response fixture pin | parity **283** · `tools/lantern_lap6.rish` |
 | **7** | `stop_sequence` · request pin + mismatch refuse | parity **287** · `tools/lantern_lap7.rish` (`191112`) |
+| **8** | `prompt` · request pin + mismatch refuse | parity **294** · `tools/lantern_lap8.rish` (`192749`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget + allow-list + seed + top_p + err_stop + stop_sequence |
+| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget + allow-list + seed + top_p + err_stop + stop_sequence + prompt |
 | [`lantern.rye`](lantern.rye) | Selftest |
 | [`fixtures/completion.bron`](fixtures/completion.bron) | Lap 0 pinned completion |
 | [`fixtures/completion_length.bron`](fixtures/completion_length.bron) | Lap 1 long completion |
@@ -33,5 +34,6 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | [`fixtures/completion_top_p.bron`](fixtures/completion_top_p.bron) | Lap 4 top_p pin |
 | [`fixtures/completion_err_stop.bron`](fixtures/completion_err_stop.bron) | Lap 5 err_stop pin |
 | [`fixtures/completion_stop_sequence.bron`](fixtures/completion_stop_sequence.bron) | Lap 6–7 stop_sequence pin |
+| [`fixtures/completion_prompt.bron`](fixtures/completion_prompt.bron) | Lap 8 prompt pin |
 
-*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, and stop_sequence pins keep the fixture path deterministic.*
+*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, and prompt pins keep the fixture path deterministic.*
