@@ -1,7 +1,7 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 19 require_model · dual-model `213738`; parity **334**/**338**)
+**Last updated:** 2026-07-10 (lap 21 stopped_reason pins `214145`; parity **342**/**346**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–19 green (through dual-model allow · require_model pin)
 

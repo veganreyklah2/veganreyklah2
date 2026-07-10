@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 21 selftest (ops through pow · relu).
+//! lattice/lattice.rye — Lattice lap 23 selftest (ops through sigmoid · softmax).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.213738";
+const lattice_version = "20260710.214145";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -357,6 +357,36 @@ fn welcome_relu() !void {
     print("lattice: relu 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
 }
 
+fn welcome_sigmoid() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.sigmoid(&src, &out);
+    assert(out.at(0, 0) == 0.5);
+    assert(out.at(0, 1) == 0.5);
+    assert(out.at(1, 0) == 0.5);
+    assert(out.at(1, 1) == 0.5);
+    print("lattice: sigmoid 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_softmax() !void {
+    var src = try lc.Matrix.init(1, 4);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(0, 2, 0);
+    src.set(0, 3, 0);
+    var out = try lc.Matrix.init(1, 4);
+    try lc.softmax(&src, &out);
+    assert(out.at(0, 0) == 0.25);
+    assert(out.at(0, 1) == 0.25);
+    assert(out.at(0, 2) == 0.25);
+    assert(out.at(0, 3) == 0.25);
+    print("lattice: softmax 1x4 green — p0={d}\n", .{out.at(0, 0)});
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -567,6 +597,28 @@ fn unwelcome_relu_shape() !void {
     print("lattice: relu shape mismatch refused\n", .{});
 }
 
+fn unwelcome_sigmoid_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.sigmoid(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: sigmoid shape mismatch refused\n", .{});
+}
+
+fn unwelcome_softmax_shape() !void {
+    var src = try lc.Matrix.init(1, 4);
+    var out = try lc.Matrix.init(1, 3);
+    if (lc.softmax(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: softmax shape mismatch refused\n", .{});
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -680,6 +732,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_log();
         try welcome_pow();
         try welcome_relu();
+        try welcome_sigmoid();
+        try welcome_softmax();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -704,8 +758,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_pow_shape();
         try unwelcome_pow_negative();
         try unwelcome_relu_shape();
+        try unwelcome_sigmoid_shape();
+        try unwelcome_softmax_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap21: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap23: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

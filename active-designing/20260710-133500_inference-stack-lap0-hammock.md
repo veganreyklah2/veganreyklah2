@@ -5,7 +5,7 @@
 **Stamp:** `20260710.133500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 0 green; climb `213738` pow · tally · sight TB · dual-model · relu · assist BS · require_model (parity through **338**)
+**Status:** Checkable-room hammock — lap 0 green; climb `214145` sigmoid · blocks · exceptions · stopped_reason · softmax (parity through **346**)
 **Ground:** [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · prior brief [`20260620-020712_scribble-lantern-and-lattice.md`](20260620-020712_scribble-lantern-and-lattice.md) · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
 *Written by Kaeden and Rio 3.*

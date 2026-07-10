@@ -1,7 +1,7 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 21 pow · relu `213738`; parity **331**/**335**)
+**Last updated:** 2026-07-10 (lap 23 sigmoid · softmax `214145`; parity **339**/**343**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–21 green (ops through pow · relu)
 

@@ -1,4 +1,4 @@
-//! lantern/lantern.rye — Lantern lap 19 selftest (require_model + dual-model allow + allow_count + empty allow-list + pins through allow-list).
+//! lantern/lantern.rye — Lantern lap 21 selftest (stopped_reason pin + require_model + dual-model + pins through allow-list).
 //!
 //!   rye build lantern/lantern.rye -femit-bin=lantern/bin/lantern
 //!   lantern/bin/lantern selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const lc = @import("lantern_core.rye");
 
-const lantern_version = "20260710.213738";
+const lantern_version = "20260710.214145";
 pub const fixture_path = "lantern/fixtures/completion.bron";
 pub const length_fixture_path = "lantern/fixtures/completion_length.bron";
 pub const allow_fixture_path = "lantern/fixtures/allowed_models.bron";
@@ -29,6 +29,8 @@ pub const empty_allow_fixture_path = "lantern/fixtures/allowed_models_empty.bron
 pub const one_allow_fixture_path = "lantern/fixtures/allowed_models_one.bron";
 pub const assist_fixture_path = "lantern/fixtures/completion_assist.bron";
 pub const require_model_fixture_path = "lantern/fixtures/completion_require_model.bron";
+pub const stopped_reason_pin_fixture_path = "lantern/fixtures/completion_stopped_reason_pin.bron";
+pub const stopped_reason_length_pin_fixture_path = "lantern/fixtures/completion_stopped_reason_length_pin.bron";
 
 fn welcome_complete(io: std.Io) !void {
     const cwd = Dir.cwd();
@@ -666,6 +668,55 @@ fn unwelcome_require_model_missing(io: std.Io) !void {
     print("lantern: require_model missing refused\n", .{});
 }
 
+
+fn welcome_stopped_reason_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, stopped_reason_pin_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "stop pin",
+        .max_tokens = 64,
+        .expect_stopped = "eos",
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.stopped_reason == .eos);
+    print("lantern: stopped_reason pin completion — expect eos\n", .{});
+}
+
+fn welcome_stopped_reason_length_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, stopped_reason_length_pin_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "budget",
+        .max_tokens = 64,
+        .expect_stopped = "length",
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.stopped_reason == .length);
+    print("lantern: stopped_reason length pin completion — expect length\n", .{});
+}
+
+fn unwelcome_stopped_reason_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, stopped_reason_pin_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "stop pin",
+        .max_tokens = 64,
+        .expect_stopped = "length",
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.StoppedReasonMismatch);
+    }
+    print("lantern: stopped_reason mismatch refused\n", .{});
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
@@ -688,6 +739,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_allow_count(io);
         try welcome_dual_model_allow(io);
         try welcome_require_model(io);
+        try welcome_stopped_reason_pin(io);
+        try welcome_stopped_reason_length_pin(io);
         try unwelcome_model_mismatch(io);
         try unwelcome_prompt_too_long();
         try unwelcome_zero_budget();
@@ -708,7 +761,8 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_allow_count_mismatch(io);
         try unwelcome_empty_allow_list(io);
         try unwelcome_require_model_missing(io);
-        print("lantern lap19: version {s} — GREEN\n", .{lantern_version});
+        try unwelcome_stopped_reason_mismatch(io);
+        print("lantern lap21: version {s} — GREEN\n", .{lantern_version});
         return 0;
     }
     print("usage: lantern selftest\n", .{});
