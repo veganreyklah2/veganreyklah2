@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Design + first wire lap — checkable-room hammock; hosted Tablecloth query wire GREEN; parity **219**
+**Status:** Design + wire + query view — checkable-room hammock; hosted Tablecloth query wire GREEN; Realidream query-view Skate fold GREEN; parity **220**
 
 **Ground:** counsel [`005612`](../counsel/20260707-005612_claude-counsel-tablecloth-query.md) · Hyperfiddle gratitude [`../gratitude/hyperfiddle.md`](../gratitude/hyperfiddle.md) · Weave essay [`../foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) · NS brief [`20260706-023912_the-referential-namespace.md`](20260706-023912_the-referential-namespace.md) · Realidream thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
@@ -68,6 +68,12 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - `mantra/recall_tablecloth_query_delivery.rye` — hosted UDP selftest
 - Witness + parity **219**
 - Hammock + TASKS/ROADMAP pin
+
+### In scope (lap 1b — query view)
+
+- `tools/fixtures/tablecloth_query_hits.bron` — wire answer shape as fixture
+- `pond/apps/drawn_terminal.rye` `queryviewtest` — fold hits → Skate
+- `tools/realidream_query_view.rish` — witness; parity **220**
 
 ### Out of scope (later)
 

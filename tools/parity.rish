@@ -560,3 +560,8 @@ say "witness suite: Tablecloth query wire (Comlink hosted filter)…"
 let tcq_wire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_tablecloth_query_wire.rish"]
 assert tcq_wire.ok else "Tablecloth query wire witness failed"
 say "GREEN: Tablecloth query wire witness passed."
+
+say "witness suite: Realidream query view (Tablecloth hits → Skate)…"
+let query_view = run ["rishi/bin/rishi" "run" "tools/realidream_query_view.rish"]
+assert query_view.ok else "Realidream query view witness failed"
+say "GREEN: Realidream query view witness passed."

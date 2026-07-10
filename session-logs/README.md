@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.141200 | [Realidream query view](20260710-141200_realidream-query-view.md) | Query-wire hits → Skate; parity **220** |
 | 20260710.140500 | [Tablecloth query wire](20260710-140500_tablecloth-query-wire.md) | Not GraphQL; Comlink hosted filter; parity **219** |
 | 20260710.135200 | [Commit push — Greencandy + inference](20260710-135200_commit-push-greencandy-inference.md) | gitignore allowlist; parity **218** shipped |
 | 20260710.134800 | [Scribble lap 1 — snippets](20260710-134800_scribble-lap1-snippets.md) | rye_fence extract; parity **218** |
