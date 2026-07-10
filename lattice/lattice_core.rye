@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 15).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 17).
 //!
-//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs · clamp · reduce_max.
+//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs · clamp · reduce_max · reduce_min · sqrt.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -17,6 +17,7 @@ pub const TensorError = error{
     DimOverflow,
     EmptyMatrix,
     DivideByZero,
+    NegativeInput,
 };
 
 pub const Matrix = struct {
@@ -255,4 +256,32 @@ pub fn reduce_max(src: *const Matrix, out: *Matrix) TensorError!void {
         if (v > max_v) max_v = v;
     }
     out.set(0, 0, max_v);
+}
+
+/// Full-matrix min into a 1×1 — asserts output shape at entry.
+pub fn reduce_min(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != 1 or out.cols != 1) return error.ShapeMismatch;
+    var min_v: f32 = src.at(0, 0);
+    var i: u32 = 1;
+    while (i < src.len()) : (i += 1) {
+        const r = i / src.cols;
+        const c = i % src.cols;
+        const v = src.at(r, c);
+        if (v < min_v) min_v = v;
+    }
+    out.set(0, 0, min_v);
+}
+
+/// Elementwise square root — shapes must match; negative input refused.
+pub fn sqrt(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            if (v < 0.0) return error.NegativeInput;
+            out.set(r, c, @sqrt(v));
+        }
+    }
 }
