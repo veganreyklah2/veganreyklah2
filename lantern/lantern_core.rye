@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 27).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 29).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen through top_k · frequency_penalty pins.
+//! Weights live in Tablecloth by hash. Laps deepen through presence_penalty · n — lap-1 close.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -13,6 +13,8 @@ pub const max_temperature: f32 = 2.0;
 pub const max_top_p: f32 = 1.0;
 pub const max_top_k: u32 = 256;
 pub const max_frequency_penalty: f32 = 2.0;
+pub const max_presence_penalty: f32 = 2.0;
+pub const max_n: u32 = 8;
 pub const max_stop_sequence_len: u32 = 32;
 
 pub const StoppedReason = enum(u8) {
@@ -48,6 +50,10 @@ pub const LanternError = error{
     TopKMismatch,
     BadFrequencyPenalty,
     FrequencyPenaltyMismatch,
+    BadPresencePenalty,
+    PresencePenaltyMismatch,
+    BadN,
+    NMismatch,
 };
 
 pub const Request = struct {
@@ -64,6 +70,8 @@ pub const Request = struct {
     stream: bool = false,
     top_k: u32 = 0,
     frequency_penalty: f32 = 0.0,
+    presence_penalty: f32 = 0.0,
+    n: u32 = 1,
 };
 
 pub const Response = struct {
@@ -80,6 +88,8 @@ pub fn validate_request(req: Request) LanternError!void {
     if (req.top_p < 0.0 or req.top_p > max_top_p) return error.BadTopP;
     if (req.top_k > max_top_k) return error.BadTopK;
     if (req.frequency_penalty < -max_frequency_penalty or req.frequency_penalty > max_frequency_penalty) return error.BadFrequencyPenalty;
+    if (req.presence_penalty < -max_presence_penalty or req.presence_penalty > max_presence_penalty) return error.BadPresencePenalty;
+    if (req.n == 0 or req.n > max_n) return error.BadN;
     if (req.stop_sequence.len > max_stop_sequence_len) return error.BadStopSequence;
 }
 
@@ -182,6 +192,14 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     if (field_value(fixture_text, "frequency_penalty")) |pinned_text| {
         const pinned = std.fmt.parseFloat(f32, pinned_text) catch return error.BadFixture;
         if (req.frequency_penalty != pinned) return error.FrequencyPenaltyMismatch;
+    }
+    if (field_value(fixture_text, "presence_penalty")) |pinned_text| {
+        const pinned = std.fmt.parseFloat(f32, pinned_text) catch return error.BadFixture;
+        if (req.presence_penalty != pinned) return error.PresencePenaltyMismatch;
+    }
+    if (field_value(fixture_text, "n")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        if (req.n != pinned) return error.NMismatch;
     }
     if (field_value(fixture_text, "prompt")) |pinned| {
         if (!std.mem.eql(u8, req.prompt, pinned)) return error.PromptMismatch;

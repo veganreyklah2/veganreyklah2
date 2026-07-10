@@ -50,6 +50,7 @@
 //!   pond/bin/drawn-terminal scribblefenceheadingviewtest # Scribble fence+heading combo → Skate
 //!   pond/bin/drawn-terminal scribbletallyblocksviewtest # Scribble tally+blocks combo → Skate
 //!   pond/bin/drawn-terminal scribbleparablocksviewtest # Scribble paragraphs+blocks combo → Skate
+//!   pond/bin/drawn-terminal scribbleh1blocksviewtest # Scribble h1+blocks combo → Skate
 //!   pond/bin/drawn-terminal corpusryecandyprefixviewtest # Anvil rye + greencandy/ → Skate
 //!   pond/bin/drawn-terminal corpusrishtoolsprefixviewtest # Anvil rish + tools/ → Skate
 //!   pond/bin/drawn-terminal corpusryeappsprefixviewtest # Anvil rye + pond/apps/ → Skate
@@ -131,6 +132,7 @@ const scribble_blocks_view_max_lines: u32 = 5;
 const scribble_fence_heading_view_max_lines: u32 = 5;
 const scribble_tally_blocks_view_max_lines: u32 = 5;
 const scribble_para_blocks_view_max_lines: u32 = 5;
+const scribble_h1_blocks_view_max_lines: u32 = 5;
 const exception_view_max_lines: u32 = 5;
 const pnl_view_max_lines: u32 = 5;
 const bs_view_max_lines: u32 = 5;
@@ -498,7 +500,7 @@ fn compose_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     lines[3] = .{ .text = try garden.dupe(u8, conservation) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d} retained {d} · pnl net {d} · bs equity {d} · tb {d}", .{ nets[0], bs.retained, pl.net, bs.equity, tb_sum }) };
         const ex = try greencandy_exception_summary();
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d}", .{ entry_count, entries[0].memo, ex.count, ex.first_reason, ex.second_reason, ex.unknown_n, ex.bad_n }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{ entry_count, entries[0].memo, ex.count, ex.first_reason, ex.second_reason, ex.unknown_n, ex.bad_n, ex.kinds_n }) };
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "chart {s} {s} {s} {s}", .{
         greencandy.Account.cash.name(),
         greencandy.Account.revenue.name(),
@@ -530,16 +532,16 @@ fn run_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage wov seq 1",
         "conservation 1000 issued 1000 redeemed 0",
         "books cash 800 retained 800 · pnl net 800 · bs equity 0 · tb 0",
-        "journal entries 2 stipend received · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1",
+        "journal entries 2 stipend received · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1 · kinds 2",
         "chart cash revenue expense equity",
         "sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [280]u8 = undefined;
+    var out: [320]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal sight view: journal=2 chart=4 pnl=800 equity=0 tb=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 sig={x} lines={d} — GREEN\n",
+        "drawn terminal sight view: journal=2 chart=4 pnl=800 equity=0 tb=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -624,7 +626,7 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d}", .{
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{
         entry_count,
         entries[0].memo,
         greencandy.Account.cash.name(),
@@ -638,6 +640,7 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
         ex.second_reason,
         ex.unknown_n,
         ex.bad_n,
+        ex.kinds_n,
     }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist fold green") };
     return lines;
@@ -665,15 +668,15 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "model sha3-256-rye-forge-lap0",
         "lantern 24/12 eos",
         "suggest use init.garden not ArgIterator",
-        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1",
+        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1 · kinds 2",
         "assist fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [320]u8 = undefined;
+    var out: [360]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -732,7 +735,7 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d}", .{
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{
         entry_count,
         entries[0].memo,
         greencandy.Account.cash.name(),
@@ -746,6 +749,7 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
         ex.second_reason,
         ex.unknown_n,
         ex.bad_n,
+        ex.kinds_n,
     }) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist sight fold green") };
     return lines;
@@ -773,15 +777,15 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "corpus rye 2 rish 1",
         "snippets rye 2 rish 1 plain 1",
         "lantern 24/12 eos",
-        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1",
+        "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1 · kinds 2",
         "assist sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [320]u8 = undefined;
+    var out: [360]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -2268,7 +2272,7 @@ fn run_corpus_apps_prefix_view_witness(garden: std.mem.Allocator, io: std.Io) !u
 }
 
 
-fn greencandy_exception_summary() !struct { count: u32, first_reason: []const u8, second_reason: []const u8, unknown_n: u32, bad_n: u32 } {
+fn greencandy_exception_summary() !struct { count: u32, first_reason: []const u8, second_reason: []const u8, unknown_n: u32, bad_n: u32, kinds_n: u32 } {
     const drafts = [_][]const u8{
         "debit cash\ncredit notanaccount\namount 10\nmemo bad\nstamp 20260710.182502\n",
         "debit cash\ncredit revenue\namount 0\nmemo zero\nstamp 20260710.182502\n",
@@ -2285,7 +2289,10 @@ fn greencandy_exception_summary() !struct { count: u32, first_reason: []const u8
         if (std.mem.eql(u8, out_ex[i].reason, "unknown account")) unknown_n += 1;
         if (std.mem.eql(u8, out_ex[i].reason, "bad amount")) bad_n += 1;
     }
-    return .{ .count = count, .first_reason = out_ex[0].reason, .second_reason = out_ex[1].reason, .unknown_n = unknown_n, .bad_n = bad_n };
+    var kinds_n: u32 = 0;
+    if (unknown_n > 0) kinds_n += 1;
+    if (bad_n > 0) kinds_n += 1;
+    return .{ .count = count, .first_reason = out_ex[0].reason, .second_reason = out_ex[1].reason, .unknown_n = unknown_n, .bad_n = bad_n, .kinds_n = kinds_n };
 }
 
 /// Greencandy exception queue view — refused drafts on Skate.
@@ -3225,6 +3232,60 @@ fn run_scribble_para_blocks_view_witness(garden: std.mem.Allocator, io: std.Io) 
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal scribble para blocks view: paragraphs=3 blocks=6 sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Scribble h1+blocks combo — depth-1 heading count and block count on one Skate frame.
+fn compose_scribble_h1_blocks_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [scribble.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, scribble_outline_fixture, &buf);
+    var blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const n = try scribble.parse_markdown(text, &blocks);
+    var headings: [scribble.max_headings]scribble.Heading = undefined;
+    const h1 = try scribble.extract_headings_at_depth(blocks[0..n], 1, &headings);
+    if (h1 != 1 or n != 6) return error.BadScribbleFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, scribble_h1_blocks_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "scribble h1 blocks view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "h1 {d}", .{h1}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "blocks {d}", .{n}) };
+    lines[3] = .{ .text = try garden.dupe(u8, "h1 blocks combo") };
+    lines[4] = .{ .text = try garden.dupe(u8, "combo fold green") };
+    return lines;
+}
+
+fn run_scribble_h1_blocks_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_scribble_h1_blocks_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == scribble_h1_blocks_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "scribble h1 blocks view",
+        "h1 1",
+        "blocks 6",
+        "h1 blocks combo",
+        "combo fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [200]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal scribble h1 blocks view: h1=1 blocks=6 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -4200,6 +4261,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleparablocksviewtest")) {
         return run_scribble_para_blocks_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleh1blocksviewtest")) {
+        return run_scribble_h1_blocks_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
         return run_exception_view_witness(garden, io);

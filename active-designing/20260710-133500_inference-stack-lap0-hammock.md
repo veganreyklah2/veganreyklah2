@@ -5,7 +5,7 @@
 **Stamp:** `20260710.133500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 0 green; climb `224322` softplus · para+blocks · exception tallies · top_k · maximum · frequency_penalty (parity through **370**)
+**Status:** Checkable-room hammock — lap 0 green; **Inference Track lap 1 closed** `224805` — tip **378**; fixture contract whole; next ROCm/Pond/LoRA on word
 **Ground:** [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · prior brief [`20260620-020712_scribble-lantern-and-lattice.md`](20260620-020712_scribble-lantern-and-lattice.md) · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md) · progress [`../work-in-progress/20260710-220706_slc-and-inference-progress.md`](../work-in-progress/20260710-220706_slc-and-inference-progress.md)
 
 *Written by Kaeden and Rio 3.*
@@ -32,6 +32,10 @@ Lattice → Lantern → Anvil training. Scribble feeds corpus and eval alongside
 
 - ROCm host seam · live model weights · Pond policy · LoRA overnight runs
 - Embedding index in Tablecloth · editor inline assist on Wayland metal
+
+## Lap 1 close (`20260710.224805`)
+
+The lettered climb **1**–**1ag** deepened Lattice activations, Lantern request pins, Scribble combo views, and Greencandy exception folds on the drawn terminal — all fixture-served, all parity-gated. Tip **378** closes that mechanical family. Horizon rungs **2**–**5** (ROCm, Pond-Lantern, LoRA, live editor assist) wait their own gates.
 
 ## Success
 

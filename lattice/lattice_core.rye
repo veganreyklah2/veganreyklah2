@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 29).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 31).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through softplus · maximum.
+//! Parity-gated tensor ops before Lantern. Laps through minimum · elu — lap-1 close.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -456,6 +456,34 @@ pub fn maximum(a: *const Matrix, b: *const Matrix, out: *Matrix) TensorError!voi
             const av = a.at(r, c);
             const bv = b.at(r, c);
             out.set(r, c, if (av >= bv) av else bv);
+        }
+    }
+}
+
+/// Elementwise minimum of two matrices — shapes must match.
+pub fn minimum(a: *const Matrix, b: *const Matrix, out: *Matrix) TensorError!void {
+    if (a.rows != b.rows or a.cols != b.cols) return error.ShapeMismatch;
+    if (out.rows != a.rows or out.cols != a.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < a.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < a.cols) : (c += 1) {
+            const av = a.at(r, c);
+            const bv = b.at(r, c);
+            out.set(r, c, if (av <= bv) av else bv);
+        }
+    }
+}
+
+/// Elementwise ELU — v if v>=0 else α·(exp(v)-1); shapes must match; elu(0)=0.
+pub fn elu(src: *const Matrix, alpha: f32, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v >= 0.0) v else alpha * (@exp(v) - 1.0));
         }
     }
 }
