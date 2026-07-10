@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Amphora purchase delivery `161358`; parity **231**)
+**Last updated:** 2026-07-10 (Granary name seated `163043`; Amphora purchase delivery `161358`; parity **231**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -108,6 +108,7 @@
 | **39** | **Amphora resin chunk** | **Landed** | Large resin beyond one datagram (kind **0x33**); parity **229** |
 | **40** | **Pond customs** | **Landed** | First policy lap — place / hold / refuse per Tilak; Amphora receipt gated; parity **230** |
 | **41** | **Amphora purchase delivery** | **Landed** | Commerce delivery slip binds vessel parent + payment; parity **231** |
+| **42** | **Granary name** | **Seated** | Weave-sharing surface (four doors); Mandi parks for vessel market; first code lap horizon — [`163043`](../context/specs/20260710-163043_granary-name-seated.md) |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |

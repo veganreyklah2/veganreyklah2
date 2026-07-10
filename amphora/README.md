@@ -15,7 +15,7 @@
 | **Stamp (landed)** | Kumara `stamp_sig` on canonical vessel body; verify on pour + scrub |
 | **Seal (landed)** | Amber ChaCha20-Poly1305 on cargo (`seal_nonce` · `seal_tag` · `seal_cargo`); shoulder stays clear; seal then stamp |
 | **Chunk (landed)** | Large resin beyond one datagram — kind **0x33** chunks + `ResinAssembler`; 400 B witness |
-| **Purchase delivery (landed)** | Commerce slip binds `vessel_parent` + `payment` under Kumara; Granary market floor still held |
+| **Purchase delivery (landed)** | Commerce slip binds `vessel_parent` + `payment` under Kumara; Granary name seated (sharing surface); Mandi parks for vessel market floor |
 
 **Forge surface:** Realidream `forgeviewtest` pours `amphora_lap3_tree` via `tools/fixtures/forge_view_pour.sh`, then folds the sealed bundle onto Skate (`tools/realidream_forge_view.rish`).
 

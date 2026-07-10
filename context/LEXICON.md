@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
+**Last updated:** 2026-07-10 (Granary name seated `163043`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -62,7 +62,8 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Maitreya** | Media driver — **time** for audio and video: decode, sync, bounded buffers; Brushstroke owns space; Lotus authors above; Realidream and Linengrow play through one seam; codecs as royalty-free host seams |
 | **Lotus** | Our digital audio workstation — hot-loop studio above Maitreya; horizon after SLC-2 |
 | **Uddhava** | Spatial driver — real-time 3D, CAD, and scene graph (horizon; Unity-shaped role in our vocabulary) |
-| **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy |
+| **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy; **customs** first policy lap landed `161125` (place / hold / refuse per Tilak) |
+| **Granary** | **Sharing surface** — Mantra global namespace where signed weaves are named, shared, mirrored, and optionally sold (four doors: Identity · Namespace · Sharing · Exchange); name seated `20260710.163043`; first code lap horizon — [`specs/20260710-163043_granary-name-seated.md`](specs/20260710-163043_granary-name-seated.md) · study [`../external-research/20260703-182612_the-granary-question.md`](../external-research/20260703-182612_the-granary-question.md) |
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition; **bond overrides** carry the infuse pattern (Silo module name retired `174500`) |
@@ -129,6 +130,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, gitlink `59f2b99`, pin **203**, host seam A **204**, dual D1 **205**); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty [`specs/20260709-200443_wov-exit-honesty.md`](specs/20260709-200443_wov-exit-honesty.md); lap 1 **201**; seam A [`specs/20260709-204026_wov-tb-client-seam.md`](specs/20260709-204026_wov-tb-client-seam.md); dual D1 [`specs/20260709-224531_wov-dual-monarch.md`](specs/20260709-224531_wov-dual-monarch.md) — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
+| **Mandi** | Parked — produce / vessel market floor where harvests and amphorae change hands; distinct from Granary's weave-sharing surface — [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md) |
 | **`.brush`** | Surface-description extension when Brushstroke earns a small language |
 
 ---

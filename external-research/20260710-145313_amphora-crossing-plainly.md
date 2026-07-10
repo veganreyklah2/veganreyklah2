@@ -72,9 +72,10 @@ GPL gratitude projects (SixOS, River, Damus, …) stay gitlink-or-docs-only per 
 
 ## Horizons (Named, Not Opened Here)
 
-- Granary **market floor** where vessels change hands (sharing surface still held)  
+- Granary **first code lap** (name seated `163043` — read-only local registry; payments/federation wait)  
+- **Mandi** vessel market floor (parked; distinct from Granary)  
 
-**Landed since this page:** Kumara `stamp_sig` (`20260710.145843`, parity **227**) · Amber AEAD vessel seal (`20260710.153745`, parity **228**) · large-resin chunking (`20260710.154300`, parity **229**) · Pond customs (`20260710.161125`, parity **230**) · purchase delivery slip (`20260710.161358`, parity **231**).
+**Landed since this page:** Kumara `stamp_sig` (`20260710.145843`, parity **227**) · Amber AEAD vessel seal (`20260710.153745`, parity **228**) · large-resin chunking (`20260710.154300`, parity **229**) · Pond customs (`20260710.161125`, parity **230**) · purchase delivery slip (`20260710.161358`, parity **231**) · Granary **name** seated (`20260710.163043`).
 
 ---
 

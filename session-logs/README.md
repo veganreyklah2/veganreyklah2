@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.163043 | [Granary name seated](20260710-163043_granary-name-seated.md) | Four-door sharing surface; Mandi for vessel floor |
 | 20260710.162950 | [Bakery as a name candidate](20260710-162950_bakery-name-candidate.md) | Warm kitchen alternate; mission fit vs Granary |
 | 20260710.162312 | [Granary naming — mission and candidates](20260710-162312_granary-naming-mission.md) | Four-door mission; Granary vs Mandi; name counsel |
 | 20260710.161538 | [Day summary — sealed crossing](20260710-161538_day-summary-sealed-crossing.md) | Seal → chunk → customs → delivery; parity **227**–**231** |
