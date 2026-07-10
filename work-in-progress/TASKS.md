@@ -243,6 +243,14 @@
 | **174** | **Assist sight lap 9 second exception reason** | **Landed** | Second exception reason on carriage; parity **360**; stamp `223639` |
 | **175** | **Assist view lap 11 second exception reason** | **Landed** | Second exception reason on assist fold; parity **361**; stamp `223639` |
 | **176** | **Lantern lap 25 stopped_reason stop_sequence pin** | **Landed** | pin_stopped_reason stop_sequence; parity **362**; stamp `223639` |
+| **177** | **Lattice lap 28 softplus** | **Landed** | Elementwise softplus; parity **363**; stamp `224322` |
+| **178** | **Scribble paragraphs+blocks view** | **Landed** | Paragraphs + blocks on one Skate frame; parity **364**; stamp `224322` |
+| **179** | **Linengrow sight lap 10 exception tallies** | **Landed** | Exception reason tallies on glass; parity **365**; stamp `224322` |
+| **180** | **Lantern lap 26 top_k pin** | **Landed** | top_k pin; parity **366**; stamp `224322` |
+| **181** | **Lattice lap 29 maximum** | **Landed** | Elementwise maximum; parity **367**; stamp `224322` |
+| **182** | **Assist sight lap 10 exception tallies** | **Landed** | Exception tallies on carriage; parity **368**; stamp `224322` |
+| **183** | **Assist view lap 12 exception tallies** | **Landed** | Exception tallies on assist fold; parity **369**; stamp `224322` |
+| **184** | **Lantern lap 27 frequency_penalty pin** | **Landed** | frequency_penalty pin; parity **370**; stamp `224322` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

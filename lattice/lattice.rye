@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 27 selftest (ops through silu · leaky_relu).
+//! lattice/lattice.rye — Lattice lap 29 selftest (ops through softplus · maximum).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.223639";
+const lattice_version = "20260710.224322";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -447,6 +447,42 @@ fn welcome_leaky_relu() !void {
     print("lattice: leaky_relu 2x2 green — o01={d}\n", .{out.at(0, 1)});
 }
 
+fn welcome_softplus() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.softplus(&src, &out);
+    assert(out.at(0, 0) > 0.69);
+    assert(out.at(0, 0) < 0.70);
+    assert(out.at(1, 1) > 0.69);
+    assert(out.at(1, 1) < 0.70);
+    print("lattice: softplus 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_maximum() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 4);
+    a.set(1, 0, 2);
+    a.set(1, 1, 0);
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 3);
+    b.set(0, 1, 1);
+    b.set(1, 0, 2);
+    b.set(1, 1, 5);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.maximum(&a, &b, &out);
+    assert(out.at(0, 0) == 3);
+    assert(out.at(0, 1) == 4);
+    assert(out.at(1, 0) == 2);
+    assert(out.at(1, 1) == 5);
+    print("lattice: maximum 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -723,6 +759,30 @@ fn unwelcome_leaky_relu_shape() !void {
     print("lattice: leaky_relu shape mismatch refused\n", .{});
 }
 
+fn unwelcome_softplus_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.softplus(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: softplus shape mismatch refused\n", .{});
+}
+
+fn unwelcome_maximum_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.maximum(&a, &b, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: maximum shape mismatch refused\n", .{});
+}
+
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -842,6 +902,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_gelu();
         try welcome_silu();
         try welcome_leaky_relu();
+        try welcome_softplus();
+        try welcome_maximum();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -872,8 +934,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_gelu_shape();
         try unwelcome_silu_shape();
         try unwelcome_leaky_relu_shape();
+        try unwelcome_softplus_shape();
+        try unwelcome_maximum_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap27: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap29: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

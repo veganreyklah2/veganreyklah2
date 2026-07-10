@@ -1,9 +1,9 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 25 stopped_reason pins `223639`; parity **358**/**362**)
+**Last updated:** 2026-07-10 (lap 27 top_k · frequency_penalty `224322`; parity **366**/**370**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–25 green (through full stopped_reason pin coverage)
+**Status:** Checkable-room module — laps 0–27 green (through top_k · frequency_penalty pins)
 
 ---
 
@@ -37,6 +37,8 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | **23** | `stream` · pin true | parity **354** · `tools/lantern_lap23.rish` (`215613`) |
 | **24** | `stopped_reason` · err_stop pin | parity **358** · `tools/lantern_lap24.rish` (`223639`) |
 | **25** | `stopped_reason` · stop_sequence pin | parity **362** · `tools/lantern_lap25.rish` (`223639`) |
+| **26** | `top_k` · request pin | parity **366** · `tools/lantern_lap26.rish` (`224322`) |
+| **27** | `frequency_penalty` · request pin | parity **370** · `tools/lantern_lap27.rish` (`224322`) |
 
 ## Layout
 
@@ -69,5 +71,7 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | [`fixtures/completion_stream_on.bron`](fixtures/completion_stream_on.bron) | Lap 23 stream pin true |
 | [`fixtures/completion_stopped_reason_err_stop_pin.bron`](fixtures/completion_stopped_reason_err_stop_pin.bron) | Lap 24 stopped_reason err_stop pin |
 | [`fixtures/completion_stopped_reason_stop_sequence_pin.bron`](fixtures/completion_stopped_reason_stop_sequence_pin.bron) | Lap 25 stopped_reason stop_sequence pin |
+| [`fixtures/completion_top_k.bron`](fixtures/completion_top_k.bron) | Lap 26 top_k pin |
+| [`fixtures/completion_frequency_penalty.bron`](fixtures/completion_frequency_penalty.bron) | Lap 27 frequency_penalty pin |
 
 *May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, prompt, max_tokens, text, temperature, TopPMismatch, err_stop, length_stop, stopped_reason, and stream pins keep the fixture path deterministic.*

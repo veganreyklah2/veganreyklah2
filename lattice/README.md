@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 27 silu · leaky_relu `223639`; parity **355**/**359**)
+**Last updated:** 2026-07-10 (lap 29 softplus · maximum `224322`; parity **363**/**367**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–27 green (ops through silu · leaky_relu)
+**Status:** Checkable-room module — laps 0–29 green (ops through softplus · maximum)
 
 ---
 
@@ -39,17 +39,19 @@ Lattice holds explicit tensor math in bounded gardens. Build order places **Latt
 | **25** | Elementwise `gelu` (tanh approx) · shape assert | parity **351** · `tools/lattice_lap26.rish` (`215613`) |
 | **26** | Elementwise `silu` · shape assert | parity **355** · `tools/lattice_lap27.rish` (`223639`) |
 | **27** | Elementwise `leaky_relu` · shape assert | parity **359** · `tools/lattice_lap28.rish` (`223639`) |
+| **28** | Elementwise `softplus` · shape assert | parity **363** · `tools/lattice_lap29.rish` (`224322`) |
+| **29** | Elementwise `maximum` · shape assert | parity **367** · `tools/lattice_lap30.rish` (`224322`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through silu · leaky_relu |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through softplus · maximum |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap27.rish
-rishi/bin/rishi run tools/lattice_lap28.rish
+rishi/bin/rishi run tools/lattice_lap29.rish
+rishi/bin/rishi run tools/lattice_lap30.rish
 ```
 
 *May the numbers stay honest before the model runs.*
