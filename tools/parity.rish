@@ -555,3 +555,8 @@ say "witness suite: Comlink device wire (pattern + sealed laps)…"
 let comlink_dw = run ["rishi/bin/rishi" "run" "tools/comlink_device_wire.rish"]
 assert comlink_dw.ok else "Comlink device wire witness failed"
 say "GREEN: Comlink device wire witness passed."
+
+say "witness suite: Tablecloth query wire (Comlink hosted filter)…"
+let tcq_wire = run ["rishi/bin/rishi" "run" "tools/mantra_recall_tablecloth_query_wire.rish"]
+assert tcq_wire.ok else "Tablecloth query wire witness failed"
+say "GREEN: Tablecloth query wire witness passed."
