@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 10 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg).
+//! lattice/lattice.rye — Lattice lap 11 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.192749";
+const lattice_version = "20260710.193358";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -196,6 +196,26 @@ fn welcome_neg() !void {
     print("lattice: neg 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
 }
 
+fn welcome_div() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 6);
+    a.set(0, 1, 8);
+    a.set(1, 0, 9);
+    a.set(1, 1, 16);
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 2);
+    b.set(0, 1, 4);
+    b.set(1, 0, 3);
+    b.set(1, 1, 4);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.div(&a, &b, &out);
+    assert(out.at(0, 0) == 3);
+    assert(out.at(0, 1) == 2);
+    assert(out.at(1, 0) == 3);
+    assert(out.at(1, 1) == 4);
+    print("lattice: div 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -228,6 +248,38 @@ fn unwelcome_neg_shape() !void {
         assert(err == error.ShapeMismatch);
     }
     print("lattice: neg shape mismatch refused\n", .{});
+}
+
+fn unwelcome_div_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.div(&a, &b, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: div shape mismatch refused\n", .{});
+}
+
+fn unwelcome_div_zero() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 1);
+    b.set(0, 1, 0);
+    b.set(1, 0, 1);
+    b.set(1, 1, 1);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.div(&a, &b, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.DivideByZero);
+    }
+    print("lattice: div by zero refused\n", .{});
 }
 
 fn unwelcome_shape_mismatch() !void {
@@ -321,6 +373,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_copy();
         try welcome_sub();
         try welcome_neg();
+        try welcome_div();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -330,8 +383,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_copy_shape();
         try unwelcome_sub_shape();
         try unwelcome_neg_shape();
+        try unwelcome_div_shape();
+        try unwelcome_div_zero();
         try unwelcome_dim_overflow();
-        print("lattice lap10: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap11: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
