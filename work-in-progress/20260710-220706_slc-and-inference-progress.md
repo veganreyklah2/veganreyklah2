@@ -6,7 +6,7 @@
 **Language:** EN  
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Voice:** Rio 3  
 **Lens:** [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall's Law · checkable room  
-**Status:** Living progress brief — tip **410** (`232158` hardsig-echo); fixture deepen **1ak** closed  
+**Status:** Living progress brief — tip **418** (`234004` glass composition); assist/sight glass lap closed  
 **Ground:** [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · Inference hammock [`../active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · explain log [`../session-logs/20260710-220459_slc-inference-climb-explain.md`](../session-logs/20260710-220459_slc-inference-climb-explain.md)
 
 *Written by Rio 3 for Kaeden.*
@@ -74,9 +74,9 @@ Fixture Lantern and bounded Lattice ops keep the promise honest: the modules tha
 | Marker | Value |
 |--------|-------|
 | Lap 0 opened | `20260710.133500` |
-| Tip on `main` | **410** (hardsig-echo `232158`) |
-| Climbs this evening | through **1ai** (**402**) then **1aj**/**1ak** (**403**→**410**) |
-| Latest eight bolts | hard_sigmoid · rye+blocks · rsqrt · echo · hardtanh · rish+blocks · cube · user |
+| Tip on `main` | **418** (glass composition `234004`) |
+| Climbs this evening | through **1ak** (**410**) then glass composition (**411**→**418**) |
+| Latest eight bolts | blocks · fence-rye · echo · user on assist view + assist sight |
 
 ### Explicitly parked (Rest-until / horizon)
 
@@ -115,7 +115,7 @@ That is the checkable-room exam. It is how SLC Completeness stays true at every 
 
 ## Next
 
-Recommend: keep going from tip **410** — another named non-ROCm lap if Kaeden still wants climb; or hold. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy.
+Recommend: keep going from tip **418** — another named non-ROCm lap if Kaeden still wants climb; or hold. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy.
 
 ---
 

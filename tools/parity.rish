@@ -1517,3 +1517,43 @@ say "witness suite: Lantern lap 33 (user pin)…"
 let lantern_lap33 = run ["rishi/bin/rishi" "run" "tools/lantern_lap33.rish"]
 assert lantern_lap33.ok else "Lantern lap 33 witness failed"
 say "GREEN: Lantern lap 33 witness passed."
+
+say "witness suite: Assist view lap 14 (blocks on snippets band)…"
+let assist_view_lap14 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap14.rish"]
+assert assist_view_lap14.ok else "Assist view lap 14 witness failed"
+say "GREEN: Assist view lap 14 witness passed."
+
+say "witness suite: Inference assist sight lap 12 (blocks on carriage)…"
+let assist_sight_lap12 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap12.rish"]
+assert assist_sight_lap12.ok else "Inference assist sight lap 12 witness failed"
+say "GREEN: Inference assist sight lap 12 witness passed."
+
+say "witness suite: Assist view lap 15 (fence-rye + blocks)…"
+let assist_view_lap15 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap15.rish"]
+assert assist_view_lap15.ok else "Assist view lap 15 witness failed"
+say "GREEN: Assist view lap 15 witness passed."
+
+say "witness suite: Inference assist sight lap 13 (fence-rye + blocks)…"
+let assist_sight_lap13 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap13.rish"]
+assert assist_sight_lap13.ok else "Inference assist sight lap 13 witness failed"
+say "GREEN: Inference assist sight lap 13 witness passed."
+
+say "witness suite: Assist view lap 16 (echo pin on lantern band)…"
+let assist_view_lap16 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap16.rish"]
+assert assist_view_lap16.ok else "Assist view lap 16 witness failed"
+say "GREEN: Assist view lap 16 witness passed."
+
+say "witness suite: Inference assist sight lap 14 (echo pin on carriage)…"
+let assist_sight_lap14 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap14.rish"]
+assert assist_sight_lap14.ok else "Inference assist sight lap 14 witness failed"
+say "GREEN: Inference assist sight lap 14 witness passed."
+
+say "witness suite: Assist view lap 17 (user pin on lantern band)…"
+let assist_view_lap17 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap17.rish"]
+assert assist_view_lap17.ok else "Assist view lap 17 witness failed"
+say "GREEN: Assist view lap 17 witness passed."
+
+say "witness suite: Inference assist sight lap 15 (user pin — glass composition close)…"
+let assist_sight_lap15 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap15.rish"]
+assert assist_sight_lap15.ok else "Inference assist sight lap 15 witness failed"
+say "GREEN: Inference assist sight lap 15 witness passed."
