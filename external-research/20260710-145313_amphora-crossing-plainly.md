@@ -39,6 +39,7 @@ Realidream's forge view folds that poured bundle onto a Skate frame — cellar f
 | **Seal (landed)** | `20260710.153745` | `tools/amphora_vessel_seal.rish` | Amber AEAD on cargo; seal then stamp; tamper refused |
 | **Chunk (landed)** | `20260710.154300` | `tools/amphora_resin_chunk.rish` | 400 B resin over kind **0x33** chunks; pour → fetch → scrub |
 | **Pond customs (landed)** | `20260710.161125` | `tools/pond_customs.rish` | place / hold / refuse per Tilak; Amphora scrub gated |
+| **Purchase delivery (landed)** | `20260710.161358` | `tools/amphora_purchase_delivery.rish` | Slip binds vessel parent + payment; tamper refused |
 | **Forge pour** | `20260710.145313` | `tools/realidream_forge_view.rish` | Live pour → Skate frame (parity **221** path deepened) |
 
 ---
@@ -71,9 +72,9 @@ GPL gratitude projects (SixOS, River, Damus, …) stay gitlink-or-docs-only per 
 
 ## Horizons (Named, Not Opened Here)
 
-- Commerce delivery of purchased work  
+- Granary **market floor** where vessels change hands (sharing surface still held)  
 
-**Landed since this page:** Kumara `stamp_sig` (`20260710.145843`, parity **227**) · Amber AEAD vessel seal (`20260710.153745`, parity **228**) · large-resin chunking (`20260710.154300`, parity **229**) · Pond customs (`20260710.161125`, parity **230**).
+**Landed since this page:** Kumara `stamp_sig` (`20260710.145843`, parity **227**) · Amber AEAD vessel seal (`20260710.153745`, parity **228**) · large-resin chunking (`20260710.154300`, parity **229**) · Pond customs (`20260710.161125`, parity **230**) · purchase delivery slip (`20260710.161358`, parity **231**).
 
 ---
 

@@ -75,10 +75,10 @@ Bron = letter (one record). Amphora = crate (many). MALA = coin inside. Comlink 
 
 ## What This Page Does Not Do
 
-- Does **not** seat commerce delivery  
+- Does **not** seat Granary market floor  
 - Does **not** replace the silo or the study — those remain the design and research homes  
 
-**Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`) · large-resin chunking (`154300`) · Pond customs (`161125`).
+**Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`) · large-resin chunking (`154300`) · Pond customs (`161125`) · purchase delivery (`161358`).
 
 ---
 

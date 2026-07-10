@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Pond customs `161125`; parity **230**)
+**Last updated:** 2026-07-10 (Amphora purchase delivery `161358`; parity **231**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **Realidream forge view landed** `143000`; **Amphora lap 1 + forge query landed** `143500`; **Amphora lap 2 pour/scrub landed** `143726`; **Amphora lap 3 Comlink fetch landed** `144309`; **Amphora device wire landed** `144833`; **Amphora Kumara vessel stamp landed** `145843`; **Amphora Amber vessel seal landed** `153745`; **Amphora resin chunk landed** `154300`; **Pond customs landed** `161125`; **kitchen-twin shelf** (shipping + custody + thin-edge spine); **universal foundations affirmed**. Parity **230**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **Realidream forge view landed** `143000`; **Amphora lap 1 + forge query landed** `143500`; **Amphora lap 2 pour/scrub landed** `143726`; **Amphora lap 3 Comlink fetch landed** `144309`; **Amphora device wire landed** `144833`; **Amphora Kumara vessel stamp landed** `145843`; **Amphora Amber vessel seal landed** `153745`; **Amphora resin chunk landed** `154300`; **Pond customs landed** `161125`; **Amphora purchase delivery landed** `161358`; **kitchen-twin shelf** (shipping + custody + thin-edge spine); **universal foundations affirmed**. Parity **231**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -107,6 +107,7 @@
 | **38** | **Amphora vessel seal** | **Landed** | Amber ChaCha20-Poly1305 on cargo; parity **228** |
 | **39** | **Amphora resin chunk** | **Landed** | Large resin beyond one datagram (kind **0x33**); parity **229** |
 | **40** | **Pond customs** | **Landed** | First policy lap — place / hold / refuse per Tilak; Amphora receipt gated; parity **230** |
+| **41** | **Amphora purchase delivery** | **Landed** | Commerce delivery slip binds vessel parent + payment; parity **231** |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
