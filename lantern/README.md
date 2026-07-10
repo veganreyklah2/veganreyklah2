@@ -1,26 +1,28 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 1 `180111`; lap 0 `133500`)
+**Last updated:** 2026-07-10 (lap 2 allow-list `180747`; lap 1 `180111`; lap 0 `133500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — lap 0 + lap 1 green (fixture completion + max_tokens)
+**Status:** Checkable-room module — laps 0–2 green (fixture · max_tokens · model allow-list)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Lap 0 pins a fixture completion; lap 1 enforces `max_tokens` with truncate to `stopped_reason length`. Weights-by-hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Lap 0 pins a fixture completion; lap 1 enforces `max_tokens` with truncate to `stopped_reason length`; lap 2 allow-lists model hashes before complete. Weights-by-hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
 | **0** | Request validation · model hash match · fixture response | parity **213** |
 | **1** | `max_tokens` truncate · length stop · zero budget refused | `tools/lantern_lap1.rish` (`180111`) |
+| **2** | Model allow-list gate · unknown hash refused | parity **252** · `tools/lantern_lap2.rish` (`180747`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget |
+| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + budget + allow-list |
 | [`lantern.rye`](lantern.rye) | Selftest |
 | [`fixtures/completion.bron`](fixtures/completion.bron) | Lap 0 pinned completion |
 | [`fixtures/completion_length.bron`](fixtures/completion_length.bron) | Lap 1 long completion |
+| [`fixtures/allowed_models.bron`](fixtures/allowed_models.bron) | Lap 2 model-hash allow-list |
 
-*May every completion honor its budget. May length stops stay honest.*
+*May every completion honor its budget. May length stops stay honest. May only listed models speak.*

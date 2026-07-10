@@ -9,9 +9,10 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const sc = @import("scribble_core.rye");
 
-const scribble_version = "20260710.134800";
+const scribble_version = "20260710.180747";
 pub const fixture_path = "scribble/fixtures/sample.md";
 pub const session_fixture_path = "scribble/fixtures/session_snippets.md";
+pub const session_rish_fixture_path = "scribble/fixtures/session_rish_snippets.md";
 
 fn welcome_parse() !void {
     const sample =
@@ -80,6 +81,35 @@ fn unwelcome_snippet_overflow(io: std.Io) !void {
     print("scribble: snippet overflow refused\n", .{});
 }
 
+fn welcome_extract_rish(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, session_rish_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var snippets: [sc.max_snippets]sc.Snippet = undefined;
+    const sn = try sc.extract_rish_snippets(blocks[0..n], &snippets);
+    assert(sn == 2);
+    assert(std.mem.indexOf(u8, snippets[0].text_slice(), "lantern lap") != null);
+    assert(std.mem.indexOf(u8, snippets[1].text_slice(), "GREEN") != null);
+    print("scribble: rish snippets extracted — count={d}\n", .{sn});
+}
+
+fn unwelcome_rish_snippet_overflow(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, session_rish_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var tiny: [1]sc.Snippet = undefined;
+    if (sc.extract_rish_snippets(blocks[0..n], &tiny)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.SnippetOverflow);
+    }
+    print("scribble: rish snippet overflow refused\n", .{});
+}
+
 fn unwelcome_unclosed_fence() !void {
     const bad =
         \\```rye
@@ -103,9 +133,11 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_parse();
         try check_fixture(io);
         try welcome_extract(io);
+        try welcome_extract_rish(io);
         try unwelcome_snippet_overflow(io);
+        try unwelcome_rish_snippet_overflow(io);
         try unwelcome_unclosed_fence();
-        print("scribble lap2: version {s} — GREEN\n", .{scribble_version});
+        print("scribble lap3: version {s} — GREEN\n", .{scribble_version});
         return 0;
     }
     print("usage: scribble selftest\n", .{});
