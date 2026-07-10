@@ -3,7 +3,7 @@
 **Stamp:** `20260710.165634` (Kaeden: likes the name suggestions; open what is needed)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — vessel market floor name; lap 1 landed `20260710.165634` (parity **238**); floor view lap 2 `20260710.170700` (parity **240**)
+**Status:** Seated — vessel market floor name; lap 1 landed `20260710.165634` (parity **238**); floor view lap 2 `20260710.170700` (parity **240**); listing settle lap 3 `20260710.171202` (parity **242**)
 **Ground:** study [`../../external-research/20260703-200712_compute-commerce-on-the-network.md`](../../external-research/20260703-200712_compute-commerce-on-the-network.md) · Granary seating [`20260710-163043_granary-name-seated.md`](20260710-163043_granary-name-seated.md)
 
 *Written by Kaeden and Rio 3.*
