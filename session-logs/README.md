@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.221906 | [Mantrapod explained for kids](20260710-221906_mantrapod-for-kids.md) | Kid-facing story of the pocket computer that forgets on purpose |
 | 20260710.220833 | [Machines and organizing thought](20260710-220833_machines-organize-thoughts.md) | Reflection: machines externalize and witness; choosing stays human |
 | 20260710.220706 | [SLC and inference progress document](20260710-220706_slc-inference-progress-doc.md) | Durable brief at tip **354**; pushed to all remotes |
 | 20260710.220459 | [How the inference climb serves the SLCs](20260710-220459_slc-inference-climb-explain.md) | Tip **347**–**354** as Gall growth under SLC-2a glass, not a new product lap |
