@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (Greencandy lap 4 closed `230433`; parity **394**)
+**Last updated:** 2026-07-10 (compass climb softsign-tokens `231151`; parity **402**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -152,6 +152,8 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **1ag** | **Elu · assist kinds · n pin — lap 1 close** | **landed** `20260710.224805` — elu **375**; assist sight/view kinds **376**/**377**; n pin **378**; **Inference Track lap 1 closed** | — |
 | **Anvil corpus lap 2** | **min/max lines · path_suffix · sum_lines + views** | **landed** `20260710.225320` — filters **379**–**382**; Skate views **383**–**386**; **Anvil corpus lap 2 closed** | keep-going after lap-1 close |
 | **Greencandy lap 4** | **account/memo filters · cash flow · sum amounts + views** | **landed** `20260710.230433` — filters **387**–**390**; Skate views **391**–**394**; **Greencandy lap 4 closed** | keep-going after Anvil lap 2 |
+| **1ah** | **Softsign · h2+blocks · square · tokens_out** | **landed** `20260710.231151` — softsign **395**; h2+blocks **396**; square **397**; tokens_out **398** | — |
+| **1ai** | **Sign · h3+blocks · reciprocal · tokens_in — fixture deepen close** | **landed** `20260710.231151` — sign **399**; h3+blocks **400**; reciprocal **401**; tokens_in **402** | — |
 | **2** | **ROCm host seam** | horizon | hardware + ship policy; opens after lap-1 close |
 | **3** | **Lantern in Pond** | horizon | Pond policy word |
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
@@ -171,7 +173,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 | **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | **Lap 1 closed** tip **378** (`224805`); **Anvil corpus lap 2** tip **386** (`225320`); **Greencandy lap 4** tip **394** (`230433`); next rung **2** ROCm (horizon) |
+| **Inference stack** | **Lap 1 closed** tip **378**; Anvil lap 2 **386**; Greencandy lap 4 **394**; fixture deepen **1ah**/**1ai** tip **402** (`231151`); next rung **2** ROCm (horizon) |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

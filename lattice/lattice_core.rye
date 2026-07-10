@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 31).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 35).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through minimum · elu — lap-1 close.
+//! Parity-gated tensor ops before Lantern. Laps through softsign · square · sign · reciprocal.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -484,6 +484,59 @@ pub fn elu(src: *const Matrix, alpha: f32, out: *Matrix) TensorError!void {
         while (c < src.cols) : (c += 1) {
             const v = src.at(r, c);
             out.set(r, c, if (v >= 0.0) v else alpha * (@exp(v) - 1.0));
+        }
+    }
+}
+
+/// Elementwise softsign — v / (1 + |v|); softsign(0)=0; softsign(1)=0.5.
+pub fn softsign(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, v / (1.0 + @abs(v)));
+        }
+    }
+}
+
+/// Elementwise square — v·v; shapes must match.
+pub fn square(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, v * v);
+        }
+    }
+}
+
+/// Elementwise sign — −1 / 0 / +1; shapes must match.
+pub fn sign(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v > 0.0) 1.0 else if (v < 0.0) -1.0 else 0.0);
+        }
+    }
+}
+
+/// Elementwise reciprocal — 1/v; zero refused; shapes must match.
+pub fn reciprocal(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            if (v == 0.0) return error.DivideByZero;
+            out.set(r, c, 1.0 / v);
         }
     }
 }

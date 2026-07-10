@@ -1,4 +1,4 @@
-//! lantern/lantern.rye — Lantern lap 29 selftest (presence_penalty · n pins — lap-1 close).
+//! lantern/lantern.rye — Lantern lap 31 selftest (tokens_out · tokens_in pins).
 //!
 //!   rye build lantern/lantern.rye -femit-bin=lantern/bin/lantern
 //!   lantern/bin/lantern selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const lc = @import("lantern_core.rye");
 
-const lantern_version = "20260710.224805";
+const lantern_version = "20260710.231151";
 pub const fixture_path = "lantern/fixtures/completion.bron";
 pub const length_fixture_path = "lantern/fixtures/completion_length.bron";
 pub const allow_fixture_path = "lantern/fixtures/allowed_models.bron";
@@ -39,6 +39,8 @@ pub const top_k_fixture_path = "lantern/fixtures/completion_top_k.bron";
 pub const frequency_penalty_fixture_path = "lantern/fixtures/completion_frequency_penalty.bron";
 pub const presence_penalty_fixture_path = "lantern/fixtures/completion_presence_penalty.bron";
 pub const n_fixture_path = "lantern/fixtures/completion_n.bron";
+pub const tokens_out_fixture_path = "lantern/fixtures/completion_tokens_out.bron";
+pub const tokens_in_fixture_path = "lantern/fixtures/completion_tokens_in.bron";
 
 fn welcome_complete(io: std.Io) !void {
     const cwd = Dir.cwd();
@@ -938,6 +940,74 @@ fn unwelcome_n_mismatch(io: std.Io) !void {
     print("lantern: n mismatch refused\n", .{});
 }
 
+fn welcome_tokens_out_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, tokens_out_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "tokens-out",
+        .max_tokens = 64,
+        .expect_tokens_out = 3,
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.tokens_out == 3);
+    assert(resp.stopped_reason == .eos);
+    print("lantern: tokens_out pin completion — out 3\n", .{});
+}
+
+fn unwelcome_tokens_out_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, tokens_out_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "tokens-out",
+        .max_tokens = 64,
+        .expect_tokens_out = 9,
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.TokensOutMismatch);
+    }
+    print("lantern: tokens_out mismatch refused\n", .{});
+}
+
+fn welcome_tokens_in_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, tokens_in_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "tokens-in",
+        .max_tokens = 64,
+        .expect_tokens_in = 5,
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.tokens_in == 5);
+    assert(resp.stopped_reason == .eos);
+    print("lantern: tokens_in pin completion — in 5\n", .{});
+}
+
+fn unwelcome_tokens_in_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, tokens_in_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "tokens-in",
+        .max_tokens = 64,
+        .expect_tokens_in = 1,
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.TokensInMismatch);
+    }
+    print("lantern: tokens_in mismatch refused\n", .{});
+}
+
 
 
 pub fn main(init: std.process.Init) !u8 {
@@ -972,6 +1042,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_frequency_penalty_pin(io);
         try welcome_presence_penalty_pin(io);
         try welcome_n_pin(io);
+        try welcome_tokens_out_pin(io);
+        try welcome_tokens_in_pin(io);
         try unwelcome_model_mismatch(io);
         try unwelcome_prompt_too_long();
         try unwelcome_zero_budget();
@@ -998,7 +1070,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_frequency_penalty_mismatch(io);
         try unwelcome_presence_penalty_mismatch(io);
         try unwelcome_n_mismatch(io);
-        print("lantern lap29: version {s} — GREEN\n", .{lantern_version});
+        try unwelcome_tokens_out_mismatch(io);
+        try unwelcome_tokens_in_mismatch(io);
+        print("lantern lap31: version {s} — GREEN\n", .{lantern_version});
         return 0;
     }
     print("usage: lantern selftest\n", .{});

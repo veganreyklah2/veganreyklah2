@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Greencandy lap 4 `230433`; parity **394**)
+**Last updated:** 2026-07-10 (compass climb softsign-tokens `231151`; parity **402**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -276,6 +276,14 @@
 | **207** | **Greencandy memo prefix view** | **Landed** | memo prefix → Skate; parity **392**; stamp `230433` |
 | **208** | **Greencandy cash flow view** | **Landed** | cash flow → Skate; parity **393**; stamp `230433` |
 | **209** | **Greencandy sum amounts view — lap 4 close** | **Landed** | sum amounts → Skate; tip **394**; Greencandy lap 4 closed; stamp `230433` |
+| **210** | **Lattice lap 32 softsign** | **Landed** | Elementwise softsign; parity **395**; stamp `231151` |
+| **211** | **Scribble h2+blocks view** | **Landed** | h2 + blocks on one Skate frame; parity **396**; stamp `231151` |
+| **212** | **Lattice lap 33 square** | **Landed** | Elementwise square; parity **397**; stamp `231151` |
+| **213** | **Lantern lap 30 tokens_out pin** | **Landed** | tokens_out pin; parity **398**; stamp `231151` |
+| **214** | **Lattice lap 34 sign** | **Landed** | Elementwise sign; parity **399**; stamp `231151` |
+| **215** | **Scribble h3+blocks view** | **Landed** | h3 + blocks on one Skate frame; parity **400**; stamp `231151` |
+| **216** | **Lattice lap 35 reciprocal** | **Landed** | Elementwise reciprocal + zero refuse; parity **401**; stamp `231151` |
+| **217** | **Lantern lap 31 tokens_in pin — fixture deepen close** | **Landed** | tokens_in pin; tip **402**; stamp `231151` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.231501 | [Compass climb — softsign, square, sign, reciprocal, tokens pins](20260710-231501_compass-climb-softsign-tokens.md) | Parity **395**–**402**; climbs **1ah**/**1ai** |
 | 20260710.230739 | [Greencandy lap 4 — filters, cash flow, and Skate views](20260710-230739_greencandy-lap4-close.md) | Parity **387**–**394**; Greencandy lap 4 closed |
 | 20260710.225615 | [Anvil corpus lap 2 — filters, folds, and Skate views](20260710-225615_anvil-corpus-lap2-close.md) | Parity **379**–**386**; Anvil corpus lap 2 closed |
 | 20260710.224805 | [Compass climb — Inference Track lap 1 close](20260710-224805_compass-climb-inference-lap1-close.md) | Parity **371**–**378**; climbs **1af**/**1ag**; lap 1 closed |
