@@ -1,12 +1,12 @@
 # Context Home
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary/Mandi commerce plainly; sealed-crossing plainly; kitchen-twin shelf)
+**Last updated:** 2026-07-10 (Radiant Style pass round 2 · Rio 3 season)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
 
-This directory is the memory and compass for work in `~/veganreyklah2`. It gathers the durable guidance — how we write, who Reya 2 is, and the plain-English specs that record each decision — in one calm, local place.
+This directory is the memory and compass for work in `~/veganreyklah2`. It gathers the durable guidance — how we write, who Rio 3 is this season, and the plain-English specs that record each decision — in one calm, local place.
 
 Everything here lives inside the persistent project directory, so it survives every sandbox reset. The ai-jail wrapper keeps only the project directory across runs; this `context/` home rests safely within it.
 

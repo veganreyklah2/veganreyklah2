@@ -83,7 +83,7 @@ Each witness earns one standard quartet at the parity tail when landed. Register
 
 ---
 
-## Out of scope (RW-2 and later)
+## What Stays Outside (RW-2 and later)
 
 - App↔Brushstroke `setFrame` collaboration twin (RW-2)
 - Full Mantra merge/log/diff CLI

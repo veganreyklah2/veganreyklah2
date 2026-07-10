@@ -75,7 +75,7 @@ Live Sui `groth16` verify may join later as an on-demand seam; v1 offline prove+
 - Offline prove+verify pair in `tools/parity.rish` once green (Zig-native, deterministic)
 - Live Sui verify stays on-demand (same category as chain-read; point 5)
 
-### Out of scope (later seasons)
+### Horizon for later seasons
 
 - Mainnet treasury
 - All three passes in one binary — one pass per lap iteration

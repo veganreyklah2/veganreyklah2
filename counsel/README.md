@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-08 (every gate sorted `20260708.171712`)
+**Last updated:** 2026-07-10 (Radiant Style pass round 2)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -9,7 +9,7 @@
 
 ## What This Folder Is
 
-This is where the bench answers what Kaeden asked. The `counsel/` folder holds analysis, rulings, proposals, and recommendations delivered in response to a specific question about this project's own pending decisions — never a study of an external work (that stays in `external-research/`), never a decision made and seated (that lives in `active-designing/` or wherever the decision's own home is once Kaeden's word lands). Every piece here proposes; none of them seats anything. Propose-never-seat is not a discipline counsel merely follows — it is the whole reason this folder exists.
+This is where the bench answers what Kaeden asked. The `counsel/` folder holds analysis, rulings, proposals, and recommendations delivered in response to a specific question about this project's own pending decisions — never a study of an external work (that stays in `external-research/`), never a decision made and seated (that lives in `active-designing/` or wherever the decision's own home is once Kaeden's word lands). Every piece here proposes; none of them seats anything. Propose-never-seat is the whole reason this folder exists — counsel proposes; Kaeden seats.
 
 Each entry stays exactly as written the day it was filed. A later counsel document may revisit, refine, or overturn an earlier one — the ruling that MALA had not graduated stands beside the fold-gap it found, both permanent, neither edited to match what came after.
 

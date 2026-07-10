@@ -1,7 +1,7 @@
 # Rishi — the shell of the Rye ecosystem
 
 **Version:** `20260620.153812` (Rye chronological stamp)
-**Last updated:** 2026-06-29
+**Last updated:** 2026-07-10 (Radiant Style pass round 2)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** First version — small, runnable, and growing
 
@@ -44,7 +44,7 @@ supporting:
 - **`run`** — `let result = run ["echo" "hello"]` executes a command and returns a
   record: `out` and `err` (the captured text), `code` (the exit status), and `ok`
   (true when the code is zero). A command that exits non-zero is an ordinary
-  result; a command that cannot be spawned at all stops the script.
+  result; a spawn that fails to begin stops the script and says why.
 - **`map` and `where`** — `map xs as x: <expr>` transforms each element into a new
   list; `where xs as x: <pred>` keeps the elements whose boolean predicate holds.
   The body can project a field (`map people as p: p.name`), compare, or even

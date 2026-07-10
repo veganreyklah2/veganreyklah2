@@ -99,7 +99,7 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - Hosted forge query fixture without `wire device` stays unwelcome for this mode
 - Parity **256**; sibling to query device view; unified already at **255**
 
-### Out of scope (later)
+### What Stays Outside This Lap
 
 - Resin bytes in the query response (use sync/catch-up)
 - Browser HTTP bridge

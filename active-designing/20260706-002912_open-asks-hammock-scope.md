@@ -111,7 +111,7 @@ The completion record **links** to the ask loop by `request_ref` in `memo` — n
 - [x] Witness `tools/open_asks_lap1.rish` — welcome path (full loop green); unwelcome path (application cites wrong `request_ref` → verify fails)
 - [x] Fixture under `tools/fixtures/open_asks_*`; parity block wired (**156**)
 
-### Out of scope (OA-L2 and later)
+### Horizon (OA-L2 and later)
 
 - **Comlink delivery** of facts between machines — SLC-L2 carriage; OA-L2
 - **MALA mint, escrow, release** — M1/M2 ladder; OA-L3

@@ -118,7 +118,7 @@ Port **38474** — distinct from SLC-L2 delivery (**38473**) and hosted wire dem
 - Poster-side fold reaches `applied` after cross-party round trip
 - Witness green on metal
 
-### Out of scope (later laps)
+### Horizon for later laps
 
 - Delivery of acceptance or completion facts cross-party
 - Device wire variant (civic proof path — carriage pattern already green from SLC-L2)

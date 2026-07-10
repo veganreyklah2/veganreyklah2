@@ -1,7 +1,7 @@
 # Amber — Cellar Software
 
 **Language:** EN
-**Last updated:** 2026-07-04 (cellar · vessel pairing in LEXICON)
+**Last updated:** 2026-07-10 (Radiant Style pass round 2 · cellar · vessel pairing)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Amber is cellar software** — preservation **in place** at home. It seals bit-faithful snapshots as content-addressed **resins** and a signed manifest, then sets them on deep storage that disconnects from every running system. Mantra holds the living history; Amber seals the moment cold.
@@ -10,7 +10,7 @@
 
 The functional spec lives at [`context/specs/20260701-221512_amber-functional-spec.md`](../context/specs/20260701-221512_amber-functional-spec.md). Archive law: [`context/specs/20260703-191112_resins-and-hash-tiers.md`](../context/specs/20260703-191112_resins-and-hash-tiers.md). Vessel vocabulary: [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md).
 
-## first lap (parity **144**)
+## First lap (parity **144**)
 
 | Piece | Path |
 |-------|------|
