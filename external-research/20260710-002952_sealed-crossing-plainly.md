@@ -21,7 +21,7 @@
 
 The duty already showed up five ways before it had a home: nightly bench packets, the offsite copy in 3-2-1, the pocket device's "hand across," packaging's fetch-by-digest, commerce's future delivery. One duty, five appearances — the sealed crossing.
 
-**Status today:** Landed through lap 3, Kumara stamp, and Amber AEAD seal. Module home `amphora/`; witnesses prove parse, pour/scrub, hosted Comlink fetch, virtio device wire, stamp, and seal. This page teaches what metal already holds.
+**Status today:** Landed through lap 3, Kumara stamp, Amber AEAD seal, and large-resin chunking. Module home `amphora/`; witnesses prove parse, pour/scrub, hosted Comlink fetch, virtio device wire, stamp, seal, and chunked fetch. This page teaches what metal already holds.
 
 ---
 
@@ -78,7 +78,7 @@ Bron = letter (one record). Amphora = crate (many). MALA = coin inside. Comlink 
 - Does **not** seat commerce delivery or Pond customs policy  
 - Does **not** replace the silo or the study — those remain the design and research homes  
 
-**Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`).
+**Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`) · large-resin chunking (`154300`).
 
 ---
 
