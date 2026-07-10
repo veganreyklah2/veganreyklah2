@@ -820,3 +820,23 @@ say "witness suite: Greencandy P&L view (income statement → Skate)…"
 let pnl_view = run ["rishi/bin/rishi" "run" "tools/greencandy_pnl_view.rish"]
 assert pnl_view.ok else "Greencandy P&L view witness failed"
 say "GREEN: Greencandy P&L view witness passed."
+
+say "witness suite: Lattice lap 6 (elementwise mul)…"
+let lattice_lap7 = run ["rishi/bin/rishi" "run" "tools/lattice_lap7.rish"]
+assert lattice_lap7.ok else "Lattice lap 6 witness failed"
+say "GREEN: Lattice lap 6 witness passed."
+
+say "witness suite: Scribble paragraphs view (prose → Skate)…"
+let scribble_para_view = run ["rishi/bin/rishi" "run" "tools/inference_scribble_para_view.rish"]
+assert scribble_para_view.ok else "Scribble paragraphs view witness failed"
+say "GREEN: Scribble paragraphs view witness passed."
+
+say "witness suite: Greencandy BS view (balance sheet → Skate)…"
+let bs_view = run ["rishi/bin/rishi" "run" "tools/greencandy_bs_view.rish"]
+assert bs_view.ok else "Greencandy BS view witness failed"
+say "GREEN: Greencandy BS view witness passed."
+
+say "witness suite: Lantern lap 4 (top_p)…"
+let lantern_lap4 = run ["rishi/bin/rishi" "run" "tools/lantern_lap4.rish"]
+assert lantern_lap4.ok else "Lantern lap 4 witness failed"
+say "GREEN: Lantern lap 4 witness passed."

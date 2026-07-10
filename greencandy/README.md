@@ -1,9 +1,9 @@
 # Greencandy — Centralized Books of Record
 
 **Language:** EN
-**Last updated:** 2026-07-10 (P&L view `185542`; parity **271**)
+**Last updated:** 2026-07-10 (BS view `185947`; parity **274**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 1–3 green; sight, exception, and P&L views on Skate
+**Status:** Checkable-room module — laps 1–3 green; sight, exception, P&L, and BS views on Skate
 
 ---
 
@@ -15,7 +15,8 @@ Greencandy is Linengrow's **centralized books**: one steward's chart of accounts
 | **2** | Income statement · balance sheet · exception queue | parity **209** |
 | **3** | Sight view — books P&L/BS on Skate + unified carriage+books frame | parity **210** |
 | **exception view** | Refused drafts → five-line Skate frame | parity **267** · `tools/greencandy_exception_view.rish` |
-| **P&L view** | Income statement alone → five-line Skate frame | parity **271** · `tools/greencandy_pnl_view.rish` (`185542`) |
+| **P&L view** | Income statement alone → five-line Skate frame | parity **271** · `tools/greencandy_pnl_view.rish` |
+| **BS view** | Balance sheet alone → five-line Skate frame | parity **274** · `tools/greencandy_bs_view.rish` (`185947`) |
 
 ## Layout
 
@@ -34,6 +35,7 @@ rishi/bin/rishi run tools/greencandy_books_view.rish
 rishi/bin/rishi run tools/greencandy_sight_view.rish
 rishi/bin/rishi run tools/greencandy_exception_view.rish
 rishi/bin/rishi run tools/greencandy_pnl_view.rish
+rishi/bin/rishi run tools/greencandy_bs_view.rish
 ```
 
 **Design:** hammock [`../active-designing/20260710-125953_greencandy-hammock.md`](../active-designing/20260710-125953_greencandy-hammock.md) · lap 2 [`../active-designing/20260710-131212_greencandy-lap2-reports.md`](../active-designing/20260710-131212_greencandy-lap2-reports.md) · lap 3 sight [`../active-designing/20260710-132548_greencandy-lap3-sight-view.md`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`../external-research/20260710-131956_seen-books-living-desktop-horizon.md`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md)
