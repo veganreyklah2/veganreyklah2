@@ -641,6 +641,11 @@ let granary4 = run ["rishi/bin/rishi" "run" "tools/granary_resin_wire.rish"]
 assert granary4.ok else "Granary lap 4 resin wire witness failed"
 say "GREEN: Granary lap 4 resin wire witness passed."
 
+say "witness suite: Granary lap 4b (device-wire resin serve)…"
+let granary4b = run ["rishi/bin/rishi" "run" "tools/granary_device_wire.rish"]
+assert granary4b.ok else "Granary lap 4b device wire witness failed"
+say "GREEN: Granary lap 4b device wire witness passed."
+
 say "witness suite: Granary lap 5 (Exchange listing in MALA)…"
 let granary5 = run ["rishi/bin/rishi" "run" "tools/granary_exchange.rish"]
 assert granary5.ok else "Granary lap 5 exchange witness failed"

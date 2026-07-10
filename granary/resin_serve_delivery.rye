@@ -1,7 +1,8 @@
 //! granary/resin_serve_delivery.rye — Granary lap 4: Comlink resin serve for Sharing.
 //!
-//! Reuses Amphora fetch-by-digest wire (0x31/0x32). Ports: guest 38496 · host 38497.
-//! Name-facts stay local; only resin bytes cross. Exchange and device wire wait.
+//! Reuses Amphora fetch-by-digest wire (0x31/0x32). Hosted ports: guest 38496 · host 38497.
+//! Device wire: ports 15573/15574 (virtio lab). Name-facts stay local; only resin bytes cross.
+//! WOV settlement waits.
 //!
 //!   rye build granary/resin_serve_delivery.rye -lc -femit-bin=granary/bin/resin-serve-delivery
 //!   granary/bin/resin-serve-delivery selftest
