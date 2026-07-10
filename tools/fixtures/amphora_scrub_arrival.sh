@@ -38,6 +38,24 @@ fi
 "$seal_bin" open-check "$VESSEL" >/dev/null
 echo "SEAL ok Amber AEAD cargo opens"
 
+# Pond customs — policy at receipt before Amber place/restore.
+customs_bin="$ROOT/pond/bin/customs"
+if ! test -x "$customs_bin"; then
+  mkdir -p "$ROOT/pond/bin"
+  env RYE_ZIG="${RYE_ZIG:-$ROOT/vendor/zig-toolchain/zig}" \
+    "$ROOT/rye/bin/rye" build "$ROOT/pond/customs.rye" -femit-bin="$customs_bin"
+fi
+customs_out=$("$customs_bin" inspect "$MANIFEST" 2>&1) || {
+  echo "$customs_out"
+  echo "FAIL Pond customs refused or held cargo at receipt"
+  exit 1
+}
+echo "$customs_out" | grep -q 'GREEN' || {
+  echo "FAIL Pond customs missing GREEN admit"
+  exit 1
+}
+echo "CUSTOMS ok Pond admitted cargo for placement"
+
 sh "$ROOT/tools/fixtures/amber_ring1_verify.sh" "$BUNDLE"
 
 restore=$(mktemp -d)

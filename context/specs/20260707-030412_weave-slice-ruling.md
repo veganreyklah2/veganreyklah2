@@ -28,7 +28,7 @@ Per counsel [`20260707-025212`](../counsel/20260707-025212_claude-counsel-weave-
 | Item | Status |
 |------|--------|
 | **Brix closure in snapshot** | Held — Brix's own first lap |
-| **Pond customs on import** | Held — Pond's own first policy concept |
+| **Pond customs on import** | **Landed** `20260710.161125` — `pond/customs.rye`; place / hold / refuse; Amphora receipt gated; parity **230** |
 | **Continuity custody** (live-instance + per-host epoch) | Kaeden gate — lap 2 structural check only |
 
 ---

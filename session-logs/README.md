@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.161125 | [Pond customs first policy](20260710-161125_pond-customs-first-policy.md) | place / hold / refuse; Amphora receipt; parity **230** |
 | 20260710.154300 | [Amphora large-resin chunking](20260710-154300_amphora-resin-chunk.md) | kind **0x33** chunks; 400 B fetch; parity **229** |
 | 20260710.153745 | [Amphora Amber vessel seal](20260710-153745_amphora-amber-vessel-seal.md) | AEAD on cargo; seal then stamp; parity **228** |
 | 20260710.145843 | [Amphora Kumara vessel stamp](20260710-145843_amphora-kumara-vessel-stamp.md) | `stamp_sig` on pour/scrub; parity **227** |
