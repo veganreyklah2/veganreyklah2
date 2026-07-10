@@ -1,7 +1,7 @@
 # Comlink — the Sealed Wire, Hosted and on Real Virtio
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary device wire **15573**/**15574**; hosted resin serve **38496**/**38497**; MALA M2b device **15569**/**15570**)
+**Last updated:** 2026-07-10 (Tablecloth query device **15575**/**15576**; Granary device **15573**/**15574**; hosted resin **38496**/**38497**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Comlink carries a sealed datagram, and the format never forks.** `wire_format.rye` defines one offset layout and one seal/open pair, and every rung above it — a hosted UDP socket on localhost, or a real virtio-net link between two freestanding guests on QEMU virt — reads and writes exactly the same bytes. A fact that crosses this wire arrives whole or not at all; nothing here retries a partial frame.
@@ -35,6 +35,7 @@ Every Mantra and Linengrow wire capability that crosses onto real virtio carries
 | MALA M2 / M2b | 38492 / 38493 | 15569 / 15570 |
 | Amphora lap 3 vessel fetch | 38494 / 38495 | 15571 / 15572 |
 | Granary lap 4 resin serve | 38496 / 38497 | 15573 / 15574 |
+| Tablecloth query (hosted + device) | 38490 / 38491 | 15575 / 15576 |
 
 Ports repeat across unrelated laps by design — each witness binds, uses, and releases its own pair within one bounded run, and Comlink's laps never run concurrently against the same address.
 
