@@ -1,4 +1,4 @@
-//! scribble/scribble.rye — Scribble lap 6 selftest (parse · rye/rish/plain · headings · paragraphs · fence kinds).
+//! scribble/scribble.rye — Scribble lap 7 selftest (parse · rye/rish/plain · headings · depth filter · paragraphs · fence kinds).
 //!
 //!   rye build scribble/scribble.rye -femit-bin=scribble/bin/scribble
 //!   scribble/bin/scribble selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const sc = @import("scribble_core.rye");
 
-const scribble_version = "20260710.190800";
+const scribble_version = "20260710.211930";
 pub const fixture_path = "scribble/fixtures/sample.md";
 pub const session_fixture_path = "scribble/fixtures/session_snippets.md";
 pub const session_rish_fixture_path = "scribble/fixtures/session_rish_snippets.md";
@@ -130,6 +130,23 @@ fn welcome_extract_headings(io: std.Io) !void {
     print("scribble: headings extracted — count={d}\n", .{hn});
 }
 
+fn welcome_extract_headings_at_depth(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, outline_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var headings: [sc.max_headings]sc.Heading = undefined;
+    const h1 = try sc.extract_headings_at_depth(blocks[0..n], 1, &headings);
+    assert(h1 == 1);
+    assert(std.mem.eql(u8, headings[0].text_slice(), "Forge outline"));
+    const h2 = try sc.extract_headings_at_depth(blocks[0..n], 2, &headings);
+    assert(h2 == 2);
+    assert(std.mem.eql(u8, headings[0].text_slice(), "Lattice first"));
+    assert(std.mem.eql(u8, headings[1].text_slice(), "Scribble next"));
+    print("scribble: headings at depth — h1={d} h2={d}\n", .{ h1, h2 });
+}
+
 fn unwelcome_heading_overflow(io: std.Io) !void {
     const cwd = Dir.cwd();
     var buf: [sc.max_doc_bytes]u8 = undefined;
@@ -241,6 +258,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_extract(io);
         try welcome_extract_rish(io);
         try welcome_extract_headings(io);
+        try welcome_extract_headings_at_depth(io);
         try welcome_extract_paragraphs(io);
         try unwelcome_snippet_overflow(io);
         try unwelcome_rish_snippet_overflow(io);

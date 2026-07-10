@@ -1,13 +1,13 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 11 temperature pin `200819`; parity **306**)
+**Last updated:** 2026-07-10 (lap 13 TopPMismatch · seed pin `211930`; parity **310**/**314**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–11 green (fixture · max_tokens · allow-list · temperature/seed · top_p · err_stop · stop_sequence · prompt · max_tokens · text · temperature pins)
+**Status:** Checkable-room module — laps 0–13 green (fixture · max_tokens · allow-list · temperature/seed · top_p · err_stop · stop_sequence · prompt · max_tokens · text · temperature · seed pins · TopPMismatch)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, a request-side `stop_sequence` pin, a request-side `prompt` pin, a request-side `max_tokens` pin, a response `text_pin`, then a dedicated `TemperatureMismatch` pin. Weights named by hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, a request-side `stop_sequence` pin, a request-side `prompt` pin, a request-side `max_tokens` pin, a response `text_pin`, a dedicated `TemperatureMismatch` pin, a seed-only pin fixture, then `TopPMismatch` distinct from range `BadTopP`. Weights named by hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
@@ -23,12 +23,14 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | **9** | `max_tokens` · request pin + mismatch refuse | parity **298** · `tools/lantern_lap9.rish` (`193358`) |
 | **10** | `text_pin` · response pin + mismatch refuse | parity **302** · `tools/lantern_lap10.rish` (`200203`) |
 | **11** | `temperature` · request pin + `TemperatureMismatch` | parity **306** · `tools/lantern_lap11.rish` (`200819`) |
+| **12** | `seed` · request pin fixture + mismatch refuse | parity **310** · `tools/lantern_lap12.rish` (`211930`) |
+| **13** | `top_p` · `TopPMismatch` distinct from `BadTopP` | parity **314** · `tools/lantern_lap13.rish` (`211930`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + pins through temperature |
+| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + pins through TopPMismatch |
 | [`lantern.rye`](lantern.rye) | Selftest |
 | [`fixtures/completion.bron`](fixtures/completion.bron) | Lap 0 pinned completion |
 | [`fixtures/completion_length.bron`](fixtures/completion_length.bron) | Lap 1 long completion |
@@ -41,5 +43,6 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | [`fixtures/completion_max_tokens.bron`](fixtures/completion_max_tokens.bron) | Lap 9 max_tokens pin |
 | [`fixtures/completion_text.bron`](fixtures/completion_text.bron) | Lap 10 text pin |
 | [`fixtures/completion_temperature.bron`](fixtures/completion_temperature.bron) | Lap 11 temperature pin |
+| [`fixtures/completion_seed_pin.bron`](fixtures/completion_seed_pin.bron) | Lap 12 seed pin |
 
-*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, prompt, max_tokens, text, and temperature pins keep the fixture path deterministic.*
+*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, prompt, max_tokens, text, temperature, and TopPMismatch pins keep the fixture path deterministic.*
