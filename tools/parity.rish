@@ -606,6 +606,11 @@ let amphora_chunk = run ["rishi/bin/rishi" "run" "tools/amphora_resin_chunk.rish
 assert amphora_chunk.ok else "Amphora resin chunk witness failed"
 say "GREEN: Amphora resin chunk witness passed."
 
+say "witness suite: Pond customs (policy at receipt per Tilak)…"
+let pond_customs = run ["rishi/bin/rishi" "run" "tools/pond_customs.rish"]
+assert pond_customs.ok else "Pond customs witness failed"
+say "GREEN: Pond customs witness passed."
+
 say "witness suite: Realidream forge query view (Tablecloth forge hits → Skate)…"
 let forge_query = run ["rishi/bin/rishi" "run" "tools/realidream_forge_query_view.rish"]
 assert forge_query.ok else "Realidream forge query view witness failed"
