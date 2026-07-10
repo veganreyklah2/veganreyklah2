@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 2).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 3).
 //!
-//! Parity-gated matmul before Lantern. Lap 0: matmul; lap 1: add; lap 2: reshape.
+//! Parity-gated matmul before Lantern. Lap 0: matmul; lap 1: add; lap 2: reshape; lap 3: reduce_sum.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -87,4 +87,17 @@ pub fn reshape(src: *const Matrix, out: *Matrix) TensorError!void {
         const ocol = i % out.cols;
         out.set(orow, ocol, src.at(sr, sc));
     }
+}
+
+/// Full-matrix sum into a 1×1 — asserts output shape at entry.
+pub fn reduce_sum(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != 1 or out.cols != 1) return error.ShapeMismatch;
+    var sum: f32 = 0;
+    var i: u32 = 0;
+    while (i < src.len()) : (i += 1) {
+        const r = i / src.cols;
+        const c = i % src.cols;
+        sum += src.at(r, c);
+    }
+    out.set(0, 0, sum);
 }

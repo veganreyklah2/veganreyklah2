@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.182118 | [Compass climb — Lattice reduce, Scribble headings, outline view, assist kinds](20260710-182118_compass-climb-reduce-headings-scribble-assist.md) | Parity **260**–**263**; soak closed |
 | 20260710.181653 | [Compass climb — forge query device, Lattice reshape, Lantern seed, corpus view](20260710-181653_compass-climb-device-reshape-seed-corpus.md) | Parity **256**–**259**; soak closed |
 | 20260710.180747 | [Compass climb — Lantern allow-list, Scribble rish, assist sight, forge query unified](20260710-180747_compass-climb-lantern-scribble-sight-forge.md) | Parity **252**–**255**; soak closed |
 | 20260710.180111 | [Compass climb — forge views, Lantern lap 1, assist snippets](20260710-180111_compass-climb-forge-lantern-assist.md) | Parity **249**–**251**; soak closed |
