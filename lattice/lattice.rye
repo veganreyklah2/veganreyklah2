@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 11 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div).
+//! lattice/lattice.rye — Lattice lap 12 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.193358";
+const lattice_version = "20260710.200203";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -82,6 +82,18 @@ fn welcome_reduce_sum() !void {
     try lc.reduce_sum(&a, &out);
     assert(out.at(0, 0) == 10);
     print("lattice: reduce_sum 2x2 green — sum={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_reduce_mean() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+    var out = try lc.Matrix.init(1, 1);
+    try lc.reduce_mean(&a, &out);
+    assert(out.at(0, 0) == 2.5);
+    print("lattice: reduce_mean 2x2 green — mean={d}\n", .{out.at(0, 0)});
 }
 
 fn welcome_scale() !void {
@@ -316,6 +328,17 @@ fn unwelcome_reduce_shape() !void {
     print("lattice: reduce shape mismatch refused\n", .{});
 }
 
+fn unwelcome_reduce_mean_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    if (lc.reduce_mean(&a, &b)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: reduce_mean shape mismatch refused\n", .{});
+}
+
 fn unwelcome_scale_shape() !void {
     var a = try lc.Matrix.init(2, 2);
     var b = try lc.Matrix.init(2, 1);
@@ -366,6 +389,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_add();
         try welcome_reshape();
         try welcome_reduce_sum();
+        try welcome_reduce_mean();
         try welcome_scale();
         try welcome_transpose();
         try welcome_mul();
@@ -377,6 +401,7 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
+        try unwelcome_reduce_mean_shape();
         try unwelcome_scale_shape();
         try unwelcome_transpose_shape();
         try unwelcome_mul_shape();
@@ -386,7 +411,7 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_div_shape();
         try unwelcome_div_zero();
         try unwelcome_dim_overflow();
-        print("lattice lap11: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap12: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

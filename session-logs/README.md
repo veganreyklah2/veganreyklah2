@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.200203 | [Compass climb — Lattice mean, rish view, sight chart, Lantern text pin](20260710-200203_compass-climb-mean-rish-sight-text.md) | Parity **299**–**302**; soak closed |
 | 20260710.193358 | [Compass climb — Lattice div, rye view, greencandy prefix, Lantern max_tokens pin](20260710-193358_compass-climb-div-rye-candy-maxtokens.md) | Parity **295**–**298**; soak closed |
 | 20260710.192749 | [Compass climb — Lattice neg, chart view, tools prefix, Lantern prompt pin](20260710-192749_compass-climb-neg-chart-tools-prompt.md) | Parity **291**–**294**; soak closed |
 | 20260710.192018 | [Assist/sight composition — plain fences and journal memos on the glass](20260710-192018_assist-sight-composition-journal-plain.md) | Parity **288**–**290**; composition lap |

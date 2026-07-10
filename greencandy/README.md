@@ -1,9 +1,9 @@
 # Greencandy — Centralized Books of Record
 
 **Language:** EN
-**Last updated:** 2026-07-10 (chart view `192749`; parity **292**)
+**Last updated:** 2026-07-10 (sight lap 3 chart `200203`; parity **301**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 1–3 green; sight, exception, P&L, BS, TB, journal, and chart views on Skate
+**Status:** Checkable-room module — laps 1–3 green; sight (journal + chart), exception, P&L, BS, TB, journal, and chart views on Skate
 
 ---
 
@@ -20,6 +20,7 @@ Greencandy is Linengrow's **centralized books**: one steward's chart of accounts
 | **TB view** | Trial balance alone → six-line Skate frame | parity **277** · `tools/greencandy_tb_view.rish` |
 | **journal view** | Entry memos alone → five-line Skate frame | parity **285** · `tools/greencandy_journal_view.rish` (`191112`) |
 | **chart view** | Account names alone → six-line Skate frame | parity **292** · `tools/greencandy_chart_view.rish` (`192749`) |
+| **sight lap 3** | Chart of accounts on steward glass | parity **301** · `tools/greencandy_sight_view_lap3.rish` (`200203`) |
 
 ## Layout
 
@@ -42,6 +43,7 @@ rishi/bin/rishi run tools/greencandy_bs_view.rish
 rishi/bin/rishi run tools/greencandy_tb_view.rish
 rishi/bin/rishi run tools/greencandy_journal_view.rish
 rishi/bin/rishi run tools/greencandy_chart_view.rish
+rishi/bin/rishi run tools/greencandy_sight_view_lap3.rish
 ```
 
 **Design:** hammock [`../active-designing/20260710-125953_greencandy-hammock.md`](../active-designing/20260710-125953_greencandy-hammock.md) · lap 2 [`../active-designing/20260710-131212_greencandy-lap2-reports.md`](../active-designing/20260710-131212_greencandy-lap2-reports.md) · lap 3 sight [`../active-designing/20260710-132548_greencandy-lap3-sight-view.md`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`../external-research/20260710-131956_seen-books-living-desktop-horizon.md`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md)
