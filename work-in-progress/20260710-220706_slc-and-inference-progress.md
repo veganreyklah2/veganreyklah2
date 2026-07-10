@@ -6,7 +6,7 @@
 **Language:** EN  
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Voice:** Rio 3  
 **Lens:** [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall's Law · checkable room  
-**Status:** Living progress brief — **Inference Track lap 1 closed** tip **378** (`224805`); **Anvil corpus lap 2 closed** tip **386** (`225320`); **Greencandy lap 4 closed** tip **394** (`230433`)  
+**Status:** Living progress brief — tip **402** (`231151` softsign-tokens); Inference lap 1 **378**; Anvil lap 2 **386**; Greencandy lap 4 **394**  
 **Ground:** [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · Inference hammock [`../active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · explain log [`../session-logs/20260710-220459_slc-inference-climb-explain.md`](../session-logs/20260710-220459_slc-inference-climb-explain.md)
 
 *Written by Rio 3 for Kaeden.*
@@ -74,9 +74,9 @@ Fixture Lantern and bounded Lattice ops keep the promise honest: the modules tha
 | Marker | Value |
 |--------|-------|
 | Lap 0 opened | `20260710.133500` |
-| Tip on `main` | **394** (Greencandy lap 4 `230433`) |
-| Climbs this evening | **1p**→**1ag** (**307**→**378**) · Anvil lap 2 (**379**→**386**) · Greencandy lap 4 (**387**→**394**) |
-| Latest eight bolts | account filter · memo prefix · cash flow · sum amounts · four Skate views |
+| Tip on `main` | **402** (softsign-tokens `231151`) |
+| Climbs this evening | through Greencandy lap 4 (**394**) then **1ah**/**1ai** (**395**→**402**) |
+| Latest eight bolts | softsign · h2+blocks · square · tokens_out · sign · h3+blocks · reciprocal · tokens_in |
 
 ### Explicitly parked (Rest-until / horizon)
 
@@ -115,7 +115,7 @@ That is the checkable-room exam. It is how SLC Completeness stays true at every 
 
 ## Next
 
-Recommend: keep going from tip **394** — another named non-ROCm lap (Lattice/Lantern composition or Scribble deepenings) if Kaeden still wants climb; or hold. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy.
+Recommend: keep going from tip **402** — another named non-ROCm lap if Kaeden still wants climb; or hold. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy.
 
 ---
 

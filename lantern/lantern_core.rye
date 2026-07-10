@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 29).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 31).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen through presence_penalty · n — lap-1 close.
+//! Weights live in Tablecloth by hash. Laps deepen through tokens_out · tokens_in pins.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -54,6 +54,8 @@ pub const LanternError = error{
     PresencePenaltyMismatch,
     BadN,
     NMismatch,
+    TokensOutMismatch,
+    TokensInMismatch,
 };
 
 pub const Request = struct {
@@ -72,6 +74,8 @@ pub const Request = struct {
     frequency_penalty: f32 = 0.0,
     presence_penalty: f32 = 0.0,
     n: u32 = 1,
+    expect_tokens_out: ?u32 = null,
+    expect_tokens_in: ?u32 = null,
 };
 
 pub const Response = struct {
@@ -201,6 +205,16 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
         const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
         if (req.n != pinned) return error.NMismatch;
     }
+    if (field_value(fixture_text, "pin_tokens_out")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        const expect = req.expect_tokens_out orelse return error.TokensOutMismatch;
+        if (expect != pinned) return error.TokensOutMismatch;
+    }
+    if (field_value(fixture_text, "pin_tokens_in")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        const expect = req.expect_tokens_in orelse return error.TokensInMismatch;
+        if (expect != pinned) return error.TokensInMismatch;
+    }
     if (field_value(fixture_text, "prompt")) |pinned| {
         if (!std.mem.eql(u8, req.prompt, pinned)) return error.PromptMismatch;
     }
@@ -209,6 +223,14 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
         if (req.max_tokens != pinned) return error.MaxTokensMismatch;
     }
     var resp = try parse_fixture(fixture_text);
+    if (field_value(fixture_text, "pin_tokens_out")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        if (resp.tokens_out != pinned) return error.TokensOutMismatch;
+    }
+    if (field_value(fixture_text, "pin_tokens_in")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        if (resp.tokens_in != pinned) return error.TokensInMismatch;
+    }
     if (resp.tokens_out <= req.max_tokens) {
         if (field_value(fixture_text, "text_pin")) |pinned| {
             if (!std.mem.eql(u8, resp.text, pinned)) return error.TextMismatch;

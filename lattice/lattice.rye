@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 31 selftest (ops through minimum · elu — lap-1 close).
+//! lattice/lattice.rye — Lattice lap 35 selftest (ops through softsign · square · sign · reciprocal).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.224805";
+const lattice_version = "20260710.231151";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -518,6 +518,66 @@ fn welcome_elu() !void {
     print("lattice: elu 2x2 green — o00={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_softsign() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 1);
+    src.set(1, 0, -1);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.softsign(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 0.5);
+    assert(out.at(1, 0) == -0.5);
+    assert(out.at(1, 1) == 0);
+    print("lattice: softsign 2x2 green — o01={d}\n", .{out.at(0, 1)});
+}
+
+fn welcome_square() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 2);
+    src.set(0, 1, -3);
+    src.set(1, 0, 0);
+    src.set(1, 1, 4);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.square(&src, &out);
+    assert(out.at(0, 0) == 4);
+    assert(out.at(0, 1) == 9);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 16);
+    print("lattice: square 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_sign() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 3);
+    src.set(0, 1, -2);
+    src.set(1, 0, 0);
+    src.set(1, 1, 1);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.sign(&src, &out);
+    assert(out.at(0, 0) == 1);
+    assert(out.at(0, 1) == -1);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 1);
+    print("lattice: sign 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_reciprocal() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 2);
+    src.set(0, 1, -4);
+    src.set(1, 0, 1);
+    src.set(1, 1, 0.5);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.reciprocal(&src, &out);
+    assert(out.at(0, 0) == 0.5);
+    assert(out.at(0, 1) == -0.25);
+    assert(out.at(1, 0) == 1);
+    assert(out.at(1, 1) == 2);
+    print("lattice: reciprocal 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
 
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
@@ -842,6 +902,62 @@ fn unwelcome_elu_shape() !void {
     print("lattice: elu shape mismatch refused\n", .{});
 }
 
+fn unwelcome_softsign_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.softsign(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: softsign shape mismatch refused\n", .{});
+}
+
+fn unwelcome_square_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.square(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: square shape mismatch refused\n", .{});
+}
+
+fn unwelcome_sign_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.sign(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: sign shape mismatch refused\n", .{});
+}
+
+fn unwelcome_reciprocal_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.reciprocal(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: reciprocal shape mismatch refused\n", .{});
+}
+
+fn unwelcome_reciprocal_zero() !void {
+    var src = try lc.Matrix.init(1, 1);
+    src.set(0, 0, 0);
+    var out = try lc.Matrix.init(1, 1);
+    if (lc.reciprocal(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.DivideByZero);
+    }
+    print("lattice: reciprocal zero refused\n", .{});
+}
+
 
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
@@ -966,6 +1082,10 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_maximum();
         try welcome_minimum();
         try welcome_elu();
+        try welcome_softsign();
+        try welcome_square();
+        try welcome_sign();
+        try welcome_reciprocal();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -1000,8 +1120,13 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_maximum_shape();
         try unwelcome_minimum_shape();
         try unwelcome_elu_shape();
+        try unwelcome_softsign_shape();
+        try unwelcome_square_shape();
+        try unwelcome_sign_shape();
+        try unwelcome_reciprocal_shape();
+        try unwelcome_reciprocal_zero();
         try unwelcome_dim_overflow();
-        print("lattice lap31: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap35: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

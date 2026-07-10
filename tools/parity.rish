@@ -1437,3 +1437,43 @@ say "witness suite: Greencandy sum amounts view…"
 let greencandy_sum_amounts = run ["rishi/bin/rishi" "run" "tools/greencandy_sum_amounts_view.rish"]
 assert greencandy_sum_amounts.ok else "Greencandy sum amounts view witness failed"
 say "GREEN: Greencandy sum amounts view witness passed."
+
+say "witness suite: Lattice lap 32 (softsign)…"
+let lattice_lap33 = run ["rishi/bin/rishi" "run" "tools/lattice_lap33.rish"]
+assert lattice_lap33.ok else "Lattice lap 32 witness failed"
+say "GREEN: Lattice lap 32 witness passed."
+
+say "witness suite: Scribble h2 blocks view…"
+let scribble_h2_blocks = run ["rishi/bin/rishi" "run" "tools/inference_scribble_h2_blocks_view.rish"]
+assert scribble_h2_blocks.ok else "Scribble h2 blocks view witness failed"
+say "GREEN: Scribble h2 blocks view witness passed."
+
+say "witness suite: Lattice lap 33 (square)…"
+let lattice_lap34 = run ["rishi/bin/rishi" "run" "tools/lattice_lap34.rish"]
+assert lattice_lap34.ok else "Lattice lap 33 witness failed"
+say "GREEN: Lattice lap 33 witness passed."
+
+say "witness suite: Lantern lap 30 (tokens_out pin)…"
+let lantern_lap30 = run ["rishi/bin/rishi" "run" "tools/lantern_lap30.rish"]
+assert lantern_lap30.ok else "Lantern lap 30 witness failed"
+say "GREEN: Lantern lap 30 witness passed."
+
+say "witness suite: Lattice lap 34 (sign)…"
+let lattice_lap35 = run ["rishi/bin/rishi" "run" "tools/lattice_lap35.rish"]
+assert lattice_lap35.ok else "Lattice lap 34 witness failed"
+say "GREEN: Lattice lap 34 witness passed."
+
+say "witness suite: Scribble h3 blocks view…"
+let scribble_h3_blocks = run ["rishi/bin/rishi" "run" "tools/inference_scribble_h3_blocks_view.rish"]
+assert scribble_h3_blocks.ok else "Scribble h3 blocks view witness failed"
+say "GREEN: Scribble h3 blocks view witness passed."
+
+say "witness suite: Lattice lap 35 (reciprocal)…"
+let lattice_lap36 = run ["rishi/bin/rishi" "run" "tools/lattice_lap36.rish"]
+assert lattice_lap36.ok else "Lattice lap 35 witness failed"
+say "GREEN: Lattice lap 35 witness passed."
+
+say "witness suite: Lantern lap 31 (tokens_in pin)…"
+let lantern_lap31 = run ["rishi/bin/rishi" "run" "tools/lantern_lap31.rish"]
+assert lantern_lap31.ok else "Lantern lap 31 witness failed"
+say "GREEN: Lantern lap 31 witness passed."
