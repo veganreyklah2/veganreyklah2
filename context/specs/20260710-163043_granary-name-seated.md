@@ -3,7 +3,7 @@
 **Stamp:** `20260710.163043` (Kaeden's word: "okay, go with Granary")
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — the **name** for the Mantra global namespace / weave-sharing surface; first code lap landed `20260710.163304` (parity **232**)
+**Status:** Seated — the **name** for the Mantra global namespace / weave-sharing surface; lap 1 `20260710.163304` (parity **232**); weave view `20260710.163557` (**233**); write gate lap 2 `20260710.164237` (**234**)
 **Ground:** study [`../../external-research/20260703-182612_the-granary-question.md`](../../external-research/20260703-182612_the-granary-question.md) · counsel [`../../session-logs/20260710-162312_granary-naming-mission.md`](../../session-logs/20260710-162312_granary-naming-mission.md)
 
 *Written by Kaeden and Rio 3.*
@@ -31,7 +31,7 @@ Forge · Grove · Orchard · Sangha · Weavehall · Bakery — warm or legible, 
 
 ## First lap (landed `20260710.163304`)
 
-Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. Skate weave view landed `20260710.163557` (`granaryviewtest`; parity **233**). No payments, no federation, no writes until their own gates.
+Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. Skate weave view landed `20260710.163557` (`granaryviewtest`; parity **233**). Write gate lap 2 landed `20260710.164237` — durable `publish` + reload; parity **234**. No payments, no federation until their own gates.
 
 ---
 
