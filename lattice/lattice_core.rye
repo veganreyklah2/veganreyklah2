@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 12).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 13).
 //!
-//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean.
+//! Parity-gated tensor ops before Lantern. Laps: matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -212,6 +212,19 @@ pub fn div(a: *const Matrix, b: *const Matrix, out: *Matrix) TensorError!void {
             const denom = b.at(r, c);
             if (denom == 0.0) return error.DivideByZero;
             out.set(r, c, a.at(r, c) / denom);
+        }
+    }
+}
+
+/// Elementwise absolute value — shapes must match.
+pub fn abs(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v < 0.0) -v else v);
         }
     }
 }

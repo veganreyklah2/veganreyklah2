@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 12 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean).
+//! lattice/lattice.rye — Lattice lap 13 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub · neg · div · reduce_mean · abs).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.200203";
+const lattice_version = "20260710.200819";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -228,6 +228,21 @@ fn welcome_div() !void {
     print("lattice: div 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
 }
 
+fn welcome_abs() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, -3);
+    src.set(0, 1, 4);
+    src.set(1, 0, -5);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.abs(&src, &out);
+    assert(out.at(0, 0) == 3);
+    assert(out.at(0, 1) == 4);
+    assert(out.at(1, 0) == 5);
+    assert(out.at(1, 1) == 0);
+    print("lattice: abs 2x2 green — o00={d} o10={d}\n", .{ out.at(0, 0), out.at(1, 0) });
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -292,6 +307,17 @@ fn unwelcome_div_zero() !void {
         assert(err == error.DivideByZero);
     }
     print("lattice: div by zero refused\n", .{});
+}
+
+fn unwelcome_abs_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.abs(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: abs shape mismatch refused\n", .{});
 }
 
 fn unwelcome_shape_mismatch() !void {
@@ -398,6 +424,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_sub();
         try welcome_neg();
         try welcome_div();
+        try welcome_abs();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -410,8 +437,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_neg_shape();
         try unwelcome_div_shape();
         try unwelcome_div_zero();
+        try unwelcome_abs_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap12: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap13: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

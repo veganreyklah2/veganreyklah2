@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb mean+rish+sight+text `200203`; parity **302**)
+**Last updated:** 2026-07-10 (Compass climb abs+apps+assist-chart+temp `200819`; parity **306**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -183,6 +183,10 @@
 | **114** | **Scribble rish snippets view** | **Landed** | Rish fences → Skate `scribblerishviewtest`; parity **300**; stamp `200203` |
 | **115** | **Linengrow sight lap 3 chart** | **Landed** | Chart on steward glass; parity **301**; stamp `200203` |
 | **116** | **Lantern lap 10 text pin** | **Landed** | Response text_pin; parity **302**; stamp `200203` |
+| **117** | **Lattice lap 13 abs** | **Landed** | Elementwise abs; parity **303**; stamp `200819` |
+| **118** | **Anvil corpus apps prefix view** | **Landed** | pond/apps/ → Skate; parity **304**; stamp `200819` |
+| **119** | **Assist sight lap 4 chart** | **Landed** | Chart on carriage assist fold; parity **305**; stamp `200819` |
+| **120** | **Lantern lap 11 temperature pin** | **Landed** | TemperatureMismatch pin; parity **306**; stamp `200819` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
