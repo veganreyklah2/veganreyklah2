@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 25 selftest (ops through tanh · gelu).
+//! lattice/lattice.rye — Lattice lap 27 selftest (ops through silu · leaky_relu).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.215613";
+const lattice_version = "20260710.223639";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -417,6 +417,36 @@ fn welcome_gelu() !void {
     print("lattice: gelu 2x2 green — o00={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_silu() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.silu(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 0);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: silu 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_leaky_relu() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, -1);
+    src.set(1, 0, 2);
+    src.set(1, 1, -2);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.leaky_relu(&src, 0.01, &out);
+    assert(out.at(0, 0) == 1);
+    assert(out.at(0, 1) == -0.01);
+    assert(out.at(1, 0) == 2);
+    assert(out.at(1, 1) == -0.02);
+    print("lattice: leaky_relu 2x2 green — o01={d}\n", .{out.at(0, 1)});
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -671,6 +701,28 @@ fn unwelcome_gelu_shape() !void {
     print("lattice: gelu shape mismatch refused\n", .{});
 }
 
+fn unwelcome_silu_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.silu(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: silu shape mismatch refused\n", .{});
+}
+
+fn unwelcome_leaky_relu_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.leaky_relu(&src, 0.01, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: leaky_relu shape mismatch refused\n", .{});
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -788,6 +840,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_softmax();
         try welcome_tanh();
         try welcome_gelu();
+        try welcome_silu();
+        try welcome_leaky_relu();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -816,8 +870,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_softmax_shape();
         try unwelcome_tanh_shape();
         try unwelcome_gelu_shape();
+        try unwelcome_silu_shape();
+        try unwelcome_leaky_relu_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap25: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap27: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

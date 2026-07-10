@@ -1,9 +1,9 @@
 # Scribble — Markdown as Values
 
 **Language:** EN
-**Last updated:** 2026-07-10 (fence+heading view `215613`; parity **348**)
+**Last updated:** 2026-07-10 (tally+blocks view `223639`; parity **356**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–7 green (parse · rye/rish/plain snippets · headings · depth filter · paragraphs · fence kinds); rye/rish/plain/fence/paragraph/outline/h1/h2/h3/depth-tally/tally/blocks/fence+heading views on Skate
+**Status:** Checkable-room module — laps 0–7 green (parse · rye/rish/plain snippets · headings · depth filter · paragraphs · fence kinds); rye/rish/plain/fence/paragraph/outline/h1/h2/h3/depth-tally/tally/blocks/fence+heading/tally+blocks views on Skate
 
 ---
 
@@ -30,6 +30,7 @@ Scribble turns human prose into block values — headings, paragraphs, and fence
 | **tally view** | Headings + paragraphs counts → five-line Skate frame | parity **332** · `tools/inference_scribble_tally_view.rish` (`213738`) |
 | **blocks view** | Six outline blocks → Skate frame | parity **340** · `tools/inference_scribble_blocks_view.rish` (`214145`) |
 | **fence+heading view** | Fence kinds + heading count → Skate frame | parity **348** · `tools/inference_scribble_fence_heading_view.rish` (`215613`) |
+| **tally+blocks view** | Headings/paragraphs tally + block count → Skate frame | parity **356** · `tools/inference_scribble_tally_blocks_view.rish` (`223639`) |
 
 ## Layout
 
