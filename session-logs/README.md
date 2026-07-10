@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.170838 | [Granary Exchange view — weave listing on Skate](20260710-170838_granary-exchange-view.md) | Six-line frame; parity **241** |
 | 20260710.170700 | [Mandi floor view — vessel listing on Skate](20260710-170700_mandi-floor-view.md) | Five-line frame; parity **240** |
 | 20260710.170132 | [Granary lap 4b — device-wire resin serve](20260710-170132_granary-device-wire.md) | Virtio 15573/15574; parity **239** |
 | 20260710.165634 | [Mandi name seated + lap 1 vessel listing](20260710-165634_mandi-name-and-lap1.md) | Vessel floor; parity **238** |
