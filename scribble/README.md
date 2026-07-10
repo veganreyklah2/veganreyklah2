@@ -1,7 +1,7 @@
 # Scribble — Markdown as Values
 
 **Language:** EN
-**Last updated:** 2026-07-10 (plain snippets `190800`; parity **282**)
+**Last updated:** 2026-07-10 (plain snippets view `191112`; parity **286**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–6 green (parse · rye/rish/plain snippets · headings · paragraphs · fence kinds)
 
@@ -19,7 +19,8 @@ Scribble turns human prose into block values — headings, paragraphs, and fence
 | **paragraphs view** | Prose bodies → five-line Skate frame | parity **273** · `tools/inference_scribble_para_view.rish` |
 | **5** | `count_fence_kinds` · rye/rish/plain tallies | `tools/scribble_lap6.rish` |
 | **fence kinds view** | rye/rish/plain counts → five-line Skate frame | parity **278** · `tools/inference_scribble_fence_view.rish` |
-| **6** | `extract_plain_snippets` · overflow refused | parity **282** · `tools/scribble_lap7.rish` (`190800`) |
+| **6** | `extract_plain_snippets` · overflow refused | parity **282** · `tools/scribble_lap7.rish` |
+| **plain snippets view** | Unmarked fences → five-line Skate frame | parity **286** · `tools/inference_scribble_plain_view.rish` (`191112`) |
 
 ## Layout
 
@@ -39,6 +40,7 @@ rishi/bin/rishi run tools/scribble_lap7.rish
 rishi/bin/rishi run tools/inference_scribble_view.rish
 rishi/bin/rishi run tools/inference_scribble_para_view.rish
 rishi/bin/rishi run tools/inference_scribble_fence_view.rish
+rishi/bin/rishi run tools/inference_scribble_plain_view.rish
 ```
 
 *May what we write become values the stack can diff and render.*
