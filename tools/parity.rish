@@ -636,6 +636,11 @@ let granary3 = run ["rishi/bin/rishi" "run" "tools/granary_lap3.rish"]
 assert granary3.ok else "Granary lap 3 witness failed"
 say "GREEN: Granary lap 3 witness passed."
 
+say "witness suite: Granary lap 4 (Comlink resin serve)…"
+let granary4 = run ["rishi/bin/rishi" "run" "tools/granary_resin_wire.rish"]
+assert granary4.ok else "Granary lap 4 resin wire witness failed"
+say "GREEN: Granary lap 4 resin wire witness passed."
+
 say "witness suite: Realidream forge query view (Tablecloth forge hits → Skate)…"
 let forge_query = run ["rishi/bin/rishi" "run" "tools/realidream_forge_query_view.rish"]
 assert forge_query.ok else "Realidream forge query view witness failed"
