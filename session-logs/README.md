@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.174752 | [Realidream query device view — device hits on Skate](20260710-174752_query-device-view.md) | querydeviceviewtest; parity **247** |
 | 20260710.174217 | [Tablecloth query device wire — virtio filter](20260710-174217_tablecloth-query-device-wire.md) | Ports 15575/15576; parity **246** |
 | 20260710.173752 | [Kitchen twin — LEXICON row seated](20260710-173752_kitchen-twin-lexicon.md) | Plain companion gloss; rose asserts |
 | 20260710.173631 | [Kitchen metaphor — said for Kaeden](20260710-173631_kitchen-metaphor-plainly.md) | Twin = plain companion; not cooking |
