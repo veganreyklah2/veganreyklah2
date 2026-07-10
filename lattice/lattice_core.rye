@@ -1,9 +1,10 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 19).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 21).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through exp · log.
+//! Parity-gated tensor ops before Lantern. Laps through pow · relu.
 
 const std = @import("std");
 const assert = std.debug.assert;
+const math = std.math;
 
 pub const max_dim: u32 = 8;
 pub const max_elements: u32 = max_dim * max_dim;
@@ -309,6 +310,33 @@ pub fn log(src: *const Matrix, out: *Matrix) TensorError!void {
             const v = src.at(r, c);
             if (v <= 0.0) return error.NonPositiveInput;
             out.set(r, c, @log(v));
+        }
+    }
+}
+
+/// Elementwise power with scalar exponent — shapes must match; negative base refused.
+pub fn pow(src: *const Matrix, exponent: f32, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            if (v < 0.0) return error.NegativeInput;
+            out.set(r, c, math.pow(f32, v, exponent));
+        }
+    }
+}
+
+/// Elementwise ReLU — shapes must match; max(0, v).
+pub fn relu(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v > 0.0) v else 0.0);
         }
     }
 }

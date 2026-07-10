@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 17).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 19).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen through allow-list empty refuse and allow_count pin.
+//! Weights live in Tablecloth by hash. Laps deepen through dual-model allow and require_model pin.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -39,6 +39,7 @@ pub const LanternError = error{
     LengthStopMismatch,
     EmptyAllowList,
     AllowCountMismatch,
+    RequireModelMissing,
 };
 
 pub const Request = struct {
@@ -225,6 +226,9 @@ pub fn complete_allowed(req: Request, fixture_text: []const u8, allow_text: []co
     if (field_value(fixture_text, "allow_count")) |pinned_text| {
         const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
         if (allow_n != pinned) return error.AllowCountMismatch;
+    }
+    if (field_value(fixture_text, "require_model")) |required| {
+        if (!model_allowed(required, allow_text)) return error.RequireModelMissing;
     }
     if (!model_allowed(req.model_hash, allow_text)) return error.ModelMismatch;
     return complete_fixture(req, fixture_text);
