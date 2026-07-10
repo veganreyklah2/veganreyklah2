@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 0 selftest (f32 matmul).
+//! lattice/lattice.rye — Lattice lap 2 selftest (matmul · add · reshape).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.134200";
+const lattice_version = "20260710.181653";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -52,6 +52,26 @@ fn welcome_matmul() !void {
     print("lattice: matmul 2x2 green — c00={d} c11={d}\n", .{ c.at(0, 0), c.at(1, 1) });
 }
 
+fn welcome_reshape() !void {
+    var a = try lc.Matrix.init(2, 3);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(0, 2, 3);
+    a.set(1, 0, 4);
+    a.set(1, 1, 5);
+    a.set(1, 2, 6);
+
+    var b = try lc.Matrix.init(3, 2);
+    try lc.reshape(&a, &b);
+    assert(b.at(0, 0) == 1);
+    assert(b.at(0, 1) == 2);
+    assert(b.at(1, 0) == 3);
+    assert(b.at(1, 1) == 4);
+    assert(b.at(2, 0) == 5);
+    assert(b.at(2, 1) == 6);
+    print("lattice: reshape 2x3→3x2 green — b00={d} b21={d}\n", .{ b.at(0, 0), b.at(2, 1) });
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -62,6 +82,17 @@ fn unwelcome_shape_mismatch() !void {
         assert(err == error.ShapeMismatch);
     }
     print("lattice: shape mismatch refused\n", .{});
+}
+
+fn unwelcome_reshape_count() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(3, 1);
+    if (lc.reshape(&a, &b)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: reshape count mismatch refused\n", .{});
 }
 
 fn unwelcome_dim_overflow() !void {
@@ -78,9 +109,11 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
         try welcome_matmul();
         try welcome_add();
+        try welcome_reshape();
         try unwelcome_shape_mismatch();
+        try unwelcome_reshape_count();
         try unwelcome_dim_overflow();
-        print("lattice lap1: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap2: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Design + wire + query view + device wire + device view + unified view — checkable-room hammock; hosted + device filter GREEN; Skate folds including unified; parity **248**
+**Status:** Design + wire + query/forge views through device + unified — checkable-room hammock; forge query device **256**; parity tip through climb `181653`
 
 **Ground:** counsel [`005612`](../counsel/20260707-005612_claude-counsel-tablecloth-query.md) · Hyperfiddle gratitude [`../gratitude/hyperfiddle.md`](../gratitude/hyperfiddle.md) · Weave essay [`../foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) · NS brief [`20260706-023912_the-referential-namespace.md`](20260706-023912_the-referential-namespace.md) · Realidream thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
@@ -91,6 +91,13 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 
 - Hosted + device fixtures on one eight-line Skate frame (`queryunifiedviewtest`)
 - `tools/realidream_query_unified_view.rish`; parity **248**
+
+
+### In scope (lap 2e — forge query device view · landed `20260710.181653`)
+
+- `forgequerydeviceviewtest` folds `forge_query_device_hits.bron` (`wire device`) into a six-line Skate frame
+- Hosted forge query fixture without `wire device` stays unwelcome for this mode
+- Parity **256**; sibling to query device view; unified already at **255**
 
 ### Out of scope (later)
 

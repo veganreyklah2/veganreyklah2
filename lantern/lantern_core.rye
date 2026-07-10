@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 2).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 3).
 //!
-//! Weights live in Tablecloth by hash; lap 1 enforces max_tokens; lap 2 allow-lists model hashes.
+//! Weights live in Tablecloth by hash; lap 1 max_tokens; lap 2 allow-list; lap 3 temperature + seed.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -9,6 +9,7 @@ pub const max_prompt_len: u32 = 256;
 pub const max_completion_len: u32 = 256;
 pub const max_hash_len: u32 = 64;
 pub const max_budget_tokens: u32 = 512;
+pub const max_temperature: f32 = 2.0;
 
 pub const StoppedReason = enum(u8) {
     eos,
@@ -21,12 +22,16 @@ pub const LanternError = error{
     ModelMismatch,
     BudgetExceeded,
     BadFixture,
+    BadTemperature,
+    SeedMismatch,
 };
 
 pub const Request = struct {
     model_hash: []const u8,
     prompt: []const u8,
     max_tokens: u32,
+    temperature: f32 = 0.0,
+    seed: u64 = 0,
 };
 
 pub const Response = struct {
@@ -39,6 +44,7 @@ pub const Response = struct {
 pub fn validate_request(req: Request) LanternError!void {
     if (req.prompt.len > max_prompt_len) return error.PromptTooLong;
     if (req.max_tokens == 0 or req.max_tokens > max_budget_tokens) return error.BudgetExceeded;
+    if (req.temperature < 0.0 or req.temperature > max_temperature) return error.BadTemperature;
 }
 
 fn field_value(text: []const u8, key: []const u8) ?[]const u8 {
@@ -86,6 +92,14 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     try validate_request(req);
     const fixture_model = field_value(fixture_text, "model_hash") orelse return error.BadFixture;
     if (!std.mem.eql(u8, req.model_hash, fixture_model)) return error.ModelMismatch;
+    if (field_value(fixture_text, "seed")) |seed_text| {
+        const pinned = std.fmt.parseInt(u64, seed_text, 10) catch return error.BadFixture;
+        if (req.seed != pinned) return error.SeedMismatch;
+    }
+    if (field_value(fixture_text, "temperature")) |temp_text| {
+        const pinned = std.fmt.parseFloat(f32, temp_text) catch return error.BadFixture;
+        if (req.temperature != pinned) return error.BadTemperature;
+    }
     var resp = try parse_fixture(fixture_text);
     if (resp.tokens_out <= req.max_tokens) return resp;
 
