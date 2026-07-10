@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb neg+chart+tools+prompt `192749`; parity **294**)
+**Last updated:** 2026-07-10 (Compass climb div+rye+candy+maxtokens `193358`; parity **298**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -175,6 +175,10 @@
 | **106** | **Greencandy chart view** | **Landed** | Chart of accounts → Skate `chartviewtest`; parity **292**; stamp `192749` |
 | **107** | **Anvil corpus tools prefix view** | **Landed** | tools/ → Skate `corpustoolsprefixviewtest`; parity **293**; stamp `192749` |
 | **108** | **Lantern lap 8 prompt pin** | **Landed** | Request-side prompt pin; parity **294**; stamp `192749` |
+| **109** | **Lattice lap 11 div** | **Landed** | Elementwise divide + zero refuse; parity **295**; stamp `193358` |
+| **110** | **Scribble rye snippets view** | **Landed** | Rye fences → Skate `scribbleryeviewtest`; parity **296**; stamp `193358` |
+| **111** | **Anvil corpus greencandy prefix view** | **Landed** | greencandy/ → Skate `corpuscandyprefixviewtest`; parity **297**; stamp `193358` |
+| **112** | **Lantern lap 9 max_tokens pin** | **Landed** | Request-side max_tokens pin; parity **298**; stamp `193358` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

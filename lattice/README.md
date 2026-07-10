@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 10 neg `192749`; parity **291**)
+**Last updated:** 2026-07-10 (lap 11 div `193358`; parity **295**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–10 green (matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg)
+**Status:** Checkable-room module — laps 0–11 green (matmul · add · reshape · reduce_sum · scale · transpose · mul · fill · copy · sub · neg · div)
 
 ---
 
@@ -22,16 +22,17 @@ Lattice holds explicit tensor math in bounded gardens. Build order places **Latt
 | **8** | `copy` · shape assert | parity **280** · `tools/lattice_lap9.rish` |
 | **9** | Elementwise `sub` · shape assert | parity **284** · `tools/lattice_lap10.rish` (`191112`) |
 | **10** | Elementwise `neg` · shape assert | parity **291** · `tools/lattice_lap11.rish` (`192749`) |
+| **11** | Elementwise `div` · shape assert · zero refuse | parity **295** · `tools/lattice_lap12.rish` (`193358`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through neg |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through div |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap11.rish
+rishi/bin/rishi run tools/lattice_lap12.rish
 ```
 
 *May the numbers stay honest before the model runs.*
