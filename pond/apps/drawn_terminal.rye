@@ -28,7 +28,9 @@
 //!   pond/bin/drawn-terminal forgequerydeviceviewtest # Forge query device-wire hits → Skate
 //!   pond/bin/drawn-terminal forgequeryunifiedviewtest # Hosted + device forge query hits
 //!   pond/bin/drawn-terminal corpusviewtest # Anvil corpus query hits → Skate
+//!   pond/bin/drawn-terminal corpusprefixviewtest # Anvil path_prefix query → Skate
 //!   pond/bin/drawn-terminal scribbleviewtest # Scribble outline headings → Skate
+//!   pond/bin/drawn-terminal exceptionviewtest # Greencandy exception queue → Skate
 //!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
 //!   pond/bin/drawn-terminal exchangeviewtest # Granary Exchange view — weave listing → Skate
 //!   pond/bin/drawn-terminal mandiviewtest   # Mandi floor view — vessel listing → Skate
@@ -57,8 +59,9 @@ const rc = @import("mandi/receipt_core.rye");
 const kumara = @import("mandi/kumara.rye");
 const anvil = @import("anvil/anvil_core.rye");
 const scribble = @import("scribble/scribble_core.rye");
+const greencandy = @import("greencandy/greencandy_core.rye");
 
-const drawn_terminal_version = "20260710.182118";
+const drawn_terminal_version = "20260710.182502";
 
 const status_max_len: u32 = 80;
 const thin_view_max_lines: u32 = 5;
@@ -76,7 +79,9 @@ const forge_query_view_max_lines: u32 = 6;
 const forge_query_device_view_max_lines: u32 = 6;
 const forge_query_unified_view_max_lines: u32 = 8;
 const corpus_view_max_lines: u32 = 6;
+const corpus_prefix_view_max_lines: u32 = 5;
 const scribble_view_max_lines: u32 = 6;
+const exception_view_max_lines: u32 = 5;
 const granary_view_max_lines: u32 = 7;
 const exchange_view_max_lines: u32 = 6;
 const mandi_view_max_lines: u32 = 5;
@@ -594,8 +599,9 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     const kinds = count_corpus_kinds(corpus);
     assert(kinds.rye == 2);
     assert(kinds.rish == 1);
-    const fence_count = count_scribble_fences(snippets);
-    assert(fence_count == 3);
+    const fences = count_scribble_fence_kinds(snippets);
+    assert(fences.rye == 2);
+    assert(fences.rish == 1);
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
     const stopped = field_value(lantern, "stopped_reason") orelse return error.BadLanternFixture;
@@ -609,7 +615,7 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "carriage mala:mint amount {s}", .{amount}) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets {d}", .{fence_count}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d}", .{ fences.rye, fences.rish }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist sight fold green") };
@@ -636,17 +642,17 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage mala:mint amount 1000",
         "carriage wov seq 1",
         "corpus rye 2 rish 1",
-        "snippets 3",
+        "snippets rye 2 rish 1",
         "lantern 24/12 eos",
         "books P&L net 800",
         "assist sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [160]u8 = undefined;
+    var out: [180]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist sight: sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist sight: snippets=3 rye=2 rish=1 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -1425,6 +1431,134 @@ fn run_forge_query_unified_view_witness(garden: std.mem.Allocator, io: std.Io) !
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal forge query unified view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Anvil corpus path-prefix view — pond/ filter hits on Skate.
+fn compose_corpus_prefix_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [4096]u8 = undefined;
+    const text = try cwd.readFile(io, anvil_corpus_fixture, &buf);
+    var cat: anvil.Catalog = .{};
+    try anvil.parse_catalog(text, &cat);
+    var hits: [anvil.max_chunks]u32 = undefined;
+    const n = try anvil.query_corpus(&cat, .{ .path_prefix = "pond/" }, hits[0..]);
+    if (n != 1) return error.BadCorpusFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, corpus_prefix_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "anvil corpus prefix view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "filter path_prefix pond/") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "hits {d}", .{n}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "hit {s}", .{cat.chunks[hits[0]].path_slice()}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "prefix fold green") };
+    return lines;
+}
+
+fn run_corpus_prefix_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_corpus_prefix_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == corpus_prefix_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "anvil corpus prefix view",
+        "filter path_prefix pond/",
+        "hits 1",
+        "hit pond/apps/drawn_terminal.rye",
+        "prefix fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal corpus prefix view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Greencandy exception queue view — refused drafts on Skate.
+fn compose_exception_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    _ = io;
+    const drafts = [_][]const u8{
+        \\debit cash
+        \\credit notanaccount
+        \\amount 10
+        \\memo bad
+        \\stamp 20260710.182502
+        \\
+        ,
+        \\debit cash
+        \\credit revenue
+        \\amount 0
+        \\memo zero
+        \\stamp 20260710.182502
+        \\
+        ,
+        \\debit cash
+        \\credit revenue
+        \\amount 50
+        \\memo welcome
+        \\stamp 20260710.182502
+        \\
+        ,
+    };
+    var out_ex: [greencandy.max_exceptions]greencandy.Exception = undefined;
+    var count: u32 = 0;
+    greencandy.collect_exceptions(&drafts, &out_ex, &count);
+    if (count != 2) return error.BadExceptionFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, exception_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "greencandy exception view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "exceptions {d}", .{count}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "exception {s}", .{out_ex[0].reason}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "exception {s}", .{out_ex[1].reason}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "exception fold green") };
+    return lines;
+}
+
+fn run_exception_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_exception_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == exception_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "greencandy exception view",
+        "exceptions 2",
+        "exception unknown account",
+        "exception bad amount",
+        "exception fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal exception view: sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -2385,8 +2519,14 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2 and std.mem.eql(u8, args[1], "corpusviewtest")) {
         return run_corpus_view_witness(garden, io);
     }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "corpusprefixviewtest")) {
+        return run_corpus_prefix_view_witness(garden, io);
+    }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleviewtest")) {
         return run_scribble_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
+        return run_exception_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "granaryviewtest")) {
         return run_granary_view_witness(garden, io);

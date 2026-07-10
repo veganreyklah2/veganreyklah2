@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 3 reduce_sum `182118`; lap 2 `181653`; parity **260**)
+**Last updated:** 2026-07-10 (lap 4 scale `182502`; lap 3 `182118`; parity **264**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–3 green (matmul · add · reshape · reduce_sum)
+**Status:** Checkable-room module — laps 0–4 green (matmul · add · reshape · reduce_sum · scale)
 
 ---
 
@@ -13,19 +13,19 @@ Lattice holds explicit tensor math in bounded gardens. Build order: **Lattice be
 |-----|--------|---------|
 | **0** | f32 `Matrix` · shape asserts · matmul 2×2 | parity **211** |
 | **1** | Elementwise `add` · shape asserts | parity **217** |
-| **2** | Row-major `reshape` · element-count assert | parity **257** · `tools/lattice_lap3.rish` |
-| **3** | `reduce_sum` into 1×1 · shape assert | parity **260** · `tools/lattice_lap4.rish` (`182118`) |
+| **2** | Row-major `reshape` · element-count assert | parity **257** |
+| **3** | `reduce_sum` into 1×1 · shape assert | parity **260** |
+| **4** | Elementwise `scale` · shape assert | parity **264** · `tools/lattice_lap5.rish` (`182502`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix type, matmul, add, reshape, reduce_sum |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through scale |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
-| `bin/lattice` | Build output |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap4.rish
+rishi/bin/rishi run tools/lattice_lap5.rish
 ```
 
 *May the numbers stay honest before the model runs.*

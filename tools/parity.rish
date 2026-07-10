@@ -561,6 +561,11 @@ let lattice_lap4 = run ["rishi/bin/rishi" "run" "tools/lattice_lap4.rish"]
 assert lattice_lap4.ok else "Lattice lap 3 witness failed"
 say "GREEN: Lattice lap 3 witness passed."
 
+say "witness suite: Lattice lap 4 (scale)…"
+let lattice_lap5 = run ["rishi/bin/rishi" "run" "tools/lattice_lap5.rish"]
+assert lattice_lap5.ok else "Lattice lap 4 witness failed"
+say "GREEN: Lattice lap 4 witness passed."
+
 say "witness suite: Inference assist view (Skate fold)…"
 let assist_view = run ["rishi/bin/rishi" "run" "tools/inference_assist_view.rish"]
 assert assist_view.ok else "Inference assist view witness failed"
@@ -580,6 +585,11 @@ say "witness suite: Inference assist view lap 4 (rye+rish snippet kinds)…"
 let assist_view_lap4 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap4.rish"]
 assert assist_view_lap4.ok else "Inference assist view lap 4 witness failed"
 say "GREEN: Inference assist view lap 4 witness passed."
+
+say "witness suite: Inference assist sight lap 2 (rye+rish kinds)…"
+let assist_sight_lap2 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap2.rish"]
+assert assist_sight_lap2.ok else "Inference assist sight lap 2 witness failed"
+say "GREEN: Inference assist sight lap 2 witness passed."
 
 say "witness suite: compass rose (navigation habit seated)…"
 let compass = run ["rishi/bin/rishi" "run" "tools/compass_rose.rish"]
@@ -780,3 +790,13 @@ say "witness suite: Scribble outline view (headings → Skate)…"
 let scribble_view = run ["rishi/bin/rishi" "run" "tools/inference_scribble_view.rish"]
 assert scribble_view.ok else "Scribble outline view witness failed"
 say "GREEN: Scribble outline view witness passed."
+
+say "witness suite: Anvil corpus prefix view (path_prefix → Skate)…"
+let anvil_prefix_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_prefix_view.rish"]
+assert anvil_prefix_view.ok else "Anvil corpus prefix view witness failed"
+say "GREEN: Anvil corpus prefix view witness passed."
+
+say "witness suite: Greencandy exception view (refused drafts → Skate)…"
+let exception_view = run ["rishi/bin/rishi" "run" "tools/greencandy_exception_view.rish"]
+assert exception_view.ok else "Greencandy exception view witness failed"
+say "GREEN: Greencandy exception view witness passed."

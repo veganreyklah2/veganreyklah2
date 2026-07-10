@@ -1,7 +1,7 @@
 # Greencandy — Centralized Books of Record
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 3 sight view `132548`; parity **210**)
+**Last updated:** 2026-07-10 (exception view `182502`; lap 3 sight `132548`; parity **267**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 1–3 green; sight view unifies carriage + books
 
@@ -14,6 +14,7 @@ Greencandy is Linengrow's **centralized books**: one steward's chart of accounts
 | **1** | Chart · journal · trial-balance fold · unwelcome paths · Skate books view | parity **207** / **208** |
 | **2** | Income statement · balance sheet · exception queue | parity **209** |
 | **3** | Sight view — books P&L/BS on Skate + unified carriage+books frame | parity **210** |
+| **exception view** | Refused drafts → five-line Skate frame | parity **267** · `tools/greencandy_exception_view.rish` (`182502`) |
 
 ## Layout
 
