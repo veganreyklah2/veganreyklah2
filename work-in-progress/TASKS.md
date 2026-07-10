@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb abs+apps+assist-chart+temp `200819`; parity **306**)
+**Last updated:** 2026-07-10 (Rest-until · Steep named `210433`; parity **306**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -79,7 +79,7 @@
 | **10** | **MALA `kind` field** | **K0 cleared** | memos through M3; K1 gated [`225159`](../context/specs/20260709-225159_mala-kind-field.md) |
 | **11** | **Thin view / Dexter** | **Exception affirmed** | not a second consumer; [`225343`](../context/specs/20260709-225343_thin-view-dexter-exception.md) |
 | **12** | **Evening leftovers** | **Cleared** | removal headers on-touch; M0 spec not required; keep-going default; [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
-| **13** | **W1 + seam B** | **Soak** | reopen triggers named; [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
+| **13** | **W1 + seam B** | **Rest-until** | reopen triggers named; [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
 | **14** | **Compass rose + twin-keys story** | **Landed** | jail-safe clarity; parity **206**; [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md) |
 | **15** | **Graduation plainly + pointer hygiene** | **Landed** | Jul 2 kitchen twin [`231011`](../external-research/20260709-231011_graduation-rule-plainly.md); thin-edge + Amber + OWOG index; compass rose extended |
 | **16** | **One-clock + resins plainly** | **Landed** | Jun 27 naming spine [`235921`](../external-research/20260709-235921_one-clock-plainly.md); cellar/vessel [`235931`](../external-research/20260709-235931_resins-cellar-vessel-plainly.md); compass rose pairs |
@@ -187,7 +187,7 @@
 | **118** | **Anvil corpus apps prefix view** | **Landed** | pond/apps/ → Skate; parity **304**; stamp `200819` |
 | **119** | **Assist sight lap 4 chart** | **Landed** | Chart on carriage assist fold; parity **305**; stamp `200819` |
 | **120** | **Lantern lap 11 temperature pin** | **Landed** | TemperatureMismatch pin; parity **306**; stamp `200819` |
-| — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
+| — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
@@ -221,13 +221,13 @@
 - [x] **WOV lap 2b — TB host seam A (code)** — `wov_tb_host.rye` + ensure/REPL scripts; projection golden; parity **204** (`20260709.223700`); live REPL needs io_uring (SKIP in ai-jail); seam B later
 - [x] **MALA / WOV — path realigned `152612`** — own L1 via July 2 design; Sui/Monad settlement removed; **M1–M2b + WOV lap 1 + pin + seam A** on metal; counsel [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md)
 - [x] **SLC-L4 lap 2 width design** — W0/W1/W2 named; [`224325`](../context/specs/20260709-224325_slcl4-lap2-width.md); lap-open [`224325`](../expanding-prompts/20260709-224325_slcl4-lap2-width-gated.md)
-- [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; soak affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
+- [x] **SLC-L4 W0 — lap 1 design review** — selftest-scope review; Rest-until affirmed; counsel [`224426`](../counsel/20260709-224426_grok-counsel-slcl4-w0-lap1-review.md); no parity bump
 - [x] **WOV dual-monarch design** — D1 twin log lines vs D2 two-sig envelope; [`224531`](../context/specs/20260709-224531_wov-dual-monarch.md)
 - [x] **WOV dual-monarch D1 (code)** — `publish_root_dual` / `verify_latest_root_dual` / `accept_exit_dual`; `selftest-dual`; `tools/wov_dual_monarch.rish`; parity **205** (`20260709.224634`)
-- [ ] **WOV TB seam B** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on measured red or affirm
+- [ ] **WOV TB seam B** — **Rest-until** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on measured red or affirm
 - [ ] **WOV dual D2 envelope** — later if twin-line pairing proves awkward
-- [ ] **SLC-L4 W1/W2 code** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on product need or affirm
-- [x] **W1 + seam B soak ruling** — counsel [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); keep-going does not open them
+- [ ] **SLC-L4 W1/W2 code** — **Rest-until** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on product need or affirm
+- [x] **W1 + seam B Rest-until ruling** — counsel [`225614`] (living name Rest-until; counsel title keeps soak)(../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); keep-going does not open them
 - [x] **Twin-keys plain story + compass rose** — kitchen-language dual D1 [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md); `tools/compass_rose.rish` walks the navigation habit; parity **206** (`20260709.230414`)
 - [x] **Graduation plainly + pointer hygiene** — Jul 2 kitchen twin [`231011`](../external-research/20260709-231011_graduation-rule-plainly.md); thin-ring→thin-edge in gratitude; Amber §10 + context README; OWOG index → specs; compass rose asserts the hygiene; parity **206** unchanged (`20260709.231011`)
 - [x] **One-clock + resins plainly** — Jun 27 naming spine [`235921`](../external-research/20260709-235921_one-clock-plainly.md); Amber/Amphora/resin/two-tier SHA3 [`235931`](../external-research/20260709-235931_resins-cellar-vessel-plainly.md); compass rose asserts both pairs; parity **206** unchanged (`20260709.235931`)

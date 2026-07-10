@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Kitchen twin seated `173752`; Granary settle view `173353`; Amphora plainly; Season · Lap · Green · Metalsmoke)
+**Last updated:** 2026-07-10 (Rest-until · Steep named `210433`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -25,6 +25,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Witness-first, red-then-green** | Method within the itinerary — prove on metal before prose; fail loudly, then land green in the same sitting |
 | **Journey's pause** | When the itinerary has **no further stops** — stop and summarize; a pause is a question for Kaeden, never permission to go off-route |
 | **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
+| **Rest-until** | Status for designed (often partly landed) work that stays closed on keep-going until a **named reopen trigger** — product need, measured red, or explicit affirm; living name for what counsel called *soak*; not forever-pause, not parked — ruling [`../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) · Kaeden `210433` |
 | **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) · plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood — plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Metalsmoke** | The thin edge's few honest integrated checks — world alone can answer, smallest slice, witnessed; happy zone stays in parity — [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · plainly [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md) |
@@ -32,7 +33,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
 | **Kitchen twin** | A plain-speech companion (`*-plainly.md`) beside a hard canon — table voice for jargon, not a cooking metaphor; the shelf is those plainly notes the rose asserts — hearth [`../foundations/20260702-202612_a-conversation-with-serena.md`](../foundations/20260702-202612_a-conversation-with-serena.md) · example [`../external-research/20260710-171707_granary-mandi-commerce-plainly.md`](../external-research/20260710-171707_granary-mandi-commerce-plainly.md) |
 
-**Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet*, *ring*, *thin ring*, *appetite* (ordering sense) — still readable in session history and frozen witness basenames; new prose uses **itinerary** · **stops** · **journey's pause** · **lap** · **thin edge** · **toll**.
+**Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet*, *ring*, *thin ring*, *appetite* (ordering sense), *soak* (status sense — living prose uses **Rest-until**) — still readable in session history, counsel titles, and frozen witness basenames; new prose uses **itinerary** · **stops** · **journey's pause** · **lap** · **thin edge** · **toll** · **Rest-until**.
 
 **Examples (gated):** Edit 5 wire (Door 3) · Amber rungs (Doors 1–3) · studies 19–20 (Kaeden paste) · RW-1 implementation (SLC-2b metal).
 
@@ -132,6 +133,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |
 | **Mandi** | **Vessel market floor** — where harvests and amphorae change hands, priced in MALA; name seated `20260710.165634`; lap 1 vessel listing (parity **238**); floor view `20260710.170700` (parity **240**); listing settle `20260710.171202` (parity **242**); settle view `20260710.172955` (parity **244**); distinct from Granary — [`specs/20260710-165634_mandi-name-seated.md`](specs/20260710-165634_mandi-name-seated.md) · settle [`specs/20260710-171202_mandi-listing-settle-seated.md`](specs/20260710-171202_mandi-listing-settle-seated.md) · [`../mandi/README.md`](../mandi/README.md) · study [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md) |
+| **Steep** | Named (`20260710.210433`) — horizon p2p file-sharing application: sealed, content-addressed pieces over Comlink/Mantra/Granary/Pond; TAME Rye-aligned alternative design spirit to BitTorrent (not a protocol clone) — [`../active-designing/20260710-210433_steep-peer-file-sharing-name.md`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md) |
 | **`.brush`** | Surface-description extension when Brushstroke earns a small language |
 
 ---
