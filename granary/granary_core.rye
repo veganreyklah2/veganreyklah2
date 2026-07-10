@@ -11,7 +11,7 @@ const tally_copy = @import("tally_copy.rye");
 const scribble = @import("scribble_core.rye");
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
-pub const granary_version = "20260710.164514";
+pub const granary_version = "20260710.164944";
 
 pub const max_facts: u32 = 16;
 pub const max_person: u32 = 32;
