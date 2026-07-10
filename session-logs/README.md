@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.143000 | [Realidream forge view](20260710-143000_realidream-forge-view.md) | Amber cellar → Skate; Amphora proposed; parity **221** |
 | 20260710.142900 | [No Claude check-in until otherwise](20260710-142900_no-claude-checkin-until-otherwise.md) | Thread mode: strategy here; no Claude-ruling pauses |
 | 20260710.142100 | [Realidream forge surfaces strategy](20260710-142100_realidream-forge-surfaces-strategy.md) | Amber · Amphora · resins · Tablecloth · DAG UI path |
 | 20260710.141800 | [Strategy home — this thread](20260710-141800_strategy-home-this-thread.md) | Reasoning and strategy stay here until Kaeden says otherwise |

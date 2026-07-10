@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Realidream query view `141200`; parity **220**)
+**Last updated:** 2026-07-10 (Realidream forge view `143000`; parity **221**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **kitchen-twin shelf** (shipping + custody + thin-edge spine); **universal foundations affirmed**. Parity **220**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **Tablecloth query wire landed** `140500`; **Realidream query view landed** `141200`; **Realidream forge view landed** `143000`; **kitchen-twin shelf** (shipping + custody + thin-edge spine); **universal foundations affirmed**. Parity **221**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -97,6 +97,7 @@
 | **28** | **Scribble lap 1** | **Landed** | `extract_rye_snippets` from session fixture; parity **218**; stamp `134800` |
 | **29** | **Tablecloth query wire** | **Landed** | Comlink hosted filter (not GraphQL); parity **219**; hammock [`140500`](../active-designing/20260710-140500_comlink-view-filter-not-graphql.md) |
 | **30** | **Realidream query view** | **Landed** | query-wire hits → Skate `queryviewtest`; parity **220**; thin-view exception family |
+| **31** | **Realidream forge view** | **Landed** | Amber manifest + resins → Skate `forgeviewtest`; Amphora proposed; parity **221** |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |

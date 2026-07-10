@@ -18,6 +18,7 @@
 //!   pond/bin/drawn-terminal sightviewtest  # Linengrow sight — carriage + books on one Skate frame
 //!   pond/bin/drawn-terminal assistviewtest # Inference assist — corpus + lantern + books fold
 //!   pond/bin/drawn-terminal queryviewtest  # Realidream query view — Tablecloth query-wire hits
+//!   pond/bin/drawn-terminal forgeviewtest  # Realidream forge view — Amber manifest + resins
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -31,7 +32,7 @@ const surface = @import("brushstroke/wayland_seed.rye");
 const window_input = @import("window_input.rye");
 const tally_parse_int = @import("rishi/parse_int.rye");
 
-const drawn_terminal_version = "20260710.141200";
+const drawn_terminal_version = "20260710.143000";
 
 const status_max_len: u32 = 80;
 const thin_view_max_lines: u32 = 5;
@@ -39,12 +40,14 @@ const books_view_max_lines: u32 = 8;
 const sight_view_max_lines: u32 = 8;
 const assist_view_max_lines: u32 = 8;
 const query_view_max_lines: u32 = 6;
+const forge_view_max_lines: u32 = 7;
 const mala_mint_fixture = "tools/fixtures/mala_m1_mint.bron";
 const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
 const anvil_corpus_fixture = "anvil/fixtures/rye_corpus.bron";
 const lantern_completion_fixture = "lantern/fixtures/completion.bron";
 const tablecloth_query_hits_fixture = "tools/fixtures/tablecloth_query_hits.bron";
+const forge_amber_manifest_fixture = "tools/fixtures/forge_amber_manifest.bron";
 const status_full_text = "transcript full — earlier lines still ran; :quit to close";
 const poll_timeout_ms: i32 = 50;
 const fill_line_count: u32 = 200;
@@ -576,6 +579,90 @@ fn run_query_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
+/// Realidream forge view — fold Amber cellar manifest (resins + Tilak entries) into Skate.
+/// Amphora stays proposed as the vessel sibling; no Dexter graduation.
+fn compose_forge_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [2048]u8 = undefined;
+    const text = try cwd.readFile(io, forge_amber_manifest_fixture, &buf);
+
+    const format = field_value(text, "format") orelse return error.BadForgeFixture;
+    const stamp = field_value(text, "stamp") orelse return error.BadForgeFixture;
+    if (!std.mem.eql(u8, format, "amber-ring1-v2-tilak")) return error.BadForgeFixture;
+
+    var entry_count: u32 = 0;
+    var hello_digest: ?[]const u8 = null;
+    var lines_iter = std.mem.splitScalar(u8, text, '\n');
+    while (lines_iter.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (!std.mem.startsWith(u8, line, "entry ")) continue;
+        entry_count += 1;
+        // entry plain-bytes <digest> <name>
+        var parts = std.mem.tokenizeScalar(u8, line, ' ');
+        _ = parts.next(); // entry
+        const tilak = parts.next() orelse return error.BadForgeFixture;
+        const digest = parts.next() orelse return error.BadForgeFixture;
+        const name = parts.next() orelse return error.BadForgeFixture;
+        if (!std.mem.eql(u8, tilak, "plain-bytes")) return error.BadForgeFixture;
+        if (digest.len != 64) return error.BadForgeFixture;
+        if (std.mem.eql(u8, name, "hello.txt")) hello_digest = digest;
+    }
+    if (entry_count != 4) return error.BadForgeFixture;
+    const digest = hello_digest orelse return error.BadForgeFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, forge_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "realidream forge view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "cellar amber") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "format {s}", .{format}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "stamp {s}", .{stamp}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "resins {d}", .{entry_count}) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "resin hello.txt {s}", .{digest[0..12]}) };
+    lines[6] = .{ .text = try garden.dupe(u8, "vessel amphora proposed") };
+    return lines;
+}
+
+fn run_forge_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_forge_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == forge_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "realidream forge view",
+        "cellar amber",
+        "format amber-ring1-v2-tilak",
+        "stamp 20260710.143000",
+        "resins 4",
+        "resin hello.txt cd416bd6cae8",
+        "vessel amphora proposed",
+    };
+    assert(lines_equal(&golden, frame));
+
+    const cwd = std.Io.Dir.cwd();
+    var probe: [8]u8 = undefined;
+    if (cwd.readFile(io, "tools/fixtures/does_not_exist_forge_view.bron", &probe)) |_| {
+        return error.UnwelcomePassed;
+    } else |_| {}
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal forge view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
@@ -927,6 +1014,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "queryviewtest")) {
         return run_query_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "forgeviewtest")) {
+        return run_forge_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return run_keyboard_witness(garden, io, init);
