@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Design + wire + query view — checkable-room hammock; hosted Tablecloth query wire GREEN; Realidream query-view Skate fold GREEN; parity **220**
+**Status:** Design + wire + query view + device wire — checkable-room hammock; hosted Tablecloth query wire GREEN; Realidream query-view Skate fold GREEN; device virtio GREEN; parity **246**
 
 **Ground:** counsel [`005612`](../counsel/20260707-005612_claude-counsel-tablecloth-query.md) · Hyperfiddle gratitude [`../gratitude/hyperfiddle.md`](../gratitude/hyperfiddle.md) · Weave essay [`../foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) · NS brief [`20260706-023912_the-referential-namespace.md`](20260706-023912_the-referential-namespace.md) · Realidream thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
@@ -75,9 +75,14 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - `pond/apps/drawn_terminal.rye` `queryviewtest` — fold hits → Skate
 - `tools/realidream_query_view.rish` — witness; parity **220**
 
+### In scope (lap 2 — device wire · landed `20260710.174217`)
+
+- Four virtio guests: client TX/RX · host RX/TX
+- Ports **15575**/**15576**; same sealed bytes as hosted `peerB`/`b` → two hits
+- `tools/mantra_recall_tablecloth_query_device.rish`; parity **246**
+
 ### Out of scope (later)
 
-- Device wire virtio guests (lap 2 when wanted)
 - Resin bytes in the query response (use sync/catch-up)
 - Browser HTTP bridge
 - GraphQL schema or introspection
@@ -106,7 +111,9 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 | `mantra/recall_tablecloth_query.rye` | In-process filter (parity **175**) — unchanged |
 | `mantra/recall_tablecloth_query_wire.rye` | Compact request/response bodies |
 | `mantra/recall_tablecloth_query_delivery.rye` | Hosted seal → UDP → open → filter → seal reply |
-| `tools/mantra_recall_tablecloth_query_wire.rish` | Witness |
+| `tools/mantra_recall_tablecloth_query_wire.rish` | Hosted witness |
+| `comlink/guest_tablecloth_query_*.rye` | Device virtio guests (request + response) |
+| `tools/mantra_recall_tablecloth_query_device.rish` | Device witness (parity **246**) |
 
 ---
 
