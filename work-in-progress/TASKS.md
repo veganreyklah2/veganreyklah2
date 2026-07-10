@@ -251,6 +251,15 @@
 | **182** | **Assist sight lap 10 exception tallies** | **Landed** | Exception tallies on carriage; parity **368**; stamp `224322` |
 | **183** | **Assist view lap 12 exception tallies** | **Landed** | Exception tallies on assist fold; parity **369**; stamp `224322` |
 | **184** | **Lantern lap 27 frequency_penalty pin** | **Landed** | frequency_penalty pin; parity **370**; stamp `224322` |
+| **185** | **Lattice lap 30 minimum** | **Landed** | Elementwise minimum; parity **371**; stamp `224805` |
+| **186** | **Scribble h1+blocks view** | **Landed** | h1 + blocks on one Skate frame; parity **372**; stamp `224805` |
+| **187** | **Linengrow sight lap 11 exception kinds** | **Landed** | Exception kinds tally on glass; parity **373**; stamp `224805` |
+| **188** | **Lantern lap 28 presence_penalty pin** | **Landed** | presence_penalty pin; parity **374**; stamp `224805` |
+| **189** | **Lattice lap 31 elu** | **Landed** | Elementwise ELU; parity **375**; stamp `224805` |
+| **190** | **Assist sight lap 11 exception kinds** | **Landed** | Exception kinds on carriage; parity **376**; stamp `224805` |
+| **191** | **Assist view lap 13 exception kinds** | **Landed** | Exception kinds on assist fold; parity **377**; stamp `224805` |
+| **192** | **Lantern lap 29 n pin** | **Landed** | n pin; parity **378**; stamp `224805` |
+| **193** | **Inference Track lap 1 close** | **Landed** | Fixture-contract family closed at tip **378**; next ROCm/Pond/LoRA horizon | stamp `224805` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

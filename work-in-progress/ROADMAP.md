@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (compass climb `224322`; parity **370**)
+**Last updated:** 2026-07-10 (Inference Track lap 1 closed `224805`; parity **378**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -148,12 +148,17 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **1ac** | **Leaky ReLU · assist ex2 · stopped stop_sequence** | **landed** `20260710.223639` — leaky_relu **359**; assist sight/view ex2 **360**/**361**; stopped stop_sequence **362** | — |
 | **1ad** | **Softplus · para+blocks · sight tallies · top_k** | **landed** `20260710.224322` — softplus **363**; para+blocks **364**; sight tallies **365**; top_k **366** | — |
 | **1ae** | **Maximum · assist tallies · frequency_penalty** | **landed** `20260710.224322` — maximum **367**; assist sight/view tallies **368**/**369**; frequency_penalty **370** | — |
-| **2** | **ROCm host seam** | horizon | hardware + ship policy |
+| **1af** | **Minimum · h1+blocks · sight kinds · presence_penalty** | **landed** `20260710.224805` — minimum **371**; h1+blocks **372**; sight kinds **373**; presence_penalty **374** | — |
+| **1ag** | **Elu · assist kinds · n pin — lap 1 close** | **landed** `20260710.224805` — elu **375**; assist sight/view kinds **376**/**377**; n pin **378**; **Inference Track lap 1 closed** | — |
+| **2** | **ROCm host seam** | horizon | hardware + ship policy; opens after lap-1 close |
 | **3** | **Lantern in Pond** | horizon | Pond policy word |
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
 | **5** | **Live editor assist** | horizon | Wayland metal + rung 3 |
 
 Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · hammock: [`active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · progress: [`20260710-220706_slc-and-inference-progress.md`](20260710-220706_slc-and-inference-progress.md)
+
+**Lap 1 close (`224805`):** the fixture-served contract family is whole — activations through ELU/min/max, sampling pins through `n`/`presence_penalty`, Scribble combos, and exception folds on glass. Further Inference Track work opens at rung **2** (ROCm) or a new named lap on Kaeden's word.
+
 
 ---
 
@@ -164,7 +169,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 | **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | Lattice through **363**/**367** · Scribble through **364** · Lantern through **366**/**370** · assist through **368**/**369** · sight through **365** · climb `224322` tip **370**; ROCm/LoRA/Pond/Steep still horizon |
+| **Inference stack** | **Lap 1 closed** tip **378** (`224805`) — Lattice through **371**/**375** · Scribble through **372** · Lantern through **374**/**378** · assist through **376**/**377** · sight through **373**; next rung **2** ROCm (horizon) |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.224805 | [Compass climb — Inference Track lap 1 close](20260710-224805_compass-climb-inference-lap1-close.md) | Parity **371**–**378**; climbs **1af**/**1ag**; lap 1 closed |
 | 20260710.224322 | [Compass climb — softplus, maximum, para+blocks, exception tallies, top_k, frequency_penalty](20260710-224322_compass-climb-softplus-topk.md) | Parity **363**–**370**; climbs **1ad**/**1ae** |
 | 20260710.223639 | [Compass climb — silu, leaky_relu, tally+blocks, second exception reason, stopped_reason pins](20260710-223639_compass-climb-silu-leaky-ex2.md) | Parity **355**–**362**; climbs **1ab**/**1ac** |
 | 20260710.223456 | [Scribble vs Brushstroke — keep both](20260710-223456_scribble-brushstroke-keep-both.md) | Different seams: parse vs draw; both names stay |

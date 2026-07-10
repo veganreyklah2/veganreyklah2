@@ -1,4 +1,4 @@
-//! lantern/lantern.rye — Lantern lap 27 selftest (top_k · frequency_penalty pins + stopped_reason + stream + require_model + dual-model + pins through allow-list).
+//! lantern/lantern.rye — Lantern lap 29 selftest (presence_penalty · n pins — lap-1 close).
 //!
 //!   rye build lantern/lantern.rye -femit-bin=lantern/bin/lantern
 //!   lantern/bin/lantern selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const lc = @import("lantern_core.rye");
 
-const lantern_version = "20260710.224322";
+const lantern_version = "20260710.224805";
 pub const fixture_path = "lantern/fixtures/completion.bron";
 pub const length_fixture_path = "lantern/fixtures/completion_length.bron";
 pub const allow_fixture_path = "lantern/fixtures/allowed_models.bron";
@@ -37,6 +37,8 @@ pub const stream_pin_fixture_path = "lantern/fixtures/completion_stream_pin.bron
 pub const stream_on_fixture_path = "lantern/fixtures/completion_stream_on.bron";
 pub const top_k_fixture_path = "lantern/fixtures/completion_top_k.bron";
 pub const frequency_penalty_fixture_path = "lantern/fixtures/completion_frequency_penalty.bron";
+pub const presence_penalty_fixture_path = "lantern/fixtures/completion_presence_penalty.bron";
+pub const n_fixture_path = "lantern/fixtures/completion_n.bron";
 
 fn welcome_complete(io: std.Io) !void {
     const cwd = Dir.cwd();
@@ -870,6 +872,73 @@ fn unwelcome_frequency_penalty_mismatch(io: std.Io) !void {
     print("lantern: frequency_penalty mismatch refused\n", .{});
 }
 
+fn welcome_presence_penalty_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, presence_penalty_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "pres",
+        .max_tokens = 64,
+        .presence_penalty = 0.25,
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.stopped_reason == .eos);
+    print("lantern: presence_penalty pin completion — penalty 0.25\n", .{});
+}
+
+fn unwelcome_presence_penalty_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, presence_penalty_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "pres",
+        .max_tokens = 64,
+        .presence_penalty = 1.0,
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.PresencePenaltyMismatch);
+    }
+    print("lantern: presence_penalty mismatch refused\n", .{});
+}
+
+fn welcome_n_pin(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, n_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "n",
+        .max_tokens = 64,
+        .n = 2,
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.stopped_reason == .eos);
+    print("lantern: n pin completion — n 2\n", .{});
+}
+
+fn unwelcome_n_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, n_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "n",
+        .max_tokens = 64,
+        .n = 1,
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.NMismatch);
+    }
+    print("lantern: n mismatch refused\n", .{});
+}
+
+
 
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
@@ -901,6 +970,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_stream_on(io);
         try welcome_top_k_pin(io);
         try welcome_frequency_penalty_pin(io);
+        try welcome_presence_penalty_pin(io);
+        try welcome_n_pin(io);
         try unwelcome_model_mismatch(io);
         try unwelcome_prompt_too_long();
         try unwelcome_zero_budget();
@@ -925,7 +996,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_stream_mismatch(io);
         try unwelcome_top_k_mismatch(io);
         try unwelcome_frequency_penalty_mismatch(io);
-        print("lantern lap27: version {s} — GREEN\n", .{lantern_version});
+        try unwelcome_presence_penalty_mismatch(io);
+        try unwelcome_n_mismatch(io);
+        print("lantern lap29: version {s} — GREEN\n", .{lantern_version});
         return 0;
     }
     print("usage: lantern selftest\n", .{});
