@@ -27,10 +27,10 @@ Two markets. Two roofs. One tree. Confusing them blurs both.
 
 | Roof | Landed on metal | Still held |
 |------|-----------------|------------|
-| **Granary** | Registry · weave view · write gate · Sharing (hosted + device) · Exchange listing · Exchange Skate view (parity **232**–**237**, **239**, **241**) | Weave settle on WOV; live TigerBeetle |
+| **Granary** | Registry · weave view · write gate · Sharing (hosted + device) · Exchange listing · Exchange Skate view · weave settle (parity **232**–**237**, **239**, **241**, **243**) | Live TigerBeetle |
 | **Mandi** | Vessel listing · floor view · listing settle binding MALA send + WOV transfer (parity **238**, **240**, **242**) | Live TigerBeetle; Amphora carriage stays its own rite |
 
-**What "WOV settlement waits" means for Granary:** Exchange can *name a price* and print a receipt digest without identities. Closing that weave sale on the ledger the way Mandi closes a vessel sale is a separate gate — not forgotten, not opened by enthusiasm alone.
+**What weave settle is:** In-process only (same shape as Mandi). Exchange listing receipt + payment digest (MALA + WOV). No buyer/seller fields. No live TB.
 
 **What Mandi settle already is:** In-process only. Listing receipt + payment digest (MALA + WOV). No buyer/seller fields. No live TB. Amphora still carries the vessel after purchase.
 

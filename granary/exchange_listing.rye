@@ -1,7 +1,7 @@
 //! granary/exchange_listing.rye — Granary lap 5: Exchange listing (weave priced in MALA).
 //!
 //! Binds person/weave + resin digest + MALA price under Kumara. Receipt is a digest
-//! of the listing body — no buyer/seller identities. WOV settlement waits; Mandi is its own room.
+//! of the listing body — no buyer/seller identities. Weave settle landed; live TB waits.
 //!
 //!   rye build granary/exchange_listing.rye -femit-bin=granary/bin/exchange-listing
 //!   granary/bin/exchange-listing selftest
