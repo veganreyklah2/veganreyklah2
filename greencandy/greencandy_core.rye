@@ -2,6 +2,7 @@
 //!
 //! Centralized books of record. Debit-positive nets; conservation holds when the sum of nets is zero.
 //! Lap 2 adds income-statement and balance-sheet projections from the same fold.
+//! Lap 4 deepens journal filters: account · memo prefix · cash flow · sum amounts.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -13,6 +14,10 @@ pub const max_memo_len: u32 = 64;
 pub const max_stamp_len: u32 = 32;
 pub const max_journal_len: u32 = 4096;
 pub const max_exceptions: u32 = 16;
+
+pub const FilterError = error{
+    ResultOverflow,
+};
 
 pub const Account = enum(u8) {
     cash = 0,
@@ -76,6 +81,16 @@ pub const BalanceSheet = struct {
     }
 };
 
+/// Cash movement fold — inflow when cash is debited; outflow when cash is credited.
+pub const CashFlow = struct {
+    inflow: i64,
+    outflow: i64,
+
+    pub fn net(self: CashFlow) i64 {
+        return self.inflow - self.outflow;
+    }
+};
+
 /// One refused draft for the exception queue (Digits checklist lesson, our words).
 pub const Exception = struct {
     reason: []const u8,
@@ -123,6 +138,59 @@ pub fn fold_balance_sheet(tb: TrialBalance) BalanceSheet {
     };
     assert(sheet.balances());
     return sheet;
+}
+
+/// Entries that debit or credit the named account — indices in held order.
+pub fn filter_by_account(
+    entries: []const Entry,
+    account: Account,
+    out_indices: []u32,
+) FilterError!u32 {
+    var count: u32 = 0;
+    var i: u32 = 0;
+    while (i < entries.len) : (i += 1) {
+        const e = entries[i];
+        if (e.debit != account and e.credit != account) continue;
+        if (count >= out_indices.len) return error.ResultOverflow;
+        out_indices[count] = i;
+        count += 1;
+    }
+    return count;
+}
+
+/// Entries whose memo starts with `prefix` — indices in held order.
+pub fn filter_by_memo_prefix(
+    entries: []const Entry,
+    prefix: []const u8,
+    out_indices: []u32,
+) FilterError!u32 {
+    var count: u32 = 0;
+    var i: u32 = 0;
+    while (i < entries.len) : (i += 1) {
+        if (!std.mem.startsWith(u8, entries[i].memo, prefix)) continue;
+        if (count >= out_indices.len) return error.ResultOverflow;
+        out_indices[count] = i;
+        count += 1;
+    }
+    return count;
+}
+
+/// Cash inflow (debit cash) and outflow (credit cash) across the journal.
+pub fn fold_cash_flow(entries: []const Entry) CashFlow {
+    var inflow: i64 = 0;
+    var outflow: i64 = 0;
+    for (entries) |e| {
+        if (e.debit == .cash) inflow += e.amount;
+        if (e.credit == .cash) outflow += e.amount;
+    }
+    return .{ .inflow = inflow, .outflow = outflow };
+}
+
+/// Sum of entry amounts (unsigned magnitudes as posted).
+pub fn sum_amounts(entries: []const Entry) i64 {
+    var sum: i64 = 0;
+    for (entries) |e| sum += e.amount;
+    return sum;
 }
 
 fn trim_line(line: []const u8) []const u8 {
