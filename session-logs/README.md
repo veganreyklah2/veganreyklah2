@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.233026 | [Path counsel — what to open from tip 410](20260710-233026_path-counsel-next-open.md) | Prefer glass composition; ROCm/Rest-until stay gated |
+| 20260710.232810 | [ROCm reminder — not MOCm](20260710-232810_rocm-reminder.md) | Rung **2** is AMD ROCm host seam; horizon |
 | 20260710.232625 | [Fixture deepen 1aj/1ak — lap landed on main](20260710-232625_hardsig-echo-lap-landed.md) | PR **#88** merged; tip **410** on `main` |
 | 20260710.232500 | [Compass climb — hard_sigmoid, rsqrt, hardtanh, cube, echo, user](20260710-232500_compass-climb-hardsig-echo.md) | Parity **403**–**410**; climbs **1aj**/**1ak**; fixture deepen lap closed |
 | 20260710.231501 | [Compass climb — softsign, square, sign, reciprocal, tokens pins](20260710-231501_compass-climb-softsign-tokens.md) | Parity **395**–**402**; climbs **1ah**/**1ai** |
