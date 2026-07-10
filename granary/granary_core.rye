@@ -1,6 +1,6 @@
-//! granary/granary_core.rye — Granary lap 1: signed name-facts, resolve, resin fold, Scribble frame.
+//! granary/granary_core.rye — Granary: name-facts, resolve, resin fold, Scribble, write gate, mirror.
 //!
-//! Read-only and local. Identity · Namespace · Sharing doors open; Exchange waits.
+//! Identity · Namespace · Sharing doors open; Exchange waits. Federation wire waits.
 //!
 //! Ground: [`../context/specs/20260710-163043_granary-name-seated.md`](../context/specs/20260710-163043_granary-name-seated.md)
 
@@ -11,7 +11,7 @@ const tally_copy = @import("tally_copy.rye");
 const scribble = @import("scribble_core.rye");
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
 
-pub const granary_version = "20260710.164237";
+pub const granary_version = "20260710.164514";
 
 pub const max_facts: u32 = 16;
 pub const max_person: u32 = 32;
@@ -385,6 +385,61 @@ fn find_resin(store: *const ResinStore, digest_hex: []const u8) ?*const StoredRe
         if (std.mem.eql(u8, &store.resins[i].digest_hex, digest_hex)) return &store.resins[i];
     }
     return null;
+}
+
+fn find_resin_mut(store: *ResinStore, digest_hex: []const u8) ?*StoredResin {
+    var i: u32 = 0;
+    while (i < store.resin_count) : (i += 1) {
+        if (std.mem.eql(u8, &store.resins[i].digest_hex, digest_hex)) return &store.resins[i];
+    }
+    return null;
+}
+
+pub fn has_resin(store: *const ResinStore, digest_hex: []const u8) bool {
+    return find_resin(store, digest_hex) != null;
+}
+
+/// Host serves: copy verified resin bytes for a digest.
+pub fn serve_resin(host: *const ResinStore, digest_hex: []const u8, out: []u8) NameFactError!u32 {
+    return clone_resin(host, digest_hex, out);
+}
+
+/// Report from mirroring one weave's resin from host to guest.
+pub const MirrorReport = struct {
+    had_already: bool,
+    bytes_copied: u32,
+};
+
+/// Sharing door: resolve path, serve resin from host if guest lacks it, fold into guest.
+/// Mirrors equal when both hold the same digest-verified bytes.
+pub fn mirror_weave(
+    guest: *ResinStore,
+    host: *const ResinStore,
+    reg: *const Registry,
+    path: []const u8,
+) NameFactError!MirrorReport {
+    const fact = try resolve(reg, path);
+    if (has_resin(guest, fact.resin_digest)) {
+        // Guest already holds — prove host agrees (equal mirrors).
+        var guest_buf: [max_resin_bytes]u8 = undefined;
+        var host_buf: [max_resin_bytes]u8 = undefined;
+        const gl = try clone_resin(guest, fact.resin_digest, &guest_buf);
+        const hl = try serve_resin(host, fact.resin_digest, &host_buf);
+        if (gl != hl or !std.mem.eql(u8, guest_buf[0..gl], host_buf[0..hl])) return error.DigestMismatch;
+        return .{ .had_already = true, .bytes_copied = 0 };
+    }
+    var buf: [max_resin_bytes]u8 = undefined;
+    const len = try serve_resin(host, fact.resin_digest, &buf);
+    const put_digest = try put_resin(guest, buf[0..len]);
+    if (!std.mem.eql(u8, &put_digest, fact.resin_digest)) return error.DigestMismatch;
+    return .{ .had_already = false, .bytes_copied = len };
+}
+
+/// Witness-only: corrupt hosted bytes so digest no longer matches (unwelcome path).
+pub fn tamper_resin_for_witness(store: *ResinStore, digest_hex: []const u8) NameFactError!void {
+    const resin = find_resin_mut(store, digest_hex) orelse return error.ResinMissing;
+    if (resin.bytes_len == 0) return error.ResinMissing;
+    resin.bytes[0] ^= 0xff;
 }
 
 /// Clone by folding: verify digest, then copy resin bytes into `out`.
