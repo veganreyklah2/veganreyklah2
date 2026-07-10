@@ -35,10 +35,12 @@
 //!   pond/bin/drawn-terminal scribbleviewtest # Scribble outline headings → Skate
 //!   pond/bin/drawn-terminal scribbleparaviewtest # Scribble paragraphs → Skate
 //!   pond/bin/drawn-terminal scribblefenceviewtest # Scribble fence kinds → Skate
+//!   pond/bin/drawn-terminal scribbleplainviewtest # Scribble plain snippets → Skate
 //!   pond/bin/drawn-terminal exceptionviewtest # Greencandy exception queue → Skate
 //!   pond/bin/drawn-terminal pnlviewtest # Greencandy P&L income statement → Skate
 //!   pond/bin/drawn-terminal bsviewtest # Greencandy balance sheet → Skate
 //!   pond/bin/drawn-terminal tbviewtest # Greencandy trial balance → Skate
+//!   pond/bin/drawn-terminal journalviewtest # Greencandy journal entries → Skate
 //!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
 //!   pond/bin/drawn-terminal exchangeviewtest # Granary Exchange view — weave listing → Skate
 //!   pond/bin/drawn-terminal mandiviewtest   # Mandi floor view — vessel listing → Skate
@@ -93,10 +95,12 @@ const corpus_rye_prefix_view_max_lines: u32 = 5;
 const scribble_view_max_lines: u32 = 6;
 const scribble_para_view_max_lines: u32 = 5;
 const scribble_fence_view_max_lines: u32 = 5;
+const scribble_plain_view_max_lines: u32 = 5;
 const exception_view_max_lines: u32 = 5;
 const pnl_view_max_lines: u32 = 5;
 const bs_view_max_lines: u32 = 5;
 const tb_view_max_lines: u32 = 6;
+const journal_view_max_lines: u32 = 5;
 const granary_view_max_lines: u32 = 7;
 const exchange_view_max_lines: u32 = 6;
 const mandi_view_max_lines: u32 = 5;
@@ -1478,6 +1482,60 @@ fn run_scribble_fence_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
+/// Scribble plain-snippets view — unmarked fence bodies on Skate.
+fn compose_scribble_plain_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [scribble.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, scribble_fence_kinds_fixture, &buf);
+    var blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const n = try scribble.parse_markdown(text, &blocks);
+    var snippets: [scribble.max_blocks]scribble.Snippet = undefined;
+    const sn = try scribble.extract_plain_snippets(blocks[0..n], &snippets);
+    if (sn != 1) return error.BadScribbleFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, scribble_plain_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "scribble plain snippets view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "plain {d}", .{sn}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "body {s}", .{snippets[0].text_slice()}) };
+    lines[3] = .{ .text = try garden.dupe(u8, "unmarked fence") };
+    lines[4] = .{ .text = try garden.dupe(u8, "plain fold green") };
+    return lines;
+}
+
+fn run_scribble_plain_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_scribble_plain_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == scribble_plain_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "scribble plain snippets view",
+        "plain 1",
+        "body plain fence body",
+        "unmarked fence",
+        "plain fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal scribble plain snippets view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 /// Greencandy trial-balance view — account nets alone on Skate.
 fn compose_tb_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
     const cwd = std.Io.Dir.cwd();
@@ -1525,6 +1583,59 @@ fn run_tb_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal tb view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Greencandy journal view — append-only entry memos on Skate before the fold.
+fn compose_journal_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [2048]u8 = undefined;
+    const text = try cwd.readFile(io, greencandy_journal_fixture, &buf);
+    var entries: [greencandy.max_entries]greencandy.Entry = undefined;
+    var count: u32 = 0;
+    try greencandy.parse_journal(text, &entries, &count);
+    if (count != 2) return error.BadJournal;
+
+    const lines = try garden.alloc(surface.SkateLine, journal_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "greencandy journal view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "entries {d}", .{count}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "entry {s} {d}", .{ entries[0].memo, entries[0].amount }) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "entry {s} {d}", .{ entries[1].memo, entries[1].amount }) };
+    lines[4] = .{ .text = try garden.dupe(u8, "journal fold green") };
+    return lines;
+}
+
+fn run_journal_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_journal_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == journal_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "greencandy journal view",
+        "entries 2",
+        "entry stipend received 1000",
+        "entry supplies 200",
+        "journal fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal journal view: sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -2926,6 +3037,9 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribblefenceviewtest")) {
         return run_scribble_fence_view_witness(garden, io);
     }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleplainviewtest")) {
+        return run_scribble_plain_view_witness(garden, io);
+    }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
         return run_exception_view_witness(garden, io);
     }
@@ -2937,6 +3051,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "tbviewtest")) {
         return run_tb_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "journalviewtest")) {
+        return run_journal_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "granaryviewtest")) {
         return run_granary_view_witness(garden, io);

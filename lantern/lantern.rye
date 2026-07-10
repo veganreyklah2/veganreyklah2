@@ -1,4 +1,4 @@
-//! lantern/lantern.rye — Lantern lap 6 selftest (stop_sequence + err_stop + top_p + temperature + seed + allow-list + max_tokens).
+//! lantern/lantern.rye — Lantern lap 7 selftest (stop_sequence request pin + response + err_stop + top_p + temperature + seed + allow-list + max_tokens).
 //!
 //!   rye build lantern/lantern.rye -femit-bin=lantern/bin/lantern
 //!   lantern/bin/lantern selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const lc = @import("lantern_core.rye");
 
-const lantern_version = "20260710.190800";
+const lantern_version = "20260710.191112";
 pub const fixture_path = "lantern/fixtures/completion.bron";
 pub const length_fixture_path = "lantern/fixtures/completion_length.bron";
 pub const allow_fixture_path = "lantern/fixtures/allowed_models.bron";
@@ -248,12 +248,48 @@ fn welcome_stop_sequence(io: std.Io) !void {
         .model_hash = "sha3-256-rye-forge-lap0",
         .prompt = "fence",
         .max_tokens = 64,
+        .stop_sequence = "fence",
     };
     const resp = try lc.complete_fixture(req, text);
     assert(resp.stopped_reason == .stop_sequence);
     assert(resp.tokens_out == 3);
     assert(std.mem.indexOf(u8, resp.text, "halt") != null);
     print("lantern: stop_sequence completion — tokens {d} stop_sequence\n", .{resp.tokens_out});
+}
+
+fn unwelcome_stop_sequence_mismatch(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, stop_sequence_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "fence",
+        .max_tokens = 64,
+        .stop_sequence = "other",
+    };
+    if (lc.complete_fixture(req, text)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.StopSequenceMismatch);
+    }
+    print("lantern: stop_sequence mismatch refused\n", .{});
+}
+
+fn unwelcome_bad_stop_sequence() !void {
+    const long = "abcdefghijklmnopqrstuvwxyz012345"; // 32 chars ok; 33 refused
+    const too_long = long ++ "x";
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "x",
+        .max_tokens = 8,
+        .stop_sequence = too_long,
+    };
+    if (lc.validate_request(req)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.BadStopSequence);
+    }
+    print("lantern: bad stop_sequence refused\n", .{});
 }
 
 fn unwelcome_zero_budget() !void {
@@ -290,7 +326,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_seed_mismatch(io);
         try unwelcome_bad_top_p();
         try unwelcome_top_p_mismatch(io);
-        print("lantern lap6: version {s} — GREEN\n", .{lantern_version});
+        try unwelcome_stop_sequence_mismatch(io);
+        try unwelcome_bad_stop_sequence();
+        print("lantern lap7: version {s} — GREEN\n", .{lantern_version});
         return 0;
     }
     print("usage: lantern selftest\n", .{});

@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 6).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 7).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence.
+//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence (response + request pin).
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -11,6 +11,7 @@ pub const max_hash_len: u32 = 64;
 pub const max_budget_tokens: u32 = 512;
 pub const max_temperature: f32 = 2.0;
 pub const max_top_p: f32 = 1.0;
+pub const max_stop_sequence_len: u32 = 32;
 
 pub const StoppedReason = enum(u8) {
     eos,
@@ -27,6 +28,8 @@ pub const LanternError = error{
     BadTemperature,
     SeedMismatch,
     BadTopP,
+    StopSequenceMismatch,
+    BadStopSequence,
 };
 
 pub const Request = struct {
@@ -36,6 +39,7 @@ pub const Request = struct {
     temperature: f32 = 0.0,
     seed: u64 = 0,
     top_p: f32 = 1.0,
+    stop_sequence: []const u8 = "",
 };
 
 pub const Response = struct {
@@ -50,6 +54,7 @@ pub fn validate_request(req: Request) LanternError!void {
     if (req.max_tokens == 0 or req.max_tokens > max_budget_tokens) return error.BudgetExceeded;
     if (req.temperature < 0.0 or req.temperature > max_temperature) return error.BadTemperature;
     if (req.top_p < 0.0 or req.top_p > max_top_p) return error.BadTopP;
+    if (req.stop_sequence.len > max_stop_sequence_len) return error.BadStopSequence;
 }
 
 fn field_value(text: []const u8, key: []const u8) ?[]const u8 {
@@ -110,6 +115,9 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     if (field_value(fixture_text, "top_p")) |top_p_text| {
         const pinned = std.fmt.parseFloat(f32, top_p_text) catch return error.BadFixture;
         if (req.top_p != pinned) return error.BadTopP;
+    }
+    if (field_value(fixture_text, "stop_sequence")) |pinned| {
+        if (!std.mem.eql(u8, req.stop_sequence, pinned)) return error.StopSequenceMismatch;
     }
     var resp = try parse_fixture(fixture_text);
     if (resp.tokens_out <= req.max_tokens) return resp;
