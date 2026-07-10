@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary settle view `173353`; Granary Exchange listing `165348`; resin wire `164944`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
+**Last updated:** 2026-07-10 (Kitchen twin seated `173752`; Granary settle view `173353`; Amphora plainly; Season · Lap · Green · Metalsmoke)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -30,6 +30,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Metalsmoke** | The thin edge's few honest integrated checks — world alone can answer, smallest slice, witnessed; happy zone stays in parity — [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · plainly [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md) |
 | **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) · plainly [`../external-research/20260710-002422_amber-seasons-plainly.md`](../external-research/20260710-002422_amber-seasons-plainly.md) |
 | **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
+| **Kitchen twin** | A plain-speech companion (`*-plainly.md`) beside a hard canon — table voice for jargon, not a cooking metaphor; the shelf is those plainly notes the rose asserts — hearth [`../foundations/20260702-202612_a-conversation-with-serena.md`](../foundations/20260702-202612_a-conversation-with-serena.md) · example [`../external-research/20260710-171707_granary-mandi-commerce-plainly.md`](../external-research/20260710-171707_granary-mandi-commerce-plainly.md) |
 
 **Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet*, *ring*, *thin ring*, *appetite* (ordering sense) — still readable in session history and frozen witness basenames; new prose uses **itinerary** · **stops** · **journey's pause** · **lap** · **thin edge** · **toll**.
 
