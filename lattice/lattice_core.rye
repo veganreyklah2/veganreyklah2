@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 25).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 27).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through tanh · gelu.
+//! Parity-gated tensor ops before Lantern. Laps through silu · leaky_relu.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -402,6 +402,32 @@ pub fn gelu(src: *const Matrix, out: *Matrix) TensorError!void {
             const x = src.at(r, c);
             const u = k * (x + 0.044715 * x * x * x);
             out.set(r, c, 0.5 * x * (1.0 + math.tanh(u)));
+        }
+    }
+}
+
+/// Elementwise SiLU (swish) — x · σ(x); shapes must match; silu(0) = 0.
+pub fn silu(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const x = src.at(r, c);
+            out.set(r, c, x / (1.0 + @exp(-x)));
+        }
+    }
+}
+
+/// Elementwise leaky ReLU — max(0,v) + α·min(0,v); shapes must match.
+pub fn leaky_relu(src: *const Matrix, alpha: f32, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const v = src.at(r, c);
+            out.set(r, c, if (v >= 0.0) v else alpha * v);
         }
     }
 }
