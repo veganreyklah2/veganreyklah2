@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.161538 | [Day summary — sealed crossing](20260710-161538_day-summary-sealed-crossing.md) | Seal → chunk → customs → delivery; parity **227**–**231** |
+| 20260710.161358 | [Amphora purchase delivery](20260710-161358_amphora-purchase-delivery.md) | Commerce slip; vessel + payment; parity **231** |
 | 20260710.161125 | [Pond customs first policy](20260710-161125_pond-customs-first-policy.md) | place / hold / refuse; Amphora receipt; parity **230** |
 | 20260710.154300 | [Amphora large-resin chunking](20260710-154300_amphora-resin-chunk.md) | kind **0x33** chunks; 400 B fetch; parity **229** |
 | 20260710.153745 | [Amphora Amber vessel seal](20260710-153745_amphora-amber-vessel-seal.md) | AEAD on cargo; seal then stamp; parity **228** |
