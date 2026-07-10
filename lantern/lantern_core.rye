@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 1).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 2).
 //!
-//! Weights live in Tablecloth by hash; lap 1 serves pinned fixtures and enforces max_tokens.
+//! Weights live in Tablecloth by hash; lap 1 enforces max_tokens; lap 2 allow-lists model hashes.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -112,4 +112,23 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     resp.tokens_out = words;
     resp.stopped_reason = .length;
     return resp;
+}
+
+/// True when `model_hash` appears as a `model_hash` line in an allow-list fixture.
+pub fn model_allowed(model_hash: []const u8, allow_text: []const u8) bool {
+    var lines = std.mem.splitScalar(u8, allow_text, '\n');
+    while (lines.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (line.len == 0 or line[0] == '#') continue;
+        if (!std.mem.startsWith(u8, line, "model_hash ")) continue;
+        const hash = std.mem.trim(u8, line["model_hash ".len..], " \t\r\n");
+        if (std.mem.eql(u8, hash, model_hash)) return true;
+    }
+    return false;
+}
+
+/// Lap 2: allow-list gate, then lap-1 complete_fixture.
+pub fn complete_allowed(req: Request, fixture_text: []const u8, allow_text: []const u8) LanternError!Response {
+    if (!model_allowed(req.model_hash, allow_text)) return error.ModelMismatch;
+    return complete_fixture(req, fixture_text);
 }

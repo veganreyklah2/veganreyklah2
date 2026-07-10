@@ -163,10 +163,19 @@ pub fn parse_markdown(text: []const u8, out: []Block) ParseError!u32 {
 
 /// Collect every `rye_fence` body in source order — training snippets for Anvil forge.
 pub fn extract_rye_snippets(blocks: []const Block, out: []Snippet) ParseError!u32 {
+    return extract_kind_snippets(blocks, .rye_fence, out);
+}
+
+/// Collect every `rish_fence` body in source order — witness-script snippets for Anvil forge.
+pub fn extract_rish_snippets(blocks: []const Block, out: []Snippet) ParseError!u32 {
+    return extract_kind_snippets(blocks, .rish_fence, out);
+}
+
+fn extract_kind_snippets(blocks: []const Block, kind: BlockKind, out: []Snippet) ParseError!u32 {
     var count: u32 = 0;
     var i: u32 = 0;
     while (i < blocks.len) : (i += 1) {
-        if (blocks[i].kind != .rye_fence) continue;
+        if (blocks[i].kind != kind) continue;
         if (count >= out.len) return error.SnippetOverflow;
         const body = blocks[i].text_slice();
         if (body.len > max_block_text) return error.BlockTooLarge;
