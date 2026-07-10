@@ -2,7 +2,7 @@
 //!
 //! Kumara names the keypair that signs a fact before it enters the log.
 //! This file centralizes the scattered `Ed25519` calls so every module
-//! reaches identity through one home — extraction, not a new capability.
+//! reaches identity through one home — extraction, rather than a new capability.
 //!
 //!   rye build tally/kumara.rye -femit-bin=tally/bin/kumara
 //!   tally/bin/kumara selftest

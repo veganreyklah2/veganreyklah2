@@ -2,7 +2,7 @@
 //!
 //! Tries the next revision the fetcher does not yet hold, applies it if the source
 //! has it, and repeats until an ask comes back empty. Composing rather than extending:
-//! recall_lap1.rye is imported and not edited.
+//! recall_lap1.rye is imported and left standing.
 //!
 //!   rye build mantra/recall_catch_up.rye -femit-bin=mantra/bin/recall-catch-up
 //!   mantra/bin/recall-catch-up selftest

@@ -1,6 +1,7 @@
 # Aurora — the dawn a machine wakes into
 
 **Version:** `20260619.035912` (Rye chronological stamp)
+**Last updated:** 2026-07-10 (Radiant Style pass round 3)
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Guidance (`../external-research/TAME_GUIDANCE.md`)
 **Status:** Seed, relay, content-named hart, sealed datagram, the wire, and a sealed datagram posted across it — small, runnable, and growing
 
@@ -20,9 +21,8 @@ the part that already breathes.
 Following Gall's Law — a working complex system grows from a working simple one —
 Aurora begins with the smallest boot that runs. In `src/seed.rye`, one hart wakes
 on a freestanding RISC-V machine, gives itself a stack, speaks a single line over
-the console, and asks the machine to rest. No operating system sits beneath it
-and no standard library above it: only Rye's own toolchain, aimed at bare metal,
-and an emulator to wake in.
+the console, and asks the machine to rest. Bare metal alone: Rye's own toolchain
+aimed at the hart, and an emulator to wake in.
 
 It is also the step where Rye and Aurora meet. Rye's north star asks it to cohere
 with open hardware (`../context/specs/rye-as-its-own-language.md`); a freestanding
@@ -35,8 +35,8 @@ roots fed.
 The seed grows by one true step into the first *relay*. In `src/relay.rye`, the
 boot becomes a flow of named values: stage one wakes and reads the machine's
 identity, packing it into a small `Machine` value; stage two receives that value,
-proves an invariant of it — the base integer ISA must be present, or this code
-could not run — and speaks what it found; stage three rests. Each handoff is a
+proves an invariant of it — the base integer ISA must be present for this code
+to run — and speaks what it found; stage three rests. Each handoff is a
 tail call, and a value travels with it: the boot-as-flow-of-named-values idea
 (`../external-research/yonder/20260617-195812_aurora-boot-riscv.md`, `/986`) at its smallest honest
 size. It reads real registers (`mhartid`, `misa`), proves what it must, and hands

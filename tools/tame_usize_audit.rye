@@ -1,7 +1,7 @@
 //! TAME / Tiger Style usize audit for strengthening pass docs.
 //!
 //! Tiger Style: use explicitly-sized types like `u32`; avoid `usize`.
-//! TAME: `usize` is a boundary type, not a design type.
+//! TAME: `usize` is a boundary type, rather than a design type.
 
 const std = @import("std");
 

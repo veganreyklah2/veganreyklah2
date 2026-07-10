@@ -9,7 +9,7 @@
 //! This seed proves two things:
 //!   1. A parent can watch a child and restart it on failure.
 //!   2. The restart count matches the plan exactly — supervision is
-//!      deterministic, not a retry loop with hope.
+//!      deterministic — a planned restart count, rather than a retry loop with hope.
 //!
 //! The seed runs hosted, where the gates can reach it. Freestanding
 //! Caravan follows Aurora's relay pattern once the hosted proof is green.

@@ -6,7 +6,7 @@
 //! in order, in a bead-index resin. Reassembly verifies every bead against its digest
 //! and the reassembled whole against the resin's own digest, so recall of a beaded
 //! resin returns the very same bytes as the resin unbeaded. A missing bead, a tampered
-//! bead, a tampered index, or a resin that is not a bead-index refuses the whole
+//! bead, a tampered index, or a resin whose Tilak is other than bead-index refuses the whole
 //! reassembly before a single byte is trusted.
 //!
 //! Fixed-size beading is the first ring by Gall's Law and Simple-Lovable-Complete: the
@@ -497,7 +497,7 @@ fn run_beading_selftest(_: std.Io) !u8 {
         }
     }
 
-    // Unwelcome: a resin that is not a bead-index refuses the layout.
+    // Unwelcome: a resin whose Tilak is other than bead-index refuses the layout.
     {
         var scratch: [max_resin_bytes]u8 = undefined;
         if (reassemble(&store, tilak_plain_bytes, idx_c[0..bc.len], &scratch)) |_| {

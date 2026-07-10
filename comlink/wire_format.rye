@@ -1,7 +1,7 @@
 //! comlink/wire_format.rye — sealed datagram layout shared by every Comlink wire rung.
 //!
 //! Offsets and crypto are identical across shared memory, hosted UDP, and virtio-net.
-//! Hosted wire and device wire import this module; the format does not fork.
+//! Hosted wire and device wire import this module; the format stays one layout.
 //!
 //! Discipline (control-before-data, shape-cast at edge, bounded capacity) shares DNA
 //! with the zero-copy resins research — inherited here as the single-datagram letter;
