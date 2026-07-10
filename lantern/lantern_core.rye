@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 0).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 1).
 //!
-//! Weights live in Tablecloth by hash; lap 0 serves a pinned fixture completion.
+//! Weights live in Tablecloth by hash; lap 1 serves pinned fixtures and enforces max_tokens.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -80,10 +80,36 @@ pub fn parse_fixture(text: []const u8) LanternError!Response {
     };
 }
 
-/// Lap 0: return fixture completion when model hash matches.
+/// Lap 1: return fixture completion when model hash matches; enforce max_tokens.
+/// Truncates whitespace-separated words when the fixture outruns the budget.
 pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Response {
     try validate_request(req);
     const fixture_model = field_value(fixture_text, "model_hash") orelse return error.BadFixture;
     if (!std.mem.eql(u8, req.model_hash, fixture_model)) return error.ModelMismatch;
-    return parse_fixture(fixture_text);
+    var resp = try parse_fixture(fixture_text);
+    if (resp.tokens_out <= req.max_tokens) return resp;
+
+    // Truncate to max_tokens words; mark length stop.
+    var words: u32 = 0;
+    var cut: usize = 0;
+    var i: usize = 0;
+    var in_word = false;
+    while (i < resp.text.len) : (i += 1) {
+        const c = resp.text[i];
+        const is_space = c == ' ' or c == '\t' or c == '\n' or c == '\r';
+        if (!is_space) {
+            if (!in_word) {
+                if (words == req.max_tokens) break;
+                words += 1;
+                in_word = true;
+            }
+            cut = i + 1;
+        } else {
+            in_word = false;
+        }
+    }
+    resp.text = resp.text[0..cut];
+    resp.tokens_out = words;
+    resp.stopped_reason = .length;
+    return resp;
 }

@@ -511,10 +511,10 @@ let scribble_lap2 = run ["rishi/bin/rishi" "run" "tools/scribble_lap2.rish"]
 assert scribble_lap2.ok else "Scribble lap 1 witness failed"
 say "GREEN: Scribble lap 1 witness passed."
 
-say "witness suite: Lantern lap 0 (fixture completion)…"
+say "witness suite: Lantern lap 1 (fixture + max_tokens)…"
 let lantern_lap1 = run ["rishi/bin/rishi" "run" "tools/lantern_lap1.rish"]
-assert lantern_lap1.ok else "Lantern lap 0 witness failed"
-say "GREEN: Lantern lap 0 witness passed."
+assert lantern_lap1.ok else "Lantern lap 1 witness failed"
+say "GREEN: Lantern lap 1 witness passed."
 
 say "witness suite: Anvil corpus lap 0 (rye catalog)…"
 let anvil_corpus = run ["rishi/bin/rishi" "run" "tools/anvil_corpus_lap1.rish"]
@@ -535,6 +535,11 @@ say "witness suite: Inference assist view (Skate fold)…"
 let assist_view = run ["rishi/bin/rishi" "run" "tools/inference_assist_view.rish"]
 assert assist_view.ok else "Inference assist view witness failed"
 say "GREEN: Inference assist view witness passed."
+
+say "witness suite: Inference assist view lap 2 (Scribble snippets)…"
+let assist_view_lap2 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap2.rish"]
+assert assist_view_lap2.ok else "Inference assist view lap 2 witness failed"
+say "GREEN: Inference assist view lap 2 witness passed."
 
 say "witness suite: compass rose (navigation habit seated)…"
 let compass = run ["rishi/bin/rishi" "run" "tools/compass_rose.rish"]
@@ -585,6 +590,16 @@ say "witness suite: Realidream forge view (Amber cellar → Skate)…"
 let forge_view = run ["rishi/bin/rishi" "run" "tools/realidream_forge_view.rish"]
 assert forge_view.ok else "Realidream forge view witness failed"
 say "GREEN: Realidream forge view witness passed."
+
+say "witness suite: Realidream forge device view (virtio fetch → Skate)…"
+let forge_device_view = run ["rishi/bin/rishi" "run" "tools/realidream_forge_device_view.rish"]
+assert forge_device_view.ok else "Realidream forge device view witness failed"
+say "GREEN: Realidream forge device view witness passed."
+
+say "witness suite: Realidream forge unified view (pour + device → Skate)…"
+let forge_unified_view = run ["rishi/bin/rishi" "run" "tools/realidream_forge_unified_view.rish"]
+assert forge_unified_view.ok else "Realidream forge unified view witness failed"
+say "GREEN: Realidream forge unified view witness passed."
 
 say "witness suite: Amphora lap 1 (manifest entry + vessel)…"
 let amphora = run ["rishi/bin/rishi" "run" "tools/amphora_lap1.rish"]

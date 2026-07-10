@@ -21,6 +21,8 @@
 //!   pond/bin/drawn-terminal querydeviceviewtest # Query device-wire hits → Skate
 //!   pond/bin/drawn-terminal queryunifiedviewtest # Hosted + device query hits on one Skate frame
 //!   pond/bin/drawn-terminal forgeviewtest  # Realidream forge view — live Amphora pour → Skate
+//!   pond/bin/drawn-terminal forgedeviceviewtest # Forge device-wire fetch → Skate
+//!   pond/bin/drawn-terminal forgeunifiedviewtest # Hosted pour + device fetch on one Skate frame
 //!   pond/bin/drawn-terminal forgequeryviewtest # Forge Tablecloth-query hits → Skate
 //!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
 //!   pond/bin/drawn-terminal exchangeviewtest # Granary Exchange view — weave listing → Skate
@@ -49,7 +51,7 @@ const wov_core = @import("mandi/wov_core.rye");
 const rc = @import("mandi/receipt_core.rye");
 const kumara = @import("mandi/kumara.rye");
 
-const drawn_terminal_version = "20260710.175447";
+const drawn_terminal_version = "20260710.180111";
 
 const status_max_len: u32 = 80;
 const thin_view_max_lines: u32 = 5;
@@ -60,6 +62,8 @@ const query_view_max_lines: u32 = 6;
 const query_device_view_max_lines: u32 = 6;
 const query_unified_view_max_lines: u32 = 8;
 const forge_view_max_lines: u32 = 8;
+const forge_device_view_max_lines: u32 = 6;
+const forge_unified_view_max_lines: u32 = 8;
 const forge_query_view_max_lines: u32 = 6;
 const granary_view_max_lines: u32 = 7;
 const exchange_view_max_lines: u32 = 6;
@@ -75,6 +79,8 @@ const tablecloth_query_hits_fixture = "tools/fixtures/tablecloth_query_hits.bron
 const tablecloth_query_device_hits_fixture = "tools/fixtures/tablecloth_query_device_hits.bron";
 const forge_amber_manifest_fixture = "tools/fixtures/.forge_view_bundle/manifest.bron";
 const amphora_vessel_fixture = "tools/fixtures/.forge_view_bundle/vessel.bron";
+const amphora_device_fetch_hits_fixture = "tools/fixtures/amphora_device_fetch_hits.bron";
+const scribble_snippets_fixture = "scribble/fixtures/session_snippets.md";
 const forge_query_hits_fixture = "tools/fixtures/forge_query_hits.bron";
 const granary_front_page_fixture = "granary/fixtures/front_page.md";
 const status_full_text = "transcript full — earlier lines still ran; :quit to close";
@@ -458,7 +464,17 @@ fn count_corpus_kinds(text: []const u8) struct { rye: u32, rish: u32 } {
     return .{ .rye = rye, .rish = rish };
 }
 
-/// Inference assist — Anvil corpus counts + Lantern fixture + Greencandy books fold on one Skate frame.
+/// Inference assist — Anvil corpus + Scribble snippets + Lantern + books on one Skate frame.
+fn count_scribble_fences(text: []const u8) u32 {
+    var count: u32 = 0;
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (std.mem.eql(u8, line, "```rye") or std.mem.eql(u8, line, "```rish")) count += 1;
+    }
+    return count;
+}
+
 fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
     const cwd = std.Io.Dir.cwd();
     var corpus_buf: [4096]u8 = undefined;
@@ -467,10 +483,14 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const lantern = try cwd.readFile(io, lantern_completion_fixture, &lantern_buf);
     var journal_buf: [2048]u8 = undefined;
     const journal = try cwd.readFile(io, greencandy_journal_fixture, &journal_buf);
+    var snippets_buf: [4096]u8 = undefined;
+    const snippets = try cwd.readFile(io, scribble_snippets_fixture, &snippets_buf);
 
     const kinds = count_corpus_kinds(corpus);
     assert(kinds.rye == 2);
     assert(kinds.rish == 1);
+    const fence_count = count_scribble_fences(snippets);
+    assert(fence_count == 3);
 
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
@@ -485,11 +505,11 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const lines = try garden.alloc(surface.SkateLine, assist_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "inference assist view") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
-    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
-    lines[6] = .{ .text = try garden.dupe(u8, "lattice matmul 2x2 green") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets {d}", .{fence_count}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "books P&L net {d}", .{pl.net}) };
     lines[7] = .{ .text = try garden.dupe(u8, "assist fold green") };
     return lines;
 }
@@ -512,11 +532,11 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const golden = [_][]const u8{
         "inference assist view",
         "corpus rye 2 rish 1",
+        "snippets 3",
         "model sha3-256-rye-forge-lap0",
         "lantern 24/12 eos",
         "suggest use init.garden not ArgIterator",
         "books P&L net 800",
-        "lattice matmul 2x2 green",
         "assist fold green",
     };
     assert(lines_equal(&golden, frame));
@@ -524,7 +544,7 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     var out: [160]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist view: sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist view: snippets=3 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -878,6 +898,152 @@ fn run_forge_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal forge view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Realidream forge device view — Amphora virtio fetch-by-digest shape → Skate.
+fn compose_forge_device_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, amphora_device_fetch_hits_fixture, &buf);
+
+    const wire = field_value(text, "wire") orelse return error.BadForgeFixture;
+    if (!std.mem.eql(u8, wire, "device")) return error.BadForgeFixture;
+    const digest = field_value(text, "digest") orelse return error.BadForgeFixture;
+    if (digest.len != 64) return error.BadForgeFixture;
+    const name = field_value(text, "name") orelse return error.BadForgeFixture;
+    const ports = field_value(text, "ports") orelse return error.BadForgeFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, forge_device_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "realidream forge device view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "wire device") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "digest {s}", .{digest[0..12]}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "name {s}", .{name}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "ports {s}", .{ports}) };
+    lines[5] = .{ .text = try garden.dupe(u8, "device fold green") };
+    return lines;
+}
+
+fn run_forge_device_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_forge_device_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == forge_device_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "realidream forge device view",
+        "wire device",
+        "digest cd416bd6cae8",
+        "name hello.txt",
+        "ports 15571/15572",
+        "device fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    const cwd = std.Io.Dir.cwd();
+    var buf: [2048]u8 = undefined;
+    const hosted = try cwd.readFile(io, "tools/fixtures/forge_amber_manifest.bron", &buf);
+    if (field_value(hosted, "wire")) |_| return error.HostedMarkedDevice;
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal forge device view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Realidream forge unified view — hosted pour + device fetch on one Skate frame.
+fn compose_forge_unified_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var man_buf: [2048]u8 = undefined;
+    const man = try cwd.readFile(io, forge_amber_manifest_fixture, &man_buf);
+    var device_buf: [1024]u8 = undefined;
+    const device = try cwd.readFile(io, amphora_device_fetch_hits_fixture, &device_buf);
+
+    const format = field_value(man, "format") orelse return error.BadForgeFixture;
+    if (!std.mem.eql(u8, format, "amber-ring1-v2-tilak")) return error.BadForgeFixture;
+    var hello_digest: ?[]const u8 = null;
+    var entry_count: u32 = 0;
+    var lines_iter = std.mem.splitScalar(u8, man, '\n');
+    while (lines_iter.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (!std.mem.startsWith(u8, line, "entry ")) continue;
+        entry_count += 1;
+        var parts = std.mem.tokenizeScalar(u8, line, ' ');
+        _ = parts.next();
+        _ = parts.next();
+        const digest = parts.next() orelse return error.BadForgeFixture;
+        const name = parts.next() orelse return error.BadForgeFixture;
+        if (std.mem.eql(u8, name, "hello.txt")) hello_digest = digest;
+    }
+    if (entry_count != 2) return error.BadForgeFixture;
+    const hosted_digest = hello_digest orelse return error.BadForgeFixture;
+
+    const wire = field_value(device, "wire") orelse return error.BadForgeFixture;
+    if (!std.mem.eql(u8, wire, "device")) return error.BadForgeFixture;
+    const device_digest = field_value(device, "digest") orelse return error.BadForgeFixture;
+    if (device_digest.len != 64) return error.BadForgeFixture;
+    const device_name = field_value(device, "name") orelse return error.BadForgeFixture;
+    if (!std.mem.eql(u8, hosted_digest, device_digest)) return error.DigestMismatch;
+
+    const lines = try garden.alloc(surface.SkateLine, forge_unified_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "realidream forge unified view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "hosted cellar amber") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "hosted resins {d}", .{entry_count}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "hosted resin hello.txt {s}", .{hosted_digest[0..12]}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "device wire device") };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "device digest {s}", .{device_digest[0..12]}) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "device name {s}", .{device_name}) };
+    lines[7] = .{ .text = try garden.dupe(u8, "unified fold green") };
+    return lines;
+}
+
+fn run_forge_unified_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_forge_unified_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == forge_unified_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "realidream forge unified view",
+        "hosted cellar amber",
+        "hosted resins 2",
+        "hosted resin hello.txt cd416bd6cae8",
+        "device wire device",
+        "device digest cd416bd6cae8",
+        "device name hello.txt",
+        "unified fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal forge unified view: sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -1828,6 +1994,12 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "forgeviewtest")) {
         return run_forge_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "forgedeviceviewtest")) {
+        return run_forge_device_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "forgeunifiedviewtest")) {
+        return run_forge_unified_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "forgequeryviewtest")) {
         return run_forge_query_view_witness(garden, io);

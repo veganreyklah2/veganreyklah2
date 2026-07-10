@@ -1,4 +1,4 @@
-//! lantern/lantern.rye — Lantern lap 0 selftest (fixture completion).
+//! lantern/lantern.rye — Lantern lap 1 selftest (fixture completion + max_tokens).
 //!
 //!   rye build lantern/lantern.rye -femit-bin=lantern/bin/lantern
 //!   lantern/bin/lantern selftest
@@ -9,8 +9,9 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const lc = @import("lantern_core.rye");
 
-const lantern_version = "20260710.133500";
+const lantern_version = "20260710.180111";
 pub const fixture_path = "lantern/fixtures/completion.bron";
+pub const length_fixture_path = "lantern/fixtures/completion_length.bron";
 
 fn welcome_complete(io: std.Io) !void {
     const cwd = Dir.cwd();
@@ -27,6 +28,22 @@ fn welcome_complete(io: std.Io) !void {
     assert(resp.stopped_reason == .eos);
     assert(std.mem.indexOf(u8, resp.text, "init.garden") != null);
     print("lantern: fixture completion — tokens {d}/{d} eos\n", .{ resp.tokens_in, resp.tokens_out });
+}
+
+fn welcome_length_budget(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [1024]u8 = undefined;
+    const text = try cwd.readFile(io, length_fixture_path, &buf);
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "budget",
+        .max_tokens = 5,
+    };
+    const resp = try lc.complete_fixture(req, text);
+    assert(resp.tokens_out == 5);
+    assert(resp.stopped_reason == .length);
+    assert(std.mem.eql(u8, resp.text, "one two three four five"));
+    print("lantern: max_tokens truncate — tokens {d} length\n", .{resp.tokens_out});
 }
 
 fn unwelcome_model_mismatch(io: std.Io) !void {
@@ -62,15 +79,31 @@ fn unwelcome_prompt_too_long() !void {
     print("lantern: prompt overflow refused\n", .{});
 }
 
+fn unwelcome_zero_budget() !void {
+    const req = lc.Request{
+        .model_hash = "sha3-256-rye-forge-lap0",
+        .prompt = "x",
+        .max_tokens = 0,
+    };
+    if (lc.validate_request(req)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.BudgetExceeded);
+    }
+    print("lantern: zero budget refused\n", .{});
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
     const args = try init.minimal.args.toSlice(garden);
     if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
         try welcome_complete(io);
+        try welcome_length_budget(io);
         try unwelcome_model_mismatch(io);
         try unwelcome_prompt_too_long();
-        print("lantern lap0: version {s} — GREEN\n", .{lantern_version});
+        try unwelcome_zero_budget();
+        print("lantern lap1: version {s} — GREEN\n", .{lantern_version});
         return 0;
     }
     print("usage: lantern selftest\n", .{});

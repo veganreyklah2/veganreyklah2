@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.180111 | [Compass climb — forge views, Lantern lap 1, assist snippets](20260710-180111_compass-climb-forge-lantern-assist.md) | Parity **249**–**251**; soak closed |
 | 20260710.175447 | [Realidream query unified view — hosted + device on one glass](20260710-175447_query-unified-view.md) | Eight-line frame; parity **248** |
 | 20260710.174900 | [Hammock — query device view lap 2c seated](20260710-174900_query-device-view-hammock.md) | Hammock pin after parity **247** |
 | 20260710.174752 | [Realidream query device view — device hits on Skate](20260710-174752_query-device-view.md) | querydeviceviewtest; parity **247** |
