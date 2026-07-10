@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-06 (OA-L3 escrow counsel `013012` · parity **166** · witness bolt + compass briefs)
+**Last updated:** 2026-07-10 (inference stack lap 0 hammock `133500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,16 +47,22 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| `20260710.133500` | [Inference stack — lap 0 hammock](20260710-133500_inference-stack-lap0-hammock.md) | Lattice · Scribble · Lantern · Anvil · assist view; parity **215** |
+| `20260710.132548` | [Greencandy — lap 3 sight view](20260710-132548_greencandy-lap3-sight-view.md) | Carriage + books on one Skate frame; parity **210** |
+| `20260710.131212` | [Greencandy — lap 2 reports](20260710-131212_greencandy-lap2-reports.md) | Own root; P&L · BS · exception queue; parity **209** |
+| `20260710.125953` | [Greencandy — hammock scope (lap 1)](20260710-125953_greencandy-hammock.md) | Centralized books; chart · journal · fold · Skate books view; **landed** parity **207**/**208** |
 | `20260706.185112` | [The witness bolt](20260706-185112_the-witness-bolt.md) | Minimal pinned catalog fixture for NS-L3 witnesses; small, chunk, and beaded variants |
 | `20260706.023912` | [The referential namespace — Mantra grows to hold it](20260706-023912_the-referential-namespace.md) | **recall** and **bolt** seated; NS-L1–L3 wire + batch chunking GREEN parity **166** |
 | `20260705.225412` | [Comlink device wire](20260705-225412_comlink-device-wire.md) | Virtio carriage for sealed datagram — sub-lap 1 fixture selftest GREEN |
 | `20260705-045012` | [Rye astrology atelier](20260705-045012_rye-astrology-atelier.md) | Charts and calculations in Rye — ephemeris seam, golden cast witness, SVG fold; counsel only |
 | `20260704-211012` | [The Rye core and the shell](20260704-211012_the-rye-core-and-the-shell.md) | Lap law seated — core proves, shell witnesses; explicit subject, horizon, `preview`/`fold`, parity hygiene |
 | `20260703-202312` | [The marked value — types that travel](20260703-202312_the-marked-value.md) | Type-mark layer unified with crossing; absorb/express/tend triad; Tilak leads (RTAC); three laps dogfed by nightly packet |
-| `20260703-201612` | [The sealed crossing](20260703-201612_the-sealed-crossing.md) | Greenware vessel discipline; manifest anatomy with mark field; vows at the seam |
+| `20260703-201612` | [The sealed crossing](20260703-201612_the-sealed-crossing.md) | Amphora vessel duty — **Proposed**; kitchen twin [`002952`](../external-research/20260710-002952_sealed-crossing-plainly.md) |
 | `20260703-200712` | [What needs ordering](20260703-200712_what-needs-ordering.md) | Value-object ladder + compute choreography; silo companion to Pottery suite |
 | `20260703-140212` | [The bench — where claims become evidence](20260703-140212_the-bench.md) | Third in the metalsmoke/season family: metal, sitter, discipline; bench truth; harvest workflow economics absorbed |
 | `20260703-140212` | [The shape carries the bound](20260703-140212_the-shape-carries-the-bound.md) | Bounds woven into geometry; Tally lap region + framed grid named; TAME canon passage boxed for Kaeden's word |
+| `20260703-071212` | [Amber seasons](20260703-071212_amber-seasons.md) | Custody unit of time; **Reviewed and kept**; kitchen twin [`002422`](../external-research/20260710-002422_amber-seasons-plainly.md) |
+| `20260703-013412` | [Metalsmoke](20260703-013412_metalsmoke.md) | Thin edge's few honest checks; **Reviewed and kept**; kitchen twin [`002017`](../external-research/20260710-002017_metalsmoke-plainly.md) |
 | `20260702-195426` | [SLC-L1 — the verifiable receipt](20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — transaction fact, sign-append-fold-verify |
 | `20260706-013012` | [Open Asks — escrow hammock (OA-L3)](20260706-013012_open-asks-escrow-hammock.md) | Bounty escrow as hold-then-release on one log; **Nyasa** escrow account; **landed** parity **158** |
 | `20260706-011512` | [Open Asks — cross-party delivery (OA-L2)](20260706-011512_open-asks-cross-party-delivery.md) | Request + application under Comlink seal — **landed** parity **157** |

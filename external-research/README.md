@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-07 (settlement refresh `20260707.222500`)
+**Last updated:** 2026-07-10 (local-forge inference horizon `133500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -45,6 +45,19 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260710.133500` | [Local forge on Minisforum metal](20260710-133500_local-forge-minisforum-inference.md) | Visionary: Lattice · Lantern · Scribble · Anvil; lap 0 landed **215** |
+| `20260710.131956` | [Seen books and the living desktop — long horizon](20260710-131956_seen-books-living-desktop-horizon.md) | Visionary: carriage · books · sight; Greencandy + Visual Track + Rye OS |
+| `20260710.125953` | [Greencandy — Kick/Digits clean-room](20260710-125953_greencandy-kick-digits-clean-room.md) | Public-docs concepts → our chart/journal/fold vocabulary; no code copy |
+| `20260710.002952` | [Sealed crossing — said plainly](20260710-002952_sealed-crossing-plainly.md) | Amphora vessel duty; six parts · four vows · three laps; still Proposed |
+| `20260710.002544` | [First lap goes green — said plainly](20260710-002544_first-lap-goes-green-plainly.md) | Lap · green · Edit 5; layers of proof; shipping phrase whole |
+| `20260710.002422` | [Amber seasons — said plainly](20260710-002422_amber-seasons-plainly.md) | Custody as bounded interval; seal · scrub · restore; cellar sleeps between |
+| `20260710.002017` | [Metalsmoke — said plainly](20260710-002017_metalsmoke-plainly.md) | Thin edge's few honest checks; three marks; audit rule already ratified |
+| `20260710.001249` | [Settlement seat — said plainly](20260710-001249_settlement-seat-plainly.md) | Three lights, asset axis, MALA/WOV supersession after `152612` |
+| `20260710.000725` | [Learning chapter — said plainly](20260710-000725_learning-chapter-plainly.md) | Civic education candidate in kitchen voice; canon wait remains Kaeden's |
+| `20260709.235931` | [Resins, cellar, and vessel — said plainly](20260709-235931_resins-cellar-vessel-plainly.md) | Amber · Amphora · resin · two-tier SHA3 in kitchen voice |
+| `20260709.235921` | [One clock — said plainly](20260709-235921_one-clock-plainly.md) | Stamp filenames; living vs dated; newest-first in README |
+| `20260709.231011` | [Graduation rule — said plainly](20260709-231011_graduation-rule-plainly.md) | Second consumer; aspect vs module; Weave and Dexter triggers in kitchen voice |
+| `20260709.230414` | [Twin keys and the exit bundle](20260709-230414_twin-keys-and-the-exit-bundle.md) | Dual monarch D1 without a consensus textbook |
 | `20260709.203139` | [Claude review brief — Jul 9 night climb](20260709-203139_claude-review-brief-jul9-night-climb.md) | Arc M1→thin view; parity **202**; questions for counsel |
 | `20260709.200022` | [Pedersen and Sigma, plainly](20260709-200022_pedersen-and-sigma-plainly.md) | Sealed envelopes and prove-you-know rituals for SLC-L4 |
 | `20260709.194437` | [What parity is](20260709-194437_what-parity-is.md) | Plain-language map of the witness suite, the trio, and how the count grows |
@@ -64,7 +77,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260704.024800` | [The checkable room](20260704-024800_the-checkable-room.md) | What checkable means — witness, trio, happy zone, doorway, bench pins |
 | `20260704.024600` | [Two rooms on the metal path](20260704-024600_two-rooms-on-the-metal-path.md) | Rye→Caravan→Tally→modules walk; compile vs runtime cases |
 | `20260703.033602` | [First lap goes green](20260703-033602_first-lap-goes-green.md) | Lap · green · Edit 5 graduation vocabulary — the shipping phrase whole |
-| `20260704.020800` | [One word, one gate](20260704-020800_one-word-one-gate.md) | Gate · witness · toll vocabulary ratified |
+| `20260704.020800` | [One word, one gate](../context/specs/20260704-020800_one-word-one-gate.md) | Gate · witness · toll vocabulary ratified (canon in `context/specs/`) |
 | `20260704-002912` | [Gates, arms, and the Urbit lineage](20260704-002912_gates-arms-and-the-urbit-lineage.md) | Three gate families vs Hoon homonyms; Tilak triad vs grab/grow/grad; Zig function+struct sufficient — no Urbit gate/arm in Rye |
 | `20260704.030600` | [Itinerary and the crossing manifest](20260704-030600_itinerary-and-the-crossing-manifest.md) | Itinerary primer + crossing_manifest_seed — canonical |
 | `20260703-201612` | [The Amphora and the crossing](20260703-201612_the-amphora-and-the-crossing.md) | **Vessel software** — sealed traveling container; shoulder line, parent mark, manifest; cellar's sibling |

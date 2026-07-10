@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-09 (MALA M2b device wire; WOV lap 1 at parity **201**; SLC-L4 **200**)
+**Last updated:** 2026-07-10 (Greencandy own root; MALA/WOV still here)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -62,6 +62,7 @@ The full vision — a public benefit corporation, a computational data market, s
 | **MALA M2b** | **Device wire** — virtio mint + receipt hops; ports **15569**/**15570**; extends M2 witness | prompt [`../expanding-prompts/20260709-201734_mala-m2b-device-wire.md`](../expanding-prompts/20260709-201734_mala-m2b-device-wire.md) |
 | **SLC-L4** | **Fixed-tier Sigma** — donor-amount privacy; [`disclosure_core.rye`](disclosure_core.rye) + [`../tally/pedersen.rye`](../tally/pedersen.rye) · witness **200** | prompt [`../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) |
 | **WOV lap 1** | **Exit honesty** — in-memory book, root fact, prove, exit; [`wov_core.rye`](wov_core.rye) · witness **201** | spec [`../context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md) |
+| **Greencandy** | **Centralized books** — moved to own root [`../greencandy/`](../greencandy/); witnesses **207**–**209** | hammock [`../active-designing/20260710-125953_greencandy-hammock.md`](../active-designing/20260710-125953_greencandy-hammock.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model, below |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows. A sanctuary receiving donations with cryptographic receipts is a complete, lovable, honest beginning, and everything larger grows from it.

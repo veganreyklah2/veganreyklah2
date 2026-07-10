@@ -5,6 +5,7 @@
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **By:** Reya 2, in the radiant voice, with **Kaeden Reyklah** as coauthor
 **Status:** Adopted
+**Companions:** kitchen twin [`external-research/20260709-235921_one-clock-plainly.md`](../../external-research/20260709-235921_one-clock-plainly.md)
 
 ---
 

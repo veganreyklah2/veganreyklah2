@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-09 (compass rose + twin-keys plain story `230414`; parity **206**)
+**Last updated:** 2026-07-10 (Scribble lap 1 `134800`; parity **218**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -63,7 +63,7 @@
 
 ## Next bench (counsel [`222812`](../counsel/20260707-222812_claude-counsel-open-questions-final-pass.md) → [`015312`](../counsel/20260708-015312_claude-counsel-kumara-open-asks-cluster.md) · Realidream [`021912`](../counsel/20260708-021912_claude-counsel-realidream-zig016-brix.md))
 
-**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **compass rose + twin-keys plain story**. Parity **206**.
+**Direction:** Open Questions closed on paper. **Kumara arc complete** — ratchet **0**. **MALA/WOV path realigned** `152612`. **MALA M1–M2b landed**; **SLC-L4 Sigma + W0 landed**; **WOV lap 1 + pin + seam A + dual D1 landed**; **Realidream thin view landed**; **Greencandy laps 1–3 + Linengrow sight view landed**; **Inference stack laps 0–1 + Scribble lap 1 landed**; **kitchen-twin shelf** (shipping + custody + thin-edge spine); **universal foundations affirmed**. Parity **218**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -81,7 +81,21 @@
 | **12** | **Evening leftovers** | **Cleared** | removal headers on-touch; M0 spec not required; keep-going default; [`225508`](../counsel/20260709-225508_grok-counsel-evening-close-leftovers.md) |
 | **13** | **W1 + seam B** | **Soak** | reopen triggers named; [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) |
 | **14** | **Compass rose + twin-keys story** | **Landed** | jail-safe clarity; parity **206**; [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md) |
-| — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view is the exception |
+| **15** | **Graduation plainly + pointer hygiene** | **Landed** | Jul 2 kitchen twin [`231011`](../external-research/20260709-231011_graduation-rule-plainly.md); thin-edge + Amber + OWOG index; compass rose extended |
+| **16** | **One-clock + resins plainly** | **Landed** | Jun 27 naming spine [`235921`](../external-research/20260709-235921_one-clock-plainly.md); cellar/vessel [`235931`](../external-research/20260709-235931_resins-cellar-vessel-plainly.md); compass rose pairs |
+| **17** | **Learning plainly + universal affirm** | **Landed** | Civic candidate kitchen twin [`000725`](../external-research/20260710-000725_learning-chapter-plainly.md); aspiring/regenerative **Reviewed and kept**; zip 58 / expanding-prompts hygiene |
+| **18** | **Settlement seat plainly** | **Landed** | Jul 6–7 dossier kitchen twin + supersession notes [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md); external rail retired `152612` |
+| **19** | **Metalsmoke plainly + affirm** | **Landed** | Kitchen twin [`002017`](../external-research/20260710-002017_metalsmoke-plainly.md); silo **Reviewed and kept**; audit-rule stale line cleared; LEXICON row |
+| **20** | **Amber seasons + first-lap plainly** | **Landed** | Custody twin [`002422`](../external-research/20260710-002422_amber-seasons-plainly.md); shipping phrase [`002544`](../external-research/20260710-002544_first-lap-goes-green-plainly.md); Season LEXICON ask cleared |
+| **21** | **Sealed crossing plainly** | **Landed** | Amphora kitchen twin [`002952`](../external-research/20260710-002952_sealed-crossing-plainly.md); Status stays **Proposed**; no module seat |
+| **22** | **Greencandy lap 1** | **Landed** | Chart · journal · fold · unwelcome; `greencandy/`; parity **207**; hammock [`125953`](../active-designing/20260710-125953_greencandy-hammock.md) |
+| **23** | **Greencandy books view** | **Landed** | Trial balance → Skate via `booksviewtest`; parity **208**; prompt [`125953`](../expanding-prompts/20260710-125953_greencandy-lap1-books-view.md) |
+| **24** | **Greencandy root + lap 2** | **Landed** | Own folder; P&L · BS · exception queue; parity **209**; [`131212`](../active-designing/20260710-131212_greencandy-lap2-reports.md) |
+| **25** | **Linengrow sight view** | **Landed** | Carriage + books on one Skate frame; `sightviewtest`; parity **210**; [`132548`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) |
+| **26** | **Inference stack lap 0** | **Landed** | Lattice · Scribble · Lantern · Anvil corpus · `assistviewtest`; parity **211**–**215**; [`133500`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) |
+| **27** | **Inference stack lap 1** | **Landed** | Anvil corpus query · Lattice add; parity **216**–**217**; stamp `134200` |
+| **28** | **Scribble lap 1** | **Landed** | `extract_rye_snippets` from session fixture; parity **218**; stamp `134800` |
+| — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
 | — | Agent-writing paste | Awaiting paste | — |
 | — | Snapshot lap 4 | Kaeden's hands | — |
@@ -122,6 +136,17 @@
 - [ ] **SLC-L4 W1/W2 code** — **soak** [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); reopen on product need or affirm
 - [x] **W1 + seam B soak ruling** — counsel [`225614`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md); keep-going does not open them
 - [x] **Twin-keys plain story + compass rose** — kitchen-language dual D1 [`230414`](../external-research/20260709-230414_twin-keys-and-the-exit-bundle.md); `tools/compass_rose.rish` walks the navigation habit; parity **206** (`20260709.230414`)
+- [x] **Graduation plainly + pointer hygiene** — Jul 2 kitchen twin [`231011`](../external-research/20260709-231011_graduation-rule-plainly.md); thin-ring→thin-edge in gratitude; Amber §10 + context README; OWOG index → specs; compass rose asserts the hygiene; parity **206** unchanged (`20260709.231011`)
+- [x] **One-clock + resins plainly** — Jun 27 naming spine [`235921`](../external-research/20260709-235921_one-clock-plainly.md); Amber/Amphora/resin/two-tier SHA3 [`235931`](../external-research/20260709-235931_resins-cellar-vessel-plainly.md); compass rose asserts both pairs; parity **206** unchanged (`20260709.235931`)
+- [x] **Learning plainly + universal affirm** — Civic candidate kitchen twin [`000725`](../external-research/20260710-000725_learning-chapter-plainly.md) (CIVIC_STYLE untouched); aspiring/regenerative **Reviewed and kept**; resins H1 drift; zip 58 proposed→landed; Jul 9 prompts in expanding-prompts index; parity **206** (`20260710.000725`)
+- [x] **Settlement seat plainly** — kitchen twin [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md); dated supersession on `002612`/`005512`/`222500`; Prior-bench SLC-L3 row marked superseded; compass rose asserts; parity **206** (`20260710.001249`)
+- [x] **Metalsmoke plainly + affirm** — kitchen twin [`002017`](../external-research/20260710-002017_metalsmoke-plainly.md); silo + happy-zone foundations affirmed; "awaiting ratification" cleared (audit rule `191312`); LEXICON **Metalsmoke**; parity **206** (`20260710.002017`)
+- [x] **Amber seasons + first-lap plainly** — kitchen twins [`002422`](../external-research/20260710-002422_amber-seasons-plainly.md) · [`002544`](../external-research/20260710-002544_first-lap-goes-green-plainly.md); seasons silo **Reviewed and kept** (LEXICON Season ask closed); first-lap essay affirmed; Lap/Green/Season plainly links; parity **206** (`20260710.002544`)
+- [x] **Sealed crossing plainly** — kitchen twin [`002952`](../external-research/20260710-002952_sealed-crossing-plainly.md); silo + Amphora study companion links; Status remains **Proposed** (no Amphora seat); LEXICON Amphora plainly; parity **206** (`20260710.002952`)
+- [x] **Greencandy lap 1** — chart (cash/revenue/expense/equity), journal parse, trial-balance fold, unwelcome paths; now at `greencandy/`; `tools/greencandy_lap1.rish`; parity **207** (`20260710.125953`)
+- [x] **Greencandy books view** — journal fixture → six Skate lines via `drawn-terminal booksviewtest`; `tools/greencandy_books_view.rish`; parity **208** (`20260710.125953`)
+- [x] **Greencandy root + lap 2** — own `greencandy/` home; P&L · balance sheet · exception queue; `tools/greencandy_lap2.rish`; parity **209** (`20260710.131212`)
+- [x] **Linengrow sight view** — horizon sight altitude: `booksviewtest` eight lines (TB + P&L net + BS); `sightviewtest` carriage+books; `tools/greencandy_sight_view.rish`; parity **210** (`20260710.132548`)
 - [x] **MALA `kind` field design** — K0/K1 named; [`225159`](../context/specs/20260709-225159_mala-kind-field.md)
 - [x] **MALA `kind` K0** — keep memo prefixes through M3; affirmed `225343`; K1 still gated
 - [ ] **MALA `kind` K1 code** — waits affirm
@@ -151,16 +176,16 @@
 
 ## Prior bench (counsel [`220912`](../counsel/20260707-220912_claude-counsel-roadmap-synthesis.md))
 
-**Direction:** not a new domain, not a Rishi rewrite, not Horizon 2's five v1s before their gates are ready. Clear the **Open Questions** backlog (bench-workable sittings) and **prepare SLC-L3** so settlement moves the moment Kaeden's word comes.
+**Direction (historical `220912`):** Open Questions cleared; SLC-L3 external-rail prep was front of queue — **superseded** `152612` by MALA/WOV. Kitchen twin: [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | Open Questions backlog | **Cleared** | Six small proposals affirmed `174500`; SLC-L3 alone remains Kaeden's custody gate |
-| **2** | **SLC-L3 settlement prep** | Ruling-gated | Front of Linengrow queue; refresh three-lights survey + two-lane witness proposal |
+| **1** | Open Questions backlog | **Cleared** | Six small proposals affirmed `174500` |
+| **2** | **SLC-L3 settlement prep** | **Superseded** `152612` | External rail removed; MALA/WOV path; plainly [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md) |
 | — | Snapshot lap 4 | Kaeden's hands | Unchanged per `214012` |
 | — | Astrology lane | Source material | Unchanged per `214012` |
 
-- [x] **Settlement-seat refresh** — refresh + two-lane witness proposal [`external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md`](../external-research/20260707-222500_settlement-seat-refresh-and-slcl3-witness-proposal.md); July horizon refresh [`external-research/20260708-041000_settlement-horizon-refresh-july-2026.md`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md); apply prompt [`expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md`](../expanding-prompts/20260707-222500_apply-slcl3-settlement-witness.md); seat holds; gate Kaeden's word
+- [x] **Settlement-seat refresh** — refresh + two-lane witness then **superseded** `152612`; dossiers dated; kitchen twin [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md); July horizon [`041000`](../external-research/20260708-041000_settlement-horizon-refresh-july-2026.md)
 - [x] **Bron beside Brix — first proposal** — counsel [`222500`](../counsel/20260707-222500_claude-counsel-bron-beside-brix-first-proposal.md): Bron = values at seams; Brix = composable wholes; graduation deferred
 - [x] **Open Questions batch two** — Brix/Silo, Linengrow home, TASKS naming — counsel [`223100`](../counsel/20260707-223100_claude-counsel-open-questions-batch-two.md)
 - [x] **ROADMAP Linengrow table hygiene** — OA-L4 and OA-L5 landed rows added; parity **196** (`220912`)
@@ -177,7 +202,7 @@
 | **Snapshot lap 4** (Puddle microVM boot replay) | Kaeden's hands | Headless bench cannot claim this lap — different session kind |
 | **New domain** (astrology lane, etc.) | Awaiting source material | Valid pivot; needs Kaeden's transcripts/readings, not bench alone |
 
-**Still open under Linengrow (not wire):** agent-writing intake (paste pending); moderation + resin-refusal fact shapes (design only); settlement seat (ruling-gated).
+**Still open under Linengrow (not wire):** agent-writing intake (paste pending); moderation + resin-refusal fact shapes (design only). External settlement seat **retired** `152612` — see [`001249`](../external-research/20260710-001249_settlement-seat-plainly.md).
 
 - [x] **`.sh` migration — `tame_style_scan` bans half** — `tools/tame_style_scan_bans.rish` + selftest; `tame_style_check.rish` wired; `tame_style_scan.sh bans` delegates; counsel [`214012`](../counsel/20260707-214012_claude-counsel-next-bench-choice.md)
 - [x] **`.sh` migration — `tame_style_scan` advise half** — `tools/tame_style_scan_advise.rish` + selftest; map+join+sh sum idiom (`rish_count_selftest.rish`); `>70` ledger shell seam in `tame_style_long_fn.sh`; counsel `195912` / `214012`

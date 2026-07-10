@@ -25,6 +25,11 @@
 !/manual/
 !/classical-vedic-astrology/
 !/linengrow/
+!/greencandy/
+!/lattice/
+!/lantern/
+!/scribble/
+!/anvil/
 !/rye/
 !/rye-learning-process/
 !/gratitude/
@@ -63,6 +68,11 @@
 /mantra/bin/
 /aurora/.build/
 /linengrow/bin/
+/greencandy/bin/
+/lattice/bin/
+/lantern/bin/
+/scribble/bin/
+/anvil/bin/
 *.rye.zig
 .zig-cache/
 zig-cache/

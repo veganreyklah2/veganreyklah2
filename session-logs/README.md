@@ -12,6 +12,21 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.135200 | [Commit push — Greencandy + inference](20260710-135200_commit-push-greencandy-inference.md) | gitignore allowlist; parity **218** shipped |
+| 20260710.134800 | [Scribble lap 1 — snippets](20260710-134800_scribble-lap1-snippets.md) | rye_fence extract; parity **218** |
+| 20260710.134200 | [Inference lap 1 — query + add](20260710-134200_inference-lap1-query-add.md) | Anvil corpus filter **216**; Lattice add **217** |
+| 20260710.133500 | [Inference stack lap 0](20260710-133500_inference-stack-lap0.md) | Lattice · Scribble · Lantern · Anvil · assist view; parity **215** |
+| 20260710.132700 | [Implement horizon sight — lap 3](20260710-132700_implement-horizon-sight-lap3.md) | sightviewtest + books P&L/BS; parity **210** |
+| 20260710.132019 | [Seen-books living-desktop horizon essay](20260710-132019_seen-books-horizon-essay.md) | Visionary ER: carriage · books · sight from Greencandy climb |
+| 20260710.131411 | [Greencandy own root + lap 2](20260710-131411_greencandy-root-lap2.md) | `greencandy/` home; P&L · BS · exceptions; parity **209** |
+| 20260710.130848 | [Greencandy lap 1 + books view](20260710-130848_greencandy-lap1-books-view.md) | Chart · journal · fold · Skate booksviewtest; parity **208** |
+| 20260710.003345 | [Sealed crossing plainly](20260710-003345_sealed-crossing-plainly.md) | Amphora vessel twin; Status stays Proposed; parity **206** |
+| 20260710.002935 | [Amber seasons + first-lap plainly](20260710-002935_amber-seasons-first-lap-plainly.md) | Custody + shipping-phrase twins; Season ask closed; Amber section landed; parity **206** |
+| 20260710.002406 | [Metalsmoke plainly + affirm](20260710-002406_metalsmoke-plainly-affirm.md) | Thin-edge kitchen twin; audit-rule stale line cleared; LEXICON; parity **206** |
+| 20260710.001949 | [Settlement seat plainly](20260710-001949_settlement-seat-plainly.md) | Three lights + MALA/WOV supersession; doorway-safe Status; parity **206** |
+| 20260710.000940 | [Learning plainly + universal affirm](20260710-000940_learning-plainly-universal-affirm.md) | Civic candidate twin; aspiring/regenerative kept; index hygiene; parity **206** |
+| 20260710.000045 | [One-clock + resins plainly](20260710-000045_one-clock-resins-plainly.md) | Jun 27 naming + cellar/vessel kitchen twins; compass rose; parity **206** |
+| 20260709.231112 | [Graduation plainly + pointer hygiene](20260709-231112_graduation-plainly-pointer-hygiene.md) | Jul 2 kitchen twin; thin-edge/Amber/OWOG; compass rose; parity **206** |
 | 20260709.230720 | [Go — creative jail 206](20260709-230720_go-creative-jail-206.md) | Twin-keys story + compass rose; four remotes |
 | 20260709.230414 | [Creative jail — compass + twin keys](20260709-230414_creative-jail-compass-twin-keys.md) | Plain dual D1; parity **206** |
 | 20260709.230243 | [Bare keep-going chat-only](20260709-230243_bare-keep-going-chat-only.md) | Contract: no more pause commits from silence |

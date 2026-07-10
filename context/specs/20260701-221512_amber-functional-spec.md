@@ -89,7 +89,7 @@ Amber assumes the storage discipline the blueprint verifies, stated here as conc
 
 ## 10. What Waits, Named Honestly
 
-Amber is designed, and it is not built. The live rung remains the drawn terminal, and Amber's build waits for its own season after the spine; until then, the four live remotes are the project's honest durability floor, and this specification is the module's whole existence. When its season comes, the first lap is already visible and small: seal one directory to one drive, produce one signed record, verify it once by the fold — and check that fold against one hand-verified golden, a directory whose digest is computed by an independent tool from outside the family and pinned, so the oracle is never checking itself. Simple, lovable, complete. Everything larger grows from that working seed.
+Amber's **first lap is green** (`20260703.051812`) — fixture export, verify against an openssl golden, restore; witness at parity **144**. Later laps still wait: Kumara-native signing, live drive seal, scrub seasons, and cold-key ceremony. The four live remotes remain the project's everyday durability floor; this specification names both the room that already stands and the rooms that grow from it. Simple, lovable, complete — everything larger grows from that working seed.
 
 ---
 

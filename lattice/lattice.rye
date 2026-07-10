@@ -1,0 +1,88 @@
+//! lattice/lattice.rye — Lattice lap 0 selftest (f32 matmul).
+//!
+//!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
+//!   lattice/bin/lattice selftest
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const lc = @import("lattice_core.rye");
+
+const lattice_version = "20260710.134200";
+
+fn welcome_add() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 10);
+    b.set(0, 1, 20);
+    b.set(1, 0, 30);
+    b.set(1, 1, 40);
+
+    var c = try lc.Matrix.init(2, 2);
+    try lc.add(&a, &b, &c);
+    assert(c.at(0, 0) == 11);
+    assert(c.at(1, 1) == 44);
+    print("lattice: add 2x2 green — c00={d} c11={d}\n", .{ c.at(0, 0), c.at(1, 1) });
+}
+
+fn welcome_matmul() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 5);
+    b.set(0, 1, 6);
+    b.set(1, 0, 7);
+    b.set(1, 1, 8);
+
+    var c = try lc.Matrix.init(2, 2);
+    try lc.matmul(&a, &b, &c);
+    assert(c.at(0, 0) == 19);
+    assert(c.at(0, 1) == 22);
+    assert(c.at(1, 0) == 43);
+    assert(c.at(1, 1) == 50);
+    print("lattice: matmul 2x2 green — c00={d} c11={d}\n", .{ c.at(0, 0), c.at(1, 1) });
+}
+
+fn unwelcome_shape_mismatch() !void {
+    var a = try lc.Matrix.init(2, 3);
+    var b = try lc.Matrix.init(2, 2);
+    var c = try lc.Matrix.init(2, 2);
+    if (lc.matmul(&a, &b, &c)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: shape mismatch refused\n", .{});
+}
+
+fn unwelcome_dim_overflow() !void {
+    if (lc.Matrix.init(9, 2)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.DimOverflow);
+    }
+    print("lattice: dim overflow refused\n", .{});
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest")) {
+        try welcome_matmul();
+        try welcome_add();
+        try unwelcome_shape_mismatch();
+        try unwelcome_dim_overflow();
+        print("lattice lap1: version {s} — GREEN\n", .{lattice_version});
+        return 0;
+    }
+    print("usage: lattice selftest\n", .{});
+    return 1;
+}

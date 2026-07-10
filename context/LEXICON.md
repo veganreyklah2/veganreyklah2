@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-08 (six proposals affirmed `174500`; recall · bolt seated · stone retired)
+**Last updated:** 2026-07-10 (Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -25,9 +25,10 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Witness-first, red-then-green** | Method within the itinerary — prove on metal before prose; fail loudly, then land green in the same sitting |
 | **Journey's pause** | When the itinerary has **no further stops** — stop and summarize; a pause is a question for Kaeden, never permission to go off-route |
 | **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
-| **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) |
-| **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood |
-| **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) |
+| **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) · plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
+| **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood — plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
+| **Metalsmoke** | The thin edge's few honest integrated checks — world alone can answer, smallest slice, witnessed; happy zone stays in parity — [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · plainly [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md) |
+| **Season** | A bounded interval with a named opening, a stated budget, and a clean close that returns everything it held — Tally's discipline applied to time; Amber's unit of custody — [`active-designing/20260703-071212_amber-seasons.md`](../active-designing/20260703-071212_amber-seasons.md) · plainly [`../external-research/20260710-002422_amber-seasons-plainly.md`](../external-research/20260710-002422_amber-seasons-plainly.md) |
 | **Bench** | Where claims become evidence — metal raised by recipe, a named sitter for a season, and the discipline that pins what the bench reports, never prediction — [`active-designing/20260703-140212_the-bench.md`](../active-designing/20260703-140212_the-bench.md) |
 
 **Retired forward-facing (accrete-never-break in old logs):** *diet*, *menu*, *empty plate*, *ungated diet*, *ring*, *thin ring*, *appetite* (ordering sense) — still readable in session history and frozen witness basenames; new prose uses **itinerary** · **stops** · **journey's pause** · **lap** · **thin edge** · **toll**.
@@ -97,7 +98,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Express** | A Tilak's duty — render this type as another (prose, text, lines) |
 | **Tend** | A Tilak's duty — care for this type's history in its own grain (diff, patch, merge) |
 | **Pottery** | The value-object tier — linear resources thrown while owned, fired when sealed; `.pott` the working extension; greenware · kiln · glaze name the aspect family; horizon until measured demand |
-| **Amphora** | **Vessel software** — preservation in motion across a crossing: the sealed traveling container (manifest, stamp, parent mark, shoulder line); the cellar's sibling — [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md)
+| **Amphora** | **Vessel software** — preservation in motion across a crossing: the sealed traveling container (manifest, stamp, parent mark, shoulder line); the cellar's sibling — [`external-research/20260703-201612_the-amphora-and-the-crossing.md`](../external-research/20260703-201612_the-amphora-and-the-crossing.md) · silo [`active-designing/20260703-201612_the-sealed-crossing.md`](../active-designing/20260703-201612_the-sealed-crossing.md) · plainly [`../external-research/20260710-002952_sealed-crossing-plainly.md`](../external-research/20260710-002952_sealed-crossing-plainly.md) |
 
 ## Preservation pair — cellar and vessel
 
@@ -120,6 +121,11 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | Name | Status |
 |------|--------|
 | **MALA** | Named (`2026-07-02`) — mailable money: issuer-signed token facts on the log, balance as a fold; ladder M0–M4 in [`active-designing/20260702-031312_modules-aspects-and-mailable-money.md`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md); first lap after Edit 5 and Amber |
+| **Greencandy** | Named (`2026-07-10`) — centralized books of record at `greencandy/`: chart, journal, fold, P&L/BS, exception queue, Skate books view; complements MALA — [`active-designing/20260710-125953_greencandy-hammock.md`](../active-designing/20260710-125953_greencandy-hammock.md) · [`../greencandy/README.md`](../greencandy/README.md) |
+| **Lattice** | Named (`2026-07-10`) — f32 tensors in bounded gardens; matmul lap 0 at `lattice/`; before Lantern — [`../lattice/README.md`](../lattice/README.md) · [`../active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) |
+| **Scribble** | Named (`2026-07-10`) — markdown → block values; `rye_fence` / `rish_fence` at `scribble/` — [`../scribble/README.md`](../scribble/README.md) |
+| **Lantern** | Named (`2026-07-10`) — bounded inference request/response; fixture lap 0 at `lantern/` — [`../lantern/README.md`](../lantern/README.md) |
+| **Anvil** | Named (`2026-07-10`) — local forge; corpus catalog lap 0 at `anvil/`; LoRA horizon — [`../anvil/README.md`](../anvil/README.md) · horizon [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) |
 | **WOV** | Named by Kaeden (`2026-07-02`) — the throughput lane: Rye overlay on pinned TigerBeetle (Apache-2.0, gitlink `59f2b99`, pin **203**, host seam A **204**, dual D1 **205**); each instance an L2 book anchored to MALA by monarch-signed root facts; one or two monarchs, never three (three is Mycelium's door at M4); exit honesty [`specs/20260709-200443_wov-exit-honesty.md`](specs/20260709-200443_wov-exit-honesty.md); lap 1 **201**; seam A [`specs/20260709-204026_wov-tb-client-seam.md`](specs/20260709-204026_wov-tb-client-seam.md); dual D1 [`specs/20260709-224531_wov-dual-monarch.md`](specs/20260709-224531_wov-dual-monarch.md) — [`external-research/20260702-211312_names-builds-and-the-ledger-map.md`](../external-research/20260702-211312_names-builds-and-the-ledger-map.md) |
 | **Mycelium** | Named (`2026-07-02`) — Comlink's ordering aspect for the many-issuer horizon: leaderless agreement on a DAG of signed messages; gated at MALA M4, never before |
 | **Puddle** | Named (`2026-07-02`) — VM exploration: sandboxed Rye OS containers with own Pond and Kumara; Amber state-as-snapshot; [`external-research/20260702-035018_puddle-sandboxed-rye-containers.md`](../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) |

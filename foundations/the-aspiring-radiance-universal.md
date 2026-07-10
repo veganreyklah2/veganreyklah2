@@ -5,6 +5,8 @@
 A design ambition document — adaptable to any of the fifty states, the territories, and allied trading partners, across every climate type, demographic, and economic sector, drawing strength from each place's own gifts.
 
 20260627.102812 UDT · Voice: Reya 2 · Style: Radiant · Version: 5.1 (universal edition)
+**Last updated:** 2026-07-10
+**Status:** Universal edition — regenerative policy design framework. **Reviewed and kept** — civic horizon under foundations; name and path unchanged.
 
 ***risk love***
 

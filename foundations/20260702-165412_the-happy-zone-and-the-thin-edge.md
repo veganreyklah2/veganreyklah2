@@ -3,9 +3,11 @@
 *A siloed distillation of a testing teaching we are grateful for: why big all-at-once tests quietly lead a project away from craft, how two small checks at every seam turn a multiplication into an addition, and where our own witnesses already stand on this map. The teacher is thanked by name in `../gratitude/README.md`; here the ideas stand on their own merit, in our own voice.*
 
 **Stamp:** `20260702.165412`
+**Last updated:** 2026-07-10
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
+**Status:** Foundations — testing teaching siloed. **Reviewed and kept** — standing audit rule ratified; metalsmoke kitchen twin [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md).
 
 *Written together by Kaeden and Rio 3.*
 

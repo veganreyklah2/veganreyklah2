@@ -1,4 +1,4 @@
-# Resins and Hash Tiers — Proposed Archive and Digest Law
+# Resins and Hash Tiers — Archive and Digest Law
 
 *Two vocabulary choices prepared for the archive-verdict ratification: **resins** as the content-addressed unit Amber seals, and a **two-tier SHA3 policy** so forever-names and working-store names each carry the width their promise deserves.*
 
@@ -8,6 +8,7 @@
 **Lens:** TAME — safety first, performance second, the joy of the craft third
 **Status:** Ratified (`20260703.191312 UDT`) — Kaeden affirmed **for**; lap-1 export paths renamed to **`resins/`** at hygiene `20260706.235812` (golden manifest digest unchanged).
 **Ground:** [`20260701-221512_amber-functional-spec.md`](20260701-221512_amber-functional-spec.md) · [`20260702-035018_puddle-sandboxed-rye-containers.md`](../../external-research/20260702-035018_puddle-sandboxed-rye-containers.md) · [`../../external-research/yonder/20260617-195312_mantra.md`](../../external-research/yonder/20260617-195312_mantra.md) · [`../active-designing/20260703-140212_the-bench.md`](../../active-designing/20260703-140212_the-bench.md)
+**Companions:** kitchen twin [`external-research/20260709-235931_resins-cellar-vessel-plainly.md`](../../external-research/20260709-235931_resins-cellar-vessel-plainly.md)
 
 ---
 

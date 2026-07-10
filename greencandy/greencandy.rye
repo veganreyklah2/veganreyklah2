@@ -1,0 +1,170 @@
+//! greencandy/greencandy.rye — Greencandy selftest (lap 1 fold + lap 2 reports).
+//!
+//!   rye build greencandy/greencandy.rye -femit-bin=greencandy/bin/greencandy
+//!   greencandy/bin/greencandy selftest
+
+const std = @import("std");
+const assert = std.debug.assert;
+const print = std.debug.print;
+const Dir = std.Io.Dir;
+const gc = @import("greencandy_core.rye");
+
+const greencandy_version = "20260710.131212";
+
+fn welcome_path() !void {
+    var entries: [gc.max_entries]gc.Entry = undefined;
+    var count: u32 = 0;
+    try gc.parse_journal(gc.welcome_journal, &entries, &count);
+    assert(count == 2);
+    const tb = try gc.fold_journal(entries[0..count]);
+    assert(tb.conservation() == 0);
+    assert(tb.nets[@intFromEnum(gc.Account.cash)] == 800);
+    assert(tb.nets[@intFromEnum(gc.Account.revenue)] == -1000);
+    assert(tb.nets[@intFromEnum(gc.Account.expense)] == 200);
+    assert(tb.nets[@intFromEnum(gc.Account.equity)] == 0);
+    print("greencandy lap1: cash {d}, revenue {d}, expense {d} — conservation 0\n", .{
+        tb.nets[@intFromEnum(gc.Account.cash)],
+        tb.nets[@intFromEnum(gc.Account.revenue)],
+        tb.nets[@intFromEnum(gc.Account.expense)],
+    });
+}
+
+fn check_fixture(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [2048]u8 = undefined;
+    const text = try cwd.readFile(io, gc.fixture_path, &buf);
+    var entries: [gc.max_entries]gc.Entry = undefined;
+    var count: u32 = 0;
+    try gc.parse_journal(text, &entries, &count);
+    assert(count == 2);
+    const tb = try gc.fold_journal(entries[0..count]);
+    assert(tb.conservation() == 0);
+    assert(tb.nets[@intFromEnum(gc.Account.cash)] == 800);
+}
+
+fn unwelcome_unknown_account() !void {
+    var entry: gc.Entry = undefined;
+    const bad =
+        \\debit cash
+        \\credit notanaccount
+        \\amount 10
+        \\memo x
+        \\stamp 20260710.125953
+        \\
+    ;
+    if (gc.parse_entry(bad, &entry)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.UnknownAccount);
+    }
+    print("greencandy: unknown account refused\n", .{});
+}
+
+fn unwelcome_bad_amount() !void {
+    var entry: gc.Entry = undefined;
+    const bad =
+        \\debit cash
+        \\credit revenue
+        \\amount 0
+        \\memo x
+        \\stamp 20260710.125953
+        \\
+    ;
+    if (gc.parse_entry(bad, &entry)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.BadAmount);
+    }
+    print("greencandy: zero amount refused\n", .{});
+}
+
+fn unwelcome_same_account() !void {
+    var tb: gc.TrialBalance = .{};
+    const e = gc.Entry{
+        .debit = .cash,
+        .credit = .cash,
+        .amount = 50,
+        .memo = "loop",
+        .stamp = "20260710.125953",
+    };
+    if (gc.post_entry(&tb, e)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.SameAccount);
+    }
+    print("greencandy: same-account entry refused\n", .{});
+}
+
+fn reports_path() !void {
+    var entries: [gc.max_entries]gc.Entry = undefined;
+    var count: u32 = 0;
+    try gc.parse_journal(gc.welcome_journal, &entries, &count);
+    const tb = try gc.fold_journal(entries[0..count]);
+    const is = gc.fold_income_statement(tb);
+    assert(is.revenue == 1000);
+    assert(is.expense == 200);
+    assert(is.net_income == 800);
+    const bs = gc.fold_balance_sheet(tb);
+    assert(bs.cash == 800);
+    assert(bs.equity_booked == 0);
+    assert(bs.retained == 800);
+    assert(bs.balances());
+    print("greencandy lap2: P&L revenue {d} expense {d} net {d}; BS cash {d} retained {d}\n", .{
+        is.revenue,
+        is.expense,
+        is.net_income,
+        bs.cash,
+        bs.retained,
+    });
+}
+
+fn exception_queue_path() !void {
+    const drafts = [_][]const u8{
+        \\debit cash
+        \\credit notanaccount
+        \\amount 10
+        \\memo bad
+        \\stamp 20260710.131212
+        \\
+        ,
+        \\debit cash
+        \\credit revenue
+        \\amount 0
+        \\memo zero
+        \\stamp 20260710.131212
+        \\
+        ,
+        \\debit cash
+        \\credit revenue
+        \\amount 50
+        \\memo welcome
+        \\stamp 20260710.131212
+        \\
+        ,
+    };
+    var out: [gc.max_exceptions]gc.Exception = undefined;
+    var count: u32 = 0;
+    gc.collect_exceptions(&drafts, &out, &count);
+    assert(count == 2);
+    assert(std.mem.eql(u8, out[0].reason, "unknown account"));
+    assert(std.mem.eql(u8, out[1].reason, "bad amount"));
+    print("greencandy lap2: exception queue held {d} drafts\n", .{count});
+}
+
+pub fn main(init: std.process.Init) !u8 {
+    const garden = init.arena.allocator();
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(garden);
+    _ = args;
+
+    print("greencandy {s}\n", .{greencandy_version});
+    try welcome_path();
+    try check_fixture(io);
+    try unwelcome_unknown_account();
+    try unwelcome_bad_amount();
+    try unwelcome_same_account();
+    try reports_path();
+    try exception_queue_path();
+    print("GREEN: greencandy — books fold, reports, exception queue\n", .{});
+    return 0;
+}

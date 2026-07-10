@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-04 (grain index pointer · sameness seated)
+**Last updated:** 2026-07-10 (metalsmoke affirm; universal visions; learning twin)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -20,19 +20,19 @@ These rest beneath the specifications. The specs say what to build and how; thes
 
 - `20260703-182612_sameness-is-the-macro.md` — compression without magic: sameness as the macro we accept, syntax macros we refuse; **grain strand seated** `20260704.023400 UDT`; siloed from [`../external-research/20260703-182612_sameness-is-the-macro.md`](../external-research/20260703-182612_sameness-is-the-macro.md).
 - `20260706-022912_the-wire-serves-the-fold.md` — carriage first-principles for Comlink: the record is sovereign and the wire serves it; **landed** at ruling `20260706.232812`.
-- `20260703-140212_the-learning-chapter.md` — the candidate Civic Style education chapter: learning as apprenticeship, a dignity floor per learner, the unlocked door in existing law, accreditation resung as a witness suite; enters canon on Kaeden's word.
+- `20260703-140212_the-learning-chapter.md` — the candidate Civic Style education chapter: learning as apprenticeship, a dignity floor per learner, the unlocked door in existing law, accreditation resung as a witness suite; enters canon on Kaeden's word. Kitchen twin: [`../external-research/20260710-000725_learning-chapter-plainly.md`](../external-research/20260710-000725_learning-chapter-plainly.md).
 - `20260702-202612_a-conversation-with-serena.md` — the hearth episode: the long cycles, the diary that can't be quietly rewritten, grace as the ground and the ledger for the weeds; a mother's questions as the best part.
 - `20260628-121512_the-foundation-beneath-the-work.md` — work as offering, building as service, freedom as the thing we build toward, grace as the ground we stand on.
 - `20260628-121512_the-heart-in-the-work.md` — the path with heart as the test for what we take up, conserved energy as strength, clean craft as energy spent without leak.
-- `20260702-165412_the-happy-zone-and-the-thin-edge.md` — the testing teaching siloed: two small answers at every seam turn multiplication into addition; the pure fold core proven fast inside, the world's few honest checks kept to a thin edge at the edge. Gate · witness · toll vocabulary: [`../context/specs/20260704-020800_one-word-one-gate.md`](../context/specs/20260704-020800_one-word-one-gate.md).
+- `20260702-165412_the-happy-zone-and-the-thin-edge.md` — the testing teaching siloed: two small answers at every seam turn multiplication into addition; the pure fold core proven fast inside, the world's few honest checks kept to a thin edge at the edge. **Reviewed and kept** `2026-07-10`. Metalsmoke kitchen twin: [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md). Gate · witness · toll vocabulary: [`../context/specs/20260704-020800_one-word-one-gate.md`](../context/specs/20260704-020800_one-word-one-gate.md).
 
 **Vision documents** — the larger civic horizon, adaptable to any community:
 
 - `20260628-124512_anywhere-we-are-found.md` — the unifying vision above both tracks: a free open-source OS given away, open hardware, regenerative communities, a decentralized ledger with USDsui, and the creator tools and access passes that Linengrow carries forward.
 - `20260629-014512_money-that-stays-close-to-home.md` — sovereign money for the public good, and a lawful complementary local currency beside it that circulates close to home, settling on the same decentralized ledger with USDsui.
 - `20260629-020012_mantrapod-venture-pitch.md` — the open-hardware pocket computer where the whole vision becomes holdable: a reflective screen, no radios, memory that forgets, a held key, screwdriver repair, and local currency on the shared ledger.
-- `the-aspiring-radiance-universal.md` — a regenerative policy design framework for every climate and community.
-- `the-regenerative-experiment-universal.md` — a literary vision of renewal across every landscape.
+- `the-aspiring-radiance-universal.md` — a regenerative policy design framework for every climate and community. **Reviewed and kept** `2026-07-10`.
+- `the-regenerative-experiment-universal.md` — a literary vision of renewal across every landscape. **Reviewed and kept** `2026-07-10`.
 
 **The far horizon** — four visions that compose one layered stack the project grows toward, distinct from the active laps (SLC-1 done; TAME hardening now). Read top to bottom: surface → graph → hardware → model. Gall's Law holds — complex systems grow from working simple ones; these name aspiration, not near-term build order.
 

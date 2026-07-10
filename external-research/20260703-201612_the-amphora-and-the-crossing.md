@@ -6,7 +6,8 @@
 **Category:** External research — a missing piece named, a candidate proposed
 **Candidate:** Amphora (parked in RTAC; the seat, and the re-park from the value-object table, are Kaeden's alone)
 **Companion to:** `20260703-201612_the-sealed-crossing.md` (the silo) · `20260703-200712_a-move-for-rye.md`
-**Status:** Proposed
+**Status:** Research for understanding — Proposed candidate; kitchen twin [`20260710-002952_sealed-crossing-plainly.md`](20260710-002952_sealed-crossing-plainly.md). Seat stays Kaeden's.
+**Last updated:** 2026-07-10
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 

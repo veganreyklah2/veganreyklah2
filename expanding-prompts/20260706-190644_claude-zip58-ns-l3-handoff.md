@@ -78,8 +78,8 @@ Prioritize among: two-way sync/subscribe · marks-on-read · Tablecloth query ·
 
 ### 4 — Foundations
 
-- Affirm or refine [`foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) (still **proposed**).
-- Affirm compass brief (landed).
+- Affirm or refine [`foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) — **landed** at ruling `20260706.232812` (handoff text kept for archive; no longer an open ask).
+- Affirm compass brief — **landed** `20260706.185512 UDT`.
 
 ### 5 — Settlement rail
 

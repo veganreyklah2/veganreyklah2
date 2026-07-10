@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260709.230414` (compass rose + twin-keys story; parity **206**)
-**Last updated:** 2026-07-09 (creative jail climb `230414`; soak holds; parity **206**)
+**Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
+**Last updated:** 2026-07-10 (settlement kitchen twin `001249`; soak holds; parity **206**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -52,7 +52,7 @@ Correctness by construction in the kernel becomes trust by construction in the p
 
 **Strengthening arc:** complete — chronicle + lexicon at `strengthening-compiler/0000_STRENGTHENING_LEXICON.md`; call-site harvest at [`archive/20260628-044200_call-site-harvest.md`](archive/20260628-044200_call-site-harvest.md).
 
-**The trio:** `parity.rish` (**200 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + **Amber manifest Tilak (I6)** + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **MALA M1** + **MALA M2** + **SLC-L4 Sigma** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **OA-L5 accept/complete/consent wire** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **I2 snapshot replay** + **I2 snapshot horizon** + **I2 snapshot wire lap 3** + **Caravan witness-stop footgun** + **Caravan source-crash recovery** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **identity check** + **Comlink device wire**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal; SLC-L3 settlement stanza **removed** `152612` (MALA path).
+**The trio:** `parity.rish` (**218 witnesses** — regression suite + SLC-1 + SLC-2a + SLC-2b + RW-1 + RW-2 + Caravan + Comlink + Tally/Brushstroke seeds + hosted `width-check` + RW-3 + RW-4 + Edit 5 + Amber lap 1 + **Amber manifest Tilak (I6)** + chrono version sweep + crossing manifest seed + **SLC-L1 receipt** + **MALA M1** + **MALA M2** + **SLC-L4 Sigma** + **SLC-L2 sealed delivery** + **OA-L1 closed ask loop** + **OA-L2 cross-party delivery** + **OA-L3 escrow** + **OA-L4 reputation-as-fold** + **OA-L5 accept/complete/consent wire** + **NS-L1 recall** + **NS-L2 write revision** + **NS-L3 bolt sync** + **NS-L3 wire lap 1 hosted sync** + **NS-L3 resin-batch frame** + **NS-L3 beading** + **NS-L3 recall_beaded** + **marks-on-read** + **two-way sync (in-process)** + **two-way sync wire (hosted + device)** + **catch-up-to-latest (in-process)** + **catch-up-to-latest wire (hosted + device)** + **outer subscribe poll (in-process)** + **outer subscribe poll wire (hosted + device)** + **Tablecloth query (in-process)** + **I2 snapshot replay** + **I2 snapshot horizon** + **I2 snapshot wire lap 3** + **Caravan witness-stop footgun** + **Caravan source-crash recovery** + **NS-L3 batch wire (hosted + device + chunking)** + **two-rooms doorway** + **identity check** + **Comlink device wire** + **Realidream thin view** + **compass rose** + **Greencandy lap 1** + **Greencandy books view** + **Greencandy lap 2** + **Linengrow sight view** + **Lattice lap 0** + **Scribble lap 0** + **Lantern lap 0** + **Anvil corpus lap 0** + **Inference assist view** + **Anvil corpus lap 1** + **Lattice lap 1** + **Scribble lap 1**), `parity-selftest.rish` (std symlink guard), `additive-gate.rish` (structural std diff — applies when `rye/lib/` changes in HEAD). All in Rishi. **Status:** parity + selftest green on metal; SLC-L3 settlement stanza **removed** `152612` (MALA path).
 
 ---
 
@@ -87,6 +87,7 @@ Grown from the same modules Rye OS is already building, smallest lovable complet
 | **SLC-L4** | Fixed-tier Sigma (donor-amount privacy) — Zig-native Pedersen + proof of opening; **landed** `20260709.194437` — [`disclosure_core.rye`](../linengrow/disclosure_core.rye) + [`pedersen.rye`](../tally/pedersen.rye) at parity **200** | prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) · hammock [`194500`](../active-designing/20260708-194500_slcl4-selective-disclosure.md) |
 | **MALA M1** | One issuer, one holder — mint, send, receipt, balance-as-fold on one node; **landed** `20260709.184051` — [`linengrow/mala.rye`](../linengrow/mala.rye) + witness at parity **198** | design [`031312`](../active-designing/20260702-031312_modules-aspects-and-mailable-money.md) · prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md) |
 | **MALA M2** | Mailable — mint crosses Comlink hosted UDP; receipt crosses back; **landed** `20260709.191634` — [`mala_delivery.rye`](../linengrow/mala_delivery.rye) + witness at parity **199** (device wire = M2b) | prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md) |
+| **Greencandy** | Centralized books — chart, journal, fold, P&L/BS, exception queue, sight view; **own root** `greencandy/`; **landed** laps 1–3 `20260710.132548` — parity **207**–**210** | hammock [`125953`](../active-designing/20260710-125953_greencandy-hammock.md) · sight [`132548`](../active-designing/20260710-132548_greencandy-lap3-sight-view.md) · horizon [`131956`](../external-research/20260710-131956_seen-books-living-desktop-horizon.md) |
 | **Horizon** | The data market, premium tiers, state-currency circulation, the PBC and its rounds | the business model in `../linengrow/` |
 
 The first lap needs no ledger and no currency — only the foundations Rye OS already grows.
@@ -100,12 +101,29 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | Rung | Name | State | Gate |
 |------|------|-------|------|
 | 0 | **Weave slice + Kumara** | **landed** — I2 export + identity seam; Ed25519 ratchet **0** (`030200`) | — |
-| 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung** — compositor, window, drawn surface; **thin view** of local MALA/WOV fixtures landed `202427` (parity **202**) | already in Now |
+| 1 | **SLC-2a drawn terminal (Skate viewer)** | **active rung** — thin view (MALA/WOV **202**); books view (Greencandy TB + P&L/BS **208**); **sight view** (carriage + books **210**) | already in Now |
 | 2 | **Pond's first policy** | held | Pond's own word |
 | 3 | **Dexter graduation** | held — a Realidream viewer is the natural second consumer the rule waits for | second consumer arrives |
 | 4 | **Realidream** | horizon — ask, receipt, reputation, sanctuary page rendered as views over Weave; thin-view exception proves local facts → frame without Pond/Dexter | rungs 1–3 |
 
 **Gratitude shelf for the lane:** Hyperfiddle (Dustin Getz — UIs as streaming DAGs) · Matklad (project-wide semantic graph) · the Nostr protocol (signed-event, relay-subscribed shape — [`nips/`](../gratitude/nips/)) · TigerBeetle (already kept) · grain-sketchbook (Kaeden's archived prototype — [`grain-sketchbook.md`](../gratitude/grain-sketchbook.md)) · Noah B. (name's artistic source — [`noah-b-realidream.md`](../gratitude/noah-b-realidream.md)). **Affirmed `174500`.** **Departures the lane keeps:** immutable facts re-folded, never nodes patched; meaning per-entry via Tilak, never one shared enum across consumers; values cross seams as Bron, never JSON-in-a-payload.
+
+---
+
+## The Inference Track — Local Forge (horizon lane, lap 0 opened `20260710.133500`)
+
+*Where Rye-literate models are forged, served, and seen — on Minisforum metal under Aurora/Caravan, with parity as the exam.*
+
+| Rung | Name | State | Gate |
+|------|------|-------|------|
+| **0** | **Module roots + assist view** | **landed** — Lattice **211**–**217** · Scribble **212** · Lantern **213** · Anvil corpus **214**–**216** · `assistviewtest` **215** | Kaeden go-forth `133500` |
+| **1** | **Corpus query + matrix add + rye snippets** | **landed** `20260710.134200`–`134800` — Anvil query **216**; Lattice add **217**; Scribble extract **218** | — |
+| **2** | **ROCm host seam** | horizon | hardware + ship policy |
+| **3** | **Lantern in Pond** | horizon | Pond policy word |
+| **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
+| **5** | **Live editor assist** | horizon | Wayland metal + rung 3 |
+
+Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · hammock: [`active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md)
 
 ---
 
@@ -115,7 +133,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 |---------|------|
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | Lantern, Lattice, Anvil — after the living desktop composes |
+| **Inference stack** | Lattice **211**–**217** · Scribble **212**/**218** · Lantern **213** · Anvil **214**–**216** · assist **215** — lap 1 `134800`; ROCm/LoRA/Pond still horizon |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

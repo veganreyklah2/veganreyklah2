@@ -7,7 +7,8 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME — safety first, performance second, the joy of the craft third · SLC · CIVIC · TWO_ROOMS
 **Category:** External research — verification and verdict; recommends no purchase and no treasury action; every gate stays Kaeden's
 **Ground:** [`20260706-002612_the-settlement-seat-under-three-lights.md`](20260706-002612_the-settlement-seat-under-three-lights.md) · [`20260702-031312_settlement-consensus-and-many-roads.md`](20260702-031312_settlement-consensus-and-many-roads.md) · [`20260703-200712_mysticetis-blocks-and-the-object-path.md`](20260703-200712_mysticetis-blocks-and-the-object-path.md)
-**Status:** Proposed — research for understanding; the seat parks under stop-and-park because it touches custody and ledger ground; only Kaeden's word opens the gate
+**Status:** Research for understanding — lessons kept; **external SLC-L3 seat superseded** by MALA/WOV realignment [`152612`](../counsel/20260709-152612_claude-counsel-mala-wov-already-designed.md). Kitchen twin: [`20260710-001249_settlement-seat-plainly.md`](20260710-001249_settlement-seat-plainly.md). Still no purchase and no treasury action.
+**Last updated:** 2026-07-10 (supersession note + kitchen twin)
 
 *Written together by Kaeden and Rio 3.*
 

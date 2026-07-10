@@ -1,0 +1,89 @@
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 0).
+//!
+//! Weights live in Tablecloth by hash; lap 0 serves a pinned fixture completion.
+
+const std = @import("std");
+const assert = std.debug.assert;
+
+pub const max_prompt_len: u32 = 256;
+pub const max_completion_len: u32 = 256;
+pub const max_hash_len: u32 = 64;
+pub const max_budget_tokens: u32 = 512;
+
+pub const StoppedReason = enum(u8) {
+    eos,
+    length,
+    err_stop,
+};
+
+pub const LanternError = error{
+    PromptTooLong,
+    ModelMismatch,
+    BudgetExceeded,
+    BadFixture,
+};
+
+pub const Request = struct {
+    model_hash: []const u8,
+    prompt: []const u8,
+    max_tokens: u32,
+};
+
+pub const Response = struct {
+    text: []const u8,
+    tokens_in: u32,
+    tokens_out: u32,
+    stopped_reason: StoppedReason,
+};
+
+pub fn validate_request(req: Request) LanternError!void {
+    if (req.prompt.len > max_prompt_len) return error.PromptTooLong;
+    if (req.max_tokens == 0 or req.max_tokens > max_budget_tokens) return error.BudgetExceeded;
+}
+
+fn field_value(text: []const u8, key: []const u8) ?[]const u8 {
+    var lines = std.mem.splitScalar(u8, text, '\n');
+    while (lines.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (line.len == 0 or line[0] == '#') continue;
+        if (!std.mem.startsWith(u8, line, key)) continue;
+        if (line.len == key.len) return "";
+        if (line[key.len] != ' ') continue;
+        return std.mem.trim(u8, line[key.len + 1 ..], " \t\r\n");
+    }
+    return null;
+}
+
+/// Parse a pinned completion fixture (Bron-shaped text).
+pub fn parse_fixture(text: []const u8) LanternError!Response {
+    const model = field_value(text, "model_hash") orelse return error.BadFixture;
+    _ = model;
+    const completion = field_value(text, "text") orelse return error.BadFixture;
+    const tin = field_value(text, "tokens_in") orelse return error.BadFixture;
+    const tout = field_value(text, "tokens_out") orelse return error.BadFixture;
+    const reason = field_value(text, "stopped_reason") orelse return error.BadFixture;
+    const tokens_in = std.fmt.parseInt(u32, tin, 10) catch return error.BadFixture;
+    const tokens_out = std.fmt.parseInt(u32, tout, 10) catch return error.BadFixture;
+    const stopped_reason: StoppedReason = if (std.mem.eql(u8, reason, "eos"))
+        .eos
+    else if (std.mem.eql(u8, reason, "length"))
+        .length
+    else if (std.mem.eql(u8, reason, "err_stop"))
+        .err_stop
+    else
+        return error.BadFixture;
+    return .{
+        .text = completion,
+        .tokens_in = tokens_in,
+        .tokens_out = tokens_out,
+        .stopped_reason = stopped_reason,
+    };
+}
+
+/// Lap 0: return fixture completion when model hash matches.
+pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Response {
+    try validate_request(req);
+    const fixture_model = field_value(fixture_text, "model_hash") orelse return error.BadFixture;
+    if (!std.mem.eql(u8, req.model_hash, fixture_model)) return error.ModelMismatch;
+    return parse_fixture(fixture_text);
+}

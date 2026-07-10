@@ -12,6 +12,7 @@ enters `context/CIVIC_STYLE.md` only on Kaeden's word, and until then it rests h
 **Style:** Radiant · Civic (see `../context/CIVIC_STYLE.md`)
 **Status:** Foundations draft — candidate chapter awaiting Kaeden's word
 **Ground:** [`../external-research/20260703-071712_the-second-harvest.md`](../external-research/20260703-071712_the-second-harvest.md) · [`../context/CIVIC_STYLE.md`](../context/CIVIC_STYLE.md), whose first principle and dignity-floor pattern this chapter inherits
+**Companions:** kitchen twin [`../external-research/20260710-000725_learning-chapter-plainly.md`](../external-research/20260710-000725_learning-chapter-plainly.md)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 

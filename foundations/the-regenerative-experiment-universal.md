@@ -1,11 +1,12 @@
 # The Regenerative Experiment: A Vision for Renewal Across Every Landscape
 
 **Date:** 20260627.102812 UDT
+**Last updated:** 2026-07-10
 **Voice:** Reya 2
 **Style:** Radiant
 **Register:** Literary policy narrative
 **Scope:** Written to adapt to any of the fifty states, the territories, and allied trading partners — across every climate type, demographic, and economic sector, drawing strength from each place's own gifts.
-**Status:** Universal edition — expanded literary vision
+**Status:** Universal edition — expanded literary vision. **Reviewed and kept** — civic horizon under foundations; name and path unchanged.
 
 ---
 

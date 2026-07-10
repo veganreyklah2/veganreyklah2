@@ -3,10 +3,13 @@
 *Three words travel together in every ladder, every door note, and every functional spec waiting its season: **first lap**, **goes**, **green**. They sound like project jargon until the bench names them honestly — and then they become the whole method in miniature. Simple, Lovable, Complete names how we ship; Gall's Law names how we grow; TAME names how we prove. **First lap goes green** is where those three disciplines meet on metal: the smallest whole for a module closes its loop, a witness says so aloud, and the tree may grow the next honest slice.*
 
 **Stamp:** `20260703.033602`
+**Last updated:** 2026-07-10
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third; SLC and Gall's Law as companions
+**Status:** Research for understanding — shipping-phrase essay. **Reviewed and kept** — Lap · Green seated in LEXICON; Amber lap 1 green; kitchen twin seated.
 **Ground:** [`../context/SIMPLE_LOVABLE_COMPLETE.md`](../context/SIMPLE_LOVABLE_COMPLETE.md) · [`../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`](../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md) · [`../active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · [`../tools/designed_not_built_witness.rish`](../tools/designed_not_built_witness.rish) · Edit 5 at parity **143**
+**Companions:** kitchen twin [`20260710-002544_first-lap-goes-green-plainly.md`](20260710-002544_first-lap-goes-green-plainly.md)
 
 *Written together by Kaeden and Reya 2, in Rio 3's Radiant voice.*
 
@@ -67,9 +70,9 @@ The Rishi-and-Mantra shell closed its first lap when type, run, version, and rec
 
 The drawn terminal's third lap added live session mirroring. Headless witness green in parity; metalsmoke green on the bench; **Door 2** added Kaeden's live five on host GNOME and a stamp — `Lap 3 metal-closed on GNOME, 20260703.032412 UDT`. That is first lap goes green wearing a **product** coat: the automated world finished everything it could; the human hand closed the one seam only a person at a real window can witness. The lap was three layers deep because the lap honestly named three layers.
 
-### Amber — the next first lap (pre-staged)
+### Amber — first lap green (landed)
 
-Amber remains *designed, not yet built* until rung **(e)** wires `tools/amber_first_ring.rish` at parity **144**. Then export emits resins and manifest; the manifest digest matches the hand-pinned golden; restore then `diff -r` stays clean; one tampered resin makes verify **fail** — and the functional spec's status may graduate. The cathedral spec stays on the shelf; the **first room** stands proven. Scrub seasons, drive docks, and cold-key ceremonies belong to later laps — they were never part of lap one's promise.
+Amber's first room **stands**: `tools/amber_first_ring.rish` at parity **144** — export emits resins and manifest; the manifest digest matches the hand-pinned golden; restore then `diff -r` stays clean; one tampered resin makes verify **fail**. The functional spec's status graduated; the cathedral spec stays on the shelf for later seasons. Scrub seasons, drive docks, and cold-key ceremonies belong to later laps — they were never part of lap one's promise.
 
 ---
 

@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-06 (zip **58** NS-L3 handoff `190644`)
+**Last updated:** 2026-07-10 (inference stack lap 0 prompt `133500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Reya 2
 
@@ -68,7 +68,22 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
-| `20260706.190644` | [Claude zip 58 — NS-L3 handoff](20260706-190644_claude-zip58-ns-l3-handoff.md) | Wire ladder complete; OA-L4 vs MALA ruling; relay to Claude |
+| `20260710.133500` | [Inference stack lap 0](20260710-133500_inference-stack-lap0.md) | Module roots + assist view; parity **215** |
+| `20260710.132548` | [Greencandy lap 3 — sight view](20260710-132548_greencandy-lap3-sight-view.md) | Carriage + books Skate frame; parity **210** |
+| `20260710.131212` | [Greencandy root + lap 2 reports](20260710-131212_greencandy-root-lap2-reports.md) | Own folder; P&L · BS · exceptions; parity **209** |
+| `20260710.125953` | [Greencandy lap 1 — books view](20260710-125953_greencandy-lap1-books-view.md) | Chart · journal · fold · Skate booksviewtest; parity **207**/**208** |
+| `20260709.225159` | [MALA kind field — gated](20260709-225159_mala-kind-field-gated.md) | K0 keep memos; K1 still gated |
+| `20260709.224531` | [WOV dual monarch — gated](20260709-224531_wov-dual-monarch-gated.md) | D1 twin-lines landed (parity **205**); D2 later |
+| `20260709.224325` | [SLC-L4 lap 2 width — gated](20260709-224325_slcl4-lap2-width-gated.md) | W0 cleared; W1/W2 soak |
+| `20260709.204026` | [WOV lap 2b TB client wrapper](20260709-204026_wov-lap2b-tb-client-wrapper.md) | Seam A host landed (parity **204**); seam B soak |
+| `20260709.203527` | [WOV lap 2 TigerBeetle pin](20260709-203527_wov-lap2-tigerbeetle-pin-presence.md) | Pin presence; parity **203** |
+| `20260709.202427` | [Realidream thin view](20260709-202427_realidream-thin-view-local-facts.md) | Local fixtures → Skate; parity **202** |
+| `20260709.201734` | [MALA M2b device wire](20260709-201734_mala-m2b-device-wire.md) | Device-wire MALA path |
+| `20260709.200443` | [WOV lap 1 exit honesty](20260709-200443_wov-lap1-exit-honesty-witness.md) | In-memory exit honesty; parity **201** |
+| `20260709.191634` | [MALA M2 mailable Comlink](20260709-191634_mala-m2-mailable-comlink.md) | Hosted M2; parity **199** |
+| `20260709.182354` | [MALA M1 one issuer one holder](20260709-182354_mala-m1-one-issuer-one-holder.md) | M1 first lap; parity **198** |
+| `20260709.031612` | [SLC-L4 lap 1 fixed-tier Sigma](20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md) | Pedersen + proof of opening; parity **200** |
+| `20260706.190644` | [Claude zip 58 — NS-L3 handoff](20260706-190644_claude-zip58-ns-l3-handoff.md) | Wire ladder complete; OA-L4 vs MALA; wire-serves-the-fold then proposed, now landed `232812` |
 | `20260706.013512` | [Claude OA-L3 escrow first lap](20260706-013512_claude-oal3-escrow-first-lap.md) | Runnable bench — vocabulary gate, hold/release on one log, parity **158** |
 | `20260705.195812` | [Fidelity soften — thirteen title-drawn studies](20260705-195812_fidelity-soften-instructions.md) | Gratitude softening on #24–#36; Chitra and transcript-true batches untouched |
 | `20260705.190812` | [Claude recursion v9 — batch-6 bundle](20260705-190812_claude-recursion-v9.md) | Apply b1→b4→b5→b6 in order; commit/push/zip 47 |
