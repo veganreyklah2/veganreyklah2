@@ -1,7 +1,7 @@
 # Granary — weave-sharing surface
 
 **Language:** EN
-**Stamp:** `20260710.170132`
+**Stamp:** `20260710.170838`
 **Status:** Landed — four doors open; Sharing on hosted + device wire; WOV settlement waits; Mandi is its own room
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
