@@ -571,6 +571,11 @@ let query_view = run ["rishi/bin/rishi" "run" "tools/realidream_query_view.rish"
 assert query_view.ok else "Realidream query view witness failed"
 say "GREEN: Realidream query view witness passed."
 
+say "witness suite: Realidream query device view (device-wire hits → Skate)…"
+let query_device_view = run ["rishi/bin/rishi" "run" "tools/realidream_query_device_view.rish"]
+assert query_device_view.ok else "Realidream query device view witness failed"
+say "GREEN: Realidream query device view witness passed."
+
 say "witness suite: Realidream forge view (Amber cellar → Skate)…"
 let forge_view = run ["rishi/bin/rishi" "run" "tools/realidream_forge_view.rish"]
 assert forge_view.ok else "Realidream forge view witness failed"
