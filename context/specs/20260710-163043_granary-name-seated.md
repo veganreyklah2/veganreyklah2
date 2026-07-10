@@ -3,7 +3,7 @@
 **Stamp:** `20260710.163043` (Kaeden's word: "okay, go with Granary")
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Sharing device wire `20260710.170132` (parity **239**); WOV settlement waits; Mandi seated separately `20260710.165634`
+**Status:** Seated — four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Sharing device wire `20260710.170132` (parity **239**); Exchange view `20260710.170838` (parity **241**); WOV settlement waits; Mandi seated separately `20260710.165634`
 **Ground:** study [`../../external-research/20260703-182612_the-granary-question.md`](../../external-research/20260703-182612_the-granary-question.md) · counsel [`../../session-logs/20260710-162312_granary-naming-mission.md`](../../session-logs/20260710-162312_granary-naming-mission.md)
 
 *Written by Kaeden and Rio 3.*

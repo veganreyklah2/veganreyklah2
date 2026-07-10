@@ -16,9 +16,10 @@
 | **4 (landed)** | Sharing over Comlink hosted — ports **38496**/**38497** |
 | **4b (landed)** | Sharing over Comlink device wire — ports **15573**/**15574** |
 | **5 (landed)** | Exchange listing — weave priced in MALA; receipt digest without identities; WOV settlement waits |
+| **Exchange view (landed)** | Skate `exchangeviewtest` — six-line citizen's window on a priced weave |
 
 **Not this room:** Amphora vessel market floor is **Mandi** (seated `20260710.165634`). Live WOV settlement waits.
 
-**Witnesses:** **232**–**237**, **239** (`tools/granary_lap1.rish` · `granary_weave_view.rish` · `granary_lap2.rish` · `granary_lap3.rish` · `granary_resin_wire.rish` · `granary_exchange.rish` · `granary_device_wire.rish`)
+**Witnesses:** **232**–**237**, **239**, **241** (`tools/granary_lap1.rish` · `granary_weave_view.rish` · `granary_lap2.rish` · `granary_lap3.rish` · `granary_resin_wire.rish` · `granary_exchange.rish` · `granary_device_wire.rish` · `granary_exchange_view.rish`)
 
 *May the namespace never forget a name. May every mirror be equal. May every receipt stay quiet about who paid.*

@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Mandi floor view `170700`; Granary device wire `170132`; Mandi lap 1 `165634`; parity **240**)
+**Last updated:** 2026-07-10 (Granary Exchange view `170838`; Mandi floor view `170700`; Granary device wire `170132`; parity **241**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 

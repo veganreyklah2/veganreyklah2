@@ -651,6 +651,11 @@ let granary5 = run ["rishi/bin/rishi" "run" "tools/granary_exchange.rish"]
 assert granary5.ok else "Granary lap 5 exchange witness failed"
 say "GREEN: Granary lap 5 exchange witness passed."
 
+say "witness suite: Granary Exchange view (weave listing → Skate)…"
+let exchange_view = run ["rishi/bin/rishi" "run" "tools/granary_exchange_view.rish"]
+assert exchange_view.ok else "Granary Exchange view witness failed"
+say "GREEN: Granary Exchange view witness passed."
+
 say "witness suite: Mandi lap 1 (vessel market listing in MALA)…"
 let mandi1 = run ["rishi/bin/rishi" "run" "tools/mandi_lap1.rish"]
 assert mandi1.ok else "Mandi lap 1 witness failed"
