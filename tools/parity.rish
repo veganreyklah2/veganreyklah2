@@ -915,3 +915,23 @@ say "witness suite: Linengrow sight view lap 2 (journal on glass)…"
 let sight_view_lap2 = run ["rishi/bin/rishi" "run" "tools/greencandy_sight_view_lap2.rish"]
 assert sight_view_lap2.ok else "Linengrow sight view lap 2 witness failed"
 say "GREEN: Linengrow sight view lap 2 witness passed."
+
+say "witness suite: Lattice lap 10 (neg)…"
+let lattice_lap11 = run ["rishi/bin/rishi" "run" "tools/lattice_lap11.rish"]
+assert lattice_lap11.ok else "Lattice lap 10 witness failed"
+say "GREEN: Lattice lap 10 witness passed."
+
+say "witness suite: Greencandy chart view (accounts → Skate)…"
+let chart_view = run ["rishi/bin/rishi" "run" "tools/greencandy_chart_view.rish"]
+assert chart_view.ok else "Greencandy chart view witness failed"
+say "GREEN: Greencandy chart view witness passed."
+
+say "witness suite: Anvil corpus tools prefix view (tools/ → Skate)…"
+let tools_prefix_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_tools_prefix_view.rish"]
+assert tools_prefix_view.ok else "Anvil corpus tools prefix view witness failed"
+say "GREEN: Anvil corpus tools prefix view witness passed."
+
+say "witness suite: Lantern lap 8 (prompt pin)…"
+let lantern_lap8 = run ["rishi/bin/rishi" "run" "tools/lantern_lap8.rish"]
+assert lantern_lap8.ok else "Lantern lap 8 witness failed"
+say "GREEN: Lantern lap 8 witness passed."
