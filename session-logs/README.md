@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.141800 | [Strategy home — this thread](20260710-141800_strategy-home-this-thread.md) | Reasoning and strategy stay here until Kaeden says otherwise |
 | 20260710.141500 | [QEMU Aurora Caravan Tally path](20260710-141500_qemu-aurora-caravan-tally-path.md) | How to confirm freestanding strength; seed+posted GREEN |
 | 20260710.141200 | [Realidream query view](20260710-141200_realidream-query-view.md) | Query-wire hits → Skate; parity **220** |
 | 20260710.140500 | [Tablecloth query wire](20260710-140500_tablecloth-query-wire.md) | Not GraphQL; Comlink hosted filter; parity **219** |
