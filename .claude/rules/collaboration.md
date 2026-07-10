@@ -16,4 +16,4 @@ Cursor (or Claude Code) climbs the bench one keystone at a time. End every pass 
 
 ## Organizing
 
-Active work rests one level deep; deferred-but-alive work moves to `yonder/` (forward-pointing); finished-and-historical work moves to `archive/` (backward-pointing). Age is a hint, not the test — relevance and inbound citation outrank the stamp. Affirming a kept file is a single touch: strip its dead `NNN ·` prefix, lead the title with the slug's concept, re-date `Last updated`, add the reviewed-and-kept line, and lightly freshen the Radiant voice where it has drifted. No rename, no reference change.
+Active work rests one level deep; deferred yet alive work moves to `yonder/` (forward-pointing); finished-and-historical work moves to `archive/` (backward-pointing). Age is a hint; relevance and inbound citation outrank the stamp. Affirming a kept file is a single touch: strip its dead `NNN ·` prefix, lead the title with the slug's concept, re-date `Last updated`, add the reviewed-and-kept line, and lightly freshen the Radiant voice where it has drifted. No rename, no reference change.

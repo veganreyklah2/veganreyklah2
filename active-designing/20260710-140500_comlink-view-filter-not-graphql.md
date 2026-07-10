@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Design + wire + query/forge views through device + unified — checkable-room hammock; forge query device **256**; parity tip through climb `181653`
+**Status:** Design + wire + query/forge views through device + unified — checkable-room hammock; forge query device **256**; climb tip through **267** (`182502`)
 
 **Ground:** counsel [`005612`](../counsel/20260707-005612_claude-counsel-tablecloth-query.md) · Hyperfiddle gratitude [`../gratitude/hyperfiddle.md`](../gratitude/hyperfiddle.md) · Weave essay [`../foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) · NS brief [`20260706-023912_the-referential-namespace.md`](20260706-023912_the-referential-namespace.md) · Realidream thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
@@ -16,23 +16,23 @@
 
 ## The Ask, Plainly
 
-Other Rye OS clients need to **ask a host** for the facts a Realidream surface will fold — the same job GraphQL often fills on the web: a typed read, a bounded answer, a frontend that does not own the whole store.
+Other Rye OS clients need to **ask a host** for the facts a Realidream surface will fold — the same job GraphQL often fills on the web: a typed read, a bounded answer, a frontend that folds locally.
 
-Our grain already answered the shape of that read **in-process**: Tablecloth query is an optional-field filter over the bounded namespace catalog — every match in held order, never a query language, plan, or index (counsel `005612`). Comlink already carries sealed facts between processes. The missing ring is **the filter on the wire**.
+Our grain already answered the shape of that read **in-process**: Tablecloth query is an optional-field filter over the bounded namespace catalog — every match in held order, a filter rather than a query language, plan, or index (counsel `005612`). Comlink already carries sealed facts between processes. The next ring is **the filter on the wire**.
 
 ---
 
-## What We Do Not Build
+## What Stays Outside This Lap
 
-| Temptation | Why it stays out |
-|------------|------------------|
-| **GraphQL** | Not in LEXICON or TAME; JSON-in-payload contradicts Visual Track departures; Sui GraphQL was a rejected external path |
-| **HTTP REST gateway** | Host seam for browsers later; not the Rye OS client path |
+| Temptation | Why we keep the grain thin |
+|------------|----------------------------|
+| **GraphQL** | Outside LEXICON and TAME; Visual Track prefers Bron-shaped values over JSON-in-payload |
+| **HTTP REST gateway** | Host seam for browsers later; Rye OS clients ride Comlink |
 | **New Comlink module** | This is an **aspect of the fact lane** — Tablecloth query over sealed datagrams |
 | **Schema language / resolvers** | Filter fields already named: peer · bolt · revision · tilak · path_hint |
-| **Full Realidream viewer** | Still held — Pond policy + Dexter second consumer; this lap serves the **data path**, not the window |
+| **Full Realidream viewer** | Still held — Pond policy + Dexter second consumer; this lap serves the **data path** |
 
-Hyperfiddle's lesson maps to **Weave · fold · Tilak** — not Electric. Values cross seams as **Bron** (or compact wire that encodes the same fields), never JSON-in-a-payload.
+Hyperfiddle's lesson maps to **Weave · fold · Tilak**. Values cross seams as **Bron** (or compact wire that encodes the same fields).
 
 ---
 

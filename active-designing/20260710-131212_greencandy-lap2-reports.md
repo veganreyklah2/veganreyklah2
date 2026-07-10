@@ -1,6 +1,6 @@
 # Greencandy — Lap 2 Reports Hammock
 
-*Own-root module continues: income statement, balance sheet, and a bounded exception queue — the next honest room after trial-balance fold. No bank sync, no tax package cargo, no Amphora seat.*
+*Own-root module continues: income statement, balance sheet, and a bounded exception queue — the next honest room after trial-balance fold. Bank sync, tax package cargo, and Amphora seat wait later rooms.*
 
 **Stamp:** `20260710.131212`
 **Language:** EN

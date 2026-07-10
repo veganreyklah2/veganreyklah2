@@ -1,6 +1,6 @@
 # Greencandy Lap 3 — Sight View (Carriage + Books on One Frame)
 
-*Implements the horizon essay's sight altitude: MALA/WOV carriage facts and Greencandy books projections on one Skate fold — no Amphora, no Dexter graduation, no Pond policy.*
+*Implements the horizon essay's sight altitude: MALA/WOV carriage facts and Greencandy books projections on one Skate fold. Amphora, Dexter graduation, and Pond policy wait their own gates.*
 
 **Stamp:** `20260710.132548`
 **Language:** EN

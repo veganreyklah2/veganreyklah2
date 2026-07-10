@@ -2,15 +2,18 @@
 
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
-**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); settle view lap 4 (`172955`); live TB waits  
-**Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) · settle [`../context/specs/20260710-171202_mandi-listing-settle-seated.md`](../context/specs/20260710-171202_mandi-listing-settle-seated.md)  
+**Language:** EN
+**Last updated:** 2026-07-10 (Radiant pass `182821`)
+**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); settle view lap 4 (`172955`); live TigerBeetle rests until its brief
+**Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) · settle [`../context/specs/20260710-171202_mandi-listing-settle-seated.md`](../context/specs/20260710-171202_mandi-listing-settle-seated.md)
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)
 
 ## What this room is
 
-Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA price under Kumara (seed `0x67`). The receipt is a digest of the canonical body — no buyer, no seller. A sale closes with `vessel-settle-v1` (seed `0x68`) binding that receipt to a payment digest of MALA send + WOV transfer. Amphora purchase delivery remains the carriage rite.
+Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA price under Kumara (seed `0x67`). The receipt is a digest of the canonical body — quiet about buyer and seller. A sale closes with `vessel-settle-v1` (seed `0x68`) binding that receipt to a payment digest of MALA send + WOV transfer. Amphora purchase delivery remains the carriage rite.
 
-**Not this room:** Granary (weave-sharing four doors). Mela and Haat stay parked as warm siblings.
+**Sister room:** Granary holds the weave-sharing four doors. Mela and Haat stay parked as warm siblings.
 
 ## Lap 1
 
@@ -56,7 +59,7 @@ Witness → parity **244** (`mandisettletest`).
 
 ## Held
 
-Live TigerBeetle settlement waits its own gate.
+Live TigerBeetle settlement rests until its own gate.
 
 ---
 

@@ -1,6 +1,6 @@
 //! lantern/lantern_core.rye — bounded request/response inference contract (lap 3).
 //!
-//! Weights live in Tablecloth by hash; lap 1 max_tokens; lap 2 allow-list; lap 3 temperature + seed.
+//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed.
 
 const std = @import("std");
 const assert = std.debug.assert;

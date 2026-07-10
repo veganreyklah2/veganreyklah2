@@ -2,7 +2,8 @@
 //!
 //! Composes Rishi's live session (run_one_input + session_lines) with Brushstroke's
 //! Skate surface. SLC-2b carries keyboard input through Wayland so one typed
-//! line in the window runs through Rishi and redraws the frame.
+//! line in the window runs through Rishi and redraws the frame. Inference and
+//! commerce folds share the same glass under the thin-view exception.
 //!
 //! Build (from repo root — prefer rishi):
 //!   rishi/bin/rishi run tools/fixtures/pond_build_drawn_terminal.rish

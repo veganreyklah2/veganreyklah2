@@ -1,13 +1,13 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 4 scale `182502`; lap 3 `182118`; parity **264**)
+**Last updated:** 2026-07-10 (Radiant pass `182821`; lap 4 scale `182502`; parity **264**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 0–4 green (matmul · add · reshape · reduce_sum · scale)
 
 ---
 
-Lattice holds explicit tensor math in bounded gardens. Build order: **Lattice before Lantern**.
+Lattice holds explicit tensor math in bounded gardens. Build order places **Lattice before Lantern**, so every matmul that serves a model has already met the parity gate.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
