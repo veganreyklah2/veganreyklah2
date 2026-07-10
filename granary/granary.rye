@@ -1,8 +1,9 @@
-//! granary/granary.rye — Granary lap 1 + lap 2 (write gate) selftest.
+//! granary/granary.rye — Granary laps 1–3 selftest (registry · write gate · Sharing).
 //!
 //!   rye build granary/granary.rye -femit-bin=granary/bin/granary
 //!   granary/bin/granary selftest
 //!   granary/bin/granary selftest-lap2
+//!   granary/bin/granary selftest-lap3
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -239,6 +240,80 @@ fn unwelcome_lying_publish() !void {
     print("granary lap2: lying publish refused — log untouched\n", .{});
 }
 
+fn welcome_mirror_share(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var md_buf: [gc.max_resin_bytes]u8 = undefined;
+    const markdown = try cwd.readFile(io, gc.fixture_front_page, &md_buf);
+
+    var host = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&host, markdown);
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const n = try gc.sign_name_fact(gc.granary_version, "rio", "greeting", &digest, &fact);
+    var reg = gc.Registry.empty();
+    try gc.append_fact(&reg, fact[0..n]);
+
+    var guest = gc.ResinStore.empty();
+    assert(!gc.has_resin(&guest, &digest));
+    assert(gc.has_resin(&host, &digest));
+
+    const first = try gc.mirror_weave(&guest, &host, &reg, "rio/greeting");
+    assert(!first.had_already);
+    assert(first.bytes_copied == markdown.len);
+    assert(gc.has_resin(&guest, &digest));
+
+    var guest_bytes: [gc.max_resin_bytes]u8 = undefined;
+    const gl = try gc.clone_resin(&guest, &digest, &guest_bytes);
+    assert(std.mem.eql(u8, guest_bytes[0..gl], markdown));
+
+    const second = try gc.mirror_weave(&guest, &host, &reg, "rio/greeting");
+    assert(second.had_already);
+    assert(second.bytes_copied == 0);
+    print("granary lap3: mirror clone — guest equals host\n", .{});
+
+    var frame: gc.Frame = .{};
+    try gc.render_front_page(guest_bytes[0..gl], &frame);
+    assert(std.mem.indexOf(u8, frame.lines[1].slice(), "rio/greeting") != null);
+    print("granary lap3: mirrored front page renders\n", .{});
+}
+
+fn unwelcome_host_missing() !void {
+    var host = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&host, "only-on-paper\n");
+    // Name-fact points at digest, then remove by using empty host for serve.
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const n = try gc.sign_name_fact(gc.granary_version, "rio", "ghost", &digest, &fact);
+    var reg = gc.Registry.empty();
+    try gc.append_fact(&reg, fact[0..n]);
+
+    var empty_host = gc.ResinStore.empty();
+    var guest = gc.ResinStore.empty();
+    if (gc.mirror_weave(&guest, &empty_host, &reg, "rio/ghost")) |_| {
+        return error.MissingServed;
+    } else |err| {
+        assert(err == error.ResinMissing);
+    }
+    print("granary lap3: host missing resin refused\n", .{});
+}
+
+fn unwelcome_tampered_host() !void {
+    var host = gc.ResinStore.empty();
+    const digest = try gc.put_resin(&host, "honest mirror\n");
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const n = try gc.sign_name_fact(gc.granary_version, "rio", "tamper", &digest, &fact);
+    var reg = gc.Registry.empty();
+    try gc.append_fact(&reg, fact[0..n]);
+    try gc.tamper_resin_for_witness(&host, &digest);
+
+    var guest = gc.ResinStore.empty();
+    if (gc.mirror_weave(&guest, &host, &reg, "rio/tamper")) |_| {
+        return error.TamperMirrored;
+    } else |err| {
+        assert(err == error.DigestMismatch);
+    }
+    assert(!gc.has_resin(&guest, &digest));
+    print("granary lap3: tampered host resin refused\n", .{});
+}
+
 pub fn main(init: std.process.Init) !u8 {
     const garden = init.arena.allocator();
     const io = init.io;
@@ -259,6 +334,13 @@ pub fn main(init: std.process.Init) !u8 {
         print("granary lap2: version {s} — GREEN\n", .{gc.granary_version});
         return 0;
     }
-    print("usage: granary selftest | selftest-lap2\n", .{});
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "selftest-lap3")) {
+        try welcome_mirror_share(io);
+        try unwelcome_host_missing();
+        try unwelcome_tampered_host();
+        print("granary lap3: version {s} — GREEN\n", .{gc.granary_version});
+        return 0;
+    }
+    print("usage: granary selftest | selftest-lap2 | selftest-lap3\n", .{});
     return 1;
 }
