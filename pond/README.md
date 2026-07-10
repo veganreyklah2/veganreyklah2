@@ -1,7 +1,7 @@
 # Pond — The Enclosure and Its Applications
 
 **Language:** EN
-**Last updated:** 2026-07-10 (customs first policy lap `161125`)
+**Last updated:** 2026-07-10 (Granary weave view `163557`; customs first policy lap `161125`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -12,7 +12,7 @@ Pond holds **applications** that compose Rye OS modules above the kernel and com
 
 **Customs (landed `20260710.161125`):** [`customs.rye`](customs.rye) — first policy concept. At receipt, each Tilak mark earns **place**, **hold**, or **refuse**. Root allow-list: `plain-bytes` may be placed; `await-word` waits for a human word; unknown marks refuse whole. Amphora cold scrub calls `customs inspect` on the Amber manifest before restore. Witness: `tools/pond_customs.rish` (parity **230**).
 
-**First application:** [`apps/drawn_terminal.rye`](apps/drawn_terminal.rye) — SLC-2a Lap 3, the drawn terminal (Rishi session mirrored in a Brushstroke/Skate window).
+**First application:** [`apps/drawn_terminal.rye`](apps/drawn_terminal.rye) — SLC-2a Lap 3, the drawn terminal (Rishi session mirrored in a Brushstroke/Skate window). Granary weave view (`granaryviewtest`) folds resolve + Scribble onto Skate (parity **233**).
 
 Policy-as-value horizon: `rishi/examples/pond.rish` and `external-research/20260618-180812_pond-foundation.md`.
 
@@ -26,6 +26,7 @@ Rye resolves modules from the compile directory. Under `pond/apps/`:
 |------|-----------|
 | `rishi` | `../../rishi/src` |
 | `brushstroke` | `../../brushstroke` |
+| `granary/` | `../../../granary` core + Kumara / Tally / Scribble seams |
 
 These symlinks are required for `drawn_terminal.rye` to import `rishi/main.rye` and `brushstroke/wayland_seed.rye`.
 

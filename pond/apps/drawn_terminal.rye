@@ -20,6 +20,7 @@
 //!   pond/bin/drawn-terminal queryviewtest  # Realidream query view — Tablecloth query-wire hits
 //!   pond/bin/drawn-terminal forgeviewtest  # Realidream forge view — live Amphora pour → Skate
 //!   pond/bin/drawn-terminal forgequeryviewtest # Forge Tablecloth-query hits → Skate
+//!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -32,8 +33,9 @@ const rishi = @import("rishi/main.rye");
 const surface = @import("brushstroke/wayland_seed.rye");
 const window_input = @import("window_input.rye");
 const tally_parse_int = @import("rishi/parse_int.rye");
+const granary = @import("granary/granary_core.rye");
 
-const drawn_terminal_version = "20260710.145313";
+const drawn_terminal_version = "20260710.163557";
 
 const status_max_len: u32 = 80;
 const thin_view_max_lines: u32 = 5;
@@ -43,6 +45,7 @@ const assist_view_max_lines: u32 = 8;
 const query_view_max_lines: u32 = 6;
 const forge_view_max_lines: u32 = 8;
 const forge_query_view_max_lines: u32 = 6;
+const granary_view_max_lines: u32 = 7;
 const mala_mint_fixture = "tools/fixtures/mala_m1_mint.bron";
 const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
@@ -52,6 +55,7 @@ const tablecloth_query_hits_fixture = "tools/fixtures/tablecloth_query_hits.bron
 const forge_amber_manifest_fixture = "tools/fixtures/.forge_view_bundle/manifest.bron";
 const amphora_vessel_fixture = "tools/fixtures/.forge_view_bundle/vessel.bron";
 const forge_query_hits_fixture = "tools/fixtures/forge_query_hits.bron";
+const granary_front_page_fixture = "granary/fixtures/front_page.md";
 const status_full_text = "transcript full — earlier lines still ran; :quit to close";
 const poll_timeout_ms: i32 = 50;
 const fill_line_count: u32 = 200;
@@ -758,6 +762,93 @@ fn run_forge_query_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
+/// Granary weave view — resolve person/weave, fold-clone resin, Scribble → Skate.
+fn compose_granary_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var md_buf: [granary.max_resin_bytes]u8 = undefined;
+    const markdown = try cwd.readFile(io, granary_front_page_fixture, &md_buf);
+
+    var store = granary.ResinStore.empty();
+    const digest = try granary.put_resin(&store, markdown);
+    var fact_buf: [granary.max_fact_len]u8 = undefined;
+    const fact_len = try granary.sign_name_fact(
+        granary.granary_version,
+        "rio",
+        "greeting",
+        &digest,
+        &fact_buf,
+    );
+    var reg = granary.Registry.empty();
+    try granary.append_fact(&reg, fact_buf[0..fact_len]);
+    const resolved = try granary.resolve(&reg, "rio/greeting");
+    assert(std.mem.eql(u8, resolved.resin_digest, &digest));
+
+    var clone: [granary.max_resin_bytes]u8 = undefined;
+    const clone_len = try granary.clone_resin(&store, resolved.resin_digest, &clone);
+    assert(std.mem.eql(u8, clone[0..clone_len], markdown));
+
+    var frame: granary.Frame = .{};
+    try granary.render_front_page(clone[0..clone_len], &frame);
+    // Frame: border, heading, paragraph, rye fence, border — need middle three.
+    assert(frame.line_count >= 5);
+    const heading = frame.lines[1].slice();
+    const paragraph = frame.lines[2].slice();
+    const fence = frame.lines[3].slice();
+
+    const lines = try garden.alloc(surface.SkateLine, granary_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "granary weave view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "path rio/greeting") };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "resin {s}", .{digest[0..12]}) };
+    lines[3] = .{ .text = try garden.dupe(u8, heading) };
+    lines[4] = .{ .text = try garden.dupe(u8, paragraph) };
+    lines[5] = .{ .text = try garden.dupe(u8, fence) };
+    lines[6] = .{ .text = try garden.dupe(u8, "fold green") };
+    return lines;
+}
+
+fn run_granary_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_granary_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == granary_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "granary weave view",
+        "path rio/greeting",
+        "resin 5b3b4e968679",
+        "# rio/greeting",
+        "A first weave in the Granary — signed, named, and shared.",
+        "[rye fence]",
+        "fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    // Unwelcome — missing fixture path refuses.
+    const cwd = std.Io.Dir.cwd();
+    var probe: [8]u8 = undefined;
+    if (cwd.readFile(io, "tools/fixtures/does_not_exist_granary_view.md", &probe)) |_| {
+        return error.UnwelcomePassed;
+    } else |_| {}
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal granary weave view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
@@ -1115,6 +1206,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "forgequeryviewtest")) {
         return run_forge_query_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "granaryviewtest")) {
+        return run_granary_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return run_keyboard_witness(garden, io, init);

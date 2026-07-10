@@ -31,7 +31,7 @@ Forge · Grove · Orchard · Sangha · Weavehall · Bakery — warm or legible, 
 
 ## First lap (landed `20260710.163304`)
 
-Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. No payments, no federation, no writes until their own gates.
+Read-only and local, as the study already named: one registry of signed name-facts; resolve `person/weave`; clone by folding resins; render a front page through Scribble to a drawn frame; one witness refusing a lying signature. Module home `granary/`; witness `tools/granary_lap1.rish`; parity **232**. Skate weave view landed `20260710.163557` (`granaryviewtest`; parity **233**). No payments, no federation, no writes until their own gates.
 
 ---
 
