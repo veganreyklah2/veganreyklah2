@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Compass climb mul+para-view+bs+top_p `185947`; parity **275**)
+**Last updated:** 2026-07-10 (Compass climb fill+tb+fence+err_stop `190319`; parity **279**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -156,6 +156,10 @@
 | **87** | **Scribble paragraphs view** | **Landed** | Prose bodies → Skate `scribbleparaviewtest`; parity **273**; stamp `185947` |
 | **88** | **Greencandy BS view** | **Landed** | Balance sheet → Skate `bsviewtest`; parity **274**; stamp `185947` |
 | **89** | **Lantern lap 4 top_p** | **Landed** | top_p range + fixture pin; parity **275**; stamp `185947` |
+| **90** | **Lattice lap 7 fill** | **Landed** | Fill tensor with constant; parity **276**; stamp `190319` |
+| **91** | **Greencandy TB view** | **Landed** | Trial balance → Skate `tbviewtest`; parity **277**; stamp `190319` |
+| **92** | **Scribble fence kinds view** | **Landed** | rye/rish/plain counts → Skate `scribblefenceviewtest`; parity **278**; stamp `190319` |
+| **93** | **Lantern lap 5 err_stop** | **Landed** | err_stop fixture pin; parity **279**; stamp `190319` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
