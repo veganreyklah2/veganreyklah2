@@ -86,7 +86,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 |------|----------|
 | **Recall** | The referentially-transparent read — a name resolves to the same bytes for all time, with honest not-yet / never / here outcomes; [`active-designing/20260706-023912_the-referential-namespace.md`](../active-designing/20260706-023912_the-referential-namespace.md) |
 | **Bolt** | A coherent, independently-versioned unit of content with its own history and dependencies — the unit a name selects before a path within it |
-| **Tablecloth query** | Optional-field filter over the bounded namespace catalog — every match in held order; parity **175**; hosted Comlink wire **219**; device virtio **246**; query device view **247** (`174752`); not the Brix artifact store (counsel `20260707.005612`) |
+| **Tablecloth query** | Optional-field filter over the bounded namespace catalog — every match in held order; parity **175**; hosted Comlink wire **219**; device virtio **246**; query device view **247**; unified view **248** (`175447`); not the Brix artifact store (counsel `20260707.005612`) |
 | **Name grammar** | `peer / bolt / revision / path` — Kumara identity, bolt, revision (change, date, or label), path within the bolt |
 
 **Retired forward-facing:** **stone** as the content-addressed unit word — use **resin** per [`specs/20260703-191112_resins-and-hash-tiers.md`](specs/20260703-191112_resins-and-hash-tiers.md); forward-doc hygiene landed `20260706.033200`. **Silo** as a Rye OS module name — retired `174500`; configuration composition lives in **Brix bonds**; lowercase **silo** names only the reading technique and astrology lane.

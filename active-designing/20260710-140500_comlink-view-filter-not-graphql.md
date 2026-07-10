@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall · Hammock
-**Status:** Design + wire + query view + device wire + device view — checkable-room hammock; hosted + device filter GREEN; Skate folds for both; parity **247**
+**Status:** Design + wire + query view + device wire + device view + unified view — checkable-room hammock; hosted + device filter GREEN; Skate folds including unified; parity **248**
 
 **Ground:** counsel [`005612`](../counsel/20260707-005612_claude-counsel-tablecloth-query.md) · Hyperfiddle gratitude [`../gratitude/hyperfiddle.md`](../gratitude/hyperfiddle.md) · Weave essay [`../foundations/20260629-063512_the-graph-beneath-the-surface.md`](../foundations/20260629-063512_the-graph-beneath-the-surface.md) · NS brief [`20260706-023912_the-referential-namespace.md`](20260706-023912_the-referential-namespace.md) · Realidream thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
@@ -87,6 +87,11 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - `pond/apps/drawn_terminal.rye` `querydeviceviewtest` — fold → Skate
 - `tools/realidream_query_device_view.rish`; parity **247**
 
+### In scope (lap 2d — query unified view · landed `20260710.175447`)
+
+- Hosted + device fixtures on one eight-line Skate frame (`queryunifiedviewtest`)
+- `tools/realidream_query_unified_view.rish`; parity **248**
+
 ### Out of scope (later)
 
 - Resin bytes in the query response (use sync/catch-up)
@@ -122,6 +127,7 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 | `tools/mantra_recall_tablecloth_query_device.rish` | Device witness (parity **246**) |
 | `tools/fixtures/tablecloth_query_device_hits.bron` | Device-provenance hit fixture |
 | `tools/realidream_query_device_view.rish` | Device Skate view (parity **247**) |
+| `tools/realidream_query_unified_view.rish` | Hosted + device Skate fold (parity **248**) |
 
 ---
 
