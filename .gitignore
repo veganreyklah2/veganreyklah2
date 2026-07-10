@@ -46,6 +46,7 @@
 !/pond/
 !/amber/
 !/amphora/
+!/granary/
 !/expanding-prompts/
 !/session-logs/
 !/.cursor/
@@ -121,4 +122,5 @@ __pycache__/
 /gratitude/zon/
 /pond/bin/
 /amphora/bin/
+/granary/bin/
 /tools/fixtures/.forge_view_bundle/

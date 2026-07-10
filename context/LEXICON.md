@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary name seated `163043`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
+**Last updated:** 2026-07-10 (Granary lap 1 `163304`; name seated `163043`; Amphora plainly; Season · Lap · Green · Metalsmoke · Inference stack lap 0)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -63,7 +63,7 @@ Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-i
 | **Lotus** | Our digital audio workstation — hot-loop studio above Maitreya; horizon after SLC-2 |
 | **Uddhava** | Spatial driver — real-time 3D, CAD, and scene graph (horizon; Unity-shaped role in our vocabulary) |
 | **Pond** | The bounded enclosure for an agent — packaging's runtime target under policy; **customs** first policy lap landed `161125` (place / hold / refuse per Tilak) |
-| **Granary** | **Sharing surface** — Mantra global namespace where signed weaves are named, shared, mirrored, and optionally sold (four doors: Identity · Namespace · Sharing · Exchange); name seated `20260710.163043`; first code lap horizon — [`specs/20260710-163043_granary-name-seated.md`](specs/20260710-163043_granary-name-seated.md) · study [`../external-research/20260703-182612_the-granary-question.md`](../external-research/20260703-182612_the-granary-question.md) |
+| **Granary** | **Sharing surface** — Mantra global namespace where signed weaves are named, shared, mirrored, and optionally sold (four doors: Identity · Namespace · Sharing · Exchange); name seated `20260710.163043`; lap 1 landed `20260710.163304` (registry · resolve · fold-clone · Scribble frame; parity **232**) — [`specs/20260710-163043_granary-name-seated.md`](specs/20260710-163043_granary-name-seated.md) · [`../granary/README.md`](../granary/README.md) · study [`../external-research/20260703-182612_the-granary-question.md`](../external-research/20260703-182612_the-granary-question.md) |
 | **Rishi** | The shell — the faithful hand |
 | **Rye** | The language and value model |
 | **Brix** | What a system is made of — lawful composition; **bond overrides** carry the infuse pattern (Silo module name retired `174500`) |

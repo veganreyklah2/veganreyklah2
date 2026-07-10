@@ -8,7 +8,7 @@ study draws the design and parks the name candidates in RTAC, seating nothing.*
 
 **Stamp:** `20260703.182612` (supplied verbatim by Kaeden)
 **Language:** EN · **Style:** Radiant · **Lens:** TAME · CIVIC · SLC
-**Status:** External research — design study; **name seated** `20260710.163043` (Kaeden: "go with Granary"); first code lap still horizon
+**Status:** External research — design study; **name seated** `20260710.163043` (Kaeden: "go with Granary"); **first code lap landed** `20260710.163304` (parity **232**)
 **Companions:** seating ruling [`../context/specs/20260710-163043_granary-name-seated.md`](../context/specs/20260710-163043_granary-name-seated.md) · the Scribble/Forge sketch (`../active-designing/20260620-020712_scribble-lantern-and-lattice.md`) · Puddle harbor study (same stamp) · the drawing-room harvest · SLC-L1 receipt note · the second harvest (*every artist a node*)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice. Name affirmed by Kaeden `20260710.163043`.*
@@ -38,10 +38,10 @@ the thing edited.
 
 ## The first lap
 
-Read-only and local: one registry fixture of signed name-facts; resolve `person/weave`; clone
-by folding resins; render the weave's front page through Scribble to a drawn frame; one
-witness refusing a name-fact whose signature lies. No payments, no federation, no writes —
-each waits behind its own gate.
+**Landed** `20260710.163304` at `granary/` — read-only and local: signed name-fact registry; resolve
+`person/weave`; clone by folding resins; render the weave's front page through Scribble to a drawn
+frame; witness refusing a name-fact whose signature lies. Witness `tools/granary_lap1.rish`; parity
+**232**. No payments, no federation, no writes — each waits behind its own gate.
 
 ## The Names, Parked
 
