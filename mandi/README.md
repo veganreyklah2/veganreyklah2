@@ -2,7 +2,7 @@
 
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
-**Status:** Seated — name + lap 1 vessel listing (`20260710.165634`); WOV settlement waits  
+**Status:** Seated — name + lap 1 vessel listing (`20260710.165634`); floor view lap 2 (`20260710.170700`); WOV settlement waits  
 **Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md)  
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)
 

@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.170700 | [Mandi floor view — vessel listing on Skate](20260710-170700_mandi-floor-view.md) | Five-line frame; parity **240** |
 | 20260710.170132 | [Granary lap 4b — device-wire resin serve](20260710-170132_granary-device-wire.md) | Virtio 15573/15574; parity **239** |
 | 20260710.165634 | [Mandi name seated + lap 1 vessel listing](20260710-165634_mandi-name-and-lap1.md) | Vessel floor; parity **238** |
 | 20260710.165348 | [Granary lap 5 — Exchange listing](20260710-165348_granary-exchange-listing.md) | Weave priced in MALA; parity **237** |
