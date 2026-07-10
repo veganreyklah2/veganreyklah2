@@ -90,7 +90,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 | `20260703-182612` | [The road a failure carries](20260703-182612_the-road-a-failure-carries.md) | Metalsmoke stays narrow; trace designed — call road + fact road; spec candidate parked |
 | `20260703-182612` | [Sameness is the macro](20260703-182612_sameness-is-the-macro.md) | Graham × Hickey study; siloed companion in [`foundations/`](../foundations/20260703-182612_sameness-is-the-macro.md) |
 | `20260703-182612` | [Puddle — the app harbor](20260703-182612_puddle-the-app-harbor.md) | Serena's blessing; harbor laps; charter expansion parked in RTAC |
-| `20260703-182612` | [The granary question](20260703-182612_the-granary-question.md) | Sharing surface on four doors; five names parked, Granary leading |
+| `20260703-182612` | [The granary question](20260703-182612_the-granary-question.md) | Sharing surface on four doors; **name seated** `163043`; first code lap horizon |
 | `20260703-173512` | [Bubble — the drawing room](20260703-173512_bubble-the-drawing-room.md) | Sibling-bench harvest seated verbatim: felt tests, export door, one log under every surface |
 | `20260703-071712` | [The second harvest](20260703-071712_the-second-harvest.md) | Silo harvest map from a sibling bench: nineteen insights with destinations; first four landings at `140212` |
 | `20260702-215212` | [WOV/MALA hardware fit-check](20260702-215212_wov-mala-hardware-fit.md) | Blueprint confirmed in ballpark; PLP M.2 and ECC deltas named; gentle-slot rule extended |
