@@ -32,8 +32,10 @@
 //!   pond/bin/drawn-terminal corpusprefixviewtest # Anvil path_prefix query → Skate
 //!   pond/bin/drawn-terminal corpusrishviewtest # Anvil rish-kind query → Skate
 //!   pond/bin/drawn-terminal scribbleviewtest # Scribble outline headings → Skate
+//!   pond/bin/drawn-terminal scribbleparaviewtest # Scribble paragraphs → Skate
 //!   pond/bin/drawn-terminal exceptionviewtest # Greencandy exception queue → Skate
 //!   pond/bin/drawn-terminal pnlviewtest # Greencandy P&L income statement → Skate
+//!   pond/bin/drawn-terminal bsviewtest # Greencandy balance sheet → Skate
 //!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
 //!   pond/bin/drawn-terminal exchangeviewtest # Granary Exchange view — weave listing → Skate
 //!   pond/bin/drawn-terminal mandiviewtest   # Mandi floor view — vessel listing → Skate
@@ -85,8 +87,10 @@ const corpus_view_max_lines: u32 = 6;
 const corpus_prefix_view_max_lines: u32 = 5;
 const corpus_rish_view_max_lines: u32 = 5;
 const scribble_view_max_lines: u32 = 6;
+const scribble_para_view_max_lines: u32 = 5;
 const exception_view_max_lines: u32 = 5;
 const pnl_view_max_lines: u32 = 5;
+const bs_view_max_lines: u32 = 5;
 const granary_view_max_lines: u32 = 7;
 const exchange_view_max_lines: u32 = 6;
 const mandi_view_max_lines: u32 = 5;
@@ -1301,6 +1305,113 @@ fn run_forge_query_device_view_witness(garden: std.mem.Allocator, io: std.Io) !u
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal forge query device view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Scribble paragraphs view — paragraph extract folded onto a Skate frame.
+fn compose_scribble_para_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [scribble.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, scribble_outline_fixture, &buf);
+    var blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const n = try scribble.parse_markdown(text, &blocks);
+    var paragraphs: [scribble.max_paragraphs]scribble.Paragraph = undefined;
+    const pn = try scribble.extract_paragraphs(blocks[0..n], &paragraphs);
+    if (pn != 3) return error.BadScribbleFixture;
+
+    const lines = try garden.alloc(surface.SkateLine, scribble_para_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "scribble paragraphs view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "paragraphs {d}", .{pn}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "p0 {s}", .{paragraphs[0].text_slice()}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "p1 {s}", .{paragraphs[1].text_slice()}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "paragraphs fold green") };
+    return lines;
+}
+
+fn run_scribble_para_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_scribble_para_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == scribble_para_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "scribble paragraphs view",
+        "paragraphs 3",
+        "p0 Lattice before Lantern; Scribble feeds the corpus.",
+        "p1 Matmul, add, reshape, reduce — parity before weights.",
+        "paragraphs fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal scribble paragraphs view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Greencandy balance-sheet view — BS alone on Skate.
+fn compose_bs_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [2048]u8 = undefined;
+    const text = try cwd.readFile(io, greencandy_journal_fixture, &buf);
+    var nets: [4]i64 = undefined;
+    try fold_greencandy_fixture(text, &nets);
+    const bs = balance_from_nets(&nets);
+    assert(bs.cash == bs.equity + bs.retained);
+
+    const lines = try garden.alloc(surface.SkateLine, bs_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "greencandy bs view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "cash {d}", .{bs.cash}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "equity {d}", .{bs.equity}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "retained {d}", .{bs.retained}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "bs fold green") };
+    return lines;
+}
+
+fn run_bs_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_bs_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == bs_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "greencandy bs view",
+        "cash 800",
+        "equity 0",
+        "retained 800",
+        "bs fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal bs view: sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -2639,11 +2750,17 @@ pub fn main(init: std.process.Init) !u8 {
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleviewtest")) {
         return run_scribble_view_witness(garden, io);
     }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleparaviewtest")) {
+        return run_scribble_para_view_witness(garden, io);
+    }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
         return run_exception_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "pnlviewtest")) {
         return run_pnl_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "bsviewtest")) {
+        return run_bs_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "granaryviewtest")) {
         return run_granary_view_witness(garden, io);
