@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 5).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 6).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop.
+//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -16,6 +16,7 @@ pub const StoppedReason = enum(u8) {
     eos,
     length,
     err_stop,
+    stop_sequence,
 };
 
 pub const LanternError = error{
@@ -80,6 +81,8 @@ pub fn parse_fixture(text: []const u8) LanternError!Response {
         .length
     else if (std.mem.eql(u8, reason, "err_stop"))
         .err_stop
+    else if (std.mem.eql(u8, reason, "stop_sequence"))
+        .stop_sequence
     else
         return error.BadFixture;
     return .{

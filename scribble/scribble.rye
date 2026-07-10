@@ -1,4 +1,4 @@
-//! scribble/scribble.rye — Scribble lap 5 selftest (parse · rye/rish · headings · paragraphs · fence kinds).
+//! scribble/scribble.rye — Scribble lap 6 selftest (parse · rye/rish/plain · headings · paragraphs · fence kinds).
 //!
 //!   rye build scribble/scribble.rye -femit-bin=scribble/bin/scribble
 //!   scribble/bin/scribble selftest
@@ -9,7 +9,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const sc = @import("scribble_core.rye");
 
-const scribble_version = "20260710.190319";
+const scribble_version = "20260710.190800";
 pub const fixture_path = "scribble/fixtures/sample.md";
 pub const session_fixture_path = "scribble/fixtures/session_snippets.md";
 pub const session_rish_fixture_path = "scribble/fixtures/session_rish_snippets.md";
@@ -188,6 +188,34 @@ fn welcome_fence_kinds(io: std.Io) !void {
     print("scribble: fence kinds — rye={d} rish={d} plain={d}\n", .{ kinds.rye, kinds.rish, kinds.plain });
 }
 
+fn welcome_extract_plain(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, fence_kinds_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var snippets: [sc.max_blocks]sc.Snippet = undefined;
+    const sn = try sc.extract_plain_snippets(blocks[0..n], &snippets);
+    assert(sn == 1);
+    assert(std.mem.eql(u8, snippets[0].text_slice(), "plain fence body"));
+    print("scribble: plain snippets extracted — count={d}\n", .{sn});
+}
+
+fn unwelcome_plain_snippet_overflow(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, fence_kinds_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var tiny: [0]sc.Snippet = .{};
+    if (sc.extract_plain_snippets(blocks[0..n], &tiny)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.SnippetOverflow);
+    }
+    print("scribble: plain snippet overflow refused\n", .{});
+}
+
 fn unwelcome_unclosed_fence() !void {
     const bad =
         \\```rye
@@ -219,8 +247,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_heading_overflow(io);
         try unwelcome_paragraph_overflow(io);
         try welcome_fence_kinds(io);
+        try welcome_extract_plain(io);
+        try unwelcome_plain_snippet_overflow(io);
         try unwelcome_unclosed_fence();
-        print("scribble lap6: version {s} — GREEN\n", .{scribble_version});
+        print("scribble lap7: version {s} — GREEN\n", .{scribble_version});
         return 0;
     }
     print("usage: scribble selftest\n", .{});
