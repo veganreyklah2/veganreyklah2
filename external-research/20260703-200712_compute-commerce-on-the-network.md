@@ -6,7 +6,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME, with Civic discipline
 **Category:** External research — survey, counsel, and RTAC name parking
 **Companion to:** `20260703-200712_a-move-for-rye.md` · `context/CIVIC_STYLE.md`
-**Status:** Proposed — external names live here by design; candidates park in RTAC
+**Status:** Proposed — external names live here by design; **Mandi** seated `20260710.165634` for vessel market floor; Mela · Haat · Bazaar remain parked
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 
@@ -36,7 +36,7 @@ The counsel is composition first: no new organ until the choreography above prov
 |---|---|---|
 | **Mela** | The fair that convenes — a festival market | Warm, devotional register; a market as a gathering rather than an extraction |
 | **Haat** | The village market that arrives on schedule, then rests | Beautiful resonance with *rest is scheduled first*; periodic commerce |
-| **Mandi** | The produce market where the harvest is weighed | Agrarian; sits well beside Granary and Linengrow |
+| **Mandi** | The produce market where the harvest is weighed | **Seated** `20260710.165634` — vessel market floor; [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) |
 | **Bazaar** | The open market of many stalls | Worn smooth by wide use, and now literally the name of an outside protocol's discovery index — a live collision |
 
 Granary stays reserved where it already leads, for the sharing surface; two markets under one roof would blur both.

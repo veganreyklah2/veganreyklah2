@@ -69,13 +69,13 @@ Crossing-manifest seed (parity **151**) graduated into `amphora/manifest_entry.r
 
 ## Neighbors Keep Their Rooms
 
-Bron = letter (one record). Amphora = crate (many). MALA = coin inside. Comlink = sea. Kumara = stamp. Amber = cellar left and returned to. Granary = weave-sharing surface (name seated). Mandi parks for vessel market floor. Pond = customs at receipt. No duty overlaps.
+Bron = letter (one record). Amphora = crate (many). MALA = coin inside. Comlink = sea. Kumara = stamp. Amber = cellar left and returned to. Granary = weave-sharing surface (name seated). Mandi = vessel market floor (name seated). Pond = customs at receipt. No duty overlaps.
 
 ---
 
 ## What This Page Does Not Do
 
-- Does **not** seat Mandi market floor or Granary payments/federation  
+- Mandi market floor seated separately `20260710.165634`; Granary payments/federation still wait  
 - Does **not** replace the silo or the study — those remain the design and research homes  
 
 **Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`) · large-resin chunking (`154300`) · Pond customs (`161125`) · purchase delivery (`161358`) · Granary **name** (`163043`) · Granary **lap 1** (`163304`).

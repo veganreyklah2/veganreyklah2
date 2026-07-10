@@ -8,7 +8,7 @@ study draws the design and parks the name candidates in RTAC, seating nothing.*
 
 **Stamp:** `20260703.182612` (supplied verbatim by Kaeden)
 **Language:** EN · **Style:** Radiant · **Lens:** TAME · CIVIC · SLC
-**Status:** External research — design study; **name seated** `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**)
+**Status:** External research — design study; **name seated** `20260710.163043`; four doors through Exchange listing `20260710.165348` (parity **232**–**237**); Mandi vessel floor seated separately `20260710.165634`
 **Companions:** seating ruling [`../context/specs/20260710-163043_granary-name-seated.md`](../context/specs/20260710-163043_granary-name-seated.md) · the Scribble/Forge sketch (`../active-designing/20260620-020712_scribble-lantern-and-lattice.md`) · Puddle harbor study (same stamp) · the drawing-room harvest · SLC-L1 receipt note · the second harvest (*every artist a node*)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice. Name affirmed by Kaeden `20260710.163043`.*
@@ -17,7 +17,7 @@ study draws the design and parks the name candidates in RTAC, seating nothing.*
 
 ## Seated name (`20260710.163043`)
 
-**Granary** is the word. Mission: the place where signed weaves are named, shared, mirrored, and optionally sold — every artist a node. Four doors below. Alternates (Forge · Grove · Orchard · Sangha · Weavehall · Bakery) stay parked. Vessel market floor is **not** this room — **Mandi** parks there.
+**Granary** is the word. Mission: the place where signed weaves are named, shared, mirrored, and optionally sold — every artist a node. Four doors below. Alternates (Forge · Grove · Orchard · Sangha · Weavehall · Bakery) stay parked. Vessel market floor is **not** this room — **Mandi** holds that duty (seated `20260710.165634`).
 
 ## The Shape Before the Name
 
