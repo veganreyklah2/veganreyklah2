@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.234331 | [Assist/sight glass composition — lap closed](20260710-234331_glass-composition-lap-close.md) | Parity **411**–**418**; blocks · fence-rye · echo · user on glass |
 | 20260710.233026 | [Path counsel — what to open from tip 410](20260710-233026_path-counsel-next-open.md) | Prefer glass composition; ROCm/Rest-until stay gated |
 | 20260710.232810 | [ROCm reminder — not MOCm](20260710-232810_rocm-reminder.md) | Rung **2** is AMD ROCm host seam; horizon |
 | 20260710.232625 | [Fixture deepen 1aj/1ak — lap landed on main](20260710-232625_hardsig-echo-lap-landed.md) | PR **#88** merged; tip **410** on `main` |

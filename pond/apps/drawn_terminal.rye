@@ -173,6 +173,8 @@ const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
 const anvil_corpus_fixture = "anvil/fixtures/rye_corpus.bron";
 const lantern_completion_fixture = "lantern/fixtures/completion.bron";
+const lantern_echo_fixture = "lantern/fixtures/completion_echo.bron";
+const lantern_user_fixture = "lantern/fixtures/completion_user.bron";
 const tablecloth_query_hits_fixture = "tools/fixtures/tablecloth_query_hits.bron";
 const tablecloth_query_device_hits_fixture = "tools/fixtures/tablecloth_query_device_hits.bron";
 const forge_amber_manifest_fixture = "tools/fixtures/.forge_view_bundle/manifest.bron";
@@ -625,6 +627,17 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const fence_n = try scribble.parse_markdown(fence_kinds, &fence_blocks);
     const plain_kinds = scribble.count_fence_kinds(fence_blocks[0..fence_n]);
     assert(plain_kinds.plain == 1);
+    assert(fence_n == 4);
+    var rye_snips: [scribble.max_snippets]scribble.Snippet = undefined;
+    const fence_rye = try scribble.extract_rye_snippets(fence_blocks[0..fence_n], &rye_snips);
+    assert(fence_rye == 1);
+
+    var echo_buf: [1024]u8 = undefined;
+    const echo_text = try cwd.readFile(io, lantern_echo_fixture, &echo_buf);
+    var user_buf: [1024]u8 = undefined;
+    const user_text = try cwd.readFile(io, lantern_user_fixture, &user_buf);
+    const echo = field_value(echo_text, "echo") orelse return error.BadLanternFixture;
+    const user = field_value(user_text, "user") orelse return error.BadLanternFixture;
 
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
@@ -644,9 +657,9 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const lines = try garden.alloc(surface.SkateLine, assist_view_max_lines);
     lines[0] = .{ .text = try garden.dupe(u8, "inference assist view") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d}", .{ fences.rye, fences.rish, plain_kinds.plain }) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d} blocks {d} fence-rye {d}", .{ fences.rye, fences.rish, plain_kinds.plain, fence_n, fence_rye }) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s} · echo {s} · user {s}", .{ tokens_in, tokens_out, stopped, echo, user }) };
     lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
@@ -688,19 +701,19 @@ fn run_assist_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const golden = [_][]const u8{
         "inference assist view",
         "corpus rye 2 rish 1",
-        "snippets rye 2 rish 1 plain 1",
+        "snippets rye 2 rish 1 plain 1 blocks 4 fence-rye 1",
         "model sha3-256-rye-forge-lap0",
-        "lantern 24/12 eos",
+        "lantern 24/12 eos · echo 1 · user steward-rio",
         "suggest use init.garden not ArgIterator",
         "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1 · kinds 2",
         "assist fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [360]u8 = undefined;
+    var out: [480]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist view: snippets=3 rye=2 rish=1 plain=1 blocks=4 fence_rye=1 echo=1 user=steward-rio journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -737,6 +750,16 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     const fence_n = try scribble.parse_markdown(fence_kinds, &fence_blocks);
     const plain_kinds = scribble.count_fence_kinds(fence_blocks[0..fence_n]);
     assert(plain_kinds.plain == 1);
+    assert(fence_n == 4);
+    var rye_snips: [scribble.max_snippets]scribble.Snippet = undefined;
+    const fence_rye = try scribble.extract_rye_snippets(fence_blocks[0..fence_n], &rye_snips);
+    assert(fence_rye == 1);
+    var echo_buf: [1024]u8 = undefined;
+    const echo_text = try cwd.readFile(io, lantern_echo_fixture, &echo_buf);
+    var user_buf: [1024]u8 = undefined;
+    const user_text = try cwd.readFile(io, lantern_user_fixture, &user_buf);
+    const echo = field_value(echo_text, "echo") orelse return error.BadLanternFixture;
+    const user = field_value(user_text, "user") orelse return error.BadLanternFixture;
     const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
     const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
     const stopped = field_value(lantern, "stopped_reason") orelse return error.BadLanternFixture;
@@ -755,8 +778,8 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "carriage mala:mint amount {s}", .{amount}) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d}", .{ fences.rye, fences.rish, plain_kinds.plain }) };
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s}", .{ tokens_in, tokens_out, stopped }) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d} blocks {d} fence-rye {d}", .{ fences.rye, fences.rish, plain_kinds.plain, fence_n, fence_rye }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s} · echo {s} · user {s}", .{ tokens_in, tokens_out, stopped, echo, user }) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{
@@ -799,17 +822,17 @@ fn run_assist_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage mala:mint amount 1000",
         "carriage wov seq 1",
         "corpus rye 2 rish 1",
-        "snippets rye 2 rish 1 plain 1",
-        "lantern 24/12 eos",
+        "snippets rye 2 rish 1 plain 1 blocks 4 fence-rye 1",
+        "lantern 24/12 eos · echo 1 · user steward-rio",
         "journal 2 stipend received · chart cash revenue expense equity · pnl net 800 · bs equity 0 · exceptions 2 · ex unknown account · ex2 bad amount · unk 1 bad 1 · kinds 2",
         "assist sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [360]u8 = undefined;
+    var out: [480]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
+        "drawn terminal assist sight: snippets=3 rye=2 rish=1 plain=1 blocks=4 fence_rye=1 echo=1 user=steward-rio journal=2 chart=4 pnl=800 equity=0 exceptions=2 ex=unknown ex2=bad unk=1 bad=1 kinds=2 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);

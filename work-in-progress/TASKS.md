@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (compass climb hardsig-echo `232158`; parity **410**)
+**Last updated:** 2026-07-10 (glass composition `234004`; parity **418**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -292,6 +292,14 @@
 | **223** | **Scribble rish+blocks view** | **Landed** | rish + blocks on one Skate frame; parity **408**; stamp `232158` |
 | **224** | **Lattice lap 39 cube** | **Landed** | Elementwise cube; parity **409**; stamp `232158` |
 | **225** | **Lantern lap 33 user pin — fixture deepen lap close** | **Landed** | user pin; tip **410**; stamp `232158` |
+| **226** | **Assist view lap 14 — blocks on glass** | **Landed** | blocks=4 on snippets band; parity **411**; stamp `234004` |
+| **227** | **Assist sight lap 12 — blocks on carriage** | **Landed** | blocks=4 on assist sight; parity **412**; stamp `234004` |
+| **228** | **Assist view lap 15 — fence-rye + blocks** | **Landed** | fence_rye=1 + blocks; parity **413**; stamp `234004` |
+| **229** | **Assist sight lap 13 — fence-rye + blocks** | **Landed** | fence_rye + blocks on carriage; parity **414**; stamp `234004` |
+| **230** | **Assist view lap 16 — echo on glass** | **Landed** | echo pin on lantern band; parity **415**; stamp `234004` |
+| **231** | **Assist sight lap 14 — echo on carriage** | **Landed** | echo on assist sight; parity **416**; stamp `234004` |
+| **232** | **Assist view lap 17 — user on glass** | **Landed** | user pin on lantern band; parity **417**; stamp `234004` |
+| **233** | **Assist sight lap 15 — user — glass composition close** | **Landed** | user on carriage; tip **418**; stamp `234004` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
