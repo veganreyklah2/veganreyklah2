@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 21).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 23).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen through stopped_reason pin.
+//! Weights live in Tablecloth by hash. Laps deepen through stream pin.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -41,6 +41,7 @@ pub const LanternError = error{
     AllowCountMismatch,
     RequireModelMissing,
     StoppedReasonMismatch,
+    StreamMismatch,
 };
 
 pub const Request = struct {
@@ -54,6 +55,7 @@ pub const Request = struct {
     err_stop: bool = false,
     length_stop: bool = false,
     expect_stopped: []const u8 = "",
+    stream: bool = false,
 };
 
 pub const Response = struct {
@@ -153,6 +155,15 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     }
     if (field_value(fixture_text, "pin_stopped_reason")) |pinned| {
         if (!std.mem.eql(u8, req.expect_stopped, pinned)) return error.StoppedReasonMismatch;
+    }
+    if (field_value(fixture_text, "stream")) |pinned_text| {
+        const pinned = if (std.mem.eql(u8, pinned_text, "1"))
+            true
+        else if (std.mem.eql(u8, pinned_text, "0"))
+            false
+        else
+            return error.BadFixture;
+        if (req.stream != pinned) return error.StreamMismatch;
     }
     if (field_value(fixture_text, "prompt")) |pinned| {
         if (!std.mem.eql(u8, req.prompt, pinned)) return error.PromptMismatch;
