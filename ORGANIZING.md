@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-07-07 (counsel folder split — sixteen files moved to `counsel/`)
+**Last updated:** 2026-07-10 (Radiant Style pass round 3)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
@@ -19,7 +19,7 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 ## The Shape of the Tree
 
-**`context/`** — memory and compass. The disciplines we keep across every track: Tiger and TAME for code rigor, Radiant for prose, Simple-Lovable-Complete for product scope, and Civic for designing public benefit so the reward points at the good. Identity (`REYA2.md`), and `specs/` for plain-English decisions that deserve a durable home.
+**`context/`** — memory and compass. The disciplines we keep across every track: Tiger and TAME for code rigor, Radiant for prose, Simple-Lovable-Complete for product scope, and Civic for designing public benefit so the reward points at the good. Identity (`RIO3.md` this season; `REYA2.md` resting), and `specs/` for plain-English decisions that deserve a durable home.
 
 **`foundations/`** — the why beneath the work: foundation briefs, the distilled essays and the weave that composes them, and the civic visions. Dated artifacts rest beneath a living README.
 
@@ -33,7 +33,7 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`active-designing/`** — design in motion. Our own module names, RISC-V-first, siloed from gratitude sources. Dated briefs; living README index.
 
-**`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README. **Research for understanding, not advice:** surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course; policy and money choices belong to Kaeden in their own season. Say so in each file's status line; CIVIC stays policy-shaped in `context/`. Proposed register law: [`context/TWO_ROOMS.md`](context/TWO_ROOMS.md) (seats on Kaeden's word).
+**`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README. **Research for understanding — advice stays elsewhere:** surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course; policy and money choices belong to Kaeden in their own season. Say so in each file's status line; CIVIC stays policy-shaped in `context/`. Proposed register law: [`context/TWO_ROOMS.md`](context/TWO_ROOMS.md) (seats on Kaeden's word).
 
 **`counsel/`** — the bench's answer to a pending project decision. Analysis, rulings, proposals, and recommendations from Claude (or the bench) in response to a specific question Kaeden asked — propose-never-seat. Each piece stays as filed; Kaeden's word seats decisions in `active-designing/`, `context/specs/`, or the module home. Living README at [`counsel/README.md`](counsel/README.md).
 

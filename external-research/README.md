@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-10 (local-forge inference horizon `133500`)
+**Last updated:** 2026-07-10 (Radiant Style pass round 3 · inference horizon `133500`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -17,7 +17,7 @@ This folder is allowed to be experimental, informal, and overgrown at times. It 
 
 This file is the foundation stone. It rests at the bottom of the stack and explains how the stack works, so that anyone who opens this folder for the first time understands the shape of it at a glance.
 
-**Research for understanding, not advice.** Surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course. Policy and money choices belong to Kaeden in their own season. Each dated exploration carries the boundary in its status line. Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · register law (proposed): [`../context/TWO_ROOMS.md`](../context/TWO_ROOMS.md).
+**Research for understanding — advice stays elsewhere.** Surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course. Policy and money choices belong to Kaeden in their own season. Each dated exploration carries the boundary in its status line. Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · register law (proposed): [`../context/TWO_ROOMS.md`](../context/TWO_ROOMS.md).
 
 ---
 
@@ -33,7 +33,7 @@ When an exploration **lands** (mission complete) or **moves** to active-designin
 
 **Width policy:** interim seam manual [`968`](20260621-050312_usize-boundary-not-design.md); fork north star [`967`](20260621-051312_literal-usize-ban-language-fork.md) + [`../active-designing/yonder/20260621-051312_explicit-width-in-rye.md`](../active-designing/yonder/20260621-051312_explicit-width-in-rye.md).
 
-**Retired patterns** (do not reintroduce in new research): Bash `parity.sh`, Python doc enrichers, permanent Tier C `usize` as destination, `init.arena` in prose (use `init.garden`).
+**Retired patterns** (leave these in the archive): Bash `parity.sh`, Python doc enrichers, permanent Tier C `usize` as destination, `init.arena` in prose (use `init.garden`).
 
 ---
 

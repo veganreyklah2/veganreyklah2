@@ -120,13 +120,13 @@ rye/bin/rye build mantra/src/main.rye -femit-bin=mantra/bin/mantra
 - [x] Witness programs exercise the loop (`slc1_repl_step1`, `slc1_version_step2`, `slc1_recall_step3`, `slc1_accept`); registered in `tools/parity.rish`
 - [ ] Width migration on touched `rishi/*` and `mantra/*` files per refined `width-check.rish` — **deferred to TAME-hardening milestone**, not required for functional close (`2026-06-29` ruling)
 
-### Out of scope (SLC-2 or later)
+### Horizon (SLC-2 or later)
 
 - Pond enclosure, Brushstroke, Skate, Wayland — the GUI lap
 - Full Mantra CLI surface (merge, log, diff UI) beyond `init` / `add` / optional `status`
 - Rishi language growth unrelated to the loop (new builtins welcome if they serve the four verbs)
 - Comlink, Brix, Tablecloth, Caravan capability table
-- Splitting Rishi into parser/terminal/completion modules — TigerBeetle's REPL decomposition is a **reference for horizon**, not a v1 requirement; v1 stays one file accreting a `repl` mode
+- Splitting Rishi into parser/terminal/completion modules — TigerBeetle's REPL decomposition is a **reference for horizon**, rather than a v1 requirement; v1 stays one file accreting a `repl` mode
 
 ### Gate before implementation pass
 

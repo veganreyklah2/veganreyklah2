@@ -6,7 +6,7 @@
 //!   rye build linengrow/delivery.rye -lc -femit-bin=linengrow/bin/delivery
 //!
 //! Imports `wire_format.rye` via symlink `linengrow/wire_format.rye` → `comlink/wire_format.rye`
-//! (format does not fork; rye module path cannot cross directories).
+//! (format stays one layout; rye module path stays within one directory).
 //!   linengrow/bin/delivery selftest
 //!   linengrow/bin/delivery demo
 //!

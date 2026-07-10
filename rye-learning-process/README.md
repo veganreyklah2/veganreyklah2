@@ -1,7 +1,7 @@
 # The Rye Learning Process
 
 **Language:** EN
-**Last updated:** 2026-06-28
+**Last updated:** 2026-07-10 (Radiant Style pass round 3)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 

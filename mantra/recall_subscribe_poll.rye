@@ -3,7 +3,7 @@
 //! Each cycle runs catch-up-to-latest for every named peer/bolt pair (host mirror
 //! configuration). A test-only cycle bound makes the loop witnessable without a
 //! live clock or Caravan scheduling. Composing rather than extending:
-//! recall_catch_up.rye is imported and not edited.
+//! recall_catch_up.rye is imported and left standing.
 //!
 //!   rye build mantra/recall_subscribe_poll.rye -lc -femit-bin=mantra/bin/recall-subscribe-poll
 //!   mantra/bin/recall-subscribe-poll selftest

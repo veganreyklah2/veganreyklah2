@@ -1,7 +1,7 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Greencandy own root; MALA/WOV still here)
+**Last updated:** 2026-07-10 (Radiant Style pass round 3 · Greencandy own root; MALA/WOV still here)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---

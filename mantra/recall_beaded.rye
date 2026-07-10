@@ -5,7 +5,7 @@
 //! file composes the two: append_leaf_beaded stores small content directly and large
 //! content as beads, and recall_beaded returns the very same bytes either way, so a
 //! caller never needs to know which path a given resin took. Composing rather than
-//! extending: recall_lap1.rye and beading.rye are both imported and neither is edited.
+//! extending: recall_lap1.rye and beading.rye are both imported and left standing.
 //!
 //! The payoff beading brings here is not size — a resin still tops out at
 //! max_resin_bytes, whole or beaded — it is dedup at bead granularity across revisions.

@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-10 (commerce plainly twin; metalsmoke affirm; universal visions; learning twin)
+**Last updated:** 2026-07-10 (Radiant Style pass round 3 · commerce plainly; metalsmoke; visions)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
