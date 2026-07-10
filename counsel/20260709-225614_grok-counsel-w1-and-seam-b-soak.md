@@ -11,11 +11,13 @@
 
 ## Verdict
 
-**Soak both.** Do not open SLC-L4 **W1** (OR-across-tiers) or WOV **seam B** (Zig client protocol) on keep-going alone. Lap 1 Sigma + W0, and seam A + dual D1, are enough metal for this season until a named trigger fires.
+**Rest-until both** (living name for what this counsel called *soak*). Do not open SLC-L4 **W1** (OR-across-tiers) or WOV **seam B** (Zig client protocol) on keep-going alone. Lap 1 Sigma + W0, and seam A + dual D1, are enough metal for this season until a named trigger fires.
+
+**Living vocabulary (`210433`):** status prose uses **Rest-until**; this counsel's filename and historical *soak* wording stay as dated artifacts. **Steep** is reserved for the horizon p2p file-sharing app — not this status.
 
 ---
 
-## Why Soak (Not Pause Forever)
+## Why Rest-until (Not Pause Forever)
 
 | Surface | On metal now | What W1 / seam B would add |
 |---------|--------------|----------------------------|

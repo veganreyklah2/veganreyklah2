@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (compass climb `200819`; parity **306**; soak holds)
+**Last updated:** 2026-07-10 (Rest-until · Steep named `210433`; compass climb `200819`; parity **306**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -145,6 +145,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 
 | Horizon | What |
 |---------|------|
+| **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
 | **Inference stack** | Lattice **211**–**217**/**257**/**260**/**264**/**268**/**272**/**276**/**280**/**284**/**291**/**295**/**299** · Scribble **212**/**218**/**253**/**261**/**262**/**270**/**273**/**278**/**282**/**286**/**296**/**300** · Lantern **213**/**252**/**258**/**275**/**279**/**283**/**287**/**294**/**298**/**302** · Anvil **214**–**216**/**259**/**265**/**269**/**281**/**293**/**297** · assist **215**/**251**/**254**/**263**/**266**/**288**/**289** · forge query **255**/**256** · Greencandy exception **267** · P&L **271** · BS **274** · TB **277** · journal **285** · sight journal **290** · chart **292** · sight chart **301** · Lattice div **295** · rye view **296** · greencandy prefix **297** · max_tokens pin **298** · mean **299** · rish view **300** · sight chart **301** · text pin **302** · abs **303** · apps prefix **304** · assist chart **305** · temperature pin **306** — climb `200819`; ROCm/LoRA/Pond still horizon |
