@@ -1,6 +1,6 @@
-//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 27).
+//! lattice/lattice_core.rye — f32 tensors in Tally-shaped fixed gardens (lap 29).
 //!
-//! Parity-gated tensor ops before Lantern. Laps through silu · leaky_relu.
+//! Parity-gated tensor ops before Lantern. Laps through softplus · maximum.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -428,6 +428,34 @@ pub fn leaky_relu(src: *const Matrix, alpha: f32, out: *Matrix) TensorError!void
         while (c < src.cols) : (c += 1) {
             const v = src.at(r, c);
             out.set(r, c, if (v >= 0.0) v else alpha * v);
+        }
+    }
+}
+
+/// Elementwise softplus — log(1+exp(x)); shapes must match; softplus(0) ≈ ln(2).
+pub fn softplus(src: *const Matrix, out: *Matrix) TensorError!void {
+    if (out.rows != src.rows or out.cols != src.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < src.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < src.cols) : (c += 1) {
+            const x = src.at(r, c);
+            out.set(r, c, @log(1.0 + @exp(x)));
+        }
+    }
+}
+
+/// Elementwise maximum of two matrices — shapes must match.
+pub fn maximum(a: *const Matrix, b: *const Matrix, out: *Matrix) TensorError!void {
+    if (a.rows != b.rows or a.cols != b.cols) return error.ShapeMismatch;
+    if (out.rows != a.rows or out.cols != a.cols) return error.ShapeMismatch;
+    var r: u32 = 0;
+    while (r < a.rows) : (r += 1) {
+        var c: u32 = 0;
+        while (c < a.cols) : (c += 1) {
+            const av = a.at(r, c);
+            const bv = b.at(r, c);
+            out.set(r, c, if (av >= bv) av else bv);
         }
     }
 }
