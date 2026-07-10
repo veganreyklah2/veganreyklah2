@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (compass climb `214145`; parity **346**)
+**Last updated:** 2026-07-10 (Anvil corpus lap 2 `225320`; parity **386**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -260,6 +260,14 @@
 | **191** | **Assist view lap 13 exception kinds** | **Landed** | Exception kinds on assist fold; parity **377**; stamp `224805` |
 | **192** | **Lantern lap 29 n pin** | **Landed** | n pin; parity **378**; stamp `224805` |
 | **193** | **Inference Track lap 1 close** | **Landed** | Fixture-contract family closed at tip **378**; next ROCm/Pond/LoRA horizon | stamp `224805` |
+| **194** | **Anvil corpus lap 2 min_lines** | **Landed** | min_lines filter; parity **379**; stamp `225320` |
+| **195** | **Anvil corpus lap 2 max_lines** | **Landed** | max_lines filter; parity **380**; stamp `225320` |
+| **196** | **Anvil corpus lap 2 path_suffix** | **Landed** | path_suffix filter; parity **381**; stamp `225320` |
+| **197** | **Anvil corpus lap 2 sum_lines** | **Landed** | sum_lines fold; parity **382**; stamp `225320` |
+| **198** | **Anvil min_lines view** | **Landed** | min_lines → Skate; parity **383**; stamp `225320` |
+| **199** | **Anvil max_lines view** | **Landed** | max_lines → Skate; parity **384**; stamp `225320` |
+| **200** | **Anvil path_suffix view** | **Landed** | path_suffix → Skate; parity **385**; stamp `225320` |
+| **201** | **Anvil sum_lines view — lap 2 close** | **Landed** | sum_lines → Skate; tip **386**; Anvil corpus lap 2 closed; stamp `225320` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

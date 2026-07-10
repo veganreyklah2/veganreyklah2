@@ -1357,3 +1357,43 @@ say "witness suite: Lantern lap 29 (n pin)…"
 let lantern_lap29 = run ["rishi/bin/rishi" "run" "tools/lantern_lap29.rish"]
 assert lantern_lap29.ok else "Lantern lap 29 witness failed"
 say "GREEN: Lantern lap 29 witness passed."
+
+say "witness suite: Anvil corpus lap 2 (min_lines)…"
+let anvil_corpus_lap2 = run ["rishi/bin/rishi" "run" "tools/anvil_corpus_lap2.rish"]
+assert anvil_corpus_lap2.ok else "Anvil corpus lap 2 witness failed"
+say "GREEN: Anvil corpus lap 2 witness passed."
+
+say "witness suite: Anvil corpus lap 3 (max_lines)…"
+let anvil_corpus_lap3 = run ["rishi/bin/rishi" "run" "tools/anvil_corpus_lap3.rish"]
+assert anvil_corpus_lap3.ok else "Anvil corpus lap 3 witness failed"
+say "GREEN: Anvil corpus lap 3 witness passed."
+
+say "witness suite: Anvil corpus lap 4 (path_suffix)…"
+let anvil_corpus_lap4 = run ["rishi/bin/rishi" "run" "tools/anvil_corpus_lap4.rish"]
+assert anvil_corpus_lap4.ok else "Anvil corpus lap 4 witness failed"
+say "GREEN: Anvil corpus lap 4 witness passed."
+
+say "witness suite: Anvil corpus lap 5 (sum_lines)…"
+let anvil_corpus_lap5 = run ["rishi/bin/rishi" "run" "tools/anvil_corpus_lap5.rish"]
+assert anvil_corpus_lap5.ok else "Anvil corpus lap 5 witness failed"
+say "GREEN: Anvil corpus lap 5 witness passed."
+
+say "witness suite: Anvil corpus min_lines view…"
+let anvil_min_lines_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_min_lines_view.rish"]
+assert anvil_min_lines_view.ok else "Anvil corpus min_lines view witness failed"
+say "GREEN: Anvil corpus min_lines view witness passed."
+
+say "witness suite: Anvil corpus max_lines view…"
+let anvil_max_lines_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_max_lines_view.rish"]
+assert anvil_max_lines_view.ok else "Anvil corpus max_lines view witness failed"
+say "GREEN: Anvil corpus max_lines view witness passed."
+
+say "witness suite: Anvil corpus path_suffix view…"
+let anvil_path_suffix_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_path_suffix_view.rish"]
+assert anvil_path_suffix_view.ok else "Anvil corpus path_suffix view witness failed"
+say "GREEN: Anvil corpus path_suffix view witness passed."
+
+say "witness suite: Anvil corpus sum_lines view…"
+let anvil_sum_lines_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_sum_lines_view.rish"]
+assert anvil_sum_lines_view.ok else "Anvil corpus sum_lines view witness failed"
+say "GREEN: Anvil corpus sum_lines view witness passed."

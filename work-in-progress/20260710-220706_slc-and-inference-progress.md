@@ -6,7 +6,7 @@
 **Language:** EN  
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Voice:** Rio 3  
 **Lens:** [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md) · Gall's Law · checkable room  
-**Status:** Living progress brief — **Inference Track lap 1 closed** tip **378** (`224805`)  
+**Status:** Living progress brief — **Inference Track lap 1 closed** tip **378** (`224805`); **Anvil corpus lap 2 closed** tip **386** (`225320`)  
 **Ground:** [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · Inference hammock [`../active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · explain log [`../session-logs/20260710-220459_slc-inference-climb-explain.md`](../session-logs/20260710-220459_slc-inference-climb-explain.md)
 
 *Written by Rio 3 for Kaeden.*
@@ -74,9 +74,9 @@ Fixture Lantern and bounded Lattice ops keep the promise honest: the modules tha
 | Marker | Value |
 |--------|-------|
 | Lap 0 opened | `20260710.133500` |
-| Tip on `main` | **354** (climb `215613`, PR [#75](https://github.com/groupproject36/veganreyklah2/pull/75)) |
-| Climbs this evening | **1p**→**1aa** (parity **307**→**354**) |
-| Latest eight bolts | tanh · fence+heading · sight ex reason · stream false · gelu · assist ex reasons · stream true |
+| Tip on `main` | **386** (Anvil corpus lap 2 `225320`) |
+| Climbs this evening | **1p**→**1ag** (parity **307**→**378**) then Anvil lap 2 (**379**→**386**) |
+| Latest eight bolts | min_lines · max_lines · path_suffix · sum_lines · four Skate views |
 
 ### Explicitly parked (Rest-until / horizon)
 
@@ -115,7 +115,7 @@ That is the checkable-room exam. It is how SLC Completeness stays true at every 
 
 ## Next
 
-Recommend: keep going from tip **354** — next Lattice activation / `matmul` depth, or Lantern chunk / stream composition on glass. Rest-until still waits product need, measured red, or an explicit affirm of that surface.
+Recommend: keep going from tip **386** — another named non-ROCm lap (Greencandy deepenings, Lattice/Lantern composition) if Kaeden still wants climb; or hold. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy.
 
 ---
 
