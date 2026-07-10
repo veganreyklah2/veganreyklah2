@@ -1,7 +1,7 @@
 # Anvil — Local Forge Corpus
 
 **Language:** EN
-**Last updated:** 2026-07-10 (rye+greencandy · rish+tools combos `212715`; parity **317**/**320**)
+**Last updated:** 2026-07-10 (rye+apps combo `213317`; parity **328**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — corpus catalog + query + Skate views green; LoRA and training remain horizon
 
@@ -22,6 +22,7 @@ Anvil names training and fine-tuning on our own corpus. Lap 0 catalogs `.rye` / 
 | **apps prefix view** | `path_prefix pond/apps/` → five-line Skate frame | parity **304** · `tools/inference_anvil_corpus_apps_prefix_view.rish` (`200819`) |
 | **rye greencandy prefix** | `kind rye` + `path_prefix greencandy/` → five-line Skate frame | parity **317** · `tools/inference_anvil_corpus_rye_greencandy_prefix_view.rish` (`212715`) |
 | **rish tools prefix** | `kind rish` + `path_prefix tools/` → five-line Skate frame | parity **320** · `tools/inference_anvil_corpus_rish_tools_prefix_view.rish` (`212715`) |
+| **rye apps prefix** | `kind rye` + `path_prefix pond/apps/` → five-line Skate frame | parity **328** · `tools/inference_anvil_corpus_rye_apps_prefix_view.rish` (`213317`) |
 
 ## Layout
 

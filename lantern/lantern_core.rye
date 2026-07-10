@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 15).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 17).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen the contract through temperature pin, seed pin, TopPMismatch, err_stop pin, and length_stop pin.
+//! Weights live in Tablecloth by hash. Laps deepen through allow-list empty refuse and allow_count pin.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -37,6 +37,8 @@ pub const LanternError = error{
     TextMismatch,
     ErrStopMismatch,
     LengthStopMismatch,
+    EmptyAllowList,
+    AllowCountMismatch,
 };
 
 pub const Request = struct {
@@ -202,8 +204,28 @@ pub fn model_allowed(model_hash: []const u8, allow_text: []const u8) bool {
     return false;
 }
 
+/// Count `model_hash` lines in an allow-list fixture.
+pub fn count_allowed_models(allow_text: []const u8) u32 {
+    var n: u32 = 0;
+    var lines = std.mem.splitScalar(u8, allow_text, '\n');
+    while (lines.next()) |raw| {
+        const line = std.mem.trim(u8, raw, " \t\r\n");
+        if (line.len == 0 or line[0] == '#') continue;
+        if (!std.mem.startsWith(u8, line, "model_hash ")) continue;
+        n += 1;
+    }
+    return n;
+}
+
 /// Lap 2: allow-list gate, then lap-1 complete_fixture.
+/// Empty allow-list refused; optional fixture `allow_count` pins the list size.
 pub fn complete_allowed(req: Request, fixture_text: []const u8, allow_text: []const u8) LanternError!Response {
+    const allow_n = count_allowed_models(allow_text);
+    if (allow_n == 0) return error.EmptyAllowList;
+    if (field_value(fixture_text, "allow_count")) |pinned_text| {
+        const pinned = std.fmt.parseInt(u32, pinned_text, 10) catch return error.BadFixture;
+        if (allow_n != pinned) return error.AllowCountMismatch;
+    }
     if (!model_allowed(req.model_hash, allow_text)) return error.ModelMismatch;
     return complete_fixture(req, fixture_text);
 }

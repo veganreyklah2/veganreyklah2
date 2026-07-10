@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 17 selftest (ops through reduce_min · sqrt).
+//! lattice/lattice.rye — Lattice lap 19 selftest (ops through exp · log).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.212715";
+const lattice_version = "20260710.213317";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -297,6 +297,36 @@ fn welcome_sqrt() !void {
     print("lattice: sqrt 2x2 green — o00={d} o01={d}\n", .{ out.at(0, 0), out.at(0, 1) });
 }
 
+fn welcome_exp() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.exp(&src, &out);
+    assert(out.at(0, 0) == 1);
+    assert(out.at(0, 1) == 1);
+    assert(out.at(1, 0) == 1);
+    assert(out.at(1, 1) == 1);
+    print("lattice: exp 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_log() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, 1);
+    src.set(1, 0, 1);
+    src.set(1, 1, 1);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.log(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 0);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: log 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -433,6 +463,43 @@ fn unwelcome_sqrt_negative() !void {
     print("lattice: sqrt negative refused\n", .{});
 }
 
+fn unwelcome_exp_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.exp(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: exp shape mismatch refused\n", .{});
+}
+
+fn unwelcome_log_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.log(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: log shape mismatch refused\n", .{});
+}
+
+fn unwelcome_log_nonpositive() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 1);
+    src.set(0, 1, 0);
+    src.set(1, 0, 1);
+    src.set(1, 1, 1);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.log(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.NonPositiveInput);
+    }
+    print("lattice: log nonpositive refused\n", .{});
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -542,6 +609,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_reduce_max();
         try welcome_reduce_min();
         try welcome_sqrt();
+        try welcome_exp();
+        try welcome_log();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -560,8 +629,11 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_clamp_shape();
         try unwelcome_sqrt_shape();
         try unwelcome_sqrt_negative();
+        try unwelcome_exp_shape();
+        try unwelcome_log_shape();
+        try unwelcome_log_nonpositive();
         try unwelcome_dim_overflow();
-        print("lattice lap17: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap19: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

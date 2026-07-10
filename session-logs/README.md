@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.213317 | [Compass climb — exp, depth tally, sight BS, empty allow-list, log, rye+apps, assist P&L, allow_count](20260710-213317_compass-climb-exp-bs-allowlist.md) | Parity **323**–**330**; climbs **1t**/**1u** |
 | 20260710.212715 | [Compass climb — reduce_min, h3, Anvil combos, err_stop/length_stop, sqrt, assist P&L](20260710-212715_compass-climb-reduce-min-h3-err-stop.md) | Parity **315**–**322**; climbs **1r**/**1s** |
 | 20260710.211930 | [Compass climb — clamp, heading depth, assist chart, seed pin, reduce_max, h2, sight P&L, TopPMismatch](20260710-211930_compass-climb-clamp-heading-seed-pin.md) | Parity **307**–**314**; climbs **1p**/**1q** |
 | 20260710.210433 | [Rest-until and Steep naming](20260710-210433_rest-until-steep-naming.md) | Soak → Rest-until; Steep = p2p share horizon |
