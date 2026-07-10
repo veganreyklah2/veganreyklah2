@@ -149,7 +149,7 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
 | **5** | **Live editor assist** | horizon | Wayland metal + rung 3 |
 
-Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · hammock: [`active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md)
+Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · hammock: [`active-designing/20260710-133500_inference-stack-lap0-hammock.md`](../active-designing/20260710-133500_inference-stack-lap0-hammock.md) · progress: [`20260710-220706_slc-and-inference-progress.md`](20260710-220706_slc-and-inference-progress.md)
 
 ---
 
