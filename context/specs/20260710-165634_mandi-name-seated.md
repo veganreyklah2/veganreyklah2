@@ -3,7 +3,7 @@
 **Stamp:** `20260710.165634` (Kaeden: likes the name suggestions; open what is needed)
 **Language:** EN
 **Style:** Radiant (see `../RADIANT_STYLE.md`)
-**Status:** Seated — vessel market floor name; lap 1 landed same stamp (parity **238**)
+**Status:** Seated — vessel market floor name; lap 1 landed `20260710.165634` (parity **238**); floor view lap 2 `20260710.170700` (parity **240**)
 **Ground:** study [`../../external-research/20260703-200712_compute-commerce-on-the-network.md`](../../external-research/20260703-200712_compute-commerce-on-the-network.md) · Granary seating [`20260710-163043_granary-name-seated.md`](20260710-163043_granary-name-seated.md)
 
 *Written by Kaeden and Rio 3.*
@@ -22,7 +22,7 @@ It is **not** Granary. Granary is the weave-sharing surface (four doors). Mandi 
 
 ## First lap (landed `20260710.165634`)
 
-Signed vessel listing: `vessel_parent` + MALA price under Kumara; receipt digest without buyer/seller; bind check against a known parent digest; refuse zero price, lying sig, and parent mismatch. Module home `mandi/`; witness `tools/mandi_lap1.rish`; parity **238**. Amphora purchase delivery remains the carriage rite; Mandi is the floor that names the offer. WOV settlement of a sale waits its own gate.
+Signed vessel listing: `vessel_parent` + MALA price under Kumara; receipt digest without buyer/seller; bind check against a known parent digest; refuse zero price, lying sig, and parent mismatch. Module home `mandi/`; witness `tools/mandi_lap1.rish`; parity **238**. Floor view lap 2 landed `20260710.170700` — Skate `mandiviewtest`; parity **240**. Amphora purchase delivery remains the carriage rite; Mandi is the floor that names the offer. WOV settlement of a sale waits its own gate.
 
 ---
 

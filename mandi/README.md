@@ -2,7 +2,7 @@
 
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
-**Status:** Seated — name + lap 1 vessel listing (`20260710.165634`); WOV settlement waits  
+**Status:** Seated — name + lap 1 vessel listing (`20260710.165634`); floor view lap 2 (`20260710.170700`); WOV settlement waits  
 **Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md)  
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)
 
@@ -23,6 +23,16 @@ Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA
 ```sh
 rishi/bin/rishi run tools/mandi_lap1.rish
 ```
+
+## Floor view (lap 2)
+
+Citizen window on Skate — five lines: floor title, vessel parent prefix, price, receipt prefix, fold green. Lying listing refused.
+
+```sh
+rishi/bin/rishi run tools/mandi_floor_view.rish
+```
+
+Witness → parity **240** (`mandiviewtest`).
 
 ## Held
 

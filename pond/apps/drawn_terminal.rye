@@ -21,6 +21,7 @@
 //!   pond/bin/drawn-terminal forgeviewtest  # Realidream forge view — live Amphora pour → Skate
 //!   pond/bin/drawn-terminal forgequeryviewtest # Forge Tablecloth-query hits → Skate
 //!   pond/bin/drawn-terminal granaryviewtest # Granary weave view — resolve + Scribble → Skate
+//!   pond/bin/drawn-terminal mandiviewtest   # Mandi floor view — vessel listing → Skate
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -34,8 +35,9 @@ const surface = @import("brushstroke/wayland_seed.rye");
 const window_input = @import("window_input.rye");
 const tally_parse_int = @import("rishi/parse_int.rye");
 const granary = @import("granary/granary_core.rye");
+const mandi = @import("mandi/mandi_core.rye");
 
-const drawn_terminal_version = "20260710.163557";
+const drawn_terminal_version = "20260710.170700";
 
 const status_max_len: u32 = 80;
 const thin_view_max_lines: u32 = 5;
@@ -46,6 +48,7 @@ const query_view_max_lines: u32 = 6;
 const forge_view_max_lines: u32 = 8;
 const forge_query_view_max_lines: u32 = 6;
 const granary_view_max_lines: u32 = 7;
+const mandi_view_max_lines: u32 = 5;
 const mala_mint_fixture = "tools/fixtures/mala_m1_mint.bron";
 const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
@@ -849,6 +852,76 @@ fn run_granary_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     return 0;
 }
 
+/// Mandi floor view — signed vessel listing priced in MALA → Skate.
+fn compose_mandi_floor_view_lines(garden: std.mem.Allocator) ![]surface.SkateLine {
+    var parent: [mandi.digest_hex_len]u8 = undefined;
+    mandi.witness_vessel_parent(&parent);
+
+    var listing: [mandi.max_listing_len]u8 = undefined;
+    const n = try mandi.sign_listing(mandi.mandi_version, &parent, "25", &listing);
+    try mandi.verify_listing(listing[0..n]);
+    try mandi.verify_against_parent(listing[0..n], &parent);
+
+    var receipt: [mandi.digest_hex_len]u8 = undefined;
+    try mandi.receipt_digest(listing[0..n], &receipt);
+
+    const lines = try garden.alloc(surface.SkateLine, mandi_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "mandi floor view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "vessel {s}", .{parent[0..12]}) };
+    lines[2] = .{ .text = try garden.dupe(u8, "price 25 mala") };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "receipt {s}", .{receipt[0..12]}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "fold green") };
+    return lines;
+}
+
+fn run_mandi_floor_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_mandi_floor_view_lines(garden);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == mandi_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "mandi floor view",
+        "vessel 675cd344edbf",
+        "price 25 mala",
+        "receipt a8e89899c996",
+        "fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    // Unwelcome — lying stamp_sig refused.
+    var parent: [mandi.digest_hex_len]u8 = undefined;
+    mandi.witness_vessel_parent(&parent);
+    var lying: [mandi.max_listing_len]u8 = undefined;
+    const ln = try mandi.sign_listing(mandi.mandi_version, &parent, "10", &lying);
+    const sig_key = "stamp_sig ";
+    const sig_at = std.mem.indexOf(u8, lying[0..ln], sig_key) orelse return error.MissingSig;
+    lying[sig_at + sig_key.len] = if (lying[sig_at + sig_key.len] == '0') '1' else '0';
+    if (mandi.verify_listing(lying[0..ln])) |_| {
+        return error.LyingAccepted;
+    } else |err| {
+        assert(err == error.VerifyFailed);
+    }
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal mandi floor view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
@@ -1209,6 +1282,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "granaryviewtest")) {
         return run_granary_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "mandiviewtest")) {
+        return run_mandi_floor_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return run_keyboard_witness(garden, io, init);
