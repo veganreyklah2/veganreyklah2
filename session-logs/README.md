@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.163557 | [Granary weave view — Scribble on Skate](20260710-163557_granary-weave-view.md) | Resolve + fold → seven-line Skate; parity **233** |
 | 20260710.163304 | [Granary lap 1 — registry and Scribble frame](20260710-163304_granary-lap1-registry.md) | Name-facts · resolve · fold-clone · frame; parity **232** |
 | 20260710.163043 | [Granary name seated](20260710-163043_granary-name-seated.md) | Four-door sharing surface; Mandi for vessel floor |
 | 20260710.162950 | [Bakery as a name candidate](20260710-162950_bakery-name-candidate.md) | Warm kitchen alternate; mission fit vs Granary |
