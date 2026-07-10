@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.165634 | [Mandi name seated + lap 1 vessel listing](20260710-165634_mandi-name-and-lap1.md) | Vessel floor; parity **238** |
 | 20260710.165348 | [Granary lap 5 — Exchange listing](20260710-165348_granary-exchange-listing.md) | Weave priced in MALA; parity **237** |
 | 20260710.164944 | [Granary lap 4 — Comlink resin serve](20260710-164944_granary-resin-wire.md) | Ports 38496/38497; parity **236** |
 | 20260710.164514 | [Granary lap 3 — Sharing door](20260710-164514_granary-sharing-door.md) | Host serve + mirror clone; parity **235** |

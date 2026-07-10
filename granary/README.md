@@ -2,7 +2,7 @@
 
 **Language:** EN
 **Stamp:** `20260710.165348`
-**Status:** Landed — four doors open (Identity · Namespace · Sharing · Exchange listing); WOV settlement and Mandi wait
+**Status:** Landed — four doors open (Identity · Namespace · Sharing · Exchange listing); WOV settlement waits; Mandi is its own room
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 **Granary** is the place where signed weaves are named, shared, mirrored, and optionally sold — every artist a node.
@@ -16,7 +16,7 @@
 | **4 (landed)** | Sharing over Comlink — ports **38496**/**38497** |
 | **5 (landed)** | Exchange listing — weave priced in MALA; receipt digest without identities; WOV settlement waits |
 
-**Not this room:** Amphora vessel market floor parks as **Mandi**. Live WOV settlement and device wire wait.
+**Not this room:** Amphora vessel market floor is **Mandi** (seated `20260710.165634`). Live WOV settlement and device wire wait.
 
 **Witnesses:** **232**–**237** (`tools/granary_lap1.rish` · `granary_weave_view.rish` · `granary_lap2.rish` · `granary_lap3.rish` · `granary_resin_wire.rish` · `granary_exchange.rish`)
 
