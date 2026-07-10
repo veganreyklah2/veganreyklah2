@@ -16,8 +16,8 @@ trap 'rm -rf "$source" "$far"' EXIT
 sh "$ROOT/tools/fixtures/amphora_pour.sh" "$SRC" "$source" "$STAMP"
 test -f "$source/vessel.bron"
 test -d "$source/resins"
-cargo_count=$(grep -c '^cargo ' "$source/vessel.bron")
-test "$cargo_count" -eq 2
+grep -q '^seal_cargo ' "$source/vessel.bron"
+grep -q '^stamp_sig ' "$source/vessel.bron"
 
 # Far peer receives vessel + manifest only — resins cross by Comlink fetch.
 cp "$source/vessel.bron" "$source/manifest.bron" "$far/"

@@ -29,6 +29,15 @@ fi
 "$vessel_bin" verify "$VESSEL" >/dev/null
 echo "STAMP ok Kumara stamp_sig verified"
 
+seal_bin="$ROOT/amphora/bin/vessel-seal"
+if ! test -x "$seal_bin"; then
+  mkdir -p "$ROOT/amphora/bin"
+  env RYE_ZIG="${RYE_ZIG:-$ROOT/vendor/zig-toolchain/zig}" \
+    "$ROOT/rye/bin/rye" build "$ROOT/amphora/vessel_seal.rye" -femit-bin="$seal_bin"
+fi
+"$seal_bin" open-check "$VESSEL" >/dev/null
+echo "SEAL ok Amber AEAD cargo opens"
+
 sh "$ROOT/tools/fixtures/amber_ring1_verify.sh" "$BUNDLE"
 
 restore=$(mktemp -d)

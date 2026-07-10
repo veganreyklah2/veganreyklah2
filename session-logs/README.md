@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.153745 | [Amphora Amber vessel seal](20260710-153745_amphora-amber-vessel-seal.md) | AEAD on cargo; seal then stamp; parity **228** |
 | 20260710.145843 | [Amphora Kumara vessel stamp](20260710-145843_amphora-kumara-vessel-stamp.md) | `stamp_sig` on pour/scrub; parity **227** |
 | 20260710.145313 | [Amphora forge pour + docs](20260710-145313_amphora-forge-pour-docs.md) | Live pour → Skate; crossing plainly + references |
 | 20260710.144833 | [Amphora device wire](20260710-144833_amphora-device-wire.md) | Virtio vessel fetch 15571/15572; parity **226** |

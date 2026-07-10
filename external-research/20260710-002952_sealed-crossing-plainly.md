@@ -6,8 +6,8 @@
 **Voice:** Rio 3
 **Editor:** Cursor · **Model:** Grok 4.5
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room research — explains **Landed** Amphora laps 1–3 (module `amphora/`); commerce and packaging horizons remain open
-**Last updated:** 2026-07-10 (affirmed after lap 3 + device wire)
+**Status:** Checkable-room research — explains **Landed** Amphora laps 1–3 + stamp + seal (module `amphora/`); commerce and packaging horizons remain open
+**Last updated:** 2026-07-10 (affirmed after Amber vessel seal `153745`)
 **Ground:** silo [`201612`](../active-designing/20260703-201612_the-sealed-crossing.md) · Amphora study [`201612`](20260703-201612_the-amphora-and-the-crossing.md) · crossing plainly [`145313`](20260710-145313_amphora-crossing-plainly.md) · resins plainly [`235931`](20260709-235931_resins-cellar-vessel-plainly.md) · amber seasons plainly [`002422`](20260710-002422_amber-seasons-plainly.md) · LEXICON Amphora · compass [`185112`](../foundations/20260706-185112_follow-our-compass.md)
 
 *Written by Kaeden and Rio 3 (Grok). Creative climb inside the jail — oldest vessel duty, kitchen voice. Affirmed in place when metal landed.*
@@ -21,7 +21,7 @@
 
 The duty already showed up five ways before it had a home: nightly bench packets, the offsite copy in 3-2-1, the pocket device's "hand across," packaging's fetch-by-digest, commerce's future delivery. One duty, five appearances — the sealed crossing.
 
-**Status today:** Landed through lap 3. Module home `amphora/`; witnesses prove parse, pour/scrub, hosted Comlink fetch, and virtio device wire. This page teaches what metal already holds.
+**Status today:** Landed through lap 3, Kumara stamp, and Amber AEAD seal. Module home `amphora/`; witnesses prove parse, pour/scrub, hosted Comlink fetch, virtio device wire, stamp, and seal. This page teaches what metal already holds.
 
 ---
 
@@ -38,7 +38,7 @@ Ancient amphorae were standardized shapes with painted shoulders and maker stamp
 | Part | Job |
 |------|-----|
 | **Vessel** | One file, whole |
-| **Seal** | Encryption under Amber's cellar law (horizon — plaintext vessel fields today) |
+| **Seal** | Encryption under Amber's cellar law — ChaCha20-Poly1305 on cargo (`seal_nonce` · `seal_tag` · `seal_cargo`); shoulder stays clear (**landed** `20260710.153745`) |
 | **Stamp** | Kumara signature — `stamp_sig` on canonical vessel body (**landed** `20260710.145843`); chrono `stamp` stays the one-clock field |
 | **Manifest** | Each enclosed thing: type-mark + digest (working / forever tiers per resins law) |
 | **Parent mark** | Lineage hash — today's zip-comment convention made a field |
@@ -75,9 +75,10 @@ Bron = letter (one record). Amphora = crate (many). MALA = coin inside. Comlink 
 
 ## What This Page Does Not Do
 
-- Does **not** open Amber encryption seal or Kumara vessel stamp (named horizons)  
 - Does **not** seat commerce delivery or Pond customs policy  
 - Does **not** replace the silo or the study — those remain the design and research homes  
+
+**Landed since first draft:** Kumara vessel stamp (`145843`) · Amber vessel seal (`153745`).
 
 ---
 
