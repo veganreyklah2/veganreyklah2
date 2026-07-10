@@ -516,6 +516,11 @@ let scribble_lap3 = run ["rishi/bin/rishi" "run" "tools/scribble_lap3.rish"]
 assert scribble_lap3.ok else "Scribble lap 2 witness failed"
 say "GREEN: Scribble lap 2 witness passed."
 
+say "witness suite: Scribble lap 3 (heading extract)…"
+let scribble_lap4 = run ["rishi/bin/rishi" "run" "tools/scribble_lap4.rish"]
+assert scribble_lap4.ok else "Scribble lap 3 witness failed"
+say "GREEN: Scribble lap 3 witness passed."
+
 say "witness suite: Lantern lap 1 (fixture + max_tokens)…"
 let lantern_lap1 = run ["rishi/bin/rishi" "run" "tools/lantern_lap1.rish"]
 assert lantern_lap1.ok else "Lantern lap 1 witness failed"
@@ -551,6 +556,11 @@ let lattice_lap3 = run ["rishi/bin/rishi" "run" "tools/lattice_lap3.rish"]
 assert lattice_lap3.ok else "Lattice lap 2 witness failed"
 say "GREEN: Lattice lap 2 witness passed."
 
+say "witness suite: Lattice lap 3 (reduce_sum)…"
+let lattice_lap4 = run ["rishi/bin/rishi" "run" "tools/lattice_lap4.rish"]
+assert lattice_lap4.ok else "Lattice lap 3 witness failed"
+say "GREEN: Lattice lap 3 witness passed."
+
 say "witness suite: Inference assist view (Skate fold)…"
 let assist_view = run ["rishi/bin/rishi" "run" "tools/inference_assist_view.rish"]
 assert assist_view.ok else "Inference assist view witness failed"
@@ -565,6 +575,11 @@ say "witness suite: Inference assist sight (carriage + assist fold)…"
 let assist_view_lap3 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap3.rish"]
 assert assist_view_lap3.ok else "Inference assist sight view witness failed"
 say "GREEN: Inference assist sight view witness passed."
+
+say "witness suite: Inference assist view lap 4 (rye+rish snippet kinds)…"
+let assist_view_lap4 = run ["rishi/bin/rishi" "run" "tools/inference_assist_view_lap4.rish"]
+assert assist_view_lap4.ok else "Inference assist view lap 4 witness failed"
+say "GREEN: Inference assist view lap 4 witness passed."
 
 say "witness suite: compass rose (navigation habit seated)…"
 let compass = run ["rishi/bin/rishi" "run" "tools/compass_rose.rish"]
@@ -760,3 +775,8 @@ say "witness suite: Anvil corpus view (query hits → Skate)…"
 let anvil_corpus_view = run ["rishi/bin/rishi" "run" "tools/inference_anvil_corpus_view.rish"]
 assert anvil_corpus_view.ok else "Anvil corpus view witness failed"
 say "GREEN: Anvil corpus view witness passed."
+
+say "witness suite: Scribble outline view (headings → Skate)…"
+let scribble_view = run ["rishi/bin/rishi" "run" "tools/inference_scribble_view.rish"]
+assert scribble_view.ok else "Scribble outline view witness failed"
+say "GREEN: Scribble outline view witness passed."

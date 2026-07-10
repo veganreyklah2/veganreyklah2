@@ -9,10 +9,11 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const sc = @import("scribble_core.rye");
 
-const scribble_version = "20260710.180747";
+const scribble_version = "20260710.182118";
 pub const fixture_path = "scribble/fixtures/sample.md";
 pub const session_fixture_path = "scribble/fixtures/session_snippets.md";
 pub const session_rish_fixture_path = "scribble/fixtures/session_rish_snippets.md";
+pub const outline_fixture_path = "scribble/fixtures/outline.md";
 
 fn welcome_parse() !void {
     const sample =
@@ -110,6 +111,39 @@ fn unwelcome_rish_snippet_overflow(io: std.Io) !void {
     print("scribble: rish snippet overflow refused\n", .{});
 }
 
+fn welcome_extract_headings(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, outline_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var headings: [sc.max_headings]sc.Heading = undefined;
+    const hn = try sc.extract_headings(blocks[0..n], &headings);
+    assert(hn == 3);
+    assert(headings[0].depth == 1);
+    assert(std.mem.eql(u8, headings[0].text_slice(), "Forge outline"));
+    assert(headings[1].depth == 2);
+    assert(std.mem.eql(u8, headings[1].text_slice(), "Lattice first"));
+    assert(headings[2].depth == 2);
+    assert(std.mem.eql(u8, headings[2].text_slice(), "Scribble next"));
+    print("scribble: headings extracted — count={d}\n", .{hn});
+}
+
+fn unwelcome_heading_overflow(io: std.Io) !void {
+    const cwd = Dir.cwd();
+    var buf: [sc.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, outline_fixture_path, &buf);
+    var blocks: [sc.max_blocks]sc.Block = undefined;
+    const n = try sc.parse_markdown(text, &blocks);
+    var tiny: [1]sc.Heading = undefined;
+    if (sc.extract_headings(blocks[0..n], &tiny)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.SnippetOverflow);
+    }
+    print("scribble: heading overflow refused\n", .{});
+}
+
 fn unwelcome_unclosed_fence() !void {
     const bad =
         \\```rye
@@ -134,10 +168,12 @@ pub fn main(init: std.process.Init) !u8 {
         try check_fixture(io);
         try welcome_extract(io);
         try welcome_extract_rish(io);
+        try welcome_extract_headings(io);
         try unwelcome_snippet_overflow(io);
         try unwelcome_rish_snippet_overflow(io);
+        try unwelcome_heading_overflow(io);
         try unwelcome_unclosed_fence();
-        print("scribble lap3: version {s} — GREEN\n", .{scribble_version});
+        print("scribble lap4: version {s} — GREEN\n", .{scribble_version});
         return 0;
     }
     print("usage: scribble selftest\n", .{});

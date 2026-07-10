@@ -1,6 +1,6 @@
-//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 0).
+//! scribble/scribble_core.rye — Markdown subset → value blocks (lap 3).
 //!
-//! Headings, paragraphs, fenced code (rye / rish / plain). No execution.
+//! Headings, paragraphs, fenced code (rye / rish / plain). Heading extract for outline view.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -183,6 +183,36 @@ fn extract_kind_snippets(blocks: []const Block, kind: BlockKind, out: []Snippet)
         @memcpy(snippet.text[0..body.len], body);
         snippet.text_len = @intCast(body.len);
         out[count] = snippet;
+        count += 1;
+    }
+    return count;
+}
+
+pub const Heading = struct {
+    depth: u32 = 0,
+    text: [max_block_text]u8 = .{0} ** max_block_text,
+    text_len: u32 = 0,
+
+    pub fn text_slice(self: *const Heading) []const u8 {
+        return self.text[0..self.text_len];
+    }
+};
+
+pub const max_headings: u32 = 16;
+
+/// Collect every heading title in source order — outline for Scribble view.
+pub fn extract_headings(blocks: []const Block, out: []Heading) ParseError!u32 {
+    var count: u32 = 0;
+    var i: u32 = 0;
+    while (i < blocks.len) : (i += 1) {
+        if (blocks[i].kind != .heading) continue;
+        if (count >= out.len) return error.SnippetOverflow;
+        const body = blocks[i].text_slice();
+        if (body.len > max_block_text) return error.BlockTooLarge;
+        var heading: Heading = .{ .depth = blocks[i].depth };
+        @memcpy(heading.text[0..body.len], body);
+        heading.text_len = @intCast(body.len);
+        out[count] = heading;
         count += 1;
     }
     return count;
