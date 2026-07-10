@@ -15,10 +15,12 @@ const me = @import("manifest_entry.rye");
 const kumara = @import("kumara.rye");
 const tally_copy = @import("tally_copy.rye");
 
-pub const amphora_vessel_version = "20260710.145843";
-pub const max_vessel_len: u32 = 4096;
+pub const amphora_vessel_version = "20260710.153745";
+pub const max_vessel_len: u32 = 8192;
 pub const max_cargo: u32 = 16;
 pub const stamp_sig_hex_len: u32 = kumara.signature_length * 2;
+pub const seal_nonce_hex_len: u32 = 24;
+pub const seal_tag_hex_len: u32 = 32;
 
 /// Witness seed for Amphora vessel stamps — distinct from kumara 0x42 / batch 0x60.
 const vessel_stamp_seed: [kumara.seed_length]u8 = .{0x62} ** kumara.seed_length;
@@ -30,6 +32,7 @@ pub const VesselFields = struct {
     parent: []const u8,
     stamp_sig: []const u8,
     cargo_count: u32,
+    sealed: bool,
 };
 
 fn trim_line(line: []const u8) []const u8 {
@@ -65,15 +68,80 @@ pub fn vessel_keypair() kumara.KeyPair {
     return kumara.keypair_from_seed(&vessel_stamp_seed);
 }
 
-/// Build canonical bytes: format · stamp · shoulder · parent · cargo lines (file order).
-/// Skips comments, blanks, and stamp_sig.
-pub fn write_canonical(text: []const u8, out: []u8) error{InvalidVessel, Overflow}!u32 {
-    var format: ?[]const u8 = null;
-    var stamp: ?[]const u8 = null;
-    var shoulder: ?[]const u8 = null;
-    var parent: ?[]const u8 = null;
-    var cargo_lines: [max_cargo][]const u8 = undefined;
-    var cargo_count: u32 = 0;
+fn require_lower_hex(value: []const u8, want_len: u32) error{InvalidVessel}!void {
+    if (value.len != want_len) return error.InvalidVessel;
+    var i: u32 = 0;
+    while (i < value.len) : (i += 1) {
+        if (!is_lower_hex(value[i])) return error.InvalidVessel;
+    }
+}
+
+fn require_even_lower_hex(value: []const u8) error{InvalidVessel}!void {
+    if (value.len == 0 or value.len % 2 != 0) return error.InvalidVessel;
+    var i: u32 = 0;
+    while (i < value.len) : (i += 1) {
+        if (!is_lower_hex(value[i])) return error.InvalidVessel;
+    }
+}
+
+fn append_kv(out: []u8, off: *u32, key: []const u8, value: []const u8) error{Overflow}!void {
+    const need = key.len + 1 + value.len + 1;
+    if (off.* + need > out.len) return error.Overflow;
+    tally_copy.copy_disjoint(u8, out[off.*..][0..key.len], key);
+    off.* += @intCast(key.len);
+    out[off.*] = ' ';
+    off.* += 1;
+    tally_copy.copy_disjoint(u8, out[off.*..][0..value.len], value);
+    off.* += @intCast(value.len);
+    out[off.*] = '\n';
+    off.* += 1;
+}
+
+const CanonicalParts = struct {
+    format: []const u8,
+    stamp: []const u8,
+    shoulder: []const u8,
+    parent: []const u8,
+    seal_nonce: ?[]const u8,
+    seal_tag: ?[]const u8,
+    seal_cargo: ?[]const u8,
+    cargo_lines: [max_cargo][]const u8,
+    cargo_count: u32,
+    sealed: bool,
+};
+
+fn take_canon_kv(parts: *CanonicalParts, key: []const u8, value: []const u8) error{InvalidVessel}!void {
+    if (std.mem.eql(u8, key, "format")) {
+        parts.format = value;
+    } else if (std.mem.eql(u8, key, "stamp")) {
+        parts.stamp = value;
+    } else if (std.mem.eql(u8, key, "shoulder")) {
+        parts.shoulder = value;
+    } else if (std.mem.eql(u8, key, "parent")) {
+        if (value.len != me.digest_hex_len) return error.InvalidVessel;
+        parts.parent = value;
+    } else if (std.mem.eql(u8, key, "seal_nonce")) {
+        try require_lower_hex(value, seal_nonce_hex_len);
+        parts.seal_nonce = value;
+    } else if (std.mem.eql(u8, key, "seal_tag")) {
+        try require_lower_hex(value, seal_tag_hex_len);
+        parts.seal_tag = value;
+    } else if (std.mem.eql(u8, key, "seal_cargo")) {
+        try require_even_lower_hex(value);
+        parts.seal_cargo = value;
+    } else return error.InvalidVessel;
+}
+
+fn scan_canonical_parts(text: []const u8, parts: *CanonicalParts) error{InvalidVessel, Overflow}!void {
+    parts.format = "";
+    parts.stamp = "";
+    parts.shoulder = "";
+    parts.parent = "";
+    parts.seal_nonce = null;
+    parts.seal_tag = null;
+    parts.seal_cargo = null;
+    parts.cargo_count = 0;
+    parts.sealed = false;
 
     var lines = std.mem.splitScalar(u8, text, '\n');
     while (lines.next()) |raw| {
@@ -81,45 +149,52 @@ pub fn write_canonical(text: []const u8, out: []u8) error{InvalidVessel, Overflo
         if (line.len == 0 or line[0] == '#') continue;
         if (std.mem.startsWith(u8, line, "stamp_sig ")) continue;
         if (std.mem.startsWith(u8, line, "cargo ")) {
-            const rest = line["cargo ".len..];
-            _ = me.parse_manifest_line(rest) catch return error.InvalidVessel;
-            if (cargo_count >= max_cargo) return error.Overflow;
-            cargo_lines[cargo_count] = line;
-            cargo_count += 1;
+            _ = me.parse_manifest_line(line["cargo ".len..]) catch return error.InvalidVessel;
+            if (parts.cargo_count >= max_cargo) return error.Overflow;
+            parts.cargo_lines[parts.cargo_count] = line;
+            parts.cargo_count += 1;
             continue;
         }
         const space = std.mem.indexOfScalar(u8, line, ' ') orelse return error.InvalidVessel;
-        const key = line[0..space];
         const value = trim_line(line[space + 1 ..]);
         if (value.len == 0) return error.InvalidVessel;
-        if (std.mem.eql(u8, key, "format")) format = value else if (std.mem.eql(u8, key, "stamp")) stamp = value else if (std.mem.eql(u8, key, "shoulder")) shoulder = value else if (std.mem.eql(u8, key, "parent")) {
-            if (value.len != me.digest_hex_len) return error.InvalidVessel;
-            parent = value;
-        } else return error.InvalidVessel;
+        try take_canon_kv(parts, line[0..space], value);
     }
-    if (format == null or stamp == null or shoulder == null or parent == null) return error.InvalidVessel;
-    if (cargo_count == 0) return error.InvalidVessel;
+    if (parts.format.len == 0 or parts.stamp.len == 0 or parts.shoulder.len == 0 or parts.parent.len == 0) {
+        return error.InvalidVessel;
+    }
+    const sealed = parts.seal_nonce != null or parts.seal_tag != null or parts.seal_cargo != null;
+    if (sealed) {
+        if (parts.seal_nonce == null or parts.seal_tag == null or parts.seal_cargo == null) return error.InvalidVessel;
+        if (parts.cargo_count != 0) return error.InvalidVessel;
+    } else if (parts.cargo_count == 0) return error.InvalidVessel;
+    parts.sealed = sealed;
+}
 
+/// Build canonical bytes: format · stamp · shoulder · parent · cargo | seal_* .
+/// Skips comments, blanks, and stamp_sig. Seal and clear cargo are mutually exclusive.
+pub fn write_canonical(text: []const u8, out: []u8) error{InvalidVessel, Overflow}!u32 {
+    var parts: CanonicalParts = undefined;
+    try scan_canonical_parts(text, &parts);
     var off: u32 = 0;
-    const parts = [_][]const u8{
-        "format ", format.?, "\n",
-        "stamp ", stamp.?, "\n",
-        "shoulder ", shoulder.?, "\n",
-        "parent ", parent.?, "\n",
-    };
-    for (parts) |p| {
-        if (off + p.len > out.len) return error.Overflow;
-        tally_copy.copy_disjoint(u8, out[off..][0..p.len], p);
-        off += @intCast(p.len);
-    }
-    var i: u32 = 0;
-    while (i < cargo_count) : (i += 1) {
-        const c = cargo_lines[i];
-        if (off + c.len + 1 > out.len) return error.Overflow;
-        tally_copy.copy_disjoint(u8, out[off..][0..c.len], c);
-        off += @intCast(c.len);
-        out[off] = '\n';
-        off += 1;
+    try append_kv(out, &off, "format", parts.format);
+    try append_kv(out, &off, "stamp", parts.stamp);
+    try append_kv(out, &off, "shoulder", parts.shoulder);
+    try append_kv(out, &off, "parent", parts.parent);
+    if (parts.sealed) {
+        try append_kv(out, &off, "seal_nonce", parts.seal_nonce.?);
+        try append_kv(out, &off, "seal_tag", parts.seal_tag.?);
+        try append_kv(out, &off, "seal_cargo", parts.seal_cargo.?);
+    } else {
+        var i: u32 = 0;
+        while (i < parts.cargo_count) : (i += 1) {
+            const c = parts.cargo_lines[i];
+            if (off + c.len + 1 > out.len) return error.Overflow;
+            tally_copy.copy_disjoint(u8, out[off..][0..c.len], c);
+            off += @intCast(c.len);
+            out[off] = '\n';
+            off += 1;
+        }
     }
     return off;
 }
@@ -130,6 +205,9 @@ pub fn parse_vessel(text: []const u8, out: *VesselFields) error{InvalidVessel}!v
     var shoulder_set = false;
     var parent_set = false;
     var stamp_sig_set = false;
+    var seal_nonce_set = false;
+    var seal_tag_set = false;
+    var seal_cargo_set = false;
     var cargo_count: u32 = 0;
 
     var lines = std.mem.splitScalar(u8, text, '\n');
@@ -162,20 +240,30 @@ pub fn parse_vessel(text: []const u8, out: *VesselFields) error{InvalidVessel}!v
             out.parent = value;
             parent_set = true;
         } else if (std.mem.eql(u8, key, "stamp_sig")) {
-            if (value.len != stamp_sig_hex_len) return error.InvalidVessel;
-            var i: u32 = 0;
-            while (i < value.len) : (i += 1) {
-                if (!is_lower_hex(value[i])) return error.InvalidVessel;
-            }
+            try require_lower_hex(value, stamp_sig_hex_len);
             out.stamp_sig = value;
             stamp_sig_set = true;
+        } else if (std.mem.eql(u8, key, "seal_nonce")) {
+            try require_lower_hex(value, seal_nonce_hex_len);
+            seal_nonce_set = true;
+        } else if (std.mem.eql(u8, key, "seal_tag")) {
+            try require_lower_hex(value, seal_tag_hex_len);
+            seal_tag_set = true;
+        } else if (std.mem.eql(u8, key, "seal_cargo")) {
+            try require_even_lower_hex(value);
+            seal_cargo_set = true;
         } else {
             return error.InvalidVessel;
         }
     }
     if (!format_set or !stamp_set or !shoulder_set or !parent_set or !stamp_sig_set) return error.InvalidVessel;
-    if (cargo_count == 0) return error.InvalidVessel;
+    const sealed = seal_nonce_set or seal_tag_set or seal_cargo_set;
+    if (sealed) {
+        if (!seal_nonce_set or !seal_tag_set or !seal_cargo_set) return error.InvalidVessel;
+        if (cargo_count != 0) return error.InvalidVessel;
+    } else if (cargo_count == 0) return error.InvalidVessel;
     out.cargo_count = cargo_count;
+    out.sealed = sealed;
 }
 
 pub fn verify_vessel_stamp(text: []const u8) error{InvalidVessel, VerifyFailed, Overflow, BadHex}!void {
@@ -253,12 +341,20 @@ fn run_parse_file(io: std.Io, path: []const u8) !u8 {
     const text = try cwd.readFile(io, path, &buf);
     var fields: VesselFields = undefined;
     try parse_vessel(text, &fields);
-    print("amphora: vessel parse format={s} stamp={s} shoulder={s} cargo={d} stamped\n", .{
-        fields.format,
-        fields.stamp,
-        fields.shoulder,
-        fields.cargo_count,
-    });
+    if (fields.sealed) {
+        print("amphora: vessel parse format={s} stamp={s} shoulder={s} sealed stamped\n", .{
+            fields.format,
+            fields.stamp,
+            fields.shoulder,
+        });
+    } else {
+        print("amphora: vessel parse format={s} stamp={s} shoulder={s} cargo={d} stamped\n", .{
+            fields.format,
+            fields.stamp,
+            fields.shoulder,
+            fields.cargo_count,
+        });
+    }
     print("GREEN: Amphora vessel — file parse ok.\n", .{});
     return 0;
 }
@@ -275,6 +371,7 @@ fn run_selftest(io: std.Io) !u8 {
     assert(fields.parent.len == me.digest_hex_len);
     assert(fields.stamp_sig.len == stamp_sig_hex_len);
     assert(fields.cargo_count == 2);
+    assert(!fields.sealed);
     try verify_vessel_stamp(text);
 
     // Unwelcome: tampered cargo refuses verify.

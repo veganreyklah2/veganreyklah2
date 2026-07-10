@@ -21,7 +21,7 @@ Pour an Amber season into an Amphora vessel. Carry home → dock → far (three 
 
 ## The Everyday Picture
 
-You finish a cellar season. The jars stay home under Amber. For the road you pour their catalog and digests into a traveling amphora: shoulder readable, parent pointing home, cargo lines naming each resin. At the far dock the vessel arrives first; the bytes may follow later over the sea (Comlink). When every digest matches, the scrub restores the tree bit-faithful. Tamper one byte and the whole crossing refuses.
+You finish a cellar season. The jars stay home under Amber. For the road you pour their catalog and digests into a traveling amphora: shoulder readable, parent pointing home, cargo sealed under Amber AEAD, then stamped. At the far dock the vessel arrives first; the bytes may follow later over the sea (Comlink). When every digest matches, the scrub restores the tree bit-faithful. Tamper one byte and the whole crossing refuses.
 
 Realidream's forge view folds that poured bundle onto a Skate frame — cellar format, resin count, vessel cargo, shoulder — so a person sees the crossing without opening Dexter.
 
@@ -36,6 +36,7 @@ Realidream's forge view folds that poured bundle onto a Skate frame — cellar f
 | **3 hosted** | `20260710.144309` | `tools/amphora_lap3.rish` | Fetch-by-digest on **38494**/**38495**; scrub on arrival |
 | **3 device** | `20260710.144833` | `tools/amphora_device_wire.rish` | Same wire bytes over virtio **15571**/**15572** |
 | **Stamp (landed)** | `20260710.145843` | `tools/amphora_vessel_stamp.rish` | Kumara `stamp_sig`; pour + scrub verify |
+| **Seal (landed)** | `20260710.153745` | `tools/amphora_vessel_seal.rish` | Amber AEAD on cargo; seal then stamp; tamper refused |
 | **Forge pour** | `20260710.145313` | `tools/realidream_forge_view.rish` | Live pour → Skate frame (parity **221** path deepened) |
 
 ---
@@ -50,8 +51,8 @@ We study the living world; we write our own modules. No third-party code enters 
 | Sealed archive bag | **BagIt** (Library of Congress / digital preservation community) | vessel + parent + cargo lines; wreck rule |
 | Offline DAG slice | **`git bundle`** | Amphora as traveling crate; Mantra remains history |
 | Whole closures | **Nix** `nix copy` / closures (Eelco Dolstra et al.; LGPL study boundary — ideas only) | pour carries complete resin set for the season |
-| Encrypted backup | **restic** · **borg** | Amber cellar seal law; Amphora encryption seal still horizon |
-| Small crypto tools | **age** (Filippo Valsorda) · **minisign** (Frank Denis) | Kumara stamp kinship; vessel stamp horizon |
+| Encrypted backup | **restic** · **borg** | Amber cellar seal law; Amphora vessel AEAD seal (**landed** `153745`) |
+| Small crypto tools | **age** (Filippo Valsorda) · **minisign** (Frank Denis) | Kumara stamp kinship; vessel `stamp_sig` (**landed** `145843`) |
 | 3-2-1 backup | Operations lore (widely taught; no single author) | lap 2 `THREE_COPIES` — home · dock · far |
 | Datagram carriage | Hosted UDP sealed messages; packaging-over-wire patterns | **Comlink** `wire_format` · ports **38494**/**38495** |
 | Device virtio lab | QEMU virtio-net guest patterns (public QEMU docs) | freestanding guests · ports **15571**/**15572** |
@@ -68,12 +69,11 @@ GPL gratitude projects (SixOS, River, Damus, …) stay gitlink-or-docs-only per 
 
 ## Horizons (Named, Not Opened Here)
 
-- Amber **encryption seal** on the vessel file itself  
 - Large-resin **chunking** beyond one datagram  
 - Pond **customs** policy at receipt  
 - Commerce delivery of purchased work  
 
-**Landed since this page:** Kumara `stamp_sig` on `vessel.bron` (`20260710.145843`, parity **227**).
+**Landed since this page:** Kumara `stamp_sig` (`20260710.145843`, parity **227**) · Amber AEAD vessel seal (`20260710.153745`, parity **228**).
 
 ---
 

@@ -16,8 +16,9 @@ const c = std.c;
 const vfw = @import("vessel_fetch_wire.rye");
 const wf = @import("wire_format.rye");
 const tally_copy = @import("tally_copy.rye");
+const vessel_seal = @import("vessel_seal.rye");
 
-const vfd_version = "20260710.144309";
+const vfd_version = "20260710.153745";
 
 const AF_INET: c_uint = 2;
 const SOCK_DGRAM: c_uint = 2;
@@ -202,9 +203,9 @@ fn run_source(io: std.Io, bundle_dir: []const u8) !u8 {
     return 0;
 }
 
-fn parse_cargo_digests(vessel_text: []const u8, out: *[8][64]u8) !u32 {
+fn parse_cargo_lines(text: []const u8, out: *[8][64]u8) !u32 {
     var count: u32 = 0;
-    var lines = std.mem.splitScalar(u8, vessel_text, '\n');
+    var lines = std.mem.splitScalar(u8, text, '\n');
     while (lines.next()) |raw| {
         const line = std.mem.trim(u8, raw, " \t\r\n");
         if (!std.mem.startsWith(u8, line, "cargo ")) continue;
@@ -219,6 +220,15 @@ fn parse_cargo_digests(vessel_text: []const u8, out: *[8][64]u8) !u32 {
     }
     if (count == 0) return error.BadVessel;
     return count;
+}
+
+fn parse_cargo_digests(vessel_text: []const u8, out: *[8][64]u8) !u32 {
+    if (std.mem.indexOf(u8, vessel_text, "seal_cargo ") != null) {
+        var plain: [vessel_seal.max_seal_plain]u8 = undefined;
+        const plain_len = try vessel_seal.open_cargo_plain(vessel_text, &plain);
+        return parse_cargo_lines(plain[0..plain_len], out);
+    }
+    return parse_cargo_lines(vessel_text, out);
 }
 
 fn fetch_one(digest_hex: []const u8, out_bytes: *[vfw.max_resin_bytes]u8) !u32 {

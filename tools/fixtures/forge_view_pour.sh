@@ -16,9 +16,10 @@ sh "$ROOT/tools/fixtures/amphora_pour.sh" "$SRC" "$OUT" "$STAMP"
 test -f "$OUT/manifest.bron"
 test -f "$OUT/vessel.bron"
 test -d "$OUT/resins"
-cargo=$(grep -c '^cargo ' "$OUT/vessel.bron")
+grep -q '^seal_nonce ' "$OUT/vessel.bron"
+grep -q '^seal_cargo ' "$OUT/vessel.bron"
+grep -q '^stamp_sig ' "$OUT/vessel.bron"
 entries=$(grep -c '^entry ' "$OUT/manifest.bron")
-test "$cargo" -eq 2
 test "$entries" -eq 2
 
-echo "FORGE_POUR ok bundle=$OUT stamp=$STAMP cargo=$cargo entries=$entries"
+echo "FORGE_POUR ok bundle=$OUT stamp=$STAMP sealed entries=$entries"

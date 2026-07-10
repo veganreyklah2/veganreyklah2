@@ -613,15 +613,23 @@ fn compose_forge_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     if (entry_count != 2) return error.BadForgeFixture;
     const digest = hello_digest orelse return error.BadForgeFixture;
 
-    var vessel_buf: [1024]u8 = undefined;
+    var vessel_buf: [2048]u8 = undefined;
     const vessel_text = try cwd.readFile(io, amphora_vessel_fixture, &vessel_buf);
     const shoulder = field_value(vessel_text, "shoulder") orelse return error.BadVesselFixture;
+    const seal_cargo = field_value(vessel_text, "seal_cargo");
     const cargo_count_text = blk: {
         var count: u32 = 0;
         var vlines = std.mem.splitScalar(u8, vessel_text, '\n');
         while (vlines.next()) |vraw| {
             const vline = std.mem.trim(u8, vraw, " \t\r\n");
             if (std.mem.startsWith(u8, vline, "cargo ")) count += 1;
+        }
+        if (seal_cargo != null) {
+            // Sealed vessel: clear cargo is gone; resins count is the poured cargo count.
+            if (count != 0) return error.BadVesselFixture;
+            if (field_value(vessel_text, "seal_nonce") == null) return error.BadVesselFixture;
+            if (field_value(vessel_text, "seal_tag") == null) return error.BadVesselFixture;
+            break :blk entry_count;
         }
         break :blk count;
     };

@@ -40,14 +40,23 @@ PARENT=$(openssl dgst -sha3-256 -r "$MANIFEST" | awk '{print $1}')
 cargo_count=$(grep -c '^cargo ' "$VESSEL" || true)
 test "$cargo_count" -ge 1 || { echo "FAIL pour produced no cargo"; exit 1; }
 
-# Kumara vessel stamp — sign canonical body in place.
+# Kumara vessel stamp — Amber seal first, then sign canonical sealed body.
 vessel_bin="$ROOT/amphora/bin/vessel-core"
+seal_bin="$ROOT/amphora/bin/vessel-seal"
 if ! test -x "$vessel_bin"; then
   mkdir -p "$ROOT/amphora/bin"
   env RYE_ZIG="${RYE_ZIG:-$ROOT/vendor/zig-toolchain/zig}" \
     "$ROOT/rye/bin/rye" build "$ROOT/amphora/vessel_core.rye" -femit-bin="$vessel_bin"
 fi
+if ! test -x "$seal_bin"; then
+  mkdir -p "$ROOT/amphora/bin"
+  env RYE_ZIG="${RYE_ZIG:-$ROOT/vendor/zig-toolchain/zig}" \
+    "$ROOT/rye/bin/rye" build "$ROOT/amphora/vessel_seal.rye" -femit-bin="$seal_bin"
+fi
+"$seal_bin" seal "$VESSEL" >/dev/null
+grep -q '^seal_nonce ' "$VESSEL" || { echo "FAIL missing seal_nonce after seal"; exit 1; }
+grep -q '^seal_cargo ' "$VESSEL" || { echo "FAIL missing seal_cargo after seal"; exit 1; }
 "$vessel_bin" sign "$VESSEL" >/dev/null
 grep -q '^stamp_sig ' "$VESSEL" || { echo "FAIL missing stamp_sig after sign"; exit 1; }
 
-echo "POUR ok vessel=$VESSEL parent=$PARENT cargo=$cargo_count stamped"
+echo "POUR ok vessel=$VESSEL parent=$PARENT cargo=$cargo_count sealed stamped"
