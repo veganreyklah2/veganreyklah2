@@ -21,6 +21,11 @@ let r = run ["sh" "-c" "test -f context/TWO_ROOMS.md && echo ROOMS_OK"]
 assert r.ok else "TWO_ROOMS missing"
 assert r.out contains "ROOMS_OK" else "two-rooms check failed"
 
+say "compass rose: kitchen twin seated in LEXICON…"
+let kt = run ["sh" "-c" "grep -q 'Kitchen twin' context/LEXICON.md && echo KITCHEN_OK"]
+assert kt.ok else "Kitchen twin LEXICON row missing"
+assert kt.out contains "KITCHEN_OK" else "kitchen twin check failed"
+
 say "compass rose: active-designing ladder…"
 let a = run ["sh" "-c" "test -f active-designing/README.md && echo LADDER_OK"]
 assert a.ok else "active-designing README missing"
@@ -116,4 +121,4 @@ let cm = run ["sh" "-c" "test -d granary && test -d mandi && test -f context/spe
 assert cm.ok else "Granary/Mandi commerce packet missing"
 assert cm.out contains "COMMERCE_OK" else "commerce packet check failed"
 
-say "GREEN: compass rose — foundations, grain, two rooms, ladder, now, order; plain stories; pointer hygiene; Greencandy; sight; inference lap 0; Granary/Mandi commerce."
+say "GREEN: compass rose — foundations, grain, two rooms, kitchen twin, ladder, now, order; plain stories; pointer hygiene; Greencandy; sight; inference lap 0; Granary/Mandi commerce."

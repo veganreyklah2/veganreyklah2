@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Granary settle view `173353`; Mandi settle view `172955`; Granary weave settle `172625`; commerce compass hygiene `171707`; parity **245**)
+**Last updated:** 2026-07-10 (Kitchen twin LEXICON `173752`; Granary settle view `173353`; Mandi settle view `172955`; parity **245**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -124,6 +124,7 @@
 | **55** | **Granary weave settle** | **Landed** | `weave-settle-v1` binds Exchange receipt + MALA/WOV payment; parity **243**; stamp `172625` — [`172625`](../context/specs/20260710-172625_granary-weave-settle-seated.md) |
 | **56** | **Mandi settle view** | **Landed** | Vessel settle → Skate `mandisettletest`; six-line frame; parity **244**; stamp `172955` |
 | **57** | **Granary settle view** | **Landed** | Weave settle → Skate `settlevie`; six-line frame; parity **245**; stamp `173353` |
+| **58** | **Kitchen twin LEXICON** | **Landed** | Plain-companion gloss seated; compass rose asserts; stamp `173752` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; soak (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
