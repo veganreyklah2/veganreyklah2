@@ -1,7 +1,7 @@
 # Anvil — The Local Forge
 
 **Language:** EN
-**Last updated:** 2026-07-10 (corpus view `181653`; query lap 1 `134200`; parity **259**)
+**Last updated:** 2026-07-10 (corpus prefix view `182502`; corpus view `181653`; parity **265**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — corpus catalog + query + Skate view green; LoRA/training horizon
 

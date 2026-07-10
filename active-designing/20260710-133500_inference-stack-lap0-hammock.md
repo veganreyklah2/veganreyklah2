@@ -5,7 +5,7 @@
 **Stamp:** `20260710.133500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 0 green; climb `182118` Lattice reduce · Scribble headings · scribble view · assist rye/rish (parity through **263**)
+**Status:** Checkable-room hammock — lap 0 green; climb `182502` Lattice scale · corpus prefix · assist sight kinds · exception view (parity through **267**)
 **Ground:** [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · prior brief [`20260620-020712_scribble-lantern-and-lattice.md`](20260620-020712_scribble-lantern-and-lattice.md) · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
 *Written by Kaeden and Rio 3.*

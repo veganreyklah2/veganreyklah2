@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 3 selftest (matmul · add · reshape · reduce_sum).
+//! lattice/lattice.rye — Lattice lap 4 selftest (matmul · add · reshape · reduce · scale).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.182118";
+const lattice_version = "20260710.182502";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -84,6 +84,19 @@ fn welcome_reduce_sum() !void {
     print("lattice: reduce_sum 2x2 green — sum={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_scale() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.scale(&a, 2.0, &out);
+    assert(out.at(0, 0) == 2);
+    assert(out.at(1, 1) == 8);
+    print("lattice: scale 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -118,6 +131,17 @@ fn unwelcome_reduce_shape() !void {
     print("lattice: reduce shape mismatch refused\n", .{});
 }
 
+fn unwelcome_scale_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    if (lc.scale(&a, 3.0, &b)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: scale shape mismatch refused\n", .{});
+}
+
 fn unwelcome_dim_overflow() !void {
     if (lc.Matrix.init(9, 2)) |_| {
         return error.UnwelcomePassed;
@@ -134,11 +158,13 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_add();
         try welcome_reshape();
         try welcome_reduce_sum();
+        try welcome_scale();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
+        try unwelcome_scale_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap3: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap4: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
