@@ -1,7 +1,7 @@
 # Anvil — Local Forge Corpus
 
 **Language:** EN
-**Last updated:** 2026-07-10 (corpus rye prefix view `190800`; parity **281**)
+**Last updated:** 2026-07-10 (corpus tools prefix view `192749`; parity **293**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — corpus catalog + query + Skate views green; LoRA and training remain horizon
 
@@ -17,6 +17,7 @@ Anvil names training and fine-tuning on our own corpus. Lap 0 catalogs `.rye` / 
 | **prefix view** | `path_prefix pond/` → five-line Skate frame | parity **265** · `tools/inference_anvil_corpus_prefix_view.rish` |
 | **rish view** | `kind rish` → five-line Skate frame | parity **269** · `tools/inference_anvil_corpus_rish_view.rish` |
 | **rye prefix view** | `kind rye` + `path_prefix pond/` → five-line Skate frame | parity **281** · `tools/inference_anvil_corpus_rye_prefix_view.rish` (`190800`) |
+| **tools prefix view** | `path_prefix tools/` → five-line Skate frame | parity **293** · `tools/inference_anvil_corpus_tools_prefix_view.rish` (`192749`) |
 
 ## Layout
 
@@ -32,6 +33,7 @@ rishi/bin/rishi run tools/inference_anvil_corpus_view.rish
 rishi/bin/rishi run tools/inference_anvil_corpus_prefix_view.rish
 rishi/bin/rishi run tools/inference_anvil_corpus_rish_view.rish
 rishi/bin/rishi run tools/inference_anvil_corpus_rye_prefix_view.rish
+rishi/bin/rishi run tools/inference_anvil_corpus_tools_prefix_view.rish
 ```
 
 *May the forge train only on what we wrote.*

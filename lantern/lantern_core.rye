@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 7).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 8).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence (response + request pin).
+//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence, prompt pin.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -30,6 +30,7 @@ pub const LanternError = error{
     BadTopP,
     StopSequenceMismatch,
     BadStopSequence,
+    PromptMismatch,
 };
 
 pub const Request = struct {
@@ -118,6 +119,9 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     }
     if (field_value(fixture_text, "stop_sequence")) |pinned| {
         if (!std.mem.eql(u8, req.stop_sequence, pinned)) return error.StopSequenceMismatch;
+    }
+    if (field_value(fixture_text, "prompt")) |pinned| {
+        if (!std.mem.eql(u8, req.prompt, pinned)) return error.PromptMismatch;
     }
     var resp = try parse_fixture(fixture_text);
     if (resp.tokens_out <= req.max_tokens) return resp;
