@@ -24,6 +24,16 @@ Mandi names the offer: a signed `vessel-listing-v1` binds `vessel_parent` + MALA
 rishi/bin/rishi run tools/mandi_lap1.rish
 ```
 
+## Floor view (lap 2)
+
+Citizen window on Skate — five lines: floor title, vessel parent prefix, price, receipt prefix, fold green. Lying listing refused.
+
+```sh
+rishi/bin/rishi run tools/mandi_floor_view.rish
+```
+
+Witness → parity **240** (`mandiviewtest`).
+
 ## Held
 
 Live WOV settlement of a Mandi sale waits its own gate.
