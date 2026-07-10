@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 23 selftest (ops through sigmoid · softmax).
+//! lattice/lattice.rye — Lattice lap 25 selftest (ops through tanh · gelu).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.214145";
+const lattice_version = "20260710.215613";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -387,6 +387,36 @@ fn welcome_softmax() !void {
     print("lattice: softmax 1x4 green — p0={d}\n", .{out.at(0, 0)});
 }
 
+fn welcome_tanh() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.tanh(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 0);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: tanh 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
+fn welcome_gelu() !void {
+    var src = try lc.Matrix.init(2, 2);
+    src.set(0, 0, 0);
+    src.set(0, 1, 0);
+    src.set(1, 0, 0);
+    src.set(1, 1, 0);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.gelu(&src, &out);
+    assert(out.at(0, 0) == 0);
+    assert(out.at(0, 1) == 0);
+    assert(out.at(1, 0) == 0);
+    assert(out.at(1, 1) == 0);
+    print("lattice: gelu 2x2 green — o00={d}\n", .{out.at(0, 0)});
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -619,6 +649,28 @@ fn unwelcome_softmax_shape() !void {
     print("lattice: softmax shape mismatch refused\n", .{});
 }
 
+fn unwelcome_tanh_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.tanh(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: tanh shape mismatch refused\n", .{});
+}
+
+fn unwelcome_gelu_shape() !void {
+    var src = try lc.Matrix.init(2, 2);
+    var out = try lc.Matrix.init(2, 1);
+    if (lc.gelu(&src, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: gelu shape mismatch refused\n", .{});
+}
+
 fn unwelcome_shape_mismatch() !void {
     var a = try lc.Matrix.init(2, 3);
     var b = try lc.Matrix.init(2, 2);
@@ -734,6 +786,8 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_relu();
         try welcome_sigmoid();
         try welcome_softmax();
+        try welcome_tanh();
+        try welcome_gelu();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -760,8 +814,10 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_relu_shape();
         try unwelcome_sigmoid_shape();
         try unwelcome_softmax_shape();
+        try unwelcome_tanh_shape();
+        try unwelcome_gelu_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap23: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap25: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});

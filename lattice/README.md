@@ -1,9 +1,9 @@
 # Lattice — Tensors in Tally Gardens
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 23 sigmoid · softmax `214145`; parity **339**/**343**)
+**Last updated:** 2026-07-10 (lap 25 tanh · gelu `215613`; parity **347**/**351**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–21 green (ops through pow · relu)
+**Status:** Checkable-room module — laps 0–25 green (ops through tanh · gelu)
 
 ---
 
@@ -33,17 +33,21 @@ Lattice holds explicit tensor math in bounded gardens. Build order places **Latt
 | **19** | Elementwise `log` · non-positive refuse | parity **327** · `tools/lattice_lap20.rish` (`213317`) |
 | **20** | Elementwise `pow` · negative refuse | parity **331** · `tools/lattice_lap21.rish` (`213738`) |
 | **21** | Elementwise `relu` · shape assert | parity **335** · `tools/lattice_lap22.rish` (`213738`) |
+| **22** | Elementwise `sigmoid` · shape assert | parity **339** · `tools/lattice_lap23.rish` (`214145`) |
+| **23** | Row-wise `softmax` · shape assert | parity **343** · `tools/lattice_lap24.rish` (`214145`) |
+| **24** | Elementwise `tanh` · shape assert | parity **347** · `tools/lattice_lap25.rish` (`215613`) |
+| **25** | Elementwise `gelu` (tanh approx) · shape assert | parity **351** · `tools/lattice_lap26.rish` (`215613`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through pow · relu |
+| [`lattice_core.rye`](lattice_core.rye) | Matrix ops through tanh · gelu |
 | [`lattice.rye`](lattice.rye) | Selftest binary |
 
 ```bash
-rishi/bin/rishi run tools/lattice_lap21.rish
-rishi/bin/rishi run tools/lattice_lap22.rish
+rishi/bin/rishi run tools/lattice_lap25.rish
+rishi/bin/rishi run tools/lattice_lap26.rish
 ```
 
 *May the numbers stay honest before the model runs.*

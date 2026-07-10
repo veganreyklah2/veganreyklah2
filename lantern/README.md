@@ -1,13 +1,13 @@
 # Lantern — Local Inference in Pond
 
 **Language:** EN
-**Last updated:** 2026-07-10 (lap 21 stopped_reason pins `214145`; parity **342**/**346**)
+**Last updated:** 2026-07-10 (lap 23 stream pins `215613`; parity **350**/**354**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room module — laps 0–19 green (through dual-model allow · require_model pin)
+**Status:** Checkable-room module — laps 0–23 green (through stream pin)
 
 ---
 
-Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, a request-side `stop_sequence` pin, a request-side `prompt` pin, a request-side `max_tokens` pin, a response `text_pin`, a dedicated `TemperatureMismatch` pin, a seed-only pin fixture, `TopPMismatch` distinct from range `BadTopP`, an `err_stop` request pin, a `length_stop` request pin, empty allow-list refuse, an `allow_count` pin, dual-model allow welcome, then a `require_model` pin. Weights named by hash and Caravan supervision follow on later laps.
+Lantern serves bounded request/response inference inside Pond. Each lap deepens the contract: a pinned fixture completion, a `max_tokens` budget, a model-hash allow-list, `temperature` and `seed`, `top_p`, `err_stop`, `stop_sequence` on the response, a request-side `stop_sequence` pin, a request-side `prompt` pin, a request-side `max_tokens` pin, a response `text_pin`, a dedicated `TemperatureMismatch` pin, a seed-only pin fixture, `TopPMismatch` distinct from range `BadTopP`, an `err_stop` request pin, a `length_stop` request pin, empty allow-list refuse, an `allow_count` pin, dual-model allow welcome, a `require_model` pin, `stopped_reason` pins, then a `stream` pin. Weights named by hash and Caravan supervision follow on later laps.
 
 | Lap | Claim | Witness |
 |-----|--------|---------|
@@ -31,12 +31,16 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | **17** | `allow_count` · pin + `AllowCountMismatch` | parity **330** · `tools/lantern_lap17.rish` (`213317`) |
 | **18** | Dual-model allow · assist hash welcome | parity **334** · `tools/lantern_lap18.rish` (`213738`) |
 | **19** | `require_model` · pin + `RequireModelMissing` | parity **338** · `tools/lantern_lap19.rish` (`213738`) |
+| **20** | `stopped_reason` · eos pin | parity **342** · `tools/lantern_lap20.rish` (`214145`) |
+| **21** | `stopped_reason` · length pin | parity **346** · `tools/lantern_lap21.rish` (`214145`) |
+| **22** | `stream` · pin false | parity **350** · `tools/lantern_lap22.rish` (`215613`) |
+| **23** | `stream` · pin true | parity **354** · `tools/lantern_lap23.rish` (`215613`) |
 
 ## Layout
 
 | Path | Role |
 |------|------|
-| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + pins through TopPMismatch |
+| [`lantern_core.rye`](lantern_core.rye) | Request/response types, fixture complete + pins through stream |
 | [`lantern.rye`](lantern.rye) | Selftest |
 | [`fixtures/completion.bron`](fixtures/completion.bron) | Lap 0 pinned completion |
 | [`fixtures/completion_length.bron`](fixtures/completion_length.bron) | Lap 1 long completion |
@@ -57,5 +61,9 @@ Lantern serves bounded request/response inference inside Pond. Each lap deepens 
 | [`fixtures/allowed_models_one.bron`](fixtures/allowed_models_one.bron) | Lap 17 single-model mismatch |
 | [`fixtures/completion_assist.bron`](fixtures/completion_assist.bron) | Lap 18 assist-model completion |
 | [`fixtures/completion_require_model.bron`](fixtures/completion_require_model.bron) | Lap 19 require_model pin |
+| [`fixtures/completion_stopped_reason_pin.bron`](fixtures/completion_stopped_reason_pin.bron) | Lap 20 stopped_reason eos pin |
+| [`fixtures/completion_stopped_reason_length_pin.bron`](fixtures/completion_stopped_reason_length_pin.bron) | Lap 21 stopped_reason length pin |
+| [`fixtures/completion_stream_pin.bron`](fixtures/completion_stream_pin.bron) | Lap 22 stream pin false |
+| [`fixtures/completion_stream_on.bron`](fixtures/completion_stream_on.bron) | Lap 23 stream pin true |
 
-*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, prompt, max_tokens, text, temperature, TopPMismatch, err_stop, and length_stop pins keep the fixture path deterministic.*
+*May every completion honor its budget. May length stops stay honest. May only listed models speak. May seed, top_p, err_stop, stop_sequence, prompt, max_tokens, text, temperature, TopPMismatch, err_stop, length_stop, stopped_reason, and stream pins keep the fixture path deterministic.*

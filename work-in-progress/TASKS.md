@@ -227,6 +227,14 @@
 | **158** | **Assist sight lap 7 exceptions** | **Landed** | Exceptions on carriage; parity **344**; stamp `214145` |
 | **159** | **Assist view lap 9 exceptions** | **Landed** | Exceptions on assist fold; parity **345**; stamp `214145` |
 | **160** | **Lantern lap 21 stopped_reason length pin** | **Landed** | pin_stopped_reason length; parity **346**; stamp `214145` |
+| **161** | **Lattice lap 24 tanh** | **Landed** | Elementwise tanh; parity **347**; stamp `215613` |
+| **162** | **Scribble fence+heading view** | **Landed** | Fence kinds + heading on one Skate frame; parity **348**; stamp `215613` |
+| **163** | **Linengrow sight lap 8 exception reason** | **Landed** | First exception reason on glass; parity **349**; stamp `215613` |
+| **164** | **Lantern lap 22 stream pin false** | **Landed** | stream pin false; parity **350**; stamp `215613` |
+| **165** | **Lattice lap 25 gelu** | **Landed** | Elementwise GELU (tanh approx); parity **351**; stamp `215613` |
+| **166** | **Assist sight lap 8 exception reason** | **Landed** | First exception reason on carriage; parity **352**; stamp `215613` |
+| **167** | **Assist view lap 10 exception reason** | **Landed** | First exception reason on assist fold; parity **353**; stamp `215613` |
+| **168** | **Lantern lap 23 stream pin true** | **Landed** | stream pin true; parity **354**; stamp `215613` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
