@@ -87,6 +87,11 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - `pond/apps/drawn_terminal.rye` `querydeviceviewtest` — fold → Skate
 - `tools/realidream_query_device_view.rish`; parity **247**
 
+### In scope (lap 2d — query unified view · landed `20260710.175447`)
+
+- Hosted + device fixtures on one eight-line Skate frame (`queryunifiedviewtest`)
+- `tools/realidream_query_unified_view.rish`; parity **248**
+
 ### Out of scope (later)
 
 - Resin bytes in the query response (use sync/catch-up)
@@ -122,6 +127,7 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 | `tools/mantra_recall_tablecloth_query_device.rish` | Device witness (parity **246**) |
 | `tools/fixtures/tablecloth_query_device_hits.bron` | Device-provenance hit fixture |
 | `tools/realidream_query_device_view.rish` | Device Skate view (parity **247**) |
+| `tools/realidream_query_unified_view.rish` | Hosted + device Skate fold (parity **248**) |
 
 ---
 
