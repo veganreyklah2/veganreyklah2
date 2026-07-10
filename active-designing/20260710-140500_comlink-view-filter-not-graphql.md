@@ -81,6 +81,12 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 - Ports **15575**/**15576**; same sealed bytes as hosted `peerB`/`b` → two hits
 - `tools/mantra_recall_tablecloth_query_device.rish`; parity **246**
 
+### In scope (lap 2c — query device view · landed `20260710.174752`)
+
+- `tools/fixtures/tablecloth_query_device_hits.bron` — device-provenance hit fixture
+- `pond/apps/drawn_terminal.rye` `querydeviceviewtest` — fold → Skate
+- `tools/realidream_query_device_view.rish`; parity **247**
+
 ### Out of scope (later)
 
 - Resin bytes in the query response (use sync/catch-up)
@@ -114,6 +120,8 @@ Client fold: names → local Skate lines or a later resin fetch. The host remain
 | `tools/mantra_recall_tablecloth_query_wire.rish` | Hosted witness |
 | `comlink/guest_tablecloth_query_*.rye` | Device virtio guests (request + response) |
 | `tools/mantra_recall_tablecloth_query_device.rish` | Device witness (parity **246**) |
+| `tools/fixtures/tablecloth_query_device_hits.bron` | Device-provenance hit fixture |
+| `tools/realidream_query_device_view.rish` | Device Skate view (parity **247**) |
 
 ---
 
