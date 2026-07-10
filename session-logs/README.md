@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.162312 | [Granary naming — mission and candidates](20260710-162312_granary-naming-mission.md) | Four-door mission; Granary vs Mandi; name counsel |
 | 20260710.161538 | [Day summary — sealed crossing](20260710-161538_day-summary-sealed-crossing.md) | Seal → chunk → customs → delivery; parity **227**–**231** |
 | 20260710.161358 | [Amphora purchase delivery](20260710-161358_amphora-purchase-delivery.md) | Commerce slip; vessel + payment; parity **231** |
 | 20260710.161125 | [Pond customs first policy](20260710-161125_pond-customs-first-policy.md) | place / hold / refuse; Amphora receipt; parity **230** |
