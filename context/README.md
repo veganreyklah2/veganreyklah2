@@ -1,7 +1,7 @@
 # Context Home
 
 **Language:** EN
-**Last updated:** 2026-07-10 (sealed-crossing plainly; kitchen-twin shelf)
+**Last updated:** 2026-07-10 (Granary/Mandi commerce plainly; sealed-crossing plainly; kitchen-twin shelf)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
