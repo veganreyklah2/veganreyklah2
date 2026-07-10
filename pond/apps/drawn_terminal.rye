@@ -39,6 +39,7 @@
 //!   pond/bin/drawn-terminal scribblefenceviewtest # Scribble fence kinds → Skate
 //!   pond/bin/drawn-terminal scribbleplainviewtest # Scribble plain snippets → Skate
 //!   pond/bin/drawn-terminal scribbleryeviewtest # Scribble rye snippets → Skate
+//!   pond/bin/drawn-terminal scribblerishviewtest # Scribble rish snippets → Skate
 //!   pond/bin/drawn-terminal exceptionviewtest # Greencandy exception queue → Skate
 //!   pond/bin/drawn-terminal pnlviewtest # Greencandy P&L income statement → Skate
 //!   pond/bin/drawn-terminal bsviewtest # Greencandy balance sheet → Skate
@@ -103,6 +104,7 @@ const scribble_para_view_max_lines: u32 = 5;
 const scribble_fence_view_max_lines: u32 = 5;
 const scribble_plain_view_max_lines: u32 = 5;
 const scribble_rye_view_max_lines: u32 = 5;
+const scribble_rish_view_max_lines: u32 = 5;
 const exception_view_max_lines: u32 = 5;
 const pnl_view_max_lines: u32 = 5;
 const bs_view_max_lines: u32 = 5;
@@ -125,6 +127,7 @@ const forge_amber_manifest_fixture = "tools/fixtures/.forge_view_bundle/manifest
 const amphora_vessel_fixture = "tools/fixtures/.forge_view_bundle/vessel.bron";
 const amphora_device_fetch_hits_fixture = "tools/fixtures/amphora_device_fetch_hits.bron";
 const scribble_snippets_fixture = "scribble/fixtures/session_snippets.md";
+const scribble_rish_snippets_fixture = "scribble/fixtures/session_rish_snippets.md";
 const scribble_outline_fixture = "scribble/fixtures/outline.md";
 const scribble_fence_kinds_fixture = "scribble/fixtures/fence_kinds.md";
 const forge_query_hits_fixture = "tools/fixtures/forge_query_hits.bron";
@@ -461,9 +464,14 @@ fn compose_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.Sk
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "carriage mala:mint amount {s}", .{amount}) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try garden.dupe(u8, conservation) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d}", .{nets[0]}) };
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "books BS retained {d}", .{bs.retained}) };
-    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "books cash {d} retained {d}", .{ nets[0], bs.retained }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "journal entries {d} {s}", .{ entry_count, entries[0].memo }) };
+    lines[6] = .{ .text = try std.fmt.allocPrint(garden, "chart {s} {s} {s} {s}", .{
+        greencandy.Account.cash.name(),
+        greencandy.Account.revenue.name(),
+        greencandy.Account.expense.name(),
+        greencandy.Account.equity.name(),
+    }) };
     lines[7] = .{ .text = try garden.dupe(u8, "sight fold green") };
     return lines;
 }
@@ -488,17 +496,17 @@ fn run_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
         "carriage mala:mint amount 1000",
         "carriage wov seq 1",
         "conservation 1000 issued 1000 redeemed 0",
-        "books cash 800",
-        "books BS retained 800",
+        "books cash 800 retained 800",
         "journal entries 2 stipend received",
+        "chart cash revenue expense equity",
         "sight fold green",
     };
     assert(lines_equal(&golden, frame));
 
-    var out: [180]u8 = undefined;
+    var out: [200]u8 = undefined;
     const msg = try std.fmt.bufPrint(
         &out,
-        "drawn terminal sight view: journal=2 sig={x} lines={d} — GREEN\n",
+        "drawn terminal sight view: journal=2 chart=4 sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -1619,6 +1627,62 @@ fn run_scribble_rye_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
     const msg = try std.fmt.bufPrint(
         &out,
         "drawn terminal scribble rye snippets view: sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
+/// Scribble rish-snippets view — rish fence first lines on Skate.
+fn compose_scribble_rish_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const cwd = std.Io.Dir.cwd();
+    var buf: [scribble.max_doc_bytes]u8 = undefined;
+    const text = try cwd.readFile(io, scribble_rish_snippets_fixture, &buf);
+    var blocks: [scribble.max_blocks]scribble.Block = undefined;
+    const n = try scribble.parse_markdown(text, &blocks);
+    var snippets: [scribble.max_snippets]scribble.Snippet = undefined;
+    const sn = try scribble.extract_rish_snippets(blocks[0..n], &snippets);
+    if (sn != 2) return error.BadScribbleFixture;
+    assert(std.mem.indexOf(u8, snippets[0].text_slice(), "lantern lap") != null);
+    assert(std.mem.indexOf(u8, snippets[1].text_slice(), "GREEN") != null);
+
+    const lines = try garden.alloc(surface.SkateLine, scribble_rish_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "scribble rish snippets view") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "rish {d}", .{sn}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "body {s}", .{scribble_first_line(snippets[0].text_slice())}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "body {s}", .{scribble_first_line(snippets[1].text_slice())}) };
+    lines[4] = .{ .text = try garden.dupe(u8, "rish fold green") };
+    return lines;
+}
+
+fn run_scribble_rish_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_scribble_rish_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == scribble_rish_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "scribble rish snippets view",
+        "rish 2",
+        "body say \"build: lantern lap\"",
+        "body say \"GREEN: witness passed.\"",
+        "rish fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [160]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal scribble rish snippets view: sig={x} lines={d} — GREEN\n",
         .{ sig, frame.len },
     );
     try std.Io.File.stdout().writeStreamingAll(io, msg);
@@ -3293,6 +3357,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "scribbleryeviewtest")) {
         return run_scribble_rye_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "scribblerishviewtest")) {
+        return run_scribble_rish_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "exceptionviewtest")) {
         return run_exception_view_witness(garden, io);

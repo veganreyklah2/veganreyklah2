@@ -1,6 +1,6 @@
-//! lantern/lantern_core.rye — bounded request/response inference contract (lap 9).
+//! lantern/lantern_core.rye — bounded request/response inference contract (lap 10).
 //!
-//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence, prompt pin, max_tokens pin.
+//! Weights live in Tablecloth by hash. Laps deepen the contract: max_tokens, allow-list, temperature + seed, top_p, err_stop, stop_sequence, prompt pin, max_tokens pin, text pin.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -32,6 +32,7 @@ pub const LanternError = error{
     BadStopSequence,
     PromptMismatch,
     MaxTokensMismatch,
+    TextMismatch,
 };
 
 pub const Request = struct {
@@ -129,7 +130,12 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
         if (req.max_tokens != pinned) return error.MaxTokensMismatch;
     }
     var resp = try parse_fixture(fixture_text);
-    if (resp.tokens_out <= req.max_tokens) return resp;
+    if (resp.tokens_out <= req.max_tokens) {
+        if (field_value(fixture_text, "text_pin")) |pinned| {
+            if (!std.mem.eql(u8, resp.text, pinned)) return error.TextMismatch;
+        }
+        return resp;
+    }
 
     // Truncate to max_tokens words; mark length stop.
     var words: u32 = 0;
@@ -153,6 +159,9 @@ pub fn complete_fixture(req: Request, fixture_text: []const u8) LanternError!Res
     resp.text = resp.text[0..cut];
     resp.tokens_out = words;
     resp.stopped_reason = .length;
+    if (field_value(fixture_text, "text_pin")) |pinned| {
+        if (!std.mem.eql(u8, resp.text, pinned)) return error.TextMismatch;
+    }
     return resp;
 }
 
