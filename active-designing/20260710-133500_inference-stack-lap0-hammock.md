@@ -5,7 +5,7 @@
 **Stamp:** `20260710.133500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 0 green; climb `193358` Lattice div · rye view · greencandy prefix · max_tokens pin (parity through **298**)
+**Status:** Checkable-room hammock — lap 0 green; climb `200203` Lattice mean · rish view · sight chart · text pin (parity through **302**)
 **Ground:** [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · prior brief [`20260620-020712_scribble-lantern-and-lattice.md`](20260620-020712_scribble-lantern-and-lattice.md) · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md)
 
 *Written by Kaeden and Rio 3.*
