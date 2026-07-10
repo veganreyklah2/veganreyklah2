@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-10 (compass climb `213738`; parity **338**)
+**Last updated:** 2026-07-10 (compass climb `214145`; parity **346**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -140,6 +140,8 @@ The first lap needs no ledger and no currency — only the foundations Rye OS al
 | **1u** | **Log · rye+apps · assist P&L · allow_count pin** | **landed** `20260710.213317` — Lattice log **327**; rye+apps **328**; assist P&L **329**; allow_count pin **330** | — |
 | **1v** | **Pow · tally · sight TB · dual-model allow** | **landed** `20260710.213738` — Lattice pow **331**; tally **332**; sight TB **333**; dual-model **334** | — |
 | **1w** | **Relu · assist BS · require_model** | **landed** `20260710.213738` — Lattice relu **335**; assist sight BS **336**; assist view BS **337**; require_model **338** | — |
+| **1x** | **Sigmoid · blocks · sight exceptions · stopped eos** | **landed** `20260710.214145` — sigmoid **339**; blocks **340**; sight exceptions **341**; stopped eos **342** | — |
+| **1y** | **Softmax · assist exceptions · stopped length** | **landed** `20260710.214145` — softmax **343**; assist sight/view exceptions **344**/**345**; stopped length **346** | — |
 | **2** | **ROCm host seam** | horizon | hardware + ship policy |
 | **3** | **Lantern in Pond** | horizon | Pond policy word |
 | **4** | **Anvil LoRA + eval** | horizon | Tablecloth checkpoints |
@@ -156,7 +158,7 @@ Essay: [`external-research/20260710-133500_local-forge-minisforum-inference.md`]
 | **Steep** | Peer file sharing — sealed content-addressed pieces; TAME Rye alternative spirit to BitTorrent; named `210433` — [`hammock`](../active-designing/20260710-210433_steep-peer-file-sharing-name.md); first lap not opened |
 | **Language fork** | Self-hosted compiler, Rye-native `std` — revisited from a **mature whole** when RISC-V-first genuinely demands it ([`20260628-043542` direction](../active-designing/20260628-043542_thin-frontend-slc-direction.md)) |
 | **Whole machine** | Aurora on RISC-V, full desktop, Brushstroke web-portable, Rye OS on open silicon |
-| **Inference stack** | Lattice through **331**/**335** · Scribble through **332** · Lantern through **334**/**338** · assist through **336**/**337** · sight through **333** · climb `213738` tip **338**; ROCm/LoRA/Pond/Steep still horizon |
+| **Inference stack** | Lattice through **339**/**343** · Scribble through **340** · Lantern through **342**/**346** · assist through **344**/**345** · sight through **341** · climb `214145` tip **346**; ROCm/LoRA/Pond/Steep still horizon |
 
 Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621-070712_the-compiler-fork.md`](../active-designing/yonder/20260621-070712_the-compiler-fork.md) as **research**, not the active build order.
 

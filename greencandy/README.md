@@ -1,7 +1,7 @@
 # Greencandy — Centralized Books of Record
 
 **Language:** EN
-**Last updated:** 2026-07-10 (sight lap 6 TB `213738`; parity **333**)
+**Last updated:** 2026-07-10 (sight lap 7 exceptions `214145`; parity **341**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Checkable-room module — laps 1–3 green; sight (journal + chart + P&L), exception, P&L, BS, TB, journal, and chart views on Skate
 
