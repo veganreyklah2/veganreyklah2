@@ -1,4 +1,4 @@
-//! lattice/lattice.rye — Lattice lap 8 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy).
+//! lattice/lattice.rye — Lattice lap 9 selftest (matmul · add · reshape · reduce · scale · transpose · mul · fill · copy · sub).
 //!
 //!   rye build lattice/lattice.rye -femit-bin=lattice/bin/lattice
 //!   lattice/bin/lattice selftest
@@ -8,7 +8,7 @@ const assert = std.debug.assert;
 const print = std.debug.print;
 const lc = @import("lattice_core.rye");
 
-const lattice_version = "20260710.190800";
+const lattice_version = "20260710.191112";
 
 fn welcome_add() !void {
     var a = try lc.Matrix.init(2, 2);
@@ -161,6 +161,26 @@ fn welcome_copy() !void {
     print("lattice: copy 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
 }
 
+fn welcome_sub() !void {
+    var a = try lc.Matrix.init(2, 2);
+    a.set(0, 0, 10);
+    a.set(0, 1, 20);
+    a.set(1, 0, 30);
+    a.set(1, 1, 40);
+    var b = try lc.Matrix.init(2, 2);
+    b.set(0, 0, 1);
+    b.set(0, 1, 2);
+    b.set(1, 0, 3);
+    b.set(1, 1, 4);
+    var out = try lc.Matrix.init(2, 2);
+    try lc.sub(&a, &b, &out);
+    assert(out.at(0, 0) == 9);
+    assert(out.at(0, 1) == 18);
+    assert(out.at(1, 0) == 27);
+    assert(out.at(1, 1) == 36);
+    print("lattice: sub 2x2 green — o00={d} o11={d}\n", .{ out.at(0, 0), out.at(1, 1) });
+}
+
 fn unwelcome_copy_shape() !void {
     var src = try lc.Matrix.init(2, 2);
     var out = try lc.Matrix.init(2, 1);
@@ -170,6 +190,18 @@ fn unwelcome_copy_shape() !void {
         assert(err == error.ShapeMismatch);
     }
     print("lattice: copy shape mismatch refused\n", .{});
+}
+
+fn unwelcome_sub_shape() !void {
+    var a = try lc.Matrix.init(2, 2);
+    var b = try lc.Matrix.init(2, 1);
+    var out = try lc.Matrix.init(2, 2);
+    if (lc.sub(&a, &b, &out)) |_| {
+        return error.UnwelcomePassed;
+    } else |err| {
+        assert(err == error.ShapeMismatch);
+    }
+    print("lattice: sub shape mismatch refused\n", .{});
 }
 
 fn unwelcome_shape_mismatch() !void {
@@ -261,6 +293,7 @@ pub fn main(init: std.process.Init) !u8 {
         try welcome_mul();
         try welcome_fill();
         try welcome_copy();
+        try welcome_sub();
         try unwelcome_shape_mismatch();
         try unwelcome_reshape_count();
         try unwelcome_reduce_shape();
@@ -268,8 +301,9 @@ pub fn main(init: std.process.Init) !u8 {
         try unwelcome_transpose_shape();
         try unwelcome_mul_shape();
         try unwelcome_copy_shape();
+        try unwelcome_sub_shape();
         try unwelcome_dim_overflow();
-        print("lattice lap8: version {s} — GREEN\n", .{lattice_version});
+        print("lattice lap9: version {s} — GREEN\n", .{lattice_version});
         return 0;
     }
     print("usage: lattice selftest\n", .{});
