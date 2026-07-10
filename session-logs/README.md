@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260710.173550 | [Commerce streak — settle views closed; full summary](20260710-173550_commerce-streak-summary.md) | Both roofs list/view/settle; parity **245** tip |
 | 20260710.173353 | [Granary settle view — weave close on Skate](20260710-173353_granary-settle-view.md) | Six-line frame; parity **245** |
 | 20260710.172955 | [Mandi settle view — vessel close on Skate](20260710-172955_mandi-settle-view.md) | Six-line frame; parity **244** |
 | 20260710.172625 | [Granary weave settle — MALA + WOV in-process](20260710-172625_granary-weave-settle.md) | weave-settle-v1; parity **243** |
