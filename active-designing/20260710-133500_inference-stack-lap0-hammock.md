@@ -5,7 +5,7 @@
 **Stamp:** `20260710.133500`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · SLC · Gall's Law
-**Status:** Checkable-room hammock — lap 0 green; **Inference Track lap 1 closed** `224805` — tip **378**; fixture contract whole; next ROCm/Pond/LoRA on word
+**Status:** Checkable-room hammock — lap 0 green; **Inference Track lap 1 closed** `224805` — tip **378**; **Anvil corpus lap 2 closed** `225320` — tip **386**; fixture contract whole; next ROCm/Pond/LoRA on word
 **Ground:** [`../external-research/20260710-133500_local-forge-minisforum-inference.md`](../external-research/20260710-133500_local-forge-minisforum-inference.md) · prior brief [`20260620-020712_scribble-lantern-and-lattice.md`](20260620-020712_scribble-lantern-and-lattice.md) · thin-view exception [`../context/specs/20260709-225343_thin-view-dexter-exception.md`](../context/specs/20260709-225343_thin-view-dexter-exception.md) · progress [`../work-in-progress/20260710-220706_slc-and-inference-progress.md`](../work-in-progress/20260710-220706_slc-and-inference-progress.md)
 
 *Written by Kaeden and Rio 3.*
@@ -35,7 +35,11 @@ Lattice → Lantern → Anvil training. Scribble feeds corpus and eval alongside
 
 ## Lap 1 close (`20260710.224805`)
 
-The lettered climb **1**–**1ag** deepened Lattice activations, Lantern request pins, Scribble combo views, and Greencandy exception folds on the drawn terminal — all fixture-served, all parity-gated. Tip **378** closes that mechanical family. Horizon rungs **2**–**5** (ROCm, Pond-Lantern, LoRA, live editor assist) wait their own gates.
+The lettered climb **1**–**1ag** deepened Lattice activations, Lantern request pins, Scribble combo views, and Greencandy exception folds on the drawn terminal — all fixture-served, all parity-gated. Tip **378** closes that mechanical family.
+
+## Anvil corpus lap 2 (`20260710.225320`)
+
+Named keep-going lap after lap-1 close: `min_lines` · `max_lines` · `path_suffix` · `sum_lines` plus four Skate views. Tip **386** closes Anvil corpus lap 2. Horizon rungs **2**–**5** (ROCm, Pond-Lantern, LoRA, live editor assist) wait their own gates.
 
 ## Success
 

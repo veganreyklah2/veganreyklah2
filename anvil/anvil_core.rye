@@ -1,6 +1,7 @@
 //! anvil/anvil_core.rye — Rye corpus catalog for local forge (query + views).
 //!
 //! Chunks name paths in our tree — gratitude and vendor stay in their reading rooms.
+//! Lap 2 deepens filters: min_lines · max_lines · path_suffix · sum_lines fold.
 
 const std = @import("std");
 const assert = std.debug.assert;
@@ -42,6 +43,9 @@ pub const Chunk = struct {
 pub const CorpusQuery = struct {
     kind: ?ChunkKind = null,
     path_prefix: ?[]const u8 = null,
+    path_suffix: ?[]const u8 = null,
+    min_lines: ?u32 = null,
+    max_lines: ?u32 = null,
 };
 
 pub const Catalog = struct {
@@ -65,6 +69,15 @@ fn chunk_matches(chunk: *const Chunk, query: CorpusQuery) bool {
     if (query.path_prefix) |prefix| {
         if (!std.mem.startsWith(u8, chunk.path_slice(), prefix)) return false;
     }
+    if (query.path_suffix) |suffix| {
+        if (!std.mem.endsWith(u8, chunk.path_slice(), suffix)) return false;
+    }
+    if (query.min_lines) |min_n| {
+        if (chunk.lines < min_n) return false;
+    }
+    if (query.max_lines) |max_n| {
+        if (chunk.lines > max_n) return false;
+    }
     return true;
 }
 
@@ -83,6 +96,17 @@ pub fn query_corpus(
         count += 1;
     }
     return count;
+}
+
+/// Sum `lines` across every chunk that matches the query (held order; no index buffer).
+pub fn sum_lines(catalog: *const Catalog, query: CorpusQuery) u32 {
+    var sum: u32 = 0;
+    var i: u32 = 0;
+    while (i < catalog.count) : (i += 1) {
+        if (!chunk_matches(&catalog.chunks[i], query)) continue;
+        sum += catalog.chunks[i].lines;
+    }
+    return sum;
 }
 
 fn field_value(text: []const u8, key: []const u8) ?[]const u8 {
