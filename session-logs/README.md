@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260711.004217 | [Blind spots counsel — important, lucrative, dharmic](20260711-004217_blind-spots-counsel.md) | Commerce citizen brief beats climb-from-418; RW-5 next bench |
 | 20260711.003333 | [Standing next — affirmed](20260711.003333_standing-next-affirm.md) | Menu held: AMD brief · RW-5 · climb from **418** |
 | 20260711.003041 | [AMD drivers counsel — acknowledged](20260711-003041_amd-counsel-ack.md) | Standing next: three-seam brief or RW-5 / climb |
 | 20260711.002944 | [Counsel — AMD drivers for Caravan and Aurora?](20260711-002944_amd-drivers-caravan-aurora-counsel.md) | Enough for host ROCm; thin for Caravan/Aurora |
