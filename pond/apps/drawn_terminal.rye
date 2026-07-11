@@ -18,7 +18,7 @@
 //!   pond/bin/drawn-terminal thinviewtest   # Realidream thin view — local MALA/WOV fixtures
 //!   pond/bin/drawn-terminal booksviewtest  # Greencandy books view — trial balance + P&L + BS
 //!   pond/bin/drawn-terminal sightviewtest  # Linengrow sight — carriage + books on one Skate frame
-//!   pond/bin/drawn-terminal assistviewtest # Inference assist — corpus + lantern + books fold
+//!   pond/bin/drawn-terminal assistviewtest # Inference assist — corpus + lantern + books fold (tip 428 asks complete_fixture)
 //!   pond/bin/drawn-terminal assistviewsighttest # Assist sight — carriage + assist on one frame
 //!   pond/bin/drawn-terminal queryviewtest  # Realidream query view — Tablecloth query-wire hits
 //!   pond/bin/drawn-terminal querydeviceviewtest # Query device-wire hits → Skate
@@ -619,12 +619,65 @@ fn count_scribble_fences(text: []const u8) u32 {
     return kinds.rye + kinds.rish;
 }
 
+/// RW-5 assist integration — lantern band via the same `complete_fixture` ask path as tip 420.
+const LanternAssistBand = struct {
+    model_hash: []const u8,
+    tokens_in: u32,
+    tokens_out: u32,
+    stopped: []const u8,
+    echo: []const u8,
+    user: []const u8,
+    suggestion: []const u8,
+};
+
+fn ask_lantern_assist_band(garden: std.mem.Allocator, io: std.Io) !LanternAssistBand {
+    const cwd = std.Io.Dir.cwd();
+    var completion_buf: [1024]u8 = undefined;
+    const completion_text = try cwd.readFile(io, lantern_completion_fixture, &completion_buf);
+    var echo_buf: [1024]u8 = undefined;
+    const echo_text = try cwd.readFile(io, lantern_echo_fixture, &echo_buf);
+    var user_buf: [1024]u8 = undefined;
+    const user_text = try cwd.readFile(io, lantern_user_fixture, &user_buf);
+
+    const model_hash = "sha3-256-rye-forge-lap0";
+    const resp = try lc.complete_fixture(.{
+        .model_hash = model_hash,
+        .prompt = "init.garden for args",
+        .max_tokens = 64,
+    }, completion_text);
+    assert(resp.tokens_in == 24);
+    assert(resp.tokens_out == 12);
+    assert(resp.stopped_reason == .eos);
+
+    _ = try lc.complete_fixture(.{
+        .model_hash = model_hash,
+        .prompt = "echo",
+        .max_tokens = 64,
+        .echo = true,
+    }, echo_text);
+
+    _ = try lc.complete_fixture(.{
+        .model_hash = model_hash,
+        .prompt = "user",
+        .max_tokens = 64,
+        .user = "steward-rio",
+    }, user_text);
+
+    return .{
+        .model_hash = model_hash,
+        .tokens_in = resp.tokens_in,
+        .tokens_out = resp.tokens_out,
+        .stopped = @tagName(resp.stopped_reason),
+        .echo = "1",
+        .user = "steward-rio",
+        .suggestion = try garden.dupe(u8, resp.text),
+    };
+}
+
 fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
     const cwd = std.Io.Dir.cwd();
     var corpus_buf: [4096]u8 = undefined;
     const corpus = try cwd.readFile(io, anvil_corpus_fixture, &corpus_buf);
-    var lantern_buf: [1024]u8 = undefined;
-    const lantern = try cwd.readFile(io, lantern_completion_fixture, &lantern_buf);
     var journal_buf: [2048]u8 = undefined;
     const journal = try cwd.readFile(io, greencandy_journal_fixture, &journal_buf);
     var snippets_buf: [4096]u8 = undefined;
@@ -647,18 +700,8 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     const fence_rye = try scribble.extract_rye_snippets(fence_blocks[0..fence_n], &rye_snips);
     assert(fence_rye == 1);
 
-    var echo_buf: [1024]u8 = undefined;
-    const echo_text = try cwd.readFile(io, lantern_echo_fixture, &echo_buf);
-    var user_buf: [1024]u8 = undefined;
-    const user_text = try cwd.readFile(io, lantern_user_fixture, &user_buf);
-    const echo = field_value(echo_text, "echo") orelse return error.BadLanternFixture;
-    const user = field_value(user_text, "user") orelse return error.BadLanternFixture;
-
-    const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
-    const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
-    const stopped = field_value(lantern, "stopped_reason") orelse return error.BadLanternFixture;
-    const suggestion = field_value(lantern, "text") orelse return error.BadLanternFixture;
-    const model = field_value(lantern, "model_hash") orelse return error.BadLanternFixture;
+    const band = try ask_lantern_assist_band(garden, io);
+    defer garden.free(band.suggestion);
 
     var entries: [greencandy.max_entries]greencandy.Entry = undefined;
     var entry_count: u32 = 0;
@@ -673,9 +716,9 @@ fn compose_assist_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.S
     lines[0] = .{ .text = try garden.dupe(u8, "inference assist view") };
     lines[1] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d} blocks {d} fence-rye {d}", .{ fences.rye, fences.rish, plain_kinds.plain, fence_n, fence_rye }) };
-    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{model}) };
-    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s} · echo {s} · user {s}", .{ tokens_in, tokens_out, stopped, echo, user }) };
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{suggestion}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "model {s}", .{band.model_hash}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "lantern {d}/{d} {s} · echo {s} · user {s}", .{ band.tokens_in, band.tokens_out, band.stopped, band.echo, band.user }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "suggest {s}", .{band.suggestion}) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{
@@ -744,8 +787,6 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     const wov = try cwd.readFile(io, wov_bundle_fixture, &wov_buf);
     var corpus_buf: [4096]u8 = undefined;
     const corpus = try cwd.readFile(io, anvil_corpus_fixture, &corpus_buf);
-    var lantern_buf: [1024]u8 = undefined;
-    const lantern = try cwd.readFile(io, lantern_completion_fixture, &lantern_buf);
     var journal_buf: [2048]u8 = undefined;
     const journal = try cwd.readFile(io, greencandy_journal_fixture, &journal_buf);
     var snippets_buf: [4096]u8 = undefined;
@@ -769,15 +810,9 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     var rye_snips: [scribble.max_snippets]scribble.Snippet = undefined;
     const fence_rye = try scribble.extract_rye_snippets(fence_blocks[0..fence_n], &rye_snips);
     assert(fence_rye == 1);
-    var echo_buf: [1024]u8 = undefined;
-    const echo_text = try cwd.readFile(io, lantern_echo_fixture, &echo_buf);
-    var user_buf: [1024]u8 = undefined;
-    const user_text = try cwd.readFile(io, lantern_user_fixture, &user_buf);
-    const echo = field_value(echo_text, "echo") orelse return error.BadLanternFixture;
-    const user = field_value(user_text, "user") orelse return error.BadLanternFixture;
-    const tokens_in = field_value(lantern, "tokens_in") orelse return error.BadLanternFixture;
-    const tokens_out = field_value(lantern, "tokens_out") orelse return error.BadLanternFixture;
-    const stopped = field_value(lantern, "stopped_reason") orelse return error.BadLanternFixture;
+
+    const band = try ask_lantern_assist_band(garden, io);
+    defer garden.free(band.suggestion);
 
     var entries: [greencandy.max_entries]greencandy.Entry = undefined;
     var entry_count: u32 = 0;
@@ -794,7 +829,7 @@ fn compose_assist_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]sur
     lines[2] = .{ .text = try std.fmt.allocPrint(garden, "carriage wov seq {s}", .{seq}) };
     lines[3] = .{ .text = try std.fmt.allocPrint(garden, "corpus rye {d} rish {d}", .{ kinds.rye, kinds.rish }) };
     lines[4] = .{ .text = try std.fmt.allocPrint(garden, "snippets rye {d} rish {d} plain {d} blocks {d} fence-rye {d}", .{ fences.rye, fences.rish, plain_kinds.plain, fence_n, fence_rye }) };
-    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {s}/{s} {s} · echo {s} · user {s}", .{ tokens_in, tokens_out, stopped, echo, user }) };
+    lines[5] = .{ .text = try std.fmt.allocPrint(garden, "lantern {d}/{d} {s} · echo {s} · user {s}", .{ band.tokens_in, band.tokens_out, band.stopped, band.echo, band.user }) };
     const bs = balance_from_nets(&nets);
     const ex = try greencandy_exception_summary();
     lines[6] = .{ .text = try std.fmt.allocPrint(garden, "journal {d} {s} · chart {s} {s} {s} {s} · pnl net {d} · bs equity {d} · exceptions {d} · ex {s} · ex2 {s} · unk {d} bad {d} · kinds {d}", .{
