@@ -42,6 +42,7 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 
 | Stamp | Artifact | Meaning |
 |-------|----------|---------|
+| `20260711.004652` | [Commerce citizen steward demo hammock](../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md) | Tip **419** — list → settle → Greencandy; live TB held |
 | `20260711.001225` | [Testing audit — second pass (Inference)](20260711-001225_testing-audit-second-pass-inference.md) | Happy-zone census tip **418**; RW-5 next season |
 | `20260710.220706` | [SLC and inference progress](20260710-220706_slc-and-inference-progress.md) | How tip **354** serves the SLCs; track snapshot; Rest-until / horizon |
 | `20260702.200109` | [RW-1 mirrored-pair contract](20260702-200109_rw1-mirrored-pair-contract.md) | Happy-zone prep — shell↔Mantra seam; build after SLC-2b |

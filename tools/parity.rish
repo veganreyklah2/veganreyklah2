@@ -1557,3 +1557,8 @@ say "witness suite: Inference assist sight lap 15 (user pin — glass compositio
 let assist_sight_lap15 = run ["rishi/bin/rishi" "run" "tools/inference_assist_sight_lap15.rish"]
 assert assist_sight_lap15.ok else "Inference assist sight lap 15 witness failed"
 say "GREEN: Inference assist sight lap 15 witness passed."
+
+say "witness suite: Commerce steward demo (list → settle → Greencandy receipt)…"
+let commerce_steward = run ["rishi/bin/rishi" "run" "tools/commerce_steward_demo.rish"]
+assert commerce_steward.ok else "Commerce steward demo witness failed"
+say "GREEN: Commerce steward demo witness passed."

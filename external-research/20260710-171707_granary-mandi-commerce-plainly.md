@@ -6,8 +6,8 @@
 **Voice:** Rio 3
 **Editor:** Cursor · **Model:** Cursor Grok 4.5
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Checkable-room research — explains living practice; cites seated specs; seats nothing new
-**Ground:** Granary seating [`163043`](../context/specs/20260710-163043_granary-name-seated.md) · Mandi seating [`165634`](../context/specs/20260710-165634_mandi-name-seated.md) · Mandi settle [`171202`](../context/specs/20260710-171202_mandi-listing-settle-seated.md) · commerce study [`200712`](20260703-200712_compute-commerce-on-the-network.md) · compass [`185112`](../foundations/20260706-185112_follow-our-compass.md)
+**Status:** Checkable-room research — explains living practice; cites seated specs; steward demo tip **419** landed `004652`; live TB still held
+**Ground:** Granary seating [`163043`](../context/specs/20260710-163043_granary-name-seated.md) · Mandi seating [`165634`](../context/specs/20260710-165634_mandi-name-seated.md) · Mandi settle [`171202`](../context/specs/20260710-171202_mandi-listing-settle-seated.md) · steward hammock [`../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md`](../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md) · commerce study [`200712`](20260703-200712_compute-commerce-on-the-network.md) · compass [`185112`](../foundations/20260706-185112_follow-our-compass.md)
 
 *Written by Kaeden and Rio 3. Kitchen twin for the commerce season that landed through parity **242**.*
 
@@ -46,7 +46,7 @@ The commerce study warned early: two markets under one name would blur both. Gra
 
 When direction frays, walk foundations → grain → two rooms → ladder → TASKS → ROADMAP. This page is the kitchen twin for the commerce arc that just completed its citizen-visible Mandi loop and its Granary four-door surface. It belongs on the plainly shelf so the rose can assert two roofs without inventing a third market.
 
-Logic before carriage still holds: Mandi settled in-process before any live TB. Granary Sharing rode hosted wire before device wire. The next commerce gate — Granary weave settle or live TB — waits a brief, not a mirror grind.
+Logic before carriage still holds: Mandi settled in-process before any live TB. Granary Sharing rode hosted wire before device wire. The commerce citizen brief (`004652`) closed the **steward loop** on metal — list → settle → Greencandy receipt at tip **419** — still in-process. Live TB and WOV seam B wait their own word.
 
 ---
 
