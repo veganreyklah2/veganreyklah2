@@ -1612,3 +1612,8 @@ say "witness suite: Open Asks reputation view (consent-before-counting on Skate)
 let open_asks_reputation_view = run ["rishi/bin/rishi" "run" "tools/open_asks_reputation_view.rish"]
 assert open_asks_reputation_view.ok else "Open Asks reputation view witness failed"
 say "GREEN: Open Asks reputation view witness passed."
+
+say "witness suite: Open Asks civic sight (lifecycle · escrow · consent on Skate)…"
+let open_asks_civic_sight = run ["rishi/bin/rishi" "run" "tools/open_asks_civic_sight_view.rish"]
+assert open_asks_civic_sight.ok else "Open Asks civic sight witness failed"
+say "GREEN: Open Asks civic sight witness passed."
