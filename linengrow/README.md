@@ -1,14 +1,14 @@
 # Linengrow
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 3 · Greencandy own root; MALA/WOV still here)
+**Last updated:** 2026-07-11 (commerce steward demo tip **419** · Greencandy own root; MALA/WOV still here)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
 
 Linengrow is the first whole built upon Rye OS — a transparent civic and social-commerce platform for vegan musicians and activist creators, where every sponsored post carries a visible label, every data sale carries a visible receipt, every contract carries a visible expiration, and every person owns their complete data in a portable server they can carry whenever they choose. Where Rye OS is the system, Linengrow is what the system is *for*: the place its foundations meet real people, real creators, and real communities.
 
-This folder holds the vision. The build grows the SLC way — smallest lovable complete first — and its laps rest on the same modules Rye OS is already growing.
+This folder holds the vision. The build grows the SLC way — smallest lovable complete first — and its laps rest on the same modules Rye OS is already growing. The **commerce steward demo** (tip **419**) closes the in-process livelihood loop: Mandi list → settle → Greencandy receipt — hammock [`../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md`](../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md).
 
 ---
 

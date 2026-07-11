@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-11 (happy-zone second pass `001225`; tip **418**)
+**Last updated:** 2026-07-11 (commerce steward demo `004652`; parity **419**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -300,6 +300,7 @@
 | **231** | **Assist sight lap 14 — echo on carriage** | **Landed** | echo on assist sight; parity **416**; stamp `234004` |
 | **232** | **Assist view lap 17 — user on glass** | **Landed** | user pin on lantern band; parity **417**; stamp `234004` |
 | **233** | **Assist sight lap 15 — user — glass composition close** | **Landed** | user on carriage; tip **418**; stamp `234004` |
+| **234** | **Commerce steward demo — list → settle → Greencandy receipt** | **Landed** | In-process livelihood loop; tip **419**; stamp `004652`; live TB stays Rest-until |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

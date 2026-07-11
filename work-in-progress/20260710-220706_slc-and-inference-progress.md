@@ -115,7 +115,7 @@ That is the checkable-room exam. It is how SLC Completeness stays true at every 
 
 ## Next
 
-Recommend: keep going to **RW-5 contract on paper** (Drawn Terminal ↔ Lantern) when Kaeden opens the season pair — or climb another named non-ROCm lap from tip **418**. Rest-until still waits product need, measured red, or an explicit affirm of that surface. Rung **2** ROCm waits hardware/ship policy. Happy-zone second pass landed `001225`.
+Recommend: keep going to **RW-5 contract on paper** when Kaeden opens that season — or hold. Commerce steward demo tip **419** closed the in-process livelihood loop; live TB and Rest-until still wait their own word. Rung **2** ROCm waits hardware/ship policy. Happy-zone second pass landed `001225`.
 
 ---
 
