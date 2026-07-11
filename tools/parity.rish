@@ -1607,3 +1607,8 @@ say "witness suite: RW-5 assist integration (assist glass asks complete_fixture)
 let rw5_assist = run ["rishi/bin/rishi" "run" "tools/rw5_assist_integration.rish"]
 assert rw5_assist.ok else "RW-5 assist integration witness failed"
 say "GREEN: RW-5 assist integration witness passed."
+
+say "witness suite: Open Asks reputation view (consent-before-counting on Skate)…"
+let open_asks_reputation_view = run ["rishi/bin/rishi" "run" "tools/open_asks_reputation_view.rish"]
+assert open_asks_reputation_view.ok else "Open Asks reputation view witness failed"
+say "GREEN: Open Asks reputation view witness passed."

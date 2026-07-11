@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260711.030243 | [Open Asks reputation view — tip 429](20260711-030243_open-asks-reputation-view.md) | OA-L4 consent-before-counting on Skate; consented 3 · stipend 300 |
 | 20260711.025539 | [RW-5 assist integration — tip 428](20260711-025539_rw5-assist-integration.md) | Assist glass asks complete_fixture; golden frames held |
 | 20260711.015439 | [Open Asks escrow view + compass hygiene — tip 427](20260711-015439_open-asks-escrow-view.md) | Nyasa hold/release on Skate; LEXICON · ROADMAP tip hygiene |
 | 20260711.015030 | [Open Asks view — tip 426](20260711-015030_open-asks-view.md) | OA-L1 closed ask loop on Skate; stipend 100 |
