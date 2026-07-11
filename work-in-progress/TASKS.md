@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-11 (Open Asks reputation view `030123`; parity **429**)
+**Last updated:** 2026-07-11 (Open Asks civic sight `032657`; parity **430**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -311,6 +311,7 @@
 | **242** | **Open Asks escrow view — Nyasa hold/release on Skate** | **Landed** | OA-L3 fold on glass; escrow **0**; tip **427**; stamp `015106` |
 | **243** | **RW-5 assist integration — glass asks complete_fixture** | **Landed** | assist + sight lantern band via tip-420 ask path; tip **428**; stamp `025301` |
 | **244** | **Open Asks reputation view — consent-before-counting on Skate** | **Landed** | OA-L4 fold on glass; consented **3** · stipend **300**; tip **429**; stamp `030123` |
+| **245** | **Open Asks civic sight — lifecycle · escrow · consent on Skate** | **Landed** | three seated folds on one frame; tip **430**; stamp `032657` |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
@@ -616,6 +617,7 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 - [x] **RW-5 contract on paper** — Drawn Terminal ↔ Lantern fixture collaboration/contract mirror; tips **420**/**421**; contract [`20260711-005028_rw5-mirrored-pair-contract.md`](20260711-005028_rw5-mirrored-pair-contract.md) (`20260711.005028`).
 - [x] **RW-5 assist integration** — assist + sight lantern band via `ask_lantern_assist_band` → `complete_fixture`; tip **428**; witness `tools/rw5_assist_integration.rish` (`20260711.025301`).
 - [x] **Open Asks reputation view** — OA-L4 consent-before-counting on Skate; tip **429**; hammock [`20260711-030123_open-asks-reputation-view-hammock.md`](../active-designing/20260711-030123_open-asks-reputation-view-hammock.md) (`20260711.030123`).
+- [x] **Open Asks civic sight** — L1 · L3 · L4 on one Skate frame; tip **430**; hammock [`20260711-032657_open-asks-civic-sight-hammock.md`](../active-designing/20260711-032657_open-asks-civic-sight-hammock.md) (`20260711.032657`).
 - [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** wired in parity **148** (`20260703.203212 UDT`, Cursor metal) (`20260703.191312 UDT`, *for*).
 - [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).

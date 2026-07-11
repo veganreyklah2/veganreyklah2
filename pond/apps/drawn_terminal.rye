@@ -85,6 +85,7 @@
 //!   pond/bin/drawn-terminal openasksviewtest # Open Asks — closed ask loop on Skate (tip 426)
 //!   pond/bin/drawn-terminal openasksescrowviewtest # Open Asks escrow — hold/release on Skate (tip 427)
 //!   pond/bin/drawn-terminal openasksreputationviewtest # Open Asks reputation — consent-before-counting (tip 429)
+//!   pond/bin/drawn-terminal openaskscivicsighttest # Open Asks civic sight — L1+L3+L4 on one frame (tip 430)
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -185,6 +186,7 @@ const granary_steward_sight_view_max_lines: u32 = 8;
 const open_asks_view_max_lines: u32 = 8;
 const open_asks_escrow_view_max_lines: u32 = 8;
 const open_asks_reputation_view_max_lines: u32 = 8;
+const open_asks_civic_sight_view_max_lines: u32 = 8;
 const mala_mint_fixture = "tools/fixtures/mala_m1_mint.bron";
 const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
@@ -5236,6 +5238,77 @@ fn run_open_asks_reputation_view_witness(garden: std.mem.Allocator, io: std.Io) 
     return 0;
 }
 
+/// Open Asks civic sight — OA-L1 · OA-L3 · OA-L4 seated folds on one Skate frame.
+fn compose_open_asks_civic_sight_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const life = try open_asks.run_welcome_fold(io);
+    assert(life.posted);
+    assert(life.applied);
+    assert(life.accepted);
+    assert(life.completed);
+    assert(life.stipend == 100);
+    assert(life.request_ref_len == open_asks.ref_hex_len);
+    assert(std.mem.eql(u8, life.request_ref[0..life.request_ref_len], open_asks.witness_request_ref));
+
+    const escrow = try open_asks.run_escrow_welcome_fold(io);
+    assert(escrow.held);
+    assert(escrow.released);
+    assert(escrow.completed);
+    assert(escrow.escrow_balance == 0);
+    assert(escrow.stipend == 100);
+
+    const rep = try open_asks.run_reputation_welcome_fold(io);
+    assert(rep.consented_completions == 3);
+    assert(rep.consented_stipend == 300);
+
+    const lines = try garden.alloc(surface.SkateLine, open_asks_civic_sight_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "open asks civic sight") };
+    lines[1] = .{ .text = try std.fmt.allocPrint(garden, "lifecycle completed stipend {d}", .{life.stipend}) };
+    lines[2] = .{ .text = try std.fmt.allocPrint(garden, "request_ref {s}", .{life.request_ref[0..12]}) };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "nyasa held · released · escrow {d}", .{escrow.escrow_balance}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "reputation consented {d} · stipend {d}", .{ rep.consented_completions, rep.consented_stipend }) };
+    lines[5] = .{ .text = try garden.dupe(u8, "plain + escrow-release") };
+    lines[6] = .{ .text = try garden.dupe(u8, "withheld excluded") };
+    lines[7] = .{ .text = try garden.dupe(u8, "sight fold green") };
+    return lines;
+}
+
+fn run_open_asks_civic_sight_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_open_asks_civic_sight_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == open_asks_civic_sight_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "open asks civic sight",
+        "lifecycle completed stipend 100",
+        "request_ref 9cdb9aafd767",
+        "nyasa held · released · escrow 0",
+        "reputation consented 3 · stipend 300",
+        "plain + escrow-release",
+        "withheld excluded",
+        "sight fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [300]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal open asks civic sight: lifecycle=1 escrow=0 consented=3 stipend=300 withheld=excluded sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
@@ -5899,6 +5972,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "openasksreputationviewtest")) {
         return run_open_asks_reputation_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "openaskscivicsighttest")) {
+        return run_open_asks_civic_sight_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return run_keyboard_witness(garden, io, init);

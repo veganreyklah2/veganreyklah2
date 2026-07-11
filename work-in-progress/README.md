@@ -1,7 +1,7 @@
 # The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-07-11 (Open Asks reputation view · workbench index)
+**Last updated:** 2026-07-11 (Open Asks civic sight · workbench index)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Status:** Foundation
@@ -42,6 +42,7 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 
 | Stamp | Artifact | Meaning |
 |-------|----------|---------|
+| `20260711.032657` | [Open Asks civic sight hammock](../active-designing/20260711-032657_open-asks-civic-sight-hammock.md) | Tip **430** — L1 · L3 · L4 on one Skate frame |
 | `20260711.030123` | [Open Asks reputation view hammock](../active-designing/20260711-030123_open-asks-reputation-view-hammock.md) | Tip **429** — consent-before-counting on Skate |
 | `20260711.015106` | [Open Asks escrow view hammock](../active-designing/20260711-015106_open-asks-escrow-view-hammock.md) | Tip **427** — Nyasa hold/release on Skate |
 | `20260711.014454` | [Open Asks view hammock](../active-designing/20260711-014454_open-asks-view-hammock.md) | Tip **426** — closed ask loop on Skate |
