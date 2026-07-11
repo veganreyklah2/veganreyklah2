@@ -1,7 +1,7 @@
 # The Work-in-Progress Stack
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 2 · workbench alias)
+**Last updated:** 2026-07-11 (happy-zone second pass · workbench index)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Status:** Foundation
@@ -42,6 +42,7 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 
 | Stamp | Artifact | Meaning |
 |-------|----------|---------|
+| `20260711.001225` | [Testing audit — second pass (Inference)](20260711-001225_testing-audit-second-pass-inference.md) | Happy-zone census tip **418**; RW-5 next season |
 | `20260710.220706` | [SLC and inference progress](20260710-220706_slc-and-inference-progress.md) | How tip **354** serves the SLCs; track snapshot; Rest-until / horizon |
 | `20260702.200109` | [RW-1 mirrored-pair contract](20260702-200109_rw1-mirrored-pair-contract.md) | Happy-zone prep — shell↔Mantra seam; build after SLC-2b |
 | `20260702.195426` | [SLC-L1 scope note](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — verifiable receipt; Open Asks gated |

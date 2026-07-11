@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-10 (glass composition `234004`; parity **418**)
+**Last updated:** 2026-07-11 (happy-zone second pass `001225`; tip **418**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -601,6 +601,8 @@ Ground: [`20260702-180812_testing-audit-first-pass.md`](20260702-180812_testing-
 - [x] **RW-3 run-record witness** — `tools/run_record_witness.rish` pins `.ok`, `.code`, `.out`, `.err` for success and failure; wired in parity **141** (`20260702.190000`).
 - [x] **RW-4 SLC failure-path witness** — `tools/rw4_slc_failure_paths.rish` pins unknown meta-command, bad `:recall`, doomed `run`, and unknown CLI; wired in parity **142** (`20260702.183500`).
 - [x] **Standing audit rule (Kaeden ratifies)** — every new seam ships its mirrored collaboration/contract pair; integrated checks live only on the thin edge; one pair per season, RW-1 (**147**), RW-2 (**150**) landed (`20260703.191312 UDT`, *for*).
+- [x] **Happy-zone second pass (Inference)** — census tip **211**–**418**; suite still happy-zone shaped; mirror gap named; next season **RW-5** Drawn Terminal ↔ Lantern; audit [`20260711-001225_testing-audit-second-pass-inference.md`](20260711-001225_testing-audit-second-pass-inference.md) (`20260711.001225`).
+- [ ] **RW-5 contract on paper** — Drawn Terminal ↔ Lantern fixture collaboration/contract mirror; one-pair-per-season; opens on Kaeden's word after second pass.
 - [x] **Versioning rule (Kaeden ratifies)** — authored surfaces carry chronological stamps only; the backend's semver and the inherited parser stay named seams ([`20260702-184312_versioning-audit.md`](20260702-184312_versioning-audit.md)); **chrono sweep** wired in parity **148** (`20260703.203212 UDT`, Cursor metal) (`20260703.191312 UDT`, *for*).
 - [x] **Rishi framework growth (witness-first, in need order)** — **conditional** `tools/rish_conditional_witness.rish` (`20260702.205630`); **env** `tools/rish_env_witness.rish` (`20260702.210201`); **file I/O** `tools/rish_file_io_witness.rish` (`20260702.210435`); **exit vocabulary** `tools/rish_exit_codes_witness.rish` (`20260702.210650`); all unwired from parity — Edit 5 landed at **143** (`20260703.032812`).
 - [x] **Manual next rooms — Rishi tutorial one** — [`manual/tutorials/first-witness.md`](../manual/tutorials/first-witness.md); reference at chronological stamp `20260702.184312`, parity **142** (`20260702.184312` grain round).
