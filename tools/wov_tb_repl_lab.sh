@@ -1,10 +1,15 @@
 #!/bin/sh
+# SUPERSEDED 20260711.055800 — WOV TB REPL lab retired from the living suite.
+# Kaeden approved Claude counsel 055112: keep pure-Rye WOV core; retire the optional
+# TigerBeetle cross-check seam to dated record. Kept; never deleted. Not run from parity.
+# Living WOV coverage: tools/wov_exit_honesty.rish · tools/wov_dual_monarch.rish
+#
 # wov_tb_repl_lab.sh — WOV lap 2b seam A: cluster-of-one mint/transfer → projection file.
 #
 # Requires io_uring (blocked under ai-jail seccomp). On PermissionDenied, exits 0
 # with WOV-TB-LIVE-SKIP so the projection witness can still GREEN in the enclosure.
 #
-# Usage (from repo root):
+# Usage (from repo root; manual / dated record only):
 #   sh tools/wov_tb_ensure_binary.sh
 #   sh tools/wov_tb_repl_lab.sh
 

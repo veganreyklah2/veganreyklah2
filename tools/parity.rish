@@ -312,15 +312,9 @@ let wov = run ["rishi/bin/rishi" "run" "tools/wov_exit_honesty.rish"]
 assert wov.ok else "WOV exit-honesty witness failed"
 say "GREEN: WOV exit-honesty witness passed."
 
-say "witness suite: WOV TigerBeetle pin presence (no client link)…"
-let wov_pin = run ["rishi/bin/rishi" "run" "tools/wov_tb_pin.rish"]
-assert wov_pin.ok else "WOV TigerBeetle pin witness failed"
-say "GREEN: WOV TigerBeetle pin presence witness passed."
-
-say "witness suite: WOV TigerBeetle host seam A (projection → exit honesty)…"
-let wov_tb = run ["rishi/bin/rishi" "run" "tools/wov_tb_host.rish"]
-assert wov_tb.ok else "WOV TigerBeetle host seam A witness failed"
-say "GREEN: WOV TigerBeetle host seam A witness passed."
+# WOV TigerBeetle pin + host seam A retired from the living suite 20260711.055800
+# (Kaeden approved counsel 055112). Pure-Rye coverage stays via exit honesty + dual monarch.
+# Dated record: tools/wov_tb_pin.rish · tools/wov_tb_host.rish · linengrow/wov_tb_host.rye
 
 say "witness suite: WOV dual monarch D1 (twin log lines)…"
 let wov_dual = run ["rishi/bin/rishi" "run" "tools/wov_dual_monarch.rish"]

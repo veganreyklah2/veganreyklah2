@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-11 (Cursor-bot arc audit `053412`)
+**Last updated:** 2026-07-11 (WOV TB seam retirement counsel `055112`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260711.055112` | [WOV/TigerBeetle — retire optional cross-check seam](20260711-055112_claude-counsel-wov-tigerbeetle-recommendation.md) | Pure-Rye core kept; TB seam dated record — **seated** `055800` |
 | `20260711.053412` | [Cursor-bot arc audit — money sound, WOV split, TB tension](20260711-053412_claude-counsel-cursor-bot-arc-audit.md) | Three WOV money fns split+witnessed; WOV/TB self-contained question for Kaeden |
 | `20260711.052338` | [Cursor bot full trail — tips 379 → 430](20260711-052338_cursor-bot-full-trail.md) | Map of Inference deepen + civic glass + hold |
 | `20260711.033228` | [Hold at tip 430 — reopen menu](20260711-033228_hold-at-tip-430.md) | Civic glass arc closed; name a door to reopen |

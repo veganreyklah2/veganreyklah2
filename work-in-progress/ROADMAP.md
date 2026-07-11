@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-11 (Cursor-bot arc audit `053412` — money code verified sound; three WOV money functions split and witnessed; WOV/TigerBeetle self-contained tension flagged as an open question for Kaeden)
+**Last updated:** 2026-07-11 (WOV TB cross-check seam retired `055800`; Kaeden approved counsel `055112`; pure-Rye WOV core kept)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
