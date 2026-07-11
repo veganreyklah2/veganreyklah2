@@ -71,11 +71,16 @@ Mode: `lantern/bin/lantern rw5contracttest` — six probes only, reusing existin
 
 ## Relation to existing laps
 
-`tools/lantern_lap*.rish` remain the deep answerer suite. Assist glass laps **415**–**418** fold echo/user onto Skate via bron reads — integration, not collaboration. RW-5 isolates the asker against `complete_fixture`.
+`tools/lantern_lap*.rish` remain the deep answerer suite. Assist glass laps **415**–**418** folded echo/user onto Skate via bron reads; tip **428** routes that band through `ask_lantern_assist_band` → `complete_fixture` (same ask path as tip **420**). RW-5 isolates the asker against `complete_fixture`; assist integration reuses that ask without a second mirrored pair.
+
+## Assist integration (tip 428) — landed
+
+**Witness:** `tools/rw5_assist_integration.rish` · modes `assistviewtest` + `assistviewsighttest`  
+**Helper:** `ask_lantern_assist_band` in `pond/apps/drawn_terminal.rye`  
+**Golden frames unchanged:** lantern `24/12 eos · echo 1 · user steward-rio`
 
 ## What Stays Outside
 
-- Assist-view refactor to call the new ask helper (follow-up)
 - Live Pond-Lantern · ROCm · metalsmoke
 - RW-6 Scribble · RW-7 Anvil
 
