@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-11 (Open Asks civic sight `032657`; parity **430**)
+**Last updated:** 2026-07-11 (hold at tip **430** `033228`; parity **430**)
 
 - [x] **Realidream thin-view exception (`021112` → re-scoped `202427`)** — chain-read removed `152612`; renders **local** MALA mint + WOV exit-bundle fixtures through SLC-2a drawn terminal (`thinviewtest`); no new input, no Pond policy, no Dexter graduation; `tools/realidream_thin_view.rish`; parity **202**; prompt [`202427`](../expanding-prompts/20260709-202427_realidream-thin-view-local-facts.md)
 
@@ -312,6 +312,7 @@
 | **243** | **RW-5 assist integration — glass asks complete_fixture** | **Landed** | assist + sight lantern band via tip-420 ask path; tip **428**; stamp `025301` |
 | **244** | **Open Asks reputation view — consent-before-counting on Skate** | **Landed** | OA-L4 fold on glass; consented **3** · stipend **300**; tip **429**; stamp `030123` |
 | **245** | **Open Asks civic sight — lifecycle · escrow · consent on Skate** | **Landed** | three seated folds on one frame; tip **430**; stamp `032657` |
+| — | **Hold at tip 430** | **Affirmed** | Civic glass arc closed; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
