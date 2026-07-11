@@ -84,6 +84,7 @@
 //!   pond/bin/drawn-terminal granarystewardsighttest # Granary steward sight — weave + books (tip 425)
 //!   pond/bin/drawn-terminal openasksviewtest # Open Asks — closed ask loop on Skate (tip 426)
 //!   pond/bin/drawn-terminal openasksescrowviewtest # Open Asks escrow — hold/release on Skate (tip 427)
+//!   pond/bin/drawn-terminal openasksreputationviewtest # Open Asks reputation — consent-before-counting (tip 429)
 //!   pond/bin/drawn-terminal metalsmoke     # Wayland metal smoke (needs WAYLAND_DISPLAY)
 
 const std = @import("std");
@@ -183,6 +184,7 @@ const granary_steward_view_max_lines: u32 = 8;
 const granary_steward_sight_view_max_lines: u32 = 8;
 const open_asks_view_max_lines: u32 = 8;
 const open_asks_escrow_view_max_lines: u32 = 8;
+const open_asks_reputation_view_max_lines: u32 = 8;
 const mala_mint_fixture = "tools/fixtures/mala_m1_mint.bron";
 const wov_bundle_fixture = "tools/fixtures/wov_exit_bundle_v1.bron";
 const greencandy_journal_fixture = "greencandy/fixtures/journal.bron";
@@ -5179,6 +5181,61 @@ fn run_open_asks_escrow_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 
     return 0;
 }
 
+/// Open Asks reputation view — OA-L4 consent-before-counting on one Skate frame.
+fn compose_open_asks_reputation_view_lines(garden: std.mem.Allocator, io: std.Io) ![]surface.SkateLine {
+    const state = try open_asks.run_reputation_welcome_fold(io);
+    assert(state.consented_completions == 3);
+    assert(state.consented_stipend == 300);
+
+    const lines = try garden.alloc(surface.SkateLine, open_asks_reputation_view_max_lines);
+    lines[0] = .{ .text = try garden.dupe(u8, "open asks reputation view") };
+    lines[1] = .{ .text = try garden.dupe(u8, "consent before counting") };
+    lines[2] = .{ .text = try garden.dupe(u8, "witness bolt five cycles") };
+    lines[3] = .{ .text = try std.fmt.allocPrint(garden, "consented completions {d}", .{state.consented_completions}) };
+    lines[4] = .{ .text = try std.fmt.allocPrint(garden, "consented stipend {d}", .{state.consented_stipend}) };
+    lines[5] = .{ .text = try garden.dupe(u8, "plain + escrow-release") };
+    lines[6] = .{ .text = try garden.dupe(u8, "withheld excluded") };
+    lines[7] = .{ .text = try garden.dupe(u8, "fold green") };
+    return lines;
+}
+
+fn run_open_asks_reputation_view_witness(garden: std.mem.Allocator, io: std.Io) !u8 {
+    const empty = try garden.alloc(surface.SkateLine, 1);
+    empty[0] = .{ .text = "" };
+    const sig_empty = try surface.content_signature(garden, empty);
+
+    const frame = try compose_open_asks_reputation_view_lines(garden, io);
+    defer {
+        var i: u32 = 0;
+        while (i < frame.len) : (i += 1) garden.free(frame[i].text);
+        garden.free(frame);
+    }
+    assert(frame.len == open_asks_reputation_view_max_lines);
+    const sig = try surface.content_signature(garden, frame);
+    assert(sig != sig_empty);
+
+    const golden = [_][]const u8{
+        "open asks reputation view",
+        "consent before counting",
+        "witness bolt five cycles",
+        "consented completions 3",
+        "consented stipend 300",
+        "plain + escrow-release",
+        "withheld excluded",
+        "fold green",
+    };
+    assert(lines_equal(&golden, frame));
+
+    var out: [280]u8 = undefined;
+    const msg = try std.fmt.bufPrint(
+        &out,
+        "drawn terminal open asks reputation view: consented=3 stipend=300 plain+escrow withheld=excluded sig={x} lines={d} — GREEN\n",
+        .{ sig, frame.len },
+    );
+    try std.Io.File.stdout().writeStreamingAll(io, msg);
+    return 0;
+}
+
 fn run_session_witness(garden: std.mem.Allocator, io: std.Io, init: std.process.Init) !u8 {
     var env = rishi.Env{};
     var history = rishi.History{};
@@ -5839,6 +5896,9 @@ pub fn main(init: std.process.Init) !u8 {
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "openasksescrowviewtest")) {
         return run_open_asks_escrow_view_witness(garden, io);
+    }
+    if (args.len >= 2 and std.mem.eql(u8, args[1], "openasksreputationviewtest")) {
+        return run_open_asks_reputation_view_witness(garden, io);
     }
     if (args.len >= 2 and std.mem.eql(u8, args[1], "keyboardtest")) {
         return run_keyboard_witness(garden, io, init);
