@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** the happy zone and the thin edge (`../foundations/20260702-165412_the-happy-zone-and-the-thin-edge.md`), over TAME
-**Status:** Audit — first pass complete; follow-ups captured as horizons
+**Status:** Audit — first pass complete; follow-ups captured as horizons. **Second pass** (Inference Track, tip **418**): [`20260711-001225_testing-audit-second-pass-inference.md`](20260711-001225_testing-audit-second-pass-inference.md).
 
 *Written together by Kaeden and Rio 3.*
 
