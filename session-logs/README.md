@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260711.052338 | [Full Cursor-bot summary — tips 379 → 430 + hold](20260711-052338_full-cursor-bot-summary.md) | PRs #85–#112; civic glass arc; hold at tip **430** |
 | 20260711.033228 | [Hold at tip 430 — OA civic glass arc closed](20260711-033228_hold-at-tip-430.md) | Hold affirmed; reopen menu filed; no invented lap |
 | 20260711.032748 | [Open Asks civic sight — tip 430](20260711-032748_open-asks-civic-sight.md) | L1 · L3 · L4 on one Skate frame; OA civic glass arc closed |
 | 20260711.030243 | [Open Asks reputation view — tip 429](20260711-030243_open-asks-reputation-view.md) | OA-L4 consent-before-counting on Skate; consented 3 · stipend 300 |
