@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260711.052338` | [Cursor bot full trail — tips 379 → 430](20260711-052338_cursor-bot-full-trail.md) | Map of Inference deepen + civic glass + hold |
 | `20260711.033228` | [Hold at tip 430 — reopen menu](20260711-033228_hold-at-tip-430.md) | Civic glass arc closed; name a door to reopen |
 | `20260711.010030` | [How Rye OS could help Cursor SpaceXAI](20260711-010030_rye-os-helps-cursor-spacexai.md) | Five surfaces — enclosure · witnesses · local inference · agent commerce · Realidream |
 | `20260708.171712` | [Every gate sorted](20260708-171712_claude-counsel-every-gate-sorted.md) | Decision briefing — SLC-L3 alone; six small proposals; four non-gates |
