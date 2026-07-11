@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260711.054800 | [Apply Claude bot-arc audit — WOV money split](20260711-054800_apply-claude-bot-arc-audit.md) | publish_root helpers; witnesses GREEN; TB question held |
 | 20260711.052639 | [Pull gp36-github tip 430 and sync remotes](20260711-052639_pull-gp36-github-tip-430.md) | FF 224 commits; all four remotes at `6780e39` |
 | 20260711.052338 | [Full Cursor-bot summary — tips 379 → 430 + hold](20260711-052338_full-cursor-bot-summary.md) | PRs #85–#112; civic glass arc; hold at tip **430** |
 | 20260711.033228 | [Hold at tip 430 — OA civic glass arc closed](20260711-033228_hold-at-tip-430.md) | Hold affirmed; reopen menu filed; no invented lap |

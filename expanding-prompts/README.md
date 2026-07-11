@@ -3,7 +3,7 @@
 *A place where a request becomes a plan. When you hand me a seed of intent, I bring it here, read it closely through every lens we have built, and craft from it a fuller, clearer prompt for myself — one I can then run. The seed stays yours; the expansion is how I make sure I have understood it, sharpened it, and lost none of it.*
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 2 · inference stack lap 0 prompt `133500`)
+**Last updated:** 2026-07-11 (Cursor-bot arc audit apply `053412`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
@@ -68,6 +68,7 @@ What does *not* belong here is the work itself — that lands in the research, d
 
 | Stamp | Prompt | Meaning |
 |-------|--------|---------|
+| `20260711.053412` | [Apply Cursor-bot arc audit](20260711-053412_apply-cursor-bot-arc-audit.md) | WOV money fn split; counsel; Kaeden TB question held |
 | `20260710.133500` | [Inference stack lap 0](20260710-133500_inference-stack-lap0.md) | Module roots + assist view; parity **215** |
 | `20260710.132548` | [Greencandy lap 3 — sight view](20260710-132548_greencandy-lap3-sight-view.md) | Carriage + books Skate frame; parity **210** |
 | `20260710.131212` | [Greencandy root + lap 2 reports](20260710-131212_greencandy-root-lap2-reports.md) | Own folder; P&L · BS · exceptions; parity **209** |

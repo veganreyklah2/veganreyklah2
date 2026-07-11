@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-11 (Radiant Style pass · Rye OS / Cursor SpaceXAI counsel `010030`)
+**Last updated:** 2026-07-11 (Cursor-bot arc audit `053412`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260711.053412` | [Cursor-bot arc audit — money sound, WOV split, TB tension](20260711-053412_claude-counsel-cursor-bot-arc-audit.md) | Three WOV money fns split+witnessed; WOV/TB self-contained question for Kaeden |
 | `20260711.052338` | [Cursor bot full trail — tips 379 → 430](20260711-052338_cursor-bot-full-trail.md) | Map of Inference deepen + civic glass + hold |
 | `20260711.033228` | [Hold at tip 430 — reopen menu](20260711-033228_hold-at-tip-430.md) | Civic glass arc closed; name a door to reopen |
 | `20260711.010030` | [How Rye OS could help Cursor SpaceXAI](20260711-010030_rye-os-helps-cursor-spacexai.md) | Five surfaces — enclosure · witnesses · local inference · agent commerce · Realidream |

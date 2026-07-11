@@ -244,25 +244,23 @@ pub const PublishedRoot = struct {
 };
 
 /// Publish root: build bundle, sign body, append wov:root to MALA log.
-pub fn publish_root(
+// Build the attested bundle into `out.bundle`, hash it into `out.state_root_hex`,
+// and fill `out.accounts_digest_hex`. The attestation is monarch A's signature
+// over the bundle body. Shared by publish_root and publish_root_dual.
+fn build_attested_bundle(
     book: *Book,
-    monarch: kumara.KeyPair,
-    monarch_hex: *const [pubkey_hex_len]u8,
+    seq: u64,
     stamp: []const u8,
-    log: []u8,
-    log_len: *u32,
+    attester: kumara.KeyPair,
     out: *PublishedRoot,
 ) error{Overflow, InvalidFact, ConservationBroken}!void {
-    const seq = book.root_seq + 1;
     var body: [max_bundle_len]u8 = undefined;
     const body_len = try write_bundle_body(book, seq, stamp, &body, &out.accounts_digest_hex);
 
-    const sig = kumara.sign(body[0..body_len], monarch, null);
-    const sig_bytes = sig.toBytes();
+    const asig = kumara.sign(body[0..body_len], attester, null);
     var sig_hex: [kumara.signature_length * 2]u8 = undefined;
-    write_hex(&sig_bytes, &sig_hex);
+    write_hex(&asig.toBytes(), &sig_hex);
 
-    // Full bundle = body + attestation line
     if (body_len + 12 + sig_hex.len + 1 > max_bundle_len) return error.Overflow;
     tally_copy.copy_disjoint(u8, out.bundle[0..body_len], body[0..body_len]);
     const att = std.fmt.bufPrint(
@@ -275,13 +273,20 @@ pub fn publish_root(
     var state_digest: [32]u8 = undefined;
     Sha3_256.hash(out.bundle[0..out.bundle_len], &state_digest, .{});
     write_hex(&state_digest, &out.state_root_hex);
+}
 
+// Format the root-fact memo (prefix, instance, seq, state root, accounts digest,
+// prev root) into `memo_buf`, returning the written slice.
+fn write_root_memo(
+    book: *const Book,
+    seq: u64,
+    out: *const PublishedRoot,
+    memo_buf: *[max_memo_len]u8,
+) error{Overflow}![]const u8 {
     var instance_hex: [instance_hex_len]u8 = undefined;
     hex_of_instance(&instance_hex);
-
-    var memo_buf: [max_memo_len]u8 = undefined;
-    const memo = std.fmt.bufPrint(
-        &memo_buf,
+    return std.fmt.bufPrint(
+        memo_buf,
         "{s}{s} {d} {s} {s} {s}",
         .{
             memo_root_prefix,
@@ -292,6 +297,38 @@ pub fn publish_root(
             book.prev_state_root_hex[0..],
         },
     ) catch return error.Overflow;
+}
+
+// Sign `canonical` with `signer` and append the formatted log line to `log`.
+fn append_signed_line(
+    canonical: []const u8,
+    signer: kumara.KeyPair,
+    log: []u8,
+    log_len: *u32,
+) error{Overflow, InvalidFact}!void {
+    const root_sig = kumara.sign(canonical, signer, null);
+    var line: [rc.max_line_len]u8 = undefined;
+    const line_len = try rc.format_log_line(root_sig, canonical, &line);
+    const need = log_len.* + line_len;
+    if (need > buf_len_u32(log)) return error.Overflow;
+    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
+    log_len.* = need;
+}
+
+pub fn publish_root(
+    book: *Book,
+    monarch: kumara.KeyPair,
+    monarch_hex: *const [pubkey_hex_len]u8,
+    stamp: []const u8,
+    log: []u8,
+    log_len: *u32,
+    out: *PublishedRoot,
+) error{Overflow, InvalidFact, ConservationBroken}!void {
+    const seq = book.root_seq + 1;
+    try build_attested_bundle(book, seq, stamp, monarch, out);
+
+    var memo_buf: [max_memo_len]u8 = undefined;
+    const memo = try write_root_memo(book, seq, out, &memo_buf);
 
     const fields = rc.FactFields{
         .from = monarch_hex[0..],
@@ -304,13 +341,7 @@ pub fn publish_root(
     // Root facts use amount 0 — sign via receipt_core directly (MALA fold refuses 0).
     var canonical: [rc.max_fact_len]u8 = undefined;
     const canonical_len = try rc.write_canonical_fact(fields, &canonical);
-    const root_sig = kumara.sign(canonical[0..canonical_len], monarch, null);
-    var line: [rc.max_line_len]u8 = undefined;
-    const line_len = try rc.format_log_line(root_sig, canonical[0..canonical_len], &line);
-    const need = log_len.* + line_len;
-    if (need > buf_len_u32(log)) return error.Overflow;
-    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
-    log_len.* = need;
+    try append_signed_line(canonical[0..canonical_len], monarch, log, log_len);
 
     book.root_seq = seq;
     tally_copy.copy_disjoint(u8, &book.prev_state_root_hex, &out.state_root_hex);
@@ -331,43 +362,10 @@ pub fn publish_root_dual(
     out: *PublishedRoot,
 ) error{Overflow, InvalidFact, ConservationBroken}!void {
     const seq = book.root_seq + 1;
-    var body: [max_bundle_len]u8 = undefined;
-    const body_len = try write_bundle_body(book, seq, stamp, &body, &out.accounts_digest_hex);
-
-    const sig = kumara.sign(body[0..body_len], monarch_a, null);
-    const sig_bytes = sig.toBytes();
-    var sig_hex: [kumara.signature_length * 2]u8 = undefined;
-    write_hex(&sig_bytes, &sig_hex);
-
-    if (body_len + 12 + sig_hex.len + 1 > max_bundle_len) return error.Overflow;
-    tally_copy.copy_disjoint(u8, out.bundle[0..body_len], body[0..body_len]);
-    const att = std.fmt.bufPrint(
-        out.bundle[body_len..],
-        "attestation {s}\n",
-        .{sig_hex[0..]},
-    ) catch return error.Overflow;
-    out.bundle_len = body_len + buf_len_u32(att);
-
-    var state_digest: [32]u8 = undefined;
-    Sha3_256.hash(out.bundle[0..out.bundle_len], &state_digest, .{});
-    write_hex(&state_digest, &out.state_root_hex);
-
-    var instance_hex: [instance_hex_len]u8 = undefined;
-    hex_of_instance(&instance_hex);
+    try build_attested_bundle(book, seq, stamp, monarch_a, out);
 
     var memo_buf: [max_memo_len]u8 = undefined;
-    const memo = std.fmt.bufPrint(
-        &memo_buf,
-        "{s}{s} {d} {s} {s} {s}",
-        .{
-            memo_root_prefix,
-            instance_hex[0..],
-            seq,
-            out.state_root_hex[0..],
-            out.accounts_digest_hex[0..],
-            book.prev_state_root_hex[0..],
-        },
-    ) catch return error.Overflow;
+    const memo = try write_root_memo(book, seq, out, &memo_buf);
 
     const fields = rc.FactFields{
         .from = monarch_a_hex[0..],
@@ -380,21 +378,9 @@ pub fn publish_root_dual(
     var canonical: [rc.max_fact_len]u8 = undefined;
     const canonical_len = try rc.write_canonical_fact(fields, &canonical);
 
-    const root_sig_a = kumara.sign(canonical[0..canonical_len], monarch_a, null);
-    var line_a: [rc.max_line_len]u8 = undefined;
-    const line_a_len = try rc.format_log_line(root_sig_a, canonical[0..canonical_len], &line_a);
-    var need = log_len.* + line_a_len;
-    if (need > buf_len_u32(log)) return error.Overflow;
-    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_a_len], line_a[0..line_a_len]);
-    log_len.* = need;
-
-    const root_sig_b = kumara.sign(canonical[0..canonical_len], monarch_b, null);
-    var line_b: [rc.max_line_len]u8 = undefined;
-    const line_b_len = try rc.format_log_line(root_sig_b, canonical[0..canonical_len], &line_b);
-    need = log_len.* + line_b_len;
-    if (need > buf_len_u32(log)) return error.Overflow;
-    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_b_len], line_b[0..line_b_len]);
-    log_len.* = need;
+    // Two log lines over identical canonical bytes: signed by A, then by B.
+    try append_signed_line(canonical[0..canonical_len], monarch_a, log, log_len);
+    try append_signed_line(canonical[0..canonical_len], monarch_b, log, log_len);
 
     book.root_seq = seq;
     tally_copy.copy_disjoint(u8, &book.prev_state_root_hex, &out.state_root_hex);
@@ -752,13 +738,7 @@ pub fn accept_exit_dual(
     };
     var canonical: [rc.max_fact_len]u8 = undefined;
     const canonical_len = try rc.write_canonical_fact(fields, &canonical);
-    const sig = kumara.sign(canonical[0..canonical_len], holder, null);
-    var line: [rc.max_line_len]u8 = undefined;
-    const line_len = try rc.format_log_line(sig, canonical[0..canonical_len], &line);
-    const need = log_len.* + line_len;
-    if (need > buf_len_u32(log)) return error.Overflow;
-    tally_copy.copy_disjoint(u8, log[log_len.*..][0..line_len], line[0..line_len]);
-    log_len.* = need;
+    try append_signed_line(canonical[0..canonical_len], holder, log, log_len);
 
     try record_exit(book, holder_hex, published.seq);
     book.redeemed +%= proof.balance;
