@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-11 (Open Asks civic sight `032657`; parity **430**)
+**Last updated:** 2026-07-11 (hold at tip **430** `033228`; parity **430**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
