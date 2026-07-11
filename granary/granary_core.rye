@@ -37,6 +37,7 @@ pub const NameFactError = error{
     Overflow,
     VerifyFailed,
     UnknownName,
+    NotPublished,
     DigestMismatch,
     ResinMissing,
     StoreFull,
@@ -401,6 +402,31 @@ pub fn has_resin(store: *const ResinStore, digest_hex: []const u8) bool {
 
 /// Host serves: copy verified resin bytes for a digest.
 pub fn serve_resin(host: *const ResinStore, digest_hex: []const u8, out: []u8) NameFactError!u32 {
+    return clone_resin(host, digest_hex, out);
+}
+
+/// A digest is published when some verified name-fact in the registry names it.
+/// Precondition: digest_hex.len == digest_hex_len (asserted).
+pub fn digest_is_published(reg: *const Registry, digest_hex: []const u8) bool {
+    assert(digest_hex.len == digest_hex_len);
+    var i: u32 = 0;
+    while (i < reg.fact_count) : (i += 1) {
+        if (std.mem.eql(u8, reg.facts[i].resin_digest[0..], digest_hex)) return true;
+    }
+    return false;
+}
+
+/// Network-facing serve: a digest is an address for verifying content, never a
+/// capability for reaching it. Refuse any digest no published name-fact names,
+/// so an unpublished resin sharing a store with published ones stays private
+/// even from a requester who has learned its digest.
+pub fn serve_resin_published(
+    host: *const ResinStore,
+    reg: *const Registry,
+    digest_hex: []const u8,
+    out: []u8,
+) NameFactError!u32 {
+    if (!digest_is_published(reg, digest_hex)) return error.NotPublished;
     return clone_resin(host, digest_hex, out);
 }
 

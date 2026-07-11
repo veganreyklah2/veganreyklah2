@@ -146,7 +146,7 @@ fn run_selftest(io: std.Io) !u8 {
     try vfw.decode_request(req_opened[0..@intCast(req_opened_len)], &decoded_req);
 
     var served: [gc.max_resin_bytes]u8 = undefined;
-    const served_len = try gc.serve_resin(&host, decoded_req.digest_hex[0..], &served);
+    const served_len = try gc.serve_resin_published(&host, &reg, decoded_req.digest_hex[0..], &served);
     var resp: vfw.FetchResponse = undefined;
     try build_response_bytes(decoded_req.digest_hex[0..], served[0..served_len], &resp);
     var resp_buf: [vfw.max_wire_payload]u8 = undefined;
@@ -183,6 +183,19 @@ fn run_selftest(io: std.Io) !u8 {
     } else |_| {}
     print("rsd: digest mismatch refused — GREEN unwelcome\n", .{});
 
+    // Unwelcome: an unpublished resin in the same store is refused over the wire.
+    // A digest is an address, never a capability — no name-fact, no serve.
+    const private_note = "draft: not yet published anywhere";
+    const private_digest = try gc.put_resin(&host, private_note);
+    assert(!gc.digest_is_published(&reg, private_digest[0..]));
+    var leak: [gc.max_resin_bytes]u8 = undefined;
+    if (gc.serve_resin_published(&host, &reg, private_digest[0..], &leak)) |_| {
+        return error.VerifyFailed;
+    } else |err| {
+        assert(err == error.NotPublished);
+    }
+    print("rsd: unpublished digest refused — GREEN unwelcome\n", .{});
+
     print("rsd: version {s} granary {s} wire {s}\n", .{ rsd_version, gc.granary_version, vfw.vessel_fetch_wire_version });
     print("GREEN: Granary lap 4 — resin serve under Comlink seal.\n", .{});
     return 0;
@@ -193,6 +206,10 @@ fn run_demo_host(io: std.Io) !u8 {
     const markdown = try load_front_page(io, &md_buf);
     var host = gc.ResinStore.empty();
     const digest = try gc.put_resin(&host, markdown);
+    var fact: [gc.max_fact_len]u8 = undefined;
+    const fact_len = try gc.sign_name_fact(gc.granary_version, "rio", "greeting", &digest, &fact);
+    var reg = gc.Registry.empty();
+    try gc.append_fact(&reg, fact[0..fact_len]);
 
     var wire_in: [@intCast(wf.wire_capacity)]u8 = undefined;
     const n = try recv_wire(host_port, &wire_in);
@@ -200,12 +217,12 @@ fn run_demo_host(io: std.Io) !u8 {
     const opened_len = try open_wire(wire_in[0..n], &opened);
     var req: vfw.FetchRequest = undefined;
     try vfw.decode_request(opened[0..@intCast(opened_len)], &req);
-    if (!std.mem.eql(u8, req.digest_hex[0..], digest[0..])) return error.DigestMismatch;
 
+    // Published-set gate on the live wire: no name-fact, no serve.
     var served: [gc.max_resin_bytes]u8 = undefined;
-    const served_len = try gc.serve_resin(&host, &digest, &served);
+    const served_len = try gc.serve_resin_published(&host, &reg, req.digest_hex[0..], &served);
     var resp: vfw.FetchResponse = undefined;
-    try build_response_bytes(&digest, served[0..served_len], &resp);
+    try build_response_bytes(req.digest_hex[0..], served[0..served_len], &resp);
     try send_resin_response(&resp);
     print("rsd: demo host served rio/greeting resin\n", .{});
     return 0;

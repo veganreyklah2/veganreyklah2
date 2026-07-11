@@ -15,6 +15,7 @@ assert selftest.ok else "Granary resin wire selftest exited non-zero"
 assert selftest.out contains "GREEN" else "Granary resin wire selftest not GREEN"
 assert selftest.out contains "guest equals host" else "Granary resin wire missing mirror equality"
 assert selftest.out contains "bad seal refused" else "Granary resin wire missing seal refuse"
+assert selftest.out contains "unpublished digest refused" else "Granary resin wire missing published-set gate"
 
 say "granary-wire: hosted UDP demo..."
 let demo = run ["sh" "-c" "${bin} demo 2>&1"]

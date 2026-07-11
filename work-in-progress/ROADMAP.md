@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-11 (WOV TB cross-check seam retired `055800`; Kaeden approved counsel `055112`; pure-Rye WOV core kept)
+**Last updated:** 2026-07-11 (consumer-surface protection audit `060112` — published-set gate; WOV TB seam retired `055800`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
