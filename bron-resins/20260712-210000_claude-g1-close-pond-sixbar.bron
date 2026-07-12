@@ -6,7 +6,7 @@ stamp 20260712.210000
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib 249657d
+git_nib ccc7dc4
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -20,7 +20,7 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go 40d7984
-pin git_nib 249657d
+pin git_nib ccc7dc4
 pin remotes will-push-four
 pin lane_kvm onpath GREEN 140403
 pin enclosure_pair refuse-jail · permit-Framework
@@ -54,6 +54,7 @@ section commits_this_go
 title Commits oldest → newest (fill tip after push if needed)
 commit 9744ecd Close G1 at digest-grade and seat vendor/genode as the teacher home.
 commit 249657d Land Pond enclosure six-bar baseline against ai-jail.
+commit ccc7dc4 Record the evening Claude handoff for G1 close and Pond sixbar.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
