@@ -18,6 +18,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.202118 | [Go — G1 Codeberg sources + three-asks counsel](20260712-202118_go-g1-codeberg-sources.bron) | Commit + four remotes · prepare_port kg next |
+| 20260712.201802 | [Seat + kg — G1 sources Codeberg 26.05 GREEN](20260712-201802_g1-sources-codeberg-26.05.bron) | Commit pin 492a510… · META trio revised · prepare_port next |
+| 20260712.201558 | [Kg — G1 sources fetch GREEN](20260712-201558_g1-sources-fetch-green.bron) | Tag 25.05 · repos/base+libports · prepare_port next |
+| 20260712.201200 | [Seat Claude three asks — META trio · source-fetch next](20260712-201200_claude-g1-three-asks-seated.bron) | 25.05/25.05/Sculpt 26.04 · kg unroll · park holds |
 | 20260712.200445 | [Go — G1 toolchain fetch GREEN · Claude evening handoff](20260712-200445_go-g1-toolchain-claude-handoff.bron) | Fetch witness · GCC 14.2.0 · Claude printout |
 | 20260712.200256 | [G1 fetch-toolchain Rishi witness](20260712-200256_g1-fetch-toolchain-rish.bron) | Ubuntu 24.04 tarball · sha256 pin · cache extract |
 | 20260712.195339 | [Go open kg — proven-seat G1 crossing spike](20260712-195339_go-open-kg-g1-crossing.bron) | Path named · probe GREEN · skeleton waits binary |

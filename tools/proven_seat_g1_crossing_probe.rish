@@ -33,6 +33,11 @@ let have_tool = run ["test" "-d" tool_dir]
 if have_tool.ok then say "proven-seat G1 crossing: toolchain directory present at ${tool_dir}"
 if have_tool.ok == false then say "proven-seat G1 crossing: toolchain not fetched yet — next kg follows pin fetch recipe"
 
+let src_dir = "${cache}/genode-sources"
+let have_src = run ["test" "-d" src_dir]
+if have_src.ok then say "proven-seat G1 crossing: sources directory present at ${src_dir}"
+if have_src.ok == false then say "proven-seat G1 crossing: sources not fetched yet — next kg is proven_seat_g1_fetch_sources.rish"
+
 let goa = run ["sh" "-c" "command -v goa >/dev/null"]
 if goa.ok then say "proven-seat G1 crossing: goa on PATH"
 if goa.ok == false then say "proven-seat G1 crossing: goa not on PATH (optional teacher)"

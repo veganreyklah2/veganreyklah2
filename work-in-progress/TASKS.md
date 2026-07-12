@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (G1 toolchain fetch GREEN · host GCC 14.2.0)
+**Last updated:** 2026-07-12 (G1 sources Codeberg 26.05 GREEN · prepare_port next)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -13,7 +13,7 @@
 
 **Ordered next (Claude `144519` · G1 open `195339`):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
-2. **G1** — **opened** · crossing named · **toolchain fetched GREEN** (25.05 ubuntu-24.04 · `genode-x86-g++` 14.2.0) · **next:** posix/libc receipt guest · jailed TCG serial GREEN
+2. **G1** — toolchain **25.05** + sources **26.05** Codeberg @ `492a510…` GREEN · META trio seated · **next:** `prepare_port libc` → `create_builddir` x86_64 → SLC guest · jailed TCG serial GREEN (Claude `201802`)
 3. **Pond** enclosure six-bar baseline
 4. Route two / inward lane nest — parked until graduation trigger; G1 is the watch-post
 
