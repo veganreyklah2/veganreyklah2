@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942` · T2 courtesy **choice seated** `062656`; Door 3 **landed** tip **431** `063213`; Spritely ally parked; component compile · proven-seat metal wait on word
+**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942` · T2 courtesy **choice seated** `062656`; Door 3 **landed** tip **431** `063213`; component compile **landed** tip **432** `063558`; Spritely ally parked; proven-seat metal wait on word
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 

@@ -1,13 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Door 3 consumer-edge pass tip **431** `063213`)
+**Last updated:** 2026-07-12 (receipt-verify Wasmtime tip **432** `063558`)
 
-## Now — Door 3 green (**431**) · tip **430** product hold
+## Now — Portable seam green (**432**) · Door 3 (**431**) · product tip **430**
 
-**Standing product green:** tip **430** — Open Asks civic sight (`032657`). **New suite tip:** **431** — Door 3 consumer-edge pass (in-process). Hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md).
+**Standing product green:** tip **430** — Open Asks civic sight. **Suite tip:** **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md).
 
-**Ordered next (counsel):** component compile (`receipt_core`) → proven-seat metal · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words.
+**Ordered next (counsel):** proven-seat metal (heaviest) · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -20,7 +20,7 @@
 | — | **Giving-lane T1** | **Landed** `054942` | OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) — amount/`from` public = top gaps |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
-| — | **Component compile lap** | **Parked** | Wasmtime green waits on word — ER `054135` |
+| — | **Component compile lap** | **Landed** tip **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
 | — | **Giving-lane T2** | **Choice seated** `062656` | Courtesy now · proof as T3 — brief [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
@@ -37,7 +37,7 @@
 - [x] **Giving-lane T1** — OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md); top gaps: public `amount` and `from` on completion
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
 - [x] **Door 3 first green** — in-process pass admits published read + signed submit; refuses unpublished / lying / lying pass — tip **431** `063213`
-- [ ] **Component compile lap (on word)** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — ER `054135`
+- [x] **Component compile lap** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — tip **432** `063558`
 - [ ] **Proven-seat G1 guest (on word)** — receipt verify-witness GREEN under Genode-hosted path — ER `054342`
 - [ ] **Giving-lane T2 wire (on word)** — courtesy shape seated [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); glass withholding composition awaits word
 - [x] **Bud / mudra names seated** — `tally/bud.rye` · `tools/slcl4_mudra.rish` · Mudra released from Pottery alternates (`062656`)
