@@ -17,50 +17,71 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/enrich_strengthening_docs.rish
 
-let real_before = run ["sh" "-c" "md5sum strengthening-compiler/0000_STRENGTHENING_LEXICON.md | cut -d' ' -f1"]
+let zig = "vendor/zig-toolchain/zig"
+let zig_ver = run [zig "version"]
+assert zig_ver.ok else "pinned ziglang toolchain missing at vendor/zig-toolchain"
+
+let real_before = run ["md5sum" "strengthening-compiler/0000_STRENGTHENING_LEXICON.md"]
 assert real_before.ok else "could not checksum the real lexicon file before the run"
 
-let real_crosswalk_before = run ["sh" "-c" "test -f work-in-progress/992_strengthening_width_crosswalk.md && echo present || echo absent"]
+let crosswalk_path = "work-in-progress/992_strengthening_width_crosswalk.md"
+let crosswalk_before = run ["test" "-f" crosswalk_path]
 
-let build = run ["sh" "-c" "mkdir -p tools/bin && rye/bin/rye build tools/enrich_strengthening_docs.rye -femit-bin=tools/bin/enrich-strengthening-docs"]
+let mkdir = run ["mkdir" "-p" "tools/bin"]
+assert mkdir.ok else "could not create tools/bin"
+let build = run ["env" "RYE_ZIG=${zig}" "rye/bin/rye" "build" "tools/enrich_strengthening_docs.rye" "-femit-bin=tools/bin/enrich-strengthening-docs"]
+if build.ok == false then say "enrich_strengthening_docs build stdout:"
+if build.ok == false then say build.out
+if build.ok == false then say "enrich_strengthening_docs build stderr:"
+if build.ok == false then say build.err
 assert build.ok else "enrich_strengthening_docs build failed"
 
 let fixture_src = "tools/fixtures/enrich_strengthening_docs_fixture"
 let work = "tools/fixtures/.enrich_strengthening_docs_work"
-let prep = run ["sh" "-c" "rm -rf ${work} && cp -r ${fixture_src} ${work}"]
+let clear = run ["rm" "-rf" work]
+assert clear.ok else "enrich_strengthening_docs fixture clear failed"
+let prep = run ["cp" "-r" fixture_src work]
 assert prep.ok else "enrich_strengthening_docs fixture copy failed"
 
 let doc = "${work}/strengthening-compiler/9001_fixture_pass.md"
 
-let first = run ["sh" "-c" "VEGANREYKLAH2_ROOT=$(pwd)/${work} tools/bin/enrich-strengthening-docs 2>&1"]
+let pwd_r = run ["pwd"]
+let pwd_s = trim pwd_r.out
+let work_root = "${pwd_s}/${work}"
+
+let first = run ["env" "VEGANREYKLAH2_ROOT=${work_root}" "tools/bin/enrich-strengthening-docs"]
+if first.ok == false then say "enrich first-run stdout:"
+if first.ok == false then say first.out
+if first.ok == false then say "enrich first-run stderr:"
+if first.ok == false then say first.err
 assert first.ok else "enrich_strengthening_docs first run failed"
-assert first.out contains "enriched 9001_fixture_pass.md" else "first run did not enrich the fixture pass doc"
-assert first.out contains "crosswalk: 1 rows" else "first run did not produce a one-row crosswalk"
-assert first.out contains "lexicon: 1 surfaces" else "first run did not produce a one-surface lexicon"
+assert first.err contains "enriched 9001_fixture_pass.md" else "first run did not enrich the fixture pass doc"
+assert first.err contains "crosswalk: 1 rows" else "first run did not produce a one-row crosswalk"
+assert first.err contains "lexicon: 1 surfaces" else "first run did not produce a one-surface lexicon"
 
-let after_first = run ["sh" "-c" "cat ${doc}"]
-assert after_first.out contains "## Rye std surface" else "first run did not add the surface section"
-assert after_first.out contains "## Width notes" else "first run did not add the width section"
-assert after_first.out contains "std.mem.eql" else "first run lost the backtick-wrapped std reference it was meant to find"
+let after_first = read-file doc
+assert after_first contains "## Rye std surface" else "first run did not add the surface section"
+assert after_first contains "## Width notes" else "first run did not add the width section"
+assert after_first contains "std.mem.eql" else "first run lost the backtick-wrapped std reference it was meant to find"
 
-let crosswalk_out = run ["sh" "-c" "cat ${work}/work-in-progress/992_strengthening_width_crosswalk.md"]
-assert crosswalk_out.out contains "9001" else "crosswalk output is missing the fixture pass row"
+let crosswalk_out = read-file "${work}/work-in-progress/992_strengthening_width_crosswalk.md"
+assert crosswalk_out contains "9001" else "crosswalk output is missing the fixture pass row"
 
-let lexicon_out = run ["sh" "-c" "cat ${work}/strengthening-compiler/0000_STRENGTHENING_LEXICON.md"]
-assert lexicon_out.out contains "9001_fixture_pass" else "lexicon output is missing the fixture pass entry"
+let lexicon_out = read-file "${work}/strengthening-compiler/0000_STRENGTHENING_LEXICON.md"
+assert lexicon_out contains "9001_fixture_pass" else "lexicon output is missing the fixture pass entry"
 
-let second = run ["sh" "-c" "VEGANREYKLAH2_ROOT=$(pwd)/${work} tools/bin/enrich-strengthening-docs 2>&1"]
+let second = run ["env" "VEGANREYKLAH2_ROOT=${work_root}" "tools/bin/enrich-strengthening-docs"]
 assert second.ok else "enrich_strengthening_docs second run failed"
-assert second.out contains "enriched 0 files" else "second run was not idempotent — enrich_file re-enriched an already-enriched doc"
+assert second.err contains "enriched 0 files" else "second run was not idempotent — enrich_file re-enriched an already-enriched doc"
 
-let real_after = run ["sh" "-c" "md5sum strengthening-compiler/0000_STRENGTHENING_LEXICON.md | cut -d' ' -f1"]
+let real_after = run ["md5sum" "strengthening-compiler/0000_STRENGTHENING_LEXICON.md"]
 assert real_after.ok else "could not checksum the real lexicon file after the run"
 assert real_after.out == real_before.out else "the real strengthening-compiler/0000_STRENGTHENING_LEXICON.md changed — this witness must never touch it"
 
-let real_crosswalk_after = run ["sh" "-c" "test -f work-in-progress/992_strengthening_width_crosswalk.md && echo present || echo absent"]
-assert real_crosswalk_after.out == real_crosswalk_before.out else "the real work-in-progress/ gained or lost the crosswalk file — this witness must never touch it"
+let crosswalk_after = run ["test" "-f" crosswalk_path]
+assert crosswalk_after.ok == crosswalk_before.ok else "the real work-in-progress/ gained or lost the crosswalk file — this witness must never touch it"
 
-let cleanup = run ["sh" "-c" "rm -rf ${work}"]
+let cleanup = run ["rm" "-rf" work]
 assert cleanup.ok else "enrich_strengthening_docs fixture cleanup failed"
 
 say "GREEN: enrich_strengthening_docs — fixture enriched once, idempotent on the second run, real tree untouched."

@@ -18,6 +18,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.143130 | [Go — argv-direct RYE_ZIG pins](20260712-143130_go-argv-direct-rye-zig-pins.bron) | Commit + four remotes · host parity still teeing |
+| 20260712.142812 | [Argv-direct RYE_ZIG pins · assert .err](20260712-142812_argv-direct-rye-zig-pins.bron) | No shell · six witnesses GREEN · stream discipline |
+| 20260712.142547 | [Rishi run is argv-direct not shell](20260712-142547_rishi-run-argv-direct.bron) | std.process.run · sh is convenience only |
+| 20260712.142323 | [Rishi scripts need not rely on bash](20260712-142323_rishi-no-bash-required.bron) | POSIX sh default · bash only for bashisms |
+| 20260712.142000 | [Aborted jail parity_ch01 probe noted](20260712-142000_parity-ch01-probe-aborted.bron) | Tail-pipe hung · host fix already at e7a0593 |
 | 20260712.141300 | [Fix tally_maybe RYE_ZIG pin](20260712-141300_fix-tally-maybe-rye-zig.bron) | Parity ch1 RED · zig FileNotFound under narrow PATH |
 | 20260712.140800 | [Parity tee recipe · print ch.out on fail](20260712-140800_parity-tee-recipe.bron) | No meta file · tee cache log · orchestrator detail |
 | 20260712.140403 | [lane_kvm on-path G0-complete GREEN](20260712-140403_lane-kvm-onpath-green.bron) | Host sitting · GRUB + glass · refuse restored |

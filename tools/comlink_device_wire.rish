@@ -13,13 +13,27 @@
 # Wire into tools/parity.rish only after a red-then-green pass on the wiring
 # bench, and pin the resulting count from metal.
 
-let build = run ["sh" "-c" "mkdir -p comlink/bin && rye/bin/rye build comlink/device_wire.rye -lc -femit-bin=comlink/bin/device-wire"]
+let zig = "vendor/zig-toolchain/zig"
+let zig_ver = run [zig "version"]
+assert zig_ver.ok else "pinned ziglang toolchain missing at vendor/zig-toolchain"
+
+let mkdir = run ["mkdir" "-p" "comlink/bin"]
+assert mkdir.ok else "could not create comlink/bin"
+let build = run ["env" "RYE_ZIG=${zig}" "rye/bin/rye" "build" "comlink/device_wire.rye" "-lc" "-femit-bin=comlink/bin/device-wire"]
+if build.ok == false then say "comlink device wire build stdout:"
+if build.ok == false then say build.out
+if build.ok == false then say "comlink device wire build stderr:"
+if build.ok == false then say build.err
 assert build.ok else "comlink device wire hosted build failed"
 
-let hosted = run ["sh" "-c" "comlink/bin/device-wire selftest 2>&1"]
+let hosted = run ["comlink/bin/device-wire" "selftest"]
+if hosted.ok == false then say "comlink device wire hosted stdout:"
+if hosted.ok == false then say hosted.out
+if hosted.ok == false then say "comlink device wire hosted stderr:"
+if hosted.ok == false then say hosted.err
 assert hosted.ok else "comlink device wire hosted selftest exited non-zero"
-assert hosted.out contains "GREEN" else "comlink device wire hosted selftest not GREEN"
-assert hosted.out contains "padding-free" else "comlink device wire layout proof did not run"
+assert hosted.err contains "GREEN" else "comlink device wire hosted selftest not GREEN"
+assert hosted.err contains "padding-free" else "comlink device wire layout proof did not run"
 
 let lab = run ["sh" "comlink/run_device_wire_lab.sh"]
 assert lab.ok else "comlink device wire lab failed"

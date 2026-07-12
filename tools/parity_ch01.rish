@@ -150,38 +150,56 @@ assert tame.ok else "TAME style witness failed"
 say "GREEN: TAME style witness passed."
 
 say "witness suite: Tally maybe…"
-let tmaybe = run ["bash" "-c" "rishi/bin/rishi run tools/tally_maybe.rish 2>&1"]
-if tmaybe.ok == false then say "tally maybe nested output:"
+let tmaybe = run ["rishi/bin/rishi" "run" "tools/tally_maybe.rish"]
+if tmaybe.ok == false then say "tally maybe nested stdout:"
 if tmaybe.ok == false then say tmaybe.out
+if tmaybe.ok == false then say "tally maybe nested stderr:"
+if tmaybe.ok == false then say tmaybe.err
 assert tmaybe.ok else "tally maybe witness failed"
 say "GREEN: Tally maybe witness passed."
 
 say "witness suite: Tally no_padding…"
-let tnp = run ["bash" "-c" "rishi/bin/rishi run tools/tally_no_padding.rish 2>&1"]
-if tnp.ok == false then say "tally no_padding nested output:"
+let tnp = run ["rishi/bin/rishi" "run" "tools/tally_no_padding.rish"]
+if tnp.ok == false then say "tally no_padding nested stdout:"
 if tnp.ok == false then say tnp.out
+if tnp.ok == false then say "tally no_padding nested stderr:"
+if tnp.ok == false then say tnp.err
 assert tnp.ok else "tally no_padding witness failed"
 say "GREEN: Tally no_padding witness passed."
 
 say "witness suite: Tally parse_int…"
-let tpi = run ["bash" "-c" "rishi/bin/rishi run tools/tally_parse_int.rish 2>&1"]
-if tpi.ok == false then say "tally parse_int nested output:"
+let tpi = run ["rishi/bin/rishi" "run" "tools/tally_parse_int.rish"]
+if tpi.ok == false then say "tally parse_int nested stdout:"
 if tpi.ok == false then say tpi.out
+if tpi.ok == false then say "tally parse_int nested stderr:"
+if tpi.ok == false then say tpi.err
 assert tpi.ok else "tally parse_int witness failed"
 say "GREEN: Tally parse_int witness passed."
 
 say "witness suite: align_session_logs (fixture only)…"
 let asl = run ["rishi/bin/rishi" "run" "tools/align_session_logs.rish"]
+if asl.ok == false then say "align_session_logs nested stdout:"
+if asl.ok == false then say asl.out
+if asl.ok == false then say "align_session_logs nested stderr:"
+if asl.ok == false then say asl.err
 assert asl.ok else "align_session_logs witness failed"
 say "GREEN: align_session_logs witness passed."
 
 say "witness suite: tame_usize_audit surfaceAuditOk…"
 let tua = run ["rishi/bin/rishi" "run" "tools/tame_usize_audit.rish"]
+if tua.ok == false then say "tame_usize_audit nested stdout:"
+if tua.ok == false then say tua.out
+if tua.ok == false then say "tame_usize_audit nested stderr:"
+if tua.ok == false then say tua.err
 assert tua.ok else "tame_usize_audit witness failed"
 say "GREEN: tame_usize_audit witness passed."
 
 say "witness suite: enrich_strengthening_docs (fixture only)…"
 let esd = run ["rishi/bin/rishi" "run" "tools/enrich_strengthening_docs.rish"]
+if esd.ok == false then say "enrich_strengthening_docs nested stdout:"
+if esd.ok == false then say esd.out
+if esd.ok == false then say "enrich_strengthening_docs nested stderr:"
+if esd.ok == false then say esd.err
 assert esd.ok else "enrich_strengthening_docs witness failed"
 say "GREEN: enrich_strengthening_docs witness passed."
 
