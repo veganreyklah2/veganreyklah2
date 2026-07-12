@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.185736 | [Fresh sitting opens · parity first-act on host](20260712-185736_fresh-sitting-parity-first.bron) | Day-close go · Framework tee recipe · Claude order |
+| 20260712.182752 | [Claude day-close · sitting clean at e460d3d](20260712-182752_claude-day-close-sitting-clean.bron) | Evening verify · full-day arc named · park until fresh tee |
 | 20260712.144519 | [Go — Claude afternoon four asks seated](20260712-144519_go-claude-afternoon-four-asks.bron) | Park · argv-direct · order · Route two trigger · four remotes |
 | 20260712.143946 | [Claude afternoon handoff bron · on-path · parity park](20260712-143946_claude-afternoon-handoff.bron) | Full Claude printout · commits · pushes · FAIL line |
 | 20260712.143528 | [Park second parity red · two-rooms Status](20260712-143528_park-parity-two-rooms-status.bron) | Route-probe Status lacked room · doorway GREEN · park |
