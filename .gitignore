@@ -10,6 +10,7 @@
 # --- The project ------------------------------------------------------------
 !/.gitignore
 !/.gitmodules
+!/.gitattributes
 !/SOURCE.md
 !/LICENSE-MIT
 !/LICENSE-APACHE

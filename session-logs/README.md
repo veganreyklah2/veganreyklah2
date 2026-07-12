@@ -14,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.103300 | [IronBeetle seventeen + Linguist Path A](20260712-103300_ironbeetle-seventeen-linguist-path-a.md) | Ep 004–021 on shelf · four gaps · `.rye`→Zig remap |
 | 20260712.095112 | [IronBeetle pilot ring filed and resting](20260712-095112_ironbeetle-pilot-ring-filed.md) | Ep 001–002 on shelf · ep003/ep004 queued · matklad pointer |
 | 20260712.093812 | [Verdicts + mesh study bundle filed](20260712-093812_verdicts-mesh-bundle.md) | Rye/Kumara/Comlink likes · ER 093812 · ROADMAP 1.6 |
 | 20260712.092212 | [IronBeetle Ep 001–002 siloed](20260712-092212_ironbeetle-ep001-002-silo.md) | gratitude/ironbeetle · matklad see-also · ep003 paused |

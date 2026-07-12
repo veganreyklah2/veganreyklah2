@@ -266,7 +266,7 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 
 | Destination | Status | Depends |
 |-------------|--------|---------|
-| **Mesh inference (TAME-guided)** | Horizon study [`093812`](../external-research/20260712-093812_mesh-inference-study.md) — Kumara-admitted · MALA-metered; not a lap | Comlink · Mycelium M4 · seL4 seat · model-runtime seam |
+| **Mesh inference (TAME-guided)** | Horizon study [`093812`](../external-research/20260712-093812_mesh-inference-study.md) — Kumara-admitted · MALA-metered; not a lap. **Sobriety anchor:** IronBeetle ep004 COST [`../gratitude/ironbeetle/20260712-092212_ironbeetle-ep004-refuses-to-be-sharded.md`](../gratitude/ironbeetle/20260712-092212_ironbeetle-ep004-refuses-to-be-sharded.md) — beat one honest thread before scaling counts | Comlink · Mycelium M4 · seL4 seat · model-runtime seam |
 | **Proven-seat G1–G3 children** | Named: `genode_seed` · Tally-quota dataspace · Mantra storage seam · Comlink transport seam · `genode_witness` — counsel [`092212`](../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md) | Enclosure `lane_kvm` · G0-complete jailed · G1 |
 | **Comlink maturation** | Key-addressing · `%fade` from birth · content-address dedupe — shared prerequisite for Genode transport + mesh | RTAC seat |
 

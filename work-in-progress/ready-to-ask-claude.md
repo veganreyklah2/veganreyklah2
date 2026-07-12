@@ -1,19 +1,33 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.095112` (IronBeetle pilot ring resting)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.103300` (IronBeetle seventeen · Linguist Path A)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## IronBeetle silo pilot — **ring of two resting** (`20260712.095112`)
+## IronBeetle silo pilot — **seventeen written · four gaps open**
 
-**Delivered:** Episodes 001–002 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tracked beside submodule `tigerbeetle/`).
+**Delivered:** Episodes 001–002, 004–006, 008–015, 018–021 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tracked beside submodule `tigerbeetle/`). Filed by Kaeden's labels and content — not the speaker's spoken numbering (matklad mis-numbers 004 as "fifth" on stream; corrects it himself).
 
-**Status:** ring of two delivered and resting; **ep003** earned-next on word (wire-to-disk message — Comlink / Mantra storage rhyme); **ep004 (COST)** queued beside mesh Horizon 1.6 — distributed must first beat a single honest thread.
+**Gaps (visible, not papered):** **003 · 007 · 016 · 017** await captions — gap-fills on arrival. Ep 015's forward nod to `view_headers` / view-change control flow stays a pointer, never a secondhand write-up of 016.
 
-**matklad.md:** see-also pointer to `tigerbeetle/` + silo home at `ironbeetle/`.
+**Status:** seventeen on the shelf; **ep004 COST** write-up anchors mesh Horizon 1.6 — beat one honest thread before scaling counts.
+
+**matklad.md:** widened see-also — 001–002, 004–006, 008–015, 018–021 written / 003, 007, 016, 017 open; silo home `ironbeetle/`.
+
+---
+
+## GitHub language bar — **Path A seated · Path C horizon**
+
+**Before (GitHub bar, Kaeden screenshot):** C 39.5% · Shell 33.3% · HTML 24.4% · Python 2.1% · Linker Script 0.4% · Awk 0.3% — no Rye, no Zig. The C share is almost certainly `.rye` mislabeled by content heuristics.
+
+**Path A (interim, seated):** repo-root [`.gitattributes`](../.gitattributes) — `*.rye linguist-language=Zig linguist-detectable` (Rye is a thin Zig frontend; truthful remap). `vendor/**` linguist-vendored. Prose shelves (`gratitude/` · `session-logs/` · `external-research/` · counsel/context/active-designing/foundations/… ) marked `linguist-documentation`. Shell (`.rish`/`.sh`) left as-is. **HTML product-vs-sketch** awaits Kaeden per-path word (much of the HTML already sits under `gratitude/` and will read as docs once Path A lands on GitHub).
+
+**Local pin:** `github-linguist` not on PATH in this enclosure — before/after percentages wait a host run or GitHub's post-push refresh; do not predict.
+
+**Path C (horizon RTAC):** Rye in GitHub Linguist — `languages.yml` PR, display color **Flax**, gated on multi-repo adoption; earned like the OCapN / Spritely two-sided rulings. Never rushed.
 
 ---
 

@@ -14,4 +14,4 @@
 
 **Cross-ref:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) — Visual Track · [`../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`](../external-research/20260708-021912_grain-sketchbook-realidream-mining.md) · distilled teachings [`../external-research/20260712-093812_matklad-teachings-distilled.md`](../external-research/20260712-093812_matklad-teachings-distilled.md)
 
-**See also:** [`tigerbeetle/`](tigerbeetle/) — the same teacher walks us through TigerBeetle's own machinery across the IronBeetle series, starting with Episodes 001 and 002. Own-voice silos (tracked; submodule stays unmodified): [`ironbeetle/`](ironbeetle/) (`20260712.092212`).
+**See also:** [`tigerbeetle/`](tigerbeetle/) — the same teacher walks us through TigerBeetle's own machinery across the IronBeetle series. Episodes 001–002, 004–006, 008–015, and 018–021 are written up; 003, 007, 016, and 017 are still open. Own-voice silos (tracked; submodule stays unmodified): [`ironbeetle/`](ironbeetle/) (`20260712.092212`).
