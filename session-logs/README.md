@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.140800 | [Parity tee recipe · print ch.out on fail](20260712-140800_parity-tee-recipe.bron) | No meta file · tee cache log · orchestrator detail |
 | 20260712.140403 | [lane_kvm on-path G0-complete GREEN](20260712-140403_lane-kvm-onpath-green.bron) | Host sitting · GRUB + glass · refuse restored |
 | 20260712.140200 | [Fix GRUB check — grep not rg](20260712-140200_fix-grub-grep-not-rg.bron) | Rishi PATH lacked rg · early kill on GRUB |
 | 20260712.135600 | [Fix G0c serial — nographic phase](20260712-135600_fix-g0c-serial-nographic.bron) | Empty -serial file · two-phase A GRUB / B glass |

@@ -8,11 +8,15 @@
 
 say "witness suite: chapter 1/2…"
 let ch1 = run ["rishi/bin/rishi" "run" "tools/parity_ch01.rish"]
+if ch1.ok == false then say "parity chapter 1 output (failure detail):"
+if ch1.ok == false then say ch1.out
 assert ch1.ok else "parity chapter 1 failed"
 say "GREEN: parity chapter 1/2 passed."
 
 say "witness suite: chapter 2/2…"
 let ch2 = run ["rishi/bin/rishi" "run" "tools/parity_ch02.rish"]
+if ch2.ok == false then say "parity chapter 2 output (failure detail):"
+if ch2.ok == false then say ch2.out
 assert ch2.ok else "parity chapter 2 failed"
 say "GREEN: parity chapter 2/2 passed."
 
