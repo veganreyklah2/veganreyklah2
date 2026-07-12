@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.072525 | [Cloud cannot host full Sculpt QEMU — use Framework 16](20260712-072525_cloud-qemu-use-framework16.md) | No `/dev/kvm`; G0-complete/G1 belong on Framework host |
 | 20260712.072452 | [Kaeden word — proven-seat G0 · T2 · Steep](20260712-072452_kaeden-word-proven-seat-g0.md) | Word seated; Sculpt GRUB G0 GREEN; T2 wire opened; Steep living twin |
 | 20260712.065525 | [Post–Season-B hygiene lap](20260712-065525_post-season-b-hygiene.md) | Collision-guard · living-vs-dated · dated_guard; product **430** · suite **432** |
 | 20260712.064227 | [Full summary merged and pushed](20260712-064227_full-summary-merged-pushed.md) | #118 at `3a9f47b`; #116/#117 closed; origin+gp36 pushed |
