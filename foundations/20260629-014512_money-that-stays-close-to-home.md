@@ -48,6 +48,8 @@ When a person funds a public or civic good — a sanctuary, an open-ask stipend,
 
 MALA and WOV remain the settlement and witness seat. Libre payment teachers (GNU Taler among them) illuminate the asymmetry; they do not replace our log. One job per side of the till.
 
+**T1 (`20260712.054942`):** the Open Asks stipend path mapped field-by-field — [`../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md). Top gaps today: completion `amount` and `from` are public on the fold; `to` (payee) and consent/civic-sight aggregates already lean the right way.
+
 ---
 
 *May the value a place creates stay close to the hands that made it. May our money move like water, feeding every field it passes. May the giver keep their quiet dignity, and the receiver’s books stay honest in the light. May what we build circulate rather than extract, and return, season after season, more than it ever takes.*

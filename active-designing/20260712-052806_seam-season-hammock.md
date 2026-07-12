@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated**; Spritely ally parked; Door 3 · component compile · proven-seat G0–G3 · giving T1–T2 wait on word
+**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942`; Spritely ally parked; Door 3 · component compile · proven-seat G0–G3 · giving T2 wait on word
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 
@@ -47,9 +47,9 @@ Logic before carriage throughout. Each study lands as understanding + a short de
 | Session idiom as the fold’s carriage | **Decline** — session ≠ record; accrete-never-break; study 1 affirms | **Seated decline** [`../context/specs/20260712-054650_captp-as-fold-carriage-declined.md`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
 | Institutional ally name | **Teacher now** — one-sided gratitude | Two-sided green contact, then Kaeden names ally |
 
-## Giving lane (T0 seated)
+## Giving lane (T0 seated · T1 mapped)
 
-Private payer · transparent payee — [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md).
+Private payer · transparent payee — [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) · **T1 gap map** [`20260712-054942_giving-lane-t1-open-asks-field-map.md`](20260712-054942_giving-lane-t1-open-asks-field-map.md).
 
 ## Out of scope this season
 

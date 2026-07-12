@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260712.054650` (CapTP-as-fold decline seated · giving-lane T0 seated)
+**Stamp:** `20260702.202612` · refreshed `20260712.054942` (Giving-lane T1 OA stipend field map)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -37,9 +37,9 @@ Understanding filed; CapTP formal decline · Door 3 · component compile · prov
 | CapTP / session idiom as fold carriage | Counsel declines; study 1 affirms | **Seated decline** [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
 | Spritely as institutional ally | **Teacher** now (gratitude / silo) | Two-sided green contact, then Kaeden names ally |
 
-### Giving-lane T0 — **seated** (`20260712.054650`)
+### Giving-lane T0 — **seated** (`20260712.054650`) · T1 — **mapped** (`20260712.054942`)
 
-Private payer · transparent payee — [`foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md).
+Private payer · transparent payee — [`foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) · OA field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) (top gaps: public completion `amount` and `from`).
 
 ### Door 3 spark (parked to itinerary until word)
 

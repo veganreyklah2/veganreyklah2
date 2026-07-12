@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.054942 | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-field-map.md) | Public `amount`/`from` are top gaps; `to` + consent glass hold |
 | 20260712.054650 | [CapTP decline seated · giving-lane T0](20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
 | 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
 | 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |

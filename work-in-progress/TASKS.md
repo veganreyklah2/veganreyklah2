@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (CapTP-as-fold decline seated `054650` · giving-lane T0 seated in money-close-to-home)
+**Last updated:** 2026-07-12 (Giving-lane T1 OA field map `054942`)
 
 ## Now — Seam season (`052806`)
 
@@ -15,11 +15,12 @@
 | **4** | **GNU Taler for Linengrow giving lane** | **Landed** `054521` | ER [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md); private payer · transparent payee |
 | — | **CapTP as fold carriage** | **Declined** `054650` | Spec [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) — sealed datagram stays carriage |
 | — | **Giving-lane T0** | **Seated** `054650` | Invariant in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md) |
+| — | **Giving-lane T1** | **Landed** `054942` | OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) — amount/`from` public = top gaps |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
 | — | **Consumer-edge pass / Door 3** | **Design filed** | First green waits on word — ER test plan `053324` |
 | — | **Component compile lap** | **Parked** | Wasmtime green waits on word — ER `054135` |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
-| — | **Giving-lane T1–T2** | **Parked** | Gap map / glass wait on word |
+| — | **Giving-lane T2** | **Parked** | Compose amount/payer privacy with payee transparency — awaits word |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
@@ -29,11 +30,12 @@
 - [x] **Seam study 4 — GNU Taler for the giving lane** — [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md)
 - [x] **CapTP-as-fold formal decline** — [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md)
 - [x] **Giving-lane T0** — private payer · transparent payee in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
+- [x] **Giving-lane T1** — OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md); top gaps: public `amount` and `from` on completion
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
 - [ ] **Door 3 first green (on word)** — in-process pass admits published read + signed submit; refuses unpublished / lying — ER test plan `053324`
 - [ ] **Component compile lap (on word)** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — ER `054135`
 - [ ] **Proven-seat G1 guest (on word)** — receipt verify-witness GREEN under Genode-hosted path — ER `054342`
-- [ ] **Giving-lane T1 (on word)** — map one Open Asks / sanctuary gift: payer-private vs payee-public fields today — ER `054521`
+- [ ] **Giving-lane T2 (on word)** — compose payer amount/identity privacy with payee transparency (SLC-L4 + OA) — map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md)
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
