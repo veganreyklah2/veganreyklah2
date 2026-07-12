@@ -94,6 +94,19 @@ REPO="${REPO:-$REPO_ROOT}"
 CURSOR_STATE="${CURSOR_STATE:-$REPO/.cursor-state}"
 AIJAIL_FLAGS="${AIJAIL_FLAGS:---private-home --no-docker}"
 LANE_KVM="${LANE_KVM:-false}"
+ENCLOSURE="${ENCLOSURE:-ai-jail}"
+
+# Retreat flag (Claude 212412): pond only after exit bron; season-closed is measured.
+EXIT_BRON="${REPO_ROOT}/bron-resins/pond-supersede-exit.bron"
+if [ "$ENCLOSURE" = "pond" ]; then
+  if [ ! -s "$EXIT_BRON" ]; then
+    echo "REFUSE: ENCLOSURE=pond while ${EXIT_BRON} is absent — season still closed." >&2
+    exit 1
+  fi
+elif [ "$ENCLOSURE" != "ai-jail" ]; then
+  echo "REFUSE: ENCLOSURE must be ai-jail or pond (got: ${ENCLOSURE})" >&2
+  exit 1
+fi
 
 # A-narrow: LANE_KVM authorizes /dev/kvm via our gate, not via teacher ai-jail.
 # ai-jail has no --kvm; keep the lane off for daily editor sessions. One-shot

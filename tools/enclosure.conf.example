@@ -42,6 +42,12 @@ USE_GPU=true
 #   rishi/bin/rishi run tools/lane_kvm_onpath_host.rish --parity
 LANE_KVM=false
 
+# Enclosure selector (Claude 212412 retreat flag · exit criterion 6).
+# Default ai-jail. Flip to pond only after bron-resins/pond-supersede-exit.bron
+# is present with content. Both values stay live one full season past the flip.
+# Wrappers honor this; pond refuses while the exit bron is absent.
+ENCLOSURE=ai-jail
+
 # Anthropic API key for Zed's Claude Agent — copy and fill in (gitignored):
 #   cp tools/secrets.env.example tools/secrets.env
 # launch-zed.sh sources tools/secrets.env automatically.

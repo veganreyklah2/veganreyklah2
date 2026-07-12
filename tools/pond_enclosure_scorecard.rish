@@ -1,8 +1,8 @@
 # pond_enclosure_scorecard.rish — two-column scorecard living measure.
 #
-# Claude 210800: column one = incumbent (sixbar); column two = pond-required.
-# This witness proves column one GREEN, records column-two gap rows, and
-# refuses to claim supersede. Season stays closed until exit bron.
+# Claude 210800 · 212412: column one = incumbent (sixbar); column two = gaps.
+# Proves column one GREEN, records column-two gap rows, asserts exit bron
+# absent and ENCLOSURE=ai-jail in the example — season-closed is measured.
 #
 #   rishi/bin/rishi run tools/pond_enclosure_scorecard.rish
 
@@ -10,6 +10,8 @@ let cache = "tools/.cache/pond-enclosure"
 let meta = "${cache}/scorecard-meta.txt"
 let scorecard = "active-designing/20260712-210800_pond-enclosure-scorecard-two-column.md"
 let exit_card = "active-designing/20260712-210800_pond-supersede-exit-criteria.md"
+let exit_bron = "bron-resins/pond-supersede-exit.bron"
+let example = "tools/enclosure.conf.example"
 
 say "pond scorecard: requiring two-column doc · exit card…"
 let have_sc = run ["test" "-f" scorecard]
@@ -19,6 +21,17 @@ assert have_ex.ok else "missing ${exit_card}"
 let sc_text = read-file scorecard
 assert sc_text contains "Incumbent-measured" else "scorecard must name incumbent-measured column"
 assert sc_text contains "Pond-required" else "scorecard must name pond-required column"
+
+say "pond scorecard: season-closed measured — exit bron absent…"
+let bron_gone = run ["sh" "-c" "test ! -e ${exit_bron}"]
+assert bron_gone.ok else "season claims closed yet ${exit_bron} exists — remove or claim exit properly"
+say "pond scorecard: ${exit_bron} absent — season sleeps"
+
+say "pond scorecard: retreat flag greppable on example…"
+let have_example = run ["test" "-f" example]
+assert have_example.ok else "missing ${example}"
+let ex_text = read-file example
+assert ex_text contains "ENCLOSURE=ai-jail" else "example must default ENCLOSURE=ai-jail"
 
 say "pond scorecard: column one — run sixbar baseline…"
 let col1 = run ["rishi/bin/rishi" "run" "tools/pond_enclosure_sixbar.rish"]
@@ -38,18 +51,16 @@ let bus_net = trim bus_net_raw
 say "pond scorecard: bus_env=${bus_env} · bus_socket=${bus_sock} · bus_netns=${bus_net}"
 
 say "pond scorecard: column two — pond-required cells (record gaps; do not claim)…"
-# Pond-required bus: env empty · socket absent · netns unshared.
 let gap_r = run ["sh" "-c" "e=$(cat ${cache}/bus_env); s=$(cat ${cache}/bus_socket); n=$(cat ${cache}/bus_netns); if [ \"$e\" = empty ] && [ \"$s\" = absent ] && [ \"$n\" = unshared ]; then echo closed; else echo open; fi"]
 assert gap_r.ok else "gap_bus compute failed"
 let gap_bus = trim gap_r.out
 if gap_bus == "open" then say "pond scorecard column two: GAP bus three-door still open (unreachable is the floor)"
 if gap_bus == "closed" then say "pond scorecard column two: bus three-door closed — still need customs · daily-driver · N soak for exit"
 
-# GPU lane customs (grant/refuse) not yet Pond policy — named gap from scorecard.
 say "pond scorecard column two: GAP gpu-lane-customs — present-when-granted / absent-when-not not yet Pond policy"
-# On ai-jail today the bus gap must stay open — this witness refuses a false supersede claim.
+# Finest line (Claude 212412): refuse false supersede green on the incumbent.
 assert gap_bus == "open" else "column two bus already closed on this host — re-read exit card; do not claim supersede from this witness alone"
-say "pond scorecard: supersede season remains closed (exit bron not signed)"
+say "pond scorecard: supersede season remains closed (exit bron absent · measured)"
 
 say "pond scorecard: writing ${meta}…"
 let mkdir = run ["mkdir" "-p" cache]
@@ -72,6 +83,10 @@ let w7 = run ["sh" "-c" "echo gap_gpu_lane_customs open >> ${meta}"]
 assert w7.ok
 let w8 = run ["sh" "-c" "echo supersede_season closed >> ${meta}"]
 assert w8.ok
+let w8b = run ["sh" "-c" "echo exit_bron absent ${exit_bron} >> ${meta}"]
+assert w8b.ok
+let w8c = run ["sh" "-c" "echo enclosure_default ai-jail >> ${meta}"]
+assert w8c.ok
 let w9 = run ["sh" "-c" "echo N six-over-seven >> ${meta}"]
 assert w9.ok
 let w10 = run ["sh" "-c" "echo scorecard ${scorecard} >> ${meta}"]
@@ -79,4 +94,4 @@ assert w10.ok
 let w11 = run ["sh" "-c" "echo exit_card ${exit_card} >> ${meta}"]
 assert w11.ok
 
-say "GREEN: pond enclosure scorecard — column one GREEN; column two gaps named; supersede season closed"
+say "GREEN: pond enclosure scorecard — column one GREEN; column two gaps named; season closed measured"

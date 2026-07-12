@@ -113,7 +113,9 @@
 
 **Claude `211400` N:** **six consecutive green sittings spanning at least seven calendar days** — breadth (editor · parity · QEMU · cold-start-after-reboot) · soak clock on frozen candidate (enclosure-enforcing edits reset) · red law (one red resets; two on one witness parks). Softening hinge (wrappers free) available if solo bench bites. Exit card complete; Claude second walk next (tip `40673e0`).
 
-**Kg `211900`:** living two-column witness `tools/pond_enclosure_scorecard.rish` — column one GREEN · column two gaps named · supersede season closed. Does not land column-two probes; awaits Claude walk word.
+**Kg `211900`:** living two-column witness `tools/pond_enclosure_scorecard.rish` — column one GREEN · column two gaps named · supersede season closed.
+
+**Claude `212412` second walk:** **freeze-worthy** affirmed. Four accretions landed — enforcing seam · `ENCLOSURE=ai-jail` retreat flag · exit bron path `bron-resins/pond-supersede-exit.bron` (absent measured) · `soak_start_nib`. Ask two: keep enforcing-code-resets until bite. Ask three: col2 probes landed refuse-until-candidate. Counsel [`../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md`](../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md). Next: named supersede build word only.
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

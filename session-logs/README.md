@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.212900 | [Go — freeze-worthy card · four accretions · col2 probes](20260712-212900_go-freeze-worthy.bron) | Push freeze-worthy · Claude affirm-freeze |
+| 20260712.212412 | [Seat Claude second walk — freeze-worthy · four accretions · col2 probes](20260712-212412_claude-freeze-worthy-col2.bron) | Seam · ENCLOSURE · exit bron absent · probes landed |
 | 20260712.212200 | [Go — scorecard witness · four remotes · Claude walk](20260712-212200_go-scorecard-witness.bron) | Push living measure · Claude second eyes |
 | 20260712.211900 | [Kg — pond enclosure scorecard living witness](20260712-211900_kg-pond-scorecard-witness.bron) | Col1 GREEN · col2 gaps named · season closed |
 | 20260712.211800 | [Counsel — silo vs keep Pond exit cards active](20260712-211800_silo-counsel-pond-exit.bron) | Season-governing docs stay active-designing |

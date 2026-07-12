@@ -118,6 +118,10 @@ chmod +x tools/cursor-jail.sh tools/launch-zed.sh
 
 `LANE_KVM=false` by default. When true, our gate (`tools/lane_kvm.sh`) authorizes **`/dev/kvm` only** — no D-Bus, no systemd host units, no session buses. Teacher **ai-jail stays unmodified** (no `--kvm` flag — confirmed through release **v1.12.0**). Daily editor sessions keep the lane off; proven-seat one-shots use `tools/run_with_lane_kvm.sh` on a host that already has `/dev/kvm`. Refuse witness: `rishi/bin/rishi run tools/lane_kvm_refuse.rish`. On-path: `tools/proven_seat_g0_complete_jailed.rish`. Retirement of the D-Bus escape: `active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md`. Pond customs graduate the same fact at supersede.
 
+### `ENCLOSURE` (retreat flag · Claude `20260712.212412`)
+
+`ENCLOSURE=ai-jail` by default in `tools/enclosure.conf.example`. Wrappers (`cursor-jail.sh` · `launch-zed.sh`) honor it. `ENCLOSURE=pond` **refuses** while `bron-resins/pond-supersede-exit.bron` is absent — season-closed is measured. Flip to `pond` only after that exit bron is present with content (`soak_start_nib` required); both values stay live one full season past the flip.
+
 **Pinned teacher binary (`20260712.131200`):** release **v1.12.0** under gitignored `tools/.cache/bin/ai-jail` (tarball sha256 `91458f153c7b0a87d79aae9014b558a0cfc4b160b7e390008a00c1adfc3edc21`). Set `AIJAIL_BIN="$REPO/tools/.cache/bin/ai-jail"` in personal `enclosure.conf`. Takes effect on the next `./tools/cursor-jail.sh` launch. Study submodule `gratitude/ai-jail` tracks tag `v1.12.0`. Route one stays closed; Route two nest still on word.
 
 ### Claude API key for Zed (gitignored secrets file)

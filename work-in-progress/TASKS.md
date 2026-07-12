@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (scorecard living witness · tip 40673e0)
+**Last updated:** 2026-07-12 (Claude 212412 freeze-worthy · col2 probes · ENCLOSURE flag)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -11,15 +11,16 @@
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (tip `40673e0` · scorecard witness `211900`):**
-1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
-2. ~~**G1**~~ — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` @ `492a510…` · signed Ed25519 lap pre-shaped (host Kumara · guest verifies)
-3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` · sharpened `210800` (two-column · three-door bus · bar5 count)
-4. ~~**Pond supersede exit criteria**~~ — **complete** `211400` · N = six-over-seven · three riders · season closed until exit bron
-5. ~~**Go** seats the drafts~~ — **done** tip `40673e0` · Claude second walk next
-6. **Claude second walk** of scorecard + exit card — then column-two probe *landing* on word (living measure already: `pond_enclosure_scorecard.rish`)
-7. Route two / inward lane nest — parked until graduation trigger (may fire inside supersede season under trigger law)
-8. Signed Ed25519 proven-seat — parked for a fresh crypto-teacher morning
+**Ordered next (Claude `212412` freeze-worthy · col2 probes landed):**
+1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`**
+2. ~~**G1**~~ — **closed digest-grade** `204549`
+3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` · sharpened `210800`
+4. ~~**Pond supersede exit criteria**~~ — **freeze-worthy** `212412` · N six-over-seven · four accretions
+5. ~~**Claude second walk**~~ — **done** `212412`
+6. ~~**Column-two probes**~~ — **landed** refuse-until-candidate `tools/pond_enclosure_col2_probes.rish`
+7. **Named supersede build word** — only then; soak under N with `soak_start_nib`
+8. Route two / inward lane nest — parked (may fire inside supersede season under trigger law)
+9. Signed Ed25519 proven-seat — parked for a fresh crypto-teacher morning
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
@@ -65,7 +66,8 @@
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [x] **Proven-seat G1** — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` submodule @ `492a510…` · probe + guest + jailed TCG witnesses · signed Ed25519 next named lap
 - [x] **Pond enclosure witness baseline** — **GREEN** `205600` · sharpened `210800` · two-column scorecard · three-door bus · bar5 exactly-one secret
-- [x] **Pond supersede exit criteria** — **complete** [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · **N = six-over-seven** seated `211400` · season closed until exit bron
+- [x] **Pond supersede exit criteria** — **freeze-worthy** [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · **N = six-over-seven** · four accretions `212412` · season closed until exit bron
+- [x] **Pond column-two probes** — **landed** refuse-until-candidate `tools/pond_enclosure_col2_probes.rish` · claim nothing · build word still required
 - [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; host metal parity re-pin **GREEN** `193958`
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)

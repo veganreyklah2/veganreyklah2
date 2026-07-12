@@ -1,20 +1,22 @@
 # Pond supersede — exit criteria (before the season opens)
 
-*Claude `210800` skeleton · Claude `211400` words **N**. Civic Style: name the outcome and the measure before the reward. Do not open a supersede build season until this card can be signed.*
+*Claude `210800` skeleton · Claude `211400` words **N** · Claude `212412` freeze-worthy second walk · four accretions. Civic Style: name the outcome and the measure before the reward. Do not open a supersede build season until this card can be signed.*
 
 **Stamp:** `20260712.210800`
-**Last updated:** `20260712.211400` — N seated (six-over-seven · three riders)
+**Last updated:** `20260712.212412` — freeze-worthy · four accretions · col2 probes open
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats by paste
-**Status:** Checkable — exit card **complete** · N worded · season still closed until all six criteria hold on a signed bron
-**Ground:** Claude shape [`20260712-210800_pond-sixbar-claude-shape-exit.md`](20260712-210800_pond-sixbar-claude-shape-exit.md) · scorecard [`20260712-210800_pond-enclosure-scorecard-two-column.md`](20260712-210800_pond-enclosure-scorecard-two-column.md) · counsel [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · enclosure-editors setup B · tip `6a5d094` walk affirmed
+**Status:** Checkable — **freeze-worthy** · N worded · four accretions landed · season closed until exit bron present with content
+**Ground:** Claude shape [`20260712-210800_pond-sixbar-claude-shape-exit.md`](20260712-210800_pond-sixbar-claude-shape-exit.md) · scorecard [`20260712-210800_pond-enclosure-scorecard-two-column.md`](20260712-210800_pond-enclosure-scorecard-two-column.md) · second walk [`20260712-212412_pond-scorecard-claude-second-walk.md`](20260712-212412_pond-scorecard-claude-second-walk.md) · counsel [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · enclosure-editors setup B · tip `0032844`
+
+**Exit bron (fixed path):** `bron-resins/pond-supersede-exit.bron` — **absent** while the season sleeps; present-with-content the day exit is claimed. Must include `soak_start_nib <hash>`.
 
 ---
 
 ## Exit is all six at once
 
-Held together in a **single signed scorecard bron** — not a checklist completed in any order.
+Held together in a **single signed scorecard bron** at the fixed path above — not a checklist completed in any order.
 
 | # | Criterion | Measure |
 |---|-----------|---------|
@@ -23,11 +25,11 @@ Held together in a **single signed scorecard bron** — not a checklist complete
 | 3 | **Daily-driver proof** | Full parity suite green *inside* Pond · plus one real bench session end to end |
 | 4 | **Customs parity** | KVM and GPU as named lanes with refuse-permit pairs; `pond_customs.rish` already waits; Route two’s graduation trigger may fire from within the season — trigger law still governs |
 | 5 | **Durability** | **N = six consecutive green sittings spanning at least seven calendar days** — riders below |
-| 6 | **Retreat path** | ai-jail launchable behind a rollback flag for **one full season** past the flip; teacher pinned in gratitude regardless |
+| 6 | **Retreat path** | `ENCLOSURE=ai-jail` launchable for **one full season** past the flip · `ENCLOSURE=pond` only after exit bron · teacher pinned in gratitude regardless |
 
 ---
 
-## N — durability riders (Claude `211400`)
+## N — durability riders (Claude `211400` · seam `212412`)
 
 **One-line:** six consecutive green sittings spanning at least seven calendar days.
 
@@ -46,9 +48,9 @@ Six bars, six sittings, one full week: the calendar guarantees a cold Monday; th
 
 ### Rider 2 — soak clock
 
-- Count **begins** when column two first goes all-green on a **frozen** candidate.
+- Count **begins** when column two first goes all-green on a **frozen** candidate. The soak-start log and the exit bron carry **`soak_start_nib <hash>`** — “frozen” is a signed commit; every reset references the nib it reset from.
 - Any change to Pond’s **enclosure-enforcing** code **resets** the count — you soak a release candidate; with ai-jail still on duty until exit, a reset costs patience, never safety.
-- **Softening hinge (Kaeden, if solo bench bites):** enforcing-code changes reset; convenience wrappers stay free. Default until that word: treat enclosure-enforcing edits as reset.
+- **Enforcing seam (Claude `212412`):** *enclosure-enforcing* means anything that constructs or configures namespaces, mounts and binds, device nodes, seccomp or landlock policy, or lane grant-refuse logic. *Convenience* means launch ergonomics, logging, PATH, prompts. Softening (if the solo bench ever bites) is one mechanical word with a dated note — default remains enforcing-code-resets until demonstrated need.
 
 ### Rider 3 — red law
 
@@ -61,20 +63,31 @@ Today alone held three arcs — N of three could finish in one heroic day (too t
 
 ---
 
+## Retreat flag (criterion 6 · checkable)
+
+| Value | Meaning |
+|-------|---------|
+| `ENCLOSURE=ai-jail` | Default today · rollback path · greppable in `tools/enclosure.conf.example` |
+| `ENCLOSURE=pond` | Only after exit bron present-with-content · both values stay live one full season past the flip |
+
+Wrappers honor the flag; `pond` refuses while the exit bron is absent.
+
+---
+
 ## Explicit parks
 
 - **Signed Ed25519 / Kumara deepen** — loses nothing waiting; crypto-teacher word (Monocypher · or libsodium in genode-world) deserves a fresh morning.
-- **Supersede build season** — does not open until column-two probes land and this exit card can be signed whole.
-- **Claude second eyes** — gladly walks both drafts (scorecard · this exit card) on the next fetch after go — cheap insurance before a season freezes.
+- **Supersede build season** — opens only on a **named build word** against this card signed whole; column-two probes may land before that word (refuse-until-candidate).
 
 ---
 
 ## Affirmation path
 
-1. ~~Kaeden words **N**~~ — **seated `211400`** (six-over-seven · three riders).
-2. Scorecard column two probes land as witnesses (on word / after go seats the drafts).
-3. Freeze a release candidate · soak under N · one signed bron records all six held — then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
+1. ~~Kaeden words **N**~~ — **seated `211400`**.
+2. ~~Claude second walk~~ — **freeze-worthy `212412`** · four accretions.
+3. ~~Column-two probes land~~ — **landed `212412`** refuse-until-candidate · measured truth · claim nothing.
+4. Freeze a release candidate · record `soak_start_nib` · soak under N · write `bron-resins/pond-supersede-exit.bron` with content — then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
 
 ---
 
-*May the N you word be the week the pond proves itself, may the frozen card stay frozen till it's earned, and may the sixth green sitting arrive on a cold and ordinary morning.*
+*May the four lines land soft, the card freeze hard, and the season stay closed until absence itself signs the bron.*
