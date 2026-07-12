@@ -3,8 +3,8 @@
 **Vessel market floor** — where harvests and amphorae change hands, weighed in daylight and priced in MALA.
 
 **Language:** EN
-**Last updated:** 2026-07-11 (steward demo tip **419** `004652`)
-**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); settle view lap 4 (`172955`); **steward demo** list→settle→Greencandy (`004652`, tip **419**); live TigerBeetle rests until its brief
+**Last updated:** 2026-07-11 (steward demo nib **419** `004652`)
+**Status:** Seated — name + lap 1 listing (`165634`); floor view (`170700`); listing settle lap 3 (`171202`); settle view lap 4 (`172955`); **steward demo** list→settle→Greencandy (`004652`, nib **419**); live TigerBeetle rests until its brief
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Seating:** [`../context/specs/20260710-165634_mandi-name-seated.md`](../context/specs/20260710-165634_mandi-name-seated.md) · settle [`../context/specs/20260710-171202_mandi-listing-settle-seated.md`](../context/specs/20260710-171202_mandi-listing-settle-seated.md) · steward [`../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md`](../active-designing/20260711-004652_commerce-citizen-steward-demo-hammock.md)
 **Study:** [`../external-research/20260703-200712_compute-commerce-on-the-network.md`](../external-research/20260703-200712_compute-commerce-on-the-network.md)

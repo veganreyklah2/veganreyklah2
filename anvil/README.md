@@ -1,7 +1,7 @@
 # Anvil — README
 
 **Language:** EN  
-**Last updated:** 2026-07-10 (`225320` — corpus lap 2 closed tip **386**)  
+**Last updated:** 2026-07-10 (`225320` — corpus lap 2 closed nib **386**)  
 **Status:** Checkable-room module — corpus catalog + query + Skate views green; LoRA and training remain horizon  
 **Style:** Radiant · **Lens:** TAME · SLC · Gall's Law
 

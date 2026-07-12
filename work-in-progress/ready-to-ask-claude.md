@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.122600` (Claude affirms nib · living tip→nib sweep · rule polish)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.125200` (Claude affirms residue close · six living lines · host pre-flight · giving-family)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -84,6 +84,8 @@
 **Bron session-log law (`120007` · Claude affirm `120812` · index hygiene `121409`):** living logs are `.bron`; Markdown folded under `archive/YYYYMMDD/`. Order holds: host on-path G0-complete first, then G1, then Pond.
 
 **Kaeden word `121518`:** *kg i grant* — host on-path **opened**; same-sitting metal parity re-pin **allowed**. Awaiting Framework host with `/dev/kvm` (this session: `ai-sandbox`, kvm absent).
+
+**Claude `125200` (guidance `123700`):** residue close **affirmed** after six living tip→nib lines (anvil · mandi · active-designing README · seam-season guard · giving-lane-t2 guard). Order **holds** — host on-path → G1 → Pond. Pre-flight: stage sculpt image · after restore run `lane_kvm.sh refuse-probe` on host · parity pin-what-prints / red-twice parks. Giving-family naming **affirmed** for future creator gratuity. Jail kg refuse honored as the floor working.
 
 ---
 

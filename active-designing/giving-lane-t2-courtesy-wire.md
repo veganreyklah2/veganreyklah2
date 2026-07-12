@@ -17,7 +17,7 @@ Reuse OA-L4 consent / `withheld=excluded` on any giving-lane stipend glass so th
 
 ## What this lap does not claim
 
-- No tip bump until a composition witness prints GREEN
+- No nib bump until a composition witness prints GREEN
 - No mudra / bud on the fold (that is T3)
 - No MALA conservation change
 - No `.bron` schema change

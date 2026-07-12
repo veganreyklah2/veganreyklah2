@@ -54,7 +54,7 @@ Private payer · transparent payee — [`../foundations/20260629-014512_money-th
 
 ## Out of scope this season
 
-- Product laps inventing beyond tip **430** green work
+- Product laps inventing beyond nib **430** green work
 - Merging Caravan into a foreign kernel name
 - Replacing MALA / WOV with a foreign settlement seat
 - Naming an institutional ally before a two-sided witness
