@@ -1,13 +1,19 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (tip `de483e0` · `lane_kvm` refuse GREEN · encrypt-to-identity park · parity **324** · product **430** · suite **432** · IronBeetle 34)
+**Last updated:** 2026-07-12 (tip `f63be3e` · on-path **worded** `121518` · refuse GREEN · parity **324** · product **430** · suite **432**)
 
 ## Now — product tip **430** · suite tip **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) — D-Bus escape retired; tip **`de483e0`** on all four remotes. Encrypt-to-future-identity **horizon park** [`114600`](../work-in-progress/ready-to-ask-claude.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`. Metal parity chaptered GREEN **324**.
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). Tip **`f63be3e`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
 
-**Ordered next (on word):** Host one-shot `lane_kvm` on-path G0-complete (`LANE_KVM=true` + `/dev/kvm`) · optional same-sitting metal parity re-pin · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
+**Word seated (`121518`):** Kaeden — *kg i grant* — host **`lane_kvm` on-path** G0-complete + **same-sitting metal parity re-pin** allowed. This Cursor session remains `ai-sandbox` without `/dev/kvm`; run the one-shot on the Framework host.
+
+**Ordered next (worded — run on host):** 
+1. Set `LANE_KVM=true` in `tools/enclosure.conf` (gitignored)
+2. `./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh` (or `rishi run tools/proven_seat_g0_complete_jailed.rish`)
+3. Optional same sitting: `rishi run tools/parity.rish` re-pin
+4. Set `LANE_KVM=false` again · then G1 / Pond on further word
 
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); tip **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
@@ -51,7 +57,7 @@
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
 - [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
-- [ ] **`lane_kvm` on-path G0-complete green** — `LANE_KVM=true` + `/dev/kvm` one-shot (`run_with_lane_kvm.sh`) — worded when granting the lane on host
+- [ ] **`lane_kvm` on-path G0-complete green** — **worded** `121518` — host: `LANE_KVM=true` + `/dev/kvm` + `run_with_lane_kvm.sh`; flip lane off after; parity re-pin may ride same sitting
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
 - [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead

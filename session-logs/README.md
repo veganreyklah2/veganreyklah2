@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.121518 | [Kaeden grant — on-path + parity ride-along](20260712-121518_kaeden-grant-onpath-parity.bron) | Word seated · host kvm recipe · refuse stays GREEN in-jail |
 | 20260712.121409 | [Claude affirms Bron law · four index hygiene fixes](20260712-121409_claude-affirms-bron-index-hygiene.bron) | README+RTAC+convention · order holds · tip d9ee5ed |
 | 20260712.120007 | [Session logs → Bron · md archived by day](20260712-120007_session-logs-bron-law.bron) | Rules updated · fold 207+43 · Claude combined bron |
 | 20260712.115753 | [bron-resins morning-fold essay](archive/20260712/20260712-115753_bron-resins-morning-fold.md) | Chat-printout `.bron` · essay resin · four-remote push |
