@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
 | 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
 | 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
 | 20260712.053324 | [Seam study 1 — OCapN beside Comlink](20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
