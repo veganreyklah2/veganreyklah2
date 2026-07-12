@@ -16,12 +16,21 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CONF="${ENCLOSURE_CONF:-$REPO_ROOT/tools/enclosure.conf}"
 
+# Caller export wins over enclosure.conf — one-shot without editing the file:
+#   LANE_KVM=true ./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh
+# Daily editors keep LANE_KVM=false in conf; refuse-probe still reads conf when unset.
+_CALLER_LANE_KVM="${LANE_KVM-}"
+
 if [ -f "$CONF" ]; then
   # shellcheck source=/dev/null
   source "$CONF"
 fi
 
-LANE_KVM="${LANE_KVM:-false}"
+if [ -n "${_CALLER_LANE_KVM}" ]; then
+  LANE_KVM="${_CALLER_LANE_KVM}"
+else
+  LANE_KVM="${LANE_KVM:-false}"
+fi
 
 lane_on() {
   [ "$LANE_KVM" = "true" ]
@@ -38,6 +47,8 @@ Usage: ./tools/lane_kvm.sh <command>
   refuse-probe   Prove run refuses while lane is off (paired refuse floor)
 
 Config: LANE_KVM in tools/enclosure.conf (see enclosure.conf.example).
+  One-shot without editing conf: LANE_KVM=true ./tools/run_with_lane_kvm.sh -- <cmd>
+  Full host sitting: rishi/bin/rishi run tools/lane_kvm_onpath_host.rish [--parity]
 EOF
 }
 

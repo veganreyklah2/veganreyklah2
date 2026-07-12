@@ -2,6 +2,10 @@
 #
 # Counsel 20260712.090512: -accel kvm -cpu host -m 4G -display none + QMP PNG
 # + GRUB serial; -nic none. Requires LANE_KVM=true and /dev/kvm in this enclosure.
+# Prefer the full host sitting (verify + boot + refuse restore):
+#   rishi/bin/rishi run tools/lane_kvm_onpath_host.rish
+# One-shot boot only (caller export; conf may stay false):
+#   LANE_KVM=true rishi/bin/rishi run tools/proven_seat_g0_complete_jailed.rish
 # Paired refuse: tools/lane_kvm_refuse.rish (lane off).
 #
 #   rishi/bin/rishi run tools/proven_seat_g0_complete_jailed.rish

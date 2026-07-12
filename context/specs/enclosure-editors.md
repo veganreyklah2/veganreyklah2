@@ -83,8 +83,11 @@ zed --version
 Documented in `SOURCE.md` Step 6–9. From the repo root:
 
 ```bash
-./tools/cursor-jail.sh --extract ./Cursor-3.9.16-x86_64.AppImage   # once → squashfs-root/
-./tools/cursor-jail.sh                                              # launch in ai-jail
+./tools/cursor-jail.sh --extract ./Cursor-3.11.13-x86_64.AppImage   # once → squashfs-root/
+./tools/cursor-jail.sh --gpu                                         # launch in ai-jail
+# Rishi door (preferred):
+rishi/bin/rishi run tools/launch-cursor.rish --extract ./Cursor-3.11.13-x86_64.AppImage --gpu
+rishi/bin/rishi run tools/launch-cursor.rish --gpu
 ```
 
 Or from Rishi (edit `apprun` in `tools/launch-cursor.rish` if needed):

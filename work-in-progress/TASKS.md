@@ -15,16 +15,19 @@
 
 **ai-jail `131200`:** release **v1.12.0** binary + study submodule · tarball sha256 `91458f153c7b0a87d79aae9014b558a0cfc4b160b7e390008a00c1adfc3edc21` · Route one still closed · next launch picks it up · wrapper version-echo awaits word · Karpathy/ai-memory dispositions await word (RTAC).
 
-**Ordered next (worded — run on Framework host; Claude pre-flight `125200` + human-in-loop `130300`):**
-0. On host clone: `git fetch` · `git checkout` nib · `git verify-commit HEAD` (sandbox key) · stage `tools/.cache/proven-seat/sculpt-26-04.img` (sha256 `241b916ab9e3ed25a089c27119aac98f80fe4d3e67101936b4e69d7f1c708f14`)
-0b. Read once: `tools/lane_kvm.sh` · `tools/run_with_lane_kvm.sh` · `tools/proven_seat_g0c_lane_kvm.sh`
-1. Set `LANE_KVM=true` in `tools/enclosure.conf` (gitignored · cannot ride a commit)
-2. `./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh` (or `rishi run tools/proven_seat_g0_complete_jailed.rish`)
-3. Optional same sitting: `rishi run tools/parity.rish` — full chaptered composition; pin what it prints; witness red twice parks the sitting
-4. Set `LANE_KVM=false` again
-5. On that same host metal: `./tools/lane_kvm.sh refuse-probe` — sitting closes with permit-green and restored refuse-green in one session log
-5b. `git status --porcelain` — expect silence (run artifacts under gitignored cache)
-6. Then G1 / Pond on further word · Route two / inward lane on further word
+**Ordered next (worded — Framework host; Rishi door `131900`):**
+```
+cd ~/veganreyklah2 && git pull && rishi/bin/rishi run tools/lane_kvm_onpath_host.rish
+# optional same-sitting parity:
+rishi/bin/rishi run tools/lane_kvm_onpath_host.rish --parity
+```
+No need to edit `enclosure.conf` — the script exports `LANE_KVM=true` for the boot only, then re-proves refuse with conf still off. Requires `/dev/kvm` (host, not ai-sandbox). Image already staged under `tools/.cache/proven-seat/`.
+
+Cursor relaunch (GNOME Wayland):
+```
+rishi/bin/rishi run tools/launch-cursor.rish --extract ./Cursor-3.11.13-x86_64.AppImage --gpu
+rishi/bin/rishi run tools/launch-cursor.rish --gpu
+```
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only — module home + name await word ([`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md)). Do not patch teacher ai-jail.
 

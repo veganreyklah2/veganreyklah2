@@ -18,6 +18,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.132000 | [Host on-path Rishi · env one-shot](20260712-132000_onpath-rishi-env-oneshot.bron) | LANE_KVM export wins · launch-cursor --extract · host recipe one line |
+| 20260712.131800 | [kg on-path — image staged · kvm absent](20260712-131800_kg-onpath-image-staged.bron) | Refuse GREEN · sculpt hash match · host recipe ready |
+| 20260712.131700 | [Cursor relaunch affirmed](20260712-131700_cursor-relaunch-affirmed.bron) | 3.11.13 + ai-jail 1.12.0 walls live · kvm still absent |
+| 20260712.131600 | [Print Cursor 3.11.13 ai-jail launch](20260712-131600_cursor-31113-launch-cmd.bron) | extract + --gpu recipe for GNOME Wayland |
 | 20260712.131200 | [ai-jail v1.12.0 pin · study refresh](20260712-131200_ai-jail-v1120-pin.bron) | Cache binary · submodule · Route one still closed · Karpathy park |
 | 20260712.130300 | [Claude host-safe · lane-inward probe](20260712-130300_claude-host-safe-lane-inward.bron) | Route one flag absent · Route two parked · host recipe + HITL |
 | 20260712.125200 | [Claude affirms residue · six lines · pre-flight](20260712-125200_claude-residue-six-preflight.bron) | Six tip→nib · host recipe + refuse-probe · giving-family |

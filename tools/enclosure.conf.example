@@ -36,6 +36,10 @@ USE_GPU=true
 # host escapes, no session buses. Teacher ai-jail stays unmodified. Proven-seat
 # on-path: tools/proven_seat_g0_complete_jailed.rish; refuse: lane_kvm_refuse.rish.
 # One-shot from a host that already has /dev/kvm: tools/run_with_lane_kvm.sh
+# One-shot without editing conf (caller export wins over this file):
+#   LANE_KVM=true ./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh
+#   rishi/bin/rishi run tools/lane_kvm_onpath_host.rish
+#   rishi/bin/rishi run tools/lane_kvm_onpath_host.rish --parity
 LANE_KVM=false
 
 # Anthropic API key for Zed's Claude Agent — copy and fill in (gitignored):
