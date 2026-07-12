@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-12 (post–Season-B hygiene · living hammock twin)
+**Last updated:** 2026-07-12 (Kaeden word · proven-seat G0 · Steep living twin)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,6 +47,9 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| living | [Proven-seat guest — hammock](proven-seat-guest-hammock.md) | Kaeden word · G0 GRUB milestone GREEN · G1–G3 ahead |
+| living | [Giving-lane T2 courtesy wire](giving-lane-t2-courtesy-wire.md) | Word seated · wire opened · composition witness ahead |
+| living | [Steep — peer file sharing](steep.md) | Living twin · published-set / peer-offer precedent seated |
 | living | [Seam season — hammock](seam-season-hammock.md) | Living twin — product tip **430** · suite tip **432**; edit here |
 | `20260712.052806` | [Seam season — hammock (frozen)](20260712-052806_seam-season-hammock.md) | Dated original → pointer to living twin |
 | `20260712.054942` | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-open-asks-field-map.md) | Gap list: public `amount`/`from` vs transparent `to`; consent glass holds |

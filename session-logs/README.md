@@ -12,6 +12,10 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.072621 | [Full summary · merge #121 · push](20260712-072621_full-summary-merge-push.md) | Fold proven-seat G0 + Framework counsel; remotes pushed |
+| 20260712.072621 | [Full summary — tip 430 through G0 and Framework](20260712-072621_full-summary-through-g0-framework.md) | Seam→Season B→hygiene→word→G0; product **430** · suite **432** |
+| 20260712.072525 | [Cloud cannot host full Sculpt QEMU — use Framework 16](20260712-072525_cloud-qemu-use-framework16.md) | No `/dev/kvm`; G0-complete/G1 belong on Framework host |
+| 20260712.072452 | [Kaeden word — proven-seat G0 · T2 · Steep](20260712-072452_kaeden-word-proven-seat-g0.md) | Word seated; Sculpt GRUB G0 GREEN; T2 wire opened; Steep living twin |
 | 20260712.065525 | [Post–Season-B hygiene lap](20260712-065525_post-season-b-hygiene.md) | Collision-guard · living-vs-dated · dated_guard; product **430** · suite **432** |
 | 20260712.064227 | [Full summary merged and pushed](20260712-064227_full-summary-merged-pushed.md) | #118 at `3a9f47b`; #116/#117 closed; origin+gp36 pushed |
 | 20260712.064107 | [Full summary · merge stack into main](20260712-064107_full-summary-merge-push.md) | #118 fold; seats→Door3→compile on main; remotes pushed |
