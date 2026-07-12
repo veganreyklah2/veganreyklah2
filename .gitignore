@@ -55,6 +55,7 @@
 !/vendor/
 /vendor/*
 !/vendor/genode/
+!/vendor/monocypher/
 !/.cursor/
 !/CLAUDE.md
 !/ORGANIZING.md

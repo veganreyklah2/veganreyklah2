@@ -42,3 +42,6 @@
 	branch = 26.05
 	path = vendor/genode
 	url = https://codeberg.org/genodelabs/genode.git
+[submodule "vendor/monocypher"]
+	path = vendor/monocypher
+	url = https://github.com/LoupVaillant/Monocypher.git

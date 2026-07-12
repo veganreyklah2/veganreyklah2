@@ -46,7 +46,7 @@ LGPL limits embedding, not ideas or separate host tools. Full notes: **997_SYSTE
 
 ## Permissive — study freely, still write our own code
 
-MIT, ISC, Apache 2.0, public domain — Zig, DVUI, Ghostty, Manyana, infuse.nix, Urbit, TigerBeetle, Sui, Primal. Permissive licenses allow reading; implementations still enter through the clean room.
+MIT, ISC, Apache 2.0, public domain — Zig, DVUI, Ghostty, Manyana, infuse.nix, Urbit, TigerBeetle, Sui, Primal, Monocypher (CC0/BSD dual · `vendor/monocypher`). Permissive licenses allow reading; implementations still enter through the clean room.
 
 ## The clean-room path
 

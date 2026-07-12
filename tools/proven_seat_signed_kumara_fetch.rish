@@ -1,0 +1,87 @@
+# proven_seat_signed_kumara_fetch.rish — Monocypher pin + three-assert shape.
+#
+# Claude 214900: vendor/monocypher @ 4.0.3 / ab2b16d… pre-pinned tonight so
+# the morning fetch opens on a known HEAD. Three asserts:
+#   1. pin — HEAD equals ab2b16d…
+#   2. red-avoid — guest source: crypto_eddsa_ nowhere; crypto_ed25519_check ≥1
+#   3. fixture — host generator re-run; committed pubkey/sig/message match
+# Asserts 2–3 HOLD until guest and generator land on the morning open word.
+#
+#   rishi/bin/rishi run tools/proven_seat_signed_kumara_fetch.rish
+
+let cache = "tools/.cache/proven-seat"
+let root = "vendor/monocypher"
+let pinned = "ab2b16dd619ad5f6979a4fbe69cfa324a6fcc35f"
+let tag = "4.0.3"
+let remote = "https://github.com/LoupVaillant/Monocypher.git"
+let guest = "tools/proven_seat_signed_kumara_guest"
+let fixture_meta = "${cache}/signed-kumara-fixture-meta.txt"
+let meta = "${cache}/signed-kumara-monocypher-meta.txt"
+
+say "signed-Kumara fetch: preparing cache shelf…"
+let mkdir = run ["mkdir" "-p" cache]
+assert mkdir.ok else "could not create ${cache}"
+
+say "signed-Kumara fetch: git submodule update --init ${root}…"
+let sub = run ["git" "submodule" "update" "--init" root]
+assert sub.ok else "git submodule update --init failed for ${root}"
+
+say "signed-Kumara fetch: assert 1 — HEAD equals pinned ${pinned}…"
+let head = run ["git" "-C" root "rev-parse" "HEAD"]
+assert head.ok else "git rev-parse HEAD failed"
+let head_trim = trim head.out
+assert head_trim == pinned else "monocypher HEAD mismatch (want ${pinned}; got ${head_trim})"
+say "GREEN: signed-Kumara pin — HEAD ${pinned} · tag ${tag}"
+
+say "signed-Kumara fetch: teacher files present (include-path surface)…"
+let f1 = run ["test" "-f" "${root}/src/monocypher.c"]
+assert f1.ok else "missing ${root}/src/monocypher.c"
+let f2 = run ["test" "-f" "${root}/src/monocypher.h"]
+assert f2.ok else "missing ${root}/src/monocypher.h"
+let f3 = run ["test" "-f" "${root}/src/optional/monocypher-ed25519.c"]
+assert f3.ok else "missing ${root}/src/optional/monocypher-ed25519.c"
+let f4 = run ["test" "-f" "${root}/src/optional/monocypher-ed25519.h"]
+assert f4.ok else "missing ${root}/src/optional/monocypher-ed25519.h"
+let lic = run ["test" "-f" "${root}/LICENCE.md"]
+assert lic.ok else "missing ${root}/LICENCE.md"
+let ed_hdr = read-file "${root}/src/optional/monocypher-ed25519.h"
+assert ed_hdr contains "crypto_ed25519_check" else "teacher header must declare crypto_ed25519_check"
+say "signed-Kumara fetch: four teacher files + LICENCE.md · crypto_ed25519_check declared"
+
+say "signed-Kumara fetch: assert 2 — red-avoid on guest source…"
+let red_scan = run ["sh" "-c" "g=${guest}; if [ ! -d \"$g\" ]; then echo HOLD; elif grep -R -n --include='*.c' --include='*.h' -F 'crypto_eddsa_' \"$g\" >/dev/null 2>&1; then echo BAD_EDDSA; elif grep -R -n --include='*.c' --include='*.h' -F 'crypto_ed25519_check' \"$g\" >/dev/null 2>&1; then echo OK; else echo MISSING_CHECK; fi"]
+assert red_scan.ok else "red-avoid scan failed"
+let red_note = trim red_scan.out
+let red_ok = run ["sh" "-c" "case ${red_note} in HOLD|OK) exit 0;; *) exit 1;; esac"]
+assert red_ok.ok else "red-avoid failed: want HOLD (pre-guest) or OK (got ${red_note})"
+if red_note == "HOLD" then say "signed-Kumara fetch: red-avoid HOLD — ${guest} not yet landed (morning open)"
+if red_note == "OK" then say "GREEN: signed-Kumara red-avoid — crypto_ed25519_check present · crypto_eddsa_ absent"
+
+say "signed-Kumara fetch: assert 3 — fixture pair freshness…"
+let fix_scan = run ["sh" "-c" "if [ ! -f ${fixture_meta} ]; then echo HOLD; else echo META_PRESENT; fi"]
+assert fix_scan.ok else "fixture scan failed"
+let fix_note = trim fix_scan.out
+if fix_note == "HOLD" then say "signed-Kumara fetch: fixture HOLD — generator + committed arrays await morning open"
+if fix_note == "META_PRESENT" then say "signed-Kumara fetch: fixture meta present — morning generator re-run assert lands with guest"
+
+say "signed-Kumara fetch: writing ${meta}…"
+let clear = run ["rm" "-f" meta]
+assert clear.ok
+let w1 = run ["sh" "-c" "echo pin ${pinned} > ${meta}"]
+assert w1.ok
+let w2 = run ["sh" "-c" "echo tag ${tag} >> ${meta}"]
+assert w2.ok
+let w3 = run ["sh" "-c" "echo remote ${remote} >> ${meta}"]
+assert w3.ok
+let w4 = run ["sh" "-c" "echo home ${root} >> ${meta}"]
+assert w4.ok
+let w5 = run ["sh" "-c" "echo red_avoid ${red_note} >> ${meta}"]
+assert w5.ok
+let w6 = run ["sh" "-c" "echo fixture ${fix_note} >> ${meta}"]
+assert w6.ok
+let w7 = run ["sh" "-c" "echo guest ${guest} >> ${meta}"]
+assert w7.ok
+let w8 = run ["sh" "-c" "echo teacher_files four+licence >> ${meta}"]
+assert w8.ok
+
+say "GREEN: signed-Kumara fetch — pin ${tag} @ ${pinned}; red_avoid=${red_note}; fixture=${fix_note}"

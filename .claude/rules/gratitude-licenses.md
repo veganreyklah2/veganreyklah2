@@ -39,9 +39,10 @@ LGPL limits **embedding** library code in programs we distribute — not learnin
 
 - **libqrencode**: LGPL-2.1 gitlink; build CLI to `tools/.build/` only — see 997
 
-## Permissive projects (zig, dvui, urbit, tigerbeetle, sui, primal, manyana, infuse.nix, Ghostty)
+## Permissive projects (zig, dvui, urbit, tigerbeetle, sui, primal, manyana, infuse.nix, Ghostty, Monocypher)
 
-- MIT, ISC, Apache 2.0, public domain — safe to study freely
+- MIT, ISC, Apache 2.0, public domain / CC0 — safe to study freely
+- **Monocypher** — CC0 · 2-clause BSD dual; vendored at `vendor/monocypher` @ 4.0.3 for signed-Kumara guest verify
 - Still write our own implementations; concepts enter through the clean room
 
 ## The clean-room path
