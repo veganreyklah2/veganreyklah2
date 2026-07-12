@@ -12,6 +12,10 @@ Kaeden asked for a full summary with commits, merges, and pushes. Wrote the dura
 - Full map: [`20260712-064107_full-summary-seam-through-432.md`](20260712-064107_full-summary-seam-through-432.md)
 - Product tip **430** · suite tip **432**
 - Stack fold: one merge of the tip branch lands seats + Door 3 + compile
+- **Merged:** PR [#118](https://github.com/groupproject36/veganreyklah2/pull/118) → merge commit `3a9f47b` on `main`
+- **Closed superseded:** #116 · #117
+- **Pushed:** `origin` + `gp36-github` at `3a9f47b`
+- **Held for credentials:** `github` (veganreyklah2, 403) · both Codeberg remotes — still at `22ff91d`
 
 ## Files
 
