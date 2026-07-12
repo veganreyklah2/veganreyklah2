@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 3 · commerce plainly; metalsmoke; visions)
+**Last updated:** 2026-07-12 (Seam season pointer `052806`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -13,6 +13,8 @@ These rest beneath the specifications. The specs say what to build and how; thes
 **The grain** — ten standing strands and the crossing test live in [`../active-designing/20260702-184312_the-grain-and-the-crossing.md`](../active-designing/20260702-184312_the-grain-and-the-crossing.md); companion to [`../context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md). Strand briefs that silo here point back to that index; the index points to each brief.
 
 **The compass** — the return habit (foundations → grain → active-designing → TASKS → witnesses) lives in [`20260706-185112_follow-our-compass.md`](20260706-185112_follow-our-compass.md) · **landed** `20260706.185512 UDT`. Say **follow our compass** for navigation; keep **grain strand** for structural fit.
+
+**Seam season (`20260712.052806`)** — tip-430 horizon door: universality through the application seam. Wire serves the fold and sameness stay the why; studies 1–4 landed; CapTP-as-fold **declined** [`../context/specs/20260712-054650_captp-as-fold-carriage-declined.md`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md); giving-lane T0 in [`20260629-014512_money-that-stays-close-to-home.md`](20260629-014512_money-that-stays-close-to-home.md). Hammock [`../active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) · counsel [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md).
 
 ## What Lives Here
 

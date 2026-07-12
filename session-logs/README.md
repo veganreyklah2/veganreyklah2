@@ -12,6 +12,15 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.055558 | [Full Seam-season summary · four-remote push](20260712-055558_full-summary-four-remote-push.md) | Counsel→T1 map infused into commit; push all remotes |
+| 20260712.055558 | [Full Seam-season summary — tip-430 door through T1](20260712-055558_full-seam-season-summary.md) | Four studies · CapTP decline · giving T0/T1; tip **430** green held |
+| 20260712.054942 | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-field-map.md) | Public `amount`/`from` are top gaps; `to` + consent glass hold |
+| 20260712.054650 | [CapTP decline seated · giving-lane T0](20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
+| 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
+| 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
+| 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
+| 20260712.053324 | [Seam study 1 — OCapN beside Comlink](20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
+| 20260712.053001 | [Seam season prioritization](20260712-053001_seam-season-prioritization.md) | Tip-430 door named; four RTAC studies; CapTP/ally parked; TASKS/ROADMAP updated |
 | 20260711.061200 | [Consumer-surface protection — published-set gate](20260711-061200_consumer-surface-protection-gate.md) | Digest ≠ capability; Granary wire GREEN; Steep note parked |
 | 20260711.055821 | [Seat WOV TB seam retirement](20260711-055821_seat-wov-tb-seam-retirement.md) | Kaeden approved `055112`; pure-Rye WOV kept; TB dated record |
 | 20260711.054800 | [Apply Claude bot-arc audit — WOV money split](20260711-054800_apply-claude-bot-arc-audit.md) | publish_root helpers; witnesses GREEN; TB question held |

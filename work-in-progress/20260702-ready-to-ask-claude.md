@@ -1,11 +1,55 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260706.234512` (OA-L4 parity **167** · zip **59** next)
+**Stamp:** `20260702.202612` · refreshed `20260712.054942` (Giving-lane T1 OA stipend field map)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
+
+## Seam season — **prioritized** (`20260712.052806`)
+
+**Tip-430 door named:** Horizon brief → Seam season. Kaeden affirmed Claude Fable 5’s disposition: four studies file now; CapTP-as-fold and Spritely-ally park; green stays green.
+
+| Item | Path |
+|------|------|
+| Uncompressed counsel | [`counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) |
+| Hammock (our names) | [`active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) |
+| TASKS / ROADMAP | [`TASKS.md`](TASKS.md) · [`ROADMAP.md`](ROADMAP.md) |
+
+### Four RTAC studies (smallest-first)
+
+| # | Study | Ask when season opens | Output shape | Status |
+|---|-------|----------------------|--------------|--------|
+| **1** | OCapN idiom beside Comlink sealed datagram | How does CapTP’s session idiom compose with a record fold without becoming it? What is the smallest consumer-edge pass shape (access vs truth)? | ER note + design conclusion; Door 3 test plan | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
+| **2** | Component-model target for one existing seed | Which one seed is the honest first portable ABI target? What stays identical across browser / host / later Caravan host? | ER note + one-seed pick | **Landed** [`054135`](../external-research/20260712-054135_component-model-one-seed.md) — pick **`receipt_core`** |
+| **3** | Genode / seL4 guest for Rye userland | What is the smallest guest witness that proves Rye userland on a proven seat without renaming Caravan? | ER note + guest witness sketch | **Landed** [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) — G0–G3; guest never merger |
+| **4** | GNU Taler for Linengrow giving lane | How does payer-privacy / payee-transparency map onto MALA + selective disclosure without replacing the settlement seat? | ER note beside *Money That Stays Close to Home* | **Landed** [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) — private payer · transparent payee |
+
+### Four Seam studies — **complete** (`20260712.054521`)
+
+Understanding filed; CapTP formal decline · Door 3 · component compile · proven-seat G0–G3 · giving T0–T2 · Spritely ally all await Kaeden’s word. Green tip **430** untouched.
+
+### Two parked rulings (await post-study word)
+
+| Ruling | Standing | Seats when |
+|--------|----------|------------|
+| CapTP / session idiom as fold carriage | Counsel declines; study 1 affirms | **Seated decline** [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
+| Spritely as institutional ally | **Teacher** now (gratitude / silo) | Two-sided green contact, then Kaeden names ally |
+
+### Giving-lane T0 — **seated** (`20260712.054650`) · T1 — **mapped** (`20260712.054942`)
+
+Private payer · transparent payee — [`foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) · OA field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) (top gaps: public completion `amount` and `from`).
+
+### Door 3 spark (parked to itinerary until word)
+
+In-process pass admits published read + signed submit; refuses unpublished digest / lying signature — test plan in [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md). Code waits on Kaeden.
+
+### Three doors (wire) — compressed reminder
+
+1. **Study** — yes today (OCapN beside Comlink)
+2. **Full CapTP seat** — decline (counsel)
+3. **Consumer edge** — design toward after study 1 (pass = door, record = room)
 
 ## Zip 58 — **ruled** (`20260706.232812`)
 

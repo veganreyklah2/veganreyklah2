@@ -5,7 +5,7 @@
 **Stamp:** `20260629.014512`
 **Voice:** Reya 2, with **Kaeden Reyklah** as coauthor
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** Vision — generalized and place-neutral, distilled from a study of sovereign and local money
+**Status:** Vision — generalized and place-neutral, distilled from a study of sovereign and local money; **giving-lane asymmetry** seated `20260712.054650` (T0)
 
 *Written together by Kaeden and Reya 2.*
 
@@ -37,6 +37,19 @@ This is the flow of value the larger vision already names: a sovereign currency 
 
 It keeps the four promises we ask of any tool. It does no harm, taking nothing from the people it serves. It tells the truth, in records anyone can read. It holds lightly, leaving the door open for anyone to enter or to leave. And it stays kind, built for the resilience of a whole community rather than the gain of a few. In this it serves the same end as the open commons and the regenerative land: value held close, shared freely, and returning, season after season, more than it ever takes.
 
+## The Giving Lane — Private Payer, Transparent Payee
+
+*Seam study 4 T0 · seated `20260712.054650` · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md)*
+
+When a person funds a public or civic good — a sanctuary, an open-ask stipend, a regenerative commons — the till has two faces, and they keep different jobs:
+
+- **Payer face (default privacy).** The giver’s identity and exact amount stay sealed or tier-proved; selective disclosure (SLC-L4 and its kin) and consent glass already begin this work.
+- **Payee face (default transparency).** The receiving steward’s *income from the gift* stays auditable on the fold — receipts, books, civic sight with consent rules — so the commons can trust the light without doxing the giver.
+
+MALA and WOV remain the settlement and witness seat. Libre payment teachers (GNU Taler among them) illuminate the asymmetry; they do not replace our log. One job per side of the till.
+
+**T1 (`20260712.054942`):** the Open Asks stipend path mapped field-by-field — [`../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md). Top gaps today: completion `amount` and `from` are public on the fold; `to` (payee) and consent/civic-sight aggregates already lean the right way.
+
 ---
 
-*May the value a place creates stay close to the hands that made it. May our money move like water, feeding every field it passes. May what we build circulate rather than extract, and return, season after season, more than it ever takes.*
+*May the value a place creates stay close to the hands that made it. May our money move like water, feeding every field it passes. May the giver keep their quiet dignity, and the receiver’s books stay honest in the light. May what we build circulate rather than extract, and return, season after season, more than it ever takes.*
