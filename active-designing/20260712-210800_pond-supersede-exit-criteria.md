@@ -3,7 +3,7 @@
 *Claude `210800` skeleton · Claude `211400` words **N** · Claude `212412` freeze-worthy · Claude `213600` freeze affirmed · master-seal custody. Civic Style: name the outcome and the measure before the reward. Do not open a supersede build season until this card can be signed.*
 
 **Stamp:** `20260712.210800`
-**Last updated:** `20260712.213600` — freeze affirmed · master-seal custody line
+**Last updated:** `20260712.214200` — latch rests · ceremony command · Monocypher seated
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats by paste
@@ -76,7 +76,7 @@ Wrappers honor the flag; `pond` refuses while the exit bron is absent **or** uns
 
 ## Explicit parks
 
-- **Signed Ed25519 / Kumara deepen** — loses nothing waiting; crypto-teacher word (Monocypher · or libsodium in genode-world) deserves a fresh morning.
+- **Signed Ed25519 / Kumara deepen** — crypto teacher **Monocypher** seated `214200` · `monocypher-ed25519` / `crypto_ed25519_check` seam · awaits morning open; libsodium parks behind named trigger
 - **Supersede build season** — opens only on a **named build word** against this card signed whole; column-two probes may land before that word (refuse-until-candidate).
 
 ---
@@ -87,7 +87,13 @@ Wrappers honor the flag; `pond` refuses while the exit bron is absent **or** uns
 2. ~~Claude second walk~~ — **freeze-worthy `212412`** · four accretions.
 3. ~~Column-two probes land~~ — **landed `212412`** refuse-until-candidate · measured truth · claim nothing.
 4. ~~Claude freeze affirm~~ — **affirmed `213600`** · master-seal custody line.
-5. Hold for Kaeden’s **named supersede build word** — then freeze a release candidate · record `soak_start_nib` · soak under N · write `bron-resins/pond-supersede-exit.bron` with content · **master-sign** detached `.asc` with cold `0646 2132…` — then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
+5. Hold for Kaeden’s **named supersede build word** — then freeze a release candidate · record `soak_start_nib` · soak under N · write `bron-resins/pond-supersede-exit.bron` with content · **master-sign** on the host (cold key only):
+
+   ```
+   gpg --local-user 06462132D3E63B834F976E03A81D720B9235FA7A! --armor --detach-sign bron-resins/pond-supersede-exit.bron
+   ```
+
+   The trailing `!` pins the primary key itself so no future subkey drifts past the witness grep. Then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
 
 ---
 

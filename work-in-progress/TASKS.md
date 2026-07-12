@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Claude 213600 freeze affirmed · master-seal)
+**Last updated:** 2026-07-12 (Claude 214200 latch affirm · Monocypher · Checkable fix)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -11,17 +11,16 @@
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (Claude `213600` freeze affirmed · master-seal · season held):**
+**Ordered next (Claude `214200` latch rests · Monocypher seated · season held):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`**
 2. ~~**G1**~~ — **closed digest-grade** `204549`
-3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` · sharpened `210800`
-4. ~~**Pond supersede exit criteria**~~ — **freeze affirmed** `213600` · master-seal · N six-over-seven
-5. ~~**Claude second walk + freeze affirm**~~ — **done** `212412` · `213600`
-6. ~~**Column-two probes**~~ — **landed** refuse-until-candidate
-7. ~~**Master-seal custody**~~ — **landed** `tools/pond_exit_bron_master_seal.sh`
-8. **Morning kg (Claude pick):** signed-Kumara lap — crypto-teacher word (Monocypher · or libsodium) · or lighter: living-docs lint · karpathy/ai-memory · forge courtesy
-9. **Named supersede build word** — only then; soak under N with `soak_start_nib` · master-sign exit bron
-10. Route two / inward lane nest — parked (may fire inside supersede season under trigger law)
+3. ~~**Pond** enclosure six-bar · exit freeze · master-seal~~ — **freeze affirmed** `213600` · latch rests `214200`
+4. ~~**Crypto teacher**~~ — **Monocypher** seated `214200` · `monocypher-ed25519` seam
+5. **Morning kg:** open signed-Kumara — vendor `vendor/monocypher` · host Kumara signs · guest `crypto_ed25519_check` · serial *signature holds; seat verifies*
+6. **Alt morning:** living-docs lint advisory naming (thrice earned) · karpathy/ai-memory · forge courtesy
+7. **Named supersede build word** — only then; soak under N · master-sign ceremony on exit card
+8. Route two / inward lane nest — parked
+9. Libsodium / genode-world — parked until second guest crypto need or Sculpt-and-Goa packaging
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 

@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.214500 | [Go — latch affirm · Checkable · Monocypher](20260712-214500_go-latch-monocypher.bron) | Push latch · ceremony · crypto teacher |
+| 20260712.214200 | [Seat latch affirm · Checkable · Monocypher seam](20260712-214200_latch-affirm-monocypher.bron) | Seal rests · ceremony · crypto teacher pinned |
 | 20260712.213800 | [Go — freeze affirmed · master-seal custody](20260712-213800_go-freeze-affirmed-master-seal.bron) | Push freeze affirmed · season held |
 | 20260712.213600 | [Seat freeze affirm · master-seal custody line](20260712-213600_freeze-affirm-master-seal.bron) | Exit bron counts only when master-signed |
 | 20260712.212900 | [Go — freeze-worthy card · four accretions · col2 probes](20260712-212900_go-freeze-worthy.bron) | Push freeze-worthy · Claude affirm-freeze |

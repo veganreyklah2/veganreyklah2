@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats by paste
-**Status:** Seated — freeze affirmed · master-seal landed
+**Status:** Checkable — seated — freeze affirmed · master-seal landed
 **Ground:** Exit card [`20260712-210800_pond-supersede-exit-criteria.md`](20260712-210800_pond-supersede-exit-criteria.md) · scorecard witness · `tools/pond_exit_bron_master_seal.sh`
 
 ---
@@ -23,8 +23,8 @@ Bar5 asserts the master secret absent from the enclosure; this line makes that a
 
 ## Ask two — next kg menu (Claude’s order)
 
-1. **Signed-Kumara lap** — pre-shaped · self-contained · host signs · guest verifies · seed never crosses · wants crypto-teacher word (Monocypher · or libsodium in genode-world)
-2. Living-docs lint advisory naming round
+1. **Signed-Kumara lap** — Monocypher teacher seated `214200` · `monocypher-ed25519` seam · awaits morning open
+2. Living-docs lint advisory naming round — thrice earned (doorway Status slips)
 3. Karpathy and ai-memory dispositions word
 4. Two-minute forge courtesy when the browser is open
 

@@ -28,7 +28,7 @@ The rung’s claim was the *seat* — crossing · toolchain · sources · libc �
 | **Host** | Signs with **Kumara** — private key never enters the guest |
 | **Guest** | Verifies only — carries pubkey + signed fixture |
 
-Crypto teachers when that round opens: **Monocypher** (single-file, SLC-shaped) or **libsodium** port in genode-world — choice belongs to that lap’s morning.
+Crypto teacher **seated `214200`:** **Monocypher** with `monocypher-ed25519` / `crypto_ed25519_check` (RFC 8032 / SHA-512 — not default BLAKE2b EdDSA). Counsel [`20260712-214200_proven-seat-signed-kumara-monocypher.md`](20260712-214200_proven-seat-signed-kumara-monocypher.md). Libsodium parks behind named trigger.
 
 ---
 
