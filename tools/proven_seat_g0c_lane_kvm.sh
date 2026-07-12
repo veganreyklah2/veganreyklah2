@@ -30,6 +30,13 @@ mkdir -p "$CACHE"
 : >"$META"
 date -Is | tee -a "$META"
 
+# Heartbeats: tee to META (captured) and /dev/tty (live under a host terminal;
+# Rishi's run may buffer child stdout until the boot finishes).
+progress() {
+  echo "progress: $*" | tee -a "$META"
+  echo "progress: $*" > /dev/tty 2>/dev/null || true
+}
+
 if [ ! -f "$IMG" ]; then
   echo "RED: missing $IMG" | tee -a "$META" >&2
   exit 1
@@ -42,6 +49,8 @@ fi
 
 cp -f "$IMG" "$WORK"
 rm -f "$LOG" "$PNG" "$QMP"
+
+progress "copying image done; starting qemu (display none, nic none)…"
 
 qemu-system-x86_64 \
   -accel kvm -cpu host -machine q35 -m 4G \
@@ -62,14 +71,18 @@ cleanup() {
 }
 trap cleanup EXIT
 
-echo "qemu_pid=$QPID" | tee -a "$META"
+progress "qemu_pid=$QPID — waiting for QMP socket (up to 60s)…"
 
-# Wait for QMP socket, then GRUB on serial (up to ~120s).
+# Wait for QMP socket, then GRUB on serial (up to ~120s more).
 ready=0
-for _ in $(seq 1 60); do
+for i in $(seq 1 60); do
   if [ -S "$QMP" ]; then
+    progress "QMP ready after ${i}s"
     ready=1
     break
+  fi
+  if [ $((i % 5)) -eq 0 ]; then
+    progress "still waiting for QMP… ${i}/60s"
   fi
   sleep 1
 done
@@ -78,11 +91,16 @@ if [ "$ready" -ne 1 ]; then
   exit 1
 fi
 
+progress "waiting for serial GRUB loading (up to ~120s)…"
 grub=0
-for _ in $(seq 1 60); do
+for i in $(seq 1 60); do
   if [ -f "$LOG" ] && rg -q 'GRUB loading' "$LOG" 2>/dev/null; then
+    progress "GRUB loading seen after $((i * 2))s of serial wait"
     grub=1
     break
+  fi
+  if [ $((i % 5)) -eq 0 ]; then
+    progress "still waiting for GRUB… $((i * 2))/120s (not stuck — Sculpt boot is quiet)"
   fi
   sleep 2
 done
@@ -91,8 +109,7 @@ if [ "$grub" -ne 1 ]; then
   exit 1
 fi
 echo "serial_floor=GRUB" | tee -a "$META"
-
-# QMP screendump via Python (unix socket; no socat required).
+progress "taking QMP screendump…"
 python3 - "$QMP" "$PNG" <<'PY'
 import json, socket, sys, time
 

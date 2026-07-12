@@ -25,10 +25,17 @@ let hash = run ["sh" "-c" "sha256sum ${img} | cut -d' ' -f1"]
 assert hash.ok else "sha256sum failed"
 assert hash.out contains expected else "sculpt-26-04.img sha256 mismatch (want ${expected})"
 
-say "lane_kvm on-path host: G0-complete with LANE_KVM=true (env one-shot; conf stays off)…"
-let boot = run ["sh" "-c" "LANE_KVM=true ./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh"]
+say "lane_kvm on-path host: image pin ok (${hash.out})"
+say "lane_kvm on-path host: G0-complete next — up to ~2 minutes (QEMU QMP + GRUB)."
+say "lane_kvm on-path host: live pulse in another terminal:"
+say "  tail -f tools/.cache/proven-seat/g0c-lane-meta.txt"
+say "lane_kvm on-path host: starting boot with LANE_KVM=true (env one-shot; conf stays off)…"
+let boot = run ["bash" "-c" "LANE_KVM=true stdbuf -oL -eL ./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh"]
+say "lane_kvm on-path host: boot finished — ok=${boot.ok}"
+say "${boot.out}"
 assert boot.ok else "G0-complete boot failed — see tools/.cache/proven-seat/g0c-lane-meta.txt"
 assert boot.out contains "GREEN" else "G0-complete missing GREEN"
+say "lane_kvm on-path host: G0-complete GREEN"
 
 if (args contains "--parity") then say "lane_kvm on-path host: same-sitting parity re-pin…"
 if (args contains "--parity") then let par = run ["sh" "-c" "rishi/bin/rishi run tools/parity.rish"]

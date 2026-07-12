@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.133900 | [On-path progress heartbeats](20260712-133900_onpath-progress-heartbeats.bron) | QMP/GRUB pulse · /dev/tty + meta · Rishi pre-boot says |
+| 20260712.133600 | [Point host to onpath Rishi one-shot](20260712-133600_point-onpath-host-rish.bron) | Outside jail · lane_kvm_onpath_host.rish · optional --parity |
 | 20260712.133400 | [Fix launch-cursor bash not sh](20260712-133400_fix-launch-cursor-bash.bron) | Ubuntu dash rejected pipefail · bash shebang path |
 | 20260712.132900 | [Fix if-then-assert-else UnknownStatement](20260712-132900_fix-if-assert-else.bron) | assert else must not sit under if · on-path parity too |
 | 20260712.132400 | [Fix launch-cursor UndefinedName image](20260712-132400_fix-launch-cursor-undefined-image.bron) | Default binds · RS-3 extract+gpu witness GREEN |
