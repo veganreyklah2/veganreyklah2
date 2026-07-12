@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Claude 214900 Monocypher pin · fetch GREEN · season held)
+**Last updated:** 2026-07-12 (signed-Kumara GREEN · pair verify+refuse · season held)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -11,16 +11,15 @@
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (Claude `214900` Monocypher pre-pinned · season held):**
+**Ordered next (signed-Kumara GREEN `215400` · season held):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`**
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
-4. ~~**Crypto teacher + vendor pin**~~ — **Monocypher** `214200` · `vendor/monocypher` @ 4.0.3 / `ab2b16d…` `214900`
-5. **Morning kg:** open signed-Kumara — guest + host fixture generator · red-avoid GREEN · serial *signature holds; seat verifies*
-6. **Alt morning:** living-docs lint advisory naming (thrice earned) · karpathy/ai-memory · forge courtesy
-7. **Named supersede build word** — only then; soak under N · master-sign ceremony
-8. Route two / inward lane nest — parked
-9. Libsodium / genode-world — parked until second guest crypto need or Sculpt-and-Goa
+4. ~~**Signed-Kumara**~~ — **GREEN** `215400` · Monocypher 4.0.3 · pair verify+refuse · seed never crossed
+5. **Alt morning:** living-docs lint advisory naming (thrice earned) · karpathy/ai-memory · forge courtesy
+6. **Named supersede build word** — only then; soak under N · master-sign ceremony
+7. Route two / inward lane nest — parked
+8. Libsodium / genode-world — parked until second guest crypto need or Sculpt-and-Goa
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
@@ -69,7 +68,8 @@
 - [x] **Pond supersede exit criteria** — **freeze affirmed** [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · master-seal `213600` · **N = six-over-seven** · season closed until master-signed exit bron
 - [x] **Pond column-two probes** — **landed** refuse-until-candidate `tools/pond_enclosure_col2_probes.rish` · claim nothing · build word still required
 - [x] **Pond master-seal** — **landed** `tools/pond_exit_bron_master_seal.sh` · VALIDSIG `0646 2132…` alone
-- [x] **Monocypher vendor pin** — **landed** `vendor/monocypher` @ 4.0.3 / `ab2b16d…` · fetch witness GREEN · guest/fixture HOLD
+- [x] **Monocypher vendor pin** — **landed** `vendor/monocypher` @ 4.0.3 / `ab2b16d…` · fetch witness GREEN
+- [x] **Signed-Kumara** — **GREEN** `215400` · pair verify+refuse · jailed TCG · grade signed-Kumara · G1 digest stays
 - [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; host metal parity re-pin **GREEN** `193958`
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)

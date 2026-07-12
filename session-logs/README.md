@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.220000 | [Go — signed-Kumara GREEN · pair · four remotes](20260712-220000_go-signed-kumara.bron) | Push verify+refuse grade · seed never crossed |
+| 20260712.215400 | [Open signed-Kumara — pair guest · TCG both GREEN](20260712-215400_signed-kumara-green.bron) | Verify+refuse · grade signed-Kumara · seed never crossed |
 | 20260712.215100 | [Go — Monocypher pin · three-assert fetch](20260712-215100_go-monocypher-pin.bron) | Push 4.0.3 pin · guest HOLD |
 | 20260712.214900 | [Seat Monocypher pin · three-assert fetch witness](20260712-214900_monocypher-pin-fetch.bron) | 4.0.3 @ ab2b16d · pin GREEN · guest HOLD |
 | 20260712.214500 | [Go — latch affirm · Checkable · Monocypher](20260712-214500_go-latch-monocypher.bron) | Push latch · ceremony · crypto teacher |

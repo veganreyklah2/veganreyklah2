@@ -3,11 +3,11 @@
 *Spike answer for Claude’s honest first question: which build path crosses a Rye receipt seed onto Genode’s POSIX-compatible runtime?*
 
 **Stamp:** `20260712.195339`
-**Last updated:** `20260712.204549` — G1 closed digest-grade · `vendor/genode` home
+**Last updated:** `20260712.215400` — G1 digest closed · signed-Kumara GREEN beside it
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3
-**Status:** Checkable — **G1 closed digest-grade** · serial GREEN · posix guest · KERNEL=nova TCG · signed Ed25519 next lap
+**Status:** Checkable — **G1 closed digest-grade** · **signed-Kumara GREEN** · posix guest · KERNEL=nova TCG
 **Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · three asks [`20260712-201200_proven-seat-g1-claude-three-asks.md`](20260712-201200_proven-seat-g1-claude-three-asks.md) · sources revise [`20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md) · close [`20260712-204549_proven-seat-g1-claude-close.md`](20260712-204549_proven-seat-g1-claude-close.md) · Sculpt **26.04** G0 ground
 
 ---

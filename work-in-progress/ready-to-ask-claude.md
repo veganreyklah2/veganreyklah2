@@ -121,7 +121,9 @@
 
 **Claude `214200` latch affirm:** seal **rests** — zero rewrites. Ceremony command on exit-card affirmation path (primary `!`). Doorway Status on `213600` note → **Checkable**. Crypto teacher **Monocypher** — must use `monocypher-ed25519` / `crypto_ed25519_check` (RFC 8032/SHA-512); default BLAKE2b EdDSA is the named red-to-avoid. Counsel [`../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md).
 
-**Claude `214900` pin:** ask one resting. Ask two — `vendor/monocypher` submodule @ **4.0.3** / `ab2b16dd619ad5f6979a4fbe69cfa324a6fcc35f` · fetch witness GREEN · red-avoid + fixture HOLD until morning guest. Three-assert law shaped. Gratitude CC0/BSD. Counsel [`../active-designing/20260712-214900_signed-kumara-monocypher-pin.md`](../active-designing/20260712-214900_signed-kumara-monocypher-pin.md).
+**Claude `214900` pin:** ask one resting. Ask two — `vendor/monocypher` @ **4.0.3** / `ab2b16d…`. Counsel [`../active-designing/20260712-214900_signed-kumara-monocypher-pin.md`](../active-designing/20260712-214900_signed-kumara-monocypher-pin.md).
+
+**Kaeden `215400` open + kg:** signed-Kumara **GREEN** — generator through Kumara · guest pair (verify + refuse) · three asserts live · jailed TCG both serial lines · `guest_grade signed-Kumara` · G1 digest stays beside it. Counsel/lap [`../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md).
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 
