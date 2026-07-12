@@ -9,7 +9,8 @@
 **Status:** Checkable — column one frozen by sixbar witness · column two draft for supersede
 **Ground:** Claude shape [`20260712-210800_pond-sixbar-claude-shape-exit.md`](20260712-210800_pond-sixbar-claude-shape-exit.md) · baseline pin [`20260712-205600_pond-enclosure-sixbar-baseline.md`](20260712-205600_pond-enclosure-sixbar-baseline.md) · counsel [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md)
 
-**Witness (column one):** `rishi/bin/rishi run tools/pond_enclosure_sixbar.rish`
+**Witness (column one):** `rishi/bin/rishi run tools/pond_enclosure_sixbar.rish`  
+**Witness (two-column living):** `rishi/bin/rishi run tools/pond_enclosure_scorecard.rish` — column one GREEN · column two gaps named · supersede season closed
 
 ---
 

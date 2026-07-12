@@ -111,7 +111,9 @@
 
 **Claude `210800` shape (three asks):** (1) two-column scorecard affirmed — incumbent-measured · pond-required; named-gap-beside-green stands. (2) Exit criteria first — draft [`../active-designing/20260712-210800_pond-supersede-exit-criteria.md`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md); signed-Kumara waits a fresh morning. (3) Bar6 three-door rewrite — env · `$XDG_RUNTIME_DIR/bus` · netns unshared; bar5 exactly-one secret; bars 2/4 incumbent-anchored. Counsel [`../active-designing/20260712-210800_pond-sixbar-claude-shape-exit.md`](../active-designing/20260712-210800_pond-sixbar-claude-shape-exit.md) · scorecard [`../active-designing/20260712-210800_pond-enclosure-scorecard-two-column.md`](../active-designing/20260712-210800_pond-enclosure-scorecard-two-column.md).
 
-**Claude `211400` N:** **six consecutive green sittings spanning at least seven calendar days** — breadth (editor · parity · QEMU · cold-start-after-reboot) · soak clock on frozen candidate (enclosure-enforcing edits reset) · red law (one red resets; two on one witness parks). Softening hinge (wrappers free) available if solo bench bites. Exit card complete; Claude offers a second walk after go.
+**Claude `211400` N:** **six consecutive green sittings spanning at least seven calendar days** — breadth (editor · parity · QEMU · cold-start-after-reboot) · soak clock on frozen candidate (enclosure-enforcing edits reset) · red law (one red resets; two on one witness parks). Softening hinge (wrappers free) available if solo bench bites. Exit card complete; Claude second walk next (tip `40673e0`).
+
+**Kg `211900`:** living two-column witness `tools/pond_enclosure_scorecard.rish` — column one GREEN · column two gaps named · supersede season closed. Does not land column-two probes; awaits Claude walk word.
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

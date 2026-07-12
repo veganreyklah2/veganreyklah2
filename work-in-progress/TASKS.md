@@ -1,24 +1,25 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (N seated · six-over-seven · exit card complete)
+**Last updated:** 2026-07-12 (scorecard living witness · tip 40673e0)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`7857221`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling).
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`40673e0`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling).
 
 **Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/`.
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (Claude `211400` N seated · go when ready):**
+**Ordered next (tip `40673e0` · scorecard witness `211900`):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
 2. ~~**G1**~~ — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` @ `492a510…` · signed Ed25519 lap pre-shaped (host Kumara · guest verifies)
 3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` · sharpened `210800` (two-column · three-door bus · bar5 count)
 4. ~~**Pond supersede exit criteria**~~ — **complete** `211400` · N = six-over-seven · three riders · season closed until exit bron
-5. **Go** seats the drafts for Claude’s second walk · then column-two probes on word
-6. Route two / inward lane nest — parked until graduation trigger (may fire inside supersede season under trigger law)
-7. Signed Ed25519 proven-seat — parked for a fresh crypto-teacher morning
+5. ~~**Go** seats the drafts~~ — **done** tip `40673e0` · Claude second walk next
+6. **Claude second walk** of scorecard + exit card — then column-two probe *landing* on word (living measure already: `pond_enclosure_scorecard.rish`)
+7. Route two / inward lane nest — parked until graduation trigger (may fire inside supersede season under trigger law)
+8. Signed Ed25519 proven-seat — parked for a fresh crypto-teacher morning
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 

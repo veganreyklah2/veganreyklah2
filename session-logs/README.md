@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.211900 | [Kg — pond enclosure scorecard living witness](20260712-211900_kg-pond-scorecard-witness.bron) | Col1 GREEN · col2 gaps named · season closed |
+| 20260712.211800 | [Counsel — silo vs keep Pond exit cards active](20260712-211800_silo-counsel-pond-exit.bron) | Season-governing docs stay active-designing |
 | 20260712.211700 | [Go — exit card · N · four remotes · Claude walk](20260712-211700_go-exit-n-claude-walk.bron) | Push drafts · Claude second eyes |
 | 20260712.211400 | [Seat Claude N — six-over-seven durability](20260712-211400_seat-n-six-over-seven.bron) | Exit card complete · soak riders seated |
 | 20260712.210800 | [Seat Claude shape — two-column scorecard · bar6 · exit first](20260712-210800_claude-sixbar-shape-exit.bron) | Scorecard + exit draft · three-door bus · N open |
