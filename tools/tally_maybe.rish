@@ -3,10 +3,18 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/tally_maybe.rish
 
-let build = run ["sh" "-c" "mkdir -p tally/bin && rye/bin/rye build tally/maybe.rye -femit-bin=tally/bin/maybe"]
+let zig = "vendor/zig-toolchain/zig"
+let zig_ver = run ["sh" "-c" "${zig} version"]
+assert zig_ver.ok else "pinned ziglang toolchain missing at vendor/zig-toolchain"
+
+let build = run ["bash" "-c" "mkdir -p tally/bin && env RYE_ZIG=${zig} rye/bin/rye build tally/maybe.rye -femit-bin=tally/bin/maybe 2>&1"]
+if build.ok == false then say "tally maybe build output:"
+if build.ok == false then say build.out
 assert build.ok else "tally maybe build failed"
 
-let self = run ["sh" "-c" "tally/bin/maybe selftest 2>&1"]
+let self = run ["bash" "-c" "tally/bin/maybe selftest 2>&1"]
+if self.ok == false then say "tally maybe selftest output:"
+if self.ok == false then say self.out
 assert self.ok else "tally maybe selftest exited non-zero"
 assert self.out contains "GREEN" else "tally maybe selftest not GREEN"
 

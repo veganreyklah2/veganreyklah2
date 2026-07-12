@@ -3,10 +3,18 @@
 # Run from the repository root:
 #   rishi/bin/rishi run tools/tally_no_padding.rish
 
-let build = run ["sh" "-c" "mkdir -p tally/bin && rye/bin/rye build tally/no_padding.rye -femit-bin=tally/bin/no-padding"]
+let zig = "vendor/zig-toolchain/zig"
+let zig_ver = run ["sh" "-c" "${zig} version"]
+assert zig_ver.ok else "pinned ziglang toolchain missing at vendor/zig-toolchain"
+
+let build = run ["bash" "-c" "mkdir -p tally/bin && env RYE_ZIG=${zig} rye/bin/rye build tally/no_padding.rye -femit-bin=tally/bin/no-padding 2>&1"]
+if build.ok == false then say "tally no_padding build output:"
+if build.ok == false then say build.out
 assert build.ok else "tally no_padding build failed"
 
-let self = run ["sh" "-c" "tally/bin/no-padding selftest 2>&1"]
+let self = run ["bash" "-c" "tally/bin/no-padding selftest 2>&1"]
+if self.ok == false then say "tally no_padding selftest output:"
+if self.ok == false then say self.out
 assert self.ok else "tally no_padding selftest exited non-zero"
 assert self.out contains "GREEN" else "tally no_padding selftest not GREEN"
 
