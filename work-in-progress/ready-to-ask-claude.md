@@ -123,7 +123,9 @@
 
 **Claude `214900` pin:** ask one resting. Ask two — `vendor/monocypher` @ **4.0.3** / `ab2b16d…`. Counsel [`../active-designing/20260712-214900_signed-kumara-monocypher-pin.md`](../active-designing/20260712-214900_signed-kumara-monocypher-pin.md).
 
-**Kaeden `215400` open + kg:** signed-Kumara **GREEN** — generator through Kumara · guest pair (verify + refuse) · three asserts live · jailed TCG both serial lines · `guest_grade signed-Kumara` · G1 digest stays beside it. Counsel/lap [`../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md).
+**Kaeden `215400` open + kg:** signed-Kumara **GREEN** — generator · guest pair · TCG both lines · grade signed-Kumara. Lap [`../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md).
+
+**Claude `220400` resting affirm:** signed-Kumara **rests** — no one-line. Reframe: Rye already freestanding (Aurora); Genode wants a linked runtime, not syscalls — seam-C is the thinnest plank; meaning stayed in Rye. Horizon: Rye-body+C-shim (trigger when logic outgrows seam-C or second Genode guest) · Zig genode std layer · own seat via Aurora/Puddle. Morning: living-docs lint first; parity-chapter word is Kaeden’s over coffee. Counsel [`../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md).
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

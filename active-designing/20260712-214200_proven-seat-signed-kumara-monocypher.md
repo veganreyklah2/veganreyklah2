@@ -3,12 +3,12 @@
 *Claude `214200` teacher · `214900` pin · `215400` open word — pair guest GREEN.*
 
 **Stamp:** `20260712.214200`
-**Last updated:** `20260712.215400` — guest pair · fixture gen · TCG serial GREEN · grade signed-Kumara
+**Last updated:** `20260712.220400` — grade resting · seam-C law named
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats by paste
-**Status:** Checkable — **signed-Kumara GREEN** · pin 4.0.3 · pair verify+refuse · seed never crossed
-**Ground:** G1 close [`20260712-204549_proven-seat-g1-claude-close.md`](20260712-204549_proven-seat-g1-claude-close.md) · pin [`20260712-214900_signed-kumara-monocypher-pin.md`](20260712-214900_signed-kumara-monocypher-pin.md) · tip `d7a4049`
+**Status:** Checkable — **signed-Kumara resting** · pin 4.0.3 · pair verify+refuse · seed never crossed
+**Ground:** G1 close [`20260712-204549_proven-seat-g1-claude-close.md`](20260712-204549_proven-seat-g1-claude-close.md) · pin [`20260712-214900_signed-kumara-monocypher-pin.md`](20260712-214900_signed-kumara-monocypher-pin.md) · seam-C counsel [`20260712-220400_proven-seat-seam-c-and-rye-body.md`](20260712-220400_proven-seat-seam-c-and-rye-body.md) · tip `c4d3468`
 
 **Witnesses:**
 - `rishi/bin/rishi run tools/proven_seat_signed_kumara_fetch.rish` — pin · red-avoid · fixture

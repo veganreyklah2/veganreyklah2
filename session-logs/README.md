@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.220600 | [Go — signed-Kumara resting · seam-C counsel](20260712-220600_go-seam-c-resting.bron) | Push resting affirm · day sealed |
+| 20260712.220400 | [Seat signed-Kumara resting · seam-C · Rye-body horizon](20260712-220400_seam-c-rye-body-resting.bron) | Affirmed · Genode runtime law · shim parked |
 | 20260712.220000 | [Go — signed-Kumara GREEN · pair · four remotes](20260712-220000_go-signed-kumara.bron) | Push verify+refuse grade · seed never crossed |
 | 20260712.215400 | [Open signed-Kumara — pair guest · TCG both GREEN](20260712-215400_signed-kumara-green.bron) | Verify+refuse · grade signed-Kumara · seed never crossed |
 | 20260712.215100 | [Go — Monocypher pin · three-assert fetch](20260712-215100_go-monocypher-pin.bron) | Push 4.0.3 pin · guest HOLD |
