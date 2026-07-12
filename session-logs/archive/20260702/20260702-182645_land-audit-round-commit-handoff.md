@@ -23,5 +23,5 @@ Mechanical lane is complete through ladder rung 1. No further Cursor work unbloc
 - `active-designing/README.md` — row for small-sharp toolset
 - `context/TAME_GUIDANCE.md` — link testing audit memo in happy-zone horizon
 - `session-logs/README.md` — index rows for `180812` logs
-- `work-in-progress/20260702-ready-to-ask-claude.md` — tip at `61a986a`
+- `work-in-progress/ready-to-ask-claude.md` — tip at `61a986a`
 - Commit `61a986a` — full audit round integration (21 files)

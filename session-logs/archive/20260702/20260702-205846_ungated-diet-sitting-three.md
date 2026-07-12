@@ -31,4 +31,4 @@ Hard bounds held: no Kaeden boxes touched, no `amber/`, no Edit 5 wire, no new m
 | `manual/reference/rishi-language.md` | §8 conditionals + §12 edge |
 | `manual/README.md` | Index update |
 | `work-in-progress/TASKS.md` | Progress marks |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | RTAC diet update |
+| `work-in-progress/ready-to-ask-claude.md` | RTAC diet update |

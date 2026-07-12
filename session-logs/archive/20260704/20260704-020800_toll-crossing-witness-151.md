@@ -32,7 +32,7 @@ Fixed LEXICON typo from lap sweep (retired list had wrongly listed *lap* instead
 | `tools/crossing_manifest_seed.rish` | New witness |
 | `work-in-progress/20260703-202312_crossing_manifest_seed.rye` | main() harness |
 | `tools/parity.rish` | Witness registered |
-| `work-in-progress/TASKS.md` · `ROADMAP.md` · `20260702-ready-to-ask-claude.md` | Parity **151** arithmetic |
+| `work-in-progress/TASKS.md` · `ROADMAP.md` · `ready-to-ask-claude.md` | Parity **151** arithmetic |
 
 ## Next step
 

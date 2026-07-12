@@ -1,11 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Giving-lane T1 OA field map `054942`)
+**Last updated:** 2026-07-12 (receipt-verify Wasmtime tip **432** `063558`)
 
-## Now — Seam season (`052806`)
+## Now — Portable seam green (**432**) · Door 3 (**431**) · product tip **430**
 
-**Door named from tip-430 hold:** Horizon brief → **Seam season**. Counsel [`052806`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) · hammock [`052806`](../active-designing/20260712-052806_seam-season-hammock.md). Green product work at tip **430** stays green. Logic before carriage.
+**Standing product green:** tip **430** — Open Asks civic sight. **Suite tip:** **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md).
+
+**Ordered next (counsel):** proven-seat metal (heaviest) · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -17,10 +19,12 @@
 | — | **Giving-lane T0** | **Seated** `054650` | Invariant in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md) |
 | — | **Giving-lane T1** | **Landed** `054942` | OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) — amount/`from` public = top gaps |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
-| — | **Consumer-edge pass / Door 3** | **Design filed** | First green waits on word — ER test plan `053324` |
-| — | **Component compile lap** | **Parked** | Wasmtime green waits on word — ER `054135` |
+| — | **Consumer-edge pass / Door 3** | **Landed** tip **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
+| — | **Component compile lap** | **Landed** tip **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
-| — | **Giving-lane T2** | **Parked** | Compose amount/payer privacy with payee transparency — awaits word |
+| — | **Giving-lane T2** | **Choice seated** `062656` | Courtesy now · proof as T3 — brief [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
+| — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
+| — | **Cloud signing key** | **Seated** `062656` | PUBKEYS Cursor cloud lane-key `SHA256:/ZGdxqU+…` |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
@@ -32,10 +36,14 @@
 - [x] **Giving-lane T0** — private payer · transparent payee in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 - [x] **Giving-lane T1** — OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md); top gaps: public `amount` and `from` on completion
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
-- [ ] **Door 3 first green (on word)** — in-process pass admits published read + signed submit; refuses unpublished / lying — ER test plan `053324`
-- [ ] **Component compile lap (on word)** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — ER `054135`
+- [x] **Door 3 first green** — in-process pass admits published read + signed submit; refuses unpublished / lying / lying pass — tip **431** `063213`
+- [x] **Component compile lap** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — tip **432** `063558`
 - [ ] **Proven-seat G1 guest (on word)** — receipt verify-witness GREEN under Genode-hosted path — ER `054342`
-- [ ] **Giving-lane T2 (on word)** — compose payer amount/identity privacy with payee transparency (SLC-L4 + OA) — map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md)
+- [ ] **Giving-lane T2 wire (on word)** — courtesy shape seated [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); glass withholding composition awaits word
+- [x] **Bud / mudra names seated** — `tally/bud.rye` · `tools/slcl4_mudra.rish` · Mudra released from Pottery alternates (`062656`)
+- [x] **Cloud Cursor lane-key in PUBKEYS** — `SHA256:/ZGdxqU+…` (`062656`)
+- [x] **RTAC ledger plain name** — `work-in-progress/ready-to-ask-claude.md` (`062656`)
+- [x] **Giving-lane T2 choice brief** — courtesy now · proof as T3 (`062656`)
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
@@ -379,7 +387,7 @@
 - [x] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198** (`20260709.184051`); prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md)
 - [x] **MALA M2 — mailable (hosted)** — mint crosses Comlink UDP; receipt crosses back; `mala_core.rye` + `mala_delivery.rye` + `tools/mala_m2_witness.rish`; parity **199** (`20260709.191634`); prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
 - [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
-- [x] **SLC-L4 fixed-tier Sigma** — Pedersen + proof of opening to declared tier; `disclosure_core.rye` + `pedersen.rye` + `tools/slcl4_sigma.rish`; parity **200** (`20260709.194437`); prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
+- [x] **SLC-L4 fixed-tier mudra** (inherited: Sigma) — bud + proof of opening to declared tier; `disclosure_core.rye` + `tally/bud.rye` + `tools/slcl4_mudra.rish`; first landed parity **200** (`20260709.194437`); warm names seated `062656`; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 - [x] **MALA M2b — device wire** — virtio twin of hosted M2; ports **15569**/**15570**; four guests + `comlink/run_mala_wire_lab.sh`; extends `mala_m2_witness` (`20260709.201734`)
 - [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md)
 - [x] **WOV lap 1 (in-memory)** — mint/transfer, publish root + golden bundle, prove balance, accept exit, refuse double/tamper; `linengrow/wov_core.rye` + `tools/wov_exit_honesty.rish`; parity **201** (`20260709.200729`); prompt [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md)

@@ -15,6 +15,6 @@ RTAC refreshed at `20260702.030112`. Added `metalsmoke` to `pond/apps/drawn_term
 - `pond/apps/drawn_terminal.rye` — metalsmoke mode
 - `tools/slc2a_ring3_metal.rish` — Wayland metal smoke
 - `expanding-prompts/20260702-030112_cursor-slc-2b-keyboard-from-window.md` — placed
-- `work-in-progress/20260702-ready-to-ask-claude.md`, `TASKS.md`, `active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`
+- `work-in-progress/ready-to-ask-claude.md`, `TASKS.md`, `active-designing/20260630-030312_slc-2a-the-drawn-terminal.md`
 
 *Recommend: interactive Ring 3 metal close → Edit 5 → nod SLC-2b → bench Dexter without Claude unless seam shifts.*

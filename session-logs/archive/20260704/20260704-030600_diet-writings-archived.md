@@ -37,6 +37,6 @@ The diet-era external-research primer (`20260703-235912_diet-and-the-crossing-ma
 | `context/LEXICON.md` | Primer link |
 | `context/specs/20260704-030300_itinerary-retires-diet.md` | Canonical + archive paths |
 | `external-research/README.md` | Index row |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Parked table |
+| `work-in-progress/ready-to-ask-claude.md` | Parked table |
 
 **Recommend:** keep going on open-itinerary mechanical stops — Claude bench parity **152** re-run or seat `TWO_ROOMS` on Kaeden word.

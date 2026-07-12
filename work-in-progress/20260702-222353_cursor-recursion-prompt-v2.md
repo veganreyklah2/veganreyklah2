@@ -19,7 +19,7 @@ When Kaeden asks *"what do you recommend?"* without opening a menu item — answ
 
 Lexicon: [`context/LEXICON.md`](../context/LEXICON.md) → **Gate** · **Ungated diet** · **Empty plate**.
 
-Checkpoint: [`20260702-ready-to-ask-claude.md`](20260702-ready-to-ask-claude.md).
+Checkpoint: [`ready-to-ask-claude.md`](ready-to-ask-claude.md).
 
 ---
 

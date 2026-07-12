@@ -20,7 +20,7 @@ First zip of the arc with comment, contents, and relay aligned. v5 accretion pai
 |------|-----|
 | `counsel/20260704-004912_gate-unify-counsel.md` | Claude commissioned memo |
 | `session-logs/20260704-004912_zip40-green-gate-counsel.md` | Claude bench raise log |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Bench pins + delivered counsel row |
+| `work-in-progress/ready-to-ask-claude.md` | Bench pins + delivered counsel row |
 | `external-research/README.md` | Index row |
 | `session-logs/README.md` | Index rows |
 

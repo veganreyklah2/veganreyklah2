@@ -6,7 +6,7 @@
 **Voice:** Rio 3
 **Lens:** TAME · SLC · Gall's Law · CIVIC where Linengrow touches people
 **Opens after:** Kaeden reads the summary; Claude sits when Kaeden opens the thread
-**Ground:** [`20260702-ready-to-ask-claude.md`](20260702-ready-to-ask-claude.md) · [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md)
+**Ground:** [`ready-to-ask-claude.md`](ready-to-ask-claude.md) · [`ROADMAP.md`](ROADMAP.md) · [`TASKS.md`](TASKS.md) · [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md)
 
 *Prepared by Cursor for Claude (Fable counsel) and Kaeden — counsel only; no parity or module changes from this file alone.*
 

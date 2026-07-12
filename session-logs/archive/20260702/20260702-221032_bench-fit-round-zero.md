@@ -26,4 +26,4 @@ Moved Fable session logs and fit memo to canonical homes. Doors untouched; WOV g
 | `external-research/20260702-215212_wov-mala-hardware-fit.md` | Fit-check memo |
 | `session-logs/20260702-215212_wov-mala-hardware-fit-check.md` | Fit executor log |
 | `work-in-progress/TASKS.md` | Hardware fit recorded |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | RTAC with commit hashes |
+| `work-in-progress/ready-to-ask-claude.md` | RTAC with commit hashes |

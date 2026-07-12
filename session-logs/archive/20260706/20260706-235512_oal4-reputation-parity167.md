@@ -25,7 +25,7 @@ Applied TASKS lines 52 and 72. Implemented `foldReputationLog` in `linengrow/ope
 - `tools/open_asks_lap4.rish` — witness (new)
 - `tools/parity.rish` — OA-L4 block
 - `work-in-progress/TASKS.md` — ruling deltas + OA-L4 landed + next climb
-- `work-in-progress/20260702-ready-to-ask-claude.md` — OA-L4 seated
+- `work-in-progress/ready-to-ask-claude.md` — OA-L4 seated
 - `active-designing/20260706-013012_open-asks-escrow-hammock.md` — OA-L4 landed
 - `active-designing/20260706-185112_the-witness-bolt.md` — doorway fix
 - `counsel/20260706-232812_claude-ruling-oal4-mala-edit5-and-horizons.md` — Status line

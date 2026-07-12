@@ -1,9 +1,10 @@
-//! linengrow/disclosure_core.rye — SLC-L4 lap 1: fixed-tier Sigma (declared tier).
+//! linengrow/disclosure_core.rye — SLC-L4 lap 1: fixed-tier mudra (inherited name: Sigma protocol).
 //!
 //!   rye build linengrow/disclosure_core.rye -femit-bin=linengrow/bin/disclosure
 //!   linengrow/bin/disclosure selftest
 //!
-//! Proves knowledge of blinding for C = tier·G + r·H where tier is public.
+//! Proves knowledge of dew for C = tier·G + r·H where tier is public.
+//! The tier mudra vouches the bud's tier without blooming it.
 //! Scope: [`expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 
 const std = @import("std");
@@ -12,7 +13,7 @@ const print = std.debug.print;
 const Dir = std.Io.Dir;
 const Edwards25519 = std.crypto.ecc.Edwards25519;
 const Sha3_256 = std.crypto.hash.sha3.Sha3_256;
-const pedersen = @import("pedersen.rye");
+const bud = @import("bud.rye");
 const tally_copy = @import("tally_copy.rye");
 
 const slcl4_version = "20260709.194437";
@@ -21,8 +22,8 @@ pub const tiers = [_]u64{ 1000, 5000, 10000 };
 pub const proof_bytes_len: u32 = 64; // A (32) || z (32)
 pub const challenge_domain = "veganreyklah2/slcl4/sigma-tier/v1";
 
-const witness_blinding = [_]u8{0x22} ** pedersen.scalar_len;
-const witness_nonce = [_]u8{0x33} ** pedersen.scalar_len;
+const witness_dew = [_]u8{0x22} ** bud.scalar_len;
+const witness_nonce = [_]u8{0x33} ** bud.scalar_len;
 const witness_stamp = "20260709.194437";
 const witness_log_digest = "0000000000000000000000000000000000000000000000000000000000000000";
 
@@ -34,10 +35,10 @@ fn tier_allowed(tier: u64) bool {
 }
 
 fn challenge(
-    commitment: *const [pedersen.point_len]u8,
-    nonce_point: *const [pedersen.point_len]u8,
+    commitment: *const [bud.point_len]u8,
+    nonce_point: *const [bud.point_len]u8,
     tier: u64,
-) [pedersen.scalar_len]u8 {
+) [bud.scalar_len]u8 {
     var h = Sha3_256.init(.{});
     h.update(challenge_domain);
     h.update(commitment);
@@ -55,32 +56,32 @@ fn challenge(
     return Edwards25519.scalar.reduce(digest);
 }
 
-/// Prove knowledge of blinding for C = tier·G + r·H (tier public).
-/// Callers outside the witness must supply fresh blinding and nonce scalars.
+/// Prove knowledge of dew for C = tier·G + r·H (tier public).
+/// Callers outside the witness must supply fresh dew and nonce scalars.
 pub fn prove_tier(
     tier: u64,
-    blinding: *const [pedersen.scalar_len]u8,
-    nonce: *const [pedersen.scalar_len]u8,
-    commitment_out: *[pedersen.point_len]u8,
+    dew: *const [bud.scalar_len]u8,
+    nonce: *const [bud.scalar_len]u8,
+    commitment_out: *[bud.point_len]u8,
     proof_out: *[proof_bytes_len]u8,
 ) !void {
     if (!tier_allowed(tier)) return error.BadTier;
-    const c = try pedersen.commit(tier, blinding);
+    const c = try bud.commit(tier, dew);
     commitment_out.* = c.toBytes();
 
-    const h_gen = pedersen.derive_h();
+    const h_gen = bud.derive_h();
     const a_point = try h_gen.mulPublic(nonce.*);
     const a_bytes = a_point.toBytes();
     const e = challenge(commitment_out, &a_bytes, tier);
     // z = e·r + k
-    const z = Edwards25519.scalar.mulAdd(e, blinding.*, nonce.*);
+    const z = Edwards25519.scalar.mulAdd(e, dew.*, nonce.*);
 
-    tally_copy.copy_disjoint(u8, proof_out[0..pedersen.point_len], &a_bytes);
-    tally_copy.copy_disjoint(u8, proof_out[pedersen.point_len..][0..pedersen.scalar_len], &z);
+    tally_copy.copy_disjoint(u8, proof_out[0..bud.point_len], &a_bytes);
+    tally_copy.copy_disjoint(u8, proof_out[bud.point_len..][0..bud.scalar_len], &z);
 }
 
 pub fn verify_tier(
-    commitment: *const [pedersen.point_len]u8,
+    commitment: *const [bud.point_len]u8,
     proof: *const [proof_bytes_len]u8,
     tier: u64,
 ) !void {
@@ -88,19 +89,19 @@ pub fn verify_tier(
     const c = try Edwards25519.fromBytes(commitment.*);
     try c.rejectIdentity();
 
-    var a_bytes: [pedersen.point_len]u8 = undefined;
-    var z: [pedersen.scalar_len]u8 = undefined;
-    tally_copy.copy_disjoint(u8, &a_bytes, proof[0..pedersen.point_len]);
-    tally_copy.copy_disjoint(u8, &z, proof[pedersen.point_len..][0..pedersen.scalar_len]);
+    var a_bytes: [bud.point_len]u8 = undefined;
+    var z: [bud.scalar_len]u8 = undefined;
+    tally_copy.copy_disjoint(u8, &a_bytes, proof[0..bud.point_len]);
+    tally_copy.copy_disjoint(u8, &z, proof[bud.point_len..][0..bud.scalar_len]);
 
     const a_point = try Edwards25519.fromBytes(a_bytes);
     try a_point.rejectIdentity();
 
     const e = challenge(commitment, &a_bytes, tier);
-    const h_gen = pedersen.derive_h();
+    const h_gen = bud.derive_h();
     const lhs = try h_gen.mulPublic(z);
 
-    const v_g = try Edwards25519.basePoint.mulPublic(pedersen.scalar_from_u64(tier));
+    const v_g = try Edwards25519.basePoint.mulPublic(bud.scalar_from_u64(tier));
     const c_minus_vg = c.sub(v_g);
     const e_delta = try c_minus_vg.mulPublic(e);
     const rhs = a_point.add(e_delta);
@@ -116,12 +117,12 @@ fn write_hex(bytes: []const u8, out: []u8) void {
 }
 
 fn write_proof_receipt(
-    commitment: *const [pedersen.point_len]u8,
+    commitment: *const [bud.point_len]u8,
     proof: *const [proof_bytes_len]u8,
     tier: u64,
     out: []u8,
 ) !u32 {
-    var commit_hex: [pedersen.point_len * 2]u8 = undefined;
+    var commit_hex: [bud.point_len * 2]u8 = undefined;
     var proof_hex: [proof_bytes_len * 2]u8 = undefined;
     write_hex(commitment, &commit_hex);
     write_hex(proof, &proof_hex);
@@ -142,22 +143,22 @@ fn check_fixture_receipt(io: std.Io, expected: []const u8) !void {
 }
 
 fn run_selftest(io: std.Io) !u8 {
-    try pedersen.assert_pinned_h();
+    try bud.assert_pinned_h();
 
     var i: u32 = 0;
     while (i < tiers.len) : (i += 1) {
         const tier = tiers[i];
-        var commitment: [pedersen.point_len]u8 = undefined;
+        var commitment: [bud.point_len]u8 = undefined;
         var proof: [proof_bytes_len]u8 = undefined;
-        try prove_tier(tier, &witness_blinding, &witness_nonce, &commitment, &proof);
+        try prove_tier(tier, &witness_dew, &witness_nonce, &commitment, &proof);
         try verify_tier(&commitment, &proof, tier);
         print("slcl4: honest proof for tier {d} verified — GREEN welcome\n", .{tier});
     }
 
     // Golden receipt for tier 1000
-    var commitment: [pedersen.point_len]u8 = undefined;
+    var commitment: [bud.point_len]u8 = undefined;
     var proof: [proof_bytes_len]u8 = undefined;
-    try prove_tier(1000, &witness_blinding, &witness_nonce, &commitment, &proof);
+    try prove_tier(1000, &witness_dew, &witness_nonce, &commitment, &proof);
     var receipt: [1024]u8 = undefined;
     const receipt_len = try write_proof_receipt(&commitment, &proof, 1000, &receipt);
     try check_fixture_receipt(io, receipt[0..receipt_len]);
@@ -175,15 +176,15 @@ fn run_selftest(io: std.Io) !u8 {
     } else |_| print("slcl4: wrong tier claim refused — GREEN unwelcome path\n", .{});
 
     print("slcl4: version {s}\n", .{slcl4_version});
-    print("GREEN: SLC-L4 fixed-tier Sigma — prove, receipt, verify.\n", .{});
+    print("GREEN: SLC-L4 fixed-tier mudra — prove, receipt, verify.\n", .{});
     return 0;
 }
 
 fn run_write_fixture(_: std.Io) !u8 {
-    try pedersen.assert_pinned_h();
-    var commitment: [pedersen.point_len]u8 = undefined;
+    try bud.assert_pinned_h();
+    var commitment: [bud.point_len]u8 = undefined;
     var proof: [proof_bytes_len]u8 = undefined;
-    try prove_tier(1000, &witness_blinding, &witness_nonce, &commitment, &proof);
+    try prove_tier(1000, &witness_dew, &witness_nonce, &commitment, &proof);
     var receipt: [1024]u8 = undefined;
     const receipt_len = try write_proof_receipt(&commitment, &proof, 1000, &receipt);
     print("{s}", .{receipt[0..receipt_len]});

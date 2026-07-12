@@ -14,6 +14,6 @@ Continued TAME as-you-touch hygiene: added `const print = std.debug.print` and b
 
 - `caravan/*.rye` (5 files) — bare print
 - `comlink/hosted_wire.rye` — bare print
-- `work-in-progress/20260702-ready-to-ask-claude.md`
+- `work-in-progress/ready-to-ask-claude.md`
 
 *Remaining print debt: Mantra, Rishi, brushstroke/seed — as-you-touch when those files open.*

@@ -20,6 +20,6 @@ Amber rungs remain gated on Kaeden's *Open Amber*. Claude counsel is staged, not
 - `external-research/20260703-033602_first-ring-goes-green.md` — essay committed
 - `session-logs/20260703-033702_first-ring-goes-green-essay.md` — log committed
 - `work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md` — new counsel brief
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC refresh
+- `work-in-progress/ready-to-ask-claude.md` — RTAC refresh
 - `session-logs/README.md` — index row
 - `session-logs/20260703-041850_commits-counsel-brief.md` — this log

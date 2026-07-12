@@ -22,4 +22,4 @@ Chrono sweep now ungated to wire per versioning rule. TWO_ROOMS and not-advice l
 | `external-research/20260703-015512_bandwidth-and-moderation.md` | Resins + resin-refusal prose |
 | `amber/README.md` | Ratified resin vocabulary |
 | `context/specs/20260701-221512_amber-functional-spec.md` | Companion pointer |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Menu updated |
+| `work-in-progress/ready-to-ask-claude.md` | Menu updated |

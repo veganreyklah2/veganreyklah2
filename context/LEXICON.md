@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-12 (CapTP-as-fold decline `054650` · giving-lane T0)
+**Last updated:** 2026-07-12 (bud/mudra seated `062656` · cloud lane-key · T2 courtesy choice)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -27,10 +27,14 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
 | **Rest-until** | Status for designed (often partly landed) work that stays closed on keep-going until a **named reopen trigger** — product need, measured red, or explicit affirm; living name for what counsel called *soak*; not forever-pause, not parked — ruling [`../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) · Kaeden `210433` |
 | **Seam season** | Tip-430 horizon door (`20260712.052806`) — universality through the portable application seam and a consumer-edge pass, while Caravan stays the named horizon; four RTAC studies; CapTP-as-fold and institutional-ally name parked — hammock [`../active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) · counsel [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) |
-| **Consumer edge** | Design conclusion (`20260712.053324`): a capability-shaped **pass** grants access to a published slice / signed submit; signatures gate **truth**; sealed datagram carries the fold — pass = door, record = room; Door 3 test plan filed; code waits on word — study [`../external-research/20260712-053324_ocapn-beside-comlink.md`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
-| **Portable seam** | First Component Model target (`20260712.054135`): `receipt_core` verify-witness — same fold guest across hosts; freestanding Brushstroke canvas is the twin *surface* track — study [`../external-research/20260712-054135_component-model-one-seed.md`](../external-research/20260712-054135_component-model-one-seed.md) |
+| **Consumer edge** | **Landed** tip **431** `063213`: capability-shaped **pass** grants access; signatures gate **truth**; sealed datagram carries the fold — pass = door, record = room — module [`../granary/consumer_edge_pass.rye`](../granary/consumer_edge_pass.rye) · study [`../external-research/20260712-053324_ocapn-beside-comlink.md`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
+| **Portable seam** | **Landed** tip **432** `063558`: `receipt_core` verify-witness as wasm guest under Wasmtime; WIT `receipt-verify` — [`../linengrow/wit/receipt-verify.wit`](../linengrow/wit/receipt-verify.wit) · hammock [`../active-designing/20260712-063558_receipt-verify-wasm-hammock.md`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) · study [`../external-research/20260712-054135_component-model-one-seed.md`](../external-research/20260712-054135_component-model-one-seed.md) |
 | **Proven seat** | Guest-never-merger (`20260712.054342`): Genode/Sculpt atop seL4 lineage as the seat Rye userland may guest on this season; Caravan keeps its name and horizon — study [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
 | **Giving lane** | Asymmetry (`20260712.054521` study · **T0 seated** `20260712.054650`): private payer · transparent payee; complements MALA/WOV; Taler is teacher not rail — foundations [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) |
+| **Bud** | **Seated** `061012`/`062656` — Pedersen commitment in our voice; `tally/bud.rye`; dew blinds; bloom opens — [`specs/20260712-061012_bud-and-mudra-names-seated.md`](specs/20260712-061012_bud-and-mudra-names-seated.md) |
+| **Bloom** | **Seated** `061012`/`062656` — opening a bud (commitment open); gathered buds bloom to the ledger’s sum |
+| **Dew** | **Seated** `061012`/`062656` — blinding scalar; fresh on every bud so equal amounts never look alike |
+| **Mudra** | **Seated** `061012`/`062656` — fixed-tier Sigma proof (tier mudra); released from Pottery alternates; witness `tools/slcl4_mudra.rish` — [`specs/20260712-061012_bud-and-mudra-names-seated.md`](specs/20260712-061012_bud-and-mudra-names-seated.md) |
 | **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) · plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood — plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Metalsmoke** | The thin edge's few honest integrated checks — world alone can answer, smallest slice, witnessed; happy zone stays in parity — [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · plainly [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md) |
@@ -44,7 +48,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 
 **Examples (on the open itinerary):** Rishi builtin ladder one-per-round · semver sweep · manual reference pages (witnessed behavior only) · tutorial rooms · RW-2 contract on paper · bare-print as-you-touch.
 
-Full loop bounds: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md).
+Full loop bounds: [`work-in-progress/ready-to-ask-claude.md`](../work-in-progress/ready-to-ask-claude.md).
 
 ## Pattern — module and aspect
 

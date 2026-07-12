@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260712.054942` (Giving-lane T1 OA stipend field map)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.062656` (bud/mudra seated · T2 courtesy choice · plain name)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -36,6 +36,10 @@ Understanding filed; CapTP formal decline · Door 3 · component compile · prov
 |--------|----------|------------|
 | CapTP / session idiom as fold carriage | Counsel declines; study 1 affirms | **Seated decline** [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
 | Spritely as institutional ally | **Teacher** now (gratitude / silo) | Two-sided green contact, then Kaeden names ally |
+
+### Bud / mudra — **seated** (`20260712.062656`)
+
+Warm names for Pedersen / Sigma — [`../context/specs/20260712-061012_bud-and-mudra-names-seated.md`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md). T2 courtesy choice brief [`../active-designing/20260712-062656_giving-lane-t2-choice-brief.md`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md).
 
 ### Giving-lane T0 — **seated** (`20260712.054650`) · T1 — **mapped** (`20260712.054942`)
 
@@ -435,7 +439,7 @@ Prior tip: `778f4b8` · parity **143** · chrono **143** · Doors 1–3 closed
 ## Parked name-candidates (Kaeden's joy)
 
 - **Type-mark alternates (`202312`):** Titulus · Emblem · Motif — beside seated **Tilak**
-- **Value-object alternates (`200712`):** Grain · Bead · Mudra · Murti · Tulsi · Loam · Kiln — beside seated **Pottery** (`.pott`)
+- **Value-object alternates (`200712`):** Grain · Bead · Murti · Tulsi · Loam · Kiln — beside seated **Pottery** (`.pott`); **Mudra** released `062656` → seated as fixed-tier proof ([`../context/specs/20260712-061012_bud-and-mudra-names-seated.md`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md))
 - **Marketplace (`200712`):** Mela · Haat · Mandi (one live collision noted)
 - **Practice ground (`200712`):** Lila · Greenhouse · Nursery · Chalk · Slate · Rehearsal
 - **Itinerary vocabulary (`001012` → `030300` → `030600`):** **Itinerary** · **open itinerary** · **stops** · **journey's pause** · **off-route** — [`context/specs/20260704-030300_itinerary-retires-diet.md`](../context/specs/20260704-030300_itinerary-retires-diet.md); primer [`external-research/20260704-030600_itinerary-and-the-crossing-manifest.md`](../external-research/20260704-030600_itinerary-and-the-crossing-manifest.md); recursion prompt v4 [`expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md)

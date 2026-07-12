@@ -23,7 +23,7 @@ Kaeden requested commit, push, and full summary of the ratification arc. Reviewe
 | `amber/README.md` | Resin vocabulary; path hygiene note |
 | `external-research/20260703-015512_bandwidth-and-moderation.md` | Stones → resins prose |
 | `work-in-progress/TASKS.md` | Five boxes checked; recorded rulings block |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Menu status updated |
+| `work-in-progress/ready-to-ask-claude.md` | Menu status updated |
 | `session-logs/20260703-162212_five-ratifications-speakable-script.md` | Full speakable script with resins |
 | `session-logs/20260703-191112_resins-and-hash-tiers.md` | Proposed-law log |
 | `session-logs/20260703-191312_five-ratifications-seated.md` | Ratification seating log |

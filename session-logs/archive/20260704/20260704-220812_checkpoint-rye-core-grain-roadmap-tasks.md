@@ -18,7 +18,7 @@
 
 Rye today is a **thin, honest frontend** on pinned Zig 0.16.0 — `rye/lib/std` through pristine symlinks; safety lives in authored `.rye` (assertions, width law, the gate trio). The strengthening chronicle **completed** as analysis; it is record, not product.
 
-Full design: [`active-designing/yonder/20260619-225712_the-whole-system.md`](../active-designing/yonder/20260619-225712_the-whole-system.md). Order and why: [`work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md). Granular what-now: [`work-in-progress/TASKS.md`](../work-in-progress/TASKS.md). Strategy checkpoint: [`work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md).
+Full design: [`active-designing/yonder/20260619-225712_the-whole-system.md`](../active-designing/yonder/20260619-225712_the-whole-system.md). Order and why: [`work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md). Granular what-now: [`work-in-progress/TASKS.md`](../work-in-progress/TASKS.md). Strategy checkpoint: [`work-in-progress/ready-to-ask-claude.md`](../work-in-progress/ready-to-ask-claude.md).
 
 ### Two tracks, one spine
 
@@ -439,7 +439,7 @@ Caravan v1 · Pond v1 · Forge · TAME Editor · Aurora verified boot · kernel 
 
 ## Part Eleven — RTAC hard bounds (Cursor loop)
 
-From [`20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md):
+From [`ready-to-ask-claude.md`](../work-in-progress/ready-to-ask-claude.md):
 
 - **Never** touch boxes tagged **(Kaeden …)**  
 - **No new module/aspect names** — park in RTAC  

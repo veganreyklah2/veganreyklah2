@@ -16,7 +16,7 @@ Commit chain: `3e7bf9c` (main body) · `da9bd91` · `ff11524` (zip **41** cut ha
 
 ## Files
 
-- `work-in-progress/20260702-ready-to-ask-claude.md` — zip 41 Amphora exchange section + bench pins
+- `work-in-progress/ready-to-ask-claude.md` — zip 41 Amphora exchange section + bench pins
 - `session-logs/20260704-031200_zip41-commit-push-amphora-brief.md` — this log
 - `session-logs/README.md` — index row
 

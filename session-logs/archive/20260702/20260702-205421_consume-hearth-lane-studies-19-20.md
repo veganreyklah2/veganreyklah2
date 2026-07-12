@@ -19,4 +19,4 @@ Question four answered (Amber confirmed). Questions 1–3, 5–6 remain Kaeden's
 - `expanding-prompts/20260702-202612_cursor-astrology-silos-19-20.md` — placed (gated prompt, executed)
 - `session-logs/20260702-202612_hearth-lane-confirmed-counsel.md` — Claude executor log
 - `work-in-progress/TASKS.md` — Amber confirmed; lane/hearth boxes
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC at 202612
+- `work-in-progress/ready-to-ask-claude.md` — RTAC at 202612

@@ -22,7 +22,7 @@ Continued from handoff prep. Seated expanding prompt, RTAC refresh, handoff summ
 
 - `expanding-prompts/20260706-190644_claude-zip58-ns-l3-handoff.md` — Claude sitting (created, tip pinned)
 - `expanding-prompts/README.md` — zip 58 row
-- `work-in-progress/20260702-ready-to-ask-claude.md` — zip 58 queue
+- `work-in-progress/ready-to-ask-claude.md` — zip 58 queue
 - `session-logs/20260706-190312_claude-handoff-ns-l3-complete.md` — full summary
 - `session-logs/20260706-190644_zip58-cut.md` — cut log
 - `session-logs/README.md` — index rows

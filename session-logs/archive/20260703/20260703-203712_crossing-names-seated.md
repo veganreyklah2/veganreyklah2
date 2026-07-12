@@ -20,7 +20,7 @@ Kaeden affirmed *yes* to the four-name bundle: Tilak, absorb/express/tend, Potte
 | `context/LEXICON.md` | Tilak, triad, Pottery, Amphora seated |
 | `work-in-progress/TASKS.md` | Recorded ruling `203712`; boxes checked |
 | `active-designing/20260703-202312_the-marked-value.md` | Status ratified |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Ratification block; parked table trimmed |
+| `work-in-progress/ready-to-ask-claude.md` | Ratification block; parked table trimmed |
 | `session-logs/20260703-203712_crossing-names-seated.md` | This log |
 
 **Recommend:** keep going to **RW-2 contract season** in a fresh chat — mechanical, follows RW-1; or witness the crossing seed if you want ring one closed first.

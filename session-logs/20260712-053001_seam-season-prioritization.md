@@ -27,7 +27,7 @@ Disposition applied:
 - `active-designing/20260712-052806_seam-season-hammock.md` — season scope in our vocabulary
 - `work-in-progress/TASKS.md` — Seam season Now table + study checklist
 - `work-in-progress/ROADMAP.md` — Horizon 1.5 + season line
-- `work-in-progress/20260702-ready-to-ask-claude.md` — four RTAC studies + two parked rulings
+- `work-in-progress/ready-to-ask-claude.md` — four RTAC studies + two parked rulings
 - `context/LEXICON.md` — Seam season · consumer edge
 - `foundations/README.md` · `counsel/README.md` · `active-designing/README.md` — pointers
 - `counsel/20260711-033228_hold-at-tip-430.md` — door taken recorded

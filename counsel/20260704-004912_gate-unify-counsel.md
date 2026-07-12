@@ -3,7 +3,7 @@
 **Language:** EN
 **Stamp:** `20260704.004912 UDT` (Kaeden's anchor from the RTAC ask; slug distinguishes)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`) · **Lens:** TAME · silo law
-**Category:** External research — counsel memo, commissioned in RTAC (`work-in-progress/20260702-ready-to-ask-claude.md`, section *Claude — gate terminology unify counsel*)
+**Category:** External research — counsel memo, commissioned in RTAC (`work-in-progress/ready-to-ask-claude.md`, section *Claude — gate terminology unify counsel*)
 **Ground:** the read order named in the ask, walked in order on this bench at `4ab032d`, parity 150 GREEN re-witnessed here from bare
 **Status:** Seated — vocabulary ratified `20260704.020800`; deltas applied per §4
 

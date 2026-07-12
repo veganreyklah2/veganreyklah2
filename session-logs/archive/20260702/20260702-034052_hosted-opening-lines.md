@@ -14,6 +14,6 @@ Continued TAME as-you-touch after design sitting canonized opening lines. Added 
 
 - `tally/seed.rye`, `tally/gardens.rye`, `brushstroke/seed.rye`
 - `mantra/src/*.rye`, `rishi/src/main.rye`
-- `work-in-progress/20260702-ready-to-ask-claude.md`
+- `work-in-progress/ready-to-ask-claude.md`
 
 *Claude door unchanged: Edit 5, Amber, Pond clause, SLC-2b nod.*

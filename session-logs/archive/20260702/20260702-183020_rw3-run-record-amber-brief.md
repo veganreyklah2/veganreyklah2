@@ -22,7 +22,7 @@ Mechanical lane is again idle until Kaeden walks doors 1–3. RW-4 (SLC failure 
 - `tools/run_record_witness.rish` — RW-3 witness (new)
 - `tools/parity.rish` — wire RW-3 block
 - `work-in-progress/20260702-190000_amber-first-ring-claude-brief.md` — Claude prep (new)
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC refresh
+- `work-in-progress/ready-to-ask-claude.md` — RTAC refresh
 - `work-in-progress/20260702-edit5-ready-to-apply.md` — parity 142 note
 - `work-in-progress/TASKS.md` — RW-3 checked; Edit 5 parity
 - `work-in-progress/ROADMAP.md` — 141 witness count

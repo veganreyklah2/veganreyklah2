@@ -303,7 +303,7 @@ assert mala_m2.ok else "MALA M2 witness failed"
 say "GREEN: MALA M2 mailable Comlink (hosted + device wire) witness passed."
 
 say "witness suite: SLC-L4 fixed-tier Sigma (Zig-native)…"
-let slcl4 = run ["rishi/bin/rishi" "run" "tools/slcl4_sigma.rish"]
+let slcl4 = run ["rishi/bin/rishi" "run" "tools/slcl4_mudra.rish"]
 assert slcl4.ok else "SLC-L4 Sigma witness failed"
 say "GREEN: SLC-L4 fixed-tier Sigma witness passed."
 
@@ -1611,3 +1611,13 @@ say "witness suite: Open Asks civic sight (lifecycle · escrow · consent on Ska
 let open_asks_civic_sight = run ["rishi/bin/rishi" "run" "tools/open_asks_civic_sight_view.rish"]
 assert open_asks_civic_sight.ok else "Open Asks civic sight witness failed"
 say "GREEN: Open Asks civic sight witness passed."
+
+say "witness suite: Door 3 consumer-edge pass (access vs truth, in-process)…"
+let door3_pass = run ["rishi/bin/rishi" "run" "tools/door3_consumer_edge_pass.rish"]
+assert door3_pass.ok else "Door 3 consumer-edge pass witness failed"
+say "GREEN: Door 3 consumer-edge pass witness passed."
+
+say "witness suite: receipt-verify Wasmtime guest (component compile lap)…"
+let receipt_verify_wasm = run ["rishi/bin/rishi" "run" "tools/receipt_verify_wasm.rish"]
+assert receipt_verify_wasm.ok else "receipt-verify Wasmtime witness failed"
+say "GREEN: receipt-verify Wasmtime guest witness passed."

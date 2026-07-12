@@ -21,7 +21,7 @@ Grep found appetite in ordering doctrine, Mysticeti survey, diet ER, doc-lane co
 | `work-in-progress/20260703-021412_counsel-and-confirmation-tests.md` | Design stops |
 | `work-in-progress/20260703-014912_round-summary-and-decoder.md` | Design stops |
 | `work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md` | Stop discipline heading |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Parked tutorial wording |
+| `work-in-progress/ready-to-ask-claude.md` | Parked tutorial wording |
 | `active-designing/yonder/20260619-051212_correctness-by-construction.md` | Memory budget |
 
 **Recommend:** Kaeden rules on **toll** — then Cursor lands spec + LEXICON + remaining phrase deltas from gate-unify memo §4.

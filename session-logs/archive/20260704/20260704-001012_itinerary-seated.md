@@ -31,7 +31,7 @@ Recursion prompt v4 (when it ships) should rename `MENU` → `STOPS` and swap pl
 | File | Why |
 |------|-----|
 | `context/LEXICON.md` | Canonical itinerary table; retired terms noted |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Hard bounds, open itinerary section, parity table |
+| `work-in-progress/ready-to-ask-claude.md` | Hard bounds, open itinerary section, parity table |
 | `work-in-progress/TASKS.md` | Pre-staged stops line |
 | `external-research/20260703-235912_diet-and-the-crossing-manifest.md` | Accretion block at top; status updated |
 
