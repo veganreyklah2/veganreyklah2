@@ -52,6 +52,9 @@
 !/mandi/
 !/expanding-prompts/
 !/session-logs/
+!/vendor/
+/vendor/*
+!/vendor/genode/
 !/.cursor/
 !/CLAUDE.md
 !/ORGANIZING.md

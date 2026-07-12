@@ -37,3 +37,8 @@
 [submodule "gratitude/dvui"]
 	path = gratitude/dvui
 	url = https://github.com/david-vanderson/dvui
+[submodule "vendor/genode"]
+	ignore = untracked
+	branch = 26.05
+	path = vendor/genode
+	url = https://codeberg.org/genodelabs/genode.git

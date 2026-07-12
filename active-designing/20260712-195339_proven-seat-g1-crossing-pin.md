@@ -3,12 +3,12 @@
 *Spike answer for Claude’s honest first question: which build path crosses a Rye receipt seed onto Genode’s POSIX-compatible runtime?*
 
 **Stamp:** `20260712.195339`
-**Last updated:** `20260712.203900` — G1 jailed TCG serial GREEN
+**Last updated:** `20260712.204549` — G1 closed digest-grade · `vendor/genode` home
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3
-**Status:** Checkable — **G1 serial GREEN** · digest-grade fixture · posix guest · KERNEL=nova TCG
-**Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · three asks [`20260712-201200_proven-seat-g1-claude-three-asks.md`](20260712-201200_proven-seat-g1-claude-three-asks.md) · sources revise [`20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md) · Sculpt **26.04** G0 ground
+**Status:** Checkable — **G1 closed digest-grade** · serial GREEN · posix guest · KERNEL=nova TCG · signed Ed25519 next lap
+**Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · three asks [`20260712-201200_proven-seat-g1-claude-three-asks.md`](20260712-201200_proven-seat-g1-claude-three-asks.md) · sources revise [`20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md) · close [`20260712-204549_proven-seat-g1-claude-close.md`](20260712-204549_proven-seat-g1-claude-close.md) · Sculpt **26.04** G0 ground
 
 ---
 
@@ -17,10 +17,10 @@
 | Pin | Value |
 |-----|-------|
 | **toolchain** | **25.05** (ubuntu-24.04 · `genode-x86-g++` GCC 14.2.0) |
-| **sources** | **26.05** @ `492a51024217fe74ccee1ebdfb81be97046b43eb` (Codeberg canonical) |
+| **sources** | **26.05** @ `492a51024217fe74ccee1ebdfb81be97046b43eb` · home **`vendor/genode`** (submodule) |
 | **ground** | **Sculpt 26.04** (G0 seat image; G1 boots its own Genode image) |
 
-Drift between rungs is named, not hidden. Recorded in `g1-sources-meta.txt` / refreshed on `g1-toolchain-meta.txt`.
+Drift between rungs is named, not hidden. Recorded in `g1-sources-meta.txt` / refreshed on `g1-toolchain-meta.txt`. Workbench (builddir · contrib · toolchain · host-tools) stays under `tools/.cache/proven-seat/`.
 
 ---
 
@@ -40,13 +40,13 @@ Drift between rungs is named, not hidden. Recorded in `g1-sources-meta.txt` / re
 
 ## Kg unroll (Claude `201200` · sources forge revise `201802`)
 
-1. ~~**Source fetch witness**~~ — **GREEN** `tools/proven_seat_g1_fetch_sources.rish` · Codeberg shallow-clone **26.05** · HEAD `492a5102…`
-2. ~~**`tool/ports/prepare_port libc`**~~ — **GREEN** `tools/proven_seat_g1_prepare_libc.rish` · contrib `libc-d6a3665f…` · host-tools flex/bison/m4 in cache
-3. ~~**`create_builddir` for x86_64**~~ — **GREEN** `tools/proven_seat_g1_create_builddir.rish` · `genode-build-x86_64` · `CROSS_DEV_PREFIX` + libports pinned
+1. ~~**Source fetch witness**~~ — **GREEN** `tools/proven_seat_g1_fetch_sources.rish` · `vendor/genode` submodule · HEAD `492a5102…`
+2. ~~**`tool/ports/prepare_port libc`**~~ — **GREEN** `tools/proven_seat_g1_prepare_libc.rish` · workbench contrib `libc-d6a3665f…` · host-tools flex/bison/m4 in cache
+3. ~~**`create_builddir` for x86_64**~~ — **GREEN** `tools/proven_seat_g1_create_builddir.rish` · `genode-build-x86_64` · `GENODE_DIR` + `CONTRIB_DIR` + `CROSS_DEV_PREFIX` + libports pinned
 4. ~~**SLC guest**~~ — **GREEN** `tools/proven_seat_g1_guest/` · posix `main` · digest-grade fixture · installed as `g1-receipt-verify`
 5. ~~**Jailed TCG serial**~~ — **GREEN** `tools/proven_seat_g1.rish` · `KERNEL=nova` · serial line matched
 
-Jailed TCG needs no `/dev/kvm`. **Park:** permanent Genode module home until first serial GREEN; then `vendor/` precedent.
+Jailed TCG needs no `/dev/kvm`. **Home:** `vendor/genode` (Claude `204549`) · `ignore = untracked` · signed Ed25519 lap pre-shaped (host Kumara signs · guest verifies only).
 
 ---
 
@@ -64,7 +64,7 @@ Pinned: GitHub release **25.05** Ubuntu 24.04 tarball · sha256 `6cab8e5f…b739
 rishi/bin/rishi run tools/proven_seat_g1_fetch_sources.rish
 ```
 
-Pinned: `git clone --depth 1 --branch 26.05 https://codeberg.org/genodelabs/genode.git` → assert HEAD `492a51024217fe74ccee1ebdfb81be97046b43eb`. Try `git verify-tag 26.05` (record only). Asserts `VERSION` · `repos/base` · `repos/libports` · `tool/ports/prepare_port`.
+Pinned: `git submodule update --init vendor/genode` → assert HEAD `492a51024217fe74ccee1ebdfb81be97046b43eb`. Try `git verify-tag 26.05` (record only). Asserts `VERSION` · `repos/base` · `repos/libports` · `tool/ports/prepare_port`.
 
 ## Libc prepare recipe (landed GREEN)
 
@@ -72,7 +72,7 @@ Pinned: `git clone --depth 1 --branch 26.05 https://codeberg.org/genodelabs/geno
 rishi/bin/rishi run tools/proven_seat_g1_prepare_libc.rish
 ```
 
-Fetches flex/bison/m4 into `tools/.cache/proven-seat/host-tools/` when missing (no sudo). Runs `prepare_port libc`. Asserts contrib `libc-d6a3665f0d2778ce8928c66302f1694cdc0d8480`.
+Fetches flex/bison/m4 into `tools/.cache/proven-seat/host-tools/` when missing (no sudo). Runs `prepare_port` for **libc** · **nova** · **grub2** with `CONTRIB_DIR` in the cache workbench (migrates from the retired cache clone when present). Asserts the three contrib dirs under `tools/.cache/proven-seat/genode-contrib/`.
 
 ## Builddir recipe (landed GREEN)
 
@@ -80,7 +80,7 @@ Fetches flex/bison/m4 into `tools/.cache/proven-seat/host-tools/` when missing (
 rishi/bin/rishi run tools/proven_seat_g1_create_builddir.rish
 ```
 
-Creates `tools/.cache/proven-seat/genode-build-x86_64/`, pins absolute `CROSS_DEV_PREFIX` (`…/bin/genode-x86-`), enables `repos/libports`.
+Creates `tools/.cache/proven-seat/genode-build-x86_64/`, pins absolute `GENODE_DIR` → `vendor/genode`, `CONTRIB_DIR` → workbench contrib, `CROSS_DEV_PREFIX` (`…/bin/genode-x86-`), enables `repos/libports`.
 
 ## Guest + serial (landed GREEN)
 

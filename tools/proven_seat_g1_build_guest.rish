@@ -26,7 +26,7 @@ say "proven-seat G1 guest: ensuring REPOSITORIES points at guest repo…"
 let abs_repo = run ["realpath" guest_repo]
 assert abs_repo.ok else "realpath ${guest_repo} failed"
 let repo_path = trim abs_repo.out
-let have_repo_line = run ["sh" "-c" "grep -F 'proven-seat G1: guest repo' ${conf}"]
+let have_repo_line = run ["sh" "-c" "grep -F 'REPOSITORIES += ${repo_path}' ${conf}"]
 if have_repo_line.ok == false then say "proven-seat G1 guest: appending REPOSITORIES for ${repo_path}"
 if have_repo_line.ok == false then let a1 = run ["sh" "-c" "echo >> ${conf}"]
 if have_repo_line.ok == false then assert a1.ok
