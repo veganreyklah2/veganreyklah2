@@ -1,7 +1,7 @@
 # The External-Research Stack
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Seam study 1 `053324` — OCapN beside Comlink)
+**Last updated:** 2026-07-12 (Seam study 2 `054135` — component-model one seed)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -45,6 +45,7 @@ Dated explorations carry `YYYYMMDD-HHMMSS_short-slug.md`; living documents (`REA
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260712.054135` | [Component-model target — one seed](20260712-054135_component-model-one-seed.md) | Seam study 2; pick `receipt_core` verify-witness; Brushstroke canvas twin track |
 | `20260712.053324` | [OCapN beside Comlink — session vs record](20260712-053324_ocapn-beside-comlink.md) | Seam study 1; CapTP decline affirmed; consumer-edge pass + Door 3 test plan |
 | `20260710.133500` | [Local forge on Minisforum metal](20260710-133500_local-forge-minisforum-inference.md) | Visionary: Lattice · Lantern · Scribble · Anvil; lap 0 landed **215** |
 | `20260710.131956` | [Seen books and the living desktop — long horizon](20260710-131956_seen-books-living-desktop-horizon.md) | Visionary: carriage · books · sight; Greencandy + Visual Track + Rye OS |

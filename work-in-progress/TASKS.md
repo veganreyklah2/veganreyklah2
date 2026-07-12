@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Seam study 1 landed `053324` — OCapN beside Comlink; CapTP-as-fold formal decline awaits word)
+**Last updated:** 2026-07-12 (Seam study 2 landed `054135` — component-model one-seed pick: receipt_core)
 
 ## Now — Seam season (`052806`)
 
@@ -10,22 +10,24 @@
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
 | **1** | **OCapN idiom beside Comlink** | **Landed** `053324` | ER [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md); Door 3 design conclusion + test plan; CapTP decline affirmed as understanding |
-| **2** | **Component-model target — one seed** | **RTAC study** | Wasm/component seam; “anywhere” before bare metal |
+| **2** | **Component-model target — one seed** | **Landed** `054135` | ER [`054135`](../external-research/20260712-054135_component-model-one-seed.md); pick = `receipt_core` verify-witness; Brushstroke canvas stays twin track |
 | **3** | **Genode / seL4 guest for Rye userland** | **RTAC study** | Proven seat; Caravan stays horizon — guest, never merger |
 | **4** | **GNU Taler for Linengrow giving lane** | **RTAC study** | Payer privacy · payee transparency; complements MALA / USDsui |
 | — | **CapTP as fold carriage** | **Ready to seat decline** | Study 1 returned; formal seat awaits Kaeden’s word |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
 | — | **Consumer-edge pass** | **Design conclusion filed** | Pass = door, record = room — Door 3 test plan in ER; code waits on word |
+| — | **Component compile lap** | **Parked** | Study 2 pick seated as understanding; Wasmtime green waits on word |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
 - [x] **Seam study 1 — OCapN idiom beside Comlink** — [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md); consumer-edge design conclusion + Door 3 test plan; sealed datagram stays fold carriage
-- [ ] **Seam study 2 — component-model target for one existing seed** — one seed through the portable ABI; sameness is the macro
+- [x] **Seam study 2 — component-model target for one existing seed** — [`054135`](../external-research/20260712-054135_component-model-one-seed.md); **pick: `receipt_core` / SLC-L1 verify-witness**; freestanding Brushstroke canvas remains twin track
 - [ ] **Seam study 3 — Genode / seL4 guest witness for Rye userland** — guest on a proven seat; Caravan keeps its name and horizon
 - [ ] **Seam study 4 — GNU Taler for the giving lane** — study beside *Money That Stays Close to Home*; no settlement-seat replacement
 - [ ] **Parked — CapTP-as-fold formal decline** — study 1 returned; seat on Kaeden’s word
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
 - [ ] **Door 3 first green (on word)** — in-process pass admits published read + signed submit; refuses unpublished / lying — ER test plan `053324`
+- [ ] **Component compile lap (on word)** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — ER `054135`
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
