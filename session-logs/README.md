@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
 | 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
 | 20260712.053324 | [Seam study 1 — OCapN beside Comlink](20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
 | 20260712.053001 | [Seam season prioritization](20260712-053001_seam-season-prioritization.md) | Tip-430 door named; four RTAC studies; CapTP/ally parked; TASKS/ROADMAP updated |

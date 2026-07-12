@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260712.054135` (Seam study 2 landed — component-model pick: receipt_core)
+**Stamp:** `20260702.202612` · refreshed `20260712.054342` (Seam study 3 landed — Genode/seL4 guest never merger)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -23,7 +23,7 @@
 |---|-------|----------------------|--------------|--------|
 | **1** | OCapN idiom beside Comlink sealed datagram | How does CapTP’s session idiom compose with a record fold without becoming it? What is the smallest consumer-edge pass shape (access vs truth)? | ER note + design conclusion; Door 3 test plan | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **2** | Component-model target for one existing seed | Which one seed is the honest first portable ABI target? What stays identical across browser / host / later Caravan host? | ER note + one-seed pick | **Landed** [`054135`](../external-research/20260712-054135_component-model-one-seed.md) — pick **`receipt_core`** |
-| **3** | Genode / seL4 guest for Rye userland | What is the smallest guest witness that proves Rye userland on a proven seat without renaming Caravan? | ER note + guest witness sketch | Open |
+| **3** | Genode / seL4 guest for Rye userland | What is the smallest guest witness that proves Rye userland on a proven seat without renaming Caravan? | ER note + guest witness sketch | **Landed** [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) — G0–G3; guest never merger |
 | **4** | GNU Taler for Linengrow giving lane | How does payer-privacy / payee-transparency map onto MALA + selective disclosure without replacing the settlement seat? | ER note beside *Money That Stays Close to Home* | Open |
 
 ### Two parked rulings (await post-study word)

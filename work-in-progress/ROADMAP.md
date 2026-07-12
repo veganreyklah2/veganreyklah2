@@ -253,10 +253,10 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 |-------|------|--------|
 | **1** | Capability-protocol idiom (OCapN) beside Comlink’s sealed datagram | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **2** | One existing seed through a component-model / Wasm target | **Landed** [`054135`](../external-research/20260712-054135_component-model-one-seed.md) — **`receipt_core`** |
-| **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | RTAC open |
+| **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | **Landed** [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
 | **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | RTAC open |
 
-**Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** (study 1 affirmed) · Spritely ally name after two-sided green. **Door 3:** consumer-edge pass design conclusion + test plan in study 1 — code waits on word. **Component compile lap:** waits on word (pick seated as understanding).
+**Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** (study 1 affirmed) · Spritely ally name after two-sided green. **Door 3:** consumer-edge pass design conclusion + test plan in study 1 — code waits on word. **Component compile lap:** waits on word (pick seated as understanding). **Proven-seat G0–G3:** waits on word + machine.
 
 ## Horizon 2 — Compose the Simples
 
