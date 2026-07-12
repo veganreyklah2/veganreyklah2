@@ -1,0 +1,75 @@
+# proven_seat_g1_prepare_libc.rish — prepare Genode libc port under the cache tree.
+#
+# Claude 201200 unroll step 2 · sources already at Codeberg 26.05.
+# Ensures host flex/bison/m4 (extract Ubuntu noble debs into cache when missing),
+# then runs tool/ports/prepare_port libc. Teacher hash-verifies its FreeBSD
+# upstream. Cache claims no seat.
+#
+#   rishi/bin/rishi run tools/proven_seat_g1_prepare_libc.rish
+
+let cache = "tools/.cache/proven-seat"
+let src = "${cache}/genode-sources"
+let tools = "${cache}/host-tools"
+let debs = "${tools}/debs"
+let meta = "${cache}/g1-prepare-libc-meta.txt"
+let expected_hash = "d6a3665f0d2778ce8928c66302f1694cdc0d8480"
+let port_dir = "${src}/contrib/libc-${expected_hash}"
+let hash_file = "${src}/repos/libports/ports/libc.hash"
+let ubuntu = "http://archive.ubuntu.com/ubuntu"
+
+say "proven-seat G1 prepare-libc: checking sources tree…"
+let have_src = run ["test" "-d" src]
+assert have_src.ok else "missing ${src} — run proven_seat_g1_fetch_sources.rish first"
+let have_prep = run ["test" "-f" "${src}/tool/ports/prepare_port"]
+assert have_prep.ok else "missing prepare_port under ${src}"
+let pin_hash = read-file hash_file
+assert pin_hash contains expected_hash else "libc.hash pin drift (want ${expected_hash})"
+
+say "proven-seat G1 prepare-libc: ensuring flex · bison · m4 in ${tools}…"
+let mkdir_tools = run ["mkdir" "-p" debs]
+assert mkdir_tools.ok else "could not create ${debs}"
+let have_flex = run ["test" "-x" "${tools}/usr/bin/flex"]
+if have_flex.ok == false then say "proven-seat G1 prepare-libc: fetching Ubuntu noble flex/bison/m4/libfl2 debs…"
+if have_flex.ok == false then let get_pkg = run ["sh" "-c" "cd ${debs} && /usr/bin/curl -fsSL -o Packages.gz ${ubuntu}/dists/noble/main/binary-amd64/Packages.gz && /bin/gzip -dc Packages.gz | /usr/bin/awk '/^Package: (flex|bison|m4|libfl2)$/{pkg=$2;keep=1} keep && /^Filename:/{print pkg, $2; keep=0}' > urls.txt && while read -r pkg path; do /usr/bin/curl -fL --retry 3 -o ${debs}/${pkg}.deb ${ubuntu}/${path}; done < urls.txt && for deb in ${debs}/*.deb; do /usr/bin/dpkg-deb -x $deb ${tools}; done"]
+if have_flex.ok == false then assert get_pkg.ok
+let have_flex2 = run ["test" "-x" "${tools}/usr/bin/flex"]
+assert have_flex2.ok else "flex missing — install via host-tools extract into ${tools}"
+let have_bison = run ["test" "-x" "${tools}/usr/bin/bison"]
+assert have_bison.ok else "bison missing after host-tools extract"
+let have_m4 = run ["test" "-x" "${tools}/usr/bin/m4"]
+assert have_m4.ok else "m4 missing after host-tools extract"
+let have_rpcgen = run ["test" "-x" "/usr/bin/rpcgen"]
+assert have_rpcgen.ok else "rpcgen missing on host PATH (/usr/bin/rpcgen)"
+
+say "proven-seat G1 prepare-libc: running prepare_port libc…"
+# Prefer already-prepared contrib — skip rebuild when hash dir exists (idempotent GREEN).
+let already = run ["test" "-f" "${port_dir}/libc.hash"]
+if already.ok then say "proven-seat G1 prepare-libc: contrib already prepared — skipping make"
+if already.ok == false then let prep = run ["sh" "-c" "cd ${src} && PATH=${tools}/usr/bin:/usr/bin:/bin LD_LIBRARY_PATH=${tools}/usr/lib/x86_64-linux-gnu make -f tool/ports/prepare_port libc"]
+if already.ok == false then assert prep.ok
+if already.ok == false then say "proven-seat G1 prepare-libc: make finished"
+
+say "proven-seat G1 prepare-libc: asserting contrib port dir…"
+let have_port = run ["test" "-d" port_dir]
+assert have_port.ok else "missing prepared port ${port_dir}"
+let have_port_hash = run ["test" "-f" "${port_dir}/libc.hash"]
+assert have_port_hash.ok else "missing ${port_dir}/libc.hash"
+let port_hash = read-file "${port_dir}/libc.hash"
+assert port_hash contains expected_hash else "prepared libc.hash mismatch (want ${expected_hash})"
+say "proven-seat G1 prepare-libc: contrib libc-${expected_hash} present; hash matches pin"
+
+say "proven-seat G1 prepare-libc: writing ${meta}…"
+let clear_meta = run ["rm" "-f" meta]
+assert clear_meta.ok else "could not clear ${meta}"
+let w1 = run ["sh" "-c" "echo port libc > ${meta}"]
+assert w1.ok else "meta write failed"
+let w2 = run ["sh" "-c" "echo libc_hash ${expected_hash} >> ${meta}"]
+assert w2.ok else "meta write failed"
+let w3 = run ["sh" "-c" "echo port_dir ${port_dir} >> ${meta}"]
+assert w3.ok else "meta write failed"
+let w4 = run ["sh" "-c" "echo sources ${src} >> ${meta}"]
+assert w4.ok else "meta write failed"
+let w5 = run ["sh" "-c" "echo host_tools ${tools} >> ${meta}"]
+assert w5.ok else "meta write failed"
+
+say "GREEN: proven-seat G1 prepare-libc — libc port prepared at ${port_dir}; create_builddir next"

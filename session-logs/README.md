@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.202433 | [Go + kg — prepare_port libc GREEN](20260712-202433_g1-prepare-libc-green.bron) | contrib libc-d6a3665f… · host-tools flex · create_builddir next |
 | 20260712.202118 | [Go — G1 Codeberg sources + three-asks counsel](20260712-202118_go-g1-codeberg-sources.bron) | Commit + four remotes · prepare_port kg next |
 | 20260712.201802 | [Seat + kg — G1 sources Codeberg 26.05 GREEN](20260712-201802_g1-sources-codeberg-26.05.bron) | Commit pin 492a510… · META trio revised · prepare_port next |
 | 20260712.201558 | [Kg — G1 sources fetch GREEN](20260712-201558_g1-sources-fetch-green.bron) | Tag 25.05 · repos/base+libports · prepare_port next |

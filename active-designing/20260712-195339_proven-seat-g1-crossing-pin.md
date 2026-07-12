@@ -3,11 +3,11 @@
 *Spike answer for Claude’s honest first question: which build path crosses a Rye receipt seed onto Genode’s POSIX-compatible runtime?*
 
 **Stamp:** `20260712.195339`
-**Last updated:** `20260712.201802` — Claude Codeberg revise · sources **26.05** @ `492a510…` GREEN
+**Last updated:** `20260712.202400` — prepare_port libc GREEN · create_builddir next
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3
-**Status:** Checkable — path **named** · toolchain **25.05 GREEN** · sources **26.05 Codeberg GREEN** · META trio pinned · **next:** `prepare_port libc` → builddir x86_64 → SLC guest · serial GREEN
+**Status:** Checkable — toolchain **25.05 GREEN** · sources **26.05 Codeberg GREEN** · **libc port GREEN** · **next:** `create_builddir` x86_64 → SLC guest · serial GREEN
 **Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · three asks [`20260712-201200_proven-seat-g1-claude-three-asks.md`](20260712-201200_proven-seat-g1-claude-three-asks.md) · sources revise [`20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md) · Sculpt **26.04** G0 ground
 
 ---
@@ -41,7 +41,7 @@ Drift between rungs is named, not hidden. Recorded in `g1-sources-meta.txt` / re
 ## Kg unroll (Claude `201200` · sources forge revise `201802`)
 
 1. ~~**Source fetch witness**~~ — **GREEN** `tools/proven_seat_g1_fetch_sources.rish` · Codeberg shallow-clone **26.05** · HEAD `492a5102…`
-2. **`tool/ports/prepare_port libc`** — teacher hash-verifies its own upstream downloads
+2. ~~**`tool/ports/prepare_port libc`**~~ — **GREEN** `tools/proven_seat_g1_prepare_libc.rish` · contrib `libc-d6a3665f…` · host-tools flex/bison/m4 in cache
 3. **`create_builddir` for x86_64**
 4. **SLC guest** — posix main via `Libc::Component::construct` · one signed receipt fixture · own GREEN line on serial
 5. Grow `tools/proven_seat_g1.rish` until that serial GREEN
@@ -65,6 +65,14 @@ rishi/bin/rishi run tools/proven_seat_g1_fetch_sources.rish
 ```
 
 Pinned: `git clone --depth 1 --branch 26.05 https://codeberg.org/genodelabs/genode.git` → assert HEAD `492a51024217fe74ccee1ebdfb81be97046b43eb`. Try `git verify-tag 26.05` (record only). Asserts `VERSION` · `repos/base` · `repos/libports` · `tool/ports/prepare_port`.
+
+## Libc prepare recipe (landed GREEN)
+
+```bash
+rishi/bin/rishi run tools/proven_seat_g1_prepare_libc.rish
+```
+
+Fetches flex/bison/m4 into `tools/.cache/proven-seat/host-tools/` when missing (no sudo). Runs `prepare_port libc`. Asserts contrib `libc-d6a3665f0d2778ce8928c66302f1694cdc0d8480`.
 
 ---
 
