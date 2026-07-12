@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.130300` (Claude host-safe affirm · lane-inward probe · Route one flag absent)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.131200` (ai-jail v1.12.0 pin · Karpathy/ai-memory dispositions await word)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -88,6 +88,15 @@
 **Claude `125200` (guidance `123700`):** residue close **affirmed** after six living tip→nib lines (anvil · mandi · active-designing README · seam-season guard · giving-lane-t2 guard). Order **holds** — host on-path → G1 → Pond. Pre-flight: stage sculpt image · after restore run `lane_kvm.sh refuse-probe` on host · parity pin-what-prints / red-twice parks. Giving-family naming **affirmed** for future creator gratuity. Jail kg refuse honored as the floor working.
 
 **Claude `130300`:** host one-shot **safe** (human-in-loop · verify-commit · read three scripts · porcelain silence). Lane inward: Route one **no teacher `--kvm`/`--dev`** (only `--gpu` uses `--dev-bind`; `--rw-map` is filesystem `--bind`) — study seated [`../active-designing/20260712-130300_lane-inward-route-probe.md`](../active-designing/20260712-130300_lane-inward-route-probe.md). Route two nest **parked** (module home + name). Sequencing word: host-first (default) vs Route two when spoken.
+
+**ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
+
+**Claude `131200` — Karpathy gist + ai-memory (await Kaeden word):**
+- Tree already runs the gist pattern (often stricter: dated_guard, Bron stream, counsel/). Gains are deltas, not adoption.
+- **Lint advisory** (retired LEXICON words · broken relative links · zero-inbound living pages) as ratchet print-on-parity — **name parked**.
+- **Compression test:** a wiki page earns place only when it compresses facts scattered across many sources (aparigraha on docs).
+- **ai-memory:** study now, adopt nothing; daemon = second unsigned authority + Docker — park until pipeline round as teacher for Mantra/Weave session-memory projection. Silo now (when worded): rules-vs-facts classifier sentence into session-log rules.
+- Dispositions on word: gist → gratitude + distillation · ai-memory study shelf beside sibling · lint lap when named · daemon parked.
 
 ---
 

@@ -1,17 +1,19 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (git nib `468ff98` · Claude `130300` host-safe + lane-inward probe · residue `125200` · on-path worded)
+**Last updated:** 2026-07-12 (git nib `2d04c43` · ai-jail **v1.12.0** pin `131200` · Claude `130300` · on-path worded)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719` · residue affirm `125200`). Git nib **`468ff98`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719` · residue affirm `125200`). Git nib **`2d04c43`**. Teacher ai-jail **v1.12.0** pinned under `tools/.cache/bin/` (`131200`). Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
 
 **Word seated (`121518`):** Kaeden — *kg i grant* — host **`lane_kvm` on-path** G0-complete + **same-sitting metal parity re-pin** allowed. This Cursor session remains `ai-sandbox` without `/dev/kvm`; run the one-shot on the Framework host.
 
 **Claude `125200`:** residue close affirmed after six living lines swept · order holds (no reorder) · giving-family naming affirmed for future gratuity · kg jail-refuse honored as the floor working.
 
 **Claude `130300`:** host one-shot **safe under human-in-loop** · lane-inward evolution counsel · Route one **flag absent** (teacher has `--gpu` only, no `--kvm`/`--dev`) · Route two nest **parked for word** — note [`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md).
+
+**ai-jail `131200`:** release **v1.12.0** binary + study submodule · tarball sha256 `91458f153c7b0a87d79aae9014b558a0cfc4b160b7e390008a00c1adfc3edc21` · Route one still closed · next launch picks it up · wrapper version-echo awaits word · Karpathy/ai-memory dispositions await word (RTAC).
 
 **Ordered next (worded — run on Framework host; Claude pre-flight `125200` + human-in-loop `130300`):**
 0. On host clone: `git fetch` · `git checkout` nib · `git verify-commit HEAD` (sandbox key) · stage `tools/.cache/proven-seat/sculpt-26-04.img` (sha256 `241b916ab9e3ed25a089c27119aac98f80fe4d3e67101936b4e69d7f1c708f14`)

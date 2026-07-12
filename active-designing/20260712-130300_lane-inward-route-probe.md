@@ -39,7 +39,9 @@ A-narrow remains interim; Pond wins the lane home by out-refusing.
 
 Teacher CLI (`gratitude/ai-jail` HELP): **`--gpu` / `--no-gpu`** is the only device-passthrough option. There is **no** `--kvm`, **no** generic `--dev` for arbitrary nodes. `--rw-map` / `--map` are filesystem binds (`--bind` / `--ro-bind`), not `--dev-bind`. GPU discovery alone uses `Mount::DevBind` for `/dev/dri` and nvidia nodes.
 
-**Verdict:** Route one as “config + splice existing flag” **does not land** on today’s teacher. Stretching `--rw-map /dev/kvm` would use the wrong mount kind and is not the GPU pattern — decline as a side door. True enclosed KVM wants either a teacher `--kvm` (upstream ask · we do not patch) or **Route two** (parked).
+**Verdict:** Route one as “config + splice existing flag” **does not land** on today’s teacher (reconfirmed at release **v1.12.0** `20260712.131200`). Stretching `--rw-map /dev/kvm` would use the wrong mount kind and is not the GPU pattern — decline as a side door. True enclosed KVM wants either a teacher `--kvm` (upstream ask · we do not patch) or **Route two** (parked).
+
+**Pinned binary:** `tools/.cache/bin/ai-jail` **v1.12.0** · tarball sha256 `91458f153c7b0a87d79aae9014b558a0cfc4b160b7e390008a00c1adfc3edc21` · `AIJAIL_BIN` in personal enclosure.conf. Flags of note for future lanes: `--exec` (direct, no PTY) · `--seccomp` default-on (Route two carries its own stance).
 
 Wrappers already wait: `cursor-jail.sh` sources `AIJAIL_FLAGS` + `GPU_ARGS` beside `--no-save-config`; `LANE_KVM=true` today only warns that the teacher does not pass kvm.
 

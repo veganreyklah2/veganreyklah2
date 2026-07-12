@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.131200 | [ai-jail v1.12.0 pin · study refresh](20260712-131200_ai-jail-v1120-pin.bron) | Cache binary · submodule · Route one still closed · Karpathy park |
 | 20260712.130300 | [Claude host-safe · lane-inward probe](20260712-130300_claude-host-safe-lane-inward.bron) | Route one flag absent · Route two parked · host recipe + HITL |
 | 20260712.125200 | [Claude affirms residue · six lines · pre-flight](20260712-125200_claude-residue-six-preflight.bron) | Six tip→nib · host recipe + refuse-probe · giving-family |
 | 20260712.123700 | [Claude guidance bron · go](20260712-123700_claude-guidance-bron-go.bron) | Handoff resin · kg log + bron commit/push |
