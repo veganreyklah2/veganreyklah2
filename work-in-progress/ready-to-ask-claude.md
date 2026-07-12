@@ -127,7 +127,7 @@
 
 **Claude `220400` resting affirm:** signed-Kumara **rests** — no one-line. Reframe: Rye already freestanding (Aurora); Genode wants a linked runtime, not syscalls — seam-C is the thinnest plank; meaning stayed in Rye. Horizon: Rye-body+C-shim (trigger when logic outgrows seam-C or second Genode guest) · Zig genode std layer · own seat via Aurora/Puddle. Morning: living-docs lint first; parity-chapter word is Kaeden’s over coffee. Counsel [`../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md).
 
-**Docs compression layer — four of five pages live:** [`../docs/PROVEN_SEAT.md`](../docs/PROVEN_SEAT.md) · [`../docs/ENCLOSURE.md`](../docs/ENCLOSURE.md) · [`../docs/VENDORING.md`](../docs/VENDORING.md). Next: WITNESS_PATTERNS · lint name.
+**Docs compression layer — complete (five pages):** [`../docs/README.md`](../docs/README.md) · [`PROVEN_SEAT`](../docs/PROVEN_SEAT.md) · [`ENCLOSURE`](../docs/ENCLOSURE.md) · [`VENDORING`](../docs/VENDORING.md) · [`WITNESS_PATTERNS`](../docs/WITNESS_PATTERNS.md). Lint name awaits word.
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

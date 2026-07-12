@@ -24,7 +24,7 @@ Docs carry **no load-bearing pins** — every fingerprint cites a witness or MET
 | [`PROVEN_SEAT.md`](PROVEN_SEAT.md) | guide · ≤300 | Proven-seat ladder — G0 through signed-Kumara |
 | [`ENCLOSURE.md`](ENCLOSURE.md) | guide · ≤300 | Enclosure · pond · lane_kvm · supersede season |
 | [`VENDORING.md`](VENDORING.md) | recipe · ≤150 | Vendor · gratitude · cache · pin habit |
-| `WITNESS_PATTERNS.md` | thin · ≤120 | *not yet* — patterns → TAME_GUIDANCE |
+| [`WITNESS_PATTERNS.md`](WITNESS_PATTERNS.md) | thin · ≤120 | Witness habits → TAME_GUIDANCE (self-deleting if canon) |
 
 Design law: [`active-designing/20260712-221600_docs-compression-layer-design.md`](../active-designing/20260712-221600_docs-compression-layer-design.md).
 
