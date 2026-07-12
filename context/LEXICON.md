@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-12 (bud/mudra seated `062656` · cloud lane-key · T2 courtesy choice)
+**Last updated:** 2026-07-12 (bud/mudra seated · post–Season-B hygiene · living hammock twin)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -26,7 +26,7 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Journey's pause** | When the itinerary has **no further stops** — stop and summarize; a pause is a question for Kaeden, never permission to go off-route |
 | **Off-route** | Work not on the itinerary — the agent names it and waits; replaces *foraging* |
 | **Rest-until** | Status for designed (often partly landed) work that stays closed on keep-going until a **named reopen trigger** — product need, measured red, or explicit affirm; living name for what counsel called *soak*; not forever-pause, not parked — ruling [`../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md`](../counsel/20260709-225614_grok-counsel-w1-and-seam-b-soak.md) · Kaeden `210433` |
-| **Seam season** | Tip-430 horizon door (`20260712.052806`) — universality through the portable application seam and a consumer-edge pass, while Caravan stays the named horizon; four RTAC studies; CapTP-as-fold and institutional-ally name parked — hammock [`../active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) · counsel [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) |
+| **Seam season** | Tip-430 horizon door (`20260712.052806`) — universality through the portable application seam and a consumer-edge pass, while Caravan stays the named horizon; four RTAC studies; CapTP-as-fold and institutional-ally name parked; Door 3 tip **431** · compile tip **432** — living hammock [`../active-designing/seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · counsel [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) |
 | **Consumer edge** | **Landed** tip **431** `063213`: capability-shaped **pass** grants access; signatures gate **truth**; sealed datagram carries the fold — pass = door, record = room — module [`../granary/consumer_edge_pass.rye`](../granary/consumer_edge_pass.rye) · study [`../external-research/20260712-053324_ocapn-beside-comlink.md`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **Portable seam** | **Landed** tip **432** `063558`: `receipt_core` verify-witness as wasm guest under Wasmtime; WIT `receipt-verify` — [`../linengrow/wit/receipt-verify.wit`](../linengrow/wit/receipt-verify.wit) · hammock [`../active-designing/20260712-063558_receipt-verify-wasm-hammock.md`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) · study [`../external-research/20260712-054135_component-model-one-seed.md`](../external-research/20260712-054135_component-model-one-seed.md) |
 | **Proven seat** | Guest-never-merger (`20260712.054342`): Genode/Sculpt atop seL4 lineage as the seat Rye userland may guest on this season; Caravan keeps its name and horizon — study [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |

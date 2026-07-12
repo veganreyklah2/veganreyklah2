@@ -4,13 +4,13 @@
 
 **Language:** EN
 **Version:** `20260712.052806` (Seam season prioritization — tip-430 horizon door)
-**Last updated:** 2026-07-12 (receipt-verify Wasmtime tip **432** `063558`)
+**Last updated:** 2026-07-12 (post–Season-B hygiene · product tip **430** · suite tip **432**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
 **Status:** Living roadmap
 
-**Direction:** [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md) · **Seam season hammock:** [`active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) · **Counsel:** [`counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
+**Direction:** [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md) · **Seam season hammock (living):** [`active-designing/seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · **Counsel:** [`counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 
 ---
 

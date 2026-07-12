@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Door 3 consumer-edge pass `063213`)
+**Last updated:** 2026-07-12 (post–Season-B hygiene · living hammock twin)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -47,8 +47,9 @@ Dated briefs carry `YYYYMMDD-HHMMSS_short-slug.md` filenames; this README is the
 
 | Stamp | Brief | Meaning |
 |-------|-------|---------|
+| living | [Seam season — hammock](seam-season-hammock.md) | Living twin — product tip **430** · suite tip **432**; edit here |
+| `20260712.052806` | [Seam season — hammock (frozen)](20260712-052806_seam-season-hammock.md) | Dated original → pointer to living twin |
 | `20260712.054942` | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-open-asks-field-map.md) | Gap list: public `amount`/`from` vs transparent `to`; consent glass holds |
-| `20260712.052806` | [Seam season — hammock](20260712-052806_seam-season-hammock.md) | Tip-430 door named; four studies; session-as-fold and ally parked; pass=door · record=room |
 | `20260711.032657` | [Open Asks civic sight — L1·L3·L4 on Skate](20260711-032657_open-asks-civic-sight-hammock.md) | Tip **430** — three seated folds on one frame |
 | `20260711.030123` | [Open Asks reputation view — consent on Skate](20260711-030123_open-asks-reputation-view-hammock.md) | Tip **429** — OA-L4 consent-before-counting on glass |
 | `20260711.015106` | [Open Asks escrow view — Nyasa on Skate](20260711-015106_open-asks-escrow-view-hammock.md) | Tip **427** — hold/release civic glass |
