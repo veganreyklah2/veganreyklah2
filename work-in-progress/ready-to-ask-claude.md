@@ -1,9 +1,19 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.071405` (Kaeden word · proven-seat G0 · T2 wire opened · Steep living twin)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.004012` (Framework G0-complete · ai-jail vs Pond ask)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
+
+---
+
+## Open ask — enclosure: ai-jail widen vs Pond supersede (`20260712.004012`)
+
+**Ask Claude:** Should we widen the **ai-jail** launch (pass `/dev/kvm`, clearer device policy) as an interim, and/or prioritize finishing **Pond** so it supersedes ai-jail with equal-or-stronger TAME safety and the features we need (KVM, GPU/Wayland, signing lanes, customs), following the compass?
+
+**Full brief:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
+
+**Ground tonight:** proven-seat **G0-complete** on Framework host KVM (Cursor still inside ai-jail without `/dev/kvm`); Pond customs + drawn terminal landed; Pond is not yet the daily agent enclosure.
 
 ---
 

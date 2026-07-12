@@ -44,7 +44,7 @@ for-each pgp_rows as row do say row.text
 let ssh_n = length ssh_lines
 let pgp_n = length pgp_rows
 
-if (ssh_n == 2) then if (pgp_n == 2) then say "IDENTITY-GREEN ssh=${ssh_n} pgp=${pgp_n}" else say "IDENTITY-RED ssh=${ssh_n} pgp=${pgp_n}"
-if (ssh_n != 2) then say "IDENTITY-RED ssh=${ssh_n} pgp=${pgp_n}"
-if (ssh_n == 2) then if (pgp_n != 2) then exit 1
-if (ssh_n != 2) then exit 1
+if (ssh_n == 3) then if (pgp_n == 2) then say "IDENTITY-GREEN ssh=${ssh_n} pgp=${pgp_n}" else say "IDENTITY-RED ssh=${ssh_n} pgp=${pgp_n}"
+if (ssh_n != 3) then say "IDENTITY-RED ssh=${ssh_n} pgp=${pgp_n}"
+if (ssh_n == 3) then if (pgp_n != 2) then exit 1
+if (ssh_n != 3) then exit 1

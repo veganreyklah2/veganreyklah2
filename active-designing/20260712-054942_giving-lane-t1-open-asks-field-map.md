@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** CIVIC · giving lane T0 · consent architecture
-**Status:** Gap map — T1 landed; T2 (glass / SLC-L4 wire) waits on word
+**Status:** Checkable-room — gap map; T1 landed; T2 (glass / SLC-L4 wire) waits on word
 **Ground:** T0 [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study 4 [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) · OA-L1 hammock [`20260706-002912_open-asks-hammock-scope.md`](20260706-002912_open-asks-hammock-scope.md) · OA-L4 consent · civic sight tip **430** · consumer-surface audit [`../counsel/20260711-060112_claude-counsel-consumer-surface-protection-audit.md`](../counsel/20260711-060112_claude-counsel-consumer-surface-protection-audit.md)
 
 ---

@@ -2,6 +2,9 @@
 #
 # Run from the repository root:
 #   rishi/bin/rishi run tools/chrono_version_sweep.rish
+#
+# Verdict lives in tools/.cache/chrono-scan-summary.txt (written by the drive
+# script) so large OK/FAIL transcripts never cross Rishi string/list ceilings.
 
 say "chrono-version: scanning authored surfaces for semver Version lines..."
 
@@ -10,11 +13,6 @@ assert result.ok else "chrono-version scan script failed"
 
 say result.out
 
-let lines = lines result.out
-let fails = where lines as l: l starts-with "FAIL"
-let oks = where lines as l: l starts-with "OK"
-
-if length fails == 0 then say "CHRONO VERSION GREEN: ${length oks} authored files carry chronological stamps only."
-if length fails != 0 then say "CHRONO VERSION RED: ${length fails} file(s) carry semver Version marks."
-
-assert length fails == 0 else "chrono-version RED: semver drift on authored surfaces"
+let summary = read-file "tools/.cache/chrono-scan-summary.txt"
+assert summary contains "verdict=GREEN" else "chrono-version RED: semver drift on authored surfaces"
+say "CHRONO VERSION GREEN: summary ${summary}"
