@@ -6,7 +6,7 @@ stamp 20260712.213800
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib ed316f8
+git_nib af1ec0e
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -25,8 +25,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go ca7cca8
-pin git_nib ed316f8
-pin remotes pushed-four tip ed316f8
+pin git_nib af1ec0e
+pin remotes pushed-four tip af1ec0e
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin pond_sixbar GREEN · scorecard_witness GREEN · col2_probes GREEN
