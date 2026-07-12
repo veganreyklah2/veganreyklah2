@@ -1,0 +1,24 @@
+# proven_seat_g1.rish — G1 skeleton: receipt verify-witness on Genode POSIX seat.
+#
+# Refuses until a Genode-built guest binary exists under the cache.
+# Crossing path must already be named (run proven_seat_g1_crossing_probe.rish).
+# Serial GREEN inside the guest is the next lap after the binary appears.
+#
+#   rishi/bin/rishi run tools/proven_seat_g1.rish
+
+let cache = "tools/.cache/proven-seat"
+let guest = "${cache}/g1-receipt-verify"
+let pin = "active-designing/20260712-195339_proven-seat-g1-crossing-pin.md"
+
+say "proven-seat G1: requiring crossing pin…"
+let have_pin = run ["test" "-f" pin]
+assert have_pin.ok else "run tools/proven_seat_g1_crossing_probe.rish first — crossing pin missing"
+
+say "proven-seat G1: looking for Genode-built receipt verify guest…"
+let have_guest = run ["test" "-x" guest]
+if have_guest.ok == false then say "proven-seat G1: no executable at ${guest}"
+if have_guest.ok == false then say "proven-seat G1: fetch Genode toolchain (see crossing pin), build receipt_core as posix/libc guest, install to ${guest}"
+assert have_guest.ok else "G1 skeleton RED — Genode-built guest binary not present yet (crossing named; build still ahead)"
+
+say "proven-seat G1: guest present — serial jailed run not wired in this skeleton sitting"
+say "GREEN: proven-seat G1 skeleton — guest binary present; wire jailed TCG serial next."

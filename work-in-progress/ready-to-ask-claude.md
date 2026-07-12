@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.193958` (host metal parity re-pin GREEN)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.195339` (G1 opened · crossing spike)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -95,7 +95,11 @@
 
 **Claude `182752` day-close:** verified `e460d3d` Good · route-probe Status Checkable with enclosure pair + graduation trigger · TASKS order holds. Sitting closes clean. Nothing open that wants Claude before the fresh Framework tee; check-ins before G1 and Route two remain seated. Two teachers on the shelf still await Kaeden word (Karpathy gist · ai-memory).
 
-**Host metal parity re-pin `193958`:** full suite **GREEN** at git nib `826bcea` — chapter 1 GREEN · chapter 2 GREEN · full witness suite under Env binding ceiling. Tee log `tools/.cache/parity-host.log`. Fresh-sitting first act **closed**. Ordered next: **G1** on word · Pond after · Route two behind graduation trigger.
+**Host metal parity re-pin `193958`:** full suite **GREEN** at git nib `826bcea` — chapter 1 GREEN · chapter 2 GREEN · full witness suite under Env binding ceiling. Tee log `tools/.cache/parity-host.log`. Fresh-sitting first act **closed**. Go `ee1c37f`.
+
+**Claude `195155` G1 check-in:** walked `ee1c37f` Good on reachable GitHub remote; affirmed re-pin. Recommend **open G1** scoped SLC — spike *which Genode libc build path* first (fetches under `tools/.cache/proven-seat/`), then same `receipt_core` seed on jailed TCG serial for one GREEN line; guest never merger; Route two watch-post. Parks: module-home/name · red×2 · chapter early · no keys. Counsel seated [`../active-designing/20260712-195155_proven-seat-g1-claude-opening-counsel.md`](../active-designing/20260712-195155_proven-seat-g1-claude-opening-counsel.md).
+
+**Kaeden `195339` go+open+kg:** G1 **opened**. Crossing pin [`../active-designing/20260712-195339_proven-seat-g1-crossing-pin.md`](../active-designing/20260712-195339_proven-seat-g1-crossing-pin.md) — Genode toolchain + posix/libc; refuse host Zig-alone. Probe witness GREEN. Skeleton refuses until guest binary. Next: Framework toolchain fetch matching Sculpt 26.04 → serial GREEN.
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

@@ -2,12 +2,12 @@
 
 *Kaeden granted word for the standing recommendations (`20260712.071405` bench-clock). This hammock opens Genode/Sculpt G0 on the cloud QEMU path while Caravan stays the named horizon — guest, never merger.*
 
-**Stamp:** living ledger (born `20260712.071405` bench-clock) · refreshed `20260712.113900` (`lane_kvm` seated · D-Bus escape retired)
+**Stamp:** living ledger (born `20260712.071405` bench-clock) · refreshed `20260712.195339` (G1 opened · crossing spike GREEN)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
-**Status:** Living — word seated; **G0** GREEN (TCG GRUB); **G0-complete** glass `004012`; **`lane_kvm`** refuse GREEN `113900`; on-path ready behind `LANE_KVM=true` + `/dev/kvm`; G1–G3 still ahead
-**Ground:** ER study [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) · living seam hammock [`seam-season-hammock.md`](seam-season-hammock.md) · product tip **430** · suite tip **432** · retire note [`20260712-113900_lane-kvm-retire-dbus-escape.md`](20260712-113900_lane-kvm-retire-dbus-escape.md)
+**Status:** Living — **G0** GREEN · **G0-complete** `004012` · **`lane_kvm`** on-path GREEN `140403` · parity re-pin GREEN `193958` · **G1 opened** `195339` — crossing path named; serial verify-witness ahead
+**Ground:** ER [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) · counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · crossing pin [`20260712-195339_proven-seat-g1-crossing-pin.md`](20260712-195339_proven-seat-g1-crossing-pin.md) · product nib **430** · suite nib **432**
 **License (gratitude):** Genode/Sculpt images are AGPL-hosted teacher artifacts — held under `tools/.cache/proven-seat/` (gitignored); never linked into Rye ship binaries; Caravan keeps its name.
 
 ---
@@ -56,7 +56,8 @@ Bare-metal USB boot stays a **separate word**. Depot/red diagnostics on first bo
 
 | Lap | Prove |
 |-----|-------|
-| **G1** | `receipt_core` verify-witness under Genode POSIX-compatible runtime — ER `054342` |
+| **G1 crossing** | **Named** `195339` — Genode toolchain + posix/libc; probe GREEN; toolchain fetch next |
+| **G1 serial** | `receipt_core` verify-witness one GREEN on jailed TCG serial — skeleton `tools/proven_seat_g1.rish` |
 | **G2** | Capability-shaped Genode component (console/ROM only) — check in with Claude first |
 | **G3** | Optional Caravan seed pattern as Genode parent — check in with Claude first |
 
