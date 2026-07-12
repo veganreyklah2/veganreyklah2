@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.205600 | [Kg — Pond enclosure six-bar baseline GREEN](20260712-205600_pond-enclosure-sixbar-green.bron) | Six asserts vs ai-jail 1.12.0 · session-bus gap named |
+| 20260712.204549 | [Seat Claude close — G1 digest · vendor/genode · Pond next](20260712-204549_seat-g1-close-vendor-genode.bron) | Submodule home · witnesses GREEN · Pond climbs next |
 | 20260712.204010 | [Go — G1 serial GREEN · Claude handoff](20260712-204010_go-g1-serial-claude-handoff.bron) | Commit + four remotes · Claude printout |
 | 20260712.203900 | [Kg — G1 jailed TCG serial GREEN](20260712-203900_g1-serial-green.bron) | posix guest · digest fixture · nova TCG · seat speaks |
 | 20260712.202551 | [Kg — G1 create_builddir x86_64 GREEN](20260712-202551_g1-create-builddir-green.bron) | CROSS_DEV_PREFIX + libports · SLC guest next |

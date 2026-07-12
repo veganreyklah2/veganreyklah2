@@ -105,7 +105,11 @@
 
 **Claude `201802` (Codeberg revise):** sources pin **revised** to **26.05** from [codeberg.org/genodelabs/genode](https://codeberg.org/genodelabs/genode) · commit `492a51024217fe74ccee1ebdfb81be97046b43eb` · forge clone preferred over tarball hash. Toolchain **25.05** stands (still `TOOL_CHAIN_VERSION` at 26.05). META trio: toolchain 25.05 · sources 26.05 @ commit · ground Sculpt 26.04. Witness GREEN. Counsel seated [`../active-designing/20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](../active-designing/20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md).
 
-**G1 serial GREEN `203900`:** posix guest under `tools/proven_seat_g1_guest/` · digest-grade fixture (receipt_core / slcl1) · `KERNEL=nova` jailed TCG · `[init -> g1-receipt-verify] GREEN: … seat speaks`. Witnesses: `proven_seat_g1_build_guest.rish` · `proven_seat_g1.rish`. Module home / signed Kumara depth await word.
+**G1 serial GREEN `203900`:** posix guest under `tools/proven_seat_g1_guest/` · digest-grade fixture (receipt_core / slcl1) · `KERNEL=nova` jailed TCG · `[init -> g1-receipt-verify] GREEN: … seat speaks`. Witnesses: `proven_seat_g1_build_guest.rish` · `proven_seat_g1.rish`.
+
+**Claude `204549` close (three asks):** (1) **G1 closed digest-grade** — signed Ed25519 is next lap (host Kumara signs · guest verifies only · Monocypher / libsodium when that morning opens). (2) **`vendor/genode` open** — submodule @ `492a510…` tag 26.05 Codeberg · `ignore = untracked` · cache remains workbench. (3) **Pond next** — six-bar baseline while enclosure greens stay warm. Counsel [`../active-designing/20260712-204549_proven-seat-g1-claude-close.md`](../active-designing/20260712-204549_proven-seat-g1-claude-close.md).
+
+**Pond six-bar baseline `205600`:** **GREEN** vs ai-jail **v1.12.0** — six counsel bars frozen (`tools/pond_enclosure_sixbar.rish`). Session D-Bus still reachable (named gap for Pond supersede). Pin [`../active-designing/20260712-205600_pond-enclosure-sixbar-baseline.md`](../active-designing/20260712-205600_pond-enclosure-sixbar-baseline.md).
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

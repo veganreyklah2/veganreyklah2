@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (G1 jailed TCG serial GREEN)
+**Last updated:** 2026-07-12 (Pond six-bar baseline GREEN · G1 closed digest-grade)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -11,11 +11,12 @@
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (Claude `144519` · G1 open `195339`):**
+**Ordered next (Claude `204549` close · sixbar `205600`):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
-2. **G1** — **serial GREEN** · digest-grade fixture on posix guest · `KERNEL=nova` TCG · **next:** Pond enclosure / signed Kumara lap / permanent `vendor/` home on word
-3. **Pond** enclosure six-bar baseline
-4. Route two / inward lane nest — parked until graduation trigger; G1 is the watch-post
+2. ~~**G1**~~ — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` @ `492a510…` · signed Ed25519 lap pre-shaped (host Kumara · guest verifies)
+3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` vs ai-jail v1.12.0 · session-bus gap named for supersede
+4. Route two / inward lane nest — parked until graduation trigger
+5. Pond supersede / signed Ed25519 proven-seat — on word (safety scorecard frozen)
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
@@ -34,7 +35,7 @@
 | — | **Encrypt-to-future-identity** | **Horizon park** `114600` | Keep capability · decline VetKeys quorum; beside T3 / OCapN — RTAC |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
 | — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
-| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` · **`lane_kvm` on-path GREEN** `140403` · refuse GREEN · **G1 opened** `195339` (crossing named) | Hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); serial GREEN next |
+| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` · **`lane_kvm` on-path GREEN** `140403` · refuse GREEN · **G1 closed digest-grade** `204549` · home `vendor/genode` | Hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); Pond next · signed lap pre-shaped |
 | — | **Giving-lane T2** | **Wire opened** `071405` | Choice [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md) · wire note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); composition witness ahead |
 | — | **Steep published-set sentence** | **Seated** `071405` | Living [`steep.md`](../active-designing/steep.md) — peer-offer gate; Granary precedent |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
@@ -59,8 +60,8 @@
 - [x] **Metal parity pin (chaptered)** — suite **GREEN** · **324** GREEN say-lines · 2 chapters · tip **432** · Env[256] cleared (`parity_ch01`/`parity_ch02` + thin orchestrator)
 - [x] **RTAC — parity TooManyBindings** — **Resolved** by chaptering (fresh Env per chapter); not by raising the binding ceiling
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
-- [ ] **Proven-seat G1** — **opened** `195339` · crossing named (Genode toolchain + posix/libc) · probe `tools/proven_seat_g1_crossing_probe.rish` · skeleton `tools/proven_seat_g1.rish` · serial GREEN still ahead
-- [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
+- [x] **Proven-seat G1** — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` submodule @ `492a510…` · probe + guest + jailed TCG witnesses · signed Ed25519 next named lap
+- [x] **Pond enclosure witness baseline** — **GREEN** `205600` · six bars vs ai-jail v1.12.0 · `tools/pond_enclosure_sixbar.rish` · session-bus gap named for supersede
 - [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; host metal parity re-pin **GREEN** `193958`
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
