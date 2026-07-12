@@ -6,7 +6,7 @@ stamp 20260712.211700
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib a725001
+git_nib 7857221
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -22,8 +22,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go 6a5d094
-pin git_nib a725001
-pin remotes will-push-four
+pin git_nib 7857221
+pin remotes pushed-four tip 7857221
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin pond_sixbar GREEN 205600 · sharpened 210800
@@ -51,6 +51,7 @@ doc active-designing/20260712-210800_pond-sixbar-claude-shape-exit.md
 section commits_this_go
 title Commits oldest → newest
 commit a725001 Seat Pond supersede exit criteria with N six-over-seven.
+commit 7857221 Record Claude handoff for exit-card second walk after N.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
