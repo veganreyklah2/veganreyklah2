@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.135600 | [Fix G0c serial — nographic phase](20260712-135600_fix-g0c-serial-nographic.bron) | Empty -serial file · two-phase A GRUB / B glass |
 | 20260712.133900 | [On-path progress heartbeats](20260712-133900_onpath-progress-heartbeats.bron) | QMP/GRUB pulse · /dev/tty + meta · Rishi pre-boot says |
 | 20260712.133600 | [Point host to onpath Rishi one-shot](20260712-133600_point-onpath-host-rish.bron) | Outside jail · lane_kvm_onpath_host.rish · optional --parity |
 | 20260712.133400 | [Fix launch-cursor bash not sh](20260712-133400_fix-launch-cursor-bash.bron) | Ubuntu dash rejected pipefail · bash shebang path |

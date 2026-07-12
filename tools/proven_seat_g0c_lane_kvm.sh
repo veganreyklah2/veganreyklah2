@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # proven_seat_g0c_lane_kvm.sh — in-lane G0-complete (counsel 20260712.090512).
 #
-# Requires lane_kvm on + /dev/kvm. Shape:
-#   -accel kvm -cpu host -machine q35 -m 4G
-#   -display none  (VGA kept; QMP screendump)
-#   -nic none      (until a worded networking need)
-# Serial floor: GRUB loading. Glass: non-empty PNG via QMP screendump.
+# Requires lane_kvm on + /dev/kvm. Two phases (same sitting):
+#   A) Serial floor — -nographic → file (known-green SeaBIOS→GRUB capture).
+#      One-boot `-display none -serial file:` left a 0-byte log on Framework
+#      20260712; nographic matches the 004012 serial witness shape.
+#   B) Glass — -display none (VGA kept) + QMP screendump PNG.
+# Both keep -nic none until a worded networking need.
 #
 #   ./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh
-#   rishi/bin/rishi run tools/proven_seat_g0_complete_jailed.rish
+#   rishi/bin/rishi run tools/lane_kvm_onpath_host.rish
 
 set -euo pipefail
 
@@ -30,8 +31,6 @@ mkdir -p "$CACHE"
 : >"$META"
 date -Is | tee -a "$META"
 
-# Heartbeats: tee to META (captured) and /dev/tty (live under a host terminal;
-# Rishi's run may buffer child stdout until the boot finishes).
 progress() {
   echo "progress: $*" | tee -a "$META"
   echo "progress: $*" > /dev/tty 2>/dev/null || true
@@ -47,10 +46,37 @@ if [ "$hash" != "$EXPECTED" ]; then
   exit 1
 fi
 
+# ── Phase A: serial floor (nographic → log; -nic none) ─────────────────────
+progress "phase A: serial floor — nographic, nic none, up to 90s (SeaBIOS→GRUB)…"
 cp -f "$IMG" "$WORK"
-rm -f "$LOG" "$PNG" "$QMP"
+rm -f "$LOG"
+set +e
+timeout 90 qemu-system-x86_64 \
+  -accel kvm -cpu host -machine q35 -m 4G \
+  -drive "format=raw,file=${WORK}" \
+  -nic none \
+  -boot order=c \
+  -nographic \
+  >"$LOG" 2>&1
+set -e
+serial_bytes="$(wc -c <"$LOG" | tr -d ' \n')"
+progress "phase A: serial bytes=${serial_bytes}"
+if [ "${serial_bytes}" = "0" ]; then
+  echo "RED: serial log still empty after nographic boot — see $META" | tee -a "$META" >&2
+  exit 1
+fi
+if ! rg -q 'GRUB loading' "$LOG"; then
+  echo "RED: serial missing GRUB loading — see $LOG" | tee -a "$META" >&2
+  progress "phase A: serial head:"; head -20 "$LOG" | tee -a "$META" >/dev/tty 2>/dev/null || head -20 "$LOG" | tee -a "$META"
+  exit 1
+fi
+echo "serial_floor=GRUB" | tee -a "$META"
+progress "phase A: GRUB loading GREEN"
 
-progress "copying image done; starting qemu (display none, nic none)…"
+# ── Phase B: glass (display none + QMP screendump; -nic none) ──────────────
+progress "phase B: glass — display none + QMP screendump…"
+cp -f "$IMG" "$WORK"
+rm -f "$PNG" "$QMP"
 
 qemu-system-x86_64 \
   -accel kvm -cpu host -machine q35 -m 4G \
@@ -58,7 +84,6 @@ qemu-system-x86_64 \
   -nic none \
   -boot order=c \
   -display none \
-  -serial "file:${LOG}" \
   -qmp "unix:${QMP},server,nowait" \
   >>"$META" 2>&1 &
 QPID=$!
@@ -71,18 +96,16 @@ cleanup() {
 }
 trap cleanup EXIT
 
-progress "qemu_pid=$QPID — waiting for QMP socket (up to 60s)…"
-
-# Wait for QMP socket, then GRUB on serial (up to ~120s more).
+progress "phase B: qemu_pid=$QPID — waiting for QMP (up to 60s)…"
 ready=0
 for i in $(seq 1 60); do
   if [ -S "$QMP" ]; then
-    progress "QMP ready after ${i}s"
+    progress "phase B: QMP ready after ${i}s"
     ready=1
     break
   fi
   if [ $((i % 5)) -eq 0 ]; then
-    progress "still waiting for QMP… ${i}/60s"
+    progress "phase B: still waiting for QMP… ${i}/60s"
   fi
   sleep 1
 done
@@ -91,25 +114,10 @@ if [ "$ready" -ne 1 ]; then
   exit 1
 fi
 
-progress "waiting for serial GRUB loading (up to ~120s)…"
-grub=0
-for i in $(seq 1 60); do
-  if [ -f "$LOG" ] && rg -q 'GRUB loading' "$LOG" 2>/dev/null; then
-    progress "GRUB loading seen after $((i * 2))s of serial wait"
-    grub=1
-    break
-  fi
-  if [ $((i % 5)) -eq 0 ]; then
-    progress "still waiting for GRUB… $((i * 2))/120s (not stuck — Sculpt boot is quiet)"
-  fi
-  sleep 2
-done
-if [ "$grub" -ne 1 ]; then
-  echo "RED: serial never reached GRUB loading — see $LOG" | tee -a "$META" >&2
-  exit 1
-fi
-echo "serial_floor=GRUB" | tee -a "$META"
-progress "taking QMP screendump…"
+# Give SeaBIOS/GRUB a few seconds of VGA life before screendump.
+progress "phase B: brief settle before screendump (8s)…"
+sleep 8
+progress "phase B: taking QMP screendump…"
 python3 - "$QMP" "$PNG" <<'PY'
 import json, socket, sys, time
 
@@ -132,12 +140,10 @@ def recv_obj():
 def send(obj):
     sock.sendall((json.dumps(obj) + "\n").encode())
 
-# Greeting
 recv_obj()
 send({"execute": "qmp_capabilities"})
 recv_obj()
 send({"execute": "screendump", "arguments": {"filename": png_path}})
-# Allow an event before the return
 deadline = time.time() + 20
 got = False
 while time.time() < deadline:
@@ -159,4 +165,5 @@ if [ ! -s "$PNG" ]; then
 fi
 bytes="$(wc -c <"$PNG" | tr -d ' \n')"
 echo "glass_bytes=$bytes" | tee -a "$META"
-echo "GREEN: proven-seat G0-complete (lane_kvm) — GRUB serial + QMP PNG ($bytes bytes); -display none -nic none"
+progress "phase B: glass ${bytes} bytes"
+echo "GREEN: proven-seat G0-complete (lane_kvm) — GRUB serial (nographic) + QMP PNG ($bytes bytes); -nic none; display-none glass"

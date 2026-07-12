@@ -26,7 +26,7 @@ assert hash.ok else "sha256sum failed"
 assert hash.out contains expected else "sculpt-26-04.img sha256 mismatch (want ${expected})"
 
 say "lane_kvm on-path host: image pin ok (${hash.out})"
-say "lane_kvm on-path host: G0-complete next — up to ~2 minutes (QEMU QMP + GRUB)."
+say "lane_kvm on-path host: G0-complete — two phases, ~2–3 min (A nographic GRUB · B display-none glass)."
 say "lane_kvm on-path host: live pulse in another terminal:"
 say "  tail -f tools/.cache/proven-seat/g0c-lane-meta.txt"
 say "lane_kvm on-path host: starting boot with LANE_KVM=true (env one-shot; conf stays off)…"
