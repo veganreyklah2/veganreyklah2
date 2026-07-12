@@ -17,8 +17,10 @@ let have_sc = run ["test" "-f" scorecard_pin]
 assert have_sc.ok else "missing ${scorecard_pin}"
 let have_ex = run ["test" "-f" exit_card]
 assert have_ex.ok else "missing ${exit_card}"
-let bron_gone = run ["sh" "-c" "test ! -e ${exit_bron}"]
-assert bron_gone.ok else "exit bron present — col2 probes are refuse-until-candidate only while season sleeps"
+let bron_gone = run ["sh" "-c" "test ! -e ${exit_bron} && test ! -e ${exit_bron}.asc"]
+assert bron_gone.ok else "exit bron or .asc present — col2 probes are refuse-until-candidate only while season sleeps"
+let seal = run ["bash" "tools/pond_exit_bron_master_seal.sh" "--season-closed"]
+assert seal.ok else "master-seal --season-closed failed"
 
 say "pond col2 probes: re-measure three-door bus against pond-required…"
 let doors = run ["bash" "tools/fixtures/pond_sixbar_bus_doors.sh" "--write-dir" cache]

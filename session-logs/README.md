@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.213800 | [Go — freeze affirmed · master-seal custody](20260712-213800_go-freeze-affirmed-master-seal.bron) | Push freeze affirmed · season held |
+| 20260712.213600 | [Seat freeze affirm · master-seal custody line](20260712-213600_freeze-affirm-master-seal.bron) | Exit bron counts only when master-signed |
 | 20260712.212900 | [Go — freeze-worthy card · four accretions · col2 probes](20260712-212900_go-freeze-worthy.bron) | Push freeze-worthy · Claude affirm-freeze |
 | 20260712.212412 | [Seat Claude second walk — freeze-worthy · four accretions · col2 probes](20260712-212412_claude-freeze-worthy-col2.bron) | Seam · ENCLOSURE · exit bron absent · probes landed |
 | 20260712.212200 | [Go — scorecard witness · four remotes · Claude walk](20260712-212200_go-scorecard-witness.bron) | Push living measure · Claude second eyes |

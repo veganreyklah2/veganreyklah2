@@ -96,11 +96,11 @@ AIJAIL_FLAGS="${AIJAIL_FLAGS:---private-home --no-docker}"
 LANE_KVM="${LANE_KVM:-false}"
 ENCLOSURE="${ENCLOSURE:-ai-jail}"
 
-# Retreat flag (Claude 212412): pond only after exit bron; season-closed is measured.
+# Retreat flag (Claude 212412) · master-seal (Claude 213600): pond only after
+# exit bron present AND detached .asc verifies against master 0646 2132… alone.
 EXIT_BRON="${REPO_ROOT}/bron-resins/pond-supersede-exit.bron"
 if [ "$ENCLOSURE" = "pond" ]; then
-  if [ ! -s "$EXIT_BRON" ]; then
-    echo "REFUSE: ENCLOSURE=pond while ${EXIT_BRON} is absent — season still closed." >&2
+  if ! bash "${REPO_ROOT}/tools/pond_exit_bron_master_seal.sh" --require; then
     exit 1
   fi
 elif [ "$ENCLOSURE" != "ai-jail" ]; then

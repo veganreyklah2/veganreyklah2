@@ -115,7 +115,9 @@
 
 **Kg `211900`:** living two-column witness `tools/pond_enclosure_scorecard.rish` — column one GREEN · column two gaps named · supersede season closed.
 
-**Claude `212412` second walk:** **freeze-worthy** affirmed. Four accretions landed — enforcing seam · `ENCLOSURE=ai-jail` retreat flag · exit bron path `bron-resins/pond-supersede-exit.bron` (absent measured) · `soak_start_nib`. Ask two: keep enforcing-code-resets until bite. Ask three: col2 probes landed refuse-until-candidate. Counsel [`../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md`](../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md). Next: named supersede build word only.
+**Claude `212412` second walk:** **freeze-worthy** affirmed. Four accretions landed — enforcing seam · `ENCLOSURE=ai-jail` retreat flag · exit bron path `bron-resins/pond-supersede-exit.bron` (absent measured) · `soak_start_nib`. Ask two: keep enforcing-code-resets until bite. Ask three: col2 probes landed refuse-until-candidate. Counsel [`../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md`](../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md).
+
+**Claude `213600` freeze affirm:** **freeze affirmed** with master-seal custody — exit bron counts only when detached `.asc` verifies against master `0646 2132…` alone (`tools/pond_exit_bron_master_seal.sh`). Season held for named build word (no clock). Next kg menu: signed-Kumara (pick) · living-docs lint · karpathy/ai-memory · forge courtesy. Counsel [`../active-designing/20260712-213600_pond-freeze-affirm-master-seal.md`](../active-designing/20260712-213600_pond-freeze-affirm-master-seal.md).
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

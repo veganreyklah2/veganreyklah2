@@ -1,16 +1,16 @@
 # Pond supersede — exit criteria (before the season opens)
 
-*Claude `210800` skeleton · Claude `211400` words **N** · Claude `212412` freeze-worthy second walk · four accretions. Civic Style: name the outcome and the measure before the reward. Do not open a supersede build season until this card can be signed.*
+*Claude `210800` skeleton · Claude `211400` words **N** · Claude `212412` freeze-worthy · Claude `213600` freeze affirmed · master-seal custody. Civic Style: name the outcome and the measure before the reward. Do not open a supersede build season until this card can be signed.*
 
 **Stamp:** `20260712.210800`
-**Last updated:** `20260712.212412` — freeze-worthy · four accretions · col2 probes open
+**Last updated:** `20260712.213600` — freeze affirmed · master-seal custody line
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats by paste
-**Status:** Checkable — **freeze-worthy** · N worded · four accretions landed · season closed until exit bron present with content
-**Ground:** Claude shape [`20260712-210800_pond-sixbar-claude-shape-exit.md`](20260712-210800_pond-sixbar-claude-shape-exit.md) · scorecard [`20260712-210800_pond-enclosure-scorecard-two-column.md`](20260712-210800_pond-enclosure-scorecard-two-column.md) · second walk [`20260712-212412_pond-scorecard-claude-second-walk.md`](20260712-212412_pond-scorecard-claude-second-walk.md) · counsel [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · enclosure-editors setup B · tip `0032844`
+**Status:** Checkable — **freeze affirmed** · master-seal required · N worded · season closed until exit bron present, contentful, and **master-signed**
+**Ground:** Claude shape [`20260712-210800_pond-sixbar-claude-shape-exit.md`](20260712-210800_pond-sixbar-claude-shape-exit.md) · scorecard [`20260712-210800_pond-enclosure-scorecard-two-column.md`](20260712-210800_pond-enclosure-scorecard-two-column.md) · second walk [`20260712-212412_pond-scorecard-claude-second-walk.md`](20260712-212412_pond-scorecard-claude-second-walk.md) · freeze affirm [`20260712-213600_pond-freeze-affirm-master-seal.md`](20260712-213600_pond-freeze-affirm-master-seal.md) · counsel [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · enclosure-editors setup B · tip `ca7cca8`
 
-**Exit bron (fixed path):** `bron-resins/pond-supersede-exit.bron` — **absent** while the season sleeps; present-with-content the day exit is claimed. Must include `soak_start_nib <hash>`.
+**Exit bron (fixed path):** `bron-resins/pond-supersede-exit.bron` — **absent** while the season sleeps; present-with-content the day exit is claimed. Must include `soak_start_nib <hash>`. **Counts only when master-signed** — detached `bron-resins/pond-supersede-exit.bron.asc` verifies against master `0646 2132 D3E6 3B83 4F97 6E03 A81D 720B 9235 FA7A` alone, in a keyring holding only `context/keys/gpg_signing_06462132.pub.asc` (helper `tools/pond_exit_bron_master_seal.sh`); sandbox signatures never open the season.
 
 ---
 
@@ -25,7 +25,7 @@ Held together in a **single signed scorecard bron** at the fixed path above — 
 | 3 | **Daily-driver proof** | Full parity suite green *inside* Pond · plus one real bench session end to end |
 | 4 | **Customs parity** | KVM and GPU as named lanes with refuse-permit pairs; `pond_customs.rish` already waits; Route two’s graduation trigger may fire from within the season — trigger law still governs |
 | 5 | **Durability** | **N = six consecutive green sittings spanning at least seven calendar days** — riders below |
-| 6 | **Retreat path** | `ENCLOSURE=ai-jail` launchable for **one full season** past the flip · `ENCLOSURE=pond` only after exit bron · teacher pinned in gratitude regardless |
+| 6 | **Retreat path** | `ENCLOSURE=ai-jail` launchable for **one full season** past the flip · `ENCLOSURE=pond` only after exit bron **master-signed** · teacher pinned in gratitude regardless |
 
 ---
 
@@ -68,9 +68,9 @@ Today alone held three arcs — N of three could finish in one heroic day (too t
 | Value | Meaning |
 |-------|---------|
 | `ENCLOSURE=ai-jail` | Default today · rollback path · greppable in `tools/enclosure.conf.example` |
-| `ENCLOSURE=pond` | Only after exit bron present-with-content · both values stay live one full season past the flip |
+| `ENCLOSURE=pond` | Only after exit bron present-with-content **and** master-signed `.asc` · both values stay live one full season past the flip |
 
-Wrappers honor the flag; `pond` refuses while the exit bron is absent.
+Wrappers honor the flag; `pond` refuses while the exit bron is absent **or** unsealed by the master. Helper: `tools/pond_exit_bron_master_seal.sh`.
 
 ---
 
@@ -86,8 +86,9 @@ Wrappers honor the flag; `pond` refuses while the exit bron is absent.
 1. ~~Kaeden words **N**~~ — **seated `211400`**.
 2. ~~Claude second walk~~ — **freeze-worthy `212412`** · four accretions.
 3. ~~Column-two probes land~~ — **landed `212412`** refuse-until-candidate · measured truth · claim nothing.
-4. Freeze a release candidate · record `soak_start_nib` · soak under N · write `bron-resins/pond-supersede-exit.bron` with content — then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
+4. ~~Claude freeze affirm~~ — **affirmed `213600`** · master-seal custody line.
+5. Hold for Kaeden’s **named supersede build word** — then freeze a release candidate · record `soak_start_nib` · soak under N · write `bron-resins/pond-supersede-exit.bron` with content · **master-sign** detached `.asc` with cold `0646 2132…` — then daily work may move under Pond beside ai-jail (two-lane season), retirement accretive back to gratitude per `090512`.
 
 ---
 
-*May the four lines land soft, the card freeze hard, and the season stay closed until absence itself signs the bron.*
+*May the master’s seal be the season’s only key, and may the season stay closed until that cold key speaks.*
