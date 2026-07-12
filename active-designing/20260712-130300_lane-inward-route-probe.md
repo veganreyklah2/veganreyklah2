@@ -6,8 +6,9 @@
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 recording Claude · Kaeden’s clock from the 13:03 paste
-**Status:** Counsel seated · **Route one flag absent** · Route two **parked for word** · host one-shot still worded
+**Status:** Checkable — counsel seated · Route one flag absent · Route two parked · enclosure pair GREEN on metal `140403` · Claude graduation trigger `144519`
 **Ground:** ruling [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · wrappers `tools/cursor-jail.sh` · gate `tools/lane_kvm.sh` · gratitude study `gratitude/ai-jail/src/cli.rs` + `sandbox/bwrap.rs` (GPL-3.0 — ideas only)
+**Reviewed-and-kept:** Status named Checkable after doorway FAIL `143528`; Claude afternoon four asks seated `144519`
 
 ---
 
@@ -47,20 +48,30 @@ Wrappers already wait: `cursor-jail.sh` sources `AIJAIL_FLAGS` + `GPU_ARGS` besi
 
 ---
 
-## Sequencing (needs Kaeden word)
+## Sequencing (Claude `144519` · host one-shot already GREEN)
 
-Claude offered two honest orderings:
+Host on-path G0-complete **GREEN** `140403` closed the worded hand need. Order after go of the park close:
 
-1. **Host first** — run the worded Framework one-shot; evolve the inward lane afterward  
-2. **Probe-then-enclose** — was for when Route one flag exists; **flag absent**, so this shape collapses to Route two (parked) or host-first
+1. **Fresh Framework sitting — first act:** metal parity re-pin  
+2. **G1** on word · **Pond** after  
+3. **Route two** stays parked until the graduation trigger below
 
-Default keep-going without a new name: **host one-shot as worded**, then Route two / Pond doorway on further word.
+---
+
+## Route two graduation trigger (Claude `144519`)
+
+Route two opens when **either**:
+
+- G1’s QEMU cadence makes the hand-run one-shot the bottleneck (the lane’s second consumer), **or**
+- the autonomous-pipeline word arrives
+
+— whichever first. Until one fires, parked is correct. On-path GREEN sharpens the Pond ring-one bar: *reproduce this exact refuse–permit pair inside the nest.*
 
 ---
 
 ## Out of scope until word
 
 - Implementing `jail-flags` that invents a non-existent teacher flag  
-- Nesting bwrap (Route two)  
+- Nesting bwrap (Route two) before the graduation trigger  
 - Patching `gratitude/ai-jail`  
 - Reopening D-Bus / systemd host escapes  

@@ -18,6 +18,9 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.144519 | [Go — Claude afternoon four asks seated](20260712-144519_go-claude-afternoon-four-asks.bron) | Park · argv-direct · order · Route two trigger · four remotes |
+| 20260712.143946 | [Claude afternoon handoff bron · on-path · parity park](20260712-143946_claude-afternoon-handoff.bron) | Full Claude printout · commits · pushes · FAIL line |
+| 20260712.143528 | [Park second parity red · two-rooms Status](20260712-143528_park-parity-two-rooms-status.bron) | Route-probe Status lacked room · doorway GREEN · park |
 | 20260712.143130 | [Go — argv-direct RYE_ZIG pins](20260712-143130_go-argv-direct-rye-zig-pins.bron) | Commit + four remotes · host parity still teeing |
 | 20260712.142812 | [Argv-direct RYE_ZIG pins · assert .err](20260712-142812_argv-direct-rye-zig-pins.bron) | No shell · six witnesses GREEN · stream discipline |
 | 20260712.142547 | [Rishi run is argv-direct not shell](20260712-142547_rishi-run-argv-direct.bron) | std.process.run · sh is convenience only |
