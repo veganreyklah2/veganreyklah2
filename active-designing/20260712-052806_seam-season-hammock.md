@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — prioritization seated by Kaeden; studies open; session-idiom-as-fold and institutional-ally name **parked**
+**Status:** Hammock — prioritization seated; study 1 landed `053324`; studies 2–4 open; session-idiom-as-fold formal decline **ready for Kaeden**; institutional-ally name parked
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 
@@ -19,16 +19,16 @@
 
 ## In scope (studies only)
 
-| Order | Study (our words) | Opens in | Unlocks |
-|-------|-------------------|----------|---------|
-| **1** | Capability-protocol idiom beside Comlink’s sealed datagram | `external-research/` (named teachers stay there) | Consumer-edge design note |
-| **2** | One existing seed through a component-model target | `external-research/` (portable ABI lineage) | “Anywhere” before bare metal |
-| **3** | Proven-seat guest for Rye userland — Caravan stays horizon | `external-research/` (verified microkernel lineage) | Guest, never merger |
-| **4** | Giving-asymmetric money for Linengrow’s giving lane | `external-research/` beside money-close-to-home | Complements MALA / settlement seat |
+| Order | Study (our words) | Opens in | Unlocks | Status |
+|-------|-------------------|----------|---------|--------|
+| **1** | Capability-protocol idiom beside Comlink’s sealed datagram | `external-research/` (named teachers stay there) | Consumer-edge design note | **Landed** [`../external-research/20260712-053324_ocapn-beside-comlink.md`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
+| **2** | One existing seed through a component-model target | `external-research/` (portable ABI lineage) | “Anywhere” before bare metal | Open |
+| **3** | Proven-seat guest for Rye userland — Caravan stays horizon | `external-research/` (verified microkernel lineage) | Guest, never merger | Open |
+| **4** | Giving-asymmetric money for Linengrow’s giving lane | `external-research/` beside money-close-to-home | Complements MALA / settlement seat | Open |
 
 Logic before carriage throughout. Each study lands as understanding + a short design conclusion; none ships a new wire or renames a module.
 
-## Consumer edge (design toward — after study 1)
+## Consumer edge (design conclusion — study 1 returned)
 
 **The pass is the door; the record is the room.**
 
@@ -36,14 +36,15 @@ Logic before carriage throughout. Each study lands as understanding + a short de
 - Capabilities gate **access**; signatures gate **truth**
 - One job per layer — no second security model bolted onto the fold
 - Comlink’s sealed datagram keeps carrying the fold between our own ships
+- Granary’s published-set gate is the in-tree ancestor of the pass check
 
-This shape is a study conclusion to test, never a seat taken in this hammock.
+**Door 3 test plan** (code waits on Kaeden): in-process pass admits published read + signed submit; refuses unpublished digest / lying signature — detail in study 1.
 
-## Parked rulings (Kaeden’s word after studies)
+## Parked rulings (Kaeden’s word)
 
 | Ruling | Standing counsel | What seats it later |
 |--------|------------------|---------------------|
-| Session idiom as the fold’s carriage | **Decline** — session ≠ record; accrete-never-break | Formal decline seat after study 1 returns |
+| Session idiom as the fold’s carriage | **Decline** — session ≠ record; accrete-never-break; **study 1 affirms** | **Ready** — formal decline seat on Kaeden’s word |
 | Institutional ally name | **Teacher now** — one-sided gratitude | Two-sided green contact, then Kaeden names ally |
 
 ## Out of scope this season

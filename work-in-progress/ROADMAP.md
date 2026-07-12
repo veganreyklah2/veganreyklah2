@@ -251,12 +251,12 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 
 | Study | What | Status |
 |-------|------|--------|
-| **1** | Capability-protocol idiom (OCapN) beside Comlink’s sealed datagram | RTAC open |
+| **1** | Capability-protocol idiom (OCapN) beside Comlink’s sealed datagram | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **2** | One existing seed through a component-model / Wasm target | RTAC open |
 | **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | RTAC open |
 | **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | RTAC open |
 
-**Parked rulings:** CapTP-as-fold formal decline · Spritely ally name after two-sided green. **Design toward after study 1:** consumer-edge capability pass (access) composed with signed facts (truth).
+**Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** (study 1 affirmed) · Spritely ally name after two-sided green. **Door 3:** consumer-edge pass design conclusion + test plan in study 1 — code waits on word.
 
 ## Horizon 2 — Compose the Simples
 

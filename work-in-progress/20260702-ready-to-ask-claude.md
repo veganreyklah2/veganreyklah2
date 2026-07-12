@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** `20260702.202612` · refreshed `20260712.052806` (Seam season — four studies · two parked rulings · tip-430 door named)
+**Stamp:** `20260702.202612` · refreshed `20260712.053324` (Seam study 1 landed — OCapN beside Comlink; CapTP decline ready to seat)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -19,19 +19,23 @@
 
 ### Four RTAC studies (smallest-first)
 
-| # | Study | Ask when season opens | Output shape |
-|---|-------|----------------------|--------------|
-| **1** | OCapN idiom beside Comlink sealed datagram | How does CapTP’s session idiom compose with a record fold without becoming it? What is the smallest consumer-edge pass shape (access vs truth)? | ER note + design conclusion; Door 3 test plan |
-| **2** | Component-model target for one existing seed | Which one seed is the honest first portable ABI target? What stays identical across browser / host / later Caravan host? | ER note + one-seed pick |
-| **3** | Genode / seL4 guest for Rye userland | What is the smallest guest witness that proves Rye userland on a proven seat without renaming Caravan? | ER note + guest witness sketch |
-| **4** | GNU Taler for Linengrow giving lane | How does payer-privacy / payee-transparency map onto MALA + selective disclosure without replacing the settlement seat? | ER note beside *Money That Stays Close to Home* |
+| # | Study | Ask when season opens | Output shape | Status |
+|---|-------|----------------------|--------------|--------|
+| **1** | OCapN idiom beside Comlink sealed datagram | How does CapTP’s session idiom compose with a record fold without becoming it? What is the smallest consumer-edge pass shape (access vs truth)? | ER note + design conclusion; Door 3 test plan | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
+| **2** | Component-model target for one existing seed | Which one seed is the honest first portable ABI target? What stays identical across browser / host / later Caravan host? | ER note + one-seed pick | Open |
+| **3** | Genode / seL4 guest for Rye userland | What is the smallest guest witness that proves Rye userland on a proven seat without renaming Caravan? | ER note + guest witness sketch | Open |
+| **4** | GNU Taler for Linengrow giving lane | How does payer-privacy / payee-transparency map onto MALA + selective disclosure without replacing the settlement seat? | ER note beside *Money That Stays Close to Home* | Open |
 
 ### Two parked rulings (await post-study word)
 
 | Ruling | Standing | Seats when |
 |--------|----------|------------|
-| CapTP / session idiom as fold carriage | Counsel **declines** (session ≠ record; protocol still moving) | Formal decline seat after study 1 |
+| CapTP / session idiom as fold carriage | Counsel **declines**; study 1 **affirms as understanding** | **Ready** — Kaeden’s formal seat word |
 | Spritely as institutional ally | **Teacher** now (gratitude / silo) | Two-sided green contact, then Kaeden names ally |
+
+### Door 3 spark (parked to itinerary until word)
+
+In-process pass admits published read + signed submit; refuses unpublished digest / lying signature — test plan in [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md). Code waits on Kaeden.
 
 ### Three doors (wire) — compressed reminder
 
