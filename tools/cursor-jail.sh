@@ -93,6 +93,17 @@ fi
 REPO="${REPO:-$REPO_ROOT}"
 CURSOR_STATE="${CURSOR_STATE:-$REPO/.cursor-state}"
 AIJAIL_FLAGS="${AIJAIL_FLAGS:---private-home --no-docker}"
+LANE_KVM="${LANE_KVM:-false}"
+
+# A-narrow: LANE_KVM authorizes /dev/kvm via our gate, not via teacher ai-jail.
+# ai-jail has no --kvm; keep the lane off for daily editor sessions. One-shot
+# proven-seat boots use tools/run_with_lane_kvm.sh on a host that already has
+# /dev/kvm. Pond customs graduate this fact at supersede.
+if [ "$LANE_KVM" = "true" ]; then
+  echo "cursor-jail: LANE_KVM=true — teacher ai-jail does not pass /dev/kvm." >&2
+  echo "  Daily editors stay lane-off. One-shot: ./tools/run_with_lane_kvm.sh -- …" >&2
+  echo "  Refuse floor: rishi/bin/rishi run tools/lane_kvm_refuse.rish" >&2
+fi
 
 resolve_aijail() {
   local c

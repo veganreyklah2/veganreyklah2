@@ -25,6 +25,13 @@ AIJAIL_FLAGS="--private-home --no-docker"
 # Zed on GNOME Wayland needs GPU passthrough (/dev/dri). Cursor can stay false.
 USE_GPU=true
 
+# KVM device lane (counsel 20260712.090512 A-narrow). Off by default.
+# When true, tools/lane_kvm.sh authorizes /dev/kvm only — no D-Bus, no systemd
+# host escapes, no session buses. Teacher ai-jail stays unmodified. Proven-seat
+# on-path: tools/proven_seat_g0_complete_jailed.rish; refuse: lane_kvm_refuse.rish.
+# One-shot from a host that already has /dev/kvm: tools/run_with_lane_kvm.sh
+LANE_KVM=false
+
 # Anthropic API key for Zed's Claude Agent — copy and fill in (gitignored):
 #   cp tools/secrets.env.example tools/secrets.env
 # launch-zed.sh sources tools/secrets.env automatically.

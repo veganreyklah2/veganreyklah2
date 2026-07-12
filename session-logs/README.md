@@ -14,6 +14,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.115212 | [go — lane_kvm + encrypt-to-identity park](20260712-115212_go-lane-kvm-encrypt-park.md) | Commit A-narrow gate · refuse GREEN · horizon park |
+| 20260712.115100 | [kg again — await go](20260712-115100_kg-await-go.md) | Second affirm · lane_kvm + encrypt park uncommitted |
+| 20260712.114612 | [kg — encrypt park · lane_kvm await go](20260712-114612_kg-encrypt-park-lane-kvm.md) | Affirm light park · uncommitted stack ready |
+| 20260712.114600 | [Encrypt-to-identity light park](20260712-114600_encrypt-to-identity-light-park.md) | Keep capability · decline VetKeys quorum · beside T3/OCapN |
+| 20260712.114500 | [VetKeys takeaway — capability yes · quorum no](20260712-114500_vetkeys-capability-horizon.md) | Encrypt-to-future-identity horizon · decline threshold quorum |
+| 20260712.113900 | [lane_kvm seated — refuse GREEN](20260712-113900_lane-kvm-refuse-green.md) | A-narrow gate · D-Bus retired · on-path ready behind kvm |
 | 20260712.113600 | [Parity chaptered GREEN 324](20260712-113600_parity-chaptered-green-324.md) | Env[256] cleared · tip 432 · wasmtime cache · doorway hygiene |
 | 20260712.105212 | [IronBeetle silo complete — thirty-four](20260712-105212_ironbeetle-silo-complete-thirty-four.md) | Reconcile +17 · five gaps · series otherwise closed |
 | 20260712.102712 | [Claude affirms IronBeetle seventeen — ring may rest](20260712-102712_claude-affirms-ironbeetle-seventeen.md) | Review pass · gaps held · tip already `303363c` |

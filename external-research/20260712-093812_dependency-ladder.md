@@ -15,7 +15,7 @@ These need only a session and, where marked, Kaeden's word. They are the ground 
 
 - **A1 · Finish full metal parity.** The first and oldest open debt. The suite was interrupted mid-run on the Framework; individual greens are not a suite green. Foreground, pin the number seen. **Blocker: none — do this first.**
 - **A2 · File the enclosure ruling** (A-narrow then Pond-supersede) as counsel; mark the RTAC row answered. **Blocker: none.**
-- **A3 · Seat `lane_kvm`** in our enclosure config, off by default, `/dev/kvm` only, no sessions; move the G0-complete witness inside the jail with its paired refusal; retire the D-Bus path. **Blocker: A2 filed.**
+- **A3 · Seat `lane_kvm`** in our enclosure config, off by default, `/dev/kvm` only, no sessions; move the G0-complete witness inside the jail with its paired refusal; retire the D-Bus path. **Seated `113900`:** refuse GREEN; D-Bus retired; on-path scripts ready (host one-shot when kvm granted). **Blocker was: A2 filed.**
 - **A4 · Silo IronBeetle Episode 001** into `gratitude/tigerbeetle/`; let it earn the next episode. **Blocker: none — runs in its own Sonnet session.**
 - **A5 · Seat the parked names** on Kaeden's word: Flax/Bark/Oat/Walnut (Brushstroke palette); release Loam and Ember from park or keep parked; the three verdict RTAC rows (Kumara rotation, Comlink fade-from-birth, genode seams). **Blocker: Kaeden's word only.**
 

@@ -1,13 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (parity chaptered GREEN **324** · tip **430**/**432** · IronBeetle 34)
+**Last updated:** 2026-07-12 (`lane_kvm` seated `113900` · parity GREEN **324** · tip **430**/**432** · IronBeetle 34)
 
 ## Now — product tip **430** · suite tip **432** · proven-seat G0-complete · enclosure A→B
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`.
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) — D-Bus escape retired; on-path ready behind `LANE_KVM=true` + `/dev/kvm`. Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`.
 
-**Ordered next (on word):** `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
+**Ordered next (on word):** G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. Host one-shot on-path G0-complete when granting the lane. T3 / Spritely / NLnet own mornings.
 
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); tip **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
@@ -21,9 +21,10 @@
 | — | **Giving-lane T0** | **Seated** `054650` | Invariant in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md) |
 | — | **Giving-lane T1** | **Landed** `054942` | OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) — amount/`from` public = top gaps |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
+| — | **Encrypt-to-future-identity** | **Horizon park** `114600` | Keep capability · decline VetKeys quorum; beside T3 / OCapN — RTAC |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
 | — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
-| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` | Framework host KVM · Leitzentrale — hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); enclosure **A→B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md); G1 on word |
+| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` · **`lane_kvm` refuse GREEN** `113900` | Hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); retire [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path awaits host kvm grant; G1 on word |
 | — | **Giving-lane T2** | **Wire opened** `071405` | Choice [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md) · wire note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); composition witness ahead |
 | — | **Steep published-set sentence** | **Seated** `071405` | Living [`steep.md`](../active-designing/steep.md) — peer-offer gate; Granary precedent |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
@@ -39,6 +40,7 @@
 - [x] **Giving-lane T0** — private payer · transparent payee in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 - [x] **Giving-lane T1** — OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md); top gaps: public `amount` and `from` on completion
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
+- [ ] **Parked — encrypt-to-future-identity** — horizon beside T3 / OCapN (`114600`); keep capability; decline threshold-derivation quorum (VetKeys packaging)
 - [x] **Door 3 first green** — in-process pass admits published read + signed submit; refuses unpublished / lying / lying pass — tip **431** `063213`
 - [x] **Component compile lap** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — tip **432** `063558`
 - [x] **Proven-seat G0 (Kaeden word)** — Sculpt 26.04 pinned + QEMU reaches GRUB loading (TCG) — [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md) · `tools/proven_seat_g0.rish` (`071405`)
@@ -46,9 +48,10 @@
 - [x] **Claude ruling — ai-jail widen vs Pond supersede** — **Answered** A-narrow → B [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md)
 - [x] **Metal parity pin (chaptered)** — suite **GREEN** · **324** GREEN say-lines · 2 chapters · tip **432** · Env[256] cleared (`parity_ch01`/`parity_ch02` + thin orchestrator)
 - [x] **RTAC — parity TooManyBindings** — **Resolved** by chaptering (fresh Env per chapter); not by raising the binding ceiling
-- [ ] **`lane_kvm` + in-jail G0-complete** — off by default; paired refuse; retire D-Bus path (on word)
+- [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
 - [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
+- [ ] **`lane_kvm` on-path G0-complete green** — `LANE_KVM=true` + `/dev/kvm` one-shot (`run_with_lane_kvm.sh`) — worded when granting the lane on host
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
 - [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead

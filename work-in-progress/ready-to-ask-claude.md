@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.105212` (IronBeetle silo complete — thirty-four · five gaps)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.114600` (encrypt-to-identity light park · VetKeys teaching kept · quorum declined)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -73,11 +73,13 @@
 
 **Ask closed:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
 
-**On word:** `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline.
+**On word:** G1 jailed · Pond enclosure witness baseline · host one-shot `lane_kvm` on-path G0-complete when granting `/dev/kvm`.
 
 **Metal parity pin `091012`:** full suite **RED** — `TooManyBindings` after **242** GREEN lines (`parity.rish` / `lantern_lap23`). Tip **432** standing. Ask Claude: chapter the suite or raise bindings?
 
-**Metal parity pin (chaptered, kg):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · tip **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`. Doorway Status hygiene on four `093812` ER notes. Next on word: `lane_kvm`.
+**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · tip **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`.
+
+**`lane_kvm` seated (`113900` word):** `LANE_KVM=false` default · refuse GREEN · D-Bus/systemd escape retired [`../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) · on-path scripts ready behind host kvm grant.
 
 ---
 
@@ -132,6 +134,14 @@ Warm names for Pedersen / Sigma — [`../context/specs/20260712-061012_bud-and-m
 ### Giving-lane T0 — **seated** (`20260712.054650`) · T1 — **mapped** (`20260712.054942`)
 
 Private payer · transparent payee — [`foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) · OA field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) (top gaps: public completion `amount` and `from`).
+
+### Encrypt-to-future-identity — **horizon park** (`20260712.114600`)
+
+**Keep:** seal a payload to a name / pass / ask *before* that party has a keypair — a third face beside Kumara access and signature truth (Open Asks · giving lane · Door 3 sturdyref-shaped grant extended to decryption).
+
+**Decline:** live threshold key-derivation quorum (ICP VetKeys packaging · chain-node coupling) — fights custody law; same refusal shape as Azimuth.
+
+**Season:** beside **T3** (ZK / private-by-proof) and **OCapN** consumer-edge — study IBE / threshold-IBE as crypto when that morning opens; DFINITY vocabulary stays in gratitude if a teacher note is ever siloed. **No current lap.**
 
 ### Door 3 spark (parked to itinerary until word)
 

@@ -1,11 +1,9 @@
-# proven_seat_g0_complete.rish — Proven-seat G0-complete on Framework host KVM.
+# proven_seat_g0_complete.rish — Legacy G0-complete artifact check (004012 glass).
 #
-# Thin-edge: suite asserts image hash + Leitzentrale glass artifact + serial floor;
-# human eyes confirm the Components graph (recorded in the session log).
-#
-# Enclosure note: Cursor often runs inside ai-jail (no /dev/kvm). Host KVM boot
-# and screendump live under tools/.cache/proven-seat/ (gitignored). Pond has not
-# yet superseded ai-jail with the same TAME-guided safety guarantees.
+# Living path is lane_kvm (counsel 20260712.090512): refuse
+# tools/lane_kvm_refuse.rish · on-path tools/proven_seat_g0_complete_jailed.rish.
+# D-Bus/systemd host escape retired — active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md.
+# This file keeps asserting the historical Leitzentrale glass + host-ping cache.
 #
 #   rishi/bin/rishi run tools/proven_seat_g0_complete.rish
 
