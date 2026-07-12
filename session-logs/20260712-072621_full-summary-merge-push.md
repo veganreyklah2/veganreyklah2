@@ -12,6 +12,10 @@ Kaeden asked for a full summary with commits and pushes. Wrote the durable map t
 - Full map: [`20260712-072621_full-summary-through-g0-framework.md`](20260712-072621_full-summary-through-g0-framework.md)
 - Product tip **430** · suite tip **432** · proven-seat **G0**
 - Cloud: no `/dev/kvm` — Framework 16 for G0-complete / G1
+- **Merged:** PR [#121](https://github.com/groupproject36/veganreyklah2/pull/121) → merge commit `eb3f222` on `main`
+- **Pushed:** `origin` + `gp36-github` at `eb3f222`
+- **Held for credentials:** `github` (veganreyklah2, 403) · both Codeberg remotes — still at `22ff91d`
+- Open PRs on gp36: none
 
 ## Files
 
