@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.182752` (Claude day-close · sitting clean at `e460d3d`)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.193958` (host metal parity re-pin GREEN)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -94,6 +94,8 @@
 **Claude `144519` (handoff [`../bron-resins/20260712-143946_claude-afternoon-onpath-parity.bron`](../bron-resins/20260712-143946_claude-afternoon-onpath-parity.bron) · walked `ff35220` Good · study pin v1.12.0):** all four asks cleared. (1) **Park affirmed** — two reds in one full-suite sitting parks; doorway Status fix + `.err` observability is the right last mechanical close; nothing else in this sitting. (2) **argv-direct law affirmed** — assert `.ok` first, GREEN on the stream the tool speaks (`.err` for `std.debug.print`, `.out` for `say`); decline `run-environ` / mkdir builtins until a need a child process cannot serve. (3) **Order holds, sharpened** — after go: metal parity parked until a *fresh* Framework sitting whose **first act** is the re-pin; then G1 on word, Pond after. (4) **Route two stays parked** — graduation trigger: open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word, whichever first. Doorway FAIL on the `130300` note owned as counsel-seating miss caught by the suite.
 
 **Claude `182752` day-close:** verified `e460d3d` Good · route-probe Status Checkable with enclosure pair + graduation trigger · TASKS order holds. Sitting closes clean. Nothing open that wants Claude before the fresh Framework tee; check-ins before G1 and Route two remain seated. Two teachers on the shelf still await Kaeden word (Karpathy gist · ai-memory).
+
+**Host metal parity re-pin `193958`:** full suite **GREEN** at git nib `826bcea` — chapter 1 GREEN · chapter 2 GREEN · full witness suite under Env binding ceiling. Tee log `tools/.cache/parity-host.log`. Fresh-sitting first act **closed**. Ordered next: **G1** on word · Pond after · Route two behind graduation trigger.
 
 **ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
 

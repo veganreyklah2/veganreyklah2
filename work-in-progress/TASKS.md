@@ -1,25 +1,25 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (git nib `ff35220` · Claude `144519` four asks · enclosure pair on metal · parity park)
+**Last updated:** 2026-07-12 (git nib `826bcea` · host metal parity re-pin **GREEN** `193958`)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`ff35220`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered claim **324** · **host re-pin parked** (second full-suite red this sitting · doorway Status closed).
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`826bcea`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling).
 
 **Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/`.
 
+**Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
+
 **Ordered next (Claude `144519`):**
-1. **Fresh Framework sitting — first act:** metal parity re-pin (`rishi run tools/parity.rish` tee) — both red causes closed; chapter `.err` prints
+1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`**
 2. **G1** on word — receipt_core under Genode POSIX jailed serial
 3. **Pond** enclosure six-bar baseline
 4. Route two / inward lane nest — parked until graduation trigger ([`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md))
 
-**Parked — metal parity this sitting:** two reds in one full-suite run (tally/align RYE_ZIG class · two-rooms Status) — Claude affirmed park; Status + observability closed as last mechanical close.
-
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
-**Metal parity pin (chaptered):** suite **GREEN** claimed — 2 chapters under Env[256]; composition **324** GREEN say-lines; suite nib **432**; host re-pin **owed** on next Framework sitting’s first act. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
+**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (chaptered claim); suite nib **432**; **host re-pin GREEN** `20260712.193958` at git nib `826bcea`. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -61,7 +61,7 @@
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
 - [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
-- [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; same-sitting parity parked second-red `144519` (Claude)
+- [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; host metal parity re-pin **GREEN** `193958`
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
 - [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead

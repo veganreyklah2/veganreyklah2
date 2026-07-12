@@ -18,6 +18,11 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.194101 | [Go — host metal parity re-pin GREEN](20260712-194101_go-host-parity-repin-green.bron) | Commit + four remotes · first act closed |
+| 20260712.193958 | [Host metal parity re-pin GREEN](20260712-193958_host-parity-repin-green.bron) | Both chapters · full suite · fresh-sitting first act closed |
+| 20260712.193750 | [Host ps shows living parity tree](20260712-193750_parity-ps-living-tree.bron) | Parent 19:07 · ch02 19:21 · nested 19:37 · leave alone |
+| 20260712.193558 | [Chapter 1 GREEN · chapter 2 buffering](20260712-193558_parity-ch1-green-ch2-buffer.bron) | Nested buffer · ch02 long · use grep not rg |
+| 20260712.191858 | [Host parity silence after chapter 1 banner](20260712-191858_parity-chapter1-silence.bron) | Log 30 B · ~11 min · treat as hung not buffered |
 | 20260712.185736 | [Fresh sitting opens · parity first-act on host](20260712-185736_fresh-sitting-parity-first.bron) | Day-close go · Framework tee recipe · Claude order |
 | 20260712.182752 | [Claude day-close · sitting clean at e460d3d](20260712-182752_claude-day-close-sitting-clean.bron) | Evening verify · full-day arc named · park until fresh tee |
 | 20260712.144519 | [Go — Claude afternoon four asks seated](20260712-144519_go-claude-afternoon-four-asks.bron) | Park · argv-direct · order · Route two trigger · four remotes |
