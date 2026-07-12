@@ -6,7 +6,7 @@ stamp 20260712.213800
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib 3bfd04e
+git_nib ed316f8
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -25,8 +25,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go ca7cca8
-pin git_nib 3bfd04e
-pin remotes pushed-four tip 3bfd04e
+pin git_nib ed316f8
+pin remotes pushed-four tip ed316f8
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin pond_sixbar GREEN · scorecard_witness GREEN · col2_probes GREEN
@@ -70,6 +70,7 @@ p REFUSE: ENCLOSURE=pond while exit bron absent — season still closed
 section commits_this_go
 title Commits oldest → newest
 commit 3bfd04e Affirm the Pond exit freeze with a master-signed sentinel gate.
+commit ed316f8 Record Claude handoff for freeze-affirmed master-seal custody.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
