@@ -14,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.113600 | [Parity chaptered GREEN 324](20260712-113600_parity-chaptered-green-324.md) | Env[256] cleared · tip 432 · wasmtime cache · doorway hygiene |
 | 20260712.105212 | [IronBeetle silo complete — thirty-four](20260712-105212_ironbeetle-silo-complete-thirty-four.md) | Reconcile +17 · five gaps · series otherwise closed |
 | 20260712.102712 | [Claude affirms IronBeetle seventeen — ring may rest](20260712-102712_claude-affirms-ironbeetle-seventeen.md) | Review pass · gaps held · tip already `303363c` |
 | 20260712.103300 | [IronBeetle seventeen + Linguist Path A](20260712-103300_ironbeetle-seventeen-linguist-path-a.md) | Ep 004–021 on shelf · four gaps · `.rye`→Zig remap |

@@ -73,9 +73,11 @@
 
 **Ask closed:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
 
-**On word:** metal parity pin · `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline.
+**On word:** `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline.
 
 **Metal parity pin `091012`:** full suite **RED** — `TooManyBindings` after **242** GREEN lines (`parity.rish` / `lantern_lap23`). Tip **432** standing. Ask Claude: chapter the suite or raise bindings?
+
+**Metal parity pin (chaptered, kg):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · tip **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`. Doorway Status hygiene on four `093812` ER notes. Next on word: `lane_kvm`.
 
 ---
 

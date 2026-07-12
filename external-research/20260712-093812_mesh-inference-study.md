@@ -4,7 +4,7 @@
 **Stamp:** 20260712.093812 (Kaeden's clock, verbatim)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Honors:** the iroh / n0 team (the pooled-inference pattern read in the wild, July 2026)
-**Status:** Proposed study — a shape to understand, not a seat to take. Every module role here is a sketch awaiting Kaeden's word and, for most rungs, a working seL4 seat first.
+**Status:** Proposed study — research for understanding; a shape to understand, not a seat to take. Every module role here is a sketch awaiting Kaeden's word and, for most rungs, a working seL4 seat first.
 
 ---
 

@@ -3,7 +3,7 @@
 **Language:** EN
 **Stamp:** 20260712.093812 (Kaeden's clock, verbatim)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
-**Status:** Proposed ordering — counsel. Rung sequence is a recommendation; Kaeden words which open.
+**Status:** Proposed ordering — research for understanding / counsel. Rung sequence is a recommendation; Kaeden words which open.
 
 ---
 

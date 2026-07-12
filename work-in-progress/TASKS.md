@@ -1,15 +1,15 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (verdicts `092212` · study bundle `093812` · tip **430** · suite **432**)
+**Last updated:** 2026-07-12 (parity chaptered GREEN **324** · tip **430**/**432** · IronBeetle 34)
 
 ## Now — product tip **430** · suite tip **432** · proven-seat G0-complete · enclosure A→B
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md).
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`.
 
-**Ordered next (on word):** resolve metal parity `TooManyBindings` (Claude) · `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
+**Ordered next (on word):** `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
 
-**Metal parity pin `091012`:** suite **RED** — `TooManyBindings` at `lantern_lap23` after **242** GREEN lines; tip **432** standing; full composition green not claimed.
+**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); tip **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -44,8 +44,8 @@
 - [x] **Proven-seat G0 (Kaeden word)** — Sculpt 26.04 pinned + QEMU reaches GRUB loading (TCG) — [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md) · `tools/proven_seat_g0.rish` (`071405`)
 - [x] **Proven-seat G0-complete (Framework host KVM)** — Leitzentrale Components graph + glass witness — `tools/proven_seat_g0_complete.rish` (`004012`)
 - [x] **Claude ruling — ai-jail widen vs Pond supersede** — **Answered** A-narrow → B [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md)
-- [ ] **Metal parity pin** — `091012`: **RED** TooManyBindings after 242 GREEN; tip **432** standing — Claude on chaptering/bindings before re-claiming suite green
-- [ ] **RTAC — parity TooManyBindings** — living suite exceeded Rishi binding ceiling at `lantern_lap23`
+- [x] **Metal parity pin (chaptered)** — suite **GREEN** · **324** GREEN say-lines · 2 chapters · tip **432** · Env[256] cleared (`parity_ch01`/`parity_ch02` + thin orchestrator)
+- [x] **RTAC — parity TooManyBindings** — **Resolved** by chaptering (fresh Env per chapter); not by raising the binding ceiling
 - [ ] **`lane_kvm` + in-jail G0-complete** — off by default; paired refuse; retire D-Bus path (on word)
 - [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
 - [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)

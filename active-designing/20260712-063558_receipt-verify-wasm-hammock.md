@@ -26,7 +26,7 @@ Same guest fold rules, one host today (Wasmtime). `verify_witness` returns 1 on 
 
 ## Host note
 
-Wasmtime CLI must be on `PATH` (bench used `wasmtime-cli 31.0.0`). Guest artifact is built by the witness; not committed under `linengrow/bin/`.
+Wasmtime CLI must be on `PATH`, or at `tools/.cache/wasmtime/wasmtime` (gitignored pin; bench used `wasmtime-cli 31.0.0`). Guest artifact is built by the witness; not committed under `linengrow/bin/`.
 
 ## Out of scope
 

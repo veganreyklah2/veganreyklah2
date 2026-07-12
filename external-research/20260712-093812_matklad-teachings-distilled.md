@@ -4,7 +4,7 @@
 **Stamp:** 20260712.093812 (Kaeden's clock, verbatim)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Honors:** Alex Kladov (matklad) — rust-analyzer, and years of essays on his Arts & Crafts blog
-**Status:** Proposed study — silo-style; no exact phrasing carried; sources named, not quoted
+**Status:** Proposed study — research for understanding; silo-style; no exact phrasing carried; sources named, not quoted
 
 ---
 
