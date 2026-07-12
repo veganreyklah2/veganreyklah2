@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (git nib pending · G1 opened · crossing spike `195339`)
+**Last updated:** 2026-07-12 (git nib `434755b` · G1 opened · crossing spike GREEN)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
