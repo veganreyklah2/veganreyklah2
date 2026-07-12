@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.222500 | [Go ENCLOSURE — second docs guide · four remotes](20260712-222500_go-enclosure.bron) | Push 27d961d · ENCLOSURE guide · folded 222400 |
 | 20260712.222400 | [Go PROVEN_SEAT — docs shelf first page · four remotes](20260712-222400_go-proven-seat.bron) | Push 5f95215 · README + PROVEN_SEAT · gitignore |
 | 20260712.222200 | [Go — ship 222100 go bron · four remotes](20260712-222200_go-222100-bron.bron) | Push ff108c1 · go-trace chain closed |
 | 20260712.222100 | [Go — ship 222000 go bron · four remotes](20260712-222100_go-222000-bron.bron) | Push b11564a · go trace complete |

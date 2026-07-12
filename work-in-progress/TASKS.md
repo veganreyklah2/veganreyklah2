@@ -16,7 +16,7 @@
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
 4. ~~**Signed-Kumara**~~ — **resting** `220400` · GREEN · seam-C law named · Rye-body shim parked
-5. **Docs compression layer** — `docs/README.md` · `PROVEN_SEAT.md` · `ENCLOSURE.md` landed; next SLC: `VENDORING` · `WITNESS_PATTERNS` · lint
+5. **Docs compression layer** — four of five pages live (`README` · `PROVEN_SEAT` · `ENCLOSURE` · `VENDORING`); next: `WITNESS_PATTERNS` · lint
 6. **Morning kg:** living-docs lint advisory naming (thrice earned) — proposed `tools/living_docs_lint.rish`
 7. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
 8. Karpathy / ai-memory dispositions · forge courtesy
