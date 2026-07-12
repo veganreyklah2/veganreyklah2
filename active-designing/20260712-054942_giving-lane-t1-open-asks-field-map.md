@@ -74,7 +74,7 @@ Recorded in [`../counsel/20260712-061012_claude-counsel-post-seam-disposition.md
 | Item | Status |
 |------|--------|
 | Giving-lane T1 | **Landed** — this gap map |
-| Giving-lane T2 | Awaits word — **choice brief** first (courtesy vs proof), not wire |
+| Giving-lane T2 | **Choice seated** `062656` — courtesy now · proof as T3 — [`20260712-062656_giving-lane-t2-choice-brief.md`](20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
 | Tip **430** green | Untouched |
 
 ---

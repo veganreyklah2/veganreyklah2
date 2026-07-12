@@ -23,7 +23,7 @@ Kaeden pasted the closing narrative and `files (8).zip`. Extracted outer packet 
 | `session-logs/20260703-193012_bench-as-block-research.md` | Claude counsel log seated |
 | `active-designing/20260703-140212_the-bench.md` | Ground link to survey |
 | `work-in-progress/TASKS.md` | Living-build counsel + extraction horizon |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Landed `193012` block; Bron note |
+| `work-in-progress/ready-to-ask-claude.md` | Landed `193012` block; Bron note |
 | `session-logs/README.md` | Index rows |
 
 **Recommend:** keep going to **chrono sweep wire** when a full-tree zip at `999359e` lands — versioning rule ratified, witness green unwired; mechanical unless parity red.

@@ -37,7 +37,7 @@ Spec: [`context/specs/20260704-030300_itinerary-retires-diet.md`](../context/spe
 | `external-research/20260703-013412_writing-recursion-prompts.md` | Full itinerary craft guide |
 | `context/LEXICON.md` | Spec link on itinerary row |
 | `external-research/README.md` | Index row |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Parked table + stale ungated line |
+| `work-in-progress/ready-to-ask-claude.md` | Parked table + stale ungated line |
 | `external-research/20260703-200712_the-cloneable-repo-and-the-practice-ground.md` | diet → itinerary |
 | `active-designing/20260703-071212_amber-seasons.md` | lexicon companions |
 | `work-in-progress/20260703-041850_claude-strategy-roadmap-counsel.md` | STOPS counsel |

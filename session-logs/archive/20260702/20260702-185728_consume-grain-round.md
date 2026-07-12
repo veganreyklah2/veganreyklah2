@@ -19,5 +19,5 @@ Two ratifications now sit beside the three doors: standing audit rule and versio
 - `manual/README.md` — index match
 - `active-designing/README.md` — grain row
 - `work-in-progress/TASKS.md` — versioning rule, ground links
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC at 184312
+- `work-in-progress/ready-to-ask-claude.md` — RTAC at 184312
 - `session-logs/20260702-184312_grain-and-versioning.md` — Claude executor log

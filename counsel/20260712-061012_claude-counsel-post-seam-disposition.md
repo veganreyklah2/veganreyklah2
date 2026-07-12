@@ -22,7 +22,7 @@ Seam season closed whole on `main`: studies 1–4, CapTP-as-fold decline, giving
 |------|-------------------|--------|
 | **Cloud SSH signing key** | Seat in PUBKEYS as third revocable lane-key, **or** declare cloud lane unsigned-by-canon | **Open** — [`20260712-061012_cloud-signing-key-park.md`](20260712-061012_cloud-signing-key-park.md) |
 | **Four-remote sync** | Credentialed push to veganreyklah2 GitHub + both Codeberg | **Open** — cloud token writes gp36 GitHub only |
-| **RTAC ledger rename** | Living ledger `20260702-ready-to-ask-claude.md` → plain spoken name on next touch | **Open** — one-clock living-name law |
+| **RTAC ledger rename** | Living ledger `ready-to-ask-claude.md` → plain spoken name on next touch | **Open** — one-clock living-name law |
 | **Bud / mudra names** | Proposed provenance; mudra soft-collides with Pottery value-object alternate | **Proposed / RTAC-parked** — [`../context/specs/20260712-061012_bud-and-mudra-names-seated.md`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); code waits on “bud and mudra seated” |
 
 ## T2 counsel (shape only — not a brief yet)

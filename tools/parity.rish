@@ -303,7 +303,7 @@ assert mala_m2.ok else "MALA M2 witness failed"
 say "GREEN: MALA M2 mailable Comlink (hosted + device wire) witness passed."
 
 say "witness suite: SLC-L4 fixed-tier Sigma (Zig-native)…"
-let slcl4 = run ["rishi/bin/rishi" "run" "tools/slcl4_sigma.rish"]
+let slcl4 = run ["rishi/bin/rishi" "run" "tools/slcl4_mudra.rish"]
 assert slcl4.ok else "SLC-L4 Sigma witness failed"
 say "GREEN: SLC-L4 fixed-tier Sigma witness passed."
 

@@ -16,7 +16,7 @@ Read zero-copy ER essay, eight-asks counsel, ROADMAP/TASKS/decoder, strategy cou
 
 - `expanding-prompts/20260704-181012_zero-copy-resins-claude-counsel.md` — counsel prompt
 - `expanding-prompts/README.md` — index row
-- `work-in-progress/20260702-ready-to-ask-claude.md` — zip 42 counsel pointer
+- `work-in-progress/ready-to-ask-claude.md` — zip 42 counsel pointer
 - `session-logs/20260704-181012_zero-copy-resins-expanding-prompt.md` — this log
 
 **Recommend:** Kaeden cuts zip **42** with ER `180612` + this prompt when ready for Claude; Cursor applies ROADMAP/TASKS deltas only after counsel lands and Kaeden approves.

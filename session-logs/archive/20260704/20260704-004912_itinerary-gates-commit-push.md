@@ -18,7 +18,7 @@ Staged all uncommitted vocabulary work: itinerary in LEXICON/RTAC/TASKS, diet ER
 | `external-research/20260703-235912_diet-and-the-crossing-manifest.md` | Diet survey + itinerary accretion |
 | `external-research/20260704-002912_gates-arms-and-the-urbit-lineage.md` | Gate homonym survey |
 | `external-research/README.md` | Index rows |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Itinerary + Claude gate counsel request |
+| `work-in-progress/ready-to-ask-claude.md` | Itinerary + Claude gate counsel request |
 | `work-in-progress/TASKS.md` | Stops line |
 | `session-logs/*` | Three prior logs + this log |
 | `session-logs/README.md` | Index |

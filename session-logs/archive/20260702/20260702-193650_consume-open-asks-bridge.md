@@ -18,5 +18,5 @@ Strongest finding: the boards are the architecture wearing a website. Foundation
 - `external-research/20260702-192712_the-movements-open-asks.md` — bridge memo (new)
 - `work-in-progress/TASKS.md` — open asks horizons block
 - `external-research/README.md` — index row
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC at 192712
+- `work-in-progress/ready-to-ask-claude.md` — RTAC at 192712
 - `session-logs/20260702-192712_movements-open-asks.md` — Claude executor log

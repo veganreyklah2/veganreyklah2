@@ -27,4 +27,4 @@ Landed backlog in two batches: recursion prompt v2; then HOLD logs, Door 2 in-pr
 | `session-logs/20260702-222353_recursion-prompt-v2.md` | v2 authorship log |
 | `session-logs/20260703-*` | HOLD passes + Door 2 in-progress |
 | `work-in-progress/TASKS.md` | Door 1 checked; Door 2 fresh stamps |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | RTAC door table + landed `3320bed` |
+| `work-in-progress/ready-to-ask-claude.md` | RTAC door table + landed `3320bed` |

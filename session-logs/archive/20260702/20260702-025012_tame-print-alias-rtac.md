@@ -22,6 +22,6 @@ Kaeden asked whether bare `print` should mirror bare `assert` across Rye/Rishi h
 
 - `context/TAME_GUIDANCE.md` — print alias section
 - `.cursor/rules/tame-guidance.mdc`, `.claude/rules/tame-guidance.md` — agent rules
-- `work-in-progress/20260702-ready-to-ask-claude.md`, `TASKS.md`
+- `work-in-progress/ready-to-ask-claude.md`, `TASKS.md`
 
 *Claude door unchanged: Edit 5 → Amber; SLC-2b after Kaeden nod.*

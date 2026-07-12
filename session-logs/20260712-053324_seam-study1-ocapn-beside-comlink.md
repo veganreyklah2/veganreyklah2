@@ -17,7 +17,7 @@ Kaeden said keep going. Next stop was Seam study 1. I surveyed Comlink ER, wire-
 ## Files
 
 - `external-research/20260712-053324_ocapn-beside-comlink.md` — Seam study 1
-- `external-research/README.md` · `work-in-progress/TASKS.md` · `ROADMAP.md` · `20260702-ready-to-ask-claude.md` · `active-designing/20260712-052806_seam-season-hammock.md` · `context/LEXICON.md` — status pointers
+- `external-research/README.md` · `work-in-progress/TASKS.md` · `ROADMAP.md` · `ready-to-ask-claude.md` · `active-designing/20260712-052806_seam-season-hammock.md` · `context/LEXICON.md` — status pointers
 - `session-logs/20260712-053324_seam-study1-ocapn-beside-comlink.md` — this log
 - `session-logs/README.md` — index row
 

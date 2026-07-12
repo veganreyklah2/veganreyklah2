@@ -58,7 +58,7 @@ Tip-430 hold named its reopen door: **Horizon brief → Seam season**. Claude Fa
 
 - `work-in-progress/TASKS.md` — Seam Now table + checklist through T1
 - `work-in-progress/ROADMAP.md` — Horizon 1.5 · season line
-- `work-in-progress/20260702-ready-to-ask-claude.md` — four studies landed · parked rulings updated
+- `work-in-progress/ready-to-ask-claude.md` — four studies landed · parked rulings updated
 - `context/LEXICON.md` — Seam season · consumer edge · portable seam · proven seat · giving lane
 - Indexes under foundations / counsel / active-designing / external-research / specs
 

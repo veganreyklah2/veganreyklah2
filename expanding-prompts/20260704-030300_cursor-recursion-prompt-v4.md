@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
-**Live checkpoint:** [`../work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md)
+**Live checkpoint:** [`../work-in-progress/ready-to-ask-claude.md`](../work-in-progress/ready-to-ask-claude.md)
 
 ---
 

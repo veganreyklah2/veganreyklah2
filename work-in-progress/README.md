@@ -56,7 +56,7 @@ The discipline is simple: if reading a line aloud would make a newcomer ask "so 
 | `20260710.220706` | [SLC and inference progress](20260710-220706_slc-and-inference-progress.md) | How tip **354** serves the SLCs; track snapshot; Rest-until / horizon |
 | `20260702.200109` | [RW-1 mirrored-pair contract](20260702-200109_rw1-mirrored-pair-contract.md) | Happy-zone prep — shell↔Mantra seam; build after SLC-2b |
 | `20260702.195426` | [SLC-L1 scope note](../active-designing/20260702-195426_slcl1-verifiable-receipt.md) | Linengrow hammock — verifiable receipt; Open Asks gated |
-| `20260702.194512` | [Ready to ask Claude](20260702-ready-to-ask-claude.md) | Strategy checkpoint — doors, parity arithmetic, Amber pre-counsel |
+| `20260702.194512` | [Ready to ask Claude](ready-to-ask-claude.md) | Strategy checkpoint — doors, parity arithmetic, Amber pre-counsel |
 | — | [`TASKS.md`](TASKS.md) | Living granular plan — what-now (~88 commit-sized boxes) |
 | — | [`ROADMAP.md`](ROADMAP.md) | Living roadmap — current position table |
 | `20260623-033012` | [Open threads — redirect](20260623-033012_open-threads.md) | Archived — full snapshot in [`archive/`](archive/) |

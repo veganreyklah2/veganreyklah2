@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.062656 | [Seat recommendations — bud/mudra, PUBKEYS, T2, RTAC](20260712-062656_seat-recommendations-bud-mudra.md) | Names + lane-key + courtesy T2 seated; SLC-L4 mudra GREEN |
 | 20260712.061012 | [Bud and mudra names — proposed (steps 1–4)](20260712-061012_bud-mudra-rename.md) | Collision red on mudra; proposed spec + LEXICON; code rename stopped |
 | 20260712.060131 | [Merge Seam into main · clean up cursor branches](20260712-060131_merge-main-cleanup-branches.md) | #115 merged; #114 logs kept; stale PRs closed; cursor/* deleted |
 | 20260712.055558 | [Full Seam-season summary · four-remote push](20260712-055558_full-summary-four-remote-push.md) | Counsel→T1 map infused into commit; push all remotes |

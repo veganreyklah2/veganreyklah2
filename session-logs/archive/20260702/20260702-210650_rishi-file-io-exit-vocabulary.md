@@ -30,4 +30,4 @@ All four witnesses stay **unwired** from parity — Edit 5 reserved for **143**.
 | `rishi/src/main.rye` | Exit vocabulary + `exit` statement |
 | `manual/reference/rishi-language.md` | §5–§6, §15 gaps closed |
 | `work-in-progress/TASKS.md` | Framework growth checked |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Diet update |
+| `work-in-progress/ready-to-ask-claude.md` | Diet update |

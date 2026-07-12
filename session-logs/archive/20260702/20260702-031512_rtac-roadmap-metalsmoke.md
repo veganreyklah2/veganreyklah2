@@ -13,7 +13,7 @@ Fixed `tools/slc2a_ring3_metal.rish` (`UndefinedName` on rish `${}` in shell str
 ## Files
 
 - `tools/slc2a_ring3_metal.rish` — shell test fix
-- `work-in-progress/ROADMAP.md`, `20260702-ready-to-ask-claude.md`
+- `work-in-progress/ROADMAP.md`, `ready-to-ask-claude.md`
 - Prior commit `bc69e80` — metalsmoke, SLC-2b prompt, session log
 
 *Claude door opens after Edit 5 ruling and optional SLC-2b seam counsel; not needed for witness shape.*

@@ -25,4 +25,4 @@ Landed the four-movement memo in `external-research/`. Seated **WOV** in the lex
 | `external-research/README.md` | Index row |
 | `context/LEXICON.md` | WOV seated |
 | `work-in-progress/TASKS.md` | Horizons + pre-staged menu |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | RTAC refresh |
+| `work-in-progress/ready-to-ask-claude.md` | RTAC refresh |

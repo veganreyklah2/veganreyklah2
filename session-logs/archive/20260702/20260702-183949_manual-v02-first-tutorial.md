@@ -21,4 +21,4 @@ No parity change — docs only. Mechanical lane idle again at the three doors. M
 - `manual/tutorials/first-witness.md` — tutorial one (new)
 - `manual/README.md` — index both rooms
 - `work-in-progress/TASKS.md` — tutorial checked
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC refresh
+- `work-in-progress/ready-to-ask-claude.md` — RTAC refresh

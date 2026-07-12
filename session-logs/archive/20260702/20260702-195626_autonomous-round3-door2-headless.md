@@ -14,4 +14,4 @@ Kaeden's Door 2 work is now only the interactive pass — build and thin ring al
 ## Files
 
 - `work-in-progress/TASKS.md` — SLC-L1/Sui open question resolved
-- `work-in-progress/20260702-ready-to-ask-claude.md` — headless GREEN noted
+- `work-in-progress/ready-to-ask-claude.md` — headless GREEN noted

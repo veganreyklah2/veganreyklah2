@@ -1,12 +1,12 @@
 # Public Keys
 
 **Language:** EN
-**Last updated:** 2026-06-21
+**Last updated:** 2026-07-12 (cloud Cursor lane-key seated `062656`)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
 
-This file holds the public face of Kaeden's developer identity: four fingerprints anyone can use to confirm that a commit, a push, or a signed message truly comes from Kaeden. Each string here travels freely — printed on a card, pinned to a profile, read aloud at a key-signing. The matching private keys stay close: three rest safely on Kaeden's own machines, and one dedicated signing key lives in the project's sandbox keyring so the automated agent can sign commits from inside ai-jail. This file keeps only their public counterparts.
+This file holds the public face of Kaeden's developer identity: fingerprints anyone can use to confirm that a commit, a push, or a signed message truly comes from a named lane of this house. Each string here travels freely — printed on a card, pinned to a profile, read aloud at a key-signing. The matching private keys stay close: three rest safely on Kaeden's own machines, one dedicated OpenPGP signing key lives in the project's sandbox keyring so the automated agent can sign commits from inside ai-jail, and one dedicated SSH lane-key signs from the Cursor cloud bench. This file keeps only their public counterparts.
 
 Keep this file current. When a key rotates, record the new fingerprint here and date the change, so the canonical record and the keys out in the world stay in agreement.
 
@@ -23,7 +23,7 @@ These keys belong to **Kaeden Reyklah**.
 
 ## The Keys
 
-All keys use the ed25519 family — two SSH keys for the forges, and two OpenPGP keys for signing: Kaeden's master, and a dedicated sandbox key the automated agent signs with. Each fingerprint below stands ready for checking against its source.
+All keys use the ed25519 family — SSH keys for the forges and lane signing, and two OpenPGP keys for signing: Kaeden's master, and a dedicated sandbox key the automated agent signs with inside ai-jail. Each fingerprint below stands ready for checking against its source.
 
 **The two `.asc` files in `keys/` are different keys** (master `0646…` vs sandbox `DBF8…`). See `keys/README.md` for roles and why both are kept.
 
@@ -49,6 +49,18 @@ SHA256:2nVRCdyzWhT2XWk0vS9lWt8VJumFS1rDZBD9lrRlgWE
 
 ```
 DBF8 5343 7A93 7B4E 36B9 3611 D949 807A C26B 2B99
+```
+
+**SSH · Cursor cloud lane-key** is a dedicated, revocable ed25519 key the Cursor cloud bench uses for SSHSIG commit signatures (`gpg.format=ssh`). It sits beside the ai-jail OpenPGP sandbox key as a third named lane — forge-mechanical, revocable, not the master. Seated `20260712.062656` after counsel park [`../counsel/20260712-061012_cloud-signing-key-park.md`](../counsel/20260712-061012_cloud-signing-key-park.md). Public form (OpenSSH one-line):
+
+```
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPqiJsBjAsv4KymedFcUR891X1lgC90DW8yMtjcHJ/p0
+```
+
+Fingerprint:
+
+```
+SHA256:/ZGdxqU+YWGLYEplYKh2c36jVXjB1wQzjGRo7qwO46I
 ```
 
 ---

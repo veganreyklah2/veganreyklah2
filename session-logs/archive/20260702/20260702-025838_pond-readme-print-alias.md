@@ -14,6 +14,6 @@ Continued mechanical Pond hygiene while Kaeden's hand items wait. Expanded `pond
 
 - `pond/README.md` — build, run, witness table
 - `pond/apps/drawn_terminal.rye` — bare `print`, header metalsmoke line
-- `work-in-progress/20260702-ready-to-ask-claude.md`
+- `work-in-progress/ready-to-ask-claude.md`
 
 *Claude door unchanged: Edit 5 → Amber; SLC-2b after nod.*

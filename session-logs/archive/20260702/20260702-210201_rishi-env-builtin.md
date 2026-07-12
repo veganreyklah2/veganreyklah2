@@ -26,4 +26,4 @@ Parity **142** GREEN unchanged (env witness unwired, preserving Edit 5 at **143*
 | `manual/reference/rishi-language.md` | §4 env, § renumber, §13 gaps |
 | `rishi/README.md` | Builtin list + test command |
 | `work-in-progress/TASKS.md` | Framework growth progress |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Diet update |
+| `work-in-progress/ready-to-ask-claude.md` | Diet update |

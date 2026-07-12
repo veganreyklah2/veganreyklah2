@@ -1,13 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (post-Seam parks + bud/mudra proposed `061012`)
+**Last updated:** 2026-07-12 (bud/mudra seated · T2 courtesy · PUBKEYS cloud lane `062656`)
 
-## Now — Post-Seam parks (`061012`) · Seam season closed
+## Now — Post-Seam seats (`062656`) · tip **430** green
 
-**Standing green:** tip **430** — Open Asks civic sight (`032657`). Seam season closed on `main` (`b0c9590` arc). Post-Seam disposition [`061012`](../counsel/20260712-061012_claude-counsel-post-seam-disposition.md).
+**Standing green:** tip **430** — Open Asks civic sight (`032657`). Bud/mudra seated; cloud lane-key in PUBKEYS; T2 **courtesy** choice brief seated (not wire). Disposition [`061012`](../counsel/20260712-061012_claude-counsel-post-seam-disposition.md).
 
-**Ordered next (counsel):** sync-and-parks → T2 **choice brief** → Door 3 green → component compile → proven-seat metal · **or hold**.
+**Ordered next (counsel):** four-remote catch-up (credentialed host) → Door 3 first green → component compile → proven-seat metal · **or hold**. T2 wire and T3 proof await their own words.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -22,9 +22,9 @@
 | — | **Consumer-edge pass / Door 3** | **Design filed** | First green waits on word — ER test plan `053324` |
 | — | **Component compile lap** | **Parked** | Wasmtime green waits on word — ER `054135` |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
-| — | **Giving-lane T2** | **Parked** | Choice brief first (courtesy vs proof) — counsel `061012`; wire awaits word |
-| — | **Bud / mudra names** | **Proposed** `061012` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); mudra soft-red vs Pottery alternate; code waits on “bud and mudra seated” |
-| — | **Cloud signing key** | **Parked** | Fingerprint `SHA256:/ZGdxqU+…`; PUBKEYS word — [`061012`](../counsel/20260712-061012_cloud-signing-key-park.md) |
+| — | **Giving-lane T2** | **Choice seated** `062656` | Courtesy now · proof as T3 — brief [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
+| — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
+| — | **Cloud signing key** | **Seated** `062656` | PUBKEYS Cursor cloud lane-key `SHA256:/ZGdxqU+…` |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
@@ -39,7 +39,11 @@
 - [ ] **Door 3 first green (on word)** — in-process pass admits published read + signed submit; refuses unpublished / lying — ER test plan `053324`
 - [ ] **Component compile lap (on word)** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — ER `054135`
 - [ ] **Proven-seat G1 guest (on word)** — receipt verify-witness GREEN under Genode-hosted path — ER `054342`
-- [ ] **Giving-lane T2 (on word)** — compose payer amount/identity privacy with payee transparency (SLC-L4 + OA) — map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md)
+- [ ] **Giving-lane T2 wire (on word)** — courtesy shape seated [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); glass withholding composition awaits word
+- [x] **Bud / mudra names seated** — `tally/bud.rye` · `tools/slcl4_mudra.rish` · Mudra released from Pottery alternates (`062656`)
+- [x] **Cloud Cursor lane-key in PUBKEYS** — `SHA256:/ZGdxqU+…` (`062656`)
+- [x] **RTAC ledger plain name** — `work-in-progress/ready-to-ask-claude.md` (`062656`)
+- [x] **Giving-lane T2 choice brief** — courtesy now · proof as T3 (`062656`)
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
@@ -383,7 +387,7 @@
 - [x] **MALA M1 implementation** — one issuer, one holder, mint/send/receipt/balance-as-fold; `linengrow/mala.rye` + `tools/mala_m1_witness.rish`; parity **198** (`20260709.184051`); prompt [`182354`](../expanding-prompts/20260709-182354_mala-m1-one-issuer-one-holder.md); counsel [`184051`](../counsel/20260709-184051_grok-counsel-mala-m1-names-and-tasks.md)
 - [x] **MALA M2 — mailable (hosted)** — mint crosses Comlink UDP; receipt crosses back; `mala_core.rye` + `mala_delivery.rye` + `tools/mala_m2_witness.rish`; parity **199** (`20260709.191634`); prompt [`191634`](../expanding-prompts/20260709-191634_mala-m2-mailable-comlink.md)
 - [x] **OA-L3/L5 UDP bind-before-send** — listen sockets bound before peer sends; clears parity hang under Rishi `sh -c` (`20260709.192631`)
-- [x] **SLC-L4 fixed-tier Sigma** — Pedersen + proof of opening to declared tier; `disclosure_core.rye` + `pedersen.rye` + `tools/slcl4_sigma.rish`; parity **200** (`20260709.194437`); prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
+- [x] **SLC-L4 fixed-tier mudra** (inherited: Sigma) — bud + proof of opening to declared tier; `disclosure_core.rye` + `tally/bud.rye` + `tools/slcl4_mudra.rish`; first landed parity **200** (`20260709.194437`); warm names seated `062656`; prompt [`031612`](../expanding-prompts/20260709-031612_slcl4-lap1-fixed-tier-sigma-protocol.md)
 - [x] **MALA M2b — device wire** — virtio twin of hosted M2; ports **15569**/**15570**; four guests + `comlink/run_mala_wire_lab.sh`; extends `mala_m2_witness` (`20260709.201734`)
 - [x] **WOV exit-honesty spec** — root facts + exit bundles + holder `wov:exit`; [`context/specs/20260709-200443_wov-exit-honesty.md`](../context/specs/20260709-200443_wov-exit-honesty.md)
 - [x] **WOV lap 1 (in-memory)** — mint/transfer, publish root + golden bundle, prove balance, accept exit, refuse double/tamper; `linengrow/wov_core.rye` + `tools/wov_exit_honesty.rish`; parity **201** (`20260709.200729`); prompt [`200443`](../expanding-prompts/20260709-200443_wov-lap1-exit-honesty-witness.md)

@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME · CIVIC · SLC · Gall's Law · the silo principle
-**Ground:** [`../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md) · [`../work-in-progress/20260702-ready-to-ask-claude.md`](../work-in-progress/20260702-ready-to-ask-claude.md) · [`../context/LEXICON.md`](../context/LEXICON.md) · [`../context/specs/20260704-030300_itinerary-retires-diet.md`](../context/specs/20260704-030300_itinerary-retires-diet.md)
+**Ground:** [`../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md`](../expanding-prompts/20260704-030300_cursor-recursion-prompt-v4.md) · [`../work-in-progress/ready-to-ask-claude.md`](../work-in-progress/ready-to-ask-claude.md) · [`../context/LEXICON.md`](../context/LEXICON.md) · [`../context/specs/20260704-030300_itinerary-retires-diet.md`](../context/specs/20260704-030300_itinerary-retires-diet.md)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 

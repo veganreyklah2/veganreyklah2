@@ -1,27 +1,8 @@
-# slcl4_sigma.rish — SLC-L4 fixed-tier Sigma (Zig-native) witness.
+# slcl4_sigma.rish — deprecated alias; warm name is slcl4_mudra.rish (seated 061012).
+# Kept so older prompts that name this path still green.
 #
-# Run from the repository root:
 #   rishi/bin/rishi run tools/slcl4_sigma.rish
 
-let zig = "vendor/zig-toolchain/zig"
-let pedersen_bin = "tally/bin/pedersen"
-let disclosure_bin = "linengrow/bin/disclosure"
-
-let build = run ["sh" "-c" "mkdir -p tally/bin linengrow/bin && env RYE_ZIG=${zig} rye/bin/rye build tally/pedersen.rye -femit-bin=${pedersen_bin} && env RYE_ZIG=${zig} rye/bin/rye build linengrow/disclosure_core.rye -femit-bin=${disclosure_bin}"]
-
-assert build.ok else "SLC-L4 pedersen/disclosure build failed"
-
-let pedersen = run ["sh" "-c" "${pedersen_bin} selftest 2>&1"]
-assert pedersen.ok else "pedersen selftest exited non-zero"
-assert pedersen.out contains "GREEN" else "pedersen selftest not GREEN"
-
-let selftest = run ["sh" "-c" "${disclosure_bin} selftest 2>&1"]
-assert selftest.ok else "SLC-L4 selftest exited non-zero"
-assert selftest.out contains "GREEN" else "SLC-L4 selftest not GREEN"
-assert selftest.out contains "honest proof for tier 1000" else "SLC-L4 missing tier 1000 welcome"
-assert selftest.out contains "honest proof for tier 5000" else "SLC-L4 missing tier 5000 welcome"
-assert selftest.out contains "honest proof for tier 10000" else "SLC-L4 missing tier 10000 welcome"
-assert selftest.out contains "forged proof refused" else "SLC-L4 missing forged unwelcome"
-assert selftest.out contains "wrong tier claim refused" else "SLC-L4 missing wrong-tier unwelcome"
-
-say "GREEN: SLC-L4 fixed-tier Sigma witness passed."
+let mudra = run ["rishi/bin/rishi" "run" "tools/slcl4_mudra.rish"]
+assert mudra.ok else "slcl4_mudra (via sigma alias) failed"
+say "GREEN: SLC-L4 fixed-tier mudra witness passed (sigma alias)."

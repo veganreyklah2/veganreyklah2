@@ -12,6 +12,6 @@ Kaeden asked for commits, pushes, and a full summary. Verified working tree clea
 
 ## Files
 
-- `work-in-progress/20260702-ready-to-ask-claude.md` — landed arc tip
+- `work-in-progress/ready-to-ask-claude.md` — landed arc tip
 
 *Full summary delivered in chat; parity 139 green at tip.*

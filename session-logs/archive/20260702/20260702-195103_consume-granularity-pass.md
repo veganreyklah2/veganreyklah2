@@ -17,6 +17,6 @@ Parity **142** unchanged. Cursor starts nothing on Amber until sitting confirms 
 
 - `work-in-progress/TASKS.md` — granularity pass replaces coarse ladder bullets
 - `work-in-progress/ROADMAP.md` — current position table; version `20260702-194512`
-- `work-in-progress/20260702-ready-to-ask-claude.md` — RTAC at 194512
+- `work-in-progress/ready-to-ask-claude.md` — RTAC at 194512
 - `session-logs/20260702-194512_granularity-pass.md` — Claude executor log
 - `TASKS-20260702-194512.md` — removed from repo root after install

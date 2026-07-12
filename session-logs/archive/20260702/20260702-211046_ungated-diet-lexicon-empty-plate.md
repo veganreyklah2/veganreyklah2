@@ -19,4 +19,4 @@ Seated **Gate**, **Ungated diet**, **Smallest-first**, **Witness-first**, and **
 | File | Why |
 |------|-----|
 | `context/LEXICON.md` | House vocabulary for ungated diet |
-| `work-in-progress/20260702-ready-to-ask-claude.md` | Definition, empty plate rule, menu status |
+| `work-in-progress/ready-to-ask-claude.md` | Definition, empty plate rule, menu status |

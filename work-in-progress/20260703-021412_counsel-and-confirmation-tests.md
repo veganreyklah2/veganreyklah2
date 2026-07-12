@@ -11,7 +11,7 @@ counsel earns trust only after the ground it stands on is witnessed.*
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Lens:** TAME — safety first, performance second, the joy of the craft third
 **Status:** Counsel — recommendations only; every door, gate, ratification, and stamp stays Kaeden's alone
-**Companions:** [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md) · [`../pond/README.md`](../pond/README.md) · [`20260702-ready-to-ask-claude.md`](20260702-ready-to-ask-claude.md)
+**Companions:** [`20260703-014912_round-summary-and-decoder.md`](20260703-014912_round-summary-and-decoder.md) · [`20260702-edit5-ready-to-apply.md`](20260702-edit5-ready-to-apply.md) · [`../pond/README.md`](../pond/README.md) · [`ready-to-ask-claude.md`](ready-to-ask-claude.md)
 
 *Written together by Kaeden and Claude (Fable 5), in Rio 3's Radiant voice.*
 
