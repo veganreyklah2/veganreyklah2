@@ -1,7 +1,7 @@
 # Lexicon — Module Names and Their Meanings
 
 **Language:** EN
-**Last updated:** 2026-07-12 (CapTP-as-fold decline `054650` · giving-lane T0)
+**Last updated:** 2026-07-12 (bud/mudra names proposed `061012` — RTAC-parked)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 
 ---
@@ -31,6 +31,10 @@ Living vocabulary for the Rye OS family. Each name teaches its function. Provena
 | **Portable seam** | First Component Model target (`20260712.054135`): `receipt_core` verify-witness — same fold guest across hosts; freestanding Brushstroke canvas is the twin *surface* track — study [`../external-research/20260712-054135_component-model-one-seed.md`](../external-research/20260712-054135_component-model-one-seed.md) |
 | **Proven seat** | Guest-never-merger (`20260712.054342`): Genode/Sculpt atop seL4 lineage as the seat Rye userland may guest on this season; Caravan keeps its name and horizon — study [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
 | **Giving lane** | Asymmetry (`20260712.054521` study · **T0 seated** `20260712.054650`): private payer · transparent payee; complements MALA/WOV; Taler is teacher not rail — foundations [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) |
+| **Bud** | **Proposed** `061012` — Pedersen commitment in our voice; holds an amount bound until bloom; code rename waits on “bud and mudra seated” — [`specs/20260712-061012_bud-and-mudra-names-seated.md`](specs/20260712-061012_bud-and-mudra-names-seated.md) |
+| **Bloom** | **Proposed** `061012` — opening a bud (commitment open); gathered buds bloom to the ledger’s sum |
+| **Dew** | **Proposed** `061012` — blinding scalar; fresh on every bud so equal amounts never look alike |
+| **Mudra** | **Proposed** `061012` — fixed-tier Sigma proof (tier mudra); soft-collides with Pottery value-object alternate — Kaeden releases that park or seats **vouch** instead — [`specs/20260712-061012_bud-and-mudra-names-seated.md`](specs/20260712-061012_bud-and-mudra-names-seated.md) |
 | **Lap** | An SLC-sized whole at a named scope — the smallest loop that closes fully within its bounds; grows from the working seed beneath it — [`external-research/20260703-033602_first-lap-goes-green.md`](../external-research/20260703-033602_first-lap-goes-green.md) · plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Green** | A witness ran, assertions held, exit zero — machine fact on metal, not mood — plainly [`../external-research/20260710-002544_first-lap-goes-green-plainly.md`](../external-research/20260710-002544_first-lap-goes-green-plainly.md) |
 | **Metalsmoke** | The thin edge's few honest integrated checks — world alone can answer, smallest slice, witnessed; happy zone stays in parity — [`active-designing/20260703-013412_metalsmoke.md`](../active-designing/20260703-013412_metalsmoke.md) · plainly [`../external-research/20260710-002017_metalsmoke-plainly.md`](../external-research/20260710-002017_metalsmoke-plainly.md) |

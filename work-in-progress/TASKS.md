@@ -1,11 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Giving-lane T1 OA field map `054942`)
+**Last updated:** 2026-07-12 (post-Seam parks + bud/mudra proposed `061012`)
 
-## Now — Seam season (`052806`)
+## Now — Post-Seam parks (`061012`) · Seam season closed
 
-**Door named from tip-430 hold:** Horizon brief → **Seam season**. Counsel [`052806`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) · hammock [`052806`](../active-designing/20260712-052806_seam-season-hammock.md). Green product work at tip **430** stays green. Logic before carriage.
+**Standing green:** tip **430** — Open Asks civic sight (`032657`). Seam season closed on `main` (`b0c9590` arc). Post-Seam disposition [`061012`](../counsel/20260712-061012_claude-counsel-post-seam-disposition.md).
+
+**Ordered next (counsel):** sync-and-parks → T2 **choice brief** → Door 3 green → component compile → proven-seat metal · **or hold**.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -20,7 +22,9 @@
 | — | **Consumer-edge pass / Door 3** | **Design filed** | First green waits on word — ER test plan `053324` |
 | — | **Component compile lap** | **Parked** | Wasmtime green waits on word — ER `054135` |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
-| — | **Giving-lane T2** | **Parked** | Compose amount/payer privacy with payee transparency — awaits word |
+| — | **Giving-lane T2** | **Parked** | Choice brief first (courtesy vs proof) — counsel `061012`; wire awaits word |
+| — | **Bud / mudra names** | **Proposed** `061012` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); mudra soft-red vs Pottery alternate; code waits on “bud and mudra seated” |
+| — | **Cloud signing key** | **Parked** | Fingerprint `SHA256:/ZGdxqU+…`; PUBKEYS word — [`061012`](../counsel/20260712-061012_cloud-signing-key-park.md) |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
