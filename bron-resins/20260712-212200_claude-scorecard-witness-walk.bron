@@ -6,7 +6,7 @@ stamp 20260712.212200
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib 1b69e45
+git_nib a7a2ec6
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -23,8 +23,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go 40673e0
-pin git_nib 1b69e45
-pin remotes will-push-four
+pin git_nib a7a2ec6
+pin remotes pushed-four tip a7a2ec6
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin pond_sixbar GREEN · scorecard_witness GREEN
@@ -63,6 +63,7 @@ p gap_gpu_lane_customs open
 section commits_this_go
 title Commits oldest → newest
 commit 1b69e45 Land the living two-column Pond enclosure scorecard witness.
+commit a7a2ec6 Record Claude handoff for the scorecard-witness second walk.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
