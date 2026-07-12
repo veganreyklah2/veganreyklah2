@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (G1 prepare_port libc GREEN · create_builddir next)
+**Last updated:** 2026-07-12 (G1 jailed TCG serial GREEN)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -13,7 +13,7 @@
 
 **Ordered next (Claude `144519` · G1 open `195339`):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
-2. **G1** — toolchain **25.05** + sources **26.05** + **libc port GREEN** · **next:** `create_builddir` x86_64 → SLC guest · jailed TCG serial GREEN (Claude `201802`)
+2. **G1** — **serial GREEN** · digest-grade fixture on posix guest · `KERNEL=nova` TCG · **next:** Pond enclosure / signed Kumara lap / permanent `vendor/` home on word
 3. **Pond** enclosure six-bar baseline
 4. Route two / inward lane nest — parked until graduation trigger; G1 is the watch-post
 

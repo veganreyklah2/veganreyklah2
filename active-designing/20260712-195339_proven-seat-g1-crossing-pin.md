@@ -3,11 +3,11 @@
 *Spike answer for Claude’s honest first question: which build path crosses a Rye receipt seed onto Genode’s POSIX-compatible runtime?*
 
 **Stamp:** `20260712.195339`
-**Last updated:** `20260712.202400` — prepare_port libc GREEN · create_builddir next
+**Last updated:** `20260712.203900` — G1 jailed TCG serial GREEN
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3
-**Status:** Checkable — toolchain **25.05 GREEN** · sources **26.05 Codeberg GREEN** · **libc port GREEN** · **next:** `create_builddir` x86_64 → SLC guest · serial GREEN
+**Status:** Checkable — **G1 serial GREEN** · digest-grade fixture · posix guest · KERNEL=nova TCG
 **Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · three asks [`20260712-201200_proven-seat-g1-claude-three-asks.md`](20260712-201200_proven-seat-g1-claude-three-asks.md) · sources revise [`20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md`](20260712-201802_proven-seat-g1-claude-sources-codeberg-26.05.md) · Sculpt **26.04** G0 ground
 
 ---
@@ -42,9 +42,9 @@ Drift between rungs is named, not hidden. Recorded in `g1-sources-meta.txt` / re
 
 1. ~~**Source fetch witness**~~ — **GREEN** `tools/proven_seat_g1_fetch_sources.rish` · Codeberg shallow-clone **26.05** · HEAD `492a5102…`
 2. ~~**`tool/ports/prepare_port libc`**~~ — **GREEN** `tools/proven_seat_g1_prepare_libc.rish` · contrib `libc-d6a3665f…` · host-tools flex/bison/m4 in cache
-3. **`create_builddir` for x86_64**
-4. **SLC guest** — posix main via `Libc::Component::construct` · one signed receipt fixture · own GREEN line on serial
-5. Grow `tools/proven_seat_g1.rish` until that serial GREEN
+3. ~~**`create_builddir` for x86_64**~~ — **GREEN** `tools/proven_seat_g1_create_builddir.rish` · `genode-build-x86_64` · `CROSS_DEV_PREFIX` + libports pinned
+4. ~~**SLC guest**~~ — **GREEN** `tools/proven_seat_g1_guest/` · posix `main` · digest-grade fixture · installed as `g1-receipt-verify`
+5. ~~**Jailed TCG serial**~~ — **GREEN** `tools/proven_seat_g1.rish` · `KERNEL=nova` · serial line matched
 
 Jailed TCG needs no `/dev/kvm`. **Park:** permanent Genode module home until first serial GREEN; then `vendor/` precedent.
 
@@ -73,6 +73,23 @@ rishi/bin/rishi run tools/proven_seat_g1_prepare_libc.rish
 ```
 
 Fetches flex/bison/m4 into `tools/.cache/proven-seat/host-tools/` when missing (no sudo). Runs `prepare_port libc`. Asserts contrib `libc-d6a3665f0d2778ce8928c66302f1694cdc0d8480`.
+
+## Builddir recipe (landed GREEN)
+
+```bash
+rishi/bin/rishi run tools/proven_seat_g1_create_builddir.rish
+```
+
+Creates `tools/.cache/proven-seat/genode-build-x86_64/`, pins absolute `CROSS_DEV_PREFIX` (`…/bin/genode-x86-`), enables `repos/libports`.
+
+## Guest + serial (landed GREEN)
+
+```bash
+rishi/bin/rishi run tools/proven_seat_g1_build_guest.rish
+rishi/bin/rishi run tools/proven_seat_g1.rish
+```
+
+Guest sources: `tools/proven_seat_g1_guest/` (posix · digest-grade fixture from `receipt_core` / `slcl1_fact.bron`). Serial: `KERNEL=nova BOARD=pc` · expect/m4/bison under `host-tools/`.
 
 ---
 
