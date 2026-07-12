@@ -1,8 +1,8 @@
 # launch-cursor.rish — start Cursor inside ai-jail from the repository root.
 #
 # Reads --appimage, --extract, and --gpu from script args (RS-3).
+# Bind defaults before any if — Rishi resolves names in every branch.
 #
-#   rishi/bin/rishi run tools/launch-cursor.rish
 #   rishi/bin/rishi run tools/launch-cursor.rish --gpu
 #   rishi/bin/rishi run tools/launch-cursor.rish --extract ./Cursor-3.11.13-x86_64.AppImage --gpu
 #   rishi/bin/rishi run tools/launch-cursor.rish --appimage squashfs-root/AppRun --gpu
@@ -10,13 +10,14 @@
 # Shell equivalent: tools/cursor-jail.sh (still the driver; this is the Rishi door).
 # See: SOURCE.md Step 9 · context/specs/enclosure-editors.md
 
-if (args contains "--extract") then let image = flag args "--extract"
-if (args contains "--extract") then if (args contains "--gpu") then let result = run ["sh" "tools/cursor-jail.sh" "--extract" image "--gpu"] else let result = run ["sh" "tools/cursor-jail.sh" "--extract" image]
-if (args contains "--extract") then assert result.ok else "cursor-jail --extract failed"
-if (args contains "--extract") then exit 0
-
+let image = ""
 let apprun = "squashfs-root/AppRun"
+if (args contains "--extract") then let image = flag args "--extract"
 if (args contains "--appimage") then let apprun = flag args "--appimage"
+
+if (args contains "--extract") then if (args contains "--gpu") then let result = run ["sh" "tools/cursor-jail.sh" "--extract" image "--gpu"] else let result = run ["sh" "tools/cursor-jail.sh" "--extract" image]
+if (args contains "--extract") then assert result.ok else "cursor-jail --extract failed — check AppImage path and chmod +x"
+if (args contains "--extract") then exit 0
 
 if (args contains "--gpu") then let result = run ["sh" "tools/cursor-jail.sh" "--gpu" apprun] else let result = run ["sh" "tools/cursor-jail.sh" apprun]
 
