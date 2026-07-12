@@ -1,23 +1,23 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.102712` (Claude affirms seventeen · ring may rest) · filed `103300`
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.105212` (IronBeetle silo complete — thirty-four · five gaps)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## IronBeetle silo pilot — **seventeen written · four gaps open · ring may rest** (`20260712.102712`)
+## IronBeetle silo pilot — **COMPLETE · thirty-four written · five gaps** (`20260712.105212`)
 
-**Delivered:** Episodes 001–002, 004–006, 008–015, 018–021 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tip `303363c` · filing `103300`). Filed by Kaeden's labels and content — not the speaker's spoken numbering.
+**Delivered:** 001, 002, 004, 005, 006, 008–015, 018–022, 025, 028, 030, 031½, 032–038, 040, 042–045 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tip reconcile from seventeen at `09c02cb`). Submodule `tigerbeetle/` unmodified.
 
-**Claude review `102712`:** all eight of part three pass; structure uniform; ep019↔beading and ep021↔Amphora rhymes held. Gap discipline affirmed across four open slots. Ring may rest — gaps are caption fills whenever convenient, not a blocking queue.
+**Gaps (visible):** **003 · 007 · 016 · 017 · 024** — gap-fills on captions if ever convenient; series otherwise closed.
 
-**Gaps (visible, not papered):** **003 · 007 · 016 · 017**.
+**Notes:** ep022 written once (grid read-path arrived duplicated); 028-vs-030 sort slightly lower confidence than 032/033 (verify raw audio first if odd); ep031½ / ep037½ preserve matklad's half-numbering; ep042 title "Over the Alps" is matklad's phrase; ep045 independently lands near our fold-over-append-only-log thesis (convergence noted, not borrowing claimed).
 
-**Status:** seventeen on the shelf; **ep004 COST** still anchors mesh Horizon 1.6.
+**Status:** silo pilot complete at thirty-four; **ep004 COST** still anchors mesh Horizon 1.6.
 
-**matklad.md:** 001–002, 004–006, 008–015, 018–021 written / 003, 007, 016, 017 open.
+**matklad.md:** final range line as above.
 
 ---
 

@@ -14,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.105212 | [IronBeetle silo complete — thirty-four](20260712-105212_ironbeetle-silo-complete-thirty-four.md) | Reconcile +17 · five gaps · series otherwise closed |
 | 20260712.102712 | [Claude affirms IronBeetle seventeen — ring may rest](20260712-102712_claude-affirms-ironbeetle-seventeen.md) | Review pass · gaps held · tip already `303363c` |
 | 20260712.103300 | [IronBeetle seventeen + Linguist Path A](20260712-103300_ironbeetle-seventeen-linguist-path-a.md) | Ep 004–021 on shelf · four gaps · `.rye`→Zig remap |
 | 20260712.095112 | [IronBeetle pilot ring filed and resting](20260712-095112_ironbeetle-pilot-ring-filed.md) | Ep 001–002 on shelf · ep003/ep004 queued · matklad pointer |
