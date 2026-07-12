@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.054650 | [CapTP decline seated · giving-lane T0](20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
 | 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
 | 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
 | 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |

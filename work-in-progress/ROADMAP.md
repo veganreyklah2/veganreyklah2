@@ -256,7 +256,7 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 | **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | **Landed** [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
 | **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | **Landed** [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) |
 
-**Four Seam studies complete.** **Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** · Spritely ally after two-sided green. **Parked metal/prose:** Door 3 · component compile · proven-seat G0–G3 · giving-lane T0–T2.
+**Four Seam studies complete.** **Seated:** CapTP-as-fold **declined** [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) · giving-lane T0 in money-close-to-home. **Parked:** Spritely ally after two-sided green · Door 3 · component compile · proven-seat G0–G3 · giving T1–T2.
 
 ## Horizon 2 — Compose the Simples
 

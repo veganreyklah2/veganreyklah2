@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — prioritization seated; **studies 1–4 landed**; session-idiom-as-fold formal decline **ready for Kaeden**; institutional-ally name parked; Door 3 · component compile · proven-seat G0–G3 · giving T0–T2 wait on word
+**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated**; Spritely ally parked; Door 3 · component compile · proven-seat G0–G3 · giving T1–T2 wait on word
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 
@@ -42,10 +42,14 @@ Logic before carriage throughout. Each study lands as understanding + a short de
 
 ## Parked rulings (Kaeden’s word)
 
-| Ruling | Standing counsel | What seats it later |
-|--------|------------------|---------------------|
-| Session idiom as the fold’s carriage | **Decline** — session ≠ record; accrete-never-break; **study 1 affirms** | **Ready** — formal decline seat on Kaeden’s word |
+| Ruling | Standing counsel | Status |
+|--------|------------------|--------|
+| Session idiom as the fold’s carriage | **Decline** — session ≠ record; accrete-never-break; study 1 affirms | **Seated decline** [`../context/specs/20260712-054650_captp-as-fold-carriage-declined.md`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
 | Institutional ally name | **Teacher now** — one-sided gratitude | Two-sided green contact, then Kaeden names ally |
+
+## Giving lane (T0 seated)
+
+Private payer · transparent payee — [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md) · study [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md).
 
 ## Out of scope this season
 

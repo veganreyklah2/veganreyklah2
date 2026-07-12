@@ -17,7 +17,7 @@
 | Item | Status |
 |------|--------|
 | Four RTAC study entries | **File now** — smallest-first order in TASKS |
-| CapTP / session idiom as the fold's carriage | **Parked decline** — await post-study word to seat formally |
+| CapTP / session idiom as the fold's carriage | **Declined** `054650` — [`../context/specs/20260712-054650_captp-as-fold-carriage-declined.md`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) |
 | Spritely as institutional ally | **Parked** — teacher now; ally only after two-sided green |
 | Green product work at tip **430** | **Stays green** — no inventing product laps from this counsel |
 | Tip-430 reopen door | **Horizon brief / Seam season** — named |
