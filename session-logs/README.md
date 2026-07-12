@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.130300 | [Claude host-safe · lane-inward probe](20260712-130300_claude-host-safe-lane-inward.bron) | Route one flag absent · Route two parked · host recipe + HITL |
 | 20260712.125200 | [Claude affirms residue · six lines · pre-flight](20260712-125200_claude-residue-six-preflight.bron) | Six tip→nib · host recipe + refuse-probe · giving-family |
 | 20260712.123700 | [Claude guidance bron · go](20260712-123700_claude-guidance-bron-go.bron) | Handoff resin · kg log + bron commit/push |
 | 20260712.123200 | [kg on-path — blocked · no kvm](20260712-123200_kg-onpath-blocked-no-kvm.bron) | Refuse GREEN · ai-sandbox kvm absent · host recipe holds |

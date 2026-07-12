@@ -1,24 +1,30 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (git nib `f9ff576` · Claude `125200` six-line residue · on-path pre-flight · refuse GREEN · parity **324** · product **430** · suite **432**)
+**Last updated:** 2026-07-12 (git nib `468ff98` · Claude `130300` host-safe + lane-inward probe · residue `125200` · on-path worded)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719` · residue affirm `125200`). Git nib **`f9ff576`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719` · residue affirm `125200`). Git nib **`468ff98`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
 
 **Word seated (`121518`):** Kaeden — *kg i grant* — host **`lane_kvm` on-path** G0-complete + **same-sitting metal parity re-pin** allowed. This Cursor session remains `ai-sandbox` without `/dev/kvm`; run the one-shot on the Framework host.
 
 **Claude `125200`:** residue close affirmed after six living lines swept · order holds (no reorder) · giving-family naming affirmed for future gratuity · kg jail-refuse honored as the floor working.
 
-**Ordered next (worded — run on Framework host; Claude pre-flight `125200`):**
-0. Stage `tools/.cache/proven-seat/sculpt-26-04.img` (sha256 `241b916ab9e3ed25a089c27119aac98f80fe4d3e67101936b4e69d7f1c708f14`) before the run — missing/mismatch RED is clean; staged image makes the one-shot mechanical
+**Claude `130300`:** host one-shot **safe under human-in-loop** · lane-inward evolution counsel · Route one **flag absent** (teacher has `--gpu` only, no `--kvm`/`--dev`) · Route two nest **parked for word** — note [`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md).
+
+**Ordered next (worded — run on Framework host; Claude pre-flight `125200` + human-in-loop `130300`):**
+0. On host clone: `git fetch` · `git checkout` nib · `git verify-commit HEAD` (sandbox key) · stage `tools/.cache/proven-seat/sculpt-26-04.img` (sha256 `241b916ab9e3ed25a089c27119aac98f80fe4d3e67101936b4e69d7f1c708f14`)
+0b. Read once: `tools/lane_kvm.sh` · `tools/run_with_lane_kvm.sh` · `tools/proven_seat_g0c_lane_kvm.sh`
 1. Set `LANE_KVM=true` in `tools/enclosure.conf` (gitignored · cannot ride a commit)
 2. `./tools/run_with_lane_kvm.sh -- ./tools/proven_seat_g0c_lane_kvm.sh` (or `rishi run tools/proven_seat_g0_complete_jailed.rish`)
 3. Optional same sitting: `rishi run tools/parity.rish` — full chaptered composition; pin what it prints; witness red twice parks the sitting
 4. Set `LANE_KVM=false` again
 5. On that same host metal: `./tools/lane_kvm.sh refuse-probe` — sitting closes with permit-green and restored refuse-green in one session log
-6. Then G1 / Pond on further word
+5b. `git status --porcelain` — expect silence (run artifacts under gitignored cache)
+6. Then G1 / Pond on further word · Route two / inward lane on further word
+
+**Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only — module home + name await word ([`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md)). Do not patch teacher ai-jail.
 
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); suite nib **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 

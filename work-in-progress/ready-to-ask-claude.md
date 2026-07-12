@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.125200` (Claude affirms residue close · six living lines · host pre-flight · giving-family)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.130300` (Claude host-safe affirm · lane-inward probe · Route one flag absent)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -86,6 +86,8 @@
 **Kaeden word `121518`:** *kg i grant* — host on-path **opened**; same-sitting metal parity re-pin **allowed**. Awaiting Framework host with `/dev/kvm` (this session: `ai-sandbox`, kvm absent).
 
 **Claude `125200` (guidance `123700`):** residue close **affirmed** after six living tip→nib lines (anvil · mandi · active-designing README · seam-season guard · giving-lane-t2 guard). Order **holds** — host on-path → G1 → Pond. Pre-flight: stage sculpt image · after restore run `lane_kvm.sh refuse-probe` on host · parity pin-what-prints / red-twice parks. Giving-family naming **affirmed** for future creator gratuity. Jail kg refuse honored as the floor working.
+
+**Claude `130300`:** host one-shot **safe** (human-in-loop · verify-commit · read three scripts · porcelain silence). Lane inward: Route one **no teacher `--kvm`/`--dev`** (only `--gpu` uses `--dev-bind`; `--rw-map` is filesystem `--bind`) — study seated [`../active-designing/20260712-130300_lane-inward-route-probe.md`](../active-designing/20260712-130300_lane-inward-route-probe.md). Route two nest **parked** (module home + name). Sequencing word: host-first (default) vs Route two when spoken.
 
 ---
 
