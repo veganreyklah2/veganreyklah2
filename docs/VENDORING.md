@@ -2,9 +2,9 @@
 
 *Teacher sources pin at commit; workbench droppings stay in cache; gratitude holds the clean-room study shelf.*
 
+**Status:** Checkable — vendor · gratitude · cache recipe
 **Depth:** recipe
 **Ceiling:** ≤150 lines
-**Room:** Checkable
 **Last updated:** 2026-07-12
 **Compresses:** [`20260712-204549_proven-seat-g1-claude-close.md`](../active-designing/20260712-204549_proven-seat-g1-claude-close.md) · [`20260712-214900_signed-kumara-monocypher-pin.md`](../active-designing/20260712-214900_signed-kumara-monocypher-pin.md) · [`ORGANIZING.md`](../ORGANIZING.md) · [`external-research/20260620-014412_system.md`](../external-research/20260620-014412_system.md) (Gratitude Licenses)
 

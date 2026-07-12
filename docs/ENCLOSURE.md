@@ -2,9 +2,9 @@
 
 *ai-jail holds the daily seat today; Pond earns it by out-refusing the jail — witnessed, never by feature list.*
 
+**Status:** Checkable — enclosure and Pond supersede guide
 **Depth:** guide
 **Ceiling:** ≤300 lines
-**Room:** Checkable
 **Last updated:** 2026-07-12
 **Compresses:** [`counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) · [`20260712-210800_pond-enclosure-scorecard-two-column.md`](../active-designing/20260712-210800_pond-enclosure-scorecard-two-column.md) · [`20260712-210800_pond-supersede-exit-criteria.md`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · [`20260712-212412_pond-scorecard-claude-second-walk.md`](../active-designing/20260712-212412_pond-scorecard-claude-second-walk.md) · [`20260712-213600_pond-freeze-affirm-master-seal.md`](../active-designing/20260712-213600_pond-freeze-affirm-master-seal.md) · [`20260712-113900_lane-kvm-retire-dbus-escape.md`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) · [`context/specs/enclosure-editors.md`](../context/specs/enclosure-editors.md)
 

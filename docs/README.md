@@ -1,8 +1,8 @@
 # Docs — compression shelf
 
+**Status:** Checkable — compression shelf routing
 **Depth:** routing
 **Ceiling:** ≤40 lines
-**Room:** Checkable
 **Last updated:** 2026-07-12
 **Compresses:** [`active-designing/20260712-221600_docs-compression-layer-design.md`](../active-designing/20260712-221600_docs-compression-layer-design.md)
 
@@ -12,7 +12,7 @@
 
 - **Raw beneath** — dated notes in `active-designing/`, counsel, Bron logs stay immutable.
 - **Compress above** — these pages distill many sources into operator guides.
-- **Lint keeps honest** — proposed `tools/living_docs_lint.rish` (name awaits word).
+- **Lint keeps honest** — `tools/living_docs_lint.rish` (ratchet-advisory · five duties).
 - **Pages compress the record; they never replace it.**
 
 Docs carry **no load-bearing pins** — every fingerprint cites a witness or META shelf; the doc points, the witness proves.

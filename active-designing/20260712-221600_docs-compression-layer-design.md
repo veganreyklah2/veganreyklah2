@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3 · Claude proposes · Kaeden seats
-**Status:** Checkable — design seated at git nib `386869e`; `docs/` shelf not yet created; lint name awaits Kaeden's word
+**Status:** Checkable — design seated at git nib `386869e`; `docs/` shelf live; **`tools/living_docs_lint.rish` seated** `222800`
 **Ground:** RTAC compression test · [`context/TAME_GUIDANCE.md`](../context/TAME_GUIDANCE.md) TigerBeetle `docs/` precedent · [`context/TWO_ROOMS.md`](../context/TWO_ROOMS.md) doorway law · [`context/SILO_TECHNIQUE.md`](../context/SILO_TECHNIQUE.md) scoped relaxation
 
 ---
@@ -134,20 +134,21 @@ Any pin-string that appears in `docs/` must **byte-match** its witness source.
 
 ---
 
-## Lint proposal — name awaits Kaeden's word
+## Lint — seated `tools/living_docs_lint.rish`
 
-**Proposed:** `tools/living_docs_lint.rish`
-**Tier:** ratchet-advisory
+**Tier:** ratchet-advisory — print every parity run; never fail. Hardening horizon: link-breaks may earn a gate once the shelf proves stable.
 
 | Duty | What it catches |
 |------|-----------------|
-| 1 | Retired words in living voice |
-| 2 | Broken relative links |
-| 3 | Orphan living pages |
-| 4 | Status rooms on rostered dirs |
-| 5 | Docs-pin match (pin-strings in `docs/` vs witness source) |
+| 1 | Retired LEXICON words in living-voice lines (word-boundary) |
+| 2 | Broken relative links on roster |
+| 3 | Orphan roster pages (no inbound from roster + `docs/README`) |
+| 4 | Status rooms on rostered paths |
+| 5 | `docs/` pin-strings must byte-match canon sources |
 
-**Roster join:** extend `tools/fixtures/two_rooms_doorway_roster.sh` to include `docs/*.md` when the lint lands.
+**First-lap roster:** `tools/fixtures/living_docs_lint_roster.sh` — `docs/` · four living hammocks · eight module READMEs.
+
+**Doorway join:** `tools/fixtures/two_rooms_doorway_roster.sh` includes `docs/*.md`.
 
 ---
 

@@ -407,6 +407,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | **No tabs, no trailing whitespace** | `tools/tame-check.rish` (witness) |
 | **Line length ≤ 100 columns** | flag lines past 100, allowing a URL or a multiline-string result that itself fits |
 | **One `# Title` per markdown** | flag any `.md` with zero or more than one top-level `#`, fenced code ignored — directly serving our doc-heavy tree |
+| **Living docs lint (roster advisory)** | `tools/living_docs_lint.rish` — five duties; ratchet advisory; roster in `tools/fixtures/living_docs_lint_roster.sh` |
 | **No leftover `FIXME` or `dbg(`** | flag both before merge; `FIXME` is welcome while iterating, gone before main |
 | **Disjoint copies through `tally/copy.rye`** | `copyForwards`/`copyBackwards` banned; `@memcpy` counted down as a ratchet; new code calls `copy_disjoint` — `tools/tame_style_check.rish` (live) |
 | **Qualified `debug.assert(` anywhere** | banned; import once, call bare — the import line carries no parenthesis, so the string alone convicts |
