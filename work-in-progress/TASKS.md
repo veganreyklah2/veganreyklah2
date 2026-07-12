@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (enclosure ruling `090512` · Brushstroke silo `091012` · tip **430** · suite **432**)
+**Last updated:** 2026-07-12 (verdicts `092212` · study bundle `093812` · tip **430** · suite **432**)
 
 ## Now — product tip **430** · suite tip **432** · proven-seat G0-complete · enclosure A→B
 

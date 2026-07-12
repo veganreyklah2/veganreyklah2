@@ -1,9 +1,41 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.091012` (enclosure ruling answered · Brushstroke weave silo)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.093812` (Hoon/Azimuth/Ames verdicts · mesh study bundle)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
+
+---
+
+## Hoon · Azimuth · Ames — **verdicts filed** (`20260712.092212`)
+
+**Counsel:** [`../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md`](../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md)
+
+| Like | Over | Teacher keeps |
+|------|------|---------------|
+| **Rye** | Hoon | fold-as-definition · pill · kelvin · scry |
+| **Kumara** | Azimuth | life/rift continuity → rotation facts |
+| **Comlink** | Ames | %fade · ack-effect via content address · backpressure bounds |
+
+**RTAC (await word):**
+
+1. **Kumara rotation facts** — old-key-signs-new, monotonic counter; PUBKEYS history as checkable law (keys → stop-and-park)
+2. **Comlink fade-from-birth + content-address dedupe** — Ames teachings kept; global-PKI coupling refused
+3. **`genode_seed` + storage/transport seams** — G2 prerequisites (after G1 / `lane_kvm`)
+
+## Study bundle — **proposed** (`20260712.093812`)
+
+| Note | Path |
+|------|------|
+| README order | drop into `external-research/` |
+| Matklad distilled | [`../external-research/20260712-093812_matklad-teachings-distilled.md`](../external-research/20260712-093812_matklad-teachings-distilled.md) |
+| Mesh inference study | [`../external-research/20260712-093812_mesh-inference-study.md`](../external-research/20260712-093812_mesh-inference-study.md) — horizon only; Kumara-pass admission boundary first |
+| Dependency ladder | [`../external-research/20260712-093812_dependency-ladder.md`](../external-research/20260712-093812_dependency-ladder.md) — A1 parity · A2 enclosure filed · A3 `lane_kvm`… |
+| Infusion map | [`../external-research/20260712-093812_infusion-map.md`](../external-research/20260712-093812_infusion-map.md) |
+
+**RTAC parks from infusion:** mesh onto horizon (not a lap)? · gossip-of-capabilities / mesh-node / model-runtime names · Flax·Bark·Oat·Walnut seat · Loam/Ember hold · web-glass home · foundations compute-as-harvest · hammocks genode-seams / mesh
+
+**Nothing seated.** Spine remains A1→A3→G1 before mesh heat.
 
 ---
 

@@ -12,4 +12,4 @@
 
 **Clean room:** We study public architecture docs and essays; we never copy rust-analyzer source into our modules. The Realidream lane's gratitude shelf seats this name formally per Kaeden's word (`20260708.174500`).
 
-**Cross-ref:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) — Visual Track · [`../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`](../external-research/20260708-021912_grain-sketchbook-realidream-mining.md)
+**Cross-ref:** [`../work-in-progress/ROADMAP.md`](../work-in-progress/ROADMAP.md) — Visual Track · [`../external-research/20260708-021912_grain-sketchbook-realidream-mining.md`](../external-research/20260708-021912_grain-sketchbook-realidream-mining.md) · distilled teachings [`../external-research/20260712-093812_matklad-teachings-distilled.md`](../external-research/20260712-093812_matklad-teachings-distilled.md)

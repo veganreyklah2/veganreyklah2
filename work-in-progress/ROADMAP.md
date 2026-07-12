@@ -260,6 +260,18 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 
 **Four Seam studies complete.** **Seated:** CapTP-as-fold **declined** [`054650`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md) · giving-lane T0 in money-close-to-home · **T1 gap map** [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md). **Parked:** Spritely ally · Door 3 · component compile · proven-seat G0–G3 · giving T2.
 
+## Horizon 1.6 — Proposed destinations (`20260712.093812`)
+
+*Additions-only from the Fable study bundle. Studies and rows — nothing opened as a lap. Infusion map [`093812`](../external-research/20260712-093812_infusion-map.md).*
+
+| Destination | Status | Depends |
+|-------------|--------|---------|
+| **Mesh inference (TAME-guided)** | Horizon study [`093812`](../external-research/20260712-093812_mesh-inference-study.md) — Kumara-admitted · MALA-metered; not a lap | Comlink · Mycelium M4 · seL4 seat · model-runtime seam |
+| **Proven-seat G1–G3 children** | Named: `genode_seed` · Tally-quota dataspace · Mantra storage seam · Comlink transport seam · `genode_witness` — counsel [`092212`](../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md) | Enclosure `lane_kvm` · G0-complete jailed · G1 |
+| **Comlink maturation** | Key-addressing · `%fade` from birth · content-address dedupe — shared prerequisite for Genode transport + mesh | RTAC seat |
+
+**Dependency ladder:** [`093812`](../external-research/20260712-093812_dependency-ladder.md) · **Matklad distilled:** [`093812`](../external-research/20260712-093812_matklad-teachings-distilled.md).
+
 ## Horizon 2 — Compose the Simples
 
 - [ ] **Pond GUI** — SLC 2

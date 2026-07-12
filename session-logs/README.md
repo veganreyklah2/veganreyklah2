@@ -14,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.093812 | [Verdicts + mesh study bundle filed](20260712-093812_verdicts-mesh-bundle.md) | Rye/Kumara/Comlink likes · ER 093812 · ROADMAP 1.6 |
 | 20260712.091012 | [Enclosure ruling + Brushstroke silo filed](20260712-091012_enclosure-ruling-brushstroke-silo.md) | A→B disposition · Flax/Bark/Oat/Walnut · metal parity pin |
 | 20260712.004012 | [Framework metal · G0-complete · Pond ask](20260712-004012_framework-metal-g0c-pond-ask.md) | Four remotes · Leitzentrale KVM · ask Claude ai-jail vs Pond |
 | 20260712.072621 | [Full summary · merge #121 · push](20260712-072621_full-summary-merge-push.md) | Fold proven-seat G0 + Framework counsel; remotes pushed |
