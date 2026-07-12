@@ -6,7 +6,7 @@
 **Language:** EN
 **Style:** Radiant
 **Voice:** Rio 3
-**Status:** Checkable — path **named** · toolchain **not yet fetched** this sitting · serial GREEN still ahead
+**Status:** Checkable — path **named** · toolchain **fetched GREEN** (25.05 · `genode-x86-g++` 14.2.0) · serial GREEN still ahead
 **Ground:** Claude counsel [`20260712-195155_proven-seat-g1-claude-opening-counsel.md`](20260712-195155_proven-seat-g1-claude-opening-counsel.md) · public Genode Applications / Foundations docs · Sculpt **26.04** already pinned for G0
 
 ---
@@ -24,10 +24,13 @@
 
 ## Fetch recipe (Framework host · next kg)
 
-1. Read https://genode.org/download/tool-chain — choose the prebuilt matching **Sculpt 26.04** / Goa’s expected toolchain (do not guess a tarball stamp until the page names it).
-2. Unpack under `tools/.cache/proven-seat/genode-toolchain/` (gitignored).
-3. Optional: clone Genode framework for study only under gratitude/local rules — AGPL; never into `caravan/` or ship trees.
-4. Re-run `tools/proven_seat_g1_crossing_probe.rish` then grow `tools/proven_seat_g1.rish` until one serial GREEN.
+```bash
+rishi/bin/rishi run tools/proven_seat_g1_fetch_toolchain.rish
+```
+
+Pinned: GitHub release **25.05** Ubuntu 24.04 tarball · sha256 `6cab8e5f…b739` (from [genode.org/download/tool-chain](https://genode.org/download/tool-chain)). Lands under `tools/.cache/proven-seat/genode-toolchain/` (gitignored; no sudo). Meta: `tools/.cache/proven-seat/g1-toolchain-meta.txt` records `CROSS_DEV_PREFIX`.
+
+Then: build the receipt seed as a posix/libc guest · grow `tools/proven_seat_g1.rish` until one serial GREEN.
 
 ## Witness
 

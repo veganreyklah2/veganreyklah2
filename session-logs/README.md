@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.200445 | [Go — G1 toolchain fetch GREEN · Claude evening handoff](20260712-200445_go-g1-toolchain-claude-handoff.bron) | Fetch witness · GCC 14.2.0 · Claude printout |
+| 20260712.200256 | [G1 fetch-toolchain Rishi witness](20260712-200256_g1-fetch-toolchain-rish.bron) | Ubuntu 24.04 tarball · sha256 pin · cache extract |
 | 20260712.195339 | [Go open kg — proven-seat G1 crossing spike](20260712-195339_go-open-kg-g1-crossing.bron) | Path named · probe GREEN · skeleton waits binary |
 | 20260712.195155 | [Claude G1 check-in counsel seated · awaits open](20260712-195155_claude-g1-counsel-awaits-open.bron) | SLC spike scope · seed stays seat changes · open word next |
 | 20260712.194101 | [Go — host metal parity re-pin GREEN](20260712-194101_go-host-parity-repin-green.bron) | Commit + four remotes · first act closed |
