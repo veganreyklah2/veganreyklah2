@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.122600 | [Claude affirms nib · living residues closed](20260712-122600_claude-affirms-nib-residues.bron) | Living tip→nib · rule polish · nibble boundary |
 | 20260712.121719 | [Seat nib — retire forward tip](20260712-121719_seat-nib-retire-tip.bron) | LEXICON + dual-editor rules · Claude bron |
 | 20260712.121518 | [Kaeden grant — on-path + parity ride-along](20260712-121518_kaeden-grant-onpath-parity.bron) | Word seated · host kvm recipe · refuse stays GREEN in-jail |
 | 20260712.121409 | [Claude affirms Bron law · four index hygiene fixes](20260712-121409_claude-affirms-bron-index-hygiene.bron) | README+RTAC+convention · order holds · tip d9ee5ed |

@@ -15,7 +15,7 @@
 3. Optional same sitting: `rishi run tools/parity.rish` re-pin
 4. Set `LANE_KVM=false` again · then G1 / Pond on further word
 
-**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); tip **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
+**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); suite nib **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -384,7 +384,7 @@
 | **244** | **Open Asks reputation view — consent-before-counting on Skate** | **Landed** | OA-L4 fold on glass; consented **3** · stipend **300**; tip **429**; stamp `030123` |
 | **245** | **Open Asks civic sight — lifecycle · escrow · consent on Skate** | **Landed** | three seated folds on one frame; tip **430**; stamp `032657` |
 | — | **Hold at tip 430** | **Door named** | Horizon brief → **Seam season** `052806`; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) · product **430** · suite later **432** |
-| — | **Seam season** | **Landed through suite 432** | Four RTAC studies · CapTP decline · Door 3 · compile — living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · product tip **430** · suite tip **432** |
+| — | **Seam season** | **Landed through suite 432** | Four RTAC studies · CapTP decline · Door 3 · compile — living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · product nib **430** · suite nib **432** |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |

@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.121518` (Kaeden grant — on-path + parity ride-along)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.122600` (Claude affirms nib · living tip→nib sweep · rule polish)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -75,9 +75,9 @@
 
 **On word:** G1 jailed · Pond enclosure witness baseline · host one-shot `lane_kvm` on-path G0-complete when granting `/dev/kvm`.
 
-**Metal parity pin `091012`:** full suite **RED** — `TooManyBindings` after **242** GREEN lines (`parity.rish` / `lantern_lap23`). Tip **432** standing. Ask Claude: chapter the suite or raise bindings?
+**Metal parity pin `091012`:** full suite **RED** — `TooManyBindings` after **242** GREEN lines (`parity.rish` / `lantern_lap23`). Suite nib **432** standing. Ask Claude: chapter the suite or raise bindings?
 
-**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · tip **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`.
+**Metal parity pin (chaptered):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · suite nib **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`.
 
 **`lane_kvm` seated (`113900` word):** `LANE_KVM=false` default · refuse GREEN · D-Bus/systemd escape retired [`../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) · on-path scripts ready behind host kvm grant.
 
@@ -122,7 +122,7 @@
 
 ### Four Seam studies — **complete** (`20260712.054521`)
 
-Understanding filed; CapTP formal decline · Door 3 · component compile · proven-seat G0–G3 · giving T0–T2 · Spritely ally all await Kaeden’s word. Green tip **430** untouched.
+Understanding filed; CapTP formal decline · Door 3 · component compile · proven-seat G0–G3 · giving T0–T2 · Spritely ally all await Kaeden’s word. Green product nib **430** untouched.
 
 ### Two parked rulings (await post-study word)
 
