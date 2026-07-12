@@ -13,6 +13,7 @@ Full guide: `context/RADIANT_STYLE.md`. Apply to chats, commit messages, specs, 
 ## Vocabulary of correctness
 
 - **Prepare** for challenges; **prove** and **state** invariants; **prevent** error classes — rather than firefight, debug, or patch as the main story.
+- **Nib** names the landed edge (product · suite · git) — not *tip*. See `context/LEXICON.md` · `.claude/rules/vocabulary-nib.md`.
 
 ## Before you publish prose
 

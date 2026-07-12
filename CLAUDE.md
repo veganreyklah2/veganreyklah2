@@ -21,6 +21,7 @@ Write in **Radiant Style** — see `context/RADIANT_STYLE.md` and `.claude/rules
 
 - **Stay durable.** Save anything worth keeping inside `~/veganreyklah2`. ai-jail resets host `$HOME`, `/tmp`, and parent paths on exit; the project directory persists.
 - **Third-party source** lives in `vendor/` and `gratitude/` — held locally, left unmodified unless a task explicitly says otherwise.
+- **Vocabulary:** **nib** (not *tip*) for product · suite · git landed edges — `context/LEXICON.md` · `.claude/rules/vocabulary-nib.md`.
 - **Slower to go faster.** Prefer strict, capable tools early.
 - **Prune with care.** Release what no longer serves.
 

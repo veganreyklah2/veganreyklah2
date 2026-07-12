@@ -53,6 +53,8 @@ recommend keep-going|check-in what and why
 
 Prior (and closed) days' logs live under `session-logs/archive/YYYYMMDD/`. **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (today Markdown-era). Extend the fold for `.bron` when a day closes on Bron logs. Run fold on Kaeden's word.
 
+Bron session logs prefer `product_nib` · `suite_nib` · `git_nib` (or `nib <hash>`) over legacy `tip` fields.
+
 ## Spirit
 
 Write it plainly and honestly, in Radiant Style, so a future self or another agent can follow the work home. **Commit the log in the same commit as the work it records** whenever possible; a log-only follow-up commit is a last resort.

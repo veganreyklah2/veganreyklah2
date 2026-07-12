@@ -1,11 +1,11 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (tip `f63be3e` · on-path **worded** `121518` · refuse GREEN · parity **324** · product **430** · suite **432**)
+**Last updated:** 2026-07-12 (git nib `bf05fbf` · on-path **worded** `121518` · **nib** seated · refuse GREEN · parity **324** · product **430** · suite **432**)
 
-## Now — product tip **430** · suite tip **432** · proven-seat · enclosure A→B · `lane_kvm`
+## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). Tip **`f63be3e`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719`). Git nib **`bf05fbf`**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
 
 **Word seated (`121518`):** Kaeden — *kg i grant* — host **`lane_kvm` on-path** G0-complete + **same-sitting metal parity re-pin** allowed. This Cursor session remains `ai-sandbox` without `/dev/kvm`; run the one-shot on the Framework host.
 
