@@ -6,7 +6,7 @@ stamp 20260712.200445
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib f3a604d
+git_nib b790881
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -18,7 +18,7 @@ section pins
 pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
-pin git_nib f3a604d
+pin git_nib b790881
 pin git_before_this_go 9f1c911
 pin remotes will-push-four
 pin lane_kvm onpath GREEN 140403
@@ -43,7 +43,7 @@ commit 826bcea Record Claude day-close and open the fresh parity-first sitting.
 commit e460d3d Seat Claude afternoon four asks and close the doorway Status park.
 commit 434755b Open proven-seat G1 with a named Genode crossing spike.
 commit 9f1c911 Record git nib 434755b on the TASKS living header.
-commit f3a604d Seat G1 toolchain fetch witness and evening Claude handoff.
+commit b790881 Seat G1 toolchain fetch witness and evening Claude handoff.
 push remotes origin github gp36-codeberg gp36-github
 
 section host_printouts
