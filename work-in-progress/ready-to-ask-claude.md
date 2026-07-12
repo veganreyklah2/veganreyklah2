@@ -1,21 +1,23 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.103300` (IronBeetle seventeen · Linguist Path A)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.102712` (Claude affirms seventeen · ring may rest) · filed `103300`
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## IronBeetle silo pilot — **seventeen written · four gaps open**
+## IronBeetle silo pilot — **seventeen written · four gaps open · ring may rest** (`20260712.102712`)
 
-**Delivered:** Episodes 001–002, 004–006, 008–015, 018–021 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tracked beside submodule `tigerbeetle/`). Filed by Kaeden's labels and content — not the speaker's spoken numbering (matklad mis-numbers 004 as "fifth" on stream; corrects it himself).
+**Delivered:** Episodes 001–002, 004–006, 008–015, 018–021 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tip `303363c` · filing `103300`). Filed by Kaeden's labels and content — not the speaker's spoken numbering.
 
-**Gaps (visible, not papered):** **003 · 007 · 016 · 017** await captions — gap-fills on arrival. Ep 015's forward nod to `view_headers` / view-change control flow stays a pointer, never a secondhand write-up of 016.
+**Claude review `102712`:** all eight of part three pass; structure uniform; ep019↔beading and ep021↔Amphora rhymes held. Gap discipline affirmed across four open slots. Ring may rest — gaps are caption fills whenever convenient, not a blocking queue.
 
-**Status:** seventeen on the shelf; **ep004 COST** write-up anchors mesh Horizon 1.6 — beat one honest thread before scaling counts.
+**Gaps (visible, not papered):** **003 · 007 · 016 · 017**.
 
-**matklad.md:** widened see-also — 001–002, 004–006, 008–015, 018–021 written / 003, 007, 016, 017 open; silo home `ironbeetle/`.
+**Status:** seventeen on the shelf; **ep004 COST** still anchors mesh Horizon 1.6.
+
+**matklad.md:** 001–002, 004–006, 008–015, 018–021 written / 003, 007, 016, 017 open.
 
 ---
 
