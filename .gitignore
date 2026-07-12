@@ -116,6 +116,8 @@ tools/fixtures/rish_io/*.txt
 tools/fixtures/session_logs_archive/_sandbox/
 tools/.build/
 tools/.cache/
+# IronBeetle raw captions stay out of git (covered by tools/.cache/; named for the pilot):
+# tools/.cache/ironbeetle-transcripts/
 __pycache__/
 *.pyc
 /gratitude/nix/

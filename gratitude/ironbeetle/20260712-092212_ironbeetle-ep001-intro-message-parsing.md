@@ -2,7 +2,7 @@
 
 **Language:** EN
 **Stamp:** 20260712.092212 UDT (Kaeden's clock, carried forward)
-**Style:** Radiant (see `../../context/RADIANT_STYLE.md`)
+**Style:** Radiant (see `RADIANT_STYLE.md`)
 **Category:** Gratitude — IronBeetle, pilot ring, episode 1 of 2 delivered this round
 **Companion to:** `gratitude/matklad.md`
 

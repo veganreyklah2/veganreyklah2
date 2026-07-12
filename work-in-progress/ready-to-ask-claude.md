@@ -1,9 +1,19 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.093812` (Hoon/Azimuth/Ames verdicts · mesh study bundle)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.095112` (IronBeetle pilot ring resting)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
+
+---
+
+## IronBeetle silo pilot — **ring of two resting** (`20260712.095112`)
+
+**Delivered:** Episodes 001–002 at [`../gratitude/ironbeetle/`](../gratitude/ironbeetle/) (filenames stamp `092212`; tracked beside submodule `tigerbeetle/`).
+
+**Status:** ring of two delivered and resting; **ep003** earned-next on word (wire-to-disk message — Comlink / Mantra storage rhyme); **ep004 (COST)** queued beside mesh Horizon 1.6 — distributed must first beat a single honest thread.
+
+**matklad.md:** see-also pointer to `tigerbeetle/` + silo home at `ironbeetle/`.
 
 ---
 
