@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.055558 | [Full Seam-season summary · four-remote push](20260712-055558_full-summary-four-remote-push.md) | Counsel→T1 map infused into commit; push all remotes |
+| 20260712.055558 | [Full Seam-season summary — tip-430 door through T1](20260712-055558_full-seam-season-summary.md) | Four studies · CapTP decline · giving T0/T1; tip **430** green held |
 | 20260712.054942 | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-field-map.md) | Public `amount`/`from` are top gaps; `to` + consent glass hold |
 | 20260712.054650 | [CapTP decline seated · giving-lane T0](20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
 | 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
