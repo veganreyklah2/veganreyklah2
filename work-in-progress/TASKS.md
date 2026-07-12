@@ -1,13 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (post–Season-B hygiene · product tip **430** · suite tip **432**)
+**Last updated:** 2026-07-12 (Kaeden word · proven-seat G0 · product tip **430** · suite tip **432**)
 
-## Now — product tip **430** · suite tip **432**
+## Now — product tip **430** · suite tip **432** · proven-seat G0
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md).
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Proven-seat **G0** — Sculpt image + GRUB loading on cloud QEMU (TCG). Living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · proven-seat [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md).
 
-**Ordered next (counsel):** proven-seat metal (heaviest) · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words. Hygiene: collision-guard + living-vs-dated + dated_guard seated (`065146` bench-clock).
+**Ordered next:** proven-seat G0-complete on KVM/host · G1 receipt guest · T2 courtesy composition witness · four-remote catch-up on credentialed host · **or hold**. T3 proof still parked.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -21,12 +21,12 @@
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
 | — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
-| — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
-| — | **Giving-lane T2** | **Choice seated** `062656` | Courtesy now · proof as T3 — brief [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
+| — | **Proven-seat G0–G3 metal** | **G0 GREEN** `071405` | Word seated; Sculpt 26.04 + GRUB milestone — hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); G1–G3 ahead |
+| — | **Giving-lane T2** | **Wire opened** `071405` | Choice [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md) · wire note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); composition witness ahead |
+| — | **Steep published-set sentence** | **Seated** `071405` | Living [`steep.md`](../active-designing/steep.md) — peer-offer gate; Granary precedent |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
 | — | **Cloud signing key** | **Seated** `062656` | PUBKEYS Cursor cloud lane-key `SHA256:/ZGdxqU+…` |
 | — | **Post–Season-B hygiene** | **This lap** | Collision-guard · living-vs-dated · dated_guard · toolchain pin · product **430** · suite **432** |
-| — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
 - [x] **Seam study 1 — OCapN idiom beside Comlink** — [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md)
@@ -39,8 +39,10 @@
 - [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
 - [x] **Door 3 first green** — in-process pass admits published read + signed submit; refuses unpublished / lying / lying pass — tip **431** `063213`
 - [x] **Component compile lap** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — tip **432** `063558`
-- [ ] **Proven-seat G1 guest (on word)** — receipt verify-witness GREEN under Genode-hosted path — ER `054342`
-- [ ] **Giving-lane T2 wire (on word)** — courtesy shape seated [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); glass withholding composition awaits word
+- [x] **Proven-seat G0 (Kaeden word)** — Sculpt 26.04 pinned + QEMU reaches GRUB loading (TCG) — [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md) · `tools/proven_seat_g0.rish` (`071405`)
+- [ ] **Proven-seat G0-complete / G1** — full Sculpt UI on KVM/host · then receipt verify-witness under Genode path — ER `054342`
+- [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead
+- [x] **Steep published-set sentence** — living [`steep.md`](../active-designing/steep.md) (`071405`)
 - [x] **Bud / mudra names seated** — `tally/bud.rye` · `tools/slcl4_mudra.rish` · Mudra released from Pottery alternates (`062656`)
 - [x] **Cloud Cursor lane-key in PUBKEYS** — `SHA256:/ZGdxqU+…` (`062656`)
 - [x] **RTAC ledger plain name** — `work-in-progress/ready-to-ask-claude.md` (`062656`)
@@ -48,7 +50,7 @@
 - [x] **Post–Season-B hygiene** — collision-guard · living-vs-dated · dated_guard · toolchain pin in parity/receipt_verify_wasm · hammock living twin · product tip **430** · suite tip **432** (`065146` bench-clock)
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
-- [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
+- [x] **Steep design-stage note (`060112`)** — seated in living [`steep.md`](../active-designing/steep.md) (`071405`): serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; Granary `serve_resin_published` is the precedent.
 
 - [x] **Cursor-bot arc audit (`053412`)** — audited tips 379→430 (PRs #85–#112). **Money code sound:** `linengrow/mala_core.rye` conservation traced by hand — mint is issuer-only (double-guarded: `from`==issuer AND sig verifies against issuer key, holder cannot mint), send strictly conserves (debit-then-credit, underflow-refused); MALA M1 witness GREEN on bench. Naming discipline held (every new module — Granary/Mandi/Greencandy/Anvil/Steep — has a dated seating spec); symlink hygiene held (5 `mala_core.rye` copies all symlink to one canonical, byte-identical); WOV well-witnessed (exit-honesty, TB-pin, host-seam, dual-monarch all in parity). **Fix done + verified, not just recommended:** split three over-length WOV money functions — `publish_root` (72→32), `publish_root_dual` (73→36), `accept_exit_dual` (74→68) — via three shared leaf helpers (`build_attested_bundle`, `write_root_memo`, `append_signed_line`); both WOV witnesses GREEN against refactored code, confirming behavior-preserving. **Left for next hand (named honestly):** `wov_core.rye:run_selftest` (77, test scaffold) and `open_asks_lap5_delivery.rye:run_poster` (73, older orchestration) — stopped at core money-path functions rather than refactor code unverifiable in one pass. Counsel `053412`.
 - [x] **WOV TB cross-check seam retired `055800` (Kaeden approved `055112`)** — pure-Rye WOV core kept (`wov_exit_honesty`, `wov_dual_monarch` only in living parity). Optional TigerBeetle pin/host seam marked superseded dated record (`tools/wov_tb_pin.rish`, `tools/wov_tb_host.rish`, `tools/wov_tb_ensure_binary.sh`, `tools/wov_tb_repl_lab.sh`, `linengrow/wov_tb_host.rye`); two `wov_tb` stanzas removed from `parity.rish`. `gratitude/tigerbeetle` stays whole on the shelf. Seam revivable later if MALA log-and-fold ever needs TB throughput. Counsel [`055112`](../counsel/20260711-055112_claude-counsel-wov-tigerbeetle-recommendation.md).

@@ -2,12 +2,12 @@
 
 *Tip 430 named a horizon door: prioritize the seam path so “anywhere we are found” arrives through one application ABI and a consumer-edge pass, while Caravan stays the named horizon and the fold stays sovereign. This hammock scopes the season in our own words — four studies, two parked rulings, green work left green.*
 
-**Stamp:** living ledger (born `20260712.052806`) · refreshed `20260712.065146` (post–Season-B hygiene — living twin)
+**Stamp:** living ledger (born `20260712.052806`) · refreshed `20260712.071405` (Kaeden word · proven-seat G0 · T2 wire opened · Steep precedent)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Living hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942` · T2 courtesy **choice seated** `062656`; Door 3 **landed** tip **431** `063213`; component compile **landed** tip **432** `063558`; Spritely ally parked; proven-seat metal wait on word · product tip **430** · suite tip **432**
+**Status:** Living hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942` · T2 courtesy **choice seated** `062656` · **wire opened** `071405`; Door 3 **landed** tip **431** `063213`; component compile **landed** tip **432** `063558`; proven-seat **G0 GREEN** `071405` (GRUB milestone; full UI wants KVM); Spritely ally parked · product tip **430** · suite tip **432**
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 **Living law:** [`../context/specs/living-vs-dated.md`](../context/specs/living-vs-dated.md) · frozen dated original [`20260712-052806_seam-season-hammock.md`](20260712-052806_seam-season-hammock.md)
