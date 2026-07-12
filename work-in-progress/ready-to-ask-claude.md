@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.115441` (full summary · tip `de483e0` · doorway GREEN · todos↔TASKS)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.121409` (Claude affirms Bron session-log law · index hygiene · order holds)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -71,7 +71,7 @@
 
 **Counsel:** [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) (addendum: red-team escapes→asserts · `-nic none` · two-lane exit criteria before season · lane→customs graduation)
 
-**Ask closed:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
+**Ask closed:** [`../session-logs/archive/20260712/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/archive/20260712/20260712-004012_framework-metal-g0c-pond-ask.md)
 
 **On word:** G1 jailed · Pond enclosure witness baseline · host one-shot `lane_kvm` on-path G0-complete when granting `/dev/kvm`.
 
@@ -80,6 +80,8 @@
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters · composition **324** GREEN say-lines · tip **432**. Env[256] cleared by fresh Env per chapter. wasmtime 31.0.0 via PATH or `tools/.cache/wasmtime/`.
 
 **`lane_kvm` seated (`113900` word):** `LANE_KVM=false` default · refuse GREEN · D-Bus/systemd escape retired [`../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) · on-path scripts ready behind host kvm grant.
+
+**Bron session-log law (`120007` · Claude affirm `120812` · index hygiene `121409`):** living logs are `.bron`; Markdown folded under `archive/YYYYMMDD/`. Order holds: host on-path G0-complete first, then G1, then Pond. Scheduling note: full metal parity re-pin may ride the same Framework sitting as the KVM grant — Kaeden’s word whether it shares the morning.
 
 ---
 

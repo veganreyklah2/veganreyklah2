@@ -14,9 +14,12 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 **Archive fold:** closed days live under `archive/YYYYMMDD/` (Markdown era fully folded `20260712.120007`). **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (selftest: `rishi/bin/rishi run tools/session_logs_archive_witness.rish`). Convention in [`ORGANIZING.md`](../ORGANIZING.md).
 
+**Flat-link resolution (pre-Bron):** any link to a session-log filename stamped **before** `20260712.120007` that still points at a flat `session-logs/YYYYMMDD-HHMMSS_….md` path resolves under `session-logs/archive/YYYYMMDD/` using the day digits in the filename. Dated counsel / active-designing / specs stay immutable; follow the trail through this convention rather than rewriting those files.
+
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260712.120007 | [Session logs → Bron · md archived by day](20260712-120007_session-logs-bron-law.md) | Rules updated · fold 207+43 · Claude combined bron |
+| 20260712.121409 | [Claude affirms Bron law · four index hygiene fixes](20260712-121409_claude-affirms-bron-index-hygiene.bron) | README+RTAC+convention · order holds · tip d9ee5ed |
+| 20260712.120007 | [Session logs → Bron · md archived by day](20260712-120007_session-logs-bron-law.bron) | Rules updated · fold 207+43 · Claude combined bron |
 | 20260712.115753 | [bron-resins morning-fold essay](archive/20260712/20260712-115753_bron-resins-morning-fold.md) | Chat-printout `.bron` · essay resin · four-remote push |
 | 20260712.115441 | [Full summary — parity · lane_kvm · encrypt park](archive/20260712/20260712-115441_full-summary-lane-kvm-parity.md) | Compass · doorway GREEN · tip de483e0 · todos↔TASKS |
 | 20260712.115230 | [Four-remote push — lane_kvm tip 1b21286](archive/20260712/20260712-115230_four-remote-push-lane-kvm.md) | origin · github · gp36 both · on-path awaits host kvm |
@@ -79,7 +82,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 | 20260711.005519 | [RW-5 Lantern mirrored pair — tips 420 / 421](archive/20260711/20260711-005519_rw5-lantern-pair.md) | Drawn Terminal asks complete_fixture; six-probe contract GREEN |
 | 20260711.004928 | [Commerce steward demo — tip 419](archive/20260711/20260711-004928_commerce-steward-demo.md) | List → settle → Greencandy; livelihood loop in-process |
 | 20260711.004217 | [Blind spots counsel — important, lucrative, dharmic](archive/20260711/20260711-004217_blind-spots-counsel.md) | Commerce citizen brief beats climb-from-418; RW-5 next bench |
-| 20260711.003333 | [Standing next — affirmed](20260711.003333_standing-next-affirm.md) | Menu held: AMD brief · RW-5 · climb from **418** |
+| 20260711.003333 | [Standing next — affirmed](archive/20260711/20260711-003333_standing-next-affirm.md) | Menu held: AMD brief · RW-5 · climb from **418** |
 | 20260711.003041 | [AMD drivers counsel — acknowledged](archive/20260711/20260711-003041_amd-counsel-ack.md) | Standing next: three-seam brief or RW-5 / climb |
 | 20260711.002944 | [Counsel — AMD drivers for Caravan and Aurora?](archive/20260711/20260711-002944_amd-drivers-caravan-aurora-counsel.md) | Enough for host ROCm; thin for Caravan/Aurora |
 | 20260711.001331 | [Full session summary — climbs, counsel, audit, commits](archive/20260711/20260711-001331_full-session-summary-commits.md) | Tips **379**–**418**; PRs **#85**–**#93**; HEAD tip **418** |
