@@ -3,14 +3,14 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260710.001249` (settlement-seat plainly + supersession; parity **206**)
-**Last updated:** 2026-07-11 (consumer-surface protection audit `060112` — published-set gate; WOV TB seam retired `055800`)
+**Version:** `20260712.052806` (Seam season prioritization — tip-430 horizon door)
+**Last updated:** 2026-07-12 (Seam season `052806` — four studies; CapTP-as-fold and ally name parked; green at tip **430** stays green)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
 **Status:** Living roadmap
 
-**Direction:** [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md)
+**Direction:** [`active-designing/20260628-043542_thin-frontend-slc-direction.md`](../active-designing/20260628-043542_thin-frontend-slc-direction.md) · **Seam season hammock:** [`active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) · **Counsel:** [`counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 
 ---
 
@@ -226,9 +226,11 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 | Open Asks civic sight — lifecycle · escrow · consent on Skate | Cursor | **430** ✅; hammock `032657` |
 | Vocabulary ground — TWO_ROOMS seat · canonical gloss · doorway witness | Cursor | **153** ✅ |
 
-**Season (`20260705.203144`):** **Linengrow-via-Comlink** — ground first, then **Comlink device wire** (Rye spine step that unlocks SLC-L2 sealed delivery). Zip **47** seals the astrology silo bench (`e8d1919`).
+**Season (`20260705.203144`):** **Linengrow-via-Comlink** — ground first, then **Comlink device wire** (Rye spine step that unlocks SLC-L2 sealed delivery). Zip **47** seals the astrology silo bench (`e8d1919`). **Landed through tip 430** — civic glass arc closed; hold menu [`counsel/20260711-033228_hold-at-tip-430.md`](../counsel/20260711-033228_hold-at-tip-430.md).
 
-Still on this horizon, after vocabulary ground: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests; **Rishi builtins** as-you-touch.
+**Season (`20260712.052806`):** **Seam season** — tip-430 horizon door named. Universality through the application seam (portable ABI + sealed record carriage + consumer-edge pass), not the hardware summit. Four RTAC studies open; CapTP-as-fold declined on counsel; Spritely teacher now / ally after two-sided witness; Caravan stays named horizon (guest, never merger). Granular boxes in [`TASKS.md`](TASKS.md).
+
+Still on the prior horizon, after vocabulary ground: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests — **landed**; **Rishi builtins** as-you-touch.
 
 ### Ground (thin frontend)
 
@@ -243,18 +245,32 @@ Still on this horizon, after vocabulary ground: **Comlink device wire** — seal
 
 ---
 
+## Horizon 1.5 — Seam season (studies now · `20260712.052806`)
+
+*Opened from the tip-430 horizon-brief door. Studies only; nothing seats CapTP as fold carriage or names an institutional ally today. Pass = door, record = room.*
+
+| Study | What | Status |
+|-------|------|--------|
+| **1** | Capability-protocol idiom (OCapN) beside Comlink’s sealed datagram | RTAC open |
+| **2** | One existing seed through a component-model / Wasm target | RTAC open |
+| **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | RTAC open |
+| **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | RTAC open |
+
+**Parked rulings:** CapTP-as-fold formal decline · Spritely ally name after two-sided green. **Design toward after study 1:** consumer-edge capability pass (access) composed with signed facts (truth).
+
 ## Horizon 2 — Compose the Simples
 
 - [ ] **Pond GUI** — SLC 2
-- [ ] **Comlink v1** — typed, content-named, sealed delivery
+- [ ] **Comlink v1** — typed, content-named, sealed delivery (sealed datagram stays fold carriage; consumer-edge pass is a later composition)
 - [ ] **Brix v1** — lawful composition + content-addressed store
 - [ ] **Tablecloth v1** — storage for Pond applications
-- [ ] **Caravan v1** — supervision tree with capability table
+- [ ] **Caravan v1** — supervision tree with capability table (proven-seat guest is study, never merger)
 - [ ] **Pond v1** — policy as value
 - [ ] **The Forge** — Mantra served, Brushstroke drawn, Comlink replicated
 - [ ] **The TAME Editor** — select-then-act in Skate
 - [ ] **Comlink Remoting** — value-based state sync over UDP
 - [ ] **Unified keys** — one owner seed deriving all keys
+- [ ] **Portable component seam** — one ABI for browser / rented server / later Caravan host (Seam study 2)
 
 ---
 

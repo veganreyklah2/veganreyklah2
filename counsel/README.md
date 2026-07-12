@@ -1,7 +1,7 @@
 # The Counsel Stack
 
 **Language:** EN
-**Last updated:** 2026-07-11 (consumer-surface protection audit `060112`)
+**Last updated:** 2026-07-12 (Seam season three-doors counsel `052806`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
@@ -21,6 +21,7 @@ Filing law: [`../ORGANIZING.md`](../ORGANIZING.md) · reorg proposal: [`20260707
 
 | Stamp | Note | Meaning |
 |-------|------|---------|
+| `20260712.052806` | [Three doors and teacher — Seam season](20260712-052806_claude-counsel-three-doors-and-teacher.md) | OCapN study · CapTP decline · consumer edge · teacher≠ally; prioritization affirmed |
 | `20260711.060112` | [Consumer-surface protection — digest is not a capability](20260711-060112_claude-counsel-consumer-surface-protection-audit.md) | Consent held; Granary published-set gate witnessed; Steep note parked |
 | `20260711.055112` | [WOV/TigerBeetle — retire optional cross-check seam](20260711-055112_claude-counsel-wov-tigerbeetle-recommendation.md) | Pure-Rye core kept; TB seam dated record — **seated** `055800` |
 | `20260711.053412` | [Cursor-bot arc audit — money sound, WOV split, TB tension](20260711-053412_claude-counsel-cursor-bot-arc-audit.md) | Three WOV money fns split+witnessed; WOV/TB self-contained question for Kaeden |

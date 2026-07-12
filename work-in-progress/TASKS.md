@@ -1,7 +1,30 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-11 (consumer-surface protection audit `060112` — consent architecture verified excellent end-to-end; fetch-by-digest capability gap found and closed with witnessed published-set gate)
+**Last updated:** 2026-07-12 (Seam season prioritization `052806` — tip-430 horizon door named; four RTAC studies; CapTP-as-fold and ally name parked)
+
+## Now — Seam season (`052806`)
+
+**Door named from tip-430 hold:** Horizon brief → **Seam season**. Counsel [`052806`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) · hammock [`052806`](../active-designing/20260712-052806_seam-season-hammock.md). Green product work at tip **430** stays green. Logic before carriage.
+
+| Priority | Item | Status | Notes |
+|----------|------|--------|-------|
+| **1** | **OCapN idiom beside Comlink** | **RTAC study** | Door 1 — read beside sealed datagram; unlocks consumer-edge design note |
+| **2** | **Component-model target — one seed** | **RTAC study** | Wasm/component seam; “anywhere” before bare metal |
+| **3** | **Genode / seL4 guest for Rye userland** | **RTAC study** | Proven seat; Caravan stays horizon — guest, never merger |
+| **4** | **GNU Taler for Linengrow giving lane** | **RTAC study** | Payer privacy · payee transparency; complements MALA / USDsui |
+| — | **CapTP as fold carriage** | **Parked decline** | Session ≠ record; accrete-never-break; formal seat after study 1 |
+| — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
+| — | **Consumer-edge pass** | **Design toward** | Pass = door, record = room — after study 1; nothing seats today |
+| — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
+| — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
+
+- [ ] **Seam study 1 — OCapN idiom beside Comlink** — external-research note + design conclusion for consumer-edge pass; Comlink sealed datagram stays fold carriage between our ships
+- [ ] **Seam study 2 — component-model target for one existing seed** — one seed through the portable ABI; sameness is the macro
+- [ ] **Seam study 3 — Genode / seL4 guest witness for Rye userland** — guest on a proven seat; Caravan keeps its name and horizon
+- [ ] **Seam study 4 — GNU Taler for the giving lane** — study beside *Money That Stays Close to Home*; no settlement-seat replacement
+- [ ] **Parked — CapTP-as-fold formal decline** — seat after study 1 returns (counsel already declines)
+- [ ] **Parked — Spritely ally name** — teacher in gratitude now; ally only after two-sided witness
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
@@ -318,7 +341,8 @@
 | **243** | **RW-5 assist integration — glass asks complete_fixture** | **Landed** | assist + sight lantern band via tip-420 ask path; tip **428**; stamp `025301` |
 | **244** | **Open Asks reputation view — consent-before-counting on Skate** | **Landed** | OA-L4 fold on glass; consented **3** · stipend **300**; tip **429**; stamp `030123` |
 | **245** | **Open Asks civic sight — lifecycle · escrow · consent on Skate** | **Landed** | three seated folds on one frame; tip **430**; stamp `032657` |
-| — | **Hold at tip 430** | **Affirmed** | Civic glass arc closed; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) |
+| — | **Hold at tip 430** | **Door named** | Horizon brief → **Seam season** `052806`; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) |
+| — | **Seam season** | **Now** | Four RTAC studies · two parked rulings · green stays green — [`052806`](../active-designing/20260712-052806_seam-season-hammock.md) |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
