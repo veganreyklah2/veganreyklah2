@@ -1,7 +1,7 @@
 # Gratitude
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 3 · Realidream lane gratitude)
+**Last updated:** 2026-07-12 (IronBeetle Ep 001–002 silo `092212`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -18,6 +18,10 @@ When we adapt one of these works into Radiant Style, the rewrite lives elsewhere
   - Source: <https://raw.githubusercontent.com/tigerbeetle/tigerbeetle/refs/heads/main/docs/TIGER_STYLE.md>
 - **`tigerbeetle/`** — TigerBeetle's full source, the financial database whose Tiger Style we adapted into TAME Guidance. We keep the code close to study how its principles live in practice, especially its assertions: the `maybe` dual of `assert`, the precondition blocks gathered at each function's door, and the control-plane / data-plane economy that decides when an expensive check earns a `verify` gate. Those three habits are folded into `../external-research/TAME_GUIDANCE.md`, and the discipline of carrying such craft into Rye's own `std` is recorded in `../strengthening-compiler/9999_STRENGTHENING.md`. Cloned whole and unmodified (rev `59f2b99`), Apache-2.0.
   - Source: <https://github.com/tigerbeetle/tigerbeetle>
+- **`ironbeetle/`** — Our own-voice silos from matklad's IronBeetle live series (pilot Episodes 001–002, stamp `20260712.092212`). Understanding written fresh; captions never quoted. Lives beside the unmodified `tigerbeetle/` submodule so the clone stays teacher-pure.
+  - Ep 001: [`ironbeetle/20260712-092212_ironbeetle-ep001-intro-message-parsing.md`](ironbeetle/20260712-092212_ironbeetle-ep001-intro-message-parsing.md)
+  - Ep 002: [`ironbeetle/20260712-092212_ironbeetle-ep002-double-entry-bookkeeping.md`](ironbeetle/20260712-092212_ironbeetle-ep002-double-entry-bookkeeping.md)
+  - Companion: [`matklad.md`](matklad.md)
 - **`Spec_ulation.md`** — Rich Hickey's 2016 talk on change, versioning, and the commitment to never take something away. It shapes how Rye names its versions, recorded in `../context/specs/rye-versioning-style.md`.
   - Source: <https://raw.githubusercontent.com/matthiasn/talk-transcripts/refs/heads/master/Hickey_Rich/Spec_ulation.md>
 - **`LanguageSystem.md`** — Rich Hickey's 2012 talk on the language of the system: how systems are ensembles of programs that flow values to one another, with enduring names, simple services, and the systems failure model held as the normal case. It shapes how we think about boots, kernels, and networks, honored in `../external-research/20260620-014412_system.md` and voiced directly in `../external-research/yonder/20260617-195812_aurora-boot-riscv.md`.
