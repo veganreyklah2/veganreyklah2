@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
 | 20260712.053324 | [Seam study 1 — OCapN beside Comlink](20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
 | 20260712.053001 | [Seam season prioritization](20260712-053001_seam-season-prioritization.md) | Tip-430 door named; four RTAC studies; CapTP/ally parked; TASKS/ROADMAP updated |
 | 20260711.061200 | [Consumer-surface protection — published-set gate](20260711-061200_consumer-surface-protection-gate.md) | Digest ≠ capability; Granary wire GREEN; Steep note parked |
