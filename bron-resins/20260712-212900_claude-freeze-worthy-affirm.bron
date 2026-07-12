@@ -6,7 +6,7 @@ stamp 20260712.212900
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib 1eeffca
+git_nib 5eee6ee
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -24,8 +24,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go 0032844
-pin git_nib 1eeffca
-pin remotes pushed-four tip 1eeffca
+pin git_nib 5eee6ee
+pin remotes pushed-four tip 5eee6ee
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin pond_sixbar GREEN · scorecard_witness GREEN · col2_probes GREEN
@@ -76,6 +76,8 @@ p REFUSE: ENCLOSURE=pond while bron-resins/pond-supersede-exit.bron is absent �
 section commits_this_go
 title Commits oldest → newest
 commit 68c6f2f Seat Claude freeze-worthy Pond exit card with four accretions and col2 probes.
+commit 1eeffca Record Claude handoff for freeze-worthy affirm after four accretions.
+commit 5eee6ee Fill freeze-worthy Claude handoff with go nib 1eeffca.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
