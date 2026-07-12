@@ -6,7 +6,7 @@ stamp 20260712.220000
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib acc961f
+git_nib 5e12876
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -21,8 +21,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go d7a4049
-pin git_nib acc961f
-pin remotes pushed-four tip acc961f
+pin git_nib 5e12876
+pin remotes pushed-four tip 5e12876
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin monocypher_home vendor/monocypher @ 4.0.3 ab2b16d
