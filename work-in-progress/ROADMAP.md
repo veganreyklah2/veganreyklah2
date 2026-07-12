@@ -228,7 +228,7 @@ Prior fork steps F0–F5 remain documented in [`active-designing/yonder/20260621
 
 **Season (`20260705.203144`):** **Linengrow-via-Comlink** — ground first, then **Comlink device wire** (Rye spine step that unlocks SLC-L2 sealed delivery). Zip **47** seals the astrology silo bench (`e8d1919`). **Landed through tip 430** — civic glass arc closed; hold menu [`counsel/20260711-033228_hold-at-tip-430.md`](../counsel/20260711-033228_hold-at-tip-430.md).
 
-**Season (`20260712.052806`):** **Seam season** — tip-430 horizon door named. Universality through the application seam (portable ABI + sealed record carriage + consumer-edge pass), not the hardware summit. Four RTAC studies open; CapTP-as-fold declined on counsel; Spritely teacher now / ally after two-sided witness; Caravan stays named horizon (guest, never merger). Granular boxes in [`TASKS.md`](TASKS.md).
+**Season (`20260712.052806`):** **Seam season** — tip-430 horizon door named. Universality through the application seam (portable ABI + sealed record carriage + consumer-edge pass), not the hardware summit. **Four RTAC studies landed** through `054521`. CapTP-as-fold declined on counsel (formal seat awaits word); Spritely teacher now / ally after two-sided witness; Caravan stays named horizon (guest, never merger); giving-lane asymmetry filed (private payer · transparent payee). Granular boxes in [`TASKS.md`](TASKS.md).
 
 Still on the prior horizon, after vocabulary ground: **Comlink device wire** — sealed datagram over virtio-net between two QEMU guests — **landed**; **Rishi builtins** as-you-touch.
 
@@ -254,9 +254,9 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 | **1** | Capability-protocol idiom (OCapN) beside Comlink’s sealed datagram | **Landed** [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **2** | One existing seed through a component-model / Wasm target | **Landed** [`054135`](../external-research/20260712-054135_component-model-one-seed.md) — **`receipt_core`** |
 | **3** | Proven-seat guest (Genode / seL4) for Rye userland — Caravan stays horizon | **Landed** [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
-| **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | RTAC open |
+| **4** | Giving-asymmetric money (GNU Taler) for Linengrow’s giving lane | **Landed** [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) |
 
-**Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** (study 1 affirmed) · Spritely ally name after two-sided green. **Door 3:** consumer-edge pass design conclusion + test plan in study 1 — code waits on word. **Component compile lap:** waits on word (pick seated as understanding). **Proven-seat G0–G3:** waits on word + machine.
+**Four Seam studies complete.** **Parked rulings:** CapTP-as-fold formal decline **ready for Kaeden’s word** · Spritely ally after two-sided green. **Parked metal/prose:** Door 3 · component compile · proven-seat G0–G3 · giving-lane T0–T2.
 
 ## Horizon 2 — Compose the Simples
 

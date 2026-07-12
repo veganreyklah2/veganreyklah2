@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — prioritization seated; studies 1–3 landed; study 4 open; session-idiom-as-fold formal decline **ready for Kaeden**; institutional-ally name parked; component compile + proven-seat G0–G3 wait on word
+**Status:** Hammock — prioritization seated; **studies 1–4 landed**; session-idiom-as-fold formal decline **ready for Kaeden**; institutional-ally name parked; Door 3 · component compile · proven-seat G0–G3 · giving T0–T2 wait on word
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 
@@ -24,7 +24,7 @@
 | **1** | Capability-protocol idiom beside Comlink’s sealed datagram | `external-research/` (named teachers stay there) | Consumer-edge design note | **Landed** [`../external-research/20260712-053324_ocapn-beside-comlink.md`](../external-research/20260712-053324_ocapn-beside-comlink.md) |
 | **2** | One existing seed through a component-model target | `external-research/` (portable ABI lineage) | “Anywhere” before bare metal | **Landed** [`../external-research/20260712-054135_component-model-one-seed.md`](../external-research/20260712-054135_component-model-one-seed.md) — pick **receipt verify-witness** |
 | **3** | Proven-seat guest for Rye userland — Caravan stays horizon | `external-research/` (verified microkernel lineage) | Guest, never merger | **Landed** [`../external-research/20260712-054342_proven-seat-guest-genode-sel4.md`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) |
-| **4** | Giving-asymmetric money for Linengrow’s giving lane | `external-research/` beside money-close-to-home | Complements MALA / settlement seat | Open |
+| **4** | Giving-asymmetric money for Linengrow’s giving lane | `external-research/` beside money-close-to-home | Complements MALA / settlement seat | **Landed** [`../external-research/20260712-054521_taler-giving-lane-asymmetry.md`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md) |
 
 Logic before carriage throughout. Each study lands as understanding + a short design conclusion; none ships a new wire or renames a module.
 
