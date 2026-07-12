@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (docs PROVEN_SEAT landed · signed-Kumara resting)
+**Last updated:** 2026-07-12 (docs ENCLOSURE landed · signed-Kumara resting)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -16,7 +16,7 @@
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
 4. ~~**Signed-Kumara**~~ — **resting** `220400` · GREEN · seam-C law named · Rye-body shim parked
-5. **Docs compression layer** — `docs/README.md` + `docs/PROVEN_SEAT.md` landed; next SLC: `docs/ENCLOSURE.md` (then small two · lint)
+5. **Docs compression layer** — `docs/README.md` · `PROVEN_SEAT.md` · `ENCLOSURE.md` landed; next SLC: `VENDORING` · `WITNESS_PATTERNS` · lint
 6. **Morning kg:** living-docs lint advisory naming (thrice earned) — proposed `tools/living_docs_lint.rish`
 7. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
 8. Karpathy / ai-memory dispositions · forge courtesy

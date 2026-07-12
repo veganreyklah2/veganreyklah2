@@ -22,7 +22,7 @@ Docs carry **no load-bearing pins** — every fingerprint cites a witness or MET
 | Page | Grade | Role |
 |------|-------|------|
 | [`PROVEN_SEAT.md`](PROVEN_SEAT.md) | guide · ≤300 | Proven-seat ladder — G0 through signed-Kumara |
-| `ENCLOSURE.md` | guide · ≤300 | *not yet* — enclosure · pond · lane_kvm custody |
+| [`ENCLOSURE.md`](ENCLOSURE.md) | guide · ≤300 | Enclosure · pond · lane_kvm · supersede season |
 | `VENDORING.md` | recipe · ≤150 | *not yet* — vendor · gratitude · cache |
 | `WITNESS_PATTERNS.md` | thin · ≤120 | *not yet* — patterns → TAME_GUIDANCE |
 
