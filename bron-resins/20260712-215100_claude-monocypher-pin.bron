@@ -6,7 +6,7 @@ stamp 20260712.215100
 voice Rio 3
 editor Cursor
 model Cursor Grok 4.5
-git_nib 82be9b0
+git_nib e94fca7
 product_nib 430
 suite_nib 432
 parity_host_repin GREEN
@@ -23,8 +23,8 @@ pin product_nib 430
 pin suite_nib 432
 pin parity_host_repin 20260712.193958 GREEN
 pin git_before_this_go 85c79ef
-pin git_nib 82be9b0
-pin remotes pushed-four tip 82be9b0
+pin git_nib e94fca7
+pin remotes pushed-four tip e94fca7
 pin teacher_ai_jail v1.12.0
 pin genode_home vendor/genode @ 492a510
 pin monocypher_home vendor/monocypher
@@ -62,6 +62,7 @@ p GREEN: signed-Kumara fetch — pin 4.0.3 @ ab2b16d…; red_avoid=HOLD; fixture
 section commits_this_go
 title Commits oldest → newest
 commit 82be9b0 Pin Monocypher 4.0.3 for signed-Kumara and shape its three-assert fetch.
+commit e94fca7 Record Claude handoff for the Monocypher 4.0.3 pin.
 push remotes origin github gp36-codeberg gp36-github
 
 section open_now
