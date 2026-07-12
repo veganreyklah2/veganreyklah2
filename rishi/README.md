@@ -3,7 +3,7 @@
 **Version:** `20260620.153812` (Rye chronological stamp)
 **Last updated:** 2026-07-10 (Radiant Style pass round 2)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
-**Status:** First version — small, runnable, and growing
+**Status:** Checkable — shell, small and growing
 
 ---
 

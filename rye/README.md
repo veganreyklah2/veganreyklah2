@@ -4,7 +4,7 @@
 **Version:** `20260620.033912` (Rye chronological stamp)
 **Last updated:** 2026-07-10 (Radiant Style pass round 2)
 **Style:** Radiant prose (see `../context/RADIANT_STYLE.md`); code in TAME Guidance (`../external-research/TAME_GUIDANCE.md`)
-**Status:** Living
+**Status:** Checkable — living language module
 
 ---
 

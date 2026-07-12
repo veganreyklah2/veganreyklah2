@@ -3,6 +3,7 @@
 **Language:** EN
 **Last updated:** 2026-07-10 (Radiant Style pass round 2 · `maybe`/`no_padding` seated)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Status:** Checkable — bounded garden allocator
 
 **Tally is where bounds live.** A garden is a region of memory with a stated start, length, and end — bump allocation lands inside it or fails cleanly, and clearing it releases everything at once. Every hosted seed and tool in this tree reaches for a Tally garden rather than `std.heap.ArenaAllocator` directly, so the one owned name carries the one law: bounded, named, and cleared whole.
 

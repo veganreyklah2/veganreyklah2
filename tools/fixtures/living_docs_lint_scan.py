@@ -5,7 +5,7 @@ Always exits 0 — print advisories every parity run; never fail the witness.
 Hardening horizon: link-breaks may earn a gate once the shelf proves stable.
 
 Duties:
-  1. Retired LEXICON / Radiant words in living-voice lines (word-boundary)
+  1. Retired LEXICON / Radiant words in living-voice lines (word-boundary; keeps.txt exemptions)
   2. Broken relative markdown links
   3. Orphan roster pages (no inbound link from roster + docs/README)
   4. Status room on rostered living pages (head-30)
@@ -38,6 +38,30 @@ RETIRED_WORDS = [
     r"\bgit_tip\b",
 ]
 RETIRED_RE = re.compile("|".join(RETIRED_WORDS), re.IGNORECASE)
+
+
+def load_keeps() -> list[tuple[str, re.Pattern[str]]]:
+    keeps_path = ROOT / "tools/fixtures/living_docs_lint_keeps.txt"
+    if not keeps_path.is_file():
+        return []
+    out: list[tuple[str, re.Pattern[str]]] = []
+    for raw in keeps_path.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "\t" not in line:
+            continue
+        path, pat = line.split("\t", 1)
+        out.append((path.strip(), re.compile(pat.strip())))
+    return out
+
+
+def kept_line(rel: str, line: str, keeps: list[tuple[str, re.Pattern[str]]]) -> bool:
+    for path, pat in keeps:
+        if rel == path and pat.search(line):
+            return True
+    return False
+
 
 LINK_RE = re.compile(r"\]\(([^)]+)\)")
 FENCE_RE = re.compile(r"^```", re.MULTILINE)
@@ -112,13 +136,18 @@ def resolve_link(src: Path, target: str) -> Path | None:
 
 
 def duty1_retired(paths: list[Path]) -> int:
+    keeps = load_keeps()
     n = 0
     for p in paths:
+        rel = str(p.relative_to(ROOT))
         text = strip_fences(p.read_text(encoding="utf-8", errors="replace"))
         for i, line in enumerate(text.splitlines(), 1):
-            if RETIRED_RE.search(line):
-                print(f"ADVISE duty1 retired-word {p.relative_to(ROOT)}:{i}: {line.strip()[:100]}")
-                n += 1
+            if not RETIRED_RE.search(line):
+                continue
+            if kept_line(rel, line, keeps):
+                continue
+            print(f"ADVISE duty1 retired-word {rel}:{i}: {line.strip()[:100]}")
+            n += 1
     if n == 0:
         print("OK   duty1 retired LEXICON words — none on roster")
     else:
@@ -150,6 +179,9 @@ def duty3_orphans(paths: list[Path]) -> int:
     index = ROOT / "docs/README.md"
     sources = [p for p in paths if p != index]
     sources.append(index)
+    organizing = ROOT / "ORGANIZING.md"
+    if organizing.is_file():
+        sources.append(organizing)
     for p in sources:
         text = p.read_text(encoding="utf-8", errors="replace")
         for m in LINK_RE.finditer(text):

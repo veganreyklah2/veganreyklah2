@@ -3,6 +3,7 @@
 **Language:** EN
 **Last updated:** 2026-07-10 (Radiant pass `182821`; Granary weave view `163557`; customs first policy lap `161125`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Status:** Checkable — enclosure applications floor
 
 ---
 

@@ -58,8 +58,22 @@ case "${1:-}" in
     fetch "https://www.reaper.fm/about.php" "$DOCS/about-features.md" "REAPER — features and technical summary"
     fetch "https://www.reaper.fm/sdk/reascript/reascript.php" "$DOCS/reascript.md" "ReaScript — scripting and extension API"
     ;;
+  karpathy-llm-wiki)
+    OUT="$ROOT/gratitude/karpathy/llm-wiki.md"
+    mkdir -p "$(dirname "$OUT")"
+    body="$(curl -fsSL "https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw")"
+    {
+      printf '%s\n\n' "# LLM Wiki (study copy)"
+      printf '**Source:** <%s>  \n' "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+      printf '**Fetched:** %s  \n' "$STAMP"
+      printf '%s\n\n' "**License:** Public gist by Andrej Karpathy; study copy for gratitude only — do not treat as our voice."
+      printf '%s\n\n' "---"
+      printf '%s\n' "$body"
+    } >"$OUT"
+    echo "wrote $OUT"
+    ;;
   *)
-    echo "usage: $0 reaper" >&2
+    echo "usage: $0 reaper|karpathy-llm-wiki" >&2
     exit 1
     ;;
 esac

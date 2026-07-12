@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.223300 | [Living-docs keeper — three folds GREEN](20260712-223300_living-docs-keeper-folds.bron) | Keeps-list · module Status · dispositions park closed |
 | 20260712.222800 | [Docs design-to-shipped — Status · living_docs_lint](20260712-222800_docs-lint-seated.bron) | Five Status lines · lint seated · doorway join |
 | 20260712.222700 | [Go — ship 222700 docs-complete bron · four remotes](20260712-222700_go-witness-patterns.bron) | Push 4fa8363 · docs go-trace closed |
 | 20260712.222700 | [Go WITNESS_PATTERNS — docs shelf complete · four remotes](20260712-222700_go-witness-patterns.bron) | Push 580f028 · five pages live · blurman guard |

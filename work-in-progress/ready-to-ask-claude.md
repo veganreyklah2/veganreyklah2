@@ -93,7 +93,7 @@
 
 **Claude `144519` (handoff [`../bron-resins/20260712-143946_claude-afternoon-onpath-parity.bron`](../bron-resins/20260712-143946_claude-afternoon-onpath-parity.bron) · walked `ff35220` Good · study pin v1.12.0):** all four asks cleared. (1) **Park affirmed** — two reds in one full-suite sitting parks; doorway Status fix + `.err` observability is the right last mechanical close; nothing else in this sitting. (2) **argv-direct law affirmed** — assert `.ok` first, GREEN on the stream the tool speaks (`.err` for `std.debug.print`, `.out` for `say`); decline `run-environ` / mkdir builtins until a need a child process cannot serve. (3) **Order holds, sharpened** — after go: metal parity parked until a *fresh* Framework sitting whose **first act** is the re-pin; then G1 on word, Pond after. (4) **Route two stays parked** — graduation trigger: open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word, whichever first. Doorway FAIL on the `130300` note owned as counsel-seating miss caught by the suite.
 
-**Claude `182752` day-close:** verified `e460d3d` Good · route-probe Status Checkable with enclosure pair + graduation trigger · TASKS order holds. Sitting closes clean. Nothing open that wants Claude before the fresh Framework tee; check-ins before G1 and Route two remain seated. Two teachers on the shelf still await Kaeden word (Karpathy gist · ai-memory).
+**Claude `182752` day-close:** verified `e460d3d` Good · route-probe Status Checkable with enclosure pair + graduation trigger · TASKS order holds. Sitting closes clean. Nothing open that wants Claude before the fresh Framework tee; check-ins before G1 and Route two remain seated.
 
 **Host metal parity re-pin `193958`:** full suite **GREEN** at git nib `826bcea` — chapter 1 GREEN · chapter 2 GREEN · full witness suite under Env binding ceiling. Tee log `tools/.cache/parity-host.log`. Fresh-sitting first act **closed**. Go `ee1c37f`.
 
@@ -127,16 +127,9 @@
 
 **Claude `220400` resting affirm:** signed-Kumara **rests** — no one-line. Reframe: Rye already freestanding (Aurora); Genode wants a linked runtime, not syscalls — seam-C is the thinnest plank; meaning stayed in Rye. Horizon: Rye-body+C-shim (trigger when logic outgrows seam-C or second Genode guest) · Zig genode std layer · own seat via Aurora/Puddle. Morning: living-docs lint first; parity-chapter word is Kaeden’s over coffee. Counsel [`../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md).
 
-**Docs compression layer — shipped:** five pages under ceiling · [`living_docs_lint.rish`](../tools/living_docs_lint.rish) seated (ratchet-advisory · five duties) · doorway roster joins `docs/` · Status Checkable on every page.
+**Docs compression layer — shipped:** five pages under ceiling · [`living_docs_lint.rish`](../tools/living_docs_lint.rish) seated (ratchet-advisory · five duties) · doorway roster joins `docs/` · Status Checkable on every page · **keeper folds GREEN** `223300` (keeps-list · module Status · ORGANIZING inbound · Karpathy/ai-memory dispositions closed).
 
-**ai-jail pin `131200`:** release **v1.12.0** binary under `tools/.cache/bin/ai-jail` · tarball sha256 `91458f15…dc21` verified · `AIJAIL_BIN` set in personal enclosure.conf · study submodule at tag `v1.12.0`. Route one still closed at 1.12.0. Takes effect next host `cursor-jail.sh` launch. Wrapper `--version` echo at launch **awaits word**.
-
-**Claude `131200` — Karpathy gist + ai-memory (await Kaeden word):**
-- Tree already runs the gist pattern (often stricter: dated_guard, Bron stream, counsel/). Gains are deltas, not adoption.
-- **Lint advisory** (retired LEXICON words · broken relative links · zero-inbound living pages) as ratchet print-on-parity — **name parked**.
-- **Compression test:** a wiki page earns place only when it compresses facts scattered across many sources (aparigraha on docs).
-- **ai-memory:** study now, adopt nothing; daemon = second unsigned authority + Docker — park until pipeline round as teacher for Mantra/Weave session-memory projection. Silo now (when worded): rules-vs-facts classifier sentence into session-log rules.
-- Dispositions on word: gist → gratitude + distillation · ai-memory study shelf beside sibling · lint lap when named · daemon parked.
+**Karpathy gist + ai-memory — closed `223300`:** gist → [`gratitude/karpathy/`](../gratitude/karpathy/) · distillation [`20260712-223300`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md) · ai-memory study shelf [`gratitude/ai-memory/`](../gratitude/ai-memory/) · daemon still parked.
 
 ---
 

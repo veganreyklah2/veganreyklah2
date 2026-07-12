@@ -2,7 +2,7 @@
 
 **Language:** EN
 **Last updated:** 2026-07-07
-**Status:** Reference front door — canon `20260707.011812`; normative spec in `context/specs/20260707-011412_mantra-referential-namespace-reference.md`
+**Status:** Checkable — referential namespace front door
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---

@@ -1,7 +1,7 @@
 # Gratitude
 
 **Language:** EN
-**Last updated:** 2026-07-12 (IronBeetle silo complete — thirty-four · five gaps · `105212`)
+**Last updated:** 2026-07-12 (Karpathy gist · ai-memory study shelf · living-docs keeper folds)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -54,6 +54,10 @@ When we adapt one of these works into Radiant Style, the rewrite lives elsewhere
   - Source: <https://github.com/ziglang/zig>
 - **`ai-jail/`** — Fabio Akita's sandbox wrapper for AI coding agents. It layers Linux's own isolation primitives — `bwrap` namespaces, Landlock filesystem rules, seccomp syscall filtering, and resource limits — so an agent reaches only the paths you allow. It is the very sandbox we work inside, and it seeds **Pond**, our gentle TAME Rye reimplementation, explored in `../external-research/yonder/20260617-201612_useful-utilities.md`. Cloned whole and unmodified, GPLv3.
   - Source: <https://github.com/akitaonrails/ai-jail>
+- **`ai-memory/`** — study shelf only (README beside `ai-jail/`). Docker daemon for agent session memory — adopt nothing; parked until Mantra/Weave projection round. See [`ai-memory/README.md`](ai-memory/README.md).
+  - Source: <https://github.com/akitaonrails/ai-memory>
+- **`karpathy/`** — Andrej Karpathy's **LLM Wiki** gist (public). Study copy [`karpathy/llm-wiki.md`](karpathy/llm-wiki.md); distillation [`../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md). Refresh: `tools/fetch_gratitude_web.sh karpathy-llm-wiki`.
+  - Source: <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>
 
 ### The networking and social study (`985`, `984`)
 

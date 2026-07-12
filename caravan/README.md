@@ -3,6 +3,7 @@
 **Language:** EN
 **Last updated:** 2026-07-10 (Radiant Style pass round 2 · host mirror under supervision)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
+**Status:** Checkable — process supervision ladder
 
 **Caravan supervises.** It watches a child process, restarts it when it falls, and grows — one accretion at a time — toward the fuller shape a real service needs: bounded memory per child, more than one child, ordered startup, a named capability table, and a real exit-code vocabulary that tells restart-on-fall apart from an ordinary cycle and a deliberate stop.
 
@@ -29,7 +30,7 @@ A supervisor that only knows "zero means done, anything else means retry" stalls
 
 ## Held
 
-Extended-run stability (dozens of supervised cycles, watched for resource growth) waits for a genuine indefinite consumer to make the longer run mean something — see [`counsel/20260707-185112_claude-counsel-tools-census-and-maybe-design.md`](../counsel/20260707-185112_claude-counsel-tools-census-and-maybe-design.md) for the reasoning. Nothing here reaches toward Pond's policy layer or Brix's composition layer; Caravan supervises processes, and stops exactly there.
+Extended-run stability (dozens of supervised cycles, watched for resource growth) waits for a genuine indefinite consumer to make the longer run mean something — see [`counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md`](../counsel/20260707-195912_claude-counsel-tools-census-and-sh-rish-boundary.md) for the reasoning. Nothing here reaches toward Pond's policy layer or Brix's composition layer; Caravan supervises processes, and stops exactly there.
 
 ---
 

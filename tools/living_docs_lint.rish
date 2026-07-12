@@ -5,7 +5,7 @@
 # a gate once the docs shelf proves stable.
 #
 # Duties (fixtures/living_docs_lint_scan.py):
-#   1. retired LEXICON words in living-voice lines (word-boundary)
+#   1. retired LEXICON words in living-voice lines (word-boundary; keeps.txt exemptions)
 #   2. broken relative links on roster
 #   3. orphan roster pages (no inbound from roster + docs/README)
 #   4. Status rooms on rostered living pages

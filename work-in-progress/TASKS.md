@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (living_docs_lint seated · docs Status lines · design-to-shipped)
+**Last updated:** 2026-07-12 (living_docs_lint keeper folds · Karpathy/ai-memory dispositions closed)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -16,9 +16,9 @@
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
 4. ~~**Signed-Kumara**~~ — **resting** `220400` · GREEN · seam-C law named · Rye-body shim parked
-5. ~~**Docs compression layer**~~ — **complete** · `living_docs_lint.rish` seated `222800`
+5. ~~**Docs compression layer**~~ — **complete** · `living_docs_lint.rish` seated `222800` · keeper folds **GREEN** `223300`
 6. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
-7. Karpathy / ai-memory dispositions · forge courtesy
+7. ~~Karpathy / ai-memory dispositions~~ — **closed** `223300` · forge courtesy remains
 8. **Named supersede build word** — only then
 9. Route two / libsodium — parked · Rye-body C-shim on trigger (guest logic outgrows seam-C · or second Genode guest)
 
