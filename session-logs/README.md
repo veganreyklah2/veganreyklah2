@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.123700 | [Claude guidance bron · go](20260712-123700_claude-guidance-bron-go.bron) | Handoff resin · kg log + bron commit/push |
+| 20260712.123200 | [kg on-path — blocked · no kvm](20260712-123200_kg-onpath-blocked-no-kvm.bron) | Refuse GREEN · ai-sandbox kvm absent · host recipe holds |
 | 20260712.122600 | [Claude affirms nib · living residues closed](20260712-122600_claude-affirms-nib-residues.bron) | Living tip→nib · rule polish · nibble boundary |
 | 20260712.121719 | [Seat nib — retire forward tip](20260712-121719_seat-nib-retire-tip.bron) | LEXICON + dual-editor rules · Claude bron |
 | 20260712.121518 | [Kaeden grant — on-path + parity ride-along](20260712-121518_kaeden-grant-onpath-parity.bron) | Word seated · host kvm recipe · refuse stays GREEN in-jail |
