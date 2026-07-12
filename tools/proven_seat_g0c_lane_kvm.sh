@@ -2,9 +2,8 @@
 # proven_seat_g0c_lane_kvm.sh — in-lane G0-complete (counsel 20260712.090512).
 #
 # Requires lane_kvm on + /dev/kvm. Two phases (same sitting):
-#   A) Serial floor — -nographic → file (known-green SeaBIOS→GRUB capture).
-#      One-boot `-display none -serial file:` left a 0-byte log on Framework
-#      20260712; nographic matches the 004012 serial witness shape.
+#   A) Serial floor — -nographic; poll until GRUB loading (grep -aF — portable;
+#      Rishi's PATH often lacks rg).
 #   B) Glass — -display none (VGA kept) + QMP screendump PNG.
 # Both keep -nic none until a worded networking need.
 #
@@ -36,6 +35,11 @@ progress() {
   echo "progress: $*" > /dev/tty 2>/dev/null || true
 }
 
+# Portable: Rishi often runs with PATH=/usr/bin:/bin (no cargo rg).
+serial_has_grub() {
+  grep -aFq 'GRUB loading' "$LOG" 2>/dev/null
+}
+
 if [ ! -f "$IMG" ]; then
   echo "RED: missing $IMG" | tee -a "$META" >&2
   exit 1
@@ -46,28 +50,52 @@ if [ "$hash" != "$EXPECTED" ]; then
   exit 1
 fi
 
-# ── Phase A: serial floor (nographic → log; -nic none) ─────────────────────
-progress "phase A: serial floor — nographic, nic none, up to 90s (SeaBIOS→GRUB)…"
+# ── Phase A: serial floor (nographic; -nic none; early kill on GRUB) ────────
+progress "phase A: serial floor — nographic, nic none (poll up to 90s)…"
 cp -f "$IMG" "$WORK"
 rm -f "$LOG"
-set +e
-timeout 90 qemu-system-x86_64 \
+: >"$LOG"
+
+qemu-system-x86_64 \
   -accel kvm -cpu host -machine q35 -m 4G \
   -drive "format=raw,file=${WORK}" \
   -nic none \
   -boot order=c \
   -nographic \
-  >"$LOG" 2>&1
-set -e
+  >"$LOG" 2>&1 &
+QPID=$!
+
+cleanup_a() {
+  if kill -0 "$QPID" 2>/dev/null; then
+    kill "$QPID" 2>/dev/null || true
+    wait "$QPID" 2>/dev/null || true
+  fi
+}
+trap cleanup_a EXIT
+
+grub=0
+for i in $(seq 1 90); do
+  if serial_has_grub; then
+    progress "phase A: GRUB loading seen after ${i}s"
+    grub=1
+    break
+  fi
+  if [ $((i % 5)) -eq 0 ]; then
+    bytes="$(wc -c <"$LOG" | tr -d ' \n')"
+    progress "phase A: waiting… ${i}/90s serial_bytes=${bytes}"
+  fi
+  sleep 1
+done
+
+cleanup_a
+trap - EXIT
+
 serial_bytes="$(wc -c <"$LOG" | tr -d ' \n')"
 progress "phase A: serial bytes=${serial_bytes}"
-if [ "${serial_bytes}" = "0" ]; then
-  echo "RED: serial log still empty after nographic boot — see $META" | tee -a "$META" >&2
-  exit 1
-fi
-if ! rg -q 'GRUB loading' "$LOG"; then
+if [ "$grub" -ne 1 ] || ! serial_has_grub; then
   echo "RED: serial missing GRUB loading — see $LOG" | tee -a "$META" >&2
-  progress "phase A: serial head:"; head -20 "$LOG" | tee -a "$META" >/dev/tty 2>/dev/null || head -20 "$LOG" | tee -a "$META"
+  progress "phase A: serial head:"
+  head -20 "$LOG" | tee -a "$META" > /dev/tty 2>/dev/null || head -20 "$LOG" | tee -a "$META"
   exit 1
 fi
 echo "serial_floor=GRUB" | tee -a "$META"
@@ -88,13 +116,13 @@ qemu-system-x86_64 \
   >>"$META" 2>&1 &
 QPID=$!
 
-cleanup() {
+cleanup_b() {
   if kill -0 "$QPID" 2>/dev/null; then
     kill "$QPID" 2>/dev/null || true
     wait "$QPID" 2>/dev/null || true
   fi
 }
-trap cleanup EXIT
+trap cleanup_b EXIT
 
 progress "phase B: qemu_pid=$QPID — waiting for QMP (up to 60s)…"
 ready=0
@@ -114,7 +142,6 @@ if [ "$ready" -ne 1 ]; then
   exit 1
 fi
 
-# Give SeaBIOS/GRUB a few seconds of VGA life before screendump.
 progress "phase B: brief settle before screendump (8s)…"
 sleep 8
 progress "phase B: taking QMP screendump…"

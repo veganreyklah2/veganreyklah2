@@ -33,7 +33,7 @@ assert boot.ok else "lane_kvm G0-complete boot failed — see ${cache}/g0c-lane-
 assert boot.out contains "GREEN" else "lane_kvm G0-complete missing GREEN"
 
 say "proven-seat G0-complete (lane_kvm): serial + glass artifacts…"
-let ser = run ["sh" "-c" "test -f ${serial} && rg -q 'GRUB loading' ${serial}"]
+let ser = run ["sh" "-c" "test -f ${serial} && grep -aFq 'GRUB loading' ${serial}"]
 assert ser.ok else "serial missing GRUB loading — see ${serial}"
 let glass_ok = run ["sh" "-c" "test -s ${glass}"]
 assert glass_ok.ok else "missing or empty ${glass}"
