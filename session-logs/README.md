@@ -12,6 +12,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.063213 | [Door 3 consumer-edge pass — tip 431](20260712-063213_door3-consumer-edge-pass.md) | Pass admits published read + signed submit; unpublished/lying refused |
 | 20260712.062656 | [Seat recommendations — bud/mudra, PUBKEYS, T2, RTAC](20260712-062656_seat-recommendations-bud-mudra.md) | Names + lane-key + courtesy T2 seated; SLC-L4 mudra GREEN |
 | 20260712.061012 | [Bud and mudra names — proposed (steps 1–4)](20260712-061012_bud-mudra-rename.md) | Collision red on mudra; proposed spec + LEXICON; code rename stopped |
 | 20260712.060131 | [Merge Seam into main · clean up cursor branches](20260712-060131_merge-main-cleanup-branches.md) | #115 merged; #114 logs kept; stale PRs closed; cursor/* deleted |

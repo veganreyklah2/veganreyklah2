@@ -7,7 +7,7 @@
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME · SLC · compass · wire serves the fold · sameness is the macro
-**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942`; Spritely ally parked; Door 3 · component compile · proven-seat G0–G3 · giving T2 wait on word
+**Status:** Hammock — studies 1–4 landed; CapTP-as-fold **declined** `054650`; giving-lane T0 **seated** · T1 **mapped** `054942` · T2 courtesy **choice seated** `062656`; Door 3 **landed** tip **431** `063213`; Spritely ally parked; component compile · proven-seat metal wait on word
 **Counsel:** [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md)
 **Foundations:** [`../foundations/20260706-022912_the-wire-serves-the-fold.md`](../foundations/20260706-022912_the-wire-serves-the-fold.md) · [`../foundations/20260703-182612_sameness-is-the-macro.md`](../foundations/20260703-182612_sameness-is-the-macro.md) · [`../foundations/20260628-124512_anywhere-we-are-found.md`](../foundations/20260628-124512_anywhere-we-are-found.md) · [`../foundations/20260629-014512_money-that-stays-close-to-home.md`](../foundations/20260629-014512_money-that-stays-close-to-home.md)
 
@@ -38,7 +38,7 @@ Logic before carriage throughout. Each study lands as understanding + a short de
 - Comlink’s sealed datagram keeps carrying the fold between our own ships
 - Granary’s published-set gate is the in-tree ancestor of the pass check
 
-**Door 3 test plan** (code waits on Kaeden): in-process pass admits published read + signed submit; refuses unpublished digest / lying signature — detail in study 1.
+**Door 3** — tip **431** `063213`: in-process pass admits published read + signed submit; refuses unpublished digest / lying signature / lying pass — [`20260712-063213_door3-consumer-edge-pass-hammock.md`](20260712-063213_door3-consumer-edge-pass-hammock.md).
 
 ## Parked rulings (Kaeden’s word)
 

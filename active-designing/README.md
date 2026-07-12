@@ -1,7 +1,7 @@
 # The Active-Designing Stack
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Giving-lane T1 field map `054942`)
+**Last updated:** 2026-07-12 (Door 3 consumer-edge pass `063213`)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Status:** Foundation
 
