@@ -7,7 +7,7 @@ type: reference
 # TAME Guidance — Operational Supplement
 
 **Language:** EN
-**Last updated:** 2026-07-08 (spawn lap 2 complete `033600` · POSIX structural seam closed)
+**Last updated:** 2026-07-12 (post–Season-B hygiene · living hammock twin · dated_guard)
 **Style:** Radiant (see `RADIANT_STYLE.md`)
 **Status:** Active — grow by supplement, earned when the language is ready
 
@@ -398,6 +398,7 @@ These are the machine-checkable rules — the lint surface. The discipline is th
 | Rule | Check |
 |------|-------|
 | **No authored `usize` in published `.rye`** (seam casts blessed) | `tools/width-check.rish` (live, TH-1) |
+| **Dated artifacts on main stay immutable** (unless living ledger header or freeze pointer) | `tools/dated_guard.rish` (live, beside width-check; spec [`living-vs-dated.md`](specs/living-vs-dated.md)) |
 | **Unqualified assert** | `tools/tame-check.rish` (live witness, TH-2c) |
 | **Opening lines** (`const assert` + `const print`, no qualified debug calls) | `tools/opening_lines_witness.rish` (live witness, parity **140** — hosted corpus + `pond/apps/drawn_terminal.rye`) |
 | **At most one designed-not-built functional spec** (`context/specs/*.md` Status) | `tools/designed_not_built_witness.rish` (live witness, parity **143**, Edit 5 ruling `20260703.032812`) |

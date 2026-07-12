@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.062656` (bud/mudra seated · T2 courtesy choice · plain name)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.065146` (post–Season-B hygiene · hammock living twin · collision-guard)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -14,7 +14,7 @@
 | Item | Path |
 |------|------|
 | Uncompressed counsel | [`counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md) |
-| Hammock (our names) | [`active-designing/20260712-052806_seam-season-hammock.md`](../active-designing/20260712-052806_seam-season-hammock.md) |
+| Hammock (our names) | [`active-designing/seam-season-hammock.md`](../active-designing/seam-season-hammock.md) (living) · frozen dated [`052806`](../active-designing/20260712-052806_seam-season-hammock.md) |
 | TASKS / ROADMAP | [`TASKS.md`](TASKS.md) · [`ROADMAP.md`](ROADMAP.md) |
 
 ### Four RTAC studies (smallest-first)

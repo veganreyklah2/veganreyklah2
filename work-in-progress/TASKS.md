@@ -1,17 +1,17 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (receipt-verify Wasmtime tip **432** `063558`)
+**Last updated:** 2026-07-12 (post–Season-B hygiene · product tip **430** · suite tip **432**)
 
-## Now — Portable seam green (**432**) · Door 3 (**431**) · product tip **430**
+## Now — product tip **430** · suite tip **432**
 
-**Standing product green:** tip **430** — Open Asks civic sight. **Suite tip:** **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md).
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md).
 
-**Ordered next (counsel):** proven-seat metal (heaviest) · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words.
+**Ordered next (counsel):** proven-seat metal (heaviest) · four-remote catch-up on credentialed host · **or hold**. T2 wire and T3 proof await their own words. Hygiene: collision-guard + living-vs-dated + dated_guard seated (`065146` bench-clock).
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
-| **1** | **OCapN idiom beside Comlink** | **Landed** `053324` | ER [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md); Door 3 design conclusion + test plan |
+| **1** | **OCapN idiom beside Comlink** | **Landed** `053324` | ER [`053324`](../external-research/20260712-053324_ocapn-beside-comlink.md); Door 3 design conclusion + test plan · product **430** · suite later **431**/**432** |
 | **2** | **Component-model target — one seed** | **Landed** `054135` | ER [`054135`](../external-research/20260712-054135_component-model-one-seed.md); pick = `receipt_core` verify-witness |
 | **3** | **Genode / seL4 guest for Rye userland** | **Landed** `054342` | ER [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md); guest never merger; G0–G3 sketch |
 | **4** | **GNU Taler for Linengrow giving lane** | **Landed** `054521` | ER [`054521`](../external-research/20260712-054521_taler-giving-lane-asymmetry.md); private payer · transparent payee |
@@ -19,12 +19,13 @@
 | — | **Giving-lane T0** | **Seated** `054650` | Invariant in [`money-close-to-home`](../foundations/20260629-014512_money-that-stays-close-to-home.md) |
 | — | **Giving-lane T1** | **Landed** `054942` | OA stipend field map [`054942`](../active-designing/20260712-054942_giving-lane-t1-open-asks-field-map.md) — amount/`from` public = top gaps |
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
-| — | **Consumer-edge pass / Door 3** | **Landed** tip **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
-| — | **Component compile lap** | **Landed** tip **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
+| — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
+| — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
 | — | **Proven-seat G0–G3 metal** | **Parked** | Boot + guest green wait on word + machine — ER `054342` |
 | — | **Giving-lane T2** | **Choice seated** `062656` | Courtesy now · proof as T3 — brief [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md); wire awaits word |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
 | — | **Cloud signing key** | **Seated** `062656` | PUBKEYS Cursor cloud lane-key `SHA256:/ZGdxqU+…` |
+| — | **Post–Season-B hygiene** | **This lap** | Collision-guard · living-vs-dated · dated_guard · toolchain pin · product **430** · suite **432** |
 | — | **Steep design-stage note (`060112`)** | **Parked** | Published-set precedent sentence; awaits Kaeden's word |
 | — | **Rest bench (commerce)** | **Parked** | Live TB · W1/seam B Rest-until unchanged |
 
@@ -44,6 +45,7 @@
 - [x] **Cloud Cursor lane-key in PUBKEYS** — `SHA256:/ZGdxqU+…` (`062656`)
 - [x] **RTAC ledger plain name** — `work-in-progress/ready-to-ask-claude.md` (`062656`)
 - [x] **Giving-lane T2 choice brief** — courtesy now · proof as T3 (`062656`)
+- [x] **Post–Season-B hygiene** — collision-guard · living-vs-dated · dated_guard · toolchain pin in parity/receipt_verify_wasm · hammock living twin · product tip **430** · suite tip **432** (`065146` bench-clock)
 
 - [x] **Consumer-surface protection audit (`060112`)** — the innocent surfaces walked for user protection. **What held:** Open Asks consent is opt-in, self-sovereign, non-overwritable (applicant's own key only, post-completion only, set-once, explicit-grant-only counting, `.none`==`.withhold`==excluded — silence means privacy); civic sight displays aggregates only with `withheld=excluded` visible; Granary sharing is explicit-signed-act only; input glass bounded (400B, silent-refuse correct for typed input); Steep design already privacy-leaning (named peers, no open swarm). **Gap found + closed:** the fetch-by-digest wire (`resin_serve_delivery.rye`) served ANY digest without consulting the registry — digest-as-capability; exposed nothing today (store held only published resins) yet sat one step from a real leak since digests travel into public logs. Fix built + witnessed: `granary_core.rye` gains `digest_is_published` + `serve_resin_published` (+ `error.NotPublished`); both wire paths (selftest round-trip AND live UDP demo host) now gate on the published set; new unwelcome path proves an unpublished resin in the same store is refused over the wire; witness asserts `unpublished digest refused` so parity (line 714) guards it permanently. All GREEN on bench. **Principle seated in code comment:** a digest is an address for verifying content, never a capability for reaching it. Counsel `060112`.
 - [ ] **Steep design-stage note (`060112`)** — Steep inherits the same question at its first peer lap: serving side gates on *pieces explicitly offered to that named peer*, never *any digest the local store holds*; `serve_resin_published` is the in-tree precedent. One sentence in Steep's hammock now vs a protocol change later — recommend the sentence, parks for Kaeden's word.
@@ -360,8 +362,8 @@
 | **243** | **RW-5 assist integration — glass asks complete_fixture** | **Landed** | assist + sight lantern band via tip-420 ask path; tip **428**; stamp `025301` |
 | **244** | **Open Asks reputation view — consent-before-counting on Skate** | **Landed** | OA-L4 fold on glass; consented **3** · stipend **300**; tip **429**; stamp `030123` |
 | **245** | **Open Asks civic sight — lifecycle · escrow · consent on Skate** | **Landed** | three seated folds on one frame; tip **430**; stamp `032657` |
-| — | **Hold at tip 430** | **Door named** | Horizon brief → **Seam season** `052806`; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) |
-| — | **Seam season** | **Now** | Four RTAC studies · two parked rulings · green stays green — [`052806`](../active-designing/20260712-052806_seam-season-hammock.md) |
+| — | **Hold at tip 430** | **Door named** | Horizon brief → **Seam season** `052806`; reopen menu `counsel/20260711-033228_hold-at-tip-430.md` (`033228`) · product **430** · suite later **432** |
+| — | **Seam season** | **Landed through suite 432** | Four RTAC studies · CapTP decline · Door 3 · compile — living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · product tip **430** · suite tip **432** |
 | — | **Rest bench (commerce)** | **Parked** | Live TB — wait for brief; Rest-until (W1/seam B) unchanged |
 | — | **Realidream lane** | Horizon opened | Visual Track in ROADMAP; full viewer still held; thin view + books view are Skate folds |
 | — | Two-backend seam | **Affirmed: wait** | Kaeden `174500`; sovereign framebuffer when Aurora needs a screen |
