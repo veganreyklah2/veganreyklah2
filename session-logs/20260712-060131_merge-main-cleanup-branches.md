@@ -9,8 +9,11 @@ Kaeden asked to merge into `main` and clean up all other branches. Merged PR #11
 
 ## Observations
 
-- `main` carries Seam season + full summary; tip **430** product green stays the product hold beneath Horizon 1.5
-- PR #114 session logs kept; PR itself closed as superseded by merge + preserve
+- `main` tip `216329d` — Seam season via #115 (`ac3433d`) plus preserved #114 logs and this cleanup record
+- Tip **430** product green stays the product hold beneath Horizon 1.5 / Seam season
+- Closed leftover open PRs: #114, #95, #5
+- Deleted **50** remote `origin/cursor/*` branches (seam head already gone from #115 `--delete-branch`; 1 expected miss)
+- Local feature branches removed; working tree is `main` only beside remote `main` refs
 - Writable remotes this cloud: `origin` / `gp36-github` only
 
 ## Files
