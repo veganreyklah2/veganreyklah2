@@ -32,7 +32,8 @@ assert boot.out contains "GREEN" else "G0-complete missing GREEN"
 
 if (args contains "--parity") then say "lane_kvm on-path host: same-sitting parity re-pin…"
 if (args contains "--parity") then let par = run ["sh" "-c" "rishi/bin/rishi run tools/parity.rish"]
-if (args contains "--parity") then assert par.ok else "parity red — pin what printed; red twice parks the sitting (Claude 125200)"
+if (args contains "--parity") then say "lane_kvm on-path host: parity ok=${par.ok} — pin printed composition; red twice parks"
+if (args contains "--parity") then assert par.ok
 if (args contains "--parity") then say "lane_kvm on-path host: parity exit 0 — pin the printed composition count"
 
 say "lane_kvm on-path host: restore refuse floor (conf still off)…"

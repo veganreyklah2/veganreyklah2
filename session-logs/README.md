@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.132900 | [Fix if-then-assert-else UnknownStatement](20260712-132900_fix-if-assert-else.bron) | assert else must not sit under if · on-path parity too |
 | 20260712.132400 | [Fix launch-cursor UndefinedName image](20260712-132400_fix-launch-cursor-undefined-image.bron) | Default binds · RS-3 extract+gpu witness GREEN |
 | 20260712.132000 | [Host on-path Rishi · env one-shot](20260712-132000_onpath-rishi-env-oneshot.bron) | LANE_KVM export wins · launch-cursor --extract · host recipe one line |
 | 20260712.131800 | [kg on-path — image staged · kvm absent](20260712-131800_kg-onpath-image-staged.bron) | Refuse GREEN · sculpt hash match · host recipe ready |
