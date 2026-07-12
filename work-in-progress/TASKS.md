@@ -1,13 +1,15 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Framework metal · proven-seat G0-complete · product tip **430** · suite tip **432**)
+**Last updated:** 2026-07-12 (enclosure ruling `090512` · Brushstroke silo `091012` · tip **430** · suite **432**)
 
-## Now — product tip **430** · suite tip **432** · proven-seat G0-complete
+## Now — product tip **430** · suite tip **432** · proven-seat G0-complete · enclosure A→B
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Door 3 pass tip **431**. Proven-seat **G0-complete** — Sculpt Leitzentrale under Framework host KVM (`004012`). Living hammock [`seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · proven-seat [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md).
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md).
 
-**Ordered next:** Claude ruling — ai-jail widen vs Pond supersede · G1 receipt guest under Genode POSIX · T2 courtesy composition witness · **or hold**. T3 proof still parked. Bare-metal USB = separate word.
+**Ordered next (on word):** resolve metal parity `TooManyBindings` (Claude) · `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
+
+**Metal parity pin `091012`:** suite **RED** — `TooManyBindings` at `lantern_lap23` after **242** GREEN lines; tip **432** standing; full composition green not claimed.
 
 | Priority | Item | Status | Notes |
 |----------|------|--------|-------|
@@ -21,7 +23,7 @@
 | — | **Spritely institutional ally** | **Parked** | Teacher now (gratitude/silo); ally after two-sided green |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
 | — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
-| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` | Framework host KVM · Leitzentrale glass — hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); G1–G3 ahead; enclosure ask to Claude |
+| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` | Framework host KVM · Leitzentrale — hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); enclosure **A→B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md); G1 on word |
 | — | **Giving-lane T2** | **Wire opened** `071405` | Choice [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md) · wire note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); composition witness ahead |
 | — | **Steep published-set sentence** | **Seated** `071405` | Living [`steep.md`](../active-designing/steep.md) — peer-offer gate; Granary precedent |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
@@ -41,8 +43,14 @@
 - [x] **Component compile lap** — `receipt_core` → WIT `receipt-verify` → Wasmtime green + tamper refuse — tip **432** `063558`
 - [x] **Proven-seat G0 (Kaeden word)** — Sculpt 26.04 pinned + QEMU reaches GRUB loading (TCG) — [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md) · `tools/proven_seat_g0.rish` (`071405`)
 - [x] **Proven-seat G0-complete (Framework host KVM)** — Leitzentrale Components graph + glass witness — `tools/proven_seat_g0_complete.rish` (`004012`)
-- [ ] **Claude ruling — ai-jail widen vs Pond supersede** — ask [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
-- [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX — ER `054342` (after enclosure disposition)
+- [x] **Claude ruling — ai-jail widen vs Pond supersede** — **Answered** A-narrow → B [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md)
+- [ ] **Metal parity pin** — `091012`: **RED** TooManyBindings after 242 GREEN; tip **432** standing — Claude on chaptering/bindings before re-claiming suite green
+- [ ] **RTAC — parity TooManyBindings** — living suite exceeded Rishi binding ceiling at `lantern_lap23`
+- [ ] **`lane_kvm` + in-jail G0-complete** — off by default; paired refuse; retire D-Bus path (on word)
+- [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
+- [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
+- [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
+- [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
 - [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead
 - [x] **Steep published-set sentence** — living [`steep.md`](../active-designing/steep.md) (`071405`)
 - [x] **Bud / mudra names seated** — `tally/bud.rye` · `tools/slcl4_mudra.rish` · Mudra released from Pottery alternates (`062656`)

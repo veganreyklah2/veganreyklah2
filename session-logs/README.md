@@ -1,6 +1,8 @@
 # Session logs
 
-Living index for the append-only session stream. Files sort ascending by stamp; this table reads **newest first**.
+Living index for the append-only session stream. This table reads **newest first**.
+
+**Day’s truth is this index’s order, not filename sort.** One-clock stamps sort ascending on disk; a morning stamp such as `004012` can sit above afternoon/evening stamps from the same date in the table when the index is refreshed newest-first — trust the table for sequence within a day.
 
 Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../context/specs/20260627-102012_one-clock-naming-law.md).
 
@@ -12,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.091012 | [Enclosure ruling + Brushstroke silo filed](20260712-091012_enclosure-ruling-brushstroke-silo.md) | A→B disposition · Flax/Bark/Oat/Walnut · metal parity pin |
 | 20260712.004012 | [Framework metal · G0-complete · Pond ask](20260712-004012_framework-metal-g0c-pond-ask.md) | Four remotes · Leitzentrale KVM · ask Claude ai-jail vs Pond |
 | 20260712.072621 | [Full summary · merge #121 · push](20260712-072621_full-summary-merge-push.md) | Fold proven-seat G0 + Framework counsel; remotes pushed |
 | 20260712.072621 | [Full summary — tip 430 through G0 and Framework](20260712-072621_full-summary-through-g0-framework.md) | Seam→Season B→hygiene→word→G0; product **430** · suite **432** |

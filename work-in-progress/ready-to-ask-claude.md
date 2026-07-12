@@ -1,19 +1,37 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.004012` (Framework G0-complete · ai-jail vs Pond ask)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.091012` (enclosure ruling answered · Brushstroke weave silo)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
 ---
 
-## Open ask — enclosure: ai-jail widen vs Pond supersede (`20260712.004012`)
+## Enclosure — **answered** (`20260712.090512`)
 
-**Ask Claude:** Should we widen the **ai-jail** launch (pass `/dev/kvm`, clearer device policy) as an interim, and/or prioritize finishing **Pond** so it supersedes ai-jail with equal-or-stronger TAME safety and the features we need (KVM, GPU/Wayland, signing lanes, customs), following the compass?
+**Disposition:** **A-narrow interim → B supersede-by-witness** — `lane_kvm` (off by default, `/dev/kvm` only, no sessions) as wall-repair; Pond earns the daily seat by refusal-parity, never by feature list.
 
-**Full brief:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
+**Counsel:** [`../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md) (addendum: red-team escapes→asserts · `-nic none` · two-lane exit criteria before season · lane→customs graduation)
 
-**Ground tonight:** proven-seat **G0-complete** on Framework host KVM (Cursor still inside ai-jail without `/dev/kvm`); Pond customs + drawn terminal landed; Pond is not yet the daily agent enclosure.
+**Ask closed:** [`../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md`](../session-logs/20260712-004012_framework-metal-g0c-pond-ask.md)
+
+**On word:** metal parity pin · `lane_kvm` + in-jail G0-complete · G1 jailed · Pond enclosure witness baseline.
+
+**Metal parity pin `091012`:** full suite **RED** — `TooManyBindings` after **242** GREEN lines (`parity.rish` / `lantern_lap23`). Tip **432** standing. Ask Claude: chapter the suite or raise bindings?
+
+---
+
+## Brushstroke × Linengrow weave — **silo filed** (`20260712.091012`)
+
+**Silo:** [`../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md) — six invariants; design-as-value token sheet; three glasses (web · Skate · Genode later).
+
+**Palette (proposed seat):** Flax · Bark · Oat · Walnut — collision census in the silo (Flax = radiance prose only; Bark/Oat/Walnut clean).
+
+**Parked:** Ember (Amber adjacency) · Loam (Pottery alternate — needs release) · Hearth left whole · Stone unavailable (resin law).
+
+**Open RTAC:** web-glass artifact home — `linengrow/` vs `brushstroke/`?
+
+**On word:** `brushstroke/tokens.rye` · `tools/brushstroke_tokens.rish` · CSS generator · gratitude DVUI teacher note.
 
 ---
 
