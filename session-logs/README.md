@@ -12,6 +12,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.064107 | [Full summary · merge stack into main](20260712-064107_full-summary-merge-push.md) | #118 fold; seats→Door3→compile on main; remotes pushed |
+| 20260712.064107 | [Full summary — Seam season through suite tip 432](20260712-064107_full-summary-seam-through-432.md) | Studies·seats·Door 3·Wasmtime; product **430** · suite **432** |
 | 20260712.063558 | [receipt-verify Wasmtime — tip 432](20260712-063558_receipt-verify-wasm.md) | receipt_core guest under Wasmtime; verify-witness + refuse-tampered GREEN |
 | 20260712.063213 | [Door 3 consumer-edge pass — tip 431](20260712-063213_door3-consumer-edge-pass.md) | Pass admits published read + signed submit; unpublished/lying refused |
 | 20260712.062656 | [Seat recommendations — bud/mudra, PUBKEYS, T2, RTAC](20260712-062656_seat-recommendations-bud-mudra.md) | Names + lane-key + courtesy T2 seated; SLC-L4 mudra GREEN |
