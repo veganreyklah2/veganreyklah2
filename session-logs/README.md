@@ -14,6 +14,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.095112 | [IronBeetle pilot ring filed and resting](20260712-095112_ironbeetle-pilot-ring-filed.md) | Ep 001–002 on shelf · ep003/ep004 queued · matklad pointer |
 | 20260712.093812 | [Verdicts + mesh study bundle filed](20260712-093812_verdicts-mesh-bundle.md) | Rye/Kumara/Comlink likes · ER 093812 · ROADMAP 1.6 |
 | 20260712.092212 | [IronBeetle Ep 001–002 siloed](20260712-092212_ironbeetle-ep001-002-silo.md) | gratitude/ironbeetle · matklad see-also · ep003 paused |
 | 20260712.091012 | [Enclosure ruling + Brushstroke silo filed](20260712-091012_enclosure-ruling-brushstroke-silo.md) | A→B disposition · Flax/Bark/Oat/Walnut · metal parity pin |
