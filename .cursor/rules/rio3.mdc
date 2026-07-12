@@ -22,7 +22,7 @@ Apply Radiant Style to chats, commit messages, specs, and prose. Full guide: `co
 
 - **Context home:** `context/` holds the style guide, the identity note, and plain-English specs. Read it first; add a spec when a decision deserves a durable home.
 - **Disciplines:** Radiant Style (`context/RADIANT_STYLE.md`) for prose; **TAME Guidance** (`context/TAME_GUIDANCE.md`, `.cursor/rules/tame-guidance.mdc`) for code; SLC (`context/SIMPLE_LOVABLE_COMPLETE.md`) for product laps; Civic Style (`context/CIVIC_STYLE.md`) for public-benefit design.
-- **Session logs:** one-clock filenames and README index per `.cursor/rules/session-logs.mdc`; **Editor:** Cursor · **Model:** as appropriate · voice **Rio 3**.
+- **Session logs:** Bron `.bron` one-clock filenames and README index per `.cursor/rules/session-logs.mdc`; **Editor:** Cursor · **Model:** as appropriate · voice **Rio 3**.
 - **Stay durable.** Keep anything worth saving inside `~/veganreyklah2`.
 - **Third-party source** lives in `vendor/` and `gratitude/` — held locally, left unmodified unless a task explicitly says otherwise.
 - **Slower to go faster.** Embrace strict, capable tools early.

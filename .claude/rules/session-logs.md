@@ -2,30 +2,56 @@
 
 At the end of **every** response — before finishing the turn — write a session log to `session-logs/`. The log captures the step-by-step reasoning followed before and during any prose writing, repository update, or code implementation, together with the changes made. It is a record kept for years.
 
+## Format — Bron (living law)
+
+**New logs are `.bron`**, not Markdown. Bron carries immutable values at seams (key-value, one field per line, `#` comments, no quotes, no braces). See `active-designing/yonder/20260621-063912_bron-notation.md` and counsel `20260707-222500`.
+
+Historical Markdown logs live under `session-logs/archive/YYYYMMDD/` (folded by day). Do not create new `.md` session logs.
+
 ## Filename
 
-`YYYYMMDD-HHMMSS_short-slug.md` — hyphen stamp in the filename; dot form `YYYYMMDD.HHMMSS` in the file body as `**Stamp:**`.
+`YYYYMMDD-HHMMSS_short-slug.bron` — hyphen stamp in the filename; body field `stamp YYYYMMDD.HHMMSS` (dot form).
 
 **No countdown prefix** (`99999_`, etc.) — retired. One clock only.
 
-Full naming law: `context/specs/20260627-102012_one-clock-naming-law.md`. Files sort ascending by stamp; the living index in `session-logs/README.md` reads newest first.
+Full naming law: `context/specs/20260627-102012_one-clock-naming-law.md` (extension is `.bron` for this stream). Files sort ascending by stamp; the living index in `session-logs/README.md` reads newest first.
 
-When two logs share a second, add `_short-slug` from the header (or from **Prompt:** when H1s match). Derive a missing stamp from the file's first-commit date per the naming law.
+When two logs share a second, add `_short-slug` from `title` (or from `prompt` when titles match). Derive a missing stamp from the file's first-commit date per the naming law.
 
 ## Index
 
-After each new log, prepend a newest-first row to `session-logs/README.md`: stamp, linked title, and one line of meaning drawn from the header.
+After each new log, prepend a newest-first row to `session-logs/README.md`: stamp, linked title (`.bron` path), and one line of meaning drawn from `title` / `obs`.
 
-For a batch hygiene pass or when the index may be stale, run `rye run tools/align_session_logs.rye` — it normalizes headers and rebuilds the full README table.
+Batch hygiene for **archived Markdown** only: `rye run tools/align_session_logs.rye`. Living Bron logs are indexed by hand (or a future Bron-aware aligner).
 
-## Contents
+## Contents (Bron fields)
 
-- **Editor and model** at the top — which editor produced this log and which model powered it. Example: `**Editor:** Cursor · **Model:** Composer · **Voice:** Rio 3` or `**Editor:** Claude Code (Zed) · **Model:** Claude Opus 4.6 · **Voice:** Rio 3`. Reya 2 when Kaeden restores that voice.
-- `**Stamp:**` in dot form (`YYYYMMDD.HHMMSS`) on the line after the H1.
-- The step-by-step **thinking trace** and reasoning followed during the response.
-- **Observations** about the changes, and any decisions or trade-offs taken.
-- A list of the **files** created, modified, or deleted, each with a one-line why.
-- **Next-step recommendation** — one explicit line at the close: *Recommend: keep going to …* when the next bench item is mechanical, single-module, and follows written policy; *Recommend: check in with Claude before …* when it crosses module seams, changes Rishi or value-model behavior, raises a design question no written policy answers, needs an unmade ruling, or reaches for horizon facts. Say why in a phrase.
+Minimum shape (`format session-log-v1`):
+
+```bron
+format session-log-v1
+stamp YYYYMMDD.HHMMSS
+editor Cursor
+model Cursor Grok 4.5
+voice Rio 3
+title short title
+prompt what Kaeden asked
+think step of reasoning
+think another step
+obs observation or trade-off
+file path why-one-line
+recommend keep-going|check-in what and why
+```
+
+- **editor** / **model** / **voice** — which editor and model produced this log (Reya 2 when Kaeden restores that voice).
+- **think** — repeatable; step-by-step reasoning.
+- **obs** — decisions and trade-offs.
+- **file** — repeatable; `path` then why.
+- **recommend** — one close line: `keep-going …` when mechanical and policy-written; `check-in …` when seams, Rishi/value-model, unruled design, or horizon facts.
+
+## Archive fold
+
+Prior (and closed) days' logs live under `session-logs/archive/YYYYMMDD/`. **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (today Markdown-era). Extend the fold for `.bron` when a day closes on Bron logs. Run fold on Kaeden's word.
 
 ## Spirit
 

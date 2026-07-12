@@ -2,268 +2,271 @@
 
 Living index for the append-only session stream. This table reads **newest first**.
 
-**Day’s truth is this index’s order, not filename sort.** One-clock stamps sort ascending on disk; a morning stamp such as `004012` can sit above afternoon/evening stamps from the same date in the table when the index is refreshed newest-first — trust the table for sequence within a day.
+**Living format:** **Bron** (`.bron`) — immutable key-value at the seam. Historical Markdown logs are folded under `archive/YYYYMMDD/`. Rules: [`.cursor/rules/session-logs.mdc`](../.cursor/rules/session-logs.mdc) · [`.claude/rules/session-logs.md`](../.claude/rules/session-logs.md).
+
+**Day’s truth is this index’s order, not filename sort.** One-clock stamps sort ascending on disk; trust the table for sequence within a day.
 
 Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../context/specs/20260627-102012_one-clock-naming-law.md).
 
-**Filename:** `YYYYMMDD-HHMMSS_short-slug.md` — no countdown prefix. **Body:** `**Stamp:**` in dot form (`YYYYMMDD.HHMMSS`); **Editor** and **Model** at the top per `.claude/rules/session-logs.md`.
+**Filename (living):** `YYYYMMDD-HHMMSS_short-slug.bron` — no countdown prefix. **Body:** `format session-log-v1` with `stamp` · `editor` · `model` · `voice` · `think` · `obs` · `file` · `recommend`.
 
-**Commit discipline:** ship the log in the **same commit** as the work it records whenever possible. A follow-up commit only for the log is a last resort. Re-align the archive with `rye run tools/align_session_logs.rye`.
+**Commit discipline:** ship the log in the **same commit** as the work it records whenever possible. A follow-up commit only for the log is a last resort. Re-align **archived Markdown** with `rye run tools/align_session_logs.rye`.
 
-**Archive fold:** prior days live under `archive/YYYYMMDD/`; today's logs stay flat here. **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (selftest: `rishi/bin/rishi run tools/session_logs_archive_witness.rish`). Convention in [`ORGANIZING.md`](../ORGANIZING.md).
+**Archive fold:** closed days live under `archive/YYYYMMDD/` (Markdown era fully folded `20260712.120007`). **Preview:** `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold:** `rishi/bin/rishi run tools/session_logs_archive.rish` (selftest: `rishi/bin/rishi run tools/session_logs_archive_witness.rish`). Convention in [`ORGANIZING.md`](../ORGANIZING.md).
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
-| 20260712.115753 | [bron-resins morning-fold essay](20260712-115753_bron-resins-morning-fold.md) | Chat-printout `.bron` · essay resin · four-remote push |
-| 20260712.115441 | [Full summary — parity · lane_kvm · encrypt park](20260712-115441_full-summary-lane-kvm-parity.md) | Compass · doorway GREEN · tip de483e0 · todos↔TASKS |
-| 20260712.115230 | [Four-remote push — lane_kvm tip 1b21286](20260712-115230_four-remote-push-lane-kvm.md) | origin · github · gp36 both · on-path awaits host kvm |
-| 20260712.115212 | [go — lane_kvm + encrypt-to-identity park](20260712-115212_go-lane-kvm-encrypt-park.md) | Commit A-narrow gate · refuse GREEN · horizon park |
-| 20260712.115100 | [kg again — await go](20260712-115100_kg-await-go.md) | Second affirm · lane_kvm + encrypt park uncommitted |
-| 20260712.114612 | [kg — encrypt park · lane_kvm await go](20260712-114612_kg-encrypt-park-lane-kvm.md) | Affirm light park · uncommitted stack ready |
-| 20260712.114600 | [Encrypt-to-identity light park](20260712-114600_encrypt-to-identity-light-park.md) | Keep capability · decline VetKeys quorum · beside T3/OCapN |
-| 20260712.114500 | [VetKeys takeaway — capability yes · quorum no](20260712-114500_vetkeys-capability-horizon.md) | Encrypt-to-future-identity horizon · decline threshold quorum |
-| 20260712.113900 | [lane_kvm seated — refuse GREEN](20260712-113900_lane-kvm-refuse-green.md) | A-narrow gate · D-Bus retired · on-path ready behind kvm |
-| 20260712.113600 | [Parity chaptered GREEN 324](20260712-113600_parity-chaptered-green-324.md) | Env[256] cleared · tip 432 · wasmtime cache · doorway hygiene |
-| 20260712.105212 | [IronBeetle silo complete — thirty-four](20260712-105212_ironbeetle-silo-complete-thirty-four.md) | Reconcile +17 · five gaps · series otherwise closed |
-| 20260712.102712 | [Claude affirms IronBeetle seventeen — ring may rest](20260712-102712_claude-affirms-ironbeetle-seventeen.md) | Review pass · gaps held · tip already `303363c` |
-| 20260712.103300 | [IronBeetle seventeen + Linguist Path A](20260712-103300_ironbeetle-seventeen-linguist-path-a.md) | Ep 004–021 on shelf · four gaps · `.rye`→Zig remap |
-| 20260712.095112 | [IronBeetle pilot ring filed and resting](20260712-095112_ironbeetle-pilot-ring-filed.md) | Ep 001–002 on shelf · ep003/ep004 queued · matklad pointer |
-| 20260712.093812 | [Verdicts + mesh study bundle filed](20260712-093812_verdicts-mesh-bundle.md) | Rye/Kumara/Comlink likes · ER 093812 · ROADMAP 1.6 |
-| 20260712.092212 | [IronBeetle Ep 001–002 siloed](20260712-092212_ironbeetle-ep001-002-silo.md) | gratitude/ironbeetle · matklad see-also · ep003 paused |
-| 20260712.091012 | [Enclosure ruling + Brushstroke silo filed](20260712-091012_enclosure-ruling-brushstroke-silo.md) | A→B disposition · Flax/Bark/Oat/Walnut · metal parity pin |
-| 20260712.004012 | [Framework metal · G0-complete · Pond ask](20260712-004012_framework-metal-g0c-pond-ask.md) | Four remotes · Leitzentrale KVM · ask Claude ai-jail vs Pond |
-| 20260712.072621 | [Full summary · merge #121 · push](20260712-072621_full-summary-merge-push.md) | Fold proven-seat G0 + Framework counsel; remotes pushed |
-| 20260712.072621 | [Full summary — tip 430 through G0 and Framework](20260712-072621_full-summary-through-g0-framework.md) | Seam→Season B→hygiene→word→G0; product **430** · suite **432** |
-| 20260712.072525 | [Cloud cannot host full Sculpt QEMU — use Framework 16](20260712-072525_cloud-qemu-use-framework16.md) | No `/dev/kvm`; G0-complete/G1 belong on Framework host |
-| 20260712.072452 | [Kaeden word — proven-seat G0 · T2 · Steep](20260712-072452_kaeden-word-proven-seat-g0.md) | Word seated; Sculpt GRUB G0 GREEN; T2 wire opened; Steep living twin |
-| 20260712.065525 | [Post–Season-B hygiene lap](20260712-065525_post-season-b-hygiene.md) | Collision-guard · living-vs-dated · dated_guard; product **430** · suite **432** |
-| 20260712.064227 | [Full summary merged and pushed](20260712-064227_full-summary-merged-pushed.md) | #118 at `3a9f47b`; #116/#117 closed; origin+gp36 pushed |
-| 20260712.064107 | [Full summary · merge stack into main](20260712-064107_full-summary-merge-push.md) | #118 fold; seats→Door3→compile on main; remotes pushed |
-| 20260712.064107 | [Full summary — Seam season through suite tip 432](20260712-064107_full-summary-seam-through-432.md) | Studies·seats·Door 3·Wasmtime; product **430** · suite **432** |
-| 20260712.063558 | [receipt-verify Wasmtime — tip 432](20260712-063558_receipt-verify-wasm.md) | receipt_core guest under Wasmtime; verify-witness + refuse-tampered GREEN |
-| 20260712.063213 | [Door 3 consumer-edge pass — tip 431](20260712-063213_door3-consumer-edge-pass.md) | Pass admits published read + signed submit; unpublished/lying refused |
-| 20260712.062656 | [Seat recommendations — bud/mudra, PUBKEYS, T2, RTAC](20260712-062656_seat-recommendations-bud-mudra.md) | Names + lane-key + courtesy T2 seated; SLC-L4 mudra GREEN |
-| 20260712.061012 | [Bud and mudra names — proposed (steps 1–4)](20260712-061012_bud-mudra-rename.md) | Collision red on mudra; proposed spec + LEXICON; code rename stopped |
-| 20260712.060131 | [Merge Seam into main · clean up cursor branches](20260712-060131_merge-main-cleanup-branches.md) | #115 merged; #114 logs kept; stale PRs closed; cursor/* deleted |
-| 20260712.055558 | [Full Seam-season summary · four-remote push](20260712-055558_full-summary-four-remote-push.md) | Counsel→T1 map infused into commit; push all remotes |
-| 20260712.055558 | [Full Seam-season summary — tip-430 door through T1](20260712-055558_full-seam-season-summary.md) | Four studies · CapTP decline · giving T0/T1; tip **430** green held |
-| 20260712.054942 | [Giving-lane T1 — OA stipend field map](20260712-054942_giving-lane-t1-field-map.md) | Public `amount`/`from` are top gaps; `to` + consent glass hold |
-| 20260712.054650 | [CapTP decline seated · giving-lane T0](20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
-| 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
-| 20260712.054342 | [Seam study 3 — proven-seat guest](20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
-| 20260712.054135 | [Seam study 2 — component-model one seed](20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
-| 20260712.053324 | [Seam study 1 — OCapN beside Comlink](20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
-| 20260712.053001 | [Seam season prioritization](20260712-053001_seam-season-prioritization.md) | Tip-430 door named; four RTAC studies; CapTP/ally parked; TASKS/ROADMAP updated |
-| 20260712.040438 | [Counsel weigh — Claude foundations paths](20260712-040438_counsel-weigh-claude-foundations.md) | Wasm seam, Genode seat, Spritely/OCapN, Taler, NLnet — counsel only |
-| 20260712.040333 | [Commit and push session log](20260712-040333_commit-push-session-log.md) | Shipped pull-check session log; draft PR #114 |
-| 20260712.040312 | [Pull latest changes](20260712-040312_pull-latest-changes.md) | `git pull origin main` — already up to date on `main` |
-| 20260711.061200 | [Consumer-surface protection — published-set gate](20260711-061200_consumer-surface-protection-gate.md) | Digest ≠ capability; Granary wire GREEN; Steep note parked |
-| 20260711.055821 | [Seat WOV TB seam retirement](20260711-055821_seat-wov-tb-seam-retirement.md) | Kaeden approved `055112`; pure-Rye WOV kept; TB dated record |
-| 20260711.054800 | [Apply Claude bot-arc audit — WOV money split](20260711-054800_apply-claude-bot-arc-audit.md) | publish_root helpers; witnesses GREEN; TB question held |
-| 20260711.052639 | [Pull gp36-github tip 430 and sync remotes](20260711-052639_pull-gp36-github-tip-430.md) | FF 224 commits; all four remotes at `6780e39` |
-| 20260711.052338 | [Full Cursor-bot summary — tips 379 → 430 + hold](20260711-052338_full-cursor-bot-summary.md) | PRs #85–#112; civic glass arc; hold at tip **430** |
-| 20260711.033228 | [Hold at tip 430 — OA civic glass arc closed](20260711-033228_hold-at-tip-430.md) | Hold affirmed; reopen menu filed; no invented lap |
-| 20260711.032748 | [Open Asks civic sight — tip 430](20260711-032748_open-asks-civic-sight.md) | L1 · L3 · L4 on one Skate frame; OA civic glass arc closed |
-| 20260711.030243 | [Open Asks reputation view — tip 429](20260711-030243_open-asks-reputation-view.md) | OA-L4 consent-before-counting on Skate; consented 3 · stipend 300 |
-| 20260711.025539 | [RW-5 assist integration — tip 428](20260711-025539_rw5-assist-integration.md) | Assist glass asks complete_fixture; golden frames held |
-| 20260711.015439 | [Open Asks escrow view + compass hygiene — tip 427](20260711-015439_open-asks-escrow-view.md) | Nyasa hold/release on Skate; LEXICON · ROADMAP tip hygiene |
-| 20260711.015030 | [Open Asks view — tip 426](20260711-015030_open-asks-view.md) | OA-L1 closed ask loop on Skate; stipend 100 |
-| 20260711.014419 | [Granary steward sight — tip 425](20260711-014419_granary-steward-sight.md) | Weave + books on one frame; two-roof view+sight arc closed |
-| 20260711.012552 | [Granary weave steward composition — tip 424](20260711-012552_granary-steward-composition.md) | Second roof livelihood on Skate; cash 900 weave-sale |
-| 20260711.011407 | [Steward sight composition — tip 423](20260711-011407_steward-sight-composition.md) | Livelihood + books on one frame; path lead after tip **422** |
-| 20260711.010215 | [Steward composition glass + Cursor SpaceXAI counsel — tip 422](20260711-010215_steward-composition-glass.md) | Durable counsel filed; livelihood loop on one Skate frame |
-| 20260711.005719 | [Counsel — how Rye OS could help Cursor SpaceXAI](20260711-005719_rye-os-helps-cursor-spacexai.md) | Enclosure · witnesses · local inference · agent commerce · Realidream |
-| 20260711.005519 | [RW-5 Lantern mirrored pair — tips 420 / 421](20260711-005519_rw5-lantern-pair.md) | Drawn Terminal asks complete_fixture; six-probe contract GREEN |
-| 20260711.004928 | [Commerce steward demo — tip 419](20260711-004928_commerce-steward-demo.md) | List → settle → Greencandy; livelihood loop in-process |
-| 20260711.004217 | [Blind spots counsel — important, lucrative, dharmic](20260711-004217_blind-spots-counsel.md) | Commerce citizen brief beats climb-from-418; RW-5 next bench |
+| 20260712.120007 | [Session logs → Bron · md archived by day](20260712-120007_session-logs-bron-law.md) | Rules updated · fold 207+43 · Claude combined bron |
+| 20260712.115753 | [bron-resins morning-fold essay](archive/20260712/20260712-115753_bron-resins-morning-fold.md) | Chat-printout `.bron` · essay resin · four-remote push |
+| 20260712.115441 | [Full summary — parity · lane_kvm · encrypt park](archive/20260712/20260712-115441_full-summary-lane-kvm-parity.md) | Compass · doorway GREEN · tip de483e0 · todos↔TASKS |
+| 20260712.115230 | [Four-remote push — lane_kvm tip 1b21286](archive/20260712/20260712-115230_four-remote-push-lane-kvm.md) | origin · github · gp36 both · on-path awaits host kvm |
+| 20260712.115212 | [go — lane_kvm + encrypt-to-identity park](archive/20260712/20260712-115212_go-lane-kvm-encrypt-park.md) | Commit A-narrow gate · refuse GREEN · horizon park |
+| 20260712.115100 | [kg again — await go](archive/20260712/20260712-115100_kg-await-go.md) | Second affirm · lane_kvm + encrypt park uncommitted |
+| 20260712.114612 | [kg — encrypt park · lane_kvm await go](archive/20260712/20260712-114612_kg-encrypt-park-lane-kvm.md) | Affirm light park · uncommitted stack ready |
+| 20260712.114600 | [Encrypt-to-identity light park](archive/20260712/20260712-114600_encrypt-to-identity-light-park.md) | Keep capability · decline VetKeys quorum · beside T3/OCapN |
+| 20260712.114500 | [VetKeys takeaway — capability yes · quorum no](archive/20260712/20260712-114500_vetkeys-capability-horizon.md) | Encrypt-to-future-identity horizon · decline threshold quorum |
+| 20260712.113900 | [lane_kvm seated — refuse GREEN](archive/20260712/20260712-113900_lane-kvm-refuse-green.md) | A-narrow gate · D-Bus retired · on-path ready behind kvm |
+| 20260712.113600 | [Parity chaptered GREEN 324](archive/20260712/20260712-113600_parity-chaptered-green-324.md) | Env[256] cleared · tip 432 · wasmtime cache · doorway hygiene |
+| 20260712.105212 | [IronBeetle silo complete — thirty-four](archive/20260712/20260712-105212_ironbeetle-silo-complete-thirty-four.md) | Reconcile +17 · five gaps · series otherwise closed |
+| 20260712.102712 | [Claude affirms IronBeetle seventeen — ring may rest](archive/20260712/20260712-102712_claude-affirms-ironbeetle-seventeen.md) | Review pass · gaps held · tip already `303363c` |
+| 20260712.103300 | [IronBeetle seventeen + Linguist Path A](archive/20260712/20260712-103300_ironbeetle-seventeen-linguist-path-a.md) | Ep 004–021 on shelf · four gaps · `.rye`→Zig remap |
+| 20260712.095112 | [IronBeetle pilot ring filed and resting](archive/20260712/20260712-095112_ironbeetle-pilot-ring-filed.md) | Ep 001–002 on shelf · ep003/ep004 queued · matklad pointer |
+| 20260712.093812 | [Verdicts + mesh study bundle filed](archive/20260712/20260712-093812_verdicts-mesh-bundle.md) | Rye/Kumara/Comlink likes · ER 093812 · ROADMAP 1.6 |
+| 20260712.092212 | [IronBeetle Ep 001–002 siloed](archive/20260712/20260712-092212_ironbeetle-ep001-002-silo.md) | gratitude/ironbeetle · matklad see-also · ep003 paused |
+| 20260712.091012 | [Enclosure ruling + Brushstroke silo filed](archive/20260712/20260712-091012_enclosure-ruling-brushstroke-silo.md) | A→B disposition · Flax/Bark/Oat/Walnut · metal parity pin |
+| 20260712.004012 | [Framework metal · G0-complete · Pond ask](archive/20260712/20260712-004012_framework-metal-g0c-pond-ask.md) | Four remotes · Leitzentrale KVM · ask Claude ai-jail vs Pond |
+| 20260712.072621 | [Full summary · merge #121 · push](archive/20260712/20260712-072621_full-summary-merge-push.md) | Fold proven-seat G0 + Framework counsel; remotes pushed |
+| 20260712.072621 | [Full summary — tip 430 through G0 and Framework](archive/20260712/20260712-072621_full-summary-through-g0-framework.md) | Seam→Season B→hygiene→word→G0; product **430** · suite **432** |
+| 20260712.072525 | [Cloud cannot host full Sculpt QEMU — use Framework 16](archive/20260712/20260712-072525_cloud-qemu-use-framework16.md) | No `/dev/kvm`; G0-complete/G1 belong on Framework host |
+| 20260712.072452 | [Kaeden word — proven-seat G0 · T2 · Steep](archive/20260712/20260712-072452_kaeden-word-proven-seat-g0.md) | Word seated; Sculpt GRUB G0 GREEN; T2 wire opened; Steep living twin |
+| 20260712.065525 | [Post–Season-B hygiene lap](archive/20260712/20260712-065525_post-season-b-hygiene.md) | Collision-guard · living-vs-dated · dated_guard; product **430** · suite **432** |
+| 20260712.064227 | [Full summary merged and pushed](archive/20260712/20260712-064227_full-summary-merged-pushed.md) | #118 at `3a9f47b`; #116/#117 closed; origin+gp36 pushed |
+| 20260712.064107 | [Full summary · merge stack into main](archive/20260712/20260712-064107_full-summary-merge-push.md) | #118 fold; seats→Door3→compile on main; remotes pushed |
+| 20260712.064107 | [Full summary — Seam season through suite tip 432](archive/20260712/20260712-064107_full-summary-seam-through-432.md) | Studies·seats·Door 3·Wasmtime; product **430** · suite **432** |
+| 20260712.063558 | [receipt-verify Wasmtime — tip 432](archive/20260712/20260712-063558_receipt-verify-wasm.md) | receipt_core guest under Wasmtime; verify-witness + refuse-tampered GREEN |
+| 20260712.063213 | [Door 3 consumer-edge pass — tip 431](archive/20260712/20260712-063213_door3-consumer-edge-pass.md) | Pass admits published read + signed submit; unpublished/lying refused |
+| 20260712.062656 | [Seat recommendations — bud/mudra, PUBKEYS, T2, RTAC](archive/20260712/20260712-062656_seat-recommendations-bud-mudra.md) | Names + lane-key + courtesy T2 seated; SLC-L4 mudra GREEN |
+| 20260712.061012 | [Bud and mudra names — proposed (steps 1–4)](archive/20260712/20260712-061012_bud-mudra-rename.md) | Collision red on mudra; proposed spec + LEXICON; code rename stopped |
+| 20260712.060131 | [Merge Seam into main · clean up cursor branches](archive/20260712/20260712-060131_merge-main-cleanup-branches.md) | #115 merged; #114 logs kept; stale PRs closed; cursor/* deleted |
+| 20260712.055558 | [Full Seam-season summary · four-remote push](archive/20260712/20260712-055558_full-summary-four-remote-push.md) | Counsel→T1 map infused into commit; push all remotes |
+| 20260712.055558 | [Full Seam-season summary — tip-430 door through T1](archive/20260712/20260712-055558_full-seam-season-summary.md) | Four studies · CapTP decline · giving T0/T1; tip **430** green held |
+| 20260712.054942 | [Giving-lane T1 — OA stipend field map](archive/20260712/20260712-054942_giving-lane-t1-field-map.md) | Public `amount`/`from` are top gaps; `to` + consent glass hold |
+| 20260712.054650 | [CapTP decline seated · giving-lane T0](archive/20260712/20260712-054650_captp-decline-giving-t0.md) | Session≠fold carriage declined; private payer · transparent payee in foundations |
+| 20260712.054521 | [Seam study 4 — Taler giving-lane asymmetry](archive/20260712/20260712-054521_seam-study4-taler-giving-lane.md) | Private payer · transparent payee; four Seam studies complete |
+| 20260712.054342 | [Seam study 3 — proven-seat guest](archive/20260712/20260712-054342_seam-study3-proven-seat-guest.md) | Genode/seL4 guest never merger; G0–G3 on receipt_core; Caravan stays horizon |
+| 20260712.054135 | [Seam study 2 — component-model one seed](archive/20260712/20260712-054135_seam-study2-component-one-seed.md) | Pick `receipt_core` verify-witness; Brushstroke canvas twin track |
+| 20260712.053324 | [Seam study 1 — OCapN beside Comlink](archive/20260712/20260712-053324_seam-study1-ocapn-beside-comlink.md) | Session≠record; consumer-edge pass + Door 3 test plan; CapTP decline ready to seat |
+| 20260712.053001 | [Seam season prioritization](archive/20260712/20260712-053001_seam-season-prioritization.md) | Tip-430 door named; four RTAC studies; CapTP/ally parked; TASKS/ROADMAP updated |
+| 20260712.040438 | [Counsel weigh — Claude foundations paths](archive/20260712/20260712-040438_counsel-weigh-claude-foundations.md) | Wasm seam, Genode seat, Spritely/OCapN, Taler, NLnet — counsel only |
+| 20260712.040333 | [Commit and push session log](archive/20260712/20260712-040333_commit-push-session-log.md) | Shipped pull-check session log; draft PR #114 |
+| 20260712.040312 | [Pull latest changes](archive/20260712/20260712-040312_pull-latest-changes.md) | `git pull origin main` — already up to date on `main` |
+| 20260711.061200 | [Consumer-surface protection — published-set gate](archive/20260711/20260711-061200_consumer-surface-protection-gate.md) | Digest ≠ capability; Granary wire GREEN; Steep note parked |
+| 20260711.055821 | [Seat WOV TB seam retirement](archive/20260711/20260711-055821_seat-wov-tb-seam-retirement.md) | Kaeden approved `055112`; pure-Rye WOV kept; TB dated record |
+| 20260711.054800 | [Apply Claude bot-arc audit — WOV money split](archive/20260711/20260711-054800_apply-claude-bot-arc-audit.md) | publish_root helpers; witnesses GREEN; TB question held |
+| 20260711.052639 | [Pull gp36-github tip 430 and sync remotes](archive/20260711/20260711-052639_pull-gp36-github-tip-430.md) | FF 224 commits; all four remotes at `6780e39` |
+| 20260711.052338 | [Full Cursor-bot summary — tips 379 → 430 + hold](archive/20260711/20260711-052338_full-cursor-bot-summary.md) | PRs #85–#112; civic glass arc; hold at tip **430** |
+| 20260711.033228 | [Hold at tip 430 — OA civic glass arc closed](archive/20260711/20260711-033228_hold-at-tip-430.md) | Hold affirmed; reopen menu filed; no invented lap |
+| 20260711.032748 | [Open Asks civic sight — tip 430](archive/20260711/20260711-032748_open-asks-civic-sight.md) | L1 · L3 · L4 on one Skate frame; OA civic glass arc closed |
+| 20260711.030243 | [Open Asks reputation view — tip 429](archive/20260711/20260711-030243_open-asks-reputation-view.md) | OA-L4 consent-before-counting on Skate; consented 3 · stipend 300 |
+| 20260711.025539 | [RW-5 assist integration — tip 428](archive/20260711/20260711-025539_rw5-assist-integration.md) | Assist glass asks complete_fixture; golden frames held |
+| 20260711.015439 | [Open Asks escrow view + compass hygiene — tip 427](archive/20260711/20260711-015439_open-asks-escrow-view.md) | Nyasa hold/release on Skate; LEXICON · ROADMAP tip hygiene |
+| 20260711.015030 | [Open Asks view — tip 426](archive/20260711/20260711-015030_open-asks-view.md) | OA-L1 closed ask loop on Skate; stipend 100 |
+| 20260711.014419 | [Granary steward sight — tip 425](archive/20260711/20260711-014419_granary-steward-sight.md) | Weave + books on one frame; two-roof view+sight arc closed |
+| 20260711.012552 | [Granary weave steward composition — tip 424](archive/20260711/20260711-012552_granary-steward-composition.md) | Second roof livelihood on Skate; cash 900 weave-sale |
+| 20260711.011407 | [Steward sight composition — tip 423](archive/20260711/20260711-011407_steward-sight-composition.md) | Livelihood + books on one frame; path lead after tip **422** |
+| 20260711.010215 | [Steward composition glass + Cursor SpaceXAI counsel — tip 422](archive/20260711/20260711-010215_steward-composition-glass.md) | Durable counsel filed; livelihood loop on one Skate frame |
+| 20260711.005719 | [Counsel — how Rye OS could help Cursor SpaceXAI](archive/20260711/20260711-005719_rye-os-helps-cursor-spacexai.md) | Enclosure · witnesses · local inference · agent commerce · Realidream |
+| 20260711.005519 | [RW-5 Lantern mirrored pair — tips 420 / 421](archive/20260711/20260711-005519_rw5-lantern-pair.md) | Drawn Terminal asks complete_fixture; six-probe contract GREEN |
+| 20260711.004928 | [Commerce steward demo — tip 419](archive/20260711/20260711-004928_commerce-steward-demo.md) | List → settle → Greencandy; livelihood loop in-process |
+| 20260711.004217 | [Blind spots counsel — important, lucrative, dharmic](archive/20260711/20260711-004217_blind-spots-counsel.md) | Commerce citizen brief beats climb-from-418; RW-5 next bench |
 | 20260711.003333 | [Standing next — affirmed](20260711.003333_standing-next-affirm.md) | Menu held: AMD brief · RW-5 · climb from **418** |
-| 20260711.003041 | [AMD drivers counsel — acknowledged](20260711-003041_amd-counsel-ack.md) | Standing next: three-seam brief or RW-5 / climb |
-| 20260711.002944 | [Counsel — AMD drivers for Caravan and Aurora?](20260711-002944_amd-drivers-caravan-aurora-counsel.md) | Enough for host ROCm; thin for Caravan/Aurora |
-| 20260711.001331 | [Full session summary — climbs, counsel, audit, commits](20260711-001331_full-session-summary-commits.md) | Tips **379**–**418**; PRs **#85**–**#93**; HEAD tip **418** |
-| 20260711.001302 | [Happy-zone second pass — Inference Track](20260711-001302_happy-zone-second-pass.md) | Audit `001225`; suite still shaped; next **RW-5** |
-| 20260710.235856 | [Counsel — should we audit the happy-zone foundation?](20260710-235856_happy-zone-audit-counsel.md) | Yes: light second-pass on Inference seams; tip **418** |
-| 20260710.234331 | [Assist/sight glass composition — lap closed](20260710-234331_glass-composition-lap-close.md) | Parity **411**–**418**; blocks · fence-rye · echo · user on glass |
-| 20260710.233026 | [Path counsel — what to open from tip 410](20260710-233026_path-counsel-next-open.md) | Prefer glass composition; ROCm/Rest-until stay gated |
-| 20260710.232810 | [ROCm reminder — not MOCm](20260710-232810_rocm-reminder.md) | Rung **2** is AMD ROCm host seam; horizon |
-| 20260710.232625 | [Fixture deepen 1aj/1ak — lap landed on main](20260710-232625_hardsig-echo-lap-landed.md) | PR **#88** merged; tip **410** on `main` |
-| 20260710.232500 | [Compass climb — hard_sigmoid, rsqrt, hardtanh, cube, echo, user](20260710-232500_compass-climb-hardsig-echo.md) | Parity **403**–**410**; climbs **1aj**/**1ak**; fixture deepen lap closed |
-| 20260710.231501 | [Compass climb — softsign, square, sign, reciprocal, tokens pins](20260710-231501_compass-climb-softsign-tokens.md) | Parity **395**–**402**; climbs **1ah**/**1ai** |
-| 20260710.230739 | [Greencandy lap 4 — filters, cash flow, and Skate views](20260710-230739_greencandy-lap4-close.md) | Parity **387**–**394**; Greencandy lap 4 closed |
-| 20260710.225615 | [Anvil corpus lap 2 — filters, folds, and Skate views](20260710-225615_anvil-corpus-lap2-close.md) | Parity **379**–**386**; Anvil corpus lap 2 closed |
-| 20260710.224805 | [Compass climb — Inference Track lap 1 close](20260710-224805_compass-climb-inference-lap1-close.md) | Parity **371**–**378**; climbs **1af**/**1ag**; lap 1 closed |
-| 20260710.224322 | [Compass climb — softplus, maximum, para+blocks, exception tallies, top_k, frequency_penalty](20260710-224322_compass-climb-softplus-topk.md) | Parity **363**–**370**; climbs **1ad**/**1ae** |
-| 20260710.223639 | [Compass climb — silu, leaky_relu, tally+blocks, second exception reason, stopped_reason pins](20260710-223639_compass-climb-silu-leaky-ex2.md) | Parity **355**–**362**; climbs **1ab**/**1ac** |
-| 20260710.223456 | [Scribble vs Brushstroke — keep both](20260710-223456_scribble-brushstroke-keep-both.md) | Different seams: parse vs draw; both names stay |
-| 20260710.223413 | [Mantrapod stack and architecture](20260710-223413_mantrapod-stack-arch.md) | RISC-V-first map: Aurora·Tally·Caravan·Rishi·Skate; Realidream far horizon |
-| 20260710.221906 | [Mantrapod explained for kids](20260710-221906_mantrapod-for-kids.md) | Kid-facing story of the pocket computer that forgets on purpose |
-| 20260710.220833 | [Machines and organizing thought](20260710-220833_machines-organize-thoughts.md) | Reflection: machines externalize and witness; choosing stays human |
-| 20260710.220706 | [SLC and inference progress document](20260710-220706_slc-inference-progress-doc.md) | Durable brief at tip **354**; pushed to all remotes |
-| 20260710.220459 | [How the inference climb serves the SLCs](20260710-220459_slc-inference-climb-explain.md) | Tip **347**–**354** as Gall growth under SLC-2a glass, not a new product lap |
-| 20260710.215613 | [Compass climb — tanh, gelu, stream pin, fence+heading, exception reason](20260710-215613_compass-climb-tanh-gelu-stream-fence.md) | Parity **347**–**354**; climbs **1z**/**1aa**; Rest-until stays closed |
-| 20260710.214145 | [Compass climb — sigmoid, blocks, exceptions, stopped_reason, softmax](20260710-214145_compass-climb-sigmoid-exception-stop-reason.md) | Parity **339**–**346**; climbs **1x**/**1y** |
-| 20260710.213738 | [Compass climb — pow, tally, sight TB, dual-model, relu, assist BS, require_model](20260710-213738_compass-climb-pow-relu-tb-dual.md) | Parity **331**–**338**; climbs **1v**/**1w** |
-| 20260710.213317 | [Compass climb — exp, depth tally, sight BS, empty allow-list, log, rye+apps, assist P&L, allow_count](20260710-213317_compass-climb-exp-bs-allowlist.md) | Parity **323**–**330**; climbs **1t**/**1u** |
-| 20260710.212715 | [Compass climb — reduce_min, h3, Anvil combos, err_stop/length_stop, sqrt, assist P&L](20260710-212715_compass-climb-reduce-min-h3-err-stop.md) | Parity **315**–**322**; climbs **1r**/**1s** |
-| 20260710.211930 | [Compass climb — clamp, heading depth, assist chart, seed pin, reduce_max, h2, sight P&L, TopPMismatch](20260710-211930_compass-climb-clamp-heading-seed-pin.md) | Parity **307**–**314**; climbs **1p**/**1q** |
-| 20260710.210433 | [Rest-until and Steep naming](20260710-210433_rest-until-steep-naming.md) | Soak → Rest-until; Steep = p2p share horizon |
-| 20260710.200819 | [Compass climb — Lattice abs, apps prefix, assist chart, Lantern temperature pin](20260710-200819_compass-climb-abs-apps-assist-temp.md) | Parity **303**–**306**; then SLC summary |
-| 20260710.200203 | [Compass climb — Lattice mean, rish view, sight chart, Lantern text pin](20260710-200203_compass-climb-mean-rish-sight-text.md) | Parity **299**–**302**; soak closed |
-| 20260710.193358 | [Compass climb — Lattice div, rye view, greencandy prefix, Lantern max_tokens pin](20260710-193358_compass-climb-div-rye-candy-maxtokens.md) | Parity **295**–**298**; soak closed |
-| 20260710.192749 | [Compass climb — Lattice neg, chart view, tools prefix, Lantern prompt pin](20260710-192749_compass-climb-neg-chart-tools-prompt.md) | Parity **291**–**294**; soak closed |
-| 20260710.192018 | [Assist/sight composition — plain fences and journal memos on the glass](20260710-192018_assist-sight-composition-journal-plain.md) | Parity **288**–**290**; composition lap |
-| 20260710.191541 | [Counsel — roadmap standing, UX from foundations, next word](20260710-191541_counsel-roadmap-ux-next.md) | Tip **287**; composition over bolt-accretion |
-| 20260710.191112 | [Compass climb — Lattice sub, journal view, plain view, Lantern stop pin](20260710-191112_compass-climb-sub-journal-plain-stop-pin.md) | Parity **284**–**287**; soak closed |
-| 20260710.190800 | [Compass climb — Lattice copy, rye prefix view, plain snippets, Lantern stop_sequence](20260710-190800_compass-climb-copy-prefix-plain-stop.md) | Parity **280**–**283**; soak closed |
-| 20260710.190319 | [Compass climb — Lattice fill, TB view, fence kinds view, Lantern err_stop](20260710-190319_compass-climb-fill-tb-fence-err-stop.md) | Parity **276**–**279**; soak closed |
-| 20260710.185947 | [Compass climb — Lattice mul, paragraphs view, BS view, Lantern top_p](20260710-185947_compass-climb-mul-para-bs-top-p.md) | Parity **272**–**275**; soak closed |
-| 20260710.185542 | [Compass climb — Lattice transpose, corpus rish, paragraphs, P&L view](20260710-185542_compass-climb-transpose-rish-para-pnl.md) | Parity **268**–**271**; soak closed |
-| 20260710.183352 | [Radiant Style pass round 3 — silo, wire, and composition headers](20260710-183352_radiant-style-pass-round-3.md) | ORGANIZING · Aurora · composition `//!` |
-| 20260710.183147 | [Radiant Style pass round 2 — foundation modules and horizon headings](20260710-183147_radiant-style-pass-round-2.md) | Rye–Manual READMEs; Out of scope → Horizon |
-| 20260710.183107 | [Radiant Style pass landed on main](20260710-183107_radiant-style-pass-landed.md) | PR **#54** merged; living prose tip |
-| 20260710.182821 | [Radiant Style pass — living module docs and comments](20260710-182821_radiant-style-pass-living-docs.md) | Affirmative READMEs, hammocks, `//!` headers |
-| 20260710.182502 | [Compass climb — Lattice scale, corpus prefix, assist sight kinds, exception view](20260710-182502_compass-climb-scale-prefix-sight-exception.md) | Parity **264**–**267**; soak closed |
-| 20260710.182118 | [Compass climb — Lattice reduce, Scribble headings, outline view, assist kinds](20260710-182118_compass-climb-reduce-headings-scribble-assist.md) | Parity **260**–**263**; soak closed |
-| 20260710.181653 | [Compass climb — forge query device, Lattice reshape, Lantern seed, corpus view](20260710-181653_compass-climb-device-reshape-seed-corpus.md) | Parity **256**–**259**; soak closed |
-| 20260710.180747 | [Compass climb — Lantern allow-list, Scribble rish, assist sight, forge query unified](20260710-180747_compass-climb-lantern-scribble-sight-forge.md) | Parity **252**–**255**; soak closed |
-| 20260710.180111 | [Compass climb — forge views, Lantern lap 1, assist snippets](20260710-180111_compass-climb-forge-lantern-assist.md) | Parity **249**–**251**; soak closed |
-| 20260710.175447 | [Realidream query unified view — hosted + device on one glass](20260710-175447_query-unified-view.md) | Eight-line frame; parity **248** |
-| 20260710.174900 | [Hammock — query device view lap 2c seated](20260710-174900_query-device-view-hammock.md) | Hammock pin after parity **247** |
-| 20260710.174752 | [Realidream query device view — device hits on Skate](20260710-174752_query-device-view.md) | querydeviceviewtest; parity **247** |
-| 20260710.174217 | [Tablecloth query device wire — virtio filter](20260710-174217_tablecloth-query-device-wire.md) | Ports 15575/15576; parity **246** |
-| 20260710.173752 | [Kitchen twin — LEXICON row seated](20260710-173752_kitchen-twin-lexicon.md) | Plain companion gloss; rose asserts |
-| 20260710.173631 | [Kitchen metaphor — said for Kaeden](20260710-173631_kitchen-metaphor-plainly.md) | Twin = plain companion; not cooking |
-| 20260710.173550 | [Commerce streak — settle views closed; full summary](20260710-173550_commerce-streak-summary.md) | Both roofs list/view/settle; parity **245** tip |
-| 20260710.173353 | [Granary settle view — weave close on Skate](20260710-173353_granary-settle-view.md) | Six-line frame; parity **245** |
-| 20260710.172955 | [Mandi settle view — vessel close on Skate](20260710-172955_mandi-settle-view.md) | Six-line frame; parity **244** |
-| 20260710.172625 | [Granary weave settle — MALA + WOV in-process](20260710-172625_granary-weave-settle.md) | weave-settle-v1; parity **243** |
-| 20260710.171707 | [Commerce compass hygiene — two roofs on the rose](20260710-171707_commerce-compass-hygiene.md) | Kitchen twin + rose packet; rest bench |
-| 20260710.171202 | [Mandi listing settle — MALA + WOV in-process](20260710-171202_mandi-listing-settle.md) | vessel-settle-v1; parity **242** |
-| 20260710.170838 | [Granary Exchange view — weave listing on Skate](20260710-170838_granary-exchange-view.md) | Six-line frame; parity **241** |
-| 20260710.170700 | [Mandi floor view — vessel listing on Skate](20260710-170700_mandi-floor-view.md) | Five-line frame; parity **240** |
-| 20260710.170132 | [Granary lap 4b — device-wire resin serve](20260710-170132_granary-device-wire.md) | Virtio 15573/15574; parity **239** |
-| 20260710.165634 | [Mandi name seated + lap 1 vessel listing](20260710-165634_mandi-name-and-lap1.md) | Vessel floor; parity **238** |
-| 20260710.165348 | [Granary lap 5 — Exchange listing](20260710-165348_granary-exchange-listing.md) | Weave priced in MALA; parity **237** |
-| 20260710.164944 | [Granary lap 4 — Comlink resin serve](20260710-164944_granary-resin-wire.md) | Ports 38496/38497; parity **236** |
-| 20260710.164514 | [Granary lap 3 — Sharing door](20260710-164514_granary-sharing-door.md) | Host serve + mirror clone; parity **235** |
-| 20260710.164237 | [Granary lap 2 — write gate](20260710-164237_granary-write-gate.md) | Durable publish + reload; parity **234** |
-| 20260710.163557 | [Granary weave view — Scribble on Skate](20260710-163557_granary-weave-view.md) | Resolve + fold → seven-line Skate; parity **233** |
-| 20260710.163304 | [Granary lap 1 — registry and Scribble frame](20260710-163304_granary-lap1-registry.md) | Name-facts · resolve · fold-clone · frame; parity **232** |
-| 20260710.163043 | [Granary name seated](20260710-163043_granary-name-seated.md) | Four-door sharing surface; Mandi for vessel floor |
-| 20260710.162950 | [Bakery as a name candidate](20260710-162950_bakery-name-candidate.md) | Warm kitchen alternate; mission fit vs Granary |
-| 20260710.162312 | [Granary naming — mission and candidates](20260710-162312_granary-naming-mission.md) | Four-door mission; Granary vs Mandi; name counsel |
-| 20260710.161538 | [Day summary — sealed crossing](20260710-161538_day-summary-sealed-crossing.md) | Seal → chunk → customs → delivery; parity **227**–**231** |
-| 20260710.161358 | [Amphora purchase delivery](20260710-161358_amphora-purchase-delivery.md) | Commerce slip; vessel + payment; parity **231** |
-| 20260710.161125 | [Pond customs first policy](20260710-161125_pond-customs-first-policy.md) | place / hold / refuse; Amphora receipt; parity **230** |
-| 20260710.154300 | [Amphora large-resin chunking](20260710-154300_amphora-resin-chunk.md) | kind **0x33** chunks; 400 B fetch; parity **229** |
-| 20260710.153745 | [Amphora Amber vessel seal](20260710-153745_amphora-amber-vessel-seal.md) | AEAD on cargo; seal then stamp; parity **228** |
-| 20260710.145843 | [Amphora Kumara vessel stamp](20260710-145843_amphora-kumara-vessel-stamp.md) | `stamp_sig` on pour/scrub; parity **227** |
-| 20260710.145313 | [Amphora forge pour + docs](20260710-145313_amphora-forge-pour-docs.md) | Live pour → Skate; crossing plainly + references |
-| 20260710.144833 | [Amphora device wire](20260710-144833_amphora-device-wire.md) | Virtio vessel fetch 15571/15572; parity **226** |
-| 20260710.144309 | [Amphora lap 3 Comlink fetch](20260710-144309_amphora-lap3-comlink-fetch.md) | Hosted fetch-by-digest; parity **225** |
-| 20260710.144202 | [Keep going — Amphora gates](20260710-144202_keep-going-amphora-gates.md) | Lap 1–2 + forge query landed; parity **224** tip |
-| 20260710.143726 | [Amphora lap 2 pour/scrub](20260710-143726_amphora-lap2-pour-scrub.md) | Pour Amber season → far cold scrub; 3-2-1; parity **224** |
-| 20260710.143500 | [Amphora lap 1 + forge query](20260710-143500_amphora-lap1-forge-query.md) | Module seated; forge query view; parity **222**–**223** |
-| 20260710.143000 | [Realidream forge view](20260710-143000_realidream-forge-view.md) | Amber cellar → Skate; Amphora proposed; parity **221** |
-| 20260710.142900 | [No Claude check-in until otherwise](20260710-142900_no-claude-checkin-until-otherwise.md) | Thread mode: strategy here; no Claude-ruling pauses |
-| 20260710.142100 | [Realidream forge surfaces strategy](20260710-142100_realidream-forge-surfaces-strategy.md) | Amber · Amphora · resins · Tablecloth · DAG UI path |
-| 20260710.141800 | [Strategy home — this thread](20260710-141800_strategy-home-this-thread.md) | Reasoning and strategy stay here until Kaeden says otherwise |
-| 20260710.141500 | [QEMU Aurora Caravan Tally path](20260710-141500_qemu-aurora-caravan-tally-path.md) | How to confirm freestanding strength; seed+posted GREEN |
-| 20260710.141200 | [Realidream query view](20260710-141200_realidream-query-view.md) | Query-wire hits → Skate; parity **220** |
-| 20260710.140500 | [Tablecloth query wire](20260710-140500_tablecloth-query-wire.md) | Not GraphQL; Comlink hosted filter; parity **219** |
-| 20260710.135200 | [Commit push — Greencandy + inference](20260710-135200_commit-push-greencandy-inference.md) | gitignore allowlist; parity **218** shipped |
-| 20260710.134800 | [Scribble lap 1 — snippets](20260710-134800_scribble-lap1-snippets.md) | rye_fence extract; parity **218** |
-| 20260710.134200 | [Inference lap 1 — query + add](20260710-134200_inference-lap1-query-add.md) | Anvil corpus filter **216**; Lattice add **217** |
-| 20260710.133500 | [Inference stack lap 0](20260710-133500_inference-stack-lap0.md) | Lattice · Scribble · Lantern · Anvil · assist view; parity **215** |
-| 20260710.132700 | [Implement horizon sight — lap 3](20260710-132700_implement-horizon-sight-lap3.md) | sightviewtest + books P&L/BS; parity **210** |
-| 20260710.132019 | [Seen-books living-desktop horizon essay](20260710-132019_seen-books-horizon-essay.md) | Visionary ER: carriage · books · sight from Greencandy climb |
-| 20260710.131411 | [Greencandy own root + lap 2](20260710-131411_greencandy-root-lap2.md) | `greencandy/` home; P&L · BS · exceptions; parity **209** |
-| 20260710.130848 | [Greencandy lap 1 + books view](20260710-130848_greencandy-lap1-books-view.md) | Chart · journal · fold · Skate booksviewtest; parity **208** |
-| 20260710.003345 | [Sealed crossing plainly](20260710-003345_sealed-crossing-plainly.md) | Amphora vessel twin; Status stays Proposed; parity **206** |
-| 20260710.002935 | [Amber seasons + first-lap plainly](20260710-002935_amber-seasons-first-lap-plainly.md) | Custody + shipping-phrase twins; Season ask closed; Amber section landed; parity **206** |
-| 20260710.002406 | [Metalsmoke plainly + affirm](20260710-002406_metalsmoke-plainly-affirm.md) | Thin-edge kitchen twin; audit-rule stale line cleared; LEXICON; parity **206** |
-| 20260710.001949 | [Settlement seat plainly](20260710-001949_settlement-seat-plainly.md) | Three lights + MALA/WOV supersession; doorway-safe Status; parity **206** |
-| 20260710.000940 | [Learning plainly + universal affirm](20260710-000940_learning-plainly-universal-affirm.md) | Civic candidate twin; aspiring/regenerative kept; index hygiene; parity **206** |
-| 20260710.000045 | [One-clock + resins plainly](20260710-000045_one-clock-resins-plainly.md) | Jun 27 naming + cellar/vessel kitchen twins; compass rose; parity **206** |
-| 20260709.231112 | [Graduation plainly + pointer hygiene](20260709-231112_graduation-plainly-pointer-hygiene.md) | Jul 2 kitchen twin; thin-edge/Amber/OWOG; compass rose; parity **206** |
-| 20260709.230720 | [Go — creative jail 206](20260709-230720_go-creative-jail-206.md) | Twin-keys story + compass rose; four remotes |
-| 20260709.230414 | [Creative jail — compass + twin keys](20260709-230414_creative-jail-compass-twin-keys.md) | Plain dual D1; parity **206** |
-| 20260709.230243 | [Bare keep-going chat-only](20260709-230243_bare-keep-going-chat-only.md) | Contract: no more pause commits from silence |
-| 20260709.230201 | [Keep-going awaits lap word](20260709-230201_keep-going-awaits-lap-word.md) | Stop line; parity **205**; no invented climb |
-| 20260709.230130 | [Go — rest holds](20260709-230130_go-rest-holds.md) | Hygiene exhausted; four remotes |
-| 20260709.230119 | [Keep-going — rest holds](20260709-230119_keep-going-rest-holds.md) | Fold idempotent; no stale refs |
-| 20260709.230050 | [Go — repoint session-log refs](20260709-230050_go-repoint-session-log-refs.md) | 28 inbound links; four remotes |
-| 20260709.230038 | [Repoint archived session-log refs](20260709-230038_repoint-archived-session-log-refs.md) | Post-fold collaboration hygiene |
-| 20260709.225820 | [Go — session-logs archive fold](20260709-225820_go-session-logs-archive-fold.md) | 354 prior-day logs folded; four remotes |
-| 20260709.225751 | [Session-logs archive fold](20260709-225751_session-logs-archive-fold.md) | Today flat; earlier days under archive/ |
-| 20260709.225720 | [Go — pause affirmed](20260709-225720_go-pause-affirmed.md) | Hygiene green; four remotes; rest |
-| 20260709.225711 | [Keep-going — pause affirmed](20260709-225711_keep-going-pause-affirmed.md) | Doorway + identity GREEN; soak holds |
-| 20260709.225650 | [Session close — soak](20260709-225650_session-close-parity-205-soak.md) | Parity **205**; W1/seam B soak; pause |
-| 20260709.225640 | [Go — W1 + seam B soak](20260709-225640_go-w1-seam-b-soak.md) | Soak counsel; four remotes |
-| 20260709.225614 | [W1 + seam B soak](20260709-225614_w1-seam-b-soak.md) | Reopen triggers named |
-| 20260709.225540 | [Go — evening leftovers](20260709-225540_go-evening-leftovers.md) | Removal/M0/keep-going default; four remotes |
-| 20260709.225508 | [Evening leftovers cleared](20260709-225508_evening-leftovers-cleared.md) | Counsel `225508`; parity **205** |
-| 20260709.225400 | [Go — K0 + Dexter exception](20260709-225400_go-k0-dexter-exception.md) | Memos through M3; thin view not second consumer |
-| 20260709.225343 | [K0 + Dexter exception](20260709-225343_k0-and-dexter-exception.md) | Rulings; parity **205** |
-| 20260709.225230 | [Go — MALA kind + Claude brief](20260709-225230_go-mala-kind-claude-brief.md) | K0 lean; late-night brief; four remotes |
-| 20260709.225159 | [MALA kind + Claude brief](20260709-225159_mala-kind-and-claude-brief.md) | Design + handoff at parity **205** |
-| 20260709.225120 | [Session close — dual D1](20260709-225120_session-close-dual-d1.md) | Tip `4c9373f`; Claude gate for seam B / W1 |
-| 20260709.225053 | [Go — WOV dual D1 205](20260709-225053_go-wov-dual-d1-205.md) | Twin lines on metal; four remotes; parity **205** |
-| 20260709.224634 | [WOV dual monarch D1](20260709-224634_wov-dual-monarch-d1.md) | Twin log lines; solo refused; parity **205** |
-| 20260709.224600 | [Go — WOV dual-monarch design](20260709-224600_go-wov-dual-monarch-design.md) | D1/D2 filed; four remotes; parity **204** |
-| 20260709.224531 | [WOV dual-monarch design](20260709-224531_wov-dual-monarch-design.md) | Twin-lines vs envelope; code gated |
-| 20260709.224500 | [Go — SLC-L4 W0 review](20260709-224500_go-slcl4-w0-review.md) | Design review cleared; four remotes; parity **204** |
-| 20260709.224426 | [SLC-L4 W0 design review](20260709-224426_slcl4-w0-design-review.md) | Lap-1 Sigma reviewed; W1/W2 gated |
-| 20260709.224400 | [Go — SLC-L4 width design](20260709-224400_go-slcl4-width-design.md) | W0/W1/W2 filed; four remotes; parity **204** |
-| 20260709.224325 | [SLC-L4 lap 2 width design](20260709-224325_slcl4-lap2-width-design.md) | Gated; MALA/WOV path checkbox closed |
-| 20260709.224233 | [Go — WOV seam A 204](20260709-224233_go-wov-seam-a-204.md) | Commit + four remotes; parity **204** |
-| 20260709.224210 | [WOV lap 2b seam A host](20260709-224210_wov-lap2b-seam-a-host.md) | Projection → exit honesty; parity **204**; live SKIP in jail |
-| 20260709.204153 | [Session close — client seam](20260709-204153_session-close-client-seam.md) | Tip `c8f3b6f`; Claude gate named |
-| 20260709.204130 | [Keep going — client seam](20260709-204130_keep-going-client-seam.md) | Design shipped `336b49a`; code gated |
-| 20260709.204100 | [Go — WOV client-seam design](20260709-204100_go-wov-client-seam-design.md) | Seam A vs B filed; gated; four remotes |
-| 20260709.204026 | [WOV TB client-seam design](20260709-204026_wov-tb-client-seam-design.md) | Design + lap-open; no client code; parity **203** |
-| 20260709.203950 | [Keep going — WOV TB pin](20260709-203950_keep-going-wov-tb-pin.md) | Pin presence shipped `80e0375` |
-| 20260709.203916 | [Go — WOV TB pin 203](20260709-203916_go-wov-tb-pin-203.md) | Pin presence; parity **203**; four remotes |
-| 20260709.203527 | [WOV TB pin presence](20260709-203527_wov-tb-pin-presence.md) | gitlink `59f2b99` witnessed; no client link |
-| 20260709.203250 | [Keep going — Claude brief](20260709-203250_keep-going-claude-brief.md) | Night-climb brief shipped `c346d5d` |
-| 20260709.203200 | [Go — Claude night-climb brief](20260709-203200_go-claude-brief-night-climb.md) | Brief `203139`; four remotes; parity **202** |
-| 20260709.203139 | [Claude brief — night climb](20260709-203139_claude-brief-night-climb.md) | Arc through thin view; questions for counsel |
-| 20260709.203100 | [Keep going — thin view](20260709-203100_keep-going-thin-view.md) | Opened thin view; shipped `70d08e4` |
-| 20260709.203027 | [Go — Realidream thin view 202](20260709-203027_go-realidream-thin-view-202.md) | Local fixtures → Skate; parity **202**; four remotes |
-| 20260709.202427 | [Realidream thin view](20260709-202427_realidream-thin-view.md) | Re-scoped thin-demo; `thinviewtest` GREEN |
-| 20260709.202341 | [Keep going — MALA M2b](20260709-202341_keep-going-mala-m2b.md) | Opened M2b; shipped `dfa5265` |
-| 20260709.202248 | [Go — MALA M2b device wire](20260709-202248_go-mala-m2b-device-wire.md) | Virtio mint+receipt; parity **201**; four remotes |
-| 20260709.201734 | [MALA M2b device wire](20260709-201734_mala-m2b-device-wire.md) | Four guests; ports **15569**/**15570**; lab GREEN |
-| 20260709.201353 | [Go — WOV lap 1 parity 201](20260709-201353_go-wov-lap1-parity-201.md) | Exit honesty on metal; four remotes |
-| 20260709.200729 | [WOV lap 1 exit honesty](20260709-200729_wov-lap1-exit-honesty.md) | In-memory book + golden; parity **201** GREEN |
-| 20260709.200600 | [Go — WOV exit-honesty spec](20260709-200600_go-wov-exit-honesty-spec.md) | Spec + lap-open brief; four remotes; parity **200** |
-| 20260709.200443 | [WOV exit-honesty spec](20260709-200443_wov-exit-honesty-spec.md) | Root facts + exit bundles; code gated on affirm |
-| 20260709.200022 | [Pedersen and Sigma plainly](20260709-200022_pedersen-and-sigma-plainly.md) | Kitchen-language note for SLC-L4 crypto words |
-| 20260709.195800 | [Full summary — parity essay + SLC-L4](20260709-195800_full-summary-parity-essay-slcl4.md) | Arc through `66ca878`; essay + Sigma; four remotes |
-| 20260709.195700 | [Go — parity essay + SLC-L4 200](20260709-195700_go-parity-essay-slcl4-200.md) | Essay + Sigma lap; parity **200**; four remotes |
-| 20260709.195559 | [SLC-L4 Sigma parity 200](20260709-195559_slcl4-sigma-parity-200.md) | Pedersen + tier proof; doorway Status fix; suite GREEN |
-| 20260709.194437 | [What parity is](20260709-194437_what-parity-is.md) | Plain-language external-research on the witness suite |
-| 20260709.193819 | [Go — OA UDP hang fix](20260709-193819_go-hang-fix-mala-m2-199.md) | Bind-before-send; parity **199** unchanged; four remotes |
-| 20260709.193237 | [OA-L3/L5 UDP hang fix](20260709-193237_hang-fix-mala-m2.md) | Listen sockets before peer send; suite GREEN |
-| 20260709.192224 | [Go — MALA M2 parity 199](20260709-192224_go-mala-m2-parity-199.md) | Hosted mint + receipt-back already on remotes |
-| 20260709.191909 | [MALA M2 kg landed](20260709-191909_mala-m2-kg-landed.md) | `mala_core` + `mala_delivery`; parity **199** |
-| 20260709.191359 | [Go — MALA M1 parity 198](20260709-191359_go-mala-m1-parity-198.md) | Commit + four-remote push; M1 landed |
-| 20260709.191319 | [Aborted parity shells noted](20260709-191319_aborted-parity-shells-noted.md) | Hung kg re-runs already cleared; M1 still ready for `go` |
-| 20260709.184753 | [MALA M1 kg confirm](20260709-184753_mala-m1-kg-confirm.md) | README hygiene; M1 GREEN; OA-L3 re-run flake noted |
-| 20260709.184555 | [MALA M1 kg landed](20260709-184555_mala-m1-kg-landed.md) | `mala.rye` + witness; parity **198** GREEN; counsel `184051` |
-| 20260709.183819 | [Grok agent evening handoff](20260709-183819_grok-agent-evening-handoff.md) | Cursor Grok 4.5; parity **197**; two laps wait word |
-| 20260709.183326 | [Go — MALA removal parity 197](20260709-183326_go-mala-removal-parity-197.md) | Claude brief `183326`; commit + four-remote push |
-| 20260709.182354 | [MALA M1 lap-open brief](20260709-182354_mala-m1-lap-open-brief.md) | M0 gate verified; expanding-prompt `182354` filed |
-| 20260709.182051 | [Parity 197 GREEN — OA-L3 clear](20260709-182051_parity-197-green-oal3-clear.md) | Full parity ~150s; no code fix needed |
-| 20260709.171101 | [Parity runs aborted at OA-L3](20260709-171101_parity-runs-aborted-oal3.md) | Two parity shells stalled on escrow lap; removal stack unchanged |
-| 20260709.163549 | [Remove SLC-L3 settlement and retired seams](20260709-163549_remove-slcl3-settlement-retired.md) | Deleted settlement + chain-read; doorway GREEN; parity **197** |
-| 20260709.155520 | [Apply MALA/WOV bundle 45](20260709-155520_apply-mala-wov-bundle45.md) | Counsel `152612`; own-L1 via July 2 design; Sui path retired |
-| 20260709.034527 | [Go — Claude brief late arc](20260709-034527_go-claude-brief-late-arc.md) | Brief `034527`; arc through `e633386` for Claude |
-| 20260709.033030 | [Go — bundle 44 + lap-open prompt](20260709-033030_go-bundle44-lap-open-prompt.md) | Zig-native `023112`; prompt `031612`; four remotes |
-| 20260709.031010 | [Apply Zig-native ZK bundle 44](20260709-031010_apply-zig-native-zk-bundle44.md) | Counsel `023112`; Groth16 out; Pedersen+Sigma in |
-| 20260709.015832 | [Go — Claude brief Jul 9](20260709-015832_go-claude-brief-jul9.md) | Review brief `015832`; landscape log; four remotes |
-| 20260709.014227 | [Landscape — bench and what to open](20260709-014227_landscape-bench-what-to-open.md) | Gate map after `51b7c1e`; three paths named |
-| 20260709.013817 | [Go — memcpy hygiene + log backlog](20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |
-| 20260709.012913 | [Apply memcpy mention hygiene bundle 42](20260709-012913_apply-memcpy-mention-hygiene-bundle42.md) | Counsel `011912`; git-signing rule pair; forward-only |
+| 20260711.003041 | [AMD drivers counsel — acknowledged](archive/20260711/20260711-003041_amd-counsel-ack.md) | Standing next: three-seam brief or RW-5 / climb |
+| 20260711.002944 | [Counsel — AMD drivers for Caravan and Aurora?](archive/20260711/20260711-002944_amd-drivers-caravan-aurora-counsel.md) | Enough for host ROCm; thin for Caravan/Aurora |
+| 20260711.001331 | [Full session summary — climbs, counsel, audit, commits](archive/20260711/20260711-001331_full-session-summary-commits.md) | Tips **379**–**418**; PRs **#85**–**#93**; HEAD tip **418** |
+| 20260711.001302 | [Happy-zone second pass — Inference Track](archive/20260711/20260711-001302_happy-zone-second-pass.md) | Audit `001225`; suite still shaped; next **RW-5** |
+| 20260710.235856 | [Counsel — should we audit the happy-zone foundation?](archive/20260710/20260710-235856_happy-zone-audit-counsel.md) | Yes: light second-pass on Inference seams; tip **418** |
+| 20260710.234331 | [Assist/sight glass composition — lap closed](archive/20260710/20260710-234331_glass-composition-lap-close.md) | Parity **411**–**418**; blocks · fence-rye · echo · user on glass |
+| 20260710.233026 | [Path counsel — what to open from tip 410](archive/20260710/20260710-233026_path-counsel-next-open.md) | Prefer glass composition; ROCm/Rest-until stay gated |
+| 20260710.232810 | [ROCm reminder — not MOCm](archive/20260710/20260710-232810_rocm-reminder.md) | Rung **2** is AMD ROCm host seam; horizon |
+| 20260710.232625 | [Fixture deepen 1aj/1ak — lap landed on main](archive/20260710/20260710-232625_hardsig-echo-lap-landed.md) | PR **#88** merged; tip **410** on `main` |
+| 20260710.232500 | [Compass climb — hard_sigmoid, rsqrt, hardtanh, cube, echo, user](archive/20260710/20260710-232500_compass-climb-hardsig-echo.md) | Parity **403**–**410**; climbs **1aj**/**1ak**; fixture deepen lap closed |
+| 20260710.231501 | [Compass climb — softsign, square, sign, reciprocal, tokens pins](archive/20260710/20260710-231501_compass-climb-softsign-tokens.md) | Parity **395**–**402**; climbs **1ah**/**1ai** |
+| 20260710.230739 | [Greencandy lap 4 — filters, cash flow, and Skate views](archive/20260710/20260710-230739_greencandy-lap4-close.md) | Parity **387**–**394**; Greencandy lap 4 closed |
+| 20260710.225615 | [Anvil corpus lap 2 — filters, folds, and Skate views](archive/20260710/20260710-225615_anvil-corpus-lap2-close.md) | Parity **379**–**386**; Anvil corpus lap 2 closed |
+| 20260710.224805 | [Compass climb — Inference Track lap 1 close](archive/20260710/20260710-224805_compass-climb-inference-lap1-close.md) | Parity **371**–**378**; climbs **1af**/**1ag**; lap 1 closed |
+| 20260710.224322 | [Compass climb — softplus, maximum, para+blocks, exception tallies, top_k, frequency_penalty](archive/20260710/20260710-224322_compass-climb-softplus-topk.md) | Parity **363**–**370**; climbs **1ad**/**1ae** |
+| 20260710.223639 | [Compass climb — silu, leaky_relu, tally+blocks, second exception reason, stopped_reason pins](archive/20260710/20260710-223639_compass-climb-silu-leaky-ex2.md) | Parity **355**–**362**; climbs **1ab**/**1ac** |
+| 20260710.223456 | [Scribble vs Brushstroke — keep both](archive/20260710/20260710-223456_scribble-brushstroke-keep-both.md) | Different seams: parse vs draw; both names stay |
+| 20260710.223413 | [Mantrapod stack and architecture](archive/20260710/20260710-223413_mantrapod-stack-arch.md) | RISC-V-first map: Aurora·Tally·Caravan·Rishi·Skate; Realidream far horizon |
+| 20260710.221906 | [Mantrapod explained for kids](archive/20260710/20260710-221906_mantrapod-for-kids.md) | Kid-facing story of the pocket computer that forgets on purpose |
+| 20260710.220833 | [Machines and organizing thought](archive/20260710/20260710-220833_machines-organize-thoughts.md) | Reflection: machines externalize and witness; choosing stays human |
+| 20260710.220706 | [SLC and inference progress document](archive/20260710/20260710-220706_slc-inference-progress-doc.md) | Durable brief at tip **354**; pushed to all remotes |
+| 20260710.220459 | [How the inference climb serves the SLCs](archive/20260710/20260710-220459_slc-inference-climb-explain.md) | Tip **347**–**354** as Gall growth under SLC-2a glass, not a new product lap |
+| 20260710.215613 | [Compass climb — tanh, gelu, stream pin, fence+heading, exception reason](archive/20260710/20260710-215613_compass-climb-tanh-gelu-stream-fence.md) | Parity **347**–**354**; climbs **1z**/**1aa**; Rest-until stays closed |
+| 20260710.214145 | [Compass climb — sigmoid, blocks, exceptions, stopped_reason, softmax](archive/20260710/20260710-214145_compass-climb-sigmoid-exception-stop-reason.md) | Parity **339**–**346**; climbs **1x**/**1y** |
+| 20260710.213738 | [Compass climb — pow, tally, sight TB, dual-model, relu, assist BS, require_model](archive/20260710/20260710-213738_compass-climb-pow-relu-tb-dual.md) | Parity **331**–**338**; climbs **1v**/**1w** |
+| 20260710.213317 | [Compass climb — exp, depth tally, sight BS, empty allow-list, log, rye+apps, assist P&L, allow_count](archive/20260710/20260710-213317_compass-climb-exp-bs-allowlist.md) | Parity **323**–**330**; climbs **1t**/**1u** |
+| 20260710.212715 | [Compass climb — reduce_min, h3, Anvil combos, err_stop/length_stop, sqrt, assist P&L](archive/20260710/20260710-212715_compass-climb-reduce-min-h3-err-stop.md) | Parity **315**–**322**; climbs **1r**/**1s** |
+| 20260710.211930 | [Compass climb — clamp, heading depth, assist chart, seed pin, reduce_max, h2, sight P&L, TopPMismatch](archive/20260710/20260710-211930_compass-climb-clamp-heading-seed-pin.md) | Parity **307**–**314**; climbs **1p**/**1q** |
+| 20260710.210433 | [Rest-until and Steep naming](archive/20260710/20260710-210433_rest-until-steep-naming.md) | Soak → Rest-until; Steep = p2p share horizon |
+| 20260710.200819 | [Compass climb — Lattice abs, apps prefix, assist chart, Lantern temperature pin](archive/20260710/20260710-200819_compass-climb-abs-apps-assist-temp.md) | Parity **303**–**306**; then SLC summary |
+| 20260710.200203 | [Compass climb — Lattice mean, rish view, sight chart, Lantern text pin](archive/20260710/20260710-200203_compass-climb-mean-rish-sight-text.md) | Parity **299**–**302**; soak closed |
+| 20260710.193358 | [Compass climb — Lattice div, rye view, greencandy prefix, Lantern max_tokens pin](archive/20260710/20260710-193358_compass-climb-div-rye-candy-maxtokens.md) | Parity **295**–**298**; soak closed |
+| 20260710.192749 | [Compass climb — Lattice neg, chart view, tools prefix, Lantern prompt pin](archive/20260710/20260710-192749_compass-climb-neg-chart-tools-prompt.md) | Parity **291**–**294**; soak closed |
+| 20260710.192018 | [Assist/sight composition — plain fences and journal memos on the glass](archive/20260710/20260710-192018_assist-sight-composition-journal-plain.md) | Parity **288**–**290**; composition lap |
+| 20260710.191541 | [Counsel — roadmap standing, UX from foundations, next word](archive/20260710/20260710-191541_counsel-roadmap-ux-next.md) | Tip **287**; composition over bolt-accretion |
+| 20260710.191112 | [Compass climb — Lattice sub, journal view, plain view, Lantern stop pin](archive/20260710/20260710-191112_compass-climb-sub-journal-plain-stop-pin.md) | Parity **284**–**287**; soak closed |
+| 20260710.190800 | [Compass climb — Lattice copy, rye prefix view, plain snippets, Lantern stop_sequence](archive/20260710/20260710-190800_compass-climb-copy-prefix-plain-stop.md) | Parity **280**–**283**; soak closed |
+| 20260710.190319 | [Compass climb — Lattice fill, TB view, fence kinds view, Lantern err_stop](archive/20260710/20260710-190319_compass-climb-fill-tb-fence-err-stop.md) | Parity **276**–**279**; soak closed |
+| 20260710.185947 | [Compass climb — Lattice mul, paragraphs view, BS view, Lantern top_p](archive/20260710/20260710-185947_compass-climb-mul-para-bs-top-p.md) | Parity **272**–**275**; soak closed |
+| 20260710.185542 | [Compass climb — Lattice transpose, corpus rish, paragraphs, P&L view](archive/20260710/20260710-185542_compass-climb-transpose-rish-para-pnl.md) | Parity **268**–**271**; soak closed |
+| 20260710.183352 | [Radiant Style pass round 3 — silo, wire, and composition headers](archive/20260710/20260710-183352_radiant-style-pass-round-3.md) | ORGANIZING · Aurora · composition `//!` |
+| 20260710.183147 | [Radiant Style pass round 2 — foundation modules and horizon headings](archive/20260710/20260710-183147_radiant-style-pass-round-2.md) | Rye–Manual READMEs; Out of scope → Horizon |
+| 20260710.183107 | [Radiant Style pass landed on main](archive/20260710/20260710-183107_radiant-style-pass-landed.md) | PR **#54** merged; living prose tip |
+| 20260710.182821 | [Radiant Style pass — living module docs and comments](archive/20260710/20260710-182821_radiant-style-pass-living-docs.md) | Affirmative READMEs, hammocks, `//!` headers |
+| 20260710.182502 | [Compass climb — Lattice scale, corpus prefix, assist sight kinds, exception view](archive/20260710/20260710-182502_compass-climb-scale-prefix-sight-exception.md) | Parity **264**–**267**; soak closed |
+| 20260710.182118 | [Compass climb — Lattice reduce, Scribble headings, outline view, assist kinds](archive/20260710/20260710-182118_compass-climb-reduce-headings-scribble-assist.md) | Parity **260**–**263**; soak closed |
+| 20260710.181653 | [Compass climb — forge query device, Lattice reshape, Lantern seed, corpus view](archive/20260710/20260710-181653_compass-climb-device-reshape-seed-corpus.md) | Parity **256**–**259**; soak closed |
+| 20260710.180747 | [Compass climb — Lantern allow-list, Scribble rish, assist sight, forge query unified](archive/20260710/20260710-180747_compass-climb-lantern-scribble-sight-forge.md) | Parity **252**–**255**; soak closed |
+| 20260710.180111 | [Compass climb — forge views, Lantern lap 1, assist snippets](archive/20260710/20260710-180111_compass-climb-forge-lantern-assist.md) | Parity **249**–**251**; soak closed |
+| 20260710.175447 | [Realidream query unified view — hosted + device on one glass](archive/20260710/20260710-175447_query-unified-view.md) | Eight-line frame; parity **248** |
+| 20260710.174900 | [Hammock — query device view lap 2c seated](archive/20260710/20260710-174900_query-device-view-hammock.md) | Hammock pin after parity **247** |
+| 20260710.174752 | [Realidream query device view — device hits on Skate](archive/20260710/20260710-174752_query-device-view.md) | querydeviceviewtest; parity **247** |
+| 20260710.174217 | [Tablecloth query device wire — virtio filter](archive/20260710/20260710-174217_tablecloth-query-device-wire.md) | Ports 15575/15576; parity **246** |
+| 20260710.173752 | [Kitchen twin — LEXICON row seated](archive/20260710/20260710-173752_kitchen-twin-lexicon.md) | Plain companion gloss; rose asserts |
+| 20260710.173631 | [Kitchen metaphor — said for Kaeden](archive/20260710/20260710-173631_kitchen-metaphor-plainly.md) | Twin = plain companion; not cooking |
+| 20260710.173550 | [Commerce streak — settle views closed; full summary](archive/20260710/20260710-173550_commerce-streak-summary.md) | Both roofs list/view/settle; parity **245** tip |
+| 20260710.173353 | [Granary settle view — weave close on Skate](archive/20260710/20260710-173353_granary-settle-view.md) | Six-line frame; parity **245** |
+| 20260710.172955 | [Mandi settle view — vessel close on Skate](archive/20260710/20260710-172955_mandi-settle-view.md) | Six-line frame; parity **244** |
+| 20260710.172625 | [Granary weave settle — MALA + WOV in-process](archive/20260710/20260710-172625_granary-weave-settle.md) | weave-settle-v1; parity **243** |
+| 20260710.171707 | [Commerce compass hygiene — two roofs on the rose](archive/20260710/20260710-171707_commerce-compass-hygiene.md) | Kitchen twin + rose packet; rest bench |
+| 20260710.171202 | [Mandi listing settle — MALA + WOV in-process](archive/20260710/20260710-171202_mandi-listing-settle.md) | vessel-settle-v1; parity **242** |
+| 20260710.170838 | [Granary Exchange view — weave listing on Skate](archive/20260710/20260710-170838_granary-exchange-view.md) | Six-line frame; parity **241** |
+| 20260710.170700 | [Mandi floor view — vessel listing on Skate](archive/20260710/20260710-170700_mandi-floor-view.md) | Five-line frame; parity **240** |
+| 20260710.170132 | [Granary lap 4b — device-wire resin serve](archive/20260710/20260710-170132_granary-device-wire.md) | Virtio 15573/15574; parity **239** |
+| 20260710.165634 | [Mandi name seated + lap 1 vessel listing](archive/20260710/20260710-165634_mandi-name-and-lap1.md) | Vessel floor; parity **238** |
+| 20260710.165348 | [Granary lap 5 — Exchange listing](archive/20260710/20260710-165348_granary-exchange-listing.md) | Weave priced in MALA; parity **237** |
+| 20260710.164944 | [Granary lap 4 — Comlink resin serve](archive/20260710/20260710-164944_granary-resin-wire.md) | Ports 38496/38497; parity **236** |
+| 20260710.164514 | [Granary lap 3 — Sharing door](archive/20260710/20260710-164514_granary-sharing-door.md) | Host serve + mirror clone; parity **235** |
+| 20260710.164237 | [Granary lap 2 — write gate](archive/20260710/20260710-164237_granary-write-gate.md) | Durable publish + reload; parity **234** |
+| 20260710.163557 | [Granary weave view — Scribble on Skate](archive/20260710/20260710-163557_granary-weave-view.md) | Resolve + fold → seven-line Skate; parity **233** |
+| 20260710.163304 | [Granary lap 1 — registry and Scribble frame](archive/20260710/20260710-163304_granary-lap1-registry.md) | Name-facts · resolve · fold-clone · frame; parity **232** |
+| 20260710.163043 | [Granary name seated](archive/20260710/20260710-163043_granary-name-seated.md) | Four-door sharing surface; Mandi for vessel floor |
+| 20260710.162950 | [Bakery as a name candidate](archive/20260710/20260710-162950_bakery-name-candidate.md) | Warm kitchen alternate; mission fit vs Granary |
+| 20260710.162312 | [Granary naming — mission and candidates](archive/20260710/20260710-162312_granary-naming-mission.md) | Four-door mission; Granary vs Mandi; name counsel |
+| 20260710.161538 | [Day summary — sealed crossing](archive/20260710/20260710-161538_day-summary-sealed-crossing.md) | Seal → chunk → customs → delivery; parity **227**–**231** |
+| 20260710.161358 | [Amphora purchase delivery](archive/20260710/20260710-161358_amphora-purchase-delivery.md) | Commerce slip; vessel + payment; parity **231** |
+| 20260710.161125 | [Pond customs first policy](archive/20260710/20260710-161125_pond-customs-first-policy.md) | place / hold / refuse; Amphora receipt; parity **230** |
+| 20260710.154300 | [Amphora large-resin chunking](archive/20260710/20260710-154300_amphora-resin-chunk.md) | kind **0x33** chunks; 400 B fetch; parity **229** |
+| 20260710.153745 | [Amphora Amber vessel seal](archive/20260710/20260710-153745_amphora-amber-vessel-seal.md) | AEAD on cargo; seal then stamp; parity **228** |
+| 20260710.145843 | [Amphora Kumara vessel stamp](archive/20260710/20260710-145843_amphora-kumara-vessel-stamp.md) | `stamp_sig` on pour/scrub; parity **227** |
+| 20260710.145313 | [Amphora forge pour + docs](archive/20260710/20260710-145313_amphora-forge-pour-docs.md) | Live pour → Skate; crossing plainly + references |
+| 20260710.144833 | [Amphora device wire](archive/20260710/20260710-144833_amphora-device-wire.md) | Virtio vessel fetch 15571/15572; parity **226** |
+| 20260710.144309 | [Amphora lap 3 Comlink fetch](archive/20260710/20260710-144309_amphora-lap3-comlink-fetch.md) | Hosted fetch-by-digest; parity **225** |
+| 20260710.144202 | [Keep going — Amphora gates](archive/20260710/20260710-144202_keep-going-amphora-gates.md) | Lap 1–2 + forge query landed; parity **224** tip |
+| 20260710.143726 | [Amphora lap 2 pour/scrub](archive/20260710/20260710-143726_amphora-lap2-pour-scrub.md) | Pour Amber season → far cold scrub; 3-2-1; parity **224** |
+| 20260710.143500 | [Amphora lap 1 + forge query](archive/20260710/20260710-143500_amphora-lap1-forge-query.md) | Module seated; forge query view; parity **222**–**223** |
+| 20260710.143000 | [Realidream forge view](archive/20260710/20260710-143000_realidream-forge-view.md) | Amber cellar → Skate; Amphora proposed; parity **221** |
+| 20260710.142900 | [No Claude check-in until otherwise](archive/20260710/20260710-142900_no-claude-checkin-until-otherwise.md) | Thread mode: strategy here; no Claude-ruling pauses |
+| 20260710.142100 | [Realidream forge surfaces strategy](archive/20260710/20260710-142100_realidream-forge-surfaces-strategy.md) | Amber · Amphora · resins · Tablecloth · DAG UI path |
+| 20260710.141800 | [Strategy home — this thread](archive/20260710/20260710-141800_strategy-home-this-thread.md) | Reasoning and strategy stay here until Kaeden says otherwise |
+| 20260710.141500 | [QEMU Aurora Caravan Tally path](archive/20260710/20260710-141500_qemu-aurora-caravan-tally-path.md) | How to confirm freestanding strength; seed+posted GREEN |
+| 20260710.141200 | [Realidream query view](archive/20260710/20260710-141200_realidream-query-view.md) | Query-wire hits → Skate; parity **220** |
+| 20260710.140500 | [Tablecloth query wire](archive/20260710/20260710-140500_tablecloth-query-wire.md) | Not GraphQL; Comlink hosted filter; parity **219** |
+| 20260710.135200 | [Commit push — Greencandy + inference](archive/20260710/20260710-135200_commit-push-greencandy-inference.md) | gitignore allowlist; parity **218** shipped |
+| 20260710.134800 | [Scribble lap 1 — snippets](archive/20260710/20260710-134800_scribble-lap1-snippets.md) | rye_fence extract; parity **218** |
+| 20260710.134200 | [Inference lap 1 — query + add](archive/20260710/20260710-134200_inference-lap1-query-add.md) | Anvil corpus filter **216**; Lattice add **217** |
+| 20260710.133500 | [Inference stack lap 0](archive/20260710/20260710-133500_inference-stack-lap0.md) | Lattice · Scribble · Lantern · Anvil · assist view; parity **215** |
+| 20260710.132700 | [Implement horizon sight — lap 3](archive/20260710/20260710-132700_implement-horizon-sight-lap3.md) | sightviewtest + books P&L/BS; parity **210** |
+| 20260710.132019 | [Seen-books living-desktop horizon essay](archive/20260710/20260710-132019_seen-books-horizon-essay.md) | Visionary ER: carriage · books · sight from Greencandy climb |
+| 20260710.131411 | [Greencandy own root + lap 2](archive/20260710/20260710-131411_greencandy-root-lap2.md) | `greencandy/` home; P&L · BS · exceptions; parity **209** |
+| 20260710.130848 | [Greencandy lap 1 + books view](archive/20260710/20260710-130848_greencandy-lap1-books-view.md) | Chart · journal · fold · Skate booksviewtest; parity **208** |
+| 20260710.003345 | [Sealed crossing plainly](archive/20260710/20260710-003345_sealed-crossing-plainly.md) | Amphora vessel twin; Status stays Proposed; parity **206** |
+| 20260710.002935 | [Amber seasons + first-lap plainly](archive/20260710/20260710-002935_amber-seasons-first-lap-plainly.md) | Custody + shipping-phrase twins; Season ask closed; Amber section landed; parity **206** |
+| 20260710.002406 | [Metalsmoke plainly + affirm](archive/20260710/20260710-002406_metalsmoke-plainly-affirm.md) | Thin-edge kitchen twin; audit-rule stale line cleared; LEXICON; parity **206** |
+| 20260710.001949 | [Settlement seat plainly](archive/20260710/20260710-001949_settlement-seat-plainly.md) | Three lights + MALA/WOV supersession; doorway-safe Status; parity **206** |
+| 20260710.000940 | [Learning plainly + universal affirm](archive/20260710/20260710-000940_learning-plainly-universal-affirm.md) | Civic candidate twin; aspiring/regenerative kept; index hygiene; parity **206** |
+| 20260710.000045 | [One-clock + resins plainly](archive/20260710/20260710-000045_one-clock-resins-plainly.md) | Jun 27 naming + cellar/vessel kitchen twins; compass rose; parity **206** |
+| 20260709.231112 | [Graduation plainly + pointer hygiene](archive/20260709/20260709-231112_graduation-plainly-pointer-hygiene.md) | Jul 2 kitchen twin; thin-edge/Amber/OWOG; compass rose; parity **206** |
+| 20260709.230720 | [Go — creative jail 206](archive/20260709/20260709-230720_go-creative-jail-206.md) | Twin-keys story + compass rose; four remotes |
+| 20260709.230414 | [Creative jail — compass + twin keys](archive/20260709/20260709-230414_creative-jail-compass-twin-keys.md) | Plain dual D1; parity **206** |
+| 20260709.230243 | [Bare keep-going chat-only](archive/20260709/20260709-230243_bare-keep-going-chat-only.md) | Contract: no more pause commits from silence |
+| 20260709.230201 | [Keep-going awaits lap word](archive/20260709/20260709-230201_keep-going-awaits-lap-word.md) | Stop line; parity **205**; no invented climb |
+| 20260709.230130 | [Go — rest holds](archive/20260709/20260709-230130_go-rest-holds.md) | Hygiene exhausted; four remotes |
+| 20260709.230119 | [Keep-going — rest holds](archive/20260709/20260709-230119_keep-going-rest-holds.md) | Fold idempotent; no stale refs |
+| 20260709.230050 | [Go — repoint session-log refs](archive/20260709/20260709-230050_go-repoint-session-log-refs.md) | 28 inbound links; four remotes |
+| 20260709.230038 | [Repoint archived session-log refs](archive/20260709/20260709-230038_repoint-archived-session-log-refs.md) | Post-fold collaboration hygiene |
+| 20260709.225820 | [Go — session-logs archive fold](archive/20260709/20260709-225820_go-session-logs-archive-fold.md) | 354 prior-day logs folded; four remotes |
+| 20260709.225751 | [Session-logs archive fold](archive/20260709/20260709-225751_session-logs-archive-fold.md) | Today flat; earlier days under archive/ |
+| 20260709.225720 | [Go — pause affirmed](archive/20260709/20260709-225720_go-pause-affirmed.md) | Hygiene green; four remotes; rest |
+| 20260709.225711 | [Keep-going — pause affirmed](archive/20260709/20260709-225711_keep-going-pause-affirmed.md) | Doorway + identity GREEN; soak holds |
+| 20260709.225650 | [Session close — soak](archive/20260709/20260709-225650_session-close-parity-205-soak.md) | Parity **205**; W1/seam B soak; pause |
+| 20260709.225640 | [Go — W1 + seam B soak](archive/20260709/20260709-225640_go-w1-seam-b-soak.md) | Soak counsel; four remotes |
+| 20260709.225614 | [W1 + seam B soak](archive/20260709/20260709-225614_w1-seam-b-soak.md) | Reopen triggers named |
+| 20260709.225540 | [Go — evening leftovers](archive/20260709/20260709-225540_go-evening-leftovers.md) | Removal/M0/keep-going default; four remotes |
+| 20260709.225508 | [Evening leftovers cleared](archive/20260709/20260709-225508_evening-leftovers-cleared.md) | Counsel `225508`; parity **205** |
+| 20260709.225400 | [Go — K0 + Dexter exception](archive/20260709/20260709-225400_go-k0-dexter-exception.md) | Memos through M3; thin view not second consumer |
+| 20260709.225343 | [K0 + Dexter exception](archive/20260709/20260709-225343_k0-and-dexter-exception.md) | Rulings; parity **205** |
+| 20260709.225230 | [Go — MALA kind + Claude brief](archive/20260709/20260709-225230_go-mala-kind-claude-brief.md) | K0 lean; late-night brief; four remotes |
+| 20260709.225159 | [MALA kind + Claude brief](archive/20260709/20260709-225159_mala-kind-and-claude-brief.md) | Design + handoff at parity **205** |
+| 20260709.225120 | [Session close — dual D1](archive/20260709/20260709-225120_session-close-dual-d1.md) | Tip `4c9373f`; Claude gate for seam B / W1 |
+| 20260709.225053 | [Go — WOV dual D1 205](archive/20260709/20260709-225053_go-wov-dual-d1-205.md) | Twin lines on metal; four remotes; parity **205** |
+| 20260709.224634 | [WOV dual monarch D1](archive/20260709/20260709-224634_wov-dual-monarch-d1.md) | Twin log lines; solo refused; parity **205** |
+| 20260709.224600 | [Go — WOV dual-monarch design](archive/20260709/20260709-224600_go-wov-dual-monarch-design.md) | D1/D2 filed; four remotes; parity **204** |
+| 20260709.224531 | [WOV dual-monarch design](archive/20260709/20260709-224531_wov-dual-monarch-design.md) | Twin-lines vs envelope; code gated |
+| 20260709.224500 | [Go — SLC-L4 W0 review](archive/20260709/20260709-224500_go-slcl4-w0-review.md) | Design review cleared; four remotes; parity **204** |
+| 20260709.224426 | [SLC-L4 W0 design review](archive/20260709/20260709-224426_slcl4-w0-design-review.md) | Lap-1 Sigma reviewed; W1/W2 gated |
+| 20260709.224400 | [Go — SLC-L4 width design](archive/20260709/20260709-224400_go-slcl4-width-design.md) | W0/W1/W2 filed; four remotes; parity **204** |
+| 20260709.224325 | [SLC-L4 lap 2 width design](archive/20260709/20260709-224325_slcl4-lap2-width-design.md) | Gated; MALA/WOV path checkbox closed |
+| 20260709.224233 | [Go — WOV seam A 204](archive/20260709/20260709-224233_go-wov-seam-a-204.md) | Commit + four remotes; parity **204** |
+| 20260709.224210 | [WOV lap 2b seam A host](archive/20260709/20260709-224210_wov-lap2b-seam-a-host.md) | Projection → exit honesty; parity **204**; live SKIP in jail |
+| 20260709.204153 | [Session close — client seam](archive/20260709/20260709-204153_session-close-client-seam.md) | Tip `c8f3b6f`; Claude gate named |
+| 20260709.204130 | [Keep going — client seam](archive/20260709/20260709-204130_keep-going-client-seam.md) | Design shipped `336b49a`; code gated |
+| 20260709.204100 | [Go — WOV client-seam design](archive/20260709/20260709-204100_go-wov-client-seam-design.md) | Seam A vs B filed; gated; four remotes |
+| 20260709.204026 | [WOV TB client-seam design](archive/20260709/20260709-204026_wov-tb-client-seam-design.md) | Design + lap-open; no client code; parity **203** |
+| 20260709.203950 | [Keep going — WOV TB pin](archive/20260709/20260709-203950_keep-going-wov-tb-pin.md) | Pin presence shipped `80e0375` |
+| 20260709.203916 | [Go — WOV TB pin 203](archive/20260709/20260709-203916_go-wov-tb-pin-203.md) | Pin presence; parity **203**; four remotes |
+| 20260709.203527 | [WOV TB pin presence](archive/20260709/20260709-203527_wov-tb-pin-presence.md) | gitlink `59f2b99` witnessed; no client link |
+| 20260709.203250 | [Keep going — Claude brief](archive/20260709/20260709-203250_keep-going-claude-brief.md) | Night-climb brief shipped `c346d5d` |
+| 20260709.203200 | [Go — Claude night-climb brief](archive/20260709/20260709-203200_go-claude-brief-night-climb.md) | Brief `203139`; four remotes; parity **202** |
+| 20260709.203139 | [Claude brief — night climb](archive/20260709/20260709-203139_claude-brief-night-climb.md) | Arc through thin view; questions for counsel |
+| 20260709.203100 | [Keep going — thin view](archive/20260709/20260709-203100_keep-going-thin-view.md) | Opened thin view; shipped `70d08e4` |
+| 20260709.203027 | [Go — Realidream thin view 202](archive/20260709/20260709-203027_go-realidream-thin-view-202.md) | Local fixtures → Skate; parity **202**; four remotes |
+| 20260709.202427 | [Realidream thin view](archive/20260709/20260709-202427_realidream-thin-view.md) | Re-scoped thin-demo; `thinviewtest` GREEN |
+| 20260709.202341 | [Keep going — MALA M2b](archive/20260709/20260709-202341_keep-going-mala-m2b.md) | Opened M2b; shipped `dfa5265` |
+| 20260709.202248 | [Go — MALA M2b device wire](archive/20260709/20260709-202248_go-mala-m2b-device-wire.md) | Virtio mint+receipt; parity **201**; four remotes |
+| 20260709.201734 | [MALA M2b device wire](archive/20260709/20260709-201734_mala-m2b-device-wire.md) | Four guests; ports **15569**/**15570**; lab GREEN |
+| 20260709.201353 | [Go — WOV lap 1 parity 201](archive/20260709/20260709-201353_go-wov-lap1-parity-201.md) | Exit honesty on metal; four remotes |
+| 20260709.200729 | [WOV lap 1 exit honesty](archive/20260709/20260709-200729_wov-lap1-exit-honesty.md) | In-memory book + golden; parity **201** GREEN |
+| 20260709.200600 | [Go — WOV exit-honesty spec](archive/20260709/20260709-200600_go-wov-exit-honesty-spec.md) | Spec + lap-open brief; four remotes; parity **200** |
+| 20260709.200443 | [WOV exit-honesty spec](archive/20260709/20260709-200443_wov-exit-honesty-spec.md) | Root facts + exit bundles; code gated on affirm |
+| 20260709.200022 | [Pedersen and Sigma plainly](archive/20260709/20260709-200022_pedersen-and-sigma-plainly.md) | Kitchen-language note for SLC-L4 crypto words |
+| 20260709.195800 | [Full summary — parity essay + SLC-L4](archive/20260709/20260709-195800_full-summary-parity-essay-slcl4.md) | Arc through `66ca878`; essay + Sigma; four remotes |
+| 20260709.195700 | [Go — parity essay + SLC-L4 200](archive/20260709/20260709-195700_go-parity-essay-slcl4-200.md) | Essay + Sigma lap; parity **200**; four remotes |
+| 20260709.195559 | [SLC-L4 Sigma parity 200](archive/20260709/20260709-195559_slcl4-sigma-parity-200.md) | Pedersen + tier proof; doorway Status fix; suite GREEN |
+| 20260709.194437 | [What parity is](archive/20260709/20260709-194437_what-parity-is.md) | Plain-language external-research on the witness suite |
+| 20260709.193819 | [Go — OA UDP hang fix](archive/20260709/20260709-193819_go-hang-fix-mala-m2-199.md) | Bind-before-send; parity **199** unchanged; four remotes |
+| 20260709.193237 | [OA-L3/L5 UDP hang fix](archive/20260709/20260709-193237_hang-fix-mala-m2.md) | Listen sockets before peer send; suite GREEN |
+| 20260709.192224 | [Go — MALA M2 parity 199](archive/20260709/20260709-192224_go-mala-m2-parity-199.md) | Hosted mint + receipt-back already on remotes |
+| 20260709.191909 | [MALA M2 kg landed](archive/20260709/20260709-191909_mala-m2-kg-landed.md) | `mala_core` + `mala_delivery`; parity **199** |
+| 20260709.191359 | [Go — MALA M1 parity 198](archive/20260709/20260709-191359_go-mala-m1-parity-198.md) | Commit + four-remote push; M1 landed |
+| 20260709.191319 | [Aborted parity shells noted](archive/20260709/20260709-191319_aborted-parity-shells-noted.md) | Hung kg re-runs already cleared; M1 still ready for `go` |
+| 20260709.184753 | [MALA M1 kg confirm](archive/20260709/20260709-184753_mala-m1-kg-confirm.md) | README hygiene; M1 GREEN; OA-L3 re-run flake noted |
+| 20260709.184555 | [MALA M1 kg landed](archive/20260709/20260709-184555_mala-m1-kg-landed.md) | `mala.rye` + witness; parity **198** GREEN; counsel `184051` |
+| 20260709.183819 | [Grok agent evening handoff](archive/20260709/20260709-183819_grok-agent-evening-handoff.md) | Cursor Grok 4.5; parity **197**; two laps wait word |
+| 20260709.183326 | [Go — MALA removal parity 197](archive/20260709/20260709-183326_go-mala-removal-parity-197.md) | Claude brief `183326`; commit + four-remote push |
+| 20260709.182354 | [MALA M1 lap-open brief](archive/20260709/20260709-182354_mala-m1-lap-open-brief.md) | M0 gate verified; expanding-prompt `182354` filed |
+| 20260709.182051 | [Parity 197 GREEN — OA-L3 clear](archive/20260709/20260709-182051_parity-197-green-oal3-clear.md) | Full parity ~150s; no code fix needed |
+| 20260709.171101 | [Parity runs aborted at OA-L3](archive/20260709/20260709-171101_parity-runs-aborted-oal3.md) | Two parity shells stalled on escrow lap; removal stack unchanged |
+| 20260709.163549 | [Remove SLC-L3 settlement and retired seams](archive/20260709/20260709-163549_remove-slcl3-settlement-retired.md) | Deleted settlement + chain-read; doorway GREEN; parity **197** |
+| 20260709.155520 | [Apply MALA/WOV bundle 45](archive/20260709/20260709-155520_apply-mala-wov-bundle45.md) | Counsel `152612`; own-L1 via July 2 design; Sui path retired |
+| 20260709.034527 | [Go — Claude brief late arc](archive/20260709/20260709-034527_go-claude-brief-late-arc.md) | Brief `034527`; arc through `e633386` for Claude |
+| 20260709.033030 | [Go — bundle 44 + lap-open prompt](archive/20260709/20260709-033030_go-bundle44-lap-open-prompt.md) | Zig-native `023112`; prompt `031612`; four remotes |
+| 20260709.031010 | [Apply Zig-native ZK bundle 44](archive/20260709/20260709-031010_apply-zig-native-zk-bundle44.md) | Counsel `023112`; Groth16 out; Pedersen+Sigma in |
+| 20260709.015832 | [Go — Claude brief Jul 9](archive/20260709/20260709-015832_go-claude-brief-jul9.md) | Review brief `015832`; landscape log; four remotes |
+| 20260709.014227 | [Landscape — bench and what to open](archive/20260709/20260709-014227_landscape-bench-what-to-open.md) | Gate map after `51b7c1e`; three paths named |
+| 20260709.013817 | [Go — memcpy hygiene + log backlog](archive/20260709/20260709-013817_go-memcpy-hygiene-and-log-backlog.md) | Bundle 42 + three backlog logs; four remotes |
+| 20260709.012913 | [Apply memcpy mention hygiene bundle 42](archive/20260709/20260709-012913_apply-memcpy-mention-hygiene-bundle42.md) | Counsel `011912`; git-signing rule pair; forward-only |
 | 20260708.224900 | [Full summary — late evening](archive/20260708/20260708-224900_full-summary-jul8-late-evening.md) | Arc through `de04722`; commits + pushes |
 | 20260708.224627 | [Go — counsel + ZK + sketchbook](archive/20260708/20260708-224627_go-counsel-zk-sketchbook.md) | `de04722` to four remotes; bundle 41 shipped |
 | 20260708.224209 | [Kg — ZK study wiring](archive/20260708/20260708-224209_kg-zk-study-wiring.md) | Stale TASKS/ROADMAP rows; `223327` pin cited; Composer 2.5 |

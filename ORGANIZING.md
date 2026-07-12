@@ -39,7 +39,7 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`expanding-prompts/`** — intent expanded into runnable plans. Counts upward from `10000`; each prompt is a dated artifact that agents can execute.
 
-**`session-logs/`** — reasoning traces. One-clock filenames; newest-first index in `README.md`. What happened lives here; what is next lives in `TASKS.md`.
+**`session-logs/`** — reasoning traces as **Bron** (`.bron`); one-clock filenames; newest-first index in `README.md`. Historical Markdown logs live under `archive/YYYYMMDD/`. What happened lives here; what is next lives in `TASKS.md`.
 
 **`rye-learning-process/`** — the almanac and learning record. How we grow capability in the open.
 
@@ -131,7 +131,7 @@ A re-stamp that bubbles a file to the bottom suits an *ordinary, lightly-cited* 
 
 The tree signs its work. The keeper's canonical fingerprints live in `context/PUBKEYS.md` (committed); a keeper may also place `PUBKEYS.md` at the repository root for local override. A fork begins from `PUBKEYS.template.md` and records its own four public lines, and `tools/identity_check.rish` proves the shape either way — template-only checkouts pass kindly, and when a pubkey file is present it must carry exactly two SSH and two OpenPGP fingerprints. The private halves never enter the tree.
 
-Session logs keep the working day flat and fold every earlier day beneath `session-logs/archive/YYYYMMDD/`. **Preview** (read-only): `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold** (mutate): `rishi/bin/rishi run tools/session_logs_archive.rish` — core logic in `tools/session_logs_archive.rye`; witness `tools/session_logs_archive_witness.rish` proves correctness and idempotency on fixtures. Run fold at a day's close, on Kaeden's word.
+Session logs keep the working day flat as **`.bron`** files and fold closed days beneath `session-logs/archive/YYYYMMDD/` (Markdown era fully folded; Bron days fold when that tool grows). **Preview** (read-only): `rishi/bin/rishi run tools/session_logs_archive_preview.rish`. **Fold** (mutate): `rishi/bin/rishi run tools/session_logs_archive.rish` — core logic in `tools/session_logs_archive.rye`; witness `tools/session_logs_archive_witness.rish`. Run fold on Kaeden's word. Living law: `.cursor/rules/session-logs.mdc` · `.claude/rules/session-logs.md`.
 
 ---
 
