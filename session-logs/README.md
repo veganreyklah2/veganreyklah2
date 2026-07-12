@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.223600 | [Go + kg — living-docs keeper folds landed](20260712-223600_go-kg-living-docs-keeper.bron) | 863fb0f four remotes · lint GREEN · HEAD f4b268e |
 | 20260712.223300 | [Living-docs keeper — three folds GREEN](20260712-223300_living-docs-keeper-folds.bron) | Keeps-list · module Status · dispositions park closed |
 | 20260712.222800 | [Docs design-to-shipped — Status · living_docs_lint](20260712-222800_docs-lint-seated.bron) | Five Status lines · lint seated · doorway join |
 | 20260712.222700 | [Go — ship 222700 docs-complete bron · four remotes](20260712-222700_go-witness-patterns.bron) | Push 4fa8363 · docs go-trace closed |
