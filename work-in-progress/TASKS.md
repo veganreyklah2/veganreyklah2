@@ -1,35 +1,21 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (git nib `2d04c43` · ai-jail **v1.12.0** pin `131200` · Claude `130300` · on-path worded)
+**Last updated:** 2026-07-12 (git nib `6f07540` · **`lane_kvm` on-path GREEN** `140403` · refuse restored · ai-jail v1.12.0)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md). Bron session-log law seated (`120007` · Claude affirm · hygiene `121409`). **Nib** replaces forward *tip* (`121719` · residue affirm `125200`). Git nib **`2d04c43`**. Teacher ai-jail **v1.12.0** pinned under `tools/.cache/bin/` (`131200`). Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** (paired · re-proven after on-path). Bron session-log law seated. **Nib** seated. Git nib **`6f07540`**. Teacher ai-jail **v1.12.0**. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered GREEN **324**.
 
-**Word seated (`121518`):** Kaeden — *kg i grant* — host **`lane_kvm` on-path** G0-complete + **same-sitting metal parity re-pin** allowed. This Cursor session remains `ai-sandbox` without `/dev/kvm`; run the one-shot on the Framework host.
+**Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/` (`g0c-lane-serial.log` · `g0c-lane-screendump.png` · `g0c-lane-meta.txt`). Optional same-sitting parity still allowed (`--parity`) if not yet run this sitting.
 
-**Claude `125200`:** residue close affirmed after six living lines swept · order holds (no reorder) · giving-family naming affirmed for future gratuity · kg jail-refuse honored as the floor working.
+**Ordered next (on word):**
+1. Optional: `rishi/bin/rishi run tools/lane_kvm_onpath_host.rish --parity` (or `rishi run tools/parity.rish`) if parity did not ride this sitting
+2. **G1** — receipt_core under Genode POSIX jailed serial
+3. **Pond** enclosure six-bar baseline
+4. Route two / inward lane nest — still parked ([`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md))
 
-**Claude `130300`:** host one-shot **safe under human-in-loop** · lane-inward evolution counsel · Route one **flag absent** (teacher has `--gpu` only, no `--kvm`/`--dev`) · Route two nest **parked for word** — note [`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md).
-
-**ai-jail `131200`:** release **v1.12.0** binary + study submodule · tarball sha256 `91458f153c7b0a87d79aae9014b558a0cfc4b160b7e390008a00c1adfc3edc21` · Route one still closed · next launch picks it up · wrapper version-echo awaits word · Karpathy/ai-memory dispositions await word (RTAC).
-
-**Ordered next (worded — Framework host; Rishi door `131900`):**
-```
-cd ~/veganreyklah2 && git pull && rishi/bin/rishi run tools/lane_kvm_onpath_host.rish
-# optional same-sitting parity:
-rishi/bin/rishi run tools/lane_kvm_onpath_host.rish --parity
-```
-No need to edit `enclosure.conf` — the script exports `LANE_KVM=true` for the boot only, then re-proves refuse with conf still off. Requires `/dev/kvm` (host, not ai-sandbox). Image already staged under `tools/.cache/proven-seat/`.
-
-Cursor relaunch (GNOME Wayland):
-```
-rishi/bin/rishi run tools/launch-cursor.rish --extract ./Cursor-3.11.13-x86_64.AppImage --gpu
-rishi/bin/rishi run tools/launch-cursor.rish --gpu
-```
-
-**Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only — module home + name await word ([`130300`](../active-designing/20260712-130300_lane-inward-route-probe.md)). Do not patch teacher ai-jail.
+**Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only — module home + name await word. Do not patch teacher ai-jail.
 
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); suite nib **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 
@@ -46,7 +32,7 @@ rishi/bin/rishi run tools/launch-cursor.rish --gpu
 | — | **Encrypt-to-future-identity** | **Horizon park** `114600` | Keep capability · decline VetKeys quorum; beside T3 / OCapN — RTAC |
 | — | **Consumer-edge pass / Door 3** | **Landed** tip **431** · product **430** · suite **431** `063213` | `granary/consumer_edge_pass.rye` · witness GREEN — hammock [`063213`](../active-designing/20260712-063213_door3-consumer-edge-pass-hammock.md) |
 | — | **Component compile lap** | **Landed** tip **432** · product **430** · suite **432** `063558` | WIT + wasm guest under Wasmtime — hammock [`063558`](../active-designing/20260712-063558_receipt-verify-wasm-hammock.md) |
-| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` · **`lane_kvm` refuse GREEN** `113900` | Hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); retire [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path awaits host kvm grant; G1 on word |
+| — | **Proven-seat G0–G3 metal** | **G0-complete GREEN** `004012` · **`lane_kvm` on-path GREEN** `140403` · refuse GREEN | Hammock [`proven-seat-guest-hammock.md`](../active-designing/proven-seat-guest-hammock.md); retire [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); G1 on word |
 | — | **Giving-lane T2** | **Wire opened** `071405` | Choice [`062656`](../active-designing/20260712-062656_giving-lane-t2-choice-brief.md) · wire note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); composition witness ahead |
 | — | **Steep published-set sentence** | **Seated** `071405` | Living [`steep.md`](../active-designing/steep.md) — peer-offer gate; Granary precedent |
 | — | **Bud / mudra names** | **Seated** `062656` | Spec [`061012`](../context/specs/20260712-061012_bud-and-mudra-names-seated.md); `tally/bud.rye` · `slcl4_mudra.rish` |
@@ -73,7 +59,7 @@ rishi/bin/rishi run tools/launch-cursor.rish --gpu
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [ ] **Proven-seat G1** — receipt verify-witness under Genode POSIX, fully jailed — ER `054342` (on word)
 - [ ] **Pond enclosure witness baseline** — six-bar asserts vs ai-jail today (on word)
-- [ ] **`lane_kvm` on-path G0-complete green** — **worded** `121518` — host: `LANE_KVM=true` + `/dev/kvm` + `run_with_lane_kvm.sh`; flip lane off after; parity re-pin may ride same sitting
+- [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; optional `--parity` still open
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
 - [x] **Giving-lane T2 wire opened (Kaeden word)** — courtesy composition note [`giving-lane-t2-courtesy-wire.md`](../active-designing/giving-lane-t2-courtesy-wire.md); glass witness still ahead

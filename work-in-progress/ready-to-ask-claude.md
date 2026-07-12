@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.131200` (ai-jail v1.12.0 pin · Karpathy/ai-memory dispositions await word)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.140403` (`lane_kvm` on-path GREEN · refuse restored)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -83,7 +83,9 @@
 
 **Bron session-log law (`120007` · Claude affirm `120812` · index hygiene `121409`):** living logs are `.bron`; Markdown folded under `archive/YYYYMMDD/`. Order holds: host on-path G0-complete first, then G1, then Pond.
 
-**Kaeden word `121518`:** *kg i grant* — host on-path **opened**; same-sitting metal parity re-pin **allowed**. Awaiting Framework host with `/dev/kvm` (this session: `ai-sandbox`, kvm absent).
+**Kaeden word `121518`:** *kg i grant* — host on-path **opened**; same-sitting metal parity re-pin **allowed**.
+
+**Host sitting `140403`:** `lane_kvm` on-path G0-complete **GREEN** — phase A GRUB (2s) · phase B QMP glass 2359312 bytes · refuse-probe restored OK · cache gitignored. Script `tools/lane_kvm_onpath_host.rish`. Optional `--parity` still open if not run this sitting. Next on word: G1 · Pond six-bar · Route two parked.
 
 **Claude `125200` (guidance `123700`):** residue close **affirmed** after six living tip→nib lines (anvil · mandi · active-designing README · seam-season guard · giving-lane-t2 guard). Order **holds** — host on-path → G1 → Pond. Pre-flight: stage sculpt image · after restore run `lane_kvm.sh refuse-probe` on host · parity pin-what-prints / red-twice parks. Giving-family naming **affirmed** for future creator gratuity. Jail kg refuse honored as the floor working.
 
