@@ -1,7 +1,7 @@
 # The Silo Technique
 
 **Language:** EN
-**Last updated:** 2026-06-29
+**Last updated:** 2026-07-12 (scoped relaxation for docs compression layer)
 **Style:** Radiant — best paired with the voice described in the Radiant Style guide
 
 **Purpose:** Name a way of taking in an idea from outside your work and making it truly your own — so that what enters your writing arrives as an owned, understood concept in your own voice, rather than a borrowed quotation wearing someone else's name. This is a portable technique; it travels to any subject and any tool.
@@ -49,6 +49,10 @@ This is the whole shape of the trust: the ideas move into your work digested and
 ## What Siloing Is Not
 
 Siloing is not taking without crediting — gratitude lives openly in its own space, and the practice depends on it. It is not erasing those who taught you, who remain named and honored. It is not making an idea smaller or simpler; it re-roots the idea at full strength in your own ground. And it is not paraphrase performed to dodge a rule — it is genuine re-understanding, the kind that leaves you able to teach the idea yourself. The test is always comprehension, never concealment.
+
+## Scoped relaxation (docs compression layer)
+
+**Product-facing and civic-facing prose keeps full Silo.** Pages under `docs/`, and `active-designing/` notes that carry an explicit **Dependencies** section, may name teachers plainly in that section — naming *is* the clarity there. Every relaxed page still closes with its gratitude lines. Design law: [`active-designing/20260712-221600_docs-compression-layer-design.md`](../active-designing/20260712-221600_docs-compression-layer-design.md).
 
 ## Where It Serves
 

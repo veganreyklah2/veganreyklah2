@@ -3,7 +3,7 @@
 *A durable guide to where work lives, how new writing earns its place, and how the tree stays honest over time.*
 
 **Language:** EN
-**Last updated:** 2026-07-10 (Radiant Style pass round 3)
+**Last updated:** 2026-07-12 (docs compression layer design seated)
 **Style:** Radiant (see `context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 
@@ -31,7 +31,9 @@ Read the sections below when you wonder where a new file belongs. When a season'
 
 **`work-in-progress/`** — the workbench. The living roadmap (`ROADMAP.md`), the granular plan (`TASKS.md`), open threads, and dated artifacts for work still in motion. Finished scaffolding graduates to `archive/`.
 
-**`active-designing/`** — design in motion. Our own module names, RISC-V-first, siloed from gratitude sources. Dated briefs; living README index.
+**`active-designing/`** — design in motion. Our own module names, RISC-V-first, siloed from gratitude sources. Dated briefs; living README index. **Raw layer** for the docs compression shelf — dated notes stay here; they are not yondered when `docs/` compresses them.
+
+**`docs/`** — compression layer at the repo root (TigerBeetle `docs/` precedent). Living guides that compress many dated sources in `active-designing/`, counsel, and witnesses. Pages compress the record; they never replace it. Pin-strings point at witnesses — docs carry no load-bearing pins. Design law: [`active-designing/20260712-221600_docs-compression-layer-design.md`](active-designing/20260712-221600_docs-compression-layer-design.md).
 
 **`external-research/`** — study of the world with attribution. Explorations, comparisons, voiced adaptations of gratitude sources. Living README. **Research for understanding — advice stays elsewhere:** surveys and memos here frame understanding only — they recommend no purchase, no treasury action, and no licensed professional course; policy and money choices belong to Kaeden in their own season. Say so in each file's status line; CIVIC stays policy-shaped in `context/`. Proposed register law: [`context/TWO_ROOMS.md`](context/TWO_ROOMS.md) (seats on Kaeden's word).
 
@@ -67,6 +69,7 @@ Read the piece aloud. Ask what it is *doing*:
 - **Teaching or looking something up** → `manual/` (tutorial, guide, or reference — only what runs).
 - **Carrying Linengrow's application vision** → `linengrow/`.
 - **Deciding our own design** → `active-designing/`.
+- **Compressing many dated design notes into one operator guide** → `docs/` (Checkable; cites witnesses).
 - **Advising on a decision this project is about to make** → `counsel/` (analysis, ruling, proposal, or recommendation — awaiting Kaeden's word).
 - **Studying an external work** → `external-research/`.
 - **Expanding intent into a runnable plan** → `expanding-prompts/`.

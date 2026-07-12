@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (signed-Kumara resting · seam-C counsel · season held)
+**Last updated:** 2026-07-12 (docs compression layer design seated · signed-Kumara resting)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -16,11 +16,12 @@
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
 4. ~~**Signed-Kumara**~~ — **resting** `220400` · GREEN · seam-C law named · Rye-body shim parked
-5. **Morning kg:** living-docs lint advisory naming (thrice earned)
-6. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
-7. Karpathy / ai-memory dispositions · forge courtesy
-8. **Named supersede build word** — only then
-9. Route two / libsodium — parked · Rye-body C-shim on trigger (guest logic outgrows seam-C · or second Genode guest)
+5. **Docs compression layer** — design seated `221600`; next SLC go: `docs/PROVEN_SEAT.md` (then ENCLOSURE · small three · lint)
+6. **Morning kg:** living-docs lint advisory naming (thrice earned) — proposed `tools/living_docs_lint.rish`
+7. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
+8. Karpathy / ai-memory dispositions · forge courtesy
+9. **Named supersede build word** — only then
+10. Route two / libsodium — parked · Rye-body C-shim on trigger (guest logic outgrows seam-C · or second Genode guest)
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
