@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.222700 | [Go WITNESS_PATTERNS — docs shelf complete · four remotes](20260712-222700_go-witness-patterns.bron) | Push 580f028 · five pages live · blurman guard |
 | 20260712.222600 | [Go VENDORING — third docs page · four remotes](20260712-222600_go-vendoring.bron) | Push 6b9a86b · vendor/gratitude/cache recipe |
 | 20260712.222500 | [Go ENCLOSURE — second docs guide · four remotes](20260712-222500_go-enclosure.bron) | Push 27d961d · ENCLOSURE guide · folded 222400 |
 | 20260712.222400 | [Go PROVEN_SEAT — docs shelf first page · four remotes](20260712-222400_go-proven-seat.bron) | Push 5f95215 · README + PROVEN_SEAT · gitignore |
