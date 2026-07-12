@@ -1,13 +1,13 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (`lane_kvm` seated `113900` · parity GREEN **324** · tip **430**/**432** · IronBeetle 34)
+**Last updated:** 2026-07-12 (tip `de483e0` · `lane_kvm` refuse GREEN · encrypt-to-identity park · parity **324** · product **430** · suite **432** · IronBeetle 34)
 
-## Now — product tip **430** · suite tip **432** · proven-seat G0-complete · enclosure A→B
+## Now — product tip **430** · suite tip **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) — D-Bus escape retired; on-path ready behind `LANE_KVM=true` + `/dev/kvm`. Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`.
+**Standing green:** product tip **430** — Open Asks civic sight. Suite tip **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`). Enclosure disposition **A-narrow → B** filed [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). **`lane_kvm` refuse GREEN** [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md) — D-Bus escape retired; tip **`de483e0`** on all four remotes. Encrypt-to-future-identity **horizon park** [`114600`](../work-in-progress/ready-to-ask-claude.md). Brushstroke weave silo [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md). IronBeetle silo complete (34 · five gaps) `105212`. Metal parity chaptered GREEN **324**.
 
-**Ordered next (on word):** G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. Host one-shot on-path G0-complete when granting the lane. T3 / Spritely / NLnet own mornings.
+**Ordered next (on word):** Host one-shot `lane_kvm` on-path G0-complete (`LANE_KVM=true` + `/dev/kvm`) · G1 jailed · Pond enclosure witness baseline · Brushstroke `tokens.rye` · **or hold**. T3 / Spritely / NLnet own mornings.
 
 **Metal parity pin (chaptered):** suite **GREEN** — 2 chapters under Env[256]; composition **324** GREEN say-lines (`parity.rish` + `parity_ch01.rish` + `parity_ch02.rish`); tip **432** standing; full composition green claimed. wasmtime via PATH or `tools/.cache/wasmtime/wasmtime` (31.0.0).
 

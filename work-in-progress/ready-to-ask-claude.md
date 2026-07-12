@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.114600` (encrypt-to-identity light park · VetKeys teaching kept · quorum declined)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.115441` (full summary · tip `de483e0` · doorway GREEN · todos↔TASKS)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
