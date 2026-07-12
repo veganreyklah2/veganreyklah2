@@ -18,6 +18,8 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260712.211400 | [Seat Claude N — six-over-seven durability](20260712-211400_seat-n-six-over-seven.bron) | Exit card complete · soak riders seated |
+| 20260712.210800 | [Seat Claude shape — two-column scorecard · bar6 · exit first](20260712-210800_claude-sixbar-shape-exit.bron) | Scorecard + exit draft · three-door bus · N open |
 | 20260712.210000 | [Go — G1 vendor home · Pond sixbar · four remotes](20260712-210000_go-g1-vendor-pond-sixbar.bron) | Commits + push · Claude printout |
 | 20260712.205600 | [Kg — Pond enclosure six-bar baseline GREEN](20260712-205600_pond-enclosure-sixbar-green.bron) | Six asserts vs ai-jail 1.12.0 · session-bus gap named |
 | 20260712.204549 | [Seat Claude close — G1 digest · vendor/genode · Pond next](20260712-204549_seat-g1-close-vendor-genode.bron) | Submodule home · witnesses GREEN · Pond climbs next |

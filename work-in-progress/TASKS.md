@@ -1,7 +1,7 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Pond six-bar baseline GREEN · G1 closed digest-grade)
+**Last updated:** 2026-07-12 (N seated · six-over-seven · exit card complete)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
@@ -11,12 +11,14 @@
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (Claude `204549` close · sixbar `205600`):**
+**Ordered next (Claude `211400` N seated · go when ready):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`** · go `ee1c37f`
 2. ~~**G1**~~ — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` @ `492a510…` · signed Ed25519 lap pre-shaped (host Kumara · guest verifies)
-3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` vs ai-jail v1.12.0 · session-bus gap named for supersede
-4. Route two / inward lane nest — parked until graduation trigger
-5. Pond supersede / signed Ed25519 proven-seat — on word (safety scorecard frozen)
+3. ~~**Pond** enclosure six-bar baseline~~ — **GREEN** `205600` · sharpened `210800` (two-column · three-door bus · bar5 count)
+4. ~~**Pond supersede exit criteria**~~ — **complete** `211400` · N = six-over-seven · three riders · season closed until exit bron
+5. **Go** seats the drafts for Claude’s second walk · then column-two probes on word
+6. Route two / inward lane nest — parked until graduation trigger (may fire inside supersede season under trigger law)
+7. Signed Ed25519 proven-seat — parked for a fresh crypto-teacher morning
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 
@@ -61,7 +63,8 @@
 - [x] **RTAC — parity TooManyBindings** — **Resolved** by chaptering (fresh Env per chapter); not by raising the binding ceiling
 - [x] **`lane_kvm` + paired refuse** — off by default; `tools/lane_kvm.sh`; refuse GREEN `113900`; D-Bus escape retired [`113900`](../active-designing/20260712-113900_lane-kvm-retire-dbus-escape.md); on-path scripts ready (`proven_seat_g0_complete_jailed.rish`) — host one-shot when `/dev/kvm` granted
 - [x] **Proven-seat G1** — **closed digest-grade** `204549` · serial GREEN · `vendor/genode` submodule @ `492a510…` · probe + guest + jailed TCG witnesses · signed Ed25519 next named lap
-- [x] **Pond enclosure witness baseline** — **GREEN** `205600` · six bars vs ai-jail v1.12.0 · `tools/pond_enclosure_sixbar.rish` · session-bus gap named for supersede
+- [x] **Pond enclosure witness baseline** — **GREEN** `205600` · sharpened `210800` · two-column scorecard · three-door bus · bar5 exactly-one secret
+- [x] **Pond supersede exit criteria** — **complete** [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · **N = six-over-seven** seated `211400` · season closed until exit bron
 - [x] **`lane_kvm` on-path G0-complete green** — **GREEN** `140403` host — `lane_kvm_onpath_host.rish` · phase A GRUB · phase B glass 2359312 B · refuse restored; host metal parity re-pin **GREEN** `193958`
 - [x] **Brushstroke × Linengrow weave silo** — [`091012`](../active-designing/20260712-091012_brushstroke-linengrow-weave-silo.md); Flax·Bark·Oat·Walnut proposed
 - [ ] **Brushstroke tokens + witness** — `tokens.rye` · `brushstroke_tokens.rish` (on word)
