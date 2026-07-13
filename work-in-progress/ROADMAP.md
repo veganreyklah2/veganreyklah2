@@ -3,8 +3,8 @@
 *A living plan shaped by one law: a complex system that works grows from a simpler system that worked. We build by growing, and we ship something simple that runs at every step.*
 
 **Language:** EN
-**Version:** `20260712.052806` (Seam season prioritization — nib-430 horizon door)
-**Last updated:** 2026-07-12 (nib seated · product nib **430** · suite nib **432**)
+**Version:** `20260713` (Fresh sitting — morning cup · docs keeper complete)
+**Last updated:** 2026-07-13 (git nib **77ab4f1** · product nib **430** · suite nib **432**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -29,6 +29,23 @@ The full design lives in [`active-designing/yonder/20260619-225712_the-whole-sys
 Rye OS is the system. **Linengrow** is the first whole built upon it — a transparent civic and social-commerce platform for vegan musicians and activist creators. The two share one architectural spine: state as a pure fold over an append-only log of immutable signed facts, and five foundations beneath everything — keypair, signed event, log, projection, capability.
 
 Correctness by construction in the kernel becomes trust by construction in the platform. The same capability that isolates a process in Caravan names ownership in Linengrow; the same Mantra log that versions a file records a verifiable receipt; the same Comlink that seals a datagram delivers a signed transaction identity to identity. Rye OS grows the infrastructure laps; Linengrow grows its application laps on the same modules. The full Linengrow vision lives in [`../linengrow/`](../linengrow/); this roadmap grows it the SLC way, smallest lovable complete first. The granular plan for both tracks lives in [`TASKS.md`](TASKS.md).
+
+---
+
+## Now — Fresh sitting (`20260713`)
+
+**Compass rose:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) — foundations → grain → active-designing → TASKS → witnesses → this roadmap.
+
+| Order | Lap | Status | Anchor |
+|-------|-----|--------|--------|
+| — | **Docs compression** + `living_docs_lint` keeper | **Complete** `223300` · five duties GREEN | [`docs/`](../docs/README.md) · design [`221600`](../active-designing/20260712-221600_docs-compression-layer-design.md) · ER [`223300`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md) |
+| **1** | **Parity word** — signed-Kumara witnesses hook into parity advisory tail beside `tame_style` | **Coffee decision** · own chapter or append ch.2 · jail-runnable · no KVM | [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) · lap [`214200`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md) |
+| **2** | **Forge courtesy** | Open · ~two minutes | Inference track lap 1 closed tip **418** |
+| **3** | **G2 naming** — the word today never named | **Open** · weigh seL4-kernel-swap · hw-kernel · Sculpt-integration | ER [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) · hammock [`proven-seat-guest-hammock`](../active-designing/proven-seat-guest-hammock.md) |
+| — | **Named supersede build word** | Parked · frozen criteria ready | [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · latch [`214200`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md) |
+| — | Route two · Rye-body C-shim · libsodium | Parked on triggers | [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) |
+
+**Season held.** Proven-seat **G0-complete** · **G1 closed digest-grade** `204549` · **signed-Kumara GREEN resting** `220400` · metal parity chaptered **GREEN** `193958`.
 
 ---
 
@@ -267,7 +284,7 @@ Still on the prior horizon, after vocabulary ground: **Comlink device wire** —
 | Destination | Status | Depends |
 |-------------|--------|---------|
 | **Mesh inference (TAME-guided)** | Horizon study [`093812`](../external-research/20260712-093812_mesh-inference-study.md) — Kumara-admitted · MALA-metered; not a lap. **Sobriety anchor:** IronBeetle ep004 COST [`../gratitude/ironbeetle/20260712-092212_ironbeetle-ep004-refuses-to-be-sharded.md`](../gratitude/ironbeetle/20260712-092212_ironbeetle-ep004-refuses-to-be-sharded.md) — beat one honest thread before scaling counts | Comlink · Mycelium M4 · seL4 seat · model-runtime seam |
-| **Proven-seat G1–G3 children** | Named: `genode_seed` · Tally-quota dataspace · Mantra storage seam · Comlink transport seam · `genode_witness` — counsel [`092212`](../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md) | **`lane_kvm` refuse GREEN** `113900` · on-path host one-shot still open · G1 on word |
+| **Proven-seat G1–G3 children** | **G1 closed digest-grade** `204549` · **signed-Kumara GREEN resting** `220400` · **G2 naming open** (seL4-kernel-swap · hw-kernel · Sculpt-integration) — counsel [`092212`](../counsel/20260712-092212_claude-counsel-hoon-azimuth-ames-verdicts.md) · seam-C [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) | **`lane_kvm` on-path GREEN** `140403` · G2 word before G3 lap |
 | **Comlink maturation** | Key-addressing · `%fade` from birth · content-address dedupe — shared prerequisite for Genode transport + mesh | RTAC seat |
 
 **Dependency ladder:** [`093812`](../external-research/20260712-093812_dependency-ladder.md) · **Matklad distilled:** [`093812`](../external-research/20260712-093812_matklad-teachings-distilled.md).

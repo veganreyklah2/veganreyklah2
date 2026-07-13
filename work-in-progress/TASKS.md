@@ -1,26 +1,27 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-12 (living_docs_lint keeper folds · Karpathy/ai-memory dispositions closed)
+**Last updated:** 2026-07-13 (compass align · fresh sitting · git nib **77ab4f1**)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`c49bc00`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling).
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **G1 closed digest-grade** `204549` · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`77ab4f1`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling). **Docs keeper** GREEN `223300` · [`docs/`](../docs/README.md) shelf complete.
 
 **Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/`.
 
 **Landed (`193958` host):** `rishi run tools/parity.rish` tee — chapter 1 GREEN · chapter 2 GREEN · full witness suite GREEN. Log `tools/.cache/parity-host.log`. Fresh-sitting first act closed.
 
-**Ordered next (signed-Kumara resting `220400` · season held):**
+**Ordered next (fresh sitting `20260713` · season held · follow compass):**
 1. ~~Fresh Framework sitting — first act: metal parity re-pin~~ **done `193958`**
 2. ~~**G1**~~ — **closed digest-grade** `204549`
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
-4. ~~**Signed-Kumara**~~ — **resting** `220400` · GREEN · seam-C law named · Rye-body shim parked
+4. ~~**Signed-Kumara**~~ — **resting GREEN** `220400` · seam-C law named · Rye-body shim parked
 5. ~~**Docs compression layer**~~ — **complete** · `living_docs_lint.rish` seated `222800` · keeper folds **GREEN** `223300`
-6. **Kaeden coffee word:** signed-Kumara witnesses → parity chapter? (suite-nib; jail-runnable · no KVM)
-7. ~~Karpathy / ai-memory dispositions~~ — **closed** `223300` · forge courtesy remains
-8. **Named supersede build word** — only then
-9. Route two / libsodium — parked · Rye-body C-shim on trigger (guest logic outgrows seam-C · or second Genode guest)
+6. **Parity word** — signed-Kumara witnesses → parity chapter beside `tame_style` (Kaeden coffee · jail-runnable · no KVM · suite-nib bumps either way)
+7. **Forge courtesy** — ~two minutes
+8. **G2 naming** — seL4-kernel-swap · hw-kernel · Sculpt-integration (proven-seat ladder warm; word today never named)
+9. **Named supersede build word** — only then · frozen criteria [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md)
+10. Route two / libsodium — parked · Rye-body C-shim on trigger (guest logic outgrows seam-C · or second Genode guest)
 
 **Parked — lane inward Route two:** nest bwrap + `--dev-bind /dev/kvm` for proven-seat only. **Graduation trigger (Claude `144519`):** open when G1’s QEMU cadence makes the hand one-shot the bottleneck (lane’s second consumer), or at the autonomous-pipeline word — whichever first. Do not patch teacher ai-jail.
 

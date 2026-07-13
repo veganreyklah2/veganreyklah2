@@ -1,6 +1,6 @@
 # Ready to Ask Claude — Strategy Checkpoint
 
-**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260712.195339` (G1 opened · crossing spike)
+**Stamp:** living ledger (born `20260702.202612`) · refreshed `20260713` (fresh sitting · compass align)
 **Language:** EN
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
@@ -130,6 +130,23 @@
 **Docs compression layer — shipped:** five pages under ceiling · [`living_docs_lint.rish`](../tools/living_docs_lint.rish) seated (ratchet-advisory · five duties) · doorway roster joins `docs/` · Status Checkable on every page · **keeper folds GREEN** `223300` (keeps-list · module Status · ORGANIZING inbound · Karpathy/ai-memory dispositions closed).
 
 **Karpathy gist + ai-memory — closed `223300`:** gist → [`gratitude/karpathy/`](../gratitude/karpathy/) · distillation [`20260712-223300`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md) · ai-memory study shelf [`gratitude/ai-memory/`](../gratitude/ai-memory/) · daemon still parked.
+
+---
+
+## Fresh sitting — morning cup (`20260713`)
+
+**Compass:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · **git nib `77ab4f1`** · product **430** · suite **432** · season **held**.
+
+| # | Lap | Status |
+|---|-----|--------|
+| — | Docs compression + `living_docs_lint` keeper | **Complete** `223300` GREEN |
+| **1** | **Parity word** — signed-Kumara witnesses → parity advisory beside `tame_style` | **Coffee decision** · ch. own or append ch.2 · jail-runnable |
+| **2** | **Forge courtesy** | Open · ~2 min |
+| **3** | **G2 naming** — seL4-kernel-swap · hw-kernel · Sculpt-integration | **Open** — word today never named |
+| — | Named supersede build word | Parked · [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) |
+| — | Route two · Rye-body shim · libsodium | Parked on triggers |
+
+**Plan:** [`TASKS.md`](TASKS.md) · [`ROADMAP.md`](ROADMAP.md).
 
 ---
 

@@ -1,7 +1,7 @@
 # Foundations
 
 **Language:** EN
-**Last updated:** 2026-07-12 (Seam season pointer `052806`)
+**Last updated:** 2026-07-13 (fresh sitting · docs keeper complete · G2 naming open)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 
 ---
@@ -15,6 +15,8 @@ These rest beneath the specifications. The specs say what to build and how; thes
 **The compass** — the return habit (foundations → grain → active-designing → TASKS → witnesses) lives in [`20260706-185112_follow-our-compass.md`](20260706-185112_follow-our-compass.md) · **landed** `20260706.185512 UDT`. Say **follow our compass** for navigation; keep **grain strand** for structural fit.
 
 **Seam season (`20260712.052806`)** — nib-430 horizon door: universality through the application seam. Wire serves the fold and sameness stay the why; studies 1–4 landed; CapTP-as-fold **declined** [`../context/specs/20260712-054650_captp-as-fold-carriage-declined.md`](../context/specs/20260712-054650_captp-as-fold-carriage-declined.md); giving-lane T0 in [`20260629-014512_money-that-stays-close-to-home.md`](20260629-014512_money-that-stays-close-to-home.md). Living hammock [`../active-designing/seam-season-hammock.md`](../active-designing/seam-season-hammock.md) · counsel [`../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md`](../counsel/20260712-052806_claude-counsel-three-doors-and-teacher.md).
+
+**Docs compression (`20260712.223300`)** — raw beneath · compress above · keeper honest: [`../docs/`](../docs/README.md) shelf · `living_docs_lint.rish` ratchet-advisory · Karpathy pattern distillation [`../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md). Compass step 5–6: [`TASKS.md`](../work-in-progress/TASKS.md) · [`ROADMAP.md`](../work-in-progress/ROADMAP.md).
 
 ## What Lives Here
 
