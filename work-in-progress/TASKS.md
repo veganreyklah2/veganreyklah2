@@ -1,11 +1,11 @@
 # Tasks — The Granular Plan
 
 **Language:** EN
-**Last updated:** 2026-07-13 (compass align · fresh sitting · git nib **77ab4f1**)
+**Last updated:** 2026-07-13 (compass align landed · git nib **5c06253**)
 
 ## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **G1 closed digest-grade** `204549` · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`77ab4f1`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling). **Docs keeper** GREEN `223300` · [`docs/`](../docs/README.md) shelf complete.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **G1 closed digest-grade** `204549` · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`5c06253`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling). **Docs keeper** GREEN `223300` · [`docs/`](../docs/README.md) shelf complete.
 
 **Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/`.
 

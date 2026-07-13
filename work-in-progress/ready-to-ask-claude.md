@@ -135,7 +135,7 @@
 
 ## Fresh sitting — morning cup (`20260713`)
 
-**Compass:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · **git nib `77ab4f1`** · product **430** · suite **432** · season **held**.
+**Compass:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · **git nib `5c06253`** · product **430** · suite **432** · season **held**.
 
 | # | Lap | Status |
 |---|-----|--------|

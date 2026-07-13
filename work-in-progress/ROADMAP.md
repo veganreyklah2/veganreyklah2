@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260713` (Fresh sitting — morning cup · docs keeper complete)
-**Last updated:** 2026-07-13 (git nib **77ab4f1** · product nib **430** · suite nib **432**)
+**Last updated:** 2026-07-13 (git nib **5c06253** · product nib **430** · suite nib **432**)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
