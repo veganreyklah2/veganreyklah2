@@ -135,14 +135,14 @@
 
 ## Fresh sitting — morning cup (`20260713`)
 
-**Compass:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · **git nib `5c06253`** · product **430** · suite **432** · season **held**.
+**Compass:** [`foundations/20260706-185112_follow-our-compass.md`](../foundations/20260706-185112_follow-our-compass.md) · product **430** · suite **433** · season **held**.
 
 | # | Lap | Status |
 |---|-----|--------|
 | — | Docs compression + `living_docs_lint` keeper | **Complete** `223300` GREEN |
-| **1** | **Parity word** — signed-Kumara witnesses → parity advisory beside `tame_style` | **Coffee decision** · ch. own or append ch.2 · jail-runnable |
-| **2** | **Forge courtesy** | Open · ~2 min |
-| **3** | **G2 naming** — seL4-kernel-swap · hw-kernel · Sculpt-integration | **Open** — word today never named |
+| — | **Parity word** — advisory ch.1 · signed-Kumara append ch.2 | **Landed** `20260713` · suite **433** |
+| **1** | **Forge courtesy** | Open · ~2 min |
+| **2** | **G2 naming** — seL4-kernel-swap · hw-kernel · Sculpt-integration | **Open** — word today never named |
 | — | Named supersede build word | Parked · [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) |
 | — | Route two · Rye-body shim · libsodium | Parked on triggers |
 

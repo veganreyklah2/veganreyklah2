@@ -18,6 +18,7 @@ Naming follows [`context/specs/20260627-102012_one-clock-naming-law.md`](../cont
 
 | Stamp | Log | Meaning |
 |-------|-----|---------|
+| 20260713.104800 | [Parity word landed — advisory ch.1 · signed-Kumara ch.2](20260713-104800_parity-word-landed.bron) | Word approved · suite nib **433** · kg GREEN |
 | 20260713.104400 | [Compass align — ROADMAP TASKS RTAC fresh sitting](20260713-104400_compass-align-fresh-sitting.bron) | Morning cup table · git nib 77ab4f1 · Cursor todos |
 | 20260712.223900 | [Day close — keeper quiet · nib grain noted](20260712-223900_day-close-keeper-quiet.bron) | Good on 863fb0f/77ab4f1 · HEAD grain for morning |
 | 20260712.223600 | [Go + kg — living-docs keeper folds landed](20260712-223600_go-kg-living-docs-keeper.bron) | 863fb0f four remotes · lint GREEN · git nib 77ab4f1 |

@@ -15,7 +15,7 @@
 
 Affirmed. No one-line before the ladder sleeps. Both serial lines verbatim; eddsa-guard silent; honesty line first in the fixture.
 
-**Morning-sized word (Kaeden over coffee, never tonight):** whether fetch · build · TCG serial join a parity chapter (suite-nib bump). All three are jail-runnable and want no KVM.
+**Morning-sized word (Kaeden over coffee, never tonight):** ~~whether fetch · build · TCG serial join a parity chapter~~ **landed** `20260713` — append ch.2 · `living_docs_lint` advisory ch.1 · suite nib **433**.
 
 ---
 

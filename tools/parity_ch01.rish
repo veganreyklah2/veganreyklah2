@@ -149,6 +149,12 @@ let tame = run ["rishi/bin/rishi" "run" "tools/tame_style_check.rish"]
 assert tame.ok else "TAME style witness failed"
 say "GREEN: TAME style witness passed."
 
+say "witness suite: living-docs lint (ratchet advisory beside tame_style)…"
+let docs_lint = run ["rishi/bin/rishi" "run" "tools/living_docs_lint.rish"]
+say docs_lint.out
+if docs_lint.err != "" then say docs_lint.err
+say "GREEN: living-docs lint advisory printed (ratchet; never fails witness)."
+
 say "witness suite: Tally maybe…"
 let tmaybe = run ["rishi/bin/rishi" "run" "tools/tally_maybe.rish"]
 if tmaybe.ok == false then say "tally maybe nested stdout:"

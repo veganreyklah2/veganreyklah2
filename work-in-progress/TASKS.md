@@ -3,9 +3,9 @@
 **Language:** EN
 **Last updated:** 2026-07-13 (compass align landed · git nib **5c06253**)
 
-## Now — product nib **430** · suite nib **432** · proven-seat · enclosure A→B · `lane_kvm`
+## Now — product nib **430** · suite nib **433** · proven-seat · enclosure A→B · `lane_kvm`
 
-**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **432** — receipt-verify under Wasmtime. Proven-seat **G0-complete** (`004012`) · **G1 closed digest-grade** `204549` · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`719cbdf`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling). **Docs keeper** GREEN `223300` · [`docs/`](../docs/README.md) shelf complete.
+**Standing green:** product nib **430** — Open Asks civic sight. Suite nib **433** — receipt-verify Wasmtime + signed-Kumara parity append ch.2. Proven-seat **G0-complete** (`004012`) · **G1 closed digest-grade** `204549` · **`lane_kvm` on-path G0-complete GREEN** `20260712.140403` (phase A GRUB · phase B QMP glass 2359312 B · refuse restored). Enclosure pair **complete on metal** — refuse GREEN (jail) · permit GREEN (Framework) · refuse-probe restored. Disposition **A-narrow → B** [`090512`](../counsel/20260712-090512_claude-ruling-enclosure-ai-jail-then-pond.md). Bron session-log law seated. **Nib** seated. Git nib **`719cbdf`**. Teacher ai-jail **v1.12.0**. argv-direct witness build law Claude-affirmed `144519`. Encrypt-to-future-identity horizon park. IronBeetle 34 · five gaps. Metal parity chaptered **GREEN** — host re-pin **`20260712.193958`** (both chapters · full suite under Env ceiling). **Docs keeper** GREEN `223300` · [`docs/`](../docs/README.md) shelf complete. **Parity word** landed `20260713` — living_docs_lint advisory ch.1 · signed-Kumara append ch.2.
 
 **Landed (`140403` host):** `rishi run tools/lane_kvm_onpath_host.rish` — permit green + refuse restored on Framework metal. Artifacts under gitignored `tools/.cache/proven-seat/`.
 
@@ -17,7 +17,7 @@
 3. ~~**Pond** enclosure · exit freeze · master-seal~~ — **latch rests** `214200`
 4. ~~**Signed-Kumara**~~ — **resting GREEN** `220400` · seam-C law named · Rye-body shim parked
 5. ~~**Docs compression layer**~~ — **complete** · `living_docs_lint.rish` seated `222800` · keeper folds **GREEN** `223300`
-6. **Parity word** — signed-Kumara witnesses → parity chapter beside `tame_style` (Kaeden coffee · jail-runnable · no KVM · suite-nib bumps either way)
+6. ~~**Parity word**~~ — **landed** `20260713` · living_docs_lint advisory ch.1 · signed-Kumara append ch.2 · suite nib **433**
 7. **Forge courtesy** — ~two minutes
 8. **G2 naming** — seL4-kernel-swap · hw-kernel · Sculpt-integration (proven-seat ladder warm; word today never named)
 9. **Named supersede build word** — only then · frozen criteria [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md)

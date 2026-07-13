@@ -127,7 +127,9 @@ Fixture generator: `tools/proven_seat_signed_kumara_gen.rye` through `tally/kuma
 
 **Resting** — no one-line before the ladder sleeps. Morning word (Kaeden): whether fetch · build · serial join a parity chapter.
 
-### Metal parity (suite nib **432**)
+### Metal parity (suite nib **433**)
+
+Chapter 1 prints `living_docs_lint` ratchet advisory beside `tame_style`. Chapter 2 appends `proven_seat_signed_kumara_parity.rish` (fetch gates; build+serial when bench staged; jail-safe ADVISE skip).
 
 Separate from the ladder rungs — Wasm receipt-verify under Env ceiling:
 

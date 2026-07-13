@@ -4,7 +4,7 @@
 
 **Language:** EN
 **Version:** `20260713` (Fresh sitting — morning cup · docs keeper complete)
-**Last updated:** 2026-07-13 (git nib **5c06253** · product nib **430** · suite nib **432**)
+**Last updated:** 2026-07-13 (parity word landed · suite nib **433** · git nib pending go)
 **Style:** Radiant (see `../context/RADIANT_STYLE.md`)
 **Voice:** Rio 3
 **Lens:** TAME — safety, performance, joy; the Seed Law; [SLC](../context/SIMPLE_LOVABLE_COMPLETE.md)
@@ -39,9 +39,9 @@ Correctness by construction in the kernel becomes trust by construction in the p
 | Order | Lap | Status | Anchor |
 |-------|-----|--------|--------|
 | — | **Docs compression** + `living_docs_lint` keeper | **Complete** `223300` · five duties GREEN | [`docs/`](../docs/README.md) · design [`221600`](../active-designing/20260712-221600_docs-compression-layer-design.md) · ER [`223300`](../external-research/20260712-223300_living-docs-lint-and-karpathy-wiki-pattern.md) |
-| **1** | **Parity word** — signed-Kumara witnesses hook into parity advisory tail beside `tame_style` | **Coffee decision** · own chapter or append ch.2 · jail-runnable · no KVM | [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) · lap [`214200`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md) |
-| **2** | **Forge courtesy** | Open · ~two minutes | Inference track lap 1 closed tip **418** |
-| **3** | **G2 naming** — the word today never named | **Open** · weigh seL4-kernel-swap · hw-kernel · Sculpt-integration | ER [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) · hammock [`proven-seat-guest-hammock`](../active-designing/proven-seat-guest-hammock.md) |
+| — | **Parity word** — living_docs_lint advisory ch.1 · signed-Kumara append ch.2 | **Landed** `20260713` · suite nib **433** | [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) · `proven_seat_signed_kumara_parity.rish` |
+| **1** | **Forge courtesy** | Open · ~two minutes | Inference track lap 1 closed tip **418** |
+| **2** | **G2 naming** — the word today never named | **Open** · weigh seL4-kernel-swap · hw-kernel · Sculpt-integration | ER [`054342`](../external-research/20260712-054342_proven-seat-guest-genode-sel4.md) · hammock [`proven-seat-guest-hammock`](../active-designing/proven-seat-guest-hammock.md) |
 | — | **Named supersede build word** | Parked · frozen criteria ready | [`210800`](../active-designing/20260712-210800_pond-supersede-exit-criteria.md) · latch [`214200`](../active-designing/20260712-214200_proven-seat-signed-kumara-monocypher.md) |
 | — | Route two · Rye-body C-shim · libsodium | Parked on triggers | [`220400`](../active-designing/20260712-220400_proven-seat-seam-c-and-rye-body.md) |
 
